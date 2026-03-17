@@ -3,6 +3,7 @@ const router = express.Router();
 const db = require('../db');
 const { computeScore } = require('../engines/scorer');
 const { scrapeAllabolag, scrapeCompanyDetail, TARGET_SNI, SWEDISH_COUNTIES } = require('../engines/discovery_allabolag');
+const { runBulkImport, lookupByOrgNr, getAccessToken } = require('../engines/discovery_bolagsverket');
 
 // GET /api/discovery/targets — available SNI codes and counties
 router.get('/targets', (req, res) => {
@@ -123,6 +124,40 @@ router.post('/import-nis2', async (req, res) => {
   }
 
   res.json({ success: true, data: { imported, matched_in_leads: matched } });
+});
+
+// POST /api/discovery/bolagsverket — run full bulk import from Bolagsverket + SCB
+router.post('/bolagsverket', async (req, res) => {
+  res.json({ success: true, data: { message: 'Bolagsverket bulk import started — this takes 5-15 minutes. Monitor PM2 logs.' } });
+
+  setImmediate(async () => {
+    try {
+      const result = await runBulkImport(db);
+      console.log(`[bolagsverket] Import done: ${JSON.stringify(result)}`);
+    } catch (err) {
+      console.error('[bolagsverket] Import error:', err.message);
+    }
+  });
+});
+
+// POST /api/discovery/bolagsverket/lookup — enrich single lead via API
+router.post('/bolagsverket/lookup', async (req, res) => {
+  const { org_nr } = req.body;
+  if (!org_nr) return res.status(400).json({ success: false, error: 'org_nr required' });
+
+  const clientId = process.env.BOLAGSVERKET_CLIENT_ID;
+  const clientSecret = process.env.BOLAGSVERKET_CLIENT_SECRET;
+  if (!clientId || !clientSecret) {
+    return res.status(400).json({ success: false, error: 'BOLAGSVERKET_CLIENT_ID / CLIENT_SECRET not set in .env. Register at portal.api.bolagsverket.se' });
+  }
+
+  try {
+    const token = await getAccessToken(clientId, clientSecret);
+    const data = await lookupByOrgNr(org_nr, token);
+    res.json({ success: true, data });
+  } catch (err) {
+    res.status(500).json({ success: false, error: err.message });
+  }
 });
 
 // POST /api/discovery/rescore-all — re-run scorer on all leads

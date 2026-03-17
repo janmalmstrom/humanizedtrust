@@ -6,3 +6,5 @@ backend/.env
 volumes/
 .DS_Store
 *.log
+data/bolagsverket/*.txt
+data/bolagsverket/*.zip

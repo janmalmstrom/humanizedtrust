@@ -20,6 +20,7 @@ export default function Discovery() {
   const [message, setMessage] = useState('');
   const [nis2Text, setNis2Text] = useState('');
   const [nis2Running, setNis2Running] = useState(false);
+  const [bvRunning, setBvRunning] = useState(false);
 
   async function runDiscovery() {
     if (!sni) return;
@@ -54,6 +55,16 @@ export default function Discovery() {
     } catch (err) {
       setMessage(`Fel: ${err.message}`);
     } finally { setNis2Running(false); }
+  }
+
+  async function runBolagsverket() {
+    setBvRunning(true);
+    try {
+      const { data } = await api.post('/discovery/bolagsverket', {});
+      setMessage(data.message);
+    } catch (err) {
+      setMessage(`Fel: ${err.message}`);
+    } finally { setBvRunning(false); }
   }
 
   async function rescoreAll() {
@@ -117,6 +128,33 @@ export default function Discovery() {
         <button onClick={runDiscovery} disabled={!sni || running}
           className="px-4 py-2 bg-cyan-600 hover:bg-cyan-500 text-white text-sm rounded-lg transition-colors disabled:opacity-50">
           {running ? 'Kör discovery...' : 'Starta Discovery'}
+        </button>
+      </div>
+
+      {/* Bolagsverket bulk import */}
+      <div className="bg-navy-800 border border-white/10 rounded-xl p-6 space-y-4">
+        <div>
+          <h2 className="text-sm font-semibold text-slate-200">Bolagsverket + SCB Bulk Import</h2>
+          <p className="text-xs text-slate-500 mt-1">
+            Laddar ner alla aktiva svenska bolag inom målsektorer (SNI 25–33, 35–36, 49–53, 64–66, 84, 86–88)
+            med 50–499 anställda. Gratis, ingen registrering krävs. Tar 5–15 minuter.
+          </p>
+        </div>
+        <div className="grid grid-cols-3 gap-3 text-xs">
+          {[
+            { label: 'Källa', value: 'Bolagsverket + SCB' },
+            { label: 'Uppdatering', value: 'Varje vecka' },
+            { label: 'Kostnad', value: 'Gratis (CC BY 2.5 SE)' },
+          ].map(item => (
+            <div key={item.label} className="bg-white/5 rounded-lg px-3 py-2">
+              <div className="text-slate-500">{item.label}</div>
+              <div className="text-slate-300 font-medium mt-0.5">{item.value}</div>
+            </div>
+          ))}
+        </div>
+        <button onClick={runBolagsverket} disabled={bvRunning}
+          className="px-4 py-2 bg-cyan-600 hover:bg-cyan-500 text-white text-sm rounded-lg transition-colors disabled:opacity-50">
+          {bvRunning ? 'Startar import...' : 'Kör Bolagsverket Import'}
         </button>
       </div>
 
