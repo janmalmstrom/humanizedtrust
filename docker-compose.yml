@@ -1,0 +1,25 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:15-alpine
+    container_name: humanizedtrust_postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: humanizedtrust
+      POSTGRES_USER: ht_user
+      POSTGRES_PASSWORD: HT_sK9mPqW3nVbX7
+      PGDATA: /var/lib/postgresql/data/pgdata
+    volumes:
+      - ./volumes/postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5435:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ht_user -d humanizedtrust"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+networks:
+  default:
+    name: humanizedtrust_network
