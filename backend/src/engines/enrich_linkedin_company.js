@@ -24,8 +24,9 @@ function urlLooksLikeCompanyPage(url) {
 }
 
 async function findLinkedInCompanyUrl(lead) {
-  const key = process.env.SERPER_API_KEY;
-  if (!key) return null;
+  const braveKey = process.env.BRAVE_API_KEY;
+  const serperKey = process.env.SERPER_API_KEY;
+  if (!braveKey && !serperKey) return null;
 
   const { company_name, city, state } = lead;
   if (!company_name) return null;
@@ -33,38 +34,57 @@ async function findLinkedInCompanyUrl(lead) {
   const location = [city, state].filter(Boolean).join(' ');
   const query = `site:linkedin.com/company/ "${company_name}"${location ? ' "' + location + '"' : ''}`;
 
-  let data;
-  try {
-    const res = await fetch('https://google.serper.dev/search', {
-      method: 'POST',
-      headers: { 'X-API-KEY': key, 'Content-Type': 'application/json' },
-      body: JSON.stringify({ q: query, num: 5 }),
-      signal: AbortSignal.timeout(8000),
-    });
-    if (!res.ok) {
-      console.warn(`[LinkedInCompany] API error ${res.status}`);
-      return null;
+  let results = []; // [{ url, title, snippet }]
+
+  if (braveKey) {
+    try {
+      const res = await fetch(
+        `https://api.search.brave.com/res/v1/web/search?q=${encodeURIComponent(query)}&count=5`,
+        {
+          headers: { 'Accept': 'application/json', 'X-Subscription-Token': braveKey },
+          signal: AbortSignal.timeout(8000),
+        }
+      );
+      if (res.ok) {
+        const data = await res.json();
+        results = (data.web?.results || []).map(r => ({ url: r.url, title: r.title || '', snippet: r.description || '' }));
+      } else {
+        console.warn(`[LinkedInCompany] Brave API error ${res.status}`);
+      }
+    } catch (err) {
+      console.warn(`[LinkedInCompany] Brave fetch failed: ${err.message}`);
     }
-    data = await res.json();
-  } catch (err) {
-    console.warn(`[LinkedInCompany] Fetch failed for "${company_name}": ${err.message}`);
-    return null;
+  } else {
+    try {
+      const res = await fetch('https://google.serper.dev/search', {
+        method: 'POST',
+        headers: { 'X-API-KEY': serperKey, 'Content-Type': 'application/json' },
+        body: JSON.stringify({ q: query, num: 5 }),
+        signal: AbortSignal.timeout(8000),
+      });
+      if (res.ok) {
+        const data = await res.json();
+        results = (data.organic || []).map(r => ({ url: r.link, title: r.title || '', snippet: r.snippet || '' }));
+      } else {
+        console.warn(`[LinkedInCompany] Serper API error ${res.status}`);
+      }
+    } catch (err) {
+      console.warn(`[LinkedInCompany] Serper fetch failed: ${err.message}`);
+    }
   }
 
-  if (!data.organic || data.organic.length === 0) return null;
+  if (!results.length) return null;
 
   const normTarget = normalizeCompanyName(company_name);
   const targetWords = normTarget.split(' ').filter(w => w.length > 2);
+  const source = braveKey ? 'brave_xray' : 'serper_xray';
 
-  for (const item of data.organic) {
-    if (!urlLooksLikeCompanyPage(item.link)) continue;
-
-    // Verify enough words from company name appear in title/snippet
-    const haystack = normalizeCompanyName((item.title || '') + ' ' + (item.snippet || ''));
+  for (const item of results) {
+    if (!urlLooksLikeCompanyPage(item.url)) continue;
+    const haystack = normalizeCompanyName(item.title + ' ' + item.snippet);
     const hits = targetWords.filter(w => haystack.includes(w));
     if (targetWords.length > 0 && hits.length < Math.min(2, targetWords.length)) continue;
-
-    return { linkedinUrl: item.link, source: 'serper_xray' };
+    return { linkedinUrl: item.url, source };
   }
 
   return null;

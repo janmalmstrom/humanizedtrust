@@ -8,6 +8,8 @@
     "dev": "nodemon src/server.js"
   },
   "dependencies": {
+    "@anthropic-ai/sdk": "^0.79.0",
+    "@aws-sdk/client-ses": "^3.967.0",
     "axios": "^1.6.0",
     "bcryptjs": "^2.4.3",
     "cheerio": "^1.0.0",

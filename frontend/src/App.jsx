@@ -6,6 +6,9 @@ import Dashboard from './pages/Dashboard';
 import Leads from './pages/Leads';
 import LeadDetail from './pages/LeadDetail';
 import Discovery from './pages/Discovery';
+import Pipeline from './pages/Pipeline';
+import Sequences from './pages/Sequences';
+import Enrichment from './pages/Enrichment';
 import Layout from './components/Layout';
 
 function PrivateRoute({ children }) {
@@ -19,8 +22,11 @@ export default function App() {
       <Route path="/" element={<PrivateRoute><Layout /></PrivateRoute>}>
         <Route index element={<Navigate to="/dashboard" replace />} />
         <Route path="dashboard" element={<Dashboard />} />
+        <Route path="pipeline" element={<Pipeline />} />
         <Route path="leads" element={<Leads />} />
         <Route path="leads/:id" element={<LeadDetail />} />
+        <Route path="sequences" element={<Sequences />} />
+        <Route path="enrichment" element={<Enrichment />} />
         <Route path="discovery" element={<Discovery />} />
       </Route>
     </Routes>

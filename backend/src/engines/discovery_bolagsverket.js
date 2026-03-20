@@ -22,12 +22,32 @@ const readline = require('readline');
 const BULK_DIR = '/home/janne/humanizedtrust/data/bolagsverket';
 
 const TARGET_SNI_PREFIXES = [
-  '25','26','27','28','29','30','31','32','33', // Manufacturing
-  '86','87','88',                               // Healthcare
-  '64','65','66',                               // Financial services
-  '35','36',                                   // Energy
-  '49','50','51','52','53',                     // Transport
-  '84',                                        // Public administration
+  // Energy (el, gas, oil, district heating)
+  '06','19','35','36',
+  // Transport (air, rail, water, road)
+  '49','50','51','52','53',
+  // Banking & financial market infrastructure
+  '64','65','66',
+  // Healthcare
+  '86','87','88',
+  // Drinking water & wastewater
+  '37','38','39',
+  // Digital infrastructure & IT services (datacenters, cloud, telecom, software)
+  '61','62','63',
+  // Public administration
+  '84',
+  // Manufacturing (medical devices, computers, machinery, vehicles, weapons)
+  '25','26','27','28','29','30','31','32','33',
+  // Chemicals & pharmaceuticals
+  '20','21',
+  // Food production & distribution
+  '10','11',
+  // Space (aircraft/spacecraft manufacturing — SNI 30)
+  // already covered by '30' above
+  // Research & development
+  '72',
+  // Postal & courier (SNI 53 already above)
+  // Waste management (SNI 38,39 already above)
 ];
 
 function normalizeOrgNr(raw) {

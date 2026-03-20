@@ -15,7 +15,9 @@
  */
 
 const { chromium } = require('playwright');
-const { detectServices, mergeServices } = require('../lib/serviceDetector');
+// serviceDetector not used in HumanizedTrust (cleaning-specific, not needed here)
+const detectServices = () => [];
+const mergeServices  = (a, b) => [...(a||[]), ...(b||[])];
 
 // Decision maker titles for contact extraction
 const DECISION_MAKER_PATTERNS = [
@@ -27,6 +29,9 @@ const DECISION_MAKER_PATTERNS = [
 
 // Email regex (RFC 5322 compliant, simplified)
 const EMAIL_REGEX = /[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}/g;
+
+// Swedish phone regex: +46XXXXXXXXX or 0XXXXXXXXX (mobile/landline)
+const PHONE_REGEX = /(?:\+46|0)[\s\-]?(?:\d[\s\-]?){7,10}\d/g;
 
 // Enhanced name patterns - more flexible matching
 const NAME_PATTERNS = [
@@ -142,6 +147,7 @@ async function crawlForContacts(website) {
 
   const results = {
     emails: new Set(),
+    phones: new Set(),
     contacts: [],
     services: [],
     pages_crawled: 0
@@ -187,8 +193,9 @@ async function crawlForContacts(website) {
         // ENHANCED: Extract schema.org JSON-LD first (has structured data)
         await extractStructuredData(page, results);
 
-        // Extract emails from multiple sources
+        // Extract emails and phones from multiple sources
         await extractEmailsFromPage(page, results);
+        await extractPhonesFromPage(page, results);
 
         // Extract contact names
         await extractContacts(page, results);
@@ -209,17 +216,19 @@ async function crawlForContacts(website) {
       }
     }
 
-    // Select best email and contact
+    // Select best email, phone and contact
     const bestEmail = selectBestEmail([...results.emails]);
+    const bestPhone = selectBestPhone([...results.phones]);
     const bestContact = selectBestContact(results.contacts);
 
     const confidence = calculateCrawlConfidence(bestEmail, bestContact, results);
 
     const detectedServices = [...new Set(results.services)];
-    console.log(`[Crawler] Found ${results.emails.size} emails, ${results.contacts.length} contacts, ${detectedServices.length} services`);
+    console.log(`[Crawler] Found ${results.emails.size} emails, ${results.phones.size} phones, ${results.contacts.length} contacts`);
 
     return {
       email: bestEmail || null,
+      phone: bestPhone || null,
       contact_first_name: bestContact?.firstName || null,
       confidence,
       emails_found: results.emails.size,
@@ -371,6 +380,61 @@ async function extractEmailsFromPage(page, results) {
   } catch {
     // Email extraction failed, continue
   }
+}
+
+/**
+ * Extract Swedish phone numbers from page
+ */
+async function extractPhonesFromPage(page, results) {
+  try {
+    // Method 1: tel: links (most reliable)
+    const telLinks = await page.locator('a[href^="tel:"]').all();
+    for (const link of telLinks) {
+      try {
+        const href = await link.getAttribute('href');
+        if (href) {
+          const digits = href.replace('tel:', '').replace(/[^\d+]/g, '');
+          if (digits.length >= 8) results.phones.add(normalizePhone(digits));
+        }
+      } catch { /* continue */ }
+    }
+
+    // Method 2: regex scan of page HTML
+    const content = await page.content();
+    const matches = content.match(PHONE_REGEX) || [];
+    matches.forEach(p => {
+      const normalized = normalizePhone(p);
+      if (normalized) results.phones.add(normalized);
+    });
+
+    // Method 3: contact elements
+    const els = await page.locator('[class*="phone"], [class*="tel"], [itemprop="telephone"], [class*="contact"]').all();
+    for (const el of els) {
+      try {
+        const text = await el.textContent();
+        if (text) {
+          const m = text.match(PHONE_REGEX) || [];
+          m.forEach(p => { const n = normalizePhone(p); if (n) results.phones.add(n); });
+        }
+      } catch { /* continue */ }
+    }
+  } catch { /* continue */ }
+}
+
+function normalizePhone(raw) {
+  const digits = String(raw).replace(/[^\d+]/g, '');
+  if (digits.startsWith('+46') && digits.length >= 11) return digits;
+  if (digits.startsWith('0') && digits.length >= 8) {
+    return '+46' + digits.slice(1);
+  }
+  return null;
+}
+
+function selectBestPhone(phones) {
+  if (!phones.length) return null;
+  // Prefer mobile (+467X) over landline
+  const mobile = phones.find(p => /^\+467/.test(p));
+  return mobile || phones[0];
 }
 
 /**
@@ -743,8 +807,12 @@ async function updateCrawledData(db, leadId, crawledData) {
   return rows[0];
 }
 
+// Alias used by enrichLeads.js pipeline
+const crawlForEmail = crawlForContacts;
+
 module.exports = {
   crawlForContacts,
+  crawlForEmail,
   crawlBatch,
   updateCrawledData,
   selectBestEmail,

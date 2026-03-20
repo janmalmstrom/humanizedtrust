@@ -22,20 +22,30 @@ const { authenticateToken } = require('./middleware/auth');
 app.use('/api/auth', require('./routes/auth'));
 
 // Protected
-app.use('/api/leads',     authenticateToken, require('./routes/leads'));
-app.use('/api/discovery', authenticateToken, require('./routes/discovery'));
+app.use('/api/leads',      authenticateToken, require('./routes/leads'));
+app.use('/api/discovery',  authenticateToken, require('./routes/discovery'));
+app.use('/api/tasks',      authenticateToken, require('./routes/tasks'));
+app.use('/api/activities', authenticateToken, require('./routes/activities'));
+app.use('/api/contacts',   authenticateToken, require('./routes/contacts'));
+app.use('/api/sequences',  authenticateToken, require('./routes/sequences'));
+app.use('/api/enrichment', authenticateToken, require('./routes/enrichment'));
 
 // Health check
 app.get('/api/health', (req, res) => res.json({ status: 'ok', service: 'humanizedtrust', timestamp: new Date() }));
 
 // ========== BACKGROUND JOBS ==========
 const { run: enrichLeadsJob } = require('./jobs/enrichLeads');
+const { startInboxPoller } = require('./jobs/pollInbox');
 
-// 06:00 UTC — enrich leads with LinkedIn, email, website
-cron.schedule('0 6 * * *', () => {
-  console.log('[cron] 06:00 — Starting enrichment pipeline');
+// Every 4 hours: 02:00, 06:00, 10:00, 14:00, 18:00, 22:00 UTC
+// ~125 Serper searches/run × 6 runs/day = ~750/day = ~22,500/month — safe for paid tier
+cron.schedule('0 2,6,10,14,18,22 * * *', () => {
+  console.log('[cron] Starting enrichment pipeline');
   enrichLeadsJob().catch(err => console.error('[cron] enrichLeads error:', err.message));
 });
+
+// IMAP reply detection — every 5 minutes (activates when IMAP_HOST is set in .env)
+startInboxPoller().catch(err => console.error('[PollInbox] startup error:', err.message));
 
 app.listen(PORT, () => {
   console.log(`[server] HumanizedTrust backend running on port ${PORT}`);
