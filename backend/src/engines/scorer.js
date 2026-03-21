@@ -122,6 +122,13 @@ function computeScore(lead) {
     totalScore += 3;
   }
 
+  // ========== BOARD CONTACTS (NIS2 liability targets) ==========
+  // Having named board members = can reach the personally liable decision makers
+  if (lead.board_contacts_count > 0) {
+    breakdown.contact.has_board_contacts = 10;
+    totalScore += 10;
+  }
+
   // ========== VIBE ENRICHMENT SIGNALS ==========
   if (lead.vibe_has_crm === false) {
     // No CRM = no current management software = greenfield for Nomad services

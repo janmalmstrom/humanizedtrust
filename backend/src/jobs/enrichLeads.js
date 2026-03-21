@@ -6,6 +6,8 @@
  * Step 2: Website crawl    — extract email from company website
  * Step 3: SMTP permutation — verify email patterns against MX
  * Step 4: Re-score updated leads
+ * Step 5: Allabolag        — extract VD name + board roles + company phone/email
+ * Step 6: Hitta.se         — look up personal mobile for named contacts without phone
  *
  * Serper budget per run:
  *   Step 0: up to 50 leads × ~1.5 searches = ~75 calls
@@ -16,6 +18,8 @@ const db = require('../db');
 const { computeScore } = require('../engines/scorer');
 const { findWebsite } = require('../engines/enrich_website_finder');
 const { findLinkedInCompanyUrl } = require('../engines/enrich_linkedin_company');
+const { enrichFromAllabolag } = require('../engines/enrich_allabolag');
+const { enrichContactPhone } = require('../engines/enrich_hitta');
 
 const BATCH_SIZE = 50;
 const WEBSITE_DELAY_MS = 1500;  // 1.5s between Serper website searches
@@ -174,6 +178,62 @@ async function run() {
   }
 
   console.log(`[enrich] Pipeline complete — ${enriched}/${leads.length} leads updated`);
+
+  // ── Step 5: Allabolag — VD name + board roles + company phone/email ──────────
+  const { rows: allabolagLeads } = await db.query(`
+    SELECT id, org_nr, city, phone, email FROM discovery_leads
+    WHERE org_nr IS NOT NULL
+      AND allabolag_enriched_at IS NULL
+      AND review_status != 'rejected'
+      AND score >= 40
+    ORDER BY score DESC NULLS LAST
+    LIMIT 30
+  `);
+
+  console.log(`[enrich] Step 5: allabolag enrichment for ${allabolagLeads.length} leads`);
+  let allabolagContacts = 0;
+
+  for (const lead of allabolagLeads) {
+    try {
+      const result = await enrichFromAllabolag(db, lead);
+      allabolagContacts += result.contactsAdded;
+      if (result.contactsAdded > 0 || result.phoneUpdated || result.emailUpdated) {
+        console.log(`[enrich] allabolag ${lead.id}: +${result.contactsAdded} contacts, phone=${result.phoneUpdated}, email=${result.emailUpdated}`);
+      }
+    } catch (e) {
+      console.error(`[enrich] allabolag error ${lead.id}: ${e.message}`);
+    }
+    await sleep(2000);
+  }
+
+  console.log(`[enrich] Step 5 complete: ${allabolagContacts} contacts added from allabolag`);
+
+  // ── Step 6: Hitta.se — personal mobile for named contacts ────────────────────
+  const { rows: contactsNeedingPhone } = await db.query(`
+    SELECT c.id, c.name, c.phone, dl.city AS lead_city
+    FROM contacts c
+    JOIN discovery_leads dl ON dl.id = c.lead_id
+    WHERE c.phone IS NULL
+      AND c.name IS NOT NULL
+      AND c.source LIKE '%allabolag%'
+    ORDER BY c.created_at DESC
+    LIMIT 30
+  `);
+
+  console.log(`[enrich] Step 6: hitta.se phone lookup for ${contactsNeedingPhone.length} contacts`);
+  let hittaFound = 0;
+
+  for (const contact of contactsNeedingPhone) {
+    try {
+      const found = await enrichContactPhone(db, contact);
+      if (found) hittaFound++;
+    } catch (e) {
+      console.error(`[enrich] hitta error contact ${contact.id}: ${e.message}`);
+    }
+    await sleep(1500);
+  }
+
+  console.log(`[enrich] Step 6 complete: ${hittaFound}/${contactsNeedingPhone.length} phones found on hitta.se`);
 }
 
 module.exports = { run };
