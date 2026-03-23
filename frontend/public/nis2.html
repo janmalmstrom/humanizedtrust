@@ -332,6 +332,39 @@
     }
 
     /* ── ROI SECTION ── */
+    /* ── TEASER HOOK ── */
+    .teaser-hook {
+      background: var(--dark);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 32px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+    .teaser-hook-text { font-size: 16px; color: var(--lightgray); line-height: 1.5; }
+    .teaser-hook-text strong { color: var(--white); font-family: 'Poppins', sans-serif; }
+    .teaser-hook-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: transparent;
+      border: 2px solid var(--yellow);
+      color: var(--yellow);
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+      font-size: 14px;
+      padding: 12px 22px;
+      border-radius: 4px;
+      text-decoration: none;
+      white-space: nowrap;
+      transition: background 0.2s, color 0.2s;
+      flex-shrink: 0;
+    }
+    .teaser-hook-link:hover { background: var(--yellow); color: var(--black); }
+
     .roi-section { background: var(--dark); }
     .roi-headline {
       font-size: clamp(28px, 4vw, 42px);
@@ -870,6 +903,17 @@
     </div>
   </section>
 
+  <!-- TEASER HOOK — leads to free tools section below -->
+  <div class="teaser-hook">
+    <div class="teaser-hook-text">
+      <strong>Vet du var ditt bolag faktiskt står?</strong><br/>
+      Tre gratis verktyg — checklista, kalkylator och styrelsepaket — tar dig från osäkerhet till klarhet på under 10 minuter.
+    </div>
+    <a class="teaser-hook-link" href="#resurser">
+      Se de gratis verktygen ↓
+    </a>
+  </div>
+
   <!-- ═══════════════════════════════════════════
        ROI — BANK THE MONEY
   ════════════════════════════════════════════ -->
@@ -981,7 +1025,7 @@
   <!-- ═══════════════════════════════════════════
        LEAD MAGNETS
   ════════════════════════════════════════════ -->
-  <section style="background: var(--black); padding: 100px 40px;">
+  <section id="resurser" style="background: var(--black); padding: 100px 40px;">
     <div class="container-wide">
       <div class="section-tag">Kostnadsfria resurser</div>
       <h2>Ta första steget — gratis</h2>
