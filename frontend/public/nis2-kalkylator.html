@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NIS2 Riskräknare — Vad kostar ett intrång? | Nomad Cyber</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800;900&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --black:  #141416;
+      --dark:   #1c1c1f;
+      --card:   #222226;
+      --border: #2e2e33;
+      --red:    #C61212;
+      --yellow: #f5e642;
+      --white:  #ffffff;
+      --gray:   #888888;
+      --lg:     #cccccc;
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Barlow', sans-serif;
+      background: var(--black);
+      color: var(--white);
+      font-size: 16px;
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+    h1,h2,h3,h4 { font-family: 'Poppins', sans-serif; }
+
+    /* ── NAV ── */
+    nav {
+      background: rgba(20,20,22,0.96);
+      border-bottom: 1px solid var(--border);
+      padding: 16px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky; top: 0; z-index: 10;
+    }
+    .nav-logo { font-family: 'Poppins', sans-serif; font-weight: 900; font-size: 18px; color: var(--white); text-decoration: none; }
+    .nav-logo span { color: var(--red); }
+    .nav-back { font-size: 14px; color: var(--gray); text-decoration: none; }
+    .nav-back:hover { color: var(--white); }
+
+    /* ── HERO ── */
+    .hero {
+      text-align: center;
+      padding: 72px 40px 56px;
+      background: var(--dark);
+      border-bottom: 1px solid var(--border);
+    }
+    .tag {
+      display: inline-block;
+      background: rgba(198,18,18,0.15);
+      border: 1px solid rgba(198,18,18,0.3);
+      color: var(--red);
+      font-size: 12px; font-weight: 700; letter-spacing: 1.5px;
+      text-transform: uppercase; padding: 5px 14px; border-radius: 3px;
+      margin-bottom: 20px;
+    }
+    .hero h1 { font-size: clamp(28px, 5vw, 48px); font-weight: 800; line-height: 1.2; margin-bottom: 16px; }
+    .hero h1 em { font-style: normal; color: var(--red); }
+    .hero p { color: var(--lg); font-size: 17px; max-width: 560px; margin: 0 auto; }
+
+    /* ── LAYOUT ── */
+    .calc-wrap {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 56px 24px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+      align-items: start;
+    }
+    @media (max-width: 720px) { .calc-wrap { grid-template-columns: 1fr; } }
+
+    /* ── INPUT PANEL ── */
+    .panel {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 36px;
+    }
+    .panel h2 { font-size: 18px; font-weight: 700; margin-bottom: 24px; color: var(--white); }
+    .field { margin-bottom: 22px; }
+    .field label {
+      display: block; font-size: 13px; font-weight: 600; color: var(--lg);
+      margin-bottom: 8px; letter-spacing: 0.3px;
+    }
+    .field label span { font-weight: 400; color: var(--gray); }
+    .field input, .field select {
+      width: 100%; padding: 12px 16px;
+      background: var(--dark); border: 1px solid var(--border);
+      border-radius: 4px; color: var(--white); font-family: 'Barlow', sans-serif;
+      font-size: 15px; outline: none; transition: border-color 0.2s;
+    }
+    .field input:focus, .field select:focus { border-color: var(--red); }
+    .field select option { background: var(--dark); }
+
+    /* ── RESULTS PANEL ── */
+    .results-panel {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    .result-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 24px 28px;
+      transition: border-color 0.3s;
+    }
+    .result-card.highlight { border-color: rgba(198,18,18,0.5); }
+    .result-card.safe-card { border-color: rgba(245,230,66,0.3); }
+    .result-label {
+      font-size: 12px; font-weight: 700; letter-spacing: 1.5px;
+      text-transform: uppercase; margin-bottom: 8px;
+    }
+    .result-card.highlight .result-label { color: var(--red); }
+    .result-card.safe-card .result-label { color: var(--yellow); }
+    .result-card:not(.highlight):not(.safe-card) .result-label { color: var(--gray); }
+    .result-value {
+      font-family: 'Poppins', sans-serif;
+      font-size: 32px; font-weight: 900; line-height: 1.1;
+      margin-bottom: 6px;
+    }
+    .result-card.highlight .result-value { color: var(--red); }
+    .result-card.safe-card .result-value { color: var(--yellow); }
+    .result-card:not(.highlight):not(.safe-card) .result-value { color: var(--white); }
+    .result-sub { font-size: 13px; color: var(--gray); line-height: 1.5; }
+
+    /* ── ROI VERDICT ── */
+    .roi-verdict {
+      background: rgba(245,230,66,0.07);
+      border: 1px solid rgba(245,230,66,0.25);
+      border-radius: 4px;
+      padding: 28px;
+      text-align: center;
+    }
+    .roi-verdict .roi-label { font-size: 12px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--yellow); margin-bottom: 12px; }
+    .roi-verdict .roi-text { font-family: 'Poppins', sans-serif; font-size: clamp(16px, 2.5vw, 20px); font-weight: 700; line-height: 1.5; }
+    .roi-verdict .roi-text em { color: var(--yellow); font-style: normal; }
+    .roi-multiplier { font-size: 48px; font-weight: 900; color: var(--yellow); font-family: 'Poppins', sans-serif; margin: 8px 0; }
+
+    /* ── CTA ── */
+    /* capture section */
+    .capture-section {
+      background: var(--dark);
+      border-top: 3px solid var(--yellow);
+      padding: 64px 24px;
+      text-align: center;
+    }
+    .capture-inner { max-width: 480px; margin: 0 auto; }
+    .capture-icon { font-size: 40px; margin-bottom: 16px; }
+    .capture-inner h2 { font-size: clamp(20px,3vw,28px); font-weight: 800; margin-bottom: 10px; color: var(--yellow); }
+    .capture-inner > p { color: var(--lightgray); font-size: 15px; margin-bottom: 24px; }
+    #captureForm { display: flex; flex-direction: column; gap: 10px; text-align: left; }
+    #captureForm input {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 4px; padding: 13px 16px;
+      font-size: 15px; color: var(--white);
+      font-family: 'Barlow', sans-serif; outline: none;
+    }
+    #captureForm input:focus { border-color: var(--yellow); }
+    #captureForm input::placeholder { color: var(--gray); }
+    #captureForm button {
+      background: var(--yellow); color: var(--black);
+      border: none; border-radius: 4px; padding: 14px 24px;
+      font-family: 'Poppins', sans-serif; font-size: 15px; font-weight: 700;
+      cursor: pointer; transition: background 0.2s;
+    }
+    #captureForm button:hover { background: var(--yellow2); }
+    #captureForm button:disabled { opacity: 0.6; cursor: not-allowed; }
+    .capture-thanks {
+      padding: 16px; background: rgba(34,197,94,0.1);
+      border: 1px solid rgba(34,197,94,0.3); border-radius: 4px;
+      color: #86efac; font-size: 15px; margin-top: 12px;
+    }
+    .capture-note { font-size: 12px; color: var(--gray); margin-top: 12px; }
+
+    footer {
+      background: var(--dark); border-top: 1px solid var(--border);
+      padding: 24px 40px; text-align: center;
+      font-size: 13px; color: var(--gray);
+    }
+    footer a { color: var(--gray); }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a class="nav-logo" href="/nis2.html">NOMAD<span>CYBER</span></a>
+    <a class="nav-back" href="/nis2.html">← Tillbaka till NIS2-sidan</a>
+  </nav>
+
+  <div class="hero">
+    <div class="tag">Interaktiv kalkylator</div>
+    <h1>Vad kostar ett intrång<br/>— <em>för ditt företag?</em></h1>
+    <p>Fyll i dina uppgifter. Se din maximala böterisk, uppskattad intrångskostnad och vad det kostar att vara trygg.</p>
+  </div>
+
+  <div class="calc-wrap">
+
+    <!-- INPUTS -->
+    <div class="panel">
+      <h2>Ditt företag</h2>
+
+      <div class="field">
+        <label>Antal anställda</label>
+        <select id="empSize" onchange="calculate()">
+          <option value="">— Välj —</option>
+          <option value="50">50–99 anställda</option>
+          <option value="100">100–249 anställda</option>
+          <option value="250">250–499 anställda</option>
+          <option value="500">500+ anställda</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label>Omsättning <span>(MSEK per år)</span></label>
+        <input type="number" id="revenue" placeholder="t.ex. 150" min="1" oninput="calculate()" />
+      </div>
+
+      <div class="field">
+        <label>Sektor</label>
+        <select id="sector" onchange="calculate()">
+          <option value="">— Välj —</option>
+          <option value="essential">Väsentlig entitet — Energi, Transport, Hälsa, Finans, Digital infrastruktur</option>
+          <option value="important">Viktig entitet — Tillverkning, Livsmedel, Kemikalier, Post, Forskning</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label>Har ni haft ett säkerhetsincident de senaste 3 åren?</label>
+        <select id="incident" onchange="calculate()">
+          <option value="no">Nej / Vet inte</option>
+          <option value="yes">Ja</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label>Cybersäkerhetsförsäkring?</label>
+        <select id="insurance" onchange="calculate()">
+          <option value="no">Nej</option>
+          <option value="yes">Ja</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- RESULTS -->
+    <div class="results-panel" id="results">
+      <div class="result-card" style="text-align:center; padding: 48px 28px;">
+        <p style="color: var(--gray); font-size: 15px;">Fyll i uppgifterna till vänster<br/>för att se din riskprofil.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Lead capture — shown after calculation -->
+  <div class="capture-section" id="captureSection" style="display:none">
+    <div class="capture-inner">
+      <div class="capture-icon">🎯</div>
+      <h2 id="captureTitle">Vill du förstå din riskbild djupare?</h2>
+      <p>Vi går igenom siffrorna med dig — 20 minuter, helt utan förpliktelser.</p>
+      <form id="captureForm" onsubmit="submitCapture(event)">
+        <input type="text"  id="capName"    placeholder="Ditt namn" autocomplete="name" />
+        <input type="email" id="capEmail"   placeholder="E-postadress *" autocomplete="email" required />
+        <input type="text"  id="capCompany" placeholder="Bolagets namn *" required />
+        <button type="submit" id="captureSubmit">Boka kostnadsfritt samtal →</button>
+      </form>
+      <div id="captureThanks" style="display:none" class="capture-thanks">
+        ✅ Tack! Vi hör av oss inom 24 timmar.
+      </div>
+      <p class="capture-note">Inga förpliktelser. Ingen säljpitch.</p>
+    </div>
+  </div>
+
+  <footer>
+    © 2026 M &amp; J Trusted Marketing KB · <a href="mailto:jan@trustedmarketing.se">jan@trustedmarketing.se</a> · <a href="/nis2.html">humanizedtrust.xyz/nis2.html</a>
+  </footer>
+
+  <script>
+    function fmt(num) {
+      if (num >= 1000000) return (num / 1000000).toFixed(1).replace('.', ',') + ' MSEK';
+      if (num >= 1000) return Math.round(num / 1000) + ' TSEK';
+      return num + ' SEK';
+    }
+    function fmtEur(eur) {
+      if (eur >= 1000000) return (eur / 1000000).toFixed(0) + ' MEUR';
+      return (eur / 1000).toFixed(0) + 'K EUR';
+    }
+
+    let lastCalcData = null;
+
+    function calculate() {
+      const emp = document.getElementById('empSize').value;
+      const rev = parseFloat(document.getElementById('revenue').value) || 0; // MSEK
+      const sector = document.getElementById('sector').value;
+      const incident = document.getElementById('incident').value;
+      const insurance = document.getElementById('insurance').value;
+
+      if (!emp || !sector || rev <= 0) {
+        document.getElementById('results').innerHTML = `
+          <div class="result-card" style="text-align:center; padding:48px 28px;">
+            <p style="color:var(--gray);font-size:15px;">Fyll i alla fält<br/>för att se din riskprofil.</p>
+          </div>`;
+        return;
+      }
+
+      const revEur = rev * 100000; // MSEK → EUR (approx 1 SEK ≈ 0.1 EUR)
+
+      // Max fine
+      let maxFineEur;
+      if (sector === 'essential') {
+        maxFineEur = Math.max(10000000, revEur * 0.02);
+      } else {
+        maxFineEur = Math.max(7000000, revEur * 0.014);
+      }
+      const maxFineSEK = maxFineEur * 10; // EUR → SEK approx
+
+      // Breach cost estimate (IBM/Ponemon data, EU SMB range)
+      let breachBase = 1500000; // 1.5 MSEK baseline
+      if (rev > 200) breachBase = 3000000;
+      if (rev > 500) breachBase = 6000000;
+      if (incident === 'yes') breachBase *= 1.4;
+      const downtimeDays = sector === 'essential' ? 21 : 15;
+      const dailyCost = (rev * 1000000) / 250; // daily revenue
+      const downtimeCost = dailyCost * downtimeDays;
+      const totalBreachCost = breachBase + downtimeCost;
+
+      // Worst case: fine + breach
+      const worstCase = maxFineSEK + totalBreachCost;
+
+      // Compliance investment estimate (rough)
+      let investMin, investMax;
+      if (rev < 100) { investMin = 80000; investMax = 200000; }
+      else if (rev < 300) { investMin = 150000; investMax = 400000; }
+      else { investMin = 300000; investMax = 700000; }
+
+      const multiplier = Math.round(worstCase / investMax);
+
+      // Insurance note
+      const insuranceNote = insurance === 'yes'
+        ? 'Obs: försäkringen kräver att du kan visa NIS2-efterlevnad för att gälla.'
+        : 'Utan cybersäkerhetsförsäkring bär ni hela risken själva.';
+
+      document.getElementById('results').innerHTML = `
+        <div class="result-card highlight">
+          <div class="result-label">🔴 Max böterisk (NIS2)</div>
+          <div class="result-value">${fmt(maxFineSEK)}</div>
+          <div class="result-sub">${fmtEur(maxFineEur)} — ${sector === 'essential' ? 'väsentlig entitet: 10 MEUR eller 2% av global omsättning' : 'viktig entitet: 7 MEUR eller 1,4% av global omsättning'}</div>
+        </div>
+
+        <div class="result-card highlight">
+          <div class="result-label">🔴 Uppskattad intrångskostnad</div>
+          <div class="result-value">${fmt(totalBreachCost)}</div>
+          <div class="result-sub">Inkl. ~${downtimeDays} dagars driftstopp (${fmt(Math.round(downtimeCost))}) + utredning, kommunikation &amp; återställning (${fmt(breachBase)})</div>
+        </div>
+
+        <div class="result-card">
+          <div class="result-label">⚠️ Värsta tänkbara scenario</div>
+          <div class="result-value" style="color:var(--white)">${fmt(worstCase)}</div>
+          <div class="result-sub">Böter + intrångskostnad kombinerat. ${insuranceNote}</div>
+        </div>
+
+        <div class="result-card safe-card">
+          <div class="result-label">🟡 Investering i efterlevnad</div>
+          <div class="result-value">${fmt(investMin)} – ${fmt(investMax)}</div>
+          <div class="result-sub">Uppskattad kostnad för att komma till NIS2-efterlevnad för ett bolag i er storlek.</div>
+        </div>
+
+        <div class="roi-verdict">
+          <div class="roi-label">Skydd per investerad krona</div>
+          <div class="roi-multiplier">${multiplier}x</div>
+          <div class="roi-text">Varje krona i NIS2-investering skyddar mot <em>${multiplier} kronor</em> i potentiell förlust.</div>
+        </div>
+      `;
+
+      // Store for lead capture
+      lastCalcData = { maxFine: maxFineEur, breachCost: Math.round(totalBreachCost / 10), sector, employees: emp };
+
+      // Update capture heading and reveal
+      const captureSection = document.getElementById('captureSection');
+      document.getElementById('captureTitle').textContent =
+        `Din böterisk: upp till ${fmtEur(maxFineEur)} — vill du veta hur ni skyddar er?`;
+      captureSection.style.display = 'block';
+      captureSection.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+
+    async function submitCapture(e) {
+      e.preventDefault();
+      const btn = document.getElementById('captureSubmit');
+      btn.disabled = true;
+      btn.textContent = 'Skickar...';
+
+      const payload = {
+        name:    document.getElementById('capName').value.trim(),
+        email:   document.getElementById('capEmail').value.trim(),
+        company: document.getElementById('capCompany').value.trim(),
+        source:  'nis2-kalkylator',
+        score_data: lastCalcData
+      };
+
+      try {
+        const res = await fetch('/api/inbound', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+        const data = await res.json();
+        if (data.success) {
+          document.getElementById('captureForm').style.display = 'none';
+          document.getElementById('captureThanks').style.display = 'block';
+        } else {
+          btn.disabled = false;
+          btn.textContent = 'Boka kostnadsfritt samtal →';
+        }
+      } catch (err) {
+        btn.disabled = false;
+        btn.textContent = 'Boka kostnadsfritt samtal →';
+      }
+    }
+  </script>
+</body>
+</html>

@@ -8,16 +8,16 @@
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&family=Barlow:wght@400;500;600;700&display=swap" rel="stylesheet" />
 
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --black:   #0a0a0a;
-      --dark:    #111111;
-      --card:    #1a1a1a;
-      --border:  #2a2a2a;
+      --black:   #141416;
+      --dark:    #1c1c1f;
+      --card:    #222226;
+      --border:  #2e2e33;
       --yellow:  #f5e642;
       --yellow2: #e8d800;
       --white:   #ffffff;
@@ -29,7 +29,7 @@
     html { scroll-behavior: smooth; }
 
     body {
-      font-family: 'Inter', sans-serif;
+      font-family: 'Barlow', sans-serif;
       background: var(--black);
       color: var(--white);
       line-height: 1.6;
@@ -51,7 +51,7 @@
       position: sticky;
       top: 0;
       z-index: 100;
-      background: rgba(10,10,10,0.95);
+      background: rgba(20,20,22,0.96);
       backdrop-filter: blur(10px);
       border-bottom: 1px solid var(--border);
       padding: 16px 40px;
@@ -73,7 +73,7 @@
       font-weight: 700;
       font-size: 14px;
       padding: 10px 22px;
-      border-radius: 8px;
+      border-radius: 4px;
       text-decoration: none;
       transition: background 0.2s;
     }
@@ -111,7 +111,7 @@
       letter-spacing: 1.5px;
       text-transform: uppercase;
       padding: 6px 16px;
-      border-radius: 100px;
+      border-radius: 3px;
       margin-bottom: 32px;
     }
     .hero h1 {
@@ -144,7 +144,7 @@
       font-weight: 800;
       font-size: 16px;
       padding: 16px 36px;
-      border-radius: 10px;
+      border-radius: 4px;
       text-decoration: none;
       transition: transform 0.15s, background 0.2s;
       display: inline-block;
@@ -156,7 +156,7 @@
       font-weight: 600;
       font-size: 16px;
       padding: 16px 36px;
-      border-radius: 10px;
+      border-radius: 4px;
       border: 1px solid var(--border);
       text-decoration: none;
       transition: border-color 0.2s, transform 0.15s;
@@ -202,6 +202,9 @@
       color: var(--yellow);
       margin-bottom: 16px;
     }
+    h1, h2, h3, h4 {
+      font-family: 'Poppins', sans-serif;
+    }
     h2 {
       font-size: clamp(28px, 4vw, 44px);
       font-weight: 800;
@@ -243,7 +246,7 @@
     .pain-card {
       background: var(--card);
       border: 1px solid var(--border);
-      border-radius: 12px;
+      border-radius: 4px;
       padding: 28px;
       transition: border-color 0.2s;
     }
@@ -257,7 +260,7 @@
     .law-block {
       background: var(--card);
       border: 1px solid var(--border);
-      border-radius: 16px;
+      border-radius: 4px;
       padding: 40px;
       margin: 40px 0;
     }
@@ -281,7 +284,7 @@
     .sector-item {
       background: var(--card);
       border: 1px solid var(--border);
-      border-radius: 10px;
+      border-radius: 4px;
       padding: 20px;
       display: flex;
       align-items: center;
@@ -299,7 +302,7 @@
     .liability-box {
       background: linear-gradient(135deg, rgba(255,68,68,0.1) 0%, rgba(245,230,66,0.05) 100%);
       border: 1px solid rgba(255,68,68,0.3);
-      border-radius: 16px;
+      border-radius: 4px;
       padding: 48px;
       margin: 40px 0;
       text-align: center;
@@ -324,7 +327,7 @@
       font-size: 14px;
       font-weight: 700;
       padding: 6px 16px;
-      border-radius: 100px;
+      border-radius: 3px;
       margin: 4px;
     }
 
@@ -344,7 +347,7 @@
     }
     @media (max-width: 640px) { .roi-table { grid-template-columns: 1fr; } }
     .roi-col {
-      border-radius: 16px;
+      border-radius: 4px;
       padding: 40px 36px;
     }
     .roi-col.risk {
@@ -380,7 +383,7 @@
     .roi-verdict {
       background: rgba(245,230,66,0.08);
       border: 1px solid rgba(245,230,66,0.25);
-      border-radius: 16px;
+      border-radius: 4px;
       padding: 36px 48px;
       text-align: center;
       margin-top: 8px;
@@ -395,6 +398,45 @@
     }
     .roi-verdict em { color: var(--yellow); font-style: normal; }
 
+    /* ── GDPR PRECEDENT BLOCK ── */
+    .gdpr-block {
+      margin-top: 48px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-left: 4px solid var(--yellow);
+      border-radius: 4px;
+      padding: 40px 48px;
+    }
+    .gdpr-block .gdpr-label {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--yellow);
+      margin-bottom: 16px;
+    }
+    .gdpr-block blockquote {
+      font-family: 'Poppins', sans-serif;
+      font-size: clamp(20px, 3vw, 28px);
+      font-weight: 700;
+      line-height: 1.4;
+      color: var(--white);
+      margin-bottom: 24px;
+    }
+    .gdpr-block blockquote em { color: var(--yellow); font-style: normal; }
+    .gdpr-block .gdpr-source {
+      font-size: 14px;
+      color: var(--gray);
+      border-top: 1px solid var(--border);
+      padding-top: 20px;
+      margin-top: 8px;
+      display: flex;
+      gap: 32px;
+      flex-wrap: wrap;
+    }
+    .gdpr-block .gdpr-stat { display: flex; flex-direction: column; gap: 4px; }
+    .gdpr-block .gdpr-stat strong { font-size: 22px; font-weight: 800; color: var(--white); }
+
     /* ── REQUIREMENTS ── */
     .req-section { background: var(--black); }
     .req-list {
@@ -406,7 +448,7 @@
     .req-item {
       background: var(--card);
       border: 1px solid var(--border);
-      border-radius: 12px;
+      border-radius: 4px;
       padding: 24px 28px;
       display: flex;
       gap: 20px;
@@ -420,7 +462,7 @@
       font-weight: 900;
       font-size: 14px;
       width: 32px; height: 32px;
-      border-radius: 8px;
+      border-radius: 4px;
       display: flex; align-items: center; justify-content: center;
       flex-shrink: 0;
       margin-top: 2px;
@@ -475,7 +517,7 @@
     .story-visual {
       background: var(--card);
       border: 1px solid var(--border);
-      border-radius: 16px;
+      border-radius: 4px;
       padding: 36px;
     }
     .timeline {
@@ -522,7 +564,7 @@
     .faq-item {
       background: var(--card);
       border: 1px solid var(--border);
-      border-radius: 12px;
+      border-radius: 4px;
       overflow: hidden;
     }
     .faq-q {
@@ -582,7 +624,7 @@
       font-weight: 800;
       font-size: 17px;
       padding: 18px 42px;
-      border-radius: 10px;
+      border-radius: 4px;
       text-decoration: none;
       display: inline-block;
       transition: transform 0.15s, background 0.2s;
@@ -905,6 +947,73 @@
           en enda böter kostar. Det är inte en utgift — det är <em>pengar i banken.</em>
         </p>
       </div>
+
+      <div class="gdpr-block">
+        <div class="gdpr-label">Bevis — det här är ingen tom varning</div>
+        <blockquote>
+          "Det sa man om GDPR 2018 också — <em>ingen kommer att bli bötfälld.</em>
+          2025 delade EU:s tillsynsmyndigheter ut <em>2,1 miljarder euro</em> i GDPR-böter.
+          På ett enda år."
+        </blockquote>
+        <p style="color: var(--lightgray); font-size: 16px; margin-bottom: 24px; line-height: 1.7;">
+          NIS2 är skrivet av samma myndigheter, med samma modell, samma tillsynslogik — och med
+          ännu skarpare personligt ansvar för styrelsen. Sveriges cybersäkerhetslag trädde i kraft
+          15 januari 2026. Klockan tickar.
+        </p>
+        <div class="gdpr-source">
+          <div class="gdpr-stat">
+            <strong>€2,1 mdr</strong>
+            <span>GDPR-böter utfärdade i EU under 2025</span>
+          </div>
+          <div class="gdpr-stat">
+            <strong>+40%</strong>
+            <span>Ökning från 2024 — trenden accelererar</span>
+          </div>
+          <div class="gdpr-stat">
+            <strong>15 jan 2026</strong>
+            <span>Cybersäkerhetslagen i kraft i Sverige</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════
+       LEAD MAGNETS
+  ════════════════════════════════════════════ -->
+  <section style="background: var(--black); padding: 100px 40px;">
+    <div class="container-wide">
+      <div class="section-tag">Kostnadsfria resurser</div>
+      <h2>Ta första steget — gratis</h2>
+      <div class="divider"></div>
+      <p class="section-lead">Tre verktyg som hjälper dig att förstå var ni står och vad som krävs — innan vi ens pratar.</p>
+      <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap:24px; margin-top:16px;">
+
+        <div style="background:var(--card); border:1px solid var(--border); border-radius:4px; padding:32px; display:flex; flex-direction:column; gap:16px;">
+          <div style="font-size:36px;">✅</div>
+          <div style="font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--yellow);">Checklista</div>
+          <h3 style="font-family:'Poppins',sans-serif; font-size:18px; font-weight:700; line-height:1.3;">10-punkts självskattning</h3>
+          <p style="font-size:14px; color:var(--gray); line-height:1.6;">10 ja/nej-frågor. 5 minuter. Se din riskprofil direkt — och vilket område du bör åtgärda först.</p>
+          <a href="/nis2-checklista.html" target="_blank" style="margin-top:auto; display:inline-block; background:var(--yellow); color:var(--black); font-family:'Poppins',sans-serif; font-weight:700; font-size:14px; padding:12px 24px; border-radius:4px; text-decoration:none; text-align:center;">Öppna checklistan →</a>
+        </div>
+
+        <div style="background:var(--card); border:1px solid var(--border); border-radius:4px; padding:32px; display:flex; flex-direction:column; gap:16px;">
+          <div style="font-size:36px;">🧮</div>
+          <div style="font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--yellow);">Kalkylator</div>
+          <h3 style="font-family:'Poppins',sans-serif; font-size:18px; font-weight:700; line-height:1.3;">Vad kostar ett intrång för ditt företag?</h3>
+          <p style="font-size:14px; color:var(--gray); line-height:1.6;">Fyll i omsättning, antal anställda och sektor — se din maximala böterisk och uppskattad intrångskostnad.</p>
+          <a href="/nis2-kalkylator.html" target="_blank" style="margin-top:auto; display:inline-block; background:var(--yellow); color:var(--black); font-family:'Poppins',sans-serif; font-weight:700; font-size:14px; padding:12px 24px; border-radius:4px; text-decoration:none; text-align:center;">Öppna kalkylatorn →</a>
+        </div>
+
+        <div style="background:var(--card); border:1px solid var(--border); border-radius:4px; padding:32px; display:flex; flex-direction:column; gap:16px;">
+          <div style="font-size:36px;">📋</div>
+          <div style="font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--yellow);">Styrelsepaket</div>
+          <h3 style="font-family:'Poppins',sans-serif; font-size:18px; font-weight:700; line-height:1.3;">Vad du behöver visa revisorn</h3>
+          <p style="font-size:14px; color:var(--gray); line-height:1.6;">Komplett dokumentationsguide för styrelseledamöter och VD — krav, checklistor, rapporteringstider och underskriftsblock.</p>
+          <a href="/nis2-styrelsepaket.html" target="_blank" style="margin-top:auto; display:inline-block; background:var(--yellow); color:var(--black); font-family:'Poppins',sans-serif; font-weight:700; font-size:14px; padding:12px 24px; border-radius:4px; text-decoration:none; text-align:center;">Öppna styrelsepaketet →</a>
+        </div>
+
+      </div>
     </div>
   </section>
 
@@ -1179,7 +1288,7 @@
 
   <!-- FOOTER -->
   <footer>
-    <p>© 2026 Nomad Cyber — NIS2-rådgivning för svenska bolag</p>
+    <p>© 2026 M &amp; J Trusted Marketing KB — NIS2-rådgivning för svenska bolag</p>
     <p style="margin-top: 8px;">
       <a href="mailto:jan@trustedmarketing.se">jan@trustedmarketing.se</a>
       &nbsp;·&nbsp;

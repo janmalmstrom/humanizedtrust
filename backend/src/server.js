@@ -19,7 +19,8 @@ app.use(morgan('combined'));
 const { authenticateToken } = require('./middleware/auth');
 
 // Public
-app.use('/api/auth', require('./routes/auth'));
+app.use('/api/auth',    require('./routes/auth'));
+app.use('/api/inbound', require('./routes/inbound'));
 
 // Protected
 app.use('/api/leads',      authenticateToken, require('./routes/leads'));
