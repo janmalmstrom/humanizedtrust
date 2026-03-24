@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Integritetspolicy — HumanizedTrust</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800;900&family=Barlow:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --black:     #141416;
+      --dark:      #1c1c1f;
+      --card:      #222226;
+      --border:    #2e2e33;
+      --yellow:    #f5e642;
+      --white:     #ffffff;
+      --gray:      #888888;
+      --lightgray: #cccccc;
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Barlow', sans-serif;
+      background: var(--black);
+      color: var(--white);
+      line-height: 1.6;
+      font-size: 16px;
+    }
+    a { color: var(--yellow); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* NAV */
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(20,20,22,0.95);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--border);
+      padding: 18px 40px;
+      display: flex; align-items: center; gap: 12px;
+    }
+    .nav-logo {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700; font-size: 16px; color: var(--white);
+    }
+    .nav-logo span { color: var(--yellow); }
+
+    /* CONTENT */
+    .container {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 80px 40px;
+    }
+    .page-tag {
+      font-size: 11px; font-weight: 700; letter-spacing: 3px;
+      text-transform: uppercase; color: var(--yellow);
+      margin-bottom: 16px;
+    }
+    h1 {
+      font-family: 'Poppins', sans-serif;
+      font-size: clamp(28px, 4vw, 40px);
+      font-weight: 800; line-height: 1.2;
+      margin-bottom: 12px;
+    }
+    .updated {
+      font-size: 13px; color: var(--gray);
+      margin-bottom: 48px;
+    }
+    h2 {
+      font-family: 'Poppins', sans-serif;
+      font-size: 18px; font-weight: 700;
+      color: var(--white);
+      margin: 40px 0 12px;
+    }
+    p {
+      font-size: 15px; color: var(--lightgray);
+      line-height: 1.8; margin-bottom: 12px;
+    }
+    ul {
+      margin: 8px 0 12px 20px;
+      color: var(--lightgray);
+      font-size: 15px; line-height: 1.8;
+    }
+    li { margin-bottom: 6px; }
+    strong { color: var(--white); }
+    .divider {
+      width: 40px; height: 3px;
+      background: var(--yellow);
+      margin: 16px 0 40px;
+    }
+    .highlight-box {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--yellow);
+      border-radius: 4px;
+      padding: 20px 24px;
+      margin: 24px 0;
+    }
+    .highlight-box p { margin-bottom: 0; }
+
+    /* FOOTER */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 32px 40px;
+      text-align: center;
+      font-size: 13px; color: var(--gray);
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="nav-logo">Humanized<span>Trust</span></div>
+  </nav>
+
+  <div class="container">
+
+    <div class="page-tag">Juridik & Integritet</div>
+    <h1>Integritetspolicy</h1>
+    <div class="divider"></div>
+    <p class="updated">Senast uppdaterad: mars 2026</p>
+
+    <p>
+      Den här policyn förklarar hur vi behandlar personuppgifter i samband med vår
+      affärsverksamhet. Vi strävar efter att vara transparenta med vad vi samlar in,
+      varför vi gör det och hur du kan utöva dina rättigheter.
+    </p>
+
+    <h2>1. Vem är personuppgiftsansvarig?</h2>
+    <p>
+      <strong>Jan Malmström</strong><br/>
+      M&amp;J Trusted Marketing KB<br/>
+      E-post: <a href="mailto:jan@trustedmarketing.se">jan@trustedmarketing.se</a>
+    </p>
+
+    <h2>2. Vilka personuppgifter behandlar vi?</h2>
+    <p>Vi behandlar följande kategorier av uppgifter om kontaktpersoner på svenska företag:</p>
+    <ul>
+      <li>Namn och befattning (VD, styrelseledamot, etc.)</li>
+      <li>Företagsnamn och organisationsnummer</li>
+      <li>Telefonnummer (arbete och/eller mobilnummer)</li>
+      <li>E-postadress (om tillgänglig)</li>
+      <li>LinkedIn-profil (om tillgänglig)</li>
+      <li>Branschkategori (SNI-kod)</li>
+      <li>Geografisk information (kommun/län)</li>
+    </ul>
+    <p>Vi behandlar <strong>inga</strong> känsliga personuppgifter (hälsa, politisk åsikt, etc.).</p>
+
+    <h2>3. Varifrån kommer uppgifterna?</h2>
+    <p>Vi samlar in uppgifter uteslutande från offentliga källor:</p>
+    <ul>
+      <li><strong>Bolagsverket</strong> — registrerade svenska aktiebolag och deras företrädare</li>
+      <li><strong>Allabolag.se</strong> — styrelsesammansättning och befattningshavare</li>
+      <li><strong>Hitta.se</strong> — offentligt registrerade telefonnummer</li>
+      <li><strong>Företagets webbplats</strong> — kontaktinformation publicerad av företaget självt</li>
+      <li><strong>LinkedIn</strong> — offentliga profiler</li>
+    </ul>
+
+    <h2>4. Varför behandlar vi uppgifterna?</h2>
+    <p>
+      Uppgifterna används uteslutande för <strong>affärsmässig kontakt (B2B-marknadsföring)</strong>
+      — specifikt för att informera beslutsfattare om NIS2-direktivets krav och hur vi
+      kan hjälpa deras organisation att uppfylla dem.
+    </p>
+    <div class="highlight-box">
+      <p>
+        Vi kontaktar enbart personer i deras <strong>yrkesmässiga egenskap</strong> som
+        representanter för ett företag — inte i egenskap av privatpersoner.
+      </p>
+    </div>
+
+    <h2>5. Rättslig grund</h2>
+    <p>
+      Vi behandlar uppgifterna med stöd av <strong>berättigat intresse</strong>
+      (Art. 6(1)(f) GDPR). Vårt berättigade intresse består i att nå ut till
+      beslutsfattare vars organisationer berörs av NIS2-direktivet — en lag som
+      ställer personliga krav på just de befattningshavare vi kontaktar.
+    </p>
+    <p>
+      Vi har gjort en intresseavvägning (LIA) och bedömt att det berättigade intresset
+      väger tyngre än den registrerades integritetsintresse, bland annat eftersom:
+    </p>
+    <ul>
+      <li>Kontakten sker i ett professionellt sammanhang</li>
+      <li>Uppgifterna är offentligt tillgängliga</li>
+      <li>Innehållet är direkt relevant för personens yrkesmässiga ansvar</li>
+      <li>Det är enkelt att avregistrera sig</li>
+    </ul>
+
+    <h2>6. Hur länge sparar vi uppgifterna?</h2>
+    <p>
+      Vi sparar uppgifter så länge de är relevanta för vår verksamhet, dock
+      <strong>maximalt 2 år</strong> från senaste kontakt. Uppgifter om personer
+      som begärt att bli borttagna raderas omedelbart och läggs till i vår
+      spärrlista så att de inte åter kontaktas.
+    </p>
+
+    <h2>7. Delar vi uppgifterna med någon?</h2>
+    <p>
+      Vi säljer eller delar inte personuppgifter med tredje part för marknadsföringssyften.
+      Uppgifterna kan delas med tekniska underleverantörer (t.ex. e-postleverantör)
+      enbart i den mån det krävs för att genomföra kommunikationen, och alltid
+      med lämpliga dataskyddsavtal.
+    </p>
+
+    <h2>8. Dina rättigheter</h2>
+    <p>Under GDPR har du rätt att:</p>
+    <ul>
+      <li><strong>Få tillgång</strong> till de uppgifter vi har om dig</li>
+      <li><strong>Begära rättelse</strong> om uppgifterna är felaktiga</li>
+      <li><strong>Begära radering</strong> av dina uppgifter</li>
+      <li><strong>Invända mot behandlingen</strong> — vi upphör omedelbart och lägger till dig i vår spärrlista</li>
+      <li><strong>Begära begränsning</strong> av behandlingen</li>
+    </ul>
+    <p>
+      För att utöva dina rättigheter, skicka ett e-postmeddelande till
+      <a href="mailto:jan@trustedmarketing.se">jan@trustedmarketing.se</a>.
+      Vi svarar inom 30 dagar.
+    </p>
+
+    <h2>9. Klagomål</h2>
+    <p>
+      Om du anser att vi hanterar dina uppgifter på ett felaktigt sätt har du rätt
+      att lämna klagomål till
+      <strong>Integritetsskyddsmyndigheten (IMY)</strong> på
+      <a href="https://www.imy.se" target="_blank" rel="noopener">imy.se</a>.
+    </p>
+
+    <h2>10. Kontakt</h2>
+    <p>
+      Frågor om den här policyn eller hur vi behandlar dina uppgifter:
+      <a href="mailto:jan@trustedmarketing.se">jan@trustedmarketing.se</a>
+    </p>
+
+  </div>
+
+  <footer>
+    <p>© 2026 M&amp;J Trusted Marketing KB</p>
+  </footer>
+
+</body>
+</html>
