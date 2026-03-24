@@ -5,7 +5,7 @@ const db = require('../db');
 // GET /api/enrichment/stats
 router.get('/stats', async (req, res) => {
   try {
-    const [statsRes, recentRes] = await Promise.all([
+    const [statsRes, contactsRes, recentRes] = await Promise.all([
       db.query(`
         SELECT
           COUNT(*) AS total,
@@ -16,8 +16,16 @@ router.get('/stats', async (req, res) => {
           COUNT(linkedin_url) AS has_linkedin,
           COUNT(phone) AS has_phone,
           COUNT(CASE WHEN last_enriched_at IS NOT NULL THEN 1 END) AS ever_enriched,
+          COUNT(CASE WHEN allabolag_enriched_at IS NOT NULL THEN 1 END) AS allabolag_done,
           MAX(last_enriched_at) AS last_enriched
         FROM discovery_leads
+      `),
+      db.query(`
+        SELECT
+          COUNT(*) AS total_contacts,
+          COUNT(phone) AS contacts_with_phone
+        FROM contacts
+        WHERE source LIKE '%allabolag%'
       `),
       db.query(`
         SELECT id, lead_id, type, title, body, created_at
@@ -31,7 +39,7 @@ router.get('/stats', async (req, res) => {
     res.json({
       success: true,
       data: {
-        stats: statsRes.rows[0],
+        stats: { ...statsRes.rows[0], ...contactsRes.rows[0] },
         recent_activity: recentRes.rows
       }
     });

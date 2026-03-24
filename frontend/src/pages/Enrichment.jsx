@@ -99,11 +99,53 @@ export default function Enrichment() {
               subColor="text-blue-400"
             />
             <StatCard
-              label="Has phone"
+              label="Company phones"
               value={parseInt(stats.has_phone).toLocaleString()}
               sub={pct(stats.has_phone, stats.total) + ' of total'}
               subColor="text-slate-400"
             />
+          </div>
+
+          {/* Board member pipeline — bulk allabolag progress */}
+          <div className="bg-navy-800 rounded-xl border border-white/10 p-5 space-y-4">
+            <div className="flex items-center justify-between">
+              <h2 className="text-sm font-semibold text-slate-200">Board member pipeline (NIS2)</h2>
+              <span className="text-xs text-amber-400 font-medium">bulk runner active</span>
+            </div>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+              <div>
+                <div className="text-xs text-slate-500 uppercase tracking-wide mb-1">Allabolag done</div>
+                <div className="text-xl font-bold text-slate-100">{parseInt(stats.allabolag_done).toLocaleString()}</div>
+                <div className="text-xs text-slate-500 mt-0.5">{pct(stats.allabolag_done, stats.total)} of leads</div>
+              </div>
+              <div>
+                <div className="text-xs text-slate-500 uppercase tracking-wide mb-1">Remaining</div>
+                <div className="text-xl font-bold text-slate-100">
+                  {(parseInt(stats.total) - parseInt(stats.allabolag_done)).toLocaleString()}
+                </div>
+                <div className="text-xs text-slate-500 mt-0.5">~{Math.ceil((parseInt(stats.total) - parseInt(stats.allabolag_done)) * 2 / 3600)}h left</div>
+              </div>
+              <div>
+                <div className="text-xs text-slate-500 uppercase tracking-wide mb-1">Board members found</div>
+                <div className="text-xl font-bold text-emerald-400">{parseInt(stats.total_contacts || 0).toLocaleString()}</div>
+                <div className="text-xs text-slate-500 mt-0.5">VD + styrelseledamöter</div>
+              </div>
+              <div>
+                <div className="text-xs text-slate-500 uppercase tracking-wide mb-1">Personal mobiles</div>
+                <div className="text-xl font-bold text-amber-400">{parseInt(stats.contacts_with_phone || 0).toLocaleString()}</div>
+                <div className="text-xs text-slate-500 mt-0.5">{pct(stats.contacts_with_phone, stats.total_contacts)} of board members</div>
+              </div>
+            </div>
+            {/* Progress bar */}
+            <div>
+              <div className="text-xs text-slate-500 mb-1.5">Allabolag coverage</div>
+              <div className="h-2 bg-navy-700 rounded-full overflow-hidden">
+                <div
+                  className="h-full bg-amber-500 rounded-full transition-all"
+                  style={{ width: pct(stats.allabolag_done, stats.total) }}
+                />
+              </div>
+            </div>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
