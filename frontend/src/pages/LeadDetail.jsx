@@ -34,7 +34,7 @@ const ACTIVITY_ICONS = {
   task_completed: '✅',
 };
 
-// Nomad Cyber pitch angles based on sector
+// NIS2 pitch angles based on sector
 function getPitchAngle(lead) {
   if (lead.nis2_registered) {
     const sector = lead.nis2_sector;
@@ -214,7 +214,7 @@ function CallScript({ lead }) {
 
             {!generated ? (
               <div className="bg-white/5 rounded-lg p-3 text-sm text-slate-200 leading-relaxed">
-                "Hej, jag heter Jan Malmström och ringer från Nomad Cyber. {s.opener} Har du två minuter?"
+                "Hej, jag heter Jan Malmström. {s.opener} Har du två minuter?"
               </div>
             ) : (
               <div className="space-y-2">
@@ -2071,7 +2071,7 @@ function BattleCard({ lead }) {
       <button onClick={() => setOpen(o => !o)} className="w-full flex justify-between items-center px-5 py-3.5 text-left rounded-t-xl">
         <span className="flex items-center gap-2 text-rose-300 font-semibold text-sm">
           ⚔️ Battle Card
-          <InfoTooltip text="Generates a 7-section competitive battle card for any named competitor: snapshot · their real strengths · weaknesses & gaps · how we win · 3 objections with rebuttals · 4 trap-setting discovery questions (expose weaknesses without naming them) · 3 punchy one-liners. All in Swedish, pre-loaded with Nomad Cyber context. Quick-select: Truesec, Secify, Advania, CGI, Atea, KPMG, PwC, Cygate." position="bottom" />
+          <InfoTooltip text="Generates a 7-section competitive battle card for any named competitor: snapshot · their real strengths · weaknesses & gaps · how we win · 3 objections with rebuttals · 4 trap-setting discovery questions (expose weaknesses without naming them) · 3 punchy one-liners. All in Swedish. Quick-select: Truesec, Secify, Advania, CGI, Atea, KPMG, PwC, Cygate." position="bottom" />
           {result && (
             <span className="text-xs bg-rose-500/20 text-rose-300 px-2 py-0.5 rounded-full font-normal">
               {result.competitor}
@@ -2493,10 +2493,10 @@ export default function LeadDetail() {
       {/* Battle card */}
       <BattleCard lead={lead} />
 
-      {/* Nomad pitch angle */}
+      {/* Pitch angle */}
       <div className="bg-cyan-500/5 border border-cyan-500/20 rounded-xl p-5">
         <div className="flex items-center justify-between mb-3">
-          <h2 className="text-sm font-semibold text-cyan-400 flex items-center gap-1.5">Nomad Cyber — Pitch Angle <InfoTooltip text="A one-paragraph NIS2 outreach angle tailored to this company's sector, employee size, and compliance status. Used as the opening hook for cold calls, emails, and LinkedIn messages. Saved to the lead — regenerate anytime if the angle needs refreshing. Based on 23 SNI sector hooks mapped to NIS2 compliance urgency." position="top" /></h2>
+          <h2 className="text-sm font-semibold text-cyan-400 flex items-center gap-1.5">NIS2 Pitch Angle <InfoTooltip text="A one-paragraph NIS2 outreach angle tailored to this company's sector, employee size, and compliance status. Used as the opening hook for cold calls, emails, and LinkedIn messages. Saved to the lead — regenerate anytime if the angle needs refreshing. Based on 23 SNI sector hooks mapped to NIS2 compliance urgency." position="top" /></h2>
           <button
             onClick={generatePitch}
             disabled={generatingPitch}

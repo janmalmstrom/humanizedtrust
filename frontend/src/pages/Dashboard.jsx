@@ -602,7 +602,7 @@ export default function Dashboard() {
     <div className="p-8 space-y-6">
       <div>
         <h1 className="text-xl font-semibold text-slate-100">Dashboard</h1>
-        <p className="text-slate-500 text-sm mt-0.5">Nomad Cyber — Swedish AI/NIS2 outreach pipeline</p>
+        <p className="text-slate-500 text-sm mt-0.5">Swedish AI/NIS2 outreach pipeline</p>
       </div>
 
       {/* Today's sequence action queue */}
