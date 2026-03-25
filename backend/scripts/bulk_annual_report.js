@@ -189,12 +189,24 @@ async function main() {
 
   if (!running) {
     console.log('[phase1] Stopped early — run again to resume.');
-  } else {
-    console.log('[phase1] Phase 1 complete!');
-    console.log('[phase1] Next: run bulk_allabolag.js — it will now only target NIS2-qualifying companies.');
+    process.exit(0);
   }
 
-  process.exit(0);
+  console.log('[phase1] Phase 1 complete! Starting Phase 2 automatically...\n');
+  console.log('[phase2] ── Phase 2: Board Member Fetch (NIS2-qualified only) ──');
+
+  // Hand off to Phase 2 — spawn as child so logs go to same file
+  const { spawn } = require('child_process');
+  const phase2 = spawn(
+    process.execPath,
+    [require('path').join(__dirname, 'bulk_allabolag.js')],
+    { stdio: 'inherit', env: process.env }
+  );
+
+  phase2.on('exit', code => {
+    console.log(`\n[phase2] Finished with exit code ${code}`);
+    process.exit(code);
+  });
 }
 
 async function run() {
