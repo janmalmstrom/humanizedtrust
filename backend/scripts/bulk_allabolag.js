@@ -8,6 +8,7 @@
  *
  * No API keys needed. Fully free.
  * Resumable — skips leads already processed (allabolag_enriched_at IS NOT NULL)
+ * Auto-reconnects on DB connection drops.
  *
  * Usage:
  *   cd /home/janne/humanizedtrust/backend
@@ -25,6 +26,7 @@ const { enrichContactPhone } = require('../src/engines/enrich_hitta');
 const ALLABOLAG_DELAY_MS = 2000;  // 2s between allabolag requests
 const HITTA_DELAY_MS     = 1500;  // 1.5s between hitta requests
 const PAGE_SIZE          = 500;   // leads fetched per DB query
+const DB_RETRY_DELAY_MS  = 10000; // 10s wait before reconnect attempt
 
 const sleep = ms => new Promise(r => setTimeout(r, ms));
 
@@ -33,6 +35,26 @@ process.on('SIGINT', () => {
   console.log('\n[bulk] Caught Ctrl+C — finishing current lead then stopping...');
   running = false;
 });
+
+// Retry wrapper — handles transient DB connection drops
+async function q(text, params, retries = 5) {
+  for (let i = 0; i < retries; i++) {
+    try {
+      return await db.query(text, params);
+    } catch (e) {
+      const isConn = e.message.includes('Connection terminated') ||
+                     e.message.includes('connection') ||
+                     e.code === 'ECONNRESET' ||
+                     e.code === 'ECONNREFUSED';
+      if (isConn && i < retries - 1) {
+        console.log(`\n[bulk] DB connection error (${e.message.slice(0, 60)}), retrying in ${DB_RETRY_DELAY_MS / 1000}s... (${i + 1}/${retries - 1})`);
+        await sleep(DB_RETRY_DELAY_MS);
+        continue;
+      }
+      throw e;
+    }
+  }
+}
 
 function eta(done, total, startMs) {
   if (done === 0) return '?';
@@ -47,8 +69,7 @@ function eta(done, total, startMs) {
 async function main() {
   console.log('[bulk] Starting bulk allabolag + hitta enrichment');
 
-  // Count total pending
-  const { rows: [counts] } = await db.query(`
+  const { rows: [counts] } = await q(`
     SELECT
       COUNT(*) FILTER (WHERE allabolag_enriched_at IS NULL) AS pending,
       COUNT(*) FILTER (WHERE allabolag_enriched_at IS NOT NULL) AS done,
@@ -80,11 +101,9 @@ async function main() {
   let phonesFound = 0;
   let emailsFound = 0;
   const startMs = Date.now();
-  let offset = 0;
 
   while (running) {
-    // Fetch a page of unprocessed leads (no score filter — process everyone)
-    const { rows: leads } = await db.query(`
+    const { rows: leads } = await q(`
       SELECT id, org_nr, city, phone, email
       FROM discovery_leads
       WHERE org_nr IS NOT NULL
@@ -103,15 +122,13 @@ async function main() {
       if (!running) break;
 
       try {
-        // Step 1: Allabolag
         const result = await enrichFromAllabolag(db, lead);
         contactsAdded += result.contactsAdded;
-        if (result.phoneUpdated) emailsFound++;   // reusing var — count any update
+        if (result.phoneUpdated) emailsFound++;
         if (result.emailUpdated) emailsFound++;
 
-        // Step 2: Hitta for ALL new contacts on this lead (inline, not batched)
         if (result.contactsAdded > 0) {
-          const { rows: newContacts } = await db.query(`
+          const { rows: newContacts } = await q(`
             SELECT c.id, c.name, c.phone, dl.city AS lead_city
             FROM contacts c
             JOIN discovery_leads dl ON dl.id = c.lead_id
@@ -133,17 +150,15 @@ async function main() {
           }
         }
       } catch (e) {
-        // Mark as attempted so we don't retry this lead in a broken state
-        await db.query(
+        await q(
           'UPDATE discovery_leads SET allabolag_enriched_at = NOW() WHERE id = $1',
           [lead.id]
         );
-        console.error(`[bulk] error lead ${lead.id}: ${e.message}`);
+        console.error(`\n[bulk] error lead ${lead.id}: ${e.message}`);
       }
 
       processed++;
 
-      // Progress every 10 leads
       if (processed % 10 === 0) {
         const pct = ((processed / totalPending) * 100).toFixed(1);
         const rate = (processed / ((Date.now() - startMs) / 1000)).toFixed(2);
@@ -158,8 +173,6 @@ async function main() {
 
       await sleep(ALLABOLAG_DELAY_MS);
     }
-
-    offset += PAGE_SIZE;
   }
 
   const elapsed = ((Date.now() - startMs) / 1000 / 60).toFixed(1);
@@ -173,7 +186,26 @@ async function main() {
   process.exit(0);
 }
 
-main().catch(err => {
-  console.error('[bulk] Fatal error:', err);
-  process.exit(1);
-});
+// Outer restart loop — if DB drops, wait and restart (script is fully resumable)
+async function run() {
+  while (true) {
+    try {
+      await main();
+      break;
+    } catch (err) {
+      const isConn = err.message.includes('Connection terminated') ||
+                     err.message.includes('connection') ||
+                     err.code === 'ECONNRESET' ||
+                     err.code === 'ECONNREFUSED';
+      if (isConn && running) {
+        console.log(`\n[bulk] Connection lost — restarting in ${DB_RETRY_DELAY_MS / 1000}s...`);
+        await sleep(DB_RETRY_DELAY_MS);
+      } else {
+        console.error('[bulk] Fatal error:', err);
+        process.exit(1);
+      }
+    }
+  }
+}
+
+run();
