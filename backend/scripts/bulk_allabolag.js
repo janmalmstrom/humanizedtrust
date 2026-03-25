@@ -66,14 +66,26 @@ function eta(done, total, startMs) {
   return h > 0 ? `${h}h ${m}m` : `${m}m`;
 }
 
+// NIS2 qualification filter — only companies that must comply
+// Essential: 250+ employees OR 550M+ SEK revenue (~€50M)
+// Important: 50-249 employees AND 110M+ SEK revenue (~€10M)
+const NIS2_FILTER = `
+  AND (
+    num_employees_exact >= 250
+    OR revenue_sek >= 550000000
+    OR (num_employees_exact >= 50 AND revenue_sek >= 110000000)
+  )
+`;
+
 async function main() {
-  console.log('[bulk] Starting bulk allabolag + hitta enrichment');
+  console.log('[bulk] ── Phase 2: Board Member Fetch (NIS2-qualified only) ──');
 
   const { rows: [counts] } = await q(`
     SELECT
-      COUNT(*) FILTER (WHERE allabolag_enriched_at IS NULL) AS pending,
+      COUNT(*) FILTER (WHERE allabolag_enriched_at IS NULL ${NIS2_FILTER}) AS pending,
       COUNT(*) FILTER (WHERE allabolag_enriched_at IS NOT NULL) AS done,
-      COUNT(*) AS total
+      COUNT(*) AS total,
+      COUNT(*) FILTER (WHERE annual_report_fetched_at IS NULL) AS phase1_remaining
     FROM discovery_leads
     WHERE org_nr IS NOT NULL
       AND review_status != 'rejected'
@@ -83,12 +95,21 @@ async function main() {
   const alreadyDone  = parseInt(counts.done);
   const grandTotal   = parseInt(counts.total);
 
-  console.log(`[bulk] ${grandTotal.toLocaleString()} leads with org_nr`);
-  console.log(`[bulk] ${alreadyDone.toLocaleString()} already processed`);
-  console.log(`[bulk] ${totalPending.toLocaleString()} pending`);
+  const phase1Remaining = parseInt(counts.phase1_remaining);
+
+  console.log(`[bulk] ${grandTotal.toLocaleString()} total leads`);
+  console.log(`[bulk] ${alreadyDone.toLocaleString()} already have board members`);
+  console.log(`[bulk] ${totalPending.toLocaleString()} NIS2-qualified pending`);
+
+  if (phase1Remaining > 0) {
+    console.log(`\n[bulk] ⚠️  Phase 1 not complete — ${phase1Remaining.toLocaleString()} leads still need annual report data.`);
+    console.log('[bulk]    Run bulk_annual_report.js first for best NIS2 targeting.');
+    console.log('[bulk]    Continuing with currently qualified leads...\n');
+  }
 
   if (totalPending === 0) {
-    console.log('[bulk] All leads already enriched. Nothing to do.');
+    console.log('[bulk] No NIS2-qualified leads need board members yet.');
+    if (phase1Remaining > 0) console.log('[bulk] Wait for Phase 1 to complete, then run again.');
     process.exit(0);
   }
 
@@ -109,7 +130,8 @@ async function main() {
       WHERE org_nr IS NOT NULL
         AND allabolag_enriched_at IS NULL
         AND review_status != 'rejected'
-      ORDER BY score DESC NULLS LAST
+        ${NIS2_FILTER}
+      ORDER BY score DESC NULLS LAST, revenue_sek DESC NULLS LAST
       LIMIT $1
     `, [PAGE_SIZE]);
 
