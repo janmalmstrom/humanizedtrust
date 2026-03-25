@@ -42,7 +42,8 @@ router.get('/', async (req, res) => {
       `SELECT id, org_nr, company_name, website, email, email_status, phone,
               city, county, nace_code, nace_description, employee_range, revenue_range,
               nis2_registered, nis2_sector, linkedin_url, score, score_label,
-              review_status, contacted_at, outreach_angle, created_at
+              review_status, contacted_at, outreach_angle, created_at,
+              intent_signal, intent_signal_at
        FROM discovery_leads ${where}
        ORDER BY ${validSort} ${validDir} NULLS LAST
        LIMIT $${params.length - 1} OFFSET $${params.length}`,

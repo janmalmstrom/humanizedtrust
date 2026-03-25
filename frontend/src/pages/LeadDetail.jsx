@@ -1541,7 +1541,7 @@ function LeadTasks({ leadId }) {
 }
 
 // ---- Contacts ----
-function ContactsCard({ leadId }) {
+function ContactsCard({ leadId, companyName }) {
   const [contacts, setContacts] = useState([]);
   const [showForm, setShowForm] = useState(false);
   const [editId, setEditId] = useState(null);
@@ -1664,11 +1664,22 @@ function ContactsCard({ leadId }) {
                       {c.title}
                     </span>
                   )}
-                  {c.linkedin_url && (
+                  {c.linkedin_url ? (
                     <a href={c.linkedin_url} target="_blank" rel="noreferrer"
-                      className="text-cyan-500 hover:text-cyan-400 text-xs" title="LinkedIn">
+                      className="text-cyan-500 hover:text-cyan-400 text-xs" title="Open LinkedIn profile">
                       💼
                     </a>
+                  ) : (
+                    <button
+                      onClick={() => {
+                        const q = encodeURIComponent(`${c.name} ${companyName || ''}`);
+                        window.open(`https://www.linkedin.com/search/results/people/?keywords=${q}`, '_blank', 'noreferrer');
+                      }}
+                      className="text-slate-500 hover:text-cyan-400 text-xs transition-colors"
+                      title="Find on LinkedIn"
+                    >
+                      💼 Find
+                    </button>
                   )}
                 </div>
                 <div className="flex items-center gap-3 mt-0.5">
@@ -2381,7 +2392,7 @@ export default function LeadDetail() {
               )}
             </div>
           </div>
-          <ContactsCard leadId={id} />
+          <ContactsCard leadId={id} companyName={lead.company_name} />
         </div>
 
         {/* Right column: Score breakdown + Status */}

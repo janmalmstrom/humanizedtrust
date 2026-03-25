@@ -295,6 +295,9 @@ export default function Leads() {
                   <Link to={`/leads/${lead.id}`} className="text-slate-200 hover:text-cyan-400 font-medium transition-colors">
                     {lead.company_name}
                   </Link>
+                  {lead.intent_signal && (
+                    <span title="Hiring for security/NIS2 roles — buying signal" className="ml-1.5 text-xs bg-orange-500/20 text-orange-400 px-1.5 py-0.5 rounded-full">🎯 hiring</span>
+                  )}
                   {lead.website && <div className="text-xs text-slate-600 truncate max-w-[180px]">{lead.website}</div>}
                 </td>
                 <td className="px-4 py-3 text-slate-400 text-xs">
