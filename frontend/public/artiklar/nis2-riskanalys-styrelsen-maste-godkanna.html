@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Riskanalysen styrelsen måste godkänna — och förstå | NIS2Klar</title>
+  <meta name="description" content="NIS2 kräver att styrelsen aktivt godkänner riskhantering — inte bara delegerar. Lär dig vad en NIS2-riskanalys innehåller och vad som händer om styrelsen inte förstår vad de skriver under.">
+  <meta property="og:title" content="Riskanalysen styrelsen måste godkänna — och förstå">
+  <meta property="og:description" content="NIS2 kräver att styrelsen aktivt godkänner riskhantering — inte bara delegerar. Lär dig vad en NIS2-riskanalys innehåller och vad som händer om styrelsen inte förstår vad de skriver under.">
+  <link rel="canonical" href="https://nis2klar.se/artiklar/nis2-riskanalys-styrelsen-maste-godkanna.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #141416;
+      --card: #1c1c1f;
+      --yellow: #f5c518;
+      --white: #f0f0f0;
+      --muted: #888;
+      --red: #C61212;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: var(--bg); color: var(--white); font-family: 'Barlow', sans-serif; font-size: 19px; line-height: 1.8; }
+
+    /* Nav */
+    nav { display: flex; justify-content: space-between; align-items: center; padding: 20px 40px; border-bottom: 1px solid rgba(255,255,255,0.07); max-width: 900px; margin: 0 auto; }
+    .nav-logo { font-family: 'Poppins', sans-serif; font-weight: 900; font-size: 20px; color: var(--yellow); text-decoration: none; }
+    .nav-logo span { color: var(--white); }
+    .nav-back { color: var(--muted); text-decoration: none; font-size: 15px; }
+    .nav-back:hover { color: var(--white); }
+    .nav-cta { background: var(--yellow); color: #000; padding: 8px 18px; border-radius: 4px; text-decoration: none; font-weight: 700; font-size: 14px; font-family: 'Poppins', sans-serif; }
+
+    /* Article */
+    .article-wrap { max-width: 760px; margin: 0 auto; padding: 60px 40px; }
+    .article-category { font-size: 13px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 16px; }
+    h1 { font-family: 'Poppins', sans-serif; font-size: clamp(30px, 4vw, 44px); font-weight: 900; line-height: 1.2; margin-bottom: 24px; }
+    .article-meta { font-size: 15px; color: var(--muted); margin-bottom: 48px; padding-bottom: 24px; border-bottom: 1px solid rgba(255,255,255,0.07); }
+    h2 { font-family: 'Poppins', sans-serif; font-size: 26px; font-weight: 700; margin: 48px 0 16px; color: var(--white); }
+    h3 { font-family: 'Poppins', sans-serif; font-size: 20px; font-weight: 600; margin: 32px 0 12px; color: var(--yellow); }
+    p { margin-bottom: 22px; }
+    strong { color: var(--white); font-weight: 700; }
+    .highlight { color: var(--yellow); font-weight: 700; }
+    .danger { color: #ff6b6b; font-weight: 700; }
+    ul, ol { margin: 16px 0 24px 24px; }
+    li { margin-bottom: 12px; font-size: 19px; }
+
+    /* Callout boxes */
+    .box-warning { background: rgba(197,17,17,0.12); border-left: 4px solid var(--red); padding: 20px 24px; margin: 32px 0; border-radius: 0 4px 4px 0; }
+    .box-info { background: rgba(245,197,24,0.08); border-left: 4px solid var(--yellow); padding: 20px 24px; margin: 32px 0; border-radius: 0 4px 4px 0; }
+    .box-case { background: var(--card); border: 1px solid rgba(255,255,255,0.08); padding: 28px; margin: 40px 0; border-radius: 4px; }
+    .box-case .case-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 12px; }
+    blockquote { border-left: 3px solid var(--yellow); padding: 12px 20px; margin: 24px 0; font-style: italic; color: #ccc; }
+
+    /* CTA */
+    .cta-section { background: var(--card); border: 1px solid rgba(245,197,24,0.2); border-radius: 4px; padding: 48px 40px; margin: 64px 0 40px; text-align: center; }
+    .cta-section h2 { margin-top: 0; font-size: 26px; }
+    .cta-section p { color: #aaa; max-width: 500px; margin: 0 auto 28px; }
+    .btn-primary { display: inline-block; background: var(--yellow); color: #000; font-family: 'Poppins', sans-serif; font-weight: 800; font-size: 16px; padding: 16px 36px; border-radius: 4px; text-decoration: none; }
+    .btn-primary:hover { background: #e0b010; }
+    .cta-fine { font-size: 13px; color: var(--muted); margin-top: 16px; }
+
+    /* FAQ */
+    .faq-item { border-bottom: 1px solid rgba(255,255,255,0.07); padding: 20px 0; }
+    .faq-q { font-family: 'Poppins', sans-serif; font-weight: 600; margin-bottom: 10px; }
+    .faq-a { color: #bbb; }
+
+    /* Fine table */
+    .fine-table { width: 100%; border-collapse: collapse; margin: 24px 0; }
+    .fine-table th { background: rgba(245,197,24,0.1); color: var(--yellow); font-family: 'Poppins', sans-serif; font-size: 13px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 12px 16px; text-align: left; border-bottom: 1px solid rgba(245,197,24,0.2); }
+    .fine-table td { padding: 14px 16px; border-bottom: 1px solid rgba(255,255,255,0.05); font-size: 15px; }
+    .fine-table tr:last-child td { border-bottom: none; }
+    .fine-table .amount { color: #ff6b6b; font-weight: 700; }
+
+    /* Summary + Key Takeaway */
+    .box-summary { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; padding: 24px 28px; margin: 0 0 32px; }
+    .summary-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-bottom: 14px; }
+    .box-summary ul { margin: 0; padding-left: 20px; }
+    .box-summary li { margin-bottom: 8px; font-size: 17px; color: #ccc; }
+    .box-takeaway { background: rgba(245,197,24,0.08); border-left: 4px solid var(--yellow); padding: 20px 24px; margin: 0 0 40px; border-radius: 0 4px 4px 0; }
+    .takeaway-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 10px; }
+    .box-takeaway p { margin: 0; font-size: 18px; font-weight: 600; color: var(--white); line-height: 1.6; }
+
+    /* Footer */
+    footer { border-top: 1px solid rgba(255,255,255,0.07); padding: 32px 40px; text-align: center; font-size: 13px; color: var(--muted); max-width: 900px; margin: 0 auto; }
+    footer a { color: var(--muted); }
+
+    @media (max-width: 600px) {
+      nav, .article-wrap, footer { padding: 20px; }
+      .cta-section { padding: 32px 20px; }
+      .fine-table { font-size: 14px; }
+      .fine-table th, .fine-table td { padding: 10px 10px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="https://nis2klar.se/">NIS2<span>Klar</span></a>
+  <a class="nav-back" href="https://nis2klar.se/artiklar.html">← Alla artiklar</a>
+  <a class="nav-cta" href="/nis2.html#boka">Boka samtal →</a>
+</nav>
+
+<article class="article-wrap">
+  <div class="article-category">Styrelsens ansvar &amp; Riskhantering</div>
+  <h1>Riskanalysen styrelsen måste godkänna — och förstå</h1>
+  <div class="article-meta">Uppdaterad 31 mars 2026 · Lästid: ca 9 minuter · Målgrupp: VD, styrelseordförande, styrelseledamöter</div>
+
+  <!-- SUMMARY -->
+  <div class="box-summary">
+    <div class="summary-label">Sammanfattning</div>
+    <ul>
+      <li>NIS2 ger styrelsen ett <strong>aktivt och personligt ansvar</strong> för riskhantering — delegation räcker inte.</li>
+      <li>En NIS2-riskanalys är ett juridiskt dokument som styrelsen skriver under och kan hållas ansvarig för.</li>
+      <li>CISO måste presentera riskanalysen på styrelsens villkor — inte i teknisk jargong.</li>
+      <li>Om styrelsen inte förstår vad de godkänner saknas det reella ansvaret som lagen kräver — och tillsynsmyndigheten vet skillnaden.</li>
+    </ul>
+  </div>
+
+  <!-- KEY TAKEAWAY -->
+  <div class="box-takeaway">
+    <div class="takeaway-label">Viktigaste slutsatsen</div>
+    <p>Att skriva under en riskanalys du inte förstår är inte ett formellt skydd — det är ett juridiskt riskmoment. NIS2:s Artikel 20 kräver att ledningen aktivt godkänner och övervakar säkerhetsarbetet. Blindt godkännande räknas inte.</p>
+  </div>
+
+  <!-- HOOK -->
+  <p>
+    Tänk dig det här scenariot: CISO lägger fram ett tjugo sidor långt dokument på styrelsemötet. Det är fullt av risk-matriser, tekniska termer och färgkodade sannolikhetsbedömningar. Styrelsen nickar, frågar om något är "under kontroll", får svaret "ja, vi har vidtagit åtgärder", och godkänner dokumentet med ett klick i protokollet.
+  </p>
+
+  <p>
+    Sex månader senare inleder tillsynsmyndigheten en granskning. De frågar hur styrelsen aktivt har övervakat genomförandet av riskhanteringsåtgärderna. Ingen i styrelsen kan svara på frågan, för ingen förstod egentligen vad de godkände.
+  </p>
+
+  <p>
+    Det är inte ett hypotetiskt scenario. Det är den vanligaste fallgropen för NIS2-reglerade organisationer i Sverige just nu — och den är lika dyr som den är onödig.
+  </p>
+
+  <div class="box-warning">
+    <strong>Det räcker inte att ha ett signerat dokument.</strong> NIS2:s Artikel 20 kräver att ledningsorganen förstår, godkänner och löpande övervakar riskhanteringsåtgärderna. Ett protokollfört "ja" utan reell förståelse är inte ett juridiskt försvar — det kan till och med försvåra er situation vid tillsyn.
+  </div>
+
+  <h2>Varför är riskanalysen styrelsens ansvar — och inte bara IT:s?</h2>
+
+  <p>
+    Det är lätt att se riskanalys som ett tekniskt dokument som hör hemma på IT-avdelningen. Det stämde under NIS1. Under NIS2 stämmer det inte längre.
+  </p>
+
+  <p>
+    <strong>Artikel 20 i NIS2-direktivet</strong> — som implementerats i svensk rätt genom cybersäkerhetslagen (2024:1056) — slår fast att ledningsorganen i en reglerad organisation inte bara ska informeras om riskhanteringsarbetet. De ska <em>godkänna</em> det, <em>övervaka</em> det och <em>bära ansvar</em> för det. Det är en fundamental förändring av var ansvaret faktiskt ligger.
+  </p>
+
+  <p>
+    Skälet är enkelt: cybersäkerhetsrisker är verksamhetsrisker. De påverkar organisation, kunder, leverantörskedjor och samhällsfunktioner på ett sätt som inte kan hanteras enbart av en teknisk funktion. Lagstiftaren har dragit slutsatsen att det kräver ledningsengagemang på samma nivå som finansiella risker eller strategiska affärsrisker.
+  </p>
+
+  <p>
+    Det innebär i praktiken att VD och styrelseledamöter måste kunna svara på frågorna: Vilka är våra mest kritiska risker? Vilka åtgärder har vi beslutat om? Hur vet vi att de fungerar? Om svaret är "det vet IT-chefen" är ni i ett exponerat läge.
+  </p>
+
+  <h2>Vad ingår egentligen i en NIS2-riskanalys?</h2>
+
+  <p>
+    En NIS2-riskanalys är inte ett enkelt checklistdokument. Det är en strukturerad genomgång av organisationens hela riskbild kopplad till informations- och nätverkssäkerhet — men den ska vara läsbar och begriplig även för icke-tekniker i ledningen.
+  </p>
+
+  <p>
+    Enligt <strong>Artikel 21 i NIS2-direktivet</strong> ska riskhanteringen täcka tio specificerade säkerhetsdomäner. Riskanalysen ska ge styrelsen en tydlig bild av organisationens exponering inom var och en av dessa:
+  </p>
+
+  <h3>1. Riskanalys och policyer för informationssäkerhet</h3>
+  <p>
+    Vilka hot och sårbarheter har organisationen identifierat? Vilka tillgångar — system, data, processer — är mest kritiska? Hur ser det ut relativt branschnormen? Det här är riskanalysens kärna, och det är den del styrelsen faktiskt måste förstå och ställa sig bakom.
+  </p>
+
+  <h3>2. Incidenthantering</h3>
+  <p>
+    Vad händer om ni drabbas av ett intrång imorgon? Vem gör vad? Vem rapporterar till tillsynsmyndigheten inom 24 timmar? Vem kommunicerar med kunder och affärspartners? Riskanalysen ska inkludera en bedömning av organisationens förmåga att hantera incidenter — och peka ut eventuella luckor.
+  </p>
+
+  <h3>3. Kontinuitet och krishantering</h3>
+  <p>
+    Kan verksamheten fortsätta om ett kritiskt system slås ut? Vad är den maximalt acceptabla nedtiden för era viktigaste tjänster? Riskanalysen ska innehålla en bedömning av affärskontinuitet och återhämtningsförmåga — och koppla den till faktiska konsekvenser för verksamheten.
+  </p>
+
+  <h3>4. Leverantörskedjan</h3>
+  <p>
+    Era leverantörer är en del av er riskbild. NIS2 kräver explicit att leverantörssäkerhet hanteras. Riskanalysen ska identifiera era mest kritiska leverantörsberoenden och bedöma deras säkerhetsmognad — och dokumentera vad ni gör om en leverantör brister.
+  </p>
+
+  <h3>5. Tekniska och organisatoriska grundåtgärder</h3>
+  <p>
+    Kryptering, autentisering, åtkomstkontroll, patchning — riskanalysen ska bedöma om organisationens tekniska grundskydd är tillräckligt i relation till identifierade risker. Det är inte en teknisk lista för tekniker; det är en bedömning av om grundskyddet är proportionerligt mot er riskexponering.
+  </p>
+
+  <p>
+    En komplett NIS2-riskanalys innehåller alltså inte bara en inventering av hot. Den innehåller en tydlig koppling mellan identifierade risker, beslutade åtgärder, ansvariga personer och uppföljningsmekanismer. Det är det styrelsen ska godkänna — och det är det tillsynsmyndigheten kommer att fråga om.
+  </p>
+
+  <div class="box-info">
+    <strong>Vad är "proportionerliga åtgärder" enligt NIS2?</strong> Direktivet kräver inte att ni bygger en fästning. Det kräver att era säkerhetsåtgärder är rimliga i förhållande till er riskexponering, er storlek och era resurser. Det innebär att riskanalysen måste innehålla en motivering — varför har ni valt de åtgärder ni valt, och varför är de tillräckliga givet er verksamhetsprofil?
+  </div>
+
+  <h2>Hur presenterar CISO riskanalysen för styrelsen — rätt sätt</h2>
+
+  <p>
+    Det finns en välkänd klyfta mellan hur en CISO tänker och hur en styrelse tänker. CISO ser risker i tekniska termer — CVE-poäng, angreppsytor, patchar som saknas. Styrelsen ser risker i verksamhetstermer — konsekvenser för kunder, intäkter, varumärke och regulatorisk exponering.
+  </p>
+
+  <p>
+    En riskanalys som presenteras i tekniska termer för en styrelse löser ingenting. Den skapar ett falskt intryck av att "IT har tagit hand om det" — och det är precis det mönstret som NIS2 vill bryta.
+  </p>
+
+  <p>
+    En NIS2-kompatibel presentation av riskanalysen för styrelsen bör struktureras så här:
+  </p>
+
+  <ol>
+    <li><strong>Vad är vår allvarligaste risk just nu — i verksamhetstermer?</strong> Inte "vi har en kritisk sårbarhet i systemX" utan "ett intrång i vårt kundregister kan leda till GDPR-sanktion på upp till Y miljoner och bortfall av X procent av vår kundstock."</li>
+    <li><strong>Vad har vi beslutat att göra åt det, och när?</strong> Tydliga åtgärder med tidsplan och ansvarig person — inte vaga formuleringar om att "arbetet pågår".</li>
+    <li><strong>Vad är den kvarstående risken efter åtgärd?</strong> Ingen åtgärd eliminerar risken helt. Styrelsen behöver förstå vilken risknivå de accepterar när de godkänner analysen.</li>
+    <li><strong>Vad behöver styrelsen besluta om idag?</strong> Riskanalysen är inte ett informationsdokument — det är ett beslutsunderlag. Det ska alltid innehålla konkreta beslutspunkter för styrelsen.</li>
+    <li><strong>Hur följer vi upp att åtgärderna faktiskt genomförs?</strong> Artikel 20 kräver löpande övervakning, inte bara ett engångsgodkännande. Presentationen ska inkludera hur och när styrelsen återrapporteras.</li>
+  </ol>
+
+  <p>
+    En styrelse som förstår de fem punkterna ovan kan fatta ett reellt informerat beslut. Det är det NIS2 kräver — och det är det som håller vid en tillsynsgranskning.
+  </p>
+
+  <h2>Vad händer om styrelsen godkänner utan att förstå?</h2>
+
+  <p>
+    Det är en fråga fler borde ställa sig. Svaret är obehagligt.
+  </p>
+
+  <p>
+    Om styrelsen godkänner en riskanalys utan reell förståelse för innehållet uppstår tre problem:
+  </p>
+
+  <p>
+    <strong>Det första problemet är praktiskt.</strong> Om styrelsen inte förstår vad de godkänt kan de inte utöva den löpande övervakning som Artikel 20 kräver. De vet inte vad de ska följa upp, vilka frågor de ska ställa eller när de ska larma. Det innebär att en incident som borde ha förhindrats istället inträffar.
+  </p>
+
+  <p>
+    <strong>Det andra problemet är juridiskt.</strong> Vid en tillsynsgranskning är ett av de första sakerna tillsynsmyndigheten undersöker hur styrelsens godkännande gick till. Om protokollet visar att styrelsen röstade igenom ett tekniskt dokument på fem minuter utan diskussion är det ett tecken på att godkännandet var pro forma — och pro forma-godkännanden är inte ett juridiskt skydd. Det kan tvärtom tyda på att organisationen inte uppfyllt kravet på aktivt ledningsengagemang.
+  </p>
+
+  <p>
+    <strong>Det tredje problemet är personligt.</strong> Artikel 20 möjliggör personliga sanktioner mot VD och styrelseledamöter — inklusive tillfälligt förbud mot att inneha ledande befattning. Den sanktionen riktas mot individen, inte mot bolaget. Att hävda att man "inte visste" vad man godkände är inte en förmildrande omständighet. Det är en bekräftelse på att ansvaret inte togs på allvar.
+  </p>
+
+  <div class="box-warning">
+    <strong>Personligt ansvar är inte en abstraktion.</strong> Om tillsynsmyndigheten bedömer att ledningen inte aktivt övervakat riskhanteringsarbetet kan enskilda styrelseledamöter och VD beläggas med tillfälligt förbud att inneha ledande befattning. Det är ett branschförbud — inte en bot mot bolaget. Det drabbar din karriär och ditt rykte, oavsett vad bolaget i övrigt gör.
+  </div>
+
+  <h2>Den vanligaste misstaget: att konfundera dokumentation med efterlevnad</h2>
+
+  <p>
+    Många organisationer tror att NIS2-efterlevnad handlar om att ha rätt dokument på plats. Det är en farlig halvsanning. Dokumentation är nödvändig, men otillräcklig.
+  </p>
+
+  <p>
+    Tillsynsmyndigheten bedömer inte bara om ett dokument finns — de bedömer om organisationen faktiskt lever efter det. Det inkluderar om styrelsen kan redogöra för besluten i riskanalysen, om åtgärderna faktiskt genomförts, och om det finns ett spår av löpande uppföljning.
+  </p>
+
+  <p>
+    En riskanalys som skrivits av en konsult, signerats av styrelsen och sedan lagts i en låda uppfyller inte NIS2-kravet. Den skapar ett falskt skydd — och det är värre än inget skydd alls, eftersom det ger en felaktig bild av organisationens faktiska läge.
+  </p>
+
+  <p>
+    Det styrelsen behöver är inte ett perfekt dokument. Det är ett levande riskhanteringsarbete de förstår, är delaktiga i och kan stå till svars för.
+  </p>
+
+  <h2>Hur ser en bra styrelsecykel för riskhantering ut?</h2>
+
+  <p>
+    NIS2 kräver inte att styrelsen sitter i tekniska arbetsmöten varje vecka. Det kräver en strukturerad och dokumenterad process för hur riskhantering hanteras på ledningsnivå. En fungerande modell ser typiskt ut så här:
+  </p>
+
+  <table class="fine-table">
+    <thead>
+      <tr>
+        <th>Frekvens</th>
+        <th>Aktivitet</th>
+        <th>Syfte</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Årligen</td>
+        <td>Fullständig riskanalys — godkänns av styrelsen</td>
+        <td>Dokumenterat ledningsbeslut, Artikel 20</td>
+      </tr>
+      <tr>
+        <td>Kvartalsvis</td>
+        <td>Statusrapport från CISO till styrelsen</td>
+        <td>Löpande övervakning av åtgärdsimplementering</td>
+      </tr>
+      <tr>
+        <td>Vid incident</td>
+        <td>Incidentrapport med lärdomar till styrelsen</td>
+        <td>Bevisa aktiv styrning även vid avvikelse</td>
+      </tr>
+      <tr>
+        <td>Vid väsentlig förändring</td>
+        <td>Uppdaterad riskbedömning vid ny leverantör, ny tjänst, M&A</td>
+        <td>Riskanalysen ska spegla faktisk verksamhet</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>
+    Det viktigaste är att varje styrelseinteraktion dokumenteras med tydliga protokollbeslut. Det är den dokumentation tillsynsmyndigheten begär — och som visar att styrelsen faktiskt har utövat sitt ansvar, inte bara delegerat det.
+  </p>
+
+  <div class="box-case">
+    <div class="case-label">Scenario</div>
+    <p>
+      <strong>Medelstort energibolag i Sverige, 320 anställda — väsentlig entitet under NIS2.</strong>
+    </p>
+    <p>
+      Bolaget hade en IT-säkerhetsansvarig som producerade riskanalyser varje år. Dokumenten var välstrukturerade och tekniskt korrekta. Styrelsen godkände dem rutinmässigt på det ordinarie styrelsemötet i november — utan diskussion, utan frågor, utan att dokumenten hade lästs i förväg.
+    </p>
+    <p>
+      I mars 2026 initierade Energimarknadsinspektionen en proaktiv tillsynsgranskning. De begärde protokoll och dokumentation från styrelsens hantering av riskanalysen för de senaste två åren. Protokollen visade att riskanalysen godkänts som punkt 7 av 12 på ett möte som varade i 90 minuter — med noll noteringar, noll frågor och noll beslutspunkter utöver "godkänt".
+    </p>
+    <p>
+      Tillsynsmyndigheten bedömde att styrelsen inte hade utövat aktivt ledningsansvar enligt Artikel 20. De begärde in kompletterande underlag för att bedöma om organisationen uppfyllde kravet på löpande övervakning. Bolaget kunde inte visa på någon kvartalsvis uppföljning eller statusrapportering till styrelsenivå.
+    </p>
+    <p>
+      <strong>Utfall:</strong> Formell anmärkning och föreläggande om att inom 60 dagar upprätta dokumenterade rutiner för styrelseövervakning av riskhantering. Juridisk hantering och intern rådgivning under granskningstiden: <span class="danger">uppskattad kostnad 600 000–900 000 kronor</span>. Och det utan att en enda incident hade inträffat.
+    </p>
+  </div>
+
+  <h2>Tre frågor styrelsen alltid ska kunna svara på</h2>
+
+  <p>
+    Som styrelseledamot i en NIS2-reglerad organisation behöver du inte vara tekniker. Men du behöver kunna svara på dessa tre frågor utan att behöva ringa IT-chefen:
+  </p>
+  <ol>
+    <li><strong>Vilka är våra tre största cybersäkerhetsrisker just nu — och vad gör vi åt dem?</strong> Om du inte kan svara på det betyder det att styrelsen inte har fått tillräcklig information, eller att informationen inte har nått dig i ett format du kan ta beslut på. Båda scenarierna är ett problem under Artikel 20.</li>
+    <li><strong>Har styrelsen formellt godkänt vår riskanalys och säkerhetsåtgärder — med protokoll?</strong> Ett rutinmässigt godkännande utan diskussion räcker inte. Tillsynsmyndigheten letar efter bevis på aktivt engagemang, inte stämplade dokument.</li>
+    <li><strong>När granskades riskanalysen senast — och vad förändrades?</strong> En riskanalys som inte uppdateras är en ögonblicksbild av ett läge som inte längre existerar. Cyberhoten förändras snabbare än de flesta styrelsemöten.</li>
+  </ol>
+  <p>
+    Kan du svara på alla tre — med dokumentation att backa upp svaren — är ni på rätt väg. Kan du inte det är det en tydlig signal om var ni behöver börja.
+  </p>
+
+<style>
+  .capture-form-section { background: #1c1c1f; border: 1px solid rgba(245,197,24,0.25); border-top: 3px solid var(--yellow); border-radius: 4px; padding: 40px; margin: 64px 0 40px; }
+  .capture-form-section h2 { margin-top: 0; font-size: 24px; font-family: 'Poppins', sans-serif; font-weight: 800; margin-bottom: 12px; }
+  .capture-form-section .sub { color: #aaa; font-size: 15px; margin-bottom: 24px; }
+  .capture-input { display: block; width: 100%; background: #222226; border: 1px solid #2e2e33; border-radius: 4px; padding: 13px 16px; font-size: 15px; color: #f0f0f0; font-family: 'Barlow', sans-serif; outline: none; transition: border-color 0.2s; margin-bottom: 12px; }
+  .capture-input:focus { border-color: var(--yellow); }
+  .capture-input::placeholder { color: #666; }
+  .capture-submit-btn { background: var(--yellow); color: #000; border: none; border-radius: 4px; padding: 14px 28px; font-family: 'Poppins', sans-serif; font-size: 15px; font-weight: 800; cursor: pointer; transition: background 0.2s; width: 100%; }
+  .capture-submit-btn:hover { background: #e8d800; }
+  .capture-submit-btn:disabled { opacity: 0.6; cursor: not-allowed; }
+  .capture-thanks-msg { padding: 16px; background: rgba(34,197,94,0.1); border: 1px solid rgba(34,197,94,0.3); border-radius: 4px; color: #86efac; font-size: 15px; text-align: center; display: none; }
+</style>
+
+  <!-- CTA — inline lead capture -->
+  <div class="capture-form-section">
+    <h2>Vet du var din organisation står idag?</h2>
+    <p class="sub">En kostnadsfri NIS2-genomgång på 20 minuter visar exakt vad som saknas — innan tillsynsmyndigheten frågar. Böterna är upp till <strong style="color:#f0f0f0">10 miljoner euro</strong>. Samtalet är gratis.</p>
+    <form id="riskanalysCtrlForm" onsubmit="submitriskanalysCtrl(event)">
+      <input class="capture-input" type="text"  id="riskanalysCtrlName"    placeholder="Ditt namn"        autocomplete="name" />
+      <input class="capture-input" type="email" id="riskanalysCtrlEmail"   placeholder="E-postadress *"   autocomplete="email" required />
+      <input class="capture-input" type="text"  id="riskanalysCtrlCompany" placeholder="Bolagets namn *"  required />
+      <button type="submit" class="capture-submit-btn" id="riskanalysCtrlSubmit">Boka kostnadsfri genomgång →</button>
+    </form>
+    <div class="capture-thanks-msg" id="riskanalysCtrlThanks">✅ Tack! Vi hör av oss inom 24 timmar.</div>
+  </div>
+
+</article>
+
+<footer>
+  © 2026 M&J Trusted Marketing KB ·
+  <a href="mailto:support@trustedmarketing.se">support@trustedmarketing.se</a> ·
+  <a href="/nis2.html">Tillbaka till startsidan</a> ·
+  <a href="/privacy.html">Integritetspolicy</a>
+</footer>
+
+<script>
+  async function submitriskanalysCtrl(e) {
+    e.preventDefault();
+    const btn = document.getElementById('riskanalysCtrlSubmit');
+    btn.disabled = true;
+    btn.textContent = 'Skickar...';
+    const payload = {
+      name:       document.getElementById('riskanalysCtrlName').value.trim(),
+      email:      document.getElementById('riskanalysCtrlEmail').value.trim(),
+      company:    document.getElementById('riskanalysCtrlCompany').value.trim(),
+      source:     'nis2-riskanalys',
+      score_data: null
+    };
+    try {
+      const res  = await fetch('/api/inbound', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) });
+      const data = await res.json();
+      if (data.success) {
+        document.getElementById('riskanalysCtrlForm').style.display = 'none';
+        document.getElementById('riskanalysCtrlThanks').style.display = 'block';
+      } else {
+        btn.disabled = false;
+        btn.textContent = 'Boka kostnadsfri genomgång →';
+        alert('Något gick fel, försök igen.');
+      }
+    } catch (err) {
+      btn.disabled = false;
+      btn.textContent = 'Boka kostnadsfri genomgång →';
+      alert('Något gick fel, försök igen.');
+    }
+  }
+</script>
+</body>
+</html>

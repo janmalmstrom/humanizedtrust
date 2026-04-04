@@ -19,29 +19,29 @@
       --red: #C61212;
     }
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    body { background: var(--bg); color: var(--white); font-family: 'Barlow', sans-serif; font-size: 17px; line-height: 1.7; }
+    body { background: var(--bg); color: var(--white); font-family: 'Barlow', sans-serif; font-size: 19px; line-height: 1.8; }
 
     /* Nav */
     nav { display: flex; justify-content: space-between; align-items: center; padding: 20px 40px; border-bottom: 1px solid rgba(255,255,255,0.07); max-width: 900px; margin: 0 auto; }
     .nav-logo { font-family: 'Poppins', sans-serif; font-weight: 900; font-size: 20px; color: var(--yellow); text-decoration: none; }
     .nav-logo span { color: var(--white); }
-    .nav-back { color: var(--muted); text-decoration: none; font-size: 14px; }
+    .nav-back { color: var(--muted); text-decoration: none; font-size: 15px; }
     .nav-back:hover { color: var(--white); }
     .nav-cta { background: var(--yellow); color: #000; padding: 8px 18px; border-radius: 4px; text-decoration: none; font-weight: 700; font-size: 14px; font-family: 'Poppins', sans-serif; }
 
     /* Article */
     .article-wrap { max-width: 760px; margin: 0 auto; padding: 60px 40px; }
-    .article-category { font-size: 12px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 16px; }
-    h1 { font-family: 'Poppins', sans-serif; font-size: clamp(26px, 4vw, 38px); font-weight: 900; line-height: 1.2; margin-bottom: 24px; }
-    .article-meta { font-size: 13px; color: var(--muted); margin-bottom: 48px; padding-bottom: 24px; border-bottom: 1px solid rgba(255,255,255,0.07); }
-    h2 { font-family: 'Poppins', sans-serif; font-size: 22px; font-weight: 700; margin: 48px 0 16px; color: var(--white); }
-    h3 { font-family: 'Poppins', sans-serif; font-size: 17px; font-weight: 600; margin: 32px 0 12px; color: var(--yellow); }
-    p { margin-bottom: 20px; }
+    .article-category { font-size: 13px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 16px; }
+    h1 { font-family: 'Poppins', sans-serif; font-size: clamp(30px, 4vw, 44px); font-weight: 900; line-height: 1.2; margin-bottom: 24px; }
+    .article-meta { font-size: 15px; color: var(--muted); margin-bottom: 48px; padding-bottom: 24px; border-bottom: 1px solid rgba(255,255,255,0.07); }
+    h2 { font-family: 'Poppins', sans-serif; font-size: 26px; font-weight: 700; margin: 48px 0 16px; color: var(--white); }
+    h3 { font-family: 'Poppins', sans-serif; font-size: 20px; font-weight: 600; margin: 32px 0 12px; color: var(--yellow); }
+    p { margin-bottom: 22px; }
     strong { color: var(--white); font-weight: 700; }
     .highlight { color: var(--yellow); font-weight: 700; }
     .danger { color: #ff6b6b; font-weight: 700; }
     ul, ol { margin: 16px 0 24px 24px; }
-    li { margin-bottom: 10px; }
+    li { margin-bottom: 12px; font-size: 19px; }
 
     /* Callout boxes */
     .box-warning { background: rgba(197,17,17,0.12); border-left: 4px solid var(--red); padding: 20px 24px; margin: 32px 0; border-radius: 0 4px 4px 0; }
@@ -70,6 +70,27 @@
     .fine-table tr:last-child td { border-bottom: none; }
     .fine-table .amount { color: #ff6b6b; font-weight: 700; }
 
+    /* Summary + Key Takeaway */
+    .box-summary { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; padding: 24px 28px; margin: 0 0 32px; }
+    .summary-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-bottom: 14px; }
+    .box-summary ul { margin: 0; padding-left: 20px; }
+    .box-summary li { margin-bottom: 8px; font-size: 17px; color: #ccc; }
+    .box-takeaway { background: rgba(245,197,24,0.08); border-left: 4px solid var(--yellow); padding: 20px 24px; margin: 0 0 40px; border-radius: 0 4px 4px 0; }
+    .takeaway-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 10px; }
+    .box-takeaway p { margin: 0; font-size: 18px; font-weight: 600; color: var(--white); line-height: 1.6; }
+
+    /* Capture form */
+    .capture-form-section { background: #1c1c1f; border: 1px solid rgba(245,197,24,0.25); border-top: 3px solid var(--yellow); border-radius: 4px; padding: 40px; margin: 64px 0 40px; }
+    .capture-form-section h2 { margin-top: 0; font-size: 24px; font-family: 'Poppins', sans-serif; font-weight: 800; margin-bottom: 12px; }
+    .capture-form-section .sub { color: #aaa; font-size: 15px; margin-bottom: 24px; }
+    .capture-input { display: block; width: 100%; background: #222226; border: 1px solid #2e2e33; border-radius: 4px; padding: 13px 16px; font-size: 15px; color: #f0f0f0; font-family: 'Barlow', sans-serif; outline: none; transition: border-color 0.2s; margin-bottom: 12px; }
+    .capture-input:focus { border-color: var(--yellow); }
+    .capture-input::placeholder { color: #666; }
+    .capture-submit-btn { background: var(--yellow); color: #000; border: none; border-radius: 4px; padding: 14px 28px; font-family: 'Poppins', sans-serif; font-size: 15px; font-weight: 800; cursor: pointer; transition: background 0.2s; width: 100%; }
+    .capture-submit-btn:hover { background: #e8d800; }
+    .capture-submit-btn:disabled { opacity: 0.6; cursor: not-allowed; }
+    .capture-thanks-msg { padding: 16px; background: rgba(34,197,94,0.1); border: 1px solid rgba(34,197,94,0.3); border-radius: 4px; color: #86efac; font-size: 15px; text-align: center; display: none; }
+
     /* Footer */
     footer { border-top: 1px solid rgba(255,255,255,0.07); padding: 32px 40px; text-align: center; font-size: 13px; color: var(--muted); max-width: 900px; margin: 0 auto; }
     footer a { color: var(--muted); }
@@ -87,13 +108,30 @@
 <nav>
   <a class="nav-logo" href="/nis2.html">NIS2<span>Klar</span></a>
   <a class="nav-back" href="/artiklar.html">← Alla artiklar</a>
-  <a class="nav-cta" href="mailto:jan@trustedmarketing.se?subject=NIS2%20Assessment">Boka samtal →</a>
+  <a class="nav-cta" href="/nis2.html#boka">Boka samtal →</a>
 </nav>
 
 <article class="article-wrap">
   <div class="article-category">Sanktioner &amp; Efterlevnad</div>
   <h1>NIS2-böter i Sverige: Vad kostar det att inte följa lagen?</h1>
   <div class="article-meta">Uppdaterad mars 2026 · Lästid: ca 7 minuter · Målgrupp: Ledning</div>
+
+  <!-- SUMMARY -->
+  <div class="box-summary">
+    <div class="summary-label">Sammanfattning</div>
+    <ul>
+      <li>För VD och styrelseledamöter i NIS2-reglerade sektorer som vill förstå den faktiska sanktionsrisken.</li>
+      <li>Böter kan nå upp till <strong>10 miljoner euro</strong> eller 2 % av global omsättning — vilket som är högst.</li>
+      <li>Personligt ansvar enligt Artikel 20 kan leda till förbud mot att inneha ledande befattning.</li>
+      <li>Tillsynsmyndigheterna i Sverige är redan aktiva — väntetiden för att "titta på det senare" är slut.</li>
+    </ul>
+  </div>
+
+  <!-- KEY TAKEAWAY -->
+  <div class="box-takeaway">
+    <div class="takeaway-label">Viktigaste slutsatsen</div>
+    <p>NIS2 är inte en IT-fråga — det är ett personligt ansvar för dig som VD eller styrelseledamot, med böter upp till 10 miljoner euro och risk för yrkesförbud om organisationen brister.</p>
+  </div>
 
   <!-- HOOK -->
   <p>
@@ -272,39 +310,86 @@
     </p>
   </div>
 
-  <h2>Vanliga frågor</h2>
+  <h2>Det du förmodligen undrar</h2>
+
+  <div class="faq-item">
+    <div class="faq-q">Har någon faktiskt fått böter i Sverige ännu?</div>
+    <div class="faq-a">Det förstår vi att man frågar sig — det verkar avlägset när man inte sett rubriker om det. Cybersäkerhetslagen trädde i kraft i oktober 2024 och tillsynsmyndigheterna är aktiva. MSB och sektoriella tillsynsmyndigheter genomför nu sina första granskningar. Böter har utfärdats i andra EU-länder sedan NIS1-direktivet, och Sverige följer samma mönster. Väntar du på att se en konkurrent drabbas har du redan missat det bästa skyddsfönstret.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">Vi är ganska små — gäller verkligen böterna oss också?</div>
+    <div class="faq-a">Det är en vanlig reflektion. NIS2 skiljer på "väsentliga" och "viktiga" entiteter — tröskeln är 50 anställda eller 10 miljoner euro i omsättning inom en relevant sektor. Är ni under det är ni troligen undantagna. Är ni över det gäller samma sanktionsregim oavsett om ni är 55 eller 5 000 anställda. Kontrollera era tal mot de 18 sektorer som räknas upp i cybersäkerhetslagen.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">Räcker det om IT-avdelningen hanterar det här?</div>
+    <div class="faq-a">Det förstår vi att man delegerar — men det löser inte det personliga ansvaret. Artikel 20 i NIS2 anger explicit att ledningsorganen ska godkänna säkerhetsåtgärderna och kan hållas personligt ansvariga vid brister. Det räcker inte att IT "tar hand om det". VD och styrelseledamöter måste förstå, besluta om och dokumentera era säkerhetsåtgärder. Det är den enda vägen till ett försvarbart läge.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">Vad händer om vi väntar ytterligare ett halvår?</div>
+    <div class="faq-a">Tillsyn väntar inte på er kalender, och inte heller incidenterna. Varje dag utan dokumenterade säkerhetsåtgärder är en dag då ett intrång — eller en granskning — kan träffa er i ett fullt exponerat läge. Böter beräknas på situationen vid granskningstillfället, inte på vad ni planerar att göra. Att sätta igång med en gap-analys nu kostar ingenting mot att bli granskad utan underlag.</div>
+  </div>
 
   <div class="faq-item">
     <div class="faq-q">Gäller NIS2 även om vi inte haft någon säkerhetsincident?</div>
-    <div class="faq-a">Ja. Efterlevnad handlar om att ha rätt processer och dokumentation på plats — inte om att ha undvikit angrepp. Tillsynsmyndigheten kan granska din organisation utan att ett angrepp har inträffat. Brister i säkerhetsåtgärder enligt Artikel 21 är sanktionsgrundande i sig.</div>
+    <div class="faq-a">Ja. Efterlevnad handlar om att ha rätt processer och dokumentation på plats — inte om att ha undvikit angrepp. Tillsynsmyndigheten kan granska er utan att ett angrepp har inträffat. Brister i säkerhetsåtgärder enligt Artikel 21 är sanktionsgrundande i sig, oavsett incidenthistorik.</div>
   </div>
 
-  <div class="faq-item">
-    <div class="faq-q">Kan vi bli av med böter om vi åtgärdar bristerna efter att tillsynen inletts?</div>
-    <div class="faq-a">Det förstår vi att man tänker — att en snabb åtgärd borde minska sanktionen. I praktiken bedömer tillsynsmyndigheten situationen vid granskningstillfället. Att åtgärda brister i efterhand minskar eventuellt framtida risk, men rubbar sällan den initiala bedömningen. Förebyggande arbete är det enda som faktiskt skyddar.</div>
-  </div>
-
-  <div class="faq-item">
-    <div class="faq-q">Vad händer om vi inte vet om vi omfattas av NIS2?</div>
-    <div class="faq-a">Okunnighet om sin klassificering är inte ett godkänt skäl. Att aktivt ta reda på om organisationen omfattas — och dokumentera den bedömningen — är i sig ett steg mot efterlevnad. Börja med en sektorsanalys mot de 18 sektorerna i cybersäkerhetslagen och jämför med era omsättnings- och personaltal.</div>
-  </div>
-
-  <!-- CTA -->
-  <div class="cta-section">
+  <!-- CTA — inline lead capture -->
+  <div class="capture-form-section">
     <h2>Vet du var din organisation står idag?</h2>
-    <p>En kostnadsfri NIS2-genomgång på 30 minuter visar exakt vad som saknas — innan tillsynsmyndigheten frågar.</p>
-    <a href="mailto:jan@trustedmarketing.se?subject=NIS2%20Assessment" class="btn-primary">Boka kostnadsfri genomgång →</a>
-    <div class="cta-fine">Böterna är upp till <strong>10 miljoner euro</strong>. Samtalet är gratis.</div>
+    <p class="sub">En kostnadsfri NIS2-genomgång på 20 minuter visar exakt vad som saknas — innan tillsynsmyndigheten frågar. Böterna är upp till <strong style="color:#f0f0f0">10 miljoner euro</strong>. Samtalet är gratis.</p>
+    <form id="botenCaptureForm" onsubmit="submitBotenCapture(event)">
+      <input class="capture-input" type="text"  id="botenName"    placeholder="Ditt namn"        autocomplete="name" />
+      <input class="capture-input" type="email" id="botenEmail"   placeholder="E-postadress *"   autocomplete="email" required />
+      <input class="capture-input" type="text"  id="botenCompany" placeholder="Bolagets namn *"  required />
+      <button type="submit" class="capture-submit-btn" id="botenSubmit">Boka kostnadsfri genomgång →</button>
+    </form>
+    <div class="capture-thanks-msg" id="botenThanks">✅ Tack! Vi hör av oss inom 24 timmar.</div>
   </div>
 
 </article>
 
 <footer>
   © 2026 M&J Trusted Marketing KB ·
-  <a href="mailto:jan@trustedmarketing.se">jan@trustedmarketing.se</a> ·
+  <a href="mailto:support@trustedmarketing.se">support@trustedmarketing.se</a> ·
   <a href="/nis2.html">Tillbaka till startsidan</a> ·
   <a href="/privacy.html">Integritetspolicy</a>
 </footer>
 
+  <script>
+    async function submitBotenCapture(e) {
+      e.preventDefault();
+      const btn = document.getElementById('botenSubmit');
+      btn.disabled = true;
+      btn.textContent = 'Skickar...';
+      const payload = {
+        name:       document.getElementById('botenName').value.trim(),
+        email:      document.getElementById('botenEmail').value.trim(),
+        company:    document.getElementById('botenCompany').value.trim(),
+        source:     'nis2-boten-sanktioner',
+        score_data: null
+      };
+      try {
+        const res  = await fetch('/api/inbound', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) });
+        const data = await res.json();
+        if (data.success) {
+          document.getElementById('botenCaptureForm').style.display = 'none';
+          const thanks = document.getElementById('botenThanks');
+          thanks.style.display = 'block';
+        } else {
+          btn.disabled = false;
+          btn.textContent = 'Boka kostnadsfri genomgång →';
+          alert('Något gick fel, försök igen.');
+        }
+      } catch (err) {
+        btn.disabled = false;
+        btn.textContent = 'Boka kostnadsfri genomgång →';
+        alert('Något gick fel, försök igen.');
+      }
+    }
+  </script>
 </body>
 </html>

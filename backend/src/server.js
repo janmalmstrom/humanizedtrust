@@ -21,6 +21,7 @@ const { authenticateToken } = require('./middleware/auth');
 // Public
 app.use('/api/auth',    require('./routes/auth'));
 app.use('/api/inbound', require('./routes/inbound'));
+app.use('/api/track',   require('./routes/tracking'));
 
 // Protected
 app.use('/api/leads',      authenticateToken, require('./routes/leads'));

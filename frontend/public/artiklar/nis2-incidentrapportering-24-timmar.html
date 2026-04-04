@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>24 timmar på sig: Så rapporterar du en NIS2-incident rätt | NIS2Klar</title>
+  <meta name="description" content="Klockan är 03:00 och ransomware har slagit till. Vad måste du göra inom 24h, 72h och 30 dagar? Praktisk NIS2-tidslinje med checkboxar för VD och styrelse.">
+  <meta property="og:title" content="24 timmar på sig: Så rapporterar du en NIS2-incident rätt">
+  <meta property="og:description" content="Klockan är 03:00 och ransomware har slagit till. Vad måste du göra inom 24h, 72h och 30 dagar? Praktisk NIS2-tidslinje med checkboxar för VD och styrelse.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #141416;
+      --card: #1c1c1f;
+      --yellow: #f5c518;
+      --white: #f0f0f0;
+      --muted: #888;
+      --red: #C61212;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: var(--bg); color: var(--white); font-family: 'Barlow', sans-serif; font-size: 19px; line-height: 1.8; }
+
+    /* Nav */
+    nav { display: flex; justify-content: space-between; align-items: center; padding: 20px 40px; border-bottom: 1px solid rgba(255,255,255,0.07); max-width: 900px; margin: 0 auto; }
+    .nav-logo { font-family: 'Poppins', sans-serif; font-weight: 900; font-size: 20px; color: var(--yellow); text-decoration: none; }
+    .nav-logo span { color: var(--white); }
+    .nav-back { color: var(--muted); text-decoration: none; font-size: 15px; }
+    .nav-back:hover { color: var(--white); }
+    .nav-cta { background: var(--yellow); color: #000; padding: 8px 18px; border-radius: 4px; text-decoration: none; font-weight: 700; font-size: 14px; font-family: 'Poppins', sans-serif; }
+
+    /* Article */
+    .article-wrap { max-width: 760px; margin: 0 auto; padding: 60px 40px; }
+    .article-category { font-size: 13px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 16px; }
+    h1 { font-family: 'Poppins', sans-serif; font-size: clamp(30px, 4vw, 44px); font-weight: 900; line-height: 1.2; margin-bottom: 24px; }
+    .article-meta { font-size: 15px; color: var(--muted); margin-bottom: 48px; padding-bottom: 24px; border-bottom: 1px solid rgba(255,255,255,0.07); }
+    h2 { font-family: 'Poppins', sans-serif; font-size: 26px; font-weight: 700; margin: 48px 0 16px; color: var(--white); }
+    h3 { font-family: 'Poppins', sans-serif; font-size: 20px; font-weight: 600; margin: 32px 0 12px; color: var(--yellow); }
+    p { margin-bottom: 22px; }
+    strong { color: var(--white); font-weight: 700; }
+    .highlight { color: var(--yellow); font-weight: 700; }
+    .danger { color: #ff6b6b; font-weight: 700; }
+    ul, ol { margin: 16px 0 24px 24px; }
+    li { margin-bottom: 12px; font-size: 19px; }
+
+    /* Callout boxes */
+    .box-warning { background: rgba(197,17,17,0.12); border-left: 4px solid var(--red); padding: 20px 24px; margin: 32px 0; border-radius: 0 4px 4px 0; }
+    .box-info { background: rgba(245,197,24,0.08); border-left: 4px solid var(--yellow); padding: 20px 24px; margin: 32px 0; border-radius: 0 4px 4px 0; }
+    .box-case { background: var(--card); border: 1px solid rgba(255,255,255,0.08); padding: 28px; margin: 40px 0; border-radius: 4px; }
+    .box-case .case-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 12px; }
+    blockquote { border-left: 3px solid var(--yellow); padding: 12px 20px; margin: 24px 0; font-style: italic; color: #ccc; }
+
+    /* CTA */
+    .cta-section { background: var(--card); border: 1px solid rgba(245,197,24,0.2); border-radius: 4px; padding: 48px 40px; margin: 64px 0 40px; text-align: center; }
+    .cta-section h2 { margin-top: 0; font-size: 26px; }
+    .cta-section p { color: #aaa; max-width: 500px; margin: 0 auto 28px; }
+    .btn-primary { display: inline-block; background: var(--yellow); color: #000; font-family: 'Poppins', sans-serif; font-weight: 800; font-size: 16px; padding: 16px 36px; border-radius: 4px; text-decoration: none; }
+    .btn-primary:hover { background: #e0b010; }
+    .cta-fine { font-size: 13px; color: var(--muted); margin-top: 16px; }
+
+    /* FAQ */
+    .faq-item { border-bottom: 1px solid rgba(255,255,255,0.07); padding: 20px 0; }
+    .faq-q { font-family: 'Poppins', sans-serif; font-weight: 600; margin-bottom: 10px; }
+    .faq-a { color: #bbb; }
+
+    /* Fine table */
+    .fine-table { width: 100%; border-collapse: collapse; margin: 24px 0; }
+    .fine-table th { background: rgba(245,197,24,0.1); color: var(--yellow); font-family: 'Poppins', sans-serif; font-size: 13px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 12px 16px; text-align: left; border-bottom: 1px solid rgba(245,197,24,0.2); }
+    .fine-table td { padding: 14px 16px; border-bottom: 1px solid rgba(255,255,255,0.05); font-size: 15px; }
+    .fine-table tr:last-child td { border-bottom: none; }
+    .fine-table .amount { color: #ff6b6b; font-weight: 700; }
+
+    /* Summary + Key Takeaway */
+    .box-summary { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; padding: 24px 28px; margin: 0 0 32px; }
+    .summary-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-bottom: 14px; }
+    .box-summary ul { margin: 0; padding-left: 20px; }
+    .box-summary li { margin-bottom: 8px; font-size: 17px; color: #ccc; }
+    .box-takeaway { background: rgba(245,197,24,0.08); border-left: 4px solid var(--yellow); padding: 20px 24px; margin: 0 0 40px; border-radius: 0 4px 4px 0; }
+    .takeaway-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 10px; }
+    .box-takeaway p { margin: 0; font-size: 18px; font-weight: 600; color: var(--white); line-height: 1.6; }
+
+    /* Timeline */
+    .timeline { margin: 40px 0; }
+    .timeline-block { border-left: 3px solid rgba(245,197,24,0.3); padding: 0 0 40px 28px; position: relative; }
+    .timeline-block:last-child { padding-bottom: 0; }
+    .timeline-dot { width: 14px; height: 14px; border-radius: 50%; background: var(--yellow); position: absolute; left: -8px; top: 6px; }
+    .timeline-time { font-family: 'Poppins', sans-serif; font-weight: 900; font-size: 13px; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 8px; }
+    .timeline-title { font-family: 'Poppins', sans-serif; font-weight: 700; font-size: 20px; margin-bottom: 12px; color: var(--white); }
+    .timeline-block p { margin-bottom: 14px; }
+
+    /* Checklist */
+    .checklist { list-style: none; margin: 16px 0 24px 0; padding: 0; }
+    .checklist li { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 14px; font-size: 18px; padding: 12px 16px; background: rgba(255,255,255,0.03); border-radius: 4px; border: 1px solid rgba(255,255,255,0.06); }
+    .checklist li::before { content: '☐'; font-size: 20px; color: var(--yellow); flex-shrink: 0; line-height: 1.4; }
+    .checklist li.done::before { content: '☑'; color: #4caf50; }
+
+    /* Footer */
+    footer { border-top: 1px solid rgba(255,255,255,0.07); padding: 32px 40px; text-align: center; font-size: 13px; color: var(--muted); max-width: 900px; margin: 0 auto; }
+    footer a { color: var(--muted); }
+
+    @media (max-width: 600px) {
+      nav, .article-wrap, footer { padding: 20px; }
+      .cta-section { padding: 32px 20px; }
+      .fine-table { font-size: 14px; }
+      .fine-table th, .fine-table td { padding: 10px 10px; }
+      .checklist li { font-size: 16px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="https://nis2klar.se/">NIS2<span>Klar</span></a>
+  <a class="nav-back" href="https://nis2klar.se/artiklar.html">← Alla artiklar</a>
+  <a class="nav-cta" href="/nis2.html#boka">Boka samtal →</a>
+</nav>
+
+<article class="article-wrap">
+  <div class="article-category">Incidentrapportering &amp; Beredskap</div>
+  <h1>24 timmar på sig: Så rapporterar du en NIS2-incident rätt</h1>
+  <div class="article-meta">Uppdaterad 31 mars 2026 · Lästid: ca 9 minuter · Målgrupp: VD, styrelseordförande, styrelseledamöter</div>
+
+  <!-- SUMMARY -->
+  <div class="box-summary">
+    <div class="summary-label">Sammanfattning</div>
+    <ul>
+      <li>NIS2 kräver att du rapporterar en allvarlig incident till tillsynsmyndigheten inom <strong>24 timmar</strong> — oavsett om det är mitt i natten.</li>
+      <li>Inom <strong>72 timmar</strong> krävs en fullständig incidentrapport med teknisk analys och konsekvensuppskattning.</li>
+      <li>Inom <strong>30 dagar</strong> ska en slutrapport inlämnas med lärdomar och vidtagna åtgärder.</li>
+      <li>Missar du dessa frister riskerar du sanktionsavgifter utöver dem som gäller för incidenten i sig — och VD kan hållas personligt ansvarig.</li>
+      <li>Det räcker inte att IT-avdelningen hanterar det. Du som ledning måste vara aktiv och dokumenterad i processen.</li>
+    </ul>
+  </div>
+
+  <!-- KEY TAKEAWAY -->
+  <div class="box-takeaway">
+    <div class="takeaway-label">Viktigaste slutsatsen</div>
+    <p>En ransomware-attack kl 03:00 startar en juridisk klocka som tickar mot dig personligen. NIS2:s rapporteringsplikt är inte valfri, och okunskap om tidsfristerna är inte ett försvar inför tillsynsmyndigheten.</p>
+  </div>
+
+  <!-- HOOK -->
+  <p>
+    Klockan är 03:14 på en tisdag i februari. Din driftchef ringer. Systemet är nere. Skärmar visar ett rött meddelande på engelska — betalningskrav i kryptovaluta. Ransomware har slagit till mot er produktionsmiljö och spridit sig till era backupsystem.
+  </p>
+
+  <p>
+    Det här är inte ett scenario från en beredskapsövning. Det är verkligheten för ett ökande antal svenska företag i NIS2-reglerade sektorer varje kvartal. Och det som händer de närmaste 24 timmarna avgör inte bara om ni överlever attacken operativt — det avgör om ni överlever den juridiskt.
+  </p>
+
+  <p>
+    NIS2-direktivet, implementerat i Sverige genom cybersäkerhetslagen (2024:1056), ställer exakta krav på hur och när en allvarlig incident ska rapporteras. De fristerna tickar från det ögonblick ni <em>borde ha känt till</em> incidenten — inte från det ögonblick ni valde att agera på den.
+  </p>
+
+  <div class="box-warning">
+    <strong>Det börjar räknas direkt.</strong> Rapporteringsfristen på 24 timmar löper från det att ni konstaterat att en incident har inträffat — inte från er första morgonmöte, inte från när IT-konsulten anländer. Varje timme utan åtgärd är en timme ni aldrig får tillbaka.
+  </div>
+
+  <h2>Vad är egentligen en "rapporteringspliktig incident" enligt NIS2?</h2>
+
+  <p>
+    Innan vi går igenom tidslinjen behöver vi klargöra vad lagen faktiskt kräver att ni rapporterar. Det är inte varje spam-attack eller misslyckad inloggning. NIS2 pekar ut <strong>allvarliga incidenter</strong> — de som har eller kan ha en betydande påverkan på er förmåga att leverera era tjänster.
+  </p>
+
+  <p>
+    En incident bedöms som allvarlig om den uppfyller ett eller flera av följande kriterier:
+  </p>
+
+  <ul>
+    <li>Den orsakar <strong>betydande driftstörning</strong> av era tjänster</li>
+    <li>Den innebär ett <strong>ekonomiskt hot</strong> av väsentlig storlek</li>
+    <li>Den drabbar <strong>andra organisationer</strong> — leverantörer, kunder eller samhällsfunktioner</li>
+    <li>Den involverar <strong>obehörig åtkomst</strong> till era system under en längre tid</li>
+    <li>Den kan leda till <strong>allvarlig reputationsskada</strong></li>
+  </ul>
+
+  <p>
+    Ransomware som stoppar produktionen faller med stor sannolikhet inom den kategorin. Men samma sak gäller en allvarlig dataintrångshändelse, ett DDoS-angrepp som lamslår era kundtjänstsystem, eller ett leverantörsangrepp som komprometterar er försörjningskedja.
+  </p>
+
+  <div class="box-info">
+    <strong>Osäker på om incidenten är rapporteringspliktig?</strong> Lagen ger inte utrymme för att avvakta och utreda i lugn och ro. Vid tveksamhet bör ni rapportera. En onödig rapport ger inga påföljder. En utebliven rapport kan göra det.
+  </div>
+
+  <h2>Fiktivt scenario: Maskinteknik AB möter ransomware</h2>
+
+  <p>
+    För att göra tidslinjen konkret följer vi ett fiktivt men representativt scenario. <strong>Maskinteknik AB</strong> är ett medelstort industriföretag med 160 anställda i Göteborg. De levererar komponenter till fordonsindustrin och klassas som viktig entitet under NIS2 tack vare sin roll i en reglerad leveranskedja.
+  </p>
+
+  <p>
+    Det är natten mot tisdag den 4 februari 2026. Klockan är 03:14 när driftchefen får ett automatiserat larm om att produktionssystemet är nere. Fem minuter senare är det uppenbart: ransomware. Krypterade filer. Betalningskrav.
+  </p>
+
+  <p>
+    Vad som händer härnäst avgör allt — inte bara för driften, utan för om VD och styrelse klarar sig undan personliga konsekvenser.
+  </p>
+
+  <h2>Tidslinjen: tre faser, tre frister</h2>
+
+  <div class="timeline">
+
+    <div class="timeline-block">
+      <div class="timeline-dot"></div>
+      <div class="timeline-time">Fas 1 — Inom 24 timmar</div>
+      <div class="timeline-title">Tidig varning: Rapportera att incidenten inträffat</div>
+      <p>
+        Den första rapporteringsplikten kallas <strong>tidig varning</strong> och regleras i Artikel 23 i NIS2-direktivet. Du behöver inte ha alla svar. Du behöver inte veta exakt vad som hände eller hur det gick till. Det som krävs är att du bekräftar att en allvarlig incident har inträffat, och att du ger tillsynsmyndigheten en initial bild.
+      </p>
+      <p>
+        I Sverige skickas den tidiga varningen till <strong>MSB</strong> (Myndigheten för samhällsskydd och beredskap) via deras rapporteringsportal, alternativt till sektorsansvarig tillsynsmyndighet beroende på din bransch. Rapporten är kort — men den måste skickas.
+      </p>
+      <p>
+        För Maskinteknik AB innebär det att VD vaknar av ett samtal kl 03:40, håller ett krismöte kl 04:15, och senast kl 03:14 nästa dag har skickat en tidig varning till tillsynsmyndigheten. Det är 24 timmar. Inte en arbetsdag. Inte nästa tisdag.
+      </p>
+
+      <p><strong>Den tidiga varningen ska innehålla:</strong></p>
+      <ul class="checklist">
+        <li>Datum och klockslag för när incidenten upptäcktes</li>
+        <li>En kortfattad beskrivning av vad som hänt (ransomware, dataintrång, DDoS etc.)</li>
+        <li>Preliminär bedömning av allvarlighetsgrad och påverkade tjänster</li>
+        <li>Uppgift om incidenten misstänks vara ett brott (polisanmälan genomförd eller planerad)</li>
+        <li>Kontaktuppgifter till ansvarig person för fortsatt kommunikation</li>
+      </ul>
+
+      <p>
+        Observera: VD och styrelseordförande behöver inte skriva rapporten själva. Men de måste se till att den skickas, och de måste kunna intyga att den skickades i tid. Det är ett ledningsansvar — inte ett IT-ansvar.
+      </p>
+    </div>
+
+    <div class="timeline-block">
+      <div class="timeline-dot"></div>
+      <div class="timeline-time">Fas 2 — Inom 72 timmar</div>
+      <div class="timeline-title">Incidentrapport: En samlad bild med teknisk analys</div>
+      <p>
+        Tre dagar efter att incidenten konstaterades ska en <strong>fullständig incidentrapport</strong> vara inlämnad. Nu förväntas ni ha en mycket tydligare bild av vad som hänt, hur det gick till, och vad det fått för konsekvenser.
+      </p>
+      <p>
+        För Maskinteknik AB innebär det att IT-teamet, gärna med stöd av en extern forensisk konsult, arbetat intensivt under de tre dygn som gått. Parallellt har VD och HR hanterat kommunikation med anställda, kunder och styrelse. Och nu — senast fredag kl 03:14 — ska rapporten vara hos MSB.
+      </p>
+
+      <p><strong>Incidentrapporten ska innehålla:</strong></p>
+      <ul class="checklist">
+        <li>Detaljerad händelserekonstruktion — vad hände, och när?</li>
+        <li>Teknisk analys av angreppsvektorn (hur tog sig angriparna in?)</li>
+        <li>Vilka system, data och tjänster som påverkats</li>
+        <li>Uppskattad påverkan på verksamheten och eventuella tredje parter</li>
+        <li>Vidtagna och planerade åtgärder för att begränsa skadan</li>
+        <li>Uppgifter om externa resurser som anlitats (konsulter, forensiker, juridisk rådgivning)</li>
+        <li>Status för eventuell polisanmälan</li>
+      </ul>
+
+      <p>
+        Det är i den här fasen som de flesta organisationer gör sina allvarligaste misstag. Pressen är enorm — driften ska återställas, media ringer, kunder är oroliga — och rapporteringsplikten hamnar i skuggan av den operativa krisen. Det är precis den situationen lagen är designad för att hantera, och tillsynsmyndigheten vet att det är i den situationen ni kan vilja vänta.
+      </p>
+
+      <div class="box-warning">
+        <strong>Den vanligaste misstaget:</strong> att prioritera att "lösa problemet" innan man rapporterar. NIS2 kräver att ni gör båda parallellt. Att vänta med rapporten tills IT-miljön är återställd är ett brott mot rapporteringsplikten — och det är ett separat sanktionsbrott, oberoende av incidenten i sig.
+      </div>
+    </div>
+
+    <div class="timeline-block">
+      <div class="timeline-dot"></div>
+      <div class="timeline-time">Fas 3 — Inom 30 dagar</div>
+      <div class="timeline-title">Slutrapport: Lärdomar, åtgärder och framåtplan</div>
+      <p>
+        En månad efter incidenten ska en <strong>slutrapport</strong> vara inlämnad. Det är den rapport som tillsynsmyndigheten kommer att granska mest ingående — och den som avgör om ni hanterat situationen på ett sätt som visar att ni tar NIS2:s krav på allvar.
+      </p>
+      <p>
+        Slutrapporten är inte en teknisk rapport. Det är en ledningsrapport. Den ska visa att organisationens högsta ledning förstår vad som hände, varför det hände, och vilka strukturella förändringar som genomförts för att det inte ska hända igen.
+      </p>
+
+      <p><strong>Slutrapporten ska innehålla:</strong></p>
+      <ul class="checklist">
+        <li>Fullständig incidentöversikt med bekräftad tidslinje</li>
+        <li>Rotorsaksanalys — varför inträffade incidenten?</li>
+        <li>Fullständig konsekvensanalys (ekonomi, drift, kunder, tredje parter)</li>
+        <li>Genomförda åtgärder för att förhindra upprepning</li>
+        <li>Uppdaterad riskbedömning baserad på incidentens lärdomar</li>
+        <li>Dokumentation av styrelsegenomgång och beslut om förstärkta säkerhetsåtgärder</li>
+        <li>Plan för uppföljning och verifiering av genomförda åtgärder</li>
+      </ul>
+
+      <p>
+        Maskinteknik AB:s VD presenterar slutrapporten vid ett extra styrelsemöte den 28 februari. Styrelseprotokollet dokumenterar beslutet om utökad budget för säkerhetsåtgärder och uppdaterat mandat för IT-chefen. Det protokollet bifogas slutrapporten. Det är det som skiljer en organisation som klarar sig från en som får ytterligare sanktioner.
+      </p>
+    </div>
+
+  </div>
+
+  <h2>Vad händer om du missar en frist?</h2>
+
+  <p>
+    Det är en fråga du bör ha svaret på innan krisen inträffar — inte under den.
+  </p>
+
+  <p>
+    NIS2-direktivet och cybersäkerhetslagen gör ingen distinktion mellan att missa en frist av misstag och att medvetet välja att inte rapportera. Konsekvensen är densamma: en separat sanktionsgrundande brist, utöver de sanktioner som kan utfärdas för incidenten i sig.
+  </p>
+
+  <table class="fine-table">
+    <thead>
+      <tr>
+        <th>Brist</th>
+        <th>Möjlig sanktion</th>
+        <th>Vem drabbas</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Utebliven tidig varning (24h)</td>
+        <td class="amount">Upp till 7–10 M€</td>
+        <td>Organisationen</td>
+      </tr>
+      <tr>
+        <td>Utebliven eller försenad incidentrapport (72h)</td>
+        <td class="amount">Upp till 7–10 M€</td>
+        <td>Organisationen + VD</td>
+      </tr>
+      <tr>
+        <td>Utebliven slutrapport (30 dagar)</td>
+        <td class="amount">Upp till 7–10 M€</td>
+        <td>Organisationen + VD</td>
+      </tr>
+      <tr>
+        <td>Bristfällig rapportinnehåll</td>
+        <td class="amount">Varning + upprepade krav</td>
+        <td>Organisationen</td>
+      </tr>
+      <tr>
+        <td>Systematisk brist på rapporteringsrutiner</td>
+        <td class="amount">Förbud för VD/styrelseledamot</td>
+        <td>VD personligen</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>
+    Det sista raden i tabellen är den som sällan diskuteras öppet men är den allvarligaste: ett <strong>tillfälligt förbud för VD eller styrelseledamot att inneha ledande befattning</strong>. Det är inte ett böter mot bolaget. Det är ett yrkesförbud mot dig personligen.
+  </p>
+
+  <div class="box-case">
+    <div class="case-label">Fallstudie — Fiktivt scenario</div>
+    <p>
+      <strong>Maskinteknik AB: Hur det kunde gå fel.</strong>
+    </p>
+    <p>
+      Låt oss spola tillbaka och föreställa oss att Maskinteknik AB hanterade incidenten annorlunda. VD bestämmer i panikens hetta att de ska vänta med rapportering tills de vet mer. "Vi vill inte skapa onödig oro," säger hen. IT-chefen arbetar dygnet runt med att återställa system. Ingen rapport skickas inom 24 timmar. Ingen rapport skickas inom 72 timmar.
+    </p>
+    <p>
+      Fyra dagar efter attacken uppmärksammar en av deras kunder — ett fordonsmontage — driftstörningar i sin egen produktion kopplade till Maskinteknik AB:s infrastruktur. Kunden anmäler detta till sektorsvis tillsynsmyndighet. Granskning inleds omgående.
+    </p>
+    <p>
+      Vid tillsynsbesöket saknar Maskinteknik AB: dokumenterad incidenthanteringsplan, bevis på att rapporteringsprocessen var känd av VD och styrelse, och protokollfört styrelsebeslut om cybersäkerhetsåtgärder. Den 24-timmarsrapport som NIS2 kräver skickades aldrig. 72-timmarsrapporten skickades dag fem.
+    </p>
+    <p>
+      <strong>Utfall:</strong> Sanktionsavgift för utebliven tidig varning. Ytterligare avgift för bristande incidenthanteringsprocess. Kunden kräver skadestånd. Den totala bedömda kostnaden — inklusive driftstopp, juridik och sanktioner — uppgår till <span class="danger">8–14 miljoner kronor</span>. Och allt hade kunnat undvikas med en dokumenterad process och en tydlig rapporteringsrutin.
+    </p>
+  </div>
+
+  <h2>Tre saker att göra den här veckan</h2>
+  <ol>
+    <li><strong>Kontrollera om 24-timmarsprocessen finns dokumenterad.</strong> Finns det ett dokument som beskriver vem som fattar beslut om tidig varning, och vem som faktiskt skickar den? Om inte — det är det viktigaste att ta fram.</li>
+    <li><strong>Sätt incidentrapportering på nästa styrelsemötes agenda.</strong> Styrelsen måste känna till processen och formellt godkänna den. Det är ett krav under Artikel 20.</li>
+    <li><strong>Testa processen i ett tabletop-övning.</strong> Gå igenom ett hypotetiskt incidentscenario och följ processen steg för steg. Identifiera var det fastnar — det är era kritiska svagheter.</li>
+  </ol>
+
+<style>
+  .capture-form-section { background: #1c1c1f; border: 1px solid rgba(245,197,24,0.25); border-top: 3px solid var(--yellow); border-radius: 4px; padding: 40px; margin: 64px 0 40px; }
+  .capture-form-section h2 { margin-top: 0; font-size: 24px; font-family: 'Poppins', sans-serif; font-weight: 800; margin-bottom: 12px; }
+  .capture-form-section .sub { color: #aaa; font-size: 15px; margin-bottom: 24px; }
+  .capture-input { display: block; width: 100%; background: #222226; border: 1px solid #2e2e33; border-radius: 4px; padding: 13px 16px; font-size: 15px; color: #f0f0f0; font-family: 'Barlow', sans-serif; outline: none; transition: border-color 0.2s; margin-bottom: 12px; }
+  .capture-input:focus { border-color: var(--yellow); }
+  .capture-input::placeholder { color: #666; }
+  .capture-submit-btn { background: var(--yellow); color: #000; border: none; border-radius: 4px; padding: 14px 28px; font-family: 'Poppins', sans-serif; font-size: 15px; font-weight: 800; cursor: pointer; transition: background 0.2s; width: 100%; }
+  .capture-submit-btn:hover { background: #e8d800; }
+  .capture-submit-btn:disabled { opacity: 0.6; cursor: not-allowed; }
+  .capture-thanks-msg { padding: 16px; background: rgba(34,197,94,0.1); border: 1px solid rgba(34,197,94,0.3); border-radius: 4px; color: #86efac; font-size: 15px; text-align: center; display: none; }
+</style>
+
+  <!-- CTA — inline lead capture -->
+  <div class="capture-form-section">
+    <h2>Vet du var din organisation står idag?</h2>
+    <p class="sub">En kostnadsfri NIS2-genomgång på 20 minuter visar exakt vad som saknas — innan tillsynsmyndigheten frågar. Böterna är upp till <strong style="color:#f0f0f0">10 miljoner euro</strong>. Samtalet är gratis.</p>
+    <form id="incidentRapForm" onsubmit="submitincidentRap(event)">
+      <input class="capture-input" type="text"  id="incidentRapName"    placeholder="Ditt namn"        autocomplete="name" />
+      <input class="capture-input" type="email" id="incidentRapEmail"   placeholder="E-postadress *"   autocomplete="email" required />
+      <input class="capture-input" type="text"  id="incidentRapCompany" placeholder="Bolagets namn *"  required />
+      <button type="submit" class="capture-submit-btn" id="incidentRapSubmit">Boka kostnadsfri genomgång →</button>
+    </form>
+    <div class="capture-thanks-msg" id="incidentRapThanks">✅ Tack! Vi hör av oss inom 24 timmar.</div>
+  </div>
+
+</article>
+
+<footer>
+  © 2026 M&J Trusted Marketing KB ·
+  <a href="mailto:support@trustedmarketing.se">support@trustedmarketing.se</a> ·
+  <a href="/nis2.html">Tillbaka till startsidan</a> ·
+  <a href="/privacy.html">Integritetspolicy</a>
+</footer>
+
+<script>
+  async function submitincidentRap(e) {
+    e.preventDefault();
+    const btn = document.getElementById('incidentRapSubmit');
+    btn.disabled = true;
+    btn.textContent = 'Skickar...';
+    const payload = {
+      name:       document.getElementById('incidentRapName').value.trim(),
+      email:      document.getElementById('incidentRapEmail').value.trim(),
+      company:    document.getElementById('incidentRapCompany').value.trim(),
+      source:     'nis2-incidentrapportering',
+      score_data: null
+    };
+    try {
+      const res  = await fetch('/api/inbound', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) });
+      const data = await res.json();
+      if (data.success) {
+        document.getElementById('incidentRapForm').style.display = 'none';
+        document.getElementById('incidentRapThanks').style.display = 'block';
+      } else {
+        btn.disabled = false;
+        btn.textContent = 'Boka kostnadsfri genomgång →';
+        alert('Något gick fel, försök igen.');
+      }
+    } catch (err) {
+      btn.disabled = false;
+      btn.textContent = 'Boka kostnadsfri genomgång →';
+      alert('Något gick fel, försök igen.');
+    }
+  }
+</script>
+</body>
+</html>

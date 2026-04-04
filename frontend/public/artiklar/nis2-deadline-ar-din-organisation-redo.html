@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NIS2-deadline: Är din organisation redo — eller köper du tid? | NIS2Klar</title>
+  <meta name="description" content="NIS2 gäller nu. Implementering tar 6–18 månader och kostnaden för att börja för sent är hög. Tre konkreta steg du kan ta den här veckan.">
+  <meta property="og:title" content="NIS2-deadline: Är din organisation redo — eller köper du tid?">
+  <meta property="og:description" content="NIS2 gäller nu. Implementering tar 6–18 månader och kostnaden för att börja för sent är hög. Tre konkreta steg du kan ta den här veckan.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #141416;
+      --card: #1c1c1f;
+      --yellow: #f5c518;
+      --white: #f0f0f0;
+      --muted: #888;
+      --red: #C61212;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: var(--bg); color: var(--white); font-family: 'Barlow', sans-serif; font-size: 19px; line-height: 1.8; }
+
+    /* Nav */
+    nav { display: flex; justify-content: space-between; align-items: center; padding: 20px 40px; border-bottom: 1px solid rgba(255,255,255,0.07); max-width: 900px; margin: 0 auto; }
+    .nav-logo { font-family: 'Poppins', sans-serif; font-weight: 900; font-size: 20px; color: var(--yellow); text-decoration: none; }
+    .nav-logo span { color: var(--white); }
+    .nav-back { color: var(--muted); text-decoration: none; font-size: 15px; }
+    .nav-back:hover { color: var(--white); }
+    .nav-cta { background: var(--yellow); color: #000; padding: 8px 18px; border-radius: 4px; text-decoration: none; font-weight: 700; font-size: 14px; font-family: 'Poppins', sans-serif; }
+
+    /* Article */
+    .article-wrap { max-width: 760px; margin: 0 auto; padding: 60px 40px; }
+    .article-category { font-size: 13px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 16px; }
+    h1 { font-family: 'Poppins', sans-serif; font-size: clamp(30px, 4vw, 44px); font-weight: 900; line-height: 1.2; margin-bottom: 24px; }
+    .article-meta { font-size: 15px; color: var(--muted); margin-bottom: 48px; padding-bottom: 24px; border-bottom: 1px solid rgba(255,255,255,0.07); }
+    h2 { font-family: 'Poppins', sans-serif; font-size: 26px; font-weight: 700; margin: 48px 0 16px; color: var(--white); }
+    h3 { font-family: 'Poppins', sans-serif; font-size: 20px; font-weight: 600; margin: 32px 0 12px; color: var(--yellow); }
+    p { margin-bottom: 22px; }
+    strong { color: var(--white); font-weight: 700; }
+    .highlight { color: var(--yellow); font-weight: 700; }
+    .danger { color: #ff6b6b; font-weight: 700; }
+    ul, ol { margin: 16px 0 24px 24px; }
+    li { margin-bottom: 12px; font-size: 19px; }
+
+    /* Callout boxes */
+    .box-warning { background: rgba(197,17,17,0.12); border-left: 4px solid var(--red); padding: 20px 24px; margin: 32px 0; border-radius: 0 4px 4px 0; }
+    .box-info { background: rgba(245,197,24,0.08); border-left: 4px solid var(--yellow); padding: 20px 24px; margin: 32px 0; border-radius: 0 4px 4px 0; }
+    .box-case { background: var(--card); border: 1px solid rgba(255,255,255,0.08); padding: 28px; margin: 40px 0; border-radius: 4px; }
+    .box-case .case-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 12px; }
+    blockquote { border-left: 3px solid var(--yellow); padding: 12px 20px; margin: 24px 0; font-style: italic; color: #ccc; }
+
+    /* CTA */
+    .cta-section { background: var(--card); border: 1px solid rgba(245,197,24,0.2); border-radius: 4px; padding: 48px 40px; margin: 64px 0 40px; text-align: center; }
+    .cta-section h2 { margin-top: 0; font-size: 26px; }
+    .cta-section p { color: #aaa; max-width: 500px; margin: 0 auto 28px; }
+    .btn-primary { display: inline-block; background: var(--yellow); color: #000; font-family: 'Poppins', sans-serif; font-weight: 800; font-size: 16px; padding: 16px 36px; border-radius: 4px; text-decoration: none; }
+    .btn-primary:hover { background: #e0b010; }
+    .cta-fine { font-size: 13px; color: var(--muted); margin-top: 16px; }
+
+    /* FAQ */
+    .faq-item { border-bottom: 1px solid rgba(255,255,255,0.07); padding: 20px 0; }
+    .faq-q { font-family: 'Poppins', sans-serif; font-weight: 600; margin-bottom: 10px; }
+    .faq-a { color: #bbb; }
+
+    /* Fine table */
+    .fine-table { width: 100%; border-collapse: collapse; margin: 24px 0; }
+    .fine-table th { background: rgba(245,197,24,0.1); color: var(--yellow); font-family: 'Poppins', sans-serif; font-size: 13px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 12px 16px; text-align: left; border-bottom: 1px solid rgba(245,197,24,0.2); }
+    .fine-table td { padding: 14px 16px; border-bottom: 1px solid rgba(255,255,255,0.05); font-size: 15px; }
+    .fine-table tr:last-child td { border-bottom: none; }
+    .fine-table .amount { color: #ff6b6b; font-weight: 700; }
+
+    /* Summary + Key Takeaway */
+    .box-summary { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; padding: 24px 28px; margin: 0 0 32px; }
+    .summary-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-bottom: 14px; }
+    .box-summary ul { margin: 0; padding-left: 20px; }
+    .box-summary li { margin-bottom: 8px; font-size: 17px; color: #ccc; }
+    .box-takeaway { background: rgba(245,197,24,0.08); border-left: 4px solid var(--yellow); padding: 20px 24px; margin: 0 0 40px; border-radius: 0 4px 4px 0; }
+    .takeaway-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 10px; }
+    .box-takeaway p { margin: 0; font-size: 18px; font-weight: 600; color: var(--white); line-height: 1.6; }
+
+    /* Timeline */
+    .timeline { margin: 32px 0; padding: 0; list-style: none; }
+    .timeline li { display: flex; gap: 20px; margin-bottom: 24px; align-items: flex-start; }
+    .timeline-marker { flex-shrink: 0; width: 36px; height: 36px; border-radius: 50%; background: rgba(245,197,24,0.15); border: 2px solid var(--yellow); display: flex; align-items: center; justify-content: center; font-family: 'Poppins', sans-serif; font-weight: 700; font-size: 13px; color: var(--yellow); }
+    .timeline-content strong { display: block; font-family: 'Poppins', sans-serif; font-size: 16px; margin-bottom: 4px; }
+    .timeline-content span { font-size: 16px; color: #bbb; }
+
+    /* Steps */
+    .step-block { background: var(--card); border: 1px solid rgba(255,255,255,0.08); border-radius: 4px; padding: 28px 28px 20px; margin: 24px 0; }
+    .step-number { font-family: 'Poppins', sans-serif; font-size: 12px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 8px; }
+    .step-block h3 { margin-top: 0; margin-bottom: 12px; }
+    .step-block p { margin-bottom: 0; font-size: 17px; color: #ccc; }
+
+    /* Footer */
+    footer { border-top: 1px solid rgba(255,255,255,0.07); padding: 32px 40px; text-align: center; font-size: 13px; color: var(--muted); max-width: 900px; margin: 0 auto; }
+    footer a { color: var(--muted); }
+
+    @media (max-width: 600px) {
+      nav, .article-wrap, footer { padding: 20px; }
+      .cta-section { padding: 32px 20px; }
+      .fine-table { font-size: 14px; }
+      .fine-table th, .fine-table td { padding: 10px 10px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="https://nis2klar.se/">NIS2<span>Klar</span></a>
+  <a class="nav-back" href="https://nis2klar.se/artiklar.html">← Alla artiklar</a>
+  <a class="nav-cta" href="/nis2.html#boka">Boka samtal →</a>
+</nav>
+
+<article class="article-wrap">
+  <div class="article-category">Implementering &amp; Deadline</div>
+  <h1>NIS2-deadline: Är din organisation redo — eller köper du tid?</h1>
+  <div class="article-meta">Publicerad 31 mars 2026 · Lästid: ca 8 minuter · Målgrupp: VD, styrelseordförande, styrelseledamöter</div>
+
+  <!-- SUMMARY -->
+  <div class="box-summary">
+    <div class="summary-label">Sammanfattning</div>
+    <ul>
+      <li>NIS2 gäller i Sverige sedan oktober 2024 — det finns ingen deadline att vänta på längre.</li>
+      <li>En fullständig implementering tar <strong>6 till 18 månader</strong> för de flesta organisationer.</li>
+      <li>Att starta sent innebär exponering under hela perioden — inklusive vid tillsynsgranskning.</li>
+      <li>Tre konkreta steg du kan ta redan den här veckan, utan att anlita en enda konsult.</li>
+    </ul>
+  </div>
+
+  <!-- KEY TAKEAWAY -->
+  <div class="box-takeaway">
+    <div class="takeaway-label">Viktigaste slutsatsen</div>
+    <p>Det finns ingen deadline att "hinna till" — lagen gäller redan. Varje månad utan implementering är en månad då ett tillsynsärende, ett cyberangrepp eller ett klagomål kan träffa din organisation i fullt exponerat läge.</p>
+  </div>
+
+  <!-- HOOK -->
+  <p>
+    Tänk dig följande situation: Tillsynsmyndigheten skickar en begäran om dokumentation. Du har 30 dagar på dig att visa att din organisation lever upp till cybersäkerhetslagen. Ni har pratat om att "sätta igång med NIS2" i ett år. Men ingenting är dokumenterat. Ingenting är beslutat av styrelsen. Och nu räknas dagarna.
+  </p>
+
+  <p>
+    Det är inte ett hypotetiskt scenario. Det är exakt den situation som ett ökande antal svenska organisationer befinner sig i just nu. Och det som avgör utfallet är inte hur god viljan är — det är vad som finns på papper den dag granskningen börjar.
+  </p>
+
+  <p>
+    Den här artikeln handlar om en sak: <strong>hur lång tid det faktiskt tar att bli redo, vad det kostar att börja för sent, och vad du kan göra redan den här veckan</strong>.
+  </p>
+
+  <div class="box-warning">
+    <strong>Direktivet gäller redan.</strong> Cybersäkerhetslagen trädde i kraft i Sverige i oktober 2024. Det finns ingen ny deadline att vänta på. Tillsynsmyndigheterna genomför sina första granskningar nu — inte om ett år.
+  </div>
+
+  <h2>Varför "vi hanterar det snart" är en riskstrategi</h2>
+
+  <p>
+    Det är mänskligt att skjuta på saker som känns abstrakta och komplexa. NIS2 har för många organisationer hamnat i kategorin "viktigt men inte brådskande" — en prioritering som nu ser allt mer felaktig ut.
+  </p>
+
+  <p>
+    Det som gör NIS2 annorlunda från tidigare regelverksarbete är att <strong>exponeringen börjar redan dag ett utan åtgärder</strong>. Det handlar inte om ett system du måste ha på plats till ett visst datum. Det handlar om att du redan i dag riskerar sanktioner om en granskning initieras — oavsett om det sker på grund av ett cyberangrepp, ett klagomål från en anställd, eller ett rutinmässigt tillsynsärende.
+  </p>
+
+  <p>
+    Och här är det som de flesta VD:ar inte förstår förrän de befinner sig mitt i det: <strong>implementeringen tar längre tid än du tror</strong>.
+  </p>
+
+  <h2>Hur lång tid tar det egentligen?</h2>
+
+  <p>
+    Det korta svaret är: <strong>6 till 18 månader</strong>, beroende på organisationens storlek, mognad och hur mycket som redan finns på plats. Det är ingen uppskattning från en konsult som vill sälja mer timmar — det är den verklighet som organisationer som arbetat med NIS2-implementering i Europa rapporterar.
+  </p>
+
+  <p>
+    Varför tar det så lång tid? Därför att NIS2 inte är ett IT-projekt. Det är ett styrningsprojekt som kräver beslut, dokumentation och förankring på alla nivåer — från styrelserummet ner till leverantörsavtalen.
+  </p>
+
+  <ul class="timeline" style="list-style:none; padding:0;">
+    <li class="timeline" style="display:flex; gap:20px; margin-bottom:20px; align-items:flex-start;">
+      <div class="timeline-marker">1</div>
+      <div class="timeline-content">
+        <strong>Vecka 1–4: Gap-analys och scopebeslut</strong>
+        <span>Fastställ om och hur er organisation omfattas, vilka system och processer som berörs och var de största bristerna finns. Utan denna grund rör ni er i fel riktning.</span>
+      </div>
+    </li>
+    <li class="timeline" style="display:flex; gap:20px; margin-bottom:20px; align-items:flex-start;">
+      <div class="timeline-marker">2</div>
+      <div class="timeline-content">
+        <strong>Månad 2–3: Riskbedömning och säkerhetspolicy</strong>
+        <span>En formell riskbedömning måste genomföras och dokumenteras. En säkerhetspolicy ska antas av styrelsen — inte bara cirkuleras till IT-avdelningen.</span>
+      </div>
+    </li>
+    <li class="timeline" style="display:flex; gap:20px; margin-bottom:20px; align-items:flex-start;">
+      <div class="timeline-marker">3</div>
+      <div class="timeline-content">
+        <strong>Månad 3–6: Tekniska och organisatoriska åtgärder</strong>
+        <span>Incidenthanteringsplan, kontinuitetsplan, leverantörsinventering, tillgångskontroll och krypteringslösningar. Varje åtgärd måste implementeras, testas och dokumenteras.</span>
+      </div>
+    </li>
+    <li class="timeline" style="display:flex; gap:20px; margin-bottom:20px; align-items:flex-start;">
+      <div class="timeline-marker">4</div>
+      <div class="timeline-content">
+        <strong>Månad 6–12: Utbildning, leverantörsdialog och intern förankring</strong>
+        <span>Personal och ledning behöver utbildas. Leverantörsavtal måste ses över. Utbildningsloggar ska föras. Det tar tid — och kan inte komprimeras.</span>
+      </div>
+    </li>
+    <li class="timeline" style="display:flex; gap:20px; margin-bottom:20px; align-items:flex-start;">
+      <div class="timeline-marker">5</div>
+      <div class="timeline-content">
+        <strong>Månad 12–18: Löpande förbättring och styrelserapportering</strong>
+        <span>NIS2 är inte ett engångsprojekt. Styrelsen ska regelbundet få rapport om säkerhetsläget och besluta om åtgärder. Det kräver rutiner som tar tid att etablera.</span>
+      </div>
+    </li>
+  </ul>
+
+  <p>
+    Om din organisation inte har påbörjat det första steget är ni sannolikt minst <strong>12 månader från ett försvarbart efterlevnadsläge</strong>. Och under hela den perioden befinner ni er i en gråzon som kan bli kostsam.
+  </p>
+
+  <h2>Vad kostar det att börja för sent?</h2>
+
+  <p>
+    Det finns två typer av kostnader som uppstår när en organisation är sen med implementeringen. Den ena är mätbar. Den andra är svårare att räkna på — men ofta den som biter hårdast.
+  </p>
+
+  <h3>De direkta kostnaderna</h3>
+
+  <p>
+    Sanktionsavgifterna under NIS2 är inte symboliska. Väsentliga entiteter kan få böter upp till <strong>10 miljoner euro eller 2 procent av global omsättning</strong> — vilket som är högst. Viktiga entiteter riskerar upp till <strong>7 miljoner euro eller 1,4 procent av global omsättning</strong>.
+  </p>
+
+  <p>
+    Men böterna är inte den enda direkta kostnaden. Organisationer som saknar beredskap när ett cyberangrepp inträffar drabbas också av:
+  </p>
+
+  <ul>
+    <li>Driftstopp och produktionsbortfall under utredning och återställning</li>
+    <li>Juridiska kostnader för att hantera tillsynsärenden retroaktivt</li>
+    <li>Konsultkostnader för akut dokumentationsarbete under pågående granskning</li>
+    <li>Potentiella skadeståndskrav från kunder och partners som påverkats</li>
+  </ul>
+
+  <p>
+    Organisationer som proaktivt implementerar NIS2 betalar en bråkdel av vad reaktiv krishantering kostar. Det är inte marknadsföring — det är erfarenheten från hundratals tillsynsärenden i Europa sedan NIS1-direktivet.
+  </p>
+
+  <h3>Det personliga ansvaret — kostnaden ingen vill prata om</h3>
+
+  <p>
+    Den kostnad som är svårast att sätta en prislapp på är den personliga. <strong>Artikel 20 i NIS2-direktivet</strong> fastslår att ledningsorgan — det vill säga VD, styrelseordförande och styrelseledamöter — är personligt ansvariga för att organisationen uppfyller kraven.
+  </p>
+
+  <p>
+    Det är inte ett juridiskt finstilt. Det är en central del av direktivet, och det är just det som gör NIS2 fundamentalt annorlunda från tidigare säkerhetsregelverkseran.
+  </p>
+
+  <p>
+    Tillsynsmyndigheten kan vid allvarliga eller upprepade brister utfärda ett <strong>tillfälligt förbud för den ansvarige VD:n eller styrelseledamoten att inneha ledande befattning</strong>. Det gäller inte bara i den aktuella organisationen — det är ett yrkesmässigt förbud.
+  </p>
+
+  <div class="box-warning">
+    <strong>Personligt ansvar är inte en metafor.</strong> Om din organisation saknar dokumenterade säkerhetsåtgärder och drabbas av ett tillsynsärende, är det du som VD eller styrelseledamot som behöver försvara det personligen — inte IT-chefen, inte säkerhetsansvarige. Du.
+  </div>
+
+  <p>
+    Det räcker inte att ha delegerat till IT-avdelningen. Artikel 20 kräver att ledningen aktivt godkänner säkerhetsåtgärderna, övervakar deras genomförande och kan uppvisa dokumentation på att detta skett. En generell hänvisning till att "IT hanterar det" är inte ett försvar som håller vid tillsyn.
+  </p>
+
+  <div class="box-case">
+    <div class="case-label">Scenario: Sent uppvaknande</div>
+    <p>
+      <strong>En svensk verksamhet med 140 anställda i energisektorn.</strong> Klassas som viktig entitet. Ledningen har känt till NIS2 sedan 2023 men skjutit implementeringen framåt i väntan på "mer klarhet". I januari 2026 drabbas företaget av ett intrång via en tredjepartsleverantör.
+    </p>
+    <p>
+      Incidenten rapporteras internt men inte till tillsynsmyndigheten inom 72-timmarsfristen. Fem veckor senare initierar Energimarknadsinspektionen en granskning.
+    </p>
+    <p>
+      Vid granskningen konstateras: ingen antagen riskbedömning, ingen dokumenterad incidenthanteringsplan, inga styrelsebeslut kopplade till säkerhetsåtgärder, inga utbildningsloggar för personal.
+    </p>
+    <p>
+      Bolaget hade tekniska system på plats — men ingenting dokumenterat. Tekniken hjälper inte om bevisbördan inte är uppfylld.
+    </p>
+    <p>
+      <strong>Konsekvens:</strong> Sanktionsavgift för utebliven rapportering. Ytterligare avgift för bristfällig säkerhetsdokumentation. VD erhåller formell notering om personligt ansvar med möjlig uppföljning. Total hanteringskostnad inklusive juridisk rådgivning och retroaktivt dokumentationsarbete: <span class="danger">uppskattad till 8–15 miljoner kronor</span>.
+    </p>
+    <p>
+      Hade en gap-analys genomförts och dokumentationsarbetet påbörjats tolv månader tidigare hade exponeringen sett fundamentalt annorlunda ut.
+    </p>
+  </div>
+
+  <h2>Den tysta risken: att vara exponerad utan att veta om det</h2>
+
+  <p>
+    En av de mest underskattade aspekterna av sen implementering är att organisationen befinner sig i ett <strong>exponerat läge utan att ha fått en signal om det</strong>. Det finns inget brev som meddelar att ni nu är granskningsmässigt sårbara. Det finns ingen varning innan tillsynsärendet initieras.
+  </p>
+
+  <p>
+    Tillsynen kan triggas av ett cyberangrepp ni inte kände till att ni hade. Den kan triggas av en anmälan från en f.d. anställd, en missnöjd leverantör eller ett annat EU-lands tillsynsmyndighet som identifierat er som del av en attackkedja. Den kan triggas av ett rutinmässigt urval.
+  </p>
+
+  <p>
+    Det enda sättet att inte vara exponerad är att ha implementeringen på plats.
+  </p>
+
+  <div class="box-info">
+    <strong>Kom ihåg:</strong> NIS2 kräver inte att ni är perfekta — det kräver att ni kan visa att ni arbetar systematiskt med säkerhet, att styrelsen är involverad och att processerna är dokumenterade. En välstrukturerad gap-analys med tydlig åtgärdsplan är i sig ett styrka vid tillsyn — även om allt inte är klart.
+  </div>
+
+  <h2>Tre konkreta steg du kan ta den här veckan</h2>
+
+  <p>
+    Du behöver inte anlita ett konsultteam eller genomföra en fullständig implementering den här veckan. Men du behöver sätta igång. Här är tre åtgärder som är realistiska att genomföra inom sju dagar — och som direkt minskar er exponering.
+  </p>
+
+  <div class="step-block">
+    <div class="step-number">Steg 1 — Denna vecka</div>
+    <h3>Fastställ om och hur ni omfattas av NIS2</h3>
+    <p>
+      Samla VD, ekonomichef och en person från IT eller verksamhetssidan i ett rum under 90 minuter. Gå igenom: Vilken sektor opererar ni i? Hur många anställda har ni? Vad är er omsättning? Är ni en kritisk leverantör till en organisation som är reglerad?
+    </p>
+    <p>
+      Svaren avgör om ni klassas som väsentlig entitet, viktig entitet — eller om ni inte berörs alls. Utan detta besked arbetar ni i mörkret. Det tar inte lång tid att ta reda på det, men det är det viktigaste enskilda beslutet ni kan fatta den här veckan. Dokumentera slutsatsen skriftligen. Skriv datum på den.
+    </p>
+  </div>
+
+  <div class="step-block">
+    <div class="step-number">Steg 2 — Denna vecka</div>
+    <h3>Sätt NIS2 på nästa styrelsemötes dagordning</h3>
+    <p>
+      Artikel 20 kräver att ledningsorganet är involverat. Det betyder att styrelsen — inte bara VD eller IT-chefen — måste engageras. Och det måste dokumenteras.
+    </p>
+    <p>
+      Kontakta styrelseordföranden i dag och begär att NIS2 läggs som en formell punkt på nästa möte. Agendan ska inkludera: organisationens klassificering, nulägesbedömning och ett beslut om att påbörja en formell gap-analys. Det räcker med ett kortfattat underlag på två till tre sidor — men beslutet måste fattas av styrelsen, inte delegeras bort. Protokollfört styrelsebeslut om att initiera NIS2-arbetet är i sig ett värdefyllt dokument vid en eventuell granskning.
+    </p>
+  </div>
+
+  <div class="step-block">
+    <div class="step-number">Steg 3 — Denna vecka</div>
+    <h3>Inventera vad som faktiskt redan finns dokumenterat</h3>
+    <p>
+      Ber din tillsynsmyndighet om dokumentation i dag — vad kan ni faktiskt ta fram? Finns det en riskbedömning? En incidenthanteringsplan? En antagen säkerhetspolicy? Leverantörsinventering med säkerhetskrav?
+    </p>
+    <p>
+      Gå igenom dessa fem kategorier och markera: finns, finns delvis, saknas. Det tar en halvdag. Resultatet är er första gap-analys — enkel, men exceptionellt värdefull. Den visar er exakt var ni befinner er och vad som behöver prioriteras. Utan detta underlag kan ni inte veta vad som faktiskt saknas — och utan den kunskapen kan ni inte prioritera, budgetera eller fördela ansvar.
+    </p>
+  </div>
+
+  <div class="step-block">
+    <div class="step-number">Steg 4 — Denna månad</div>
+    <h3>Säkra extern stöd för gap-analys och handlingsplan</h3>
+    <p>
+      Om er interna kapacitet är begränsad — vilket är normalt för organisationer som inte är renodlade IT-bolag — är nu rätt tillfälle att involvera extern expertis. En erfaren NIS2-rådgivare kan göra er gap-analys på ett till två dagar, identifiera de kritiska bristerna och leverera ett prioriterat åtgärdspaket med konkreta nästa steg. Det är inte ett projekt på sex månader. Det är ett strukturerat arbete med en tydlig startpunkt.
+    </p>
+    <p>
+      Deadline är inte frivillig. Men hur ni tar er dit — med eller utan rätt stöd — avgör om ni hinner, om ni dokumenterar rätt saker, och om ni kan visa tillsynsmyndigheten det de faktiskt efterfrågar.
+    </p>
+  </div>
+
+<style>
+  .capture-form-section { background: #1c1c1f; border: 1px solid rgba(245,197,24,0.25); border-top: 3px solid var(--yellow); border-radius: 4px; padding: 40px; margin: 64px 0 40px; }
+  .capture-form-section h2 { margin-top: 0; font-size: 24px; font-family: 'Poppins', sans-serif; font-weight: 800; margin-bottom: 12px; }
+  .capture-form-section .sub { color: #aaa; font-size: 15px; margin-bottom: 24px; }
+  .capture-input { display: block; width: 100%; background: #222226; border: 1px solid #2e2e33; border-radius: 4px; padding: 13px 16px; font-size: 15px; color: #f0f0f0; font-family: 'Barlow', sans-serif; outline: none; transition: border-color 0.2s; margin-bottom: 12px; }
+  .capture-input:focus { border-color: var(--yellow); }
+  .capture-input::placeholder { color: #666; }
+  .capture-submit-btn { background: var(--yellow); color: #000; border: none; border-radius: 4px; padding: 14px 28px; font-family: 'Poppins', sans-serif; font-size: 15px; font-weight: 800; cursor: pointer; transition: background 0.2s; width: 100%; }
+  .capture-submit-btn:hover { background: #e8d800; }
+  .capture-submit-btn:disabled { opacity: 0.6; cursor: not-allowed; }
+  .capture-thanks-msg { padding: 16px; background: rgba(34,197,94,0.1); border: 1px solid rgba(34,197,94,0.3); border-radius: 4px; color: #86efac; font-size: 15px; text-align: center; display: none; }
+</style>
+
+  <!-- CTA — inline lead capture -->
+  <div class="capture-form-section">
+    <h2>Vet du var din organisation står idag?</h2>
+    <p class="sub">En kostnadsfri NIS2-genomgång på 20 minuter visar exakt vad som saknas — innan tillsynsmyndigheten frågar. Böterna är upp till <strong style="color:#f0f0f0">10 miljoner euro</strong>. Samtalet är gratis.</p>
+    <form id="deadlineCtrlForm" onsubmit="submitdeadlineCtrl(event)">
+      <input class="capture-input" type="text"  id="deadlineCtrlName"    placeholder="Ditt namn"        autocomplete="name" />
+      <input class="capture-input" type="email" id="deadlineCtrlEmail"   placeholder="E-postadress *"   autocomplete="email" required />
+      <input class="capture-input" type="text"  id="deadlineCtrlCompany" placeholder="Bolagets namn *"  required />
+      <button type="submit" class="capture-submit-btn" id="deadlineCtrlSubmit">Boka kostnadsfri genomgång →</button>
+    </form>
+    <div class="capture-thanks-msg" id="deadlineCtrlThanks">✅ Tack! Vi hör av oss inom 24 timmar.</div>
+  </div>
+
+</article>
+
+<footer>
+  © 2026 M&J Trusted Marketing KB ·
+  <a href="mailto:support@trustedmarketing.se">support@trustedmarketing.se</a> ·
+  <a href="/nis2.html">Tillbaka till startsidan</a> ·
+  <a href="/privacy.html">Integritetspolicy</a>
+</footer>
+
+<script>
+  async function submitdeadlineCtrl(e) {
+    e.preventDefault();
+    const btn = document.getElementById('deadlineCtrlSubmit');
+    btn.disabled = true;
+    btn.textContent = 'Skickar...';
+    const payload = {
+      name:       document.getElementById('deadlineCtrlName').value.trim(),
+      email:      document.getElementById('deadlineCtrlEmail').value.trim(),
+      company:    document.getElementById('deadlineCtrlCompany').value.trim(),
+      source:     'nis2-deadline',
+      score_data: null
+    };
+    try {
+      const res  = await fetch('/api/inbound', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) });
+      const data = await res.json();
+      if (data.success) {
+        document.getElementById('deadlineCtrlForm').style.display = 'none';
+        document.getElementById('deadlineCtrlThanks').style.display = 'block';
+      } else {
+        btn.disabled = false;
+        btn.textContent = 'Boka kostnadsfri genomgång →';
+        alert('Något gick fel, försök igen.');
+      }
+    } catch (err) {
+      btn.disabled = false;
+      btn.textContent = 'Boka kostnadsfri genomgång →';
+      alert('Något gick fel, försök igen.');
+    }
+  }
+</script>
+</body>
+</html>

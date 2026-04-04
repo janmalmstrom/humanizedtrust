@@ -17,7 +17,16 @@ router.get('/stats', async (req, res) => {
           COUNT(phone) AS has_phone,
           COUNT(CASE WHEN last_enriched_at IS NOT NULL THEN 1 END) AS ever_enriched,
           COUNT(CASE WHEN allabolag_enriched_at IS NOT NULL THEN 1 END) AS allabolag_done,
-          MAX(last_enriched_at) AS last_enriched
+          MAX(last_enriched_at) AS last_enriched,
+          COUNT(CASE WHEN annual_report_fetched_at IS NOT NULL THEN 1 END) AS annual_report_done,
+          COUNT(CASE WHEN annual_report_fetched_at IS NULL THEN 1 END) AS annual_report_pending,
+          COUNT(CASE WHEN revenue_sek IS NOT NULL THEN 1 END) AS has_revenue,
+          COUNT(CASE WHEN
+            (num_employees_exact >= 250 OR revenue_sek >= 550000000) OR
+            (num_employees_exact >= 50 AND revenue_sek >= 110000000)
+          THEN 1 END) AS nis2_eligible,
+          COUNT(CASE WHEN num_employees_exact >= 250 OR revenue_sek >= 550000000 THEN 1 END) AS nis2_essential,
+          COUNT(CASE WHEN num_employees_exact >= 50 AND num_employees_exact < 250 AND revenue_sek >= 110000000 AND revenue_sek < 550000000 THEN 1 END) AS nis2_important
         FROM discovery_leads
       `),
       db.query(`

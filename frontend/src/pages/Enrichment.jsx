@@ -106,47 +106,127 @@ export default function Enrichment() {
             />
           </div>
 
-          {/* Board member pipeline — bulk allabolag progress */}
-          <div className="bg-navy-800 rounded-xl border border-white/10 p-5 space-y-4">
-            <div className="flex items-center justify-between">
-              <h2 className="text-sm font-semibold text-slate-200">Board member pipeline (NIS2)</h2>
-              <span className="text-xs text-amber-400 font-medium">bulk runner active</span>
-            </div>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-              <div>
-                <div className="text-xs text-slate-500 uppercase tracking-wide mb-1">Allabolag done</div>
-                <div className="text-xl font-bold text-slate-100">{parseInt(stats.allabolag_done).toLocaleString()}</div>
-                <div className="text-xs text-slate-500 mt-0.5">{pct(stats.allabolag_done, stats.total)} of leads</div>
-              </div>
-              <div>
-                <div className="text-xs text-slate-500 uppercase tracking-wide mb-1">Remaining</div>
-                <div className="text-xl font-bold text-slate-100">
-                  {(parseInt(stats.total) - parseInt(stats.allabolag_done)).toLocaleString()}
+          {/* Phase 1 — Annual report enrichment */}
+          {(() => {
+            const done = parseInt(stats.annual_report_done || 0);
+            const pending = parseInt(stats.annual_report_pending || 0);
+            const total = parseInt(stats.total);
+            const nis2 = parseInt(stats.nis2_eligible || 0);
+            const etaH = pending > 0 ? Math.ceil(pending / 0.33 / 3600) : 0;
+            const isRunning = pending > 0;
+            return (
+              <div className="bg-navy-800 rounded-xl border border-white/10 p-5 space-y-4">
+                <div className="flex items-center justify-between">
+                  <h2 className="text-sm font-semibold text-slate-200">Phase 1 — Annual report (revenue + employees)</h2>
+                  {isRunning
+                    ? <span className="text-xs text-cyan-400 font-medium">running</span>
+                    : <span className="text-xs text-emerald-400 font-medium">complete</span>
+                  }
                 </div>
-                <div className="text-xs text-slate-500 mt-0.5">~{Math.ceil((parseInt(stats.total) - parseInt(stats.allabolag_done)) * 2 / 3600)}h left</div>
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                  <div>
+                    <div className="text-xs text-slate-500 uppercase tracking-wide mb-1">Processed</div>
+                    <div className="text-xl font-bold text-slate-100">{done.toLocaleString()}</div>
+                    <div className="text-xs text-slate-500 mt-0.5">{pct(done, total)} of leads</div>
+                  </div>
+                  <div>
+                    <div className="text-xs text-slate-500 uppercase tracking-wide mb-1">Pending</div>
+                    <div className="text-xl font-bold text-slate-100">{pending.toLocaleString()}</div>
+                    <div className="text-xs text-slate-500 mt-0.5">{isRunning ? `~${etaH}h left` : 'done'}</div>
+                  </div>
+                  <div>
+                    <div className="text-xs text-slate-500 uppercase tracking-wide mb-1">Has revenue data</div>
+                    <div className="text-xl font-bold text-cyan-400">{parseInt(stats.has_revenue || 0).toLocaleString()}</div>
+                    <div className="text-xs text-slate-500 mt-0.5">{pct(stats.has_revenue, total)} of leads</div>
+                  </div>
+                  <div>
+                    <div className="text-xs text-slate-500 uppercase tracking-wide mb-1">NIS2 eligible</div>
+                    <div className="text-xl font-bold text-emerald-400">{nis2.toLocaleString()}</div>
+                    <div className="text-xs text-slate-500 mt-0.5">total (Essential + Important)</div>
+                  </div>
+                </div>
+                {/* NIS2 tier breakdown */}
+                <div className="grid grid-cols-2 gap-4 pt-1 border-t border-white/5">
+                  <div className="flex items-center justify-between">
+                    <div>
+                      <div className="text-xs text-slate-400 font-medium">Essential entities</div>
+                      <div className="text-xs text-slate-500">250+ emp OR 550M+ SEK revenue</div>
+                    </div>
+                    <div className="text-lg font-bold text-emerald-400">{parseInt(stats.nis2_essential || 0).toLocaleString()}</div>
+                  </div>
+                  <div className="flex items-center justify-between">
+                    <div>
+                      <div className="text-xs text-slate-400 font-medium">Important entities</div>
+                      <div className="text-xs text-slate-500">50–249 emp AND 110M+ SEK revenue</div>
+                    </div>
+                    <div className="text-lg font-bold text-amber-400">{parseInt(stats.nis2_important || 0).toLocaleString()}</div>
+                  </div>
+                </div>
+                <div>
+                  <div className="text-xs text-slate-500 mb-1.5">Annual report coverage</div>
+                  <div className="h-2 bg-navy-700 rounded-full overflow-hidden">
+                    <div className="h-full bg-cyan-500 rounded-full transition-all" style={{ width: pct(done, total) }} />
+                  </div>
+                </div>
               </div>
-              <div>
-                <div className="text-xs text-slate-500 uppercase tracking-wide mb-1">Board members found</div>
-                <div className="text-xl font-bold text-emerald-400">{parseInt(stats.total_contacts || 0).toLocaleString()}</div>
-                <div className="text-xs text-slate-500 mt-0.5">VD + styrelseledamöter</div>
+            );
+          })()}
+
+          {/* Phase 2 — Board member pipeline (allabolag) */}
+          {(() => {
+            const done = parseInt(stats.allabolag_done || 0);
+            const total = parseInt(stats.total);
+            const remaining = total - done;
+            const phase1Pending = parseInt(stats.annual_report_pending || 0);
+            const etaH = remaining > 0 ? Math.ceil(remaining / 0.30 / 3600) : 0;
+            const isWaiting = phase1Pending > 0;
+            const isComplete = done >= total;
+            return (
+              <div className="bg-navy-800 rounded-xl border border-white/10 p-5 space-y-4">
+                <div className="flex items-center justify-between">
+                  <h2 className="text-sm font-semibold text-slate-200">Phase 2 — Board members (allabolag)</h2>
+                  {isWaiting
+                    ? <span className="text-xs text-slate-400 font-medium">waiting for phase 1</span>
+                    : isComplete
+                      ? <span className="text-xs text-emerald-400 font-medium">complete</span>
+                      : <span className="text-xs text-amber-400 font-medium">running</span>
+                  }
+                </div>
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                  <div>
+                    <div className="text-xs text-slate-500 uppercase tracking-wide mb-1">Allabolag done</div>
+                    <div className="text-xl font-bold text-slate-100">{done.toLocaleString()}</div>
+                    <div className="text-xs text-slate-500 mt-0.5">{pct(done, total)} of leads</div>
+                  </div>
+                  <div>
+                    <div className="text-xs text-slate-500 uppercase tracking-wide mb-1">Remaining</div>
+                    <div className="text-xl font-bold text-slate-100">{remaining.toLocaleString()}</div>
+                    <div className="text-xs text-slate-500 mt-0.5">{isWaiting ? 'starts after phase 1' : `~${etaH}h left`}</div>
+                  </div>
+                  <div>
+                    <div className="text-xs text-slate-500 uppercase tracking-wide mb-1">Board members found</div>
+                    <div className="text-xl font-bold text-emerald-400">{parseInt(stats.total_contacts || 0).toLocaleString()}</div>
+                    <div className="text-xs text-slate-500 mt-0.5">VD + styrelseledamöter</div>
+                  </div>
+                  <div>
+                    <div className="text-xs text-slate-500 uppercase tracking-wide mb-1">Personal mobiles</div>
+                    <div className="text-xl font-bold text-amber-400">{parseInt(stats.contacts_with_phone || 0).toLocaleString()}</div>
+                    <div className="text-xs text-slate-500 mt-0.5">{pct(stats.contacts_with_phone, stats.total_contacts)} of board members</div>
+                  </div>
+                </div>
+                {/* Progress bar */}
+                <div>
+                  <div className="text-xs text-slate-500 mb-1.5">Allabolag coverage</div>
+                  <div className="h-2 bg-navy-700 rounded-full overflow-hidden">
+                    <div
+                      className="h-full bg-amber-500 rounded-full transition-all"
+                      style={{ width: pct(done, total) }}
+                    />
+                  </div>
+                </div>
               </div>
-              <div>
-                <div className="text-xs text-slate-500 uppercase tracking-wide mb-1">Personal mobiles</div>
-                <div className="text-xl font-bold text-amber-400">{parseInt(stats.contacts_with_phone || 0).toLocaleString()}</div>
-                <div className="text-xs text-slate-500 mt-0.5">{pct(stats.contacts_with_phone, stats.total_contacts)} of board members</div>
-              </div>
-            </div>
-            {/* Progress bar */}
-            <div>
-              <div className="text-xs text-slate-500 mb-1.5">Allabolag coverage</div>
-              <div className="h-2 bg-navy-700 rounded-full overflow-hidden">
-                <div
-                  className="h-full bg-amber-500 rounded-full transition-all"
-                  style={{ width: pct(stats.allabolag_done, stats.total) }}
-                />
-              </div>
-            </div>
-          </div>
+            );
+          })()}
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {/* Email status breakdown */}

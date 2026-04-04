@@ -479,7 +479,7 @@
     <a class="nav-back" href="/nis2.html">← Tillbaka till NIS2-sidan</a>
     <div class="nav-right">
       <button class="nav-pdf" onclick="window.print()">⬇ Spara som PDF</button>
-      <a class="nav-cta" href="mailto:jan@trustedmarketing.se?subject=NIS2%20styrelsepaket%20-%20samtal">Boka samtal →</a>
+      <a class="nav-cta" href="mailto:support@trustedmarketing.se?subject=NIS2%20styrelsepaket%20-%20samtal">Boka samtal →</a>
     </div>
   </nav>
 
@@ -719,7 +719,7 @@
   <footer>
     <p>© 2026 M &amp; J Trusted Marketing KB — NIS2-rådgivning för svenska bolag</p>
     <p style="margin-top: 8px;">
-      <a href="mailto:jan@trustedmarketing.se">jan@trustedmarketing.se</a>
+      <a href="mailto:support@trustedmarketing.se">support@trustedmarketing.se</a>
       &nbsp;·&nbsp;
       <a href="https://nis2klar.se">nis2klar.se</a>
     </p>
@@ -764,5 +764,18 @@
       }
     }
   </script>
+  <!-- Preheating Engine: tracking pixel + warm signal on email link click -->
+  <script>
+    (function() {
+      var PAGE = 'nis2-styrelsepaket';
+      new Image().src = '/api/track/pixel?page=' + PAGE;
+      var token = new URLSearchParams(window.location.search).get('t');
+      if (token) {
+        fetch('/api/track?t=' + encodeURIComponent(token) + '&page=' + PAGE, { method: 'GET', redirect: 'manual' })
+          .catch(function(){});
+      }
+    })();
+  </script>
+  <script src="/cookie-banner.js"></script>
 </body>
 </html>

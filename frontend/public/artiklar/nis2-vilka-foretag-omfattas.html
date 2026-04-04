@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vilka företag måste följa NIS2? Kolla om ditt faller inom lagen | NIS2Klar</title>
+  <meta name="description" content="Måste ditt företag följa NIS2? Praktisk guide om Essential vs Important entities, tröskelvärdena och sektorerna. Inkluderar ett snabbtest med ja/nej-frågor.">
+  <meta property="og:title" content="Vilka företag måste följa NIS2? Kolla om ditt faller inom lagen">
+  <meta property="og:description" content="Måste ditt företag följa NIS2? Praktisk guide om Essential vs Important entities, tröskelvärdena och sektorerna. Inkluderar ett snabbtest med ja/nej-frågor.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #141416;
+      --card: #1c1c1f;
+      --yellow: #f5c518;
+      --white: #f0f0f0;
+      --muted: #888;
+      --red: #C61212;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: var(--bg); color: var(--white); font-family: 'Barlow', sans-serif; font-size: 19px; line-height: 1.8; }
+
+    /* Nav */
+    nav { display: flex; justify-content: space-between; align-items: center; padding: 20px 40px; border-bottom: 1px solid rgba(255,255,255,0.07); max-width: 900px; margin: 0 auto; }
+    .nav-logo { font-family: 'Poppins', sans-serif; font-weight: 900; font-size: 20px; color: var(--yellow); text-decoration: none; }
+    .nav-logo span { color: var(--white); }
+    .nav-back { color: var(--muted); text-decoration: none; font-size: 15px; }
+    .nav-back:hover { color: var(--white); }
+    .nav-cta { background: var(--yellow); color: #000; padding: 8px 18px; border-radius: 4px; text-decoration: none; font-weight: 700; font-size: 14px; font-family: 'Poppins', sans-serif; }
+
+    /* Article */
+    .article-wrap { max-width: 760px; margin: 0 auto; padding: 60px 40px; }
+    .article-category { font-size: 13px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 16px; }
+    h1 { font-family: 'Poppins', sans-serif; font-size: clamp(30px, 4vw, 44px); font-weight: 900; line-height: 1.2; margin-bottom: 24px; }
+    .article-meta { font-size: 15px; color: var(--muted); margin-bottom: 48px; padding-bottom: 24px; border-bottom: 1px solid rgba(255,255,255,0.07); }
+    h2 { font-family: 'Poppins', sans-serif; font-size: 26px; font-weight: 700; margin: 48px 0 16px; color: var(--white); }
+    h3 { font-family: 'Poppins', sans-serif; font-size: 20px; font-weight: 600; margin: 32px 0 12px; color: var(--yellow); }
+    p { margin-bottom: 22px; }
+    strong { color: var(--white); font-weight: 700; }
+    .highlight { color: var(--yellow); font-weight: 700; }
+    .danger { color: #ff6b6b; font-weight: 700; }
+    ul, ol { margin: 16px 0 24px 24px; }
+    li { margin-bottom: 12px; font-size: 19px; }
+
+    /* Callout boxes */
+    .box-warning { background: rgba(197,17,17,0.12); border-left: 4px solid var(--red); padding: 20px 24px; margin: 32px 0; border-radius: 0 4px 4px 0; }
+    .box-info { background: rgba(245,197,24,0.08); border-left: 4px solid var(--yellow); padding: 20px 24px; margin: 32px 0; border-radius: 0 4px 4px 0; }
+    .box-case { background: var(--card); border: 1px solid rgba(255,255,255,0.08); padding: 28px; margin: 40px 0; border-radius: 4px; }
+    .box-case .case-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 12px; }
+    blockquote { border-left: 3px solid var(--yellow); padding: 12px 20px; margin: 24px 0; font-style: italic; color: #ccc; }
+
+    /* CTA */
+    .cta-section { background: var(--card); border: 1px solid rgba(245,197,24,0.2); border-radius: 4px; padding: 48px 40px; margin: 64px 0 40px; text-align: center; }
+    .cta-section h2 { margin-top: 0; font-size: 26px; }
+    .cta-section p { color: #aaa; max-width: 500px; margin: 0 auto 28px; }
+    .btn-primary { display: inline-block; background: var(--yellow); color: #000; font-family: 'Poppins', sans-serif; font-weight: 800; font-size: 16px; padding: 16px 36px; border-radius: 4px; text-decoration: none; }
+    .btn-primary:hover { background: #e0b010; }
+    .cta-fine { font-size: 13px; color: var(--muted); margin-top: 16px; }
+
+    /* FAQ */
+    .faq-item { border-bottom: 1px solid rgba(255,255,255,0.07); padding: 20px 0; }
+    .faq-q { font-family: 'Poppins', sans-serif; font-weight: 600; margin-bottom: 10px; }
+    .faq-a { color: #bbb; }
+
+    /* Fine table */
+    .fine-table { width: 100%; border-collapse: collapse; margin: 24px 0; }
+    .fine-table th { background: rgba(245,197,24,0.1); color: var(--yellow); font-family: 'Poppins', sans-serif; font-size: 13px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 12px 16px; text-align: left; border-bottom: 1px solid rgba(245,197,24,0.2); }
+    .fine-table td { padding: 14px 16px; border-bottom: 1px solid rgba(255,255,255,0.05); font-size: 15px; }
+    .fine-table tr:last-child td { border-bottom: none; }
+    .fine-table .amount { color: #ff6b6b; font-weight: 700; }
+
+    /* Summary + Key Takeaway */
+    .box-summary { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; padding: 24px 28px; margin: 0 0 32px; }
+    .summary-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-bottom: 14px; }
+    .box-summary ul { margin: 0; padding-left: 20px; }
+    .box-summary li { margin-bottom: 8px; font-size: 17px; color: #ccc; }
+    .box-takeaway { background: rgba(245,197,24,0.08); border-left: 4px solid var(--yellow); padding: 20px 24px; margin: 0 0 40px; border-radius: 0 4px 4px 0; }
+    .takeaway-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 10px; }
+    .box-takeaway p { margin: 0; font-size: 18px; font-weight: 600; color: var(--white); line-height: 1.6; }
+
+    /* Quiz */
+    .quiz-box { background: var(--card); border: 1px solid rgba(245,197,24,0.15); border-radius: 4px; padding: 32px 28px; margin: 40px 0; }
+    .quiz-box .quiz-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 16px; }
+    .quiz-box ol { margin: 0 0 0 20px; padding: 0; }
+    .quiz-box li { margin-bottom: 16px; font-size: 18px; color: var(--white); }
+    .quiz-box li span { display: block; font-size: 15px; color: var(--muted); margin-top: 4px; }
+
+    /* Footer */
+    footer { border-top: 1px solid rgba(255,255,255,0.07); padding: 32px 40px; text-align: center; font-size: 13px; color: var(--muted); max-width: 900px; margin: 0 auto; }
+    footer a { color: var(--muted); }
+
+    @media (max-width: 600px) {
+      nav, .article-wrap, footer { padding: 20px; }
+      .cta-section { padding: 32px 20px; }
+      .fine-table { font-size: 14px; }
+      .fine-table th, .fine-table td { padding: 10px 10px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="https://nis2klar.se/">NIS2<span>Klar</span></a>
+  <a class="nav-back" href="https://nis2klar.se/artiklar.html">← Alla artiklar</a>
+  <a class="nav-cta" href="/nis2.html#boka">Boka samtal →</a>
+</nav>
+
+<article class="article-wrap">
+  <div class="article-category">Omfattning &amp; Klassificering</div>
+  <h1>Vilka företag måste följa NIS2? Kolla om ditt faller inom lagen</h1>
+  <div class="article-meta">Uppdaterad 31 mars 2026 · Lästid: ca 9 minuter · Målgrupp: VD &amp; Styrelse</div>
+
+  <!-- SUMMARY -->
+  <div class="box-summary">
+    <div class="summary-label">Sammanfattning</div>
+    <ul>
+      <li>NIS2 delar in organisationer i två kategorier: <strong>väsentliga entiteter</strong> (Essential) och <strong>viktiga entiteter</strong> (Important).</li>
+      <li>Väsentlig entitet: 250+ anställda ELLER omsättning över 550 MSEK (50 M€) inom en reglerad sektor.</li>
+      <li>Viktig entitet: 50–249 anställda OCH omsättning över 110 MSEK (10 M€) inom en reglerad sektor.</li>
+      <li>18 sektorer omfattas — från energi och transport till digital infrastruktur och avfallshantering.</li>
+      <li>Artikeln innehåller ett snabbtest med sju frågor som hjälper dig avgöra om din organisation omfattas.</li>
+    </ul>
+  </div>
+
+  <!-- KEY TAKEAWAY -->
+  <div class="box-takeaway">
+    <div class="takeaway-label">Viktigaste slutsatsen</div>
+    <p>Att inte veta om din organisation omfattas av NIS2 skyddar dig inte mot sanktionerna. Tröskelvärdena är tydliga, sektorerna definierade och ansvaret personligt. Kontrollera — innan tillsynsmyndigheten gör det åt dig.</p>
+  </div>
+
+  <!-- HOOK -->
+  <p>
+    Frågan "måste vi följa NIS2?" dyker upp i styrelserum och ledningsgrupper över hela Sverige just nu. Problemet är att många ställer frågan utan att faktiskt kontrollera svaret. De antar att direktivet gäller "de stora" — energijättarna, bankerna, sjukhusen — och att deras eget bolag flyger under radarn.
+  </p>
+
+  <p>
+    Det antagandet kan bli mycket dyrt. Cybersäkerhetslagen, som implementerar NIS2 i Sverige sedan oktober 2024, har <strong>tydliga tröskelvärden</strong> som avgör om din organisation omfattas. Tröskelvärdena är lägre än de flesta tror. Sektorerna är fler än de flesta gissar. Och konsekvensen av att gissa fel — att stå utan dokumenterade säkerhetsåtgärder den dag tillsynsmyndigheten ringer — är att du som VD eller styrelseledamot bär det personliga ansvaret.
+  </p>
+
+  <p>
+    Den här guiden ger dig de exakta siffrorna, sektorlistan och ett enkelt test du kan göra på fem minuter. Ingen juridisk jargong. Bara klartext om huruvida lagen gäller dig — och vad det innebär.
+  </p>
+
+  <h2>Två kategorier: väsentlig och viktig entitet</h2>
+
+  <p>
+    NIS2-direktivet delar in alla organisationer som omfattas i två kategorier. Vilken kategori du hamnar i avgör hur strikt tillsynen blir, hur höga böterna kan bli och vilka rapporteringskrav som gäller. I den svenska cybersäkerhetslagen används termerna <strong>väsentliga verksamhetsutövare</strong> och <strong>viktiga verksamhetsutövare</strong>, men principen är densamma som i EU-direktivets "Essential entities" och "Important entities".
+  </p>
+
+  <h3>Väsentliga entiteter (Essential)</h3>
+  <p>
+    Det här är organisationer med en systemkritisk roll i samhället. De utsätts för den strängaste formen av tillsyn — proaktiv tillsyn — vilket innebär att tillsynsmyndigheten kan granska dem när som helst, utan att en incident har inträffat. Böter kan nå upp till <strong>10 miljoner euro</strong> eller <strong>2 % av den globala årsomsättningen</strong>, beroende på vilket belopp som är högst.
+  </p>
+
+  <p>
+    Du klassas som väsentlig entitet om din organisation verkar i en av de sektorer som räknas som <strong>högt kritiska</strong> (Annex I i direktivet) OCH uppfyller storlekskraven:
+  </p>
+
+  <ul>
+    <li><strong>250 eller fler anställda</strong>, ELLER</li>
+    <li><strong>Årsomsättning över 50 miljoner euro (cirka 550 MSEK)</strong>, ELLER</li>
+    <li><strong>Balansomslutning över 43 miljoner euro (cirka 475 MSEK)</strong></li>
+  </ul>
+
+  <p>
+    Det räcker att <strong>ett</strong> av dessa kriterier uppfylls. Du behöver inte vara ett storföretag i alla avseenden — 250 anställda med relativt låg omsättning kvalificerar dig lika mycket som ett bolag med 50 anställda och 600 MSEK i omsättning.
+  </p>
+
+  <h3>Viktiga entiteter (Important)</h3>
+  <p>
+    Viktiga entiteter omfattas av samma säkerhetskrav som väsentliga entiteter — skillnaden ligger i tillsynsformen. Viktiga entiteter utsätts för <strong>reaktiv tillsyn</strong>, vilket innebär att granskning vanligen initieras efter en incident, ett klagomål eller en indikation på bristande efterlevnad. Böter kan nå upp till <strong>7 miljoner euro</strong> eller <strong>1,4 % av den globala årsomsättningen</strong>.
+  </p>
+
+  <p>
+    Du klassas som viktig entitet om din organisation verkar i en reglerad sektor (Annex I eller Annex II) och uppfyller storlekskraven:
+  </p>
+
+  <ul>
+    <li><strong>50–249 anställda</strong>, OCH</li>
+    <li><strong>Årsomsättning över 10 miljoner euro (cirka 110 MSEK)</strong>, ELLER</li>
+    <li><strong>Balansomslutning över 10 miljoner euro (cirka 110 MSEK)</strong></li>
+  </ul>
+
+  <div class="box-info">
+    <strong>Viktigt undantag:</strong> Vissa organisationer kan klassas som väsentliga eller viktiga entiteter oavsett storlek — till exempel leverantörer av DNS-tjänster, toppdomänregister, betrodda tjänster (trust services) och enda leverantörer av en kritisk tjänst i en medlemsstat. Om din organisation är ensam om att leverera en samhällskritisk funktion i Sverige kan du omfattas även om du har färre än 50 anställda.
+  </div>
+
+  <h2>Tröskelvärdena i klartext</h2>
+
+  <table class="fine-table">
+    <thead>
+      <tr>
+        <th>Kategori</th>
+        <th>Anställda</th>
+        <th>Omsättning / Balansomslutning</th>
+        <th>Maxböter</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Väsentlig entitet</strong></td>
+        <td>250+ anställda</td>
+        <td class="amount">550+ MSEK (50 M€)</td>
+        <td class="amount">10 M€ / 2 % omsättning</td>
+      </tr>
+      <tr>
+        <td><strong>Viktig entitet</strong></td>
+        <td>50–249 anställda</td>
+        <td class="amount">110+ MSEK (10 M€)</td>
+        <td class="amount">7 M€ / 1,4 % omsättning</td>
+      </tr>
+      <tr>
+        <td><strong>Under tröskeln</strong></td>
+        <td>Färre än 50</td>
+        <td>Under 110 MSEK</td>
+        <td>Normalt undantagen*</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>
+    *Organisationer under tröskeln kan fortfarande omfattas om de pekas ut av medlemsstaten eller tillhör specifika undantagskategorier som DNS-leverantörer, toppdomänregister eller betrodda tjänster.
+  </p>
+
+  <div class="box-warning">
+    <strong>Vanlig fälla:</strong> Många räknar bara anställda och glömmer omsättningen. Ett bolag med 80 anställda och 600 MSEK i omsättning klassas som väsentlig entitet — inte viktig. Omsättningströskeln kvalificerar dig oberoende av personalstyrkan. Kontrollera båda talen.
+  </div>
+
+  <h2>De 18 sektorerna — var hamnar ditt företag?</h2>
+
+  <p>
+    NIS2 listar 18 sektorer uppdelade i två grupper. <strong>Högt kritiska sektorer</strong> (Annex I) producerar väsentliga entiteter om storlekskraven uppfylls. <strong>Andra kritiska sektorer</strong> (Annex II) producerar normalt viktiga entiteter. Här är den fullständiga listan:
+  </p>
+
+  <h3>Högt kritiska sektorer (Annex I) — 11 sektorer</h3>
+  <ol>
+    <li><strong>Energi</strong> — el, fjärrvärme, olja, gas, vätgas</li>
+    <li><strong>Transport</strong> — flyg, järnväg, sjöfart, vägtransport</li>
+    <li><strong>Bankverksamhet</strong> — kreditinstitut</li>
+    <li><strong>Finansmarknadsinfrastruktur</strong> — handelsplatser, centrala motparter</li>
+    <li><strong>Hälso- och sjukvård</strong> — sjukhus, laboratorier, läkemedelstillverkning, medicintekniska produkter</li>
+    <li><strong>Dricksvatten</strong> — vattenproducenter och distributörer</li>
+    <li><strong>Avloppsvatten</strong> — reningsverk och avloppsnät</li>
+    <li><strong>Digital infrastruktur</strong> — DNS, toppdomänregister, molntjänster, datacentertjänster, CDN, betrodda tjänster, elektroniska kommunikationsnät</li>
+    <li><strong>Förvaltning av IKT-tjänster (B2B)</strong> — managed service providers, managed security service providers</li>
+    <li><strong>Offentlig förvaltning</strong> — statliga myndigheter och regionala organ</li>
+    <li><strong>Rymden</strong> — operatörer av markbaserad infrastruktur för rymdtjänster</li>
+  </ol>
+
+  <h3>Andra kritiska sektorer (Annex II) — 7 sektorer</h3>
+  <ol>
+    <li><strong>Post- och budtjänster</strong> — paketleverans, postoperatörer</li>
+    <li><strong>Avfallshantering</strong> — insamling, transport och behandling av avfall</li>
+    <li><strong>Tillverkning, produktion och distribution av kemikalier</strong></li>
+    <li><strong>Livsmedelsproduktion, bearbetning och distribution</strong> — grossister och storskaliga producenter</li>
+    <li><strong>Tillverkning</strong> — medicintekniska produkter, datorer, elektronik, optik, elutrustning, motorfordon, övriga transportmedel, maskiner</li>
+    <li><strong>Digitala leverantörer</strong> — marknadsplatser online, sökmotorer, plattformar för sociala nätverkstjänster</li>
+    <li><strong>Forskning</strong> — forskningsorganisationer (när de pekas ut som kritiska)</li>
+  </ol>
+
+  <p>
+    Lägg märke till bredden. "Tillverkning" inkluderar allt från företag som producerar medicinteknik till de som tillverkar industriella maskiner. "Livsmedel" inkluderar grossistkedjor. "Post- och budtjänster" fångar upp logistikbolag. Många organisationer som aldrig tänkt på sig själva som "samhällskritiska" faller in under dessa definitioner.
+  </p>
+
+  <div class="box-info">
+    <strong>Leverantörskedjan:</strong> Även om ditt företag inte direkt omfattas av NIS2 kan du påverkas indirekt. Artikel 21 kräver att organisationer som omfattas ställer säkerhetskrav på sina leverantörer. Det innebär att dina kunder — om de är NIS2-reglerade — kan kräva att du uppfyller specifika cybersäkerhetskrav som villkor för fortsatt affärsrelation. I praktiken utvidgar detta NIS2:s räckvidd långt bortom de 18 sektorerna.
+  </div>
+
+  <h2>Snabbtestet: Omfattas din organisation?</h2>
+
+  <p>
+    Svara på följande sju frågor med ja eller nej. Du behöver inte vara hundra procent säker på varje svar — men varje "ja" ökar sannolikheten att din organisation omfattas av NIS2.
+  </p>
+
+  <div class="quiz-box">
+    <div class="quiz-label">NIS2-snabbtest — 7 frågor</div>
+    <ol>
+      <li>
+        Verkar din organisation i någon av de 18 sektorer som listas ovan (energi, transport, hälso- och sjukvård, digital infrastruktur, tillverkning, livsmedel, etc.)?
+        <span>JA → Fortsätt till fråga 2. NEJ → Du är troligen undantagen, men läs vidare om leverantörskedjan.</span>
+      </li>
+      <li>
+        Har din organisation 250 eller fler anställda?
+        <span>JA → Du klassas sannolikt som väsentlig entitet. Gå till fråga 7.</span>
+      </li>
+      <li>
+        Överstiger din organisations årsomsättning 550 MSEK (50 miljoner euro)?
+        <span>JA → Du klassas sannolikt som väsentlig entitet, oavsett antal anställda. Gå till fråga 7.</span>
+      </li>
+      <li>
+        Har din organisation mellan 50 och 249 anställda?
+        <span>JA → Fortsätt till fråga 5. NEJ → Du är troligen under tröskeln (men kontrollera undantagen).</span>
+      </li>
+      <li>
+        Överstiger din organisations årsomsättning 110 MSEK (10 miljoner euro)?
+        <span>JA → Du klassas sannolikt som viktig entitet. Gå till fråga 7.</span>
+      </li>
+      <li>
+        Levererar din organisation DNS-tjänster, molntjänster, datacentertjänster, managed security services eller betrodda tjänster — oavsett storlek?
+        <span>JA → Du kan omfattas oavsett antal anställda och omsättning. Kontakta en rådgivare.</span>
+      </li>
+      <li>
+        Har din styrelse och VD formellt tagit ansvar för organisationens cybersäkerhetsåtgärder enligt Artikel 20 i NIS2?
+        <span>JA → Bra start. NEJ → Det är här risken börjar, oavsett vilken kategori du tillhör.</span>
+      </li>
+    </ol>
+  </div>
+
+  <p>
+    Om du svarade ja på fråga 1 och minst en av frågorna 2, 3, 4+5, eller 6 — omfattas din organisation med mycket hög sannolikhet av NIS2. Fråga 7 avgör om du har påbörjat det arbete som krävs.
+  </p>
+
+  <div class="box-warning">
+    <strong>Att inte veta är inte ett försvar.</strong> Tillsynsmyndigheten förutsätter att du har gjort bedömningen. Organisationer som aldrig utrett sin NIS2-status och som sedan visar sig omfattas behandlas inte mildare — de behandlas som organisationer som brustit i sina skyldigheter från dag ett.
+  </div>
+
+  <h2>Det personliga ansvaret — varför det inte räcker att delegera</h2>
+
+  <p>
+    Det som gör NIS2 fundamentalt annorlunda än tidigare cybersäkerhetsdirektiv är <strong>Artikel 20</strong>. Den slår fast att <strong>ledningen</strong> — inte IT-avdelningen, inte CISO, inte en extern konsult — är personligt ansvarig för att organisationen uppfyller säkerhetskraven. I praktiken innebär det att VD och varje enskild styrelseledamot bär ansvar.
+  </p>
+
+  <p>
+    Artikel 20 kräver tre saker av ledningen:
+  </p>
+
+  <ol>
+    <li><strong>Godkänna</strong> de cybersäkerhetsåtgärder som organisationen implementerar enligt Artikel 21</li>
+    <li><strong>Genomgå utbildning</strong> i cybersäkerhetsrisker för att kunna fatta informerade beslut</li>
+    <li><strong>Övervaka</strong> att åtgärderna genomförs och fungerar</li>
+  </ol>
+
+  <p>
+    Vid allvarliga brister kan tillsynsmyndigheten — utöver böter mot organisationen — utfärda ett <strong>tillfälligt förbud för VD eller styrelseledamot att inneha ledande befattning</strong>. Det är inte ett förbud begränsat till den aktuella organisationen. Det är ett branschövergripande förbud som påverkar hela din karriär.
+  </p>
+
+  <p>
+    Det räcker inte att ha skrivit under en policy. Det räcker inte att ha köpt in säkerhetsprodukter. Det krävs <strong>dokumenterade styrelsebeslut</strong>, <strong>daterade riskbedömningar</strong> och <strong>utbildningsloggar</strong> som visar att ledningen aktivt deltagit i cybersäkerhetsarbetet — inte bara delegerat det nedåt i organisationen.
+  </p>
+
+  <h2>Tre steg för att komma igång den här veckan</h2>
+  <ol>
+    <li><strong>Fastslå er klassificering.</strong> Verkar ni inom en av de 18 reglerade sektorerna? Uppfyller ni storlekströsklarna? Om ja på båda — NIS2 gäller er. Dokumentera denna bedömning i ett styrelsebeslut.</li>
+    <li><strong>Gör en initial gap-analys.</strong> Gå igenom de åtta säkerhetsåtgärdsområdena i Artikel 21 och markera vad som finns, vad som delvis finns och vad som saknas. Det tar en halvdag men ger er en omedelbart användbar prioriteringslista.</li>
+    <li><strong>Sätt NIS2 på styrelsens agenda.</strong> Artikel 20 kräver att ledningsorganet är involverat. Det börjar med att frågan tas upp formellt — med en dagordningspunkt, ett underlag och ett protokollfört beslut om att NIS2-arbetet påbörjas.</li>
+  </ol>
+  <p>
+    Vet du inte säkert om er organisation omfattas? Det är startpunkten. En genomgång på 20 minuter räcker för att fastslå er klassificering och identifiera era tre kritiska nästa steg.
+  </p>
+
+<style>
+  .capture-form-section { background: #1c1c1f; border: 1px solid rgba(245,197,24,0.25); border-top: 3px solid var(--yellow); border-radius: 4px; padding: 40px; margin: 64px 0 40px; }
+  .capture-form-section h2 { margin-top: 0; font-size: 24px; font-family: 'Poppins', sans-serif; font-weight: 800; margin-bottom: 12px; }
+  .capture-form-section .sub { color: #aaa; font-size: 15px; margin-bottom: 24px; }
+  .capture-input { display: block; width: 100%; background: #222226; border: 1px solid #2e2e33; border-radius: 4px; padding: 13px 16px; font-size: 15px; color: #f0f0f0; font-family: 'Barlow', sans-serif; outline: none; transition: border-color 0.2s; margin-bottom: 12px; }
+  .capture-input:focus { border-color: var(--yellow); }
+  .capture-input::placeholder { color: #666; }
+  .capture-submit-btn { background: var(--yellow); color: #000; border: none; border-radius: 4px; padding: 14px 28px; font-family: 'Poppins', sans-serif; font-size: 15px; font-weight: 800; cursor: pointer; transition: background 0.2s; width: 100%; }
+  .capture-submit-btn:hover { background: #e8d800; }
+  .capture-submit-btn:disabled { opacity: 0.6; cursor: not-allowed; }
+  .capture-thanks-msg { padding: 16px; background: rgba(34,197,94,0.1); border: 1px solid rgba(34,197,94,0.3); border-radius: 4px; color: #86efac; font-size: 15px; text-align: center; display: none; }
+</style>
+
+  <!-- CTA — inline lead capture -->
+  <div class="capture-form-section">
+    <h2>Vet du var din organisation står idag?</h2>
+    <p class="sub">En kostnadsfri NIS2-genomgång på 20 minuter visar exakt vad som saknas — innan tillsynsmyndigheten frågar. Böterna är upp till <strong style="color:#f0f0f0">10 miljoner euro</strong>. Samtalet är gratis.</p>
+    <form id="vilkaForetagCtrlForm" onsubmit="submitvilkaForetagCtrl(event)">
+      <input class="capture-input" type="text"  id="vilkaForetagCtrlName"    placeholder="Ditt namn"        autocomplete="name" />
+      <input class="capture-input" type="email" id="vilkaForetagCtrlEmail"   placeholder="E-postadress *"   autocomplete="email" required />
+      <input class="capture-input" type="text"  id="vilkaForetagCtrlCompany" placeholder="Bolagets namn *"  required />
+      <button type="submit" class="capture-submit-btn" id="vilkaForetagCtrlSubmit">Boka kostnadsfri genomgång →</button>
+    </form>
+    <div class="capture-thanks-msg" id="vilkaForetagCtrlThanks">✅ Tack! Vi hör av oss inom 24 timmar.</div>
+  </div>
+
+</article>
+
+<footer>
+  © 2026 M&J Trusted Marketing KB ·
+  <a href="mailto:support@trustedmarketing.se">support@trustedmarketing.se</a> ·
+  <a href="/nis2.html">Tillbaka till startsidan</a> ·
+  <a href="/privacy.html">Integritetspolicy</a>
+</footer>
+
+<script>
+  async function submitvilkaForetagCtrl(e) {
+    e.preventDefault();
+    const btn = document.getElementById('vilkaForetagCtrlSubmit');
+    btn.disabled = true;
+    btn.textContent = 'Skickar...';
+    const payload = {
+      name:       document.getElementById('vilkaForetagCtrlName').value.trim(),
+      email:      document.getElementById('vilkaForetagCtrlEmail').value.trim(),
+      company:    document.getElementById('vilkaForetagCtrlCompany').value.trim(),
+      source:     'nis2-vilka-foretag',
+      score_data: null
+    };
+    try {
+      const res  = await fetch('/api/inbound', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) });
+      const data = await res.json();
+      if (data.success) {
+        document.getElementById('vilkaForetagCtrlForm').style.display = 'none';
+        document.getElementById('vilkaForetagCtrlThanks').style.display = 'block';
+      } else {
+        btn.disabled = false;
+        btn.textContent = 'Boka kostnadsfri genomgång →';
+        alert('Något gick fel, försök igen.');
+      }
+    } catch (err) {
+      btn.disabled = false;
+      btn.textContent = 'Boka kostnadsfri genomgång →';
+      alert('Något gick fel, försök igen.');
+    }
+  }
+</script>
+</body>
+</html>

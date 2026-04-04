@@ -547,14 +547,14 @@
         <h3>Nästa steg: Boka ett kostnadsfritt samtal</h3>
         <p>Vi går igenom dina svar, identifierar era tre största gap och tar fram en prioriterad åtgärdsplan — utan krångel och utan kostnad.</p>
       </div>
-      <a class="btn-primary" href="mailto:jan@trustedmarketing.se?subject=NIS2%20samtal%20efter%20checklista">Boka samtal →</a>
+      <a class="btn-primary" href="mailto:support@trustedmarketing.se?subject=NIS2%20samtal%20efter%20checklista">Boka samtal →</a>
     </div>
 
   </div>
 
   <footer>
     <p>© 2026 M &amp; J Trusted Marketing KB — NIS2-rådgivning för svenska bolag</p>
-    <p style="margin-top:6px;"><a href="mailto:jan@trustedmarketing.se">jan@trustedmarketing.se</a> · <a href="/nis2.html">nis2klar.se/nis2.html</a></p>
+    <p style="margin-top:6px;"><a href="mailto:support@trustedmarketing.se">support@trustedmarketing.se</a> · <a href="/nis2.html">nis2klar.se/nis2.html</a></p>
   </footer>
 
   <script>
@@ -673,5 +673,18 @@
 
     updateProgress();
   </script>
+  <!-- Preheating Engine: tracking pixel + warm signal on email link click -->
+  <script>
+    (function() {
+      var PAGE = 'nis2-checklista';
+      new Image().src = '/api/track/pixel?page=' + PAGE;
+      var token = new URLSearchParams(window.location.search).get('t');
+      if (token) {
+        fetch('/api/track?t=' + encodeURIComponent(token) + '&page=' + PAGE, { method: 'GET', redirect: 'manual' })
+          .catch(function(){});
+      }
+    })();
+  </script>
+  <script src="/cookie-banner.js"></script>
 </body>
 </html>

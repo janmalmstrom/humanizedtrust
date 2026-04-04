@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NIS2-kraven på teknisk säkerhet — vad lagen faktiskt kräver | NIS2Klar</title>
+  <meta name="description" content="Artikel 21 i NIS2 ställer konkreta tekniska krav på lösenordshantering, MFA, patchning, backup, kryptering och incidentrespons. Här är vad du som styrelseledamot behöver förstå.">
+  <meta property="og:title" content="NIS2-kraven på teknisk säkerhet — vad lagen faktiskt kräver">
+  <meta property="og:description" content="Artikel 21 i NIS2 ställer konkreta tekniska krav på lösenordshantering, MFA, patchning, backup, kryptering och incidentrespons. Här är vad du som styrelseledamot behöver förstå.">
+  <link rel="canonical" href="https://nis2klar.se/artiklar/nis2-tekniska-sakerhetsatgarder">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #141416;
+      --card: #1c1c1f;
+      --yellow: #f5c518;
+      --white: #f0f0f0;
+      --muted: #888;
+      --red: #C61212;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: var(--bg); color: var(--white); font-family: 'Barlow', sans-serif; font-size: 19px; line-height: 1.8; }
+
+    /* Nav */
+    nav { display: flex; justify-content: space-between; align-items: center; padding: 20px 40px; border-bottom: 1px solid rgba(255,255,255,0.07); max-width: 900px; margin: 0 auto; }
+    .nav-logo { font-family: 'Poppins', sans-serif; font-weight: 900; font-size: 20px; color: var(--yellow); text-decoration: none; }
+    .nav-logo span { color: var(--white); }
+    .nav-back { color: var(--muted); text-decoration: none; font-size: 15px; }
+    .nav-back:hover { color: var(--white); }
+    .nav-cta { background: var(--yellow); color: #000; padding: 8px 18px; border-radius: 4px; text-decoration: none; font-weight: 700; font-size: 14px; font-family: 'Poppins', sans-serif; }
+
+    /* Article */
+    .article-wrap { max-width: 760px; margin: 0 auto; padding: 60px 40px; }
+    .article-category { font-size: 13px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 16px; }
+    h1 { font-family: 'Poppins', sans-serif; font-size: clamp(30px, 4vw, 44px); font-weight: 900; line-height: 1.2; margin-bottom: 24px; }
+    .article-meta { font-size: 15px; color: var(--muted); margin-bottom: 48px; padding-bottom: 24px; border-bottom: 1px solid rgba(255,255,255,0.07); }
+    h2 { font-family: 'Poppins', sans-serif; font-size: 26px; font-weight: 700; margin: 48px 0 16px; color: var(--white); }
+    h3 { font-family: 'Poppins', sans-serif; font-size: 20px; font-weight: 600; margin: 32px 0 12px; color: var(--yellow); }
+    p { margin-bottom: 22px; }
+    strong { color: var(--white); font-weight: 700; }
+    .highlight { color: var(--yellow); font-weight: 700; }
+    .danger { color: #ff6b6b; font-weight: 700; }
+    ul, ol { margin: 16px 0 24px 24px; }
+    li { margin-bottom: 12px; font-size: 19px; }
+
+    /* Callout boxes */
+    .box-warning { background: rgba(197,17,17,0.12); border-left: 4px solid var(--red); padding: 20px 24px; margin: 32px 0; border-radius: 0 4px 4px 0; }
+    .box-info { background: rgba(245,197,24,0.08); border-left: 4px solid var(--yellow); padding: 20px 24px; margin: 32px 0; border-radius: 0 4px 4px 0; }
+    .box-case { background: var(--card); border: 1px solid rgba(255,255,255,0.08); padding: 28px; margin: 40px 0; border-radius: 4px; }
+    .box-case .case-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 12px; }
+    blockquote { border-left: 3px solid var(--yellow); padding: 12px 20px; margin: 24px 0; font-style: italic; color: #ccc; }
+
+    /* CTA */
+    .cta-section { background: var(--card); border: 1px solid rgba(245,197,24,0.2); border-radius: 4px; padding: 48px 40px; margin: 64px 0 40px; text-align: center; }
+    .cta-section h2 { margin-top: 0; font-size: 26px; }
+    .cta-section p { color: #aaa; max-width: 500px; margin: 0 auto 28px; }
+    .btn-primary { display: inline-block; background: var(--yellow); color: #000; font-family: 'Poppins', sans-serif; font-weight: 800; font-size: 16px; padding: 16px 36px; border-radius: 4px; text-decoration: none; }
+    .btn-primary:hover { background: #e0b010; }
+    .cta-fine { font-size: 13px; color: var(--muted); margin-top: 16px; }
+
+    /* FAQ */
+    .faq-item { border-bottom: 1px solid rgba(255,255,255,0.07); padding: 20px 0; }
+    .faq-q { font-family: 'Poppins', sans-serif; font-weight: 600; margin-bottom: 10px; }
+    .faq-a { color: #bbb; }
+
+    /* Fine table */
+    .fine-table { width: 100%; border-collapse: collapse; margin: 24px 0; }
+    .fine-table th { background: rgba(245,197,24,0.1); color: var(--yellow); font-family: 'Poppins', sans-serif; font-size: 13px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 12px 16px; text-align: left; border-bottom: 1px solid rgba(245,197,24,0.2); }
+    .fine-table td { padding: 14px 16px; border-bottom: 1px solid rgba(255,255,255,0.05); font-size: 15px; }
+    .fine-table tr:last-child td { border-bottom: none; }
+    .fine-table .amount { color: #ff6b6b; font-weight: 700; }
+
+    /* Summary + Key Takeaway */
+    .box-summary { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; padding: 24px 28px; margin: 0 0 32px; }
+    .summary-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-bottom: 14px; }
+    .box-summary ul { margin: 0; padding-left: 20px; }
+    .box-summary li { margin-bottom: 8px; font-size: 17px; color: #ccc; }
+    .box-takeaway { background: rgba(245,197,24,0.08); border-left: 4px solid var(--yellow); padding: 20px 24px; margin: 0 0 40px; border-radius: 0 4px 4px 0; }
+    .takeaway-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 10px; }
+    .box-takeaway p { margin: 0; font-size: 18px; font-weight: 600; color: var(--white); line-height: 1.6; }
+
+    /* Footer */
+    footer { border-top: 1px solid rgba(255,255,255,0.07); padding: 32px 40px; text-align: center; font-size: 13px; color: var(--muted); max-width: 900px; margin: 0 auto; }
+    footer a { color: var(--muted); }
+
+    @media (max-width: 600px) {
+      nav, .article-wrap, footer { padding: 20px; }
+      .cta-section { padding: 32px 20px; }
+      .fine-table { font-size: 14px; }
+      .fine-table th, .fine-table td { padding: 10px 10px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="https://nis2klar.se/">NIS2<span>Klar</span></a>
+  <a class="nav-back" href="https://nis2klar.se/artiklar.html">← Alla artiklar</a>
+  <a class="nav-cta" href="/nis2.html#boka">Boka samtal →</a>
+</nav>
+
+<article class="article-wrap">
+  <div class="article-category">Teknisk säkerhet &amp; Efterlevnad</div>
+  <h1>NIS2-kraven på teknisk säkerhet — vad lagen faktiskt kräver</h1>
+  <div class="article-meta">Uppdaterad 31 mars 2026 · Lästid: ca 8 minuter · Målgrupp: VD, styrelseordförande, styrelseledamot</div>
+
+  <!-- SUMMARY -->
+  <div class="box-summary">
+    <div class="summary-label">Sammanfattning</div>
+    <ul>
+      <li>Artikel 21 i NIS2 ställer tio konkreta tekniska krav — inte vaga rekommendationer utan lagstadgade skyldigheter.</li>
+      <li>Du behöver inte förstå tekniken i detalj, men du måste kunna bekräfta att åtgärderna finns och fungerar.</li>
+      <li>Lösenordshantering, MFA, patchning, backup, kryptering och incidentrespons är kärnkraven — alla med direkta sanktionskonsekvenser.</li>
+      <li>Som styrelseledamot är du personligt ansvarig för att dessa åtgärder är godkända och dokumenterade.</li>
+    </ul>
+  </div>
+
+  <!-- KEY TAKEAWAY -->
+  <div class="box-takeaway">
+    <div class="takeaway-label">Viktigaste slutsatsen</div>
+    <p>Du behöver inte vara tekniker för att förstå NIS2:s tekniska krav — men du måste förstå dem tillräckligt för att ställa rätt frågor till din IT-chef och fatta välgrundade styrelsebeslut. Det är precis vad den här artikeln ger dig.</p>
+  </div>
+
+  <!-- HOOK -->
+  <p>
+    Din IT-chef säger att allt är under kontroll. Men menar hen det i lagens mening — eller i teknikerns mening?
+    Det är inte samma sak. <strong>Artikel 21 i NIS2-direktivet</strong>, implementerat i Sverige genom cybersäkerhetslagen (2024:1056), ställer specifika och mätbara krav på teknisk säkerhet. De kan inte delegeras bort. De kan inte ersättas med goda intentioner. Och de kan inte verifieras utan att du som styrelseledamot faktiskt vet vad du ska fråga efter.
+  </p>
+
+  <p>
+    Den här artikeln bryter ned Artikel 21 i sex konkreta delar som varje styrelseledamot bör känna igen: lösenordshantering, multifaktorautentisering, patchning, backup, kryptering och incidentrespons. För var och en av dem beskriver vi vad lagen kräver, vad du bör fråga din IT-chef — och vad ett svar som "det fixar vi" egentligen innebär i ett tillsynsperspektiv.
+  </p>
+
+  <div class="box-warning">
+    <strong>Ansvaret är ditt, inte IT-chefens.</strong> Artikel 20 i NIS2 slår fast att ledningsorgan — VD och styrelseledamöter — personligen ska godkänna de tekniska säkerhetsåtgärderna och kan hållas ansvariga om de saknas. Det räcker inte att IT-avdelningen "hanterar det". Du måste kunna visa att du förstod, beslutade och dokumenterade.
+  </div>
+
+  <h2>Vad är egentligen Artikel 21?</h2>
+
+  <p>
+    Artikel 21 i NIS2-direktivet är det kapitel som specificerar de <strong>tekniska och organisatoriska säkerhetsåtgärder</strong> som alla reglerade organisationer är skyldiga att ha på plats. Lagen använder formuleringen "lämpliga och proportionella åtgärder" — men det är inte en öppen invitation att göra lite som man vill. ENISA (EU:s cybersäkerhetsbyrå) och tillsynsmyndigheter i hela Europa har gjort klart att det finns en tydlig lägstanivå.
+  </p>
+
+  <p>
+    Artikel 21 listar tio områden. Sex av dem är de som skapar mest friktion i styrelserummet — antingen för att de är felaktigt delegerade, underdokumenterade eller helt enkelt inte implementerade på ett sätt som håller vid granskning. Vi går igenom dem ett efter ett.
+  </p>
+
+  <h2>1. Lösenordshantering — det grundläggande som ofta är fel</h2>
+
+  <p>
+    Lösenord är den enklaste attackvektorn. Och trots det är bristfällig lösenordshantering fortfarande ett av de vanligaste fynden vid säkerhetsgranskningar av medelstora svenska företag. NIS2 kräver inte bara att lösenord "finns" — det kräver att det finns en <strong>dokumenterad policy för lösenordshantering</strong> som tillämpas konsekvent i hela organisationen.
+  </p>
+
+  <p>
+    Vad innebär det i praktiken? Det innebär att organisationen ska ha:
+  </p>
+
+  <ul>
+    <li>Krav på lösenordslängd och komplexitet (branschstandard är minst 12–16 tecken för vanliga konton, längre för administrativa konton)</li>
+    <li>Förbud mot delning av lösenord mellan system och användare</li>
+    <li>En process för att byta lösenord vid misstanke om kompromiss — inte bara vid förutbestämda intervall</li>
+    <li>Centraliserad hantering via lösenordshanterare eller identitetssystem, inte kalkylblad eller Post-it-lappar</li>
+    <li>Inventering och avveckling av standardlösenord på system och enheter</li>
+  </ul>
+
+  <p>
+    Frågan du bör ställa din IT-chef: <em>"Kan du visa mig vår dokumenterade lösenordspolicy och bekräfta att den tillämpas tekniskt — inte bara på papper?"</em> Om svaret är tvekande eller inte inkluderar teknisk enforcement, har ni en lucka att täppa till.
+  </p>
+
+  <h2>2. Multifaktorautentisering (MFA) — inte valfritt längre</h2>
+
+  <p>
+    Multifaktorautentisering — att logga in kräver något mer än bara ett lösenord, till exempel en kod i mobilen eller ett fingeravtryck — är inte längre en "nice-to-have". Under NIS2 är det ett explicit krav för åtkomst till känsliga system och data.
+  </p>
+
+  <p>
+    Artikel 21 anger specifikt att <strong>autentiseringslösningar</strong> ska vara robusta och att MFA ska tillämpas där risken motiverar det. Tillsynsmyndigheter och ENISA har förtydligat att detta i praktiken innebär MFA på:
+  </p>
+
+  <ul>
+    <li>Alla administrativa konton och privilegierade åtkomster</li>
+    <li>Fjärråtkomst till verksamhetens system (VPN, RDP, molntjänster)</li>
+    <li>E-post och samarbetsplattformar med känslig information</li>
+    <li>Ekonomisystem, HR-system och system med personuppgifter</li>
+  </ul>
+
+  <p>
+    Det räcker inte att MFA är <em>tillgängligt</em>. Det ska vara <em>påtvingat</em> — det vill säga att det tekniskt inte ska gå att logga in utan det, inte att det är valfritt för användaren.
+  </p>
+
+  <div class="box-info">
+    <strong>Vad du bör veta:</strong> SMS-baserad MFA är accepterat men anses svagare än appbaserade lösningar (som Microsoft Authenticator eller Google Authenticator) och hårdvarunycklar (som YubiKey). För system med särskilt hög risk — exempelvis finansiella system eller kritisk infrastruktur — rekommenderar ENISA starkare metoder. Fråga din IT-chef vilken typ av MFA ni använder och var.
+  </div>
+
+  <h2>3. Patchning — att hålla system uppdaterade är en laglig skyldighet</h2>
+
+  <p>
+    Varje vecka publiceras hundratals säkerhetssårbarheter i mjukvara och operativsystem. En del av dem är kritiska — de kan utnyttjas av en angripare för att ta full kontroll över ett system inom timmar från att sårbarheten blivit känd. Patchning är processen att installera säkerhetsuppdateringar som täpper till dessa hål.
+  </p>
+
+  <p>
+    NIS2 kräver att organisationer har en <strong>strukturerad och dokumenterad process för hantering av sårbarheter</strong>. Det betyder inte att varje uppdatering måste installeras samma dag den släpps — det betyder att det måste finnas ett system för att:
+  </p>
+
+  <ul>
+    <li>Kontinuerligt övervaka och identifiera nya säkerhetssårbarheter</li>
+    <li>Prioritera sårbarheter baserat på allvarlighetsgrad och exponering</li>
+    <li>Installera kritiska säkerhetsuppdateringar inom en definierad tidsram (branschstandard: kritiska sårbarheter inom 72 timmar till 7 dagar)</li>
+    <li>Dokumentera vilka system som är patchade, när, och av vem</li>
+    <li>Hantera system som av tekniska skäl inte kan patchas med kompenserande åtgärder</li>
+  </ul>
+
+  <p>
+    Det sista punkten är viktig: äldre system som inte längre får säkerhetsuppdateringar från leverantören — så kallade "end-of-life"-system — är en av de vanligaste anledningarna till allvarliga intrång. NIS2 kräver inte att ni byter ut dem omedelbart, men det kräver att ni kan visa att ni är medvetna om risken och vidtagit kompenserande åtgärder.
+  </p>
+
+  <p>
+    Frågan till IT-chefen: <em>"Hur lång tid tar det i genomsnitt innan vi installerar en kritisk säkerhetsuppdatering? Och har vi system som inte längre får uppdateringar — och i så fall, vad gör vi åt det?"</em>
+  </p>
+
+  <h2>4. Backup — inte bara att ta säkerhetskopior, utan att kunna återställa</h2>
+
+  <p>
+    Backup är ett område där organisationer ofta tror att de har koll — och sedan under ett faktiskt intrång upptäcker att de har det halvdant. Att ta säkerhetskopior är en sak. Att kunna återställa verksamheten från dem är en annan.
+  </p>
+
+  <p>
+    NIS2 kräver, under kravet på <strong>kontinuitet och krishantering</strong> i Artikel 21, att organisationer kan upprätthålla eller snabbt återställa sin verksamhet efter en incident. Det ställer konkreta krav på backup-rutiner:
+  </p>
+
+  <ul>
+    <li>Regelbunden och automatiserad backup av alla verksamhetskritiska system och data</li>
+    <li>Säkerhetskopior som förvaras <em>separerat</em> från huvudsystemen — helst offline eller i ett isolerat miljö — för att överleva ett ransomware-angrepp som krypterar allt det angriparen kommer åt</li>
+    <li>Dokumenterad återställningsplan (RTO — hur lång tid återställning tar, RPO — hur mycket data som max kan gå förlorat)</li>
+    <li>Regelbundna tester av återställningsförmågan — minst en gång per år, helst oftare</li>
+    <li>Kryptering av säkerhetskopior för att skydda data i transit och i vila</li>
+  </ul>
+
+  <p>
+    Det klassiska misstaget: backupen tas varje natt men har aldrig testats. Organisationen drabbas av ransomware. IT-avdelningen försöker återställa — och inser att backuperna antingen är krypterade av angriparen, är korrupta, eller att återställningsprocessen tar tre gånger längre än förväntat. Resultatet är veckor av driftstopp och miljontals kronor i förluster.
+  </p>
+
+  <p>
+    Frågan till IT-chefen: <em>"När testade vi senast en faktisk återställning från backup — inte att kontrollelra att backupen finns, utan att faktiskt återställa ett system? Och hur lång tid tog det?"</em>
+  </p>
+
+  <h2>5. Kryptering — data ska vara skyddad även när den stjäls</h2>
+
+  <p>
+    Kryptering innebär att data görs oläslig för den som inte har rätt nyckel. Det är ett av de mest fundamentala skyddslagren i modern cybersäkerhet — och ett explicit krav i Artikel 21 under rubriken om <strong>kryptering och kryptografiska åtgärder</strong>.
+  </p>
+
+  <p>
+    I praktiken innebär NIS2:s krypteringskrav att organisationen ska ha:
+  </p>
+
+  <ul>
+    <li><strong>Kryptering av data i vila</strong> — databaser, filer och lagringsmedia som innehåller känslig information ska vara krypterade, så att fysisk åtkomst till en hårddisk inte ger åtkomst till data</li>
+    <li><strong>Kryptering av data i transit</strong> — all kommunikation mellan system, och all extern kommunikation med känslig information, ska ske över krypterade kanaler (HTTPS, TLS, VPN)</li>
+    <li><strong>Hantering av kryptografiska nycklar</strong> — en policy för hur krypteringsnycklar genereras, lagras, roteras och avslutas; nycklar som förloras innebär permanent dataförlust, nycklar som stjäls innebär att krypteringen är värdelös</li>
+    <li><strong>Kryptering av bärbara enheter och mobila medier</strong> — laptops, USB-minnen och telefoner med känslig data ska vara helkrypterade</li>
+  </ul>
+
+  <p>
+    Kryptering skyddar inte mot intrång — men det begränsar skadan drastiskt. Om en angripare lyckas stjäla krypterad data utan att ha nycklarna är datan i praktiken värdelös för hen. Det påverkar också anmälningsplikten under GDPR: en dataläcka av krypterad data behöver i många fall inte rapporteras som ett personuppgiftsbrott om krypteringen håller.
+  </p>
+
+  <h2>6. Incidentrespons — hur snabbt kan ni reagera, och kan ni bevisa det?</h2>
+
+  <p>
+    Incidentrespons är den process som aktiveras när något går fel — ett intrång, ett ransomware-angrepp, ett dataläckage. Artikel 21 kräver att organisationen har en <strong>dokumenterad och testad incidenthanteringsprocess</strong>. Artikel 23 kräver dessutom att allvarliga incidenter rapporteras till tillsynsmyndigheten inom <strong>24 timmar</strong> som tidig varning och inom <strong>72 timmar</strong> som fullständig rapport.
+  </p>
+
+  <p>
+    En fungerande incidentrespons-process innehåller:
+  </p>
+
+  <ul>
+    <li>En definierad incidenthanteringsplan med tydliga roller — vem gör vad, vem beslutar vad, vem kommunicerar med tillsynsmyndigheten</li>
+    <li>En process för att klassificera incidenter och avgöra om de når tröskeln för rapporteringsplikt</li>
+    <li>Kontaktlistor för tillsynsmyndigheten, juridiska rådgivare, PR och ledning — uppdaterade och tillgängliga utan att man behöver logga in på de system som är komprometterade</li>
+    <li>Rutiner för att säkra bevisning — loggar och forensiska spår ska bevaras, inte raderas vid en återställning</li>
+    <li>Regelbundna övningar: tabletop-övningar (diskussionsbaserade scenarier) minst en gång per år</li>
+  </ul>
+
+  <p>
+    Det som tillsynsmyndigheten granskar är inte bara om ni hade en incident — det är om ni hade en plan, följde den och rapporterade i tid. Att improvisera en respons är inte ett godkänt svar. Att ha improviserat en respons och inte rapporterat inom 72 timmar är en dubbel sanktionsrisk.
+  </p>
+
+  <div class="box-case">
+    <div class="case-label">Fallstudie</div>
+    <p>
+      <strong>Scenario: Regionalt logistikföretag, 220 anställda, klassas som viktig entitet.</strong>
+    </p>
+    <p>
+      Företaget drabbas av ett ransomware-angrepp i januari 2026. IT-avdelningen identifierar intrånget på dag ett. Ledningen samlas för ett krismöte, men ingen är säker på om incidenten är anmälningspliktig — ingen incidenthanteringsplan finns dokumenterad och det är oklart vem som har mandat att rapportera till MSB.
+    </p>
+    <p>
+      Beslutet att "utreda vidare innan vi rapporterar" tas på dag tre. 72-timmarsfristen passerar utan rapportering. IT-avdelningen återställer systemen från backup — men backupen är tre dagar gammal och det visar sig att inte alla affärskritiska system ingick i backup-rutinen.
+    </p>
+    <p>
+      En affärspartner som märker driftstörningar anmäler detta till sektorsvis tillsynsmyndighet. Granskning inleds. Vid tillsynsbesöket saknas: dokumenterad incidenthanteringsplan, styrelsebeslut om tekniska säkerhetsåtgärder, backup-testprotokoll och MFA på externa åtkomster.
+    </p>
+    <p>
+      <strong>Utfall:</strong> Sanktionsavgift för utebliven rapportering inom 72 timmar. Ytterligare avgift för bristande säkerhetsåtgärder enligt Artikel 21. Styrelseordföranden erhåller formell notering om personligt ansvar. Total bedömd kostnad inklusive driftstopp, juridisk hantering och sanktioner: <span class="danger">uppskattad 15–22 miljoner kronor</span>.
+    </p>
+  </div>
+
+  <h2>Vad innebär "personligt ansvar" konkret för dig som styrelseledamot?</h2>
+
+  <p>
+    Vi har nämnt Artikel 20 tidigare, men det förtjänar ett eget avsnitt — för det är här många styrelseledamöter underskattar sin exponering.
+  </p>
+
+  <p>
+    Artikel 20 i NIS2-direktivet anger explicit att <strong>ledningsorganen</strong> — inte IT-avdelningen, inte CISO:n, inte en extern konsult — ska godkänna de säkerhetsåtgärder som krävs enligt Artikel 21, övervaka deras genomförande och bär ansvaret om de brister. Det är ett aktivt ansvar, inte ett passivt. Att inte ha tagit del av statusrapporterna, att inte ha fattat formella beslut, att inte ha protokollfört att styrelsen behandlat frågan — allt det kan tolkas som brist på aktivt ledningsansvar.
+  </p>
+  <p>
+    I praktiken innebär det att VD och styrelse behöver: godkänna er tekniska säkerhetsplan i protokollfört styrelsebeslut, få kvartalsvis statusuppdatering om genomförandet, och ha utbildning i cybersäkerhetsrisker dokumenterad i era styrelseprotokoll. Det är inte ett krav på teknisk kompetens — det är ett krav på informerat beslutsfattande.
+  </p>
+
+  <h2>Var börjar man?</h2>
+  <p>
+    Det vanligaste misstaget är att försöka implementera alla åtta åtgärdsområden parallellt. Det leder till att ingenting blir klart och ingenting blir dokumenterat. En mer effektiv approach är att börja med en gap-analys — en strukturerad genomgång av vad ni har, vad ni delvis har och vad ni saknar inom varje område.
+  </p>
+  <p>
+    Gap-analysen tar en till två dagar med rätt stöd. Den ger er tre saker: en tydlig prioriteringslista, ett underlag för styrelsebeslut, och en startpunkt för dokumentationen. Utan den startar ni i mörkret.
+  </p>
+
+<style>
+  .capture-form-section { background: #1c1c1f; border: 1px solid rgba(245,197,24,0.25); border-top: 3px solid var(--yellow); border-radius: 4px; padding: 40px; margin: 64px 0 40px; }
+  .capture-form-section h2 { margin-top: 0; font-size: 24px; font-family: 'Poppins', sans-serif; font-weight: 800; margin-bottom: 12px; }
+  .capture-form-section .sub { color: #aaa; font-size: 15px; margin-bottom: 24px; }
+  .capture-input { display: block; width: 100%; background: #222226; border: 1px solid #2e2e33; border-radius: 4px; padding: 13px 16px; font-size: 15px; color: #f0f0f0; font-family: 'Barlow', sans-serif; outline: none; transition: border-color 0.2s; margin-bottom: 12px; }
+  .capture-input:focus { border-color: var(--yellow); }
+  .capture-input::placeholder { color: #666; }
+  .capture-submit-btn { background: var(--yellow); color: #000; border: none; border-radius: 4px; padding: 14px 28px; font-family: 'Poppins', sans-serif; font-size: 15px; font-weight: 800; cursor: pointer; transition: background 0.2s; width: 100%; }
+  .capture-submit-btn:hover { background: #e8d800; }
+  .capture-submit-btn:disabled { opacity: 0.6; cursor: not-allowed; }
+  .capture-thanks-msg { padding: 16px; background: rgba(34,197,94,0.1); border: 1px solid rgba(34,197,94,0.3); border-radius: 4px; color: #86efac; font-size: 15px; text-align: center; display: none; }
+</style>
+
+  <!-- CTA — inline lead capture -->
+  <div class="capture-form-section">
+    <h2>Vet du var din organisation står idag?</h2>
+    <p class="sub">En kostnadsfri NIS2-genomgång på 20 minuter visar exakt vad som saknas — innan tillsynsmyndigheten frågar. Böterna är upp till <strong style="color:#f0f0f0">10 miljoner euro</strong>. Samtalet är gratis.</p>
+    <form id="tekniskaAtgForm" onsubmit="submittekniskaAtg(event)">
+      <input class="capture-input" type="text"  id="tekniskaAtgName"    placeholder="Ditt namn"        autocomplete="name" />
+      <input class="capture-input" type="email" id="tekniskaAtgEmail"   placeholder="E-postadress *"   autocomplete="email" required />
+      <input class="capture-input" type="text"  id="tekniskaAtgCompany" placeholder="Bolagets namn *"  required />
+      <button type="submit" class="capture-submit-btn" id="tekniskaAtgSubmit">Boka kostnadsfri genomgång →</button>
+    </form>
+    <div class="capture-thanks-msg" id="tekniskaAtgThanks">✅ Tack! Vi hör av oss inom 24 timmar.</div>
+  </div>
+
+</article>
+
+<footer>
+  © 2026 M&J Trusted Marketing KB ·
+  <a href="mailto:support@trustedmarketing.se">support@trustedmarketing.se</a> ·
+  <a href="/nis2.html">Tillbaka till startsidan</a> ·
+  <a href="/privacy.html">Integritetspolicy</a>
+</footer>
+
+<script>
+  async function submittekniskaAtg(e) {
+    e.preventDefault();
+    const btn = document.getElementById('tekniskaAtgSubmit');
+    btn.disabled = true;
+    btn.textContent = 'Skickar...';
+    const payload = {
+      name:       document.getElementById('tekniskaAtgName').value.trim(),
+      email:      document.getElementById('tekniskaAtgEmail').value.trim(),
+      company:    document.getElementById('tekniskaAtgCompany').value.trim(),
+      source:     'nis2-tekniska-atgarder',
+      score_data: null
+    };
+    try {
+      const res  = await fetch('/api/inbound', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) });
+      const data = await res.json();
+      if (data.success) {
+        document.getElementById('tekniskaAtgForm').style.display = 'none';
+        document.getElementById('tekniskaAtgThanks').style.display = 'block';
+      } else {
+        btn.disabled = false;
+        btn.textContent = 'Boka kostnadsfri genomgång →';
+        alert('Något gick fel, försök igen.');
+      }
+    } catch (err) {
+      btn.disabled = false;
+      btn.textContent = 'Boka kostnadsfri genomgång →';
+      alert('Något gick fel, försök igen.');
+    }
+  }
+</script>
+</body>
+</html>

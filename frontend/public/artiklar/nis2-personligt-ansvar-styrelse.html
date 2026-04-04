@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NIS2 och styrelsens personliga ansvar — det ingen vill prata om | NIS2Klar</title>
+  <meta name="description" content="VD och styrelseledamöter är personligt ansvariga under NIS2. Läs om konkreta scenarier, hur tillsynsärenden ser ut, skillnaden mot GDPR-ansvar och risken för yrkesförbud.">
+  <meta property="og:title" content="NIS2 och styrelsens personliga ansvar — det ingen vill prata om">
+  <meta property="og:description" content="VD och styrelseledamöter är personligt ansvariga under NIS2. Konkreta scenarier, tillsynsärenden och risken för yrkesförbud.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #141416;
+      --card: #1c1c1f;
+      --yellow: #f5c518;
+      --white: #f0f0f0;
+      --muted: #888;
+      --red: #C61212;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: var(--bg); color: var(--white); font-family: 'Barlow', sans-serif; font-size: 19px; line-height: 1.8; }
+
+    /* Nav */
+    nav { display: flex; justify-content: space-between; align-items: center; padding: 20px 40px; border-bottom: 1px solid rgba(255,255,255,0.07); max-width: 900px; margin: 0 auto; }
+    .nav-logo { font-family: 'Poppins', sans-serif; font-weight: 900; font-size: 20px; color: var(--yellow); text-decoration: none; }
+    .nav-logo span { color: var(--white); }
+    .nav-back { color: var(--muted); text-decoration: none; font-size: 15px; }
+    .nav-back:hover { color: var(--white); }
+    .nav-cta { background: var(--yellow); color: #000; padding: 8px 18px; border-radius: 4px; text-decoration: none; font-weight: 700; font-size: 14px; font-family: 'Poppins', sans-serif; }
+
+    /* Article */
+    .article-wrap { max-width: 760px; margin: 0 auto; padding: 60px 40px; }
+    .article-category { font-size: 13px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 16px; }
+    h1 { font-family: 'Poppins', sans-serif; font-size: clamp(30px, 4vw, 44px); font-weight: 900; line-height: 1.2; margin-bottom: 24px; }
+    .article-meta { font-size: 15px; color: var(--muted); margin-bottom: 48px; padding-bottom: 24px; border-bottom: 1px solid rgba(255,255,255,0.07); }
+    h2 { font-family: 'Poppins', sans-serif; font-size: 26px; font-weight: 700; margin: 48px 0 16px; color: var(--white); }
+    h3 { font-family: 'Poppins', sans-serif; font-size: 20px; font-weight: 600; margin: 32px 0 12px; color: var(--yellow); }
+    p { margin-bottom: 22px; }
+    strong { color: var(--white); font-weight: 700; }
+    .highlight { color: var(--yellow); font-weight: 700; }
+    .danger { color: #ff6b6b; font-weight: 700; }
+    ul, ol { margin: 16px 0 24px 24px; }
+    li { margin-bottom: 12px; font-size: 19px; }
+
+    /* Callout boxes */
+    .box-warning { background: rgba(197,17,17,0.12); border-left: 4px solid var(--red); padding: 20px 24px; margin: 32px 0; border-radius: 0 4px 4px 0; }
+    .box-info { background: rgba(245,197,24,0.08); border-left: 4px solid var(--yellow); padding: 20px 24px; margin: 32px 0; border-radius: 0 4px 4px 0; }
+    .box-case { background: var(--card); border: 1px solid rgba(255,255,255,0.08); padding: 28px; margin: 40px 0; border-radius: 4px; }
+    .box-case .case-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 12px; }
+    blockquote { border-left: 3px solid var(--yellow); padding: 12px 20px; margin: 24px 0; font-style: italic; color: #ccc; }
+
+    /* CTA */
+    .cta-section { background: var(--card); border: 1px solid rgba(245,197,24,0.2); border-radius: 4px; padding: 48px 40px; margin: 64px 0 40px; text-align: center; }
+    .cta-section h2 { margin-top: 0; font-size: 26px; }
+    .cta-section p { color: #aaa; max-width: 500px; margin: 0 auto 28px; }
+    .btn-primary { display: inline-block; background: var(--yellow); color: #000; font-family: 'Poppins', sans-serif; font-weight: 800; font-size: 16px; padding: 16px 36px; border-radius: 4px; text-decoration: none; }
+    .btn-primary:hover { background: #e0b010; }
+    .cta-fine { font-size: 13px; color: var(--muted); margin-top: 16px; }
+
+    /* FAQ */
+    .faq-item { border-bottom: 1px solid rgba(255,255,255,0.07); padding: 20px 0; }
+    .faq-q { font-family: 'Poppins', sans-serif; font-weight: 600; margin-bottom: 10px; }
+    .faq-a { color: #bbb; }
+
+    /* Fine table */
+    .fine-table { width: 100%; border-collapse: collapse; margin: 24px 0; }
+    .fine-table th { background: rgba(245,197,24,0.1); color: var(--yellow); font-family: 'Poppins', sans-serif; font-size: 13px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 12px 16px; text-align: left; border-bottom: 1px solid rgba(245,197,24,0.2); }
+    .fine-table td { padding: 14px 16px; border-bottom: 1px solid rgba(255,255,255,0.05); font-size: 15px; }
+    .fine-table tr:last-child td { border-bottom: none; }
+    .fine-table .amount { color: #ff6b6b; font-weight: 700; }
+
+    /* Summary + Key Takeaway */
+    .box-summary { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; padding: 24px 28px; margin: 0 0 32px; }
+    .summary-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-bottom: 14px; }
+    .box-summary ul { margin: 0; padding-left: 20px; }
+    .box-summary li { margin-bottom: 8px; font-size: 17px; color: #ccc; }
+    .box-takeaway { background: rgba(245,197,24,0.08); border-left: 4px solid var(--yellow); padding: 20px 24px; margin: 0 0 40px; border-radius: 0 4px 4px 0; }
+    .takeaway-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 10px; }
+    .box-takeaway p { margin: 0; font-size: 18px; font-weight: 600; color: var(--white); line-height: 1.6; }
+
+    /* Footer */
+    footer { border-top: 1px solid rgba(255,255,255,0.07); padding: 32px 40px; text-align: center; font-size: 13px; color: var(--muted); max-width: 900px; margin: 0 auto; }
+    footer a { color: var(--muted); }
+
+    @media (max-width: 600px) {
+      nav, .article-wrap, footer { padding: 20px; }
+      .cta-section { padding: 32px 20px; }
+      .fine-table { font-size: 14px; }
+      .fine-table th, .fine-table td { padding: 10px 10px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="https://nis2klar.se/">NIS2<span>Klar</span></a>
+  <a class="nav-back" href="https://nis2klar.se/artiklar.html">← Alla artiklar</a>
+  <a class="nav-cta" href="/nis2.html#boka">Boka samtal →</a>
+</nav>
+
+<article class="article-wrap">
+  <div class="article-category">Personligt ansvar &amp; Styrning</div>
+  <h1>NIS2 och styrelsens personliga ansvar — det ingen vill prata om</h1>
+  <div class="article-meta">Uppdaterad 31 mars 2026 · Lästid: ca 10 minuter · Målgrupp: VD, styrelseordförande, styrelseledamöter</div>
+
+  <!-- SUMMARY -->
+  <div class="box-summary">
+    <div class="summary-label">Sammanfattning</div>
+    <ul>
+      <li>NIS2:s Artikel 20 gör VD och styrelseledamöter <strong>personligt ansvariga</strong> för organisationens cybersäkerhet.</li>
+      <li>Konsekvenserna är inte bara böter mot bolaget — du kan få <strong>tillfälligt förbud att inneha ledande befattning</strong>.</li>
+      <li>Ansvaret går längre än GDPR: det räcker inte att utse ett dataskyddsombud och delegera.</li>
+      <li>Tillsynsmyndigheten bedömer inte din intention — den bedömer din dokumentation.</li>
+      <li>Vi beskriver exakt hur ett tillsynsärende ser ut, steg för steg, så att du kan förbereda dig.</li>
+    </ul>
+  </div>
+
+  <!-- KEY TAKEAWAY -->
+  <div class="box-takeaway">
+    <div class="takeaway-label">Viktigaste slutsatsen</div>
+    <p>Det personliga ansvaret under NIS2 kan inte delegeras bort. Du som VD eller styrelseledamot måste kunna visa att du aktivt godkänt, övervakat och dokumenterat organisationens cybersäkerhetsåtgärder — annars riskerar du ditt uppdrag, din karriär och din privatekonomiska trygghet.</p>
+  </div>
+
+  <!-- HOOK -->
+  <p>
+    Det finns en mening i NIS2-direktivet som de flesta VD:ar och styrelseledamöter aldrig har läst. Den står i Artikel 20, punkt 1, och den lyder i korthet: <em>ledningsorganen i väsentliga och viktiga entiteter ska godkänna de cybersäkerhetsåtgärder som organisationen vidtar och kan hållas ansvariga för överträdelser.</em>
+  </p>
+
+  <p>
+    Inte IT-chefen. Inte säkerhetschefen. Inte den externa konsulten. <strong>Du.</strong> Den som sitter i styrelserummet och fattar besluten. Den som signerar årsredovisningen. Den som har det yttersta ansvaret för att verksamheten följer lagen.
+  </p>
+
+  <p>
+    I Sverige implementerades NIS2 genom cybersäkerhetslagen (2024:1056), som trädde i kraft i oktober 2024. Sedan dess har tillsynsmyndigheterna börjat sina granskningar. Och det de letar efter är inte avancerad teknik — det är bevis på att ledningen har tagit sitt ansvar.
+  </p>
+
+  <p>
+    Den här artikeln handlar om det ansvar som ingen på styrelsemiddagen vill prata om. Vi går igenom exakt vad lagen säger, hur ett tillsynsärende ser ut i praktiken, vad som skiljer NIS2-ansvar från GDPR-ansvar, och vilka konkreta konsekvenser som väntar den som blundar.
+  </p>
+
+  <div class="box-warning">
+    <strong>Det här är inte en teoretisk risk.</strong> NIS2-direktivets personliga ansvarsbestämmelser saknar motstycke i svensk cybersäkerhetslagstiftning. Till skillnad från tidigare regelverk kan tillsynsmyndigheten rikta åtgärder direkt mot dig som fysisk person — inte bara mot bolaget du leder.
+  </div>
+
+  <h2>Vad Artikel 20 faktiskt kräver av dig</h2>
+
+  <p>
+    Låt oss vara precisa. NIS2-direktivets Artikel 20 ställer tre uttryckliga krav på ledningsorganen — det vill säga styrelsen och den verkställande ledningen — i alla organisationer som omfattas av lagen:
+  </p>
+
+  <ol>
+    <li><strong>Godkänna cybersäkerhetsåtgärderna.</strong> Styrelsen ska aktivt ta ställning till de riskhanteringsåtgärder som organisationen vidtar enligt Artikel 21. Det innebär att det ska finnas ett formellt styrelsebeslut som dokumenterar att åtgärderna har presenterats, diskuterats och godkänts.</li>
+    <li><strong>Övervaka genomförandet.</strong> Det räcker inte att godkänna en policy och lägga den i en pärm. Ledningen ska löpande följa upp att åtgärderna faktiskt implementeras och fungerar. Det ska finnas uppföljningsrutiner, rapporteringspunkter och tydliga ansvarslinjer.</li>
+    <li><strong>Genomgå utbildning.</strong> Artikel 20 kräver uttryckligen att ledningsorganens medlemmar ska genomgå cybersäkerhetsutbildning. Du behöver inte bli teknisk expert, men du ska ha tillräcklig kunskap för att förstå de risker och åtgärder som presenteras för dig.</li>
+  </ol>
+
+  <p>
+    Märk väl: inget av dessa tre krav kan uppfyllas genom delegering. Du kan anlita konsulter. Du kan ha en fantastisk IT-avdelning. Men det formella ansvaret stannar hos dig. Och det är det ansvaret tillsynsmyndigheten granskar.
+  </p>
+
+  <h2>Konsekvenserna — bortom böterna</h2>
+
+  <p>
+    De flesta som hört talas om NIS2 vet att böterna kan bli höga — upp till tio miljoner euro eller två procent av global omsättning för väsentliga entiteter. Men det personliga ansvaret handlar om något annat och potentiellt värre.
+  </p>
+
+  <h3>Tillfälligt yrkesförbud</h3>
+  <p>
+    NIS2-direktivets Artikel 32.5(b) ger tillsynsmyndigheten befogenhet att begära att en person tillfälligt förbjuds att utöva ledningsfunktioner i den berörda entiteten. I den svenska implementeringen innebär det att en tillsynsmyndighet kan vända sig till förvaltningsrätten med en begäran om att en VD eller styrelseledamot ska hindras från att utöva sitt uppdrag.
+  </p>
+
+  <p>
+    Det här är inte en böter som bolaget betalar och går vidare. Det är ett personligt förbud som drabbar dig som individ. Det syns i offentliga register. Det påverkar dina andra styrelseposter. Det följer med dig till nästa rekryteringsprocess.
+  </p>
+
+  <h3>Personligt skadeståndsansvar</h3>
+  <p>
+    Utöver den offentligrättsliga sanktionen öppnar NIS2 för civilrättsliga krav. Om organisationen drabbas av en incident som leder till ekonomisk skada — och det kan visas att ledningen brustit i sitt tillsynsansvar — kan aktieägare, kunder eller affärspartners rikta skadeståndsanspråk mot dig personligen. Styrelseledamöters vårdplikt under aktiebolagslagen förstärks av NIS2:s explicita krav.
+  </p>
+
+  <h3>Försäkringsproblematik</h3>
+  <p>
+    Många styrelseledamöter förlitar sig på sin D&O-försäkring (Directors and Officers). Men de flesta D&O-försäkringar har undantag för situationer där den försäkrade medvetet eller genom grov oaktsamhet har underlåtit att vidta lagstadgade åtgärder. Om du inte kan visa att du aktivt arbetat med NIS2-efterlevnad riskerar du att stå utan försäkringsskydd just när du behöver det som mest.
+  </p>
+
+  <div class="box-info">
+    <strong>Skillnaden är avgörande:</strong> Böter mot bolaget är en kostnad som belastar verksamheten. Personligt ansvar under Artikel 20 är en konsekvens som belastar dig — din karriär, din privatekonomiska trygghet och ditt rykte. Det är två helt olika riskklasser, och den personliga risken är den som de flesta underskattar.
+  </div>
+
+  <h2>NIS2 kontra GDPR — varför det här är annorlunda</h2>
+
+  <p>
+    När GDPR trädde i kraft 2018 var reaktionen i många styrelser att utse ett dataskyddsombud och delegera frågan. Det fungerade — åtminstone juridiskt — eftersom GDPR inte ställer samma explicita krav på ledningsorganens personliga delaktighet. NIS2 är konstruerat annorlunda, och skillnaden är avgörande.
+  </p>
+
+  <table class="fine-table">
+    <thead>
+      <tr>
+        <th>Aspekt</th>
+        <th>GDPR</th>
+        <th>NIS2</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Vem ansvarar formellt?</td>
+        <td>Den personuppgiftsansvarige (juridisk person)</td>
+        <td>Ledningsorganen (fysiska personer i styrelse och VD-roll)</td>
+      </tr>
+      <tr>
+        <td>Kan ansvaret delegeras?</td>
+        <td>Delvis — genom DPO och processer</td>
+        <td class="amount">Nej — Artikel 20 är explicit</td>
+      </tr>
+      <tr>
+        <td>Personliga sanktioner?</td>
+        <td>Sällsynt — böter riktas mot organisationen</td>
+        <td class="amount">Ja — yrkesförbud möjligt</td>
+      </tr>
+      <tr>
+        <td>Utbildningskrav på ledning?</td>
+        <td>Inga formella krav</td>
+        <td class="amount">Obligatorisk utbildning i Artikel 20</td>
+      </tr>
+      <tr>
+        <td>Proaktiv tillsyn?</td>
+        <td>Främst reaktiv (efter klagomål/incident)</td>
+        <td>Både proaktiv och reaktiv för väsentliga entiteter</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>
+    Med andra ord: den strategi som fungerade för GDPR — utse någon ansvarig, dokumentera en policy, vänta och se — fungerar inte för NIS2. Direktivet är medvetet utformat för att tvinga fram aktivt engagemang från styrelsens sida. Lagstiftarna i Bryssel hade sett att GDPR-delegering ledde till bristande ledarskapsförankring, och de ville inte upprepa det misstaget.
+  </p>
+
+  <h2>Så ser ett tillsynsärende ut — steg för steg</h2>
+
+  <p>
+    Abstrakt risk är lätt att skjuta ifrån sig. Därför beskriver vi här exakt hur ett typiskt tillsynsärende under NIS2 ser ut i Sverige, från start till slut. Det här är baserat på den tillsynsmodell som MSB och sektoriella tillsynsmyndigheter har kommunicerat.
+  </p>
+
+  <h3>Steg 1: Initiering</h3>
+  <p>
+    Tillsynen kan initieras på tre sätt: genom proaktiv granskning (tillsynsmyndigheten väljer ut organisationer för kontroll), genom reaktiv granskning (efter en incident eller incidentrapport), eller genom klagomål (en anställd, affärspartner, kund eller annan EU-myndighet anmäler en misstänkt brist). För väsentliga entiteter genomförs proaktiv tillsyn regelbundet — du behöver alltså inte ha gjort något fel för att granskas.
+  </p>
+
+  <h3>Steg 2: Informationsbegäran</h3>
+  <p>
+    Tillsynsmyndigheten skickar en formell begäran om dokumentation. Typiska förfrågningar innefattar: er riskbedömning, säkerhetspolicy antagen av styrelsen, incidenthanteringsplan, leverantörsinventering med säkerhetskrav, utbildningsloggar för ledning och personal, styrelseprotokoll som visar godkännande av säkerhetsåtgärder, samt resultat från eventuella säkerhetsaudits. Svarsfrist: ofta 14 till 30 dagar. Det finns ingen möjlighet till förlängning vid proaktiv tillsyn.
+  </p>
+
+  <h3>Steg 3: Granskning och platsbesök</h3>
+  <p>
+    Baserat på dokumentationen kan tillsynsmyndigheten genomföra platsbesök, intervjua nyckelpersoner — inklusive VD och styrelseledamöter — och begära tekniska demonstrationer av säkerhetssystem. Under intervjun ställs frågor som: "Kan du beskriva den riskbedömning som styrelsen godkänt?" och "Vilken utbildning i cybersäkerhet har styrelseledamöterna genomgått?" Om svaret är tystnad eller osäkerhet dokumenteras det.
+  </p>
+
+  <h3>Steg 4: Preliminära iakttagelser</h3>
+  <p>
+    Tillsynsmyndigheten sammanställer sina iakttagelser och skickar ett utkast till beslut. Här listas de brister som konstaterats, och organisationen ges möjlighet att yttra sig. I det här skedet anlitar de flesta organisationer extern juridisk hjälp — men den hjälpen kan inte kompensera för dokumentation som aldrig skapades.
+  </p>
+
+  <h3>Steg 5: Beslut och sanktioner</h3>
+  <p>
+    Det slutliga beslutet kan innefatta en kombination av åtgärder: förelägganden med vite, sanktionsavgifter, krav på åtgärdsplan med uppföljning, offentliggörande av bristerna, samt — i allvarliga fall — begäran om tillfälligt yrkesförbud för ansvariga personer. Beslutet är överklagbart, men det offentliggörs typiskt redan vid beslutsdatum.
+  </p>
+
+  <div class="box-case">
+    <div class="case-label">Scenario: Tillsynsärende mot en väsentlig entitet</div>
+    <p>
+      <strong>Energibolag med 400 anställda, klassad som väsentlig entitet.</strong>
+    </p>
+    <p>
+      Energimarknadsinspektionen väljer ut bolaget för proaktiv tillsyn i januari 2026. En informationsbegäran skickas med 21 dagars svarsfrist. Bolagets IT-chef sammanställer teknisk dokumentation, men det saknas styrelsebeslut om godkännande av säkerhetsåtgärder enligt Artikel 20. Ingen styrelseledamot har genomgått dokumenterad cybersäkerhetsutbildning. Riskbedömningen är en intern IT-rapport som aldrig presenterats för styrelsen.
+    </p>
+    <p>
+      Vid platsbesöket intervjuas VD, som uppger att "IT-avdelningen har hand om de frågorna." Styrelseordföranden kan inte beskriva vilka säkerhetsåtgärder som vidtagits eller vilka risker organisationen identifierat.
+    </p>
+    <p>
+      <strong>Utfall:</strong> Föreläggande med vite om att vidta specificerade åtgärder inom 90 dagar. Sanktionsavgift för bristande efterlevnad av Artikel 20 och Artikel 21. Tillsynsmyndigheten noterar i beslutet att frågan om tillfälligt yrkesförbud för VD har övervägts men inte verkställts i detta skede, med hänvisning till att bristerna inte bedömts som medvetet vårdslösa. VD:n erhåller en personlig varning. Bolagets totala kostnader — inklusive sanktionsavgift, konsultarvoden, juridisk rådgivning och akut åtgärdsarbete — uppgår till <span class="danger">uppskattningsvis 8 till 15 miljoner kronor</span>. VD:ns rykte tar skada som inte kan mätas i kronor.
+    </p>
+  </div>
+
+  <div class="box-case">
+    <div class="case-label">Scenario: Incident med utebliven rapportering</div>
+    <p>
+      <strong>Logistikföretag med 120 anställda, klassad som viktig entitet.</strong>
+    </p>
+    <p>
+      I mars 2026 drabbas bolaget av ett dataintrång där kunddata exponeras. IT-avdelningen upptäcker intrånget inom 12 timmar men informerar inte ledningen förrän dag tre. VD beslutar att först konsultera advokatbyrån innan rapportering sker. Den tidiga varningen till MSB — som enligt Artikel 23 ska ske inom 24 timmar — skickas först dag fem.
+    </p>
+    <p>
+      En affärspartner som drabbats av driftstörningar anmäler händelsen till Transportstyrelsen. Tillsyn inleds. Granskningen visar att bolaget saknar en dokumenterad incidenthanteringsplan, att styrelsen aldrig formellt behandlat cybersäkerhetsfrågor, och att ingen i ledningen genomgått utbildning.
+    </p>
+    <p>
+      <strong>Utfall:</strong> Dubbla sanktioner — en för utebliven rapportering, en för bristande säkerhetsåtgärder. Tillsynsmyndigheten begär att frågan om VD:ns lämplighet utreds. Bolaget tvingas genomföra en extern säkerhetsrevision på egen bekostnad. Den totala konsekvensen, inklusive kundförluster och avtalsbrottsanspråk från affärspartner, uppskattas till <span class="danger">20 till 30 miljoner kronor</span>. VD:n avgår frivilligt innan yrkesförbud hinner prövas.
+    </p>
+  </div>
+
+  <h2>De fem vanligaste misstagen i styrelserummet</h2>
+
+  <p>
+    Baserat på hur NIS2-implementeringen utvecklas i Sverige och resten av EU ser vi fem återkommande mönster bland organisationer som hamnar i riskzonen:
+  </p>
+
+  <ol>
+    <li><strong>"IT-chefen hanterar det."</strong> Det vanligaste och farligaste misstaget. Artikel 20 gör det omöjligt att delegera bort det formella ansvaret. IT-chefen kan och ska göra det operativa arbetet — men godkännandet och övervakningen måste ligga hos styrelsen.</li>
+    <li><strong>"Vi har en säkerhetspolicy."</strong> En policy som skapades för tre år sedan och aldrig uppdaterats eller formellt antagits av den nuvarande styrelsen har inget bevisvärde. Tillsynsmyndigheten letar efter daterade styrelsebeslut, inte generiska dokument.</li>
+    <li><strong>"Vi har inte haft några incidenter."</strong> Irrelevant. NIS2:s Artikel 21 kräver förebyggande åtgärder som ska finnas på plats oavsett incidenthistorik.</li>
+    <li><strong>"Vi anlitar IT-konsulter."</strong> Extern hjälp är värdefull, men den transfererar inte ansvaret. Artikel 20 lägger ansvaret hos ledningsorganet — inte hos konsultfirman. Styrelsen måste aktivt godkänna och övervaka, även när externt stöd anlitas.</li>
+    <li><strong>"Vi hinner ta tag i det senare."</strong> NIS2-lagen är i kraft. Tillsyn sker utan förvarning och på myndighetens initiativ — inte efter att ni bett om mer tid. Varje månad som passerar utan dokumentation är ytterligare exponering.</li>
+  </ol>
+
+  <h2>Nästa steg — för dig och din styrelse</h2>
+  <p>
+    Det personliga ansvaret under NIS2 är inte en abstraktion. Det är ett konkret rättsligt ansvar som vilar på dig som VD eller styrelseledamot — oavsett om ni upplever er som ett "IT-bolag" eller inte. Tillsynsmyndigheterna har befogenhet att agera proaktivt, och den dokumentation de begär finns antingen hos er eller inte.
+  </p>
+  <p>
+    Det enda säkra läget är att ha genomfört en gap-analys, att styrelsen har fattat dokumenterade beslut om säkerhetsåtgärder, och att ni kan visa att ledningsorganet aktivt deltar i arbetet. Det är precis vad en kostnadsfri NIS2-genomgång med oss ger er som startpunkt.
+  </p>
+
+<style>
+  .capture-form-section { background: #1c1c1f; border: 1px solid rgba(245,197,24,0.25); border-top: 3px solid var(--yellow); border-radius: 4px; padding: 40px; margin: 64px 0 40px; }
+  .capture-form-section h2 { margin-top: 0; font-size: 24px; font-family: 'Poppins', sans-serif; font-weight: 800; margin-bottom: 12px; }
+  .capture-form-section .sub { color: #aaa; font-size: 15px; margin-bottom: 24px; }
+  .capture-input { display: block; width: 100%; background: #222226; border: 1px solid #2e2e33; border-radius: 4px; padding: 13px 16px; font-size: 15px; color: #f0f0f0; font-family: 'Barlow', sans-serif; outline: none; transition: border-color 0.2s; margin-bottom: 12px; }
+  .capture-input:focus { border-color: var(--yellow); }
+  .capture-input::placeholder { color: #666; }
+  .capture-submit-btn { background: var(--yellow); color: #000; border: none; border-radius: 4px; padding: 14px 28px; font-family: 'Poppins', sans-serif; font-size: 15px; font-weight: 800; cursor: pointer; transition: background 0.2s; width: 100%; }
+  .capture-submit-btn:hover { background: #e8d800; }
+  .capture-submit-btn:disabled { opacity: 0.6; cursor: not-allowed; }
+  .capture-thanks-msg { padding: 16px; background: rgba(34,197,94,0.1); border: 1px solid rgba(34,197,94,0.3); border-radius: 4px; color: #86efac; font-size: 15px; text-align: center; display: none; }
+</style>
+
+  <!-- CTA — inline lead capture -->
+  <div class="capture-form-section">
+    <h2>Vet du var din organisation står idag?</h2>
+    <p class="sub">En kostnadsfri NIS2-genomgång på 20 minuter visar exakt vad som saknas — innan tillsynsmyndigheten frågar. Böterna är upp till <strong style="color:#f0f0f0">10 miljoner euro</strong>. Samtalet är gratis.</p>
+    <form id="styrelsePaForm" onsubmit="submitstyrelsePa(event)">
+      <input class="capture-input" type="text"  id="styrelsePaName"    placeholder="Ditt namn"        autocomplete="name" />
+      <input class="capture-input" type="email" id="styrelsePaEmail"   placeholder="E-postadress *"   autocomplete="email" required />
+      <input class="capture-input" type="text"  id="styrelsePaCompany" placeholder="Bolagets namn *"  required />
+      <button type="submit" class="capture-submit-btn" id="styrelsePaSubmit">Boka kostnadsfri genomgång →</button>
+    </form>
+    <div class="capture-thanks-msg" id="styrelsePaThanks">✅ Tack! Vi hör av oss inom 24 timmar.</div>
+  </div>
+
+</article>
+
+<footer>
+  © 2026 M&J Trusted Marketing KB ·
+  <a href="mailto:support@trustedmarketing.se">support@trustedmarketing.se</a> ·
+  <a href="/nis2.html">Tillbaka till startsidan</a> ·
+  <a href="/privacy.html">Integritetspolicy</a>
+</footer>
+
+<script>
+  async function submitstyrelsePa(e) {
+    e.preventDefault();
+    const btn = document.getElementById('styrelsePaSubmit');
+    btn.disabled = true;
+    btn.textContent = 'Skickar...';
+    const payload = {
+      name:       document.getElementById('styrelsePaName').value.trim(),
+      email:      document.getElementById('styrelsePaEmail').value.trim(),
+      company:    document.getElementById('styrelsePaCompany').value.trim(),
+      source:     'nis2-personligt-ansvar',
+      score_data: null
+    };
+    try {
+      const res  = await fetch('/api/inbound', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) });
+      const data = await res.json();
+      if (data.success) {
+        document.getElementById('styrelsePaForm').style.display = 'none';
+        document.getElementById('styrelsePaThanks').style.display = 'block';
+      } else {
+        btn.disabled = false;
+        btn.textContent = 'Boka kostnadsfri genomgång →';
+        alert('Något gick fel, försök igen.');
+      }
+    } catch (err) {
+      btn.disabled = false;
+      btn.textContent = 'Boka kostnadsfri genomgång →';
+      alert('Något gick fel, försök igen.');
+    }
+  }
+</script>
+</body>
+</html>

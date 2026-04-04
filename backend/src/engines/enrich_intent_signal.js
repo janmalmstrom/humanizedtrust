@@ -156,7 +156,8 @@ async function enrichIntentSignals(db) {
 
     // Only update if not already flagged (avoid duplicate score boosts)
     const alreadyFlagged = lead.intent_signal === SIGNAL_TYPE;
-    const newScore = alreadyFlagged ? lead.score : (lead.score || 0) + SCORE_BOOST;
+    const newScore = alreadyFlagged ? lead.score : Math.min(100, (lead.score || 0) + SCORE_BOOST);
+    const newLabel = newScore >= 70 ? 'hot' : newScore >= 40 ? 'warm' : 'cold';
 
     await db.query(`
       UPDATE discovery_leads
@@ -164,9 +165,10 @@ async function enrichIntentSignals(db) {
           intent_signal_at     = NOW(),
           intent_signal_detail = $2,
           score                = $3,
+          score_label          = $4,
           updated_at           = NOW()
-      WHERE id = $4
-    `, [SIGNAL_TYPE, JSON.stringify(detail), newScore, lead.id]);
+      WHERE id = $5
+    `, [SIGNAL_TYPE, JSON.stringify(detail), newScore, newLabel, lead.id]);
 
     leadsUpdated++;
   }

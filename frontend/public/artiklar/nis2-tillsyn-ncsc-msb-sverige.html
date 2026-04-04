@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NIS2-tillsyn i Sverige: NCSC, MSB och vem som kontrollerar dig | NIS2Klar</title>
+  <meta name="description" content="Vem granskar din organisation under NIS2? NCSC, MSB och sektorsspecifika tillsynsmyndigheter. Lär dig hur en tillsynsinspektion går till och vad du måste ha dokumenterat.">
+  <meta property="og:title" content="NIS2-tillsyn i Sverige: NCSC, MSB och vem som kontrollerar dig">
+  <meta property="og:description" content="Vem granskar din organisation under NIS2? NCSC, MSB och sektorsspecifika tillsynsmyndigheter. Lär dig hur en tillsynsinspektion går till och vad du måste ha dokumenterat.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #141416;
+      --card: #1c1c1f;
+      --yellow: #f5c518;
+      --white: #f0f0f0;
+      --muted: #888;
+      --red: #C61212;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: var(--bg); color: var(--white); font-family: 'Barlow', sans-serif; font-size: 19px; line-height: 1.8; }
+
+    /* Nav */
+    nav { display: flex; justify-content: space-between; align-items: center; padding: 20px 40px; border-bottom: 1px solid rgba(255,255,255,0.07); max-width: 900px; margin: 0 auto; }
+    .nav-logo { font-family: 'Poppins', sans-serif; font-weight: 900; font-size: 20px; color: var(--yellow); text-decoration: none; }
+    .nav-logo span { color: var(--white); }
+    .nav-back { color: var(--muted); text-decoration: none; font-size: 15px; }
+    .nav-back:hover { color: var(--white); }
+    .nav-cta { background: var(--yellow); color: #000; padding: 8px 18px; border-radius: 4px; text-decoration: none; font-weight: 700; font-size: 14px; font-family: 'Poppins', sans-serif; }
+
+    /* Article */
+    .article-wrap { max-width: 760px; margin: 0 auto; padding: 60px 40px; }
+    .article-category { font-size: 13px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 16px; }
+    h1 { font-family: 'Poppins', sans-serif; font-size: clamp(30px, 4vw, 44px); font-weight: 900; line-height: 1.2; margin-bottom: 24px; }
+    .article-meta { font-size: 15px; color: var(--muted); margin-bottom: 48px; padding-bottom: 24px; border-bottom: 1px solid rgba(255,255,255,0.07); }
+    h2 { font-family: 'Poppins', sans-serif; font-size: 26px; font-weight: 700; margin: 48px 0 16px; color: var(--white); }
+    h3 { font-family: 'Poppins', sans-serif; font-size: 20px; font-weight: 600; margin: 32px 0 12px; color: var(--yellow); }
+    p { margin-bottom: 22px; }
+    strong { color: var(--white); font-weight: 700; }
+    .highlight { color: var(--yellow); font-weight: 700; }
+    .danger { color: #ff6b6b; font-weight: 700; }
+    ul, ol { margin: 16px 0 24px 24px; }
+    li { margin-bottom: 12px; font-size: 19px; }
+
+    /* Callout boxes */
+    .box-warning { background: rgba(197,17,17,0.12); border-left: 4px solid var(--red); padding: 20px 24px; margin: 32px 0; border-radius: 0 4px 4px 0; }
+    .box-info { background: rgba(245,197,24,0.08); border-left: 4px solid var(--yellow); padding: 20px 24px; margin: 32px 0; border-radius: 0 4px 4px 0; }
+    .box-case { background: var(--card); border: 1px solid rgba(255,255,255,0.08); padding: 28px; margin: 40px 0; border-radius: 4px; }
+    .box-case .case-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 12px; }
+    blockquote { border-left: 3px solid var(--yellow); padding: 12px 20px; margin: 24px 0; font-style: italic; color: #ccc; }
+
+    /* CTA */
+    .cta-section { background: var(--card); border: 1px solid rgba(245,197,24,0.2); border-radius: 4px; padding: 48px 40px; margin: 64px 0 40px; text-align: center; }
+    .cta-section h2 { margin-top: 0; font-size: 26px; }
+    .cta-section p { color: #aaa; max-width: 500px; margin: 0 auto 28px; }
+    .btn-primary { display: inline-block; background: var(--yellow); color: #000; font-family: 'Poppins', sans-serif; font-weight: 800; font-size: 16px; padding: 16px 36px; border-radius: 4px; text-decoration: none; }
+    .btn-primary:hover { background: #e0b010; }
+    .cta-fine { font-size: 13px; color: var(--muted); margin-top: 16px; }
+
+    /* FAQ */
+    .faq-item { border-bottom: 1px solid rgba(255,255,255,0.07); padding: 20px 0; }
+    .faq-q { font-family: 'Poppins', sans-serif; font-weight: 600; margin-bottom: 10px; }
+    .faq-a { color: #bbb; }
+
+    /* Fine table */
+    .fine-table { width: 100%; border-collapse: collapse; margin: 24px 0; }
+    .fine-table th { background: rgba(245,197,24,0.1); color: var(--yellow); font-family: 'Poppins', sans-serif; font-size: 13px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 12px 16px; text-align: left; border-bottom: 1px solid rgba(245,197,24,0.2); }
+    .fine-table td { padding: 14px 16px; border-bottom: 1px solid rgba(255,255,255,0.05); font-size: 15px; }
+    .fine-table tr:last-child td { border-bottom: none; }
+    .fine-table .amount { color: #ff6b6b; font-weight: 700; }
+
+    /* Summary + Key Takeaway */
+    .box-summary { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; padding: 24px 28px; margin: 0 0 32px; }
+    .summary-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-bottom: 14px; }
+    .box-summary ul { margin: 0; padding-left: 20px; }
+    .box-summary li { margin-bottom: 8px; font-size: 17px; color: #ccc; }
+    .box-takeaway { background: rgba(245,197,24,0.08); border-left: 4px solid var(--yellow); padding: 20px 24px; margin: 0 0 40px; border-radius: 0 4px 4px 0; }
+    .takeaway-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 10px; }
+    .box-takeaway p { margin: 0; font-size: 18px; font-weight: 600; color: var(--white); line-height: 1.6; }
+
+    /* Footer */
+    footer { border-top: 1px solid rgba(255,255,255,0.07); padding: 32px 40px; text-align: center; font-size: 13px; color: var(--muted); max-width: 900px; margin: 0 auto; }
+    footer a { color: var(--muted); }
+
+    @media (max-width: 600px) {
+      nav, .article-wrap, footer { padding: 20px; }
+      .cta-section { padding: 32px 20px; }
+      .fine-table { font-size: 14px; }
+      .fine-table th, .fine-table td { padding: 10px 10px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="https://nis2klar.se/">NIS2<span>Klar</span></a>
+  <a class="nav-back" href="https://nis2klar.se/artiklar.html">← Alla artiklar</a>
+  <a class="nav-cta" href="/nis2.html#boka">Boka samtal →</a>
+</nav>
+
+<article class="article-wrap">
+  <div class="article-category">Tillsyn &amp; Kontroll</div>
+  <h1>NIS2-tillsyn i Sverige: NCSC, MSB och vem som kontrollerar dig</h1>
+  <div class="article-meta">Uppdaterad 31 mars 2026 · Lästid: ca 8 minuter · Målgrupp: VD, styrelseordförande, styrelseledamöter</div>
+
+  <!-- SUMMARY -->
+  <div class="box-summary">
+    <div class="summary-label">Sammanfattning</div>
+    <ul>
+      <li>Sverige har ett delat tillsynssystem under NIS2 — NCSC, MSB och sektorsspecifika myndigheter har olika roller.</li>
+      <li>Din bransch avgör vem som granskar dig: Finansinspektionen, Transportstyrelsen, IVO eller en annan tillsynsmyndighet.</li>
+      <li>En tillsynsinspektion kan inledas utan förvarning och kräver att dokumentation finns tillgänglig inom 14–30 dagar.</li>
+      <li>Som VD eller styrelseledamot är du personligt ansvarig — det räcker inte att IT-avdelningen "tar hand om det".</li>
+    </ul>
+  </div>
+
+  <!-- KEY TAKEAWAY -->
+  <div class="box-takeaway">
+    <div class="takeaway-label">Viktigaste slutsatsen</div>
+    <p>Tillsynsmyndigheterna har befogenhet att granska dig redan nu. Frågan är inte om din organisation kommer att granskas — utan om du har dokumentationen på plats den dag det händer.</p>
+  </div>
+
+  <!-- HOOK -->
+  <p>
+    Föreställ dig att du som VD en måndag morgon får ett brev från Finansinspektionen. De har inlett en tillsynsinspektion av er organisation med anledning av cybersäkerhetslagen. De begär att ni inom 21 dagar lämnar in er riskbedömning, incidenthanteringsplan, leverantörsinventering och styrelsebeslut om godkännande av säkerhetsåtgärder.
+  </p>
+
+  <p>
+    Vad händer i er organisation de närmaste fyra timmarna? Vet ni var dokumentationen finns? Är den aktuell? Har styrelsen faktiskt fattat de beslut som krävs enligt lag?
+  </p>
+
+  <p>
+    Det är just den situationen NIS2-tillsynen skapar — och den är redan verklighet för svenska organisationer i reglerade sektorer. Att förstå <strong>vem som granskar dig, hur en granskning går till och vad du måste ha på plats</strong> är inte längre valfri läsning. Det är ledningsansvar.
+  </p>
+
+  <div class="box-warning">
+    <strong>Tillsynsmyndigheterna är aktiva nu.</strong> Cybersäkerhetslagen trädde i kraft i Sverige i oktober 2024. MSB, NCSC och sektorsspecifika tillsynsorgan har inlett sina första granskningsprocesser. Det finns ingen tidsperiod av nåd eller uppstartsperiod inskriven i lagen.
+  </div>
+
+  <h2>Det svenska tillsynssystemet — tre nivåer du måste känna till</h2>
+
+  <p>
+    Sverige valde vid implementeringen av NIS2-direktivet att fördela tillsynsansvaret på flera myndigheter. Det är ett medvetet val som speglar hur samhällskritisk infrastruktur är organiserad i Sverige — men det skapar också en komplex bild för den som försöker förstå vem som egentligen håller koll på vad.
+  </p>
+
+  <p>
+    Det finns tre nivåer att hålla reda på: den nationella strategiska nivån, den operativa koordineringen och den faktiska sektorsspecifika tillsynen.
+  </p>
+
+  <h3>NCSC — Nationellt cybersäkerhetscenter</h3>
+  <p>
+    NCSC är Sveriges nationella nav för cybersäkerhetsfrågor och verkar under Försvarets radioanstalt (FRA). Centret samlar kompetens och information från flera myndigheter — FRA, MUST, MSB och SÄPO — och har en samordnande roll i det svenska cybersäkerhetsarbetet.
+  </p>
+  <p>
+    NCSC utövar inte direkt operativ tillsyn mot enskilda organisationer, men spelar en central roll i att definiera hotbilder, ta fram vägledning och koordinera åtgärder vid allvarliga incidenter som påverkar samhällsviktig verksamhet. Det är NCSC som ofta är den myndighet som offentligt kommunicerar om allvarliga cyberincidenter i Sverige — och deras bedömningar påverkar hur tillsynsmyndigheterna prioriterar sin granskning.
+  </p>
+  <p>
+    Som VD eller styrelseledamot behöver du inte ha en direkt relation med NCSC i det löpande arbetet, men du bör känna till att deras hotbedömningar sätter ramarna för vad tillsynsmyndigheterna förväntar sig av organisationer i känsliga sektorer.
+  </p>
+
+  <h3>MSB — Myndigheten för samhällsskydd och beredskap</h3>
+  <p>
+    MSB är den centrala koordinerande myndigheten under cybersäkerhetslagen. De ansvarar för att ta emot och sammanställa incidentrapporter, för att ge vägledning om hur kraven i lagen ska tolkas och för att koordinera tillsynsarbetet mellan de sektorsspecifika myndigheterna.
+  </p>
+  <p>
+    MSB är också den myndighet som alla organisationer under NIS2 i första hand ska rapportera allvarliga incidenter till — inom 24 timmar för tidig varning och inom 72 timmar för fullständig rapport. Det är ett krav som inte är förhandlingsbart, och det är MSB som registrerar om rapporteringen skett i tid.
+  </p>
+  <p>
+    MSB kan i vissa fall genomföra egna tillsynsinsatser, men deras primära roll är koordinering och vägledning snarare än direkt inspektionsverksamhet mot enskilda organisationer. Den rollen ligger hos de sektorsspecifika myndigheterna.
+  </p>
+
+  <h3>Sektorsspecifika tillsynsmyndigheter — det är här du faktiskt granskas</h3>
+  <p>
+    Den tillsyn som direkt berör din organisation genomförs av den myndighet som ansvarar för din sektor. Sverige har valt en modell där befintliga sektorstillsynsmyndigheter utökas med ansvar för NIS2-tillsyn, snarare än att skapa en ny central cybersäkerhetsmyndighet med inspektionsrätt.
+  </p>
+  <p>
+    Det innebär att myndigheten som granskar dig inte är en okänd aktör — det är sannolikt en myndighet din organisation redan har en relation med.
+  </p>
+
+  <table class="fine-table">
+    <thead>
+      <tr>
+        <th>Sektor</th>
+        <th>Tillsynsmyndighet</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Bank och finansmarknad</td>
+        <td>Finansinspektionen (FI)</td>
+      </tr>
+      <tr>
+        <td>Hälso- och sjukvård</td>
+        <td>Inspektionen för vård och omsorg (IVO)</td>
+      </tr>
+      <tr>
+        <td>Transport (flyg, järnväg, väg, sjöfart)</td>
+        <td>Transportstyrelsen</td>
+      </tr>
+      <tr>
+        <td>Energi (el, gas, fjärrvärme, olja)</td>
+        <td>Energimarknadsinspektionen (Ei)</td>
+      </tr>
+      <tr>
+        <td>Dricksvatten och avloppsvatten</td>
+        <td>Länsstyrelserna / Livsmedelsverket</td>
+      </tr>
+      <tr>
+        <td>Digital infrastruktur och molntjänster</td>
+        <td>Post- och telestyrelsen (PTS)</td>
+      </tr>
+      <tr>
+        <td>Offentlig förvaltning</td>
+        <td>MSB (direkt tillsyn)</td>
+      </tr>
+      <tr>
+        <td>Rymden</td>
+        <td>MSB</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="box-info">
+    <strong>Viktigt att notera:</strong> Om din organisation verkar i flera sektorer kan du stå under tillsyn från mer än en myndighet. En organisation som tillhandahåller digitala tjänster till finanssektorn kan beröras av både PTS och Finansinspektionen. Klarlägg vilket tillsynsansvar som gäller för just er verksamhet — det är inte alltid självklart.
+  </div>
+
+  <h2>Hur en tillsynsinspektion faktiskt går till</h2>
+
+  <p>
+    En av de vanligaste missuppfattningarna bland ledningsgrupper är att en tillsynsinspektion fungerar som en revision — med god framförhållning, tydlig agenda och möjlighet att förbereda sig i lugn och ro. Verkligheten är en annan.
+  </p>
+
+  <p>
+    Tillsynsmyndigheterna under NIS2 har rätt att genomföra <strong>både reaktiv och proaktiv tillsyn</strong>. Det betyder att en granskning kan initieras utan att en incident har inträffat — och utan att du vet att den är på väg.
+  </p>
+
+  <h3>Fas 1: Initiering av tillsyn</h3>
+  <p>
+    En tillsynsinspektion kan utlösas av flera olika faktorer. Det vanligaste scenariot är att tillsynsmyndigheten genomför planlagda kontroller av organisationer inom sin sektor — en form av rutinmässig proaktiv tillsyn. Men en inspektion kan också initieras av:
+  </p>
+  <ul>
+    <li>En rapporterad säkerhetsincident där myndigheten vill verifiera hur ni hanterat situationen</li>
+    <li>Ett klagomål från anställd, kund eller affärspartner</li>
+    <li>Information från en annan EU-myndighet om att er organisation kan ha brister</li>
+    <li>Nyhetsrapportering eller offentlig information om ett driftsavbrott eller dataintrång</li>
+    <li>Slumpmässig urvalsprocess inom sektorn</li>
+  </ul>
+
+  <h3>Fas 2: Dokumentationsbegäran</h3>
+  <p>
+    Det första konkreta steget är nästan alltid en skriftlig begäran om dokumentation. Tillsynsmyndigheten specificerar exakt vilka dokument de vill se och sätter en svarsfrist — i regel 14 till 30 dagar. Det är inte en förhandling. Det är ett krav.
+  </p>
+  <p>
+    Organisationer som inte kan leverera begärd dokumentation inom fristen riskerar att tillsynsmyndigheten drar slutsatsen att dokumentationen inte finns — vilket i sig är en sanktionsgrundande brist. Det spelar ingen roll om ni faktiskt arbetar med frågorna internt om ni inte kan bevisa det med skriftlig dokumentation.
+  </p>
+
+  <h3>Fas 3: Intervjuer och platsbesök</h3>
+  <p>
+    Baserat på den inlämnade dokumentationen kan tillsynsmyndigheten begära intervjuer med nyckelpersoner i organisationen. Det kan röra sig om IT-chef, säkerhetsansvarig, COO — och i allvarliga fall direkt med VD eller styrelseordförande.
+  </p>
+  <p>
+    Artikel 20 i NIS2-direktivet är explicit: ledningsorganet ansvarar för säkerhetsåtgärderna. Det innebär att tillsynsmyndigheten har rätt att rikta frågor direkt till ledningen — inte bara till den tekniska personalen. Som VD ska du kunna förklara vilka säkerhetsåtgärder organisationen har vidtagit och visa att du aktivt godkänt och övervakat dem.
+  </p>
+
+  <h3>Fas 4: Beslut och eventuella sanktioner</h3>
+  <p>
+    När tillsynsmyndigheten har samlat in tillräckligt underlag fattar de ett formellt beslut. Utfallet kan vara allt från ett konstaterande att allt är i ordning, till en föreläggning om åtgärder, till kännbara sanktionsavgifter. I allvarliga fall kan myndigheten vända sig till domstol för att utverka ett tillfälligt förbud mot att en specifik person innehar ledande befattning.
+  </p>
+
+  <h2>Vad måste du ha dokumenterat?</h2>
+
+  <p>
+    Det räcker inte att er organisation faktiskt arbetar med cybersäkerhet. Tillsynsmyndigheten bedömer vad ni kan bevisa, inte vad ni upplever att ni gör. Bevisbördan ligger hos er — inte hos myndigheten.
+  </p>
+
+  <p>
+    Cybersäkerhetslagen, som implementerar NIS2 i Sverige, kräver att ni kan uppvisa dokumentation inom tio specifika säkerhetsdomäner. De viktigaste att ha på plats inför en eventuell tillsynsinspektion är:
+  </p>
+
+  <h3>Riskhantering och riskbedömning</h3>
+  <p>
+    En daterad och undertecknad riskbedömning som identifierar era viktigaste informationstillgångar, de relevanta hoten mot dem och de åtgärder ni vidtagit för att hantera riskerna. Riskbedömningen ska uppdateras regelbundet — en bedömning från 2023 kommer sannolikt att ifrågasättas.
+  </p>
+
+  <h3>Styrelsebeslut enligt Artikel 20</h3>
+  <p>
+    Detta är det dokument som de flesta organisationer saknar — och det är det dokument som skapar personligt ansvar för ledningen. Artikel 20 kräver att ledningsorganet formellt godkänner organisationens säkerhetsåtgärder. Det ska framgå av ett protokollsfört styrelsebeslut, inte av ett internt mejl eller en muntlig överenskommelse.
+  </p>
+
+  <h3>Incidenthanteringsplan</h3>
+  <p>
+    En skriftlig plan som beskriver exakt hur organisationen identifierar, klassificerar, hanterar och rapporterar en säkerhetsincident. Planen ska inkludera tydliga roller, eskaleringsvägar och hänvisning till 24-timmars- och 72-timmarsrapporteringskraven till MSB.
+  </p>
+
+  <h3>Leverantörsinventering och leverantörssäkerhetskrav</h3>
+  <p>
+    En förteckning över era kritiska leverantörer och tjänsteleverantörer, med dokumenterade säkerhetskrav för varje leverantör. NIS2 är explicit: ni är ansvariga för säkerheten i er leverantörskedja, inte bara i er egen organisation.
+  </p>
+
+  <h3>Kontinuitetsplan och återhämtningsplan</h3>
+  <p>
+    Dokumentation som visar att organisationen kan upprätthålla kritisk verksamhet vid en allvarlig störning och att det finns en plan för hur ni återhämtar er. Inte ett PowerPoint-deck — utan en operativ plan med testdatum och ansvariga personer angivna.
+  </p>
+
+  <h3>Utbildningslogg för ledning och personal</h3>
+  <p>
+    Artikel 20 kräver inte bara att ledningen godkänner säkerhetsåtgärder — den kräver att ledningen <em>förstår</em> dem. Det innebär att tillsynsmyndigheten kan begära dokumentation på att VD och styrelseledamöter faktiskt fått utbildning i cybersäkerhetsrisker. En signerad deltagarförteckning från en utbildningsinsats räcker som bevis.
+  </p>
+
+  <div class="box-warning">
+    <strong>Det räcker inte att ha gjort arbetet.</strong> Om du inte kan visa dokumentationen den dag tillsynen begär den, betraktar myndigheten det som om arbetet inte är gjort. Bevisföringen är ert ansvar — inte myndighetens.
+  </div>
+
+  <h2>Det personliga ansvaret — vad det faktiskt innebär för dig</h2>
+
+  <p>
+    NIS2-direktivets Artikel 20 är formulerad med en precision som saknar motstycke i tidigare EU-direktiv om cybersäkerhet. Den slår fast att <strong>ledningsorganen i väsentliga och viktiga entiteter ska godkänna de åtgärder för hantering av cybersäkerhetsrisker som organisationen vidtar</strong> — och att ledningsorganen kan hållas ansvariga för brister i efterlevnaden.
+  </p>
+
+  <p>
+    Det innebär konkret att du som VD eller styrelseledamot inte kan frånta dig ansvar genom att delegera frågorna till en IT-chef, en CISO eller en extern konsult. Du kan självklart anlita stöd för att implementera säkerhetsåtgärderna — men det är <em>du</em> som ska fatta besluten, och det är <em>du</em> som ska kunna bevisa att du gjort det.
+  </p>
+
+  <p>
+    Om tillsynsmyndigheten konstaterar allvarliga brister kan konsekvensen för dig personligen bli ett <strong>tillfälligt förbud att inneha en ledande befattning</strong>. Det är inte ett böter mot bolaget. Det är ett förbud mot dig som person — att leda en organisation, sitta i en styrelse, verka som VD. Det är ett ingripande i din yrkeskarriär, och det kan inte betalas bort i efterhand med ett korrigerande styrelseprotokoll.
+  </p>
+
+  <p>
+    Det är värt att låta den informationen sjunka in. NIS2 är inte GDPR fast med cybersäkerhet. Det är ett direktiv med explicit personligt ansvar för ledningen — utformat för att göra det omöjligt för en VD att säga "det var IT-avdelningens fel".
+  </p>
+
+  <div class="box-case">
+    <div class="case-label">Illustrativt scenario</div>
+    <p>
+      <strong>Situation: Medelstort logistikföretag i Sverige, 220 anställda. Klassas som viktig entitet under transportsektorn. Transportstyrelsen ansvarar för tillsynen.</strong>
+    </p>
+    <p>
+      Bolaget har arbetat aktivt med IT-säkerhet i flera år, har en kompetent IT-avdelning och en fungerande teknisk infrastruktur. Men när Transportstyrelsen initierar en proaktiv tillsynsinspektion och begär dokumentation med 21 dagars frist, uppstår ett problem.
+    </p>
+    <p>
+      IT-chefen har implementerat de flesta tekniska åtgärderna men har aldrig formaliserat dem i skriftliga policyer. Styrelsen har aldrig fattat ett dokumenterat beslut om att godkänna säkerhetsåtgärderna — frågan har diskuterats på ett styrelsemöte men inte protokollförts separat från de ordinarie dagordningspunkterna.
+    </p>
+    <p>
+      Transportstyrelsen ger bolaget 45 dagar att inkomma med kompletterande dokumentation. Bolagets juridik och IT-säkerhetskonsult arbetar intensivt under denna period för att ta fram retroaktiv dokumentation. Delar av den godtas, delar godtas inte.
+    </p>
+    <p>
+      <strong>Utfall:</strong> Formell anmärkning. Föreläggande om att upprätta skriftliga policyer och protokollfört styrelsebeslut om säkerhetsåtgärder inom 60 dagar. Juridisk hantering och konsultkostnader under tillsynsperioden: <span class="danger">uppskattad 700 000–1,1 miljoner kronor</span>. Ingen incident hade inträffat. Inga data hade läckt. Kostnaden berodde uteslutande på avsaknaden av dokumentation.
+    </p>
+  </div>
+
+  <h2>Checklista — är ni redo för en tillsynsgranskning?</h2>
+  <p>Gå igenom dessa sju punkter. Varje "nej" är en lucka att åtgärda:</p>
+  <ol>
+    <li>Finns ett protokollfört styrelsebeslut om att organisationen har identifierat sin NIS2-klassificering?</li>
+    <li>Finns en dokumenterad riskanalys som styrelsen formellt har godkänt?</li>
+    <li>Finns skriftliga policyer för de åtta säkerhetsåtgärdsområdena i Artikel 21?</li>
+    <li>Finns en dokumenterad incidenthanteringsplan med tydliga roller och rapporteringsvägar?</li>
+    <li>Har styrelseledamöter och VD genomgått utbildning i cybersäkerhetsrisker — och är det dokumenterat?</li>
+    <li>Finns ett leverantörsregister med riskklassificering och säkerhetskrav?</li>
+    <li>Sker löpande rapportering till styrelsenivå om säkerhetsstatus — minst kvartalsvis?</li>
+  </ol>
+
+<style>
+  .capture-form-section { background: #1c1c1f; border: 1px solid rgba(245,197,24,0.25); border-top: 3px solid var(--yellow); border-radius: 4px; padding: 40px; margin: 64px 0 40px; }
+  .capture-form-section h2 { margin-top: 0; font-size: 24px; font-family: 'Poppins', sans-serif; font-weight: 800; margin-bottom: 12px; }
+  .capture-form-section .sub { color: #aaa; font-size: 15px; margin-bottom: 24px; }
+  .capture-input { display: block; width: 100%; background: #222226; border: 1px solid #2e2e33; border-radius: 4px; padding: 13px 16px; font-size: 15px; color: #f0f0f0; font-family: 'Barlow', sans-serif; outline: none; transition: border-color 0.2s; margin-bottom: 12px; }
+  .capture-input:focus { border-color: var(--yellow); }
+  .capture-input::placeholder { color: #666; }
+  .capture-submit-btn { background: var(--yellow); color: #000; border: none; border-radius: 4px; padding: 14px 28px; font-family: 'Poppins', sans-serif; font-size: 15px; font-weight: 800; cursor: pointer; transition: background 0.2s; width: 100%; }
+  .capture-submit-btn:hover { background: #e8d800; }
+  .capture-submit-btn:disabled { opacity: 0.6; cursor: not-allowed; }
+  .capture-thanks-msg { padding: 16px; background: rgba(34,197,94,0.1); border: 1px solid rgba(34,197,94,0.3); border-radius: 4px; color: #86efac; font-size: 15px; text-align: center; display: none; }
+</style>
+
+  <!-- CTA — inline lead capture -->
+  <div class="capture-form-section">
+    <h2>Vet du var din organisation står idag?</h2>
+    <p class="sub">En kostnadsfri NIS2-genomgång på 20 minuter visar exakt vad som saknas — innan tillsynsmyndigheten frågar. Böterna är upp till <strong style="color:#f0f0f0">10 miljoner euro</strong>. Samtalet är gratis.</p>
+    <form id="tillsynCtrlForm" onsubmit="submittillsynCtrl(event)">
+      <input class="capture-input" type="text"  id="tillsynCtrlName"    placeholder="Ditt namn"        autocomplete="name" />
+      <input class="capture-input" type="email" id="tillsynCtrlEmail"   placeholder="E-postadress *"   autocomplete="email" required />
+      <input class="capture-input" type="text"  id="tillsynCtrlCompany" placeholder="Bolagets namn *"  required />
+      <button type="submit" class="capture-submit-btn" id="tillsynCtrlSubmit">Boka kostnadsfri genomgång →</button>
+    </form>
+    <div class="capture-thanks-msg" id="tillsynCtrlThanks">✅ Tack! Vi hör av oss inom 24 timmar.</div>
+  </div>
+
+</article>
+
+<footer>
+  © 2026 M&J Trusted Marketing KB ·
+  <a href="mailto:support@trustedmarketing.se">support@trustedmarketing.se</a> ·
+  <a href="/nis2.html">Tillbaka till startsidan</a> ·
+  <a href="/privacy.html">Integritetspolicy</a>
+</footer>
+
+<script>
+  async function submittillsynCtrl(e) {
+    e.preventDefault();
+    const btn = document.getElementById('tillsynCtrlSubmit');
+    btn.disabled = true;
+    btn.textContent = 'Skickar...';
+    const payload = {
+      name:       document.getElementById('tillsynCtrlName').value.trim(),
+      email:      document.getElementById('tillsynCtrlEmail').value.trim(),
+      company:    document.getElementById('tillsynCtrlCompany').value.trim(),
+      source:     'nis2-tillsyn',
+      score_data: null
+    };
+    try {
+      const res  = await fetch('/api/inbound', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) });
+      const data = await res.json();
+      if (data.success) {
+        document.getElementById('tillsynCtrlForm').style.display = 'none';
+        document.getElementById('tillsynCtrlThanks').style.display = 'block';
+      } else {
+        btn.disabled = false;
+        btn.textContent = 'Boka kostnadsfri genomgång →';
+        alert('Något gick fel, försök igen.');
+      }
+    } catch (err) {
+      btn.disabled = false;
+      btn.textContent = 'Boka kostnadsfri genomgång →';
+      alert('Något gick fel, försök igen.');
+    }
+  }
+</script>
+</body>
+</html>

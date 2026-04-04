@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Din leverantör kan fälla dig: NIS2 och leverantörskedjans säkerhet | NIS2Klar</title>
+  <meta name="description" content="Under NIS2 ansvarar du för dina leverantörers säkerhet. Lär dig vad du måste kräva, hur du gör en leverantörsbedömning och vad som händer om du väljer fel.">
+  <meta property="og:title" content="Din leverantör kan fälla dig: NIS2 och leverantörskedjans säkerhet">
+  <meta property="og:description" content="Under NIS2 ansvarar du för dina leverantörers säkerhet. SolarWinds, Kaseya och personligt ansvar — vad du behöver veta som VD eller styrelseledamot.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #141416;
+      --card: #1c1c1f;
+      --yellow: #f5c518;
+      --white: #f0f0f0;
+      --muted: #888;
+      --red: #C61212;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: var(--bg); color: var(--white); font-family: 'Barlow', sans-serif; font-size: 19px; line-height: 1.8; }
+
+    /* Nav */
+    nav { display: flex; justify-content: space-between; align-items: center; padding: 20px 40px; border-bottom: 1px solid rgba(255,255,255,0.07); max-width: 900px; margin: 0 auto; }
+    .nav-logo { font-family: 'Poppins', sans-serif; font-weight: 900; font-size: 20px; color: var(--yellow); text-decoration: none; }
+    .nav-logo span { color: var(--white); }
+    .nav-back { color: var(--muted); text-decoration: none; font-size: 15px; }
+    .nav-back:hover { color: var(--white); }
+    .nav-cta { background: var(--yellow); color: #000; padding: 8px 18px; border-radius: 4px; text-decoration: none; font-weight: 700; font-size: 14px; font-family: 'Poppins', sans-serif; }
+
+    /* Article */
+    .article-wrap { max-width: 760px; margin: 0 auto; padding: 60px 40px; }
+    .article-category { font-size: 13px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 16px; }
+    h1 { font-family: 'Poppins', sans-serif; font-size: clamp(30px, 4vw, 44px); font-weight: 900; line-height: 1.2; margin-bottom: 24px; }
+    .article-meta { font-size: 15px; color: var(--muted); margin-bottom: 48px; padding-bottom: 24px; border-bottom: 1px solid rgba(255,255,255,0.07); }
+    h2 { font-family: 'Poppins', sans-serif; font-size: 26px; font-weight: 700; margin: 48px 0 16px; color: var(--white); }
+    h3 { font-family: 'Poppins', sans-serif; font-size: 20px; font-weight: 600; margin: 32px 0 12px; color: var(--yellow); }
+    p { margin-bottom: 22px; }
+    strong { color: var(--white); font-weight: 700; }
+    .highlight { color: var(--yellow); font-weight: 700; }
+    .danger { color: #ff6b6b; font-weight: 700; }
+    ul, ol { margin: 16px 0 24px 24px; }
+    li { margin-bottom: 12px; font-size: 19px; }
+
+    /* Callout boxes */
+    .box-warning { background: rgba(197,17,17,0.12); border-left: 4px solid var(--red); padding: 20px 24px; margin: 32px 0; border-radius: 0 4px 4px 0; }
+    .box-info { background: rgba(245,197,24,0.08); border-left: 4px solid var(--yellow); padding: 20px 24px; margin: 32px 0; border-radius: 0 4px 4px 0; }
+    .box-case { background: var(--card); border: 1px solid rgba(255,255,255,0.08); padding: 28px; margin: 40px 0; border-radius: 4px; }
+    .box-case .case-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 12px; }
+    blockquote { border-left: 3px solid var(--yellow); padding: 12px 20px; margin: 24px 0; font-style: italic; color: #ccc; }
+
+    /* CTA */
+    .cta-section { background: var(--card); border: 1px solid rgba(245,197,24,0.2); border-radius: 4px; padding: 48px 40px; margin: 64px 0 40px; text-align: center; }
+    .cta-section h2 { margin-top: 0; font-size: 26px; }
+    .cta-section p { color: #aaa; max-width: 500px; margin: 0 auto 28px; }
+    .btn-primary { display: inline-block; background: var(--yellow); color: #000; font-family: 'Poppins', sans-serif; font-weight: 800; font-size: 16px; padding: 16px 36px; border-radius: 4px; text-decoration: none; }
+    .btn-primary:hover { background: #e0b010; }
+    .cta-fine { font-size: 13px; color: var(--muted); margin-top: 16px; }
+
+    /* FAQ */
+    .faq-item { border-bottom: 1px solid rgba(255,255,255,0.07); padding: 20px 0; }
+    .faq-q { font-family: 'Poppins', sans-serif; font-weight: 600; margin-bottom: 10px; }
+    .faq-a { color: #bbb; }
+
+    /* Fine table */
+    .fine-table { width: 100%; border-collapse: collapse; margin: 24px 0; }
+    .fine-table th { background: rgba(245,197,24,0.1); color: var(--yellow); font-family: 'Poppins', sans-serif; font-size: 13px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 12px 16px; text-align: left; border-bottom: 1px solid rgba(245,197,24,0.2); }
+    .fine-table td { padding: 14px 16px; border-bottom: 1px solid rgba(255,255,255,0.05); font-size: 15px; }
+    .fine-table tr:last-child td { border-bottom: none; }
+    .fine-table .amount { color: #ff6b6b; font-weight: 700; }
+
+    /* Summary + Key Takeaway */
+    .box-summary { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; padding: 24px 28px; margin: 0 0 32px; }
+    .summary-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-bottom: 14px; }
+    .box-summary ul { margin: 0; padding-left: 20px; }
+    .box-summary li { margin-bottom: 8px; font-size: 17px; color: #ccc; }
+    .box-takeaway { background: rgba(245,197,24,0.08); border-left: 4px solid var(--yellow); padding: 20px 24px; margin: 0 0 40px; border-radius: 0 4px 4px 0; }
+    .takeaway-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 10px; }
+    .box-takeaway p { margin: 0; font-size: 18px; font-weight: 600; color: var(--white); line-height: 1.6; }
+
+    /* Footer */
+    footer { border-top: 1px solid rgba(255,255,255,0.07); padding: 32px 40px; text-align: center; font-size: 13px; color: var(--muted); max-width: 900px; margin: 0 auto; }
+    footer a { color: var(--muted); }
+
+    @media (max-width: 600px) {
+      nav, .article-wrap, footer { padding: 20px; }
+      .cta-section { padding: 32px 20px; }
+      .fine-table { font-size: 14px; }
+      .fine-table th, .fine-table td { padding: 10px 10px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="https://nis2klar.se/">NIS2<span>Klar</span></a>
+  <a class="nav-back" href="https://nis2klar.se/artiklar.html">← Alla artiklar</a>
+  <a class="nav-cta" href="/nis2.html#boka">Boka samtal →</a>
+</nav>
+
+<article class="article-wrap">
+  <div class="article-category">Supply Chain &amp; Leverantörssäkerhet</div>
+  <h1>Din leverantör kan fälla dig: NIS2 och leverantörskedjans säkerhet</h1>
+  <div class="article-meta">Uppdaterad 31 mars 2026 · Lästid: ca 9 minuter · Målgrupp: VD, styrelseordförande, styrelseledamöter</div>
+
+  <!-- SUMMARY -->
+  <div class="box-summary">
+    <div class="summary-label">Sammanfattning</div>
+    <ul>
+      <li>Under NIS2 är du juridiskt ansvarig för säkerheten hos de leverantörer din organisation är beroende av.</li>
+      <li>Supply chain-attacker som SolarWinds och Kaseya visar att angripare medvetet väljer den svagaste länken — din leverantör.</li>
+      <li>Artikel 21 i NIS2 kräver dokumenterade säkerhetskrav i alla leverantörsavtal inom kritiska tjänster.</li>
+      <li>Personligt ansvar för VD och styrelse gäller även när bristen sitter hos en tredje part du valt att anlita.</li>
+      <li>En leverantörsbedömningsprocess är inte valfri — den är ett lagkrav.</li>
+    </ul>
+  </div>
+
+  <!-- KEY TAKEAWAY -->
+  <div class="box-takeaway">
+    <div class="takeaway-label">Viktigaste slutsatsen</div>
+    <p>Det räcker inte att din egen organisation är säker. NIS2 håller dig ansvarig för att dina leverantörer uppfyller säkerhetskraven — och om de inte gör det är det ditt problem, inte deras.</p>
+  </div>
+
+  <!-- HOOK -->
+  <p>
+    Föreställ dig det här scenariot: En av dina IT-leverantörer drabbas av ett cyberangrepp en tidig tisdagsmorgon. Angriparen tar sig in via ett uppdateringspaket som din leverantör skickar ut till alla sina kunder — inklusive dig. Inom timmar är dina system komprometterade, utan att du gjort ett enda fel själv.
+  </p>
+
+  <p>
+    Det är inte ett hypotetiskt scenario. Det är exakt vad som hände i två av de mest omtalade cyberangreppen i modern tid: SolarWinds 2020 och Kaseya 2021. Och det är exakt det scenario som NIS2-direktivet adresserar direkt — med krav på att du som organisation ska ta ansvar för säkerheten i hela din leverantörskedja, inte bara din egen.
+  </p>
+
+  <p>
+    Som VD eller styrelseledamot i en NIS2-reglerad organisation är detta inte ett ämne du kan lämna till inköpsavdelningen eller IT-chefen. Det är ett juridiskt ansvar som vilar på dig personligen — med böter och, i värsta fall, yrkesförbud som konsekvens om du väljer fel leverantör eller underlåter att ställa rätt krav.
+  </p>
+
+  <div class="box-warning">
+    <strong>Ansvar som inte kan delegeras bort.</strong> Artikel 20 i NIS2 slår fast att ledningsorganet — det vill säga du och dina styrelsekollegor — personligen ansvarar för att organisationens säkerhetsåtgärder är på plats och fungerar. Det inkluderar säkerheten i er leverantörskedja. Ingen delegering till IT skyddar dig från det ansvaret.
+  </div>
+
+  <h2>Vad är egentligen en supply chain-attack?</h2>
+
+  <p>
+    En supply chain-attack — på svenska ofta kallad leverantörskedjeattack — är ett cyberangrepp där angriparen inte attackerar dig direkt. Istället angriper de en leverantör, partner eller mjukvaruleverantör som du litar på och som har tillgång till dina system, din data eller din infrastruktur.
+  </p>
+
+  <p>
+    Logiken är enkel och brutal: det är lättare att kompromissa ett litet mjukvaruföretag med 30 anställda och sedan använda deras betrodda position för att nå hundratals av deras kunder, än att ta sig igenom ett stort, välskyddat företags egna försvar. Din leverantör är den svagaste länken — och angriparna vet det.
+  </p>
+
+  <p>
+    Det som gör supply chain-attacker extra farliga är att de utnyttjar tillit. Din IT-avdelning filtrerar bort okänd trafik och okända avsändare. Men ett uppdateringspaket från en betrodd leverantör — en som ni anlitat i tio år och vars certifikat ni litar på — det passerar igenom. Det är designat att passera igenom.
+  </p>
+
+  <h2>SolarWinds: Attacken som förändrade allt</h2>
+
+  <div class="box-case">
+    <div class="case-label">Verkligt fall — SolarWinds 2020</div>
+    <p>
+      I december 2020 avslöjades ett av historiens mest sofistikerade cyberangrepp. Angripare — senare kopplade till rysk underrättelsetjänst — hade tagit sig in i SolarWinds, ett amerikanskt företag som tillhandahåller nätverksövervakningsverktyget Orion. Orion används av tusentals organisationer globalt, inklusive myndigheter och Fortune 500-företag.
+    </p>
+    <p>
+      Angriparna injicerade skadlig kod i en legitim programuppdatering som SolarWinds distribuerade till sina kunder. Uppdateringen var signerad med SolarWinds egna certifikat och passerade säkerhetskontroller utan problem. Uppskattningsvis <strong>18 000 organisationer</strong> installerade den komprometterade uppdateringen.
+    </p>
+    <p>
+      Bland de drabbade: det amerikanska finansdepartementet, utrikesdepartementet, delar av Pentagon, Microsoft och hundratals privata företag i Europa. Angriparna hade i vissa fall haft obehörig tillgång i <strong>upp till nio månader</strong> innan intrånget upptäcktes.
+    </p>
+    <p>
+      <strong>Lärdomen för NIS2-reglerade organisationer:</strong> Ingen av de drabbade organisationerna hade gjort fel i sin egen miljö. De hade anlitat en betrodd leverantör. Men under NIS2 hade de haft skyldighet att utvärdera och dokumentera säkerhetsrisken med den leverantören — och att ha avtal som reglerade säkerhetskraven. Frånvaron av det är i sig en brist som tillsynsmyndigheten kan sanktionera.
+    </p>
+  </div>
+
+  <h2>Kaseya: När en leverantör drabbade 1 500 företag på en gång</h2>
+
+  <p>
+    Sommaren 2021 genomförde ransomware-gruppen REvil en attack mot Kaseya, ett företag som erbjuder IT-hanteringsprogramvara till hanterade tjänsteleverantörer (MSP:er). Kaseyas kunder var i sin tur tjänsteleverantörer till tusentals slutkunder.
+  </p>
+
+  <p>
+    Angriparna utnyttjade en sårbarhet i Kaseyas VSA-plattform och distribuerade ransomware via den betrodda leverantörskedjan ned till slutkunderna. Inom timmar var uppskattningsvis <strong>1 500 företag i 17 länder</strong> drabbade — utan att något av dem hade en direkt relation med Kaseya. De hade anlitat en MSP som använde Kaseyas verktyg.
+  </p>
+
+  <p>
+    Det är det som är det verkligt obehagliga med supply chain-attacker: du kan drabbas av en leverantörs leverantörs sårbarhet. Och under NIS2 förväntas du ha synlighet och kontroll hela vägen ned i kedjan för tjänster som är kritiska för din verksamhet.
+  </p>
+
+  <div class="box-info">
+    <strong>NIS2 Artikel 21, punkt 2(d):</strong> Organisationer som omfattas av direktivet är skyldiga att implementera säkerhetsåtgärder avseende <em>"säkerhet i leveranskedjan, innefattande säkerhetsrelaterade aspekter av förhållandena mellan varje enhet och dess direkta leverantörer eller tjänsteleverantörer"</em>. Det är ett explicit lagkrav — inte en rekommendation.
+  </div>
+
+  <h2>Vad NIS2 faktiskt kräver av dig som köpare</h2>
+
+  <p>
+    Många ledningsgrupper tror att NIS2:s leverantörskrav handlar om att be leverantören signera ett papper på att de "följer GDPR och är säkra". Det räcker inte på långa vägar.
+  </p>
+
+  <p>
+    NIS2 kräver en strukturerad process för att identifiera, bedöma och hantera säkerhetsrisker i leverantörskedjan. Det innebär konkret att du behöver:
+  </p>
+
+  <h3>1. En komplett leverantörsinventering</h3>
+  <p>
+    Du kan inte hantera risker du inte känner till. Det första steget är att kartlägga samtliga leverantörer som hanterar, lagrar eller processar information som är kritisk för din verksamhet — eller som har teknisk tillgång till dina system. Det inkluderar molntjänstleverantörer, IT-support, mjukvaruutvecklare, datacenterleverantörer och alla som har inloggningsuppgifter till era miljöer.
+  </p>
+
+  <h3>2. Riskklassificering av varje leverantör</h3>
+  <p>
+    Inte alla leverantörer är lika kritiska. En leverantör som har direkt åtkomst till er operativa teknik eller er kunddata innebär en fundamentalt annan riskbild än en som levererar kontorsmöbler. NIS2 kräver att ni klassificerar leverantörer utifrån vilken skada ett säkerhetsincident hos dem skulle orsaka er organisation.
+  </p>
+
+  <p>
+    En enkel riskmatris kan se ut så här:
+  </p>
+
+  <table class="fine-table">
+    <thead>
+      <tr>
+        <th>Risknivå</th>
+        <th>Kriterier</th>
+        <th>Åtgärd</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="danger">Kritisk</span></td>
+        <td>Systemtillgång, kärndata, driftkritiska tjänster</td>
+        <td>Full revision, avtalsvillkor, löpande uppföljning</td>
+      </tr>
+      <tr>
+        <td><span class="highlight">Hög</span></td>
+        <td>Känslig data, integration med interna system</td>
+        <td>Säkerhetsfrågeformulär, avtalskrav, årlig uppföljning</td>
+      </tr>
+      <tr>
+        <td>Medel</td>
+        <td>Begränsad tillgång, icke-kritiska tjänster</td>
+        <td>Standardavtalsklausuler, självdeklaration</td>
+      </tr>
+      <tr>
+        <td>Låg</td>
+        <td>Ingen systemtillgång, ej känslig data</td>
+        <td>Grundläggande avtalsskydd</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>3. Säkerhetskrav i leverantörsavtal</h3>
+  <p>
+    För leverantörer i kritisk och hög riskkategori krävs att ni kontrakterar specifika säkerhetsåtgärder. Det är inte tillräckligt att hoppas att leverantören är säker — ni måste ha skriftliga krav och rätten att verifiera dem. Minimikrav i avtalen bör inkludera:
+  </p>
+
+  <ul>
+    <li>Krav på incident- och sårbarhetsberedskap med definierade svarstider</li>
+    <li>Skyldighet att notifiera er vid säkerhetsincidenter som kan påverka er, inom specificerad tid</li>
+    <li>Krav på kryptering av data i vila och under transport</li>
+    <li>Rätt för er att genomföra revisioner eller kräva tredjepartsrevisioner</li>
+    <li>Krav på säkerhetscertifieringar (exempelvis ISO 27001 eller SOC 2 Type II)</li>
+    <li>Hantering av underleverantörer — leverantörens skyldighet att ställa samma krav nedåt i kedjan</li>
+    <li>Klausuler för vad som händer vid kontraktsbrott på säkerhetsvillkoren</li>
+  </ul>
+
+  <h3>4. Löpande uppföljning — inte bara vid upphandling</h3>
+  <p>
+    En leverantörsbedömning är inte ett engångsprojekt. Säkerhetslandskapet förändras, leverantörer förändras, och en leverantör som var säker för tre år sedan är inte automatiskt säker idag. NIS2 förväntar sig en löpande process för att övervaka och ompröva leverantörers säkerhetsstatus.
+  </p>
+
+  <p>
+    Det behöver inte vara komplicerat: en strukturerad årlig genomgång av kritiska leverantörer, kombinerat med ett system för att fånga upp säkerhetshändelser hos leverantörerna löpande, är ett rimligt startläge för de flesta organisationer.
+  </p>
+
+  <h2>Det personliga ansvaret när leverantören brister</h2>
+
+  <p>
+    Här är den punkt som de flesta ledningsgrupper missar — och som är den mest obehagliga konsekvensen av NIS2:s leverantörskrav.
+  </p>
+
+  <p>
+    Om din organisation drabbas av ett säkerhetsincident som kan härledas till en leverantör, och det visar sig att ni inte hade adekvata säkerhetskrav i avtalet, inte genomfört en leverantörsbedömning, eller inte haft en process för att följa upp leverantörens säkerhetsläge — då är det inte leverantören som bär det juridiska ansvaret gentemot tillsynsmyndigheten. Det är ni.
+  </p>
+
+  <p>
+    Mer specifikt: det är du som VD eller styrelseledamot, i egenskap av det ansvariga ledningsorganer som Artikel 20 pekar ut.
+  </p>
+
+  <blockquote>
+    "Ledningsorganen i väsentliga och viktiga entiteter ska godkänna de cybersäkerhetsriskhanteringsåtgärder som vidtas av dessa entiteter, övervaka deras genomförande och kan hållas ansvariga för överträdelser."<br>
+    — NIS2-direktivet, Artikel 20
+  </blockquote>
+
+  <p>
+    Konsekvensen av att ha valt en leverantör utan adekvat säkerhetsutredning, och sedan drabbats av en incident via den leverantören, kan vara:
+  </p>
+
+  <ul>
+    <li>Sanktionsavgifter mot organisationen upp till <strong>10 miljoner euro</strong> (väsentliga entiteter) eller <strong>7 miljoner euro</strong> (viktiga entiteter)</li>
+    <li>Tillsynsmyndighetens formella notering om personligt ansvar för VD eller styrelseledamöter</li>
+    <li>I allvarliga fall: tillfälligt förbud för namngiven VD eller styrelseledamot att inneha ledande befattning</li>
+    <li>Offentliggörande av överträdelsen — ett krav i NIS2 som innebär att tillsynsmyndigheten kan publicera information om vilken organisation som brustit och varför</li>
+  </ul>
+
+  <div class="box-warning">
+    <strong>Väljer du fel leverantör är det ditt fel.</strong> Det låter hårt, men det är den logik NIS2 bygger på. Tillsynsmyndigheten frågar inte bara vad leverantören gjorde fel — de frågar vad du som köpare gjorde för att förebygga att just det scenariot inträffade. Saknar du dokumentation på en strukturerad leverantörsbedömning har du inget försvar.
+  </div>
+
+  <h2>Hur gör du en leverantörsbedömning i praktiken?</h2>
+
+  <p>
+    Det goda nyheten är att en leverantörsbedömningsprocess inte behöver vara en mångmiljoninvestering. Många organisationer kan bygga en fungerande grundprocess med interna resurser, förutsatt att ledningen prioriterar det och att processen faktiskt dokumenteras.
+  </p>
+
+  <p>
+    Följande steg är en praktisk startpunkt:
+  </p>
+
+  <h3>Steg 1: Kartlägg och prioritera</h3>
+  <p>
+    Börja med att lista alla leverantörer som hanterar system, data eller tjänster som är relevanta för er verksamhets kontinuitet och säkerhet. Prioritera sedan listan efter kritikalitet — vilka leverantörer skulle orsaka störst skada om de komprometterades? Det är de ni behöver hantera först och mest noggrant.
+  </p>
+
+  <h3>Steg 2: Skicka ett säkerhetsfrågeformulär</h3>
+  <p>
+    För leverantörer i de högre riskkategorierna: skicka ett strukturerat frågeformulär som täcker nyckelområden som incidenthanteringsprocess, krypteringspraxis, åtkomstkontroll, säkerhetskopiering, certifieringar och hur de hanterar sina egna underleverantörer. Svar ska dokumenteras och sparas.
+  </p>
+
+  <h3>Steg 3: Verifiera, tro inte bara på svaren</h3>
+  <p>
+    En leverantör som hävdar att de är ISO 27001-certifierade ska kunna visa upp ett giltigt certifikat. En leverantör som påstår att de har en incidenthanteringsplan ska kunna sammanfatta den. Kritiska leverantörer bör granskas med tredjepartsrevisioner eller på plats — det är en rimlig förväntning som ni har rätt att ställa som kund i ett avtal.
+  </p>
+
+  <h3>Steg 4: Uppdatera avtal och lägg in säkerhetsklausuler</h3>
+  <p>
+    Befintliga avtal med kritiska leverantörer behöver kompletteras med säkerhetsklausuler om de saknas. Det är ett arbete för juridik och inköp, men initiativet och prioriteringen måste komma från ledningen. Det är inte en fråga om att komplicera leverantörsrelationen — det är en fråga om att skydda er organisation och er personliga position.
+  </p>
+
+  <h3>Steg 5: Dokumentera allt och lägg in löpande uppföljning</h3>
+  <p>
+    Varje steg i processen ska dokumenteras. Vem som bedömde vad, när, baserat på vilka uppgifter och med vilket utfall. Det är den dokumentationen som är ert försvar vid en tillsynsgranskning — inte er övertygelse om att era leverantörer är pålitliga, utan de bevis ni kan lägga på bordet.
+  </p>
+  <p>
+    Löpande uppföljning innebär också att ni sätter datum för nästa revidering. Leverantörers säkerhetsmognad förändras. Avtal löper ut. Nyckelkontakter byts. En leverantör som var lågrisk för två år sedan kan ha förändrats. Bygg in kvartalsvis eller halvårsvis kontroll i er process från dag ett.
+  </p>
+
+  <h2>Vad en tillsynsgranskning faktiskt tittar på</h2>
+  <p>
+    Om ni hamnar i en tillsynsgranskning kommer myndigheten inte att fråga om ni "tror" att era leverantörer är säkra. De kommer att begära dokumentation: vilka leverantörer har ni identifierat som kritiska? Vilka krav har ni ställt? Vilka svar har ni fått? Har ni verifierat svaren? Finns det avtalsmässiga säkerhetsklausuler?
+  </p>
+  <p>
+    Organisationer som kan lägga fram ett strukturerat leverantörsregister med riskklassificering, genomförda bedömningar och uppdaterade avtal är i ett fundamentalt annorlunda läge än de som "vet" att deras leverantörer är seriösa utan att kunna bevisa det.
+  </p>
+
+<style>
+  .capture-form-section { background: #1c1c1f; border: 1px solid rgba(245,197,24,0.25); border-top: 3px solid var(--yellow); border-radius: 4px; padding: 40px; margin: 64px 0 40px; }
+  .capture-form-section h2 { margin-top: 0; font-size: 24px; font-family: 'Poppins', sans-serif; font-weight: 800; margin-bottom: 12px; }
+  .capture-form-section .sub { color: #aaa; font-size: 15px; margin-bottom: 24px; }
+  .capture-input { display: block; width: 100%; background: #222226; border: 1px solid #2e2e33; border-radius: 4px; padding: 13px 16px; font-size: 15px; color: #f0f0f0; font-family: 'Barlow', sans-serif; outline: none; transition: border-color 0.2s; margin-bottom: 12px; }
+  .capture-input:focus { border-color: var(--yellow); }
+  .capture-input::placeholder { color: #666; }
+  .capture-submit-btn { background: var(--yellow); color: #000; border: none; border-radius: 4px; padding: 14px 28px; font-family: 'Poppins', sans-serif; font-size: 15px; font-weight: 800; cursor: pointer; transition: background 0.2s; width: 100%; }
+  .capture-submit-btn:hover { background: #e8d800; }
+  .capture-submit-btn:disabled { opacity: 0.6; cursor: not-allowed; }
+  .capture-thanks-msg { padding: 16px; background: rgba(34,197,94,0.1); border: 1px solid rgba(34,197,94,0.3); border-radius: 4px; color: #86efac; font-size: 15px; text-align: center; display: none; }
+</style>
+
+  <!-- CTA — inline lead capture -->
+  <div class="capture-form-section">
+    <h2>Vet du var din organisation står idag?</h2>
+    <p class="sub">En kostnadsfri NIS2-genomgång på 20 minuter visar exakt vad som saknas — innan tillsynsmyndigheten frågar. Böterna är upp till <strong style="color:#f0f0f0">10 miljoner euro</strong>. Samtalet är gratis.</p>
+    <form id="leverantorRiskForm" onsubmit="submitleverantorRisk(event)">
+      <input class="capture-input" type="text"  id="leverantorRiskName"    placeholder="Ditt namn"        autocomplete="name" />
+      <input class="capture-input" type="email" id="leverantorRiskEmail"   placeholder="E-postadress *"   autocomplete="email" required />
+      <input class="capture-input" type="text"  id="leverantorRiskCompany" placeholder="Bolagets namn *"  required />
+      <button type="submit" class="capture-submit-btn" id="leverantorRiskSubmit">Boka kostnadsfri genomgång →</button>
+    </form>
+    <div class="capture-thanks-msg" id="leverantorRiskThanks">✅ Tack! Vi hör av oss inom 24 timmar.</div>
+  </div>
+
+</article>
+
+<footer>
+  © 2026 M&J Trusted Marketing KB ·
+  <a href="mailto:support@trustedmarketing.se">support@trustedmarketing.se</a> ·
+  <a href="/nis2.html">Tillbaka till startsidan</a> ·
+  <a href="/privacy.html">Integritetspolicy</a>
+</footer>
+
+<script>
+  async function submitleverantorRisk(e) {
+    e.preventDefault();
+    const btn = document.getElementById('leverantorRiskSubmit');
+    btn.disabled = true;
+    btn.textContent = 'Skickar...';
+    const payload = {
+      name:       document.getElementById('leverantorRiskName').value.trim(),
+      email:      document.getElementById('leverantorRiskEmail').value.trim(),
+      company:    document.getElementById('leverantorRiskCompany').value.trim(),
+      source:     'nis2-leverantorskedjan',
+      score_data: null
+    };
+    try {
+      const res  = await fetch('/api/inbound', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) });
+      const data = await res.json();
+      if (data.success) {
+        document.getElementById('leverantorRiskForm').style.display = 'none';
+        document.getElementById('leverantorRiskThanks').style.display = 'block';
+      } else {
+        btn.disabled = false;
+        btn.textContent = 'Boka kostnadsfri genomgång →';
+        alert('Något gick fel, försök igen.');
+      }
+    } catch (err) {
+      btn.disabled = false;
+      btn.textContent = 'Boka kostnadsfri genomgång →';
+      alert('Något gick fel, försök igen.');
+    }
+  }
+</script>
+</body>
+</html>

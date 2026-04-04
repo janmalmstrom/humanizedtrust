@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vad är NIS2-direktivet? En guide för svenska företag | NIS2Klar</title>
+  <meta name="description" content="NIS2-direktivet förklaras för VD:ar och styrelser i Sverige. Vad det kräver, varför det finns, och vad som händer om du ignorerar det. En komplett guide utan teknisk jargong.">
+  <meta property="og:title" content="Vad är NIS2-direktivet? En guide för svenska företag">
+  <meta property="og:description" content="NIS2-direktivet förklaras för VD:ar och styrelser i Sverige. Vad det kräver, varför det finns, och vad som händer om du ignorerar det. En komplett guide utan teknisk jargong.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #141416;
+      --card: #1c1c1f;
+      --yellow: #f5c518;
+      --white: #f0f0f0;
+      --muted: #888;
+      --red: #C61212;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: var(--bg); color: var(--white); font-family: 'Barlow', sans-serif; font-size: 19px; line-height: 1.8; }
+
+    /* Nav */
+    nav { display: flex; justify-content: space-between; align-items: center; padding: 20px 40px; border-bottom: 1px solid rgba(255,255,255,0.07); max-width: 900px; margin: 0 auto; }
+    .nav-logo { font-family: 'Poppins', sans-serif; font-weight: 900; font-size: 20px; color: var(--yellow); text-decoration: none; }
+    .nav-logo span { color: var(--white); }
+    .nav-back { color: var(--muted); text-decoration: none; font-size: 15px; }
+    .nav-back:hover { color: var(--white); }
+    .nav-cta { background: var(--yellow); color: #000; padding: 8px 18px; border-radius: 4px; text-decoration: none; font-weight: 700; font-size: 14px; font-family: 'Poppins', sans-serif; }
+
+    /* Article */
+    .article-wrap { max-width: 760px; margin: 0 auto; padding: 60px 40px; }
+    .article-category { font-size: 13px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 16px; }
+    h1 { font-family: 'Poppins', sans-serif; font-size: clamp(30px, 4vw, 44px); font-weight: 900; line-height: 1.2; margin-bottom: 24px; }
+    .article-meta { font-size: 15px; color: var(--muted); margin-bottom: 48px; padding-bottom: 24px; border-bottom: 1px solid rgba(255,255,255,0.07); }
+    h2 { font-family: 'Poppins', sans-serif; font-size: 26px; font-weight: 700; margin: 48px 0 16px; color: var(--white); }
+    h3 { font-family: 'Poppins', sans-serif; font-size: 20px; font-weight: 600; margin: 32px 0 12px; color: var(--yellow); }
+    p { margin-bottom: 22px; }
+    strong { color: var(--white); font-weight: 700; }
+    .highlight { color: var(--yellow); font-weight: 700; }
+    .danger { color: #ff6b6b; font-weight: 700; }
+    ul, ol { margin: 16px 0 24px 24px; }
+    li { margin-bottom: 12px; font-size: 19px; }
+
+    /* Callout boxes */
+    .box-warning { background: rgba(197,17,17,0.12); border-left: 4px solid var(--red); padding: 20px 24px; margin: 32px 0; border-radius: 0 4px 4px 0; }
+    .box-info { background: rgba(245,197,24,0.08); border-left: 4px solid var(--yellow); padding: 20px 24px; margin: 32px 0; border-radius: 0 4px 4px 0; }
+    .box-case { background: var(--card); border: 1px solid rgba(255,255,255,0.08); padding: 28px; margin: 40px 0; border-radius: 4px; }
+    .box-case .case-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 12px; }
+    blockquote { border-left: 3px solid var(--yellow); padding: 12px 20px; margin: 24px 0; font-style: italic; color: #ccc; }
+
+    /* CTA */
+    .cta-section { background: var(--card); border: 1px solid rgba(245,197,24,0.2); border-radius: 4px; padding: 48px 40px; margin: 64px 0 40px; text-align: center; }
+    .cta-section h2 { margin-top: 0; font-size: 26px; }
+    .cta-section p { color: #aaa; max-width: 500px; margin: 0 auto 28px; }
+    .btn-primary { display: inline-block; background: var(--yellow); color: #000; font-family: 'Poppins', sans-serif; font-weight: 800; font-size: 16px; padding: 16px 36px; border-radius: 4px; text-decoration: none; }
+    .btn-primary:hover { background: #e0b010; }
+    .cta-fine { font-size: 13px; color: var(--muted); margin-top: 16px; }
+
+    /* FAQ */
+    .faq-item { border-bottom: 1px solid rgba(255,255,255,0.07); padding: 20px 0; }
+    .faq-q { font-family: 'Poppins', sans-serif; font-weight: 600; margin-bottom: 10px; }
+    .faq-a { color: #bbb; }
+
+    /* Fine table */
+    .fine-table { width: 100%; border-collapse: collapse; margin: 24px 0; }
+    .fine-table th { background: rgba(245,197,24,0.1); color: var(--yellow); font-family: 'Poppins', sans-serif; font-size: 13px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 12px 16px; text-align: left; border-bottom: 1px solid rgba(245,197,24,0.2); }
+    .fine-table td { padding: 14px 16px; border-bottom: 1px solid rgba(255,255,255,0.05); font-size: 15px; }
+    .fine-table tr:last-child td { border-bottom: none; }
+    .fine-table .amount { color: #ff6b6b; font-weight: 700; }
+
+    /* Summary + Key Takeaway */
+    .box-summary { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; padding: 24px 28px; margin: 0 0 32px; }
+    .summary-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-bottom: 14px; }
+    .box-summary ul { margin: 0; padding-left: 20px; }
+    .box-summary li { margin-bottom: 8px; font-size: 17px; color: #ccc; }
+    .box-takeaway { background: rgba(245,197,24,0.08); border-left: 4px solid var(--yellow); padding: 20px 24px; margin: 0 0 40px; border-radius: 0 4px 4px 0; }
+    .takeaway-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 10px; }
+    .box-takeaway p { margin: 0; font-size: 18px; font-weight: 600; color: var(--white); line-height: 1.6; }
+
+    /* Footer */
+    footer { border-top: 1px solid rgba(255,255,255,0.07); padding: 32px 40px; text-align: center; font-size: 13px; color: var(--muted); max-width: 900px; margin: 0 auto; }
+    footer a { color: var(--muted); }
+
+    @media (max-width: 600px) {
+      nav, .article-wrap, footer { padding: 20px; }
+      .cta-section { padding: 32px 20px; }
+      .fine-table { font-size: 14px; }
+      .fine-table th, .fine-table td { padding: 10px 10px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="https://nis2klar.se/">NIS2<span>Klar</span></a>
+  <a class="nav-back" href="https://nis2klar.se/artiklar.html">← Alla artiklar</a>
+  <a class="nav-cta" href="/nis2.html#boka">Boka samtal →</a>
+</nav>
+
+<article class="article-wrap">
+  <div class="article-category">Grunderna &amp; Översikt</div>
+  <h1>Vad är NIS2-direktivet? En guide för svenska företag</h1>
+  <div class="article-meta">Uppdaterad 31 mars 2026 · Lästid: ca 10 minuter · Målgrupp: VD &amp; Styrelse</div>
+
+  <!-- SUMMARY -->
+  <div class="box-summary">
+    <div class="summary-label">Sammanfattning</div>
+    <ul>
+      <li>NIS2 är EU:s uppdaterade cybersäkerhetsdirektiv — i Sverige implementerat genom <strong>cybersäkerhetslagen (2024:1056)</strong>.</li>
+      <li>Direktivet omfattar organisationer i <strong>18 samhällskritiska sektorer</strong>, från energi och transport till digital infrastruktur och livsmedel.</li>
+      <li>VD och styrelseledamöter bär <strong>personligt ansvar</strong> för att organisationen uppfyller kraven — inklusive risk för yrkesförbud.</li>
+      <li>Böter kan nå <strong>10 miljoner euro</strong> eller 2 % av global omsättning. Tillsynsmyndigheterna i Sverige är redan aktiva.</li>
+    </ul>
+  </div>
+
+  <!-- KEY TAKEAWAY -->
+  <div class="box-takeaway">
+    <div class="takeaway-label">Viktigaste slutsatsen</div>
+    <p>NIS2 handlar inte om teknik — det handlar om ledningsansvar. Om du sitter i styrelsen eller leder ett företag i en reglerad sektor, är detta din fråga att äga. Inte IT-avdelningens.</p>
+  </div>
+
+  <!-- HOOK -->
+  <p>
+    Du leder ett företag. Du fattar strategiska beslut varje dag — om marknader, investeringar, personal och tillväxt. Du är van vid att hantera risker. Men det finns en risk som många svenska företagsledare fortfarande underskattar, och den heter <strong>NIS2</strong>.
+  </p>
+
+  <p>
+    NIS2 är inte en teknisk förkortning som hör hemma i IT-avdelningens server-rum. Det är en EU-lag som direkt berör dig som VD eller styrelseledamot. Den ställer krav på hur din organisation skyddar sig mot cyberhot — och den gör dig personligt ansvarig om kraven inte uppfylls. Böterna kan nå <strong>10 miljoner euro</strong>. I värsta fall kan du förbjudas att inneha en ledande befattning.
+  </p>
+
+  <p>
+    Den här artikeln förklarar vad NIS2 faktiskt innebär, varför det finns, vad det kräver av dig som ledare — och vad som händer om du ignorerar det. Inga tekniska djupdykningar. Bara det du behöver veta för att fatta rätt beslut.
+  </p>
+
+  <h2>Varför finns NIS2 överhuvudtaget?</h2>
+
+  <p>
+    Bakgrunden är enkel att förstå: cyberangrepp har gått från att vara ett tekniskt irritationsmoment till att bli ett samhällshot. Under de senaste åren har sjukhus tvingats ställa in operationer på grund av ransomware-attacker. Energibolag har fått sin produktion stoppad. Transportkedjor har brutits. Kommuner har förlorat tillgång till sina egna system i veckor.
+  </p>
+
+  <p>
+    EU:s första försök att reglera detta var <strong>NIS-direktivet från 2016</strong>. Det var ett steg i rätt riktning, men det hade uppenbara brister. Reglerna tolkades olika i olika medlemsländer. Alltför få organisationer omfattades. Sanktionerna var tandlösa. Och framför allt — ingen ställdes personligt till svars när det gick fel.
+  </p>
+
+  <p>
+    NIS2 är EU:s svar på dessa brister. Direktivet antogs i december 2022 och trädde i kraft i Sverige genom <strong>cybersäkerhetslagen (2024:1056)</strong> i oktober 2024. Det är inte ett förslag. Det är inte en rekommendation. Det är gällande lag.
+  </p>
+
+  <div class="box-info">
+    <strong>Kort historik:</strong> NIS1 (2016) var EU:s första cybersäkerhetslag. Den omfattade relativt få sektorer och hade svaga sanktioner. NIS2 (2022) ersätter den helt — med bredare räckvidd, hårdare krav och personligt ansvar för ledningen. I Sverige gäller det sedan oktober 2024 genom cybersäkerhetslagen.
+  </div>
+
+  <h2>Vilka företag omfattas?</h2>
+
+  <p>
+    Det första de flesta VD:ar vill veta är: gäller det här oss? Svaret beror på två saker — vilken sektor ni verkar i och hur stor er organisation är.
+  </p>
+
+  <p>
+    NIS2 pekar ut <strong>18 samhällskritiska sektorer</strong>. De delas in i två grupper:
+  </p>
+
+  <h3>Sektorer med hög kritikalitet</h3>
+  <ul>
+    <li>Energi (el, olja, gas, fjärrvärme, vätgas)</li>
+    <li>Transport (flyg, järnväg, väg, sjöfart)</li>
+    <li>Bankverksamhet och finansmarknadsinfrastruktur</li>
+    <li>Hälso- och sjukvård</li>
+    <li>Dricksvatten och avloppsvatten</li>
+    <li>Digital infrastruktur (datacenter, DNS, molntjänster, CDN)</li>
+    <li>Offentlig förvaltning</li>
+    <li>Rymdverksamhet</li>
+    <li>ICT-tjänstehantering (B2B)</li>
+  </ul>
+
+  <h3>Andra kritiska sektorer</h3>
+  <ul>
+    <li>Post- och budtjänster</li>
+    <li>Avfallshantering</li>
+    <li>Tillverkning av kemikalier</li>
+    <li>Livsmedelsproduktion och distribution</li>
+    <li>Tillverkning (medicintekniska produkter, datorer, elektronik, motorfordon, maskiner)</li>
+    <li>Digitala leverantörer (marknadsplatser, sökmotorer, sociala plattformar)</li>
+    <li>Forskning</li>
+  </ul>
+
+  <p>
+    Inom dessa sektorer gäller storlekströsklar. Organisationer med <strong>minst 50 anställda</strong> eller <strong>minst 10 miljoner euro i årsomsättning</strong> omfattas generellt. Vissa organisationer — som DNS-leverantörer, kvalificerade betrodda tjänster och domännamnsregistraturer — omfattas oavsett storlek.
+  </p>
+
+  <p>
+    Direktivet delar sedan in organisationerna i två kategorier:
+  </p>
+
+  <table class="fine-table">
+    <thead>
+      <tr>
+        <th>Kategori</th>
+        <th>Typisk storlek</th>
+        <th>Maxböter</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Väsentlig entitet</td>
+        <td>250+ anställda eller 50 M€+ omsättning</td>
+        <td class="amount">10 miljoner euro / 2 % av global omsättning</td>
+      </tr>
+      <tr>
+        <td>Viktig entitet</td>
+        <td>50–249 anställda eller 10–50 M€ omsättning</td>
+        <td class="amount">7 miljoner euro / 1,4 % av global omsättning</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>
+    Är du osäker på om er organisation träffas av lagen? Det är en farlig osäkerhet. Konsekvensen av att felaktigt anta att ni inte omfattas är betydligt dyrare än att kontrollera det ordentligt.
+  </p>
+
+  <h2>Vad kräver NIS2 — på ett språk du förstår?</h2>
+
+  <p>
+    NIS2 är inte en teknisk specifikation. Det är ett regelverk som kräver att din organisation har <strong>strukturerade processer</strong> för att hantera cyberrisker. Tänk på det som brandskydd: ingen kräver att du personligen ska kunna släcka en brand, men du måste kunna visa att det finns brandvarnare, utrymningsplaner och att personalen vet vad de ska göra.
+  </p>
+
+  <p>
+    Direktivets <strong>Artikel 21</strong> listar tio säkerhetsdomäner som varje organisation måste ha dokumenterade processer för:
+  </p>
+
+  <ol>
+    <li><strong>Riskanalys och säkerhetspolicyer</strong> — en systematisk bedömning av vilka hot ni möter och hur ni hanterar dem</li>
+    <li><strong>Incidenthantering</strong> — en plan för vad som händer när det går fel, med tydliga roller och eskaleringsvägar</li>
+    <li><strong>Kontinuitet och krishantering</strong> — hur verksamheten fortsätter att fungera under och efter en incident</li>
+    <li><strong>Leverantörssäkerhet</strong> — säkerhetskrav på de företag ni köper tjänster av, särskilt IT- och molntjänster</li>
+    <li><strong>Säkerhet vid förvärv och utveckling</strong> — cybersäkerhet ska finnas med från början när ni köper eller bygger system</li>
+    <li><strong>Utvärdering av säkerhetsåtgärder</strong> — regelbunden kontroll att era skydd faktiskt fungerar</li>
+    <li><strong>Utbildning i cyberhygien</strong> — all personal, inklusive ledningen, ska utbildas</li>
+    <li><strong>Kryptering</strong> — policyer för hur känslig information skyddas</li>
+    <li><strong>Åtkomstkontroll och tillgångshantering</strong> — vem har åtkomst till vad, och varför</li>
+    <li><strong>Flerfaktorsautentisering</strong> — tekniska skydd för inloggning och kommunikation</li>
+  </ol>
+
+  <p>
+    Lägg märke till att inget av detta kräver att du som VD ska förstå brandväggar eller krypteringsalgoritmer. Det kräver att du ser till att <strong>processerna finns, att de är dokumenterade och att styrelsen har godkänt dem</strong>. Det är en ledningsfråga, inte en teknikfråga.
+  </p>
+
+  <h3>Incidentrapportering — strikta tidsfrister</h3>
+
+  <p>
+    <strong>Artikel 23</strong> i NIS2 inför strikta rapporteringskrav vid allvarliga incidenter. Tidsfristen börjar ticka i samma ögonblick som ni upptäcker att något har hänt:
+  </p>
+
+  <ul>
+    <li><strong>Inom 24 timmar:</strong> En tidig varning ska skickas till tillsynsmyndigheten — även om ni inte vet exakt vad som har hänt</li>
+    <li><strong>Inom 72 timmar:</strong> En fullständig incidentrapport ska lämnas med en bedömning av allvarlighetsgrad, påverkan och initiala åtgärder</li>
+    <li><strong>Inom en månad:</strong> En slutrapport ska levereras med grundorsaksanalys och lärdomar</li>
+  </ul>
+
+  <p>
+    De här tidsfristerna är inte förhandlingsbara. En organisation som drabbas av ett intrång och försöker hantera det internt utan att rapportera riskerar dubbla sanktioner — en för incidenten och en för utebliven rapportering. Det är inte ett hypotetiskt scenario. Det är exakt den situation som NIS2 är designat att bestraffa.
+  </p>
+
+  <h2>Det personliga ansvaret — den del som förändrar allt</h2>
+
+  <p>
+    Det som gör NIS2 fundamentalt annorlunda än tidigare direktiv är <strong>Artikel 20</strong>. Den fastställer att det är <strong>ledningsorganen</strong> — styrelsen och VD — som bär ansvaret för organisationens cybersäkerhet. Inte IT-chefen. Inte CISO:n. Du.
+  </p>
+
+  <p>
+    Artikel 20 kräver specifikt att ledningen:
+  </p>
+
+  <ol>
+    <li><strong>Godkänner</strong> de säkerhetsåtgärder som organisationen vidtar</li>
+    <li><strong>Övervakar</strong> att åtgärderna faktiskt genomförs</li>
+    <li><strong>Genomgår utbildning</strong> i cybersäkerhet för att kunna fatta informerade beslut</li>
+    <li><strong>Kan hållas personligt ansvarig</strong> om organisationen brister i sina skyldigheter</li>
+  </ol>
+
+  <div class="box-warning">
+    <strong>Personligt ansvar — inte bara böter mot bolaget.</strong> Vid allvarliga brister kan tillsynsmyndigheten utfärda ett tillfälligt förbud mot att en specifik person innehar ledande befattning. Det gäller inte bara i den aktuella organisationen — det är ett branschövergripande förbud. Du kan inte "lösa" det i efterhand med ett styrelseprotokoll eller en konsultrapport. Ansvaret är ditt från dag ett.
+  </div>
+
+  <p>
+    Det här innebär att frasen "IT-avdelningen sköter det" inte längre är ett försvar. Om du som VD inte kan uppvisa dokumentation på att styrelsen aktivt har godkänt säkerhetsåtgärderna, att ni har en aktuell riskbedömning och att ni regelbundet utvärderar era skydd — då är du personligen exponerad. Och den exponeringen aktiveras inte bara vid en cyberattack. Den aktiveras vid en tillsynsgranskning, som kan inledas när som helst.
+  </p>
+
+  <h2>Vad händer om du ignorerar NIS2?</h2>
+
+  <p>
+    Låt oss vara konkreta. Att inte följa NIS2 är inte som att missa en branschrekommendation. Det är att bryta mot en lag som redan gäller. Konsekvenserna delas in i tre kategorier:
+  </p>
+
+  <h3>1. Ekonomiska sanktioner</h3>
+  <p>
+    Böterna är kännbara. För väsentliga entiteter kan de nå <strong>10 miljoner euro eller 2 procent av global årsomsättning</strong> — det belopp som är högst gäller. För viktiga entiteter är taket <strong>7 miljoner euro eller 1,4 procent</strong>. Böter beräknas per brist och per incident, vilket innebär att en organisation som saknar flera av de tio obligatoriska säkerhetsdomänerna och dessutom missar en rapporteringsfrist kan drabbas av flera parallella sanktioner.
+  </p>
+
+  <h3>2. Personliga konsekvenser för ledningen</h3>
+  <p>
+    Som beskrivet ovan kan VD och styrelseledamöter drabbas av tillfälliga yrkesförbud. Det är inte en teoretisk möjlighet — det är ett verktyg som tillsynsmyndigheten har till sitt förfogande och som NIS2 explicit föreskriver. Din karriär, ditt rykte och din möjlighet att leda organisationer står på spel.
+  </p>
+
+  <h3>3. Operativa konsekvenser</h3>
+  <p>
+    Tillsynsmyndigheten kan ålägga din organisation att vidta specifika åtgärder inom bestämda tidsramar. Vid allvarliga brister kan de kräva offentliggörande av bristerna, vilket innebär reputationsskada som sträcker sig långt bortom själva böterna. Kunder, leverantörer och investerare kommer att se det.
+  </p>
+
+  <div class="box-case">
+    <div class="case-label">Scenario — Så kan det gå</div>
+    <p>
+      <strong>Situation: Svenskt medelstort logistikföretag, 120 anställda, omsättning 280 miljoner kronor.</strong>
+    </p>
+    <p>
+      Företaget verkar inom transportsektorn och klassas som viktig entitet under NIS2. VD är medveten om att direktivet finns men har skjutit upp frågan — det upplevs som ett IT-ärende och budgeten är pressad.
+    </p>
+    <p>
+      I mars 2026 drabbas företaget av ett phishing-angrepp som ger angriparen åtkomst till ekonomi- och logistiksystemen. Operativ verksamhet stoppas i fyra dagar. En kund som drabbas av försenade leveranser kontaktar Transportstyrelsen. Tillsynsmyndigheten inleder granskning.
+    </p>
+    <p>
+      Vid granskningen framkommer att företaget saknar en dokumenterad riskbedömning, att incidenthanteringsplanen är informell och odaterad, att styrelsen aldrig formellt godkänt några cybersäkerhetsåtgärder, och att den tidiga varningen till tillsynsmyndigheten aldrig skickades inom 24-timmarsfristen.
+    </p>
+    <p>
+      <strong>Konsekvens:</strong> Sanktionsavgift för utebliven incidentrapportering. Ytterligare avgift för bristande säkerhetsåtgärder enligt Artikel 21. VD kallas till möte med tillsynsmyndigheten angående det personliga ansvaret enligt Artikel 20. Total kostnad inklusive juridisk hantering, konsulter och förlorade affärer uppskattas till <span class="danger">8–15 miljoner kronor</span>. Det belopp som hade krävts för att vara förberedd? En bråkdel av det.
+    </p>
+  </div>
+
+  <h2>Hur ser tillsynen ut i Sverige?</h2>
+
+  <p>
+    Sverige har ett delat tillsynsansvar. <strong>MSB (Myndigheten för samhällsskydd och beredskap)</strong> har en övergripande samordningsroll, men den operativa tillsynen ligger hos sektorsspecifika myndigheter:
+  </p>
+
+  <ul>
+    <li><strong>Energimarknadsinspektionen</strong> — energisektorn</li>
+    <li><strong>Transportstyrelsen</strong> — transportsektorn</li>
+    <li><strong>Finansinspektionen</strong> — bank och finansmarknad</li>
+    <li><strong>Inspektionen för vård och omsorg (IVO)</strong> — hälso- och sjukvård</li>
+    <li><strong>Post- och telestyrelsen (PTS)</strong> — digital infrastruktur och elektronisk kommunikation</li>
+    <li><strong>Livsmedelsverket</strong> — livsmedelsproduktion och distribution</li>
+  </ul>
+
+  <p>
+    Dessa myndigheter har befogenhet att initiera proaktiv tillsyn — de behöver inte vänta på att en incident sker. De kan begära dokumentation, genomföra revisioner och utfärda böter och förelägganden. MSB publicerar löpande vägledning och tillhör de resurser som organisationer bör bevaka aktivt.
+  </p>
+
+  <h2>Sammanfattning — det du behöver ta med dig</h2>
+  <p>
+    NIS2 är inte ett tillfälligt direktiv som kommer att mjukna i implementeringen. Det är ett permanent ramverk som förändrar hur cybersäkerhet regleras i hela EU — med tydliga krav, tydliga sanktioner och ett tydligt personligt ansvar för ledningen.
+  </p>
+  <p>
+    Om din organisation verkar inom en reglerad sektor och uppfyller storlekströsklarna gäller NIS2 er — oavsett om ni vet om det eller inte. Det avgörande är inte om ni har råkat undvika incidenter. Det avgörande är om ni har den dokumentation och de processer på plats som tillsynsmyndigheten faktiskt efterfrågar.
+  </p>
+  <p>
+    Och det tar man inte reda på genom att vänta. Det tar man reda på genom att göra en gap-analys.
+  </p>
+
+<style>
+  .capture-form-section { background: #1c1c1f; border: 1px solid rgba(245,197,24,0.25); border-top: 3px solid var(--yellow); border-radius: 4px; padding: 40px; margin: 64px 0 40px; }
+  .capture-form-section h2 { margin-top: 0; font-size: 24px; font-family: 'Poppins', sans-serif; font-weight: 800; margin-bottom: 12px; }
+  .capture-form-section .sub { color: #aaa; font-size: 15px; margin-bottom: 24px; }
+  .capture-input { display: block; width: 100%; background: #222226; border: 1px solid #2e2e33; border-radius: 4px; padding: 13px 16px; font-size: 15px; color: #f0f0f0; font-family: 'Barlow', sans-serif; outline: none; transition: border-color 0.2s; margin-bottom: 12px; }
+  .capture-input:focus { border-color: var(--yellow); }
+  .capture-input::placeholder { color: #666; }
+  .capture-submit-btn { background: var(--yellow); color: #000; border: none; border-radius: 4px; padding: 14px 28px; font-family: 'Poppins', sans-serif; font-size: 15px; font-weight: 800; cursor: pointer; transition: background 0.2s; width: 100%; }
+  .capture-submit-btn:hover { background: #e8d800; }
+  .capture-submit-btn:disabled { opacity: 0.6; cursor: not-allowed; }
+  .capture-thanks-msg { padding: 16px; background: rgba(34,197,94,0.1); border: 1px solid rgba(34,197,94,0.3); border-radius: 4px; color: #86efac; font-size: 15px; text-align: center; display: none; }
+</style>
+
+  <!-- CTA — inline lead capture -->
+  <div class="capture-form-section">
+    <h2>Vet du var din organisation står idag?</h2>
+    <p class="sub">En kostnadsfri NIS2-genomgång på 20 minuter visar exakt vad som saknas — innan tillsynsmyndigheten frågar. Böterna är upp till <strong style="color:#f0f0f0">10 miljoner euro</strong>. Samtalet är gratis.</p>
+    <form id="vadArNis2Form" onsubmit="submitvadArNis2(event)">
+      <input class="capture-input" type="text"  id="vadArNis2Name"    placeholder="Ditt namn"        autocomplete="name" />
+      <input class="capture-input" type="email" id="vadArNis2Email"   placeholder="E-postadress *"   autocomplete="email" required />
+      <input class="capture-input" type="text"  id="vadArNis2Company" placeholder="Bolagets namn *"  required />
+      <button type="submit" class="capture-submit-btn" id="vadArNis2Submit">Boka kostnadsfri genomgång →</button>
+    </form>
+    <div class="capture-thanks-msg" id="vadArNis2Thanks">✅ Tack! Vi hör av oss inom 24 timmar.</div>
+  </div>
+
+</article>
+
+<footer>
+  © 2026 M&J Trusted Marketing KB ·
+  <a href="mailto:support@trustedmarketing.se">support@trustedmarketing.se</a> ·
+  <a href="/nis2.html">Tillbaka till startsidan</a> ·
+  <a href="/privacy.html">Integritetspolicy</a>
+</footer>
+
+<script>
+  async function submitvadArNis2(e) {
+    e.preventDefault();
+    const btn = document.getElementById('vadArNis2Submit');
+    btn.disabled = true;
+    btn.textContent = 'Skickar...';
+    const payload = {
+      name:       document.getElementById('vadArNis2Name').value.trim(),
+      email:      document.getElementById('vadArNis2Email').value.trim(),
+      company:    document.getElementById('vadArNis2Company').value.trim(),
+      source:     'nis2-vad-ar',
+      score_data: null
+    };
+    try {
+      const res  = await fetch('/api/inbound', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) });
+      const data = await res.json();
+      if (data.success) {
+        document.getElementById('vadArNis2Form').style.display = 'none';
+        document.getElementById('vadArNis2Thanks').style.display = 'block';
+      } else {
+        btn.disabled = false;
+        btn.textContent = 'Boka kostnadsfri genomgång →';
+        alert('Något gick fel, försök igen.');
+      }
+    } catch (err) {
+      btn.disabled = false;
+      btn.textContent = 'Boka kostnadsfri genomgång →';
+      alert('Något gick fel, försök igen.');
+    }
+  }
+</script>
+</body>
+</html>

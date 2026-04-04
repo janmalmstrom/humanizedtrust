@@ -277,7 +277,7 @@
   </div>
 
   <footer>
-    © 2026 M &amp; J Trusted Marketing KB · <a href="mailto:jan@trustedmarketing.se">jan@trustedmarketing.se</a> · <a href="/nis2.html">nis2klar.se/nis2.html</a>
+    © 2026 M &amp; J Trusted Marketing KB · <a href="mailto:support@trustedmarketing.se">support@trustedmarketing.se</a> · <a href="/nis2.html">nis2klar.se/nis2.html</a>
   </footer>
 
   <script>
@@ -422,5 +422,18 @@
       }
     }
   </script>
+  <!-- Preheating Engine: tracking pixel + warm signal on email link click -->
+  <script>
+    (function() {
+      var PAGE = 'nis2-kalkylator';
+      new Image().src = '/api/track/pixel?page=' + PAGE;
+      var token = new URLSearchParams(window.location.search).get('t');
+      if (token) {
+        fetch('/api/track?t=' + encodeURIComponent(token) + '&page=' + PAGE, { method: 'GET', redirect: 'manual' })
+          .catch(function(){});
+      }
+    })();
+  </script>
+  <script src="/cookie-banner.js"></script>
 </body>
 </html>
