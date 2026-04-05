@@ -1,6 +1,40 @@
 const express = require('express');
 const router = express.Router();
 const db = require('../db');
+const axios = require('axios');
+
+async function sendLeadNotification(name, email, company, source) {
+  const apiKey = process.env.RESEND_API_KEY;
+  if (!apiKey) return; // silently skip if not configured
+
+  const notifyTo = process.env.NOTIFY_EMAIL || 'jan@lifeandpower.se';
+  const subject  = `🔔 Ny lead: ${company} (${source})`;
+  const html     = `
+    <h2 style="margin:0 0 16px">Ny inbound lead på nis2klar.se</h2>
+    <table style="font-size:15px;line-height:1.8;border-collapse:collapse">
+      <tr><td style="color:#888;padding-right:16px">Namn</td><td><strong>${name || '—'}</strong></td></tr>
+      <tr><td style="color:#888;padding-right:16px">E-post</td><td><a href="mailto:${email}">${email}</a></td></tr>
+      <tr><td style="color:#888;padding-right:16px">Bolag</td><td><strong>${company}</strong></td></tr>
+      <tr><td style="color:#888;padding-right:16px">Källa</td><td>${source}</td></tr>
+    </table>
+    <p style="margin-top:24px;font-size:13px;color:#888">
+      Se lead i CRM: <a href="https://humanizedtrust.xyz">humanizedtrust.xyz</a>
+    </p>
+  `;
+
+  try {
+    await axios.post('https://api.resend.com/emails', {
+      from:    'NIS2Klar <onboarding@resend.dev>',
+      to:      [notifyTo],
+      subject,
+      html
+    }, {
+      headers: { Authorization: `Bearer ${apiKey}` }
+    });
+  } catch (err) {
+    console.error('[inbound] notify error:', err.response?.data || err.message);
+  }
+}
 
 // POST /api/inbound — public lead capture from NIS2 lead magnet pages
 // No auth required — called from public HTML pages
@@ -76,6 +110,9 @@ router.post('/', async (req, res) => {
        VALUES ($1, 'inbound', $2, $3, NOW())`,
       [leadId, activityTitle, activityBody]
     );
+
+    // Fire-and-forget email notification
+    sendLeadNotification(name, cleanEmail, cleanCompany, cleanSource);
 
     res.json({ success: true, lead_id: leadId });
   } catch (err) {
