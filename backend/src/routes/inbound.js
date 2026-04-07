@@ -3,7 +3,55 @@ const router = express.Router();
 const db = require('../db');
 const axios = require('axios');
 
-async function sendLeadNotification(name, email, company, source) {
+async function sendAutoReply(name, email, company) {
+  const apiKey = process.env.RESEND_API_KEY;
+  if (!apiKey) return;
+
+  const firstName = name ? name.split(' ')[0] : 'där';
+  const bookingUrl = process.env.CAL_BOOKING_URL || 'https://cal.eu/jan-malmstrom-dq23y8/30min';
+
+  const html = `
+    <div style="font-family:Arial,sans-serif;max-width:560px;margin:0 auto;color:#1a1a1a">
+      <p style="font-size:16px">Hej ${firstName},</p>
+      <p style="font-size:15px;line-height:1.7">
+        Tack för din förfrågan — vi har tagit emot den och återkommer inom <strong>24 timmar</strong>
+        med information om vad NIS2 innebär för ${company}.
+      </p>
+      <p style="font-size:15px;line-height:1.7">
+        Vill du hellre boka ett samtal direkt? Välj en tid som passar dig:
+      </p>
+      <p style="text-align:center;margin:24px 0">
+        <a href="${bookingUrl}" style="background:#0066cc;color:#fff;text-decoration:none;padding:13px 32px;border-radius:6px;font-size:15px;font-weight:bold;display:inline-block">
+          📅 Boka ett kostnadsfritt samtal
+        </a>
+      </p>
+      <p style="font-size:15px;line-height:1.7">
+        Under tiden kan du läsa mer i våra guider på
+        <a href="https://nis2klar.se/artiklar.html" style="color:#0066cc">nis2klar.se/artiklar</a>.
+      </p>
+      <p style="font-size:15px;margin-top:24px">— Jan Malmström, NIS2Klar</p>
+      <hr style="border:none;border-top:1px solid #eee;margin:24px 0"/>
+      <p style="font-size:12px;color:#999">
+        NIS2Klar drivs av M&amp;J Trusted Marketing KB ·
+        <a href="https://nis2klar.se/integritetspolicy.html" style="color:#999">Integritetspolicy</a>
+      </p>
+    </div>
+  `;
+
+  try {
+    await axios.post('https://api.resend.com/emails', {
+      from:    'Jan Malmström <jan@nis2klar.se>',
+      to:      [email],
+      subject: `Vi återkommer inom 24 timmar — NIS2Klar`,
+      html
+    }, { headers: { Authorization: `Bearer ${apiKey}` } });
+    console.log(`[inbound] auto-reply sent to ${email}`);
+  } catch (err) {
+    console.error('[inbound] auto-reply error:', err.response?.data || err.message);
+  }
+}
+
+async function sendLeadNotification(name, email, phone, company, source) {
   const apiKey = process.env.RESEND_API_KEY;
   if (!apiKey) return; // silently skip if not configured
 
@@ -14,6 +62,7 @@ async function sendLeadNotification(name, email, company, source) {
     <table style="font-size:15px;line-height:1.8;border-collapse:collapse">
       <tr><td style="color:#888;padding-right:16px">Namn</td><td><strong>${name || '—'}</strong></td></tr>
       <tr><td style="color:#888;padding-right:16px">E-post</td><td><a href="mailto:${email}">${email}</a></td></tr>
+      <tr><td style="color:#888;padding-right:16px">Telefon</td><td>${phone ? `<a href="tel:${phone}">${phone}</a>` : '—'}</td></tr>
       <tr><td style="color:#888;padding-right:16px">Bolag</td><td><strong>${company}</strong></td></tr>
       <tr><td style="color:#888;padding-right:16px">Källa</td><td>${source}</td></tr>
     </table>
@@ -24,7 +73,7 @@ async function sendLeadNotification(name, email, company, source) {
 
   try {
     await axios.post('https://api.resend.com/emails', {
-      from:    'NIS2Klar <onboarding@resend.dev>',
+      from:    'NIS2Klar <jan@nis2klar.se>',
       to:      [notifyTo],
       subject,
       html
@@ -39,7 +88,7 @@ async function sendLeadNotification(name, email, company, source) {
 // POST /api/inbound — public lead capture from NIS2 lead magnet pages
 // No auth required — called from public HTML pages
 router.post('/', async (req, res) => {
-  const { name, email, company, source, score_data } = req.body;
+  const { name, email, phone, company, source, score_data } = req.body;
 
   if (!email || !company) {
     return res.status(400).json({ success: false, error: 'email and company required' });
@@ -47,6 +96,7 @@ router.post('/', async (req, res) => {
 
   const cleanEmail = email.trim().toLowerCase();
   const cleanCompany = company.trim();
+  const cleanPhone = phone ? phone.trim() : null;
   const cleanSource = source || 'nis2-inbound';
 
   try {
@@ -74,24 +124,26 @@ router.post('/', async (req, res) => {
 
     if (existing.rows.length > 0) {
       leadId = existing.rows[0].id;
-      // Bump to qualified since they raised their hand
+      // Bump to qualified + update phone if provided
       await db.query(
         `UPDATE discovery_leads
          SET review_status = CASE WHEN review_status IN ('new','cold') THEN 'qualified' ELSE review_status END,
+             phone = COALESCE($2, phone),
              updated_at = NOW()
          WHERE id = $1`,
-        [leadId]
+        [leadId, cleanPhone]
       );
     } else {
       // Create new lead from inbound capture
       const insert = await db.query(
         `INSERT INTO discovery_leads
-           (company_name, email, source, review_status, score, score_label, notes, created_at, updated_at)
-         VALUES ($1, $2, $3, 'qualified', $4, $5, $6, NOW(), NOW())
+           (company_name, email, phone, source, review_status, score, score_label, notes, created_at, updated_at)
+         VALUES ($1, $2, $3, $4, 'qualified', $5, $6, $7, NOW(), NOW())
          RETURNING id`,
         [
           cleanCompany,
           cleanEmail,
+          cleanPhone,
           cleanSource,
           score,
           score_label,
@@ -111,8 +163,9 @@ router.post('/', async (req, res) => {
       [leadId, activityTitle, activityBody]
     );
 
-    // Fire-and-forget email notification
-    sendLeadNotification(name, cleanEmail, cleanCompany, cleanSource);
+    // Fire-and-forget notifications
+    sendLeadNotification(name, cleanEmail, cleanPhone, cleanCompany, cleanSource);
+    sendAutoReply(name, cleanEmail, cleanCompany);
 
     res.json({ success: true, lead_id: leadId });
   } catch (err) {
@@ -146,5 +199,57 @@ function formatActivityBody(name, score_data) {
   }
   return lines.join('\n');
 }
+
+// POST /api/inbound/email — Resend inbound webhook
+// Receives emails sent to jan@nis2klar.se and stores them as messages on matching leads
+router.post('/email', async (req, res) => {
+  // Resend sends the payload directly (not nested under 'data')
+  const payload = req.body?.data || req.body;
+  const fromRaw   = payload?.from || '';
+  const subject   = payload?.subject || '(no subject)';
+  const bodyText  = payload?.text || '';
+  const bodyHtml  = payload?.html || '';
+  const messageId = payload?.message_id || payload?.messageId || null;
+
+  // Extract plain email from "Name <email>" format
+  const fromMatch = fromRaw.match(/<([^>]+)>/) || [null, fromRaw];
+  const fromEmail = (fromMatch[1] || fromRaw).trim().toLowerCase();
+
+  if (!fromEmail) {
+    return res.status(400).json({ success: false, error: 'no from email' });
+  }
+
+  try {
+    // Find lead by email
+    const { rows } = await db.query(
+      'SELECT id FROM discovery_leads WHERE LOWER(email) = $1 LIMIT 1',
+      [fromEmail]
+    );
+
+    const leadId = rows.length > 0 ? rows[0].id : null;
+
+    // Store message (even if no lead found, lead_id = null)
+    await db.query(
+      `INSERT INTO messages (lead_id, direction, from_email, to_email, subject, body_text, body_html, resend_message_id)
+       VALUES ($1, 'inbound', $2, 'jan@nis2klar.se', $3, $4, $5, $6)`,
+      [leadId, fromEmail, subject, bodyText, bodyHtml, messageId]
+    );
+
+    // Log activity if lead found
+    if (leadId) {
+      await db.query(
+        `INSERT INTO activities (lead_id, type, title, body)
+         VALUES ($1, 'email', $2, $3)`,
+        [leadId, `📩 Inbound email: ${subject}`, `From: ${fromRaw}`]
+      );
+    }
+
+    console.log(`[inbound/email] stored message from ${fromEmail}, lead_id=${leadId}`);
+    res.json({ success: true });
+  } catch (err) {
+    console.error('[inbound/email] error:', err.message);
+    res.status(500).json({ success: false, error: err.message });
+  }
+});
 
 module.exports = router;

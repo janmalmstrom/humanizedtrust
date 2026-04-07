@@ -1348,6 +1348,151 @@ function CallSimulator({ lead, onClose }) {
   );
 }
 
+// ---- Messages Inbox ----
+function MessagesPanel({ leadId, leadEmail }) {
+  const [messages, setMessages] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [replyTo, setReplyTo] = useState(leadEmail || '');
+  const [subject, setSubject] = useState('');
+  const [body, setBody] = useState('');
+  const [sending, setSending] = useState(false);
+  const [sendMsg, setSendMsg] = useState('');
+  const [showCompose, setShowCompose] = useState(false);
+
+  const fetchMessages = useCallback(() => {
+    api.get(`/messages/${leadId}`)
+      .then(r => { setMessages(r.data.messages); setLoading(false); })
+      .catch(() => setLoading(false));
+  }, [leadId]);
+
+  useEffect(() => { fetchMessages(); }, [fetchMessages]);
+
+  async function sendReply(e) {
+    e.preventDefault();
+    if (!body.trim() || !replyTo.trim()) return;
+    setSending(true);
+    setSendMsg('');
+    try {
+      await api.post(`/messages/${leadId}/reply`, {
+        to_email: replyTo.trim(),
+        subject: subject.trim() || 'Ang. NIS2',
+        body: body.trim(),
+      });
+      setBody('');
+      setSubject('');
+      setShowCompose(false);
+      setSendMsg('✓ Sent');
+      fetchMessages();
+    } catch (err) {
+      setSendMsg('Error: ' + (err.response?.data?.error || err.message));
+    } finally {
+      setSending(false);
+      setTimeout(() => setSendMsg(''), 4000);
+    }
+  }
+
+  function formatTime(ts) {
+    return new Date(ts).toLocaleString('sv-SE', { dateStyle: 'short', timeStyle: 'short' });
+  }
+
+  return (
+    <div className="bg-navy-800 rounded-xl border border-white/10 p-5 space-y-4">
+      <div className="flex items-center justify-between">
+        <h2 className="text-sm font-semibold text-slate-200 flex items-center gap-2">
+          📬 Messages
+          {messages.filter(m => m.direction === 'inbound' && !m.read_at).length > 0 && (
+            <span className="bg-cyan-500 text-white text-xs px-1.5 py-0.5 rounded-full">
+              {messages.filter(m => m.direction === 'inbound' && !m.read_at).length} new
+            </span>
+          )}
+        </h2>
+        <button
+          onClick={() => setShowCompose(c => !c)}
+          className="text-xs text-cyan-400 hover:text-cyan-300 transition-colors"
+        >
+          {showCompose ? 'Cancel' : '+ Compose'}
+        </button>
+      </div>
+
+      {/* Compose form */}
+      {showCompose && (
+        <form onSubmit={sendReply} className="space-y-2 border border-white/10 rounded-lg p-3 bg-navy-700/50">
+          <input
+            type="email"
+            value={replyTo}
+            onChange={e => setReplyTo(e.target.value)}
+            placeholder="To email..."
+            className="w-full bg-navy-700 border border-white/10 rounded-lg px-3 py-1.5 text-sm text-slate-200 placeholder-slate-500 focus:outline-none focus:border-cyan-500"
+          />
+          <input
+            type="text"
+            value={subject}
+            onChange={e => setSubject(e.target.value)}
+            placeholder="Subject (default: Ang. NIS2)"
+            className="w-full bg-navy-700 border border-white/10 rounded-lg px-3 py-1.5 text-sm text-slate-200 placeholder-slate-500 focus:outline-none focus:border-cyan-500"
+          />
+          <textarea
+            value={body}
+            onChange={e => setBody(e.target.value)}
+            placeholder="Write your message..."
+            rows={5}
+            className="w-full bg-navy-700 border border-white/10 rounded-lg px-3 py-2 text-sm text-slate-200 placeholder-slate-500 resize-none focus:outline-none focus:border-cyan-500"
+          />
+          <div className="flex items-center gap-2">
+            <button
+              type="submit"
+              disabled={sending || !body.trim() || !replyTo.trim()}
+              className="px-3 py-1.5 text-xs rounded-lg bg-cyan-600 hover:bg-cyan-500 text-white transition-colors disabled:opacity-50"
+            >
+              {sending ? 'Sending...' : '📤 Send'}
+            </button>
+            {sendMsg && (
+              <span className={`text-xs ${sendMsg.startsWith('✓') ? 'text-emerald-400' : 'text-red-400'}`}>
+                {sendMsg}
+              </span>
+            )}
+          </div>
+        </form>
+      )}
+
+      {/* Thread */}
+      {loading ? (
+        <p className="text-slate-500 text-sm">Loading...</p>
+      ) : messages.length === 0 ? (
+        <p className="text-slate-500 text-sm">No messages yet. Compose one or wait for a reply from a lead.</p>
+      ) : (
+        <div className="space-y-3 max-h-[600px] overflow-y-auto pr-1">
+          {messages.map(m => (
+            <div
+              key={m.id}
+              className={`rounded-lg p-3 space-y-1 ${
+                m.direction === 'inbound'
+                  ? 'bg-cyan-500/8 border border-cyan-500/20'
+                  : 'bg-white/4 border border-white/8'
+              }`}
+            >
+              <div className="flex items-start justify-between gap-2">
+                <div className="flex items-center gap-2 flex-wrap">
+                  <span className="text-xs font-medium text-slate-300">
+                    {m.direction === 'inbound' ? `📩 ${m.from_email}` : `📤 You → ${m.to_email}`}
+                  </span>
+                  {m.subject && (
+                    <span className="text-xs text-slate-500 italic">— {m.subject}</span>
+                  )}
+                </div>
+                <span className="text-xs text-slate-500 flex-shrink-0">{formatTime(m.created_at)}</span>
+              </div>
+              <p className="text-sm text-slate-300 leading-relaxed whitespace-pre-wrap break-words">
+                {m.body_text || '(no text content)'}
+              </p>
+            </div>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+}
+
 // ---- Activity Timeline ----
 function ActivityTimeline({ leadId }) {
   const [activities, setActivities] = useState([]);

@@ -225,6 +225,23 @@ router.get('/stats', async (req, res) => {
 });
 
 // GET /api/leads/bdr-stats — BDR KPIs for dashboard
+// GET /leads/inbound — recent inbound leads from nis2klar.se forms
+router.get('/inbound', async (req, res) => {
+  try {
+    const { rows } = await db.query(`
+      SELECT id, company_name, email, phone, source, score, score_label, notes, review_status, created_at
+      FROM discovery_leads
+      WHERE (source LIKE 'nis2%' OR source = 'inbound')
+        AND review_status != 'contacted'
+      ORDER BY created_at DESC
+      LIMIT 20
+    `);
+    res.json({ success: true, data: { leads: rows } });
+  } catch (err) {
+    res.status(500).json({ success: false, error: err.message });
+  }
+});
+
 router.get('/bdr-stats', async (req, res) => {
   try {
     const [outreach, funnel, enrichment, goingCold, seqStats, revenueByStage] = await Promise.all([

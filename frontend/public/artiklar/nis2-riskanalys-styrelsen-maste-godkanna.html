@@ -1,6 +1,14 @@
 <!DOCTYPE html>
 <html lang="sv">
 <head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-BKF3QH9K01"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag("js", new Date());
+    gtag("config", "G-BKF3QH9K01");
+  </script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Riskanalysen styrelsen måste godkänna — och förstå | NIS2Klar</title>
@@ -365,6 +373,7 @@
     <form id="riskanalysCtrlForm" onsubmit="submitriskanalysCtrl(event)">
       <input class="capture-input" type="text"  id="riskanalysCtrlName"    placeholder="Ditt namn"        autocomplete="name" />
       <input class="capture-input" type="email" id="riskanalysCtrlEmail"   placeholder="E-postadress *"   autocomplete="email" required />
+      <input class="capture-input" type="tel"   id="riskanalysCtrlPhone"   placeholder="Telefonnummer"    autocomplete="tel" />
       <input class="capture-input" type="text"  id="riskanalysCtrlCompany" placeholder="Bolagets namn *"  required />
       <button type="submit" class="capture-submit-btn" id="riskanalysCtrlSubmit">Boka kostnadsfri genomgång →</button>
     </form>
@@ -373,6 +382,16 @@
 
 </article>
 
+
+<div class="related-articles" style="margin:2.5rem 0 2rem;padding:1.5rem;background:#1a1a2e;border-left:4px solid #f0a500;border-radius:4px;">
+  <p style="margin:0 0 1rem;font-size:0.85rem;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:#f0a500;">L&#228;s ocks&#229;</p>
+  <ul style="margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:0.5rem;">
+    <li><a href="/artiklar/nis2-incidentrapportering-24-timmar.html" style="color:#e0e0e0;text-decoration:none;font-size:0.95rem;">&#x2192; 24 timmar: Rapportera en incident</a></li>
+    <li><a href="/artiklar/nis2-tekniska-sakerhetsatgarder.html" style="color:#e0e0e0;text-decoration:none;font-size:0.95rem;">&#x2192; Tekniska säkerhetskrav</a></li>
+    <li><a href="/artiklar/nis2-leverantorskedjan-risk.html" style="color:#e0e0e0;text-decoration:none;font-size:0.95rem;">&#x2192; Din leverantör kan fälla dig</a></li>
+  </ul>
+  <p style="margin:1.25rem 0 0;font-size:0.85rem;color:#aaa;">&#8592; <a href="/nis2.html" style="color:#f0a500;text-decoration:none;">NIS2Klar startsida</a> &nbsp;&middot;&nbsp; <a href="/artiklar.html" style="color:#f0a500;text-decoration:none;">Alla guider</a></p>
+</div>
 <footer>
   © 2026 M&J Trusted Marketing KB ·
   <a href="mailto:support@trustedmarketing.se">support@trustedmarketing.se</a> ·
@@ -389,6 +408,7 @@
     const payload = {
       name:       document.getElementById('riskanalysCtrlName').value.trim(),
       email:      document.getElementById('riskanalysCtrlEmail').value.trim(),
+        phone:      document.getElementById('riskanalysCtrlPhone').value.trim() || null,
       company:    document.getElementById('riskanalysCtrlCompany').value.trim(),
       source:     'nis2-riskanalys',
       score_data: null

@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useCallback } from 'react';
+import React, { useEffect, useState, useCallback, useRef } from 'react';
 import { api } from '../api';
 import { Link } from 'react-router-dom';
 
@@ -166,16 +166,92 @@ function SendEmailModal({ action, onSent, onClose }) {
   );
 }
 
+// ─── Schedule Call Modal ───────────────────────────────────────────────────────
+function ScheduleCallModal({ lead, onSaved, onClose }) {
+  const today = new Date().toISOString().slice(0, 10);
+  const nextHour = new Date();
+  nextHour.setHours(nextHour.getHours() + 1, 0, 0, 0);
+  const defaultTime = nextHour.toTimeString().slice(0, 5);
+
+  const [date, setDate] = useState(today);
+  const [time, setTime] = useState(defaultTime);
+  const [notes, setNotes] = useState('');
+  const [saving, setSaving] = useState(false);
+
+  async function save() {
+    setSaving(true);
+    const scheduled_at = `${date}T${time}:00`;
+    const title = `📞 Samtal · ${lead.company_name}${notes ? ` — ${notes}` : ''}`;
+    try {
+      const r = await api.post('/tasks', { lead_id: lead.id, title, scheduled_at, due_date: date });
+      const taskId = r.data?.data?.task?.id;
+      if (taskId && lead.email) {
+        await api.post(`/tasks/${taskId}/send-invite`).catch(() => {}); // fire-and-forget
+      }
+      onSaved();
+    } catch {
+      setSaving(false);
+    }
+  }
+
+  return (
+    <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-50 p-4" onClick={onClose}>
+      <div className="bg-[#1e293b] border border-white/15 rounded-2xl p-6 w-full max-w-sm shadow-2xl" onClick={e => e.stopPropagation()}>
+        <h3 className="text-sm font-semibold text-slate-200 mb-1">Schedule a call</h3>
+        <p className="text-xs text-slate-500 mb-5">{lead.company_name}</p>
+        <div className="space-y-3">
+          <div>
+            <label className="text-xs text-slate-400 block mb-1">Date</label>
+            <input type="date" value={date} min={today} onChange={e => setDate(e.target.value)}
+              className="w-full bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-sm text-slate-200 focus:outline-none focus:border-cyan-500/50" />
+          </div>
+          <div>
+            <label className="text-xs text-slate-400 block mb-1">Time</label>
+            <input type="time" value={time} onChange={e => setTime(e.target.value)}
+              className="w-full bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-sm text-slate-200 focus:outline-none focus:border-cyan-500/50" />
+          </div>
+          <div>
+            <label className="text-xs text-slate-400 block mb-1">Notes (optional)</label>
+            <input type="text" value={notes} onChange={e => setNotes(e.target.value)}
+              placeholder="e.g. Discuss NIS2 audit scope"
+              className="w-full bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-sm text-slate-200 placeholder-slate-600 focus:outline-none focus:border-cyan-500/50" />
+          </div>
+        </div>
+        <div className="flex gap-3 mt-5">
+          <button onClick={onClose} className="flex-1 py-2 rounded-lg text-xs font-medium text-slate-400 hover:text-slate-200 bg-white/5 hover:bg-white/10 transition-colors">Cancel</button>
+          <button onClick={save} disabled={saving}
+            className="flex-1 py-2 rounded-lg text-xs font-medium bg-cyan-600 hover:bg-cyan-500 text-white transition-colors disabled:opacity-50">
+            {saving ? 'Saving…' : 'Schedule call'}
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 function TodayActions() {
   const [actions, setActions] = useState([]);
+  const [callTasks, setCallTasks] = useState([]);
+  const [doneTasks, setDoneTasks] = useState(new Set());
   const [done, setDone] = useState(new Set());
   const [loading, setLoading] = useState(true);
   const [emailModal, setEmailModal] = useState(null); // action object
 
   const fetchActions = useCallback(() => {
-    api.get('/sequences/today')
-      .then(r => { setActions(r.data.actions); setLoading(false); })
-      .catch(() => setLoading(false));
+    const todayEnd = new Date(); todayEnd.setHours(23, 59, 59, 999);
+    Promise.all([
+      api.get('/sequences/today'),
+      api.get(`/tasks?completed=false&limit=100&_t=${Date.now()}`),
+    ]).then(([seqRes, taskRes]) => {
+      setActions(seqRes.data.actions);
+      const todayTasks = (taskRes.data?.data?.tasks || []).filter(t => {
+        const check = t.scheduled_at || t.due_date;
+        if (!check) return false;
+        return new Date(check) <= todayEnd;
+      });
+      setCallTasks(todayTasks);
+      setLoading(false);
+    }).catch(() => setLoading(false));
   }, []);
 
   useEffect(() => { fetchActions(); }, [fetchActions]);
@@ -194,9 +270,11 @@ function TodayActions() {
     setDone(prev => new Set(prev).add(enrollmentId));
   }
 
-  if (loading || actions.length === 0) return null;
+  if (loading || (actions.length === 0 && callTasks.length === 0)) return null;
 
   const pending = actions.filter(a => !done.has(a.enrollment_id));
+  const pendingTasks = callTasks.filter(t => !doneTasks.has(t.id));
+  const totalPending = pending.length + pendingTasks.length;
 
   return (
     <>
@@ -213,8 +291,8 @@ function TodayActions() {
             <h2 className="text-sm font-semibold text-slate-200">Today's Actions</h2>
             <p className="text-xs text-slate-500 mt-0.5">Your sequence queue — work through these top to bottom</p>
           </div>
-          <span className={`text-xs font-medium px-2.5 py-1 rounded-full ${pending.length > 0 ? 'bg-cyan-500/15 text-cyan-400' : 'bg-emerald-500/15 text-emerald-400'}`}>
-            {pending.length > 0 ? `${pending.length} to do` : 'All done ✓'}
+          <span className={`text-xs font-medium px-2.5 py-1 rounded-full ${totalPending > 0 ? 'bg-cyan-500/15 text-cyan-400' : 'bg-emerald-500/15 text-emerald-400'}`}>
+            {totalPending > 0 ? `${totalPending} to do` : 'All done ✓'}
           </span>
         </div>
         <div className="divide-y divide-white/5">
@@ -284,6 +362,56 @@ function TodayActions() {
                     {isDone ? 'Done ✓' : 'Mark done'}
                   </button>
                 )}
+              </div>
+            );
+          })}
+          {/* Scheduled calls from calendar */}
+          {pendingTasks.map(task => {
+            const isDoneTask = doneTasks.has(task.id);
+            const taskDue = new Date(task.scheduled_at || task.due_date);
+            const isOverdue = taskDue < new Date(new Date().setHours(0,0,0,0));
+            const timeStr = task.scheduled_at ? taskDue.toLocaleTimeString('sv-SE', { hour: '2-digit', minute: '2-digit' }) : '';
+            const isConfirmed = !!task.confirmed_at;
+            return (
+              <div key={`task-${task.id}`}
+                className={`flex items-center gap-4 px-5 py-3.5 border-t border-white/5 transition-all ${isDoneTask ? 'opacity-40' : 'hover:bg-white/3'}`}>
+                <div className="w-9 h-9 rounded-lg border flex items-center justify-center flex-shrink-0 text-lg bg-emerald-500/10 border-emerald-500/20">
+                  📞
+                </div>
+                <div className="flex-1 min-w-0">
+                  <div className="flex items-center gap-2 flex-wrap">
+                    {task.lead_id
+                      ? <Link to={`/leads/${task.lead_id}`} className="text-sm font-medium text-slate-200 hover:text-cyan-400 transition-colors">{task.company_name || 'Unknown'}</Link>
+                      : <span className="text-sm font-medium text-slate-200">{task.company_name || 'Call'}</span>
+                    }
+                    {isOverdue && !isDoneTask && (
+                      <span className="text-xs bg-red-500/15 text-red-400 px-1.5 py-0.5 rounded">overdue</span>
+                    )}
+                    {isConfirmed && (
+                      <span className="text-xs bg-emerald-500/15 text-emerald-400 px-1.5 py-0.5 rounded font-medium">✓ confirmed</span>
+                    )}
+                  </div>
+                  <div className="text-xs text-slate-400 mt-0.5">{task.title.replace(/^📞 Samtal · [^—\n]+/, '').replace(/^— /, '') || 'Scheduled call'}</div>
+                  <div className="flex items-center gap-3 mt-1">
+                    <span className="text-xs font-medium text-emerald-400">Discovery call</span>
+                    {timeStr && <span className="text-xs text-slate-500">{timeStr}</span>}
+                  </div>
+                </div>
+                <button
+                  onClick={async () => {
+                    setDoneTasks(prev => new Set(prev).add(task.id));
+                    try { await api.patch(`/tasks/${task.id}`, { completed: true }); } catch {
+                      setDoneTasks(prev => { const s = new Set(prev); s.delete(task.id); return s; });
+                    }
+                  }}
+                  disabled={isDoneTask}
+                  className={`flex-shrink-0 px-3 py-1.5 rounded-lg text-xs font-medium transition-all ${
+                    isDoneTask
+                      ? 'bg-emerald-500/15 text-emerald-400 cursor-default'
+                      : 'bg-white/8 hover:bg-emerald-500/20 hover:text-emerald-300 text-slate-300 cursor-pointer'
+                  }`}>
+                  {isDoneTask ? 'Done ✓' : 'Mark done'}
+                </button>
               </div>
             );
           })}
@@ -570,19 +698,33 @@ export default function Dashboard() {
   const [stats, setStats] = useState(null);
   const [bdr, setBdr] = useState(null);
   const [hotLeads, setHotLeads] = useState([]);
+  const [inboundLeads, setInboundLeads] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [scheduleModal, setScheduleModal] = useState(null); // lead object
+
+  const fetchInbound = useCallback(() => {
+    api.get('/leads/inbound').then(r => setInboundLeads(r.data?.data?.leads || r.data?.leads || [])).catch(() => {});
+  }, []);
 
   useEffect(() => {
     Promise.all([
       api.get('/leads/stats'),
       api.get('/leads/bdr-stats'),
-      api.get('/leads?score_label=hot&limit=8&sort=score&dir=desc')
-    ]).then(([s, b, l]) => {
+      api.get('/leads?score_label=hot&limit=8&sort=score&dir=desc'),
+      api.get('/leads/inbound')
+    ]).then(([s, b, l, inb]) => {
       setStats(s.data);
       setBdr(b.data);
       setHotLeads(l.data.leads);
+      setInboundLeads(inb.data?.data?.leads || inb.data?.leads || []);
     }).catch(console.error).finally(() => setLoading(false));
   }, []);
+
+  // Auto-refresh inbound leads every 30s
+  useEffect(() => {
+    const interval = setInterval(fetchInbound, 30000);
+    return () => clearInterval(interval);
+  }, [fetchInbound]);
 
   if (loading) return <div className="p-8 text-slate-400">Loading...</div>;
   if (!stats) return null;
@@ -603,6 +745,79 @@ export default function Dashboard() {
       <div>
         <h1 className="text-xl font-semibold text-slate-100">Dashboard</h1>
         <p className="text-slate-500 text-sm mt-0.5">Swedish AI/NIS2 outreach pipeline</p>
+      </div>
+
+      {scheduleModal && (
+        <ScheduleCallModal
+          lead={scheduleModal}
+          onSaved={() => { setScheduleModal(null); }}
+          onClose={() => setScheduleModal(null)}
+        />
+      )}
+
+      {/* NIS2Klar Inbound Leads */}
+      <div className="bg-navy-800 rounded-xl border border-white/10 overflow-hidden">
+        <div className="px-5 py-4 border-b border-white/10 flex items-center justify-between">
+          <div className="flex items-center gap-2">
+            <span className="text-base">📥</span>
+            <h3 className="text-sm font-semibold text-slate-200">NIS2Klar Inbound Leads</h3>
+            {inboundLeads.length > 0 && (
+              <span className="ml-1 px-2 py-0.5 rounded-full bg-amber-500/20 text-amber-400 text-xs font-bold">{inboundLeads.length}</span>
+            )}
+          </div>
+          <Link to="/leads" className="text-xs text-cyan-400 hover:text-cyan-300 transition-colors">View all →</Link>
+        </div>
+        {inboundLeads.length === 0 ? (
+          <div className="px-5 py-6 text-sm text-slate-500">No inbound leads yet — forms on nis2klar.se will appear here.</div>
+        ) : (
+          <table className="w-full text-sm">
+            <thead>
+              <tr className="border-b border-white/5">
+                <th className="text-left px-5 py-2.5 text-xs font-semibold text-slate-500 uppercase tracking-wide">Company</th>
+                <th className="text-left px-4 py-2.5 text-xs font-semibold text-slate-500 uppercase tracking-wide">Email</th>
+                <th className="text-left px-4 py-2.5 text-xs font-semibold text-slate-500 uppercase tracking-wide">Phone</th>
+                <th className="text-left px-4 py-2.5 text-xs font-semibold text-slate-500 uppercase tracking-wide">Source</th>
+                <th className="text-left px-4 py-2.5 text-xs font-semibold text-slate-500 uppercase tracking-wide">Received</th>
+                <th className="px-4 py-2.5"></th>
+              </tr>
+            </thead>
+            <tbody>
+              {inboundLeads.map((lead, i) => (
+                <tr key={lead.id} className={`border-b border-white/5 hover:bg-white/3 transition-colors ${i === 0 && Date.now() - new Date(lead.created_at) < 86400000 ? 'bg-amber-500/5' : ''}`}>
+                  <td className="px-5 py-3">
+                    <Link to={`/leads/${lead.id}`} className="font-medium text-slate-200 hover:text-cyan-400 transition-colors">
+                      {lead.company_name || '—'}
+                    </Link>
+                    {i === 0 && Date.now() - new Date(lead.created_at) < 86400000 && (
+                      <span className="ml-2 text-xs bg-amber-500/20 text-amber-400 px-1.5 py-0.5 rounded-full font-semibold">NEW</span>
+                    )}
+                  </td>
+                  <td className="px-4 py-3 text-slate-400">{lead.email || '—'}</td>
+                  <td className="px-4 py-3 text-slate-400">{lead.phone || '—'}</td>
+                  <td className="px-4 py-3 text-slate-500 text-xs font-mono">{lead.source}</td>
+                  <td className="px-4 py-3 text-slate-500 text-xs">{new Date(lead.created_at).toLocaleDateString('sv-SE')}</td>
+                  <td className="px-4 py-3 text-right">
+                    <div className="flex items-center justify-end gap-3">
+                      <button
+                        onClick={() => setScheduleModal(lead)}
+                        title="Schedule a call"
+                        className="text-slate-500 hover:text-cyan-400 transition-colors text-sm leading-none"
+                      >📅</button>
+                      <button
+                        onClick={async () => {
+                          setInboundLeads(prev => prev.filter(l => l.id !== lead.id));
+                          try { await api.patch(`/leads/${lead.id}`, { review_status: 'contacted' }); } catch {}
+                        }}
+                        title="Mark as contacted — removes from this list"
+                        className="text-slate-600 hover:text-emerald-400 transition-colors text-base leading-none"
+                      >✓</button>
+                    </div>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        )}
       </div>
 
       {/* Today's sequence action queue */}

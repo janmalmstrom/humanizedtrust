@@ -9,6 +9,7 @@ const nav = [
   { to: '/sequences', label: 'Sequences' },
   { to: '/enrichment', label: 'Enrichment' },
   { to: '/discovery', label: 'Discovery' },
+  { to: '/seo', label: '🔍 NIS2Klar SEO' },
 ];
 
 export default function Layout() {

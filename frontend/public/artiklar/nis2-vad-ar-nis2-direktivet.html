@@ -1,6 +1,14 @@
 <!DOCTYPE html>
 <html lang="sv">
 <head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-BKF3QH9K01"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag("js", new Date());
+    gtag("config", "G-BKF3QH9K01");
+  </script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Vad är NIS2-direktivet? En guide för svenska företag | NIS2Klar</title>
@@ -378,6 +386,7 @@
     <form id="vadArNis2Form" onsubmit="submitvadArNis2(event)">
       <input class="capture-input" type="text"  id="vadArNis2Name"    placeholder="Ditt namn"        autocomplete="name" />
       <input class="capture-input" type="email" id="vadArNis2Email"   placeholder="E-postadress *"   autocomplete="email" required />
+      <input class="capture-input" type="tel"   id="vadArNis2Phone"   placeholder="Telefonnummer"    autocomplete="tel" />
       <input class="capture-input" type="text"  id="vadArNis2Company" placeholder="Bolagets namn *"  required />
       <button type="submit" class="capture-submit-btn" id="vadArNis2Submit">Boka kostnadsfri genomgång →</button>
     </form>
@@ -386,6 +395,16 @@
 
 </article>
 
+
+<div class="related-articles" style="margin:2.5rem 0 2rem;padding:1.5rem;background:#1a1a2e;border-left:4px solid #f0a500;border-radius:4px;">
+  <p style="margin:0 0 1rem;font-size:0.85rem;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:#f0a500;">L&#228;s ocks&#229;</p>
+  <ul style="margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:0.5rem;">
+    <li><a href="/artiklar/nis2-vilka-foretag-omfattas.html" style="color:#e0e0e0;text-decoration:none;font-size:0.95rem;">&#x2192; Vilka företag omfattas?</a></li>
+    <li><a href="/artiklar/nis2-deadline-ar-din-organisation-redo.html" style="color:#e0e0e0;text-decoration:none;font-size:0.95rem;">&#x2192; NIS2-deadline: Är du redo?</a></li>
+    <li><a href="/artiklar/nis2-vs-gdpr-skillnaden.html" style="color:#e0e0e0;text-decoration:none;font-size:0.95rem;">&#x2192; NIS2 vs GDPR: Skillnaden</a></li>
+  </ul>
+  <p style="margin:1.25rem 0 0;font-size:0.85rem;color:#aaa;">&#8592; <a href="/nis2.html" style="color:#f0a500;text-decoration:none;">NIS2Klar startsida</a> &nbsp;&middot;&nbsp; <a href="/artiklar.html" style="color:#f0a500;text-decoration:none;">Alla guider</a></p>
+</div>
 <footer>
   © 2026 M&J Trusted Marketing KB ·
   <a href="mailto:support@trustedmarketing.se">support@trustedmarketing.se</a> ·
@@ -402,6 +421,7 @@
     const payload = {
       name:       document.getElementById('vadArNis2Name').value.trim(),
       email:      document.getElementById('vadArNis2Email').value.trim(),
+        phone:      document.getElementById('vadArNis2Phone').value.trim() || null,
       company:    document.getElementById('vadArNis2Company').value.trim(),
       source:     'nis2-vad-ar',
       score_data: null

@@ -9,6 +9,7 @@ import Discovery from './pages/Discovery';
 import Pipeline from './pages/Pipeline';
 import Sequences from './pages/Sequences';
 import Enrichment from './pages/Enrichment';
+import SEO from './pages/SEO';
 import Layout from './components/Layout';
 
 function PrivateRoute({ children }) {
@@ -28,6 +29,7 @@ export default function App() {
         <Route path="sequences" element={<Sequences />} />
         <Route path="enrichment" element={<Enrichment />} />
         <Route path="discovery" element={<Discovery />} />
+        <Route path="seo" element={<SEO />} />
       </Route>
     </Routes>
   );
