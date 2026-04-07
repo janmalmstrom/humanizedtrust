@@ -8,3 +8,5 @@ volumes/
 *.log
 data/bolagsverket/*.txt
 data/bolagsverket/*.zip
+frontend/public/backups/
+.env
