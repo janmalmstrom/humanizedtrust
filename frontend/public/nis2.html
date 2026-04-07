@@ -353,9 +353,10 @@
       padding: 32px 40px;
       display: flex;
       align-items: center;
-      justify-content: space-between;
+      justify-content: center;
       gap: 24px;
       flex-wrap: wrap;
+      text-align: center;
     }
     .teaser-hook-text { font-size: 16px; color: var(--lightgray); line-height: 1.5; }
     .teaser-hook-text strong { color: var(--white); font-family: 'Poppins', sans-serif; }
@@ -880,6 +881,7 @@
         Men från och med nu är du — som styrelseledamot — personligt ansvarig
         om ert företag drabbas av ett cyberangrepp utan rätt skydd på plats.
         Det är inte IT-chefens problem längre. Det är ditt.
+        Och om ni redan använder moderna molntjänster — har ni förmodligen ett försprång.
       </p>
       <div class="hero-actions">
         <a href="#boka" class="btn-primary">Boka ett gratis samtal</a>
@@ -1102,6 +1104,59 @@
     </div>
   </section>
 
+  <!-- ═══════════════════════════════════════════
+       MICROSOFT ANGLE — Zero Trust = NIS2
+  ════════════════════════════════════════════ -->
+  <section class="reframe-section">
+    <div class="container">
+      <div class="section-tag">Ditt försprång</div>
+      <h2>Använder ni molntjänster redan?<br/><em>Då är ni inte på noll.</em></h2>
+      <div class="divider"></div>
+      <p class="section-lead">
+        De flesta svenska SMB-bolag använder redan moderna molntjänster för e-post, samarbete och filhantering.
+        Nyckeln är att dessa plattformar — korrekt konfigurerade — täcker en stor del av NIS2:s krav direkt.
+        Problemet är att standardinställningarna sällan räcker.
+      </p>
+
+      <div class="law-block">
+        <h3>🔐 NIS2:s 10 krav — de flesta kan mötas med rätt konfiguration</h3>
+        <p>NIS2 ställer krav inom tio områden. Här är kopplingen till vad moderna plattformar kan leverera med rätt setup:</p>
+        <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(280px,1fr)); gap:12px; margin-top:20px;">
+          <div style="background:var(--card); border:1px solid var(--border); border-radius:4px; padding:16px;">
+            <div style="font-size:12px; font-weight:700; letter-spacing:1px; text-transform:uppercase; color:var(--yellow); margin-bottom:8px;">Krav (a) Riskanalys &amp; policy</div>
+            <div style="font-size:14px; color:var(--lightgray);">Posture Management &amp; Compliance Score — mäter er säkerhetsnivå kontinuerligt</div>
+          </div>
+          <div style="background:var(--card); border:1px solid var(--border); border-radius:4px; padding:16px;">
+            <div style="font-size:12px; font-weight:700; letter-spacing:1px; text-transform:uppercase; color:var(--yellow); margin-bottom:8px;">Krav (b) Incidenthantering</div>
+            <div style="font-size:14px; color:var(--lightgray);">SIEM &amp; XDR-lösningar för automatisk incidentdetektering och utredning</div>
+          </div>
+          <div style="background:var(--card); border:1px solid var(--border); border-radius:4px; padding:16px;">
+            <div style="font-size:12px; font-weight:700; letter-spacing:1px; text-transform:uppercase; color:var(--yellow); margin-bottom:8px;">Krav (c) Backup &amp; kontinuitet</div>
+            <div style="font-size:14px; color:var(--lightgray);">Molnbaserad backup med oföränderlig lagring och geo-redundans</div>
+          </div>
+          <div style="background:var(--card); border:1px solid var(--border); border-radius:4px; padding:16px;">
+            <div style="font-size:12px; font-weight:700; letter-spacing:1px; text-transform:uppercase; color:var(--yellow); margin-bottom:8px;">Krav (j) MFA &amp; Zero Trust</div>
+            <div style="font-size:14px; color:var(--lightgray);">Villkorsstyrd åtkomst, MFA och identitetsbaserad åtkomstkontroll — direkt tillgängligt</div>
+          </div>
+          <div style="background:var(--card); border:1px solid var(--border); border-radius:4px; padding:16px;">
+            <div style="font-size:12px; font-weight:700; letter-spacing:1px; text-transform:uppercase; color:var(--yellow); margin-bottom:8px;">Krav (h) Kryptering</div>
+            <div style="font-size:14px; color:var(--lightgray);">Informationsskyddsklassificering och kryptering av data i vila och transit</div>
+          </div>
+          <div style="background:var(--card); border:1px solid var(--border); border-radius:4px; padding:16px;">
+            <div style="font-size:12px; font-weight:700; letter-spacing:1px; text-transform:uppercase; color:var(--yellow); margin-bottom:8px;">Krav (g) Utbildning &amp; hygien</div>
+            <div style="font-size:14px; color:var(--lightgray);">Attack Simulation Training och utbildningsplattformar för säkerhetsmedvetenhet</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="villain-note">
+        <strong>Det ni förmodligen saknar</strong> är inte tekniken — det är den rätta konfigurationen,
+        dokumentationen och ett oberoende bevis på att ni faktiskt uppfyller kraven.
+        Det är precis vad en gap-analys med en certifierad partner levererar.
+      </div>
+    </div>
+  </section>
+
   <!-- TEASER HOOK — leads to free tools section below -->
   <div class="teaser-hook">
     <div class="teaser-hook-text">
@@ -1156,7 +1211,7 @@
         </div>
 
         <div class="roi-col safe">
-          <div class="roi-col-label">🟡 Med rätt partner — investeringen</div>
+          <div class="roi-col-label">🟡 Med rätt konfiguration + certifierad partner</div>
           <div class="roi-row">
             <span class="roi-row-label">NIS2-gap-analys &amp; riskbedömning</span>
             <span class="roi-row-value">Ingår</span>
@@ -1612,9 +1667,9 @@
   <div id="kontakt"></div>
   <section class="cta-section" id="boka">
     <div class="container">
-      <h2>Redo att ta det samtalet?</h2>
+      <h2>Boka en kostnadsfri gap-analys</h2>
       <p class="cta-sub">
-        20 minuter. Vi berättar exakt vad NIS2 innebär för ditt företag och vad du faktiskt behöver göra.
+        20 minuter. Vi tittar på vad ni redan har och vad som faktiskt saknas — en gap-analys med en certifierad partner.
         Inget säljtryck. Bara ett ärligt samtal.
       </p>
       <p class="cta-urgency">⏱ Vi tar max 5 nya samtal i veckan — boka din tid nu</p>
@@ -1623,7 +1678,7 @@
         <input type="email" id="ctaEmail"   placeholder="E-postadress *"   autocomplete="email" required />
         <input type="tel"   id="ctaPhone"   placeholder="Telefonnummer"    autocomplete="tel" />
         <input type="text"  id="ctaCompany" placeholder="Bolagets namn *"  required />
-        <button type="submit" id="ctaSubmit">Boka ett gratis samtal →</button>
+        <button type="submit" id="ctaSubmit">Boka kostnadsfri gap-analys →</button>
       </form>
       <div class="cta-thanks" id="ctaThanks">✅ Tack! Vi hör av oss inom 24 timmar.</div>
       <p style="font-size:13px; color:#888; margin-top:16px; text-align:center;">
@@ -1671,6 +1726,7 @@
       &nbsp;·&nbsp;
       <a href="/anvandarvillkor.html">Användarvillkor</a>
     </p>
+    <p style="margin-top:12px; font-size:11px; color: #555; max-width:600px; margin-left:auto; margin-right:auto; line-height:1.5;">Produktnamn för molntjänster och säkerhetslösningar som nämns på denna sida tillhör respektive ägare. nis2klar.se är inte affilierat med eller godkänt av dessa företag.</p>
   </footer>
 
   <script>
@@ -1697,7 +1753,7 @@
           thanks.style.display = 'block';
         } else {
           btn.disabled = false;
-          btn.textContent = 'Boka ett gratis samtal →';
+          btn.textContent = 'Boka kostnadsfri gap-analys →';
           alert('Något gick fel, försök igen.');
         }
       } catch (err) {

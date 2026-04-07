@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-BKF3QH9K01"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag("js", new Date());
+    gtag("config", "G-BKF3QH9K01");
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NIS2 Compliance-checklista för Sverige: Komplett guide för viktiga tjänster | NIS2Klar</title>
+  <meta name="description" content="Komplett NIS2-checklista för svenska organisationer. Täcker registrering, riskanalys, säkerhetsåtgärder, incidentrapportering och leverantörsgranskning. VD och styrelse är personligt ansvariga.">
+  <meta property="og:title" content="NIS2 Compliance-checklista för Sverige: Komplett guide för viktiga tjänster">
+  <meta property="og:description" content="Komplett NIS2-checklista för svenska organisationer. Täcker registrering, riskanalys, säkerhetsåtgärder, incidentrapportering och leverantörsgranskning. VD och styrelse är personligt ansvariga.">
+  <link rel="canonical" href="https://nis2klar.se/artiklar/nis2-compliance-checklista-sverige.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #141416;
+      --card: #1c1c1f;
+      --yellow: #f5c518;
+      --white: #f0f0f0;
+      --muted: #888;
+      --red: #C61212;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: var(--bg); color: var(--white); font-family: 'Barlow', sans-serif; font-size: 19px; line-height: 1.8; }
+
+    /* Nav */
+    nav { display: flex; justify-content: space-between; align-items: center; padding: 20px 40px; border-bottom: 1px solid rgba(255,255,255,0.07); max-width: 900px; margin: 0 auto; }
+    .nav-logo { font-family: 'Poppins', sans-serif; font-weight: 900; font-size: 20px; color: var(--yellow); text-decoration: none; }
+    .nav-logo span { color: var(--white); }
+    .nav-back { color: var(--muted); text-decoration: none; font-size: 15px; }
+    .nav-back:hover { color: var(--white); }
+    .nav-cta { background: var(--yellow); color: #000; padding: 8px 18px; border-radius: 4px; text-decoration: none; font-weight: 700; font-size: 14px; font-family: 'Poppins', sans-serif; }
+
+    /* Article */
+    .article-wrap { max-width: 760px; margin: 0 auto; padding: 60px 40px; }
+    .article-category { font-size: 13px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 16px; }
+    h1 { font-family: 'Poppins', sans-serif; font-size: clamp(30px, 4vw, 44px); font-weight: 900; line-height: 1.2; margin-bottom: 24px; }
+    .article-meta { font-size: 15px; color: var(--muted); margin-bottom: 48px; padding-bottom: 24px; border-bottom: 1px solid rgba(255,255,255,0.07); }
+    h2 { font-family: 'Poppins', sans-serif; font-size: 26px; font-weight: 700; margin: 48px 0 16px; color: var(--white); }
+    h3 { font-family: 'Poppins', sans-serif; font-size: 20px; font-weight: 600; margin: 32px 0 12px; color: var(--yellow); }
+    p { margin-bottom: 22px; }
+    strong { color: var(--white); font-weight: 700; }
+    .highlight { color: var(--yellow); font-weight: 700; }
+    .danger { color: #ff6b6b; font-weight: 700; }
+    ul, ol { margin: 16px 0 24px 24px; }
+    li { margin-bottom: 12px; font-size: 19px; }
+
+    /* Callout boxes */
+    .box-warning { background: rgba(197,17,17,0.12); border-left: 4px solid var(--red); padding: 20px 24px; margin: 32px 0; border-radius: 0 4px 4px 0; }
+    .box-info { background: rgba(245,197,24,0.08); border-left: 4px solid var(--yellow); padding: 20px 24px; margin: 32px 0; border-radius: 0 4px 4px 0; }
+    .box-case { background: var(--card); border: 1px solid rgba(255,255,255,0.08); padding: 28px; margin: 40px 0; border-radius: 4px; }
+    .box-case .case-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 12px; }
+    blockquote { border-left: 3px solid var(--yellow); padding: 12px 20px; margin: 24px 0; font-style: italic; color: #ccc; }
+
+    /* CTA */
+    .cta-section { background: var(--card); border: 1px solid rgba(245,197,24,0.2); border-radius: 4px; padding: 48px 40px; margin: 64px 0 40px; text-align: center; }
+    .cta-section h2 { margin-top: 0; font-size: 26px; }
+    .cta-section p { color: #aaa; max-width: 500px; margin: 0 auto 28px; }
+    .btn-primary { display: inline-block; background: var(--yellow); color: #000; font-family: 'Poppins', sans-serif; font-weight: 800; font-size: 16px; padding: 16px 36px; border-radius: 4px; text-decoration: none; }
+    .btn-primary:hover { background: #e0b010; }
+    .cta-fine { font-size: 13px; color: var(--muted); margin-top: 16px; }
+
+    /* FAQ */
+    .faq-item { border-bottom: 1px solid rgba(255,255,255,0.07); padding: 20px 0; }
+    .faq-q { font-family: 'Poppins', sans-serif; font-weight: 600; margin-bottom: 10px; }
+    .faq-a { color: #bbb; }
+
+    /* Fine table */
+    .fine-table { width: 100%; border-collapse: collapse; margin: 24px 0; }
+    .fine-table th { background: rgba(245,197,24,0.1); color: var(--yellow); font-family: 'Poppins', sans-serif; font-size: 13px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 12px 16px; text-align: left; border-bottom: 1px solid rgba(245,197,24,0.2); }
+    .fine-table td { padding: 14px 16px; border-bottom: 1px solid rgba(255,255,255,0.05); font-size: 15px; }
+    .fine-table tr:last-child td { border-bottom: none; }
+    .fine-table .amount { color: #ff6b6b; font-weight: 700; }
+
+    /* Summary + Key Takeaway */
+    .box-summary { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; padding: 24px 28px; margin: 0 0 32px; }
+    .summary-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-bottom: 14px; }
+    .box-summary ul { margin: 0; padding-left: 20px; }
+    .box-summary li { margin-bottom: 8px; font-size: 17px; color: #ccc; }
+    .box-takeaway { background: rgba(245,197,24,0.08); border-left: 4px solid var(--yellow); padding: 20px 24px; margin: 0 0 40px; border-radius: 0 4px 4px 0; }
+    .takeaway-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 10px; }
+    .box-takeaway p { margin: 0; font-size: 18px; font-weight: 600; color: var(--white); line-height: 1.6; }
+
+    /* Capture form */
+    .capture-form-section { background: #1c1c1f; border: 1px solid rgba(245,197,24,0.25); border-top: 3px solid var(--yellow); border-radius: 4px; padding: 40px; margin: 64px 0 40px; }
+    .capture-form-section h2 { margin-top: 0; font-size: 24px; font-family: 'Poppins', sans-serif; font-weight: 800; margin-bottom: 12px; }
+    .capture-form-section .sub { color: #aaa; font-size: 15px; margin-bottom: 24px; }
+    .capture-input { display: block; width: 100%; background: #222226; border: 1px solid #2e2e33; border-radius: 4px; padding: 13px 16px; font-size: 15px; color: #f0f0f0; font-family: 'Barlow', sans-serif; outline: none; transition: border-color 0.2s; margin-bottom: 12px; }
+    .capture-input:focus { border-color: var(--yellow); }
+    .capture-input::placeholder { color: #666; }
+    .capture-submit-btn { background: var(--yellow); color: #000; border: none; border-radius: 4px; padding: 14px 28px; font-family: 'Poppins', sans-serif; font-size: 15px; font-weight: 800; cursor: pointer; transition: background 0.2s; width: 100%; }
+    .capture-submit-btn:hover { background: #e8d800; }
+    .capture-submit-btn:disabled { opacity: 0.6; cursor: not-allowed; }
+    .capture-thanks-msg { padding: 16px; background: rgba(34,197,94,0.1); border: 1px solid rgba(34,197,94,0.3); border-radius: 4px; color: #86efac; font-size: 15px; text-align: center; display: none; }
+
+    /* Checklist */
+    .checklist-section { margin: 40px 0; }
+    .checklist-group { margin-bottom: 40px; }
+    .checklist-group-title { font-family: 'Poppins', sans-serif; font-size: 18px; font-weight: 700; color: var(--yellow); margin-bottom: 16px; padding-bottom: 8px; border-bottom: 1px solid rgba(245,197,24,0.2); }
+    .checklist-item { display: flex; align-items: flex-start; gap: 14px; background: var(--card); border: 1px solid rgba(255,255,255,0.06); border-radius: 4px; padding: 16px 20px; margin-bottom: 10px; }
+    .checklist-item input[type="checkbox"] { flex-shrink: 0; width: 20px; height: 20px; margin-top: 3px; accent-color: var(--yellow); cursor: pointer; }
+    .checklist-item-text { flex: 1; }
+    .checklist-item-label { font-family: 'Poppins', sans-serif; font-size: 16px; font-weight: 600; color: var(--white); margin-bottom: 4px; }
+    .checklist-item-desc { font-size: 15px; color: #aaa; line-height: 1.6; margin: 0; }
+    .checklist-item.critical { border-left: 3px solid var(--red); }
+    .checklist-item.important { border-left: 3px solid var(--yellow); }
+    .checklist-badge { display: inline-block; font-size: 10px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 2px 8px; border-radius: 2px; margin-left: 8px; vertical-align: middle; }
+    .badge-critical { background: rgba(197,17,17,0.2); color: #ff6b6b; }
+    .badge-personal { background: rgba(245,197,24,0.15); color: var(--yellow); }
+
+    /* Progress bar */
+    .progress-wrap { background: rgba(255,255,255,0.05); border-radius: 4px; height: 8px; margin: 16px 0 8px; }
+    .progress-bar { height: 100%; border-radius: 4px; background: var(--yellow); transition: width 0.4s ease; width: 0%; }
+    .progress-label { font-size: 13px; color: var(--muted); margin-bottom: 32px; }
+
+    /* Footer */
+    footer { border-top: 1px solid rgba(255,255,255,0.07); padding: 32px 40px; text-align: center; font-size: 13px; color: var(--muted); max-width: 900px; margin: 0 auto; }
+    footer a { color: var(--muted); }
+
+    @media (max-width: 600px) {
+      nav, .article-wrap, footer { padding: 20px; }
+      .cta-section { padding: 32px 20px; }
+      .fine-table { font-size: 14px; }
+      .fine-table th, .fine-table td { padding: 10px 10px; }
+      .capture-form-section { padding: 24px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="https://nis2klar.se/">NIS2<span>Klar</span></a>
+  <a class="nav-back" href="https://nis2klar.se/artiklar.html">← Alla artiklar</a>
+  <a class="nav-cta" href="https://nis2klar.se/#kontakt">Boka samtal →</a>
+</nav>
+
+<article class="article-wrap">
+  <div class="article-category">Efterlevnad &amp; Checklista</div>
+  <h1>NIS2 Compliance-checklista för Sverige: Komplett guide för viktiga tjänster</h1>
+  <div class="article-meta">Uppdaterad 7 april 2026 · Lästid: ca 10 minuter · Målgrupp: VD, styrelseordförande, styrelseledamot</div>
+
+  <!-- SUMMARY -->
+  <div class="box-summary">
+    <div class="summary-label">Sammanfattning</div>
+    <ul>
+      <li>En praktisk, handlingsbar NIS2-checklista för svenska organisationer i reglerade sektorer.</li>
+      <li>Täcker alla fem efterlevnadsområden: registrering, riskanalys, säkerhetsåtgärder, incidentrapportering och leverantörsgranskning.</li>
+      <li>Personligt ansvar enligt Artikel 20 löper som röd tråd — det räcker inte att delegera till IT.</li>
+      <li>Checkboxar du kan använda direkt i styrelserummet som underlag för ett styrelsebeslut.</li>
+    </ul>
+  </div>
+
+  <!-- KEY TAKEAWAY -->
+  <div class="box-takeaway">
+    <div class="takeaway-label">Viktigaste slutsatsen</div>
+    <p>Du behöver inte förstå varje teknisk detalj i NIS2 — men du behöver kunna bevisa att din organisation har arbetat strukturerat med efterlevnad. Den här checklistan ger dig precis det underlaget.</p>
+  </div>
+
+  <p>
+    Du är VD eller styrelseledamot. Din organisation verkar i en av de 18 sektorer som NIS2 reglerar. Cybersäkerhetslagen trädde i kraft i Sverige i oktober 2024 och sedan dess har tillsynsmyndigheterna börjat granska. Frågan är inte om ni kommer att granskas — frågan är om ni är förberedda den dag det händer.
+  </p>
+
+  <p>
+    Det som gör NIS2 annorlunda mot all tidigare IT-lagstiftning är ett enda ord: <strong>personligt ansvar</strong>. Artikel 20 i direktivet slår fast att du som ledare inte bara kan lämna cybersäkerhet till IT-avdelningen. Du ska förstå riskerna, du ska godkänna åtgärderna, och du ska kunna bevisa att du gjort det. Saknas det dokumentation är det du — inte ditt IT-system — som bär ansvaret.
+  </p>
+
+  <p>
+    Den här guiden ger dig en komplett, handlingsbar checklista. Inte skriven för tekniker, utan för dig. Gå igenom den punkt för punkt, bocka av vad ni gjort och identifiera vad som saknas. Varje område du inte kan bocka av är ett område där din organisation — och du personligen — är exponerad.
+  </p>
+
+  <div class="box-warning">
+    <strong>Personligt ansvar är inte en metafor.</strong> Tillsynsmyndigheten kan utfärda ett tillfälligt förbud för dig som VD eller styrelseledamot att inneha ledande befattning. Det är inte ett hot mot bolaget — det är ett hot mot din karriär.
+  </div>
+
+  <h2>Hur du använder den här checklistan</h2>
+
+  <p>
+    Checklistan är uppdelad i fem områden som speglar de viktigaste kraven i NIS2-direktivet och den svenska cybersäkerhetslagen (2024:1056). Varje punkt är märkt med en angelägenhetsgrad:
+  </p>
+
+  <ul>
+    <li><strong style="color:#ff6b6b;">Kritisk</strong> — direkt sanktionsrisk om den saknas</li>
+    <li><strong style="color:var(--yellow);">Personligt ansvar</strong> — kräver aktivt beslut eller godkännande från ledningen</li>
+  </ul>
+
+  <p>
+    Ta med checklistan till nästa styrelsemöte. Gå igenom varje punkt. Dokumentera vad ni beslutar. Det dokumentet är ditt bästa skydd den dag tillsynsmyndigheten hör av sig.
+  </p>
+
+  <!-- PROGRESS -->
+  <div class="progress-wrap"><div class="progress-bar" id="progressBar"></div></div>
+  <div class="progress-label" id="progressLabel">0 av 35 punkter avklarade</div>
+
+  <!-- ===== CHECKLIST ===== -->
+  <div class="checklist-section">
+
+    <!-- 1. REGISTRERING -->
+    <div class="checklist-group">
+      <div class="checklist-group-title">Del 1: Registrering och klassificering</div>
+
+      <div class="checklist-item critical">
+        <input type="checkbox" class="check-item">
+        <div class="checklist-item-text">
+          <div class="checklist-item-label">Fastställt om organisationen omfattas av NIS2 <span class="checklist-badge badge-critical">Kritisk</span></div>
+          <p class="checklist-item-desc">Kontrollera om ni verkar inom någon av de 18 reglerade sektorerna (energi, transport, finans, hälso- och sjukvård, digital infrastruktur m.fl.) och om ni uppfyller trösklarna: fler än 50 anställda ELLER mer än 10 miljoner euro i omsättning. Att gissa fel åt fel håll är kostsamt.</p>
+        </div>
+      </div>
+
+      <div class="checklist-item critical">
+        <input type="checkbox" class="check-item">
+        <div class="checklist-item-text">
+          <div class="checklist-item-label">Klassificerat organisationen som väsentlig eller viktig entitet <span class="checklist-badge badge-critical">Kritisk</span></div>
+          <p class="checklist-item-desc">Väsentliga entiteter är stora aktörer (fler än 250 anställda eller omsättning över 50 M€) med systemkritisk roll. Viktiga entiteter är medelstora aktörer. Klassificeringen avgör bötesnivå (10 M€ respektive 7 M€) och tillsynsintensitet. Dokumentera beslutsunderlag och slutsats.</p>
+        </div>
+      </div>
+
+      <div class="checklist-item critical">
+        <input type="checkbox" class="check-item">
+        <div class="checklist-item-text">
+          <div class="checklist-item-label">Genomfört obligatorisk registrering hos MSB <span class="checklist-badge badge-critical">Kritisk</span></div>
+          <p class="checklist-item-desc">Organisationer som omfattas av cybersäkerhetslagen ska registrera sig hos Myndigheten för samhällsskydd och beredskap (MSB). Utebliven registrering är i sig en sanktionsgrundande brist. Bekräfta att registreringen är gjord och att uppgifterna är aktuella.</p>
+        </div>
+      </div>
+
+      <div class="checklist-item important">
+        <input type="checkbox" class="check-item">
+        <div class="checklist-item-text">
+          <div class="checklist-item-label">Identifierat ansvarig tillsynsmyndighet för er sektor <span class="checklist-badge badge-personal">Personligt ansvar</span></div>
+          <p class="checklist-item-desc">Tillsynen i Sverige är sektorsspecifik. Finansinspektionen, IVO, Transportstyrelsen, Energimarknadsinspektionen — vilken myndighet är er? Du som VD bör veta vem som kan begära dokumentation av er med 14 dagars varsel.</p>
+        </div>
+      </div>
+
+      <div class="checklist-item important">
+        <input type="checkbox" class="check-item">
+        <div class="checklist-item-text">
+          <div class="checklist-item-label">Utsett ansvarig kontaktperson för NIS2-efterlevnad <span class="checklist-badge badge-personal">Personligt ansvar</span></div>
+          <p class="checklist-item-desc">Direktivet kräver att en utsedd funktion eller person koordinerar efterlevnadsarbetet. Det kan vara en CISO, en IT-chef eller en extern partner — men ansvaret att utse denna person och säkerställa att den har mandat och resurser vilar på ledningen.</p>
+        </div>
+      </div>
+
+      <div class="checklist-item">
+        <input type="checkbox" class="check-item">
+        <div class="checklist-item-text">
+          <div class="checklist-item-label">Granskat om dotterbolag eller utländska enheter också omfattas</div>
+          <p class="checklist-item-desc">NIS2 gäller per juridisk enhet. En koncern kan ha flera entiteter som var och en måste registreras och uppfylla kraven separat. Gör en inventering av alla juridiska enheter som verkar i reglerade sektorer inom EU.</p>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- 2. RISKANALYS -->
+    <div class="checklist-group">
+      <div class="checklist-group-title">Del 2: Riskanalys och riskhantering</div>
+
+      <div class="checklist-item critical">
+        <input type="checkbox" class="check-item">
+        <div class="checklist-item-text">
+          <div class="checklist-item-label">Genomfört en dokumenterad riskbedömning för cybersäkerhet <span class="checklist-badge badge-critical">Kritisk</span></div>
+          <p class="checklist-item-desc">Artikel 21 kräver att ni systematiskt identifierar, bedömer och hanterar risker för era nätverks- och informationssystem. En riskbedömning utan dokumentation är som om den aldrig ägt rum — tillsynsmyndigheten kan inte bedöma vad ni inte kan visa upp.</p>
+        </div>
+      </div>
+
+      <div class="checklist-item important">
+        <input type="checkbox" class="check-item">
+        <div class="checklist-item-text">
+          <div class="checklist-item-label">Styrelsen har godkänt riskbedömningen <span class="checklist-badge badge-personal">Personligt ansvar</span></div>
+          <p class="checklist-item-desc">Artikel 20 är tydlig: ledningsorganet ska godkänna de riskhanteringsåtgärder som vidtas. Det räcker inte att IT-chefen presenterar en rapport. Det krävs ett dokumenterat styrelsebeslut. Saknas detta är ni sårbara oavsett hur god er tekniska säkerhet är.</p>
+        </div>
+      </div>
+
+      <div class="checklist-item critical">
+        <input type="checkbox" class="check-item">
+        <div class="checklist-item-text">
+          <div class="checklist-item-label">Identifierat och dokumenterat kritiska tillgångar och processer <span class="checklist-badge badge-critical">Kritisk</span></div>
+          <p class="checklist-item-desc">Vilka system, data och processer är absolut kritiska för er verksamhet? Vilka, om de slås ut, skapar störningar för samhällsviktiga tjänster? Den frågan måste ni kunna besvara med ett dokument — inte med ett resonemang.</p>
+        </div>
+      </div>
+
+      <div class="checklist-item">
+        <input type="checkbox" class="check-item">
+        <div class="checklist-item-text">
+          <div class="checklist-item-label">Fastställt frekvens för återkommande riskbedömningar</div>
+          <p class="checklist-item-desc">En riskbedömning är inte ett engångsprojekt. Hot och verksamhetsförutsättningar förändras. Definiera hur ofta (minst en gång per år rekommenderas) riskbedömningen ska uppdateras och vem som ansvarar för att initiera den.</p>
+        </div>
+      </div>
+
+      <div class="checklist-item important">
+        <input type="checkbox" class="check-item">
+        <div class="checklist-item-text">
+          <div class="checklist-item-label">Ledningen har genomgått utbildning i NIS2-krav <span class="checklist-badge badge-personal">Personligt ansvar</span></div>
+          <p class="checklist-item-desc">Artikel 20 kräver inte bara att ledningen fattar beslut — den kräver att ledningen förstår vad den beslutar om. Utbildning ska dokumenteras med datum, innehåll och deltagarlista. En sådan logg är ett konkret bevis på att ni tagit ert ansvar.</p>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- 3. SÄKERHETSÅTGÄRDER -->
+    <div class="checklist-group">
+      <div class="checklist-group-title">Del 3: Tekniska och organisatoriska säkerhetsåtgärder</div>
+
+      <p style="color:#aaa; font-size:16px; margin-bottom:20px;">Artikel 21 listar tio obligatoriska säkerhetsdomäner. Alla ska vara dokumenterat adresserade — oavsett om ni haft en incident eller inte.</p>
+
+      <div class="checklist-item critical">
+        <input type="checkbox" class="check-item">
+        <div class="checklist-item-text">
+          <div class="checklist-item-label">Antagen och dokumenterad säkerhetspolicy <span class="checklist-badge badge-critical">Kritisk</span></div>
+          <p class="checklist-item-desc">En övergripande säkerhetspolicy som täcker nätverks- och informationssystem ska finnas, vara antagen av styrelsen och vara känd av relevant personal. Politiken ska inte bara existera — den ska tillämpas och det ska kunna bevisas.</p>
+        </div>
+      </div>
+
+      <div class="checklist-item critical">
+        <input type="checkbox" class="check-item">
+        <div class="checklist-item-text">
+          <div class="checklist-item-label">Upprättat incidenthanteringsplan med tydliga roller <span class="checklist-badge badge-critical">Kritisk</span></div>
+          <p class="checklist-item-desc">Vem g

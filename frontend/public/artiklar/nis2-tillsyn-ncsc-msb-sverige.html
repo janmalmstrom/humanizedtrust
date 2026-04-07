@@ -382,6 +382,10 @@
   .capture-thanks-msg { padding: 16px; background: rgba(34,197,94,0.1); border: 1px solid rgba(34,197,94,0.3); border-radius: 4px; color: #86efac; font-size: 15px; text-align: center; display: none; }
 </style>
 
+    <div class="box-info" style="margin: 48px 0 32px;">
+      <div style="font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color: var(--yellow); margin-bottom:10px;">🔧 VERKTYG &amp; LÖSNINGAR</div>
+      <p style="margin:0; font-size:17px; color: #ddd; line-height:1.7;">Compliance-rapporter och Secure Score ger er dokumentation som tillsynsmyndigheten (MSB/NCSC) kan granska. En certifierad partner hjälper er att förbereda för granskning.</p>
+    </div>
   <!-- CTA — inline lead capture -->
   <div class="capture-form-section">
     <h2>Vet du var din organisation står idag?</h2>
@@ -391,7 +395,7 @@
       <input class="capture-input" type="email" id="tillsynCtrlEmail"   placeholder="E-postadress *"   autocomplete="email" required />
       <input class="capture-input" type="tel"   id="tillsynCtrlPhone"   placeholder="Telefonnummer"    autocomplete="tel" />
       <input class="capture-input" type="text"  id="tillsynCtrlCompany" placeholder="Bolagets namn *"  required />
-      <button type="submit" class="capture-submit-btn" id="tillsynCtrlSubmit">Boka kostnadsfri genomgång →</button>
+      <button type="submit" class="capture-submit-btn" id="tillsynCtrlSubmit">Boka kostnadsfri gap-analys →</button>
     </form>
     <div class="capture-thanks-msg" id="tillsynCtrlThanks">✅ Tack! Vi hör av oss inom 24 timmar.</div>
   </div>
@@ -437,12 +441,12 @@
         document.getElementById('tillsynCtrlThanks').style.display = 'block';
       } else {
         btn.disabled = false;
-        btn.textContent = 'Boka kostnadsfri genomgång →';
+        btn.textContent = 'Boka kostnadsfri gap-analys →';
         alert('Något gick fel, försök igen.');
       }
     } catch (err) {
       btn.disabled = false;
-      btn.textContent = 'Boka kostnadsfri genomgång →';
+      btn.textContent = 'Boka kostnadsfri gap-analys →';
       alert('Något gick fel, försök igen.');
     }
   }

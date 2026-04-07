@@ -349,6 +349,10 @@
   .capture-thanks-msg { padding: 16px; background: rgba(34,197,94,0.1); border: 1px solid rgba(34,197,94,0.3); border-radius: 4px; color: #86efac; font-size: 15px; text-align: center; display: none; }
 </style>
 
+    <div class="box-info" style="margin: 48px 0 32px;">
+      <div style="font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color: var(--yellow); margin-bottom:10px;">🔧 VERKTYG &amp; LÖSNINGAR</div>
+      <p style="margin:0; font-size:17px; color: #ddd; line-height:1.7;">MFA via Conditional Access, backup med immutable storage, Endpoint Detection & Response och SIEM-loggning täcker merparten av NIS2:s tekniska krav — korrekt konfigurerade av en certifierad partner.</p>
+    </div>
   <!-- CTA — inline lead capture -->
   <div class="capture-form-section">
     <h2>Vet du var din organisation står idag?</h2>
@@ -358,7 +362,7 @@
       <input class="capture-input" type="email" id="tekniskaAtgEmail"   placeholder="E-postadress *"   autocomplete="email" required />
       <input class="capture-input" type="tel"   id="tekniskaAtgPhone"   placeholder="Telefonnummer"    autocomplete="tel" />
       <input class="capture-input" type="text"  id="tekniskaAtgCompany" placeholder="Bolagets namn *"  required />
-      <button type="submit" class="capture-submit-btn" id="tekniskaAtgSubmit">Boka kostnadsfri genomgång →</button>
+      <button type="submit" class="capture-submit-btn" id="tekniskaAtgSubmit">Boka kostnadsfri gap-analys →</button>
     </form>
     <div class="capture-thanks-msg" id="tekniskaAtgThanks">✅ Tack! Vi hör av oss inom 24 timmar.</div>
   </div>
@@ -404,12 +408,12 @@
         document.getElementById('tekniskaAtgThanks').style.display = 'block';
       } else {
         btn.disabled = false;
-        btn.textContent = 'Boka kostnadsfri genomgång →';
+        btn.textContent = 'Boka kostnadsfri gap-analys →';
         alert('Något gick fel, försök igen.');
       }
     } catch (err) {
       btn.disabled = false;
-      btn.textContent = 'Boka kostnadsfri genomgång →';
+      btn.textContent = 'Boka kostnadsfri gap-analys →';
       alert('Något gick fel, försök igen.');
     }
   }

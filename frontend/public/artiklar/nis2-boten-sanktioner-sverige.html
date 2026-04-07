@@ -345,6 +345,10 @@
     <div class="faq-a">Ja. Efterlevnad handlar om att ha rätt processer och dokumentation på plats — inte om att ha undvikit angrepp. Tillsynsmyndigheten kan granska er utan att ett angrepp har inträffat. Brister i säkerhetsåtgärder enligt Artikel 21 är sanktionsgrundande i sig, oavsett incidenthistorik.</div>
   </div>
 
+    <div class="box-info" style="margin: 48px 0 32px;">
+      <div style="font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color: var(--yellow); margin-bottom:10px;">🔧 VERKTYG &amp; LÖSNINGAR</div>
+      <p style="margin:0; font-size:17px; color: #ddd; line-height:1.7;">Det billigaste sättet att undvika böter är att dokumentera att ni gjort jobbet. En gap-analys med en certifierad partner ger er just det beviset — och kostar en bråkdel av minsta möjliga böter.</p>
+    </div>
   <!-- CTA — inline lead capture -->
   <div class="capture-form-section">
     <h2>Vet du var din organisation står idag?</h2>
@@ -354,7 +358,7 @@
       <input class="capture-input" type="email" id="botenEmail"   placeholder="E-postadress *"   autocomplete="email" required />
       <input class="capture-input" type="tel"   id="botenPhone"   placeholder="Telefonnummer"    autocomplete="tel" />
       <input class="capture-input" type="text"  id="botenCompany" placeholder="Bolagets namn *"  required />
-      <button type="submit" class="capture-submit-btn" id="botenSubmit">Boka kostnadsfri genomgång →</button>
+      <button type="submit" class="capture-submit-btn" id="botenSubmit">Boka kostnadsfri gap-analys →</button>
     </form>
     <div class="capture-thanks-msg" id="botenThanks">✅ Tack! Vi hör av oss inom 24 timmar.</div>
   </div>
@@ -401,12 +405,12 @@
           thanks.style.display = 'block';
         } else {
           btn.disabled = false;
-          btn.textContent = 'Boka kostnadsfri genomgång →';
+          btn.textContent = 'Boka kostnadsfri gap-analys →';
           alert('Något gick fel, försök igen.');
         }
       } catch (err) {
         btn.disabled = false;
-        btn.textContent = 'Boka kostnadsfri genomgång →';
+        btn.textContent = 'Boka kostnadsfri gap-analys →';
         alert('Något gick fel, försök igen.');
       }
     }

@@ -275,7 +275,7 @@
         <input type="text"  id="capName"    placeholder="Ditt namn" autocomplete="name" />
         <input type="email" id="capEmail"   placeholder="E-postadress *" autocomplete="email" required />
         <input type="text"  id="capCompany" placeholder="Bolagets namn *" required />
-        <button type="submit" id="captureSubmit">Boka kostnadsfritt samtal →</button>
+        <button type="submit" id="captureSubmit">Boka kostnadsfri gap-analys →</button>
       </form>
       <div id="captureThanks" style="display:none" class="capture-thanks">
         ✅ Tack! Vi hör av oss inom 24 timmar.
@@ -383,6 +383,18 @@
           <div class="roi-multiplier">${multiplier}x</div>
           <div class="roi-text">Varje krona i NIS2-investering skyddar mot <em>${multiplier} kronor</em> i potentiell förlust.</div>
         </div>
+
+        <div class="result-card" style="border-color: rgba(245,230,66,0.3);">
+          <div class="result-label" style="color: var(--yellow);">💡 Rekommenderat nästa steg</div>
+          <div class="result-value" style="font-size:18px; color:var(--white); line-height:1.4;">${
+            rev < 100
+              ? 'Grundnivå — MFA, backup, incidentplan. Många SMB-bolag täcker detta med befintliga molntjänster korrekt konfigurerade.'
+              : rev < 300
+              ? 'Mellannivå — lägg till avancerat identitetsskydd, SIEM-loggning och leverantörskontroll utöver grundkonfigurationen.'
+              : 'Fullnivå — kontinuerlig övervakning (SOC-as-a-Service), Endpoint Detection & Response och formell NIS2-dokumentation.'
+          }</div>
+          <div class="result-sub" style="margin-top:12px;">En certifierad partner kan göra en kostnadsfri gap-analys och visa exakt vad ni redan har täckt — och vad som saknas.</div>
+        </div>
       `;
 
       // Store for lead capture
@@ -422,7 +434,7 @@
           document.getElementById('captureThanks').style.display = 'block';
         } else {
           btn.disabled = false;
-          btn.textContent = 'Boka kostnadsfritt samtal →';
+          btn.textContent = 'Boka kostnadsfri gap-analys →';
         }
       } catch (err) {
         btn.disabled = false;
