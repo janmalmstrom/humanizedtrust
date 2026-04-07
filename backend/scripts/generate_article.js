@@ -622,11 +622,43 @@ KRAV:
 - Ton: professionell, direkt, lite skrämmande men aldrig panikskapande
 - StoryBrand: läsaren är hjälten, NIS2 är utmaningen, vi är guiden
 - Personligt ansvar ska nämnas konkret (inte bara i förbigående)
-- Avsluta med CTA-sektion: länk till https://nis2klar.se/#kontakt med texten "Boka en kostnadsfri NIS2-genomgång"
 - Inkludera minst: en .box-warning, en .box-info, och en .box-case
 - nav-logo ska vara: <a class="nav-logo" href="https://nis2klar.se/">NIS2<span>Klar</span></a>
 - nav-back: <a class="nav-back" href="https://nis2klar.se/artiklar.html">← Alla artiklar</a>
 - Slug för denna artikel: ${topic.slug}
+
+MICROSOFT-VERKTYG BOX (OBLIGATORISK):
+Lägg in följande box PRECIS INNAN <div class="cta-section">. Välj rätt Microsoft-produkt(er) baserat på artikelns ämne:
+
+| NIS2-ämne | Microsoft-produkt att namnge |
+|---|---|
+| Riskanalys & policy | Microsoft Defender Secure Score + Compliance Manager |
+| Incidenthantering | Microsoft Sentinel (SIEM) + Microsoft Defender XDR |
+| Backup & kontinuitet | Microsoft 365 Backup + Azure Backup (Immutable Vault) |
+| MFA & åtkomstkontroll | Microsoft Entra ID Conditional Access + FIDO2 / Windows Hello for Business |
+| Kryptering | Microsoft Purview Sensitivity Labels + Azure Key Vault |
+| Utbildning & hygien | Microsoft Defender for Office 365 Attack Simulation Training |
+| Leverantörssäkerhet | Microsoft Entra GDAP (Granular Delegated Admin Privileges) |
+| Tillsyn & granskning | Microsoft Defender Compliance Manager |
+| Styrelsedokumentation | Microsoft Defender Secure Score (0–100 styrelse-KPI) |
+| Tekniska åtgärder (bred) | Microsoft 365 Business Premium (täcker MFA, backup, EDR, compliance) |
+
+HTML för boxen:
+<div class="box-info" style="margin: 48px 0 32px;">
+  <div style="font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color: var(--yellow); margin-bottom:10px;">🔧 VERKTYG &amp; LÖSNINGAR</div>
+  <p style="margin:0; font-size:17px; color: #ddd; line-height:1.7;">[Rätt Microsoft-produkt(er) från tabellen ovan + en mening om certifierad Microsoft-partner och kostnadsfri gap-analys]</p>
+</div>
+
+CTA-SEKTION:
+- Rubrik: "Vet du var din organisation står idag?"
+- Undertext: "En kostnadsfri gap-analys med en certifierad Microsoft-partner visar exakt vad ni redan har täckt — och vad som saknas."
+- Knapp: <a href="/nis2.html#boka" class="btn-primary">Boka kostnadsfri gap-analys →</a>
+- Fine print: "Böterna är upp till <strong>10 miljoner euro</strong>. Gap-analysen är gratis."
+
+SIDFOT-DISCLAIMER (lägg till sist i <footer> innan </footer>):
+<p style="margin-top:12px; font-size:11px; color: #555; line-height:1.5;">Microsoft, Microsoft 365, Azure och tillhörande produktnamn är varumärken som tillhör Microsoft Corporation. nis2klar.se är inte affilierat med eller godkänt av Microsoft Corporation.</p>
+
+ARTIKELBRÖDTEXT: Håll artikelns brödtext leverantörsneutral (säg "ett SIEM-verktyg" inte "Microsoft Sentinel" i löptext). Microsoft-produktnamnen hör hemma ENBART i Verktyg-boxen ovan.
 
 VIKTIGT: Returnera ENBART giltig HTML från <!DOCTYPE html> till </html>. Inget annat.`;
 
@@ -732,6 +764,18 @@ ${cardHtml}
   const indexPath = path.join(FRONTEND_DIR, 'public', 'artiklar.html');
   fs.writeFileSync(indexPath, indexHtml, 'utf-8');
   console.log(`[index] Rebuilt artiklar.html — ${cards.length} articles`);
+
+  // Update article count in nis2.html sales page
+  const nis2Path = path.join(FRONTEND_DIR, 'public', 'nis2.html');
+  if (fs.existsSync(nis2Path)) {
+    let nis2Html = fs.readFileSync(nis2Path, 'utf-8');
+    nis2Html = nis2Html.replace(
+      /\d+ guider om NIS2 — skrivet för svenska beslutsfattare/,
+      `${cards.length} guider om NIS2 — skrivet för svenska beslutsfattare`
+    );
+    fs.writeFileSync(nis2Path, nis2Html, 'utf-8');
+    console.log(`[index] Updated nis2.html article count → ${cards.length}`);
+  }
 }
 
 function rebuildFrontend() {
