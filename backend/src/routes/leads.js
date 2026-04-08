@@ -3,6 +3,20 @@ const router = express.Router();
 const db = require('../db');
 const { computeScore } = require('../engines/scorer');
 
+function applyEmployeeFilter(range, params, conditions) {
+  if (!range) return;
+  if (range === '500+') {
+    params.push(500);
+    conditions.push(`num_employees_exact >= $${params.length}`);
+  } else {
+    const parts = range.split('-').map(Number);
+    if (parts.length === 2 && !isNaN(parts[0]) && !isNaN(parts[1])) {
+      params.push(parts[0], parts[1]);
+      conditions.push(`num_employees_exact BETWEEN $${params.length - 1} AND $${params.length}`);
+    }
+  }
+}
+
 // GET /api/leads — list with filters
 router.get('/', async (req, res) => {
   const {
@@ -19,7 +33,7 @@ router.get('/', async (req, res) => {
   if (status)               { params.push(status);     conditions.push(`review_status = $${params.length}`); }
   if (county)               { params.push(county);     conditions.push(`county ILIKE $${params.length}`); }
   if (nace)                 { params.push(`${nace}%`); conditions.push(`nace_code LIKE $${params.length}`); }
-  if (employees)            { params.push(employees);  conditions.push(`employee_range = $${params.length}`); }
+  applyEmployeeFilter(employees, params, conditions);
   if (nis2 === 'true')      conditions.push('nis2_registered = true');
   if (has_website === 'true')  conditions.push('website IS NOT NULL');
   if (score_min)            { params.push(parseInt(score_min)); conditions.push(`score >= $${params.length}`); }
@@ -30,7 +44,9 @@ router.get('/', async (req, res) => {
   }
 
   const where = conditions.length ? `WHERE ${conditions.join(' AND ')}` : '';
-  const validSort = ['score','company_name','city','employee_range','created_at'].includes(sort) ? sort : 'score';
+  const SORT_MAP = { employee_range: 'num_employees_exact' };
+  const rawSort = ['score','company_name','city','employee_range','num_employees_exact','created_at'].includes(sort) ? sort : 'score';
+  const validSort = SORT_MAP[rawSort] || rawSort;
   const validDir = dir === 'asc' ? 'ASC' : 'DESC';
 
   try {
@@ -40,7 +56,7 @@ router.get('/', async (req, res) => {
     params.push(parseInt(limit), offset);
     const { rows } = await db.query(
       `SELECT id, org_nr, company_name, website, email, email_status, phone,
-              city, county, nace_code, nace_description, employee_range, revenue_range,
+              city, county, nace_code, nace_description, employee_range, num_employees_exact, revenue_range,
               nis2_registered, nis2_sector, linkedin_url, score, score_label,
               review_status, contacted_at, outreach_angle, created_at,
               intent_signal, intent_signal_at
@@ -74,7 +90,7 @@ router.get('/export', async (req, res) => {
     if (status)               { params.push(status);     conditions.push(`review_status = $${params.length}`); }
     if (county)               { params.push(county);     conditions.push(`county ILIKE $${params.length}`); }
     if (nace)                 { params.push(`${nace}%`); conditions.push(`nace_code LIKE $${params.length}`); }
-    if (employees)            { params.push(employees);  conditions.push(`employee_range = $${params.length}`); }
+    applyEmployeeFilter(employees, params, conditions);
     if (nis2 === 'true')      conditions.push('nis2_registered = true');
     if (has_website === 'true') conditions.push('website IS NOT NULL');
     if (score_min)            { params.push(parseInt(score_min)); conditions.push(`score >= $${params.length}`); }
@@ -339,9 +355,10 @@ router.get('/:id', async (req, res) => {
   }
 });
 
-// PATCH /api/leads/:id — update status, notes, outreach angle
+// PATCH /api/leads/:id — update status, notes, outreach angle, contact info
 router.patch('/:id', async (req, res) => {
-  const { review_status, notes, outreach_angle, contacted_at, estimated_value_sek, scheduler_url } = req.body;
+  const { review_status, notes, outreach_angle, contacted_at, estimated_value_sek, scheduler_url,
+          email, phone, website, linkedin_url } = req.body;
   const fields = [];
   const params = [];
 
@@ -351,6 +368,10 @@ router.patch('/:id', async (req, res) => {
   if (contacted_at !== undefined)       { params.push(contacted_at);       fields.push(`contacted_at = $${params.length}`); }
   if (estimated_value_sek !== undefined){ params.push(estimated_value_sek);fields.push(`estimated_value_sek = $${params.length}`); }
   if (scheduler_url !== undefined)      { params.push(scheduler_url);      fields.push(`scheduler_url = $${params.length}`); }
+  if (email !== undefined)              { params.push(email || null);      fields.push(`email = $${params.length}`); }
+  if (phone !== undefined)              { params.push(phone || null);      fields.push(`phone = $${params.length}`); }
+  if (website !== undefined)            { params.push(website || null);    fields.push(`website = $${params.length}`); }
+  if (linkedin_url !== undefined)       { params.push(linkedin_url || null); fields.push(`linkedin_url = $${params.length}`); }
 
   if (!fields.length) return res.status(400).json({ success: false, error: 'Nothing to update' });
 

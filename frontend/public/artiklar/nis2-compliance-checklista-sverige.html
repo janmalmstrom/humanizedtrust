@@ -12,9 +12,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>NIS2 Compliance-checklista för Sverige: Komplett guide för viktiga tjänster | NIS2Klar</title>
-  <meta name="description" content="Komplett NIS2-checklista för svenska organisationer. Täcker registrering, riskanalys, säkerhetsåtgärder, incidentrapportering och leverantörsgranskning. VD och styrelse är personligt ansvariga.">
+  <meta name="description" content="Komplett NIS2-checklista för svenska organisationer. Täcker registrering, riskanalys, säkerhetsåtgärder, incidentrapportering och leverantörsgranskning. Riktat till VD och styrelse.">
   <meta property="og:title" content="NIS2 Compliance-checklista för Sverige: Komplett guide för viktiga tjänster">
-  <meta property="og:description" content="Komplett NIS2-checklista för svenska organisationer. Täcker registrering, riskanalys, säkerhetsåtgärder, incidentrapportering och leverantörsgranskning. VD och styrelse är personligt ansvariga.">
+  <meta property="og:description" content="Komplett NIS2-checklista för svenska organisationer. Täcker registrering, riskanalys, säkerhetsåtgärder, incidentrapportering och leverantörsgranskning. Riktat till VD och styrelse.">
   <link rel="canonical" href="https://nis2klar.se/artiklar/nis2-compliance-checklista-sverige.html">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
@@ -59,6 +59,16 @@
     .box-case .case-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 12px; }
     blockquote { border-left: 3px solid var(--yellow); padding: 12px 20px; margin: 24px 0; font-style: italic; color: #ccc; }
 
+    /* Checklist */
+    .checklist { list-style: none; margin: 0 0 32px; padding: 0; }
+    .checklist li { display: flex; align-items: flex-start; gap: 14px; padding: 14px 0; border-bottom: 1px solid rgba(255,255,255,0.05); font-size: 18px; line-height: 1.6; }
+    .checklist li:last-child { border-bottom: none; }
+    .checklist input[type="checkbox"] { margin-top: 5px; flex-shrink: 0; width: 20px; height: 20px; accent-color: var(--yellow); cursor: pointer; }
+    .checklist .check-text strong { display: block; font-size: 17px; color: var(--white); margin-bottom: 4px; }
+    .checklist .check-text span { font-size: 15px; color: #aaa; line-height: 1.5; display: block; }
+    .checklist-section { background: var(--card); border: 1px solid rgba(255,255,255,0.07); border-radius: 4px; padding: 28px 32px; margin: 32px 0; }
+    .checklist-section-title { font-family: 'Poppins', sans-serif; font-size: 14px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 20px; }
+
     /* CTA */
     .cta-section { background: var(--card); border: 1px solid rgba(245,197,24,0.2); border-radius: 4px; padding: 48px 40px; margin: 64px 0 40px; text-align: center; }
     .cta-section h2 { margin-top: 0; font-size: 26px; }
@@ -89,38 +99,7 @@
     .box-takeaway p { margin: 0; font-size: 18px; font-weight: 600; color: var(--white); line-height: 1.6; }
 
     /* Capture form */
-    .capture-form-section { background: #1c1c1f; border: 1px solid rgba(245,197,24,0.25); border-top: 3px solid var(--yellow); border-radius: 4px; padding: 40px; margin: 64px 0 40px; }
-    .capture-form-section h2 { margin-top: 0; font-size: 24px; font-family: 'Poppins', sans-serif; font-weight: 800; margin-bottom: 12px; }
-    .capture-form-section .sub { color: #aaa; font-size: 15px; margin-bottom: 24px; }
-    .capture-input { display: block; width: 100%; background: #222226; border: 1px solid #2e2e33; border-radius: 4px; padding: 13px 16px; font-size: 15px; color: #f0f0f0; font-family: 'Barlow', sans-serif; outline: none; transition: border-color 0.2s; margin-bottom: 12px; }
-    .capture-input:focus { border-color: var(--yellow); }
-    .capture-input::placeholder { color: #666; }
-    .capture-submit-btn { background: var(--yellow); color: #000; border: none; border-radius: 4px; padding: 14px 28px; font-family: 'Poppins', sans-serif; font-size: 15px; font-weight: 800; cursor: pointer; transition: background 0.2s; width: 100%; }
-    .capture-submit-btn:hover { background: #e8d800; }
-    .capture-submit-btn:disabled { opacity: 0.6; cursor: not-allowed; }
-    .capture-thanks-msg { padding: 16px; background: rgba(34,197,94,0.1); border: 1px solid rgba(34,197,94,0.3); border-radius: 4px; color: #86efac; font-size: 15px; text-align: center; display: none; }
-
-    /* Checklist */
-    .checklist-section { margin: 40px 0; }
-    .checklist-group { margin-bottom: 40px; }
-    .checklist-group-title { font-family: 'Poppins', sans-serif; font-size: 18px; font-weight: 700; color: var(--yellow); margin-bottom: 16px; padding-bottom: 8px; border-bottom: 1px solid rgba(245,197,24,0.2); }
-    .checklist-item { display: flex; align-items: flex-start; gap: 14px; background: var(--card); border: 1px solid rgba(255,255,255,0.06); border-radius: 4px; padding: 16px 20px; margin-bottom: 10px; }
-    .checklist-item input[type="checkbox"] { flex-shrink: 0; width: 20px; height: 20px; margin-top: 3px; accent-color: var(--yellow); cursor: pointer; }
-    .checklist-item-text { flex: 1; }
-    .checklist-item-label { font-family: 'Poppins', sans-serif; font-size: 16px; font-weight: 600; color: var(--white); margin-bottom: 4px; }
-    .checklist-item-desc { font-size: 15px; color: #aaa; line-height: 1.6; margin: 0; }
-    .checklist-item.critical { border-left: 3px solid var(--red); }
-    .checklist-item.important { border-left: 3px solid var(--yellow); }
-    .checklist-badge { display: inline-block; font-size: 10px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 2px 8px; border-radius: 2px; margin-left: 8px; vertical-align: middle; }
-    .badge-critical { background: rgba(197,17,17,0.2); color: #ff6b6b; }
-    .badge-personal { background: rgba(245,197,24,0.15); color: var(--yellow); }
-
-    /* Progress bar */
-    .progress-wrap { background: rgba(255,255,255,0.05); border-radius: 4px; height: 8px; margin: 16px 0 8px; }
-    .progress-bar { height: 100%; border-radius: 4px; background: var(--yellow); transition: width 0.4s ease; width: 0%; }
-    .progress-label { font-size: 13px; color: var(--muted); margin-bottom: 32px; }
-
-    /* Footer */
+  /* Footer */
     footer { border-top: 1px solid rgba(255,255,255,0.07); padding: 32px 40px; text-align: center; font-size: 13px; color: var(--muted); max-width: 900px; margin: 0 auto; }
     footer a { color: var(--muted); }
 
@@ -129,7 +108,7 @@
       .cta-section { padding: 32px 20px; }
       .fine-table { font-size: 14px; }
       .fine-table th, .fine-table td { padding: 10px 10px; }
-      .capture-form-section { padding: 24px 20px; }
+      .checklist-section { padding: 20px; }
     }
   </style>
 </head>
@@ -138,7 +117,7 @@
 <nav>
   <a class="nav-logo" href="https://nis2klar.se/">NIS2<span>Klar</span></a>
   <a class="nav-back" href="https://nis2klar.se/artiklar.html">← Alla artiklar</a>
-  <a class="nav-cta" href="https://nis2klar.se/#kontakt">Boka samtal →</a>
+  <a class="nav-cta" href="/nis2.html#boka">Boka samtal →</a>
 </nav>
 
 <article class="article-wrap">
@@ -150,173 +129,554 @@
   <div class="box-summary">
     <div class="summary-label">Sammanfattning</div>
     <ul>
-      <li>En praktisk, handlingsbar NIS2-checklista för svenska organisationer i reglerade sektorer.</li>
-      <li>Täcker alla fem efterlevnadsområden: registrering, riskanalys, säkerhetsåtgärder, incidentrapportering och leverantörsgranskning.</li>
-      <li>Personligt ansvar enligt Artikel 20 löper som röd tråd — det räcker inte att delegera till IT.</li>
-      <li>Checkboxar du kan använda direkt i styrelserummet som underlag för ett styrelsebeslut.</li>
+      <li>En praktisk checklista för VD och styrelseledamöter som behöver veta exakt vad NIS2 kräver — utan att behöva sätta sig in i lagtext.</li>
+      <li>Fem kritiska efterlevnadsområden: registrering, riskanalys, säkerhetsåtgärder, incidentrapportering och leverantörsgranskning.</li>
+      <li>Personligt ansvar enligt Artikel 20 gäller dig direkt — inte bara bolaget och inte bara IT-avdelningen.</li>
+      <li>Tillsynsmyndigheterna i Sverige är aktiva. Den som inte kan bevisa efterlevnad vid en granskning betalar priset — i böter och i karriär.</li>
     </ul>
   </div>
 
   <!-- KEY TAKEAWAY -->
   <div class="box-takeaway">
     <div class="takeaway-label">Viktigaste slutsatsen</div>
-    <p>Du behöver inte förstå varje teknisk detalj i NIS2 — men du behöver kunna bevisa att din organisation har arbetat strukturerat med efterlevnad. Den här checklistan ger dig precis det underlaget.</p>
+    <p>NIS2-compliance är inte ett IT-projekt som du beställer och glömmer. Det är ett ledningsansvar som kräver att du som VD eller styrelseledamot aktivt godkänner, dokumenterar och följer upp säkerhetsarbetet — annars är det du som bär konsekvenserna.</p>
   </div>
 
+  <!-- HOOK -->
   <p>
-    Du är VD eller styrelseledamot. Din organisation verkar i en av de 18 sektorer som NIS2 reglerar. Cybersäkerhetslagen trädde i kraft i Sverige i oktober 2024 och sedan dess har tillsynsmyndigheterna börjat granska. Frågan är inte om ni kommer att granskas — frågan är om ni är förberedda den dag det händer.
+    Du driver eller sitter i styrelsen för en organisation som levererar samhällsviktig service. Du är van vid ansvar — mot ägare, mot kunder, mot medarbetare. Men sedan cybersäkerhetslagen trädde i kraft i Sverige i oktober 2024 har du ett nytt och mycket konkret ansvar: att se till att din organisation uppfyller NIS2-direktivet.
   </p>
 
   <p>
-    Det som gör NIS2 annorlunda mot all tidigare IT-lagstiftning är ett enda ord: <strong>personligt ansvar</strong>. Artikel 20 i direktivet slår fast att du som ledare inte bara kan lämna cybersäkerhet till IT-avdelningen. Du ska förstå riskerna, du ska godkänna åtgärderna, och du ska kunna bevisa att du gjort det. Saknas det dokumentation är det du — inte ditt IT-system — som bär ansvaret.
-  </p>
-
-  <p>
-    Den här guiden ger dig en komplett, handlingsbar checklista. Inte skriven för tekniker, utan för dig. Gå igenom den punkt för punkt, bocka av vad ni gjort och identifiera vad som saknas. Varje område du inte kan bocka av är ett område där din organisation — och du personligen — är exponerad.
+    Det handlar inte om en teknisk standard som IT-chefen bockar av. Det handlar om ett regelverk där <strong>du personligen kan förlora rätten att leda en organisation</strong> om efterlevnaden brister. Den goda nyheten är att kraven är tydliga och möjliga att uppfylla — om du vet vad du ska göra. Den här checklistan ger dig exakt det.
   </p>
 
   <div class="box-warning">
-    <strong>Personligt ansvar är inte en metafor.</strong> Tillsynsmyndigheten kan utfärda ett tillfälligt förbud för dig som VD eller styrelseledamot att inneha ledande befattning. Det är inte ett hot mot bolaget — det är ett hot mot din karriär.
+    <strong>Personligt ansvar gäller redan nu.</strong> Artikel 20 i NIS2-direktivet slår fast att ledningsorgan — VD och styrelseledamöter — är personligt ansvariga för att säkerhetsåtgärderna är godkända, genomförda och dokumenterade. Det räcker inte att delegera till IT. Det räcker inte att ha välmenande intentioner. Tillsynsmyndigheten bedömer vad du kan bevisa.
   </div>
+
+  <h2>Vem gäller checklistan?</h2>
+
+  <p>
+    Innan du arbetar igenom checklistan behöver du bekräfta att din organisation faktiskt omfattas av NIS2. Lagen gäller för organisationer i <strong>18 samhällskritiska sektorer</strong> och delar in dem i två kategorier:
+  </p>
+
+  <table class="fine-table">
+    <thead>
+      <tr>
+        <th>Kategori</th>
+        <th>Kriterier</th>
+        <th>Maxsanktion</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Väsentlig entitet</td>
+        <td>Fler än 250 anställda <em>eller</em> omsättning över 50 M€ i en kritisk sektor</td>
+        <td class="amount">10 miljoner euro / 2 % av global omsättning</td>
+      </tr>
+      <tr>
+        <td>Viktig entitet</td>
+        <td>50–249 anställda <em>eller</em> omsättning 10–50 M€ i en relevant sektor</td>
+        <td class="amount">7 miljoner euro / 1,4 % av global omsättning</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>
+    Sektorerna inkluderar bland annat energi, transport, finans, hälso- och sjukvård, dricksvatten, digital infrastruktur, offentlig förvaltning, livsmedel, rymden och tillverkning av samhällskritiska produkter. Är du osäker på om din organisation ingår — kontrollera det nu, inte när tillsynen knackar på.
+  </p>
+
+  <p>
+    En viktig sak att förstå: <strong>det högsta beloppet gäller alltid</strong>. En organisation med en miljard kronor i omsättning som klassas som väsentlig entitet kan alltså stå inför böter på 10 miljoner euro — inte 2 % av omsättningen, eftersom taket är högre. Sanktionerna är dessutom kumulativa: du kan drabbas av separata böter för varje område där efterlevnad brister.
+  </p>
 
   <h2>Hur du använder den här checklistan</h2>
 
   <p>
-    Checklistan är uppdelad i fem områden som speglar de viktigaste kraven i NIS2-direktivet och den svenska cybersäkerhetslagen (2024:1056). Varje punkt är märkt med en angelägenhetsgrad:
+    Checklistan är strukturerad i fem efterlevnadsområden som direkt speglar NIS2-direktivets krav. Varje punkt innehåller en konkret åtgärd och en förklaring av varför den är obligatorisk. Bocka av det ni redan har på plats. Markera det som saknas — det är er gap-lista.
   </p>
-
-  <ul>
-    <li><strong style="color:#ff6b6b;">Kritisk</strong> — direkt sanktionsrisk om den saknas</li>
-    <li><strong style="color:var(--yellow);">Personligt ansvar</strong> — kräver aktivt beslut eller godkännande från ledningen</li>
-  </ul>
 
   <p>
-    Ta med checklistan till nästa styrelsemöte. Gå igenom varje punkt. Dokumentera vad ni beslutar. Det dokumentet är ditt bästa skydd den dag tillsynsmyndigheten hör av sig.
+    Arbeta igenom den i styrelserummet, inte bara på IT-avdelningen. Det är du som ledare som måste kunna svara på dessa frågor inför en tillsynsmyndighet — och det är du som skriver under att åtgärderna är godkända och genomförda.
   </p>
 
-  <!-- PROGRESS -->
-  <div class="progress-wrap"><div class="progress-bar" id="progressBar"></div></div>
-  <div class="progress-label" id="progressLabel">0 av 35 punkter avklarade</div>
+  <!-- ======================================================= -->
+  <!-- AREA 1: REGISTRERING -->
+  <!-- ======================================================= -->
 
-  <!-- ===== CHECKLIST ===== -->
+  <h2>Område 1: Registrering och klassificering</h2>
+
+  <p>
+    Det första steget är att formellt identifiera er som NIS2-reglerad organisation och registrera er hos rätt tillsynsmyndighet. Det låter enkelt — men många organisationer har missat detta steg och befinner sig tekniskt sett i strid med lagen från dag ett.
+  </p>
+
   <div class="checklist-section">
+    <div class="checklist-section-title">✦ Registrering och klassificering</div>
+    <ul class="checklist">
+      <li>
+        <input type="checkbox" id="c1-1">
+        <label class="check-text" for="c1-1">
+          <strong>Bekräftat att organisationen omfattas av NIS2</strong>
+          <span>Ni har gått igenom de 18 sektorerna i cybersäkerhetslagen och bekräftat att er verksamhet faller inom minst en av dem. Dokumentera detta ställningstagande med datum och beslutsfattare.</span>
+        </label>
+      </li>
+      <li>
+        <input type="checkbox" id="c1-2">
+        <label class="check-text" for="c1-2">
+          <strong>Klassificerat er som väsentlig eller viktig entitet</strong>
+          <span>Baserat på er storlek (anställda och omsättning) har ni fastställt vilken kategori ni tillhör. Skillnaden avgör sanktionsnivå och tillsynsfrekvens.</span>
+        </label>
+      </li>
+      <li>
+        <input type="checkbox" id="c1-3">
+        <label class="check-text" for="c1-3">
+          <strong>Registrerat er hos ansvarig tillsynsmyndighet</strong>
+          <span>Beroende på sektor är det Finansinspektionen, Transportstyrelsen, Energimarknadsinspektionen, IVO eller annan myndighet som är er tillsynsmyndighet. MSB samordnar. Registrering ska ske — utebliven registrering är i sig en sanktionsgrundande brist.</span>
+        </label>
+      </li>
+      <li>
+        <input type="checkbox" id="c1-4">
+        <label class="check-text" for="c1-4">
+          <strong>Utsett en ansvarig kontaktperson för NIS2</strong>
+          <span>Tillsynsmyndigheten behöver en namngiven kontaktpunkt i er organisation — inte en rollbeteckning utan en person med befogenhet att svara och agera. Dokumentera vem det är och kommunicera det internt.</span>
+        </label>
+      </li>
+      <li>
+        <input type="checkbox" id="c1-5">
+        <label class="check-text" for="c1-5">
+          <strong>Styrelsen har formellt noterat NIS2-förpliktelsen i protokoll</strong>
+          <span>För att Artikel 20 ska vara uppfylld krävs dokumentation på att ledningsorganet känner till och har godkänt sina skyldigheter. Ett styrelsebeslut som bekräftar detta är inte en formalitet — det är ert försvar vid en granskning.</span>
+        </label>
+      </li>
+    </ul>
+  </div>
 
-    <!-- 1. REGISTRERING -->
-    <div class="checklist-group">
-      <div class="checklist-group-title">Del 1: Registrering och klassificering</div>
+  <!-- ======================================================= -->
+  <!-- AREA 2: RISKANALYS -->
+  <!-- ======================================================= -->
 
-      <div class="checklist-item critical">
-        <input type="checkbox" class="check-item">
-        <div class="checklist-item-text">
-          <div class="checklist-item-label">Fastställt om organisationen omfattas av NIS2 <span class="checklist-badge badge-critical">Kritisk</span></div>
-          <p class="checklist-item-desc">Kontrollera om ni verkar inom någon av de 18 reglerade sektorerna (energi, transport, finans, hälso- och sjukvård, digital infrastruktur m.fl.) och om ni uppfyller trösklarna: fler än 50 anställda ELLER mer än 10 miljoner euro i omsättning. Att gissa fel åt fel håll är kostsamt.</p>
-        </div>
-      </div>
+  <h2>Område 2: Riskanalys och säkerhetspolicy</h2>
 
-      <div class="checklist-item critical">
-        <input type="checkbox" class="check-item">
-        <div class="checklist-item-text">
-          <div class="checklist-item-label">Klassificerat organisationen som väsentlig eller viktig entitet <span class="checklist-badge badge-critical">Kritisk</span></div>
-          <p class="checklist-item-desc">Väsentliga entiteter är stora aktörer (fler än 250 anställda eller omsättning över 50 M€) med systemkritisk roll. Viktiga entiteter är medelstora aktörer. Klassificeringen avgör bötesnivå (10 M€ respektive 7 M€) och tillsynsintensitet. Dokumentera beslutsunderlag och slutsats.</p>
-        </div>
-      </div>
+  <p>
+    Artikel 21 i NIS2 kräver att er organisation baserar sina säkerhetsåtgärder på en <strong>genomförd och dokumenterad riskanalys</strong>. Det räcker inte att "veta" vilka risker ni har — ni måste kunna visa att ni systematiskt har kartlagt dem, bedömt sannolikhet och konsekvens, och fattat informerade beslut om åtgärder.
+  </p>
 
-      <div class="checklist-item critical">
-        <input type="checkbox" class="check-item">
-        <div class="checklist-item-text">
-          <div class="checklist-item-label">Genomfört obligatorisk registrering hos MSB <span class="checklist-badge badge-critical">Kritisk</span></div>
-          <p class="checklist-item-desc">Organisationer som omfattas av cybersäkerhetslagen ska registrera sig hos Myndigheten för samhällsskydd och beredskap (MSB). Utebliven registrering är i sig en sanktionsgrundande brist. Bekräfta att registreringen är gjord och att uppgifterna är aktuella.</p>
-        </div>
-      </div>
+  <p>
+    Riskanalysen är ryggraden i hela ert NIS2-arbete. Utan den saknar era säkerhetsåtgärder sitt lagliga fundament. Med den har ni ett levande dokument som visar tillsynsmyndigheten att ni arbetar metodiskt — inte reaktivt.
+  </p>
 
-      <div class="checklist-item important">
-        <input type="checkbox" class="check-item">
-        <div class="checklist-item-text">
-          <div class="checklist-item-label">Identifierat ansvarig tillsynsmyndighet för er sektor <span class="checklist-badge badge-personal">Personligt ansvar</span></div>
-          <p class="checklist-item-desc">Tillsynen i Sverige är sektorsspecifik. Finansinspektionen, IVO, Transportstyrelsen, Energimarknadsinspektionen — vilken myndighet är er? Du som VD bör veta vem som kan begära dokumentation av er med 14 dagars varsel.</p>
-        </div>
-      </div>
+  <div class="checklist-section">
+    <div class="checklist-section-title">✦ Riskanalys och säkerhetspolicy</div>
+    <ul class="checklist">
+      <li>
+        <input type="checkbox" id="c2-1">
+        <label class="check-text" for="c2-1">
+          <strong>Genomfört en formell riskbedömning för informationssäkerhet</strong>
+          <span>Riskbedömningen ska täcka era kritiska system, processer och tillgångar. Den ska vara daterad, signerad och knuten till ett beslut om åtgärder. En PowerPoint-presentation från ett möte räcker inte — ni behöver ett strukturerat dokument.</span>
+        </label>
+      </li>
+      <li>
+        <input type="checkbox" id="c2-2">
+        <label class="check-text" for="c2-2">
+          <strong>Antaget en informationssäkerhetspolicy godkänd av styrelsen</strong>
+          <span>Policyn ska vara antagen av ledningsorganet — inte bara framtagen av IT. Den ska ange ansvar, principer och ramverk. Artikel 20 kräver explicit att ledningen godkänner säkerhetsåtgärderna.</span>
+        </label>
+      </li>
+      <li>
+        <input type="checkbox" id="c2-3">
+        <label class="check-text" for="c2-3">
+          <strong>Definierat era kritiska tillgångar och system</strong>
+          <span>Vilka system, data och processer är absolut nödvändiga för er verksamhet? En inventering av kritiska tillgångar är grunden för att prioritera rätt skyddsåtgärder och är ett krav för att riskanalysen ska vara meningsfull.</span>
+        </label>
+      </li>
+      <li>
+        <input type="checkbox" id="c2-4">
+        <label class="check-text" for="c2-4">
+          <strong>Fastställt hur ofta riskanalysen ska uppdateras</strong>
+          <span>En riskanalys gjord för tre år sedan är inte giltig dokumentation. Ni behöver en process för regelbunden uppdatering — minst en gång per år och alltid efter en väsentlig förändring i verksamheten eller hotbilden.</span>
+        </label>
+      </li>
+      <li>
+        <input type="checkbox" id="c2-5">
+        <label class="check-text" for="c2-5">
+          <strong>Säkerhetspolicyn kommunicerad till hela organisationen</strong>
+          <span>En policy som bara IT-avdelningen känner till uppfyller inte lagens krav på att säkerhetskultur genomsyrar verksamheten. Dokumentera att policyn kommunicerats och att ledningen har bekräftat sin förståelse.</span>
+        </label>
+      </li>
+    </ul>
+  </div>
 
-      <div class="checklist-item important">
-        <input type="checkbox" class="check-item">
-        <div class="checklist-item-text">
-          <div class="checklist-item-label">Utsett ansvarig kontaktperson för NIS2-efterlevnad <span class="checklist-badge badge-personal">Personligt ansvar</span></div>
-          <p class="checklist-item-desc">Direktivet kräver att en utsedd funktion eller person koordinerar efterlevnadsarbetet. Det kan vara en CISO, en IT-chef eller en extern partner — men ansvaret att utse denna person och säkerställa att den har mandat och resurser vilar på ledningen.</p>
-        </div>
-      </div>
+  <div class="box-info">
+    <strong>Observera:</strong> Riskanalysen är inte en engångsinsats. NIS2 förutsätter att er riskhantering är ett levande arbete som uppdateras när hotbilden, verksamheten eller er tekniska miljö förändras. Tillsynsmyndigheten kan begära att se versionshistorik.
+  </div>
 
-      <div class="checklist-item">
-        <input type="checkbox" class="check-item">
-        <div class="checklist-item-text">
-          <div class="checklist-item-label">Granskat om dotterbolag eller utländska enheter också omfattas</div>
-          <p class="checklist-item-desc">NIS2 gäller per juridisk enhet. En koncern kan ha flera entiteter som var och en måste registreras och uppfylla kraven separat. Gör en inventering av alla juridiska enheter som verkar i reglerade sektorer inom EU.</p>
-        </div>
-      </div>
+  <!-- ======================================================= -->
+  <!-- AREA 3: SÄKERHETSÅTGÄRDER -->
+  <!-- ======================================================= -->
 
-    </div>
+  <h2>Område 3: Tekniska och organisatoriska säkerhetsåtgärder</h2>
 
-    <!-- 2. RISKANALYS -->
-    <div class="checklist-group">
-      <div class="checklist-group-title">Del 2: Riskanalys och riskhantering</div>
+  <p>
+    Det är här det konkreta säkerhetsarbetet syns. Artikel 21 specificerar tio obligatoriska säkerhetsdomäner. Det räcker inte att ha åtgärder på plats — ni måste kunna dokumentera att de finns, att de fungerar och att ledningen har godkänt dem.
+  </p>
 
-      <div class="checklist-item critical">
-        <input type="checkbox" class="check-item">
-        <div class="checklist-item-text">
-          <div class="checklist-item-label">Genomfört en dokumenterad riskbedömning för cybersäkerhet <span class="checklist-badge badge-critical">Kritisk</span></div>
-          <p class="checklist-item-desc">Artikel 21 kräver att ni systematiskt identifierar, bedömer och hanterar risker för era nätverks- och informationssystem. En riskbedömning utan dokumentation är som om den aldrig ägt rum — tillsynsmyndigheten kan inte bedöma vad ni inte kan visa upp.</p>
-        </div>
-      </div>
+  <p>
+    Som VD eller styrelseledamot behöver du inte förstå varje teknisk detalj. Men du behöver veta att var och en av dessa domäner är täckt, och du behöver kunna visa ett styrelsebeslut som bekräftar det. Det är din personliga försvarslinje.
+  </p>
 
-      <div class="checklist-item important">
-        <input type="checkbox" class="check-item">
-        <div class="checklist-item-text">
-          <div class="checklist-item-label">Styrelsen har godkänt riskbedömningen <span class="checklist-badge badge-personal">Personligt ansvar</span></div>
-          <p class="checklist-item-desc">Artikel 20 är tydlig: ledningsorganet ska godkänna de riskhanteringsåtgärder som vidtas. Det räcker inte att IT-chefen presenterar en rapport. Det krävs ett dokumenterat styrelsebeslut. Saknas detta är ni sårbara oavsett hur god er tekniska säkerhet är.</p>
-        </div>
-      </div>
+  <div class="checklist-section">
+    <div class="checklist-section-title">✦ Tekniska och organisatoriska säkerhetsåtgärder (Artikel 21)</div>
+    <ul class="checklist">
+      <li>
+        <input type="checkbox" id="c3-1">
+        <label class="check-text" for="c3-1">
+          <strong>Flerfaktorsautentisering (MFA) är implementerat för alla kritiska system</strong>
+          <span>Enkel inloggning med lösenord är inte tillräcklig säkerhet för NIS2-reglerade system. MFA ska vara aktiverat för alla administrativa konton, fjärråtkomst och kritiska affärssystem. Dokumentera vilka system som täcks.</span>
+        </label>
+      </li>
+      <li>
+        <input type="checkbox" id="c3-2">
+        <label class="check-text" for="c3-2">
+          <strong>Kryptering av data i vila och under transport</strong>
+          <span>Känslig information ska vara krypterad — oavsett om den lagras på servrar, i molnet eller skickas via nätverk. Era krypteringsstandarder ska vara dokumenterade och uppdaterade enligt aktuell bästa praxis.</span>
+        </label>
+      </li>
+      <li>
+        <input type="checkbox" id="c3-3">
+        <label class="check-text" for="c3-3">
+          <strong>Regelbundna säkerhetskopiering med verifierade återställningsrutiner</strong>
+          <span>Backup är inte tillräckligt om ni inte kan återställa den. NIS2 kräver att ni kan upprätthålla verksamheten vid en incident. Era säkerhetskopior ska testas regelbundet — och testresultaten ska dokumenteras.</span>
+        </label>
+      </li>
+      <li>
+        <input type="checkbox" id="c3-4">
+        <label class="check-text" for="c3-4">
+          <strong>Patchhantering och sårbarhetsskanning implementerat</strong>
+          <span>Kända säkerhetsbrister i mjukvara är den vanligaste attackvektorn. Er organisation behöver en dokumenterad process för hur och hur snabbt kritiska säkerhetsuppdateringar appliceras på alla system.</span>
+        </label>
+      </li>
+      <li>
+        <input type="checkbox" id="c3-5">
+        <label class="check-text" for="c3-5">
+          <strong>Nätverkssegmentering och åtkomstkontroll dokumenterat</strong>
+          <span>Inte alla användare behöver tillgång till alla system. Principen om minsta möjliga behörighet ska tillämpas och dokumenteras. Vem har tillgång till vad — och varför?</span>
+        </label>
+      </li>
+      <li>
+        <input type="checkbox" id="c3-6">
+        <label class="check-text" for="c3-6">
+          <strong>Loggning och övervakning av kritiska system aktiv</strong>
+          <span>Era system ska generera loggar som kan användas för att identifiera och utreda säkerhetsincidenter. Loggarna ska lagras under en tillräcklig period och ni ska ha en process för att granska dem.</span>
+        </label>
+      </li>
+      <li>
+        <input type="checkbox" id="c3-7">
+        <label class="check-text" for="c3-7">
+          <strong>Kontinuitetsplan antagen och testad</strong>
+          <span>Er organisation behöver en plan för hur verksamheten upprätthålls vid ett cyberangrepp eller annan allvarlig störning. Planen ska vara testad — inte bara skriven. Styrelsen ska ha godkänt den.</span>
+        </label>
+      </li>
+      <li>
+        <input type="checkbox" id="c3-8">
+        <label class="check-text" for="c3-8">
+          <strong>Medarbetarutbildning i cybersäkerhet genomförd och loggad</strong>
+          <span>Den mänskliga faktorn är fortfarande den vanligaste orsaken till säkerhetsincidenter. NIS2 kräver att ni utbildar personal — och att ni kan visa att utbildning har skett, när och för vilka roller.</span>
+        </label>
+      </li>
+      <li>
+        <input type="checkbox" id="c3-9">
+        <label class="check-text" for="c3-9">
+          <strong>Processer för säker mjukvaruutveckling och systemförvaltning</strong>
+          <span>Om ni utvecklar egna system eller förvaltar kritisk infrastruktur behöver ni dokumenterade rutiner för säker kod och konfigurationshantering. Gäller även er hantering av inköpta och driftsatta system.</span>
+        </label>
+      </li>
+      <li>
+        <input type="checkbox" id="c3-10">
+        <label class="check-text" for="c3-10">
+          <strong>Styrelseprotokoll dokumenterar godkännande av samtliga säkerhetsåtgärder</strong>
+          <span>Det här är din personliga försäkring. Artikel 20 kräver att ledningsorganet godkänner säkerhetsåtgärderna. Ett protokoll som bekräftar att styrelsen har granskat och godkänt åtgärdslistan är det konkreta beviset på att ni tagit ert ansvar.</span>
+        </label>
+      </li>
+    </ul>
+  </div>
 
-      <div class="checklist-item critical">
-        <input type="checkbox" class="check-item">
-        <div class="checklist-item-text">
-          <div class="checklist-item-label">Identifierat och dokumenterat kritiska tillgångar och processer <span class="checklist-badge badge-critical">Kritisk</span></div>
-          <p class="checklist-item-desc">Vilka system, data och processer är absolut kritiska för er verksamhet? Vilka, om de slås ut, skapar störningar för samhällsviktiga tjänster? Den frågan måste ni kunna besvara med ett dokument — inte med ett resonemang.</p>
-        </div>
-      </div>
+  <!-- ======================================================= -->
+  <!-- AREA 4: INCIDENTRAPPORTERING -->
+  <!-- ======================================================= -->
 
-      <div class="checklist-item">
-        <input type="checkbox" class="check-item">
-        <div class="checklist-item-text">
-          <div class="checklist-item-label">Fastställt frekvens för återkommande riskbedömningar</div>
-          <p class="checklist-item-desc">En riskbedömning är inte ett engångsprojekt. Hot och verksamhetsförutsättningar förändras. Definiera hur ofta (minst en gång per år rekommenderas) riskbedömningen ska uppdateras och vem som ansvarar för att initiera den.</p>
-        </div>
-      </div>
+  <h2>Område 4: Incidenthantering och rapportering</h2>
 
-      <div class="checklist-item important">
-        <input type="checkbox" class="check-item">
-        <div class="checklist-item-text">
-          <div class="checklist-item-label">Ledningen har genomgått utbildning i NIS2-krav <span class="checklist-badge badge-personal">Personligt ansvar</span></div>
-          <p class="checklist-item-desc">Artikel 20 kräver inte bara att ledningen fattar beslut — den kräver att ledningen förstår vad den beslutar om. Utbildning ska dokumenteras med datum, innehåll och deltagarlista. En sådan logg är ett konkret bevis på att ni tagit ert ansvar.</p>
-        </div>
-      </div>
+  <p>
+    Artikel 23 i NIS2 är en av de mest konkreta — och mest kränkande för organisationer som inte är förberedda. Den slår fast att en allvarlig säkerhetsincident ska rapporteras till tillsynsmyndigheten inom <strong>24 timmar</strong> (tidig varning) och att en fullständig rapport ska lämnas inom <strong>72 timmar</strong>.
+  </p>
 
-    </div>
+  <p>
+    Det låter kanske enkelt. Men i praktiken innebär det att ni — mitt i en pågående kris — måste ha en tydlig process för vem som bestämmer att en incident är rapporteringspliktig, vem som skriver rapporten, och vem som skickar den. Utan denna process i förväg är det nästintill omöjligt att hålla tidsfristen.
+  </p>
 
-    <!-- 3. SÄKERHETSÅTGÄRDER -->
-    <div class="checklist-group">
-      <div class="checklist-group-title">Del 3: Tekniska och organisatoriska säkerhetsåtgärder</div>
+  <div class="checklist-section">
+    <div class="checklist-section-title">✦ Incidenthantering och rapportering</div>
+    <ul class="checklist">
+      <li>
+        <input type="checkbox" id="c4-1">
+        <label class="check-text" for="c4-1">
+          <strong>Dokumenterad incidenthanteringsplan med tydliga roller</strong>
+          <span>Planen ska ange vem som gör vad vid en säkerhetsincident — från IT-tekniker till VD och kommunikationsansvarig. Rollerna ska vara namngivna, inte bara funktionstitlar. Planen ska vara testad genom en faktisk eller simulerad incident.</span>
+        </label>
+      </li>
+      <li>
+        <input type="checkbox" id="c4-2">
+        <label class="check-text" for="c4-2">
+          <strong>Definierat vad som utgör en "allvarlig incident" enligt NIS2</strong>
+          <span>Inte alla driftsstörningar är rapporteringspliktiga. Men er organisation måste ha definierat tröskelvärden — vad som utlöser 24-timmarsrapportering — och dessa kriterier ska vara kända av de som ansvarar för incidentdetektering.</span>
+        </label>
+      </li>
+      <li>
+        <input type="checkbox" id="c4-3">
+        <label class="check-text" for="c4-3">
+          <strong>Klar eskaleringsväg från IT till ledning vid incident</strong>
+          <span>VD och relevanta styrelseledamöter måste informeras snabbt vid en allvarlig incident — det är ni som fattar beslut om rapportering till myndighet och kommunikation utåt. En skriftlig eskaleringsrutin ska finnas.</span>
+        </label>
+      </li>
+      <li>
+        <input type="checkbox" id="c4-4">
+        <label class="check-text" for="c4-4">
+          <strong>Kontaktuppgifter till tillsynsmyndigheten är kända och uppdaterade</strong>
+          <span>Vid en incident ska ni inte behöva söka efter rätt myndighet att rapportera till. Kontaktuppgifter till er tillsynsmyndighet och till MSB ska finnas tillgängliga och uppdaterade hos de personer som ansvarar för incidentrapportering.</span>
+        </label>
+      </li>
+      <li>
+        <input type="checkbox" id="c4-5">
+        <label class="check-text" for="c4-5">
+          <strong>Logg och dokumentationsrutin för incidenter etablerad</strong>
+          <span>Varje incident — oavsett om den är rapporteringspliktig eller inte — ska dokumenteras. Loggen används för att uppfylla rapporteringskrav, för intern lärdom och för att visa tillsynsmyndigheten att ni hanterar incidenter systematiskt.</span>
+        </label>
+      </li>
+      <li>
+        <input type="checkbox" id="c4-6">
+        <label class="check-text" for="c4-6">
+          <strong>Incidentövning genomförd och dokumenterad under senaste 12 månaderna</strong>
+          <span>En plan som aldrig testats ger falskt skydd. Genomför regelbundna övningar — tabletop-övningar räcker för många organisationer — och dokumentera resultaten. Identifierade brister ska följas upp med konkreta åtgärder.</span>
+        </label>
+      </li>
+    </ul>
+  </div>
 
-      <p style="color:#aaa; font-size:16px; margin-bottom:20px;">Artikel 21 listar tio obligatoriska säkerhetsdomäner. Alla ska vara dokumenterat adresserade — oavsett om ni haft en incident eller inte.</p>
+  <div class="box-case">
+    <div class="case-label">Scenario</div>
+    <p>
+      <strong>Medelstort logistikföretag, 130 anställda, klassas som viktig entitet.</strong>
+    </p>
+    <p>
+      En måndag morgon märker IT-avdelningen att ett ransomware-angrepp har krypterat delar av företagets serversystem. Ledningen samlas till ett krismöte. Problemet: ingen incidenthanteringsplan finns dokumenterad. IT-chefen vet ungefär vad han ska göra tekniskt — men ingen vet vem som beslutar om rapportering till tillsynsmyndigheten, och ingen vet exakt vad som ska rapporteras eller på vilket sätt.
+    </p>
+    <p>
+      Två dagar passerar medan intern diskussion pågår. 72-timmarsfristen löper ut utan att MSB notifierats. Veckan efter initierar tillsynsmyndigheten en granskning efter att en kund anmält driftstörningar. Vid granskningen framgår att incidenthanteringsplanen saknas, att styrelsen aldrig godkänt säkerhetsåtgärderna enligt Artikel 20, och att riskanalysen är tre år gammal.
+    </p>
+    <p>
+      <strong>Utfall:</strong> Sanktionsavgift för utebliven rapportering inom föreskriven tid. Ytterligare avgift för saknad incidenthanteringsplan och bristande dokumentation av ledningens ansvar. VD erhåller personlig notering i tillsynsbeslutet. Total kostnad inkl. juridisk hantering och verksamhetsstopp: <span class="danger">uppskattad till 8–14 miljoner kronor</span>.
+    </p>
+    <p>
+      Det som hade kunnat förhindra hela scenariot: en dokumenterad incidentplan, ett styrelsebeslut om säkerhetsåtgärder och en uppdaterad riskanalys. Kostnaden för det arbetet: en bråkdel av sanktionen.
+    </p>
+  </div>
 
-      <div class="checklist-item critical">
-        <input type="checkbox" class="check-item">
-        <div class="checklist-item-text">
-          <div class="checklist-item-label">Antagen och dokumenterad säkerhetspolicy <span class="checklist-badge badge-critical">Kritisk</span></div>
-          <p class="checklist-item-desc">En övergripande säkerhetspolicy som täcker nätverks- och informationssystem ska finnas, vara antagen av styrelsen och vara känd av relevant personal. Politiken ska inte bara existera — den ska tillämpas och det ska kunna bevisas.</p>
-        </div>
-      </div>
+  <!-- ======================================================= -->
+  <!-- AREA 5: LEVERANTÖRSGRANSKNING -->
+  <!-- ======================================================= -->
 
-      <div class="checklist-item critical">
-        <input type="checkbox" class="check-item">
-        <div class="checklist-item-text">
-          <div class="checklist-item-label">Upprättat incidenthanteringsplan med tydliga roller <span class="checklist-badge badge-critical">Kritisk</span></div>
-          <p class="checklist-item-desc">Vem g
+  <h2>Område 5: Leverantörsgranskning och säkerhet i leveranskedjan</h2>
+
+  <p>
+    Ett av de mest förbisedda kraven i NIS2 är leverantörssäkerhet. Artikel 21 punkt d kräver att er organisation aktivt hanterar säkerhetsrisker kopplade till leverantörer och tjänsteleverantörer. Det räcker inte att era egna system är säkra — ni ansvarar också för säkerheten hos de som ni köper tjänster av.
+  </p>
+
+  <p>
+    För de flesta organisationer innebär det en genomgång av leverantörernas säkerhetsnivå, uppdaterade avtal med säkerhetskrav och en process för att hantera situationen när en leverantör drabbas av en incident.
+  </p>
+
+  <div class="checklist-section">
+    <div class="checklist-section-title">✦ Leverantörsgranskning och säkerhet i leveranskedjan</div>
+    <ul class="checklist">
+      <li>
+        <input type="checkbox" id="c5-1">
+        <label class="check-text" for="c5-1">
+          <strong>Inventering av alla kritiska leverantörer och tjänsteleverantörer genomförd</strong>
+          <span>Vilka leverantörer har åtkomst till era system, data eller kritiska processer? Listan ska finnas dokumenterad, vara uppdaterad och ägas av en namngiven person i ledningen — inte bara av IT-avdelningen.</span>
+        </label>
+      </li>
+      <li>
+        <input type="checkbox" id="c5-2">
+        <label class="check-text" for="c5-2">
+          <strong>Säkerhetskrav inarbetade i leverantörsavtal</strong>
+          <span>Era leverantörsavtal ska innehålla konkreta säkerhetskrav — inte generella skrivningar om "god praxis". Kraven ska specificera hur leverantören ska hantera er data, vilka säkerhetsstandarder som gäller och vad som händer vid en incident hos leverantören.</span>
+        </label>
+      </li>
+      <li>
+        <input type="checkbox" id="c5-3">
+        <label class="check-text" for="c5-3">
+          <strong>Säkerhetsbedömning genomförd för högrisksleverantörer</strong>
+          <span>Inte alla leverantörer bär samma risk. De som har djup åtkomst till era kritiska system eller data ska ha genomgått en mer ingående säkerhetsbedömning — t.ex. genom att begära deras säkerhetsintyg, certifieringar eller genomföra en strukturerad granskning.</span>
+        </label>
+      </li>
+      <li>
+        <input type="checkbox" id="c5-4">
+        <label class="check-text" for="c5-4">
+          <strong>Process för hantering av leverantörsincidenter definierad</strong>
+          <span>Vad händer om en av era kritiska leverantörer drabbas av ett cyberangrepp? Er organisation behöver en dokumenterad process för hur ni hanterar sådana situationer — inklusive kommunikation, åtgärder och eventuell rapportering till tillsynsmyndigheten.</span>
+        </label>
+      </li>
+      <li>
+        <input type="checkbox" id="c5-5">
+        <label class="check-text" for="c5-5">
+          <strong>Åtkomstbegränsning för leverantörer implementerad och dokumenterad</strong>
+          <span>Leverantörer med systemåtkomst ska ha minsta möjliga behörighet för att utföra sitt arbete. Behörigheter ska vara tidsbegränsade, granskade regelbundet och omedelbart återkallas när uppdraget avslutas.</span>
+        </label>
+      </li>
+      <li>
+        <input type="checkbox" id="c5-6">
+        <label class="check-text" for="c5-6">
+          <strong>Styrelsen informerad om de viktigaste leverantörsriskerna</strong>
+          <span>Leverantörssäkerhet är inte enbart en IT-fråga. Styrelsen bör känna till vilka leverantörer som utgör de största riskerna och hur dessa risker hanteras. Dokumentera att detta har kommunicerats till ledningsorganet.</span>
+        </label>
+      </li>
+    </ul>
+  </div>
+
+  <h2>Vad gör du med din gap-lista?</h2>
+
+  <p>
+    När du arbetat igenom checklistan har du förmodligen en lista med punkter som inte är ikryssade. Det är bra — det är precis det du behöver veta. Nu handlar det om att prioritera rätt och agera i rätt ordning.
+  </p>
+
+  <p>
+    En enkel tumregel för prioritering: börja med dokumentation och styrelsebeslut, sedan med de åtgärder som krävs för att uppfylla incidentrapporteringskraven, och slutligen med de bredare tekniska säkerhetsåtgärderna. Anledningen är enkel — dokumentation och rapporteringsförmåga är det som tillsynsmyndigheten kontrollerar allra enklast och snabbast.
+  </p>
+
+  <p>
+    Att tillsynen initieras är inte en fråga om om, utan om när. Tillsynsmyndigheterna i Sverige har inlett granskningar sedan cybersäkerhetslagen trädde i kraft. En granskning kan utlösas av en anmälan, av en incident som uppmärksammas i media, eller av ett planerat tillsynsbesök. Du vet inte när det sker. Vad du kan kontrollera är hur väl förberedd du är när det händer.
+  </p>
+
+  <div class="box-info">
+    <strong>Bevisbördan ligger på dig.</strong> Tillsynsmyndigheten bedömer inte om ni har gjort ert bästa eller om ni hade goda intentioner. De bedömer om ni kan bevisa att specificerade säkerhetsåtgärder finns och fungerar. Dokumentation är inte ett administrativt extraarbete — det är ert enda försvar.
+  </div>
+
+  <h2>Vanliga frågor från styrelserummet</h2>
+
+  <div class="faq-item">
+    <div class="faq-q">Kan vi dela ut NIS2-ansvaret till vår IT-chef eller CISO?</div>
+    <div class="faq-a">Ni kan — och bör — delegera det operativa arbetet. Men Artikel 20 är tydlig: ledningsorganet ska godkänna säkerhetsåtgärderna och kan hållas personligt ansvariga vid brister. Det innebär att VD och styrelseledamöter måste förstå vad som görs, fatta formella beslut om det och dokumentera dessa beslut. Delegering löser den operativa bördan — inte det personliga ansvaret.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">Vi har inga kända säkerhetsproblem — varför prioritera detta nu?</div>
+    <div class="faq-a">NIS2-efterlevnad handlar inte om incidenthistorik. Det handlar om att ha rätt processer och dokumentation på plats oavsett om ni har haft problem eller inte. Tillsynsmyndigheten kan granska er utan att ett angrepp har inträffat, och brister i säkerhetsåtgärderna är sanktionsgrundande i sig. Att ni hittills haft tur är inte ett argument som håller vid en granskning.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">Hur lång tid tar det att bli compliant?</div>
+    <div class="faq-a">Det beror på var ni befinner er idag. Organisationer som redan arbetar med ISO 27001 eller liknande ramverk har ofta 60–70 % av kraven täckta men saknar NIS2-specifik dokumentation. Organisationer som börjar från scratch behöver räkna med 3–6 månaders fokuserat arbete. En gap-analys ger er en realistisk bild av er faktiska startpunkt — och spenderar ni en dag på den nu sparar ni månader av felprioriteringar.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">Vad händer om vi är mitt i ett NIS2-arbete när tillsynen inleds?</div>
+    <div class="faq-a">Det är bättre än att inte ha startat alls — men det är inte ett fullständigt skydd. Tillsynsmyndigheten bedömer situationen vid granskningstillfället. Att ha påbörjat arbetet och kunna visa en åtgärdsplan kan påverka sanktionens storlek, men det ersätter inte faktisk efterlevnad. Ju mer ni kan dokumentera och visa upp, desto bättre position är ni i.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">Vad är det personliga ansvaret i praktiken — hur långt sträcker det sig?</div>
+    <div class="faq-a">Tillsynsmyndigheten kan utfärda ett tillfälligt förbud för VD eller styrelseledamot att inneha ledande befattning — inte bara i den drabbade organisationen utan mer generellt. Det är ett branschförbud, inte en böter som bolaget betalar. Det drabbar dig personligen och din karriär. Detta är Artikel 20:s verkliga tand — och det är därför NIS2 inte kan behandlas som ett IT-projekt utan som ett ledningsansvar.</div>
+  </div>
+
+  <!-- MICROSOFT TOOLS BOX -->
+  <div class="box-info" style="margin: 48px 0 32px;">
+    <div style="font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color: var(--yellow); margin-bottom:10px;">🔧 VERKTYG &amp; LÖSNINGAR</div>
+    <p style="margin:0; font-size:17px; color: #ddd; line-height:1.7;">Microsoft 365 Business Premium täcker en stor del av checklistans tekniska krav i ett paket: MFA och åtkomstkontroll via Microsoft Entra ID Conditional Access, slutpunktsskydd, säkerhetskopiering och efterlevnadsdokumentation. Microsoft Defender Secure Score ger styrelsen ett mätbart 0–100-index att följa som KPI — ett konkret bevis på att ledningen aktivt övervakar säkerhetsarbetet enligt Artikel 20. En certifierad Microsoft-partner kan genomföra en kostnadsfri gap-analys mot checklistan ovan och visa exakt vad som redan täcks i er befintliga miljö.</p>
+  </div>
+
+  <!-- CTA SECTION -->
+  
+  <!-- NEWSLETTER -->
+  <div style="background:#111; border:1px solid rgba(255,255,255,0.1); border-left:3px solid #f5c518; border-radius:4px; padding:32px 36px; margin:40px 0 0; text-align:center; max-width:760px; margin-left:auto; margin-right:auto;">
+    <div style="font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:#f5c518; margin-bottom:12px;">📬 NIS2-UPPDATERINGAR</div>
+    <h3 style="font-family:'Poppins',sans-serif; font-size:20px; font-weight:800; margin:0 0 8px; color:#f0f0f0;">Ny NIS2-artikel varje vecka — direkt i inkorgen</h3>
+    <p style="color:#888; font-size:15px; margin:0 0 20px;">Ingen säljpitch. Bara konkret vägledning för VD:ar och styrelser.</p>
+    <form id="nlForm-nis2_compliance_checklista_sverige" onsubmit="submitNewsletter_nis2_compliance_checklista_sverige(event)" style="display:flex; gap:10px; flex-wrap:wrap; justify-content:center; max-width:460px; margin:0 auto;">
+      <input type="email" id="nlEmail-nis2_compliance_checklista_sverige" placeholder="din@foretag.se" required
+             style="flex:1; min-width:200px; padding:12px 16px; background:#1c1c1f; border:1px solid rgba(255,255,255,0.15); border-radius:4px; color:#f0f0f0; font-size:15px; outline:none;" />
+      <button type="submit" id="nlSubmit-nis2_compliance_checklista_sverige"
+              style="padding:12px 22px; background:#f5c518; color:#141416; font-weight:700; font-size:15px; border:none; border-radius:4px; cursor:pointer; white-space:nowrap;">
+        Prenumerera gratis →
+      </button>
+    </form>
+    <p style="font-size:12px; color:#555; margin:12px 0 0;">Du kan avprenumerera när som helst. Vi delar aldrig din e-post.</p>
+    <div id="nlThanks-nis2_compliance_checklista_sverige" style="display:none; color:#4ade80; font-size:16px; font-weight:600; margin-top:14px;">✅ Du är med! Nästa artikel kommer direkt till din inkorg.</div>
+  </div>
+
+  <div class="cta-section">
+    <h2>Vet du var din organisation står idag?</h2>
+    <p>En kostnadsfri gap-analys med en certifierad Microsoft-partner visar exakt vad ni redan har täckt — och vad som saknas.</p>
+    <a href="/nis2.html#boka" class="btn-primary">Boka kostnadsfri gap-analys →</a>
+    <p class="cta-fine">Böterna är upp till <strong>10 miljoner euro</strong>. Gap-analysen är gratis.</p>
+  </div>
+
+  <!-- CAPTURE FORM -->
+    <!-- CTA -->
+  <div class="cta-section">
+    <h2>Vet du var din organisation står idag?</h2>
+    <p>En kostnadsfri gap-analys med en certifierad Microsoft-partner visar exakt vad ni redan har täckt — och vad som saknas.</p>
+    <a href="/nis2.html#boka" class="btn-primary">Boka kostnadsfri gap-analys →</a>
+    <p class="cta-fine">Böterna är upp till <strong>10 miljoner euro</strong>. Gap-analysen är gratis.</p>
+  </div>
+
+</article>
+
+<div class="related-articles" style="margin:2.5rem 0 2rem;padding:1.5rem;background:#1a1a2e;border-left:4px solid #f0a500;border-radius:4px; max-width:760px; margin-left:auto; margin-right:auto;">
+  <p style="margin:0 0 1rem;font-size:0.85rem;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:#f0a500;">Läs också</p>
+  <ul style="margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:0.5rem;">
+    <li><a href="/artiklar/nis2-personligt-ansvar-styrelse.html" style="color:#e0e0e0;text-decoration:none;font-size:0.95rem;">&#x2192; Styrelsens personliga ansvar under NIS2</a></li>
+    <li><a href="/artiklar/nis2-boten-sanktioner-sverige.html" style="color:#e0e0e0;text-decoration:none;font-size:0.95rem;">&#x2192; NIS2-böter och sanktioner: vad kostar bristande efterlevnad?</a></li>
+    <li><a href="/artiklar/nis2-vilka-foretag-omfattas.html" style="color:#e0e0e0;text-decoration:none;font-size:0.95rem;">&#x2192; Vilka företag och sektorer omfattas av NIS2?</a></li>
+    <li><a href="/artiklar/nis2-tillsyn-ncsc-msb-sverige.html" style="color:#e0e0e0;text-decoration:none;font-size:0.95rem;">&#x2192; NIS2-tillsyn i Sverige: NCSC och MSB</a></li>
+  </ul>
+  <p style="margin:1.25rem 0 0;font-size:0.85rem;color:#aaa;">&#8592; <a href="/nis2.html" style="color:#f0a500;text-decoration:none;">NIS2Klar startsida</a> &nbsp;&middot;&nbsp; <a href="https://nis2klar.se/artiklar.html" style="color:#f0a500;text-decoration:none;">Alla guider</a></p>
+</div>
+
+<footer>
+  © 2026 M&amp;J Trusted Marketing KB ·
+  <a href="mailto:jan@nis2klar.se">jan@nis2klar.se</a> · <a href="tel:+46470597003">+46 470 59 70 03</a> ·
+  <a href="/nis2.html">Tillbaka till startsidan</a> ·
+  <a href="/privacy.html">Integritetspolicy</a>
+  <p style="margin-top:12px; font-size:11px; color: #555; line-height:1.5;">Microsoft, Microsoft 365, Azure och tillhörande produktnamn är varumärken som tillhör Microsoft Corporation. nis2klar.se är inte affilierat med eller godkänt av Microsoft Corporation.</p>
+</footer>
+
+<script data-cfasync="false">
+    async function submitNewsletter_nis2_compliance_checklista_sverige(e) {
+      e.preventDefault();
+      const btn = document.getElementById('nlSubmit-nis2_compliance_checklista_sverige');
+      btn.disabled = true;
+      btn.textContent = 'Skickar...';
+      const email = document.getElementById('nlEmail-nis2_compliance_checklista_sverige').value.trim();
+      try {
+        const res = await fetch('/api/newsletter/subscribe', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email, source: 'artikel-nis2_compliance_checklista_sverige' })
+        });
+        const data = await res.json();
+        if (data.success) {
+          document.getElementById('nlForm-nis2_compliance_checklista_sverige').style.display = 'none';
+          document.getElementById('nlThanks-nis2_compliance_checklista_sverige').style.display = 'block';
+        } else {
+          btn.disabled = false;
+          btn.textContent = 'Prenumerera gratis →';
+        }
+      } catch {
+        btn.disabled = false;
+        btn.textContent = 'Prenumerera gratis →';
+      }
+    }
+  </script>
+</body>
+</html>

@@ -2359,6 +2359,9 @@ export default function LeadDetail() {
   const [saving, setSaving] = useState(false);
   const [notes, setNotes] = useState('');
   const [status, setStatus] = useState('new');
+  const [editingInfo, setEditingInfo] = useState(false);
+  const [infoEdits, setInfoEdits] = useState({});
+  const [savingInfo, setSavingInfo] = useState(false);
   const [dealValue, setDealValue] = useState('');
   const [schedulerUrl, setSchedulerUrl] = useState('');
   const [generatingPitch, setGeneratingPitch] = useState(false);
@@ -2503,25 +2506,76 @@ export default function LeadDetail() {
         {/* Left column: Company info + Contacts */}
         <div className="space-y-4">
           <div className="bg-navy-800 rounded-xl border border-white/10 p-5 space-y-3">
-            <h2 className="text-sm font-semibold text-slate-200">Company information</h2>
-            {[
-              ['Website', lead.website ? <a href={lead.website} target="_blank" rel="noreferrer" className="text-cyan-400 hover:underline">{lead.website}</a> : '—'],
-              ['Email', lead.email ? <a href={`mailto:${lead.email}`} className="text-cyan-400 hover:underline">{lead.email}</a> : '—'],
-              ['Phone', lead.phone ? <PhoneDisplay phone={lead.phone} /> : '—'],
-              ['Address', [lead.address, lead.postal_code, lead.city].filter(Boolean).join(', ') || '—'],
-              ['County', lead.county || '—'],
-              ['Employees', lead.num_employees_exact ? `${lead.num_employees_exact} (exact)` : lead.employee_range || '—'],
-              ['Revenue', lead.revenue_sek ? `${(lead.revenue_sek/1000000).toFixed(1)} MSEK (${lead.annual_report_year})` : lead.revenue_range || '—'],
-              ['Profit', lead.profit_sek ? <span className={lead.profit_sek >= 0 ? 'text-emerald-400' : 'text-red-400'}>{(lead.profit_sek/1000000).toFixed(1)} MSEK</span> : '—'],
-              ['SNI/NACE', lead.nace_code ? `${lead.nace_code} — ${lead.nace_description || ''}` : '—'],
-              ['NIS2 sector', lead.nis2_sector || '—'],
-              ['LinkedIn', lead.linkedin_url ? <a href={lead.linkedin_url} target="_blank" rel="noreferrer" className="text-cyan-400 hover:underline">Profile</a> : '—'],
-            ].map(([label, val]) => (
-              <div key={label} className="flex justify-between text-sm">
-                <span className="text-slate-500">{label}</span>
-                <span className="text-slate-300 text-right max-w-[60%]">{val}</span>
+            <div className="flex items-center justify-between">
+              <h2 className="text-sm font-semibold text-slate-200">Company information</h2>
+              {!editingInfo ? (
+                <button
+                  onClick={() => { setInfoEdits({ email: lead.email || '', phone: lead.phone || '', website: lead.website || '', linkedin_url: lead.linkedin_url || '' }); setEditingInfo(true); }}
+                  className="text-xs text-slate-500 hover:text-slate-200 px-2 py-1 rounded hover:bg-white/8 transition-colors"
+                >✏️ Edit</button>
+              ) : (
+                <div className="flex gap-2">
+                  <button
+                    onClick={async () => {
+                      setSavingInfo(true);
+                      try {
+                        const { data } = await api.patch(`/leads/${id}`, infoEdits);
+                        setLead(l => ({ ...l, ...data.lead }));
+                        setEditingInfo(false);
+                      } catch (err) { console.error(err); }
+                      setSavingInfo(false);
+                    }}
+                    disabled={savingInfo}
+                    className="text-xs px-3 py-1 rounded bg-emerald-600 hover:bg-emerald-500 text-white transition-colors disabled:opacity-50"
+                  >{savingInfo ? 'Saving…' : 'Save'}</button>
+                  <button onClick={() => setEditingInfo(false)} className="text-xs px-2 py-1 rounded bg-white/8 text-slate-400 hover:text-slate-200 transition-colors">Cancel</button>
+                </div>
+              )}
+            </div>
+
+            {editingInfo ? (
+              <div className="space-y-2">
+                {[
+                  ['Email', 'email', 'email'],
+                  ['Phone', 'phone', 'tel'],
+                  ['Website', 'website', 'url'],
+                  ['LinkedIn URL', 'linkedin_url', 'url'],
+                ].map(([label, field, type]) => (
+                  <div key={field}>
+                    <label className="text-xs text-slate-500 block mb-0.5">{label}</label>
+                    <input
+                      type={type}
+                      value={infoEdits[field]}
+                      onChange={e => setInfoEdits(p => ({ ...p, [field]: e.target.value }))}
+                      placeholder={`Enter ${label.toLowerCase()}`}
+                      className="w-full bg-navy-700 border border-white/15 rounded-lg px-3 py-1.5 text-sm text-slate-200 placeholder-slate-600 focus:outline-none focus:border-cyan-500/50"
+                    />
+                  </div>
+                ))}
               </div>
-            ))}
+            ) : (
+              <>
+                {[
+                  ['Website', lead.website ? <a href={lead.website} target="_blank" rel="noreferrer" className="text-cyan-400 hover:underline truncate block max-w-full">{lead.website}</a> : '—'],
+                  ['Email', lead.email ? <a href={`mailto:${lead.email}`} className="text-cyan-400 hover:underline">{lead.email}</a> : '—'],
+                  ['Phone', lead.phone ? <PhoneDisplay phone={lead.phone} /> : '—'],
+                  ['LinkedIn', lead.linkedin_url ? <a href={lead.linkedin_url} target="_blank" rel="noreferrer" className="text-cyan-400 hover:underline">Profile</a> : '—'],
+                  ['Address', [lead.address, lead.postal_code, lead.city].filter(Boolean).join(', ') || '—'],
+                  ['County', lead.county || '—'],
+                  ['Employees', lead.num_employees_exact ? `${lead.num_employees_exact} (exact)` : lead.employee_range || '—'],
+                  ['Revenue', lead.revenue_sek ? `${(lead.revenue_sek/1000000).toFixed(1)} MSEK (${lead.annual_report_year})` : lead.revenue_range || '—'],
+                  ['Profit', lead.profit_sek ? <span className={lead.profit_sek >= 0 ? 'text-emerald-400' : 'text-red-400'}>{(lead.profit_sek/1000000).toFixed(1)} MSEK</span> : '—'],
+                  ['SNI/NACE', lead.nace_code ? `${lead.nace_code} — ${lead.nace_description || ''}` : '—'],
+                  ['NIS2 sector', lead.nis2_sector || '—'],
+                ].map(([label, val]) => (
+                  <div key={label} className="flex justify-between text-sm">
+                    <span className="text-slate-500">{label}</span>
+                    <span className="text-slate-300 text-right max-w-[60%]">{val}</span>
+                  </div>
+                ))}
+              </>
+            )}
+
             <div className="pt-2 border-t border-white/5">
               <button
                 onClick={fetchAnnualReport}

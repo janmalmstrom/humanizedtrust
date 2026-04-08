@@ -92,7 +92,7 @@ const TOPICS = [
     angle: 'Djupdykning i 72-timmarsrapporteringen specifikt för Sverige. Till vilken myndighet? Vad ska rapporten innehålla? Skillnaden mellan 24h tidig varning och 72h rapport. Vad händer om ni missar fristen?'
   },
   {
-    slug: 'microsoft-365-vs-google-workspace-säkerhet',
+    slug: 'microsoft-365-vs-google-workspace-sakerhet',
     title: 'Microsoft 365 vs Google Workspace: Vilket är bättre för NIS2-säkerhet?',
     angle: 'Jämförelse av säkerhetsfunktioner ur NIS2-perspektiv. Loggning, DLP, MFA, åtkomstkontroll. Vad täcker Microsoft 365 E5 som G Suite inte gör? Vad är relevant för en organisation som ska uppfylla NIS2? Köpguide utan teknisk jargong för en VD/CFO som ska fatta beslut.'
   },
@@ -147,7 +147,7 @@ const TOPICS = [
     angle: 'NIS2 kräver kontroll över enheter som ansluter till era system. MDM (Mobile Device Management) är en del av lösningen. Intune vs Workspace ONE — för- och nackdelar. Vad är miniminivå för NIS2? Bring Your Own Device (BYOD) och NIS2-risker.'
   },
   {
-    slug: 'microsoft-azure-vs-aws-molnsäkerhet',
+    slug: 'microsoft-azure-vs-aws-molnsakerhet',
     title: 'Microsoft Azure vs AWS: Molnsäkerhet och NIS2-efterlevnad i molnet',
     angle: 'För en organisation som väljer molninfrastruktur: Azure vs AWS ur NIS2-perspektiv. Datalokaliseringsregler (EU-data i EU?), certifieringar (ISO 27001, SOC 2), shared responsibility. Vad skiljer dem ur ett tillsynsperspektiv?'
   },
@@ -167,12 +167,12 @@ const TOPICS = [
     angle: 'Vad innebär proaktiv hothantering för en svensk organisation utan dedikerat SOC? Minimum: hotbevakning, patchningscykel, sårbarhetsskanning. MSB:s hotrapporter som startpunkt.'
   },
   {
-    slug: 'microsoft-teams-vs-slack-säkerhet',
+    slug: 'microsoft-teams-vs-slack-sakerhet',
     title: 'Microsoft Teams vs Slack: Enterprise-säkerhet och NIS2-efterlevnad',
     angle: 'Kommunikationsplattformar hanterar känslig information. Teams vs Slack ur NIS2-perspektiv: kryptering, loggning, åtkomstkontroll, datalagring. Vad kräver NIS2 av er kommunikationsplattform? Vad är skillnaden i säkerhetsnivå?'
   },
   {
-    slug: 'microsoft-sharepoint-vs-box-dokumentsäkerhet',
+    slug: 'microsoft-sharepoint-vs-box-dokumentsakerhet',
     title: 'Microsoft SharePoint vs Box: Dokumenthantering och NIS2-informationssäkerhet',
     angle: 'Dokument och filer innehåller ofta känslig information. SharePoint vs Box ur NIS2-perspektiv. Åtkomstkontroll, versionshistorik, extern delning, DLP. Vad är relevant för NIS2? Vad kräver en tillsynsmyndighet av er dokumenthantering?'
   },
@@ -207,17 +207,17 @@ const TOPICS = [
     angle: 'Artikel 20 i detalj: godkänna, utbilda, övervaka. Vad innebär \'aktivt ledningsansvar\' i praktiken? Konkreta styrelsebeslut som måste fattas och protokollföras.'
   },
   {
-    slug: 'nis2-tredjepartsrisk-leverantorsbedömning-sverige',
+    slug: 'nis2-tredjepartsrisk-leverantorsbedomning-sverige',
     title: 'NIS2 och tredjepartsrisk i Sverige: Guide för leverantörsbedömning',
     angle: 'Steg 1–5: identifiera kritiska leverantörer, riskklassificera, skicka säkerhetsfrågeformulär, verifiera svar, uppdatera avtal. Fiktivt scenario: leverantör drabbas av ransomware som sprider sig till er.'
   },
   {
-    slug: 'nis2-natverkssäkerhet-overvakning-krav',
+    slug: 'nis2-natverkssakerhet-overvakning-krav',
     title: 'Nätverkssäkerhet och övervakning under NIS2 i Sverige: Vad är minimikravet?',
     angle: 'Segmentering, åtkomstkontroll, logghantering — vad måste finnas? Frågor VD/styrelse ska ställa till IT-chefen. Hur länge ska loggar sparas?'
   },
   {
-    slug: 'microsoft-defender-vs-netskope-molnsäkerhet',
+    slug: 'microsoft-defender-vs-netskope-molnsakerhet',
     title: 'Microsoft Defender vs Netskope: Cloud Security för NIS2',
     angle: 'Molnsäkerhet och CASB-funktionalitet. Defender for Cloud Apps vs Netskope. Insyn i SaaS-användning, DLP i molnet, hotskydd. Vad är relevant för NIS2? Guide för organisation med hybrid molnmiljö.'
   },
@@ -242,22 +242,22 @@ const TOPICS = [
     angle: 'Specifikt för essential entities. Skärpta krav jämfört med viktiga entiteter. Checklista med 20 punkter. Fiktivt scenario: essentiell entitet i energisektorn under tillsyn — vilka punkter klarade de inte?'
   },
   {
-    slug: 'rapid7-vs-microsoft-sårbarhetsbedömning',
+    slug: 'rapid7-vs-microsoft-sarbarhetsbedomning',
     title: 'Rapid7 vs Microsoft Security Center: Sårbarhetsbedömning under NIS2',
     angle: 'NIS2 kräver att ni identifierar och hanterar sårbarheter. Rapid7 InsightVM vs Microsoft Defender Vulnerability Management. Skanning, prioritering, rapportering. Vad är miniminivå? Vad kräver tillsynsmyndigheten av er sårbarhethanteringsprocess?'
   },
   {
-    slug: 'knowbe4-vs-microsoft-viva-säkerhetsutbildning',
+    slug: 'knowbe4-vs-microsoft-viva-sakerhetsutbildning',
     title: 'KnowBe4 vs Microsoft Viva: Säkerhetsutbildning och NIS2 Artikel 20',
     angle: 'NIS2 Artikel 20 kräver utbildning. KnowBe4 (phishing-simulering + utbildning) vs Microsoft Viva Learning. Vad räknas för NIS2? Dokumentationsmöjligheter. Vilken passar en organisation som vill uppfylla Artikel 20 och kunna bevisa det vid tillsyn?'
   },
   {
-    slug: 'nis2-riskbedömning-implementeringsguide',
+    slug: 'nis2-riskbedomning-implementeringsguide',
     title: 'NIS2 Riskbedömning: Ramverk och implementeringsguide för styrelsen',
     angle: 'Fem steg för NIS2-kompatibel riskbedömning. Vad ska styrelsen formellt godkänna? Hur ofta uppdateras riskbedömningen? Vad händer om styrelsen godkänner utan att förstå?'
   },
   {
-    slug: 'nis2-leverantorskedjans-cybersäkerhet',
+    slug: 'nis2-leverantorskedjans-cybersakerhet',
     title: 'NIS2 Leverantörskedjans cybersäkerhet: Riskhantering steg för steg',
     angle: 'SolarWinds och Kaseya som verkliga exempel. Steg-för-steg leverantörsbedömning. Vad kräver NIS2 av era leverantörsavtal? Vad händer om en leverantör vägrar uppfylla era krav?'
   },
@@ -267,12 +267,12 @@ const TOPICS = [
     angle: 'Tre pelare: godkänna säkerhetsåtgärder, genomgå utbildning, övervaka genomförande. Hur ser ett styrelsemöte med korrekt NIS2-hantering ut — dagordning, underlag, protokollformuleringar?'
   },
   {
-    slug: 'microsoft-power-bi-vs-tableau-säkerhetsrapportering',
+    slug: 'microsoft-power-bi-vs-tableau-sakerhetsrapportering',
     title: 'Microsoft Power BI vs Tableau: Säkerhetsrapportering och NIS2-styrelserapporter',
     angle: 'Styrelsen behöver löpande rapportering om cybersäkerhetsstatus under NIS2. Power BI vs Tableau för att visualisera säkerhetsdata och KPI:er till styrelseledamöter. Vad är relevant? Integrationer med SIEM och GRC-system.'
   },
   {
-    slug: 'microsoft-365-e5-pris-säkerhetsfunktioner',
+    slug: 'microsoft-365-e5-pris-sakerhetsfunktioner',
     title: 'Microsoft 365 E5-licens: Vad kostar det och vad täcker det för NIS2?',
     angle: 'Microsoft 365 E5 innehåller ett brett säkerhetspaket: Defender, Purview, Sentinel (begränsat), Entra ID P2, Intune. Vad täcker det av NIS2-kraven? Vad ingår INTE? Prisanalys: E3 vs E5 — är prisskillnaden motiverad ur NIS2-perspektiv? Guide för CFO/IT-chef.'
   },
@@ -287,7 +287,7 @@ const TOPICS = [
     angle: '\'Vi är ISO 27001-certifierade, täcker det NIS2?\' Svar: delvis, men inte fullt. Matristabell. Vad täcker ISO 27001 som NIS2 inte kräver? Vad kräver NIS2 som ISO 27001 inte täcker?'
   },
   {
-    slug: 'nis2-tredjepartsrisk-leverantorsbedömning',
+    slug: 'nis2-tredjepartsrisk-leverantorsbedomning',
     title: 'NIS2 Tredjepartsrisk: Komplett guide för leverantörsbedömning',
     angle: 'Varför leverantörsrisk är en av de tre viktigaste frågorna under NIS2. Säkerhetsfrågeformulär — vad ska det innehålla? Hur hanterar ni en leverantör som inte klarar kraven men är operativt kritisk?'
   },
@@ -302,7 +302,7 @@ const TOPICS = [
     angle: 'Sentinel prissätts per gigabyte ingesterat data — kostnaderna kan eskalera snabbt. Hur beräknar ni er kostnad? Vad är rimlig datavolym för en organisation med 200–500 anställda? Kostnadsoptimering: vad måste loggas och vad kan uteslutas? Jämförelse med alternativa SIEM-lösningar.'
   },
   {
-    slug: 'nis2-driftskontinuitet-katastrofaterhämtning',
+    slug: 'nis2-driftskontinuitet-katastrofaterhamtning',
     title: 'NIS2 Business Continuity och Disaster Recovery: Vad lagen faktiskt kräver',
     angle: 'Skillnaden mellan backup och bevisad återhämtningsförmåga. RTO, RPO — rimliga mål. Fiktivt scenario: återhämtning tar 9 dagar istället för planerade 24 timmar.'
   },
@@ -312,7 +312,7 @@ const TOPICS = [
     angle: 'Utbildning på två nivåer: ledningen (Artikel 20) och anställda. Vad räknas för tillsynsmyndigheten? Hur mäter man effekt? Phishing-simuleringar som komplement.'
   },
   {
-    slug: 'nis2-nätverksövervakning-soc-krav',
+    slug: 'nis2-natverksovervakning-soc-krav',
     title: 'NIS2 och nätverksövervakning: Behöver ni ett SOC?',
     angle: 'Behöver alla organisationer ett SOC? Vad är miniminivån? Skillnad mellan in-house SOC, managed SOC och grundläggande logghantering. Kostnadsanalys för SME.'
   },
@@ -337,7 +337,7 @@ const TOPICS = [
     angle: 'Kategorisering: kritiska system, känsliga data, kritiska processer, leverantörer. Vad händer om en kritisk tillgång saknas i inventeringen och sedan utnyttjas i ett angrepp?'
   },
   {
-    slug: 'nis2-cyberförsäkring-täckning',
+    slug: 'nis2-cyberforsakring-tackning',
     title: 'NIS2 och cyberförsäkring: Täcker er försäkring det ni tror?',
     angle: 'NIS2-böter täcks ofta INTE av cyberförsäkringar. Vad täcker en typisk cyberförsäkring? Hur påverkar bristande NIS2-efterlevnad er försäkringsrätt? Frågor till er försäkringsmäklare.'
   },
@@ -357,17 +357,17 @@ const TOPICS = [
     angle: 'Penetrationstester, backup-tester, tabletop-övningar, DR-drills. Hur ofta? Vad dokumenteras? Personligt ansvar: intrång via känd sårbarhet som aldrig testades efter ett pentest.'
   },
   {
-    slug: 'nis2-molntjänster-due-diligence',
+    slug: 'nis2-molntjanster-due-diligence',
     title: 'NIS2 och molntjänster: Vem ansvarar när datan ligger i molnet?',
     angle: 'Shared responsibility i molnet. Datalokaliseringsregler. Due diligence-checklista för molntjänstbedömning under NIS2.'
   },
   {
-    slug: 'nis2-äldre-system-modernisering',
+    slug: 'nis2-aldre-system-modernisering',
     title: 'NIS2 och äldre IT-system: Vad gör du med legacy-system som inte kan patchas?',
     angle: 'Kompensatoriska kontroller, nätverkssegmentering, migration. Vad är tillsynsmyndighetens inställning? Riskbedömning och dokumentation som nödvändigt skyddsnät.'
   },
   {
-    slug: 'microsoft-365-säkerhet-implementeringstidslinje',
+    slug: 'microsoft-365-sakerhet-implementeringstidslinje',
     title: 'Microsoft 365 Säkerhet: Implementeringstidslinje för NIS2-efterlevnad',
     angle: 'Steg-för-steg tidslinje för att konfigurera Microsoft 365 säkerhetsfunktioner i NIS2-syfte. Fas 1 (vecka 1-2): MFA och Conditional Access. Fas 2 (vecka 3-4): Defender aktivering. Fas 3 (månad 2): Purview och DLP. Fas 4 (månad 3): Sentinel integration och loggning. Vad gör varje fas?'
   },
@@ -377,12 +377,12 @@ const TOPICS = [
     angle: 'Hur integrerar man Microsoft Defenders incidenthantering med NIS2:s rapporteringskrav? Steg: detektera i Defender → eskalera till CISO → tidig varning till MSB (24h) → rapport (72h) → slutrapport (30 dagar). Dokumentationsmallar. Hur konfigureras Defender-varningar för NIS2-relevanta incidenter?'
   },
   {
-    slug: 'nis2-gränsöverskridande-informationsdelning',
+    slug: 'nis2-gransoverskridande-informationsdelning',
     title: 'NIS2 och gränsöverskridande incidenter: Rapportering och koordination i EU',
     angle: 'När måste ni rapportera till fler än MSB? Vilka EU-samarbetsstrukturer finns? Vad innebär det att er molnleverantör är baserad i ett annat EU-land?'
   },
   {
-    slug: 'nis2-mognadsbedömning-cybersäkerhetsberedskap',
+    slug: 'nis2-mognadsbedomning-cybersakerhetsberedskap',
     title: 'NIS2 Mognadsbedömning: Var befinner sig er organisation på skalan?',
     angle: 'Fem mognadsnivåer från \'reaktiv\' till \'optimerande\'. Självbedömningsverktyg med 15 frågor. Vad kostar det att gå från nivå 2 till nivå 3?'
   },
@@ -407,12 +407,12 @@ const TOPICS = [
     angle: 'Vad ska en seriös NIS2-konsult kunna leverera? Red flags att se upp för. Skillnaden mellan gap-analys, implementationskonsult och revisionsförberedelse. Positionera NIS2Klar som alternativet med styrelseperspektiv.'
   },
   {
-    slug: 'nis2-rådgivare-göteborg',
+    slug: 'nis2-radgivare-goteborg',
     title: 'NIS2-rådgivning i Göteborg: Guide för VD:ar och styrelser i Västsverige',
     angle: 'Sektorer extra representerade i Göteborgsregionen: fordon, logistik, energi, hamn. Specifika NIS2-utmaningar för dessa sektorer.'
   },
   {
-    slug: 'nis2-implementeringsstöd-malmö',
+    slug: 'nis2-implementeringsstod-malmo',
     title: 'NIS2-implementering i Malmö: Vad Öresundsregionens företag behöver veta',
     angle: 'Malmö och Öresundsregionen: gränsöverskridande verksamheter, logistik, life science. Gränsöverskridande incidentrapportering — till Sverige eller Danmark?'
   },
@@ -432,32 +432,32 @@ const TOPICS = [
     angle: 'Vad händer under en NIS2-tillsynsgranskning i Stockholmsregionen? Hur initieras den? Vilken dokumentation begärs? Guide för revisionsförberedda organisationer.'
   },
   {
-    slug: 'nis2-certifieringsprogram-göteborg',
+    slug: 'nis2-certifieringsprogram-goteborg',
     title: 'NIS2-utbildning och certifiering i Göteborg: Vad räknas och vad räcker?',
     angle: 'Vilka utbildningsleverantörer finns lokalt? Certifieringar vs workshops vs in-house. Hur dokumenteras utbildningen för tillsynsmyndigheten?'
   },
   {
-    slug: 'nis2-utbildning-certifiering-malmö',
+    slug: 'nis2-utbildning-certifiering-malmo',
     title: 'NIS2-utbildning i Malmö: Guide för organisationer som behöver uppfylla Artikel 20',
     angle: 'Lokalt perspektiv. Skillnaden mellan utbildning för styrelseledamöter (Artikel 20) och generell medarbetarutbildning. NIS2Klar:s erbjudande.'
   },
   {
-    slug: 'microsoft-365-riskbedömning-mallar',
+    slug: 'microsoft-365-riskbedomning-mallar',
     title: 'Microsoft 365 Riskbedömning: Mallar och checklista för NIS2-dokumentation',
     angle: 'Microsoft Compliance Manager innehåller riskbedömningsmallar. Hur använder ni dem för NIS2? Vilka bedömningar är relevanta? Hur exporteras och presenteras resultaten för styrelsen? Vad täcker Compliance Manager och vad måste ni komplettera manuellt?'
   },
   {
-    slug: 'microsoft-azure-nätverkssegmentering',
+    slug: 'microsoft-azure-natverkssegmentering',
     title: 'Microsoft Azure Nätverkssegmentering: Konfigurationsguide för NIS2',
     angle: 'NIS2 kräver nätverkssäkerhet. Azure-nätverkssegmentering: Virtual Networks, Network Security Groups, Azure Firewall, Private Endpoints. Vad är miniminivå? Vad skyddar mot lateral movement vid ett intrång? Guide för organisation med Azure-workloads.'
   },
   {
-    slug: 'nis2-providers-göteborg',
+    slug: 'nis2-providers-goteborg',
     title: 'NIS2-leverantörer i Göteborg: Hur du väljer rätt partner för compliance',
     angle: 'Tre typer av leverantörer: tekniska, compliance-konsulter, utbildning. Frågor att ställa vid upphandling. Varning för leverantörer som säljer teknik utan styrelseperspektiv.'
   },
   {
-    slug: 'nis2-traning-providers-malmö',
+    slug: 'nis2-traning-providers-malmo',
     title: 'NIS2-träning och kompetensutveckling i Malmö med certifieringsprogram',
     angle: 'Vad kräver Artikel 20 av ledningens kompetens? Skillnaden mellan teknisk NIS2-certifiering och styrelseutbildning. NIS2Klar:s modell.'
   },
@@ -477,7 +477,7 @@ const TOPICS = [
     angle: 'Känslighetsetiketter i Microsoft 365 hjälper er klassificera och skydda känsliga dokument. Konfiguration steg för steg. Vad är relevant för NIS2? Automatisk vs manuell klassificering. Kryptering baserad på etikett. Hur rapporterar ni etikettstatus till styrelsen?'
   },
   {
-    slug: 'cloud-security-vs-on-premise-jämförelse',
+    slug: 'cloud-security-vs-on-premise-jamforelse',
     title: 'Molnsäkerhet vs lokal säkerhet: Vad passar NIS2-kompatibla organisationer?',
     angle: 'Shared responsibility i molnet. Datalokaliseringsregler under NIS2. Vad händer om molnleverantören är utanför EU? Guide för beslutsfattare.'
   },
@@ -492,17 +492,17 @@ const TOPICS = [
     angle: 'Skillnaden och vad som räcker för NIS2. Guide för en VD som fått en kostnadsoffert på XDR och undrar om det är nödvändigt.'
   },
   {
-    slug: 'microsoft-compliance-manager-bedömning',
+    slug: 'microsoft-compliance-manager-bedomning',
     title: 'Microsoft Compliance Manager: NIS2-bedömning och hur man använder den',
     angle: 'Compliance Manager har en NIS2-mall. Hur aktiverar man den? Hur tolkar man poängen? Vad är \'Compliance Score\' och vad mäter den faktiskt? Vad täcker Compliance Manager och vad måste kompletteras manuellt? Guide för compliance-ansvarig.'
   },
   {
-    slug: 'microsoft-security-score-förbättring',
+    slug: 'microsoft-security-score-forbattring',
     title: 'Microsoft Secure Score: Förbättringsguide för NIS2-säkerhetsnivå',
     angle: 'Microsoft Secure Score mäter er säkerhetskonfiguration. Hur tolkar man poängen ur NIS2-perspektiv? Vilka förbättringsåtgärder ger störst NIS2-värde? Kan Secure Score användas som bevis gentemot tillsynsmyndigheten? Varning: hög Secure Score ≠ NIS2-efterlevnad.'
   },
   {
-    slug: 'iam-vs-pam-åtkomstkontroll',
+    slug: 'iam-vs-pam-atkomstkontroll',
     title: 'IAM vs PAM: Identitets- och åtkomsthantering som NIS2 faktiskt kräver',
     angle: 'Behöver ni båda? Vad är miniminivå? Fiktivt scenario: intrång via IT-adminkonto utan MFA och loggning.'
   },
@@ -512,17 +512,17 @@ const TOPICS = [
     angle: 'GRC för regelefterlevnad vs ITSM för IT-processer. Behöver ni ett GRC-verktyg för NIS2? Alternativ för SME.'
   },
   {
-    slug: 'ngfw-vs-waf-nätverksskydd',
+    slug: 'ngfw-vs-waf-natverksskydd',
     title: 'NGFW vs WAF: Brandväggar och webbskydd under NIS2',
     angle: 'Vad är skillnaden och vilket behövs? Fiktivt scenario: intrång via ej patchad webbapplikation utan WAF.'
   },
   {
-    slug: 'microsoft-viva-säkerhetsutbildning',
+    slug: 'microsoft-viva-sakerhetsutbildning',
     title: 'Microsoft Viva Learning: Säkerhetsutbildning och NIS2 Artikel 20-dokumentation',
     angle: 'Hur kan Microsoft Viva Learning användas för NIS2-utbildning? Vilka moduler är relevanta? Hur dokumenteras genomförd utbildning? Kan Viva-rapporter visas för tillsynsmyndigheten? Vad saknas i Viva för Artikel 20-efterlevnad?'
   },
   {
-    slug: 'microsoft-power-automate-säkerhetsflöden',
+    slug: 'microsoft-power-automate-sakerhetsfloden',
     title: 'Microsoft Power Automate: Säkerhetsarbetsflöden för NIS2-automatisering',
     angle: 'Power Automate kan automatisera delar av NIS2-efterlevnadsarbetet: automatisk incident-eskalering, påminnelser om policyuppdateringar, leverantörsbedömningsflöden. Konkreta exempel på automatiseringar. Vad kan automatiseras och vad kräver mänskligt beslut under NIS2?'
   },
@@ -532,17 +532,17 @@ const TOPICS = [
     angle: 'Backup utan testad återhämtningsplan håller inte vid tillsyn. Miniminivå för 50–500 anställda.'
   },
   {
-    slug: 'e-postsäkerhet-vs-webbgateway-skydd',
+    slug: 'e-postsakerhet-vs-webbgateway-skydd',
     title: 'E-postsäkerhet vs webbgateway: Vilket skydd täcker NIS2-kraven?',
     angle: 'E-post och webb är de vanligaste angreppsvektorerna. SPF, DKIM, DMARC, phishing-filter. Vad är minimum och vad ska dokumenteras?'
   },
   {
-    slug: 'sårbarhetssanning-vs-penetrationstest',
+    slug: 'sarbarhetssanning-vs-penetrationstest',
     title: 'Sårbarhetsskanning vs penetrationstest: Vad NIS2 kräver och vad som räcker',
     angle: 'Automatisk skanning vs manuellt pentest. Är penetrationstest obligatoriskt? Styrelseansvar: kritiskt fynd ignoreras och sedan utnyttjas.'
   },
   {
-    slug: 'microsoft-graph-api-säkerhetsrapportering',
+    slug: 'microsoft-graph-api-sakerhetsrapportering',
     title: 'Microsoft Graph API: Säkerhetsrapportering och NIS2-automation',
     angle: 'Microsoft Graph API ger programmatisk åtkomst till säkerhetsdata i Microsoft 365. Vad kan hämtas? Incident-data, inloggningsloggar, DLP-varningar. Hur bygger man automatiserade NIS2-rapporter till styrelsen? Guide för teknisk person som ska ta fram styrelserapporter.'
   },
@@ -552,12 +552,12 @@ const TOPICS = [
     angle: 'Microsoft Zero Trust-ramverket (Identitet, Enheter, Nätverk, Applikationer, Data, Infrastruktur) och hur det mappas mot NIS2-kraven. Implementeringsplan i tre faser. Vad ger störst NIS2-värde per investerad krona? Guide för organisation som börjar sin Zero Trust-resa.'
   },
   {
-    slug: 'säkerhetsmedvetenhet-vs-phishing-simulering',
+    slug: 'sakerhetsmedvetenhet-vs-phishing-simulering',
     title: 'Säkerhetsutbildning vs phishing-simulering: Vad fungerar bättre under NIS2?',
     angle: 'Traditionell utbildning vs löpande phishing-simuleringar. Vad räknas för tillsynsmyndigheten? Kan simuleringar ersätta formell utbildning?'
   },
   {
-    slug: 'logghantering-vs-säkerhetsanalys',
+    slug: 'logghantering-vs-sakerhetsanalys',
     title: 'Logghantering vs säkerhetsanalys: Vad NIS2 kräver för incidentspårbarhet',
     angle: 'NIS2 kräver att ni kan rekonstruera en incident. Vad ska loggas? Hur länge sparas loggar? Miniminivå för SME.'
   },
@@ -572,7 +572,7 @@ const TOPICS = [
     angle: 'Security Copilot använder AI för att analysera hotdata och stötta incidentrespons. Vad kan den faktiskt göra? Vad kan den inte göra? Är det relevant för NIS2? Kostnader och förutsättningar. Guide för CISO/IT-chef som ska presentera AI-säkerhetsinvestering för styrelsen.'
   },
   {
-    slug: 'microsoft-entra-behörighetshantering',
+    slug: 'microsoft-entra-behorighetshantering',
     title: 'Microsoft Entra Permissions Management: Identitetsbaserad åtkomstkontroll för NIS2',
     angle: 'Entra Permissions Management (CIEM) ger insyn i och kontroll över behörigheter i multicloud-miljöer (Azure, AWS, GCP). Vad är relevant för NIS2? Principen om lägsta privilegium implementerad praktiskt. Guide för organisation med komplexa molnmiljöer.'
   },
@@ -582,7 +582,7 @@ const TOPICS = [
     angle: 'Behöver alla NIS2-reglerade organisationer DLP? Fiktivt scenario: anställd kopierar kunddata till privat molnstorage.'
   },
   {
-    slug: 'casb-vs-swg-molnåtkomst',
+    slug: 'casb-vs-swg-molnatkomst',
     title: 'CASB vs SWG: Molnåtkomst och webbsäkerhet under NIS2',
     angle: 'Insyn i och kontroll över molntjänstanvändning. Behöver ni båda? Guide för organisation med många SaaS-verktyg.'
   },
@@ -649,16 +649,66 @@ HTML för boxen:
   <p style="margin:0; font-size:17px; color: #ddd; line-height:1.7;">[Rätt Microsoft-produkt(er) från tabellen ovan + en mening om certifierad Microsoft-partner och kostnadsfri gap-analys]</p>
 </div>
 
-CTA-SEKTION:
+NYHETSBREV-SEKTION (lägg in PRECIS INNAN capture-form-section eller cta-section, ersätter aldrig formuläret):
+Slug-variabeln nedan = artikelns slug med bindestreck ersatta av understreck. Exempel: nis2-vad-ar → nis2_vad_ar
+
+<div style="background:#111; border:1px solid rgba(255,255,255,0.1); border-left:3px solid #f5c518; border-radius:4px; padding:32px 36px; margin:40px 0 0; text-align:center; max-width:760px; margin-left:auto; margin-right:auto;">
+  <div style="font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:#f5c518; margin-bottom:12px;">📬 NIS2-UPPDATERINGAR</div>
+  <h3 style="font-family:'Poppins',sans-serif; font-size:20px; font-weight:800; margin:0 0 8px; color:#f0f0f0;">Ny NIS2-artikel varje vecka — direkt i inkorgen</h3>
+  <p style="color:#888; font-size:15px; margin:0 0 20px;">Ingen säljpitch. Bara konkret vägledning för VD:ar och styrelser.</p>
+  <form id="nlForm-SLUG" onsubmit="submitNewsletter_SLUG(event)" style="display:flex; gap:10px; flex-wrap:wrap; justify-content:center; max-width:460px; margin:0 auto;">
+    <input type="email" id="nlEmail-SLUG" placeholder="din@foretag.se" required style="flex:1; min-width:200px; padding:12px 16px; background:#1c1c1f; border:1px solid rgba(255,255,255,0.15); border-radius:4px; color:#f0f0f0; font-size:15px; outline:none;" />
+    <button type="submit" id="nlSubmit-SLUG" style="padding:12px 22px; background:#f5c518; color:#141416; font-weight:700; font-size:15px; border:none; border-radius:4px; cursor:pointer; white-space:nowrap;">Prenumerera gratis →</button>
+  </form>
+  <p style="font-size:12px; color:#555; margin:12px 0 0;">Du kan avprenumerera när som helst. Vi delar aldrig din e-post.</p>
+  <div id="nlThanks-SLUG" style="display:none; color:#4ade80; font-size:16px; font-weight:600; margin-top:14px;">✅ Du är med! Nästa artikel kommer direkt till din inkorg.</div>
+</div>
+
+Lägg även till detta JS precis innan </body>:
+<script>
+  async function submitNewsletter_SLUG(e) {
+    e.preventDefault();
+    const btn = document.getElementById('nlSubmit-SLUG');
+    btn.disabled = true; btn.textContent = 'Skickar...';
+    const email = document.getElementById('nlEmail-SLUG').value.trim();
+    try {
+      const res = await fetch('/api/newsletter/subscribe', { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({ email, source: 'artikel-SLUG' }) });
+      const data = await res.json();
+      if (data.success) { document.getElementById('nlForm-SLUG').style.display='none'; document.getElementById('nlThanks-SLUG').style.display='block'; }
+      else { btn.disabled=false; btn.textContent='Prenumerera gratis →'; }
+    } catch { btn.disabled=false; btn.textContent='Prenumerera gratis →'; }
+  }
+</script>
+
+CTA-SEKTION (bokningsformulär — kommer EFTER nyhetsbrevet):
 - Rubrik: "Vet du var din organisation står idag?"
 - Undertext: "En kostnadsfri gap-analys med en certifierad Microsoft-partner visar exakt vad ni redan har täckt — och vad som saknas."
 - Knapp: <a href="/nis2.html#boka" class="btn-primary">Boka kostnadsfri gap-analys →</a>
 - Fine print: "Böterna är upp till <strong>10 miljoner euro</strong>. Gap-analysen är gratis."
 
+SIDFOT-KONTAKT (lägg till i <footer> som första rad efter copyright):
+<a href="mailto:support@trustedmarketing.se">support@trustedmarketing.se</a> · <a href="tel:+46470597003">+46 470 59 70 03</a>
+
 SIDFOT-DISCLAIMER (lägg till sist i <footer> innan </footer>):
 <p style="margin-top:12px; font-size:11px; color: #555; line-height:1.5;">Microsoft, Microsoft 365, Azure och tillhörande produktnamn är varumärken som tillhör Microsoft Corporation. nis2klar.se är inte affilierat med eller godkänt av Microsoft Corporation.</p>
 
 ARTIKELBRÖDTEXT: Håll artikelns brödtext leverantörsneutral (säg "ett SIEM-verktyg" inte "Microsoft Sentinel" i löptext). Microsoft-produktnamnen hör hemma ENBART i Verktyg-boxen ovan.
+
+SVENSK KONTEXT — använd dessa fakta när de är relevanta för artikelns ämne (behöver inte användas i varje artikel):
+
+Digital suveränitet & datacenter:
+- Microsoft har investerat 33,7 miljarder SEK i Sverige — den största investeringen i företagets 40-åriga historia i Sverige.
+- Datacenterregionen heter "Sweden Central" med noder i Gävle, Sandviken och Staffanstorp.
+- Driven med 100 % koldioxidfri energi dygnet runt i samarbete med Vattenfall.
+- Möjliggör: datarezidens (data stannar i Sverige), resiliens via flera tillgänglighetszoner (Availability Zones), stöd för CSRD-hållbarhetsrapportering.
+- För NIS2: lokala datacenter underlättar efterlevnad av nationella krav och eliminerar juridisk osäkerhet kring tredjelandsöverföringar (GDPR + NIS2 kap. 5).
+
+AI och säkerhet — Copilot for Security:
+- 63 % av svenska tjänstemän använder redan generativ AI. 86 % tar med egna AI-verktyg till jobbet (BYOAI = ny riskvektor).
+- Microsoft Copilot for Security: kombinerar LLM med organisationens säkerhetsdata från Sentinel och Defender — automatiserar hotdetektering och incidentanalys.
+- Inom hälso- och sjukvård: AI förväntas frigöra upp till 20 timmar/vecka för vårdpersonal + skyddar patientdata via anomalidetektering.
+- AI-lyftet: Microsofts satsning för att kompetensutveckla 250 000 svenskar i AI — bygger den mänskliga motståndskraft NIS2 kräver (artikel 21.2 g).
+- NIS2-relevans: BYOAI-trenden kräver policy + tekniska skydd → dokumenteras i riskanalysen styrelsen godkänner.
 
 VIKTIGT: Returnera ENBART giltig HTML från <!DOCTYPE html> till </html>. Inget annat.`;
 

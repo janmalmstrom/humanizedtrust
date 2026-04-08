@@ -304,7 +304,7 @@ export default function Leads() {
                   <div>{lead.city || '—'}</div>
                   <div className="text-slate-600">{lead.county || ''}</div>
                 </td>
-                <td className="px-4 py-3 text-slate-400 text-xs">{lead.employee_range || '—'}</td>
+                <td className="px-4 py-3 text-slate-400 text-xs">{lead.num_employees_exact != null ? lead.num_employees_exact : (lead.employee_range || '—')}</td>
                 <td className="px-4 py-3 text-slate-500 font-mono text-xs">{lead.nace_code || '—'}</td>
                 <td className="px-4 py-3">
                   {lead.nis2_registered

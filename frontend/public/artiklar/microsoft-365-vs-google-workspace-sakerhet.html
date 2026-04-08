@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-BKF3QH9K01"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag("js", new Date());
+    gtag("config", "G-BKF3QH9K01");
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Microsoft 365 vs Google Workspace: Vilket är bättre för NIS2-säkerhet? | NIS2Klar</title>
+  <meta name="description" content="Jämförelse av Microsoft 365 och Google Workspace ur NIS2-perspektiv. Loggning, DLP, MFA, åtkomstkontroll — vad täcker vad? Köpguide för VD och CFO.">
+  <meta property="og:title" content="Microsoft 365 vs Google Workspace: Vilket är bättre för NIS2-säkerhet?">
+  <meta property="og:description" content="Jämförelse av Microsoft 365 och Google Workspace ur NIS2-perspektiv. Loggning, DLP, MFA, åtkomstkontroll — vad täcker vad? Köpguide för VD och CFO.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #141416;
+      --card: #1c1c1f;
+      --yellow: #f5c518;
+      --white: #f0f0f0;
+      --muted: #888;
+      --red: #C61212;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: var(--bg); color: var(--white); font-family: 'Barlow', sans-serif; font-size: 19px; line-height: 1.8; }
+
+    /* Nav */
+    nav { display: flex; justify-content: space-between; align-items: center; padding: 20px 40px; border-bottom: 1px solid rgba(255,255,255,0.07); max-width: 900px; margin: 0 auto; }
+    .nav-logo { font-family: 'Poppins', sans-serif; font-weight: 900; font-size: 20px; color: var(--yellow); text-decoration: none; }
+    .nav-logo span { color: var(--white); }
+    .nav-back { color: var(--muted); text-decoration: none; font-size: 15px; }
+    .nav-back:hover { color: var(--white); }
+    .nav-cta { background: var(--yellow); color: #000; padding: 8px 18px; border-radius: 4px; text-decoration: none; font-weight: 700; font-size: 14px; font-family: 'Poppins', sans-serif; }
+
+    /* Article */
+    .article-wrap { max-width: 760px; margin: 0 auto; padding: 60px 40px; }
+    .article-category { font-size: 13px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 16px; }
+    h1 { font-family: 'Poppins', sans-serif; font-size: clamp(30px, 4vw, 44px); font-weight: 900; line-height: 1.2; margin-bottom: 24px; }
+    .article-meta { font-size: 15px; color: var(--muted); margin-bottom: 48px; padding-bottom: 24px; border-bottom: 1px solid rgba(255,255,255,0.07); }
+    h2 { font-family: 'Poppins', sans-serif; font-size: 26px; font-weight: 700; margin: 48px 0 16px; color: var(--white); }
+    h3 { font-family: 'Poppins', sans-serif; font-size: 20px; font-weight: 600; margin: 32px 0 12px; color: var(--yellow); }
+    p { margin-bottom: 22px; }
+    strong { color: var(--white); font-weight: 700; }
+    .highlight { color: var(--yellow); font-weight: 700; }
+    .danger { color: #ff6b6b; font-weight: 700; }
+    ul, ol { margin: 16px 0 24px 24px; }
+    li { margin-bottom: 12px; font-size: 19px; }
+
+    /* Callout boxes */
+    .box-warning { background: rgba(197,17,17,0.12); border-left: 4px solid var(--red); padding: 20px 24px; margin: 32px 0; border-radius: 0 4px 4px 0; }
+    .box-info { background: rgba(245,197,24,0.08); border-left: 4px solid var(--yellow); padding: 20px 24px; margin: 32px 0; border-radius: 0 4px 4px 0; }
+    .box-case { background: var(--card); border: 1px solid rgba(255,255,255,0.08); padding: 28px; margin: 40px 0; border-radius: 4px; }
+    .box-case .case-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 12px; }
+    blockquote { border-left: 3px solid var(--yellow); padding: 12px 20px; margin: 24px 0; font-style: italic; color: #ccc; }
+
+    /* CTA */
+    .cta-section { background: var(--card); border: 1px solid rgba(245,197,24,0.2); border-radius: 4px; padding: 48px 40px; margin: 64px 0 40px; text-align: center; }
+    .cta-section h2 { margin-top: 0; font-size: 26px; }
+    .cta-section p { color: #aaa; max-width: 500px; margin: 0 auto 28px; }
+    .btn-primary { display: inline-block; background: var(--yellow); color: #000; font-family: 'Poppins', sans-serif; font-weight: 800; font-size: 16px; padding: 16px 36px; border-radius: 4px; text-decoration: none; }
+    .btn-primary:hover { background: #e0b010; }
+    .cta-fine { font-size: 13px; color: var(--muted); margin-top: 16px; }
+
+    /* FAQ */
+    .faq-item { border-bottom: 1px solid rgba(255,255,255,0.07); padding: 20px 0; }
+    .faq-q { font-family: 'Poppins', sans-serif; font-weight: 600; margin-bottom: 10px; }
+    .faq-a { color: #bbb; }
+
+    /* Fine table */
+    .fine-table { width: 100%; border-collapse: collapse; margin: 24px 0; }
+    .fine-table th { background: rgba(245,197,24,0.1); color: var(--yellow); font-family: 'Poppins', sans-serif; font-size: 13px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 12px 16px; text-align: left; border-bottom: 1px solid rgba(245,197,24,0.2); }
+    .fine-table td { padding: 14px 16px; border-bottom: 1px solid rgba(255,255,255,0.05); font-size: 15px; }
+    .fine-table tr:last-child td { border-bottom: none; }
+    .fine-table .amount { color: #ff6b6b; font-weight: 700; }
+
+    /* Summary + Key Takeaway */
+    .box-summary { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; padding: 24px 28px; margin: 0 0 32px; }
+    .summary-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-bottom: 14px; }
+    .box-summary ul { margin: 0; padding-left: 20px; }
+    .box-summary li { margin-bottom: 8px; font-size: 17px; color: #ccc; }
+    .box-takeaway { background: rgba(245,197,24,0.08); border-left: 4px solid var(--yellow); padding: 20px 24px; margin: 0 0 40px; border-radius: 0 4px 4px 0; }
+    .takeaway-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 10px; }
+    .box-takeaway p { margin: 0; font-size: 18px; font-weight: 600; color: var(--white); line-height: 1.6; }
+
+    /* Capture form */
+    .capture-form-section { background: #1c1c1f; border: 1px solid rgba(245,197,24,0.25); border-top: 3px solid var(--yellow); border-radius: 4px; padding: 40px; margin: 64px 0 40px; }
+    .capture-form-section h2 { margin-top: 0; font-size: 24px; font-family: 'Poppins', sans-serif; font-weight: 800; margin-bottom: 12px; }
+    .capture-form-section .sub { color: #aaa; font-size: 15px; margin-bottom: 24px; }
+    .capture-input { display: block; width: 100%; background: #222226; border: 1px solid #2e2e33; border-radius: 4px; padding: 13px 16px; font-size: 15px; color: #f0f0f0; font-family: 'Barlow', sans-serif; outline: none; transition: border-color 0.2s; margin-bottom: 12px; }
+    .capture-input:focus { border-color: var(--yellow); }
+    .capture-input::placeholder { color: #666; }
+    .capture-submit-btn { background: var(--yellow); color: #000; border: none; border-radius: 4px; padding: 14px 28px; font-family: 'Poppins', sans-serif; font-size: 15px; font-weight: 800; cursor: pointer; transition: background 0.2s; width: 100%; }
+    .capture-submit-btn:hover { background: #e8d800; }
+    .capture-submit-btn:disabled { opacity: 0.6; cursor: not-allowed; }
+    .capture-thanks-msg { padding: 16px; background: rgba(34,197,94,0.1); border: 1px solid rgba(34,197,94,0.3); border-radius: 4px; color: #86efac; font-size: 15px; text-align: center; display: none; }
+
+    /* Footer */
+    footer { border-top: 1px solid rgba(255,255,255,0.07); padding: 32px 40px; text-align: center; font-size: 13px; color: var(--muted); max-width: 900px; margin: 0 auto; }
+    footer a { color: var(--muted); }
+
+    /* Comparison table */
+    .compare-table { width: 100%; border-collapse: collapse; margin: 24px 0; }
+    .compare-table th { background: rgba(245,197,24,0.1); color: var(--yellow); font-family: 'Poppins', sans-serif; font-size: 13px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 12px 16px; text-align: left; border-bottom: 1px solid rgba(245,197,24,0.2); }
+    .compare-table td { padding: 14px 16px; border-bottom: 1px solid rgba(255,255,255,0.05); font-size: 15px; vertical-align: top; }
+    .compare-table tr:last-child td { border-bottom: none; }
+    .compare-table .yes { color: #86efac; font-weight: 700; }
+    .compare-table .partial { color: var(--yellow); font-weight: 700; }
+    .compare-table .no { color: #ff6b6b; font-weight: 700; }
+    .compare-table .feature { font-weight: 600; color: var(--white); }
+
+    @media (max-width: 600px) {
+      nav, .article-wrap, footer { padding: 20px; }
+      .cta-section { padding: 32px 20px; }
+      .fine-table { font-size: 14px; }
+      .fine-table th, .fine-table td { padding: 10px 10px; }
+      .compare-table { font-size: 13px; }
+      .compare-table th, .compare-table td { padding: 10px 8px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="https://nis2klar.se/">NIS2<span>Klar</span></a>
+  <a class="nav-back" href="https://nis2klar.se/artiklar.html">← Alla artiklar</a>
+  <a class="nav-cta" href="/nis2.html#boka">Boka samtal →</a>
+</nav>
+
+<article class="article-wrap">
+  <div class="article-category">Verktyg &amp; Tekniska åtgärder</div>
+  <h1>Microsoft 365 vs Google Workspace: Vilket är bättre för NIS2-säkerhet?</h1>
+  <div class="article-meta">Uppdaterad 7 april 2026 · Lästid: ca 9 minuter · Målgrupp: VD, CFO, Styrelse</div>
+
+  <!-- SUMMARY -->
+  <div class="box-summary">
+    <div class="summary-label">Sammanfattning</div>
+    <ul>
+      <li>För VD:ar och styrelseledamöter som ska fatta ett plattformsbeslut — och samtidigt uppfylla NIS2.</li>
+      <li>Båda plattformarna kan bidra till NIS2-efterlevnad — men de gör det på mycket olika djup och till olika kostnad.</li>
+      <li>Loggning, skydd mot dataläckor, multifaktorautentisering och åtkomstkontroll ser fundamentalt olika ut beroende på vilken nivå du väljer.</li>
+      <li>NIS2 kräver att du kan <strong>bevisa</strong> att åtgärderna finns — inte bara att de finns. Det avgör allt.</li>
+    </ul>
+  </div>
+
+  <!-- KEY TAKEAWAY -->
+  <div class="box-takeaway">
+    <div class="takeaway-label">Viktigaste slutsatsen</div>
+    <p>Plattformsvalet är inte bara en IT-fråga — det är ett efterlevnadsbeslut med direkt koppling till NIS2-sanktioner på upp till 10 miljoner euro. Du som VD eller CFO behöver förstå vad ni faktiskt köper.</p>
+  </div>
+
+  <!-- HOOK -->
+  <p>
+    Du sitter i ett möte och frågan landar på bordet: <em>Ska vi stanna på Microsoft 365 eller byta till Google Workspace?</em>
+    Det är en rimlig fråga. Priserna ser liknande ut i offerten. Funktionerna verkar ungefär likvärdiga. Och IT-chefen säger att "båda duger".
+  </p>
+  <p>
+    Men ur ett NIS2-perspektiv är svaret långt ifrån självklart. NIS2-direktivet — implementerat i Sverige som cybersäkerhetslagen — ställer konkreta krav på loggning, åtkomstkontroll, skydd mot dataläckor och förmågan att bevisa allt detta för en tillsynsmyndighet. Det är på den punkten plattformarna skiljer sig åt, ibland dramatiskt.
+  </p>
+  <p>
+    Den här artikeln är en köpguide utan teknisk jargong. Den är skriven för dig som VD, CFO eller styrelseledamot — inte för IT-avdelningen. Målet är att du ska kunna gå in i nästa möte och ställa rätt frågor.
+  </p>
+
+  <div class="box-warning">
+    <strong>Personligt ansvar gäller oavsett plattform.</strong> Enligt Artikel 20 i NIS2 är du som VD eller styrelseledamot personligt ansvarig för att säkerhetsåtgärderna faktiskt är på plats — och att de är dokumenterade. Det räcker inte att ha köpt rätt programvara. Du måste kunna visa att den används korrekt.
+  </div>
+
+  <h2>Varför plattformsvalet spelar roll för NIS2</h2>
+
+  <p>
+    NIS2 ställer krav på ett antal konkreta säkerhetsdomäner. Artikel 21 listar tio obligatoriska områden — och flera av dem är direkt beroende av vilken produktivitetsplattform din organisation använder. Det handlar om hur ni hanterar identiteter och inloggning, hur ni loggar vad som händer i era system, hur ni skyddar känslig information från att lämna organisationen, och hur ni kan visa upp allt detta för en granskare.
+  </p>
+
+  <p>
+    Tre NIS2-krav är särskilt relevanta när du väljer mellan produktivitetsplattformar:
+  </p>
+
+  <ol>
+    <li><strong>Åtkomstkontroll och autentisering</strong> — Artikel 21 d: krav på stark autentisering och behörighetshantering.</li>
+    <li><strong>Loggning och spårbarhet</strong> — Artikel 21 g: förmåga att spåra vem som gjorde vad, när och var.</li>
+    <li><strong>Skydd av data och informationssäkerhet</strong> — Artikel 21 h: kryptering och skydd mot obehörig åtkomst och dataläckor.</li>
+  </ol>
+
+  <p>
+    Båda de stora plattformarna — Microsofts och Googles — erbjuder funktioner inom alla tre områdena. Frågan är hur djupt, hur integrerat och till vilket pris.
+  </p>
+
+  <h2>Multifaktorautentisering: Mer än att bocka av en ruta</h2>
+
+  <p>
+    NIS2 kräver stark autentisering. Det innebär i praktiken multifaktorautentisering — MFA — för alla användare, och i många fall ännu starkare metoder för privilegierade konton som systemadministratörer och IT-personal.
+  </p>
+
+  <p>
+    Båda plattformarna stöder MFA. Men det är inte hela bilden.
+  </p>
+
+  <p>
+    Det som skiljer dem åt är hur sofistikerad åtkomstkontroll du kan uppnå utan att köpa tilläggslicenser. En riskbaserad inloggning — där systemet automatiskt kräver extra verifiering när en användare loggar in från ett okänt land, en ovanlig enhet eller en tid på dygnet som avviker från normalt — finns inbyggd i Microsofts premiumpaket men kräver kompletterande konfiguration och eventuellt tilläggslicenser hos Google.
+  </p>
+
+  <p>
+    För en NIS2-granskare räcker det inte att säga "vi har MFA". Du måste kunna visa att MFA faktiskt tillämpas — för alla konton, utan undantag — och att ni har kontroller som fångar upp om någon försöker kringgå det. Det kräver loggning och larmfunktioner, inte bara aktiverade inställningar.
+  </p>
+
+  <h3>Vad du bör fråga din IT-leverantör</h3>
+  <p>
+    Ställ den här frågan direkt: <em>Kan vi ta fram en rapport som visar vilka konton som saknar MFA, och hur ofta det faktiskt används?</em> Om svaret är ja och rapporten tar fem minuter att generera, har ni rätt verktyg. Om det kräver ett konsultprojekt, har ni ett problem inför en NIS2-granskning.
+  </p>
+
+  <h2>Loggning: Det viktigaste ingen pratar om</h2>
+
+  <p>
+    Loggning är förmodligen det område där plattformarna skiljer sig mest — och det är det område som minst diskuteras i vanliga IT-möten.
+  </p>
+
+  <p>
+    NIS2 kräver att du kan spåra säkerhetsrelevanta händelser i dina system. Det innebär konkret: vem loggade in, från vilken enhet, vid vilken tidpunkt, vilka filer öppnades, vilka e-postmeddelanden skickades utanför organisationen, vilka administrativa ändringar gjordes. Och du måste kunna behålla den loggdatan tillräckligt länge för att den ska vara användbar vid en incident eller en granskning.
+  </p>
+
+  <p>
+    Grundläggande granskningsloggar finns i båda plattformarna — men det finns en avgörande skillnad i hur länge loggar sparas och på vilken nivå utan extrabetalning. I premiumversioner av Microsofts erbjudande kan loggar bevaras i upp till tio år med rätt konfiguration. I standardpaket hos Google sparas loggar i sex månader som standard, med möjlighet till förlängning via tilläggstjänster.
+  </p>
+
+  <p>
+    För NIS2 är detta inte en teknisk detalj — det är en efterlevnadsfråga. Om tillsynsmyndigheten begär loggdata från en incident som inträffade ett år tidigare och din organisation inte kan leverera det, är det en sanktionsgrundande brist.
+  </p>
+
+  <div class="box-info">
+    <strong>Tumregel för loggning under NIS2:</strong> Säkerhetsloggar bör bevaras i minst ett år för att vara meningsfulla vid incidentutredning. Kontrollera konkret hur länge er nuvarande plattform sparar loggar — och om det kräver en tilläggslicens eller inte.
+  </div>
+
+  <h2>Skydd mot dataläckor: Vem bestämmer vad som lämnar organisationen?</h2>
+
+  <p>
+    Data Loss Prevention — DLP — är ett verktyg som förhindrar att känslig information lämnar organisationen utan kontroll. Det kan handla om att blockera ett e-postmeddelande som innehåller personnummer, varna när en anställd försöker ladda upp en konfidentiell fil till en extern lagringstjänst, eller automatiskt kryptera dokument med viss klassificering.
+  </p>
+
+  <p>
+    NIS2 kräver inte att du har ett DLP-system med det exakta namnet, men kravets anda — att skydda informationstillgångar och förhindra obehörig åtkomst — leder i praktiken dit. Tillsynsmyndigheten frågar: Hur vet ni att känslig information inte lämnar er organisation utan kontroll?
+  </p>
+
+  <p>
+    Här finns en tydlig skillnad i djupet hos vad de båda plattformarna erbjuder i sina standardpaket kontra premiumpaket. Avancerade DLP-regler som kan identifiera känslig information automatiskt — baserat på innehåll, inte bara filnamn — och som integrerar med e-post, fillagring, chatt och möten i ett och samma gränssnitt, finns i premiumversioner. Grundläggande DLP-funktioner finns i båda, men djupet varierar.
+  </p>
+
+  <p>
+    Det avgörande för NIS2 är inte bara att DLP-regler finns, utan att de genererar loggdata som kan visas upp vid en granskning. Hur många gånger per månad blockerades ett försök att skicka känslig data externt? Vilka användare triggade varningarna? Det är den typen av dokumentation som tillsynsmyndigheten vill se.
+  </p>
+
+  <h2>Åtkomstkontroll: Rätt person, rätt data, rätt tidpunkt</h2>
+
+  <p>
+    NIS2 kräver att organisationer tillämpar principen om minsta privilegium — det vill säga att varje anställd bara har tillgång till exakt den information som krävs för arbetsuppgifterna, och inte en bit mer. Det låter enkelt men är i praktiken en av de svåraste säkerhetsdomänerna att hantera i en växande organisation.
+  </p>
+
+  <p>
+    Båda plattformarna stöder rollbaserad åtkomstkontroll. Men kapaciteten att hantera komplexa behörighetshierarkier — till exempel att automatiskt ta bort åtkomst när en anställd byter avdelning, eller att kräva extra godkännande för åtkomst till extra känsliga system — varierar.
+  </p>
+
+  <p>
+    En kritisk NIS2-fråga är också hur ni hanterar externa parter: konsulter, leverantörer och partners som behöver tillfällig åtkomst till era system. Dessa konton är historiskt sett en av de vanligaste intrångsvägarna. Hur detaljerat kan du styra vad en extern konsult ser, hur länge, och från vilken enhet? Och hur loggar du det?
+  </p>
+
+  <p>
+    Kapaciteten att hantera externa parter på ett detaljerat och spårbart sätt är ett område där plattformarna skiljer sig åt — och där premiumversioner av respektive erbjudande ger betydligt mer kontroll än grundpaketen.
+  </p>
+
+  <h2>Kryptering: Vem äger nycklarna?</h2>
+
+  <p>
+    Kryptering nämns explicit i Artikel 21 i NIS2. Det handlar om kryptering av data i vila och under transport — men för NIS2-syfte handlar det också om en djupare fråga: <em>vem kontrollerar krypteringsnycklarna?</em>
+  </p>
+
+  <p>
+    Standardkryptering finns i båda plattformarna. Det är inte det som skiljer dem åt. Skillnaden ligger i möjligheten att använda egna krypteringsnycklar — så kallad Customer Key eller Customer-Managed Encryption Keys — vilket innebär att plattformsleverantören tekniskt sett inte kan läsa er data utan er medverkan.
+  </p>
+
+  <p>
+    För organisationer i känsliga sektorer — sjukvård, finans, kritisk infrastruktur — kan detta vara en kravspecifik fråga. Det påverkar också möjligheten att automatiskt klassificera och märka dokument, vilket i sin tur är grunden för ett fungerande DLP-system.
+  </p>
+
+  <p>
+    Ytterligare en aspekt är <strong>informationsklassificering</strong>: förmågan att märka ett dokument som "konfidentiellt" eller "intern" — och att den märkningen sedan följer med filen automatiskt, oavsett om den skickas via e-post, sparas i molnet eller delas via chatt. Det är en funktion som finns i avancerade konfigurationer av båda plattformarna men som kräver medvetna val och konfigurationsarbete.
+  </p>
+
+  <h2>Compliance och bevisföring: Vad händer dagen tillsynen ringer?</h2>
+
+  <p>
+    Det här är den fråga som sällan ställs i ett IT-möte men som är den viktigaste ur NIS2-perspektiv: <em>Vad händer om tillsynsmyndigheten ringer på måndag och begär dokumentation av era säkerhetsåtgärder?</em>
+  </p>
+
+  <p>
+    En tillsynsmyndighet som inleder en granskning vill se konkret bevis: vilka säkerhetskontroller har ni aktiverat, hur länge har de varit aktiva, vad har de fångat upp, och vilka beslut har ledningen fattat om dem? Det är inte tillräckligt att säga att ni "har MFA" eller att ni "krypterar data". Ni måste kunna visa det — med datum, med loggdata, med styrelsebeslut.
+  </p>
+
+  <p>
+    Integrerade dashboards som ger en realtidsbild av organisationens säkerhetsstatus — ett enda vy som visar hur många procent av kontona har MFA aktiverat, hur loggarna ser ut, vilka säkerhetspolicyer som är aktiva — är ett verktyg som kan avgöra om ni klarar en granskning på 30 dagar eller om ni går in i kris.
+  </p>
+
+  <p>
+    Sådana compliance-dashboards finns i premiumversioner av båda plattformarna, men djupet och integrationsgraden varierar. Fråga er IT-leverantör: Kan ni ta fram en NIS2-kompliansrapport i dag? Vad innehåller den, och hur lång tid tar det?
+  </p>
+
+  <div class="box-case">
+    <div class="case-label">Scenario</div>
+    <p>
+      <strong>Ett medelstort tjänsteföretag i Sverige, 120 anställda, klassas som viktig entitet under NIS2.</strong>
+    </p>
+    <p>
+      Bolaget använder en molnbaserad produktivitetsplattform i standardkonfiguration. IT-ansvarig är övertygad om att "allt är säkert" — och det stämmer i vardaglig mening. Det finns MFA för de flesta användare, e-posten är krypterad och filer lagras i molnet.
+    </p>
+    <p>
+      En affärspartner anmäler en driftstörning som verkar härstamma från bolaget. Tillsynsmyndigheten initierar en granskning och begär:
+    </p>
+    <ul>
+      <li>En lista på alla konton med och utan MFA aktiverat — daterad 12 månader bakåt.</li>
+      <li>Loggdata för externa inloggningar under de senaste sex månaderna.</li>
+      <li>Dokumentation på att styrelsen godkänt säkerhetspolicyn (Artikel 20).</li>
+      <li>Bevis på att DLP-regler är aktiva och har generat rapporter.</li>
+    </ul>
+    <p>
+      Bolaget kan leverera delar av detta — men loggdata äldre än tre månader har raderats automatiskt i standardkonfigurationen, och styrelseprotokollet saknar explicit hänvisning till NIS2-policyer.
+    </p>
+    <p>
+      <strong>Utfall:</strong> Sanktionsavgift för bristande dokumentation. Tillsynsmyndigheten konstaterar att loggarna inte uppfyller kraven i Artikel 21 g. VD erhåller formell tillsyn. <span class="danger">Total kostnad: uppskattad till 6–10 miljoner kronor</span> inklusive juridisk rådgivning och åtgärdsarbete.
+    </p>
+    <p>
+      <strong>Vad som skulle ha räddat situationen:</strong> En konfigurerad plattform med förlängd loggbevarande, ett signerat styrelseprotokoll och en aktiv DLP-rapport — åtgärder som kostar en bråkdel av sanktionsavgiften.
+    </p>
+  </div>
+
+  <h2>Jämförelsetabell: NIS2-relevanta funktioner</h2>
+
+  <p>
+    Tabellen nedan visar hur de två plattformarna klarar NIS2-relevanta krav — och på vilken licensnivå. Observera att "delvis" ofta innebär att funktionen finns men kräver manuell konfiguration, tilläggslicenser eller externa verktyg för att uppfylla NIS2:s krav på bevisföring.
+  </p>
+
+  <table class="compare-table">
+    <thead>
+      <tr>
+        <th>NIS2-krav</th>
+        <th>Microsoft 365 Business Premium</th>
+        <th>Google Workspace Business Plus</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="feature">MFA för alla användare</td>
+        <td class="yes">✓ Inbyggt, tvingbart via policy</td>
+        <td class="yes">✓ Inbyggt, tvingbart via policy</td>
+      </tr>
+      <tr>
+        <td class="feature">Riskbaserad inloggning</td>
+        <td class="yes">✓ Ingår i Business Premium</td>
+        <td class="partial">⚡ Kräver Enterprise-licens</td>
+      </tr>
+      <tr>
+        <td class="feature">Loggbevarande 12+ månader</td>
+        <td class="yes">✓ Konfigurerbart upp till 10 år</td>
+        <td class="partial">⚡ 6 mån standard, förlängning via tillägg</td>
+      </tr>
+      <tr>
+        <td class="feature">DLP — e-post och filer</td>
+        <td class="yes">✓ Integrerat med rapportering</td>
+        <td class="partial">⚡ Grundläggande DLP, djupare kräver Enterprise</td>
+      </tr>
+      <tr>
+        <td class="feature">Informationsklassificering (etiketter)</td>
+        <td class="yes">✓ Automatisk klassificering ingår</td>
+        <td class="partial">⚡ Manuella etiketter, begränsad automation</td>
+      </tr>
+      <tr>
+        <td class="feature">Åtkomstkontroll för externa parter</td>
+        <td class="yes">✓ Detaljerad styrning med spårning</td>
+        <td class="partial">⚡ Grundläggande, avancerat kräver konfiguration</td>
+      </tr>
+      <tr>
+        <td class="feature">Compliance-dashboard</td>
+        <td class="yes">✓ Integrerat med säkerhetspoäng</td>
+        <td class="partial">⚡ Tillgängligt, men separat från säkerhetsvyn</td>
+      </tr>
+      <tr>
+        <td class="feature">Egna krypteringsnycklar</td>
+        <td class="partial">⚡ Tillgängligt i E3/E5-nivå</td>
+        <td class="partial">⚡ Tillgängligt i Enterprise-licens</td>
+      </tr>
+      <tr>
+        <td class="feature">Säkerhetspoäng för ledningsrapportering</td>
+        <td class="yes">✓ Numerisk poäng 0–100, realtid</td>
+        <td class="no">✗ Ingen direkt motsvarighet i standardvy</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p style="font-size:14px; color: var(--muted); margin-top: -8px; margin-bottom: 32px;">✓ = Ingår och fungerar utan tillägg &nbsp;|&nbsp; ⚡ = Kräver tillägg, konfiguration eller högre licensnivå &nbsp;|&nbsp; ✗ = Saknas i standarderbjudandet</p>
+
+  <h2>Licensnivåerna — vad köper du egentligen?</h2>
+
+  <p>
+    En av de vanligaste fallgroparna för organisationer som förbereder sig för NIS2 är att de köper fel licensnivå. Säkerhetsavdelningen säger "vi använder Microsoft 365" — men om det är grundpaketet Business Basic saknas en rad av de funktioner som faktiskt krävs för NIS2-efterlevnad.
+  </p>
+
+  <p>
+    För Microsoft gäller grovt sett att Business Premium ger en rimlig NIS2-bas för organisationer upp till 300 användare. Det inkluderar avancerat hotskydd, DLP, MFA-policy och loggbevarande i längre perioder. För större eller mer komplexa organisationer i känsliga sektorer kan E3 eller E5 krävas för att nå tillräcklig djup i loggning och compliance-dokumentation.
+  </p>
+
+  <p>
+    För Google gäller att Business Starter och Business Standard saknar flera av de säkerhetsfunktioner som NIS2 kräver i praktiken. Business Plus ger bättre loggning och DLP-kapacitet, men för fullständig NIS2-täckning — särskilt för väsentliga entiteter — pekar de flesta säkerhetsrådgivare mot Enterprise Standard eller Enterprise Plus.
+  </p>
+
+  <p>
+    Det finns ingen officiell standard som säger att licensnivå X ger NIS2-efterlevnad — det beror på hur er organisation är konfigurerad, vilken sektor ni verkar i och hur tillsynsmyndigheten tolkar kraven. Det som är säkert är att grundpaketen i båda plattformarna inte räcker.
+  </p>
+
+  <h2>Vad ska du fråga innan du fattar beslutet?</h2>
+
+  <p>
+    Om du sitter i ett möte där plattformsbeslutet ska fattas — och NIS2 är på agendan — är det här de frågor du bör ställa, oavsett vilken plattform som föreslås:
+  </p>
+
+  <ol>
+    <li><strong>Hur länge sparas säkerhetsloggar, och kan vi visa dem på 30 minuter om tillsynsmyndigheten ber om det?</strong></li>
+    <li><strong>Vilka konton saknar i dag MFA, och hur lång tid tar det att ta fram den listan?</strong></li>
+    <li><strong>Hur ser vår DLP-rapport ut för den senaste månaden — vad blockerades, och vem triggade varningarna?</strong></li>
+    <li><strong>Kan vi generera ett underlag till styrelseprotokollet som dokumenterar att vi uppfyller Artikel 20?</strong></li>
+    <li><strong>Vad täcker licensen vi köper — och vad kräver tillägg för att faktiskt uppfylla NIS2?</strong></li>
+  </ol>
+
+  <p>
+    Om svaren är vaga, dröjer eller kräver ett konsultprojekt har ni ett problem som är viktigare än vilket märke ni väljer.
+  </p>
+
+  <h2>Är Microsoft 365 "bättre" för NIS2?</h2>
+
+  <p>
+    Det raka svaret: i standardkonfiguration, till liknande pris, ger Microsofts premiumpaket i dag ett bredare, mer integrerat säkerhetserbjudande med djupare NIS2-koppling — framförallt vad gäller loggbevarande, compliance-dashboards och säkerhetspoäng som kan redovisas för en styrelse.
+  </p>
+
+  <p>
+    Det betyder inte att Google Workspace är olämpligt. För organisationer som redan är konfigurerade med Google och har investerat i Enterprise-licenser med rätt tillägg kan det fungera väl. Men tröskelkostnaden för att nå samma djup i NIS2-relevant funktionalitet tenderar att vara högre, och integrationsgraden mellan säkerhetsverktyg och produktivitetsverktyg är inte lika tät.
+  </p>
+
+  <p>
+    Det som verkligen avgör — mer än vilket märke du väljer — är hur plattformen är konfigurerad, om rätt policyer är aktiverade, om loggar faktiskt sparas tillräckligt länge, och om ledningen kan dokumentera sitt ansvar enligt Artikel 20. En dåligt konfigurerad premiummiljö är sämre än en välkonfigurerad grundmiljö.
+  </p>
+
+  <p>
+    Vad du behöver är inte ett produktnamn. Du behöver en verifierad gap-analys som visar vad du faktiskt har täckt — och vad som saknas.
+  </p>
+
+  <h2>Vanliga frågor från VD:ar och CFO:ar</h2>
+
+  <div class="faq-item">
+    <div class="faq-q">Vi har precis förnyat Google Workspace för tre år — är det för sent att ändra?</div>
+    <div class="faq-a">Inte nödvändigtvis. Det viktigaste är att ni uppgraderar till rätt licensnivå inom Google och aktiverar de säkerhetsfunktioner och den loggkonfiguration som krävs. Det är inte alltid en plattformsbyte som behövs — utan rätt konfiguration av det ni redan har. En gap-analys visar exakt vad som saknas utan att ni behöver byta plattform.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">Vår IT-partner säger att vi redan är NIS2-redo. Räcker det?</div>
+    <div class="faq-a">Det är en vanlig och tyvärr otillräcklig garanti. "NIS2-redo" är inte ett certifikat — det är en bedömning. Fråga er IT-partner: Kan ni visa ett skriftligt underlag på vilka av Artikel 21:s tio krav ni uppfyller, och hur ni dokumenterar det för Artikel 20? Om svaret är vagt bör ni begära en formell gap-analys med skriftlig rapport.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">Spelar det någon roll vilken molnregion datan lagras i för NIS2?</div>
+    <div class="faq-a">Det spelar indirekt roll. NIS2 kräver inte att data lagras i Sverige eller EU, men GDPR gör det i många fall, och tillsynsmyndigheterna ser till helheten. Dessutom kan datalagring utanför EU skapa komplikationer vid incidentutredning om utländsk lagstiftning begränsar er möjlighet att komma åt loggar. Kontrollera var era loggar faktiskt lagras — inte bara era produktionsfiler.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">Hur dyrt är det egentligen att uppgradera till rätt licensnivå?</div>
+    <div class="faq-a">Kostnaden varierar beroende på antal användare och nuvarande licens, men räkna på ungefär 100–250 kronor per användare och månad för de nivåer som ger fullständig NIS2-täckning i respektive plattform. För en organisation med 100 användare handlar det om 10 000–25 000 kronor per månad — eller 120 000–300 000 kronor per år. Jämfört med lägsta möjliga NIS2-böter på sju miljoner euro är det en försäkringspremie, inte en kostnad.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">Måste styrelsen fatta ett formellt beslut om plattformsvalet för NIS2?</div>
+    <div class="faq-a">Styrelsen behöver inte godkänna varje tekniskt val, men Artikel 20 kräver att ledningen godkänner och övervakar säkerhetsåtgärderna. Det innebär att ett styrelsebeslut om er säkerhetspolicy — inklusive vilka plattformar som används och vilka säkerhetskrav som ställs på dem — bör finnas dokumenterat. Det är skillnaden mellan en försvarbar position och en exponerad position vid en granskning.</div>
+  </div>
+
+  <div class="box-info" style="margin: 48px 0 32px;">
+    <div style="font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color: var(--yellow); margin-bottom:10px;">🔧 VERKTYG &amp; LÖSNINGAR</div>
+    <p style="margin:0; font-size:17px; color: #ddd; line-height:1.7;">För NIS2-efterlevnad inom MFA, åtkomstkontroll, loggning och compliance-dokumentation rekommenderas Microsoft Entra ID Conditional Access för riskbaserad inloggning, Microsoft Purview Sensitivity Labels för informationsklassificering och DLP, samt Microsoft Defender Secure Score som ger styrelsen ett mätbart KPI (0–100) på organisationens säkerhetsstatus. En certifierad Microsoft-partner kan genomföra en kostnadsfri gap-analys och visa exakt vilka funktioner ni redan har aktiverade — och vad som saknas för full NIS2-täckning.</p>
+  </div>
+
+  <!-- CTA -->
+  
+  <!-- NEWSLETTER -->
+  <div style="background:#111; border:1px solid rgba(255,255,255,0.1); border-left:3px solid #f5c518; border-radius:4px; padding:32px 36px; margin:40px 0 0; text-align:center; max-width:760px; margin-left:auto; margin-right:auto;">
+    <div style="font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:#f5c518; margin-bottom:12px;">📬 NIS2-UPPDATERINGAR</div>
+    <h3 style="font-family:'Poppins',sans-serif; font-size:20px; font-weight:800; margin:0 0 8px; color:#f0f0f0;">Ny NIS2-artikel varje vecka — direkt i inkorgen</h3>
+    <p style="color:#888; font-size:15px; margin:0 0 20px;">Ingen säljpitch. Bara konkret vägledning för VD:ar och styrelser.</p>
+    <form id="nlForm-microsoft_365_vs_google_workspace_sakerhet" onsubmit="submitNewsletter_microsoft_365_vs_google_workspace_sakerhet(event)" style="display:flex; gap:10px; flex-wrap:wrap; justify-content:center; max-width:460px; margin:0 auto;">
+      <input type="email" id="nlEmail-microsoft_365_vs_google_workspace_sakerhet" placeholder="din@foretag.se" required
+             style="flex:1; min-width:200px; padding:12px 16px; background:#1c1c1f; border:1px solid rgba(255,255,255,0.15); border-radius:4px; color:#f0f0f0; font-size:15px; outline:none;" />
+      <button type="submit" id="nlSubmit-microsoft_365_vs_google_workspace_sakerhet"
+              style="padding:12px 22px; background:#f5c518; color:#141416; font-weight:700; font-size:15px; border:none; border-radius:4px; cursor:pointer; white-space:nowrap;">
+        Prenumerera gratis →
+      </button>
+    </form>
+    <p style="font-size:12px; color:#555; margin:12px 0 0;">Du kan avprenumerera när som helst. Vi delar aldrig din e-post.</p>
+    <div id="nlThanks-microsoft_365_vs_google_workspace_sakerhet" style="display:none; color:#4ade80; font-size:16px; font-weight:600; margin-top:14px;">✅ Du är med! Nästa artikel kommer direkt till din inkorg.</div>
+  </div>
+
+
+  <div class="cta-section">
+    <h2>Vet du var din organisation står idag?</h2>
+    <p>En kostnadsfri gap-analys med en certifierad Microsoft-partner visar exakt vad ni redan har täckt — och vad som saknas.</p>
+    <a href="/nis2.html#boka" class="btn-primary">Boka kostnadsfri gap-analys →</a>
+    <div class="cta-fine">Böterna är upp till <strong>10 miljoner euro</strong>. Gap-analysen är gratis.</div>
+  </div>
+
+</article>
+
+<div class="related-articles" style="margin:2.5rem 0 2rem;padding:1.5rem;background:#1a1a2e;border-left:4px solid #f0a500;border-radius:4px; max-width: 760px; margin-left: auto; margin-right: auto;">
+  <p style="margin:0 0 1rem;font-size:0.85rem;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:#f0a500;">Läs också</p>
+  <ul style="margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:0.5rem;">
+    <li><a href="/artiklar/nis2-personligt-ansvar-styrelse.html" style="color:#e0e0e0;text-decoration:none;font-size:0.95rem;">→ Styrelsens personliga ansvar</a></li>
+    <li><a href="/artiklar/nis2-tillsyn-ncsc-msb-sverige.html" style="color:#e0e0e0;text-decoration:none;font-size:0.95rem;">→ NIS2-tillsyn: NCSC och MSB</a></li>
+    <li><a href="/artiklar/nis2-vilka-foretag-omfattas.html" style="color:#e0e0e0;text-decoration:none;font-size:0.95rem;">→ Vilka företag omfattas?</a></li>
+  </ul>
+  <p style="margin:1.25rem 0 0;font-size:0.85rem;color:#aaa;">← <a href="/nis2.html" style="color:#f0a500;text-decoration:none;">NIS2Klar startsida</a> &nbsp;·&nbsp; <a href="/artiklar.html" style="color:#f0a500;text-decoration:none;">Alla guider</a></p>
+</div>
+
+<footer>
+  © 2026 M&amp;J Trusted Marketing KB ·
+  <a href="mailto:jan@nis2klar.se">jan@nis2klar.se</a> · <a href="tel:+46470597003">+46 470 59 70 03</a> ·
+  <a href="/nis2.html">Tillbaka till startsidan</a> ·
+  <a href="/privacy.html">Integritetspolicy</a>
+  <p style="margin-top:12px; font-size:11px; color: #555; line-height:1.5;">Microsoft, Microsoft 365, Azure och tillhörande produktnamn är varumärken som tillhör Microsoft Corporation. nis2klar.se är inte affilierat med eller godkänt av Microsoft Corporation.</p>
+</footer>
+
+
+  <script data-cfasync="false">
+    async function submitNewsletter_microsoft_365_vs_google_workspace_sakerhet(e) {
+      e.preventDefault();
+      const btn = document.getElementById('nlSubmit-microsoft_365_vs_google_workspace_sakerhet');
+      btn.disabled = true;
+      btn.textContent = 'Skickar...';
+      const email = document.getElementById('nlEmail-microsoft_365_vs_google_workspace_sakerhet').value.trim();
+      try {
+        const res = await fetch('/api/newsletter/subscribe', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email, source: 'artikel-microsoft_365_vs_google_workspace_sakerhet' })
+        });
+        const data = await res.json();
+        if (data.success) {
+          document.getElementById('nlForm-microsoft_365_vs_google_workspace_sakerhet').style.display = 'none';
+          document.getElementById('nlThanks-microsoft_365_vs_google_workspace_sakerhet').style.display = 'block';
+        } else {
+          btn.disabled = false;
+          btn.textContent = 'Prenumerera gratis →';
+        }
+      } catch {
+        btn.disabled = false;
+        btn.textContent = 'Prenumerera gratis →';
+      }
+    }
+  </script>
+
+</body>
+</html>

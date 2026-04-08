@@ -337,34 +337,38 @@
   </p>
 
 <style>
-  .capture-form-section { background: #1c1c1f; border: 1px solid rgba(245,197,24,0.25); border-top: 3px solid var(--yellow); border-radius: 4px; padding: 40px; margin: 64px 0 40px; }
-  .capture-form-section h2 { margin-top: 0; font-size: 24px; font-family: 'Poppins', sans-serif; font-weight: 800; margin-bottom: 12px; }
-  .capture-form-section .sub { color: #aaa; font-size: 15px; margin-bottom: 24px; }
-  .capture-input { display: block; width: 100%; background: #222226; border: 1px solid #2e2e33; border-radius: 4px; padding: 13px 16px; font-size: 15px; color: #f0f0f0; font-family: 'Barlow', sans-serif; outline: none; transition: border-color 0.2s; margin-bottom: 12px; }
-  .capture-input:focus { border-color: var(--yellow); }
-  .capture-input::placeholder { color: #666; }
-  .capture-submit-btn { background: var(--yellow); color: #000; border: none; border-radius: 4px; padding: 14px 28px; font-family: 'Poppins', sans-serif; font-size: 15px; font-weight: 800; cursor: pointer; transition: background 0.2s; width: 100%; }
-  .capture-submit-btn:hover { background: #e8d800; }
-  .capture-submit-btn:disabled { opacity: 0.6; cursor: not-allowed; }
-  .capture-thanks-msg { padding: 16px; background: rgba(34,197,94,0.1); border: 1px solid rgba(34,197,94,0.3); border-radius: 4px; color: #86efac; font-size: 15px; text-align: center; display: none; }
-</style>
+  </style>
 
     <div class="box-info" style="margin: 48px 0 32px;">
       <div style="font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color: var(--yellow); margin-bottom:10px;">🔧 VERKTYG &amp; LÖSNINGAR</div>
       <p style="margin:0; font-size:17px; color: #ddd; line-height:1.7;">Microsoft Entra ID Conditional Access (MFA), Microsoft 365 Backup med Immutable Vault, Microsoft Defender for Endpoint (EDR) och Microsoft Sentinel (SIEM) täcker direkt NIS2:s krav på MFA, backup, sårbarhetsskanning och incidentloggning. Korrekt konfigurerat av en certifierad Microsoft-partner.</p>
     </div>
   <!-- CTA — inline lead capture -->
-  <div class="capture-form-section">
-    <h2>Vet du var din organisation står idag?</h2>
-    <p class="sub">En kostnadsfri NIS2-genomgång på 20 minuter visar exakt vad som saknas — innan tillsynsmyndigheten frågar. Böterna är upp till <strong style="color:#f0f0f0">10 miljoner euro</strong>. Samtalet är gratis.</p>
-    <form id="tekniskaAtgForm" onsubmit="submittekniskaAtg(event)">
-      <input class="capture-input" type="text"  id="tekniskaAtgName"    placeholder="Ditt namn"        autocomplete="name" />
-      <input class="capture-input" type="email" id="tekniskaAtgEmail"   placeholder="E-postadress *"   autocomplete="email" required />
-      <input class="capture-input" type="tel"   id="tekniskaAtgPhone"   placeholder="Telefonnummer"    autocomplete="tel" />
-      <input class="capture-input" type="text"  id="tekniskaAtgCompany" placeholder="Bolagets namn *"  required />
-      <button type="submit" class="capture-submit-btn" id="tekniskaAtgSubmit">Boka kostnadsfri gap-analys →</button>
+  
+  <!-- NEWSLETTER -->
+  <div style="background:#111; border:1px solid rgba(255,255,255,0.1); border-left:3px solid #f5c518; border-radius:4px; padding:32px 36px; margin:40px 0 0; text-align:center; max-width:760px; margin-left:auto; margin-right:auto;">
+    <div style="font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:#f5c518; margin-bottom:12px;">📬 NIS2-UPPDATERINGAR</div>
+    <h3 style="font-family:'Poppins',sans-serif; font-size:20px; font-weight:800; margin:0 0 8px; color:#f0f0f0;">Ny NIS2-artikel varje vecka — direkt i inkorgen</h3>
+    <p style="color:#888; font-size:15px; margin:0 0 20px;">Ingen säljpitch. Bara konkret vägledning för VD:ar och styrelser.</p>
+    <form id="nlForm-nis2_tekniska_sakerhetsatgarder" onsubmit="submitNewsletter_nis2_tekniska_sakerhetsatgarder(event)" style="display:flex; gap:10px; flex-wrap:wrap; justify-content:center; max-width:460px; margin:0 auto;">
+      <input type="email" id="nlEmail-nis2_tekniska_sakerhetsatgarder" placeholder="din@foretag.se" required
+             style="flex:1; min-width:200px; padding:12px 16px; background:#1c1c1f; border:1px solid rgba(255,255,255,0.15); border-radius:4px; color:#f0f0f0; font-size:15px; outline:none;" />
+      <button type="submit" id="nlSubmit-nis2_tekniska_sakerhetsatgarder"
+              style="padding:12px 22px; background:#f5c518; color:#141416; font-weight:700; font-size:15px; border:none; border-radius:4px; cursor:pointer; white-space:nowrap;">
+        Prenumerera gratis →
+      </button>
     </form>
-    <div class="capture-thanks-msg" id="tekniskaAtgThanks">✅ Tack! Vi hör av oss inom 24 timmar.</div>
+    <p style="font-size:12px; color:#555; margin:12px 0 0;">Du kan avprenumerera när som helst. Vi delar aldrig din e-post.</p>
+    <div id="nlThanks-nis2_tekniska_sakerhetsatgarder" style="display:none; color:#4ade80; font-size:16px; font-weight:600; margin-top:14px;">✅ Du är med! Nästa artikel kommer direkt till din inkorg.</div>
+  </div>
+
+
+    <!-- CTA -->
+  <div class="cta-section">
+    <h2>Vet du var din organisation står idag?</h2>
+    <p>En kostnadsfri gap-analys med en certifierad Microsoft-partner visar exakt vad ni redan har täckt — och vad som saknas.</p>
+    <a href="/nis2.html#boka" class="btn-primary">Boka kostnadsfri gap-analys →</a>
+    <p class="cta-fine">Böterna är upp till <strong>10 miljoner euro</strong>. Gap-analysen är gratis.</p>
   </div>
 
 </article>
@@ -381,7 +385,7 @@
 </div>
 <footer>
   © 2026 M&J Trusted Marketing KB ·
-  <a href="mailto:support@trustedmarketing.se">support@trustedmarketing.se</a> ·
+  <a href="mailto:jan@nis2klar.se">jan@nis2klar.se</a> · <a href="tel:+46470597003">+46 470 59 70 03</a> ·
   <a href="/nis2.html">Tillbaka till startsidan</a> ·
   <a href="/privacy.html">Integritetspolicy</a>
 </footer>
@@ -418,5 +422,34 @@
     }
   }
 </script>
+
+  <script data-cfasync="false">
+    async function submitNewsletter_nis2_tekniska_sakerhetsatgarder(e) {
+      e.preventDefault();
+      const btn = document.getElementById('nlSubmit-nis2_tekniska_sakerhetsatgarder');
+      btn.disabled = true;
+      btn.textContent = 'Skickar...';
+      const email = document.getElementById('nlEmail-nis2_tekniska_sakerhetsatgarder').value.trim();
+      try {
+        const res = await fetch('/api/newsletter/subscribe', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email, source: 'artikel-nis2_tekniska_sakerhetsatgarder' })
+        });
+        const data = await res.json();
+        if (data.success) {
+          document.getElementById('nlForm-nis2_tekniska_sakerhetsatgarder').style.display = 'none';
+          document.getElementById('nlThanks-nis2_tekniska_sakerhetsatgarder').style.display = 'block';
+        } else {
+          btn.disabled = false;
+          btn.textContent = 'Prenumerera gratis →';
+        }
+      } catch {
+        btn.disabled = false;
+        btn.textContent = 'Prenumerera gratis →';
+      }
+    }
+  </script>
+
 </body>
 </html>

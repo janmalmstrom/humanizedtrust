@@ -12,9 +12,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>NIS2-incidentrapportering i Sverige: 72-timmarsregeln steg för steg | NIS2Klar</title>
-  <meta name="description" content="72-timmarsregeln i NIS2 gäller nu i Sverige. Till vilken myndighet rapporterar du? Vad ska rapporten innehålla? Vad händer om du missar fristen? Komplett guide för VD och styrelse.">
+  <meta name="description" content="Till vilken myndighet rapporterar ni? Vad ska rapporten innehålla? Skillnaden mellan 24h och 72h. Vad händer om ni missar fristen? Allt om NIS2-incidentrapportering i Sverige.">
   <meta property="og:title" content="NIS2-incidentrapportering i Sverige: 72-timmarsregeln steg för steg">
-  <meta property="og:description" content="72-timmarsregeln i NIS2 gäller nu i Sverige. Till vilken myndighet rapporterar du? Vad ska rapporten innehålla? Vad händer om du missar fristen? Komplett guide för VD och styrelse.">
+  <meta property="og:description" content="Till vilken myndighet rapporterar ni? Vad ska rapporten innehålla? Skillnaden mellan 24h och 72h. Vad händer om ni missar fristen? Allt om NIS2-incidentrapportering i Sverige.">
   <link rel="canonical" href="https://nis2klar.se/artiklar/nis2-incidentrapportering-72-timmar-sverige.html">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
@@ -89,36 +89,27 @@
     .box-takeaway p { margin: 0; font-size: 18px; font-weight: 600; color: var(--white); line-height: 1.6; }
 
     /* Capture form */
-    .capture-form-section { background: #1c1c1f; border: 1px solid rgba(245,197,24,0.25); border-top: 3px solid var(--yellow); border-radius: 4px; padding: 40px; margin: 64px 0 40px; }
-    .capture-form-section h2 { margin-top: 0; font-size: 24px; font-family: 'Poppins', sans-serif; font-weight: 800; margin-bottom: 12px; }
-    .capture-form-section .sub { color: #aaa; font-size: 15px; margin-bottom: 24px; }
-    .capture-input { display: block; width: 100%; background: #222226; border: 1px solid #2e2e33; border-radius: 4px; padding: 13px 16px; font-size: 15px; color: #f0f0f0; font-family: 'Barlow', sans-serif; outline: none; transition: border-color 0.2s; margin-bottom: 12px; }
-    .capture-input:focus { border-color: var(--yellow); }
-    .capture-input::placeholder { color: #666; }
-    .capture-submit-btn { background: var(--yellow); color: #000; border: none; border-radius: 4px; padding: 14px 28px; font-family: 'Poppins', sans-serif; font-size: 15px; font-weight: 800; cursor: pointer; transition: background 0.2s; width: 100%; }
-    .capture-submit-btn:hover { background: #e8d800; }
-    .capture-submit-btn:disabled { opacity: 0.6; cursor: not-allowed; }
-    .capture-thanks-msg { padding: 16px; background: rgba(34,197,94,0.1); border: 1px solid rgba(34,197,94,0.3); border-radius: 4px; color: #86efac; font-size: 15px; text-align: center; display: none; }
+  /* Timeline */
+    .timeline { margin: 32px 0; padding: 0; list-style: none; }
+    .timeline li { display: flex; gap: 20px; margin-bottom: 28px; align-items: flex-start; }
+    .timeline-marker { flex-shrink: 0; width: 48px; height: 48px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: 'Poppins', sans-serif; font-weight: 900; font-size: 13px; text-align: center; line-height: 1.2; }
+    .tm-yellow { background: var(--yellow); color: #000; }
+    .tm-orange { background: #e07b00; color: #000; }
+    .tm-red { background: var(--red); color: #fff; }
+    .timeline-content { flex: 1; padding-top: 4px; }
+    .timeline-content strong { display: block; font-family: 'Poppins', sans-serif; font-size: 17px; margin-bottom: 6px; }
+    .timeline-content p { margin: 0; font-size: 17px; color: #bbb; line-height: 1.6; }
 
     /* Footer */
     footer { border-top: 1px solid rgba(255,255,255,0.07); padding: 32px 40px; text-align: center; font-size: 13px; color: var(--muted); max-width: 900px; margin: 0 auto; }
     footer a { color: var(--muted); }
-
-    /* Timeline */
-    .timeline { margin: 32px 0; padding: 0; list-style: none; }
-    .timeline li { display: flex; gap: 20px; margin-bottom: 28px; align-items: flex-start; }
-    .timeline-badge { flex-shrink: 0; width: 80px; background: rgba(245,197,24,0.12); border: 1px solid rgba(245,197,24,0.3); border-radius: 4px; padding: 8px 10px; text-align: center; font-family: 'Poppins', sans-serif; font-weight: 900; font-size: 13px; color: var(--yellow); line-height: 1.2; }
-    .timeline-badge span { display: block; font-size: 10px; font-weight: 600; color: #aaa; letter-spacing: 1px; text-transform: uppercase; margin-top: 4px; }
-    .timeline-content { flex: 1; }
-    .timeline-content strong { display: block; font-family: 'Poppins', sans-serif; font-size: 17px; margin-bottom: 6px; color: var(--white); }
-    .timeline-content p { margin: 0; font-size: 16px; color: #bbb; line-height: 1.6; }
 
     @media (max-width: 600px) {
       nav, .article-wrap, footer { padding: 20px; }
       .cta-section { padding: 32px 20px; }
       .fine-table { font-size: 14px; }
       .fine-table th, .fine-table td { padding: 10px 10px; }
-      .timeline-badge { width: 68px; font-size: 11px; }
+      .timeline-marker { width: 40px; height: 40px; font-size: 11px; }
     }
   </style>
 </head>
@@ -131,85 +122,79 @@
 </nav>
 
 <article class="article-wrap">
-  <div class="article-category">Incidentrapportering &amp; Efterlevnad</div>
+  <div class="article-category">Incidenthantering &amp; Rapportering</div>
   <h1>NIS2-incidentrapportering i Sverige: 72-timmarsregeln steg för steg</h1>
-  <div class="article-meta">Uppdaterad 7 april 2026 · Lästid: ca 8 minuter · Målgrupp: VD, styrelseordförande, styrelseledamot</div>
+  <div class="article-meta">Uppdaterad 7 april 2026 · Lästid: ca 8 minuter · Målgrupp: VD, styrelseordförande, styrelseledamöter</div>
 
   <!-- SUMMARY -->
   <div class="box-summary">
     <div class="summary-label">Sammanfattning</div>
     <ul>
-      <li>NIS2 kräver en <strong>tidig varning inom 24 timmar</strong> och en fullständig incidentrapport inom <strong>72 timmar</strong> från det att ni får kännedom om en allvarlig incident.</li>
-      <li>I Sverige rapporterar de flesta sektorer till <strong>NCSC (via MSB)</strong> eller sin sektoriella tillsynsmyndighet.</li>
-      <li>Rapporten ska innehålla specifika uppgifter — inte bara "vi har haft ett intrång".</li>
-      <li>Missar ni fristen riskerar ni <strong>sanktionsavgifter, tillsyn och personligt ansvar</strong> för ledningen.</li>
-      <li>Fristen börjar räknas från det att ni <em>får kännedom</em> om incidenten — inte från det att den inträffade.</li>
+      <li>För VD och styrelseledamöter i NIS2-reglerade sektorer som vill förstå exakt vad som krävs när en incident inträffar.</li>
+      <li>Ni har <strong>24 timmar</strong> på er att skicka en tidig varning och <strong>72 timmar</strong> på er att lämna en fullständig incidentrapport.</li>
+      <li>Rapporten skickas till er sektorsspecifika tillsynsmyndighet — inte till MSB direkt i de flesta fall.</li>
+      <li>Missar ni fristen riskerar ni sanktionsavgifter utöver dem ni eventuellt redan fått för incidenten i sig.</li>
+      <li>Personligt ansvar enligt Artikel 20 gäller — det räcker inte att IT-avdelningen "hanterar det".</li>
     </ul>
   </div>
 
   <!-- KEY TAKEAWAY -->
   <div class="box-takeaway">
     <div class="takeaway-label">Viktigaste slutsatsen</div>
-    <p>72-timmarsregeln är inte ett mål att sträva mot — det är en juridisk frist. Utan en dokumenterad incidenthanteringsprocess på plats innan krisen inträffar är det nästan omöjligt att klara den. Det är er uppgift som ledning att se till att den processen finns.</p>
+    <p>72-timmarsregeln är inte ett mål att sträva mot — det är en hård lagstadgad frist. Den börjar ticka i det ögonblick ni får kännedom om incidenten, inte när IT bekräftar den. Utan en förberedd rapporteringsprocess är fristen i praktiken omöjlig att hålla.</p>
   </div>
 
   <!-- HOOK -->
   <p>
-    Klockan är tre på natten. Er IT-driftsleverantör ringer och berättar att de har upptäckt ett intrång i era system. Ni lyssnar, nickar och säger att de ska ta hand om det. Ni lägger på luren och försöker sova.
+    Klockan är 23:14 på en torsdagskväll. Er IT-drift larmar om att systemen reagerar konstigt. Lördagsmorgon bekräftas: ett angrepp pågår. Ni stänger ner, tar kontakt med er IT-leverantör och börjar utreda. Måndag kväll har ni en bild av vad som hänt.
   </p>
+
   <p>
-    Vad ni förmodligen inte vet är att klockan nu tickar. Från det ögonblicket har ni <strong>24 timmar</strong> på er att skicka en tidig varning till rätt myndighet — och <strong>72 timmar</strong> på er att lämna en fullständig incidentrapport. Det är inte en rekommendation. Det är lag.
+    Problemet är att ni vid det laget redan har <strong>brutit mot lagen</strong>. NIS2-direktivet, implementerat i Sverige genom cybersäkerhetslagen (2024:1056), kräver att ni skickat en tidig varning inom <strong>24 timmar</strong> från det att ni fick kännedom om incidenten — och en fullständig rapport inom <strong>72 timmar</strong>. Inte från att IT bekräftat det. Inte från att utredningen är klar. Från det att ni visste att något var fel.
   </p>
+
   <p>
-    Den lagen heter <strong>cybersäkerhetslagen (2024:1056)</strong> och den implementerar NIS2-direktivet i Sverige. Artikel 23 i direktivet är tydlig: organisationer som faller inom NIS2:s tillämpningsområde är skyldiga att rapportera allvarliga incidenter inom specificerade tidsramar. Och ansvaret för att den rapporteringen sker i tid ligger inte hos IT-avdelningen. Det ligger hos er — VD och styrelseledamöter.
+    Det scenariot är inte hypotetiskt. Det är exakt den situation som drabbar organisationer som inte har förberett sin rapporteringsprocess i förväg. Och konsekvenserna är konkreta: sanktionsavgifter, tillsynsgranskning och — i värsta fall — personliga reprimander mot dig som sitter i ledningen.
   </p>
 
   <div class="box-warning">
-    <strong>Fristen gäller från kännedom — inte från incident.</strong> Det spelar ingen roll om intrånget skedde för en vecka sedan. Klockan börjar ticka den stund ni eller er personal får kännedom om att en allvarlig incident har inträffat. Att "inte ha vetat" är inte ett godkänt svar om ni borde ha haft system för att upptäcka det.
+    <strong>72-timmarsfristen är absolut.</strong> Det finns inga generösa undantag för att "utredningen inte var klar" eller att "IT-chefen var sjuk". Fristen räknas från kännedom, och bristande rapportering är en självständig sanktionsgrund — separat från incidenten i sig.
   </div>
 
-  <h2>Vad är egentligen en "allvarlig incident"?</h2>
+  <h2>Vad är en "rapporteringspliktig incident" enligt NIS2?</h2>
 
   <p>
-    Det första hindret de flesta organisationer stöter på är definitionen. Vad kvalificerar sig som en allvarlig incident som kräver rapportering — och vad är en intern driftstörning som ni kan hantera utan att involvera myndigheterna?
+    Inte varje driftstörning eller säkerhetshändelse utlöser rapporteringsplikt. NIS2 definierar en <strong>allvarlig incident</strong> som en händelse som orsakar eller kan orsaka betydande störning i era tjänster eller skada för andra. Det låter vagt — och det är medvetet. Lagstiftaren vill att ni tolkar det generöst snarare än restriktivt.
   </p>
+
   <p>
-    Enligt NIS2 är en incident allvarlig och rapporteringspliktig om den uppfyller ett eller flera av följande kriterier:
+    I praktiken brukar följande typer av händelser klara tröskeln för rapporteringsplikt:
   </p>
+
   <ul>
-    <li>Den har orsakat eller kan orsaka <strong>betydande driftstörning</strong> av den tjänst ni tillhandahåller</li>
-    <li>Den har orsakat eller kan orsaka <strong>betydande ekonomisk skada</strong> för er organisation eller för mottagare av er tjänst</li>
-    <li>Den har påverkat eller kan påverka <strong>andra organisationer</strong> eller sektorer</li>
-    <li>Den har medfört eller kan medföra <strong>obehörig åtkomst</strong> till personuppgifter eller kritisk information</li>
+    <li>Ransomware-angrepp som påverkar produktions- eller kundmiljöer</li>
+    <li>Dataintrång med exfiltrering av känslig information</li>
+    <li>DDoS-attacker som leder till tjänsteavbrott över en viss tid</li>
+    <li>Intrång i leveranskedjans system med påverkan på er verksamhet</li>
+    <li>Obehörig åtkomst till kritiska system eller processer</li>
+    <li>Allvarliga driftstörningar utan säkerhetsteknisk orsak — om de är tillräckligt omfattande</li>
   </ul>
-  <p>
-    En ransomware-attack som krypterar era system och stoppar produktionen i tre dagar? Självklart rapporteringspliktig. Ett DDoS-angrepp som tar ned er kundportal i fyra timmar? Troligtvis också. En phishing-attack som komprometterade en anställds e-postkonto och gav åtkomst till kunddata? Ja, med stor sannolikhet.
-  </p>
-  <p>
-    En enskild laptop som tappade uppkopplingen en timme? Förmodligen inte. Men gränsen är inte alltid uppenbar — och det är ett skäl till varför ni behöver ha fastlagda kriterier internt, <em>innan</em> en incident inträffar.
-  </p>
 
-  <div class="box-info">
-    <strong>Tröskeln sätts av er tillsynsmyndighet.</strong> ENISA (EU:s cybersäkerhetsmyndighet) och MSB har publicerat vägledning för hur allvarlighet ska bedömas. Om ni är osäkra är huvudregeln: hellre rapportera en gång för mycket än att missa en rapporteringspliktig incident. Kostnaden för en onödig rapport är noll. Kostnaden för en utebliven rapport kan vara miljonbelopp.
-  </div>
+  <p>
+    Tveka aldrig att rapportera om ni är osäkra. Tillsynsmyndigheten ser hellre en rapport som visar sig handla om något lindrigare än att ni väljer att inte rapportera och har fel. Den omvända bedömningen är den som kostar.
+  </p>
 
   <h2>Till vilken myndighet rapporterar ni i Sverige?</h2>
 
   <p>
-    Det svenska systemet är uppdelat. Det finns inte en enda myndighet som tar emot alla NIS2-rapporter. Vilket organ ni ska kontakta beror på vilken sektor er organisation verkar i.
-  </p>
-  <p>
-    Det övergripande samordningsansvaret ligger hos <strong>MSB (Myndigheten för samhällsskydd och beredskap)</strong> och den operativa mottagningsfunktionen hanteras av <strong>NCSC (Nationellt cybersäkerhetscenter)</strong>, som är samlokaliserat med MSB. NCSC är i praktiken den funktion som tar emot och koordinerar incidentrapporteringen på nationell nivå.
-  </p>
-  <p>
-    Men utöver NCSC har respektive sektor en utsedd sektoriell tillsynsmyndighet som också ska notifieras vid incidenter. Här är de viktigaste:
+    Det är en av de vanligaste frågorna — och svaret är inte alltid självklart. Sverige har ett <strong>sektorsbaserat tillsynsystem</strong>. Det innebär att ni rapporterar till den tillsynsmyndighet som ansvarar för er sektor, inte till en central cybersäkerhetsmyndighet.
   </p>
 
   <table class="fine-table">
     <thead>
       <tr>
         <th>Sektor</th>
-        <th>Tillsynsmyndighet</th>
+        <th>Rapportera till</th>
       </tr>
     </thead>
     <tbody>
@@ -222,7 +207,7 @@
         <td>Transportstyrelsen</td>
       </tr>
       <tr>
-        <td>Bankväsende &amp; finansmarknadsinfrastruktur</td>
+        <td>Bankväsende och finansmarknadsinfrastruktur</td>
         <td>Finansinspektionen (FI)</td>
       </tr>
       <tr>
@@ -230,96 +215,367 @@
         <td>Inspektionen för vård och omsorg (IVO)</td>
       </tr>
       <tr>
-        <td>Dricksvatten &amp; avloppsvatten</td>
-        <td>Livsmedelsverket / respektive kommunal tillsyn</td>
+        <td>Dricksvatten och avloppsvatten</td>
+        <td>Livsmedelsverket / länsstyrelser</td>
       </tr>
       <tr>
-        <td>Digital infrastruktur &amp; IKT-tjänster</td>
+        <td>Digital infrastruktur och IT-tjänster</td>
         <td>Post- och telestyrelsen (PTS)</td>
       </tr>
       <tr>
         <td>Offentlig förvaltning</td>
-        <td>MSB / NCSC direkt</td>
+        <td>MSB (Myndigheten för samhällsskydd och beredskap)</td>
       </tr>
       <tr>
-        <td>Rymden</td>
+        <td>Rymdsektorn</td>
         <td>MSB</td>
       </tr>
     </tbody>
   </table>
 
   <p>
-    I praktiken innebär detta att en bank som drabbas av en allvarlig incident ska notifiera både <strong>Finansinspektionen</strong> och <strong>NCSC</strong>. Ett energibolag notifierar <strong>Energimarknadsinspektionen</strong> och <strong>NCSC</strong>. Båda notifieringarna ska ske inom samma tidsfrister.
-  </p>
-  <p>
-    Är ni osäkra på vilken myndighet som gäller för er sektor? Det är en fråga ni måste ha svaret på <em>nu</em> — inte när incidenten har inträffat och klockan tickar.
+    MSB har en övergripande koordinerande roll och är den myndighet som i sin tur kommunicerar med ENISA (EU:s cybersäkerhetsmyndighet) och andra medlemsstaters CSIRT. Men er direkta rapporteringsskyldighet går alltså till sektormyndigheten.
   </p>
 
-  <h2>De tre faserna: 24h, 72h och en månad</h2>
+  <div class="box-info">
+    <strong>Vet ni vilken myndighet som tillsynar er?</strong> Det är inte alltid självklart, särskilt för organisationer som verkar i flera sektorer eller i gränslandet mellan dem. Kontrollera er klassificering enligt cybersäkerhetslagen (2024:1056) och MSB:s vägledning. Att rapportera till fel myndighet löser inte rapporteringsskyldigheten.
+  </div>
+
+  <h2>Tidslinjen: 24 timmar, 72 timmar och en månads slutrapport</h2>
 
   <p>
-    NIS2:s rapporteringskrav är uppdelade i tre distinkta faser. Det är viktigt att förstå skillnaden — varje fas har olika krav på innehåll och detaljeringsnivå.
+    NIS2-direktivets Artikel 23 delar upp rapporteringsskyldigheten i tre distinkta steg. Att förstå skillnaden mellan dem är avgörande — det är inte bara ett administrativt krav, det är strukturen som avgör om ni är i laglig efterlevnad eller inte.
   </p>
 
   <ul class="timeline">
     <li>
-      <div class="timeline-badge">24 h<span>Fas 1</span></div>
+      <div class="timeline-marker tm-yellow">24 h</div>
       <div class="timeline-content">
-        <strong>Tidig varning</strong>
-        <p>En initial notifiering till behörig myndighet. Syftet är att myndigheten ska få kännedom om att en potentiellt allvarlig incident har inträffat — inte att ni ska kunna presentera en fullständig analys. Varningen ska ange om incidenten misstänks vara orsakad av en otillåten handling (exempelvis ett cyberangrepp) och om den kan ha gränsöverskridande effekter som berör andra EU-länder.</p>
+        <strong>Tidig varning — inom 24 timmar</strong>
+        <p>Syftet med den tidiga varningen är att tillsynsmyndigheten ska få kännedom om att en allvarlig incident pågår eller nyligen inträffat. Innehållet behöver inte vara komplett — ni behöver inte ha alla svar. Ange att en incident pågår, vilken typ av händelse det verkar röra sig om och vilken preliminär påverkan ni ser. Det är tillräckligt för den tidiga varningen. Det viktiga är att den skickas i tid.</p>
       </div>
     </li>
     <li>
-      <div class="timeline-badge">72 h<span>Fas 2</span></div>
+      <div class="timeline-marker tm-orange">72 h</div>
       <div class="timeline-content">
-        <strong>Incidentanmälan</strong>
-        <p>Den fullständiga incidentrapporten. Här ska ni kunna redogöra för incidentens art, hur den initialt bedömdes, vilka åtgärder som vidtagits, och — om möjligt — vad som orsakat den. Rapporten behöver inte vara uttömmande men den måste vara substantiell och visa att ni aktivt hanterar situationen.</p>
+        <strong>Incidentrapport — inom 72 timmar</strong>
+        <p>Den fullständiga incidentrapporten ska lämnas inom 72 timmar från det att ni fick kännedom om incidenten. Här förväntas ett mer substantiellt innehåll: en bedömning av incidentens allvarlighetsgrad, dess troliga orsak, vilka system och tjänster som påverkas, geografisk utbredning om relevant, och vilka åtgärder ni redan vidtagit. Rapporten behöver inte innehålla den slutliga utredningen — men den ska ge tillsynsmyndigheten tillräcklig information för att bedöma situationen.</p>
       </div>
     </li>
     <li>
-      <div class="timeline-badge">1 mån<span>Fas 3</span></div>
+      <div class="timeline-marker tm-red">1 mån</div>
       <div class="timeline-content">
-        <strong>Slutrapport</strong>
-        <p>En månad efter incidentanmälan ska en fullständig slutrapport lämnas. Här förväntas en komplett beskrivning av incidentens förlopp, grundorsak, konsekvenser och vidtagna åtgärder inklusive hur liknande incidenter ska förhindras i framtiden. Om incidenten är pågående vid en månads gräns lämnas en lägesrapport istället, med slutrapporten när incidenten är avslutad.</p>
+        <strong>Slutrapport — inom en månad</strong>
+        <p>Senast en månad efter att den ursprungliga incidentrapporten lämnades ska en slutlig rapport finnas hos tillsynsmyndigheten. Här redovisas incidenten i sin helhet: rotorsak, fullständig påverkansbedömning, hur incidenten hanterades, och vilka permanenta åtgärder ni vidtagit för att förhindra upprepning. Slutrapporten är det dokument tillsynsmyndigheten använder för att bedöma om er incidenthantering uppfyllde lagens krav.</p>
       </div>
     </li>
   </ul>
 
   <p>
-    Det viktigaste att förstå är skillnaden mellan fas 1 och fas 2. Den tidiga varningen inom 24 timmar är en <strong>signal</strong> — ni behöver inte ha alla svar. Men ni måste ha skickat något. Att invänta en intern utredning innan ni notifierar myndigheten är en vanlig — och kostsam — miss.
+    Det som många organisationer inte inser är att <strong>alla tre steg är obligatoriska och självständiga</strong>. Att skicka en utmärkt slutrapport fem veckor senare reparerar inte att ni missade 24-timmarsfristen. Varje steg bedöms för sig.
   </p>
 
-  <h2>Vad ska 72-timmarsrapporten faktiskt innehålla?</h2>
+  <h2>Vad ska 72-timmarsrapporten konkret innehålla?</h2>
 
   <p>
-    Den frågan är avgörande. Många organisationer skickar rapporter som är för vaga och sedan möter krav på kompletteringar — vilket förlänger processen och ökar risken för sanktioner. Rapporten inom 72 timmar ska som minimum innehålla:
+    Det finns ingen standardmall som gäller för alla sektorer i Sverige — tillsynsmyndigheterna kan ha egna formulär och krav. Men NIS2-direktivet och ENISA:s vägledning pekar ut ett antal element som alltid ska finnas med. Som ledning behöver ni förstå vad detta innebär i praktiken.
   </p>
 
-  <ol>
-    <li><strong>Identifiering av er organisation</strong> — namn, organisationsnummer, kontaktuppgifter till ansvarig person</li>
-    <li><strong>Incidentens art</strong> — vad har inträffat? Ransomware, dataintrång, DDoS, insiderhot, systemhaveri?</li>
-    <li><strong>Tidpunkt för identifiering</strong> — när fick ni (eller er personal) kännedom om incidenten?</li>
-    <li><strong>Påverkade system och tjänster</strong> — vilka system är drabbade och vilka tjänster är störda?</li>
-    <li><strong>Bedömd orsak</strong> — om känd eller misstänkt</li>
-    <li><strong>Geografisk räckvidd</strong> — påverkas enbart Sverige eller finns det gränsöverskridande effekter?</li>
-    <li><strong>Vidtagna åtgärder</strong> — vad har ni gjort sedan ni fick kännedom?</li>
-    <li><strong>Bedömd allvarlighetsgrad</strong> — er preliminära bedömning av incidentens konsekvenser</li>
-  </ol>
-
+  <h3>1. Identifiering och klassificering</h3>
   <p>
-    Ni behöver inte ha alla svar inom 72 timmar. Men ni måste ha <strong>svarat på alla punkter</strong> — om en orsak inte är känd skriver ni att den utreds och förväntas klarläggas till slutrapporten. Det som inte är accepterat är att skicka en halvsidig rapport som säger "vi hade ett IT-problem som vi håller på att utreda".
+    Beskriv incidenten: vad hände, när upptäcktes den och hur, vilka system och processer berörs. Ni ska också ange er preliminära klassificering av allvarlighetsgrad — är det en allvarlig incident enligt NIS2:s definition, eller är ni osäkra och rapporterar av försiktighet?
+  </p>
+
+  <h3>2. Påverkansanalys</h3>
+  <p>
+    Vilka tjänster påverkas, i vilken grad och för vilka användare eller kunder? Har incidenten gränsöverskridande påverkan — dvs. kan den drabba verksamheter eller medborgare i andra EU-länder? Det är en fråga tillsynsmyndigheten alltid bedömer, eftersom NIS2 har ett tydligt gränsöverskridande perspektiv.
+  </p>
+
+  <h3>3. Trolig orsak och angreppsvektor</h3>
+  <p>
+    Ni behöver inte ha rotorsaken fastställd vid 72-timmarsgränsen. Men ni ska ange vad ni för tillfället bedömer som trolig orsak — exempelvis intrång via komprometterade inloggningsuppgifter, exploatering av en sårbarhet i ett externt system, eller ett insiderhot. "Okänd orsak, utredning pågår" är acceptabelt om det stämmer, men ni ska redovisa vad utredningen hittills visat.
+  </p>
+
+  <h3>4. Vidtagna och planerade åtgärder</h3>
+  <p>
+    Beskriv vad ni gjort sedan incidenten identifierades: isolerat system, aktiverat kontinuitetsplan, kontaktat leverantörer, återställt från säkerhetskopia. Ange också vad som planeras framöver och vilka resurser som är involverade i hanteringen.
+  </p>
+
+  <h3>5. Kontaktinformation och ansvarig person</h3>
+  <p>
+    Rapporten ska inkludera kontaktuppgifter till den person i er organisation som ansvarar för incidenthanteringen och som tillsynsmyndigheten kan nå dygnet runt under incidentens aktiva fas. Det är inte alltid lämpligt att det är VD — men det måste vara någon med mandat att fatta beslut.
   </p>
 
   <div class="box-info">
-    <strong>Praktiskt råd:</strong> Förbered en rapportmall i förväg. MSB och NCSC publicerar löpande vägledning och formulär för incidentrapportering. Ladda ned dem, anpassa dem för er organisation och inkludera dem i er incidenthanteringsplan. Att leta efter rätt formulär klockan tre på natten när 72-timmarsklockan tickar är ett scenario ni vill undvika.
+    <strong>Praktisk insikt:</strong> Om ni inte har ett färdigt rapporteringsformulär, en utsedd kontaktperson och en etablerad kommunikationskanal till er tillsynsmyndighet <em>innan</em> incidenten inträffar, är det i praktiken omöjligt att uppfylla 72-timmarsfristen. Rapporteringsprocessen måste förberedas i lugn och ro — inte improviseras i krisläge.
   </div>
 
-  <h2>Hur processen ser ut i praktiken — steg för steg</h2>
+  <h2>Skillnaden mellan 24-timmarsvarningen och 72-timmarsrapporten</h2>
 
   <p>
-    Teorin är en sak. Nedan är den praktiska sekvens som en NIS2-reglerad organisation bör följa från det att en incident identifieras till dess att all rapportering är klar.
+    Den tidiga varningen och incidentrapporten förväxlas ofta — och det leder till att organisationer tror att de har mer tid än de har, eller att de missar det första steget helt.
   </p>
 
-  <h3>Steg 1: Incidenten identifieras (Tidpunkt 0)</h3>
   <p>
-    En anställd, ett övervakningssystem eller en extern part informerar er om att något avvikande har skett. Från detta ögonblick börjar 24-timmarsklockan. Dokumentera exakt
+    Tänk på det så här: den <strong>tidiga varningen är ett larm</strong>. Den säger "vi vet att något allvarligt pågår". Den behöver inte vara fullständig. Den behöver inte innehålla lösningar. Den behöver bara komma inom 24 timmar.
+  </p>
+
+  <p>
+    <strong>72-timmarsrapporten är en situationsrapport</strong>. Den ger tillsynsmyndigheten tillräcklig information för att bedöma incidentens karaktär och er hantering. Den ska vara substantiell — men den är fortfarande inte en slutanalys.
+  </p>
+
+  <p>
+    <strong>Slutrapporten efter en månad är den fullständiga redovisningen.</strong> Här ska allt vara på plats: rotorsak, fullständig konsekvensanalys, dokumentation av er hantering och de permanenta åtgärder ni vidtagit.
+  </p>
+
+  <p>
+    Många organisationer fokuserar all energi på att "göra det ordentligt" och väntar med att rapportera tills de har en komplett bild. Det är fel strategi. Lagen belönar snabbhet framför fullständighet i de tidiga faserna — men kräver fullständighet i slutfasen.
+  </p>
+
+  <h2>Vad händer om ni missar 72-timmarsfristen?</h2>
+
+  <p>
+    Det korta svaret: ni bryter mot lagen, och det är en självständig sanktionsgrund. Det spelar ingen roll hur väl ni hanterat incidenten i övrigt. Utebliven eller försenad rapportering bedöms separat.
+  </p>
+
+  <p>
+    I praktiken kan det innebära:
+  </p>
+
+  <ul>
+    <li><strong>Sanktionsavgift för utebliven rapportering</strong> — utöver eventuell sanktionsavgift för bakomliggande säkerhetsbrister</li>
+    <li><strong>Föreläggande om åtgärder</strong> — tillsynsmyndigheten kan kräva att ni omedelbart implementerar specificerade säkerhetsåtgärder</li>
+    <li><strong>Utökad granskning</strong> — en missad frist signalerar till tillsynsmyndigheten att er incidenthanteringsförmåga är bristfällig, vilket ofta leder till en bredare genomgång</li>
+    <li><strong>Personliga konsekvenser för ledningen</strong> — om det framkommer att ledningen kände till incidenten och aktivt beslutade att inte rapportera, kan Artikel 20-ansvar aktualiseras</li>
+  </ul>
+
+  <div class="box-warning">
+    <strong>Dubbel sanktion är verklig.</strong> En organisation som drabbas av ett ransomware-angrepp kan stå inför en sanktionsavgift för bristande förebyggande åtgärder enligt Artikel 21 <em>och</em> en separat sanktionsavgift för utebliven rapportering enligt Artikel 23. De beräknas inte som ett samlat maxbelopp — de är separata överträdelser.
+  </div>
+
+  <h2>Det personliga ansvaret — för dig som sitter i ledningen</h2>
+
+  <p>
+    Det är frestande att tänka att incidentrapportering är en operativ fråga som IT-avdelningen hanterar. Det stämmer delvis — IT identifierar incidenten och sammanställer teknisk information. Men beslutet att rapportera, och ansvaret för att det sker i tid, vilar på ledningen.
+  </p>
+
+  <p>
+    <strong>Artikel 20 i NIS2-direktivet</strong> slår fast att ledningsorganen — styrelsen och VD — ska godkänna riskhanteringsåtgärderna och aktivt övervaka deras genomförande. Det inkluderar incidenthanteringsprocessen och rapporteringsprocedurerna.
+  </p>
+
+  <p>
+    Det innebär konkret att ni som ledning måste:
+  </p>
+
+  <ol>
+    <li>Ha fastställt och godkänt en incidenthanteringsplan som inkluderar rapporteringsrutiner</li>
+    <li>Ha utsett en ansvarig person med tydliga befogenheter att aktivera rapporteringsprocessen</li>
+    <li>Ha säkerställt att ni personligen kan nås och informeras inom rimlig tid när en allvarlig incident inträffar — oavsett tid på dygnet</li>
+    <li>Dokumenterat allt ovanstående i styrelseprotokoll och policydokument</li>
+  </ol>
+
+  <p>
+    Om ni inte har gjort det och en incident inträffar som leder till försenad rapportering, finns det en direkt linje från bristen till er personliga ansvarssituation. Det är inte en teoretisk risk — det är lagstiftningens uttryckliga intention.
+  </p>
+
+  <blockquote>
+    "Ledningsorganen ska godkänna de åtgärder för hantering av cybersäkerhetsrisker som vidtas av de väsentliga och viktiga entiteterna, övervaka dess genomförande och kan hållas ansvariga för överträdelser av deras skyldigheter."<br>
+    <em>— NIS2-direktivet, Artikel 20</em>
+  </blockquote>
+
+  <h2>Vanliga misstag organisationer gör — och hur ni undviker dem</h2>
+
+  <h3>Misstag 1: Väntar på IT-bekräftelse innan man rapporterar</h3>
+  <p>
+    Fristen börjar när ni har <em>kännedom</em> om incidenten — inte när den är tekniskt bekräftad. Om driftteamet larmar om anomalier och ni skjuter på rapporteringen tills utredningen är klar, tickar klockan redan. Ert interna larmprotokoll ska trigga rapporteringsprocessen parallellt med den tekniska utredningen — inte efter.
+  </p>
+
+  <h3>Misstag 2: Ingen utsedd rapporteringsansvarig</h3>
+  <p>
+    I en krissituation är det för sent att bestämma vem som ska göra vad. Ni behöver ha en namngiven person — med en tydlig ställföreträdare — som har ansvar för att aktivera rapporteringen, samla in nödvändig information och kommunicera med tillsynsmyndigheten. Den rollen ska vara känd av hela ledningsgruppen och övas regelbundet.
+  </p>
+
+  <h3>Misstag 3: Saknar kontaktuppgifter och kanalinfo till tillsynsmyndigheten</h3>
+  <p>
+    Det låter trivialt. Men under en aktiv incident, mitt i natten, med system nere och personal i kris, är det inte självklart vem ni ska ringa eller var rapporten skickas. Ha dessa uppgifter dokumenterade och lättillgängliga — offline om möjligt, eftersom systemen kan vara komprometterade.
+  </p>
+
+  <h3>Misstag 4: Tror att 72-timmarsfristen är ett riktmärke, inte ett krav</h3>
+  <p>
+    Fristen är absolut. Det finns inga undantag för "vi hade fullt upp med att hantera incidenten". Lagen erkänner att rapporten inte behöver vara fullständig vid 72 timmar — men den ska finnas. Prioritera rapportering parallellt med hantering, inte efter.
+  </p>
+
+  <h3>Misstag 5: Rapporterar utan att dokumentera att man har rapporterat</h3>
+  <p>
+    Om en granskning inleds sex månader efter incidenten behöver ni kunna bevisa att ni rapporterade i tid. Spara bekräftelsen från tillsynsmyndigheten, era interna kommunikationsloggar och tidsstämplarna på rapporterna. Bevis på att ni följde processen är lika viktigt som att faktiskt följa den.
+  </p>
+
+  <div class="box-case">
+    <div class="case-label">Fallstudie</div>
+    <p>
+      <strong>Scenario: Medelstort logistikföretag i Sverige, 210 anställda.</strong>
+    </p>
+    <p>
+      Klassas som viktig entitet under NIS2 (transportsektorn). En fredag eftermiddag i mars 2026 identifierar driftteamet ovanlig nätverkstrafik och stänger ner delar av infrastrukturen som en försiktighetsåtgärd. IT-chefen bedömer att det kan handla om ett intrång men vill inte "larma i onödan" innan utredningen kommit längre.
+    </p>
+    <p>
+      Ledningsgruppen informeras söndagkväll — 56 timmar in i förloppet. VD beslutar att avvakta med rapportering tills IT-chefen kan presentera en fullständig bild måndagsmorgon. Rapporten till Transportstyrelsen skickas måndag lunch — 96 timmar efter att driftteamet identifierade händelsen.
+    </p>
+    <p>
+      Vid den efterföljande granskningen framkommer att ingen incidenthanteringsplan existerade, att ansvarsfördelningen var oklar och att styrelsen aldrig godkänt några säkerhetsåtgärder dokumenterat.
+    </p>
+    <p>
+      <strong>Utfall:</strong> Sanktionsavgift för utebliven tidig varning inom 24 timmar. Sanktionsavgift för försenad incidentrapport (96 h, inte 72 h). Ytterligare avgift för avsaknad av dokumenterade säkerhetsprocesser. VD och styrelseordförande erhåller formell notifiering om personligt ansvar. Total kostnad inklusive extern juridisk hjälp och åtgärdsarbete: uppskattad till <span class="danger">8–14 miljoner kronor</span>.
+    </p>
+    <p>
+      Det som kunde ha avvärjts med ett halvdags förberedelsearbete — en incidentplan, tydlig ansvarsfördelning, och kontaktuppgifter till tillsynsmyndigheten — kostade i stället ett belopp som sätter djupa spår i ett medelstort företags balansräkning.
+    </p>
+  </div>
+
+  <h2>Hur förbereder ni er — konkret?</h2>
+
+  <p>
+    Det goda nyhet är att förberedelsen inte är komplicerad i sin grundform. Det krävs inte ett multimiljoners IT-projekt för att ha en laglig incidentrapporteringsprocess. Det krävs struktur, dokumentation och ägande på rätt nivå.
+  </p>
+
+  <p>
+    Nedan är det minimum som måste finnas på plats:
+  </p>
+
+  <ul>
+    <li><strong>Incidenthanteringsplan</strong> som definierar vad som klassas som en allvarlig incident, vem som aktiverar processen och hur eskalering till ledning sker</li>
+    <li><strong>Rapporteringsansvarig</strong> med tydlig ställföreträdare — namngiven, inte rollbaserad</li>
+    <li><strong>Kontaktuppgifter till tillsynsmyndigheten</strong> tillgängliga offline och kända av minst tre personer i organisationen</li>
+    <li><strong>Rapport-mall</strong> med de obligatoriska fälten förförberedda — så att ni inte börjar från noll i krisläge</li>
+    <li><strong>Loggstruktur</strong> som automatiskt tidsstämplar larm och åtgärder — för att kunna bevisa att ni agerade i tid</li>
+    <li><strong>Styrelseprotokoll</strong> som dokumenterar att ledningen godkänt incidenthanteringsplanen och förstår rapporteringskraven — detta är Artikel 20-dokumentationen</li>
+    <li><strong>Regelbunden övning</strong> — minst en gång per år, ett simulerat incidentscenario där ni övar hela rapporteringskedjan mot klockan</li>
+  </ul>
+
+  <p>
+    Ingen av dessa punkter kräver avancerad teknik. De kräver att någon i ledningen tar ägarskap, avsätter tid och ser till att dokumentationen finns och är känd. Det är just det Artikel 20 pekar ut som ledningens ansvar.
+  </p>
+
+  <h2>Vanliga frågor om 72-timmarsregeln</h2>
+
+  <div class="faq-item">
+    <div class="faq-q">Börjar 72-timmarsklockan från det att intrånget sker, eller från det att vi identifierar det?</div>
+    <div class="faq-a">Från det att ni identifierar det — dvs. från det ögonblick då ni har kännedom om att en allvarlig incident pågår eller har skett. Det är en viktig distinktion: ni kan inte hållas ansvariga för ett intrång ni inte visste om. Men så snart ert driftteam, er säkerhetsövervakning eller en extern part larmar, börjar fristen. Att "vänta och se" utan att rapportera är ett val — och ett val med rättsliga konsekvenser.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">Vad händer om vi rapporterar och det visar sig att det inte var en allvarlig incident?</div>
+    <div class="faq-a">Ingenting negativt. Tillsynsmyndigheten föredrar att ni rapporterar och den efterföljande utredningen visar att händelsen var lindrigare än befarat. Det signalerar god beredskap och en fungerande rapporteringskultur. Det omvända — att ni väljer att inte rapportera och bedömningen i efterhand visar att det borde ha rapporterats — är det scenariot som skapar problem.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">Måste VD vara involverad i rapporteringen, eller räcker det med IT-chefen?</div>
+    <div class="faq-a">IT-chefen kan mycket väl vara den operativt ansvarige och den som faktiskt sammanställer och skickar rapporten. Men VD och styrelse behöver ha godkänt processen i förväg och vara informerade när en allvarlig incident inträffar. Om det i en granskning framkommer att ledningen inte visste om incidenten eller aktivt hölls utanför, är det ett Artikel 20-problem — inte ett IT-problem.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">Ska vi också informera GDPR-tillsynsmyndigheten (IMY) om personuppgifter berörs?</div>
+    <div class="faq-a">Ja, om incidenten innebär en personuppgiftsincident enligt GDPR. Det är en parallell rapporteringsskyldighet — till IMY inom 72 timmar enligt GDPR, till er NIS2-tillsynsmyndighet enligt cybersäkerhetslagen. De två rapporteringarna är separata och kan ha delvis överlappande innehåll, men de ersätter inte varandra. En incident kan utlösa båda.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">Vi har outsourcat IT till en extern leverantör. Är det deras ansvar att rapportera?</div>
+    <div class="faq-a">Nej. Rapporteringsskyldigheten vilar på er som entitet — inte på er IT-leverantör. Leverantören kan förvisso vara den som identifierar incidenten och som bistår med teknisk information, men skyldigheten att rapportera till tillsynsmyndigheten är er. Kontrollera att ert avtal med IT-leverantören reglerar hur och hur snabbt de ska eskalera incidenter till er, och att ni har processer för att omvandla deras larm till er rapportering.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">Vad kostar det egentligen att missa fristen — i kronor?</div>
+    <div class="faq-a">Det finns inget fast bötesbelopp för just försenad rapportering. Tillsynsmyndigheten bedömer allvarligheten, organisationens storlek och om förseningen var avsiktlig eller berodde på systembrister. I praktiken rör sig sanktionsavgifter för rapporteringsbrister om allt från ett par hundratusen kronor till miljontals kronor. Lägg till juridiska kostnader, externa krisresurser och reputationsskada, och kostnaden överstiger snabbt vad en ordentlig förberedelse hade kostat.</div>
+  </div>
+
+  <div class="box-info" style="margin: 48px 0 32px;">
+    <div style="font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color: var(--yellow); margin-bottom:10px;">🔧 VERKTYG &amp; LÖSNINGAR</div>
+    <p style="margin:0; font-size:17px; color: #ddd; line-height:1.7;">För incidenthantering och rapporteringsberedskap enligt NIS2 är Microsoft Sentinel (SIEM) och Microsoft Defender XDR de centrala plattformarna — de ger er realtidsdetektering, automatiska larm och en komplett logg som bevisar att ni agerade inom fristerna. En certifierad Microsoft-partner kan sätta upp och konfigurera dessa verktyg som en del av en kostnadsfri gap-analys, och visa er exakt vad ni har täckt och vad som saknas.</p>
+  </div>
+
+  
+  <!-- NEWSLETTER -->
+  <div style="background:#111; border:1px solid rgba(255,255,255,0.1); border-left:3px solid #f5c518; border-radius:4px; padding:32px 36px; margin:40px 0 0; text-align:center; max-width:760px; margin-left:auto; margin-right:auto;">
+    <div style="font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:#f5c518; margin-bottom:12px;">📬 NIS2-UPPDATERINGAR</div>
+    <h3 style="font-family:'Poppins',sans-serif; font-size:20px; font-weight:800; margin:0 0 8px; color:#f0f0f0;">Ny NIS2-artikel varje vecka — direkt i inkorgen</h3>
+    <p style="color:#888; font-size:15px; margin:0 0 20px;">Ingen säljpitch. Bara konkret vägledning för VD:ar och styrelser.</p>
+    <form id="nlForm-nis2_incidentrapportering_72_timmar_sverige" onsubmit="submitNewsletter_nis2_incidentrapportering_72_timmar_sverige(event)" style="display:flex; gap:10px; flex-wrap:wrap; justify-content:center; max-width:460px; margin:0 auto;">
+      <input type="email" id="nlEmail-nis2_incidentrapportering_72_timmar_sverige" placeholder="din@foretag.se" required
+             style="flex:1; min-width:200px; padding:12px 16px; background:#1c1c1f; border:1px solid rgba(255,255,255,0.15); border-radius:4px; color:#f0f0f0; font-size:15px; outline:none;" />
+      <button type="submit" id="nlSubmit-nis2_incidentrapportering_72_timmar_sverige"
+              style="padding:12px 22px; background:#f5c518; color:#141416; font-weight:700; font-size:15px; border:none; border-radius:4px; cursor:pointer; white-space:nowrap;">
+        Prenumerera gratis →
+      </button>
+    </form>
+    <p style="font-size:12px; color:#555; margin:12px 0 0;">Du kan avprenumerera när som helst. Vi delar aldrig din e-post.</p>
+    <div id="nlThanks-nis2_incidentrapportering_72_timmar_sverige" style="display:none; color:#4ade80; font-size:16px; font-weight:600; margin-top:14px;">✅ Du är med! Nästa artikel kommer direkt till din inkorg.</div>
+  </div>
+
+  <div class="cta-section">
+    <h2>Vet du var din organisation står idag?</h2>
+    <p>En kostnadsfri gap-analys med en certifierad Microsoft-partner visar exakt vad ni redan har täckt — och vad som saknas.</p>
+    <a href="/nis2.html#boka" class="btn-primary">Boka kostnadsfri gap-analys →</a>
+    <p class="cta-fine">Böterna är upp till <strong>10 miljoner euro</strong>. Gap-analysen är gratis.</p>
+  </div>
+
+  <!-- Lead capture form -->
+    <!-- CTA -->
+  <div class="cta-section">
+    <h2>Vet du var din organisation står idag?</h2>
+    <p>En kostnadsfri gap-analys med en certifierad Microsoft-partner visar exakt vad ni redan har täckt — och vad som saknas.</p>
+    <a href="/nis2.html#boka" class="btn-primary">Boka kostnadsfri gap-analys →</a>
+    <p class="cta-fine">Böterna är upp till <strong>10 miljoner euro</strong>. Gap-analysen är gratis.</p>
+  </div>
+
+</article>
+
+<div class="related-articles" style="max-width:760px; margin: 0 auto 2rem; padding: 0 40px;">
+  <div style="margin:2.5rem 0 2rem;padding:1.5rem;background:#1a1a2e;border-left:4px solid #f0a500;border-radius:4px;">
+    <p style="margin:0 0 1rem;font-size:0.85rem;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:#f0a500;">Läs också</p>
+    <ul style="margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:0.5rem;">
+      <li><a href="/artiklar/nis2-personligt-ansvar-styrelse.html" style="color:#e0e0e0;text-decoration:none;font-size:0.95rem;">&#x2192; Styrelsens personliga ansvar under NIS2</a></li>
+      <li><a href="/artiklar/nis2-boten-sanktioner-sverige.html" style="color:#e0e0e0;text-decoration:none;font-size:0.95rem;">&#x2192; NIS2-böter och sanktioner i Sverige</a></li>
+      <li><a href="/artiklar/nis2-tillsyn-ncsc-msb-sverige.html" style="color:#e0e0e0;text-decoration:none;font-size:0.95rem;">&#x2192; NIS2-tillsyn: NCSC och MSB</a></li>
+      <li><a href="/artiklar/nis2-vilka-foretag-omfattas.html" style="color:#e0e0e0;text-decoration:none;font-size:0.95rem;">&#x2192; Vilka företag omfattas av NIS2?</a></li>
+    </ul>
+    <p style="margin:1.25rem 0 0;font-size:0.85rem;color:#aaa;">&#8592; <a href="/nis2.html" style="color:#f0a500;text-decoration:none;">NIS2Klar startsida</a> &nbsp;&middot;&nbsp; <a href="/artiklar.html" style="color:#f0a500;text-decoration:none;">Alla guider</a></p>
+  </div>
+</div>
+
+<footer>
+  © 2026 M&amp;J Trusted Marketing KB ·
+  <a href="mailto:jan@nis2klar.se">jan@nis2klar.se</a> · <a href="tel:+46470597003">+46 470 59 70 03</a> ·
+  <a href="/nis2.html">Tillbaka till startsidan</a> ·
+  <a href="/privacy.html">Integritetspolicy</a>
+  <p style="margin-top:12px; font-size:11px; color: #555; line-height:1.5;">Microsoft, Microsoft 365, Azure och tillhörande produktnamn är varumärken som tillhör Microsoft Corporation. nis2klar.se är inte affilierat med eller godkänt av Microsoft Corporation.</p>
+</footer>
+
+<script data-cfasync="false">
+    async function submitNewsletter_nis2_incidentrapportering_72_timmar_sverige(e) {
+      e.preventDefault();
+      const btn = document.getElementById('nlSubmit-nis2_incidentrapportering_72_timmar_sverige');
+      btn.disabled = true;
+      btn.textContent = 'Skickar...';
+      const email = document.getElementById('nlEmail-nis2_incidentrapportering_72_timmar_sverige').value.trim();
+      try {
+        const res = await fetch('/api/newsletter/subscribe', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email, source: 'artikel-nis2_incidentrapportering_72_timmar_sverige' })
+        });
+        const data = await res.json();
+        if (data.success) {
+          document.getElementById('nlForm-nis2_incidentrapportering_72_timmar_sverige').style.display = 'none';
+          document.getElementById('nlThanks-nis2_incidentrapportering_72_timmar_sverige').style.display = 'block';
+        } else {
+          btn.disabled = false;
+          btn.textContent = 'Prenumerera gratis →';
+        }
+      } catch {
+        btn.disabled = false;
+        btn.textContent = 'Prenumerera gratis →';
+      }
+    }
+  </script>
+</body>
+</html>

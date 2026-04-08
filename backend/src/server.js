@@ -20,7 +20,8 @@ const { authenticateToken } = require('./middleware/auth');
 
 // Public
 app.use('/api/auth',    require('./routes/auth'));
-app.use('/api/inbound', require('./routes/inbound'));
+app.use('/api/inbound',     require('./routes/inbound'));
+app.use('/api/newsletter',  require('./routes/newsletter'));
 app.use('/api/track',   require('./routes/tracking'));
 app.use('/api/booking', require('./routes/booking'));
 
