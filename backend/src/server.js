@@ -24,6 +24,7 @@ app.use('/api/inbound',     require('./routes/inbound'));
 app.use('/api/newsletter',  require('./routes/newsletter'));
 app.use('/api/track',   require('./routes/tracking'));
 app.use('/api/booking', require('./routes/booking'));
+app.use('/api/microsoft-auth', require('./routes/microsoft_auth'));
 
 // Public — prospect confirms attendance by clicking link in email
 app.get('/api/confirm/:token', async (req, res) => {
