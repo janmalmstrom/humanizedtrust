@@ -19,7 +19,7 @@ router.post('/login', async (req, res) => {
     const token = jwt.sign(
       { userId: rows[0].id, email: rows[0].email, name: rows[0].name },
       process.env.JWT_SECRET,
-      { expiresIn: '7d' }
+      { expiresIn: '30d' }
     );
 
     res.json({ success: true, data: { token, user: { id: rows[0].id, email: rows[0].email, name: rows[0].name } } });
@@ -48,7 +48,7 @@ router.post('/register', async (req, res) => {
     const token = jwt.sign(
       { userId: rows[0].id, email: rows[0].email, name: rows[0].name },
       process.env.JWT_SECRET,
-      { expiresIn: '7d' }
+      { expiresIn: '30d' }
     );
 
     res.json({ success: true, data: { token, user: rows[0] } });

@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-BKF3QH9K01"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag("js", new Date());
+    gtag("config", "G-BKF3QH9K01");
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Microsoft Sentinel vs Splunk: SIEM-plattformar för NIS2-loggning | NIS2Klar</title>
+  <meta name="description" content="NIS2 kräver logghantering och incidentdetektering. Sentinel vs Splunk — vad är skillnaden? Kostnader, komplexitet och vad tillsynsmyndigheten faktiskt kräver.">
+  <meta property="og:title" content="Microsoft Sentinel vs Splunk: SIEM-plattformar för NIS2-loggning">
+  <meta property="og:description" content="NIS2 kräver logghantering och incidentdetektering. Sentinel vs Splunk — vad är skillnaden? Kostnader, komplexitet och vad tillsynsmyndigheten faktiskt kräver.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #141416;
+      --card: #1c1c1f;
+      --yellow: #f5c518;
+      --white: #f0f0f0;
+      --muted: #888;
+      --red: #C61212;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: var(--bg); color: var(--white); font-family: 'Barlow', sans-serif; font-size: 19px; line-height: 1.8; }
+
+    /* Nav */
+    nav { display: flex; justify-content: space-between; align-items: center; padding: 20px 40px; border-bottom: 1px solid rgba(255,255,255,0.07); max-width: 900px; margin: 0 auto; }
+    .nav-logo { font-family: 'Poppins', sans-serif; font-weight: 900; font-size: 20px; color: var(--yellow); text-decoration: none; }
+    .nav-logo span { color: var(--white); }
+    .nav-back { color: var(--muted); text-decoration: none; font-size: 15px; }
+    .nav-back:hover { color: var(--white); }
+    .nav-cta { background: var(--yellow); color: #000; padding: 8px 18px; border-radius: 4px; text-decoration: none; font-weight: 700; font-size: 14px; font-family: 'Poppins', sans-serif; }
+
+    /* Article */
+    .article-wrap { max-width: 760px; margin: 0 auto; padding: 60px 40px; }
+    .article-category { font-size: 13px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 16px; }
+    h1 { font-family: 'Poppins', sans-serif; font-size: clamp(30px, 4vw, 44px); font-weight: 900; line-height: 1.2; margin-bottom: 24px; }
+    .article-meta { font-size: 15px; color: var(--muted); margin-bottom: 48px; padding-bottom: 24px; border-bottom: 1px solid rgba(255,255,255,0.07); }
+    h2 { font-family: 'Poppins', sans-serif; font-size: 26px; font-weight: 700; margin: 48px 0 16px; color: var(--white); }
+    h3 { font-family: 'Poppins', sans-serif; font-size: 20px; font-weight: 600; margin: 32px 0 12px; color: var(--yellow); }
+    p { margin-bottom: 22px; }
+    strong { color: var(--white); font-weight: 700; }
+    .highlight { color: var(--yellow); font-weight: 700; }
+    .danger { color: #ff6b6b; font-weight: 700; }
+    ul, ol { margin: 16px 0 24px 24px; }
+    li { margin-bottom: 12px; font-size: 19px; }
+
+    /* Callout boxes */
+    .box-warning { background: rgba(197,17,17,0.12); border-left: 4px solid var(--red); padding: 20px 24px; margin: 32px 0; border-radius: 0 4px 4px 0; }
+    .box-info { background: rgba(245,197,24,0.08); border-left: 4px solid var(--yellow); padding: 20px 24px; margin: 32px 0; border-radius: 0 4px 4px 0; }
+    .box-case { background: var(--card); border: 1px solid rgba(255,255,255,0.08); padding: 28px; margin: 40px 0; border-radius: 4px; }
+    .box-case .case-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 12px; }
+    blockquote { border-left: 3px solid var(--yellow); padding: 12px 20px; margin: 24px 0; font-style: italic; color: #ccc; }
+
+    /* CTA */
+    .cta-section { background: var(--card); border: 1px solid rgba(245,197,24,0.2); border-radius: 4px; padding: 48px 40px; margin: 64px 0 40px; text-align: center; }
+    .cta-section h2 { margin-top: 0; font-size: 26px; }
+    .cta-section p { color: #aaa; max-width: 500px; margin: 0 auto 28px; }
+    .btn-primary { display: inline-block; background: var(--yellow); color: #000; font-family: 'Poppins', sans-serif; font-weight: 800; font-size: 16px; padding: 16px 36px; border-radius: 4px; text-decoration: none; }
+    .btn-primary:hover { background: #e0b010; }
+    .cta-fine { font-size: 13px; color: var(--muted); margin-top: 16px; }
+
+    /* FAQ */
+    .faq-item { border-bottom: 1px solid rgba(255,255,255,0.07); padding: 20px 0; }
+    .faq-q { font-family: 'Poppins', sans-serif; font-weight: 600; margin-bottom: 10px; }
+    .faq-a { color: #bbb; }
+
+    /* Fine table */
+    .fine-table { width: 100%; border-collapse: collapse; margin: 24px 0; }
+    .fine-table th { background: rgba(245,197,24,0.1); color: var(--yellow); font-family: 'Poppins', sans-serif; font-size: 13px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 12px 16px; text-align: left; border-bottom: 1px solid rgba(245,197,24,0.2); }
+    .fine-table td { padding: 14px 16px; border-bottom: 1px solid rgba(255,255,255,0.05); font-size: 15px; }
+    .fine-table tr:last-child td { border-bottom: none; }
+    .fine-table .amount { color: #ff6b6b; font-weight: 700; }
+
+    /* Summary + Key Takeaway */
+    .box-summary { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; padding: 24px 28px; margin: 0 0 32px; }
+    .summary-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-bottom: 14px; }
+    .box-summary ul { margin: 0; padding-left: 20px; }
+    .box-summary li { margin-bottom: 8px; font-size: 17px; color: #ccc; }
+    .box-takeaway { background: rgba(245,197,24,0.08); border-left: 4px solid var(--yellow); padding: 20px 24px; margin: 0 0 40px; border-radius: 0 4px 4px 0; }
+    .takeaway-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 10px; }
+    .box-takeaway p { margin: 0; font-size: 18px; font-weight: 600; color: var(--white); line-height: 1.6; }
+
+    /* Footer */
+    footer { border-top: 1px solid rgba(255,255,255,0.07); padding: 32px 40px; text-align: center; font-size: 13px; color: var(--muted); max-width: 900px; margin: 0 auto; }
+    footer a { color: var(--muted); }
+
+    @media (max-width: 600px) {
+      nav, .article-wrap, footer { padding: 20px; }
+      .cta-section { padding: 32px 20px; }
+      .fine-table { font-size: 14px; }
+      .fine-table th, .fine-table td { padding: 10px 10px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="https://nis2klar.se/">NIS2<span>Klar</span></a>
+  <a class="nav-back" href="https://nis2klar.se/artiklar.html">← Alla artiklar</a>
+  <a class="nav-cta" href="/nis2.html#boka">Boka samtal →</a>
+</nav>
+
+<article class="article-wrap">
+  <div class="article-category">Incidenthantering &amp; Loggning</div>
+  <h1>Microsoft Sentinel vs Splunk: SIEM-plattformar för NIS2-loggning</h1>
+  <div class="article-meta">Uppdaterad 9 april 2026 · Lästid: ca 9 minuter · Målgrupp: Ledning</div>
+
+  <!-- SUMMARY -->
+  <div class="box-summary">
+    <div class="summary-label">Sammanfattning</div>
+    <ul>
+      <li>NIS2 kräver att ni kan detektera, logga och rapportera säkerhetsincidenter — ett SIEM-verktyg är inte ett val utan en nödvändighet.</li>
+      <li>De två dominerande plattformarna skiljer sig kraftigt i kostnad, komplexitet och lämplighet beroende på organisationens storlek.</li>
+      <li>En organisation med 100–1 000 anställda har fundamentalt olika förutsättningar än ett globalt företag — valet av plattform måste spegla det.</li>
+      <li>Tillsynsmyndigheten bryr sig inte om vilket verktyg ni använder — de bryr sig om att ni kan bevisa att ni har ett fungerande system på plats.</li>
+    </ul>
+  </div>
+
+  <!-- KEY TAKEAWAY -->
+  <div class="box-takeaway">
+    <div class="takeaway-label">Viktigaste slutsatsen</div>
+    <p>SIEM-valet är inte en IT-fråga — det är ett ledningsbeslut med direkta konsekvenser för er NIS2-efterlevnad, era kostnader och er förmåga att överleva en tillsynsgranskning.</p>
+  </div>
+
+  <!-- HOOK -->
+  <p>
+    Tänk dig att tillsynsmyndigheten ringer en måndag morgon. De har fått kännedom om ett potentiellt intrång i er sektor och vill granska er incidentloggning. De frågar: "Hur länge sparar ni era loggar? Kan ni visa oss aktivitetsdata från de senaste 12 månaderna? Hur detekterade ni den senaste avvikande händelsen i er miljö?"
+  </p>
+  <p>
+    Om svaret på någon av dessa frågor är ett tyst "vi vet faktiskt inte" — är ni i ett allvarligt läge. Inte för att ni nödvändigtvis gjort något fel, utan för att NIS2 kräver att ni <strong>kan bevisa</strong> att ni gör rätt. Och det beviset heter loggar, händelsedata och ett fungerande SIEM-system.
+  </p>
+  <p>
+    SIEM — Security Information and Event Management — är den typ av plattform som samlar in, analyserar och larmar om säkerhetshändelser i realtid. Det är ryggraden i all incidentdetektering och logghantering. Och det är precis vad NIS2:s Artikel 21 kräver att ni har på plats.
+  </p>
+  <p>
+    De två plattformar som dominerar marknaden är välkända namn i IT-sammanhang, men ofta okända i styrelserummet. Den här artikeln reder ut vad skillnaden faktiskt innebär för en organisation med 100 till 1 000 anställda — och vad ni som ledning behöver förstå för att fatta rätt beslut.
+  </p>
+
+  <div class="box-warning">
+    <strong>NIS2-kravet är tydligt:</strong> Artikel 21.2 kräver att ni implementerar "övervakning, revision och testning" samt "åtgärder för logghantering". Det är inte en rekommendation — det är ett krav. Kan ni inte visa att dessa processer finns, är det en sanktionsgrundande brist oavsett om ni haft en incident eller inte.
+  </div>
+
+  <h2>Vad är egentligen ett SIEM — och varför kräver NIS2 det?</h2>
+
+  <p>
+    Låt oss börja med grunderna, eftersom det är lätt att fastna i teknikjargong. En SIEM-plattform gör tre saker som är direkt relevanta för er NIS2-efterlevnad:
+  </p>
+
+  <ol>
+    <li><strong>Samlar in loggar från hela er IT-miljö</strong> — servrar, brandväggar, applikationer, molntjänster, användarinloggningar. Allt på ett ställe.</li>
+    <li><strong>Analyserar händelserna i realtid</strong> — söker efter mönster som indikerar intrång, felaktig åtkomst, dataläckage eller annan avvikande aktivitet.</li>
+    <li><strong>Larmar och dokumenterar</strong> — skapar en spårbar historik som ni kan visa för tillsynsmyndigheten, er styrelse och er cyberförsäkring.</li>
+  </ol>
+
+  <p>
+    NIS2:s Artikel 23 kräver att ni rapporterar en allvarlig incident till tillsynsmyndigheten inom 24 timmar. Det förutsätter att ni faktiskt <em>vet om</em> incidenten. Utan ett fungerande övervakningssystem kan det gå veckor innan ni märker att något har hänt — och vid det laget har ni brutit mot rapporteringsskyldigheten och potentiellt också mot kravet på att begränsa skadan.
+  </p>
+
+  <p>
+    Det är i det sammanhanget som valet av SIEM-plattform går från att vara en teknisk detaljfråga till att vara ett styrningsbeslut av högsta prioritet.
+  </p>
+
+  <h2>De två plattformarna — ett neutralt porträtt</h2>
+
+  <p>
+    Marknaden erbjuder många SIEM-lösningar, men två namn återkommer konsekvent i upphandlingsprocesser för organisationer i NIS2-reglerade sektorer. Vi kallar dem Plattform A och Plattform B i löptexten, men låter fakta tala för sig.
+  </p>
+
+  <h3>Plattform A — molnbaserad, tätt integrerad med befintlig infrastruktur</h3>
+  <p>
+    Den molnbaserade varianten är designad för organisationer som redan lever i ett modernt molnekosystem. Den är bygd som en tjänst — ni betalar för den data ni skickar in, inte för licenser, hårdvara eller underhåll. Integrationen med vanliga kontorsverktyg och identitetstjänster är nativ, vilket innebär att ni ofta kan vara igång på veckor snarare än månader.
+  </p>
+  <p>
+    Kostnadsmodellen är förbrukningsbaserad: ni betalar per gigabyte insamlad data per dag. För en organisation med 150 anställda och ett normalt IT-fotavtryck landar det typiskt på <strong>20 000–60 000 kronor per månad</strong>, beroende på hur mycket data ni genererar. Det finns möjlighet att reducera kostnaden genom att filtrera vilka datakällor ni aktiverar.
+  </p>
+  <p>
+    Den stora styrkan är att komplexiteten är hanterad — plattformen uppdateras automatiskt, hotintelligens uppdateras kontinuerligt, och för en organisation utan ett dedikerat Security Operations Center (SOC) är det värdefullt att mycket av underhållet är inbyggt i tjänsten.
+  </p>
+
+  <h3>Plattform B — marknadsledande, kraftfull, resurskrävande</h3>
+  <p>
+    Den andra plattformen är äldre, mer etablerad och extremt kraftfull. Den används av världens största organisationer, nationella underrättelsetjänster och globala banker. Den kan göra nästan vad som helst — om ni har rätt kompetens att driva den.
+  </p>
+  <p>
+    Och det är precis där skon klämmer för en organisation med 100 till 1 000 anställda. Plattformen är komplex att implementera, kräver specialistkompetens för att konfigureras korrekt, och prissättningen är notoriskt svår att förutse. En grundläggande enterprise-licens kostar ofta <strong>500 000–2 000 000 kronor per år</strong> för en medelstort organisation, och därutöver tillkommer konsultkostnader för implementation och löpande drift.
+  </p>
+  <p>
+    Det råder ingen tvekan om att plattformen är tekniskt överlägsen på många punkter. Men överlägsenhet som ni inte kan utnyttja — på grund av brist på intern kompetens eller budget — är inte ett argument för att välja den. En halvt konfigurerad avancerad plattform ger sämre NIS2-efterlevnad än en välkonfigurerad enklare plattform.
+  </p>
+
+  <h2>Vad jämförelsen faktiskt handlar om för er</h2>
+
+  <p>
+    Det finns fyra dimensioner som är relevanta för er som ledning — inte för er IT-avdelning, utan för er:
+  </p>
+
+  <h3>1. Kostnad och förutsägbarhet</h3>
+  <p>
+    Molnbaserade tjänster med förbrukningsmodell är förutsägbara och skalbara. Om er organisation växer, skalas kostnaden upp. Om ni minskar datavolymen, minskar kostnaden. Det gör budgeteringsprocessen hanterbar och eliminerar risken för oväntade licensuppgraderingar.
+  </p>
+  <p>
+    Den traditionella on-premise- eller hybridmodellen med en stor licensavgift kräver å andra sidan en initial investering och en flerårig plan. Det passar organisationer som har stor IT-stab, hög datakänslighet och befintlig infrastruktur att skydda — men det passar sällan en organisation med 100–300 anställda utan dedikerat säkerhetsteam.
+  </p>
+
+  <h3>2. Tid till efterlevnad</h3>
+  <p>
+    NIS2 kräver att ni är compliant nu — inte när er treåriga implementationsplan är klar. En plattform som kan vara operativ på fyra till åtta veckor med hjälp av en certifierad partner är mer värdefull ur ett efterlevnadsperspektiv än en plattform som tar sex till arton månader att rulla ut korrekt.
+  </p>
+  <p>
+    Tillsynsmyndigheten accepterar inte "vi håller på att implementera" som svar på en granskning. Antingen finns förmågan på plats, eller så gör den inte det.
+  </p>
+
+  <h3>3. Intern kompetens</h3>
+  <p>
+    Den ärligaste frågan ni kan ställa er själva är: har vi personal som kan underhålla och vidareutveckla det här systemet under de kommande tre åren? Om svaret är nej — och för de flesta organisationer med under 500 anställda är svaret nej — är plattformens komplexitet ett direkt säkerhetsproblem. En SIEM som ingen kan förstå varnar inte effektivt, och en varning ingen förstår är ingen varning alls.
+  </p>
+
+  <h3>4. Integration med er befintliga miljö</h3>
+  <p>
+    En avgörande praktisk faktor är hur väl SIEM-plattformen integrerar med era befintliga verktyg. En organisation som primärt använder molnbaserade kontors- och identitetstjänster drar stor nytta av nativa integrationer — alla loggar flödar in automatiskt utan manuellt arbete. En organisation med en heterogen, äldre IT-miljö kanske behöver en plattform med bredare stöd för legacy-system, vilket kan tala för den mer etablerade traditionella aktören.
+  </p>
+
+  <div class="box-info">
+    <strong>Viktigt att förstå:</strong> NIS2 ger inga krav på specifika plattformar. Kravet är att ni har <em>fungerande förmåga</em> — loggning, övervakning och incidentdetektering. Tillsynsmyndigheten bedömer resultatet, inte varumärket på er SIEM-lösning. Det bästa SIEM-systemet är det som faktiskt är konfigurerat, bemannat och testat i er specifika miljö.
+  </div>
+
+  <h2>Vad kräver tillsynsmyndigheten — konkret</h2>
+
+  <p>
+    Det är en fråga ni bör ställa er styrelse och er IT-ansvarig i kombination. Tillsynsmyndigheten — oavsett om det är MSB, Finansinspektionen, Energimarknadsinspektionen eller annan sektoriell tillsynsmyndighet — kommer att bedöma följande:
+  </p>
+
+  <ul>
+    <li><strong>Loggtäckning:</strong> Vilka system loggas? Täcker ni nätverkstrafik, inloggningshändelser, administratörsåtkomst, e-postsystem och molntjänster?</li>
+    <li><strong>Lagringstid:</strong> NIS2 specificerar inte ett exakt antal månader, men ENISA rekommenderar minst 12 månader. Branschpraxis och nationella riktlinjer pekar mot samma nivå.</li>
+    <li><strong>Larmberedskap:</strong> Vem tar emot ett larm klockan tre på natten? Finns det en eskaleringsväg? Är den dokumenterad och testad?</li>
+    <li><strong>Korrelation och analys:</strong> Kan systemet koppla samman händelser från olika källor för att detektera ett avancerat angrepp som sker i flera steg?</li>
+    <li><strong>Incidentrespons-integration:</strong> Är SIEM-plattformen kopplad till er incidenthanteringsplan? När ett larm utlöses — vad händer härnäst, och kan ni visa det?</li>
+  </ul>
+
+  <p>
+    Det är inte en lista för er IT-avdelning. Det är en lista som styrelsen bör begära status på — kvartalsvis, dokumenterat, undertecknat.
+  </p>
+
+  <table class="fine-table">
+    <thead>
+      <tr>
+        <th>Dimension</th>
+        <th>Molnbaserad tjänst</th>
+        <th>Traditionell on-premise/hybrid</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Startkostnad</td>
+        <td>Låg — förbrukningsbaserad</td>
+        <td class="amount">Hög — stor licensavgift</td>
+      </tr>
+      <tr>
+        <td>Tid till driftsättning</td>
+        <td>4–8 veckor</td>
+        <td class="amount">6–18 månader</td>
+      </tr>
+      <tr>
+        <td>Krav på intern kompetens</td>
+        <td>Måttlig</td>
+        <td class="amount">Hög — specialister krävs</td>
+      </tr>
+      <tr>
+        <td>Lämplighet för 100–500 anst.</td>
+        <td>Hög</td>
+        <td>Begränsad</td>
+      </tr>
+      <tr>
+        <td>Lämplighet för 500–1 000 anst.</td>
+        <td>Hög–Mycket hög</td>
+        <td>Möjlig med rätt resurser</td>
+      </tr>
+      <tr>
+        <td>Automatisk hotintelligens</td>
+        <td>Inbyggd, kontinuerlig</td>
+        <td>Kräver konfiguration och uppdatering</td>
+      </tr>
+      <tr>
+        <td>NIS2-rapporteringsstöd</td>
+        <td>Nativt via inbyggda dashboards</td>
+        <td>Kräver anpassade rapporter</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>Den verkliga fällan: ett SIEM ni inte kan använda</h2>
+
+  <p>
+    Det finns ett scenario som återkommer i tillsynsgranskningar runt om i Europa, och det är det mest undvikbara av alla: organisationen har ett SIEM-system, men det är felkonfigurerat, inte övervakat och genererar tusentals falska larm per dag som ingen tittar på.
+  </p>
+
+  <p>
+    I det läget har ni investerat i ett verktyg som varken skyddar er eller imponerar på tillsynsmyndigheten. Plattformen finns på pappret — förmågan finns inte i verkligheten.
+  </p>
+
+  <p>
+    Det är här valet mellan en komplex och en enklare plattform blir avgörande. En välkonfigurerad enklare plattform som genererar fem relevanta larm per dag — och där dessa larm faktiskt hanteras av er IT-ansvarig eller en extern SOC-partner — är oändligt mycket mer värdefull ur ett NIS2-perspektiv än ett avancerat system som drunknar i brus.
+  </p>
+
+  <blockquote>
+    "Det bästa SIEM-systemet är det ni faktiskt använder."
+  </blockquote>
+
+  <p>
+    Det är ett påstående som låter trivialt men som har djupa konsekvenser för hur ni bör tänka kring plattformsvalet. Ledningens uppgift är inte att välja det tekniskt mest imponerande systemet — det är att säkerställa att det system ni väljer faktiskt är i drift, bemannat och integrerat i era säkerhetsprocesser.
+  </p>
+
+  <h2>Vad organisationsstorleken betyder — konkret</h2>
+
+  <p>
+    För en organisation med <strong>100–250 anställda</strong> är verkligheten ofta att IT-funktionen är liten — ibland en enda person, ibland en extern leverantör. I det läget är en molnbaserad tjänst med hög automation och inbyggd hotintelligens inte bara ett bekvämt val, det är i praktiken det enda realistiska valet. Alternativet — en tung on-premise-plattform som kräver dedikerade SIEM-specialister — skapar en kompetensberoende som ni inte kan uppfylla.
+  </p>
+
+  <p>
+    För en organisation med <strong>250–600 anställda</strong> vidgas möjligheterna. Ni kanske har ett litet internt säkerhetsteam eller anlitar en Managed Security Service Provider (MSSP). Här kan båda plattformstyperna fungera — men det kräver en ärlig bedömning av er interna kapacitet. Har ni faktiskt en person som kan arbeta heltid med SIEM-plattformen? Har ni budget för den externa kompetens som krävs för att hålla den uppdaterad?
+  </p>
+
+  <p>
+    För en organisation med <strong>600–1 000 anställda</strong> är behovet av en robust plattform starkare, och förmågan att investera i rätt kompetens är troligen bättre. Här kan en traditionell, kraftfullare lösning vara motiverad — förutsatt att ni har, eller planerar att rekrytera, den interna kompetens som krävs.
+  </p>
+
+  <div class="box-case">
+    <div class="case-label">Fallstudie</div>
+    <p>
+      <strong>Scenario: Regionalt energibolag i Sverige, 220 anställda. Klassas som väsentlig entitet under NIS2.</strong>
+    </p>
+    <p>
+      Bolaget saknade en samlad logghanteringslösning. IT-avdelningen bestod av tre personer och en extern driftleverantör. Styrelsen beslutade under hösten 2024 att utreda SIEM-alternativ.
+    </p>
+    <p>
+      Det första alternativet som utreddes var en traditionell enterprise-plattform. Offerten landade på 1,4 miljoner kronor i annual licence fee, plus uppskattade konsultkostnader om 800 000 kronor för implementation under det första året. Den interna IT-avdelningen bedömde att de inte hade kapacitet att driva plattformen utan minst en ytterligare heltidstjänst med SIEM-specialistkompetens.
+    </p>
+    <p>
+      Det andra alternativet var en molnbaserad SIEM-tjänst, konfigurerad av en certifierad partner på sex veckor. Löpande kostnad: 38 000 kronor per månad. Bolaget anlitade en extern SOC-tjänst för larmhantering utanför kontorstid till en kostnad av 12 000 kronor per månad.
+    </p>
+    <p>
+      <strong>Utfall:</strong> Styrelsen valde den molnbaserade lösningen. Totalkostnad år ett: <span class="highlight">600 000 kronor</span> inkl. implementation och SOC-tjänst. Systemet var operativt innan årets slut. Vid en MSB-granskning sex månader senare kunde bolaget presentera 12 månaders logghistorik, dokumenterade larmprocedurer och tre testade incidentscenarier. Granskningen avslutades utan anmärkning.
+    </p>
+  </div>
+
+  <h2>Tre frågor styrelsen bör ställa på nästa möte</h2>
+
+  <p>
+    Ni behöver inte förstå den tekniska arkitekturen bakom er SIEM-plattform. Men ni behöver ställa rätt frågor för att säkerställa att organisationen faktiskt är skyddad — och att ni kan bevisa det.
+  </p>
+
+  <h3>Fråga 1: Är systemet faktiskt i drift och övervakat?</h3>
+  <p>
+    Det räcker inte att ett SIEM-system är inköpt och installerat. Frågan är om det är konfigurerat för er specifika miljö, om det genererar larm och om dessa larm hanteras av en person med tydligt ansvar. Be att få se ett rapportexempel från de senaste 30 dagarna.
+  </p>
+
+  <h3>Fråga 2: Hur lång tid tar det att identifiera ett intrång?</h3>
+  <p>
+    Den globala genomsnittstiden för att identifiera ett dataintrång är fortfarande alldeles för lång. NIS2 förutsätter att ni identifierar allvarliga incidenter snabbt nog för att rapportera inom 24 timmar. Fråga er IT-ansvarig: om ett intrång sker ikväll, när märker vi det?
+  </p>
+
+  <h3>Fråga 3: Kan vi bevisa detta för en tillsynsmyndighet?</h3>
+  <p>
+    Det är den ultimata frågan. Be att få se den dokumentation som ni skulle lämna över om tillsynsmyndigheten begärde granskning i morgon. Loggtäckning, larmprocedurer, eskaleringsvägar, testprotokoll. Är dessa dokument klara och daterade? Om inte — är det ett styrelsebeslut att åtgärda det, inte en IT-uppgift.
+  </p>
+
+  <h2>Det du förmodligen undrar</h2>
+
+  <div class="faq-item">
+    <div class="faq-q">Måste vi ha ett eget SIEM-system, eller kan vi anlita en extern tjänst?</div>
+    <div class="faq-a">NIS2 kräver förmåga, inte en specifik driftsmodell. Ni kan outsourca SIEM-driften till en Managed Security Service Provider (MSSP) eller anlita en partner som driftar och övervakar systemet åt er. Det viktiga är att ni kan visa att förmågan finns — och att ni som ledning förstår hur systemet fungerar och vad det rapporterar. Artikel 20 kräver att ledningen aktivt godkänner säkerhetsåtgärderna, vilket också gäller outsourcade tjänster.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">Hur länge måste vi spara loggar?</div>
+    <div class="faq-a">NIS2-direktivet specificerar inte ett exakt antal månader, men ENISA — EU:s cybersäkerhetsbyrå — rekommenderar minst 12 månader. Nationella tillsynsmyndigheter och branschstandarder som ISO 27001 pekar i samma riktning. Kortare lagringstid innebär en risk att ni inte kan rekonstruera händelseförloppet vid en incident — vilket direkt påverkar er förmåga att uppfylla rapporteringskraven i Artikel 23.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">Vi har redan ett antivirusprogram och en brandvägg. Är inte det tillräckligt?</div>
+    <div class="faq-a">Tyvärr inte. Antivirusprogram och brandväggar är perimeterskydd — de ska hindra attacker från att ta sig in. Ett SIEM-system är detektionskontroll — det ska identifiera vad som händer inuti er miljö när perimeterskyddet har passerats, eller när en insider missbrukar sin behörighet. NIS2 kräver båda typerna av skydd. Artikel 21 listar specifikt "övervakning" och "logghantering" som obligatoriska åtgärder.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">Vad kostar det att inte ha ett SIEM-system?</div>
+    <div class="faq-a">Direktkostnaden för bristande logghantering kan vara upp till 10 miljoner euro i sanktionsavgift för en väsentlig entitet. Men den indirekta kostnaden är ofta högre: ett intrång som inte detekteras i tid orsakar längre driftstopp, större dataförlust och mer omfattande juridisk hantering. En organisation som drabbas av ransomware utan fungerande loggning kan inte ens fastställa exakt vilken data som har exfiltrerats — vilket komplicerar anmälningsskyldigheten enormt och skapar osäkerhet i förhållande till GDPR.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">Hur snabbt kan vi ha ett SIEM på plats?</div>
+    <div class="faq-a">Med en molnbaserad lösning och en certifierad implementationspartner är fyra till åtta veckor en realistisk tidsram för grundkonfiguration som täcker de mest kritiska datakällorna. En fullständig konfiguration med anpassade larmprocedurer, SOC-integration och testprotokoll tar ytterligare fyra till åtta veckor. Det innebär att en organisation som påbörjar processen nu kan ha en fungerande SIEM-förmåga före sommarens slut.</div>
+  </div>
+
+  <div class="box-info" style="margin: 48px 0 32px;">
+    <div style="font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color: var(--yellow); margin-bottom:10px;">🔧 VERKTYG &amp; LÖSNINGAR</div>
+    <p style="margin:0; font-size:17px; color: #ddd; line-height:1.7;">För NIS2-kompliant logghantering och incidentdetektering rekommenderas <strong>Microsoft Sentinel</strong> (molnbaserad SIEM) i kombination med <strong>Microsoft Defender XDR</strong> för utökad hotdetektering och automatiserad incidentrespons. Tillsammans täcker de loggsamling, korrelation, larmhantering och rapportering — direkt integrerat med er befintliga Microsoft 365-miljö. En certifierad Microsoft-partner kan genomföra en kostnadsfri gap-analys och sätta upp grundkonfigurationen inom några veckor.</p>
+  </div>
+
+  <!-- NEWSLETTER -->
+  <div style="background:#111; border:1px solid rgba(255,255,255,0.1); border-left:3px solid #f5c518; border-radius:4px; padding:32px 36px; margin:40px 0 0; text-align:center; max-width:760px; margin-left:auto; margin-right:auto;">
+    <div style="font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:#f5c518; margin-bottom:12px;">📬 NIS2-UPPDATERINGAR</div>
+    <h3 style="font-family:'Poppins',sans-serif; font-size:20px; font-weight:800; margin:0 0 8px; color:#f0f0f0;">Ny NIS2-artikel varje vecka — direkt i inkorgen</h3>
+    <p style="color:#888; font-size:15px; margin:0 0 20px;">Ingen säljpitch. Bara konkret vägledning för VD:ar och styrelser.</p>
+    <form id="nlForm-microsoft_sentinel_vs_splunk_siem" onsubmit="submitNewsletter_microsoft_sentinel_vs_splunk_siem(event)" style="display:flex; gap:10px; flex-wrap:wrap; justify-content:center; max-width:460px; margin:0 auto;">
+      <input type="email" id="nlEmail-microsoft_sentinel_vs_splunk_siem" placeholder="din@foretag.se" required
+             style="flex:1; min-width:200px; padding:12px 16px; background:#1c1c1f; border:1px solid rgba(255,255,255,0.15); border-radius:4px; color:#f0f0f0; font-size:15px; outline:none;" />
+      <button type="submit" id="nlSubmit-microsoft_sentinel_vs_splunk_siem"
+              style="padding:12px 22px; background:#f5c518; color:#141416; font-weight:700; font-size:15px; border:none; border-radius:4px; cursor:pointer; white-space:nowrap;">
+        Prenumerera gratis →
+      </button>
+    </form>
+    <p style="font-size:12px; color:#555; margin:12px 0 0;">Du kan avprenumerera när som helst. Vi delar aldrig din e-post.</p>
+    <div id="nlThanks-microsoft_sentinel_vs_splunk_siem" style="display:none; color:#4ade80; font-size:16px; font-weight:600; margin-top:14px;">✅ Du är med! Nästa artikel kommer direkt till din inkorg.</div>
+  </div>
+
+  <!-- CTA -->
+  <div class="cta-section">
+    <h2>Vet du var din organisation står idag?</h2>
+    <p>En kostnadsfri gap-analys med en certifierad Microsoft-partner visar exakt vad ni redan har täckt — och vad som saknas.</p>
+    <a href="/nis2.html#boka" class="btn-primary">Boka kostnadsfri gap-analys →</a>
+    <p class="cta-fine">Böterna är upp till <strong>10 miljoner euro</strong>. Gap-analysen är gratis.</p>
+  </div>
+
+</article>
+
+<div class="related-articles" style="margin:2.5rem 0 2rem;padding:1.5rem;background:#1a1a2e;border-left:4px solid #f0a500;border-radius:4px; max-width:760px; margin-left:auto; margin-right:auto;">
+  <p style="margin:0 0 1rem;font-size:0.85rem;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:#f0a500;">Läs också</p>
+  <ul style="margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:0.5rem;">
+    <li><a href="/artiklar/nis2-incidentrapportering-24-timmar.html" style="color:#e0e0e0;text-decoration:none;font-size:0.95rem;">&#x2192; NIS2-incidentrapportering: 24-timmarsregeln</a></li>
+    <li><a href="/artiklar/nis2-personligt-ansvar-styrelse.html" style="color:#e0e0e0;text-decoration:none;font-size:0.95rem;">&#x2192; Styrelsens personliga ansvar</a></li>
+    <li><a href="/artiklar/nis2-vilka-foretag-omfattas.html" style="color:#e0e0e0;text-decoration:none;font-size:0.95rem;">&#x2192; Vilka företag omfattas?</a></li>
+  </ul>
+  <p style="margin:1.25rem 0 0;font-size:0.85rem;color:#aaa;">&#8592; <a href="/nis2.html" style="color:#f0a500;text-decoration:none;">NIS2Klar startsida</a> &nbsp;&middot;&nbsp; <a href="/artiklar.html" style="color:#f0a500;text-decoration:none;">Alla guider</a></p>
+</div>
+
+<footer>
+  <a href="mailto:support@trustedmarketing.se">support@trustedmarketing.se</a> · <a href="tel:+46470597003">+46 470 59 70 03</a> ·
+  © 2026 M&amp;J Trusted Marketing KB ·
+  <a href="mailto:jan@nis2klar.se">jan@nis2klar.se</a> ·
+  <a href="/nis2.html">Tillbaka till startsidan</a> ·
+  <a href="/privacy.html">Integritetspolicy</a>
+  <p style="margin-top:12px; font-size:11px; color: #555; line-height:1.5;">Microsoft, Microsoft 365, Azure och tillhörande produktnamn är varumärken som tillhör Microsoft Corporation. nis2klar.se är inte affilierat med eller godkänt av Microsoft Corporation.</p>
+</footer>
+
+<script data-cfasync="false">
+  async function submitNewsletter_microsoft_sentinel_vs_splunk_siem(e) {
+    e.preventDefault();
+    const btn = document.getElementById('nlSubmit-microsoft_sentinel_vs_splunk_siem');
+    btn.disabled = true;
+    btn.textContent = 'Skickar...';
+    const email = document.getElementById('nlEmail-microsoft_sentinel_vs_splunk_siem').value.trim();
+    try {
+      const res = await fetch('/api/newsletter/subscribe', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, source: 'artikel-microsoft_sentinel_vs_splunk_siem' })
+      });
+      const data = await res.json();
+      if (data.success) {
+        document.getElementById('nlForm-microsoft_sentinel_vs_splunk_siem').style.display = 'none';
+        document.getElementById('nlThanks-microsoft_sentinel_vs_splunk_siem').style.display = 'block';
+      } else {
+        btn.disabled = false;
+        btn.textContent = 'Prenumerera gratis →';
+      }
+    } catch {
+      btn.disabled = false;
+      btn.textContent = 'Prenumerera gratis →';
+    }
+  }
+</script>
+
+</body>
+</html>

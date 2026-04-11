@@ -2198,6 +2198,195 @@ function BuyingTriggers({ lead }) {
   );
 }
 
+// ---- IT Vendor Battle Card (MS vs konkurrenter) ----
+const IT_VENDORS = {
+  crowdstrike: {
+    name: 'CrowdStrike Falcon',
+    keywords: ['crowdstrike', 'falcon'],
+    color: 'orange',
+    price: '~kr 300–400/endpoint/mån',
+    msprice: 'Ingår i M365 Business Premium (~kr 285/user/mån total)',
+    gap: 'Täcker bara endpoints — inte email, identitet eller data',
+    win: 'Defender for Endpoint P2 är topprankad (Gartner/AV-TEST). Defender täcker endpoint + email + identitet + data i ett flöde. CrowdStrike kräver separat IdP + SIEM = 3 leverantörer.',
+    objections: [
+      { q: 'CrowdStrike är bättre än Defender', a: 'Skillnaden är marginell i EDR-rankning — men CrowdStrike täcker bara endpoints. Ni betalar för halva lösningen och saknar fortfarande email-skydd och identitetsskydd.' },
+      { q: 'Vi är vana vid CrowdStrike', a: 'Det förstår jag. Men vid en NIS2-tillsyn vill ni visa ett sammanhängande ramverk — inte ett lapptäcke av verktyg. Defender + M365 ger en portal, ett avtal, en audit log.' },
+    ],
+    discovery: 'Vilken lösning täcker er email-säkerhet idag? Och hur korrelerar ni email-hot med endpoint-detektioner?',
+  },
+  okta: {
+    name: 'Okta',
+    keywords: ['okta'],
+    color: 'blue',
+    price: '~kr 185/user/mån (Essentials)',
+    msprice: 'Entra ID P1 ingår i M365 Business Premium — ingen extra kostnad',
+    gap: 'Kostar extra ovanpå M365 ni redan betalar för',
+    win: 'Ni betalar dubbelt för IAM. Entra ID P1 ingår redan i er M365-licens. Entra P2 (PIM) kostar ~kr 80/user/mån för admins — Okta PAM kostar mångfalt mer.',
+    objections: [
+      { q: 'Okta är mer flexibelt', a: 'Okta är bra för multi-cloud med många olika IdP:s. Om ni primärt kör M365 är Entra native-integrerat och ingår — ni betalar kr 185/user/mån för ingenting extra.' },
+      { q: 'Vi har byggt mycket i Okta', a: 'Då förstår jag att det är ett beslut. Men räkna på det: 100 users × kr 185 = kr 18 500/mån = kr 222 000/år — för något som ingår i er M365-licens.' },
+    ],
+    discovery: 'Hur många av era applikationer är Microsoft-baserade? Och hur hanterar ni Conditional Access för era M365-tjänster idag?',
+  },
+  jamf: {
+    name: 'Jamf',
+    keywords: ['jamf'],
+    color: 'purple',
+    price: '~kr 280–350/device/mån',
+    msprice: 'Intune ingår i M365 Business Premium',
+    gap: 'Täcker bara Mac — inte Windows, mobil eller server',
+    win: 'Intune hanterar Mac, Windows och mobil i ett verktyg som redan ingår. Jamf saknar native integration med Entra och Defender — ingen samlad compliance-vy.',
+    objections: [
+      { q: 'Jamf är bättre för Mac', a: 'Historiskt stämmer det. Intune för Mac har kommit ikapp kraftigt sedan 2023. För en blandad miljö med Windows + Mac är Intune överlägset ur ett NIS2-perspektiv — allt syns på ett ställe.' },
+      { q: 'Vi har mycket Mac', a: 'Hur stor andel är Windows vs Mac? Om ni har blandad miljö betalar ni för Jamf (Mac) + något annat för Windows. Intune täcker båda i ett.' },
+    ],
+    discovery: 'Hur hanterar ni era Windows-enheter idag? Och hur ser ni compliance-status för alla enheter samlat — Mac och Windows?',
+  },
+  sophos: {
+    name: 'Sophos / ESET',
+    keywords: ['sophos', 'eset', 'intercept x'],
+    color: 'red',
+    price: '~kr 180–250/user/mån',
+    msprice: 'Defender for Business ingår i M365 Business Premium',
+    gap: 'Täcker bara endpoints — byggt för en era av fil- och USB-hot',
+    win: 'Moderna hot (phishing, credential theft) kräver korrelation mellan email, identitet och endpoint. Sophos/ESET klarar inte det utan ytterligare produkter. Defender täcker hela ytan och är topprankad av AV-TEST.',
+    objections: [
+      { q: 'Vi har alltid haft Sophos', a: 'Det fungerar säkert för grundläggande skydd. Men NIS2 kräver att ni kan korrelera hot över hela miljön — email + identitet + endpoint. Det klarar inte Sophos utan en SIEM och ytterligare produkter.' },
+      { q: 'ESET är billigare', a: 'ESET är billigare än Sophos — men fortfarande kr 150–200/user/mån för bara endpoint. Defender ingår i er M365-licens och täcker mer.' },
+    ],
+    discovery: 'Hur hanterar ni email-säkerhet och phishing-skydd idag? Och om en användare klickar på en phishing-länk — hur lång tid tar det innan ni märker det?',
+  },
+  google: {
+    name: 'Google Workspace',
+    keywords: ['google workspace', 'google apps', 'gsuite', 'g suite', 'gmail'],
+    color: 'yellow',
+    price: '~kr 220/user/mån (Business Plus)',
+    msprice: 'M365 Business Premium ~kr 285/user/mån — men inkluderar EDR, MDM och IAM',
+    gap: 'Saknar EDR, fullständigt MDM och PIM — måste köpas separat (totalt ~kr 1 000/user/mån)',
+    win: 'Google är billigare för email. För NIS2 behöver en Google-kund lägga till CrowdStrike + Okta + Jamf = kr 785 extra per user. Totalt kr 1 005/user vs M365 kr 285/user.',
+    objections: [
+      { q: 'Google är billigare', a: 'Google är billigare för email och kalender — kr 65/user/mån mindre. Men för NIS2 behöver ni lägga till EDR, MDM och IAM. Då är Google 3x dyrare totalt.' },
+      { q: 'Vi är vana vid Google', a: 'Många är det. Frågan är om ni vill betala kr 720 extra per user per månad och hantera 4 leverantörsrelationer för att bibehålla den vanan.' },
+    ],
+    discovery: 'Hur hanterar ni endpoint-skydd och enhetshantering idag? Och vad använder ni för MFA och Conditional Access?',
+  },
+};
+
+function detectVendor(lead) {
+  const searchText = [
+    lead?.notes || '',
+    lead?.outreach_angle || '',
+    lead?.tech_stack || '',
+    lead?.extra_context || '',
+  ].join(' ').toLowerCase();
+
+  if (!searchText.trim()) return null;
+  for (const [key, vendor] of Object.entries(IT_VENDORS)) {
+    if (vendor.keywords.some(kw => searchText.includes(kw))) return { key, ...vendor };
+  }
+  return null;
+}
+
+const VENDOR_COLORS = {
+  orange: { bg: 'bg-orange-950/30', border: 'border-orange-500/20', title: 'text-orange-300', badge: 'bg-orange-500/20 text-orange-300', pill: 'bg-orange-500/10 text-orange-200 border-orange-500/20' },
+  blue:   { bg: 'bg-blue-950/30',   border: 'border-blue-500/20',   title: 'text-blue-300',   badge: 'bg-blue-500/20 text-blue-300',   pill: 'bg-blue-500/10 text-blue-200 border-blue-500/20' },
+  purple: { bg: 'bg-purple-950/30', border: 'border-purple-500/20', title: 'text-purple-300', badge: 'bg-purple-500/20 text-purple-300', pill: 'bg-purple-500/10 text-purple-200 border-purple-500/20' },
+  red:    { bg: 'bg-red-950/30',    border: 'border-red-500/20',    title: 'text-red-300',    badge: 'bg-red-500/20 text-red-300',    pill: 'bg-red-500/10 text-red-200 border-red-500/20' },
+  yellow: { bg: 'bg-yellow-950/30', border: 'border-yellow-500/20', title: 'text-yellow-300', badge: 'bg-yellow-500/20 text-yellow-300', pill: 'bg-yellow-500/10 text-yellow-200 border-yellow-500/20' },
+};
+
+function VendorBattleCard({ lead }) {
+  const [open, setOpen] = useState(true);
+  const [manualVendor, setManualVendor] = useState('');
+  const detected = detectVendor(lead);
+  const selected = manualVendor ? IT_VENDORS[manualVendor] : detected;
+  const c = selected ? VENDOR_COLORS[selected.color] : null;
+
+  return (
+    <div className={`border rounded-xl ${selected ? `${c.bg} ${c.border}` : 'bg-slate-900/40 border-slate-700/30'}`}>
+      <button onClick={() => setOpen(o => !o)} className="w-full flex justify-between items-center px-5 py-3.5 text-left">
+        <span className={`flex items-center gap-2 font-semibold text-sm ${selected ? c.title : 'text-slate-400'}`}>
+          🛡️ IT-vendor Battle Card
+          {selected && <span className={`text-xs px-2 py-0.5 rounded-full font-normal ${c.badge}`}>{selected.name}</span>}
+          {!selected && <span className="text-xs text-slate-500 font-normal">— ange verktyg i notes för auto-detektering</span>}
+        </span>
+        <span className={`text-xs ${selected ? c.title : 'text-slate-500'}`}>{open ? '▲' : '▼'}</span>
+      </button>
+
+      {open && (
+        <div className="px-5 pb-5 space-y-4">
+          {/* Manual vendor selector */}
+          <div className="flex gap-2 flex-wrap">
+            {Object.entries(IT_VENDORS).map(([key, v]) => (
+              <button key={key}
+                onClick={() => setManualVendor(manualVendor === key ? '' : key)}
+                className={`text-xs px-3 py-1 rounded-full border transition-all ${
+                  (manualVendor === key || (!manualVendor && detected?.key === key))
+                    ? `${VENDOR_COLORS[v.color].pill} border font-semibold`
+                    : 'bg-slate-800 border-slate-700 text-slate-400 hover:border-slate-500'
+                }`}>
+                {v.name}
+              </button>
+            ))}
+          </div>
+
+          {selected ? (
+            <div className="space-y-3">
+              {/* Price comparison */}
+              <div className={`rounded-lg p-3 border ${c.pill} border-opacity-30`}>
+                <div className="text-xs font-semibold text-slate-400 uppercase tracking-wide mb-2">💰 Kostnadsjämförelse</div>
+                <div className="grid grid-cols-2 gap-3 text-xs">
+                  <div>
+                    <div className={`font-semibold mb-1 ${c.title}`}>{selected.name}</div>
+                    <div className="text-slate-300">{selected.price}</div>
+                  </div>
+                  <div>
+                    <div className="font-semibold text-green-400 mb-1">Microsoft</div>
+                    <div className="text-slate-300">{selected.msprice}</div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Gap */}
+              <div className="bg-slate-800/50 rounded-lg p-3 border border-slate-700/30">
+                <div className="text-xs font-semibold text-slate-400 uppercase tracking-wide mb-1">⚠️ Deras gap</div>
+                <div className="text-sm text-slate-200">{selected.gap}</div>
+              </div>
+
+              {/* Win argument */}
+              <div className="bg-green-950/30 rounded-lg p-3 border border-green-500/20">
+                <div className="text-xs font-semibold text-green-400 uppercase tracking-wide mb-1">✅ Så vinner vi</div>
+                <div className="text-sm text-slate-200 leading-relaxed">{selected.win}</div>
+              </div>
+
+              {/* Objections */}
+              <div className="space-y-2">
+                <div className="text-xs font-semibold text-slate-400 uppercase tracking-wide">💬 Vanliga invändningar</div>
+                {selected.objections.map((o, i) => (
+                  <div key={i} className="bg-slate-800/40 rounded-lg p-3 border border-slate-700/20 text-xs space-y-1">
+                    <div className={`font-semibold ${c.title}`}>"{o.q}"</div>
+                    <div className="text-slate-300 leading-relaxed">→ {o.a}</div>
+                  </div>
+                ))}
+              </div>
+
+              {/* Discovery question */}
+              <div className="bg-violet-950/30 rounded-lg p-3 border border-violet-500/20">
+                <div className="text-xs font-semibold text-violet-400 uppercase tracking-wide mb-1">🎯 Öppningsfråga under samtalet</div>
+                <div className="text-sm text-slate-200 italic">"{selected.discovery}"</div>
+              </div>
+            </div>
+          ) : (
+            <div className="text-xs text-slate-500 text-center py-4">
+              Välj ett verktyg ovan — eller skriv t.ex. "kör CrowdStrike" i notes-fältet för auto-detektering.
+            </div>
+          )}
+        </div>
+      )}
+    </div>
+  );
+}
+
 // ---- Battle Card ----
 const COMMON_COMPETITORS = ['Truesec', 'Secify', 'Advania', 'CGI', 'Atea', 'KPMG', 'PwC', 'Cygate'];
 
@@ -2701,6 +2890,7 @@ export default function LeadDetail() {
       <LinkedInSequence lead={lead} />
 
       {/* Battle card */}
+      <VendorBattleCard lead={lead} />
       <BattleCard lead={lead} />
 
       {/* Pitch angle */}

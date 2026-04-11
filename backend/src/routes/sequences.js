@@ -67,6 +67,26 @@ router.post('/:lead_id/enroll', async (req, res) => {
   }
 });
 
+// GET /api/sequences/enrolled-leads — all leads currently enrolled (active status)
+router.get('/enrolled-leads', async (req, res) => {
+  try {
+    const { rows } = await db.query(
+      `SELECT e.id AS enrollment_id, e.lead_id, e.current_step, e.enrolled_at, e.status,
+              s.name AS sequence_name, s.steps,
+              l.company_name, l.email, l.score, l.outreach_tier, l.intent_signal, l.num_employees_exact
+       FROM sequence_enrollments e
+       JOIN sequences s ON s.id = e.sequence_id
+       JOIN discovery_leads l ON l.id = e.lead_id
+       WHERE e.status = 'active'
+       ORDER BY e.enrolled_at DESC`
+    );
+    res.json({ success: true, data: { leads: rows } });
+  } catch (err) {
+    console.error('[sequences] enrolled-leads error:', err.message);
+    res.status(500).json({ success: false, error: err.message });
+  }
+});
+
 // GET /api/sequences/today — all active enrollments with a step due today (or overdue)
 router.get('/today', async (req, res) => {
   try {

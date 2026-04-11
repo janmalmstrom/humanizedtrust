@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-BKF3QH9K01"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag("js", new Date());
+    gtag("config", "G-BKF3QH9K01");
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Microsoft Purview vs Varonis: Datastyrning och NIS2-dataskydd | NIS2Klar</title>
+  <meta name="description" content="Microsoft Purview eller Varonis för NIS2-efterlevnad? Vi reder ut vad varje verktyg faktiskt täcker — klassificering, åtkomstkontroll och DLP — och vad som är överkurs för din organisation.">
+  <meta property="og:title" content="Microsoft Purview vs Varonis: Datastyrning och NIS2-dataskydd">
+  <meta property="og:description" content="Microsoft Purview eller Varonis för NIS2-efterlevnad? Vi reder ut vad varje verktyg faktiskt täcker — klassificering, åtkomstkontroll och DLP — och vad som är överkurs för din organisation.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #141416;
+      --card: #1c1c1f;
+      --yellow: #f5c518;
+      --white: #f0f0f0;
+      --muted: #888;
+      --red: #C61212;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: var(--bg); color: var(--white); font-family: 'Barlow', sans-serif; font-size: 19px; line-height: 1.8; }
+
+    /* Nav */
+    nav { display: flex; justify-content: space-between; align-items: center; padding: 20px 40px; border-bottom: 1px solid rgba(255,255,255,0.07); max-width: 900px; margin: 0 auto; }
+    .nav-logo { font-family: 'Poppins', sans-serif; font-weight: 900; font-size: 20px; color: var(--yellow); text-decoration: none; }
+    .nav-logo span { color: var(--white); }
+    .nav-back { color: var(--muted); text-decoration: none; font-size: 15px; }
+    .nav-back:hover { color: var(--white); }
+    .nav-cta { background: var(--yellow); color: #000; padding: 8px 18px; border-radius: 4px; text-decoration: none; font-weight: 700; font-size: 14px; font-family: 'Poppins', sans-serif; }
+
+    /* Article */
+    .article-wrap { max-width: 760px; margin: 0 auto; padding: 60px 40px; }
+    .article-category { font-size: 13px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 16px; }
+    h1 { font-family: 'Poppins', sans-serif; font-size: clamp(30px, 4vw, 44px); font-weight: 900; line-height: 1.2; margin-bottom: 24px; }
+    .article-meta { font-size: 15px; color: var(--muted); margin-bottom: 48px; padding-bottom: 24px; border-bottom: 1px solid rgba(255,255,255,0.07); }
+    h2 { font-family: 'Poppins', sans-serif; font-size: 26px; font-weight: 700; margin: 48px 0 16px; color: var(--white); }
+    h3 { font-family: 'Poppins', sans-serif; font-size: 20px; font-weight: 600; margin: 32px 0 12px; color: var(--yellow); }
+    p { margin-bottom: 22px; }
+    strong { color: var(--white); font-weight: 700; }
+    .highlight { color: var(--yellow); font-weight: 700; }
+    .danger { color: #ff6b6b; font-weight: 700; }
+    ul, ol { margin: 16px 0 24px 24px; }
+    li { margin-bottom: 12px; font-size: 19px; }
+
+    /* Callout boxes */
+    .box-warning { background: rgba(197,17,17,0.12); border-left: 4px solid var(--red); padding: 20px 24px; margin: 32px 0; border-radius: 0 4px 4px 0; }
+    .box-info { background: rgba(245,197,24,0.08); border-left: 4px solid var(--yellow); padding: 20px 24px; margin: 32px 0; border-radius: 0 4px 4px 0; }
+    .box-case { background: var(--card); border: 1px solid rgba(255,255,255,0.08); padding: 28px; margin: 40px 0; border-radius: 4px; }
+    .box-case .case-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 12px; }
+    blockquote { border-left: 3px solid var(--yellow); padding: 12px 20px; margin: 24px 0; font-style: italic; color: #ccc; }
+
+    /* CTA */
+    .cta-section { background: var(--card); border: 1px solid rgba(245,197,24,0.2); border-radius: 4px; padding: 48px 40px; margin: 64px 0 40px; text-align: center; }
+    .cta-section h2 { margin-top: 0; font-size: 26px; }
+    .cta-section p { color: #aaa; max-width: 500px; margin: 0 auto 28px; }
+    .btn-primary { display: inline-block; background: var(--yellow); color: #000; font-family: 'Poppins', sans-serif; font-weight: 800; font-size: 16px; padding: 16px 36px; border-radius: 4px; text-decoration: none; }
+    .btn-primary:hover { background: #e0b010; }
+    .cta-fine { font-size: 13px; color: var(--muted); margin-top: 16px; }
+
+    /* FAQ */
+    .faq-item { border-bottom: 1px solid rgba(255,255,255,0.07); padding: 20px 0; }
+    .faq-q { font-family: 'Poppins', sans-serif; font-weight: 600; margin-bottom: 10px; }
+    .faq-a { color: #bbb; }
+
+    /* Fine table */
+    .fine-table { width: 100%; border-collapse: collapse; margin: 24px 0; }
+    .fine-table th { background: rgba(245,197,24,0.1); color: var(--yellow); font-family: 'Poppins', sans-serif; font-size: 13px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 12px 16px; text-align: left; border-bottom: 1px solid rgba(245,197,24,0.2); }
+    .fine-table td { padding: 14px 16px; border-bottom: 1px solid rgba(255,255,255,0.05); font-size: 15px; }
+    .fine-table tr:last-child td { border-bottom: none; }
+    .fine-table .amount { color: #ff6b6b; font-weight: 700; }
+
+    /* Summary + Key Takeaway */
+    .box-summary { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; padding: 24px 28px; margin: 0 0 32px; }
+    .summary-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-bottom: 14px; }
+    .box-summary ul { margin: 0; padding-left: 20px; }
+    .box-summary li { margin-bottom: 8px; font-size: 17px; color: #ccc; }
+    .box-takeaway { background: rgba(245,197,24,0.08); border-left: 4px solid var(--yellow); padding: 20px 24px; margin: 0 0 40px; border-radius: 0 4px 4px 0; }
+    .takeaway-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 10px; }
+    .box-takeaway p { margin: 0; font-size: 18px; font-weight: 600; color: var(--white); line-height: 1.6; }
+
+    /* Footer */
+    footer { border-top: 1px solid rgba(255,255,255,0.07); padding: 32px 40px; text-align: center; font-size: 13px; color: var(--muted); max-width: 900px; margin: 0 auto; }
+    footer a { color: var(--muted); }
+
+    @media (max-width: 600px) {
+      nav, .article-wrap, footer { padding: 20px; }
+      .cta-section { padding: 32px 20px; }
+      .fine-table { font-size: 14px; }
+      .fine-table th, .fine-table td { padding: 10px 10px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="https://nis2klar.se/">NIS2<span>Klar</span></a>
+  <a class="nav-back" href="https://nis2klar.se/artiklar.html">← Alla artiklar</a>
+  <a class="nav-cta" href="/nis2.html#boka">Boka samtal →</a>
+</nav>
+
+<article class="article-wrap">
+  <div class="article-category">Datastyrning &amp; Informationssäkerhet</div>
+  <h1>Microsoft Purview vs Varonis: Datastyrning och NIS2-dataskydd</h1>
+  <div class="article-meta">Uppdaterad 10 april 2026 · Lästid: ca 9 minuter · Målgrupp: VD, styrelseordförande, styrelseledamot</div>
+
+  <!-- SUMMARY -->
+  <div class="box-summary">
+    <div class="summary-label">Sammanfattning</div>
+    <ul>
+      <li>NIS2 kräver att ni skyddar känslig information — men lagen specificerar inte vilket verktyg ni ska använda. Det är ert val.</li>
+      <li>Datastyrning handlar om att veta <strong>var känslig data finns, vem som har åtkomst och vad som händer med den</strong>.</li>
+      <li>Två plattformar dominerar marknaden: en bred, integrerad svit och en djupgående specialist — med fundamentalt olika filosofi.</li>
+      <li>För de flesta NIS2-reglerade organisationer i Sverige är den ena ett tillräckligt svar. Den andra är överkurs — om man inte har specifika skäl.</li>
+      <li>Ledningens ansvar är att förstå vad ni valt — inte att förstå den tekniska implementationen.</li>
+    </ul>
+  </div>
+
+  <!-- KEY TAKEAWAY -->
+  <div class="box-takeaway">
+    <div class="takeaway-label">Viktigaste slutsatsen</div>
+    <p>NIS2 kräver att din organisation vet var känsliga data finns och vem som kan nå dem. Det är ett ledningsbeslut — inte ett IT-beslut. Rätt datastyrningsverktyg ger dig beviset att ni uppfyller lagen. Fel val, eller inget val alls, ger tillsynsmyndigheten ett hål att gå igenom.</p>
+  </div>
+
+  <!-- HOOK -->
+  <p>
+    Det händer i praktiskt taget varje organisation vi pratar med: någon i IT-avdelningen vet ungefär var kunddata och avtal lagras. Ungefär. Men ingen kan svara på följande frågor med säkerhet: <strong>Vem har tillgång till känsliga filer just nu? Har den tillgången förändrats det senaste halvåret? Har någon kopierat konfidentiella dokument till ett personligt molnkonto?</strong>
+  </p>
+
+  <p>
+    Det är inte en fråga om ovilja. Det är en fråga om att de flesta organisationer aldrig har haft en systematisk process för att svara på dessa frågor. Och det var okej — tills NIS2 trädde i kraft.
+  </p>
+
+  <p>
+    Enligt <strong>Artikel 21 i NIS2-direktivet</strong> är hantering av tillgångars säkerhet, åtkomstkontroll och skydd av känslig information obligatoriska delar av er informationssäkerhet. Det är inte frivilligt. Och när tillsynsmyndigheten knackar på dörren — oavsett om det är Finansinspektionen, Transportstyrelsen eller MSB — räcker det inte att säga att "IT hanterar det". Du behöver kunna visa det.
+  </p>
+
+  <p>
+    I den här artikeln reder vi ut vad datastyrning faktiskt innebär i ett NIS2-sammanhang, vad de två dominerande plattformarna på marknaden erbjuder, och — viktigast av allt — vad du som VD eller styrelseledamot behöver förstå för att fatta rätt beslut.
+  </p>
+
+  <h2>Vad är datastyrning — och varför kräver NIS2 det?</h2>
+
+  <p>
+    Datastyrning, eller <em>data governance</em>, handlar om att ha kontroll över er organisations information under hela dess livscykel: från det att ett dokument skapas till det att det raderas. Det innefattar tre kärnfrågor:
+  </p>
+
+  <ul>
+    <li><strong>Vad har vi?</strong> — Klassificering av data: vilka filer innehåller känslig information?</li>
+    <li><strong>Vem kan nå det?</strong> — Åtkomstkontroll: har rätt personer och enbart rätt personer åtkomst?</li>
+    <li><strong>Vad händer med det?</strong> — Förebyggande av dataförlust (DLP): kan data läcka ut — avsiktligt eller av misstag?</li>
+  </ul>
+
+  <p>
+    NIS2 adresserar alla tre dimensioner, om än inte med dessa exakta termer. Artikel 21.2 kräver bland annat policyer för informationssäkerhet, tillgångshantering, åtkomstkontroll och kryptering. Kombinerat med kravet på att ledningen aktivt godkänner och övervakar säkerhetsåtgärderna — det vill säga Artikel 20 — är datastyrning inte längre en teknisk detalj. Det är ett ledningsansvar.
+  </p>
+
+  <div class="box-warning">
+    <strong>Artikel 20 gäller även datastyrning.</strong> Det räcker inte att er IT-avdelning har installerat ett verktyg. Ledningen ska förstå vad det gör, godkänna policyn kring känslig data och kunna dokumentera att man gjort det. En tillsynsmyndighet som granskar er datastyrning riktar sig lika mycket mot styrelserummet som mot serverhallen.
+  </div>
+
+  <h2>De två plattformarna — vad gör de egentligen?</h2>
+
+  <p>
+    På marknaden för datastyrning finns det två namn som dyker upp i de flesta upphandlingar bland NIS2-reglerade organisationer: en bred, integrerad plattform inbyggd i den produktsvit som många organisationer redan använder — och en specialistlösning med djupgående analysförmåga som ofta väljs av organisationer med komplexa, heterogena miljöer.
+  </p>
+
+  <p>
+    Vi håller den löpande texten leverantörsneutral. De specifika produktnamnen hittar du i verktygsboxen längre ned. Det viktiga för dig som ledare är att förstå <em>vad</em> varje approach innebär — inte vilka logotyper som sitter på dashboarden.
+  </p>
+
+  <h3>Den integrerade plattformen: bred täckning, lägre friktion</h3>
+
+  <p>
+    Den integrerade plattformen är designad för att leva inuti den produktmiljö som de flesta organisationer redan har — epost, dokument, samarbetsytor och molnlagring. Den erbjuder:
+  </p>
+
+  <ul>
+    <li><strong>Automatisk klassificering</strong> av känsliga data baserat på fördefinierade mallar — personnummer, kreditkortsnummer, patientjournalformat och liknande mönster identifieras automatiskt i era filer och e-postmeddelanden.</li>
+    <li><strong>Känslighetsetiketter</strong> som kan kopplas till filer och dokument — "Konfidentiellt", "Internt", "Publikt" — och som sedan styr vad som kan delas, skrivas ut eller vidarebefordras.</li>
+    <li><strong>DLP-policyer</strong> som blockerar eller varnar när känslig information är på väg att skickas utanför organisationen, kopieras till USB-minne eller delas med obehöriga.</li>
+    <li><strong>Granskningsloggar</strong> som registrerar vem som öppnat, redigerat eller delat ett dokument — och när.</li>
+  </ul>
+
+  <p>
+    Styrkan med denna approach är integration. Allt sitter ihop med er befintliga e-postmiljö, era SharePoint-bibliotek, era Teams-kanaler. Det kräver inte en separat infrastruktur, och det finns redan i de licenser som många svenska organisationer betalar för idag — utan att utnyttja kapaciteten fullt ut.
+  </p>
+
+  <p>
+    Svagheten är djup. Plattformen är utformad för den egna produktmiljön. Har ni äldre filservrar, Linux-system, databaser utanför molnekosystemet eller ett komplext nätverk av äldre applikationer — täcker den inte allt per automatik.
+  </p>
+
+  <h3>Specialistlösningen: djupare analys, högre komplexitet</h3>
+
+  <p>
+    Specialistlösningen är designad för organisationer som har data utspridda på många ställen: on-premise filservrar, SharePoint, NAS-enheter, molnlagringstjänster från flera leverantörer och databasservrar. Den erbjuder:
+  </p>
+
+  <ul>
+    <li><strong>Beteendeanalys</strong> — inte bara vem som har tillgång till data, utan vem som faktiskt använder det och hur. Onormalt beteende flaggas proaktivt: en anställd som plötsligt öppnar tusentals filer en fredag kväll väcker en varning.</li>
+    <li><strong>Automatiserad rättighetsanalys</strong> — plattformen kartlägger löpande vilka användare som har tillgång till vilka mappar och filer, och identifierar överflödiga eller felaktigt tilldelade rättigheter.</li>
+    <li><strong>Datariskbedömning</strong> — visualiserar var känsliga data ligger exponerade, till exempel känsliga filer i mappar med alltför bred åtkomst.</li>
+    <li><strong>Forensisk spårbarhet</strong> — vid en incident kan man gå tillbaka och rekonstruera exakt vad som hände: vilka filer som öppnades, av vem, och när.</li>
+  </ul>
+
+  <p>
+    Styrkan är djup och bredd över heterogena miljöer. Specialistlösningen är särskilt värdefull för organisationer med en lång historia av IT-system som växt organiskt — banker, sjukhus, tillverkningsföretag med äldre OT-miljöer.
+  </p>
+
+  <p>
+    Svagheten är komplexitet och kostnad. Att implementera och underhålla specialistlösningen kräver dedikerade resurser. Avkastningen är hög om ni har problemet den löser. Är er miljö relativt modern och sammanhållen, kan ni betala för en lösning som ger djupare svar på frågor ni aldrig ställer.
+  </p>
+
+  <h2>Vad täcker respektive lösning ur ett NIS2-perspektiv?</h2>
+
+  <p>
+    Låt oss vara konkreta. NIS2 ställer inte krav på specifika verktyg — men det ställer krav på specifika förmågor. Nedan är de tre kärndomänerna i datastyrning och hur de två approacherna levererar:
+  </p>
+
+  <table class="fine-table">
+    <thead>
+      <tr>
+        <th>NIS2-krav</th>
+        <th>Integrerad plattform</th>
+        <th>Specialistlösning</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Klassificering av känsliga data</td>
+        <td>Stark — automatisk identifiering i molnmiljö</td>
+        <td>Stark — täcker även on-premise och äldre system</td>
+      </tr>
+      <tr>
+        <td>Åtkomstkontroll och rättighetshantering</td>
+        <td>Grundläggande — täcker moderna molntjänster</td>
+        <td>Djupgående — beteendeanalys och rättighetsoptimering</td>
+      </tr>
+      <tr>
+        <td>DLP — förebyggande av dataförlust</td>
+        <td>Stark — inbyggd policy för e-post och filer</td>
+        <td>Kompletterande — fokus på analys snarare än blockering</td>
+      </tr>
+      <tr>
+        <td>Granskningslogg och revision</td>
+        <td>God — integrerat med befintlig miljö</td>
+        <td>Utmärkt — forensisk detaljnivå</td>
+      </tr>
+      <tr>
+        <td>Täckning av äldre system</td>
+        <td>Begränsad</td>
+        <td>Bred</td>
+      </tr>
+      <tr>
+        <td>Implementeringskomplexitet</td>
+        <td>Låg — ingår i befintliga licenser</td>
+        <td class="amount">Hög — kräver dedikerat projekt</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="box-info">
+    <strong>NIS2 kräver inte perfektion — det kräver proportionalitet.</strong> Artikel 21.1 anger att säkerhetsåtgärder ska vara proportionella mot organisationens storlek, risk och verksamhetens natur. En organisation med 80 anställda och en modern molnmiljö har andra krav än ett regionsjukhus med trettio år av IT-arv. Välj lösning efter er faktiska riskbild — inte efter vad som låter mest imponerande.
+  </div>
+
+  <h2>Klassificering av känslig data — vad ska ni faktiskt klassificera?</h2>
+
+  <p>
+    Innan ni väljer verktyg behöver ni svara på en enklare fråga: vilken data är känslig i er verksamhet? Det är inte en teknisk fråga — det är en ledningsfråga. Och svaret varierar dramatiskt beroende på sektor.
+  </p>
+
+  <p>
+    En finansiell aktör har känsliga kunduppgifter, transaktionsdata och insynsskyddad information. En hälso- och sjukvårdsorganisation hanterar patientjournaler och diagnoser. Ett energibolag har driftsinstruktioner och infrastrukturkartor. En leverantör av digital infrastruktur kan ha autentiseringsuppgifter och kryptografiska nycklar som är kritiska för tusentals andra organisationer.
+  </p>
+
+  <p>
+    Datastyrningsplattformarna hjälper er att identifiera och märka dessa data automatiskt — men de kan inte avgöra vad som är känsligt i er affärskontext. Den definitionen måste komma från ledningen, dokumenteras i en informationsklassificeringsmodell och godkännas av styrelsen. Det är precis vad Artikel 20 kräver.
+  </p>
+
+  <ul>
+    <li>Vad klassas som konfidentiellt i er organisation?</li>
+    <li>Vad är internt versus publikt?</li>
+    <li>Finns det data som är så kritisk att förlusten av den skulle utgöra en allvarlig incident enligt Artikel 23?</li>
+    <li>Hur länge ska olika typer av data bevaras — och finns det en automatiserad process för radering?</li>
+  </ul>
+
+  <p>
+    Svaren på dessa frågor är grunden för er datastyrningspolicy. Verktyget implementerar policyn. Ni definierar den.
+  </p>
+
+  <h2>Åtkomstkontroll — principen om minsta möjliga privilegium</h2>
+
+  <p>
+    En av de vanligaste bristerna vi ser hos NIS2-reglerade organisationer är inte avsaknaden av åtkomstkontroll — det är att kontrollen inte underhålls. Rättigheter ges när en anställd börjar, men tas sällan bort när rollen förändras. En säljare som befordras till chef behåller sin gamla åtkomst — och lägger till ny. Fem år senare har samma person tillgång till system och data som inte längre är relevanta för deras arbete.
+  </p>
+
+  <p>
+    Detta skapar vad säkerhetsbranschen kallar "rättighetsspridning" — och det är en direkt riskfaktor för både externa angrepp och interna dataintrång. En angripare som komprometterar ett konto med bred åtkomst kan röra sig fritt genom nätverket. En missnöjd medarbetare kan exfiltrera data ingen trodde de ens hade tillgång till.
+  </p>
+
+  <p>
+    Principen om minsta möjliga privilegium — att varje användare enbart ska ha åtkomst till det de behöver för att utföra sitt arbete — är inte bara god praxis. Den är en implicit del av NIS2:s krav på tillgångskontroll. Båda de plattformar vi diskuterar hjälper er att identifiera och korrigera rättighetsspridning, men de gör det på olika sätt och med olika djup.
+  </p>
+
+  <div class="box-case">
+    <div class="case-label">Fallstudie</div>
+    <p>
+      <strong>Scenario: Medelstort vårdbolag i Sverige, 320 anställda, klassas som väsentlig entitet.</strong>
+    </p>
+    <p>
+      Organisationen har använt sin befintliga produktsvit i tio år. E-post, dokument och patientadministration sköts digitalt. En datastyrningsrevision inleds som förberedelse inför en NIS2-granskning.
+    </p>
+    <p>
+      Revisionen avslöjar att 47 tidigare anställda fortfarande har aktiva konton med läsrättigheter till patientjournaler. Tre av dessa konton har inte loggat in på 18 månader — men rättigheterna finns kvar. Dessutom kan 214 anställda dela dokumenttypen "Patientöversikt" externt via e-post utan att det blockeras eller loggas.
+    </p>
+    <p>
+      Inget angrepp har skett. Men vid en tillsyn hade dessa brister utgjort sanktionsgrundande bristande åtkomstkontroll — och ett potentiellt GDPR-brott ovanpå NIS2-överträdelsen.
+    </p>
+    <p>
+      <strong>Åtgärd:</strong> Klassificeringsmallar för patientdata aktiverades, DLP-policy implementerades för e-post, och en kvartalsvis åtkomstgranskning dokumenterades i styrelseprotokollet. Total implementeringstid: sex veckor. Kostnad i förhållande till potentiell bötesgräns: <span class="highlight">marginell</span>.
+    </p>
+  </div>
+
+  <h2>DLP — vad är dataförlustreducering och vad täcker NIS2?</h2>
+
+  <p>
+    DLP, eller <em>Data Loss Prevention</em>, är tekniken som förhindrar att känslig information lämnar organisationen på ett okontrollerat sätt. Det kan handla om att blockera e-post med personnummer, förhindra uppladdning av känsliga filer till konsumentmolntjänster, eller larma när ovanligt stora datamängder kopieras till en USB-enhet.
+  </p>
+
+  <p>
+    För NIS2-reglerade organisationer är DLP relevant på flera sätt. Dels som en del av er informationssäkerhetspolicy — Artikel 21 kräver att ni har åtgärder på plats för att skydda känslig information. Dels som ett verktyg för att förebygga de typer av incidenter som utlöser rapporteringskrav enligt Artikel 23.
+  </p>
+
+  <p>
+    En dataläcka av patientuppgifter, kundregister eller kritisk infrastrukturinformation är en allvarlig incident som ska rapporteras inom 72 timmar. En DLP-policy som fångar läckan innan den inträffar är uppenbart att föredra — men det kräver att ni faktiskt aktiverat och konfigurerat DLP-funktionerna. Att ha en licens som inkluderar DLP och aldrig slå på den är inte efterlevnad. Det är ett falskt intryck av säkerhet.
+  </p>
+
+  <h2>Vad är överkurs — och vad är tillräckligt?</h2>
+
+  <p>
+    Den ärligaste frågan du kan ställa som VD eller styrelseledamot är: vad behöver vi faktiskt? Och svaret är inte alltid det mest avancerade alternativet.
+  </p>
+
+  <p>
+    För en organisation med en modern, sammanhållen IT-miljö — primärt molnbaserad, med etablerade identitetslösningar och relativt enhetliga system — ger den integrerade plattformen sannolikt fullgott NIS2-stöd. Den täcker klassificering, DLP och granskningsloggar. Den lever i den miljö ni redan betalar för. Och den kan aktiveras utan ett månaders implementeringsprojekt.
+  </p>
+
+  <p>
+    Specialistlösningen är överkurs om er huvudsakliga utmaning är att aktivera befintliga funktioner — inte att analysera ett komplext arv av spretiga system. Den tillför enorm värde i rätt sammanhang: sjukhus med decennier av IT-infrastruktur, finansiella aktörer med strikta krav på forensisk spårbarhet, eller organisationer som nyligen upplevt ett dataintrång och vill ha djupgående beteendeanalys.
+  </p>
+
+  <p>
+    Men om ni väljer specialistlösningen enbart för att den låter mer avancerad, utan att ha ett tydligt problem den löser — har ni investerat resurser som hade gjort mer nytta någon annanstans i er NIS2-resa.
+  </p>
+
+  <blockquote>
+    "NIS2 kräver inte det bästa verktyget. Det kräver rätt verktyg, rätt konfigurerat, med rätt dokumentation — och ett styrelsebeslut som bekräftar att ni vet vad ni har valt och varför."
+  </blockquote>
+
+  <h2>Ledningens ansvar i datastyrningsfrågor</h2>
+
+  <p>
+    Vi återkommer till Artikel 20 — för det är där många organisationer brister, även när de har rätt verktyg på plats. Att installera ett datastyrningsverktyg och delegera det helt till IT-avdelningen är inte tillräckligt för att uppfylla NIS2.
+  </p>
+
+  <p>
+    Vad tillsynsmyndigheten förväntar sig är att ledningen kan visa:
+  </p>
+
+  <ol>
+    <li>Att ni har en <strong>informationsklassificeringsmodell</strong> — godkänd av styrelsen — som definierar vad som är känsligt i er verksamhet.</li>
+    <li>Att ni har <strong>policyer för åtkomstkontroll</strong> — inklusive rutiner för att ta bort rättigheter när en anställd byter roll eller lämnar organisationen.</li>
+    <li>Att ni har <strong>DLP-regler aktiverade</strong> som faktiskt förhindrar att känslig data läcker okontrollerat.</li>
+    <li>Att ni har <strong>granskningsloggar</strong> som gör det möjligt att rekonstruera vad som hänt vid en incident.</li>
+    <li>Att <strong>styrelsen dokumenterat sitt godkännande</strong> av ovanstående åtgärder — i ett protokoll, med datum.</li>
+  </ol>
+
+  <p>
+    Det sista punkten är den som oftast saknas. Tekniken kan vara på plats. Policyn kan existera som ett Word-dokument på en server. Men om styrelseprotokollet inte visar att ni diskuterat, förstått och godkänt er datastyrningsstrategi — är ni formellt exponerade.
+  </p>
+
+  <div class="box-warning">
+    <strong>Glöm inte dokumentationskedjan.</strong> En tillsynsmyndighet som granskar er datastyrning efter en incident kommer att fråga: "Kan ni visa att styrelsen godkänt er informationsklassificeringsmodell och era åtkomstkontrollpolicyer?" Om svaret är nej — oavsett hur bra tekniken faktiskt fungerar — befinner ni er i ett utsatt läge.
+  </div>
+
+  <h2>Praktiska steg för ledningen</h2>
+
+  <p>
+    Oavsett vilket verktyg ni väljer — eller om ni redan har ett på plats — finns det fem konkreta åtgärder som ledningen bör vidta inom de närmaste 60 dagarna:
+  </p>
+
+  <ul>
+    <li><strong>Begär en inventering:</strong> Be IT-avdelningen presentera en lista över var känsliga data finns — vilka system, vilka mappar, vilka tjänster. Det ska vara en lista ni förstår, inte ett tekniskt diagram.</li>
+    <li><strong>Fastställ klassificeringsmodellen:</strong> Definiera vad som är konfidentiellt, internt och publikt i er organisation. Dokumentera det. Ta ett styrelsebeslut.</li>
+    <li><strong>Granska åtkomsträttigheterna:</strong> Begär en rapport över vilka användare som har tillgång till känsliga data. Fråga hur länge sedan senaste åtkomstgranskning gjordes — och om det finns rutiner för att ta bort rättigheter vid rollförändringar.</li>
+    <li><strong>Bekräfta att DLP är aktiverat:</strong> Fråga IT om era DLP-regler är aktiverade och konfigurerade — inte bara installerade. Be om ett exempel på en händelse som faktiskt stoppats av DLP de senaste tre månaderna.</li>
+    <li><strong>Dokumentera i styrelsemötet:</strong> Ta upp datastyrning som en stående punkt. Anteckna i protokollet att styrelsen har tagit del av statusen och godkänt de åtgärder som är på plats.</li>
+  </ul>
+
+  <h2>Vanliga frågor från ledningsgrupper</h2>
+
+  <div class="faq-item">
+    <div class="faq-q">Vi har redan ett datastyrningsverktyg — räcker det?</div>
+    <div class="faq-a">Det beror på om det är konfigurerat, om policyer är aktiverade och om ni kan dokumentera vad det gör. Att ha ett verktyg installerat men okonfigurerat är ungefär som att ha ett brandlarm som aldrig testats. Det ger ett falskt intryck av säkerhet. Begär en statusrapport från IT med konkreta exempel på vad som faktiskt fångas och blockeras.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">Måste vi ha båda plattformarna — eller räcker en?</div>
+    <div class="faq-a">För de allra flesta NIS2-reglerade organisationer räcker en — förutsatt att den är rätt konfigurerad och att ni aktivt utnyttjar dess funktioner. Att ha två överlappande lösningar utan tydlig ansvarsfördelning skapar ofta mer förvirring än säkerhet. Välj utifrån er faktiska IT-miljö och er riskbild, inte utifrån vad som låter mest komplett.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">Gäller datastyrningskraven även om vi inte hanterar personuppgifter?</div>
+    <div class="faq-a">Ja. NIS2 handlar om informationssäkerhet i bred mening — inte bara personuppgifter i GDPR-mening. Känslig information kan vara affärshemligheter, driftsinstruktioner för kritisk infrastruktur, tekniska ritningar eller autentiseringsuppgifter. Det är ert ansvar att definiera vad som är känsligt i er verksamhet och skydda det proportionellt.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">Hur ofta ska vi granska åtkomsträttigheterna?</div>
+    <div class="faq-a">NIS2 specificerar inget intervall, men branschpraxis och tillsynsmyndigheternas förväntningar pekar mot kvartalsvis granskning för känsliga system och en annual granskning som minst för samtliga system. Det viktigaste är att granskningen är dokumenterad och att resultaten leder till konkreta åtgärder — inte att den sker på exakt rätt datum.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">Kan vi använda molnbaserade datastyrningslösningar även om NIS2 ställer krav på datarezidens?</div>
+    <div class="faq-a">Det beror på var era data faktiskt lagras och processas. Molnlösningar med datacenter i Sverige eliminerar de flesta juridiska osäkerhetsfaktorerna kring tredjelandsöverföringar — både enligt GDPR och NIS2. Kontrollera att er leverantör kan garantera att data stannar inom EU, och helst inom Sverige, och dokumentera det i er leverantörsinventering.</div>
+  </div>
+
+  <div class="box-info" style="margin: 48px 0 32px;">
+    <div style="font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color: var(--yellow); margin-bottom:10px;">🔧 VERKTYG &amp; LÖSNINGAR</div>
+    <p style="margin:0; font-size:17px; color: #ddd; line-height:1.7;">Microsoft Purview Sensitivity Labels ger er automatisk klassificering och DLP direkt i er befintliga Microsoft 365-miljö — och lagras i Microsofts svenska datacenter (Sweden Central) för full datarezidens. Azure Key Vault hanterar kryptografiska nycklar med granulär åtkomstkontroll. Dessa verktyg ingår i licenser många svenska organisationer redan betalar för men sällan utnyttjar fullt ut. En certifierad Microsoft-partner kan aktivera och konfigurera dessa funktioner kostnadsfritt vid en gap-analys — och ge er den dokumentation tillsynsmyndigheten förväntar sig.</p>
+  </div>
+
+  <!-- NEWSLETTER -->
+  <div style="background:#111; border:1px solid rgba(255,255,255,0.1); border-left:3px solid #f5c518; border-radius:4px; padding:32px 36px; margin:40px 0 0; text-align:center; max-width:760px; margin-left:auto; margin-right:auto;">
+    <div style="font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:#f5c518; margin-bottom:12px;">📬 NIS2-UPPDATERINGAR</div>
+    <h3 style="font-family:'Poppins',sans-serif; font-size:20px; font-weight:800; margin:0 0 8px; color:#f0f0f0;">Ny NIS2-artikel varje vecka — direkt i inkorgen</h3>
+    <p style="color:#888; font-size:15px; margin:0 0 20px;">Ingen säljpitch. Bara konkret vägledning för VD:ar och styrelser.</p>
+    <form id="nlForm-microsoft_purview_vs_varonis_datastyrning" onsubmit="submitNewsletter_microsoft_purview_vs_varonis_datastyrning(event)" style="display:flex; gap:10px; flex-wrap:wrap; justify-content:center; max-width:460px; margin:0 auto;">
+      <input type="email" id="nlEmail-microsoft_purview_vs_varonis_datastyrning" placeholder="din@foretag.se" required
+             style="flex:1; min-width:200px; padding:12px 16px; background:#1c1c1f; border:1px solid rgba(255,255,255,0.15); border-radius:4px; color:#f0f0f0; font-size:15px; outline:none;" />
+      <button type="submit" id="nlSubmit-microsoft_purview_vs_varonis_datastyrning"
+              style="padding:12px 22px; background:#f5c518; color:#141416; font-weight:700; font-size:15px; border:none; border-radius:4px; cursor:pointer; white-space:nowrap;">
+        Prenumerera gratis →
+      </button>
+    </form>
+    <p style="font-size:12px; color:#555; margin:12px 0 0;">Du kan avprenumerera när som helst. Vi delar aldrig din e-post.</p>
+    <div id="nlThanks-microsoft_purview_vs_varonis_datastyrning" style="display:none; color:#4ade80; font-size:16px; font-weight:600; margin-top:14px;">✅ Du är med! Nästa artikel kommer direkt till din inkorg.</div>
+  </div>
+
+  <!-- CTA -->
+  <div class="cta-section">
+    <h2>Vet du var din organisation står idag?</h2>
+    <p>En kostnadsfri gap-analys med en certifierad Microsoft-partner visar exakt vad ni redan har täckt — och vad som saknas.</p>
+    <a href="/nis2.html#boka" class="btn-primary">Boka kostnadsfri gap-analys →</a>
+    <p class="cta-fine">Böterna är upp till <strong>10 miljoner euro</strong>. Gap-analysen är gratis.</p>
+  </div>
+
+</article>
+
+<div class="related-articles" style="margin:2.5rem 0 2rem;padding:1.5rem;background:#1a1a2e;border-left:4px solid #f0a500;border-radius:4px; max-width:760px; margin-left:auto; margin-right:auto;">
+  <p style="margin:0 0 1rem;font-size:0.85rem;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:#f0a500;">Läs också</p>
+  <ul style="margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:0.5rem;">
+    <li><a href="/artiklar/nis2-personligt-ansvar-styrelse.html" style="color:#e0e0e0;text-decoration:none;font-size:0.95rem;">→ Styrelsens personliga ansvar</a></li>
+    <li><a href="/artiklar/nis2-tillsyn-ncsc-msb-sverige.html" style="color:#e0e0e0;text-decoration:none;font-size:0.95rem;">→ NIS2-tillsyn: NCSC och MSB</a></li>
+    <li><a href="/artiklar/nis2-vilka-foretag-omfattas.html" style="color:#e0e0e0;text-decoration:none;font-size:0.95rem;">→ Vilka företag omfattas?</a></li>
+  </ul>
+  <p style="margin:1.25rem 0 0;font-size:0.85rem;color:#aaa;">← <a href="/nis2.html" style="color:#f0a500;text-decoration:none;">NIS2Klar startsida</a> &nbsp;·&nbsp; <a href="/artiklar.html" style="color:#f0a500;text-decoration:none;">Alla guider</a></p>
+</div>
+
+<footer>
+  <a href="mailto:support@trustedmarketing.se">support@trustedmarketing.se</a> · <a href="tel:+46470597003">+46 470 59 70 03</a> ·
+  © 2026 M&amp;J Trusted Marketing KB ·
+  <a href="mailto:jan@nis2klar.se">jan@nis2klar.se</a> ·
+  <a href="/nis2.html">Tillbaka till startsidan</a> ·
+  <a href="/privacy.html">Integritetspolicy</a>
+  <p style="margin-top:12px; font-size:11px; color: #555; line-height:1.5;">Microsoft, Microsoft 365, Azure och tillhörande produktnamn är varumärken som tillhör Microsoft Corporation. nis2klar.se är inte affilierat med eller godkänt av Microsoft Corporation.</p>
+</footer>
+
+<script data-cfasync="false">
+  async function submitNewsletter_microsoft_purview_vs_varonis_datastyrning(e) {
+    e.preventDefault();
+    const btn = document.getElementById('nlSubmit-microsoft_purview_vs_varonis_datastyrning');
+    btn.disabled = true;
+    btn.textContent = 'Skickar...';
+    const email = document.getElementById('nlEmail-microsoft_purview_vs_varonis_datastyrning').value.trim();
+    try {
+      const res = await fetch('/api/newsletter/subscribe', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, source: 'artikel-microsoft_purview_vs_varonis_datastyrning' })
+      });
+      const data = await res.json();
+      if (data.success) {
+        document.getElementById('nlForm-microsoft_purview_vs_varonis_datastyrning').style.display = 'none';
+        document.getElementById('nlThanks-microsoft_purview_vs_varonis_datastyrning').style.display = 'block';
+      } else {
+        btn.disabled = false;
+        btn.textContent = 'Prenumerera gratis →';
+      }
+    } catch {
+      btn.disabled = false;
+      btn.textContent = 'Prenumerera gratis →';
+    }
+  }
+</script>
+
+</body>
+</html>

@@ -229,6 +229,73 @@ function ScheduleCallModal({ lead, onSaved, onClose }) {
   );
 }
 
+function EnrolledLeadsModal({ onClose }) {
+  const [leads, setLeads] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    api.get('/sequences/enrolled-leads')
+      .then(r => { setLeads(r.data.leads || []); setLoading(false); })
+      .catch(() => setLoading(false));
+  }, []);
+
+  return (
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm" onClick={onClose}>
+      <div className="bg-[#0f172a] border border-white/10 rounded-2xl shadow-2xl w-full max-w-2xl mx-4 max-h-[80vh] flex flex-col" onClick={e => e.stopPropagation()}>
+        <div className="flex items-center justify-between px-6 py-4 border-b border-white/10">
+          <h3 className="text-sm font-semibold text-slate-200">Enrolled leads</h3>
+          <button onClick={onClose} className="text-slate-500 hover:text-slate-200 text-lg leading-none">×</button>
+        </div>
+        <div className="overflow-y-auto flex-1 px-6 py-4">
+          {loading ? (
+            <p className="text-xs text-slate-500 text-center py-8">Loading…</p>
+          ) : leads.length === 0 ? (
+            <p className="text-xs text-slate-500 text-center py-8">No active enrollments.</p>
+          ) : (
+            <table className="w-full text-xs">
+              <thead>
+                <tr className="text-slate-500 border-b border-white/8">
+                  <th className="text-left pb-2 font-medium">Company</th>
+                  <th className="text-left pb-2 font-medium">Sequence</th>
+                  <th className="text-left pb-2 font-medium">Step</th>
+                  <th className="text-left pb-2 font-medium">Score</th>
+                  <th className="text-left pb-2 font-medium">Enrolled</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-white/5">
+                {leads.map(l => {
+                  const steps = Array.isArray(l.steps) ? l.steps : JSON.parse(l.steps || '[]');
+                  const stepLabel = steps[l.current_step]?.type || `#${l.current_step + 1}`;
+                  return (
+                    <tr key={l.enrollment_id} className="hover:bg-white/3">
+                      <td className="py-2 pr-4">
+                        <Link to={`/leads/${l.lead_id}`} onClick={onClose} className="text-cyan-400 hover:underline font-medium">
+                          {l.company_name}
+                        </Link>
+                        {l.intent_signal && <span className="ml-1.5 text-orange-400">🎯</span>}
+                      </td>
+                      <td className="py-2 pr-4 text-slate-300">{l.sequence_name}</td>
+                      <td className="py-2 pr-4 text-slate-400">{stepLabel}</td>
+                      <td className="py-2 pr-4">
+                        <span className={`font-semibold ${l.score >= 70 ? 'text-emerald-400' : l.score >= 40 ? 'text-amber-400' : 'text-slate-400'}`}>
+                          {l.score}
+                        </span>
+                      </td>
+                      <td className="py-2 text-slate-500">
+                        {new Date(l.enrolled_at).toLocaleDateString('sv-SE')}
+                      </td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+}
+
 function TodayActions() {
   const [actions, setActions] = useState([]);
   const [callTasks, setCallTasks] = useState([]);
@@ -701,6 +768,7 @@ export default function Dashboard() {
   const [inboundLeads, setInboundLeads] = useState([]);
   const [loading, setLoading] = useState(true);
   const [scheduleModal, setScheduleModal] = useState(null); // lead object
+  const [showEnrolled, setShowEnrolled] = useState(false);
 
   const fetchInbound = useCallback(() => {
     api.get('/leads/inbound').then(r => setInboundLeads(r.data?.data?.leads || r.data?.leads || [])).catch(() => {});
@@ -754,6 +822,7 @@ export default function Dashboard() {
           onClose={() => setScheduleModal(null)}
         />
       )}
+      {showEnrolled && <EnrolledLeadsModal onClose={() => setShowEnrolled(false)} />}
 
       {/* NIS2Klar Inbound Leads */}
       <div className="bg-navy-800 rounded-xl border border-white/10 overflow-hidden">
@@ -828,15 +897,18 @@ export default function Dashboard() {
         {[
           { label: 'Total leads', value: parseInt(ov.total).toLocaleString(), sub: `${ov.has_email} with email`, tip: 'All Swedish ABs in your database matching NIS2 target sectors (healthcare, finance, transport, IT, etc.). Imported from Bolagsverket + SCB.' },
           { label: 'NIS2 registered', value: parseInt(ov.nis2_count).toLocaleString(), sub: 'Regulatory = high priority', highlight: true, tip: 'Companies officially registered under Sweden\'s NIS2 implementation. They face legal deadlines to improve cybersecurity — regulatory pressure creates urgency to buy. These are your hottest prospects.' },
-          { label: 'Active sequences', value: bdr?.sequences?.active || 0, sub: `${bdr?.sequences?.enrolled_leads || 0} leads enrolled`, tip: 'Leads currently enrolled in an automated multi-step outreach sequence (e.g. email → LinkedIn → call). Each sequence step fires on a schedule — sequences keep you consistent without manual follow-up tracking.' },
+          { label: 'Active sequences', value: bdr?.sequences?.active || 0, sub: `${bdr?.sequences?.enrolled_leads || 0} leads enrolled`, tip: 'Leads currently enrolled in an automated multi-step outreach sequence (e.g. email → LinkedIn → call). Each sequence step fires on a schedule — sequences keep you consistent without manual follow-up tracking.', onClick: () => setShowEnrolled(true) },
           { label: 'Avg score', value: ov.avg_score || 0, sub: 'out of 100', tip: 'Average lead quality score across all leads (0–100). Scoring: NIS2 registered +30 · employees 50–249 +25 · target NACE sector +20 · has email +15. Avg of ~20 is expected cold — enrichment + filtering push hot leads to 70+.' },
         ].map(kpi => (
-          <div key={kpi.label} className={`rounded-xl border p-5 ${kpi.highlight ? 'border-cyan-500/30 bg-cyan-500/5' : 'border-white/10 bg-navy-800'}`}>
+          <div key={kpi.label} onClick={kpi.onClick}
+            className={`rounded-xl border p-5 ${kpi.highlight ? 'border-cyan-500/30 bg-cyan-500/5' : 'border-white/10 bg-navy-800'} ${kpi.onClick ? 'cursor-pointer hover:border-white/20 hover:bg-white/5 transition-colors' : ''}`}>
             <div className="text-2xl font-bold text-slate-100">{kpi.value}</div>
             <div className={`text-sm font-medium mt-1 flex items-center gap-1.5 ${kpi.highlight ? 'text-cyan-400' : 'text-slate-300'}`}>
               {kpi.label} <InfoTooltip text={kpi.tip} />
             </div>
-            <div className="text-xs text-slate-500 mt-0.5">{kpi.sub}</div>
+            <div className="text-xs mt-0.5">
+              <span className={kpi.onClick ? 'text-cyan-500 hover:underline' : 'text-slate-500'}>{kpi.sub}</span>
+            </div>
           </div>
         ))}
       </div>
