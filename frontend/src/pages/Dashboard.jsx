@@ -296,13 +296,89 @@ function EnrolledLeadsModal({ onClose }) {
   );
 }
 
+// ─── Reply Inbox Alert ────────────────────────────────────────────────────────
+function ReplyInboxAlert() {
+  const [unread, setUnread] = useState([]);
+
+  useEffect(() => {
+    function fetch() {
+      api.get('/messages/unread-summary')
+        .then(r => setUnread(r.data?.unread || []))
+        .catch(() => {});
+    }
+    fetch();
+    const t = setInterval(fetch, 30000); // poll every 30s
+    return () => clearInterval(t);
+  }, []);
+
+  if (unread.length === 0) return null;
+
+  const totalUnread = unread.reduce((s, r) => s + parseInt(r.unread_count), 0);
+
+  return (
+    <div className="bg-cyan-500/8 border border-cyan-500/30 rounded-xl overflow-hidden">
+      <div className="px-5 py-3.5 border-b border-cyan-500/20 flex items-center justify-between">
+        <div className="flex items-center gap-2.5">
+          <span className="text-base">📩</span>
+          <h2 className="text-sm font-semibold text-cyan-300">Replies waiting</h2>
+          <span className="bg-cyan-500 text-white text-xs font-bold px-2 py-0.5 rounded-full">
+            {totalUnread}
+          </span>
+        </div>
+        <span className="text-xs text-cyan-600">Click a company to open the conversation</span>
+      </div>
+      <div className="divide-y divide-cyan-500/10">
+        {unread.map(r => (
+          <Link
+            key={r.lead_id}
+            to={`/leads/${r.lead_id}`}
+            className="flex items-center gap-4 px-5 py-3 hover:bg-cyan-500/10 transition-colors group"
+          >
+            <div className="w-8 h-8 rounded-lg bg-cyan-500/15 border border-cyan-500/30 flex items-center justify-center text-sm flex-shrink-0">
+              💬
+            </div>
+            <div className="flex-1 min-w-0">
+              <div className="flex items-center gap-2">
+                <span className="text-sm font-semibold text-slate-200 group-hover:text-cyan-300 transition-colors">
+                  {r.company_name}
+                </span>
+                {parseInt(r.unread_count) > 1 && (
+                  <span className="text-xs bg-cyan-500/20 text-cyan-400 px-1.5 py-0.5 rounded-full">
+                    {r.unread_count} new
+                  </span>
+                )}
+              </div>
+              {r.latest_subject && (
+                <div className="text-xs text-slate-500 truncate mt-0.5">{r.latest_subject}</div>
+              )}
+            </div>
+            <div className="flex items-center gap-2 flex-shrink-0">
+              <span className="text-xs text-slate-600">
+                {new Date(r.latest_at).toLocaleString('sv-SE', { dateStyle: 'short', timeStyle: 'short' })}
+              </span>
+              <span className="text-cyan-500 text-xs group-hover:translate-x-0.5 transition-transform">→</span>
+            </div>
+          </Link>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+const CHANNEL_ORDER = ['email', 'linkedin', 'call'];
+const CHANNEL_SECTION = {
+  email:    { icon: '📧', label: 'Emails',            hint: 'Send all emails first — batch them together' },
+  linkedin: { icon: '💼', label: 'LinkedIn actions',  hint: 'Follow, like, connect, or DM — work down the list' },
+  call:     { icon: '📞', label: 'Calls',             hint: 'Call all prospects — use the phone number link' },
+};
+
 function TodayActions() {
   const [actions, setActions] = useState([]);
   const [callTasks, setCallTasks] = useState([]);
   const [doneTasks, setDoneTasks] = useState(new Set());
   const [done, setDone] = useState(new Set());
   const [loading, setLoading] = useState(true);
-  const [emailModal, setEmailModal] = useState(null); // action object
+  const [emailModal, setEmailModal] = useState(null);
 
   const fetchActions = useCallback(() => {
     const todayEnd = new Date(); todayEnd.setHours(23, 59, 59, 999);
@@ -323,10 +399,10 @@ function TodayActions() {
 
   useEffect(() => { fetchActions(); }, [fetchActions]);
 
-  async function advance(enrollmentId) {
+  async function advance(enrollmentId, channel) {
     setDone(prev => new Set(prev).add(enrollmentId));
     try {
-      await api.post(`/sequences/enrollments/${enrollmentId}/advance`);
+      await api.post(`/sequences/enrollments/${enrollmentId}/advance`, { channel });
     } catch {
       setDone(prev => { const s = new Set(prev); s.delete(enrollmentId); return s; });
     }
@@ -343,6 +419,136 @@ function TodayActions() {
   const pendingTasks = callTasks.filter(t => !doneTasks.has(t.id));
   const totalPending = pending.length + pendingTasks.length;
 
+  // Group sequence actions by channel, then add scheduled call tasks into 'call' group
+  const grouped = {};
+  CHANNEL_ORDER.forEach(ch => { grouped[ch] = []; });
+  pending.forEach(a => {
+    const ch = a.step_channel || 'email';
+    if (!grouped[ch]) grouped[ch] = [];
+    grouped[ch].push({ type: 'sequence', data: a });
+  });
+  // Scheduled call tasks go into the call group
+  pendingTasks.forEach(t => grouped['call'].push({ type: 'task', data: t }));
+
+  function renderSequenceRow(action) {
+    const cfg = CHANNEL_CONFIG[action.step_channel] || CHANNEL_CONFIG.email;
+    const isDone = done.has(action.enrollment_id);
+    const isEmail = action.step_channel === 'email';
+    return (
+      <div key={action.enrollment_id}
+        className={`flex items-center gap-4 px-5 py-3.5 transition-all ${isDone ? 'opacity-40' : 'hover:bg-white/3'}`}>
+        <div className={`w-9 h-9 rounded-lg border flex items-center justify-center flex-shrink-0 text-lg ${cfg.bg}`}>
+          {cfg.icon}
+        </div>
+        <div className="flex-1 min-w-0">
+          <div className="flex items-center gap-2 flex-wrap">
+            <Link to={`/leads/${action.lead_id}`}
+              className="text-sm font-medium text-slate-200 hover:text-cyan-400 transition-colors">
+              {action.company_name}
+            </Link>
+            {action.city && <span className="text-xs text-slate-500">{action.city}</span>}
+            {action.is_overdue && !isDone && (
+              <span className="text-xs bg-red-500/15 text-red-400 px-1.5 py-0.5 rounded">overdue</span>
+            )}
+          </div>
+          <div className="text-xs text-slate-400 mt-0.5">{action.step_title}</div>
+          <div className="flex items-center gap-3 mt-1">
+            <span className={`text-xs font-medium ${cfg.color}`}>{cfg.label}</span>
+            {action.phone && action.step_channel === 'call' && (
+              <a href={`tel:${action.phone}`} className="text-xs text-slate-500 hover:text-slate-300 transition-colors">
+                {action.phone}
+              </a>
+            )}
+            {action.linkedin_url && action.step_channel === 'linkedin' && (
+              <a href={action.linkedin_url} target="_blank" rel="noreferrer"
+                className="text-xs text-sky-500 hover:text-sky-400 transition-colors">
+                Open LinkedIn →
+              </a>
+            )}
+            {isEmail && action.email && (
+              <span className="text-xs text-slate-500">{action.email}</span>
+            )}
+            {isEmail && !action.email && !isDone && (
+              <span className="text-xs text-amber-500">No email — skip or enrich first</span>
+            )}
+          </div>
+        </div>
+        <div className="text-xs text-slate-600 flex-shrink-0 text-right mr-2">
+          <div>{action.sequence_name}</div>
+          <div>Step {action.step_index + 1}/{action.step_total}</div>
+        </div>
+        {isEmail && action.email && !isDone ? (
+          <button
+            onClick={() => setEmailModal(action)}
+            className="flex-shrink-0 px-3 py-1.5 rounded-lg text-xs font-medium bg-blue-600/80 hover:bg-blue-500 text-white transition-colors cursor-pointer">
+            Send email
+          </button>
+        ) : (
+          <button
+            onClick={() => !isDone && advance(action.enrollment_id, action.step_channel)}
+            disabled={isDone}
+            className={`flex-shrink-0 px-3 py-1.5 rounded-lg text-xs font-medium transition-all ${
+              isDone
+                ? 'bg-emerald-500/15 text-emerald-400 cursor-default'
+                : 'bg-white/8 hover:bg-cyan-500/20 hover:text-cyan-300 text-slate-300 cursor-pointer'
+            }`}>
+            {isDone ? 'Done ✓' : 'Mark done'}
+          </button>
+        )}
+      </div>
+    );
+  }
+
+  function renderTaskRow(task) {
+    const isDoneTask = doneTasks.has(task.id);
+    const taskDue = new Date(task.scheduled_at || task.due_date);
+    const isOverdue = taskDue < new Date(new Date().setHours(0,0,0,0));
+    const timeStr = task.scheduled_at ? taskDue.toLocaleTimeString('sv-SE', { hour: '2-digit', minute: '2-digit' }) : '';
+    const isConfirmed = !!task.confirmed_at;
+    return (
+      <div key={`task-${task.id}`}
+        className={`flex items-center gap-4 px-5 py-3.5 transition-all ${isDoneTask ? 'opacity-40' : 'hover:bg-white/3'}`}>
+        <div className="w-9 h-9 rounded-lg border flex items-center justify-center flex-shrink-0 text-lg bg-emerald-500/10 border-emerald-500/20">
+          📞
+        </div>
+        <div className="flex-1 min-w-0">
+          <div className="flex items-center gap-2 flex-wrap">
+            {task.lead_id
+              ? <Link to={`/leads/${task.lead_id}`} className="text-sm font-medium text-slate-200 hover:text-cyan-400 transition-colors">{task.company_name || 'Unknown'}</Link>
+              : <span className="text-sm font-medium text-slate-200">{task.company_name || 'Call'}</span>
+            }
+            {isOverdue && !isDoneTask && (
+              <span className="text-xs bg-red-500/15 text-red-400 px-1.5 py-0.5 rounded">overdue</span>
+            )}
+            {isConfirmed && (
+              <span className="text-xs bg-emerald-500/15 text-emerald-400 px-1.5 py-0.5 rounded font-medium">✓ confirmed</span>
+            )}
+          </div>
+          <div className="text-xs text-slate-400 mt-0.5">{task.title.replace(/^📞 Samtal · [^—\n]+/, '').replace(/^— /, '') || 'Scheduled call'}</div>
+          <div className="flex items-center gap-3 mt-1">
+            <span className="text-xs font-medium text-emerald-400">Discovery call</span>
+            {timeStr && <span className="text-xs text-slate-500">{timeStr}</span>}
+          </div>
+        </div>
+        <button
+          onClick={async () => {
+            setDoneTasks(prev => new Set(prev).add(task.id));
+            try { await api.patch(`/tasks/${task.id}`, { completed: true }); } catch {
+              setDoneTasks(prev => { const s = new Set(prev); s.delete(task.id); return s; });
+            }
+          }}
+          disabled={isDoneTask}
+          className={`flex-shrink-0 px-3 py-1.5 rounded-lg text-xs font-medium transition-all ${
+            isDoneTask
+              ? 'bg-emerald-500/15 text-emerald-400 cursor-default'
+              : 'bg-white/8 hover:bg-emerald-500/20 hover:text-emerald-300 text-slate-300 cursor-pointer'
+          }`}>
+          {isDoneTask ? 'Done ✓' : 'Mark done'}
+        </button>
+      </div>
+    );
+  }
+
   return (
     <>
       {emailModal && (
@@ -356,133 +562,42 @@ function TodayActions() {
         <div className="px-5 py-4 border-b border-white/10 flex items-center justify-between">
           <div>
             <h2 className="text-sm font-semibold text-slate-200">Today's Actions</h2>
-            <p className="text-xs text-slate-500 mt-0.5">Your sequence queue — work through these top to bottom</p>
+            <p className="text-xs text-slate-500 mt-0.5">Grouped by action type — do all emails, then LinkedIn, then calls</p>
           </div>
           <span className={`text-xs font-medium px-2.5 py-1 rounded-full ${totalPending > 0 ? 'bg-cyan-500/15 text-cyan-400' : 'bg-emerald-500/15 text-emerald-400'}`}>
             {totalPending > 0 ? `${totalPending} to do` : 'All done ✓'}
           </span>
         </div>
-        <div className="divide-y divide-white/5">
-          {actions.map(action => {
-            const cfg = CHANNEL_CONFIG[action.step_channel] || CHANNEL_CONFIG.email;
-            const isDone = done.has(action.enrollment_id);
-            const isEmail = action.step_channel === 'email';
-            return (
-              <div key={action.enrollment_id}
-                className={`flex items-center gap-4 px-5 py-3.5 transition-all ${isDone ? 'opacity-40' : 'hover:bg-white/3'}`}>
-                <div className={`w-9 h-9 rounded-lg border flex items-center justify-center flex-shrink-0 text-lg ${cfg.bg}`}>
-                  {cfg.icon}
-                </div>
-                <div className="flex-1 min-w-0">
-                  <div className="flex items-center gap-2 flex-wrap">
-                    <Link to={`/leads/${action.lead_id}`}
-                      className="text-sm font-medium text-slate-200 hover:text-cyan-400 transition-colors">
-                      {action.company_name}
-                    </Link>
-                    {action.city && <span className="text-xs text-slate-500">{action.city}</span>}
-                    {action.is_overdue && !isDone && (
-                      <span className="text-xs bg-red-500/15 text-red-400 px-1.5 py-0.5 rounded">overdue</span>
-                    )}
-                  </div>
-                  <div className="text-xs text-slate-400 mt-0.5">{action.step_title}</div>
-                  <div className="flex items-center gap-3 mt-1">
-                    <span className={`text-xs font-medium ${cfg.color}`}>{cfg.label}</span>
-                    {action.phone && action.step_channel === 'call' && (
-                      <a href={`tel:${action.phone}`} className="text-xs text-slate-500 hover:text-slate-300 transition-colors">
-                        {action.phone}
-                      </a>
-                    )}
-                    {action.linkedin_url && action.step_channel === 'linkedin' && (
-                      <a href={action.linkedin_url} target="_blank" rel="noreferrer"
-                        className="text-xs text-sky-500 hover:text-sky-400 transition-colors">
-                        Open LinkedIn →
-                      </a>
-                    )}
-                    {isEmail && action.email && (
-                      <span className="text-xs text-slate-500">{action.email}</span>
-                    )}
-                    {isEmail && !action.email && !isDone && (
-                      <span className="text-xs text-amber-500">No email address — skip or enrich first</span>
-                    )}
-                  </div>
-                </div>
-                <div className="text-xs text-slate-600 flex-shrink-0 text-right mr-2">
-                  <div>{action.sequence_name}</div>
-                  <div>Step {action.step_index + 1}/{action.step_total}</div>
-                </div>
-                {/* Action button */}
-                {isEmail && action.email && !isDone ? (
-                  <button
-                    onClick={() => setEmailModal(action)}
-                    className="flex-shrink-0 px-3 py-1.5 rounded-lg text-xs font-medium bg-blue-600/80 hover:bg-blue-500 text-white transition-colors cursor-pointer">
-                    Send email
-                  </button>
-                ) : (
-                  <button
-                    onClick={() => !isDone && advance(action.enrollment_id)}
-                    disabled={isDone}
-                    className={`flex-shrink-0 px-3 py-1.5 rounded-lg text-xs font-medium transition-all ${
-                      isDone
-                        ? 'bg-emerald-500/15 text-emerald-400 cursor-default'
-                        : 'bg-white/8 hover:bg-cyan-500/20 hover:text-cyan-300 text-slate-300 cursor-pointer'
-                    }`}>
-                    {isDone ? 'Done ✓' : 'Mark done'}
-                  </button>
+
+        {CHANNEL_ORDER.map(ch => {
+          const items = grouped[ch] || [];
+          if (items.length === 0) return null;
+          const sec = CHANNEL_SECTION[ch];
+          return (
+            <div key={ch}>
+              {/* Section header */}
+              <div className="px-5 py-2 bg-white/3 border-y border-white/8 flex items-center justify-between">
+                <span className="text-xs font-semibold text-slate-400 tracking-wide uppercase">
+                  {sec.icon} {sec.label}
+                </span>
+                <span className="text-xs text-slate-600">{sec.hint}</span>
+              </div>
+              <div className="divide-y divide-white/5">
+                {items.map(item =>
+                  item.type === 'sequence'
+                    ? renderSequenceRow(item.data)
+                    : renderTaskRow(item.data)
                 )}
               </div>
-            );
-          })}
-          {/* Scheduled calls from calendar */}
-          {pendingTasks.map(task => {
-            const isDoneTask = doneTasks.has(task.id);
-            const taskDue = new Date(task.scheduled_at || task.due_date);
-            const isOverdue = taskDue < new Date(new Date().setHours(0,0,0,0));
-            const timeStr = task.scheduled_at ? taskDue.toLocaleTimeString('sv-SE', { hour: '2-digit', minute: '2-digit' }) : '';
-            const isConfirmed = !!task.confirmed_at;
-            return (
-              <div key={`task-${task.id}`}
-                className={`flex items-center gap-4 px-5 py-3.5 border-t border-white/5 transition-all ${isDoneTask ? 'opacity-40' : 'hover:bg-white/3'}`}>
-                <div className="w-9 h-9 rounded-lg border flex items-center justify-center flex-shrink-0 text-lg bg-emerald-500/10 border-emerald-500/20">
-                  📞
-                </div>
-                <div className="flex-1 min-w-0">
-                  <div className="flex items-center gap-2 flex-wrap">
-                    {task.lead_id
-                      ? <Link to={`/leads/${task.lead_id}`} className="text-sm font-medium text-slate-200 hover:text-cyan-400 transition-colors">{task.company_name || 'Unknown'}</Link>
-                      : <span className="text-sm font-medium text-slate-200">{task.company_name || 'Call'}</span>
-                    }
-                    {isOverdue && !isDoneTask && (
-                      <span className="text-xs bg-red-500/15 text-red-400 px-1.5 py-0.5 rounded">overdue</span>
-                    )}
-                    {isConfirmed && (
-                      <span className="text-xs bg-emerald-500/15 text-emerald-400 px-1.5 py-0.5 rounded font-medium">✓ confirmed</span>
-                    )}
-                  </div>
-                  <div className="text-xs text-slate-400 mt-0.5">{task.title.replace(/^📞 Samtal · [^—\n]+/, '').replace(/^— /, '') || 'Scheduled call'}</div>
-                  <div className="flex items-center gap-3 mt-1">
-                    <span className="text-xs font-medium text-emerald-400">Discovery call</span>
-                    {timeStr && <span className="text-xs text-slate-500">{timeStr}</span>}
-                  </div>
-                </div>
-                <button
-                  onClick={async () => {
-                    setDoneTasks(prev => new Set(prev).add(task.id));
-                    try { await api.patch(`/tasks/${task.id}`, { completed: true }); } catch {
-                      setDoneTasks(prev => { const s = new Set(prev); s.delete(task.id); return s; });
-                    }
-                  }}
-                  disabled={isDoneTask}
-                  className={`flex-shrink-0 px-3 py-1.5 rounded-lg text-xs font-medium transition-all ${
-                    isDoneTask
-                      ? 'bg-emerald-500/15 text-emerald-400 cursor-default'
-                      : 'bg-white/8 hover:bg-emerald-500/20 hover:text-emerald-300 text-slate-300 cursor-pointer'
-                  }`}>
-                  {isDoneTask ? 'Done ✓' : 'Mark done'}
-                </button>
-              </div>
-            );
-          })}
-        </div>
+            </div>
+          );
+        })}
+
+        {totalPending === 0 && (
+          <div className="px-5 py-8 text-center text-sm text-emerald-400">
+            All done for today ✓
+          </div>
+        )}
       </div>
     </>
   );
@@ -823,6 +938,9 @@ export default function Dashboard() {
         />
       )}
       {showEnrolled && <EnrolledLeadsModal onClose={() => setShowEnrolled(false)} />}
+
+      {/* Reply inbox alert — shows first if there are unread replies */}
+      <ReplyInboxAlert />
 
       {/* NIS2Klar Inbound Leads */}
       <div className="bg-navy-800 rounded-xl border border-white/10 overflow-hidden">

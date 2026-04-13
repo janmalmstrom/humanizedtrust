@@ -220,6 +220,7 @@ router.post('/enrollments/:id/generate-pitch', async (req, res) => {
 });
 
 // POST /api/sequences/enrollments/:id/advance — mark current step done, move to next
+// body: { channel: 'email'|'linkedin'|'call' } — used to log activity for daily scorecard
 router.post('/enrollments/:id/advance', async (req, res) => {
   try {
     const { rows } = await db.query(
@@ -238,6 +239,15 @@ router.post('/enrollments/:id/advance', async (req, res) => {
     await db.query(
       `UPDATE sequence_enrollments SET current_step = $1, status = $2 WHERE id = $3`,
       [nextStep, isComplete ? 'completed' : 'active', enrollment.id]
+    );
+
+    // Log activity for daily scorecard (bdr-stats reads from activities table)
+    const channel = req.body?.channel || steps[enrollment.current_step]?.channel;
+    const activityType = channel === 'call' ? 'phone' : (channel || 'email');
+    const stepTitle = steps[enrollment.current_step]?.title || 'Sequence step';
+    await db.query(
+      `INSERT INTO activities (lead_id, type, title) VALUES ($1, $2, $3)`,
+      [enrollment.lead_id, activityType, stepTitle]
     );
 
     res.json({ success: true, data: { completed: isComplete, next_step: nextStep } });

@@ -10,6 +10,7 @@ import Pipeline from './pages/Pipeline';
 import Sequences from './pages/Sequences';
 import Enrichment from './pages/Enrichment';
 import SEO from './pages/SEO';
+import Settings from './pages/Settings';
 import Layout from './components/Layout';
 
 function PrivateRoute({ children }) {
@@ -30,6 +31,7 @@ export default function App() {
         <Route path="enrichment" element={<Enrichment />} />
         <Route path="discovery" element={<Discovery />} />
         <Route path="seo" element={<SEO />} />
+        <Route path="settings" element={<Settings />} />
       </Route>
     </Routes>
   );

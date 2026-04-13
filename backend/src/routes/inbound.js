@@ -200,16 +200,29 @@ function formatActivityBody(name, score_data) {
   return lines.join('\n');
 }
 
-// POST /api/inbound/email — Resend inbound webhook
+// POST /api/inbound/email — Cloudflare Worker / Resend inbound webhook
 // Receives emails sent to jan@nis2klar.se and stores them as messages on matching leads
 router.post('/email', async (req, res) => {
-  // Resend sends the payload directly (not nested under 'data')
-  const payload = req.body?.data || req.body;
+  const { simpleParser } = require('mailparser');
+
+  const payload   = req.body?.data || req.body;
   const fromRaw   = payload?.from || '';
-  const subject   = payload?.subject || '(no subject)';
-  const bodyText  = payload?.text || '';
-  const bodyHtml  = payload?.html || '';
+  const rawText   = payload?.text || '';
   const messageId = payload?.message_id || payload?.messageId || null;
+
+  // Parse MIME email if raw contains headers (Cloudflare Worker sends full RFC 2822)
+  let subject  = payload?.subject || '(no subject)';
+  let bodyText = rawText.trim();
+  let bodyHtml = payload?.html || '';
+
+  if (rawText.includes('Received:') || rawText.includes('MIME-Version:')) {
+    try {
+      const parsed = await simpleParser(rawText);
+      subject  = parsed.subject || subject;
+      bodyText = parsed.text?.trim() || bodyText;
+      bodyHtml = parsed.html  || bodyHtml;
+    } catch {}
+  }
 
   // Extract plain email from "Name <email>" format
   const fromMatch = fromRaw.match(/<([^>]+)>/) || [null, fromRaw];

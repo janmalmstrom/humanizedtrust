@@ -19,10 +19,13 @@
     "express-rate-limit": "^7.1.5",
     "helmet": "^7.1.0",
     "jsonwebtoken": "^9.0.2",
+    "mailparser": "^3.9.8",
     "morgan": "^1.10.0",
     "node-cron": "^3.0.3",
     "pg": "^8.11.3",
-    "playwright": "^1.40.0"
+    "playwright": "^1.40.0",
+    "qrcode": "^1.5.4",
+    "speakeasy": "^2.0.0"
   },
   "devDependencies": {
     "nodemon": "^3.0.2"

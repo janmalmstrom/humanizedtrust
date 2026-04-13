@@ -1365,7 +1365,11 @@ function MessagesPanel({ leadId, leadEmail }) {
       .catch(() => setLoading(false));
   }, [leadId]);
 
-  useEffect(() => { fetchMessages(); }, [fetchMessages]);
+  useEffect(() => {
+    fetchMessages();
+    const t = setInterval(fetchMessages, 15000); // auto-refresh every 15s
+    return () => clearInterval(t);
+  }, [fetchMessages]);
 
   async function sendReply(e) {
     e.preventDefault();
@@ -1485,6 +1489,21 @@ function MessagesPanel({ leadId, leadEmail }) {
               <p className="text-sm text-slate-300 leading-relaxed whitespace-pre-wrap break-words">
                 {m.body_text || '(no text content)'}
               </p>
+              {m.direction === 'inbound' && (
+                <div className="pt-1">
+                  <button
+                    onClick={() => {
+                      setReplyTo(m.from_email);
+                      setSubject(m.subject ? `Re: ${m.subject.replace(/^Re:\s*/i, '')}` : 'Re: Ang. NIS2');
+                      setShowCompose(true);
+                      setTimeout(() => document.querySelector('textarea')?.focus(), 50);
+                    }}
+                    className="text-xs text-cyan-400 hover:text-cyan-300 transition-colors"
+                  >
+                    ↩ Reply
+                  </button>
+                </div>
+              )}
             </div>
           ))}
         </div>
@@ -2936,6 +2955,9 @@ export default function LeadDetail() {
           {saving ? 'Saving...' : 'Save'}
         </button>
       </div>
+
+      {/* Messages — email thread with reply */}
+      <MessagesPanel leadId={id} leadEmail={lead?.email} />
 
       {/* Activity timeline */}
       <ActivityTimeline leadId={id} />

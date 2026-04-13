@@ -3,6 +3,30 @@ const router = express.Router();
 const db = require('../db');
 const axios = require('axios');
 
+// GET /api/messages/unread-summary — all leads with unread inbound messages (for dashboard)
+// MUST be before /:lead_id to avoid Express treating "unread-summary" as a lead_id
+router.get('/unread-summary', async (req, res) => {
+  try {
+    const { rows } = await db.query(
+      `SELECT m.lead_id, l.company_name, l.email AS lead_email,
+              COUNT(*) AS unread_count,
+              MAX(m.created_at) AS latest_at,
+              (SELECT m2.subject FROM messages m2
+               WHERE m2.lead_id = m.lead_id AND m2.direction = 'inbound' AND m2.read_at IS NULL
+               ORDER BY m2.created_at DESC LIMIT 1) AS latest_subject
+       FROM messages m
+       JOIN discovery_leads l ON l.id = m.lead_id
+       WHERE m.direction = 'inbound' AND m.read_at IS NULL AND m.lead_id IS NOT NULL
+       GROUP BY m.lead_id, l.company_name, l.email
+       ORDER BY MAX(m.created_at) DESC`
+    );
+    res.json({ success: true, data: { unread: rows } });
+  } catch (err) {
+    console.error('[messages] unread-summary error:', err.message);
+    res.status(500).json({ success: false, error: err.message });
+  }
+});
+
 // GET /api/messages/:lead_id — list messages, mark inbound as read
 router.get('/:lead_id', async (req, res) => {
   const { lead_id } = req.params;

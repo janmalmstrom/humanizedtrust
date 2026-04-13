@@ -1,56 +1,46 @@
 'use strict';
 /**
- * emailService.js — AWS SES outbound email sender
+ * emailService.js — Outbound email via Resend
  *
  * Required env vars:
- *   AWS_REGION          e.g. eu-north-1
- *   AWS_ACCESS_KEY_ID
- *   AWS_SECRET_ACCESS_KEY
- *   SES_FROM_EMAIL      e.g. jan@humanizedtrust.xyz (must be verified in SES)
+ *   RESEND_API_KEY   — from resend.com dashboard
+ *   FROM_EMAIL       — verified sender, e.g. jan@nis2klar.se (optional, defaults below)
  */
 
-const { SESClient, SendEmailCommand } = require('@aws-sdk/client-ses');
-
-function getClient() {
-  const region = process.env.AWS_REGION;
-  const accessKeyId = process.env.AWS_ACCESS_KEY_ID;
-  const secretAccessKey = process.env.AWS_SECRET_ACCESS_KEY;
-
-  if (!region || !accessKeyId || !secretAccessKey) {
-    throw new Error('AWS SES not configured — set AWS_REGION, AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY');
-  }
-
-  return new SESClient({
-    region,
-    credentials: { accessKeyId, secretAccessKey },
-  });
-}
+const axios = require('axios');
 
 /**
- * Send a plain-text email via SES.
+ * Send a plain-text email via Resend.
  * @param {object} opts
  * @param {string} opts.to        — recipient address
  * @param {string} opts.subject
  * @param {string} opts.body      — plain text body
- * @param {string} [opts.from]    — override SES_FROM_EMAIL
+ * @param {string} [opts.from]    — override default sender
  * @returns {Promise<{messageId: string}>}
  */
 async function sendEmail({ to, subject, body, from }) {
-  const fromAddr = from || process.env.SES_FROM_EMAIL;
-  if (!fromAddr) throw new Error('SES_FROM_EMAIL not configured');
+  const apiKey = process.env.RESEND_API_KEY;
+  if (!apiKey) throw new Error('RESEND_API_KEY not configured');
 
-  const client = getClient();
-  const cmd = new SendEmailCommand({
-    Source: fromAddr,
-    Destination: { ToAddresses: [to] },
-    Message: {
-      Subject: { Data: subject, Charset: 'UTF-8' },
-      Body: { Text: { Data: body, Charset: 'UTF-8' } },
+  const fromAddr = from || process.env.FROM_EMAIL || 'Jan Malmström <jan@nis2klar.se>';
+
+  const resp = await axios.post(
+    'https://api.resend.com/emails',
+    {
+      from:    fromAddr,
+      to:      [to],
+      subject: subject,
+      text:    body,
     },
-  });
+    {
+      headers: {
+        Authorization: `Bearer ${apiKey}`,
+        'Content-Type': 'application/json',
+      },
+    }
+  );
 
-  const result = await client.send(cmd);
-  return { messageId: result.MessageId };
+  return { messageId: resp.data?.id || 'sent' };
 }
 
 module.exports = { sendEmail };

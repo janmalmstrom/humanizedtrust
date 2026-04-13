@@ -10,6 +10,7 @@ const nav = [
   { to: '/enrichment', label: 'Enrichment' },
   { to: '/discovery', label: 'Discovery' },
   { to: '/seo', label: '🔍 NIS2Klar SEO' },
+  { to: '/settings', label: '⚙️ Settings' },
 ];
 
 export default function Layout() {
