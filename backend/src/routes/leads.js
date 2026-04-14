@@ -45,9 +45,15 @@ router.get('/', async (req, res) => {
 
   const where = conditions.length ? `WHERE ${conditions.join(' AND ')}` : '';
   const SORT_MAP = { employee_range: 'num_employees_exact' };
-  const rawSort = ['score','company_name','city','employee_range','num_employees_exact','created_at'].includes(sort) ? sort : 'score';
-  const validSort = SORT_MAP[rawSort] || rawSort;
+  const VALID_SORTS = ['score','company_name','city','employee_range','num_employees_exact','created_at','sweet_spot'];
+  const rawSort = VALID_SORTS.includes(sort) ? sort : 'sweet_spot';
   const validDir = dir === 'asc' ? 'ASC' : 'DESC';
+
+  // Sweet-spot sort: NIS2-registered 50–249 emp leads always first, then by score
+  const SWEET_SPOT_EXPR = `CASE WHEN nis2_registered = true AND num_employees_exact BETWEEN 50 AND 249 THEN 0 ELSE 1 END ASC, score DESC`;
+  const orderClause = rawSort === 'sweet_spot'
+    ? SWEET_SPOT_EXPR
+    : `${SORT_MAP[rawSort] || rawSort} ${validDir} NULLS LAST`;
 
   try {
     const countRes = await db.query(`SELECT COUNT(*) FROM discovery_leads ${where}`, params);
@@ -61,7 +67,7 @@ router.get('/', async (req, res) => {
               review_status, contacted_at, outreach_angle, created_at,
               intent_signal, intent_signal_at
        FROM discovery_leads ${where}
-       ORDER BY ${validSort} ${validDir} NULLS LAST
+       ORDER BY ${orderClause} NULLS LAST
        LIMIT $${params.length - 1} OFFSET $${params.length}`,
       params
     );
@@ -358,7 +364,7 @@ router.get('/:id', async (req, res) => {
 // PATCH /api/leads/:id — update status, notes, outreach angle, contact info
 router.patch('/:id', async (req, res) => {
   const { review_status, notes, outreach_angle, contacted_at, estimated_value_sek, scheduler_url,
-          email, phone, website, linkedin_url } = req.body;
+          email, phone, website, linkedin_url, tech_stack, competitor_intel } = req.body;
   const fields = [];
   const params = [];
 
@@ -372,6 +378,8 @@ router.patch('/:id', async (req, res) => {
   if (phone !== undefined)              { params.push(phone || null);      fields.push(`phone = $${params.length}`); }
   if (website !== undefined)            { params.push(website || null);    fields.push(`website = $${params.length}`); }
   if (linkedin_url !== undefined)       { params.push(linkedin_url || null); fields.push(`linkedin_url = $${params.length}`); }
+  if (tech_stack !== undefined)         { params.push(tech_stack || null);   fields.push(`tech_stack = $${params.length}`); }
+  if (competitor_intel !== undefined)   { params.push(competitor_intel || null); fields.push(`competitor_intel = $${params.length}`); }
 
   if (!fields.length) return res.status(400).json({ success: false, error: 'Nothing to update' });
 

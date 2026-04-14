@@ -47,7 +47,7 @@ function getEmployeeScore(employeeRange) {
 
   // Sweet spot: 50-249 (can afford Nomad services, big enough to have compliance risk)
   if (r.includes('50-99') || r.includes('100-199') || r.includes('50-249') || r.includes('100-249')) {
-    return { score: 25, label: 'sweet_spot' };
+    return { score: 30, label: 'sweet_spot' };
   }
   if (r.includes('200-499') || r.includes('250-499')) {
     return { score: 15, label: 'upper_mid' };
@@ -127,6 +127,14 @@ function computeScore(lead) {
   if (lead.board_contacts_count > 0) {
     breakdown.contact.has_board_contacts = 10;
     totalScore += 10;
+  }
+
+  // ========== MICROSOFT 365 SWEET-SPOT BONUS ==========
+  // M365 leads in sweet spot: known stack → tailored pitch → higher conversion
+  if (lead.tech_stack === 'microsoft365') {
+    const isSweetSpot = empScore.label === 'sweet_spot';
+    breakdown.enrichment.microsoft365 = isSweetSpot ? 15 : 8;
+    totalScore += isSweetSpot ? 15 : 8;
   }
 
   // ========== VIBE ENRICHMENT SIGNALS ==========

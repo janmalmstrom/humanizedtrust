@@ -47,7 +47,7 @@ export default function Leads() {
   const fetchLeads = useCallback(async () => {
     setLoading(true);
     try {
-      const params = new URLSearchParams({ page, limit: 50, sort: 'score', dir: 'desc' });
+      const params = new URLSearchParams({ page, limit: 50, sort: 'sweet_spot', dir: 'desc' });
       Object.entries(filters).forEach(([k, v]) => { if (v) params.set(k, v); });
       const { data } = await api.get(`/leads?${params}`);
       setLeads(data.leads);

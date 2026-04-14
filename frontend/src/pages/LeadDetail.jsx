@@ -2566,6 +2566,7 @@ export default function LeadDetail() {
   const [lead, setLead] = useState(null);
   const [saving, setSaving] = useState(false);
   const [notes, setNotes] = useState('');
+  const [competitorIntel, setCompetitorIntel] = useState('');
   const [status, setStatus] = useState('new');
   const [editingInfo, setEditingInfo] = useState(false);
   const [infoEdits, setInfoEdits] = useState({});
@@ -2582,6 +2583,7 @@ export default function LeadDetail() {
     api.get(`/leads/${id}`).then(({ data }) => {
       setLead(data.lead);
       setNotes(data.lead.notes || '');
+      setCompetitorIntel(data.lead.competitor_intel || '');
       setStatus(data.lead.review_status || 'new');
       setDealValue(data.lead.estimated_value_sek || '');
       setSchedulerUrl(data.lead.scheduler_url || '');
@@ -2596,8 +2598,8 @@ export default function LeadDetail() {
     setSaving(true);
     try {
       const angle = getPitchAngle(lead);
-      await api.patch(`/leads/${id}`, { notes, review_status: status, outreach_angle: angle });
-      setLead(l => ({ ...l, notes, review_status: status, outreach_angle: angle }));
+      await api.patch(`/leads/${id}`, { notes, competitor_intel: competitorIntel, review_status: status, outreach_angle: angle });
+      setLead(l => ({ ...l, notes, competitor_intel: competitorIntel, review_status: status, outreach_angle: angle }));
     } finally { setSaving(false); }
   }
 
@@ -2942,7 +2944,7 @@ export default function LeadDetail() {
       {/* Sequences */}
       <SequencesPanel leadId={id} />
 
-      {/* Notes */}
+      {/* Notes + Competitor Intel */}
       <div className="bg-navy-800 rounded-xl border border-white/10 p-5 space-y-3">
         <h2 className="text-sm font-semibold text-slate-200">Notes</h2>
         <textarea
@@ -2950,6 +2952,22 @@ export default function LeadDetail() {
           rows={4} placeholder="Add notes about this prospect..."
           className="w-full bg-navy-700 border border-white/10 rounded-lg px-3 py-2 text-sm text-slate-200 resize-none focus:outline-none focus:border-cyan-500"
         />
+        <div>
+          <label className="text-xs text-slate-400 block mb-1">🛡️ Known security vendor / competitor intel</label>
+          <input
+            type="text"
+            value={competitorIntel}
+            onChange={e => setCompetitorIntel(e.target.value)}
+            placeholder="e.g. Truesec for pen tests, Advania M365 partner..."
+            className="w-full bg-navy-700 border border-white/10 rounded-lg px-3 py-2 text-sm text-slate-200 focus:outline-none focus:border-cyan-500"
+          />
+        </div>
+        {lead?.tech_stack && (
+          <p className="text-xs text-blue-400">
+            📧 Detected stack: <span className="font-semibold">{lead.tech_stack === 'microsoft365' ? 'Microsoft 365' : lead.tech_stack}</span>
+            {lead.tech_stack === 'microsoft365' && <span className="ml-2 text-slate-400">→ M365 NIS2 Security sequence recommended</span>}
+          </p>
+        )}
         <button onClick={save} disabled={saving}
           className="px-4 py-2 bg-cyan-600 hover:bg-cyan-500 text-white text-sm rounded-lg transition-colors disabled:opacity-50">
           {saving ? 'Saving...' : 'Save'}

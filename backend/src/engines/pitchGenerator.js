@@ -64,12 +64,21 @@ function buildPrompt(lead, { stepIndex = 0, stepTitle = null, enrolledAt = null 
     ? `\n- Omsättning: ${lead.revenue_sek ? (lead.revenue_sek / 1000000).toFixed(1) + ' MSEK' : 'okänd'} (${lead.annual_report_year || 'senaste'})\n- Rörelseresultat: ${lead.profit_sek ? (lead.profit_sek / 1000000).toFixed(1) + ' MSEK' : 'okänt'}\n- Exakta anställda: ${lead.num_employees_exact ?? 'okänt'}\n- Vinstmarginal: ${(lead.revenue_sek && lead.profit_sek) ? ((lead.profit_sek / lead.revenue_sek) * 100).toFixed(1) + '%' : 'okänd'}`
     : '';
 
+  // Microsoft 365 sweet-spot competitive context
+  const isSweetSpot = lead.employee_range && (
+    lead.employee_range.includes('50-') || lead.employee_range.includes('100-') ||
+    lead.employee_range.includes('50–') || lead.employee_range.includes('100–')
+  );
+  const ms365Ctx = (lead.tech_stack === 'microsoft365' && isSweetSpot)
+    ? `\nKänd tech-stack: Microsoft 365 (detekterad via MX-record)\nKONKURRENSVINKEL: M365 Business Premium täcker INTE NIS2-krav på incidentrapportering (24h-regel), oberoende riskanalyser eller leverantörssäkerhet. Nomad kan komplettera — inte ersätta — deras M365-investering. Nämn detta konkret utan att vara nedsättande om Microsoft.`
+    : (lead.competitor_intel ? `\nKänd säkerhetsleverantör: ${lead.competitor_intel}\nAnpassa tonen — de har redan en partner, men troligtvis inte NIS2-specifik kompetens.` : '');
+
   const leadCtx = `Företag: ${lead.company_name}
 Bransch (SNI/NACE): ${lead.nace_code} — ${lead.nace_description || ''}
 Anställda: ${lead.employee_range || 'okänt'}
 Stad: ${lead.city || 'Sverige'}
 NIS2-registrerat: ${lead.nis2_registered ? 'JA — sektor: ' + lead.nis2_sector : 'Nej'}
-Webbplats: ${lead.website || 'okänd'}${financialCtx}${nis2HookCtx}`;
+Webbplats: ${lead.website || 'okänd'}${financialCtx}${nis2HookCtx}${ms365Ctx}`;
 
   const commonRules = `
 REGLER (följ strikt):
