@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-BKF3QH9K01"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag("js", new Date());
+    gtag("config", "G-BKF3QH9K01");
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Microsoft SharePoint vs Box: Dokumenthantering och NIS2-informationssäkerhet | NIS2Klar</title>
+  <meta name="description" content="SharePoint eller Box — vilket system klarar NIS2-kraven på dokumenthantering? Åtkomstkontroll, versionshistorik, extern delning och DLP ur tillsynsmyndighetens perspektiv.">
+  <meta property="og:title" content="Microsoft SharePoint vs Box: Dokumenthantering och NIS2-informationssäkerhet">
+  <meta property="og:description" content="SharePoint eller Box — vilket system klarar NIS2-kraven på dokumenthantering? Åtkomstkontroll, versionshistorik, extern delning och DLP ur tillsynsmyndighetens perspektiv.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #141416;
+      --card: #1c1c1f;
+      --yellow: #f5c518;
+      --white: #f0f0f0;
+      --muted: #888;
+      --red: #C61212;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: var(--bg); color: var(--white); font-family: 'Barlow', sans-serif; font-size: 19px; line-height: 1.8; }
+
+    /* Nav */
+    nav { display: flex; justify-content: space-between; align-items: center; padding: 20px 40px; border-bottom: 1px solid rgba(255,255,255,0.07); max-width: 900px; margin: 0 auto; }
+    .nav-logo { font-family: 'Poppins', sans-serif; font-weight: 900; font-size: 20px; color: var(--yellow); text-decoration: none; }
+    .nav-logo span { color: var(--white); }
+    .nav-back { color: var(--muted); text-decoration: none; font-size: 15px; }
+    .nav-back:hover { color: var(--white); }
+    .nav-cta { background: var(--yellow); color: #000; padding: 8px 18px; border-radius: 4px; text-decoration: none; font-weight: 700; font-size: 14px; font-family: 'Poppins', sans-serif; }
+
+    /* Article */
+    .article-wrap { max-width: 760px; margin: 0 auto; padding: 60px 40px; }
+    .article-category { font-size: 13px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 16px; }
+    h1 { font-family: 'Poppins', sans-serif; font-size: clamp(30px, 4vw, 44px); font-weight: 900; line-height: 1.2; margin-bottom: 24px; }
+    .article-meta { font-size: 15px; color: var(--muted); margin-bottom: 48px; padding-bottom: 24px; border-bottom: 1px solid rgba(255,255,255,0.07); }
+    h2 { font-family: 'Poppins', sans-serif; font-size: 26px; font-weight: 700; margin: 48px 0 16px; color: var(--white); }
+    h3 { font-family: 'Poppins', sans-serif; font-size: 20px; font-weight: 600; margin: 32px 0 12px; color: var(--yellow); }
+    p { margin-bottom: 22px; }
+    strong { color: var(--white); font-weight: 700; }
+    .highlight { color: var(--yellow); font-weight: 700; }
+    .danger { color: #ff6b6b; font-weight: 700; }
+    ul, ol { margin: 16px 0 24px 24px; }
+    li { margin-bottom: 12px; font-size: 19px; }
+
+    /* Callout boxes */
+    .box-warning { background: rgba(197,17,17,0.12); border-left: 4px solid var(--red); padding: 20px 24px; margin: 32px 0; border-radius: 0 4px 4px 0; }
+    .box-info { background: rgba(245,197,24,0.08); border-left: 4px solid var(--yellow); padding: 20px 24px; margin: 32px 0; border-radius: 0 4px 4px 0; }
+    .box-case { background: var(--card); border: 1px solid rgba(255,255,255,0.08); padding: 28px; margin: 40px 0; border-radius: 4px; }
+    .box-case .case-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 12px; }
+    blockquote { border-left: 3px solid var(--yellow); padding: 12px 20px; margin: 24px 0; font-style: italic; color: #ccc; }
+
+    /* CTA */
+    .cta-section { background: var(--card); border: 1px solid rgba(245,197,24,0.2); border-radius: 4px; padding: 48px 40px; margin: 64px 0 40px; text-align: center; }
+    .cta-section h2 { margin-top: 0; font-size: 26px; }
+    .cta-section p { color: #aaa; max-width: 500px; margin: 0 auto 28px; }
+    .btn-primary { display: inline-block; background: var(--yellow); color: #000; font-family: 'Poppins', sans-serif; font-weight: 800; font-size: 16px; padding: 16px 36px; border-radius: 4px; text-decoration: none; }
+    .btn-primary:hover { background: #e0b010; }
+    .cta-fine { font-size: 13px; color: var(--muted); margin-top: 16px; }
+
+    /* FAQ */
+    .faq-item { border-bottom: 1px solid rgba(255,255,255,0.07); padding: 20px 0; }
+    .faq-q { font-family: 'Poppins', sans-serif; font-weight: 600; margin-bottom: 10px; }
+    .faq-a { color: #bbb; }
+
+    /* Fine table */
+    .fine-table { width: 100%; border-collapse: collapse; margin: 24px 0; }
+    .fine-table th { background: rgba(245,197,24,0.1); color: var(--yellow); font-family: 'Poppins', sans-serif; font-size: 13px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 12px 16px; text-align: left; border-bottom: 1px solid rgba(245,197,24,0.2); }
+    .fine-table td { padding: 14px 16px; border-bottom: 1px solid rgba(255,255,255,0.05); font-size: 15px; }
+    .fine-table tr:last-child td { border-bottom: none; }
+    .fine-table .amount { color: #ff6b6b; font-weight: 700; }
+
+    /* Summary + Key Takeaway */
+    .box-summary { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; padding: 24px 28px; margin: 0 0 32px; }
+    .summary-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-bottom: 14px; }
+    .box-summary ul { margin: 0; padding-left: 20px; }
+    .box-summary li { margin-bottom: 8px; font-size: 17px; color: #ccc; }
+    .box-takeaway { background: rgba(245,197,24,0.08); border-left: 4px solid var(--yellow); padding: 20px 24px; margin: 0 0 40px; border-radius: 0 4px 4px 0; }
+    .takeaway-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 10px; }
+    .box-takeaway p { margin: 0; font-size: 18px; font-weight: 600; color: var(--white); line-height: 1.6; }
+
+    /* Footer */
+    footer { border-top: 1px solid rgba(255,255,255,0.07); padding: 32px 40px; text-align: center; font-size: 13px; color: var(--muted); max-width: 900px; margin: 0 auto; }
+    footer a { color: var(--muted); }
+
+    @media (max-width: 600px) {
+      nav, .article-wrap, footer { padding: 20px; }
+      .cta-section { padding: 32px 20px; }
+      .fine-table { font-size: 14px; }
+      .fine-table th, .fine-table td { padding: 10px 10px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="https://nis2klar.se/">NIS2<span>Klar</span></a>
+  <a class="nav-back" href="https://nis2klar.se/artiklar.html">← Alla artiklar</a>
+  <a class="nav-cta" href="/nis2.html#boka">Boka samtal →</a>
+</nav>
+
+<article class="article-wrap">
+  <div class="article-category">Informationssäkerhet &amp; Verktyg</div>
+  <h1>Microsoft SharePoint vs Box: Dokumenthantering och NIS2-informationssäkerhet</h1>
+  <div class="article-meta">Uppdaterad 15 april 2026 · Lästid: ca 9 minuter · Målgrupp: VD, styrelseordförande, ledning</div>
+
+  <!-- SUMMARY -->
+  <div class="box-summary">
+    <div class="summary-label">Sammanfattning</div>
+    <ul>
+      <li>För VD:ar och styrelseledamöter i NIS2-reglerade sektorer som hanterar känsliga dokument i molnet.</li>
+      <li>Dokumenthantering är en direkt NIS2-fråga — bristande åtkomstkontroll, okontrollerad extern delning och saknad versionshistorik är sanktionsgrundande brister.</li>
+      <li>SharePoint och Box har fundamentalt olika säkerhetsarkitektur — valet påverkar er förmåga att uppfylla Artikel 21 och bevisa det vid tillsyn.</li>
+      <li>Tillsynsmyndigheten frågar inte vilken plattform ni använder — de frågar vad ni kan bevisa om vem som haft tillgång till vad, och när.</li>
+    </ul>
+  </div>
+
+  <!-- KEY TAKEAWAY -->
+  <div class="box-takeaway">
+    <div class="takeaway-label">Viktigaste slutsatsen</div>
+    <p>Era dokument är era bevis — om NIS2-efterlevnad, om incidenthantering, om riskbedömningar. Om plattformen ni lagrar dem på inte kan bevisa åtkomstkontroll och spårbarhet, kan inte ni heller göra det. Det är ett personligt ansvar för dig som VD eller styrelseledamot.</p>
+  </div>
+
+  <!-- HOOK -->
+  <p>
+    Tänk efter en sekund på vilka dokument som just nu ligger i er molnbaserade dokumenthantering. Avtal med kritiska leverantörer. Styrelseprotokoll. Riskbedömningar. Personaldata. Systemdokumentation. Incidentrapporter. Det är inte bara filer — det är en karta över era mest känsliga tillgångar, och i många fall exakt det en angripare eller en tillsynsmyndighet är intresserade av.
+  </p>
+
+  <p>
+    NIS2 ställer explicita krav på hur ni hanterar information. <strong>Artikel 21</strong> i direktivet — implementerat i svensk lag genom cybersäkerhetslagen (2024:1056) — kräver att ni kan demonstrera kontroll över informationstillgångar, åtkomst, klassificering och skydd mot obehörig spridning. Det låter abstrakt tills tillsynsmyndigheten ber er visa det.
+  </p>
+
+  <p>
+    Två plattformar dominerar marknaden för dokumenthantering i medelstora och stora organisationer i Sverige: <strong>Microsoft SharePoint</strong> och <strong>Box</strong>. Båda är mogna, välkända och används av tusentals svenska företag. Men ur ett NIS2-perspektiv är de inte likvärdiga. Den här artikeln hjälper dig som VD eller styrelseledamot att förstå skillnaderna — och vad de innebär för er efterlevnad och era sanktionsrisker.
+  </p>
+
+  <div class="box-warning">
+    <strong>Det räcker inte att ha ett dokumenthanteringssystem.</strong> NIS2 kräver att ni kan bevisa vem som haft tillgång till vilken information, när, och att ni aktivt förhindrar obehörig åtkomst och läckage. Saknar er plattform de tekniska förutsättningarna för detta är det en brist — oavsett hur välorganiserade era mappar är.
+  </div>
+
+  <h2>Varför dokumenthantering är en NIS2-fråga</h2>
+
+  <p>
+    Det är lätt att tänka på NIS2 som en fråga om brandväggar, antivirusprogram och nätverkssäkerhet. Men direktivets krav på informationssäkerhet är bredare än så. Artikel 21 listar tio obligatoriska säkerhetsdomäner, och flera av dem berör direkt hur ni hanterar dokument och filer.
+  </p>
+
+  <p>
+    <strong>Tillgångskontroll och behörighetshantering</strong> innebär att ni måste kunna visa att endast behörig personal har tillgång till känslig information. Det gäller inte bara i teorin — det måste kunna styrkas med loggdata och konfigurationsdokumentation. En mapp som "alla i bolaget" kan läsa, inklusive konsulter och externa samarbetspartners, är ett konkret efterlevnadsproblem.
+  </p>
+
+  <p>
+    <strong>Spårbarhet och revisionsloggar</strong> är ett annat krav. Om en incident inträffar — ett dataintrång, ett läckage, en obehörig nedladdning — måste ni kunna rekonstruera vad som hände. Utan granulär loggning i dokumenthanteringssystemet är den förmågan obefintlig.
+  </p>
+
+  <p>
+    <strong>Informationsklassificering och dataskydd</strong> kräver att ni vet vilken information som är känslig och att ni har tekniska kontroller som begränsar hur den informationen kan delas, vidarebefordras eller exporteras. Det är kärnan i vad som brukar kallas DLP — Data Loss Prevention — och det är en central del av Artikel 21-kraven.
+  </p>
+
+  <p>
+    Slutligen kräver NIS2 att ledningen — VD och styrelse — kan uppvisa dokumenterade beslut om vilka säkerhetsåtgärder som är på plats och att de fungerar. Det innebär i praktiken att er dokumenthanteringsplattform måste kunna generera underlag som ni kan presentera vid en tillsynsgranskning. Det räcker inte att plattformen är säker i sig — ni måste kunna bevisa det.
+  </p>
+
+  <h2>SharePoint och Box: En teknisk översikt för icke-tekniker</h2>
+
+  <p>
+    Innan vi går in på de specifika NIS2-relevanta skillnaderna är det värt att förstå den grundläggande arkitekturen bakom de två systemen — utan att fastna i tekniska detaljer.
+  </p>
+
+  <p>
+    <strong>Microsoft SharePoint</strong> är en integrerad del av Microsoft 365-ekosystemet. Det betyder att SharePoint inte är ett fristående dokumenthanteringssystem utan en komponent i en bredare plattform som inkluderar identitetshantering, säkerhetsövervakning, e-post, samarbetsverktyg och ett compliance-ramverk. Säkerhetsinställningar i SharePoint kan styras centralt och samordnas med hur ni hanterar identiteter, enheter och e-post i resten av organisationen.
+  </p>
+
+  <p>
+    <strong>Box</strong> är ett dedikerat molnbaserat dokumenthanteringssystem som är designat för att fungera med en bred uppsättning externa verktyg och integrationer. Box har sina egna säkerhetsfunktioner och ett eget compliance-ramverk, men det är ett separat system som kräver egna konfigurationer och i många fall separata licenser för avancerade säkerhetsfunktioner.
+  </p>
+
+  <p>
+    Skillnaden låter kanske marginell, men ur ett NIS2-perspektiv är den avgörande: <strong>integrerad säkerhet är enklare att konfigurera rätt, enklare att dokumentera och enklare att bevisa vid tillsyn.</strong> Separata system kräver separata processer, separata revisionsloggar och separata policys — vilket ökar risken för luckor.
+  </p>
+
+  <h2>Åtkomstkontroll: Vem ser vad — och kan ni bevisa det?</h2>
+
+  <p>
+    Åtkomstkontroll är sannolikt det NIS2-krav som direkt berör dokumenthantering mest. Tillsynsmyndigheten vill veta att ni tillämpar principen om minsta möjliga behörighet — att varje person, konsult och system har tillgång till exakt den information de behöver för sitt arbete, och inget mer.
+  </p>
+
+  <p>
+    I SharePoint sker åtkomstkontroll via integration med organisationens centrala identitetssystem. Det innebär att när en medarbetare slutar och deras konto inaktiveras, förlorar de automatiskt tillgång till alla SharePoint-resurser — utan att ni behöver hantera det manuellt i ett separat system. Det innebär också att åtkomstnivåer kan knytas till roller, avdelningar och certifieringar på ett sätt som är centralt dokumenterat och enkelt att revidera.
+  </p>
+
+  <p>
+    Box hanterar åtkomstkontroll internt i sitt eget system. Det är funktionellt, men skapar ett klassiskt problem: om organisationen inte har en väldefinierad process för att synkronisera Box-behörigheter med det centrala HR- och identitetssystemet uppstår luckor. En konsult som avslutat sitt uppdrag för sex månader sedan kanske fortfarande har tillgång till projektmappar i Box — inte för att någon ville det, utan för att ingen hanterade det manuellt.
+  </p>
+
+  <div class="box-info">
+    <strong>NIS2-kravet i klartext:</strong> Artikel 21 kräver att ni kan demonstrera fungerande behörighetskontroll och att ni kan visa att inaktiva konton och externa samarbetspartners inte har kvarvarande åtkomst till känslig information. Det är ett dokumentationskrav, inte bara ett tekniskt krav — och det granskas vid tillsyn.
+  </div>
+
+  <h2>Versionshistorik: Spårbarhet som bevis</h2>
+
+  <p>
+    Versionshistorik låter som en praktisk funktion för att kunna ångra ändringar i ett dokument. Men ur ett NIS2-perspektiv är det mycket mer än så — det är ett spårbarhetskrav.
+  </p>
+
+  <p>
+    Om en incident inträffar — ett ransomware-angrepp som krypterar filer, ett obehörigt intrång som modifierar dokument, eller ett läckage av känslig information — måste ni kunna rekonstruera vad som hände. Det kräver att ni kan svara på frågorna: Vilket dokument modifierades? När? Av vem? Vad ändrades? Har dokumentet delats externt?
+  </p>
+
+  <p>
+    Båda plattformarna erbjuder versionshistorik, men djupet och tillgängligheten i revisionsloggarna skiljer sig åt beroende på licensklass. Det är viktigt att ni som ledning vet vilken nivå av loggning ni faktiskt har aktiverad — inte vilken nivå plattformen teoretiskt kan erbjuda. Det är en vanlig fallgrop: organisationen har investerat i en plattform med starka säkerhetsfunktioner, men de är inte aktiverade eller korrekt konfigurerade.
+  </p>
+
+  <p>
+    Tillsynsmyndigheten frågar inte "Vilken plattform använder ni?" — de frågar "Kan ni visa oss revisionsloggen för de senaste 12 månaderna för dessa dokument?" Om svaret är nej, spelar det ingen roll vilken plattform ni har valt.
+  </p>
+
+  <h2>Extern delning: Den mest förbisedda NIS2-risken</h2>
+
+  <p>
+    Extern delning av dokument är förmodligen den enskilt största okontrollerade informationssäkerhetsrisken i moderna organisationer. Det sker hela tiden, i välmening, och nästan alltid utan att ledningen vet om det.
+  </p>
+
+  <p>
+    En projektledare delar en länk till ett upphandlingsdokument med en potentiell leverantör. En säljare skickar ett kundavtal via en delningslänk utan utgångsdatum. En konsult exporterar en analys till sin personliga Box-mapp för att kunna jobba offline. Det är inte sabotage — det är normalt arbetsbeteende. Men ur ett NIS2-perspektiv är varje okontrollerad extern delning en potentiell brist i informationssäkerheten.
+  </p>
+
+  <p>
+    NIS2 kräver att ni har tekniska kontroller som begränsar extern delning av känslig information, och att ni kan dokumentera dessa kontroller. Det innebär i praktiken:
+  </p>
+
+  <ul>
+    <li>Delningslänkar ska ha utgångsdatum — de ska inte vara permanenta</li>
+    <li>Känsliga dokument ska inte kunna delas externt utan godkännande från en behörig person</li>
+    <li>Extern delning ska loggas så att ni kan se vad som delats, med vem och när</li>
+    <li>Det ska finnas en policy — och tekniska kontroller som upprätthåller den — för vilken information som överhuvudtaget får delas externt</li>
+  </ul>
+
+  <p>
+    Båda plattformarna har funktioner för att styra extern delning, men konfigurationen avgör allt. En organisation som inte aktivt har begränsat extern delning har i praktiken ett öppet system där vem som helst med en länk kan komma åt känslig information — och det är inte förenligt med NIS2.
+  </p>
+
+  <div class="box-warning">
+    <strong>Den tysta risken:</strong> Studier visar att de flesta organisationer har hundratals eller tusentals aktiva externa delningslänkar de inte vet om. Varje sådan länk är en potentiell brist som en tillsynsmyndighet kan identifiera — och som en angripare aktivt letar efter. Att genomföra en granskning av aktiva externa delningar är en av de snabbaste NIS2-åtgärder en organisation kan vidta.
+  </div>
+
+  <h2>DLP — Dataskydd som inte är frivilligt</h2>
+
+  <p>
+    Data Loss Prevention, DLP, handlar om att förhindra att känslig information lämnar organisationen på ett okontrollerat sätt. Det kan vara ett personnummer som bifogas ett e-postmeddelande till fel mottagare, ett strategidokument som laddas upp till en privat molntjänst, eller en databas med kunduppgifter som exporteras till en USB-enhet.
+  </p>
+
+  <p>
+    NIS2 kräver inte att ni använder ett specifikt DLP-verktyg, men kräver att ni har tekniska kontroller som förhindrar obehörigt utlämnande av information. DLP är den mest direkta tekniska implementationen av detta krav.
+  </p>
+
+  <p>
+    Här är en av de mest substantiella skillnaderna mellan de två plattformarna i ett NIS2-sammanhang. Ett integrerat ekosystem har en inbyggd möjlighet att tillämpa DLP-regler konsekvent — ett dokument som klassificeras som konfidentiellt i dokumenthanteringssystemet kan automatiskt vara skyddat mot att bifogas i e-post, kopieras till okontrollerade lagringsytor eller delas via externa verktyg. Klassificeringen och skyddet följer med dokumentet.
+  </p>
+
+  <p>
+    I ett fristående dokumenthanteringssystem stannar DLP-skyddet vid systemets gräns. Laddas dokumentet ned till en lokal dator eller kopieras till ett annat verktyg försvinner skyddet. Det kräver kompletterande tekniska kontroller för att täcka hela informationsflödet — och om de inte är på plats finns det en lucka som en tillsynsmyndighet med fog kan klassificera som en brist enligt Artikel 21.
+  </p>
+
+  <h2>Datarezidens: Var lagras er information?</h2>
+
+  <p>
+    NIS2 och GDPR samverkar på ett sätt som gör frågan om var data faktiskt lagras viktigare än många organisationer inser. Att lagra känslig information om svenska medborgare eller affärshemligheter hos en tjänsteleverantör vars datacenter ligger utanför EU skapar juridisk osäkerhet — och i extremfall direkt regelöverträdelse.
+  </p>
+
+  <p>
+    Sverige har en stark ställning vad gäller digital infrastruktur. Lokala datacenter med data som stannar inom landet eliminerar juridisk osäkerhet kring tredjelandsöverföringar och gör det enklare att uppfylla både NIS2 och GDPR. Det är ett argument för att prioritera tjänsteleverantörer med tydlig dokumentation om var data lagras och vilka dataresidengarantier som gäller.
+  </p>
+
+  <p>
+    Oavsett vilken plattform ni väljer bör ni som ledning kunna svara på frågan: <strong>Var lagras vår känsligaste information, och har vi ett databehandlingsavtal som uppfyller kraven i GDPR kapitel 5 och NIS2?</strong> Om svaret är "vi vet inte" är det en prioriterad åtgärd — inte en teknisk detalj.
+  </p>
+
+  <h2>Vad tillsynsmyndigheten faktiskt granskar</h2>
+
+  <p>
+    Det är värt att vara konkret om vad en NIS2-tillsynsgranskning som berör dokumenthantering faktiskt innebär. Tillsynsmyndigheten kommer inte att testa er plattform tekniskt. De kommer att begära dokumentation och intervjua ledningen.
+  </p>
+
+  <p>
+    Typiska frågor och dokumentationskrav vid en granskning av informationssäkerhet och dokumenthantering:
+  </p>
+
+  <ol>
+    <li><strong>Visa er informationsklassificeringspolicy</strong> — har ni en antagen policy som definierar vad som är känslig information och hur den ska hanteras?</li>
+    <li><strong>Visa behörighetsstrukturen</strong> — vilka roller har tillgång till vilka dokument, och hur är det dokumenterat?</li>
+    <li><strong>Visa revisionsloggar</strong> — kan ni demonstrera att loggning är aktiverad och att ni kan spåra åtkomst och ändringar?</li>
+    <li><strong>Visa hur extern delning kontrolleras</strong> — vilka tekniska kontroller förhindrar att känsliga dokument delas okontrollerat?</li>
+    <li><strong>Visa styrelsebeslut</strong> — kan ni uppvisa ett protokoll där styrelsen godkänt säkerhetsåtgärderna för informationshantering (Artikel 20)?</li>
+  </ol>
+
+  <p>
+    Det sista punkten är avgörande och förbises ofta. Artikel 20 i NIS2 kräver att ledningsorganen — VD och styrelse — personligt godkänner och ansvarar för organisationens säkerhetsåtgärder. Det räcker inte att IT-avdelningen har konfigurerat systemen rätt. Det måste finnas ett dokumenterat beslut från ledningen.
+  </p>
+
+  <p>
+    Om er styrelse aldrig har diskuterat hur ni hanterar dokumentsäkerhet, aldrig har godkänt en informationssäkerhetspolicy och aldrig har fått en rapport om hur extern delning kontrolleras — då har ni ett personligt ansvarsproblem, inte bara ett tekniskt problem.
+  </p>
+
+  <div class="box-case">
+    <div class="case-label">Fallstudie</div>
+    <p>
+      <strong>Scenario: Konsultbolag i Sverige, 120 anställda, verksamt inom offentlig sektor.</strong>
+    </p>
+    <p>
+      Klassas som viktig entitet under NIS2 på grund av uppdrag inom samhällskritisk infrastruktur. Använder ett fristående dokumenthanteringssystem för alla klient- och projektdokument. Bolaget har aldrig genomfört en formell genomgång av externa delningslänkar eller aktiverat detaljerad revisionsloggning — inte av slöhet, utan för att ingen identifierat det som en prioritet.
+    </p>
+    <p>
+      En offentlig upphandlingsklient initierar ett leverantörsrevisionsförfarande och begär dokumentation om hur konsultbolaget hanterar känslig information. Bolaget kan inte uppvisa en informationsklassificeringspolicy, kan inte visa revisionsloggar för de senaste 12 månaderna och kan inte redovisa vilka externa delningslänkar som är aktiva.
+    </p>
+    <p>
+      Den offentliga klienten eskalerar till MSB. MSB inleder en formell NIS2-granskning. Vid granskningen identifieras 847 aktiva externa delningslänkar varav 312 saknar utgångsdatum. Styrelsen kan inte uppvisa något protokoll med beslut om informationssäkerhetsåtgärder.
+    </p>
+    <p>
+      <strong>Utfall:</strong> Tillsynsmyndigheten utfärdar ett föreläggande med krav på åtgärder inom 30 dagar. Sanktionsavgift för bristande tekniska åtgärder enligt Artikel 21. VD erhåller personlig notering om ansvar enligt Artikel 20. Klienten pausar uppdraget under granskningsperioden. Total kostnad inklusive förlorade uppdrag och juridisk hantering: uppskattad till <span class="danger">8–14 miljoner kronor</span>.
+    </p>
+    <p>
+      <strong>Det som saknades var inte tekniken</strong> — det var den styrda konfigurationen, dokumentationen och styrelsebeslutet.
+    </p>
+  </div>
+
+  <h2>Jämförelsetabell: SharePoint vs Box ur NIS2-perspektiv</h2>
+
+  <table class="fine-table">
+    <thead>
+      <tr>
+        <th>NIS2-krav</th>
+        <th>SharePoint (Microsoft 365)</th>
+        <th>Box</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Åtkomstkontroll integrerad med central identitetshantering</td>
+        <td>Ja — nativt integrerat</td>
+        <td>Kräver separat integration</td>
+      </tr>
+      <tr>
+        <td>Granulär revisionsloggning</td>
+        <td>Tillgängligt i standard-licens</td>
+        <td>Kräver ofta högre licensnivå</td>
+      </tr>
+      <tr>
+        <td>DLP som sträcker sig bortom plattformen</td>
+        <td>Möjligt via integrerat ekosystem</td>
+        <td>Stannar vid Box-gränsen</td>
+      </tr>
+      <tr>
+        <td>Informationsklassificering med tekniska kontroller</td>
+        <td>Inbyggt stöd för känslighetsetiketter</td>
+        <td>Tillgängligt via Box Shield (tilläggslicens)</td>
+      </tr>
+      <tr>
+        <td>Kontroll av extern delning</td>
+        <td>Centralt konfigurerbart</td>
+        <td>Konfigurerbart men kräver aktiv hantering</td>
+      </tr>
+      <tr>
+        <td>Datarezidens med EU-garantier</td>
+        <td>Sweden Central — data i Sverige</td>
+        <td>EU-datacenter tillgängligt men kräver aktiv konfiguration</td>
+      </tr>
+      <tr>
+        <td>Compliance-rapportering för tillsyn</td>
+        <td>Integrerat compliance-ramverk</td>
+        <td>Tillgängligt via separata verktyg</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>
+    Tabellen är inte ett betyg — Box är ett utmärkt dokumenthanteringssystem för många ändamål. Men ur ett NIS2-perspektiv handlar det om var ansvaret för konfigurationen och integrationen hamnar. I ett integrerat ekosystem är ansvaret tydligare och luckor är svårare att missa. I ett fristående system kräver varje integration en aktiv insats.
+  </p>
+
+  <h2>Vad ni behöver göra oavsett vilket system ni väljer</h2>
+
+  <p>
+    Oavsett om ni kör SharePoint, Box eller någon annan dokumenthanteringsplattform finns det ett antal konkreta åtgärder som krävs för NIS2-efterlevnad på informationssäkerhetsområdet. Det är dessa åtgärder en tillsynsmyndighet letar efter — inte vilket varumärke ni valt.
+  </p>
+
+  <h3>1. Anta en informationsklassificeringspolicy</h3>
+  <p>
+    Definiera kategorier av information — till exempel offentlig, intern, konfidentiell och känslig — och specificera hur varje kategori ska hanteras, lagras och delas. Policyn ska vara antagen av styrelsen och daterad. Det är ett styrelsebeslut, inte ett IT-beslut.
+  </p>
+
+  <h3>2. Genomför en genomgång av externa delningslänkar</h3>
+  <p>
+    Er IT-avdelning eller IT-partner kan generera en lista över alla aktiva externa delningslänkar i ert dokumenthanteringssystem. Gå igenom listan, stäng länkarna som inte längre behövs och inför en policy om att alla externa delningslänkar ska ha utgångsdatum. Dokumentera att ni gjort detta.
+  </p>
+
+  <h3>3. Aktivera och verifiera revisionsloggning</h3>
+  <p>
+    Kontrollera att granulär revisionsloggning är aktiverad — inte bara "aktiverbar". Be er IT-partner visa er ett exempel på hur en revisionslogg ser ut och vad den innehåller. Loggar som inte aktivt sparas och kan exporteras har inget värde vid en tillsynsgranskning.
+  </p>
+
+  <h3>4. Koppla behörigheter till er offboardingprocess</h3>
+  <p>
+    Säkerställ att det finns en dokumenterad process för att omedelbart återkalla åtkomst till dokumenthanteringssystemet när en medarbetare slutar, byter roll eller avslutar ett konsultuppdrag. Processen ska vara automatiserad eller ha tydliga manuella steg — och den ska vara testad.
+  </p>
+
+  <h3>5. Ta ett styrelsebeslut</h3>
+  <p>
+    Det mest förbisedda steget. Artikel 20 kräver att ledningsorganen godkänner säkerhetsåtgärderna. Sätt upp ett styrelsemöte, presentera er informationssäkerhetsstatus och dokumentera ett formellt beslut om att ni godkänner de åtgärder som är på plats. Det är detta protokoll som skyddar er personligen vid en tillsynsgranskning.
+  </p>
+
+  <h2>Det du förmodligen undrar</h2>
+
+  <div class="faq-item">
+    <div class="faq-q">Vi har använt Box i tio år och det fungerar bra — måste vi byta?</div>
+    <div class="faq-a">Inte nödvändigtvis. NIS2 kräver inte att ni använder ett specifikt system — det kräver att ni kan uppfylla säkerhetskraven och bevisa det. Box kan konfigureras för att möta många av NIS2-kraven, men det kräver aktiv insats och ofta licenstillägg. Frågan är om er nuvarande Box-konfiguration faktiskt uppfyller kraven — inte om Box som produkt kan göra det. En gap-analys ger er svaret.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">Är det verkligen styrelsens ansvar att ta beslut om dokumenthanteringssystem?</div>
+    <div class="faq-a">Styrelsen behöver inte välja system — men styrelsen måste godkänna att de säkerhetsåtgärder som är på plats för informationshantering är tillräckliga. Det är Artikel 20 i klartext. Det innebär att styrelsen behöver få en presentation om hur er känsliga information hanteras och dokumentera att man tagit del av och godkänt åtgärderna. Det är ett ledarskapsansvar, inte ett tekniskt ansvar.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">Vad händer om vi har en incident och vår dokumenthantering inte uppfyller NIS2?</div>
+    <div class="faq-a">Ni riskerar dubbla sanktioner — en för incidenten och en för de brister i säkerhetsåtgärder som möjliggjorde eller förvärrade den. Dessutom försvåras er möjlighet att uppfylla 72-timmarsrapporteringskravet i Artikel 23 om ni inte kan rekonstruera vad som hände via revisionsloggar. Utan loggdata kan ni inte svara på tillsynsmyndighetens frågor, vilket ytterligare förvärrar situationen.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">Räcker det att IT-avdelningen hanterar detta?</div>
+    <div class="faq-a">Nej. IT-avdelningen kan konfigurera systemen, men NIS2 kräver att ledningen personligt godkänner och ansvarar för säkerhetsåtgärderna. Det är en tydlig distinktion i direktivet. Delegering till IT befriar er inte från det personliga ansvaret — det förutsätter snarare att ni har förstått och godkänt vad IT faktiskt gör. Det kräver en dialog och en dokumentation.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">Hur snabbt kan vi åtgärda de mest kritiska bristerna?</div>
+    <div class="faq-a">Många av de mest kritiska åtgärderna — aktivera revisionsloggning, stänga externa delningslänkar, ta ett styrelsebeslut — kan genomföras inom dagar till veckor. Det som tar längre tid är att bygga upp en informationsklassificeringspolicy och en fullständig behörighetsstruktur. Men det finns ett tydligt steg ett: boka en gap-analys som identifierar exakt var ni befinner er och vad som är mest akut.</div>
+  </div>
+
+  <div class="box-info" style="margin: 48px 0 32px;">
+    <div style="font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color: var(--yellow); margin-bottom:10px;">🔧 VERKTYG &amp; LÖSNINGAR</div>
+    <p style="margin:0; font-size:17px; color: #ddd; line-height:1.7;">Microsoft Purview Sensitivity Labels kombinerat med Microsoft Entra ID Conditional Access ger er tekniska kontroller för informationsklassificering, DLP och åtkomstkontroll — integrerat i ett och samma ekosystem. Dessa verktyg ingår i Microsoft 365 Business Premium och täcker de flesta NIS2-kraven på dokumenthanteringsnivå. En certifierad Microsoft-partner kan kartlägga er nuvarande konfiguration och identifiera luckor i en kostnadsfri gap-analys.</p>
+  </div>
+
+  <!-- NEWSLETTER -->
+  <div style="background:#111; border:1px solid rgba(255,255,255,0.1); border-left:3px solid #f5c518; border-radius:4px; padding:32px 36px; margin:40px 0 0; text-align:center; max-width:760px; margin-left:auto; margin-right:auto;">
+    <div style="font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:#f5c518; margin-bottom:12px;">📬 NIS2-UPPDATERINGAR</div>
+    <h3 style="font-family:'Poppins',sans-serif; font-size:20px; font-weight:800; margin:0 0 8px; color:#f0f0f0;">Ny NIS2-artikel varje vecka — direkt i inkorgen</h3>
+    <p style="color:#888; font-size:15px; margin:0 0 20px;">Ingen säljpitch. Bara konkret vägledning för VD:ar och styrelser.</p>
+    <form id="nlForm-microsoft_sharepoint_vs_box_dokumentsakerhet" onsubmit="submitNewsletter_microsoft_sharepoint_vs_box_dokumentsakerhet(event)" style="display:flex; gap:10px; flex-wrap:wrap; justify-content:center; max-width:460px; margin:0 auto;">
+      <input type="email" id="nlEmail-microsoft_sharepoint_vs_box_dokumentsakerhet" placeholder="din@foretag.se" required
+             style="flex:1; min-width:200px; padding:12px 16px; background:#1c1c1f; border:1px solid rgba(255,255,255,0.15); border-radius:4px; color:#f0f0f0; font-size:15px; outline:none;" />
+      <button type="submit" id="nlSubmit-microsoft_sharepoint_vs_box_dokumentsakerhet"
+              style="padding:12px 22px; background:#f5c518; color:#141416; font-weight:700; font-size:15px; border:none; border-radius:4px; cursor:pointer; white-space:nowrap;">
+        Prenumerera gratis →
+      </button>
+    </form>
+    <p style="font-size:12px; color:#555; margin:12px 0 0;">Du kan avprenumerera när som helst. Vi delar aldrig din e-post.</p>
+    <div id="nlThanks-microsoft_sharepoint_vs_box_dokumentsakerhet" style="display:none; color:#4ade80; font-size:16px; font-weight:600; margin-top:14px;">✅ Du är med! Nästa artikel kommer direkt till din inkorg.</div>
+  </div>
+
+  <!-- CTA -->
+  <div class="cta-section">
+    <h2>Vet du var din organisation står idag?</h2>
+    <p>En kostnadsfri gap-analys med en certifierad Microsoft-partner visar exakt vad ni redan har täckt — och vad som saknas.</p>
+    <a href="/nis2.html#boka" class="btn-primary">Boka kostnadsfri gap-analys →</a>
+    <p class="cta-fine">Böterna är upp till <strong>10 miljoner euro</strong>. Gap-analysen är gratis.</p>
+  </div>
+
+</article>
+
+<div class="related-articles" style="margin:2.5rem 0 2rem;padding:1.5rem;background:#1a1a2e;border-left:4px solid #f0a500;border-radius:4px; max-width:760px; margin-left:auto; margin-right:auto;">
+  <p style="margin:0 0 1rem;font-size:0.85rem;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:#f0a500;">Läs också</p>
+  <ul style="margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:0.5rem;">
+    <li><a href="/artiklar/nis2-personligt-ansvar-styrelse.html" style="color:#e0e0e0;text-decoration:none;font-size:0.95rem;">→ Styrelsens personliga ansvar</a></li>
+    <li><a href="/artiklar/nis2-tillsyn-ncsc-msb-sverige.html" style="color:#e0e0e0;text-decoration:none;font-size:0.95rem;">→ NIS2-tillsyn: NCSC och MSB</a></li>
+    <li><a href="/artiklar/nis2-vilka-foretag-omfattas.html" style="color:#e0e0e0;text-decoration:none;font-size:0.95rem;">→ Vilka företag omfattas?</a></li>
+  </ul>
+  <p style="margin:1.25rem 0 0;font-size:0.85rem;color:#aaa;">← <a href="/nis2.html" style="color:#f0a500;text-decoration:none;">NIS2Klar startsida</a> &nbsp;·&nbsp; <a href="/artiklar.html" style="color:#f0a500;text-decoration:none;">Alla guider</a></p>
+</div>
+
+<footer>
+  © 2026 M&amp;J Trusted Marketing KB ·
+  <a href="mailto:support@trustedmarketing.se">support@trustedmarketing.se</a> · <a href="tel:+46470597003">+46 470 59 70 03</a> ·
+  <a href="/nis2.html">Tillbaka till startsidan</a> ·
+  <a href="/privacy.html">Integritetspolicy</a>
+  <p style="margin-top:12px; font-size:11px; color: #555; line-height:1.5;">Microsoft, Microsoft 365, Azure och tillhörande produktnamn är varumärken som tillhör Microsoft Corporation. nis2klar.se är inte affilierat med eller godkänt av Microsoft Corporation.</p>
+</footer>
+
+<script data-cfasync="false">
+  async function submitNewsletter_microsoft_sharepoint_vs_box_dokumentsakerhet(e) {
+    e.preventDefault();
+    const btn = document.getElementById('nlSubmit-microsoft_sharepoint_vs_box_dokumentsakerhet');
+    btn.disabled = true;
+    btn.textContent = 'Skickar...';
+    const email = document.getElementById('nlEmail-microsoft_sharepoint_vs_box_dokumentsakerhet').value.trim();
+    try {
+      const res = await fetch('/api/newsletter/subscribe', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, source: 'artikel-microsoft_sharepoint_vs_box_dokumentsakerhet' })
+      });
+      const data = await res.json();
+      if (data.success) {
+        document.getElementById('nlForm-microsoft_sharepoint_vs_box_dokumentsakerhet').style.display = 'none';
+        document.getElementById('nlThanks-microsoft_sharepoint_vs_box_dokumentsakerhet').style.display = 'block';
+      } else {
+        btn.disabled = false;
+        btn.textContent = 'Prenumerera gratis →';
+      }
+    } catch {
+      btn.disabled = false;
+      btn.textContent = 'Prenumerera gratis →';
+    }
+  }
+</script>
+
+</body>
+</html>

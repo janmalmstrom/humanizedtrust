@@ -21,7 +21,7 @@ function applyEmployeeFilter(range, params, conditions) {
 router.get('/', async (req, res) => {
   const {
     page = 1, limit = 50,
-    status, county, nace, employees, nis2, has_website,
+    status, county, nace, employees, nis2, has_website, ms365,
     score_min, score_label, search,
     sort = 'score', dir = 'desc'
   } = req.query;
@@ -36,6 +36,8 @@ router.get('/', async (req, res) => {
   applyEmployeeFilter(employees, params, conditions);
   if (nis2 === 'true')      conditions.push('nis2_registered = true');
   if (has_website === 'true')  conditions.push('website IS NOT NULL');
+  if (ms365 === 'true')     conditions.push("tech_stack = 'microsoft365'");
+  if (req.query.google_ws === 'true') conditions.push("tech_stack = 'google_workspace'");
   if (score_min)            { params.push(parseInt(score_min)); conditions.push(`score >= $${params.length}`); }
   if (score_label)          { params.push(score_label); conditions.push(`score_label = $${params.length}`); }
   if (search) {
@@ -45,14 +47,20 @@ router.get('/', async (req, res) => {
 
   const where = conditions.length ? `WHERE ${conditions.join(' AND ')}` : '';
   const SORT_MAP = { employee_range: 'num_employees_exact' };
-  const VALID_SORTS = ['score','company_name','city','employee_range','num_employees_exact','created_at','sweet_spot'];
+  const VALID_SORTS = ['score','company_name','city','employee_range','num_employees_exact','created_at','sweet_spot','ms365','google_ws'];
   const rawSort = VALID_SORTS.includes(sort) ? sort : 'sweet_spot';
   const validDir = dir === 'asc' ? 'ASC' : 'DESC';
 
   // Sweet-spot sort: NIS2-registered 50–249 emp leads always first, then by score
   const SWEET_SPOT_EXPR = `CASE WHEN nis2_registered = true AND num_employees_exact BETWEEN 50 AND 249 THEN 0 ELSE 1 END ASC, score DESC`;
+  const MS365_EXPR     = `CASE WHEN tech_stack = 'microsoft365' THEN 0 ELSE 1 END ASC, score DESC`;
+  const GOOGLE_WS_EXPR = `CASE WHEN tech_stack = 'google_workspace' THEN 0 ELSE 1 END ASC, score DESC`;
   const orderClause = rawSort === 'sweet_spot'
     ? SWEET_SPOT_EXPR
+    : rawSort === 'ms365'
+    ? MS365_EXPR
+    : rawSort === 'google_ws'
+    ? GOOGLE_WS_EXPR
     : `${SORT_MAP[rawSort] || rawSort} ${validDir} NULLS LAST`;
 
   try {
@@ -65,9 +73,9 @@ router.get('/', async (req, res) => {
               city, county, nace_code, nace_description, employee_range, num_employees_exact, revenue_range,
               nis2_registered, nis2_sector, linkedin_url, score, score_label,
               review_status, contacted_at, outreach_angle, created_at,
-              intent_signal, intent_signal_at
+              intent_signal, intent_signal_at, ms365_detected_at, tech_stack
        FROM discovery_leads ${where}
-       ORDER BY ${orderClause} NULLS LAST
+       ORDER BY ${orderClause}
        LIMIT $${params.length - 1} OFFSET $${params.length}`,
       params
     );
@@ -139,6 +147,135 @@ router.get('/export', async (req, res) => {
     res.send(lines.join('\n'));
   } catch (err) {
     console.error('[leads] export error:', err.message);
+    res.status(500).json({ success: false, error: err.message });
+  }
+});
+
+// GET /api/leads/export-d365 — CSV export formatted for Dynamics 365 import
+router.get('/export-d365', async (req, res) => {
+  const { status, county, nace, employees, nis2, has_website, ms365, google_ws, score_min, score_label, search, ids } = req.query;
+
+  const params = [];
+  const conditions = [];
+
+  if (ids) {
+    const idList = ids.split(',').map(Number).filter(Boolean);
+    if (idList.length) {
+      params.push(idList);
+      conditions.push(`id = ANY($${params.length})`);
+    }
+  } else {
+    if (status)               { params.push(status);     conditions.push(`review_status = $${params.length}`); }
+    if (county)               { params.push(county);     conditions.push(`county ILIKE $${params.length}`); }
+    if (nace)                 { params.push(`${nace}%`); conditions.push(`nace_code LIKE $${params.length}`); }
+    applyEmployeeFilter(employees, params, conditions);
+    if (nis2 === 'true')        conditions.push('nis2_registered = true');
+    if (has_website === 'true') conditions.push('website IS NOT NULL');
+    if (ms365 === 'true')       conditions.push("tech_stack = 'microsoft365'");
+    if (google_ws === 'true')   conditions.push("tech_stack = 'google_workspace'");
+    if (score_min)            { params.push(parseInt(score_min)); conditions.push(`score >= $${params.length}`); }
+    if (score_label)          { params.push(score_label); conditions.push(`score_label = $${params.length}`); }
+    if (search) {
+      params.push(`%${search}%`);
+      conditions.push(`(company_name ILIKE $${params.length} OR city ILIKE $${params.length} OR email ILIKE $${params.length})`);
+    }
+  }
+
+  const where = conditions.length ? `WHERE ${conditions.join(' AND ')}` : '';
+
+  try {
+    const { rows } = await db.query(
+      `SELECT org_nr, company_name, city, county, nace_code, nace_description,
+              num_employees_exact, employee_range, revenue_range,
+              email, phone, website, linkedin_url,
+              score, score_label, review_status,
+              nis2_registered, nis2_sector,
+              tech_stack, outreach_angle, notes
+       FROM discovery_leads ${where}
+       ORDER BY score DESC NULLS LAST`,
+      params
+    );
+
+    const escape = (v) => {
+      if (v == null) return '';
+      const s = String(v);
+      if (s.includes(',') || s.includes('"') || s.includes('\n')) return `"${s.replace(/"/g, '""')}"`;
+      return s;
+    };
+
+    const statusMap = { new: 'New', contacted: 'Contacted', qualified: 'Qualified', rejected: 'Disqualified' };
+
+    // Build D365-compatible description combining key NIS2 context
+    const buildDescription = (r) => {
+      const parts = [];
+      if (r.outreach_angle) parts.push(r.outreach_angle);
+      if (r.nis2_registered) parts.push(`NIS2 registered${r.nis2_sector ? ` (${r.nis2_sector})` : ''}`);
+      if (r.tech_stack && r.tech_stack !== 'other') parts.push(`Tech: ${r.tech_stack}`);
+      if (r.nace_description) parts.push(`Sector: ${r.nace_description} (${r.nace_code})`);
+      if (r.score) parts.push(`Lead score: ${r.score} (${r.score_label})`);
+      if (r.org_nr) parts.push(`Org.nr: ${r.org_nr}`);
+      if (r.notes) parts.push(r.notes);
+      return parts.join(' | ');
+    };
+
+    // Estimate revenue from revenue_range string (e.g. "10M-50M" → midpoint in SEK)
+    const parseRevenue = (range) => {
+      if (!range) return '';
+      const m = range.match(/(\d+)M?.*?(\d+)M?/i);
+      if (m) return String(((parseInt(m[1]) + parseInt(m[2])) / 2) * 1_000_000);
+      return '';
+    };
+
+    const today = new Date().toISOString().split('T')[0];
+
+    // D365 Lead entity columns — schema names match D365 import wizard
+    const header = [
+      'subject',           // Topic — required by D365
+      'companyname',       // Company Name
+      'emailaddress1',     // Email
+      'telephone1',        // Business Phone
+      'websiteurl',        // Website
+      'address1_city',     // City
+      'address1_stateorprovince', // State/Province (county)
+      'address1_country',  // Country
+      'numberofemployees', // No. of Employees
+      'revenue',           // Annual Revenue (SEK)
+      'industrycode',      // Industry (D365 picklist — we send description as text note)
+      'description',       // Description — NIS2 context, score, org.nr
+      'leadsourcecode',    // Lead Source
+      'statuscode',        // Status
+      'donotbulkemail',    // Do Not Bulk Email
+      // Extra context columns (custom fields or notes)
+      'msdyn_leadgrade',   // Lead Grade (if NIS2 module installed)
+      'yomifullname',      // LinkedIn (repurposed field as workaround)
+    ].join(',');
+
+    const lines = [header, ...rows.map(r => [
+      `NIS2 Lead - ${r.company_name}`,        // subject
+      r.company_name,                          // companyname
+      r.email,                                 // emailaddress1
+      r.phone,                                 // telephone1
+      r.website,                               // websiteurl
+      r.city,                                  // address1_city
+      r.county,                                // address1_stateorprovince
+      'Sweden',                                // address1_country
+      r.num_employees_exact || '',             // numberofemployees
+      parseRevenue(r.revenue_range),           // revenue
+      r.nace_description || '',                // industrycode
+      buildDescription(r),                     // description
+      'Web',                                   // leadsourcecode
+      statusMap[r.review_status] || 'New',     // statuscode
+      '0',                                     // donotbulkemail (false)
+      r.score_label === 'hot' ? 'A' : r.score_label === 'warm' ? 'B' : 'C', // msdyn_leadgrade
+      r.linkedin_url || '',                    // linkedin (via yomifullname workaround)
+    ].map(escape).join(','))];
+
+    res.setHeader('Content-Type', 'text/csv; charset=utf-8');
+    res.setHeader('Content-Disposition', `attachment; filename="d365_leads_${today}.csv"`);
+    // BOM for Excel UTF-8 compatibility
+    res.send('\uFEFF' + lines.join('\n'));
+  } catch (err) {
+    console.error('[leads] d365 export error:', err.message);
     res.status(500).json({ success: false, error: err.message });
   }
 });

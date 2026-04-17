@@ -25,6 +25,8 @@ export default function Leads() {
   const [bulkMsg, setBulkMsg] = useState('');
   const [bulkLoading, setBulkLoading] = useState(false);
 
+  const [sort, setSort] = useState(searchParams.get('sort') || 'sweet_spot');
+
   const filters = {
     search: searchParams.get('search') || '',
     score_label: searchParams.get('score_label') || '',
@@ -33,6 +35,8 @@ export default function Leads() {
     employees: searchParams.get('employees') || '',
     nis2: searchParams.get('nis2') || '',
     has_website: searchParams.get('has_website') || '',
+    ms365: searchParams.get('ms365') || '',
+    google_ws: searchParams.get('google_ws') || '',
     status: searchParams.get('status') || '',
   };
 
@@ -47,14 +51,14 @@ export default function Leads() {
   const fetchLeads = useCallback(async () => {
     setLoading(true);
     try {
-      const params = new URLSearchParams({ page, limit: 50, sort: 'sweet_spot', dir: 'desc' });
+      const params = new URLSearchParams({ page, limit: 50, sort, dir: 'desc' });
       Object.entries(filters).forEach(([k, v]) => { if (v) params.set(k, v); });
       const { data } = await api.get(`/leads?${params}`);
       setLeads(data.leads);
       setTotal(data.total);
     } catch (err) { console.error(err); }
     finally { setLoading(false); }
-  }, [page, searchParams]);
+  }, [page, searchParams, sort]);
 
   useEffect(() => { fetchLeads(); }, [fetchLeads]);
 
@@ -64,7 +68,7 @@ export default function Leads() {
   }, []);
 
   // Export CSV — fetch with auth header, then trigger browser download
-  async function handleExport(idsOverride) {
+  async function handleExport(idsOverride, endpoint = 'export', filename = 'leads_export') {
     const params = new URLSearchParams();
     if (idsOverride && idsOverride.length) {
       params.set('ids', idsOverride.join(','));
@@ -72,7 +76,7 @@ export default function Leads() {
       Object.entries(filters).forEach(([k, v]) => { if (v) params.set(k, v); });
     }
     const token = localStorage.getItem('ht_token');
-    const res = await fetch(`/api/leads/export?${params}`, {
+    const res = await fetch(`/api/leads/${endpoint}?${params}`, {
       headers: { Authorization: `Bearer ${token}` }
     });
     if (!res.ok) { console.error('Export failed'); return; }
@@ -81,7 +85,7 @@ export default function Leads() {
     const a = document.createElement('a');
     const today = new Date().toISOString().split('T')[0];
     a.href = url;
-    a.download = `leads_export_${today}.csv`;
+    a.download = `${filename}_${today}.csv`;
     a.click();
     URL.revokeObjectURL(url);
   }
@@ -135,12 +139,21 @@ export default function Leads() {
           <h1 className="text-xl font-semibold text-slate-100">Leads</h1>
           <p className="text-slate-500 text-sm">{total.toLocaleString()} companies in database</p>
         </div>
-        <button
-          onClick={() => handleExport()}
-          className="px-4 py-2 rounded-lg bg-white/5 border border-white/10 text-slate-300 hover:text-slate-100 hover:bg-white/10 text-sm transition-colors"
-        >
-          Export {total > 0 ? `${total.toLocaleString()} leads` : ''} CSV
-        </button>
+        <div className="flex items-center gap-2">
+          <button
+            onClick={() => handleExport()}
+            className="px-4 py-2 rounded-lg bg-white/5 border border-white/10 text-slate-300 hover:text-slate-100 hover:bg-white/10 text-sm transition-colors"
+          >
+            Export {total > 0 ? `${total.toLocaleString()} leads` : ''} CSV
+          </button>
+          <button
+            onClick={() => handleExport(null, 'export-d365', 'd365_leads')}
+            className="px-4 py-2 rounded-lg bg-blue-600/20 border border-blue-500/30 text-blue-300 hover:text-blue-100 hover:bg-blue-600/30 text-sm transition-colors flex items-center gap-1.5"
+            title="Export CSV formatted for Microsoft Dynamics 365 import wizard"
+          >
+            🪟 Export for D365
+          </button>
+        </div>
       </div>
 
       {/* Filters */}
@@ -183,6 +196,35 @@ export default function Leads() {
         >
           Has website
         </button>
+        <button
+          onClick={() => setFilter('ms365', filters.ms365 ? '' : 'true')}
+          className={`px-3 py-2 rounded-lg text-sm font-medium border transition-colors ${
+            filters.ms365 ? 'bg-blue-500/20 border-blue-500/40 text-blue-400' : 'bg-navy-800 border-white/10 text-slate-400 hover:text-slate-200'
+          }`}
+        >
+          🪟 Microsoft 365
+        </button>
+        <button
+          onClick={() => setFilter('google_ws', filters.google_ws ? '' : 'true')}
+          className={`px-3 py-2 rounded-lg text-sm font-medium border transition-colors ${
+            filters.google_ws ? 'bg-green-500/20 border-green-500/40 text-green-400' : 'bg-navy-800 border-white/10 text-slate-400 hover:text-slate-200'
+          }`}
+        >
+          🟢 Google Workspace
+        </button>
+        <select
+          value={sort}
+          onChange={e => { setSort(e.target.value); setPage(1); }}
+          className="bg-navy-800 border border-white/10 rounded-lg px-3 py-2 text-sm text-slate-200 focus:outline-none focus:border-cyan-500"
+        >
+          <option value="sweet_spot">Sort: Sweet Spot</option>
+          <option value="ms365">Sort: M365 first</option>
+          <option value="google_ws">Sort: Google WS first</option>
+          <option value="score">Sort: Score</option>
+          <option value="company_name">Sort: Name</option>
+          <option value="num_employees_exact">Sort: Employees</option>
+          <option value="created_at">Sort: Newest</option>
+        </select>
         {filters.nace && (
           <button
             onClick={() => setFilter('nace', '')}
@@ -237,6 +279,12 @@ export default function Leads() {
             className="px-3 py-1.5 text-xs rounded-lg bg-white/5 border border-white/10 text-slate-300 hover:bg-white/10 transition-colors"
           >
             Export selected
+          </button>
+          <button
+            onClick={() => handleExport([...selected], 'export-d365', 'd365_leads')}
+            className="px-3 py-1.5 text-xs rounded-lg bg-blue-600/20 border border-blue-500/30 text-blue-300 hover:bg-blue-600/30 transition-colors"
+          >
+            🪟 Export D365
           </button>
           <button
             onClick={() => setSelected(new Set())}
@@ -297,6 +345,12 @@ export default function Leads() {
                   </Link>
                   {lead.intent_signal && (
                     <span title="Hiring for security/NIS2 roles — buying signal" className="ml-1.5 text-xs bg-orange-500/20 text-orange-400 px-1.5 py-0.5 rounded-full">🎯 hiring</span>
+                  )}
+                  {lead.tech_stack === 'microsoft365' && (
+                    <span title="Microsoft 365 detected via MX record" className="ml-1.5 text-xs bg-blue-500/20 text-blue-400 px-1.5 py-0.5 rounded-full">🪟 M365</span>
+                  )}
+                  {lead.tech_stack === 'google_workspace' && (
+                    <span title="Google Workspace detected via MX record" className="ml-1.5 text-xs bg-green-500/20 text-green-400 px-1.5 py-0.5 rounded-full">🟢 Google WS</span>
                   )}
                   {lead.website && <div className="text-xs text-slate-600 truncate max-w-[180px]">{lead.website}</div>}
                 </td>

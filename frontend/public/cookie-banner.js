@@ -1,5 +1,11 @@
 (function () {
   var CONSENT_KEY = 'nis2klar_cookie_consent';
+  var GA_ID = 'G-BKF3QH9K01';
+
+  // If already rejected — disable GA4 immediately before it sends any hits
+  if (localStorage.getItem(CONSENT_KEY) === 'essential') {
+    window['ga-disable-' + GA_ID] = true;
+  }
 
   if (localStorage.getItem(CONSENT_KEY)) return;
 
@@ -32,13 +38,17 @@
   banner.id = 'ck';
   banner.innerHTML = [
     '<div id="ck-text">',
-      '<p>🍪 Vi använder nödvändiga cookies för att webbplatsen ska fungera. Inga spårningscookies eller annonscookies används.',
+      '<p>🍪 Vi använder cookies — nödvändiga för att sidan ska fungera samt Google Analytics för att förstå hur besökare använder webbplatsen.',
         ' <button id="ck-toggle">Mer information</button>',
       '</p>',
       '<div id="ck-details">',
         '<div class="ck-box">',
           '<div class="ck-box-title" style="color:#4ade80">✅ Nödvändiga cookies (alltid aktiva)</div>',
           '<div class="ck-box-body">Sessionscookies som krävs för att webbplatsen ska fungera korrekt. Lagras bara under ditt besök.</div>',
+        '</div>',
+        '<div class="ck-box">',
+          '<div class="ck-box-title" style="color:#f5c518">📊 Google Analytics (kräver samtycke)</div>',
+          '<div class="ck-box-body">Vi använder Google Analytics 4 för att mäta sidvisningar och förstå hur besökare navigerar på webbplatsen. Ingen personlig information delas för reklamändamål. Data behandlas av Google LLC i enlighet med deras sekretesspolicy.</div>',
         '</div>',
         '<div class="ck-box">',
           '<div class="ck-box-title" style="color:#60a5fa">🔤 Google Fonts</div>',
@@ -71,6 +81,7 @@
   });
 
   document.getElementById('ck-reject').addEventListener('click', function () {
+    window['ga-disable-' + GA_ID] = true;
     localStorage.setItem(CONSENT_KEY, 'essential');
     document.getElementById('ck').remove();
   });
