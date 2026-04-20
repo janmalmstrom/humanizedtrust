@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-BKF3QH9K01"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag("js", new Date());
+    gtag("config", "G-BKF3QH9K01");
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NIS2 Business Continuity och Disaster Recovery: Vad lagen faktiskt kräver | NIS2Klar</title>
+  <meta name="description" content="Backup räcker inte. NIS2 kräver bevisad återhämtningsförmåga med konkreta RTO- och RPO-mål. Se vad som händer när återhämtningen tar 9 dagar istället för 24 timmar.">
+  <meta property="og:title" content="NIS2 Business Continuity och Disaster Recovery: Vad lagen faktiskt kräver">
+  <meta property="og:description" content="Backup räcker inte. NIS2 kräver bevisad återhämtningsförmåga med konkreta RTO- och RPO-mål. Se vad som händer när återhämtningen tar 9 dagar istället för 24 timmar.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #141416;
+      --card: #1c1c1f;
+      --yellow: #f5c518;
+      --white: #f0f0f0;
+      --muted: #888;
+      --red: #C61212;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: var(--bg); color: var(--white); font-family: 'Barlow', sans-serif; font-size: 19px; line-height: 1.8; }
+
+    /* Nav */
+    nav { display: flex; justify-content: space-between; align-items: center; padding: 20px 40px; border-bottom: 1px solid rgba(255,255,255,0.07); max-width: 900px; margin: 0 auto; }
+    .nav-logo { font-family: 'Poppins', sans-serif; font-weight: 900; font-size: 20px; color: var(--yellow); text-decoration: none; }
+    .nav-logo span { color: var(--white); }
+    .nav-back { color: var(--muted); text-decoration: none; font-size: 15px; }
+    .nav-back:hover { color: var(--white); }
+    .nav-cta { background: var(--yellow); color: #000; padding: 8px 18px; border-radius: 4px; text-decoration: none; font-weight: 700; font-size: 14px; font-family: 'Poppins', sans-serif; }
+
+    /* Article */
+    .article-wrap { max-width: 760px; margin: 0 auto; padding: 60px 40px; }
+    .article-category { font-size: 13px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 16px; }
+    h1 { font-family: 'Poppins', sans-serif; font-size: clamp(30px, 4vw, 44px); font-weight: 900; line-height: 1.2; margin-bottom: 24px; }
+    .article-meta { font-size: 15px; color: var(--muted); margin-bottom: 48px; padding-bottom: 24px; border-bottom: 1px solid rgba(255,255,255,0.07); }
+    h2 { font-family: 'Poppins', sans-serif; font-size: 26px; font-weight: 700; margin: 48px 0 16px; color: var(--white); }
+    h3 { font-family: 'Poppins', sans-serif; font-size: 20px; font-weight: 600; margin: 32px 0 12px; color: var(--yellow); }
+    p { margin-bottom: 22px; }
+    strong { color: var(--white); font-weight: 700; }
+    .highlight { color: var(--yellow); font-weight: 700; }
+    .danger { color: #ff6b6b; font-weight: 700; }
+    ul, ol { margin: 16px 0 24px 24px; }
+    li { margin-bottom: 12px; font-size: 19px; }
+
+    /* Callout boxes */
+    .box-warning { background: rgba(197,17,17,0.12); border-left: 4px solid var(--red); padding: 20px 24px; margin: 32px 0; border-radius: 0 4px 4px 0; }
+    .box-info { background: rgba(245,197,24,0.08); border-left: 4px solid var(--yellow); padding: 20px 24px; margin: 32px 0; border-radius: 0 4px 4px 0; }
+    .box-case { background: var(--card); border: 1px solid rgba(255,255,255,0.08); padding: 28px; margin: 40px 0; border-radius: 4px; }
+    .box-case .case-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 12px; }
+    blockquote { border-left: 3px solid var(--yellow); padding: 12px 20px; margin: 24px 0; font-style: italic; color: #ccc; }
+
+    /* CTA */
+    .cta-section { background: var(--card); border: 1px solid rgba(245,197,24,0.2); border-radius: 4px; padding: 48px 40px; margin: 64px 0 40px; text-align: center; }
+    .cta-section h2 { margin-top: 0; font-size: 26px; }
+    .cta-section p { color: #aaa; max-width: 500px; margin: 0 auto 28px; }
+    .btn-primary { display: inline-block; background: var(--yellow); color: #000; font-family: 'Poppins', sans-serif; font-weight: 800; font-size: 16px; padding: 16px 36px; border-radius: 4px; text-decoration: none; }
+    .btn-primary:hover { background: #e0b010; }
+    .cta-fine { font-size: 13px; color: var(--muted); margin-top: 16px; }
+
+    /* FAQ */
+    .faq-item { border-bottom: 1px solid rgba(255,255,255,0.07); padding: 20px 0; }
+    .faq-q { font-family: 'Poppins', sans-serif; font-weight: 600; margin-bottom: 10px; }
+    .faq-a { color: #bbb; }
+
+    /* Fine table */
+    .fine-table { width: 100%; border-collapse: collapse; margin: 24px 0; }
+    .fine-table th { background: rgba(245,197,24,0.1); color: var(--yellow); font-family: 'Poppins', sans-serif; font-size: 13px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 12px 16px; text-align: left; border-bottom: 1px solid rgba(245,197,24,0.2); }
+    .fine-table td { padding: 14px 16px; border-bottom: 1px solid rgba(255,255,255,0.05); font-size: 15px; }
+    .fine-table tr:last-child td { border-bottom: none; }
+    .fine-table .amount { color: #ff6b6b; font-weight: 700; }
+
+    /* Summary + Key Takeaway */
+    .box-summary { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; padding: 24px 28px; margin: 0 0 32px; }
+    .summary-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-bottom: 14px; }
+    .box-summary ul { margin: 0; padding-left: 20px; }
+    .box-summary li { margin-bottom: 8px; font-size: 17px; color: #ccc; }
+    .box-takeaway { background: rgba(245,197,24,0.08); border-left: 4px solid var(--yellow); padding: 20px 24px; margin: 0 0 40px; border-radius: 0 4px 4px 0; }
+    .takeaway-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 10px; }
+    .box-takeaway p { margin: 0; font-size: 18px; font-weight: 600; color: var(--white); line-height: 1.6; }
+
+    /* Footer */
+    footer { border-top: 1px solid rgba(255,255,255,0.07); padding: 32px 40px; text-align: center; font-size: 13px; color: var(--muted); max-width: 900px; margin: 0 auto; }
+    footer a { color: var(--muted); }
+
+    @media (max-width: 600px) {
+      nav, .article-wrap, footer { padding: 20px; }
+      .cta-section { padding: 32px 20px; }
+      .fine-table { font-size: 14px; }
+      .fine-table th, .fine-table td { padding: 10px 10px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="https://nis2klar.se/">NIS2<span>Klar</span></a>
+  <a class="nav-back" href="https://nis2klar.se/artiklar.html">← Alla artiklar</a>
+  <a class="nav-cta" href="https://nis2klar.se/#boka">Boka samtal →</a>
+</nav>
+
+<article class="article-wrap">
+  <div class="article-category">Driftskontinuitet &amp; Återhämtning</div>
+  <h1>NIS2 Business Continuity och Disaster Recovery: Vad lagen faktiskt kräver</h1>
+  <div class="article-meta">Uppdaterad 19 april 2026 · Lästid: ca 8 minuter · Målgrupp: VD, styrelse</div>
+
+  <!-- SUMMARY -->
+  <div class="box-summary">
+    <div class="summary-label">Sammanfattning</div>
+    <ul>
+      <li>NIS2 Artikel 21 punkt 5 kräver inte backup — den kräver <strong>bevisad återhämtningsförmåga</strong>.</li>
+      <li>RTO (Recovery Time Objective) och RPO (Recovery Point Objective) måste definieras, dokumenteras och testas regelbundet.</li>
+      <li>Saknar organisationen dessa mål eller kan inte bevisa att återhämtning fungerar är det en sanktionsgrundande brist — oavsett hur mycket backup ni har.</li>
+      <li>En återhämtning som tar 9 dagar istället för planerade 24 timmar kan leda till både böter och personligt ansvar för ledningen.</li>
+      <li>Styrelsedokumentationen måste visa att ledningen godkänt och övervakar dessa mål (Artikel 20).</li>
+    </ul>
+  </div>
+
+  <!-- KEY TAKEAWAY -->
+  <div class="box-takeaway">
+    <div class="takeaway-label">Viktigaste slutsatsen</div>
+    <p>Backup är ett tekniskt verktyg. Driftskontinuitet är en affärsstrategi som styrelsen måste äga, testa och dokumentera att den fungerar — eller riskera både böter och personligt ansvar.</p>
+  </div>
+
+  <h2>Varför lagen skiljer mellan backup och återhämtning</h2>
+
+  <p>
+    Det finns en stor skillnad mellan att <strong>ha backup</strong> och att <strong>kunna återhämta sig</strong>.
+  </p>
+
+  <p>
+    En organisation kan lagra säkerhetskopior religöst varje dag, i flera geografiska lägen, krypterad och skyddad enligt alla bästa praktiker — och ändå inte kunna återhämta sig när systemet är ned.
+  </p>
+
+  <p>
+    Varför? För att backup är en möjlighet. Återhämtning är en process. En process kräver:
+  </p>
+
+  <ul>
+    <li>En tydlig plan med ansvar och eskaleringsvägar</li>
+    <li>Definierade återhämtningsmål (RTO och RPO)</li>
+    <li>Testning — minst två gånger per år, dokumenterad</li>
+    <li>Personal som är tränad och kan agera under stress</li>
+    <li>Leverantörer som är inblandade i processen och förstår rollen</li>
+  </ul>
+
+  <p>
+    <strong>NIS2 Artikel 21 punkt 5</strong> säger:
+  </p>
+
+  <blockquote>
+    Väsentliga och viktiga entiteter ska genomföra åtgärder för att se till att de kan återhämta sig från datakompromisser, felkonfigurationer och andra incidenter som påverkar systemens tillgänglighet.
+  </blockquote>
+
+  <p>
+    Ordet "återhämta" är inte något man kan kryssa av på en checklista. Det är något som måste <strong>fungera i praktiken</strong>.
+  </p>
+
+  <h2>RTO och RPO — definierna eller möta böter</h2>
+
+  <p>
+    RTO och RPO är två ord som ofta kastas runt men sällan definieras konkret. NIS2 kräver att de är båda definierade och dokumenterade.
+  </p>
+
+  <h3>RTO — Recovery Time Objective</h3>
+  <p>
+    Hur lång tid får det ta att återställa ett kritiskt system från en säkerhetsincident eller driftstörning?
+  </p>
+
+  <p>
+    Exempel: "Vår webshop-miljö ska återhämtas på högst 24 timmar. Vår e-postgång på högst 4 timmar."
+  </p>
+
+  <p>
+    RTO definieras inte av vad som är tekniskt möjligt. Det definieras av vad <strong>affären tål</strong>. Är det en bank måste e-postgången kanske vara upp inom 2 timmar. Är det en byrå kan 24 timmar räcka.
+  </p>
+
+  <h3>RPO — Recovery Point Objective</h3>
+  <p>
+    Hur gammal får data vara när vi återhämtar? Hur mycket data tål vi att förlora?
+  </p>
+
+  <p>
+    Exempel: "Vi kan acceptera att förlora högst 4 timmar transaktionsdata i vår försäljningssystem. Vi kan förlora högst 1 timme e-post."
+  </p>
+
+  <p>
+    RPO definierar hur ofta data måste säkerkopias och hur ofta teståterställningar måste ske för att vi kan garantera att vi uppnår det målet.
+  </p>
+
+  <div class="box-info">
+    <strong>Praktisk skillnad:</strong> RTO handlar om tid (hur snabbt). RPO handlar om mängd data (hur aktuell). En organisation kan ha ett RTO på 24 timmar men ett RPO på 1 timme — det betyder systemet kan vara nere i upp till 24 timmar, men när det är uppe igen får data inte vara äldre än 1 timme gammal.
+  </div>
+
+  <p>
+    Saknar organisationen definierade RTO- och RPO-mål är det redan en brist. Tillsynsmyndigheten kan utfärda sanktioner baserat på det faktum att målen inte finns — innan något har hänt.
+  </p>
+
+  <h2>Fiktivt scenario: Återhämtning tar 9 dagar istället för 24 timmar</h2>
+
+  <p>
+    Låt oss sätta detta i ett realistiskt sammanhang.
+  </p>
+
+  <div class="box-case">
+    <div class="case-label">Fallstudie</div>
+    
+    <p>
+      <strong>Situation:</strong> Medelstort försäkringsbolag, 200 anställda. Klassas som väsentlig entitet under NIS2 (samhällskritisk sektor, över 50 anställda).
+    </p>
+
+    <p>
+      De har definierat ett RTO på 24 timmar för sitt kund-administrationssystem (KAS). Systemet lagrar försäkringsavtal, premier och skadenäringar.
+    </p>
+
+    <p>
+      <strong>Vad som händer:</strong>
+    </p>
+
+    <p>
+      Fredagen den 15 november 2026, 14:30 — ett ransomware-angrepp crypterar huvudservern. Backup-miljön var på samma nätverk och blir också cryperad.
+    </p>
+
+    <p>
+      IT-avdelningen försöker återhämta från en backup från dagen innan. Återhämtningen tar längre än förväntat. Systemet är offline:
+    </p>
+
+    <ul>
+      <li>Fredag 14:30 – 23:00</li>
+      <li>Helgen</li>
+      <li>Måndag hela dagen</li>
+      <li>Tisdag 09:00 — systemet är inte helt återhämtat förrän tisdag kväll den 18 november</li>
+    </ul>
+
+    <p>
+      <strong>Total stillestånd: cirka 99 timmar — eller 4,1 dagar.</strong> Men eftersom arbete bara sker på vardagar var systemet offline under cirka 2,5 arbets­dagar.
+    </p>
+
+    <p>
+      Affärskonsekvenser:
+    </p>
+
+    <ul>
+      <li>Kunder kan inte kontakta försäkringsbolaget för att ändra försäkringar</li>
+      <li>Skadereglering stannar upp</li>
+      <li>Premiers débiteringar sker två dagar senare än planerat</li>
+      <li>Ungefär 150 inkommande samtal kan inte hanteras — dirigeras till telefonkö</li>
+    </ul>
+
+    <p>
+      <strong>Det här är acceptabelt inom RTO:n.</strong> 24 timmar är väl definierat, och systemet var upp inom 4 dagar — långt inom ramverket.
+    </p>
+
+    <p>
+      Scenariot blir dock värre om något av detta inträffar:
+    </p>
+
+    <p>
+      <strong>Scenario A — RTO brytes:</strong> Backupen är korrupt och måste rekonstrueras från band-arkiv. Återhämtningen tar 9 dagar totalt. Systemet är offline från fredag till nästa fredag. Det bryter det definierade RTO:t på 24 timmar.
+    </p>
+
+    <p>
+      <strong>Scenario B — RPO brytes:</strong> Efter återhämtningen märker man att data saknas från torsdagen. RPO var definierat till "högst 4 timmar gamla data", så back up bör ha gjorts klockan 14:30 samma dag. Backup-systemet hade felkonfigurerats och senaste tillförlitliga backup är från förra dagen. Det bryter RPO:t.
+    </p>
+
+    <p>
+      <strong>Scenario C — Ingen testning genomförd:</strong> Under granskningen frågar tillsynsmyndigheten: "Kan ni visa att ni har testat denna återhämtning?" Organisationen kan inte visa någon testlogg. Det bevisar att återhämtningsplanen aldrig verifierades fungera.
+    </p>
+
+    <p style="margin-top: 24px;">
+      <strong>Tillsynsmyndighetens bedömning i de tre scenarierna:</strong>
+    </p>
+
+    <ul>
+      <li><strong>Scenario A:</strong> Bristande förberedelse för att uppfylla RTO. Sanktion för att organisationen inte kunde genomföra återhämtning enligt plan. Belopp: upp till 7–10 miljoner euro.</li>
+      <li><strong>Scenario B:</strong> Felaktig backup-konfiguration. Sanktion för att RPO-målet ej uppnåddes. Data gick förlorad. Belopp: upp till 7–10 miljoner euro.</li>
+      <li><strong>Scenario C:</strong> Saknad testning och dokumentation. Organisationen kan inte bevisa att planen fungerar. Sanktion för bristande Artikel 21 punkt 5 — oavsett om återhämtningen hade lyckats. Belopp: upp till 7–10 miljoner euro.</li>
+    </ul>
+
+    <p>
+      <strong>Personligt ansvar (Artikel 20):</strong> VD och styrelseledamöter kan hållas personligt ansvariga för att inte ha övervakat och godkänt dessa återhämtningsmål. Om organisationen inte kan visa ett styrelseprotokoll från de senaste 12 månaderna där driftskontinuitet och tester diskuterades är det ett starkt tecken på bristande ledningskontroll.
+    </p>
+
+  </div>
+
+  <h2>Vad tillsynsmyndigheten faktiskt granskar</h2>
+
+  <p>
+    När MSB eller en sektorsspecifik tillsynsmyndighet granskar en organisation söker de efter detta dokumentation:
+  </p>
+
+  <h3>1. RTO- och RPO-definitioner per system</h3>
+  <p>
+    Ett Excel-ark, ett dokument eller en systemsammanfattning som visar:
+    <ul>
+      <li>Vilka system är kritiska?</li>
+      <li>Vad är RTO för var och en? (till exempel: 24 timmar, 4 timmar, 1 timme)</li>
+      <li>Vad är RPO för var och en? (till exempel: 24 timmar data, 1 timmes data)</li>
+      <li>Vem är ansvarig för att upprätthålla denna standard?</li>
+      <li>Godkänt av någon i ledningen? (VD, CIO, IT-chef — det måste stå någonstans)</li>
+    </ul>
+  </p>
+
+  <h3>2. Backup-konfigurationen</h3>
+  <p>
+    En teknisk specifikation som visar:
+    <ul>
+      <li>Vilka system säkerkopias?</li>
+      <li>Hur ofta? (dagligen, timligen, kontinuerligt)</li>
+      <li>Var lagras säkerhetskopian? (on-prem, cloud, båda)</li>
+      <li>Hur länge sparas den? (30 dagar, 1 år, permanent)</li>
+      <li>Är den isolerad från produktionsmiljön?</li>
+      <li>Är den krypterad?</li>
+    </ul>
+  </p>
+
+  <h3>3. Återhämtningsplan</h3>
+  <p>
+    Ett dokument som visar steg-för-steg hur återhämtning genomförs:
+    <ul>
+      <li>Vem initierar återhämtning? (vilken roll, vilket nummer)</li>
+      <li>Vilka system återhämtas i vilken ordning?</li>
+      <li>Ungefär hur lång tid tar varje steg?</li>
+      <li>Vilka är de kritiska sårbarheterna som kan senarera processen?</li>
+      <li>Vilka externa leverantörer är inblandade? (värdleverantör, backup-leverantör, ISP)</li>
+    </ul>
+  </p>
+
+  <h3>4. Testresultat — minst två per år</h3>
+  <p>
+    Dokumentation från faktiska återhämtningstest:
+    <ul>
+      <li>Test genomfört datum: [datum]</li>
+      <li>Vilka system testades?</li>
+      <li>Startade: [tid]. Avslutad: [tid]. Hur lång tid tog det faktiskt?</li>
+      <li>Jämfört mot RTO/RPO-målet: uppfyllt ja/nej</li>
+      <li>Vilka problem identifierades?</li>
+      <li>Vad ska åtgärdas före nästa test?</li>
+      <li>Vem godkände resultatet?</li>
+    </ul>
+  </p>
+
+  <p>
+    Det måste finnas minst två test per år för väsentliga entiteter. En gång per år för viktiga entiteter. Testerna måste dokumenteras — manuell testning, automatiserad testning, båda räknas.
+  </p>
+
+  <h3>5. Styrelsebeslut</h3>
+  <p>
+    Ett styrelseprotokoll från de senaste 12 månaderna som visar:
+    <ul>
+      <li>Styrelsens godkännande av RTO/RPO-målen</li>
+      <li>Styrelsens godkännande av återhämtningsplanen</li>
+      <li>Rapport om testresultat och vad som åtgärdades</li>
+      <li>Diskussion om driftskontinuitetsrisker — vilka är de största riskerna och vad görs åt dem?</li>
+    </ul>
+  </p>
+
+  <div class="box-warning">
+    <strong>Granskning utan incident:</strong> Tillsynsmyndigheten kan inleda en granskning utan att någon incident har inträffat. En organisation kan drabbas av sanktioner baserat enbart på saknad eller otillräcklig dokumentation av RTO, RPO, testning och styrelsebeslut.
+  </div>
+
+  <h2>Vad räcker inte</h2>
+
+  <p>
+    En organisation har ofta detta redan — men det räcker inte för NIS2-efterlevnad:
+  </p>
+
+  <ul>
+    <li><strong>"Vi använder en molntjänst som hanterar backup åt oss"</strong> — OK, men vem definierar RTO/RPO och ansvarar för att det fungerar? Organisationens ledning måste äga detta, inte delegera det bort.</li>
+    <li><strong>"Vi har testat återhämtning en gång för några år sedan"</strong> — Det räcker inte. Två gånger per år, dokumenterat. Ofta räcker en gång per år för viktiga entiteter, men det måste finnas en dokumenterad plan för när nästa test ska ske.</li>
+    <li><strong>"IT-avdelningen vet hur vi återhämtar oss"</strong> — IT:s kunskap räcker inte. Det måste stå i ett dokument som styrelsen kan förstå och godkänna.</li>
+    <li><strong>"Vi har en backup-fil lagrat på en extern hårddisk"</strong> — Det är något. Men kan du återhämta från den på mindre än 24 timmar om huvuddatorn är nere? Är den krypterad? Är den testerad? Är den isolerad från nätverket?</li>
+    <li><strong>"Vi har Insurance för cyberanfall"</strong> — Försäkring täcker finansiella skador, inte efterlevnaden av NIS2. Du behöver båda.</li>
+  </ul>
+
+  <h2>Praktisk checklista för styrelsen</h2>
+
+  <p>
+    Frågor som VD och styrelse måste kunna svara på:
+  </p>
+
+  <ol>
+    <li>Vilka är våra tre mest kritiska system? (försäljning, fakturering, produktion — vad är det för ert bolag?)</li>
+    <li>Vad är RTO för var och en? (Vem bestämde det? Är det dokumenterat?)</li>
+    <li>Vad är RPO för var och en?</li>
+    <li>Hur ofta säkerkopias dessa system? (Räcker det för att uppfylla RPO:t?)</li>
+    <li>Var lagras säkerhetskopian? (On-prem, cloud, båda? Är den isolerad från produktionsmiljön?)</li>
+    <li>När genomförde vi senaste återhämtningstest? (Datum?)</li>
+    <li>Hur länge tog det att återhämta systemet från backup?</li>
+    <li>Uppfyllde vi RTO:t?</li>
+    <li>Vilka problem identifierades vid testet?</li>
+    <li>Vad har vi åtgärdat sedan dess?</li>
+    <li>Innan nästa test — vad behöver göras?</li>
+    <li>Har vi ett dokumenterat styrelseprotokoll från de senaste 12 månaderna som visar att vi har godkänt dessa mål?</li>
+  </ol>
+
+  <p>
+    Om du inte kan svara på dessa frågor har organisationen en dokumenterad brist enligt NIS

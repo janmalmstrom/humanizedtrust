@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-BKF3QH9K01"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag("js", new Date());
+    gtag("config", "G-BKF3QH9K01");
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NIS2-sanktioner och konsekvenser: Vad kostar bristande efterlevnad? | NIS2Klar</title>
+  <meta name="description" content="NIS2-böter i Sverige kan nå 10 miljoner euro eller 2% av omsättningen. VD och styrelseledamöter är personligt ansvariga. Läs om sanktioner, beräkning och konsekvenser.">
+  <meta property="og:title" content="NIS2-sanktioner och konsekvenser: Vad kostar bristande efterlevnad?">
+  <meta property="og:description" content="NIS2-böter i Sverige kan nå 10 miljoner euro eller 2% av omsättningen. VD och styrelseledamöter är personligt ansvariga. Läs om sanktioner, beräkning och konsekvenser.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #141416;
+      --card: #1c1c1f;
+      --yellow: #f5c518;
+      --white: #f0f0f0;
+      --muted: #888;
+      --red: #C61212;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: var(--bg); color: var(--white); font-family: 'Barlow', sans-serif; font-size: 19px; line-height: 1.8; }
+
+    /* Nav */
+    nav { display: flex; justify-content: space-between; align-items: center; padding: 20px 40px; border-bottom: 1px solid rgba(255,255,255,0.07); max-width: 900px; margin: 0 auto; }
+    .nav-logo { font-family: 'Poppins', sans-serif; font-weight: 900; font-size: 20px; color: var(--yellow); text-decoration: none; }
+    .nav-logo span { color: var(--white); }
+    .nav-back { color: var(--muted); text-decoration: none; font-size: 15px; }
+    .nav-back:hover { color: var(--white); }
+    .nav-cta { background: var(--yellow); color: #000; padding: 8px 18px; border-radius: 4px; text-decoration: none; font-weight: 700; font-size: 14px; font-family: 'Poppins', sans-serif; }
+
+    /* Article */
+    .article-wrap { max-width: 760px; margin: 0 auto; padding: 60px 40px; }
+    .article-category { font-size: 13px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 16px; }
+    h1 { font-family: 'Poppins', sans-serif; font-size: clamp(30px, 4vw, 44px); font-weight: 900; line-height: 1.2; margin-bottom: 24px; }
+    .article-meta { font-size: 15px; color: var(--muted); margin-bottom: 48px; padding-bottom: 24px; border-bottom: 1px solid rgba(255,255,255,0.07); }
+    h2 { font-family: 'Poppins', sans-serif; font-size: 26px; font-weight: 700; margin: 48px 0 16px; color: var(--white); }
+    h3 { font-family: 'Poppins', sans-serif; font-size: 20px; font-weight: 600; margin: 32px 0 12px; color: var(--yellow); }
+    p { margin-bottom: 22px; }
+    strong { color: var(--white); font-weight: 700; }
+    .highlight { color: var(--yellow); font-weight: 700; }
+    .danger { color: #ff6b6b; font-weight: 700; }
+    ul, ol { margin: 16px 0 24px 24px; }
+    li { margin-bottom: 12px; font-size: 19px; }
+
+    /* Callout boxes */
+    .box-warning { background: rgba(197,17,17,0.12); border-left: 4px solid var(--red); padding: 20px 24px; margin: 32px 0; border-radius: 0 4px 4px 0; }
+    .box-info { background: rgba(245,197,24,0.08); border-left: 4px solid var(--yellow); padding: 20px 24px; margin: 32px 0; border-radius: 0 4px 4px 0; }
+    .box-case { background: var(--card); border: 1px solid rgba(255,255,255,0.08); padding: 28px; margin: 40px 0; border-radius: 4px; }
+    .box-case .case-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 12px; }
+    blockquote { border-left: 3px solid var(--yellow); padding: 12px 20px; margin: 24px 0; font-style: italic; color: #ccc; }
+
+    /* CTA */
+    .cta-section { background: var(--card); border: 1px solid rgba(245,197,24,0.2); border-radius: 4px; padding: 48px 40px; margin: 64px 0 40px; text-align: center; }
+    .cta-section h2 { margin-top: 0; font-size: 26px; }
+    .cta-section p { color: #aaa; max-width: 500px; margin: 0 auto 28px; }
+    .btn-primary { display: inline-block; background: var(--yellow); color: #000; font-family: 'Poppins', sans-serif; font-weight: 800; font-size: 16px; padding: 16px 36px; border-radius: 4px; text-decoration: none; }
+    .btn-primary:hover { background: #e0b010; }
+    .cta-fine { font-size: 13px; color: var(--muted); margin-top: 16px; }
+
+    /* FAQ */
+    .faq-item { border-bottom: 1px solid rgba(255,255,255,0.07); padding: 20px 0; }
+    .faq-q { font-family: 'Poppins', sans-serif; font-weight: 600; margin-bottom: 10px; }
+    .faq-a { color: #bbb; }
+
+    /* Fine table */
+    .fine-table { width: 100%; border-collapse: collapse; margin: 24px 0; }
+    .fine-table th { background: rgba(245,197,24,0.1); color: var(--yellow); font-family: 'Poppins', sans-serif; font-size: 13px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 12px 16px; text-align: left; border-bottom: 1px solid rgba(245,197,24,0.2); }
+    .fine-table td { padding: 14px 16px; border-bottom: 1px solid rgba(255,255,255,0.05); font-size: 15px; }
+    .fine-table tr:last-child td { border-bottom: none; }
+    .fine-table .amount { color: #ff6b6b; font-weight: 700; }
+
+    /* Summary + Key Takeaway */
+    .box-summary { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; padding: 24px 28px; margin: 0 0 32px; }
+    .summary-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-bottom: 14px; }
+    .box-summary ul { margin: 0; padding-left: 20px; }
+    .box-summary li { margin-bottom: 8px; font-size: 17px; color: #ccc; }
+    .box-takeaway { background: rgba(245,197,24,0.08); border-left: 4px solid var(--yellow); padding: 20px 24px; margin: 0 0 40px; border-radius: 0 4px 4px 0; }
+    .takeaway-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 10px; }
+    .box-takeaway p { margin: 0; font-size: 18px; font-weight: 600; color: var(--white); line-height: 1.6; }
+
+    /* Footer */
+    footer { border-top: 1px solid rgba(255,255,255,0.07); padding: 32px 40px; text-align: center; font-size: 13px; color: var(--muted); max-width: 900px; margin: 0 auto; }
+    footer a { color: var(--muted); }
+
+    /* Related articles */
+    .related-articles { margin: 2.5rem 0 2rem; padding: 1.5rem; background: #1a1a2e; border-left: 4px solid #f0a500; border-radius: 4px; max-width: 760px; margin-left: auto; margin-right: auto; }
+    .related-articles p { margin: 0 0 1rem; font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #f0a500; }
+    .related-articles ul { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+    .related-articles li a { color: #e0e0e0; text-decoration: none; font-size: 0.95rem; }
+    .related-articles li a:hover { color: #f0a500; }
+
+    @media (max-width: 600px) {
+      nav, .article-wrap, footer { padding: 20px; }
+      .cta-section { padding: 32px 20px; }
+      .fine-table { font-size: 14px; }
+      .fine-table th, .fine-table td { padding: 10px 10px; }
+      .related-articles { margin: 1.5rem 20px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="https://nis2klar.se/">NIS2<span>Klar</span></a>
+  <a class="nav-back" href="https://nis2klar.se/artiklar.html">← Alla artiklar</a>
+  <a class="nav-cta" href="https://nis2klar.se/#boka">Boka samtal →</a>
+</nav>
+
+<article class="article-wrap">
+  <div class="article-category">Sanktioner &amp; Efterlevnad</div>
+  <h1>NIS2-sanktioner och konsekvenser: Vad kostar bristande efterlevnad?</h1>
+  <div class="article-meta">Uppdaterad 19 april 2026 · Lästid: ca 8 minuter · Målgrupp: VD, styrelse</div>
+
+  <!-- SUMMARY -->
+  <div class="box-summary">
+    <div class="summary-label">Sammanfattning</div>
+    <ul>
+      <li>Böter kan nå upp till <strong>10 miljoner euro</strong> eller 2 % av global årsomsättning för väsentliga entiteter.</li>
+      <li>Artikel 20 i NIS2 gör dig som VD eller styrelseledamot <strong>personligt ansvarig</strong> — inte bara bolaget.</li>
+      <li>Sanktioner kan inkludera yrkesförbud, förelägganden och offentliggörande av brister.</li>
+      <li>Tillsynsmyndigheterna är redan aktiva i Sverige — MSB, IMY och sektorsspecifika myndigheter genomför granskningar nu.</li>
+      <li>Skadeståndsanspråk från affärspartner och varumärkesskador kan överskrida böterna flera gånger.</li>
+    </ul>
+  </div>
+
+  <!-- KEY TAKEAWAY -->
+  <div class="box-takeaway">
+    <div class="takeaway-label">Viktigaste slutsatsen</div>
+    <p>NIS2 är inte en IT-fråga — det är ditt personliga ansvar som VD eller styrelseledamot. Böterna är upp till 10 miljoner euro, men konsekvenserna sträcker sig långt bortom pengar: förbud att leda företag, avtalsbrott och långsiktig varumärkesskada.</p>
+  </div>
+
+  <!-- INTRODUKTION -->
+  <p>
+    Cybersäkerhetslagen trädde i kraft i Sverige i oktober 2024. Det var inte en tyst lansering — den var följd av riktlinjer från MSB, rådgivning från sektorsspecifika myndigheter och tydliga signaler om att tillsynen redan var i gång.
+  </p>
+
+  <p>
+    Om din organisation omfattas av NIS2 och inte redan har påbörjat sitt efterlevnadsarbete, är detta dokumentet viktigare än du tror. Inte för att skrämma dig, utan för att visa dig vad som faktiskt står på spel — och varför väntan är den dyraste strategin du kan välja.
+  </p>
+
+  <div class="box-warning">
+    <strong>Tillsynsmyndigheterna är aktiva idag.</strong> MSB, Finansinspektionen, IVO, Transportstyrelsen och andra sektorsspecifika myndigheter har redan inlett granskningar. De söker inte efter perfekt säkerhet — de söker efter dokumentation på att du som ledning har gjort ditt ansvar. Saknar du det, är risken inte teoretisk. Den är här.
+  </div>
+
+  <h2>Vad säger lagen — och vem måste följa den?</h2>
+
+  <p>
+    NIS2-direktivet är EU-lag. I Sverige är det implementerat genom <strong>cybersäkerhetslagen (2024:1056)</strong>, som gäller för organisationer i <strong>18 samhällskritiska sektorer</strong>: finans, sjukvård, transport, energi, digital infrastruktur, elvatten, gas, dricksvatten, avlopp, gödsel, avfallshantering, post, e-handel, buskehållsprodukter och kemikalier — plus några fler.
+  </p>
+
+  <p>
+    Två kategorier är berörda:
+  </p>
+
+  <ul>
+    <li><strong>Väsentliga entiteter</strong> — stora organisationer med systemkritisk roll. Trösklarna är oftast: fler än 250 anställda ELLER årsomsättning över 50 miljoner euro.</li>
+    <li><strong>Viktiga entiteter</strong> — medelstora organisationer inom reglerade sektorer. Trösklarna här är: 50–249 anställda ELLER 10–50 miljoner euro i årlig omsättning.</li>
+  </ul>
+
+  <p>
+    Många organisationer vet inte om de omfattas. Att gissa fel är dyrare än att fråga.
+  </p>
+
+  <h2>Bötesnivåerna — tabellen du inte gärna läser</h2>
+
+  <p>
+    Sanktionerna är två nivåer. Större organisations = högre böter. Men det går aldrig att säga "vi är små, så böterna blir små" — eftersom böterna även kan baseras på procentandel av din globala omsättning.
+  </p>
+
+  <table class="fine-table">
+    <thead>
+      <tr>
+        <th>Entitetskategori</th>
+        <th>Maxböter (absolut)</th>
+        <th>Maxböter (omsättning)</th>
+        <th>Vilket som är högst gäller</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Väsentlig entitet</strong></td>
+        <td class="amount">10 miljoner euro</td>
+        <td>2 % av årlig global omsättning</td>
+        <td>Det högre beloppet</td>
+      </tr>
+      <tr>
+        <td><strong>Viktig entitet</strong></td>
+        <td class="amount">7 miljoner euro</td>
+        <td>1,4 % av årlig global omsättning</td>
+        <td>Det högre beloppet</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>
+    En organisation med 500 miljoner kronor i årlig omsättning (cirka 47 miljoner euro) som klassas som viktig entitet riskerar alltså <strong>minst 7 miljoner euro i böter</strong> — eftersom 1,4 % av omsättningen blir cirka 6,5 miljoner euro, och 7 miljoner är högre.
+  </p>
+
+  <p>
+    En större organisation med 1 miljard kronor i omsättning som klassas som väsentlig entitet kan möta böter på <strong>20 miljoner euro eller mer</strong> — eftersom 2 % av global omsättning ofta överskrider 10 miljoner euro-taket.
+  </p>
+
+  <div class="box-info">
+    <strong>Viktigt:</strong> Böterna beräknas <strong>per typ av överträdelse</strong> och kan tillämpas <strong>flera gånger parallellt</strong>. En organisation kan få bötesavgifter för bristande riskanalys PLUS bötesavgifter för utebliven incidentrapportering PLUS bötesavgifter för saknade säkerhetskontroller — allt i samma granskning.
+  </div>
+
+  <h2>Artikel 20 — ditt personliga ansvar som ledare</h2>
+
+  <p>
+    Det som skiljer NIS2 från tidigare direktiv är <strong>Artikel 20</strong>. Denna bestämmelse slår fast något klart: <strong>du som VD eller styrelseledamot är personligt ansvarig</strong> för att din organisation uppfyller säkerhetskraven.
+  </p>
+
+  <p>
+    Det räcker inte att säga "IT-avdelningen tar hand om det." Artikel 20 kräver att du:
+  </p>
+
+  <ol>
+    <li><strong>Aktivt godkänner</strong> säkerhetsmål och säkerhetsåtgärder — med styrelsebeslut eller motsvarande ledningsbeslut</li>
+    <li><strong>Övervakar deras genomförande</strong> — och kan uppvisa rapporter från övervakningen</li>
+    <li><strong>Håller dig uppdaterad</strong> om säkerhetsstatus på högsta ledningsnivå</li>
+    <li><strong>Kan dokumentera detta</strong> — inte bara i ditt minne, utan i skriftliga beslutsprotokoll och statusrapporter</li>
+  </ol>
+
+  <p>
+    Om tillsynsmyndigheten konstaterar att detta inte har skett, kan resultatet bli något värre än böter: ett <strong>temporärt eller permanentت förbud för dig personligen att inneha ledande befattning</strong>. Det är inte ett lagförslag — det är en sanktion som redan finns i lagen.
+  </p>
+
+  <blockquote>
+    "Medlemsstaterna skall säkerställa att ledningsorganen — styrelseledamöter och motsvarade — kan hållas ansvariga för bristande efterlevnad av denna förordning."
+  </blockquote>
+
+  <p>
+    Denna sanktion gäller inte bara för bolagets IT-säkerhet. Den kan blockera dig från att leda <strong>vilken organisation som helst</strong> inom den tidsperiod myndigheten bestämmer.
+  </p>
+
+  <div class="box-warning">
+    <strong>Personlig konsekvens — värd att förstå:</strong> Du kan förlora rätten att vara VD eller styrelseledamot inte bara i detta bolaget, utan potentiellt i alla organisationer. Det är inte en böt som kan betalas bort. Det är ett försvarligt läge som måste byggas nu, medan tid finns.
+  </div>
+
+  <h2>Vad utlöser en sanktion?</h2>
+
+  <p>
+    Sanktioner utlöses av en granskning. Granskningar initieras på tre sätt:
+  </p>
+
+  <h3>1. Utebliven incidentrapportering</h3>
+
+  <p>
+    <strong>Artikel 23</strong> i cybersäkerhetslagen kräver att du rapporterar en allvarlig cybersäkerhetsincident inom två tidsramen:
+  </p>
+
+  <ul>
+    <li><strong>24 timmar</strong> efter att du känner till incidenten — detta är en "tidig varning" för att sätta iväg myndigheternas egen beredskap</li>
+    <li><strong>72 timmar</strong> senare — då måste en fullständig rapport ha lämnats in med detaljer om vad som hände och vilka åtgärder som redan initierats</li>
+  </ul>
+
+  <p>
+    Organisationer som drabbas av ransomware eller data-intrång och försöker hantera det tyst utan rapportering möter två separata sanktioner: en för incidenten i sig, och en för utebliven rapportering. En organisation som rapporterar sent kan möta böter för försening även om rapporten slutligen lämnas in.
+  </p>
+
+  <h3>2. Saknade säkerhetsåtgärder enligt Artikel 21</h3>
+
+  <p>
+    <strong>Artikel 21</strong> listar tio obligatoriska säkerhetsdomäner:
+  </p>
+
+  <ul>
+    <li>Riskhantering och riskanalys</li>
+    <li>Incidenthantering och incidentberedskap</li>
+    <li>Kontinuitetsplanering och återhämtning</li>
+    <li>Leverantörssäkerhet och tredjepartskontroller</li>
+    <li>Säker utveckling av produkter och tjänster</li>
+    <li>Tillgångskontroll och åtkomstförvaltning</li>
+    <li>Kryptering och hemlighetsskydd</li>
+    <li>Autentisering med flera faktorer (MFA)</li>
+    <li>Loggning och övervakning</li>
+    <li>Personal- och säkerhetskompetens</li>
+  </ul>
+
+  <p>
+    Om din organisation saknar dokumenterade processer, policies eller implementeringar inom någon av dessa domäner när tillsynen initieras, är det en sanktionsgrundande brist — <strong>även om ingen incident har inträffat</strong>.
+  </p>
+
+  <p>
+    Tillsynsmyndigheten söker inte efter perfekt teknik. Den söker efter dokumentation på att du har en struktur. Lägg märke till att detta inte är en IT-fråga — det är en styrelsefråga. En risk-analys måste godkännas av styrelsen. En incidenthanteringsplan måste omfatta hela organisationen. En leverantörssäkerhetspolicy måste vara del av kontraktsmallen för alla nya leverantörer.
+  </p>
+
+  <h3>3. Reaktiv tillsyn efter klagomål</h3>
+
+  <p>
+    Tillsynen kan initieras av ett klagomål — från en anställd, en kund, en affärspartner eller ett annat land inom EU. Det behöver inte vara ett cyberangrepp. En anställd som rapporterar att "vi har ingen incidenthanteringsplan" kan sätta igång en granskning.
+  </p>
+
+  <h2>Hur ser tillsynsprocessen ut i Sverige?</h2>
+
+  <p>
+    Sverige har delat tillsynsansvar. <strong>MSB</strong> (Myndigheten för samhällsskydd och beredskap) är överordnad koordinator, men den faktiska tillsynen ligger på <strong>sektorsspecifika myndigheter</strong>:
+  </p>
+
+  <ul>
+    <li><strong>Finansinspektionen (FI)</strong> — banker, försäkringsbolag, pensionsfonder</li>
+    <li><strong>Inspektionen för vård och omsorg (IVO)</strong> — sjukhus, privata vårdcentral, äldreomsorg</li>
+    <li><strong>Transportstyrelsen</strong> — flygplatser, hamnar, järnväg, vägtransport</li>
+    <li><strong>Energimarknadsinspektionen (EI)</strong> — elproduktion, elnät, gasförsörjning</li>
+    <li><strong>Vatten- och avloppsföretag</strong> — lokala tillsynsmyndigheter</li>
+    <li><strong>IMY (Integritetsmyndigheten)</strong> — digital infrastruktur, tjänsteleverantörer, samt deltid för dataskydd</li>
+  </ul>
+
+  <p>
+    När en granskning initieras kan myndigheten begära in dokumentation med kort varsel — ofta 14 till 30 dagar. En organisation utan processdokumentation hamnar omedelbar i kris vid denna begäran, eftersom svaret då blir "Vi har det, men det är inte dokumenterat" — vilket inte är ett försvar.
+  </p>
+
+  <p>
+    Granskningsprocessen är liknande GDPR-tillsyner: begäran om dokument, möte med organisationen, en rappport över fynd, möjlighet att kommentera, därefter ett slutligt tillsynsbeslut.
+  </p>
+
+  <h2>Vad räknas som "godkänd" efterlevnad?</h2>
+
+  <p>
+    Tillsynsmyndigheten bedömer inte dina intentioner eller dina ansträngningar. Den bedömer om du kan <strong>bevisa att specificerade åtgärder finns och fungerar</strong>.
+  </p>
+
+  <p>
+    Det innebär följande konkreta dokument:
+  </p>
+
+  <ul>
+    <li><strong>Riskbedömning</strong> — utförd enligt en struktur, dokumenterad och daterad, med styrelsegodkännande</li>
+    <li><strong>Säkerhetspolicy</strong> — antagen av styrelsen, täckande de tio domänerna i Artikel 21</li>
+    <li><strong>Incidenthanteringsplan</strong> — med tydliga roller, eskaleringsvägar och 72-timmarsprocedurer</li>
+    <li><strong>Leverantörsinventering</strong> — med säkerhetskrav dokumenterade i samtliga relevanta kontrakt</li>
+    <li><strong>Utbildningsregister</strong> — som visar att personal och ledning genomgått säkerhetskompetensutbildning</li>
+    <li><strong>Styrelsebeslut</strong> — som dokumenterar godkännande av säkerhetsmål och övervakning (Artikel 20)</li>
+    <li><strong>Tillgångskontrollpolicy</strong> — definiering av vem som får tillgång till vad, och hur denna upprätthålls</li>
+  </ul>
+
+  <p>
+    Saknar du dessa dokument den dagen tillsynsmyndigheten initierar en granskning, spelar det ingen roll hur mycket säkerhet du faktiskt har implementerat tekniskt. Bevisbördan ligger helt på dig.
+  </p>
+
+  <p>
+    Det betyder att en liten organisation som har dessa dokumenten — även om de är enkla — är bättre förberedd än ett större företag med sofistikerad teknik men ingen dokumentation.
+  </p>
+
+  <div class="box-case">
+    <div class="case-label">Fallstudie</div>
+    
+    <p>
+      <strong>Scenario: Medelstort industriföretag i Sverige, 180 anställda</strong>
+    </p>
+    <p>
+      Klassas som viktig entitet under NIS2. Tillverkar komponenter för en större OEM-leverantör och befinner sig inom verkstad/tillverkning (reglerad sektor).
+    </p>
+    <p>
+      <strong>Månad 1 (februari 2026):</strong> IT-avdelningen identifierar ett ransomware-angrepp. Filkryptering har påbörjats på en server med kunddata. IT-chefen rapporterar till VD. VD beslutar att invänta en intern utredning innan rapportering — "vi vill veta omfattningen först."
+    </p>
+    <p>
+      <strong>Månad 2 (mars 2026):</strong> 72-timmarsfristen passerar utan att MSB notifierats. IT-avdelningen lyckas återställa system från backup, men uppdagar att en viss datamängd inte täcktes av backupen. VD informerar slutligen MSB — 6 dagar senare än krävt.
+    </p>
+    <p>
+      <strong>Månad 3

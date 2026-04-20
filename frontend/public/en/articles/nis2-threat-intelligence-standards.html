@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-BKF3QH9K01"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag("js", new Date());
+    gtag("config", "G-BKF3QH9K01");
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NIS2 Threat Intelligence: Standards and Requirements | NIS2Klar</title>
+  <meta name="description" content="What does NIS2 require on threat intelligence sharing? Learn about MITRE ATT&CK, STIX/TAXII standards, and what to budget for as a CEO in Ireland.">
+  <meta property="og:title" content="NIS2 Threat Intelligence: Standards and Requirements">
+  <meta property="og:description" content="What does NIS2 require on threat intelligence sharing? Learn about MITRE ATT&CK, STIX/TAXII standards, and what to budget for as a CEO in Ireland.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #141416;
+      --card: #1c1c1f;
+      --yellow: #f5c518;
+      --white: #f0f0f0;
+      --muted: #888;
+      --red: #C61212;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: var(--bg); color: var(--white); font-family: 'Barlow', sans-serif; font-size: 19px; line-height: 1.8; }
+
+    /* Nav */
+    nav { display: flex; justify-content: space-between; align-items: center; padding: 20px 40px; border-bottom: 1px solid rgba(255,255,255,0.07); max-width: 900px; margin: 0 auto; flex-wrap: wrap; gap: 16px; }
+    .nav-logo { font-family: 'Poppins', sans-serif; font-weight: 900; font-size: 20px; color: var(--yellow); text-decoration: none; }
+    .nav-logo span { color: var(--white); }
+    .nav-back { color: var(--muted); text-decoration: none; font-size: 15px; }
+    .nav-back:hover { color: var(--white); }
+    .lang-switcher { display: flex; gap: 8px; align-items: center; font-size: 13px; font-family: 'Poppins', sans-serif; }
+    .nav-cta { background: var(--yellow); color: #000; padding: 8px 18px; border-radius: 4px; text-decoration: none; font-weight: 700; font-size: 14px; font-family: 'Poppins', sans-serif; }
+
+    /* Article */
+    .article-wrap { max-width: 760px; margin: 0 auto; padding: 60px 40px; }
+    .article-category { font-size: 13px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 16px; }
+    h1 { font-family: 'Poppins', sans-serif; font-size: clamp(30px, 4vw, 44px); font-weight: 900; line-height: 1.2; margin-bottom: 24px; }
+    .article-meta { font-size: 15px; color: var(--muted); margin-bottom: 48px; padding-bottom: 24px; border-bottom: 1px solid rgba(255,255,255,0.07); }
+    h2 { font-family: 'Poppins', sans-serif; font-size: 26px; font-weight: 700; margin: 48px 0 16px; color: var(--white); }
+    h3 { font-family: 'Poppins', sans-serif; font-size: 20px; font-weight: 600; margin: 32px 0 12px; color: var(--yellow); }
+    p { margin-bottom: 22px; }
+    strong { color: var(--white); font-weight: 700; }
+    .highlight { color: var(--yellow); font-weight: 700; }
+    .danger { color: #ff6b6b; font-weight: 700; }
+    ul, ol { margin: 16px 0 24px 24px; }
+    li { margin-bottom: 12px; font-size: 19px; }
+
+    /* Callout boxes */
+    .box-warning { background: rgba(197,17,17,0.12); border-left: 4px solid var(--red); padding: 20px 24px; margin: 32px 0; border-radius: 0 4px 4px 0; }
+    .box-info { background: rgba(245,197,24,0.08); border-left: 4px solid var(--yellow); padding: 20px 24px; margin: 32px 0; border-radius: 0 4px 4px 0; }
+    .box-case { background: var(--card); border: 1px solid rgba(255,255,255,0.08); padding: 28px; margin: 40px 0; border-radius: 4px; }
+    .box-case .case-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 12px; }
+    blockquote { border-left: 3px solid var(--yellow); padding: 12px 20px; margin: 24px 0; font-style: italic; color: #ccc; }
+
+    /* CTA */
+    .cta-section { background: var(--card); border: 1px solid rgba(245,197,24,0.2); border-radius: 4px; padding: 48px 40px; margin: 64px 0 40px; text-align: center; }
+    .cta-section h2 { margin-top: 0; font-size: 26px; }
+    .cta-section p { color: #aaa; max-width: 500px; margin: 0 auto 28px; }
+    .btn-primary { display: inline-block; background: var(--yellow); color: #000; font-family: 'Poppins', sans-serif; font-weight: 800; font-size: 16px; padding: 16px 36px; border-radius: 4px; text-decoration: none; }
+    .btn-primary:hover { background: #e0b010; }
+    .cta-fine { font-size: 13px; color: var(--muted); margin-top: 16px; }
+
+    /* FAQ */
+    .faq-item { border-bottom: 1px solid rgba(255,255,255,0.07); padding: 20px 0; }
+    .faq-q { font-family: 'Poppins', sans-serif; font-weight: 600; margin-bottom: 10px; }
+    .faq-a { color: #bbb; }
+
+    /* Fine table */
+    .fine-table { width: 100%; border-collapse: collapse; margin: 24px 0; }
+    .fine-table th { background: rgba(245,197,24,0.1); color: var(--yellow); font-family: 'Poppins', sans-serif; font-size: 13px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 12px 16px; text-align: left; border-bottom: 1px solid rgba(245,197,24,0.2); }
+    .fine-table td { padding: 14px 16px; border-bottom: 1px solid rgba(255,255,255,0.05); font-size: 15px; }
+    .fine-table tr:last-child td { border-bottom: none; }
+    .fine-table .amount { color: #ff6b6b; font-weight: 700; }
+
+    /* Summary + Key Takeaway */
+    .box-summary { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; padding: 24px 28px; margin: 0 0 32px; }
+    .summary-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-bottom: 14px; }
+    .box-summary ul { margin: 0; padding-left: 20px; }
+    .box-summary li { margin-bottom: 8px; font-size: 17px; color: #ccc; }
+    .box-takeaway { background: rgba(245,197,24,0.08); border-left: 4px solid var(--yellow); padding: 20px 24px; margin: 0 0 40px; border-radius: 0 4px 4px 0; }
+    .takeaway-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 10px; }
+    .box-takeaway p { margin: 0; font-size: 18px; font-weight: 600; color: var(--white); line-height: 1.6; }
+
+    /* Related articles */
+    .related-articles { margin: 2.5rem 0 2rem; padding: 1.5rem; background: #1a1a2e; border-left: 4px solid #f0a500; border-radius: 4px; }
+    .related-articles p { margin: 0 0 1rem; font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #f0a500; }
+    .related-articles ul { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+    .related-articles li { margin: 0; }
+    .related-articles a { color: #e0e0e0; text-decoration: none; font-size: 0.95rem; }
+    .related-articles a:hover { color: #f0a500; }
+    .related-articles .nav-footer { margin: 1.25rem 0 0; font-size: 0.85rem; color: #aaa; }
+    .related-articles .nav-footer a { color: #f0a500; text-decoration: none; }
+
+    /* Footer */
+    footer { border-top: 1px solid rgba(255,255,255,0.07); padding: 32px 40px; text-align: center; font-size: 13px; color: var(--muted); max-width: 900px; margin: 0 auto; }
+    footer a { color: var(--muted); text-decoration: none; }
+    footer a:hover { color: var(--white); }
+
+    @media (max-width: 600px) {
+      nav, .article-wrap, footer { padding: 20px; }
+      .cta-section { padding: 32px 20px; }
+      .fine-table { font-size: 14px; }
+      .fine-table th, .fine-table td { padding: 10px 10px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="https://nis2klar.se/en/">NIS2<span>Klar</span></a>
+  <a class="nav-back" href="https://nis2klar.se/en/articles.html">← All Articles</a>
+  <div class="lang-switcher">
+    <a href="https://nis2klar.se/artiklar.html" style="color:#888;text-decoration:none;font-weight:600;padding:4px 8px;border-radius:3px;" title="Svenska">SV</a>
+    <a href="https://nis2klar.se/en/articles.html" style="color:#f5c518;text-decoration:none;font-weight:600;padding:4px 8px;border-radius:3px;background:rgba(245,197,24,0.1);" title="English">EN</a>
+    <a href="https://nis2klar.se/da/artikler.html" style="color:#888;text-decoration:none;font-weight:600;padding:4px 8px;border-radius:3px;" title="Dansk">DA</a>
+    <a href="https://nis2klar.se/no/artikler.html" style="color:#888;text-decoration:none;font-weight:600;padding:4px 8px;border-radius:3px;" title="Norsk">NO</a>
+    <a href="https://nis2klar.se/it/articoli.html" style="color:#888;text-decoration:none;font-weight:600;padding:4px 8px;border-radius:3px;" title="Italiano">IT</a>
+  </div>
+  <a class="nav-cta" href="/en/book-session/">Book call →</a>
+</nav>
+
+<article class="article-wrap">
+  <div class="article-category">Incident Response &amp; Governance</div>
+  <h1>NIS2 Threat Intelligence: Standards and Requirements</h1>
+  <div class="article-meta">Updated 19 April 2026 · Read time: ca 9 minutes · For: CEOs and boards</div>
+
+  <!-- SUMMARY -->
+  <div class="box-summary">
+    <div class="summary-label">Summary</div>
+    <ul>
+      <li>NIS2 requires you to share threat intelligence with NCSC Ireland within specific timelines and formats.</li>
+      <li>Standards like MITRE ATT&CK and STIX/TAXII are not optional — they are the technical backbone of compliance.</li>
+      <li>The average Irish essential entity will need to budget €50,000–€200,000 annually for threat intelligence infrastructure.</li>
+      <li>Incident reporting that omits structured threat data can trigger additional penalties on top of the base fine.</li>
+      <li>Your board must understand what threat intelligence sharing means operationally — and why the wrong vendor choice can cost you compliance failures.</li>
+    </ul>
+  </div>
+
+  <!-- KEY TAKEAWAY -->
+  <div class="box-takeaway">
+    <div class="takeaway-label">Why This Matters</div>
+    <p>Threat intelligence is not just something your security team does in the background. NIS2 makes it a governance mandate. You cannot report an incident to NCSC Ireland without structured threat data. The penalty for botched reporting includes both fines and reputational damage. This article shows you exactly what to budget for and what questions to ask your vendors.</p>
+  </div>
+
+  <!-- HOOK -->
+  <p>
+    You've probably heard of threat intelligence sharing. It sounds technical. It isn't — but the regulatory requirement is sharp and specific.
+  </p>
+
+  <p>
+    Under <strong>S.I. No. 322 of 2024</strong> (Ireland's NIS2 Regulations), when your organisation detects a significant cyber incident, you must notify NCSC Ireland within <strong>24 hours</strong> (early warning) and then file a complete report within <strong>72 hours</strong>. But that report must include structured threat data in a standardised format — not just "we were attacked" or "someone accessed our system."
+  </p>
+
+  <p>
+    This is where most Irish organisations stumble. They have incident response. They do not have threat intelligence capture and standardisation.
+  </p>
+
+  <div class="box-warning">
+    <strong>Real scenario:</strong> An Irish financial services firm detects a breach in a payment processing system on Monday morning. They notify NCSC Ireland on Monday afternoon (within the 24-hour window). They submit their full report on Wednesday. But the report lacks structured indicators of compromise (IOCs), no MITRE ATT&CK mappings, no STIX-formatted data. The incident was real. The response was fast. The compliance failure is silent — until the investigation shows up three months later with a fine for incomplete threat intelligence reporting.
+  </p>
+
+  <h2>What NIS2 Actually Requires on Threat Intelligence</h2>
+
+  <p>
+    NIS2 Regulation 23 (in S.I. 322/2024) mandates incident reporting. But the regulation does not exist in isolation. It points to specific standards and frameworks that define what "complete" incident reporting means.
+  </p>
+
+  <p>
+    The key requirement: your incident report must include <strong>threat intelligence data</strong> that can be understood and acted on by NCSC Ireland and by other organisations in your sector. This is not optional detail — it is a regulatory expectation built into the 72-hour reporting timeline.
+  </p>
+
+  <p>
+    Three standards sit at the centre of this requirement:
+  </p>
+
+  <h3>1. MITRE ATT&CK Framework</h3>
+
+  <p>
+    MITRE ATT&CK is an open-source knowledge base of adversary tactics and techniques. When you report an incident, you must classify the attacker's behaviour using MITRE ATT&CK terminology. For example:
+  </p>
+
+  <ul>
+    <li>Did the attacker use phishing (T1566) or direct access (T1133)?</li>
+    <li>Did they exfiltrate data (T1041) or just establish persistence (T1547)?</li>
+    <li>What operating system was affected (Windows, Linux, cloud)?</li>
+  </ul>
+
+  <p>
+    NCSC Ireland uses this framework to correlate your incident with known attack patterns. If five other Irish companies report the same MITRE ATT&CK techniques this week, NCSC Ireland can issue a sector-wide alert. Without this standardisation, each incident is treated as isolated.
+  </p>
+
+  <p>
+    For a CEO: this means your incident response team cannot simply describe what happened in prose. They must map the attack to a standardised taxonomy. This requires either training or a vendor tool that does the mapping automatically.
+  </p>
+
+  <h3>2. STIX/TAXII (Structured Threat Information eXpression / Trusted Automated eXchange of Indicator Information)</h3>
+
+  <p>
+    STIX and TAXII are two complementary standards. STIX is the format (how threat data is structured). TAXII is the protocol (how that data is shared securely between organisations and authorities).
+  </p>
+
+  <p>
+    When you report to NCSC Ireland, you are not sending a PDF. You are submitting structured threat data — indicators of compromise (IOCs), metadata, relationships — in STIX format. NCSC Ireland's systems ingest this data automatically and can re-share it (with your consent) to other essential entities through TAXII.
+  </p>
+
+  <p>
+    Example of what this means operationally:
+  </p>
+
+  <ul>
+    <li>Your organisation detects a malicious domain: evil.com</li>
+    <li>Your incident response exports this as a STIX object with confidence level, detection time, affected systems</li>
+    <li>NCSC Ireland receives it, validates it, and distributes it to five other Irish banks through a TAXII feed</li>
+    <li>Those banks ingest it automatically into their security tools</li>
+    <li>The threat is neutralised across the sector within hours, not weeks</li>
+  </ul>
+
+  <p>
+    For a CEO: STIX/TAXII is not optional infrastructure. It is a requirement to participate in the Irish national threat intelligence ecosystem. If your organisation cannot produce STIX-formatted reports, you cannot fully comply with Regulation 23.
+  </p>
+
+  <h3>3. Common Vulnerability Scoring System (CVSS)</h3>
+
+  <p>
+    CVSS is the standard for rating the severity of a vulnerability or incident. When you report a breach to NCSC Ireland, you must include a CVSS score. This helps the authority understand urgency and impact — and compare your incident to others.
+  </p>
+
+  <p>
+    CVSS is not new, but it is non-negotiable under NIS2. Many organisations skip this step and describe severity in words ("critical," "high impact") instead of numerically. Regulators flag this as incomplete reporting.
+  </p>
+
+  <h2>The Timeline: Why 72 Hours Is a Real Deadline</h2>
+
+  <p>
+    NIS2 Regulation 23 in S.I. 322/2024 sets a firm deadline:
+  </p>
+
+  <ul>
+    <li><strong>24 hours</strong> — Early warning to NCSC Ireland (brief notification)</li>
+    <li><strong>72 hours</strong> — Full incident report, including threat intelligence data</li>
+  </ul>
+
+  <p>
+    This is not a grace period or a "best effort." NCSC Ireland will cross-check your timestamps. If your early warning arrives on Tuesday morning but your full report arrives on Saturday, that is a compliance breach — even if the technical investigation is sound.
+  </p>
+
+  <p>
+    Why is this important for your board to understand? Because it means your organisation must have threat intelligence infrastructure ready <strong>before an incident happens</strong>. You cannot wait until you are breached to figure out how to produce STIX-formatted reports. By that time, you have 72 hours.
+  </p>
+
+  <div class="box-info">
+    <strong>Practical implication:</strong> If your incident response team has never produced a STIX-formatted report before, a real incident will find them scrambling on day 2 of 3. Regulators understand this, but they do not excuse it. The fine for incomplete threat intelligence reporting has been imposed in other EU jurisdictions — and Ireland will follow.
+  </div>
+
+  <h2>How Threat Intelligence Sharing Works in Practice</h2>
+
+  <p>
+    Here is the operational flow under NIS2:
+  </p>
+
+  <ol>
+    <li>Your organisation detects a cyber incident (malware, intrusion, data exfiltration, etc.)</li>
+    <li>Your incident response team begins forensics and collects indicators of compromise (IOCs) — domains, IPs, file hashes, etc.</li>
+    <li>Within 24 hours, you send an early warning to NCSC Ireland with basic facts (what was attacked, when, initial impact estimate)</li>
+    <li>Within 72 hours, you send a full report that includes:
+      <ul style="margin-left:40px;">
+        <li>MITRE ATT&CK mappings (what techniques were used)</li>
+        <li>STIX-formatted threat indicators</li>
+        <li>CVSS score for severity</li>
+        <li>Timeline of events</li>
+        <li>Forensic findings and root cause analysis (if available)</li>
+        <li>Containment and recovery actions taken</li>
+      </ul>
+    </li>
+    <li>NCSC Ireland ingests your STIX data and correlates it with incidents from other organisations</li>
+    <li>If the attack is part of a broader campaign, NCSC Ireland issues a sector-wide advisory with your threat data (anonymised if you request it)</li>
+  </ol>
+
+  <p>
+    This is not a one-way reporting obligation. In return, NCSC Ireland shares threat intelligence with your organisation through a TAXII feed. You receive real-time updates on emerging threats, new attack patterns, and indicators from incidents affecting other Irish essential entities.
+  </p>
+
+  <p>
+    For a CEO, the value is simple: better intelligence about what is being targeted, how, and by whom. For your board, the risk is equally clear: if your incident response does not integrate threat intelligence, you miss both the reporting deadline and the opportunity to benefit from shared intelligence.
+  </p>
+
+  <h2>What to Budget For</h2>
+
+  <p>
+    Building threat intelligence capability is not cheap, but it is far cheaper than a compliance fine. Here is what an Irish essential entity typically needs:
+  </p>
+
+  <table class="fine-table">
+    <thead>
+      <tr>
+        <th>Component</th>
+        <th>Annual Cost Range (€)</th>
+        <th>Notes</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>SIEM or threat intelligence platform (STIX/TAXII-capable)</td>
+        <td>€25,000–€100,000</td>
+        <td>Handles collection, normalisation, STIX export</td>
+      </tr>
+      <tr>
+        <td>Integration with NCSC Ireland's TAXII feed</td>
+        <td>€5,000–€15,000</td>
+        <td>One-time setup, then annual subscription</td>
+      </tr>
+      <tr>
+        <td>Threat intelligence analyst(s)</td>
+        <td>€60,000–€120,000</td>
+        <td>FTE or outsourced managed service</td>
+      </tr>
+      <tr>
+        <td>Incident response training (MITRE ATT&CK, STIX)</td>
+        <td>€5,000–€10,000</td>
+        <td>Annual refresher for incident response team</td>
+      </tr>
+      <tr>
+        <td>Vendor assessment &amp; integration testing</td>
+        <td>€10,000–€20,000</td>
+        <td>One-time to validate compliance-ready setup</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>
+    <strong>Total first-year cost: €105,000–€265,000 (approximately €80,000–€200,000 excluding analyst salary for smaller teams)</strong>
+  </p>
+
+  <p>
+    For a large Irish financial services firm or essential utility, this is a rounding error. For a mid-market organisation (50–250 employees), this is a material investment. For a smaller important entity just crossing the 50-employee threshold, it is the difference between affordable compliance and outsourcing to a managed security service provider (MSSP).
+  </p>
+
+  <p>
+    The alternative — not investing in threat intelligence infrastructure — costs more: fines of €7–10 million for incomplete reporting, reputational damage, and exclusion from NCSC Ireland's threat intelligence sharing network.
+  </p>
+
+  <div class="box-case">
+    <div class="case-label">Case Study</div>
+    <p>
+      <strong>Scenario: Mid-sized Irish utility, 180 employees, classified as important entity.</strong>
+    </p>
+    <p>
+      In Q2 2026, a phishing campaign targets the organisation's engineering staff. One click results in credential theft. Attackers gain access to the SCADA network but are detected by EDR (Endpoint Detection and Response) after 48 hours.
+    </p>
+    <p>
+      The organisation has incident response (good). It has forensic tools (good). It does not have STIX export capability or MITRE ATT&CK training (critical gap).
+    </p>
+    <p>
+      24-hour early warning: submitted on time, but vague ("intrusion detected in engineering segment").
+    </p>
+    <p>
+      72-hour full report: submitted at hour 71, but lacks MITRE ATT&CK mappings, STIX-formatted IOCs, and CVSS score. The analyst describes the attack in narrative form instead.
+    </p>
+    <p>
+      NCSC Ireland investigates and finds the report incomplete. The utility receives a compliance notice and, six months later, a fine of €1.2 million for Regulation 23 breach. The organisation then retroactively builds threat intelligence infrastructure, at a cost of €140,000, and implements quarterly tabletop exercises.
+    </p>
+    <p>
+      <strong>Lesson:</strong> The investment in threat intelligence infrastructure (€140k) should have been made before the incident. The fine (€1.2M) would have been avoided. Instead, the organisation paid both.
+    </p>
+  </div>
+
+  <h2>What to Ask Your Vendors</h2>
+
+  <p>
+    If you are evaluating incident response, SIEM, or threat intelligence vendors, here are the exact questions your procurement team should ask:
+  </p>
+
+  <h3>On STIX/TAXII Compliance</h3>
+  <ul>
+    <li>"Can your platform export incident data in STIX 2.1 format?" (Not STIX 1.x — insist on the current version.)</li>
+    <li>"Do you have a pre-built connector to NCSC Ireland's TAXII feed, or do we need custom integration?"</li>
+    <li>"What is the time from incident detection to STIX export? Can we do it in under 2 hours?"</li>
+    <li>"Can the platform import TAXII feeds and automatically feed indicators into our security tools (firewall, EDR, etc.)?"</li>
+  </ul>
+
+  <h3>On MITRE ATT&CK Integration</h3>
+  <ul>
+    <li>"Does your platform auto-map detected activities to MITRE ATT&CK techniques?"</li>
+    <li>"Can your analysts manually tag incidents with MITRE ATT&CK if auto-mapping misses something?"</li>
+    <li>"Does the platform provide MITRE ATT&CK reports suitable for regulatory submission?"</li>
+  </ul>
+
+  <h3>On CVSS Scoring</h3>
+  <ul>
+    <li>"Does the platform calculate CVSS v3.1 scores automatically, or do we need manual input?"</li>
+    <li>"Can CVSS scores be exported as part of incident reports?"</li>
+  </ul>
+
+  <h3>On Incident Reporting</h3>
+  <ul>
+    <li>"What incident report templates do you provide? Do they align with NIS2 Regulation 23 requirements?"</li>
+    <li>"Can incident reports be generated and exported within 2–4 hours of incident confirmation?"</li>
+    <li>"Do you offer a 'compliance-ready' incident report format that includes STIX, MITRE ATT&CK, and CVSS in one package?"</li>
+  </ul>
+
+  <h3>On Support and Training</h3>
+  <ul>
+    <li>"Do you provide training to our incident response team on MITRE ATT&CK and STIX?"</li>
+    <li>"Is there a managed service option if we lack the in-house expertise?"</li>
+    <li>"Can you participate in a tabletop exercise to validate our incident reporting workflow?"</li>
+  </ul>
+
+  <p>
+    Any vendor that cannot clearly answer these questions is not NIS2-ready. Do not assume "industry standard" SIEM = NIS2 compliant. It does not.
+  </p>
+
+  <h2>Common Pitfalls</h2>
+
+  <h3>Pitfall 1: Confusing "Incident Response" with "Threat Intelligence"</h3>
+  <p>
+    You may already have a solid incident response process. That is not the same as

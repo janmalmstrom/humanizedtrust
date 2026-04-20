@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-BKF3QH9K01"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag("js", new Date());
+    gtag("config", "G-BKF3QH9K01");
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NIS2-tilsyn i Danmark: Sådan håndhæver CFCS overholdelse | NIS2Klar</title>
+  <meta name="description" content="CFCS håndhæver NIS2-loven i Danmark. Læs hvordan tilsynet fungerer, hvad der udløser undersøgelser, og hvordan sanktioner eskalerer — fra advarsel til forbud mod ledelse.">
+  <meta property="og:title" content="NIS2-tilsyn i Danmark: Sådan håndhæver CFCS overholdelse">
+  <meta property="og:description" content="CFCS håndhæver NIS2-loven i Danmark. Læs hvordan tilsynet fungerer, hvad der udløser undersøgelser, og hvordan sanktioner eskalerer — fra advarsel til forbud mod ledelse.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #141416;
+      --card: #1c1c1f;
+      --yellow: #f5c518;
+      --white: #f0f0f0;
+      --muted: #888;
+      --red: #C61212;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: var(--bg); color: var(--white); font-family: 'Barlow', sans-serif; font-size: 19px; line-height: 1.8; }
+
+    /* Nav */
+    nav { display: flex; justify-content: space-between; align-items: center; padding: 20px 40px; border-bottom: 1px solid rgba(255,255,255,0.07); max-width: 1200px; margin: 0 auto; gap: 20px; }
+    .nav-logo { font-family: 'Poppins', sans-serif; font-weight: 900; font-size: 20px; color: var(--yellow); text-decoration: none; }
+    .nav-logo span { color: var(--white); }
+    .nav-back { color: var(--muted); text-decoration: none; font-size: 15px; }
+    .nav-back:hover { color: var(--white); }
+    .lang-switcher { display: flex; gap: 8px; align-items: center; font-size: 13px; font-family: 'Poppins', sans-serif; margin-left: auto; }
+    .nav-cta { background: var(--yellow); color: #000; padding: 8px 18px; border-radius: 4px; text-decoration: none; font-weight: 700; font-size: 14px; font-family: 'Poppins', sans-serif; }
+
+    /* Article */
+    .article-wrap { max-width: 760px; margin: 0 auto; padding: 60px 40px; }
+    .article-category { font-size: 13px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 16px; }
+    h1 { font-family: 'Poppins', sans-serif; font-size: clamp(30px, 4vw, 44px); font-weight: 900; line-height: 1.2; margin-bottom: 24px; }
+    .article-meta { font-size: 15px; color: var(--muted); margin-bottom: 48px; padding-bottom: 24px; border-bottom: 1px solid rgba(255,255,255,0.07); }
+    h2 { font-family: 'Poppins', sans-serif; font-size: 26px; font-weight: 700; margin: 48px 0 16px; color: var(--white); }
+    h3 { font-family: 'Poppins', sans-serif; font-size: 20px; font-weight: 600; margin: 32px 0 12px; color: var(--yellow); }
+    p { margin-bottom: 22px; }
+    strong { color: var(--white); font-weight: 700; }
+    .highlight { color: var(--yellow); font-weight: 700; }
+    .danger { color: #ff6b6b; font-weight: 700; }
+    ul, ol { margin: 16px 0 24px 24px; }
+    li { margin-bottom: 12px; font-size: 19px; }
+
+    /* Callout boxes */
+    .box-warning { background: rgba(197,17,17,0.12); border-left: 4px solid var(--red); padding: 20px 24px; margin: 32px 0; border-radius: 0 4px 4px 0; }
+    .box-info { background: rgba(245,197,24,0.08); border-left: 4px solid var(--yellow); padding: 20px 24px; margin: 32px 0; border-radius: 0 4px 4px 0; }
+    .box-case { background: var(--card); border: 1px solid rgba(255,255,255,0.08); padding: 28px; margin: 40px 0; border-radius: 4px; }
+    .box-case .case-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 12px; }
+    blockquote { border-left: 3px solid var(--yellow); padding: 12px 20px; margin: 24px 0; font-style: italic; color: #ccc; }
+
+    /* CTA */
+    .cta-section { background: var(--card); border: 1px solid rgba(245,197,24,0.2); border-radius: 4px; padding: 48px 40px; margin: 64px 0 40px; text-align: center; }
+    .cta-section h2 { margin-top: 0; font-size: 26px; }
+    .cta-section p { color: #aaa; max-width: 500px; margin: 0 auto 28px; }
+    .btn-primary { display: inline-block; background: var(--yellow); color: #000; font-family: 'Poppins', sans-serif; font-weight: 800; font-size: 16px; padding: 16px 36px; border-radius: 4px; text-decoration: none; }
+    .btn-primary:hover { background: #e0b010; }
+    .cta-fine { font-size: 13px; color: var(--muted); margin-top: 16px; }
+
+    /* FAQ */
+    .faq-item { border-bottom: 1px solid rgba(255,255,255,0.07); padding: 20px 0; }
+    .faq-q { font-family: 'Poppins', sans-serif; font-weight: 600; margin-bottom: 10px; }
+    .faq-a { color: #bbb; }
+
+    /* Fine table */
+    .fine-table { width: 100%; border-collapse: collapse; margin: 24px 0; }
+    .fine-table th { background: rgba(245,197,24,0.1); color: var(--yellow); font-family: 'Poppins', sans-serif; font-size: 13px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 12px 16px; text-align: left; border-bottom: 1px solid rgba(245,197,24,0.2); }
+    .fine-table td { padding: 14px 16px; border-bottom: 1px solid rgba(255,255,255,0.05); font-size: 15px; }
+    .fine-table tr:last-child td { border-bottom: none; }
+    .fine-table .amount { color: #ff6b6b; font-weight: 700; }
+
+    /* Summary + Key Takeaway */
+    .box-summary { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; padding: 24px 28px; margin: 0 0 32px; }
+    .summary-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-bottom: 14px; }
+    .box-summary ul { margin: 0; padding-left: 20px; }
+    .box-summary li { margin-bottom: 8px; font-size: 17px; color: #ccc; }
+    .box-takeaway { background: rgba(245,197,24,0.08); border-left: 4px solid var(--yellow); padding: 20px 24px; margin: 0 0 40px; border-radius: 0 4px 4px 0; }
+    .takeaway-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 10px; }
+    .box-takeaway p { margin: 0; font-size: 18px; font-weight: 600; color: var(--white); line-height: 1.6; }
+
+    /* Related articles */
+    .related-articles { margin: 2.5rem 0 2rem; padding: 1.5rem; background: #1a1a2e; border-left: 4px solid #f0a500; border-radius: 4px; }
+    .related-articles p { margin: 0 0 1rem; font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #f0a500; }
+    .related-articles ul { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+    .related-articles li { margin: 0; }
+    .related-articles a { color: #e0e0e0; text-decoration: none; font-size: 0.95rem; }
+    .related-articles a:hover { color: #f0a500; }
+    .related-articles .footer-nav { margin: 1.25rem 0 0; font-size: 0.85rem; color: #aaa; }
+    .related-articles .footer-nav a { color: #f0a500; }
+
+    /* Footer */
+    footer { border-top: 1px solid rgba(255,255,255,0.07); padding: 32px 40px; text-align: center; font-size: 13px; color: var(--muted); max-width: 900px; margin: 0 auto; }
+    footer a { color: var(--muted); }
+    footer a:hover { color: var(--white); }
+
+    @media (max-width: 600px) {
+      nav { flex-direction: column; align-items: flex-start; padding: 16px 20px; gap: 12px; }
+      nav > div:nth-child(3) { margin-left: 0; }
+      .article-wrap, footer { padding: 20px; }
+      .cta-section { padding: 32px 20px; }
+      .fine-table { font-size: 14px; }
+      .fine-table th, .fine-table td { padding: 10px 10px; }
+      h1 { font-size: 28px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="https://nis2klar.se/da/">NIS2<span>Klar</span></a>
+  <a class="nav-back" href="https://nis2klar.se/da/artikler.html">← Alle artikler</a>
+  <div class="lang-switcher">
+    <a href="https://nis2klar.se/artiklar.html" style="color:#888;text-decoration:none;font-weight:600;padding:4px 8px;border-radius:3px;" title="Svenska">SV</a>
+    <a href="https://nis2klar.se/en/articles.html" style="color:#888;text-decoration:none;font-weight:600;padding:4px 8px;border-radius:3px;" title="English">EN</a>
+    <a href="https://nis2klar.se/da/artikler.html" style="color:#f5c518;text-decoration:none;font-weight:600;padding:4px 8px;border-radius:3px;background:rgba(245,197,24,0.1);" title="Dansk">DA</a>
+    <a href="https://nis2klar.se/no/artikler.html" style="color:#888;text-decoration:none;font-weight:600;padding:4px 8px;border-radius:3px;" title="Norsk">NO</a>
+    <a href="https://nis2klar.se/it/articoli.html" style="color:#888;text-decoration:none;font-weight:600;padding:4px 8px;border-radius:3px;" title="Italiano">IT</a>
+  </div>
+  <a class="nav-cta" href="https://nis2klar.se/da/#boka">Book samtal →</a>
+</nav>
+
+<article class="article-wrap">
+  <div class="article-category">Tilsyn &amp; Håndhævelse</div>
+  <h1>NIS2-tilsyn i Danmark: Sådan håndhæver CFCS overholdelse</h1>
+  <div class="article-meta">Opdateret 19. april 2026 · Læsetid: ca 8 minutter · Målgruppe: Direktører og bestyrelser</div>
+
+  <!-- SUMMARY -->
+  <div class="box-summary">
+    <div class="summary-label">Opsummering</div>
+    <ul>
+      <li>CFCS (Center for Cybersikkerhed) er Danmarks primære NIS2-tilsynsmyndighed siden oktober 2024.</li>
+      <li>Sektortilsyn — Finanstilsynet, Energistyrelsen og Erhvervsstyrelsen — håndterer deres brancher.</li>
+      <li>Tilsynet kan være proaktivt (planlagte revisioner) eller reaktivt (efter hændelser eller klagomål).</li>
+      <li>CFCS kan udstede øjeblikkelige påbud, pålægge bøder op til 10 mio. EUR, og midlertidigt forbyde ledelsesmand at varetage hverv.</li>
+      <li>Du er direkte ansvarlig — ikke kun IT-afdelingen.</li>
+    </ul>
+  </div>
+
+  <!-- KEY TAKEAWAY -->
+  <div class="box-takeaway">
+    <div class="takeaway-label">Vigtigste punkt</div>
+    <p>CFCS håndhæver ikke ud fra intentioner, men ud fra dokumentation og faktiske processer på revisionstidspunktet. Et styrelsesprotokol i dag værner dig — fravær af det samme protocol i dag koster dig millioner, når tilsynet kommer uvendt.</p>
+  </div>
+
+  <!-- HOOK -->
+  <p>
+    NIS2-loven trådte i kraft i Danmark i oktober 2024. CFCS er nu i gang med at håndhæve den. Første undersøgelser er allerede under opsejling, og det handler ikke kun om bøder til virksomheden — det handler om dit personlige ansvar som direktør eller bestyrelsesmedlem.
+  </p>
+
+  <p>
+    I denne artikel viser vi dig præcis hvad der sker når CFCS banker på døren: hvordan tilsynet fungerer, hvad der udløser en undersøgelse, hvor alvorlige sanktionerne bliver — og hvordan du dokumenterer dig ud af det værste scenarie.
+  </p>
+
+  <div class="box-warning">
+    <strong>CFCS er ikke blid.</strong> Myndigheden kan udstede øjeblikkelige påbud, fryse løbende aktiviteter og midlertidigt forbyde dig fra at lede en virksomhed. Ventetid er en luksus du ikke har.
+  </div>
+
+  <h2>Sådan er tilsynet organiseret i Danmark</h2>
+
+  <p>
+    NIS2-loven er en EU-direktiv, men tilsynet med den er opdelt nationalt efter sektor og virksomhedstype. I Danmark:
+  </p>
+
+  <ul>
+    <li><strong>CFCS (Center for Cybersikkerhed)</strong> — koordinator for de væsentlige og vigtige enheder på tværs af sektorer, og primærmyndighed for digital infrastruktur og IKT-serviceforvaltere.</li>
+    <li><strong>Finanstilsynet</strong> — bancasektoren, forsikringer, finansielle markedsinfrastrukturer</li>
+    <li><strong>Energistyrelsen</strong> — el- og naturgasleverandører, varmesektoren</li>
+    <li><strong>Erhvervsstyrelsen</strong> — telekommunikationsoperatører og -tjenester</li>
+    <li><strong>Øvrige sektormyndigheder</strong> — transport, sundhed, drikkevand, spildevand, post, affald osv.</li>
+  </ul>
+
+  <p>
+    Dette betyder: Du kan være under tilsyn fra CFCS, fra Finanstilsynet, fra både og — eller slet ikke hvis du ikke opfylder kriterierne (væsentlig eller vigtig enhed). Det første du skal gøre er at finde ud af hvilken myndighed der tilser dig.
+  </p>
+
+  <h2>Proaktiv vs. reaktiv tilsyn — hvad CFCS gør</h2>
+
+  <p>
+    CFCS tilser på to måder: planmæssigt og efter anledning. Begge kan ramme dig ud af det blå.
+  </p>
+
+  <h3>Proaktiv tilsyn</h3>
+  <p>
+    CFCS sender ud skemaer til væsentlige og vigtige enheder. Svaret skal komme inden en deadine — typisk 30 dage. Spørgeskemaet dækker:
+  </p>
+
+  <ul>
+    <li>Risikovurdering — hvad har I identificeret af trusler?</li>
+    <li>Sikkerhedspolitik — er den vedtaget af bestyrelsen?</li>
+    <li>Incidenthåndtering — har I en plan? Er den testet?</li>
+    <li>Uddannelse — hvem er skolet?</li>
+    <li>Leverandørkontrol — hvordan vurderer I deres sikkerhed?</li>
+    <li>Styrelsesdokumentation — kan I vise styrelsens godkendelse af sikkerhedstiltag?</li>
+  </ul>
+
+  <p>
+    Manglende eller utydeligt svar kan allerede udløse en dybdegranskning. CFCS går ikke ud fra at "vi handler på det senere". De går ud fra hvad der dokumenteres på svartidspunktet.
+  </p>
+
+  <h3>Reaktiv tilsyn</h3>
+  <p>
+    En alvorlig sikkerhedshændelse, et klagomål fra en ansatte eller kunde, eller rapportering fra en anden myndighed — det udløser øjeblikkelig undersøgelse.
+  </p>
+
+  <p>
+    Artikkel 23 i NIS2-loven forpligter dig til at rapportere alvorlige hændelser til CFCS inden <strong>24 timer (tidig varsel)</strong> og med fuld rapport inden <strong>72 timer</strong>. Ikke rapportering er selv en sanktion. Og når CFCS så åbner sagen, starter de altid med at spørge: "Hvor er jeres incidenthanteringsplan? Hvor er bestyrelsesgodkendelsen? Hvad siger logfilerne?"
+  </p>
+
+  <p>
+    Hvis du ikke kan vise det, bliver situationen meget værre meget hurtigt.
+  </p>
+
+  <div class="box-info">
+    <strong>Vigtig detalje:</strong> Rapporterin til CFCS skal ske <em>uafhængigt af politianmeldelse</em>. Du kan ikke vente til politiet er færdig med undersøgelsen. 24 timer fra du opdager hændelsen — eller fra du burde have opdaget den.
+  </div>
+
+  <h2>Hvad udsætter dig for CFCS-granskning?</h2>
+
+  <p>
+    CFCS gransker når:
+  </p>
+
+  <h3>Du rapporterer en hændelse (eller burde have gjort det)</h3>
+  <p>
+    Ransomware, datafiltrering, driftsstop — alt dette skal rapporteres. At rapportere udløser automatisk en undersøgelse. Ikke at rapportere er værre, fordi du så bryder loven <em>og</em> de opdager det uden at have dit svar først.
+  </p>
+
+  <h3>En tredjemand klager over dig</h3>
+  <p>
+    En leverandør kan klage hvis du ikke iagttager sikkkerhedsstandarder. En forening kan klage hvis persondata lækker. En konkurrent kan ikke klage, men en kunde kan. CFCS tager alle alvorlige klagomål op.
+  </p>
+
+  <h3>CFCS finder uoverensstemmelser i prøver</h3>
+  <p>
+    Myndigheden gennemfører stikprøvevisitationer blandt virksomheder i samme sektor. De sammenligner, hvem der har lavet hvad. Ligger du langt bagud i forhold til branchen, åbner de en sag hos dig.
+  </p>
+
+  <h3>En anden tilsynsmyndighed rapporterer dig</h3>
+  <p>
+    Finanstilsynet eller Energistyrelsen kan — når de tilser jer — afspore en sag til CFCS. Der er netværk mellem myndighederne.
+  </p>
+
+  <h2>Hvordan eskaleres sanktionerne</h2>
+
+  <p>
+    CFCS håndhæver ikke med det værste først. Men eskalationen er hurtigt, og du bør kende sekvensen.
+  </p>
+
+  <h3>Niveau 1: Advarsel og påbud</h3>
+  <p>
+    Myndigheden finder mangler. De sender dig skriftlig advarsel og et påbud: "I skal have det og det på plads inden [dato]."
+  </p>
+
+  <p>
+    Typisk tidsramme: 30–90 dage. Det lyder som meget, men hvis påbuddet omhandler policy-arbejde, risikovurdering og styrelsesgodkendelse, er det stramt.
+  </p>
+
+  <h3>Niveau 2: Øjeblikkelige påbud</h3>
+  <p>
+    Hvis du ikke overholder det første påbud, eller hvis CFCS finder kritiske sikkerhedshuller (f.eks. ingen MFA, ingen log-gemming), kan de udstede et <strong>øjeblikkelig påbud</strong>. Det betyder: Du skal handle nu, ikke om 30 dage.
+  </p>
+
+  <p>
+    Et øjeblikkelig påbud kan tvinge dig til at slå systemer fra, hvis de er usikre. Hvis det påvirker drift, bliver omkostninger meget høje meget hurtigt.
+  </p>
+
+  <h3>Niveau 3: Bøder (administrative sanktioner)</h3>
+  <p>
+    Når påbud ikke hjælper, eller når en hændelse viser at du systematisk ignorerer NIS2-krav, udsteder CFCS en sanktionsafgift.
+  </p>
+
+  <table class="fine-table">
+    <thead>
+      <tr>
+        <th>Kategori</th>
+        <th>Maksimal bøde</th>
+        <th>Alternativt tak</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Væsentlig enhed</td>
+        <td class="amount">10 millioner EUR</td>
+        <td>2% af global årsomsætning (højeste)</td>
+      </tr>
+      <tr>
+        <td>Vigtig enhed</td>
+        <td class="amount">7 millioner EUR</td>
+        <td>1,4% af global årsomsætning (højeste)</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>
+    Bemærk: Høj omsætning betyder høj bøde. En dansk virksomhed med 800 mio. kr. i årsomsætning kan få bøder op til 10 mio. EUR, hvis skaden er alvorlig nok.
+  </p>
+
+  <h3>Niveau 4: Forbud mod at lede virksomhed (personligt ansvar)</h3>
+  <p>
+    Den alvorligste sanktion: CFCS kan midlertidigt forbyde dig personligt fra at varetage ledelsesbetaling. Det gælder ikke kun i din nuværende virksomhed — det gælder bredt.
+  </p>
+
+  <p>
+    Du kan ikke "sælge ejerskab" eller skifte titel for at undgå det. Forbudet er personligt og kan vare fra måneder til år. Det betyder ingen bestyrelsespost, ingen direktørpost, ingeting.
+  </p>
+
+  <div class="box-warning">
+    <strong>Dette var tidligere urealistisk for ledere i små virksomheder.</strong> NIS2-loven ændrer det. Artikel 20 siger klart: Ledelse er personligt ansvarlig. CFCS kan udstede et midlertidigt forbud. Det sker, når tillid til ledelsen helt er brudt.
+  </div>
+
+  <h2>Et faktisk eksempel: sådan forløber en granskning</h2>
+
+  <div class="box-case">
+    <div class="case-label">Dansk case fra praksis</div>
+    <p>
+      <strong>Scenario: Banktilsluttet fintech-virksomhed, 95 medarbejdere, 220 mio. DKK årsomsætning.</strong>
+    </p>
+
+    <p>
+      <strong>Januar 2026:</strong> En tidligere IT-medarbejder anmelder til CFCS, at virksomheden ikke har en funktionsdygtig incidenthanteringsplan. Hun nævner også at der ingen logfiler gemmes "rigtig".
+    </p>
+
+    <p>
+      <strong>Januar – februar 2026:</strong> CFCS sender et skriftligt spørgeskema med 25 spørgsmål. Frist: 14 dage. Virksomhedens IT-chef svarer, men responsen er vag og inkomplet.
+    </p>
+
+    <p>
+      <strong>Februar 2026:</strong> CFCS udsteder et formelt påbud: "I skal indsende dokumenteret risikovurdering, godkendt incidenthanteringsplan og styrelsesprotokol inden 8. marts 2026."
+    </p>
+
+    <p>
+      <strong>Februar – marts 2026:</strong> Virksomheden hyrer en konsulent til at bygge dokumentationen. Styrelsen godkender planerne.
+    </p>
+
+    <p>
+      <strong>April 2026:</strong> To uger efter svaret modtager CFCS og Finanstilsynet (som også tilser) en ransomware-rapport. Attackerne har filtreret 3.500 kunderecords. Virksomheden rapporterer inden 72 timer.
+    </p>
+
+    <p>
+      CFCS indleder øjeblikkelig undersøgelse. De spørger: "Hvordan kom attackerne ind? Var logfilerne tilrådighed?" Svar: Ja, nu gemmes de. Men da attacken skete, gjorde de det ikke.
+    </p>
+
+    <p>
+      <strong>Maj 2026:</strong> CFCS konkluderer at virksomheden:
+    </p>
+    <ul>
+      <li>Ignorerede manglende logfiler i flere år</li>
+      <li>Ikke havde incidenthanteringsplan på tidspunktet for attacken</li>
+      <li>Ikke havde styrelsessyn på sikkerhedsspørgsmål</li>
+      <li>Brugte påbuddet blot til at "skaffe sig selv sikkerhed", ikke til reelt at rette op</li>
+    </ul>
+
+    <p>
+      <strong>Juni 2026:</strong> CFCS udsteder sanktionsafgift på <span class="danger">8 mio. EUR (ca. 60 mio. DKK)</span> og noterer direktøren til det danske virksomhedsregister med iøjnemark for ansvar.
+    </p>
+
+    <p>
+      <strong>Omkostninger for virksomheden:</strong>
+    </p>
+    <ul>
+      <li>Bøde: 60 mio. DKK</li>
+      <li>Kundeaffald og juridiske krav: 40 mio. DKK</li>
+      <li>Forsikring: blev dyrere</li>
+      <li>Tillidsværdi: blev mindre</li>
+    </ul>
+
+    <p>
+      <strong>Omkostninger for direktøren personligt:</strong> Et forbud mod at lede virksomhed i 18 måneder er blevet vurderet af Finanstilsynet. Karrieren er midlertidigt på pause.

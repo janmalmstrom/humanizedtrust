@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-BKF3QH9K01"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag("js", new Date());
+    gtag("config", "G-BKF3QH9K01");
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kritisk infrastruktur och NIS2 i Sverige: Vilka sektorer omfattas och varför | NIS2Klar</title>
+  <meta name="description" content="NIS2 täcker 18 samhällskritiska sektorer i Sverige. Läs vilka som omfattas, vilka myndigheter som tillsynar och varför din organisation troligen är berört.">
+  <meta property="og:title" content="Kritisk infrastruktur och NIS2 i Sverige: Vilka sektorer omfattas och varför">
+  <meta property="og:description" content="NIS2 täcker 18 samhällskritiska sektorer i Sverige. Läs vilka som omfattas, vilka myndigheter som tillsynar och varför din organisation troligen är berört.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #141416;
+      --card: #1c1c1f;
+      --yellow: #f5c518;
+      --white: #f0f0f0;
+      --muted: #888;
+      --red: #C61212;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: var(--bg); color: var(--white); font-family: 'Barlow', sans-serif; font-size: 19px; line-height: 1.8; }
+
+    /* Nav */
+    nav { display: flex; justify-content: space-between; align-items: center; padding: 20px 40px; border-bottom: 1px solid rgba(255,255,255,0.07); max-width: 900px; margin: 0 auto; }
+    .nav-logo { font-family: 'Poppins', sans-serif; font-weight: 900; font-size: 20px; color: var(--yellow); text-decoration: none; }
+    .nav-logo span { color: var(--white); }
+    .nav-back { color: var(--muted); text-decoration: none; font-size: 15px; }
+    .nav-back:hover { color: var(--white); }
+    .nav-cta { background: var(--yellow); color: #000; padding: 8px 18px; border-radius: 4px; text-decoration: none; font-weight: 700; font-size: 14px; font-family: 'Poppins', sans-serif; }
+
+    /* Article */
+    .article-wrap { max-width: 760px; margin: 0 auto; padding: 60px 40px; }
+    .article-category { font-size: 13px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 16px; }
+    h1 { font-family: 'Poppins', sans-serif; font-size: clamp(30px, 4vw, 44px); font-weight: 900; line-height: 1.2; margin-bottom: 24px; }
+    .article-meta { font-size: 15px; color: var(--muted); margin-bottom: 48px; padding-bottom: 24px; border-bottom: 1px solid rgba(255,255,255,0.07); }
+    h2 { font-family: 'Poppins', sans-serif; font-size: 26px; font-weight: 700; margin: 48px 0 16px; color: var(--white); }
+    h3 { font-family: 'Poppins', sans-serif; font-size: 20px; font-weight: 600; margin: 32px 0 12px; color: var(--yellow); }
+    p { margin-bottom: 22px; }
+    strong { color: var(--white); font-weight: 700; }
+    .highlight { color: var(--yellow); font-weight: 700; }
+    .danger { color: #ff6b6b; font-weight: 700; }
+    ul, ol { margin: 16px 0 24px 24px; }
+    li { margin-bottom: 12px; font-size: 19px; }
+
+    /* Callout boxes */
+    .box-warning { background: rgba(197,17,17,0.12); border-left: 4px solid var(--red); padding: 20px 24px; margin: 32px 0; border-radius: 0 4px 4px 0; }
+    .box-info { background: rgba(245,197,24,0.08); border-left: 4px solid var(--yellow); padding: 20px 24px; margin: 32px 0; border-radius: 0 4px 4px 0; }
+    .box-case { background: var(--card); border: 1px solid rgba(255,255,255,0.08); padding: 28px; margin: 40px 0; border-radius: 4px; }
+    .box-case .case-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 12px; }
+    blockquote { border-left: 3px solid var(--yellow); padding: 12px 20px; margin: 24px 0; font-style: italic; color: #ccc; }
+
+    /* CTA */
+    .cta-section { background: var(--card); border: 1px solid rgba(245,197,24,0.2); border-radius: 4px; padding: 48px 40px; margin: 64px 0 40px; text-align: center; }
+    .cta-section h2 { margin-top: 0; font-size: 26px; }
+    .cta-section p { color: #aaa; max-width: 500px; margin: 0 auto 28px; }
+    .btn-primary { display: inline-block; background: var(--yellow); color: #000; font-family: 'Poppins', sans-serif; font-weight: 800; font-size: 16px; padding: 16px 36px; border-radius: 4px; text-decoration: none; }
+    .btn-primary:hover { background: #e0b010; }
+    .cta-fine { font-size: 13px; color: var(--muted); margin-top: 16px; }
+
+    /* FAQ */
+    .faq-item { border-bottom: 1px solid rgba(255,255,255,0.07); padding: 20px 0; }
+    .faq-q { font-family: 'Poppins', sans-serif; font-weight: 600; margin-bottom: 10px; }
+    .faq-a { color: #bbb; }
+
+    /* Fine table */
+    .fine-table { width: 100%; border-collapse: collapse; margin: 24px 0; }
+    .fine-table th { background: rgba(245,197,24,0.1); color: var(--yellow); font-family: 'Poppins', sans-serif; font-size: 13px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 12px 16px; text-align: left; border-bottom: 1px solid rgba(245,197,24,0.2); }
+    .fine-table td { padding: 14px 16px; border-bottom: 1px solid rgba(255,255,255,0.05); font-size: 15px; }
+    .fine-table tr:last-child td { border-bottom: none; }
+    .fine-table .amount { color: #ff6b6b; font-weight: 700; }
+
+    /* Summary + Key Takeaway */
+    .box-summary { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; padding: 24px 28px; margin: 0 0 32px; }
+    .summary-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-bottom: 14px; }
+    .box-summary ul { margin: 0; padding-left: 20px; }
+    .box-summary li { margin-bottom: 8px; font-size: 17px; color: #ccc; }
+    .box-takeaway { background: rgba(245,197,24,0.08); border-left: 4px solid var(--yellow); padding: 20px 24px; margin: 0 0 40px; border-radius: 0 4px 4px 0; }
+    .takeaway-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 10px; }
+    .box-takeaway p { margin: 0; font-size: 18px; font-weight: 600; color: var(--white); line-height: 1.6; }
+
+    /* Footer */
+    footer { border-top: 1px solid rgba(255,255,255,0.07); padding: 32px 40px; text-align: center; font-size: 13px; color: var(--muted); max-width: 900px; margin: 0 auto; }
+    footer a { color: var(--muted); }
+
+    @media (max-width: 600px) {
+      nav, .article-wrap, footer { padding: 20px; }
+      .cta-section { padding: 32px 20px; }
+      .fine-table { font-size: 14px; }
+      .fine-table th, .fine-table td { padding: 10px 10px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="https://nis2klar.se/">NIS2<span>Klar</span></a>
+  <a class="nav-back" href="https://nis2klar.se/artiklar.html">← Alla artiklar</a>
+  <a class="nav-cta" href="https://nis2klar.se/#boka">Boka samtal →</a>
+</nav>
+
+<article class="article-wrap">
+  <div class="article-category">Lagkrav &amp; Omfattning</div>
+  <h1>Kritisk infrastruktur och NIS2 i Sverige: Vilka sektorer omfattas och varför</h1>
+  <div class="article-meta">Uppdaterad 19 april 2026 · Lästid: ca 9 minuter · Målgrupp: Ledning</div>
+
+  <!-- SUMMARY -->
+  <div class="box-summary">
+    <div class="summary-label">Sammanfattning</div>
+    <ul>
+      <li>NIS2 omfattar 18 samhällskritiska sektorer — från energi till digital infrastruktur.</li>
+      <li>I Sverige klassas organisationer som "väsentliga" eller "viktiga" entiteter beroende på storlek och sektor.</li>
+      <li>Varje sektor har sin egen tillsynsmyndighet: Finansinspektionen, IVO, Transportstyrelsen, Energimarknadsinspektionen med flera.</li>
+      <li>Du kan inte gissa vilken kategori din organisation faller i — felaktig klassificering kostar sju miljoner kronor.</li>
+      <li>Tillsynsmyndigheterna har redan påbörjat granskningar. Det finns ingen väntlista.</li>
+    </ul>
+  </div>
+
+  <!-- KEY TAKEAWAY -->
+  <div class="box-takeaway">
+    <div class="takeaway-label">Viktigaste slutsatsen</div>
+    <p>NIS2 är inte en optional IT-uppgradering. Det är en legal skyldighet för 18 sektorer i Sverige, med sanktioner upp till tio miljoner euro och personligt ansvar för ledningen. Börja med att bekräfta om din organisation omfattas.</p>
+  </div>
+
+  <!-- HOOK -->
+  <p>
+    Om du arbetar i finans, hälsovård, transport, energi eller digital infrastruktur i Sverige, är sannolikheten stor att din organisation redan omfattas av <strong>NIS2-direktivet</strong> — och har varit det sedan den 19 oktober 2024.
+  </p>
+
+  <p>
+    NIS2 är inte en allmän cybersäkerhetslag. Det är en mycket specifik EU-lag som pekar ut <strong>18 samhällskritiska sektorer</strong> och säger: dessa sektorer måste ha definierade säkerhetsåtgärder på plats, eller så riskerar ni böter på tio miljoner euro och ett förbud för era ledare att inneha befattning.
+  </p>
+
+  <p>
+    Problemet är att många organisationer inte vet om de klassas som "väsentlig" eller "viktig" entitet — och därmed inte vet vilka krav som gäller för dem. Den osäkerheten är både dyr och riskabel.
+  </p>
+
+  <div class="box-warning">
+    <strong>Felaktig självklassificering kostar.</strong> Om tillsynsmyndigheten senare fastslår att du klassades fel — och att du därför inte följde NIS2 — räknas det som bristande efterlevnad från första dagen. Böterna går inte att "reparera" med retroaktiva åtgärder.
+  </div>
+
+  <h2>De 18 NIS2-sektorerna — helt förteckning</h2>
+
+  <p>
+    NIS2-direktivet listar 18 sektorer som klassificeras som samhällskritisk infrastruktur. I Sverige har dessa implementerats i cybersäkerhetslagen (2024:1056).
+    Här är alla 18, grupperade efter hur kritiska de är för Sverige:
+  </p>
+
+  <h3>Grupp 1: Högst kritisk för Sverige</h3>
+
+  <ul>
+    <li><strong>Energisektorn</strong> — elproduktion, överföring, distribution. Tillsynad av Energimarknadsinspektionen.</li>
+    <li><strong>Transport</strong> — järnväg, väg, luftfart, sjöfart. Tillsynad av Transportstyrelsen.</li>
+    <li><strong>Banksektor och finansiell marknad</strong> — banker, försäkringsföretag, betalningsinstitutt. Tillsynad av Finansinspektionen.</li>
+    <li><strong>Vattensektorn</strong> — dricksvattenförsörjning och avloppshantering. Tillsynad av Arbetsmiljöverket tillsammans med regionala myndigheter.</li>
+    <li><strong>Hälso- och sjukvård</strong> — sjukhus, kliniker, läkarmottagningar. Tillsynad av Inspektionen för vård och omsorg (IVO).</li>
+  </ul>
+
+  <p>
+    Dessa fem sektorer är det svenska systemets "ryggkota". Ett allvarligt cyberangrepp mot en av dem skulle påverka miljontals människor omedelbar. Det är därför de får högsta prioritet i tillsynen.
+  </p>
+
+  <h3>Grupp 2: Kritisk för samhällsfunktioner</h3>
+
+  <ul>
+    <li><strong>Digital infrastruktur</strong> — internetleverantörer, DNS-leverantörer, datacenter. Tillsynad av Post- och Telestyrelsen (PTS).</li>
+    <li><strong>Offentlig förvaltning</strong> — stats-, regions- och kommunala myndigheter. Tillsynad av MSB (Myndigheten för samhällsskydd och beredskap).</li>
+    <li><strong>Dricksvattenförsörjning</strong> — redan nämnd under vattensektor, men ibland separerad.</li>
+    <li><strong>Jordbruk och livsmedel</strong> — producenter och distributörer av livsmedel. Tillsynad av Livsmedelsverket tillsammans med SJV (Jordbruksverket).</li>
+    <li><strong>Kemisk industri</strong> — producenter av kemikalier och farliga ämnen. Tillsynad av Arbetsmiljöverket och Kemikalieinspektionen.</li>
+  </ul>
+
+  <h3>Grupp 3: Viktiga för samhällets motståndskraft</h3>
+
+  <ul>
+    <li><strong>Tillverkning av kritiska produkter</strong> — läkemedel, medicinska hjälpmedel, elektronik. Tillsynad av Läkemedelsverket eller relevant branschmyndighet.</li>
+    <li><strong>Posttjänster</strong> — brevdistribution och pakethantering. Tillsynad av Post- och Telestyrelsen.</li>
+    <li><strong>Avfallshantering</strong> — skräpsamling, återvinning, farligt avfall. Tillsynad av Arbetsmiljöverket och regionala enheter.</li>
+    <li><strong>Produktion, överföring och distribution av elektrisk ström</strong> — redan nämnd under energi, men fokuseras här på de mindre aktörerna.</li>
+    <li><strong>Gas- och värmesektorn</strong> — fjärrvärme, gaskällor. Tillsynad av Energimarknadsinspektionen.</li>
+    <li><strong>Vägsektorn</strong> — redan nämnd under transport, men också väghållare som Trafikverket.</li>
+    <li><strong>Luftfartssektor</strong> — redan nämnd under transport.</li>
+    <li><strong>Sjöfartsektor</strong> — redan nämnd under transport.</li>
+  </ul>
+
+  <p>
+    Om du arbetar någonstans i dessa 18 sektorer — eller levererar en kritisk tjänst till någon i dessa sektorer — är du troligen redan NIS2-reglerad.
+  </p>
+
+  <h2>Väsentlig eller viktig entitet — vad är skillnaden?</h2>
+
+  <p>
+    Det räcker inte att arbeta i en NIS2-sektor. Du måste också klassificeras rätt: är du en <strong>väsentlig</strong> eller <strong>viktig</strong> entitet?
+  </p>
+
+  <p>
+    Klassificeringen bestäms av två faktorer: <strong>storlek</strong> och <strong>systemkritisk roll</strong>.
+  </p>
+
+  <table class="fine-table">
+    <thead>
+      <tr>
+        <th>Klassificering</th>
+        <th>Storlekskriteria</th>
+        <th>Systemkritisk roll</th>
+        <th>Högsta böter</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Väsentlig entitet</strong></td>
+        <td>> 250 anställda ELLER > 50 M€ omsättning</td>
+        <td>Ja — utgör en viktig del av samhällsfunktionen</td>
+        <td class="amount">10 M€</td>
+      </tr>
+      <tr>
+        <td><strong>Viktig entitet</strong></td>
+        <td>50–249 anställda ELLER 10–50 M€ omsättning</td>
+        <td>Delvis — försörjer en mindre region eller befolkningsgrupp</td>
+        <td class="amount">7 M€</td>
+      </tr>
+      <tr>
+        <td><strong>Undantagen</strong></td>
+        <td>< 50 anställda OCH < 10 M€ omsättning</td>
+        <td>Nej — inte systemkritisk</td>
+        <td class="amount">Ingen</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>
+    Observera: en mikro-tillverkare på 20 anställda i kemisk industri kan klassas som "viktig entitet" om hen försörjer större produktionskedjor. Storlek är inte det enda måttet.
+  </p>
+
+  <h3>Hur klassificeras min organisation?</h3>
+
+  <p>
+    Du själv kan göra en förstagranskning:
+  </p>
+
+  <ol>
+    <li>Jobbar du i någon av de 18 sektorerna? Ja → gå vidare.</li>
+    <li>Är du ett svenskt företag eller en filial av utländskt företag som verkar i Sverige? Ja → gå vidare.</li>
+    <li>Har du fler än 50 anställda eller mer än 10 M€ i årlig omsättning? Ja → du klassas åtminstone som "viktig entitet".</li>
+    <li>Har du fler än 250 anställda eller mer än 50 M€ i årlig omsättning? Ja → du klassas troligen som "väsentlig entitet".</li>
+  </ol>
+
+  <p>
+    Men denna snabbkontroll ersätter inte myndighetens officiella klassificering. Kontakta din sektorsspecifika tillsynsmyndighet för att bekräfta.
+  </p>
+
+  <div class="box-info">
+    <strong>Viktigt att veta:</strong> Klassificeringen är inte en engångsföreteelse. Den granskas årligen. Om din organisation växer från 249 till 251 anställda förflyttas du från "viktig" till "väsentlig" — och skärpningen av krav träder i kraft omedelbar.
+  </div>
+
+  <h2>Sverige uppdelas — vilken myndighet tillsynar din sektor?</h2>
+
+  <p>
+    En av de stora skillnaderna mellan NIS2 och tidigare cybersäkerhetslagar är att Sverige inte har <strong>en</strong> NIS2-tillsynsmyndighet. Istället är tillsynen uppdelad mellan <strong>sex till åtta olika myndigheter</strong> beroende på sektor.
+  </p>
+
+  <p>
+    Det här är viktigt: tillsynsmyndigheterna arbetar utifrån olika processer, olika tidsramar och ibland olika tolkningar av lagen. En granskningsbegäran från Finansinspektionen ser annorlunda ut än en från IVO.
+  </p>
+
+  <h3>Finanssektorn</h3>
+  <p>
+    <strong>Tillsynsmyndighet:</strong> Finansinspektionen (FI)
+  </p>
+  <p>
+    Finansinspektionen tillsynar banker, försäkringsföretag, värdepappersföretag och betalningsinstitutt.
+    FI är Sverige ganska auktoritär på cybersäkerhet — de hade redan en egen cybersäkerhetslag innan NIS2 implementerades.
+    De förväntar sig att organisationer inom finans har en mycket högt utvecklad säkerhetskultur.
+    Granskningen är ofta ett möte mellan två tekniska bedömningar: "Hur säkra är ni?" och "Kan ni bevisa det?"
+  </p>
+
+  <h3>Hälso- och sjukvård</h3>
+  <p>
+    <strong>Tillsynsmyndighet:</strong> Inspektionen för vård och omsorg (IVO)
+  </p>
+  <p>
+    IVO tillsynar sjukhus, kliniker, tandvårdskliniker och hemtjänstorganisationer.
+    IVO är en yngre tillsynsmyndighet med mindre erfarenhet av cybersäkerhetsgranskningar än FI.
+    Det gör inte tillsynen enklare — det gör den mindre förutsebar.
+    Eftersom sjukvården är högprioriterad har IVO redan genomfört flera granskningar.
+  </p>
+
+  <h3>Energisektorn</h3>
+  <p>
+    <strong>Tillsynsmyndighet:</strong> Energimarknadsinspektionen (EMI)
+  </p>
+  <p>
+    EMI tillsynar elproduktion, överföring och distribution — från kraftverk till lokala elnät.
+    Energisektorn är redan reglerad av flera tidigare direktiv (NIS1, till exempel), så EMI har rutiner på plats.
+    Granskningarna fokuserar på kontinuitetsplanering: kan systemet driftsättas igen efter ett angrepp?
+  </p>
+
+  <h3>Transport</h3>
+  <p>
+    <strong>Tillsynsmyndighet:</strong> Transportstyrelsen
+  </p>
+  <p>
+    Transportstyrelsen tillsynar järnväg, väg, luftfart och sjöfart.
+    Bland dessa är järnväg och luftfart mest prioriterade ur ett säkerhetsperspektiv.
+    Transportstyrelsen är också en erfaren tillsynsmyndighet och granskar ofta tillsammans med MSB.
+  </p>
+
+  <h3>Vattensektor</h3>
+  <p>
+    <strong>Tillsynsmyndighet:</strong> Arbetsmiljöverket tillsammans med regionala miljökontor
+  </p>
+  <p>
+    Vattenförsörjning och avloppshantering är den minst centraliserade sektorn när det gäller tillsyn.
+    Ansvaret är delat mellan nationell nivå (Arbetsmiljöverket) och regional nivå (länsstyrelser, kommuner).
+    Det gör tillsynen mer varierande — en kommun kan ha högt fokus på NIS2, en annan lågt.
+  </p>
+
+  <h3>Digital infrastruktur</h3>
+  <p>
+    <strong>Tillsynsmyndighet:</strong> Post- och Telestyrelsen (PTS)
+  </p>
+  <p>
+    PTS tillsynar internetleverantörer, DNS-leverantörer och stora datacenteroperatörer.
+    Detta är en relativt ny tillsynsdom för PTS, så rutinerna utvecklas löpande.
+  </p>
+
+  <h3>Offentlig förvaltning</h3>
+  <p>
+    <strong>Tillsynsmyndighet:</strong> MSB (Myndigheten för samhällsskydd och beredskap)
+  </p>
+  <p>
+    MSB är överordnad tillsynsmyndighet för all offentlig sektor — statsapparaten, regionala och kommunala myndigheter.
+    MSB är också den myndighet som koordinerar mellan alla andra sektorsspecifika tillsynsmyndigheter.
+    Det gör MSB till den mest systemkritiska aktören i Sveriges NIS2-implementering.
+  </p>
+
+  <h3>Övriga sektorer</h3>
+  <p>
+    Livsmedel, kemikalier, läkemedel, avfall och gas/värme delar tillsyn mellan branschspecifika myndigheter:
+    Livsmedelsverket, Kemikalieinspektionen, Läkemedelsverket, och regionala miljökontor.
+  </p>
+
+  <div class="box-case">
+    <div class="case-label">Exempel från praktiken</div>
+    <p>
+      <strong>Scenario: Ett regionalt sjukhus med 450 anställda.</strong>
+    </p>
+    <p>
+      Klassas automatiskt som väsentlig entitet under NIS2 (> 250 anställda + systemkritisk funktion).
+      Tillsynsmyndighet: IVO.
+    </p>
+    <p>
+      Sjukhuset har ett internt IT-system för patientjournal och bokningshantering. Det är inte tillräckligt integrerat med landstingets övergripande säkerhetssystem för att klassas som separat "viktig entitet".
+    </p>
+    <p>
+      När IVO initierar granskning förväntar de sig att sjukhuset kan uppvisa:
+      — En godkänd riskanalys för patientdata (högkritisk).
+      — En incidenthanteringsplan specifik för patientsäkerhet.
+      — Dokumentation av att styrelsen godkänt dessa åtgärder.
+    </p>
+    <p>
+      Sjukhuset har investerat i teknik men inte i dokumentation. Resultatet: sanktionsavgift på 2–3 miljoner kronor + en order att genomföra åtgärderna inom 90 dagar.
+    </p>
+  </div>
+
+  <h2>Varför inkludera dessa 18 sektorer och inte andra?</h2>
+
+  <p>
+    Du kanske undrar: varför är jordbruk en NIS2-sektor men inte försäljningskedjor? Eller varför hälsovård men inte skolor?
+  </p>
+
+  <p>
+    Svaret ligger i <strong>beroende</strong> och <strong>påverkan</strong>. EU identifierade 18 sektorer där ett cyberangrepp skulle:
+  </p>
+
+  <ul>
+    <li><strong>Påverka infrastruktur som miljontals människor förlitar sig på dagligen.</strong> Ingen kan välja ett annat elnät om sitt el är utslagen. Det är ett samhällskritiskt monopol.</li>
+    <li><strong>Skapa en kedjereaktion.</strong> Om ett transportnät går ner sprider sig konsekvensen omedelbar till lager, fabrik och butiker. Det är en infrastruktur andra förlitar sig på.</li>
+    <li><strong>Påverka hälsa eller säkerhet omedelbar.</strong> Ett sjukhus kan inte "vänta" på att IT-systemet återställs. Människor mår dåligt i minuter utan patientinformation.</li>
+    <li><strong>Påver

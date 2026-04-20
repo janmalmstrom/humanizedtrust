@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-BKF3QH9K01"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag("js", new Date());
+    gtag("config", "G-BKF3QH9K01");
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cyberstyrning under NIS2 i Sverige: Styrelsens konkreta ansvar | NIS2Klar</title>
+  <meta name="description" content="Artikel 20 i NIS2 kräver att VD och styrelseledamöter aktivt godkänner, utbildar och övervakar säkerhetsåtgärder. Läs om det personliga ansvaret och konkreta styrelsebeslut.">
+  <meta property="og:title" content="Cyberstyrning under NIS2 i Sverige: Styrelsens konkreta ansvar">
+  <meta property="og:description" content="Artikel 20 i NIS2 kräver att VD och styrelseledamöter aktivt godkänner, utbildar och övervakar säkerhetsåtgärder. Läs om det personliga ansvaret och konkreta styrelsebeslut.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #141416;
+      --card: #1c1c1f;
+      --yellow: #f5c518;
+      --white: #f0f0f0;
+      --muted: #888;
+      --red: #C61212;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: var(--bg); color: var(--white); font-family: 'Barlow', sans-serif; font-size: 19px; line-height: 1.8; }
+
+    /* Nav */
+    nav { display: flex; justify-content: space-between; align-items: center; padding: 20px 40px; border-bottom: 1px solid rgba(255,255,255,0.07); max-width: 900px; margin: 0 auto; }
+    .nav-logo { font-family: 'Poppins', sans-serif; font-weight: 900; font-size: 20px; color: var(--yellow); text-decoration: none; }
+    .nav-logo span { color: var(--white); }
+    .nav-back { color: var(--muted); text-decoration: none; font-size: 15px; }
+    .nav-back:hover { color: var(--white); }
+    .nav-cta { background: var(--yellow); color: #000; padding: 8px 18px; border-radius: 4px; text-decoration: none; font-weight: 700; font-size: 14px; font-family: 'Poppins', sans-serif; }
+
+    /* Article */
+    .article-wrap { max-width: 760px; margin: 0 auto; padding: 60px 40px; }
+    .article-category { font-size: 13px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 16px; }
+    h1 { font-family: 'Poppins', sans-serif; font-size: clamp(30px, 4vw, 44px); font-weight: 900; line-height: 1.2; margin-bottom: 24px; }
+    .article-meta { font-size: 15px; color: var(--muted); margin-bottom: 48px; padding-bottom: 24px; border-bottom: 1px solid rgba(255,255,255,0.07); }
+    h2 { font-family: 'Poppins', sans-serif; font-size: 26px; font-weight: 700; margin: 48px 0 16px; color: var(--white); }
+    h3 { font-family: 'Poppins', sans-serif; font-size: 20px; font-weight: 600; margin: 32px 0 12px; color: var(--yellow); }
+    p { margin-bottom: 22px; }
+    strong { color: var(--white); font-weight: 700; }
+    .highlight { color: var(--yellow); font-weight: 700; }
+    .danger { color: #ff6b6b; font-weight: 700; }
+    ul, ol { margin: 16px 0 24px 24px; }
+    li { margin-bottom: 12px; font-size: 19px; }
+
+    /* Callout boxes */
+    .box-warning { background: rgba(197,17,17,0.12); border-left: 4px solid var(--red); padding: 20px 24px; margin: 32px 0; border-radius: 0 4px 4px 0; }
+    .box-info { background: rgba(245,197,24,0.08); border-left: 4px solid var(--yellow); padding: 20px 24px; margin: 32px 0; border-radius: 0 4px 4px 0; }
+    .box-case { background: var(--card); border: 1px solid rgba(255,255,255,0.08); padding: 28px; margin: 40px 0; border-radius: 4px; }
+    .box-case .case-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 12px; }
+    blockquote { border-left: 3px solid var(--yellow); padding: 12px 20px; margin: 24px 0; font-style: italic; color: #ccc; }
+
+    /* CTA */
+    .cta-section { background: var(--card); border: 1px solid rgba(245,197,24,0.2); border-radius: 4px; padding: 48px 40px; margin: 64px 0 40px; text-align: center; }
+    .cta-section h2 { margin-top: 0; font-size: 26px; }
+    .cta-section p { color: #aaa; max-width: 500px; margin: 0 auto 28px; }
+    .btn-primary { display: inline-block; background: var(--yellow); color: #000; font-family: 'Poppins', sans-serif; font-weight: 800; font-size: 16px; padding: 16px 36px; border-radius: 4px; text-decoration: none; }
+    .btn-primary:hover { background: #e0b010; }
+    .cta-fine { font-size: 13px; color: var(--muted); margin-top: 16px; }
+
+    /* FAQ */
+    .faq-item { border-bottom: 1px solid rgba(255,255,255,0.07); padding: 20px 0; }
+    .faq-q { font-family: 'Poppins', sans-serif; font-weight: 600; margin-bottom: 10px; }
+    .faq-a { color: #bbb; }
+
+    /* Fine table */
+    .fine-table { width: 100%; border-collapse: collapse; margin: 24px 0; }
+    .fine-table th { background: rgba(245,197,24,0.1); color: var(--yellow); font-family: 'Poppins', sans-serif; font-size: 13px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 12px 16px; text-align: left; border-bottom: 1px solid rgba(245,197,24,0.2); }
+    .fine-table td { padding: 14px 16px; border-bottom: 1px solid rgba(255,255,255,0.05); font-size: 15px; }
+    .fine-table tr:last-child td { border-bottom: none; }
+    .fine-table .amount { color: #ff6b6b; font-weight: 700; }
+
+    /* Summary + Key Takeaway */
+    .box-summary { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; padding: 24px 28px; margin: 0 0 32px; }
+    .summary-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-bottom: 14px; }
+    .box-summary ul { margin: 0; padding-left: 20px; }
+    .box-summary li { margin-bottom: 8px; font-size: 17px; color: #ccc; }
+    .box-takeaway { background: rgba(245,197,24,0.08); border-left: 4px solid var(--yellow); padding: 20px 24px; margin: 0 0 40px; border-radius: 0 4px 4px 0; }
+    .takeaway-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 10px; }
+    .box-takeaway p { margin: 0; font-size: 18px; font-weight: 600; color: var(--white); line-height: 1.6; }
+
+    /* Footer */
+    footer { border-top: 1px solid rgba(255,255,255,0.07); padding: 32px 40px; text-align: center; font-size: 13px; color: var(--muted); max-width: 900px; margin: 0 auto; }
+    footer a { color: var(--muted); }
+
+    /* Related articles */
+    .related-articles { margin: 2.5rem 0 2rem; padding: 1.5rem; background: #1a1a2e; border-left: 4px solid #f0a500; border-radius: 4px; }
+    .related-articles p { margin: 0 0 1rem; font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #f0a500; }
+    .related-articles ul { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+    .related-articles li { margin: 0; }
+    .related-articles a { color: #e0e0e0; text-decoration: none; font-size: 0.95rem; }
+    .related-articles a:hover { color: #f0a500; }
+
+    @media (max-width: 600px) {
+      nav, .article-wrap, footer { padding: 20px; }
+      .cta-section { padding: 32px 20px; }
+      .fine-table { font-size: 14px; }
+      .fine-table th, .fine-table td { padding: 10px 10px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="https://nis2klar.se/">NIS2<span>Klar</span></a>
+  <a class="nav-back" href="https://nis2klar.se/artiklar.html">← Alla artiklar</a>
+  <a class="nav-cta" href="https://nis2klar.se/#boka">Boka samtal →</a>
+</nav>
+
+<article class="article-wrap">
+  <div class="article-category">Styrning &amp; Ledningsansvar</div>
+  <h1>Cyberstyrning under NIS2 i Sverige: Styrelsens konkreta ansvar</h1>
+  <div class="article-meta">Uppdaterad 19 april 2026 · Lästid: ca 9 minuter · Målgrupp: VD och styrelseledamöter</div>
+
+  <!-- SUMMARY -->
+  <div class="box-summary">
+    <div class="summary-label">Sammanfattning</div>
+    <ul>
+      <li><strong>Artikel 20 i NIS2</strong> kräver att ledningen aktivt godkänner, utbildas i och övervakar säkerhetsåtgärder.</li>
+      <li>Det räcker inte att delegera till IT. Du som VD eller styrelseledamot är personligt ansvarig för cybersäkerheten.</li>
+      <li>Konkreta styrelsebeslut måste fattas, dokumenteras och följas upp — protokoll är beviset.</li>
+      <li>Tillsynsmyndigheterna i Sverige granskar nu. Utan dokumentation av ledningsansvar har du ingen försvar.</li>
+    </ul>
+  </div>
+
+  <!-- KEY TAKEAWAY -->
+  <div class="box-takeaway">
+    <div class="takeaway-label">Viktigaste slutsatsen</div>
+    <p>Cyberstyrning handlar inte om teknik — det handlar om att styrelsen fattar informerade beslut, dokumenterar dem och övervakar genomförandet. Det är det enda som håller juridiskt vatten när tillsynen kommer.</p>
+  </div>
+
+  <h2>Vad är Artikel 20 — och varför är den din ansvar?</h2>
+
+  <p>
+    NIS2-direktivet innehåller en artikel som skiljer den från nästan alla andra IT-direktiv. <strong>Artikel 20 slår fast att ledningsorganen — styrelsen och VD — är personligt ansvariga</strong> för att organisationen lever upp till cybersäkerhetskraven.
+  </p>
+
+  <p>
+    Det är inte en omskrivning av "du bör ha en bra IT-säkerhet". Det är en explicit lag som säger: Du som ordförande, ledamot eller VD kan hållas personligt ansvarig. Inte bara bolaget — du.
+  </p>
+
+  <p>
+    I Sverige implementerades denna regel i <strong>cybersäkerhetslagen (2024:1056)</strong>. Den gäller för organisationer i de 18 samhällskritiska sektorer som regeringen pekat ut — från finans och sjukvård till energi, transport och digital infrastruktur.
+  </p>
+
+  <p>
+    Det betyder att om du är VD eller styrelseledamot i en organisation som klassas som väsentlig eller viktig entitet under NIS2, är detta inte längre IT-avdelningens fråga. Det är din.
+  </p>
+
+  <div class="box-warning">
+    <strong>Personligt ansvar är inte en skrämseltaktik.</strong> Det är juridisk realitet. Tillsynsmyndigheterna i Sverige — MSB, IMY, Finansinspektionen och sektorsspecifika organ — granskar nu hur väl ledningen följer Artikel 20. Utan dokumentation förlorar du automatiskt.
+  </div>
+
+  <h2>Tre konkreta krav från Artikel 20</h2>
+
+  <p>
+    Artikel 20 är inte vag. Den listar tre specifika skyldigheter som ledningen måste uppfylla:
+  </p>
+
+  <h3>1. Godkänna säkerhetsåtgärderna</h3>
+
+  <p>
+    Styrelsen måste <strong>aktivt godkänna</strong> de säkerhetspolicy och åtgärder som organisationen ska genomföra. Det räcker inte att få rapporterat att IT-avdelningen "redan har några saker på gång". Styrelsen måste:
+  </p>
+
+  <ul>
+    <li>Förstå vilka säkerhetsåtgärder som är obligatoriska enligt NIS2 (Artikel 21 listar tio domäner)</li>
+    <li>Granska dem tillsammans med ledning och säkerhetschef</li>
+    <li>Fatta ett formellt styrelsebeslut som godkänner dem</li>
+    <li>Dokumentera detta i styrelsemötes protokoll</li>
+  </ul>
+
+  <p>
+    Konkret exempel: I ett styrelsemöte presenteras en riskanalys och en säkerhetspolicy. Efter diskussion motioneras och godkänns policyn. Detta protokollförs. Det är det godkännandet Artikel 20 kräver.
+  </p>
+
+  <h3>2. Utbilda sig själv och organisationen</h3>
+
+  <p>
+    Styrelsen måste se till att <strong>både ledning och personal är utbildad</strong> i cybersäkerhet. För ledningen betyder det:
+  </p>
+
+  <ul>
+    <li>Minst årlig utbildning för styrelseledamöter i cybersäkerhetsfrågor</li>
+    <li>Utbildningen ska specifikt täcka risker relevanta för organisationens sektor</li>
+    <li>För personalen krävs regelbunden utbildning (minst årlig) i incidenthantering, lösenordshygien och phishing-medvetenhet</li>
+    <li>Utbildningsresultat måste dokumenteras (närvaro, testresultat, uppföljning)</li>
+  </ul>
+
+  <p>
+    Detta är inte en engångsgrej. Det är återkommande. Om styrelsen inte kan uppvisa att den senaste utbildningen genomfördes för sex månader sedan är detta en brist som myndigheten kommer att notera.
+  </p>
+
+  <h3>3. Övervaka genomförandet</h3>
+
+  <p>
+    Styrelsen måste <strong>aktivt övervaka</strong> att de godkända åtgärderna faktiskt genomförts och fungerar. Det betyder:
+  </p>
+
+  <ul>
+    <li>Regelbundna rapporter från säkerhetsansvarig eller ledning (minst kvartalsvis)</li>
+    <li>Uppföljning av riskanalyser och säkerhetsgranskningar</li>
+    <li>Status på åtgärdsplaner från tidigare granskningar</li>
+    <li>Rapportering av incidenter som inträffat</li>
+    <li>KPI:er för säkerhet (t.ex. andel uppdaterad mjukvara, implementering av multi-faktor-autentisering)</li>
+  </ul>
+
+  <p>
+    Utan denna övervakning kan du inte säga till tillsynsmyndigheten att du har kontroll. Och utan kontroll kan du hållas personligt ansvarig för brister.
+  </p>
+
+  <div class="box-info">
+    <strong>Praktisk ledtråd:</strong> Sätt en återkommande AgendaPunkt på varje styrelsemöte: "Cybersäkerhet & NIS2-efterlevnad". Låt säkerhetsansvarig presentera status varje gång. Protokollför vad som diskuterades och vilka beslut som fattades. Det är detta dokumentationen består av.
+  </div>
+
+  <h2>Konkreta styrelsebeslut som måste fattas och protokollföras</h2>
+
+  <p>
+    För att uppfylla Artikel 20 måste styrelsen fatta ett antal helt konkreta beslut. Här är en checklista över vad som måste protokollföras:
+  </p>
+
+  <h3>Beslut 1: Säkerhetspolicy godkänd</h3>
+
+  <p>
+    <strong>Styrelsemöte [datum]:</strong> Styrelsen godkänner säkerhetspolicy för organisationen, upprättad i enlighet med NIS2 Artikel 21.
+  </p>
+
+  <p>
+    Policyn ska täcka:
+  </p>
+  <ul>
+    <li>Riskhantering och riskbedömning</li>
+    <li>Incidenthantering och rapportering</li>
+    <li>Tillgångskontroll och identitetshantering</li>
+    <li>Kryptering av data i rörelse och vila</li>
+    <li>Leverantörshantering och tredjepartsrisk</li>
+    <li>Kontinuitets- och återhämtningsplanering</li>
+    <li>Fysisk säkerhet</li>
+  </ul>
+
+  <h3>Beslut 2: Budget för säkerhetsåtgärder fastställd</h3>
+
+  <p>
+    <strong>Styrelsemöte [datum]:</strong> Styrelsen fastställer att budget för IT-säkerhet och cybersäkerhet är tillräcklig för att implementera godkända åtgärder enligt säkerhetspolicy.
+  </p>
+
+  <p>
+    Om IT-chefen senare säger att "vi hade inte budget för det", är detta ett försvar mot personligt ansvar. Men det kräver dokumentation.
+  </p>
+
+  <h3>Beslut 3: Säkerhetsansvarig (CISO/CSO) utsedd eller bekräftad</h3>
+
+  <p>
+    <strong>Styrelsemöte [datum]:</strong> Styrelsen bekräftar att organisation har en säkerhetsansvarig med rapportväg till ledning eller styrelse, och med mandat att implementera säkerhetsåtgärder.
+  </p>
+
+  <p>
+    Denna person eller funktion är din kontaktpunkt. De rapporterar till dig. Du kan inte säga "jag visste inte vad som pågick".
+  </p>
+
+  <h3>Beslut 4: Riskanalys genomförd och godkänd</h3>
+
+  <p>
+    <strong>Styrelsemöte [datum]:</strong> Styrelsen godkänner riskanalys genomförd enligt NIS2-metodik. Analys identifierar kritiska tillgångar, hot och sårbarheter.
+  </p>
+
+  <p>
+    Denna analys är grunden för allt annat. Utan den kan du inte säga att säkerhetsåtgärderna är relevanta och proportionerade.
+  </p>
+
+  <h3>Beslut 5: Åtgärdsplan för identifierade risker godkänd</h3>
+
+  <p>
+    <strong>Styrelsemöte [datum]:</strong> Styrelsen godkänner åtgärdsplan med tidsplan och ansvarig för varje åtgärd.
+  </p>
+
+  <p>
+    Exempel: "Risk för otillåten datautsläppning på grund av svag tillgångskontroll → Åtgärd: Implementera multi-faktor-autentisering på alla systemadministratörer. Ansvarig: IT-chef. Deadline: 30 juni 2026."
+  </p>
+
+  <h3>Beslut 6: Incidenthanteringsplan godkänd</h3>
+
+  <p>
+    <strong>Styrelsemöte [datum]:</strong> Styrelsen godkänner incidenthanteringsplan som definierar:
+  </p>
+
+  <ul>
+    <li>Roller och ansvar vid säkerhetsincident</li>
+    <li>Eskaleringsvägar (vem rapporterar till vem, vem rapporterar till myndighet)</li>
+    <li>Tidsramar för respons (Artikel 23 kräver 24 timmar till MSB vid allvarlig incident)</li>
+    <li>Kommunikationsplan (intern, externa parter, media, myndigheter)</li>
+  </ul>
+
+  <h3>Beslut 7: Utbildning för styrelse genomförd årligen</h3>
+
+  <p>
+    <strong>Styrelsemöte [datum]:</strong> Styrelsen bekräftar att alla ledamöter och VD genomfört cybersäkerhetsutsbildning motsvarande minst 2 timmar under året.
+  </p>
+
+  <p>
+    Protokollera vilka som deltog, när och vad som behandlades. Denna dokumentation är ditt bästa försvar om myndigheten senare frågar "Hur kan ni säga att ni förstår risken?"
+  </p>
+
+  <h3>Beslut 8: Uppföljning av tidigare åtgärder</h3>
+
+  <p>
+    <strong>Styrelsemöte [datum]:</strong> Styrelsen granskar status för tidigare beslutade åtgärder från riskanalysen.
+  </p>
+
+  <p>
+    Denna punkt återkommer på varje styrelsemöte. Om en åtgärd inte är slutförd måste orsaken dokumenteras och en ny deadline sättas. "Vi glömde det" är ingen ursäkt i myndighetens ögon.
+  </p>
+
+  <h2>Vad händer om styrelsen inte dokumenterar detta?</h2>
+
+  <p>
+    Utan dokumentation — protokoll från styrelsemöten — kan du inte bevisa att Artikel 20 uppfyllts. Och utan bevis kommer du att stå personligt ansvarig för brister.
+  </p>
+
+  <p>
+    Tillsynsmyndigheten kommer att fråga:
+  </p>
+
+  <ul>
+    <li>"Visa en styrelsebeslut om godkännande av säkerhetspolicy."</li>
+    <li>"Visa dokumentation om utbildning för styrelsen."</li>
+    <li>"Visa uppföljningsrapporter från de senaste sex månaderna."</li>
+  </ul>
+
+  <p>
+    Kan du inte uppvisa detta — eller det är så sparsamt dokumenterat att det inte kan bevisa en faktisk process — har myndigheten grund för att utfärda sanktion mot både organisationen och personligen mot dig.
+  </p>
+
+  <div class="box-case">
+    <div class="case-label">Fallstudie: Ett verkligt scenario</div>
+    <p>
+      <strong>Scenarion: Medelstort sjukvårdsföretag i Sverige, 120 anställda.</strong>
+    </p>
+    <p>
+      Klassas som viktig entitet under NIS2. Drabbas av ett phishing-angrepp som leder till att patientdata exponeras. IT-chefen upptäcker intrånget en vecka senare.
+    </p>
+    <p>
+      MSB initierar en granskning enligt Artikel 23 (rapporteringskrav). Under granskningen frågar myndigheten att få se styrelsemötesprotokoll från det senaste året.
+    </p>
+    <p>
+      Styrelsen kan inte uppvisa något protokoll som dokumenterar:
+    </p>
+    <ul>
+      <li>Godkännande av säkerhetspolicy</li>
+      <li>Godkännande av riskanalys</li>
+      <li>Godkännande av incidenthanteringsplan</li>
+      <li>Utbildning för styrelseledamöter</li>
+    </ul>
+    <p>
+      Istället kan de endast visa ett kort "IT-status" som nämndes i förbigående på ett styrelsemöte för ett år sedan.
+    </p>
+    <p>
+      <strong>Myndighetens slutsats:</strong> Styrelsen har inte dokumenterat sitt ansvar enligt Artikel 20. Det tyder på att säkerhetsåtgärderna inte har varit ett ledningsansvar utan delegerats helt till IT-avdelningen. Detta är en brist enligt Artikel 20.
+    </p>
+    <p>
+      <strong>Konsekvens:</strong> Organisationen får böter för både incidenthanteringen (utebliven rapportering) och för bristen på dokumenterat ledningsansvar. VD får en formell tillsyn med notering om personligt ansvar.
+    </p>
+  </div>
+
+  <h2>Verktyg för att dokumentera och övervaka</h2>
+
+  <p>
+    Dokumentationen behöver inte vara komplicerad. Den måste bara vara <strong>tydlig, tidsdaterad och bevisbar</strong>.
+  </p>
+
+  <p>
+    Använd en enkel mall för styrelsemötesprotokoll:
+  </p>
+
+  <ul>
+    <li><strong>Datum och närvarande:</strong> Vem var på mötet?</li>
+    <li><strong>Agenda:</strong> Vilka punkter behandlades?</li>
+    <li><strong>Cybersäkerhetspunkt:</strong> Vad rapporterades från säkerhetsansvarig eller ledning?</li>
+    <li><strong>Beslut:</strong> Vilka beslut fattades? (Exempel: "Styrelsen godkänner uppdaterad incidenthanteringsplan")</li>
+    <li><strong>Uppföljning:</strong> Vilka åtgärder har genomförts sedan senaste möte?</li>
+    <li><strong>Nästa möte:</strong> Vad ska följas upp nästa gång?</li>
+  </ul>
+
+  <p>
+    För övervakning kan du använda ett enkelt säkerhetsdashboard:
+  </p>
+
+  <ul>
+    <li><strong>Riskstatus:</strong> Vilka risker är identifierade? Vilka är lösta?</li>
+    <li><strong>Åtgärdsstatus:</strong> Hur många åtgärder är på schema? Hur många är försenade?</li>
+    <li><strong>Incidentstatus:</strong> Vilka incidenter har inträffat? Hur hanterades de?</li>
+    <li><strong>Utbildningsstatus:</strong> Hur många medarbetare är utbildade? Behöver något uppdateras?</li>
+  </ul>
+
+  <p>
+    Denna dashboard rapporteras varje månad eller kvartal till styrelsen. Det är denna kontinuerliga rapportering som visar att ledningen <strong>övervakar</strong> enligt Artikel 20.
+  </p>
+
+  <h2>Vad myndigheten kommer att kontrollera</h2>
+
+  <p>
+    När MSB, Finansinspektionen eller en annan tillsynsmyndighet granskar din organisation, kommer de att följa denna checklist:
+  </p>
+
+  <h3>Fråga 1: Finns godkänd säkerhetspolicy?</h3>

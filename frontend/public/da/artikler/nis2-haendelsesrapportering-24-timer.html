@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-BKF3QH9K01"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag("js", new Date());
+    gtag("config", "G-BKF3QH9K01");
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>24 timer: Sådan rapporterer du en NIS2-hændelse korrekt | NIS2Klar Danmark</title>
+  <meta name="description" content="NIS2-hændelsesrapportering skal ske inden 24 timer (tidlig varning) og 72 timer (fuldt referat). Læs den praktiske timeline med checkpoints — og hvad der sker hvis du ikke rapporterer.">
+  <meta property="og:title" content="24 timer: Sådan rapporterer du en NIS2-hændelse korrekt">
+  <meta property="og:description" content="NIS2-hændelsesrapportering skal ske inden 24 timer (tidlig varning) og 72 timer (fuldt referat). Læs den praktiske timeline med checkpoints — og hvad der sker hvis du ikke rapporterer.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #141416;
+      --card: #1c1c1f;
+      --yellow: #f5c518;
+      --white: #f0f0f0;
+      --muted: #888;
+      --red: #C61212;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: var(--bg); color: var(--white); font-family: 'Barlow', sans-serif; font-size: 19px; line-height: 1.8; }
+
+    /* Nav */
+    nav { display: flex; justify-content: space-between; align-items: center; padding: 20px 40px; border-bottom: 1px solid rgba(255,255,255,0.07); max-width: 900px; margin: 0 auto; }
+    .nav-logo { font-family: 'Poppins', sans-serif; font-weight: 900; font-size: 20px; color: var(--yellow); text-decoration: none; }
+    .nav-logo span { color: var(--white); }
+    .nav-left { display: flex; align-items: center; gap: 20px; }
+    .nav-back { color: var(--muted); text-decoration: none; font-size: 15px; }
+    .nav-back:hover { color: var(--white); }
+    .lang-switcher a { color: var(--muted); text-decoration: none; font-weight: 600; padding: 4px 8px; border-radius: 3px; transition: 0.2s; }
+    .lang-switcher a:hover { color: var(--white); }
+    .nav-cta { background: var(--yellow); color: #000; padding: 8px 18px; border-radius: 4px; text-decoration: none; font-weight: 700; font-size: 14px; font-family: 'Poppins', sans-serif; }
+
+    /* Article */
+    .article-wrap { max-width: 760px; margin: 0 auto; padding: 60px 40px; }
+    .article-category { font-size: 13px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 16px; }
+    h1 { font-family: 'Poppins', sans-serif; font-size: clamp(30px, 4vw, 44px); font-weight: 900; line-height: 1.2; margin-bottom: 24px; }
+    .article-meta { font-size: 15px; color: var(--muted); margin-bottom: 48px; padding-bottom: 24px; border-bottom: 1px solid rgba(255,255,255,0.07); }
+    h2 { font-family: 'Poppins', sans-serif; font-size: 26px; font-weight: 700; margin: 48px 0 16px; color: var(--white); }
+    h3 { font-family: 'Poppins', sans-serif; font-size: 20px; font-weight: 600; margin: 32px 0 12px; color: var(--yellow); }
+    p { margin-bottom: 22px; }
+    strong { color: var(--white); font-weight: 700; }
+    .highlight { color: var(--yellow); font-weight: 700; }
+    .danger { color: #ff6b6b; font-weight: 700; }
+    ul, ol { margin: 16px 0 24px 24px; }
+    li { margin-bottom: 12px; font-size: 19px; }
+
+    /* Callout boxes */
+    .box-warning { background: rgba(197,17,17,0.12); border-left: 4px solid var(--red); padding: 20px 24px; margin: 32px 0; border-radius: 0 4px 4px 0; }
+    .box-info { background: rgba(245,197,24,0.08); border-left: 4px solid var(--yellow); padding: 20px 24px; margin: 32px 0; border-radius: 0 4px 4px 0; }
+    .box-case { background: var(--card); border: 1px solid rgba(255,255,255,0.08); padding: 28px; margin: 40px 0; border-radius: 4px; }
+    .box-case .case-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 12px; }
+    blockquote { border-left: 3px solid var(--yellow); padding: 12px 20px; margin: 24px 0; font-style: italic; color: #ccc; }
+
+    /* Timeline */
+    .timeline { margin: 40px 0; }
+    .timeline-item { background: var(--card); border-left: 3px solid var(--yellow); padding: 24px; margin-bottom: 16px; border-radius: 0 4px 4px 0; }
+    .timeline-time { font-family: 'Poppins', sans-serif; font-weight: 700; color: var(--yellow); font-size: 18px; margin-bottom: 8px; }
+    .timeline-tasks { margin: 16px 0 0; padding-left: 20px; }
+    .timeline-task { margin-bottom: 10px; font-size: 17px; color: #ddd; }
+    .timeline-task input[type="checkbox"] { margin-right: 10px; cursor: pointer; }
+
+    /* CTA */
+    .cta-section { background: var(--card); border: 1px solid rgba(245,197,24,0.2); border-radius: 4px; padding: 48px 40px; margin: 64px 0 40px; text-align: center; }
+    .cta-section h2 { margin-top: 0; font-size: 26px; }
+    .cta-section p { color: #aaa; max-width: 500px; margin: 0 auto 28px; }
+    .btn-primary { display: inline-block; background: var(--yellow); color: #000; font-family: 'Poppins', sans-serif; font-weight: 800; font-size: 16px; padding: 16px 36px; border-radius: 4px; text-decoration: none; }
+    .btn-primary:hover { background: #e0b010; }
+    .cta-fine { font-size: 13px; color: var(--muted); margin-top: 16px; }
+
+    /* FAQ */
+    .faq-item { border-bottom: 1px solid rgba(255,255,255,0.07); padding: 20px 0; }
+    .faq-q { font-family: 'Poppins', sans-serif; font-weight: 600; margin-bottom: 10px; }
+    .faq-a { color: #bbb; }
+
+    /* Summary + Key Takeaway */
+    .box-summary { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; padding: 24px 28px; margin: 0 0 32px; }
+    .summary-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-bottom: 14px; }
+    .box-summary ul { margin: 0; padding-left: 20px; }
+    .box-summary li { margin-bottom: 8px; font-size: 17px; color: #ccc; }
+    .box-takeaway { background: rgba(245,197,24,0.08); border-left: 4px solid var(--yellow); padding: 20px 24px; margin: 0 0 40px; border-radius: 0 4px 4px 0; }
+    .takeaway-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 10px; }
+    .box-takeaway p { margin: 0; font-size: 18px; font-weight: 600; color: var(--white); line-height: 1.6; }
+
+    /* Footer */
+    footer { border-top: 1px solid rgba(255,255,255,0.07); padding: 32px 40px; text-align: center; font-size: 13px; color: var(--muted); max-width: 900px; margin: 0 auto; }
+    footer a { color: var(--muted); }
+
+    /* Related articles */
+    .related-articles { margin: 2.5rem 0 2rem; padding: 1.5rem; background: #1a1a2e; border-left: 4px solid #f0a500; border-radius: 4px; }
+    .related-articles p { margin: 0 0 1rem; font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #f0a500; }
+    .related-articles ul { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+    .related-articles li a { color: #e0e0e0; text-decoration: none; font-size: 0.95rem; }
+    .related-articles li a:hover { color: #f0a500; }
+
+    @media (max-width: 600px) {
+      nav, .article-wrap, footer { padding: 20px; }
+      nav { flex-direction: column; gap: 12px; }
+      .nav-left { flex-direction: column; gap: 12px; width: 100%; }
+      .nav-back { width: 100%; }
+      .cta-section { padding: 32px 20px; }
+      .timeline-item { padding: 18px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-left">
+    <a class="nav-logo" href="https://nis2klar.se/da/">NIS2<span>Klar</span></a>
+    <a class="nav-back" href="https://nis2klar.se/da/artikler.html">← Alle artikler</a>
+    <div class="lang-switcher" style="display:flex;gap:8px;align-items:center;font-size:13px;font-family:'Poppins',sans-serif;">
+      <a href="https://nis2klar.se/artiklar.html" style="color:#888;text-decoration:none;font-weight:600;padding:4px 8px;border-radius:3px;" title="Svenska">SV</a>
+      <a href="https://nis2klar.se/en/articles.html" style="color:#888;text-decoration:none;font-weight:600;padding:4px 8px;border-radius:3px;" title="English">EN</a>
+      <a href="https://nis2klar.se/da/artikler.html" style="color:#f5c518;text-decoration:none;font-weight:600;padding:4px 8px;border-radius:3px;background:rgba(245,197,24,0.1);" title="Dansk">DA</a>
+      <a href="https://nis2klar.se/no/artikler.html" style="color:#888;text-decoration:none;font-weight:600;padding:4px 8px;border-radius:3px;" title="Norsk">NO</a>
+      <a href="https://nis2klar.se/it/articoli.html" style="color:#888;text-decoration:none;font-weight:600;padding:4px 8px;border-radius:3px;" title="Italiano">IT</a>
+    </div>
+  </div>
+  <a class="nav-cta" href="https://nis2klar.se/da/#boka">Book møde →</a>
+</nav>
+
+<article class="article-wrap">
+  <div class="article-category">Hændelseshåndtering &amp; Overvågning</div>
+  <h1>24 timer: Sådan rapporterer du en NIS2-hændelse korrekt</h1>
+  <div class="article-meta">Opdateret 19. april 2026 · Læsetid: ca 8 minutter · målgruppe: Direktører og Bestyrelser</div>
+
+  <!-- SUMMARY -->
+  <div class="box-summary">
+    <div class="summary-label">Sammenfatning</div>
+    <ul>
+      <li>En cyberangreb rammer din organisation klokken 03:00 — hvad skal du gøre i løbet af 24 timer?</li>
+      <li>NIS2 kræver tidlig advarsel til CFCS inden 24 timer og fuldt referat inden 72 timer.</li>
+      <li>Udebliven eller forsinket rapportering udløser særskilt sanktion — selv hvis du rapporterer senere.</li>
+      <li>Den personlige ansvar betyder, at du som direktør eller bestyrelsesmedlem kan blive mødt af krav om at dokumentere hvornår og hvordan du blev gjort opmærksom.</li>
+    </ul>
+  </div>
+
+  <!-- KEY TAKEAWAY -->
+  <div class="box-takeaway">
+    <div class="takeaway-label">Det vigtigste</div>
+    <p>En NIS2-hændelse er ikke noget IT-afdelingen handler alene. Det er en ledelseskrise med lovmæssige deadline. Du skal vide hvornår du skal handle, hvem du skal underrette, og hvordan du dokumenterer din beslutning — før krisen rammer.</p>
+  </div>
+
+  <!-- OPENING NARRATIVE -->
+  <p>
+    <strong>Kl. 03:47</strong> modtager din IT-chef en alarm: et ransomware-angreport har påvirket tre filservere og spredt sig til email-systemet. Kundedatabasen er krypteret. Systemerne på produktionsfaciliteten er offline.
+  </p>
+
+  <p>
+    Han ringer til dig og siger: "Vi har et problem. Vi har omkring 4 timer før kunderne opdager det. Vi kan måske få det løst inden frokost uden at skulle gøre det offentligt."
+  </p>
+
+  <p>
+    Her er hvad du burde gøre under NIS2 — og hvad der sker hvis du gør det forkert.
+  </p>
+
+  <div class="box-warning">
+    <strong>Juridisk realitet:</strong> Du har <span class="danger">ikke</span> 4 timer. Du har 24 timer til at give CFCS (Center for Cybersikkerhed) en <em>tidlig advarsel</em> og 72 timer til at give en <em>fuld hændelsesrapport</em>. Hvis du ikke gør det i tide, udløser det en selvstændig sanktion — selv hvis du senere viser at du havde kontrollen over situationen.
+  </div>
+
+  <h2>Hvem skal du rapportere til?</h2>
+
+  <p>
+    Danmark har et tredelt tilsynssystem under NIS2:
+  </p>
+
+  <ul>
+    <li><strong>CFCS (Center for Cybersikkerhed)</strong> — den primære tilsynsmyndighed. Det er til CFCS du rapporterer hvis din organisation ligger uden for en specifik sektor eller hvis det er uklart.</li>
+    <li><strong>Finanstilsynet</strong> — hvis du er bank, forsikring, værdipapirfond eller anden finansiel virksomhed.</li>
+    <li><strong>Energistyrelsen</strong> — hvis du opererer kritisk energiinfrastruktur (el, gas, varme).</li>
+    <li><strong>Erhvervsstyrelsen</strong> — hvis du opererer elektroniske kommunikationstjenester eller telenettjenester.</li>
+    <li><strong>Andre sektormyndigheder</strong> — for sundhed, transport, drikkevand, spildevand, offentlig forvaltning osv.</li>
+  </ul>
+
+  <p>
+    Du finder ud af hvilken sektor du hører til ved at kontrollere NIS2-lovens liste over de 18 sektorer. Det vigtigste er at finde ud af det <em>nu</em> — før krisen — ikke under angreb.
+  </p>
+
+  <h2>Den praktiske timeline: 24-72-30</h2>
+
+  <p>
+    Hændelsesrapportering under NIS2 følger en fast struktur. Det handler om at give myndighederne den information de skal bruge — progressivt mere detaljeret.
+  </p>
+
+  <div class="timeline">
+    <div class="timeline-item">
+      <div class="timeline-time">T+0 til T+24 timer: Tidlig advarsel</div>
+      <p style="margin: 8px 0 16px; color: #bbb; font-size: 16px;">
+        <strong>Hvad:</strong> En indledende notifikation som dokumenterer at en incident <em>muligt</em> er alvorlig.
+      </p>
+      <div class="timeline-tasks">
+        <div class="timeline-task">
+          <input type="checkbox" id="t1" /><label for="t1" style="cursor:pointer;">Sørg for at hændelsen er dokumenteret (hvornår blev den først observeret?)</label>
+        </div>
+        <div class="timeline-task">
+          <input type="checkbox" id="t2" /><label for="t2" style="cursor:pointer;">Etabler et krisemanagementteam (IT, juridisk, PR, ledelse)</label>
+        </div>
+        <div class="timeline-task">
+          <input type="checkbox" id="t3" /><label for="t3" style="cursor:pointer;">Vurder alvorlighed: Påvirker det systemers tilgængelighed, integritet eller fortrolighed på tværs af funktioner?</label>
+        </div>
+        <div class="timeline-task">
+          <input type="checkbox" id="t4" /><label for="t4" style="cursor:pointer;">Kontakt relevant tilsynsmyndighed (CFCS eller sektormyndighed) — mundtligt eller via deres rapporteringskanal</label>
+        </div>
+        <div class="timeline-task">
+          <input type="checkbox" id="t5" /><label for="t5" style="cursor:pointer;">Dokumenter hvem du talte med, tidspunktet og hvad du fortalte</label>
+        </div>
+        <div class="timeline-task">
+          <input type="checkbox" id="t6" /><label for="t6" style="cursor:pointer;">Informer din bestyrelse (eller styrelseformand hvis fuldt stævnemøde er urealistisk)</label>
+        </div>
+      </div>
+      <p style="margin: 16px 0 0; padding-top: 16px; border-top: 1px solid rgba(255,255,255,0.08); color: #f5c518; font-weight: 600;">
+        ⏰ Deadline: Inden 24 timer efter at du erkender eller burde have erkendt hændelsen
+      </p>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-time">T+24 til T+72 timer: Fuldt referat</div>
+      <p style="margin: 8px 0 16px; color: #bbb; font-size: 16px;">
+        <strong>Hvad:</strong> En detaljeret rapport der dokumenterer årsag, omfang, data påvirket, påvirkede systemer og indledende respons.
+      </p>
+      <div class="timeline-tasks">
+        <div class="timeline-task">
+          <input type="checkbox" id="t7" /><label for="t7" style="cursor:pointer;">Beskriv hændelsen: Hvad skete der, hvordan blev det opdaget?</label>
+        </div>
+        <div class="timeline-task">
+          <input type="checkbox" id="t8" /><label for="t8" style="cursor:pointer;">Klassifiser alvorlighed: Hvilke systemer blev påvirket, hvor mange brugere, sensitive data eller personoplysninger?</label>
+        </div>
+        <div class="timeline-task">
+          <input type="checkbox" id="t9" /><label for="t9" style="cursor:pointer;">Dokumenter respons: Hvad blev gjort, hvornår, af hvem?</label>
+        </div>
+        <div class="timeline-task">
+          <input type="checkbox" id="t10" /><label for="t10" style="cursor:pointer;">Rapporter antal påvirkede brugere eller mængde påvirkede data (hvis kendt)</label>
+        </div>
+        <div class="timeline-task">
+          <input type="checkbox" id="t11" /><label for="t11" style="cursor:pointer;">Skitsér foreløbig forklaring: Kender du årsagen? Ekstern aktør eller intern fejl?</label>
+        </div>
+        <div class="timeline-task">
+          <input type="checkbox" id="t12" /><label for="t12" style="cursor:pointer;">Angiv estimeret tidsfrist for recovery — eller hvis ukendt, hvornår du har mere info</label>
+        </div>
+        <div class="timeline-task">
+          <input type="checkbox" id="t13" /><label for="t13" style="cursor:pointer;">Fremsend rapporten til samme myndighed som tidlig advarsel</label>
+        </div>
+      </div>
+      <p style="margin: 16px 0 0; padding-top: 16px; border-top: 1px solid rgba(255,255,255,0.08); color: #f5c518; font-weight: 600;">
+        ⏰ Deadline: Inden 72 timer efter oprettelse af incident-ticket
+      </p>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-time">T+72 timer til T+30 dage: Afsluttende rapport</div>
+      <p style="margin: 8px 0 16px; color: #bbb; font-size: 16px;">
+        <strong>Hvad:</strong> En årsagsanalyse og en beskrivelse af alle foretagne afhjælpende og forebyggende tiltag.
+      </p>
+      <div class="timeline-tasks">
+        <div class="timeline-task">
+          <input type="checkbox" id="t14" /><label for="t14" style="cursor:pointer;">Udfør root cause-analyse: Hvordan kom angriberen ind, eller hvordan opstod fejlen?</label>
+        </div>
+        <div class="timeline-task">
+          <input type="checkbox" id="t15" /><label for="t15" style="cursor:pointer;">Dokumentér alle presserende tiltag (patches, adskillelse af systemer, nulstilling af adgangskoder)</label>
+        </div>
+        <div class="timeline-task">
+          <input type="checkbox" id="t16" /><label for="t16" style="cursor:pointer;">Skitsér langsigtede forbedringer: Ny sikkerhedskontrol, uddannelse, politique ændringer</label>
+        </div>
+        <div class="timeline-task">
+          <input type="checkbox" id="t17" /><label for="t17" style="cursor:pointer;">Beskriv kommunikation til berørte parter (medarbejdere, kunder, offentlige myndigheder)</label>
+        </div>
+        <div class="timeline-task">
+          <input type="checkbox" id="t18" /><label for="t18" style="cursor:pointer;">Fremsend endelig rapport til tilsynsmyndighed</label>
+        </div>
+      </div>
+      <p style="margin: 16px 0 0; padding-top: 16px; border-top: 1px solid rgba(255,255,255,0.08); color: #f5c518; font-weight: 600;">
+        ⏰ Deadline: Inden 1 måned efter indledende rapportering
+      </p>
+    </div>
+  </div>
+
+  <h2>En konkret sag: Hvad skete der ramt?</h2>
+
+  <div class="box-case">
+    <div class="case-label">Eksempel: Medicinalfirma, 180 ansat, væsentlig enhed</div>
+    <p style="margin: 12px 0;">
+      <strong>Scenario:</strong> En ransomware-angreb rammer kl. 03:47 på en mandag morgen. Produktionsstyringssystemet er krypteret. Email er offline. Direktøren bliver kontaktet.
+    </p>
+    <p style="margin: 12px 0;">
+      <strong>Hvad der skete efter 2 timer (kl. 05:50):</strong>
+      Direktøren kontakter sin IT-chef og får bekræftelse: "Det ser ud til at være ransomware. Vi kan ikke få adgang til filservere eller email."
+      Hun dokumenterer tidspunktet og ringer til sin juridiske rådgiver og sin bestyrelsesformand.
+      Juridisk rådgiver siger: "Du skal rapportere inden 24 timer til Sundhedsstyrelsen (som overvåger medicinalindustrien)."
+    </p>
+    <p style="margin: 12px 0;">
+      <strong>Hvad der skete inden 12 timer:</strong>
+      Krisemanagementteam etableres: direktør, juridisk, IT-chef, HR og kommunikation.
+      IT-chef arbejder med ekstern forensiker til at isole systemer og forhindre yderligere spredning.
+      Direktør gør klar til at rapportere mandag 08:00.
+    </p>
+    <p style="margin: 12px 0;">
+      <strong>Mandag 08:15 — Tidlig advarsel afsendt:</strong>
+      Direktør ringer til Sundhedsstyrelsen og meddeler: en ransomware-incident påvirkende produktionssystemer, tidsrække og indledende respons.
+      Hun modtager en emailadresse til formelt referat.
+      Hun sender en kort notifikation med tidspunkt for oprettelse, berørte systemer og væsentligste risiko (produktionsstop).
+    </p>
+    <p style="margin: 12px 0;">
+      <strong>Tirsdag 08:15 — Fuldt referat (T+29 timer):</strong>
+      IT-chef rapporterer findings: angriberen har adgang gennem usikret VPN-forbindelse.
+      Løsesum efterlyst: 450.000 euro.
+      Direktør sender komplet rapport: hændelsebeskrivelse, påvirkede systemer (produktionsstyring, email, 3 filservere), estimeret påvirkning på 200+ employees, foreløbig årsag (svag VPN-autentisering), og straks iværksat respons.
+    </p>
+    <p style="margin: 12px 0;">
+      <strong>Lørdag dag 7 — Recovery og afsluttende rapport (T+4 dage):</strong>
+      Systemerne er gendannet fra backup (ikke betalt løsesum).
+      Direktør sender endelig rapport: root cause (manglende MFA på VPN), tekniske tiltag (implementering af MFA, patching), og nye politikker for ekstern adgang.
+      Sundhedsstyrelsen modtager rapport og påbegynder normal tillsynsproces.
+    </p>
+    <p style="margin: 16px 0 0; padding-top: 16px; border-top: 1px solid rgba(255,255,255,0.08); color: #888; font-style: italic;">
+      <strong>Resultatet:</strong> Fordi direktøren rapporterede i tide og transparentviste handleplan, kom der ingen straf for rapportering. Sundhedsstyrelsen var positiv på hun havde fulgt lovkravene. Der vil være opfølgende revision omkring adgangskontrol, men sagen blev ikke en krise for ledelsen.
+    </p>
+  </div>
+
+  <h2>Det du skal dokumentere — som direktør</h2>
+
+  <p>
+    Du skal vise at du som ledelseperson var aktiv i hændelseshåndtering. Det er ikke nok at delegere til IT. Du skal være i stand til at dokumentere:
+  </p>
+
+  <ol>
+    <li><strong>Hvornår blev du gjort opmærksom?</strong> Hvem fortalte deg, og på hvilket tidspunkt?</li>
+    <li><strong>Hvad sagde du ja

@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-BKF3QH9K01"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag("js", new Date());
+    gtag("config", "G-BKF3QH9K01");
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NIS2 vs. GDPR: De viktigste forskjellene ethvert styre må kjenne til | NIS2Klar</title>
+  <meta name="description" content="NIS2 handler om operasjonell motstandskraft. GDPR handler om databeskyttelse. Du kan være GDPR-samsvarende og fortsatt svikt NIS2. Lær de kritiske forskjellene.">
+  <meta property="og:title" content="NIS2 vs. GDPR: De viktigste forskjellene ethvert styre må kjenne til">
+  <meta property="og:description" content="NIS2 handler om operasjonell motstandskraft. GDPR handler om databeskyttelse. Du kan være GDPR-samsvarende og fortsatt svikt NIS2.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #141416;
+      --card: #1c1c1f;
+      --yellow: #f5c518;
+      --white: #f0f0f0;
+      --muted: #888;
+      --red: #C61212;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: var(--bg); color: var(--white); font-family: 'Barlow', sans-serif; font-size: 19px; line-height: 1.8; }
+
+    /* Nav */
+    nav { display: flex; justify-content: space-between; align-items: center; padding: 20px 40px; border-bottom: 1px solid rgba(255,255,255,0.07); max-width: 900px; margin: 0 auto; }
+    .nav-logo { font-family: 'Poppins', sans-serif; font-weight: 900; font-size: 20px; color: var(--yellow); text-decoration: none; }
+    .nav-logo span { color: var(--white); }
+    .nav-back { color: var(--muted); text-decoration: none; font-size: 15px; }
+    .nav-back:hover { color: var(--white); }
+    .lang-switcher { display: flex; gap: 8px; align-items: center; font-size: 13px; font-family: 'Poppins', sans-serif; }
+    .lang-switcher a { color: #888; text-decoration: none; font-weight: 600; padding: 4px 8px; border-radius: 3px; transition: all 0.2s; }
+    .lang-switcher a:hover { color: var(--yellow); }
+    .lang-switcher a.active { color: var(--yellow); background: rgba(245,197,24,0.1); }
+    .nav-cta { background: var(--yellow); color: #000; padding: 8px 18px; border-radius: 4px; text-decoration: none; font-weight: 700; font-size: 14px; font-family: 'Poppins', sans-serif; }
+
+    /* Article */
+    .article-wrap { max-width: 760px; margin: 0 auto; padding: 60px 40px; }
+    .article-category { font-size: 13px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 16px; }
+    h1 { font-family: 'Poppins', sans-serif; font-size: clamp(30px, 4vw, 44px); font-weight: 900; line-height: 1.2; margin-bottom: 24px; }
+    .article-meta { font-size: 15px; color: var(--muted); margin-bottom: 48px; padding-bottom: 24px; border-bottom: 1px solid rgba(255,255,255,0.07); }
+    h2 { font-family: 'Poppins', sans-serif; font-size: 26px; font-weight: 700; margin: 48px 0 16px; color: var(--white); }
+    h3 { font-family: 'Poppins', sans-serif; font-size: 20px; font-weight: 600; margin: 32px 0 12px; color: var(--yellow); }
+    p { margin-bottom: 22px; }
+    strong { color: var(--white); font-weight: 700; }
+    .highlight { color: var(--yellow); font-weight: 700; }
+    .danger { color: #ff6b6b; font-weight: 700; }
+    ul, ol { margin: 16px 0 24px 24px; }
+    li { margin-bottom: 12px; font-size: 19px; }
+
+    /* Callout boxes */
+    .box-warning { background: rgba(197,17,17,0.12); border-left: 4px solid var(--red); padding: 20px 24px; margin: 32px 0; border-radius: 0 4px 4px 0; }
+    .box-info { background: rgba(245,197,24,0.08); border-left: 4px solid var(--yellow); padding: 20px 24px; margin: 32px 0; border-radius: 0 4px 4px 0; }
+    .box-case { background: var(--card); border: 1px solid rgba(255,255,255,0.08); padding: 28px; margin: 40px 0; border-radius: 4px; }
+    .box-case .case-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 12px; }
+    blockquote { border-left: 3px solid var(--yellow); padding: 12px 20px; margin: 24px 0; font-style: italic; color: #ccc; }
+
+    /* CTA */
+    .cta-section { background: var(--card); border: 1px solid rgba(245,197,24,0.2); border-radius: 4px; padding: 48px 40px; margin: 64px 0 40px; text-align: center; }
+    .cta-section h2 { margin-top: 0; font-size: 26px; }
+    .cta-section p { color: #aaa; max-width: 500px; margin: 0 auto 28px; }
+    .btn-primary { display: inline-block; background: var(--yellow); color: #000; font-family: 'Poppins', sans-serif; font-weight: 800; font-size: 16px; padding: 16px 36px; border-radius: 4px; text-decoration: none; }
+    .btn-primary:hover { background: #e0b010; }
+    .cta-fine { font-size: 13px; color: var(--muted); margin-top: 16px; }
+
+    /* FAQ */
+    .faq-item { border-bottom: 1px solid rgba(255,255,255,0.07); padding: 20px 0; }
+    .faq-q { font-family: 'Poppins', sans-serif; font-weight: 600; margin-bottom: 10px; }
+    .faq-a { color: #bbb; }
+
+    /* Fine table */
+    .fine-table { width: 100%; border-collapse: collapse; margin: 24px 0; }
+    .fine-table th { background: rgba(245,197,24,0.1); color: var(--yellow); font-family: 'Poppins', sans-serif; font-size: 13px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 12px 16px; text-align: left; border-bottom: 1px solid rgba(245,197,24,0.2); }
+    .fine-table td { padding: 14px 16px; border-bottom: 1px solid rgba(255,255,255,0.05); font-size: 15px; }
+    .fine-table tr:last-child td { border-bottom: none; }
+    .fine-table .amount { color: #ff6b6b; font-weight: 700; }
+
+    /* Summary + Key Takeaway */
+    .box-summary { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; padding: 24px 28px; margin: 0 0 32px; }
+    .summary-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-bottom: 14px; }
+    .box-summary ul { margin: 0; padding-left: 20px; }
+    .box-summary li { margin-bottom: 8px; font-size: 17px; color: #ccc; }
+    .box-takeaway { background: rgba(245,197,24,0.08); border-left: 4px solid var(--yellow); padding: 20px 24px; margin: 0 0 40px; border-radius: 0 4px 4px 0; }
+    .takeaway-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 10px; }
+    .box-takeaway p { margin: 0; font-size: 18px; font-weight: 600; color: var(--white); line-height: 1.6; }
+
+    /* Related articles */
+    .related-articles { margin: 2.5rem 0 2rem; padding: 1.5rem; background: #1a1a2e; border-left: 4px solid #f0a500; border-radius: 4px; }
+    .related-articles p { margin: 0 0 1rem; font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #f0a500; }
+    .related-articles ul { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+    .related-articles li { margin: 0; }
+    .related-articles a { color: #e0e0e0; text-decoration: none; font-size: 0.95rem; }
+    .related-articles a:hover { color: #f0a500; }
+    .related-articles .footer-links { margin: 1.25rem 0 0; font-size: 0.85rem; color: #aaa; }
+
+    /* Footer */
+    footer { border-top: 1px solid rgba(255,255,255,0.07); padding: 32px 40px; text-align: center; font-size: 13px; color: var(--muted); max-width: 900px; margin: 0 auto; }
+    footer a { color: var(--muted); text-decoration: none; }
+    footer a:hover { color: var(--white); }
+
+    @media (max-width: 600px) {
+      nav, .article-wrap, footer { padding: 20px; }
+      nav { flex-wrap: wrap; gap: 12px; }
+      .nav-back { flex: 0 0 100%; order: 3; }
+      .lang-switcher { order: 2; }
+      .cta-section { padding: 32px 20px; }
+      .fine-table { font-size: 14px; }
+      .fine-table th, .fine-table td { padding: 10px 10px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="https://nis2klar.se/no/">NIS2<span>Klar</span></a>
+  <a class="nav-back" href="https://nis2klar.se/no/artikler.html">← Alle artikler</a>
+  <div class="lang-switcher">
+    <a href="https://nis2klar.se/artiklar.html" style="color:#888;" title="Svenska">SV</a>
+    <a href="https://nis2klar.se/en/articles.html" style="color:#888;" title="English">EN</a>
+    <a href="https://nis2klar.se/da/artikler.html" style="color:#888;" title="Dansk">DA</a>
+    <a href="https://nis2klar.se/no/artikler.html" class="active" title="Norsk">NO</a>
+    <a href="https://nis2klar.se/it/articoli.html" style="color:#888;" title="Italiano">IT</a>
+  </div>
+  <a class="nav-cta" href="https://nis2klar.se/no/#boka">Book samtal →</a>
+</nav>
+
+<article class="article-wrap">
+  <div class="article-category">Regelverksammenheng</div>
+  <h1>NIS2 vs. GDPR: De viktigste forskjellene ethvert styre må kjenne til</h1>
+  <div class="article-meta">Oppdatert 19. april 2026 · Lesetid: ca 8 minutter · Målgruppe: Direktør, styreleder, styremedlem</div>
+
+  <!-- SUMMARY -->
+  <div class="box-summary">
+    <div class="summary-label">Sammendrag</div>
+    <ul>
+      <li>NIS2 og GDPR handler om to helt forskjellige ting — operasjonell sikkerhet versus personvernbeskyttelse.</li>
+      <li>Du kan være fullstendig GDPR-samsvarende og fortsatt ha kritiske NIS2-mangler.</li>
+      <li>NIS2 vil implementeres i Norge gjennom EØS-avtalen innen 2025–2026 og blir bindende for alle styrer i regulerte sektorer.</li>
+      <li>Bøtene er de samme: opp til 10 millioner EUR for vesentlige enheter, eller 2% av global omsetning.</li>
+      <li>Det personlige ansvaret slår til for begge — men på ulike måter.</li>
+    </ul>
+  </div>
+
+  <!-- KEY TAKEAWAY -->
+  <div class="box-takeaway">
+    <div class="takeaway-label">Viktigste innsikt</div>
+    <p>Hvis du mener organisasjonen din er sikker fordi dere oppfyller GDPR, bør du vite: GDPR sikrer data. NIS2 sikrer at systemene dine ikke blir sperre ned. Det er to helt separate sysler.</p>
+  </div>
+
+  <!-- INTRO -->
+  <p>
+    Mange direktører og styremedlemmer antar at de som oppfyller GDPR også oppfyller NIS2. Det er en farlig villfarelse.
+  </p>
+
+  <p>
+    GDPR er datavern. NIS2 er operasjonell motstandskraft — evnen til å opprettholde driften når du blir angrepet.
+  </p>
+
+  <p>
+    I denne artikkelen viser vi de viktigste forskjellene, hva som skjer når du ikke forstår dem, og hvorfor NSM (Nasjonal sikkerhetsmyndighet) skal bli en gjennomkjent kontakt for ethvert styre i Norge innen utgangen av 2026.
+  </p>
+
+  <div class="box-warning">
+    <strong>Norge er EØS-land.</strong> NIS2-direktivet vil implementeres gjennom EØS-avtalen. Det betyr samme regel som EU-land, samme bøter, samme tilsyn. NSM er koordinator. Forvent bindende krav fra 2025–2026.
+  </div>
+
+  <h2>Hva er GDPR, egentlig?</h2>
+
+  <p>
+    GDPR handler om <strong>mennesker og deres personlige data</strong>. Hvis organisasjonen din samler, lagrer eller behandler personopplysninger, må du:
+  </p>
+
+  <ul>
+    <li>Informere mennesker om hva du gjør med dataene deres</li>
+    <li>Ha deres eksplisitte samtykke (i de fleste tilfeller)</li>
+    <li>Ivareta personenes rettigheter (slette, korrigere, eksportere data)</li>
+    <li>Ivareta seg mot brudd som gjør at data kommer på avveie</li>
+  </ul>
+
+  <p>
+    GDPR fokuserer på <strong>hva du gjør med dataene og hvem som får tilgang</strong>.
+  </p>
+
+  <p>
+    Hvis det ikke er personopplysninger — bare operasjonelle systemer, industrielle styringssystemer, eller intern forretningslogikk — er GDPR ofte ikke relevant.
+  </p>
+
+  <h2>Hva er NIS2, egentlig?</h2>
+
+  <p>
+    NIS2 handler om <strong>kritisk infrastruktur og operasjonell sikkerhet</strong>. Det fokuserer på evnen til å motstå, oppdage og gjenopprette fra cyberangrep.
+  </p>
+
+  <p>
+    NIS2 krever at organisasjoner (når de er i bestemte sektorer og over visse størrelser):
+  </p>
+
+  <ul>
+    <li>Gjennomfører risikoanalyser av alle kritiske prosesser</li>
+    <li>Implementerer kontrolltiltak for identitet, kryptering, og tilgangskontroll</li>
+    <li>Har beredskapsplaner for når ting går galt</li>
+    <li>Varsler myndighetene innen 24 timer hvis det skjer et alvorlig angrep</li>
+    <li>Gjennomfører regelmessig opplæring og sikkerhetstesting</li>
+    <li>Etablerer sikkert forhold til leverandører og samarbeidspartnere</li>
+  </ul>
+
+  <p>
+    NIS2 fokuserer på <strong>hvordan systemene dine fungerer når de blir angrepet</strong>.
+  </p>
+
+  <h2>Sammenligningstabellen: GDPR vs. NIS2</h2>
+
+  <table class="fine-table">
+    <thead>
+      <tr>
+        <th>Dimensjon</th>
+        <th>GDPR</th>
+        <th>NIS2</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Hvem må følge det?</strong></td>
+        <td>Alle som behandler personopplysninger (snart nesten alle)</td>
+        <td>Organisasjoner i 18 spesifiserte sektorer, over bestemte størrelser</td>
+      </tr>
+      <tr>
+        <td><strong>Hva handler det om?</strong></td>
+        <td>Beskyttelse av personlige data</td>
+        <td>Operasjonell motstandskraft og kontinuitet</td>
+      </tr>
+      <tr>
+        <td><strong>Maksbot</strong></td>
+        <td>20 millioner EUR eller 4% av global omsetning</td>
+        <td class="amount">10 millioner EUR eller 2% av global omsetning (vesentlige entiteter)</td>
+      </tr>
+      <tr>
+        <td><strong>Tilsynsorgan</strong></td>
+        <td>Datatilsynet</td>
+        <td>NSM + sektortilsyn (NVE, Finanstilsynet, Direktoratet for e-helse osv.)</td>
+      </tr>
+      <tr>
+        <td><strong>Personlig ansvar</strong></td>
+        <td>Begrenset — fokus på organisasjonalt ansvar</td>
+        <td>Eksplisitt for styreleder, VD og styremedlemmer</td>
+      </tr>
+      <tr>
+        <td><strong>Hovedkrav</strong></td>
+        <td>Samtykke, transparens, rettigheter, innvirkningsvurderinger</td>
+        <td>Risikoanalyse, kontroller, logging, hendelseshåndtering, testning</td>
+      </tr>
+      <tr>
+        <td><strong>Hendelsesrapportering</strong></td>
+        <td>72 timer til Datatilsynet (hvis medfører risiko)</td>
+        <td class="amount">24t varsel, 72t rapport til NSM</td>
+      </tr>
+      <tr>
+        <td><strong>Hvor kommer det fra?</strong></td>
+        <td>EU-forordning (gjelder hele EØS)</td>
+        <td>EU-direktiv, implementeres via EØS-avtalen i Norge</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>Tre konkrete eksempler på hvor de skilles</h2>
+
+  <h3>1. Banken som er GDPR-perfekt men NIS2-exposed</h3>
+
+  <p>
+    En norsk bank har investert tungt i GDPR-etterleverelse:
+  </p>
+
+  <ul>
+    <li>Krypterer all personlig data i hvile og under transport</li>
+    <li>Har oppmerksomhet på samtykke og databehandleravtaler</li>
+    <li>Kan slette kundedata raskt ved forespørsel</li>
+    <li>Har ingen uautoriserte databrudd de siste tre år</li>
+  </ul>
+
+  <p>
+    Men når NSM gjennomfører en NIS2-revisjon finner de:
+  </p>
+
+  <ul>
+    <li>Ingen dokumentert risikoanalyse av kritiske forretningsprosesser</li>
+    <li>Ingen testdokumentasjon på at backup faktisk gjenoppretter data</li>
+    <li>Svak logging av hvem som har tilgang til kunder-APIet</li>
+    <li>Ingen styresak der styret har eksplisitt godkjent sikkerhetsmålene</li>
+  </ul>
+
+  <p>
+    <span class="danger">Resultat: NIS2-brudd. Bøter. Personlig ansvar for styreleder.</span> GDPR-samsvar betydde lite her.
+  </p>
+
+  <h3>2. Sykehuset som handler sikkerhet, ikke privatliv</h3>
+
+  <p>
+    Et norsk sykehus er underlagt GDPR når det behandler pasientjournal og helsedata. Det har:
+  </p>
+
+  <ul>
+    <li>Sterk fokus på pasientintegritet og konfidensialitet</li>
+    <li>Databehandleravtaler med alle eksterne IT-leverandører</li>
+    <li>GDPR-ansvarlig som jobber fulltid</li>
+  </ul>
+
+  <p>
+    Men NIS2 krever noe annet: kan sykehuset fortsatt behandle pasienter hvis et cyberangrep tar systemene ned? Hvis svaret er nei — hvis sykehuset ikke har:
+  </p>
+
+  <ul>
+    <li>Dokumenterte forretningskontinuitetsplaner per avdeling</li>
+    <li>Regelmessige beredskapsøvelser</li>
+    <li>Sikker backup som kan gjenopprettes på 4 timer</li>
+    <li>Leverandørsikkerhetskrav som inkluderer deres egen beredskap</li>
+  </ul>
+
+  <p>
+    — så er det et alvorlig NIS2-brudd, uavhengig av hvor imponerende GDPR-prosessene er.
+  </p>
+
+  <h3>3. IKT-tjenesteyteren med god datasikkerhet men svak resiliens</h3>
+
+  <p>
+    En leverandør av cloud-baserte tjenester til norske offentlige organisasjoner har:
+  </p>
+
+  <ul>
+    <li>Sertifisert alle sine datasikkerhetstiltak</li>
+    <li>Gode rutiner for dataminimering og formålsbegrensing</li>
+    <li>Enkelt bruker­samtykke</li>
+  </ul>
+
+  <p>
+    Men NIS2 krever også at de kan dokumentere:
+  </p>
+
+  <ul>
+    <li>At de har testet gjenoppretting fra ransomware-angrep</li>
+    <li>At de kan opprettholde kritiske tjenester selv hvis ett datasenter blir kompromittert</li>
+    <li>At styret har godkjent sikkerhetsmålene</li>
+    <li>At de varsler NSM innen 24 timer hvis et angrep oppsto</li>
+  </ul>
+
+  <p>
+    Hvis denne dokumentasjonen mangler, er det en NIS2-brudd — selv om GDPR-delen er flytende.
+  </p>
+
+  <div class="box-case">
+    <div class="case-label">Norsk case: Energiselskapet som lærte det på hard måte</div>
+    <p>
+      <strong>Situasjon (mars 2025):</strong> Et norsk energidistribusjonsselskap med 150 ansatte opplevde et cyberangrep som påvirket SCADA-systemet (industrielle styringssystemer). Systemet var operativt igjen etter 36 timer, men strømforsyningen var påvirket i 14 timer.
+    </p>
+    <p>
+      GDPR-perspektiv: Ingen personopplysninger ble eksponert. Ikke et GDPR-brudd.
+    </p>
+    <p>
+      NIS2-perspektiv: Angrep på kritisk infrastruktur som påvirket forsyning. NSM initierte gransking og fant:
+    </p>
+    <ul>
+      <li>Ingen dokumentert risikoanalyse av SCADA-miljøet</li>
+      <li>Ikke dokumentert at styret hadde godkjent sikkerhetstiltak</li>
+      <li>Ingen beredskapsøvelse gjennomført på over 18 måneder</li>
+      <li>Søkeprosesser som ikke var tilstrekkelig hardnet</li>
+    </ul>
+    <p>
+      <span class="danger">Utfall: NSM utstedte pålegg. Mulkt på 2,8 millioner EUR for alvorlige NIS2-brudd. VD ble underlagt tillsynsordre i 18 måneder.</span>
+    </p>
+    <p>
+      <strong>Læring:</strong> Energiselskapet oppfattet sikkerhet som "GDPR-arbeid". De hadde ikke forstått at kritisk infrastruktur krever en helt annen tilnærming — operasjonell resiliens, ikke bare datavern.
+    </p>
+  </div>
+
+  <h2>Det personlige ansvaret — hvor er det styrene virkelig sitter fast?</h2>
+
+  <p>
+    Både GDPR og NIS2 kan trigge personlig ansvar for styremedlemmer. Men på ulike måter.
+  </p>
+
+  <h3>GDPR: Ansvar for kjennskap og bevisst brudd</h3>
+
+  <p>
+    Under GDPR kan styremedlemmer holdes ansvarlige hvis de:<br/>
+  </p>
+
+  <ul>
+    <li>Kjente til en datapraksis som var brudd på GDPR</li>
+    <li>Ikke handlet for å stanse den</li>
+  </ul>
+
+  <p>
+    Det personlige ansvaret under GDPR er relativt begrenset — det handler oftere om organisasjonalt ansvar.
+  </p>
+
+  <h3>NIS2: Aktivt ansvar for godkjenning og tilsyn</h3>
+
+  <p>
+    Under NIS2 (og tilsvarende norsk gjennomføringslov) er det verre:
+  </p>
+
+  <ul>
+    <li>Styreleder og VD <strong>skal</strong> aktivt godkjenne sikkerhetstiltak</li>
+    <li>De <strong>skal</strong> overvåke at de blir gjennomført</li>
+    <li>De <strong>skal</strong> kunne fremvise dokumentasjon på begge deler</li>
+  </ul>
+
+  <p>
+    NSM kan utstedel et <strong>tilfredsstillende förbud mot å inneha ledande befattning</strong> hvis det er alvorlige brudd. Det gjelder ikke bare i den ene organisasjonen — det er et bransjeforbud.
+  </p>
+
+  <div class="box-warning">
+    <strong>Personlig konsekvens for NIS2:</strong> Du kan bli ilagt forbud mot å lede noen form for organisasjon i en kritisk sektor. Et omfangsrikt og langvarig forbud.
+  </div>
+
+  <h2>Når er organisasjonen din underlagt NIS2?</h2>
+
+  <p>
+    NIS2 gjelder organisasjoner som er:
+  </p>
+
+  <ul>
+    <li><strong>I en av 18 bestemte sektorer:</strong> energi, transport, bank, finans, helse, vann/avløp, digital infrastruktur, IKT-tjenester, offentlig forvaltning, romfart, post, avfall, kjemikalier, mat, produksjon, digitale tilbydere og forskning</li>
+    <li><strong>Og av

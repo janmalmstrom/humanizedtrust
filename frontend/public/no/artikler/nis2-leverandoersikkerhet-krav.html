@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-BKF3QH9K01"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag("js", new Date());
+    gtag("config", "G-BKF3QH9K01");
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NIS2-leverandørsikkerhet: Hva du bør kreve av leverandørene | NIS2Klar</title>
+  <meta name="description" content="NIS2 krever streng kontroll av leverandører. Lær hvilke kontraktklausuler, revisjonrettigheter og hendelsesrapporteringskrav du må innføre — med malklausuler inkludert.">
+  <meta property="og:title" content="NIS2-leverandørsikkerhet: Hva du bør kreve av leverandørene">
+  <meta property="og:description" content="NIS2 krever streng kontroll av leverandører. Lær hvilke kontraktklausuler, revisjonrettigheter og hendelsesrapporteringskrav du må innføre.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #141416;
+      --card: #1c1c1f;
+      --yellow: #f5c518;
+      --white: #f0f0f0;
+      --muted: #888;
+      --red: #C61212;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: var(--bg); color: var(--white); font-family: 'Barlow', sans-serif; font-size: 19px; line-height: 1.8; }
+
+    /* Nav */
+    nav { display: flex; justify-content: space-between; align-items: center; padding: 20px 40px; border-bottom: 1px solid rgba(255,255,255,0.07); max-width: 1200px; margin: 0 auto; }
+    .nav-left { display: flex; align-items: center; gap: 30px; }
+    .nav-logo { font-family: 'Poppins', sans-serif; font-weight: 900; font-size: 20px; color: var(--yellow); text-decoration: none; }
+    .nav-logo span { color: var(--white); }
+    .nav-back { color: var(--muted); text-decoration: none; font-size: 15px; }
+    .nav-back:hover { color: var(--white); }
+    .lang-switcher { display: flex; gap: 8px; align-items: center; font-size: 13px; font-family: 'Poppins', sans-serif; }
+    .lang-switcher a { color: var(--muted); text-decoration: none; font-weight: 600; padding: 4px 8px; border-radius: 3px; }
+    .lang-switcher a:hover { color: var(--white); }
+    .lang-switcher a.active { color: var(--yellow); background: rgba(245,197,24,0.1); }
+    .nav-cta { background: var(--yellow); color: #000; padding: 8px 18px; border-radius: 4px; text-decoration: none; font-weight: 700; font-size: 14px; font-family: 'Poppins', sans-serif; }
+
+    /* Article */
+    .article-wrap { max-width: 760px; margin: 0 auto; padding: 60px 40px; }
+    .article-category { font-size: 13px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 16px; }
+    h1 { font-family: 'Poppins', sans-serif; font-size: clamp(30px, 4vw, 44px); font-weight: 900; line-height: 1.2; margin-bottom: 24px; }
+    .article-meta { font-size: 15px; color: var(--muted); margin-bottom: 48px; padding-bottom: 24px; border-bottom: 1px solid rgba(255,255,255,0.07); }
+    h2 { font-family: 'Poppins', sans-serif; font-size: 26px; font-weight: 700; margin: 48px 0 16px; color: var(--white); }
+    h3 { font-family: 'Poppins', sans-serif; font-size: 20px; font-weight: 600; margin: 32px 0 12px; color: var(--yellow); }
+    p { margin-bottom: 22px; }
+    strong { color: var(--white); font-weight: 700; }
+    .highlight { color: var(--yellow); font-weight: 700; }
+    .danger { color: #ff6b6b; font-weight: 700; }
+    ul, ol { margin: 16px 0 24px 24px; }
+    li { margin-bottom: 12px; font-size: 19px; }
+
+    /* Callout boxes */
+    .box-warning { background: rgba(197,17,17,0.12); border-left: 4px solid var(--red); padding: 20px 24px; margin: 32px 0; border-radius: 0 4px 4px 0; }
+    .box-info { background: rgba(245,197,24,0.08); border-left: 4px solid var(--yellow); padding: 20px 24px; margin: 32px 0; border-radius: 0 4px 4px 0; }
+    .box-case { background: var(--card); border: 1px solid rgba(255,255,255,0.08); padding: 28px; margin: 40px 0; border-radius: 4px; }
+    .box-case .case-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 12px; }
+    .code-block { background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.1); padding: 16px 20px; margin: 20px 0; border-radius: 4px; font-family: 'Courier New', monospace; font-size: 14px; color: #b8d4a8; overflow-x: auto; }
+    blockquote { border-left: 3px solid var(--yellow); padding: 12px 20px; margin: 24px 0; font-style: italic; color: #ccc; }
+
+    /* CTA */
+    .cta-section { background: var(--card); border: 1px solid rgba(245,197,24,0.2); border-radius: 4px; padding: 48px 40px; margin: 64px 0 40px; text-align: center; }
+    .cta-section h2 { margin-top: 0; font-size: 26px; }
+    .cta-section p { color: #aaa; max-width: 500px; margin: 0 auto 28px; }
+    .btn-primary { display: inline-block; background: var(--yellow); color: #000; font-family: 'Poppins', sans-serif; font-weight: 800; font-size: 16px; padding: 16px 36px; border-radius: 4px; text-decoration: none; }
+    .btn-primary:hover { background: #e0b010; }
+    .cta-fine { font-size: 13px; color: var(--muted); margin-top: 16px; }
+
+    /* FAQ */
+    .faq-item { border-bottom: 1px solid rgba(255,255,255,0.07); padding: 20px 0; }
+    .faq-q { font-family: 'Poppins', sans-serif; font-weight: 600; margin-bottom: 10px; }
+    .faq-a { color: #bbb; }
+
+    /* Summary + Key Takeaway */
+    .box-summary { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; padding: 24px 28px; margin: 0 0 32px; }
+    .summary-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-bottom: 14px; }
+    .box-summary ul { margin: 0; padding-left: 20px; }
+    .box-summary li { margin-bottom: 8px; font-size: 17px; color: #ccc; }
+    .box-takeaway { background: rgba(245,197,24,0.08); border-left: 4px solid var(--yellow); padding: 20px 24px; margin: 0 0 40px; border-radius: 0 4px 4px 0; }
+    .takeaway-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 10px; }
+    .box-takeaway p { margin: 0; font-size: 18px; font-weight: 600; color: var(--white); line-height: 1.6; }
+
+    /* Related articles */
+    .related-articles { margin: 2.5rem 0 2rem; padding: 1.5rem; background: #1a1a2e; border-left: 4px solid #f0a500; border-radius: 4px; }
+    .related-articles p { margin: 0 0 1rem; font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #f0a500; }
+    .related-articles ul { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+    .related-articles li { margin: 0; }
+    .related-articles a { color: #e0e0e0; text-decoration: none; font-size: 0.95rem; }
+    .related-articles a:hover { color: var(--yellow); }
+    .related-articles .back-link { margin-top: 1.25rem; font-size: 0.85rem; color: #aaa; }
+
+    /* Footer */
+    footer { border-top: 1px solid rgba(255,255,255,0.07); padding: 32px 40px; text-align: center; font-size: 13px; color: var(--muted); max-width: 900px; margin: 0 auto; }
+    footer a { color: var(--muted); }
+
+    @media (max-width: 768px) {
+      nav { flex-direction: column; gap: 15px; padding: 15px 20px; }
+      .nav-left { flex-direction: column; gap: 15px; width: 100%; }
+      .nav-cta { width: 100%; text-align: center; }
+      .article-wrap { padding: 40px 20px; }
+      .cta-section { padding: 32px 20px; }
+      .code-block { font-size: 13px; padding: 12px 16px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-left">
+    <a class="nav-logo" href="https://nis2klar.se/no/">NIS2<span>Klar</span></a>
+    <a class="nav-back" href="https://nis2klar.se/no/artikler.html">← Alle artikler</a>
+    <div class="lang-switcher">
+      <a href="https://nis2klar.se/artiklar.html" style="color:#888;" title="Svenska">SV</a>
+      <a href="https://nis2klar.se/en/articles.html" style="color:#888;" title="English">EN</a>
+      <a href="https://nis2klar.se/da/artikler.html" style="color:#888;" title="Dansk">DA</a>
+      <a href="https://nis2klar.se/no/artikler.html" class="active" title="Norsk">NO</a>
+      <a href="https://nis2klar.se/it/articoli.html" style="color:#888;" title="Italiano">IT</a>
+    </div>
+  </div>
+  <a class="nav-cta" href="https://nis2klar.se/no/#boka">Book samtal →</a>
+</nav>
+
+<article class="article-wrap">
+  <div class="article-category">Leverandørsikkerhet & Kontrakter</div>
+  <h1>NIS2-leverandørsikkerhet: Hva du bør kreve av leverandørene</h1>
+  <div class="article-meta">Oppdatert 19. april 2026 · Lesetid: ca 9 minutter · Målgruppe: Direktør & Styremedlem</div>
+
+  <!-- SUMMARY -->
+  <div class="box-summary">
+    <div class="summary-label">Sammendrag</div>
+    <ul>
+      <li>NIS2 gjør deg ansvarlig også for leverandørenes sikkerhet — ikke bare din egen.</li>
+      <li>Du må ha skriftlige sikkerhetskrav, revisjonsprivilegier og hendelsesrapporteringskrav i leverandørkontrakter.</li>
+      <li>En enkelt kompromittert leverandør kan utløse 10 millioner euro i bøter hvis NSM fastslår at du ikke hadde tilstrekkelig kontroll.</li>
+      <li>Vi gir deg de konkrete malklausulene — ikke bare teoria.</li>
+    </ul>
+  </div>
+
+  <!-- KEY TAKEAWAY -->
+  <div class="box-takeaway">
+    <div class="takeaway-label">Viktigste konklusjon</div>
+    <p>Leverandørkontroll er ikke en IT-oppgave. Det er et styringsansvar. NSM og relevante sektormyndigheter vil spørre deg: «Hva krevde du skriftlig av leverandørene?» Hvis svaret er «vi antok de hadde det», er du personlig ansvarlig for bøtene.</p>
+  </div>
+
+  <!-- INTRO -->
+  <p>
+    NIS2 implementeres i Norge gjennom EØS-avtalen i løpet av 2025–2026. Når regelverket trer i kraft, vil ett ledd av cybersikkerhetsansvaret ditt bli helt nytt: <strong>du må formelt kreve sikkerhetskontroller fra alle leverandørene dine</strong> — og kunne bevise at du gjorde det.
+  </p>
+
+  <p>
+    Det holder ikke å stole på at «de gjør det riktig». NSM og sektormyndighetene vil se etter skriftlige kontrakter, revisjonsprivilegier og klausurer om hendelsesrapportering.
+  </p>
+
+  <p>
+    Denne artikkelen gir deg de konkrete kravene, malklausulene og prosessene du trenger for å være sertifikert som sikker leverandørkontrollør under NIS2.
+  </p>
+
+  <div class="box-warning">
+    <strong>Tidshorisonten er kort.</strong> Implementeringen er forventet fullført i løpet av 2025–2026. Leverandørkontrakter tar måneder å reforhandle. Start nå — ikke når regelverket trer i kraft.
+  </div>
+
+  <h2>Hvorfor leverandørsikkerhet er blitt ditt ansvar</h2>
+
+  <p>
+    Under NIS1 (den gamle direktivet) var det tillatt å lene seg på leverandørene: «De sjekket sine egne krav». Under NIS2 skifter bevisbyrden fullstendig.
+  </p>
+
+  <p>
+    Artikkel 21 i NIS2 (som blir norsk lov omkring 2026) lister ti obligatoriske sikkerhetsdomener. Ett av dem er <strong>«supply chain and third-party risk management»</strong> — leverandørkontroll.
+  </p>
+
+  <p>
+    Det betyr:
+  </p>
+
+  <ul>
+    <li>Du må gjøre en skriftlig inventarisering av alle leverandørene som har tilgang til dine kritiske systemer</li>
+    <li>Du må klassifisere dem etter risikonivå (høy/medium/lav)</li>
+    <li>Du må ha skriftlige sikkerhetskrav som del av kontraktene</li>
+    <li>Du må kunne gjennomføre revisjoner eller sikkerhetsgranskinger</li>
+    <li>Du må motta hendelsesvarsel hvis de oppdager sikkerhetsproblemer som påvirker deg</li>
+  </ul>
+
+  <p>
+    Mangler du dokumentasjon på ett av disse punktene når NSM kommer på besøk, er det en sanktionsgrundende brist.
+  </p>
+
+  <div class="box-info">
+    <strong>Merknad om Norge som EØS-land:</strong> Norge er ikke EU-medlem, men implementerer NIS2 gjennom EØS-avtalen. Det betyr at det samme regelverket gjelder her som i EU, men det er NSM (Nasjonal sikkerhetsmyndighet) som er primærtilsynsmyndighet, ikke ENISA. Sektortilsyn ivaretas av NVE (energi), Finanstilsynet (finans), og Direktoratet for e-helse (helsesektoren).
+  </div>
+
+  <h2>De fem obligatoriske elementene i leverandørkontrakter</h2>
+
+  <h3>1. Sikkerhetskravsspesifikasjon</h3>
+
+  <p>
+    Du kan ikke bare skrive «følg NIS2» i en kontrakt og forvente at det er nok. Leverandørene forstår ikke regelverket — og det blir din blemme hvis de ikke oppfyller det.
+  </p>
+
+  <p>
+    I stedet må du spesifisere konkrete, målbare sikkerhetskrav basert på <strong>risikonivået</strong> til leverandøren:
+  </p>
+
+  <ul>
+    <li><strong>For leverandører med tilgang til kritiske systemer (høy risiko):</strong> MFA, kryptering, logging, regulær backup, incidenthåndteringsplan</li>
+    <li><strong>For leverandører med tilgang til data (medium risiko):</strong> Grunnleggende tilgangskontroll, passordpolicy, årlig sikkerhetstrening</li>
+    <li><strong>For leverandører med begrenset tilgang (lav risiko):</strong> Basale sikkerhetsprinsipper dokumentert</li>
+  </ul>
+
+  <p>
+    Du må dokumentere at du gjorde denne risikovurderingen. Et enkelt regnearksnotat duger — men det må være skriftlig og datert.
+  </p>
+
+  <div class="code-block">
+  <strong>Eksempel på sikkerhetskravsmatrise:</strong>
+Leverandør: [Navn] | Klassifikasjon: HØYT RISIKO
+Tilgang: Driftskritisk systemintegrasjon
+Krav:
+  ☑ Multifaktor-autentisering (MFA) obligatorisk for alle brukere
+  ☑ Kryptering av data i transit (TLS 1.2 eller høyere)
+  ☑ Kryptering av data i hvile
+  ☑ Daglig sikkerhetskopi med test av gjenoppretting minimum 2x årlig
+  ☑ Incidenthåndteringsplan som inneholder eskalering til oss innen 4 timer
+  ☑ Årlig sikkerhetstrening for alle ansatte med tilgang
+  ☑ Noen ganger sikkerhetsutvurdert av tredjepart
+  </div>
+
+  <h3>2. Revisjonsprivilegier (Right-to-Audit)</h3>
+
+  <p>
+    NSM og sektormyndighetene vil spørre deg: «Hvordan vet du at leverandørene følger kravene?»
+  </p>
+
+  <p>
+    Svaret må være: «Vi har retten til å revidere dem.»
+  </p>
+
+  <p>
+    Du må ha en klausul i leverandørkontrakten som eksplisitt tillater deg å:
+  </p>
+
+  <ul>
+    <li>Få adgang til dokumentasjon om sikkerhetstilstanden (incidentlogger, sikkerhetspolicydokumenter, revisjonsrapporter)</li>
+    <li>Gjennomføre spørsmål og svar (RFI — «Request for Information»)</li>
+    <li>Inspisere deres fysiske infrastruktur dersom de hoster systemet lokalt</li>
+    <li>Kreve resultater fra tredjeparts sikkerheitsrevisjoner (f.eks. ISO 27001 eller SOC 2)</li>
+    <li>Gi dem kort varsel (3–5 dager) for å møte revisjonskrav</li>
+  </ul>
+
+  <p>
+    Uten denne klausulen har du ingen juridisk grunnlag for å spørre, og leverandørene kan nekte å dele informasjonen.
+  </p>
+
+  <div class="code-block">
+  <strong>Malklausul — Revisjonsprivilegium:</strong>
+
+«Leverandør gir Kunde rett til å:
+(a) Anmode skriftlig om dokumentasjon av sikkerhetstilstanden, inkludert men ikke begrenset til incidentlogger, sikkerhetspolicydokumenter, oppgraderingslogger og revisjonsrapporter.
+(b) Gjennomføre spørsmål og svar (RFI) relatert til cybersikkerhet med høyst 5 arbeidsdagers varsel.
+(c) Inspisere fysisk infrastruktur dersom Leverandør hoster eller administrerer driftskritiske systemer på vegne av Kunde.
+(d) Kreve kopi av Leverandørs gjeldende sikkerhetssertifikat (ISO 27001, SOC 2 Type II eller tilsvarende) minimum en gang årlig.
+(e) Kalle inn tredjeparts revisor på Kundes bekostning dersom det foreligger mistanke om alvorlig sikkerhetsbrist.
+Leverandør skal etterkomme anmodningen innen 10 arbeidsdager fra mottakelse. Unnlatelse av å oppfylle revisjonskravene er grunnlag for øyeblikkelig oppsigelse.»
+  </div>
+
+  <h3>3. Hendelsesrapportering — 24-timer-regel</h3>
+
+  <p>
+    NIS2 krever at organisasjoner rapporterer alvorlige sikkerhetsincidenter til NSM innen <strong>24 timer</strong> (tidlig varsel) og deretter en full rapport innen <strong>72 timer</strong>.
+  </p>
+
+  <p>
+    Men hvis en leverandør oppdager en incident som påvirker deg og du ikke får beskjed før 48 timer senere, er det for sent. Du kommer til å misse fristen, og NSM vil stille spørsmål: «Hvorfor rapporterte dere ikke på tid?»
+  </p>
+
+  <p>
+    Leverandørene dine må være forpliktet til å varsle deg innen kort tid — ideelt sett <strong>4 timer</strong> for alvorlige hendelser.
+  </p>
+
+  <div class="code-block">
+  <strong>Malklausul — Hendelsesrapportering:</strong>
+
+«Leverandør plikter å varsle Kunde om enhver sikkerhetshendelse som:
+(a) Påvirker eller potensielt påvirker Kundes data eller systemer.
+(b) Har identifisert eller planlagt utilsiktet åpenbar av Kundes eller tredjepartsdata.
+(c) Resulterer i systemnedetid som varer lengre enn 30 minutter.
+
+Varslingstidsrammer:
+— For KRITISK hendelse (systemfeil, datalekkasje): Innen 4 timer
+— For HØYT alvorlighetsgrad (mislykkede innloggingsforsøk, uvanlig aktivitet): Innen 8 timer
+— For MEDIUM alvorlighetsgrad (mindre konfigurasjonsavvik): Innen 24 timer
+
+Varsling skal skje skriftlig (e-post) til [Kontaktperson] og [Backup]. Leverandør skal utarbeide en innledende analyse innen 24 timer og en full hendelsesrapport innen 72 timer.»
+  </div>
+
+  <h3>4. Subkontraktor-ansvar</h3>
+
+  <p>
+    Mange leverandører bruker andre leverandører — underleverandører. Hvis en underleverandør blir kompromittert, er du fortsatt ansvarlig overfor NSM.
+  </p>
+
+  <p>
+    Du må derfor kreve at leverandøren dine:
+  </p>
+
+  <ul>
+    <li>Gir deg en liste over alle underleverandører som har tilgang til dine systemer eller data</li>
+    <li>Gir samme sikkerhetskrav videre til dem</li>
+    <li>Svarer for deres oppfyllelse</li>
+  </ul>
+
+  <div class="code-block">
+  <strong>Malklausul — Subkontraktor-ansvar:</strong>
+
+«Leverandør plikter å:
+(a) Opprettholde en oppdatert liste over alle subkontraktor(er) som har tilgang til eller håndterer Kundes data eller systemer, og dele denne listen årlig med Kunde.
+(b) Implementere samme sikkerhetskrav som beskrevet i denne kontrakten overfor alle subkontraktor(er).
+(c) Påta seg fullt ansvar for subkontraktor(enes) oppfyllelse av sikkerhetskravene.
+(d) Informere Kunde umiddelbart dersom subkontraktor(en) endrer (spesielt flytting av datasentre eller bytting av infrastruktur).
+Kunde forbeholder seg retten til å nekte bruk av spesifikke subkontraktor(er) dersom de ikke oppfyller risikokriteria.»
+  </div>
+
+  <h3>5. Databehandling og exit-klausul</h3>
+
+  <p>
+    Hvis leverandørforholdet avsluttes, må du være sikker på at dine data slettes eller returneres sikkert.
+  </p>
+
+  <p>
+    Det må stå eksplisitt i kontrakten:
+  </p>
+
+  <ul>
+    <li>Leverandøren skal slette eller returnere alle data innen 30 dager etter kontraktsutgang</li>
+    <li>Leverandøren skal dokumentere at slettingen er gjennomført</li>
+    <li>Leverandøren skal aldri bruke dine data til andre formål enn avtalt (spesielt viktig hvis de tilbyr SaaS-tjenester)</li>
+  </ul>
+
+  <div class="code-block">
+  <strong>Malklausul — Data-håndtering og Exit:</strong>
+
+«Ved avslutning eller utløp av denne avtalen plikter Leverandør å:
+(a) Innen 30 dager returnere eller slette alle Kundes data, i det format Kunde spesifiserer.
+(b) Destruere alle sikkerhetskopier av Kundes data, unntatt der lovgivning krever oppbevaring.
+(c) Utarbeide og oversende til Kunde en skriftlig sertifikasjon av at all destruksjon er gjennomført.
+(d) Ikke lagre, behandle eller bruke Kundes data etter avslutningsdato, med unntak av juridisk påkrevd bevaring.
+Brudd på denne klausulen er årsak til øyeblikkelig oppsigelse og potensiell erstatningsansvar.»
+  </div>
+
+  <h2>Praktisk implementering: Trinn for trinn</h2>
+
+  <h3>Steg 1: Leverandør-inventar</h3>
+  <p>
+    Skap en liste over alle leverandørene dine. Inkluder både cloud-tjenester og lokale leverandører. For hver, noter:
+  </p>
+
+  <ul>
+    <li>Navn og kontaktinfo</li>
+    <li>Hvilke systemer eller data de har tilgang til</li>
+    <li>Risikonivå (H/M/L)</li>
+    <li>Datoen for siste sikkerhetskontroll</li>
+  </ul>
+
+  <p>
+    Et enkel Excel-ark er tilstrekkelig. Systemet er ikke viktig — dokumentasjonen er viktig.
+  </p>
+
+  <h3>Steg 2: Gap-analyse av gjeldende kontrakter</h3>
+  <p>
+    Gjennomgå leverandørkontraksene dine. Sjekk om de inneholder:
+  </p>
+
+  <ul>
+    <li>☐ Sikkerhetskrav spesifisert</li>
+    <li>☐ Revisjonsprivilegium</li>
+    <li>☐ Hendelsesrapporteringskrav</li>
+    <li>☐ Subkontraktor-lister</li>
+    <li>☐ Exit-klausuler om datadeletering</li>
+  </ul>
+
+  <p>
+    Langt de fleste gamle kontrakter mangler dette helt. Det er ikke en feil — det er bare sånn det var før NIS2. Men nå må du løse det.
+  </p>
+
+  <h3>

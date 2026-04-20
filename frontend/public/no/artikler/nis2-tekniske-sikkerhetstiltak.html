@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-BKF3QH9K01"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag("js", new Date());
+    gtag("config", "G-BKF3QH9K01");
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NIS2-krav til teknisk sikkerhet — hva loven faktisk krever | NIS2Klar</title>
+  <meta name="description" content="NIS2-kravene til teknisk sikkerhet dekker MFA, kryptering, sikkerhetskopiering, oppdateringshåndtering og tilgangskontroll. En konkret veiledning for direktører.">
+  <meta property="og:title" content="NIS2-krav til teknisk sikkerhet — hva loven faktisk krever">
+  <meta property="og:description" content="NIS2-kravene til teknisk sikkerhet dekker MFA, kryptering, sikkerhetskopiering, oppdateringshåndtering og tilgangskontroll. En konkret veiledning for direktører.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #141416;
+      --card: #1c1c1f;
+      --yellow: #f5c518;
+      --white: #f0f0f0;
+      --muted: #888;
+      --red: #C61212;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: var(--bg); color: var(--white); font-family: 'Barlow', sans-serif; font-size: 19px; line-height: 1.8; }
+
+    /* Nav */
+    nav { display: flex; justify-content: space-between; align-items: center; padding: 20px 40px; border-bottom: 1px solid rgba(255,255,255,0.07); max-width: 1100px; margin: 0 auto; flex-wrap: wrap; gap: 16px; }
+    .nav-logo { font-family: 'Poppins', sans-serif; font-weight: 900; font-size: 20px; color: var(--yellow); text-decoration: none; }
+    .nav-logo span { color: var(--white); }
+    .nav-back { color: var(--muted); text-decoration: none; font-size: 15px; }
+    .nav-back:hover { color: var(--white); }
+    .lang-switcher { display: flex; gap: 8px; align-items: center; font-size: 13px; font-family: 'Poppins', sans-serif; margin-left: auto; }
+    .lang-switcher a { color: #888; text-decoration: none; font-weight: 600; padding: 4px 8px; border-radius: 3px; transition: all 0.2s; }
+    .lang-switcher a:hover { color: var(--white); }
+    .lang-switcher a[title="Norsk"] { color: var(--yellow); background: rgba(245,197,24,0.1); }
+    .nav-cta { background: var(--yellow); color: #000; padding: 8px 18px; border-radius: 4px; text-decoration: none; font-weight: 700; font-size: 14px; font-family: 'Poppins', sans-serif; }
+
+    /* Article */
+    .article-wrap { max-width: 760px; margin: 0 auto; padding: 60px 40px; }
+    .article-category { font-size: 13px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 16px; }
+    h1 { font-family: 'Poppins', sans-serif; font-size: clamp(30px, 4vw, 44px); font-weight: 900; line-height: 1.2; margin-bottom: 24px; }
+    .article-meta { font-size: 15px; color: var(--muted); margin-bottom: 48px; padding-bottom: 24px; border-bottom: 1px solid rgba(255,255,255,0.07); }
+    h2 { font-family: 'Poppins', sans-serif; font-size: 26px; font-weight: 700; margin: 48px 0 16px; color: var(--white); }
+    h3 { font-family: 'Poppins', sans-serif; font-size: 20px; font-weight: 600; margin: 32px 0 12px; color: var(--yellow); }
+    p { margin-bottom: 22px; }
+    strong { color: var(--white); font-weight: 700; }
+    .highlight { color: var(--yellow); font-weight: 700; }
+    .danger { color: #ff6b6b; font-weight: 700; }
+    ul, ol { margin: 16px 0 24px 24px; }
+    li { margin-bottom: 12px; font-size: 19px; }
+
+    /* Callout boxes */
+    .box-warning { background: rgba(197,17,17,0.12); border-left: 4px solid var(--red); padding: 20px 24px; margin: 32px 0; border-radius: 0 4px 4px 0; }
+    .box-info { background: rgba(245,197,24,0.08); border-left: 4px solid var(--yellow); padding: 20px 24px; margin: 32px 0; border-radius: 0 4px 4px 0; }
+    .box-case { background: var(--card); border: 1px solid rgba(255,255,255,0.08); padding: 28px; margin: 40px 0; border-radius: 4px; }
+    .box-case .case-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 12px; }
+    blockquote { border-left: 3px solid var(--yellow); padding: 12px 20px; margin: 24px 0; font-style: italic; color: #ccc; }
+
+    /* CTA */
+    .cta-section { background: var(--card); border: 1px solid rgba(245,197,24,0.2); border-radius: 4px; padding: 48px 40px; margin: 64px 0 40px; text-align: center; }
+    .cta-section h2 { margin-top: 0; font-size: 26px; }
+    .cta-section p { color: #aaa; max-width: 500px; margin: 0 auto 28px; }
+    .btn-primary { display: inline-block; background: var(--yellow); color: #000; font-family: 'Poppins', sans-serif; font-weight: 800; font-size: 16px; padding: 16px 36px; border-radius: 4px; text-decoration: none; }
+    .btn-primary:hover { background: #e0b010; }
+    .cta-fine { font-size: 13px; color: var(--muted); margin-top: 16px; }
+
+    /* FAQ */
+    .faq-item { border-bottom: 1px solid rgba(255,255,255,0.07); padding: 20px 0; }
+    .faq-q { font-family: 'Poppins', sans-serif; font-weight: 600; margin-bottom: 10px; }
+    .faq-a { color: #bbb; }
+
+    /* Table */
+    .tech-table { width: 100%; border-collapse: collapse; margin: 24px 0; }
+    .tech-table th { background: rgba(245,197,24,0.1); color: var(--yellow); font-family: 'Poppins', sans-serif; font-size: 13px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 12px 16px; text-align: left; border-bottom: 1px solid rgba(245,197,24,0.2); }
+    .tech-table td { padding: 14px 16px; border-bottom: 1px solid rgba(255,255,255,0.05); font-size: 15px; }
+    .tech-table tr:last-child td { border-bottom: none; }
+
+    /* Summary + Key Takeaway */
+    .box-summary { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; padding: 24px 28px; margin: 0 0 32px; }
+    .summary-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-bottom: 14px; }
+    .box-summary ul { margin: 0; padding-left: 20px; }
+    .box-summary li { margin-bottom: 8px; font-size: 17px; color: #ccc; }
+    .box-takeaway { background: rgba(245,197,24,0.08); border-left: 4px solid var(--yellow); padding: 20px 24px; margin: 0 0 40px; border-radius: 0 4px 4px 0; }
+    .takeaway-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 10px; }
+    .box-takeaway p { margin: 0; font-size: 18px; font-weight: 600; color: var(--white); line-height: 1.6; }
+
+    /* Related articles */
+    .related-articles { margin: 2.5rem 0 2rem; padding: 1.5rem; background: #1a1a2e; border-left: 4px solid #f0a500; border-radius: 4px; }
+    .related-articles p { margin: 0 0 1rem; font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #f0a500; }
+    .related-articles ul { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+    .related-articles a { color: #e0e0e0; text-decoration: none; font-size: 0.95rem; }
+    .related-articles a:hover { color: #f0a500; }
+
+    /* Footer */
+    footer { border-top: 1px solid rgba(255,255,255,0.07); padding: 32px 40px; text-align: center; font-size: 13px; color: var(--muted); max-width: 900px; margin: 0 auto; }
+    footer a { color: var(--muted); }
+    footer a:hover { color: var(--white); }
+
+    @media (max-width: 600px) {
+      nav, .article-wrap, footer { padding: 20px; }
+      nav { flex-direction: column; align-items: flex-start; }
+      .lang-switcher { margin-left: 0; }
+      .cta-section { padding: 32px 20px; }
+      .tech-table { font-size: 14px; }
+      .tech-table th, .tech-table td { padding: 10px 10px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="https://nis2klar.se/no/">NIS2<span>Klar</span></a>
+  <a class="nav-back" href="https://nis2klar.se/no/artikler.html">← Alle artikler</a>
+  <div class="lang-switcher">
+    <a href="https://nis2klar.se/artiklar.html" title="Svenska">SV</a>
+    <a href="https://nis2klar.se/en/articles.html" title="English">EN</a>
+    <a href="https://nis2klar.se/da/artikler.html" title="Dansk">DA</a>
+    <a href="https://nis2klar.se/no/artikler.html" title="Norsk" style="color:#f5c518;background:rgba(245,197,24,0.1);">NO</a>
+    <a href="https://nis2klar.se/it/articoli.html" title="Italiano">IT</a>
+  </div>
+</nav>
+
+<article class="article-wrap">
+  <div class="article-category">Tekniske sikkerhetskrav</div>
+  <h1>NIS2-krav til teknisk sikkerhet — hva loven faktisk krever</h1>
+  <div class="article-meta">Oppdatert 19. april 2026 · Lesetid: ca 8 minutter · Målgruppe: Ledelse</div>
+
+  <!-- SUMMARY -->
+  <div class="box-summary">
+    <div class="summary-label">Sammendrag</div>
+    <ul>
+      <li>Artikkel 21 i NIS2-direktivet krever ti konkrete tekniske sikkerhetstiltak — ikke valgfritt.</li>
+      <li>For direktører: Du må forstå hva disse kravene betyr, ikke hvordan IT løser dem teknisk.</li>
+      <li>Norge vil implementere disse kravene via EØS-avtalen. Forventes fullført i løpet av 2025–2026.</li>
+      <li>NSM (Nasjonal sikkerhetsmyndighet) vil føre tilsyn. Manglende dokumentasjon på disse tiltakene kan medføre bøter opp til 10 millioner euro eller 2% av global omsetning.</li>
+      <li>Personlig ansvar: Du som styreleder eller direktør må kunne vise at disse tiltakene er godkjent og fungerer.</li>
+    </ul>
+  </div>
+
+  <!-- KEY TAKEAWAY -->
+  <div class="box-takeaway">
+    <div class="takeaway-label">Viktigste konklusjon</div>
+    <p>NIS2 krever ikke at du er IT-ekspert. Det krever at du stiller de riktige spørsmålene til IT-leder og dokumenterer at svarene er tilfredsstillende. Det er der det personlige ansvaret ligger.</p>
+  </div>
+
+  <!-- INTRODUKSJON -->
+  <p>
+    NIS2-direktivet er på vei inn i norsk lov via EØS-avtalen. Når det skjer — forventes i løpet av 2025–2026 — vil dine krav til teknisk sikkerhet ikke bli mindre, de blir mer spesifiserte.
+  </p>
+
+  <p>
+    Artikkel 21 i direktivet lister opp ti områder hvor du må ha dokumenterte sikkerhetstiltak på plass. Ikke "bør vurdere", ikke "anbefalt" — <strong>må ha</strong>. Og du må kunne vise til NSM (Nasjonal sikkerhetsmyndighet) at de fungerer.
+  </p>
+
+  <p>
+    Det er ikke en teknisk kunnskap som forventes av deg. Det er et ledelsesspørsmål: Hvem har ansvaret? Hva har vi dokumentert? Hvem kontrollerer at det fungerer?
+  </p>
+
+  <div class="box-warning">
+    <strong>NSM fører allerede tilsyn.</strong> Selv før regelverket formelt er på plass, gjennomfører NSM cybersikkerhetsbedømmelser i kritiske sektorer. Det er ikke for tidlig å starte nå.
+  </div>
+
+  <h2>De ti tekniske sikkerhetskravene — i klartekst</h2>
+
+  <p>
+    Her er Artikkel 21 brukket ned for direktører. Hver gang du leser "Krav X", tenk: "Hvem i organisasjonen min har ansvaret for dette? Kan de vise meg dokumentasjonen?"
+  </p>
+
+  <h3>1. Risikoanalyse og styring</h3>
+  <p>
+    Du må ha identifisert hvilke IT-systemer og data som er kritiske for driften. Det skal være en skriftlig analyse av hva som kan gå galt — ransomware, datalekkasje, driftsstans — og hva du gjør for å redusere sannsynligheten.
+  </p>
+  <p>
+    <strong>Hva du bør spørre IT-lederen:</strong> "Har vi dokumentert en risikovurdering? Hvem har godkjent den? Når gjennomgår vi den sist?"
+  </p>
+
+  <h3>2. Hendelseshåndtering og beredskap</h3>
+  <p>
+    Når det skjer et cyberangrep, må det være en plan. Hvem skal varsles? Hvem gjør hva? Hvor lang tid tar det å gjenopprette tjenester? Hvis du ikke har svaret på disse spørsmålene før angrepet, vil du få dem mens du lider tap.
+  </p>
+  <p>
+    NIS2 krever en dokumentert hendelsesplan med testinger minst en gang per år. Det holder ikke å ha en plan i en mappe — den må øves.
+  </p>
+  <p>
+    <strong>Hva du bør spørre:</strong> "Når testet vi sist hendelsesplanen? Hvem deltok? Hva lærte vi?"
+  </p>
+
+  <h3>3. Kontinuitets- og gjenopprettingsplanlegging</h3>
+  <p>
+    "Business continuity" er styrenes favorittbegrep som de ofte ikke forstår selv. Det betyr simpelt: Hvis kritis IT strømmer ut, hvor lenge kan organisasjonen overleve uten den? Timer? Dager? Og hva gjør du for å redusere den tiden?
+  </p>
+  <p>
+    Du må ha en plan for hvordan driften gjenopprettes. Planen må testes. Hvis planen bare er dokumentert, men ikke testet, vet du ikke om den fungerer.
+  </p>
+  <p>
+    <strong>Hva du bør spørre:</strong> "Hva er vår kritiske maksimal downtime for hver prosess? Har vi testet gjennomopprettingen? Når?"
+  </p>
+
+  <h3>4. Kryptering av data</h3>
+  <p>
+    Data i transit (på vei mellom systemer) og data at rest (lagret) skal være kryptert. Det gjør det ubrukelig hvis noen stjeler det.
+  </p>
+  <p>
+    Dette er kanskje det eneste krav som høres ut som det er en teknisk løsning på — det er det. Men spørsmålet ditt er: "Har vi gjort det konsekvent? Finnes det unntaksfall hvor vi ikke krypterer?"
+  </p>
+  <p>
+    <strong>Hva du bør spørre:</strong> "Hvilke datasett krypteres ikke, og hvorfor? Er det godkjent?"
+  </p>
+
+  <h3>5. Multi-Factor Authentication (MFA)</h3>
+  <p>
+    Et passord alene er ikke nok. NIS2 krever at sensitive systemer (epostkontoer, administratorkontoer, datasystem) skal kreve to eller flere bevis på at du er den du utgir deg for å være.
+  </p>
+  <p>
+    Dette er enkelt å implementere, men ofte møter motstand fordi det tar noen sekunder ekstra. Det er et ledelsesansvar å bestemme at det gjøres likevel.
+  </p>
+  <p>
+    <strong>Hva du bør spørre:</strong> "Hvor er MFA påkrevd i dag? Hvilke systemer mangler det? Når reparerer vi det?"
+  </p>
+
+  <h3>6. Tilgangskontroll og rettighetsadministrasjon</h3>
+  <p>
+    Ikke alle skal ha tilgang til alt. Ansatte skal bare ha tilgang til det de trenger for jobben sin. Dette kalle "principle of least privilege" i IT-jargongen.
+  </p>
+  <p>
+    Mange organisasjoner vokser og gir tilgang, men sletter den aldri når folk byttes eller jobber endres. Etter noen år har halvparten av organisasjonen tilgang til ting de ikke har bruk for — og som de ikke burde ha tilgang til.
+  </p>
+  <p>
+    <strong>Hva du bør spørre:</strong> "Har vi en prosess for å sjekke at tilganger er korrekte? Når gjorde vi det sist? Hva fant vi?"
+  </p>
+
+  <div class="box-info">
+    <strong>Praksis-tip:</strong> En "access review" eller tilgangsgjennomgang tar ett til to dager for en dedikert person og avslører typisk 10–20% uriktig eller utdatert tilgang. Det er tid godt brukt.
+  </div>
+
+  <h3>7. Oppdatering og patchhåndtering</h3>
+  <p>
+    Hackers finner hull i software. Leverandørene lager oppdateringer. Hvis du ikke installerer oppdateringene, står du fremdeles på en hull-platform og er et enkelt mål.
+  </p>
+  <p>
+    Dette høres enkelt ut, men er ofte roteten: "Hvis vi oppdaterer OS nå, risikerer vi at denne eller den applikasjonen slutter å fungere." Ja — det kan skje. Men risikoen for et angrepp via en kjent sårbarhet er større.
+  </p>
+  <p>
+    NIS2 krever en dokumentert prosess for å håndtere oppdateringer — både planlegging, testing og implementering. Du må kunne vise at du er rett og slett ikke bare drømmer.
+  </p>
+  <p>
+    <strong>Hva du bør spørre:</strong> "Hvor lang tid tar det i gjennomsnitt fra leverandør utgir en oppdatering til vi har implementert den? Hvilke kritiske systemer ligger langt etter?"
+  </p>
+
+  <h3>8. Leverandørsikkerhet</h3>
+  <p>
+    Du bruker leverandører — skylager, epost-tjenester, regnskapssoftware, osv. Hvis deres sikkerhet svikter, kan din svikter også.
+  </p>
+  <p>
+    NIS2 krever at du evaluerer leverandørenes sikkerhet før du betror dem dine data, og at du har avtaler som sikrer at de leverer på sikkerhet.
+  </p>
+  <p>
+    Dette er ikke opphengt — mange leverandører kan ikke eller vil ikke svare på spørsmål om sikkerhet. Da må du ta en bevisst risikobeslutning: Bruker vi dem likevel, eller finner vi en annen?
+  </p>
+  <p>
+    <strong>Hva du bør spørre:</strong> "Har vi en liste over kritiske leverandører? Har de alle levd opp til våre sikkerhetskrav? Hvem har sjekket det?"
+  </p>
+
+  <h3>9. Sikkerhetskopiering (backup)</h3>
+  <p>
+    Du skal ha kopier av dine data. Ikke én kopi — minst to. Og de skal være lagret på steder som ikke kan ødelegges samtidig (ikke alt på samme server).
+  </p>
+  <p>
+    Ransomware er ikke bare en trussel — det er virkelighet. Hvis du blir angrepet, er en backup ofte det som skiller mellom "vi genoppretter fra backup" og "vi betaler løsepenger eller mister alt."
+  </p>
+  <p>
+    NIS2 krever at du har backup, at de testes regelmessig (minst en gang per år), og at de lagres immutable — altså slik at selv ransomware ikke kan slette dem.
+  </p>
+  <p>
+    <strong>Hva du bør spørre:</strong> "Når testet vi sist at en backup faktisk fungerer? Hvor er backupene lagret fysisk? Kan de ødelegges hvis vår hovedserver blir hacket?"
+  </p>
+
+  <h3>10. Opplæring og bevisstggjøring</h3>
+  <p>
+    Mennesker er ofte det svakeste leddet. En ansatt som klikker på en vedlegg fra "banken" som i virkeligheten er fra en hacker — det er ofte hvordan det begynner.
+  </p>
+  <p>
+    NIS2 krever at du opplærer ansatte i cybersikkerhet og at du kan vise til at de har gjennomgått opplæringen.
+  </p>
+  <p>
+    Dette trenger ikke være kostbart. En årlig 30-minutters video pluss månedsvis "phishing-simuleringer" (falske phishing-e-poster sendt internt for å teste) er vanlig praksis.
+  </p>
+  <p>
+    <strong>Hva du bør spørre:</strong> "Når hadde alle ansatte sist sikkerhetskurs? Har vi testet hvor mange som faller for phishing? Hva lærer vi fra det?"
+  </p>
+
+  <h2>Hvordan skal du dokumentere alt dette?</h2>
+
+  <p>
+    Problemet med NIS2-tilsyn er at NSM ikke bare sjekker at du har tiltakene — de sjekker at du har <strong>dokumentert</strong> at du har dem.
+  </p>
+
+  <p>
+    En organisasjon som gjør alt riktig teknisk, men som ikke har styrebeslutninger, prosessdokumentasjon og oppdaterte tester av beredskapsplaner, vil fremdeles bli funnet i mangel.
+  </p>
+
+  <p>
+    Minimumsdokumentasjonen du trenger:
+  </p>
+
+  <ul>
+    <li><strong>Sikkerhetspolicy:</strong> Godkjent av styret. Skal inneholde hovedprinsippene for hvordan organisasjonen behandler sikkerhet.</li>
+    <li><strong>Risikovurdering:</strong> Datert og signert. Skal identifisere kritiske systemer og trusler.</li>
+    <li><strong>Styrebeslutninger:</strong> Dokumentasjon på at styret eller ledelsen har diskutert og godkjent sikkerhetstiltakene.</li>
+    <li><strong>Hendelsesplan:</strong> Skriftlig prosess for hva som gjøres hvis noe skjer. Med navn, kontakter og roller.</li>
+    <li><strong>Kontinuitetplan:</strong> Hva gjør vi hvis IT strømmer ut? Testet minst årlig.</li>
+    <li><strong>Oppdateringslogg:</strong> Registrer når oppdateringer installeres og resultat.</li>
+    <li><strong>Tilgangsrapport:</strong> Liste over hvem som har tilgang til hva. Gjennomgått og godkjent.</li>
+    <li><strong>Leverandørregister:</strong> Liste over kritiske leverandører og deres sikkerhetsstatus.</li>
+    <li><strong>Opplæringslogg:</strong> Hvem tok sikkerhetskurs og når?</li>
+    <li><strong>Testklokkrapporter:</strong> Backup-tester, beredskapsplantester — dokumentert resultat.</li>
+  </ul>
+
+  <p>
+    Dette høres som mye, men det meste allerede i mange organisasjoner — det er bare ikke samlet på ett sted eller ikke nylig oppdatert.
+  </p>
+
+  <div class="box-case">
+    <div class="case-label">Eksempel fra praksis</div>
+    <p>
+      <strong>Scenario: Mellomstort energiselskap, 150 ansatte, klassifisert som viktig enhet under NIS2.</strong>
+    </p>
+    <p>
+      Sommeren 2025 mottar selskapet en henvendelse fra NSM om en planlagt cybersikkerhetskontroll. De har 30 dager til å levere dokumentasjon på at de oppfyller kravene til Artikkel 21.
+    </p>
+    <p>
+      IT-lederen starter en gjennomgang. Han/hun finner at:
+    </p>
+    <ul style="margin-top: 8px;">
+      <li>Sikkerhetspolicyen er fra 2019 og ikke godkjent av styret siden da.</li>
+      <li>Det finnes en risikovurdering fra 2022, men den er ikke oppdatert.</li>
+      <li>En hendelsesplan finnes, men den er aldri testet.</li>
+      <li>Backup-tester dokumenteres ikke — de blir bare gjort ad hoc.</li>
+      <li>Opplæring i sikkerhet ble ikke gjennomført i 2024.</li>
+    </ul>
+    <p>
+      Nå er det mindre enn 30 dager og alt dette må fikses. Det blir stress, overtidsarbeid og kostnad. Hvis dette hadde vært gjort løpende gjennom året, hadde det vært rutine.
+    </p>
+    <p>
+      <strong>Poengten:</strong> NSM kommer ikke i dag. Men når de kommer, må alt være på plass — og du må kunne vise det fort.
+    </p>
+  </div>
+
+  <h2>Hvem har ansvaret for hva?</h2>
+
+  <p>
+    Som direktør eller styreleder kan du ikke delegere det personlige ansvaret. Det du <strong>kan</strong> deleg

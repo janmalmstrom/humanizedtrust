@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-BKF3QH9K01"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag("js", new Date());
+    gtag("config", "G-BKF3QH9K01");
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NIS2 compliance-sjekkliste: Er organisasjonen din klar? | NIS2Klar</title>
+  <meta name="description" content="Gjennomgå alle NIS2-krav punkt for punkt. Sjekkliste for styring, risiko, hendelser, leverandører og sikkeringstiltak — med selvvurderingsscore.">
+  <meta property="og:title" content="NIS2 compliance-sjekkliste: Er organisasjonen din klar?">
+  <meta property="og:description" content="Gjennomgå alle NIS2-krav punkt for punkt. Sjekkliste for styring, risiko, hendelser, leverandører og sikkeringstiltak — med selvvurderingsscore.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #141416;
+      --card: #1c1c1f;
+      --yellow: #f5c518;
+      --white: #f0f0f0;
+      --muted: #888;
+      --red: #C61212;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: var(--bg); color: var(--white); font-family: 'Barlow', sans-serif; font-size: 19px; line-height: 1.8; }
+
+    /* Nav */
+    nav { display: flex; justify-content: space-between; align-items: center; padding: 20px 40px; border-bottom: 1px solid rgba(255,255,255,0.07); max-width: 900px; margin: 0 auto; }
+    .nav-logo { font-family: 'Poppins', sans-serif; font-weight: 900; font-size: 20px; color: var(--yellow); text-decoration: none; }
+    .nav-logo span { color: var(--white); }
+    .nav-back { color: var(--muted); text-decoration: none; font-size: 15px; }
+    .nav-back:hover { color: var(--white); }
+    .nav-cta { background: var(--yellow); color: #000; padding: 8px 18px; border-radius: 4px; text-decoration: none; font-weight: 700; font-size: 14px; font-family: 'Poppins', sans-serif; }
+    .lang-switcher { display: flex; gap: 8px; align-items: center; }
+    .lang-switcher a { color: var(--muted); text-decoration: none; font-weight: 600; padding: 4px 8px; border-radius: 3px; font-size: 13px; }
+    .lang-switcher a:hover { background: rgba(255,255,255,0.05); }
+
+    /* Article */
+    .article-wrap { max-width: 760px; margin: 0 auto; padding: 60px 40px; }
+    .article-category { font-size: 13px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 16px; }
+    h1 { font-family: 'Poppins', sans-serif; font-size: clamp(30px, 4vw, 44px); font-weight: 900; line-height: 1.2; margin-bottom: 24px; }
+    .article-meta { font-size: 15px; color: var(--muted); margin-bottom: 48px; padding-bottom: 24px; border-bottom: 1px solid rgba(255,255,255,0.07); }
+    h2 { font-family: 'Poppins', sans-serif; font-size: 26px; font-weight: 700; margin: 48px 0 16px; color: var(--white); }
+    h3 { font-family: 'Poppins', sans-serif; font-size: 20px; font-weight: 600; margin: 32px 0 12px; color: var(--yellow); }
+    p { margin-bottom: 22px; }
+    strong { color: var(--white); font-weight: 700; }
+    .highlight { color: var(--yellow); font-weight: 700; }
+    .danger { color: #ff6b6b; font-weight: 700; }
+    ul, ol { margin: 16px 0 24px 24px; }
+    li { margin-bottom: 12px; font-size: 19px; }
+
+    /* Callout boxes */
+    .box-warning { background: rgba(197,17,17,0.12); border-left: 4px solid var(--red); padding: 20px 24px; margin: 32px 0; border-radius: 0 4px 4px 0; }
+    .box-info { background: rgba(245,197,24,0.08); border-left: 4px solid var(--yellow); padding: 20px 24px; margin: 32px 0; border-radius: 0 4px 4px 0; }
+    .box-case { background: var(--card); border: 1px solid rgba(255,255,255,0.08); padding: 28px; margin: 40px 0; border-radius: 4px; }
+    .box-case .case-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 12px; }
+    blockquote { border-left: 3px solid var(--yellow); padding: 12px 20px; margin: 24px 0; font-style: italic; color: #ccc; }
+
+    /* Checklist */
+    .checklist-section { background: var(--card); border: 1px solid rgba(255,255,255,0.08); padding: 28px; margin: 40px 0; border-radius: 4px; }
+    .checklist-title { font-family: 'Poppins', sans-serif; font-size: 18px; font-weight: 700; margin-bottom: 20px; color: var(--white); }
+    .checklist-item { display: flex; gap: 12px; margin-bottom: 14px; align-items: flex-start; }
+    .checklist-box { width: 24px; height: 24px; border: 2px solid var(--yellow); border-radius: 3px; flex-shrink: 0; margin-top: 2px; }
+    .checklist-text { font-size: 16px; color: #ccc; }
+    .checklist-text strong { color: var(--white); }
+
+    /* Score bar */
+    .score-box { background: rgba(245,197,24,0.1); border: 1px solid rgba(245,197,24,0.2); padding: 24px; margin: 32px 0; border-radius: 4px; }
+    .score-label { font-size: 13px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(--yellow); margin-bottom: 12px; }
+    .score-bar { width: 100%; height: 8px; background: rgba(255,255,255,0.1); border-radius: 4px; overflow: hidden; margin-bottom: 12px; }
+    .score-fill { height: 100%; background: var(--yellow); width: 0%; }
+    .score-text { font-size: 17px; font-weight: 700; color: var(--white); }
+
+    /* CTA */
+    .cta-section { background: var(--card); border: 1px solid rgba(245,197,24,0.2); border-radius: 4px; padding: 48px 40px; margin: 64px 0 40px; text-align: center; }
+    .cta-section h2 { margin-top: 0; font-size: 26px; }
+    .cta-section p { color: #aaa; max-width: 500px; margin: 0 auto 28px; }
+    .btn-primary { display: inline-block; background: var(--yellow); color: #000; font-family: 'Poppins', sans-serif; font-weight: 800; font-size: 16px; padding: 16px 36px; border-radius: 4px; text-decoration: none; }
+    .btn-primary:hover { background: #e0b010; }
+    .cta-fine { font-size: 13px; color: var(--muted); margin-top: 16px; }
+
+    /* FAQ */
+    .faq-item { border-bottom: 1px solid rgba(255,255,255,0.07); padding: 20px 0; }
+    .faq-q { font-family: 'Poppins', sans-serif; font-weight: 600; margin-bottom: 10px; }
+    .faq-a { color: #bbb; }
+
+    /* Summary + Key Takeaway */
+    .box-summary { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; padding: 24px 28px; margin: 0 0 32px; }
+    .summary-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-bottom: 14px; }
+    .box-summary ul { margin: 0; padding-left: 20px; }
+    .box-summary li { margin-bottom: 8px; font-size: 17px; color: #ccc; }
+    .box-takeaway { background: rgba(245,197,24,0.08); border-left: 4px solid var(--yellow); padding: 20px 24px; margin: 0 0 40px; border-radius: 0 4px 4px 0; }
+    .takeaway-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 10px; }
+    .box-takeaway p { margin: 0; font-size: 18px; font-weight: 600; color: var(--white); line-height: 1.6; }
+
+    /* Related articles */
+    .related-articles { margin: 2.5rem 0 2rem; padding: 1.5rem; background: #1a1a2e; border-left: 4px solid #f0a500; border-radius: 4px; }
+    .related-articles p { margin: 0 0 1rem; font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #f0a500; }
+    .related-articles ul { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+    .related-articles li { margin: 0; }
+    .related-articles a { color: #e0e0e0; text-decoration: none; font-size: 0.95rem; }
+    .related-articles a:hover { color: #f0a500; }
+    .related-articles-footer { margin: 1.25rem 0 0; font-size: 0.85rem; color: #aaa; }
+    .related-articles-footer a { color: #f0a500; }
+
+    /* Footer */
+    footer { border-top: 1px solid rgba(255,255,255,0.07); padding: 32px 40px; text-align: center; font-size: 13px; color: var(--muted); max-width: 900px; margin: 0 auto; }
+    footer a { color: var(--muted); }
+    footer a:hover { color: var(--white); }
+
+    @media (max-width: 600px) {
+      nav, .article-wrap, footer { padding: 20px; }
+      .cta-section { padding: 32px 20px; }
+      .checklist-item { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="https://nis2klar.se/no/">NIS2<span>Klar</span></a>
+  <a class="nav-back" href="https://nis2klar.se/no/artikler.html">← Alle artikler</a>
+  <div class="lang-switcher">
+    <a href="https://nis2klar.se/artiklar.html" style="color:#888;" title="Svenska">SV</a>
+    <a href="https://nis2klar.se/en/articles.html" style="color:#888;" title="English">EN</a>
+    <a href="https://nis2klar.se/da/artikler.html" style="color:#888;" title="Dansk">DA</a>
+    <a href="https://nis2klar.se/no/artikler.html" style="color:#f5c518;background:rgba(245,197,24,0.1);" title="Norsk">NO</a>
+    <a href="https://nis2klar.se/it/articoli.html" style="color:#888;" title="Italiano">IT</a>
+  </div>
+  <a class="nav-cta" href="https://nis2klar.se/no/#boka">Book samtal →</a>
+</nav>
+
+<article class="article-wrap">
+  <div class="article-category">Sjekkliste &amp; Selvvurdering</div>
+  <h1>NIS2 compliance-sjekkliste: Er organisasjonen din klar?</h1>
+  <div class="article-meta">Oppdatert 19. april 2026 · Lesetid: ca 9 minutter · Målgruppe: Direktør, styreleiar</div>
+
+  <!-- SUMMARY -->
+  <div class="box-summary">
+    <div class="summary-label">Sammanfattning</div>
+    <ul>
+      <li>NIS2 forventes implementert i Norge gjennom EØS-avtalen i løpet av 2025–2026.</li>
+      <li>Ni hovudområder av Artikkel 21 må dekkes: styring, risikohåndtering, hendelseshåndtering, leverandørkontroll, tilgangskontroll, kryptering, sikkerheitskopi, autentisering og opplæring.</li>
+      <li>Direktør og styremedlemmer er personlig ansvarlige — det er ikke ei IT-oppgåve aleine.</li>
+      <li>Denne sjekklista gir deg eit konkret verktøy til å kartlegge kva du har og kva som manglar — og kva som er mest brått.</li>
+    </ul>
+  </div>
+
+  <!-- KEY TAKEAWAY -->
+  <div class="box-takeaway">
+    <div class="takeaway-label">Viktigaste slutnaden</div>
+    <p>Du treng ikkje vere teknolog for å styre NIS2-arbeidet. Du må berre sikre at dei rette prosessane og dokumenta finst, og at dei blir etterlevde. Denne sjekklista viser korleis.</p>
+  </div>
+
+  <!-- HOOK -->
+  <p>
+    NIS2-direktivet blir implementert i Norge gjennom EØS-avtalen, og regelverk forventes å trå i kraft i løpet av 2025–2026.
+    Når det skjer, må organisasjonar i 18 samhallskritiske sektorar oppfylle ni hovudkrav for cybersikkerheit — eller står dei overfor bøter opp til 10 millionar euro og personleg ansvar for leiinga.
+  </p>
+
+  <p>
+    Men det er ikkje nok å vite kva som skal gjerast. Du må kunne bevise at det er gjort.
+    Denne sjekklista tek deg gjennom kvar einaste Artikkel 21-krav og gir deg eit rammeverk for sjølvvurdering — slik at du kan sjå akkurat kvar du står før tillsynsmyndigheitene granskar.
+  </p>
+
+  <div class="box-warning">
+    <strong>Denne sjekklista er ikkje eit juridisk alternativ til ei profesjonell gap-analyse.</strong> Men ho gir deg nok innsikt til å avgjere om du skal be ein ekstern revisor eller om du allereie er langt framme. Ho er eit navigasjonsverktøy, ikkje ein kompass — men det er ein god start.
+  </div>
+
+  <h2>Korleis brukar du denne sjekklista?</h2>
+
+  <p>
+    Gå gjennom kvar seksjon og marker boksane for dei punkta du allereie har på plass. 
+    Ein "avkrysning" betyr at du kan vise fram ei dokumentert prosess eller ein beslutning som viser at dette er implementert.
+    Dersom du er usikker, merkjer du den som ikkje på plass. Til slutt får du ein score som viser kor langt du har komme.
+  </p>
+
+  <p>
+    <strong>Viktig:</strong> Ein høg score betyr ikkje at du er trygg. Tillsynsmyndigheita er ikkje interessert i at du "kjenner til" ei sikringsåtgerd. Dei vil sjå:
+  </p>
+
+  <ul>
+    <li>Skriftleg policy eller strategidokument</li>
+    <li>Styrarbeslutning som godkjenner det</li>
+    <li>Implementeringsbevis (log, rapport, rapport frå revisor)</li>
+    <li>Dokumentasjon på at det vert overvaka og oppdatert</li>
+  </ul>
+
+  <h2>Seksjon 1: Styring og organisering (Artikkel 21.1)</h2>
+
+  <p>
+    <strong>Krava:</strong> Organisasjonen skal ha ein ansvarleg for cybersikkerheit og ein prosess for å sikre at sikringsåtgerdene blir vedteke og implementerte.
+  </p>
+
+  <div class="checklist-section">
+    <div class="checklist-title">Din sjekkliste</div>
+    
+    <div class="checklist-item">
+      <div class="checklist-box"></div>
+      <div class="checklist-text">Du har utnemnd ein <strong>Chief Information Security Officer (CISO)</strong> eller tilsvarande ansvarleg for cybersikkerheit</div>
+    </div>
+
+    <div class="checklist-item">
+      <div class="checklist-box"></div>
+      <div class="checklist-text">Det ligg ein <strong>vedteken cybersikkerheitspolicy</strong> som styret har godkjent skriftleg</div>
+    </div>
+
+    <div class="checklist-item">
+      <div class="checklist-box"></div>
+      <div class="checklist-text">Det er etablert ein <strong>sikkerheitskomité</strong> eller tilsvarande styringsstruktur som møtast regelmessig</div>
+    </div>
+
+    <div class="checklist-item">
+      <div class="checklist-box"></div>
+      <div class="checklist-text">Det finst eit <strong>eskaleringsregime</strong> som definerer kven som skal meldast ved ulikt alvorlegheitsnivå av sikkerheitshendingar</div>
+    </div>
+
+    <div class="checklist-item">
+      <div class="checklist-box"></div>
+      <div class="checklist-text"><strong>Styret gjennomgår</strong> status for cybersikkerheit minst ein gong per kvartal</div>
+    </div>
+  </div>
+
+  <div class="box-info">
+    <strong>Praksisjekk:</strong> Kan du hente ut eit styrarsprotokoll frå dei siste 12 månadane som viser at cybersikkerheit var på dagorden? Viser det at det vart vedteke ein konkret sikringsåtgerd? Då er det eit døme på godkjend styring.
+  </div>
+
+  <h2>Seksjon 2: Risikohåndtering (Artikkel 21.2)</h2>
+
+  <p>
+    <strong>Krava:</strong> Du skal kartlegge og rangere cybersikkerheitsrisikaer innan organisasjonen og ha ein plan for å handsamar dei.
+  </p>
+
+  <div class="checklist-section">
+    <div class="checklist-title">Din sjekkliste</div>
+    
+    <div class="checklist-item">
+      <div class="checklist-box"></div>
+      <div class="checklist-text">Det er utført ein <strong>formell risikoanalyse</strong> innan det siste året</div>
+    </div>
+
+    <div class="checklist-item">
+      <div class="checklist-box"></div>
+      <div class="checklist-text">Analysen dekkar <strong>både teknologiske og organisatoriske risikofaktorar</strong></div>
+    </div>
+
+    <div class="checklist-item">
+      <div class="checklist-box"></div>
+      <div class="checklist-text">Risikoa er <strong>rangert etter alvolegheit</strong> og sannsynlegheit</div>
+    </div>
+
+    <div class="checklist-item">
+      <div class="checklist-box"></div>
+      <div class="checklist-text">Det finst ein <strong>risikominskingsplan</strong> med konkrete tiltak og tidsfrister</div>
+    </div>
+
+    <div class="checklist-item">
+      <div class="checklist-box"></div>
+      <div class="checklist-text">Planen vart <strong>vedteken av styret</strong> og er tillknytt eit budsjett</div>
+    </div>
+
+    <div class="checklist-item">
+      <div class="checklist-box"></div>
+      <div class="checklist-text">Risikoa blir <strong>revaluert minst ein gong per år</strong> eller ved større endringar i organisasjonen</div>
+    </div>
+  </div>
+
+  <h2>Seksjon 3: Hendelseshåndtering (Artikkel 21.3)</h2>
+
+  <p>
+    <strong>Krava:</strong> Du skal ha ein prosess for å oppdage, analysere, rapportere og respondera på cybersikkerheitshendingar.
+    Alvorlege hendingar skal rapporterast innanfor 24 timar (førebels varsel) og innan 72 timar (fullt omsyn) til NSM og relevante sektormyndigheiter.
+  </p>
+
+  <div class="checklist-section">
+    <div class="checklist-title">Din sjekkliste</div>
+    
+    <div class="checklist-item">
+      <div class="checklist-box"></div>
+      <div class="checklist-text">Det finst ein <strong>skriftleg hendelseshandsamsplan</strong> med definerte roller og ansvar</div>
+    </div>
+
+    <div class="checklist-item">
+      <div class="checklist-box"></div>
+      <div class="checklist-text">Planen definerer kva som reknas som ein <strong>"alvorleg"</strong> hendelse som skal rapporterast til NSM</div>
+    </div>
+
+    <div class="checklist-item">
+      <div class="checklist-box"></div>
+      <div class="checklist-text">Det er <strong>etablert ein kontaktkjede</strong> som kan aktiverats innan 24 timar</div>
+    </div>
+
+    <div class="checklist-item">
+      <div class="checklist-box"></div>
+      <div class="checklist-text">Det finst ein <strong>malmal for hendelsesrapportering</strong> som viser kva data som skal dokumenterast</div>
+    </div>
+
+    <div class="checklist-item">
+      <div class="checklist-box"></div>
+      <div class="checklist-text">Organisasjonen har <strong>gjennomført øving</strong> av hendelseshandsamisplan minst ein gong på det siste året</div>
+    </div>
+
+    <div class="checklist-item">
+      <div class="checklist-box"></div>
+      <div class="checklist-text">Det finst ein <strong>prosess for etterkjøp</strong> av hendingar — kva lærte vi, kva kan vi forbetre?</div>
+    </div>
+
+    <div class="checklist-item">
+      <div class="checklist-box"></div>
+      <div class="checklist-text">Du kjenner til <strong>kontaktdetaljane for NSM</strong> og kva nokkeltal som skal rapporterast</div>
+    </div>
+  </div>
+
+  <div class="box-case">
+    <div class="case-label">Praktisk eksempel</div>
+    <p>
+      <strong>Scenario: Ransomware-angrep på ein leverandør som tener deira system.</strong>
+    </p>
+    <p>
+      Torsdag morgon viser systemet ditt teikn på mykje uvanleg nettverksaktivitet. IT-teamet identifiserer intrång innan tre timar.
+      Dei startar ein isoleringsprotokoll og varslar leiarskap. Innan 6 timar er det klart at det er ein alvorleg hendelse.
+    </p>
+    <p>
+      CISO og VD må gjøre ei risikovurdering: Skal NSM meldast? Dersom svaret er ja, må det gjerast innan 24 timar.
+      Fullt hendelsesrapport må leverast innan 72 timar.
+    </p>
+    <p>
+      <strong>Utan hendelseshandsamilsplan:</strong> Det blir rotlaus rasering, panikk, forsking og moglegvis ulovleg datasletting før NSM får vite.
+      <strong>Med plan:</strong> Alle veit sitt ansvar, dokumentasjonen vert samla systematisk, og rapporten blir riktig.
+    </p>
+  </div>
+
+  <h2>Seksjon 4: Sikkerheitskopi og kontinuitet (Artikkel 21.4–21.5)</h2>
+
+  <p>
+    <strong>Krava:</strong> Du skal sikre at kritiske data og system kan gjenopprettast, og at organisasjonen kan halda fram med viktige funksjonar ved ein alvorleg hendelse.
+  </p>
+
+  <div class="checklist-section">
+    <div class="checklist-title">Din sjekkliste</div>
+    
+    <div class="checklist-item">
+      <div class="checklist-box"></div>
+      <div class="checklist-text">Det finst ein <strong>identifisert liste over kritiske data og system</strong></div>
+    </div>
+
+    <div class="checklist-item">
+      <div class="checklist-box"></div>
+      <div class="checklist-text">Det er etablert <strong>regelmessig sikkerheitskopi</strong> av kritiske data — automatisert og lagra på separata system</div>
+    </div>
+
+    <div class="checklist-item">
+      <div class="checklist-box"></div>
+      <div class="checklist-text">Sikkerheitskopiane er <strong>testad minst ein gong per år</strong> for å sikre at dei kan gjenopprettast</div>
+    </div>
+
+    <div class="checklist-item">
+      <div class="checklist-box"></div>
+      <div class="checklist-text">Det finst ein <strong>retningsline for oppbevaring av sikkerheitskopiar</strong> — kor lenge, kor, korleis</div>
+    </div>
+
+    <div class="checklist-item">
+      <div class="checklist-box"></div>
+      <div class="checklist-text">Det finst ein <strong>business continuity-plan</strong> som viser korleis viktige funksjonar kan halda fram ved data- eller systemtap</div>
+    </div>
+
+    <div class="checklist-item">
+      <div class="checklist-box"></div>
+      <div class="checklist-text">Planen er <strong>lest gjennom og godkjend av styret</strong></div>
+    </div>
+
+    <div class="checklist-item">
+      <div class="checklist-box"></div>
+      <div class="checklist-text">Det er gjennomført <strong>minst ein øving av recovery-prosedyrar</strong> på det siste året</div>
+    </div>
+  </div>
+
+  <h2>Seksjon 5: Leverandør- og tredjepartssikkerheit (Artikkel 21.6)</h2>
+
+  <p>
+    <strong>Krava:</strong> Du skal vurdere cybersikkerheitsrisikoen frå leverandørar og tredjepartar som har tilgang til dine system og data.
+  </p>
+
+  <div class="checklist-section">
+    <div class="checklist-title">Din sjekkliste</div>
+    
+    <div class="checklist-item">
+      <div class="checklist-box"></div>
+      <div class="checklist-text">Det finst ein <strong>kartlegging av alle kritiske leverandørar</strong> og tredjepartar</div>
+    </div>
+
+    <div class="checklist-item">
+      <div class="checklist-box"></div>
+      <div class="checklist-text">Det er gjennomført ein <strong>risikovurdering for kvar kritisk leverandør</strong> innan det siste året</div>
+    </div>
+
+    <div class="checklist

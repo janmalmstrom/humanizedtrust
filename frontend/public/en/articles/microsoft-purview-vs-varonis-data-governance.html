@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-BKF3QH9K01"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag("js", new Date());
+    gtag("config", "G-BKF3QH9K01");
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Microsoft Purview vs Varonis: Data Governance for NIS2 Compliance | NIS2Klar Ireland</title>
+  <meta name="description" content="Compare Microsoft Purview and Varonis for NIS2 data governance. Learn which tool gives better compliance evidence, DLP capabilities, and insider threat detection for Irish organisations.">
+  <meta property="og:title" content="Microsoft Purview vs Varonis: Data Governance for NIS2 Compliance">
+  <meta property="og:description" content="Compare Microsoft Purview and Varonis for NIS2 data governance. Learn which tool gives better compliance evidence, DLP capabilities, and insider threat detection for Irish organisations.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #141416;
+      --card: #1c1c1f;
+      --yellow: #f5c518;
+      --white: #f0f0f0;
+      --muted: #888;
+      --red: #C61212;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: var(--bg); color: var(--white); font-family: 'Barlow', sans-serif; font-size: 19px; line-height: 1.8; }
+
+    /* Nav */
+    nav { display: flex; justify-content: space-between; align-items: center; padding: 20px 40px; border-bottom: 1px solid rgba(255,255,255,0.07); max-width: 900px; margin: 0 auto; }
+    .nav-logo { font-family: 'Poppins', sans-serif; font-weight: 900; font-size: 20px; color: var(--yellow); text-decoration: none; }
+    .nav-logo span { color: var(--white); }
+    .nav-back { color: var(--muted); text-decoration: none; font-size: 15px; }
+    .nav-back:hover { color: var(--white); }
+    .lang-switcher { display: flex; gap: 8px; align-items: center; font-size: 13px; font-family: 'Poppins', sans-serif; }
+    .nav-cta { background: var(--yellow); color: #000; padding: 8px 18px; border-radius: 4px; text-decoration: none; font-weight: 700; font-size: 14px; font-family: 'Poppins', sans-serif; }
+
+    /* Article */
+    .article-wrap { max-width: 760px; margin: 0 auto; padding: 60px 40px; }
+    .article-category { font-size: 13px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 16px; }
+    h1 { font-family: 'Poppins', sans-serif; font-size: clamp(30px, 4vw, 44px); font-weight: 900; line-height: 1.2; margin-bottom: 24px; }
+    .article-meta { font-size: 15px; color: var(--muted); margin-bottom: 48px; padding-bottom: 24px; border-bottom: 1px solid rgba(255,255,255,0.07); }
+    h2 { font-family: 'Poppins', sans-serif; font-size: 26px; font-weight: 700; margin: 48px 0 16px; color: var(--white); }
+    h3 { font-family: 'Poppins', sans-serif; font-size: 20px; font-weight: 600; margin: 32px 0 12px; color: var(--yellow); }
+    p { margin-bottom: 22px; }
+    strong { color: var(--white); font-weight: 700; }
+    .highlight { color: var(--yellow); font-weight: 700; }
+    .danger { color: #ff6b6b; font-weight: 700; }
+    ul, ol { margin: 16px 0 24px 24px; }
+    li { margin-bottom: 12px; font-size: 19px; }
+
+    /* Callout boxes */
+    .box-warning { background: rgba(197,17,17,0.12); border-left: 4px solid var(--red); padding: 20px 24px; margin: 32px 0; border-radius: 0 4px 4px 0; }
+    .box-info { background: rgba(245,197,24,0.08); border-left: 4px solid var(--yellow); padding: 20px 24px; margin: 32px 0; border-radius: 0 4px 4px 0; }
+    .box-case { background: var(--card); border: 1px solid rgba(255,255,255,0.08); padding: 28px; margin: 40px 0; border-radius: 4px; }
+    .box-case .case-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 12px; }
+    blockquote { border-left: 3px solid var(--yellow); padding: 12px 20px; margin: 24px 0; font-style: italic; color: #ccc; }
+
+    /* CTA */
+    .cta-section { background: var(--card); border: 1px solid rgba(245,197,24,0.2); border-radius: 4px; padding: 48px 40px; margin: 64px 0 40px; text-align: center; }
+    .cta-section h2 { margin-top: 0; font-size: 26px; }
+    .cta-section p { color: #aaa; max-width: 500px; margin: 0 auto 28px; }
+    .btn-primary { display: inline-block; background: var(--yellow); color: #000; font-family: 'Poppins', sans-serif; font-weight: 800; font-size: 16px; padding: 16px 36px; border-radius: 4px; text-decoration: none; }
+    .btn-primary:hover { background: #e0b010; }
+    .cta-fine { font-size: 13px; color: var(--muted); margin-top: 16px; }
+
+    /* FAQ */
+    .faq-item { border-bottom: 1px solid rgba(255,255,255,0.07); padding: 20px 0; }
+    .faq-q { font-family: 'Poppins', sans-serif; font-weight: 600; margin-bottom: 10px; }
+    .faq-a { color: #bbb; }
+
+    /* Comparison table */
+    .comparison-table { width: 100%; border-collapse: collapse; margin: 24px 0; }
+    .comparison-table th { background: rgba(245,197,24,0.1); color: var(--yellow); font-family: 'Poppins', sans-serif; font-size: 13px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 12px 16px; text-align: left; border-bottom: 1px solid rgba(245,197,24,0.2); }
+    .comparison-table td { padding: 14px 16px; border-bottom: 1px solid rgba(255,255,255,0.05); font-size: 15px; }
+    .comparison-table tr:last-child td { border-bottom: none; }
+    .comparison-table .checkmark { color: #4ade80; font-weight: 700; }
+    .comparison-table .cross { color: #ff6b6b; font-weight: 700; }
+
+    /* Summary + Key Takeaway */
+    .box-summary { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; padding: 24px 28px; margin: 0 0 32px; }
+    .summary-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-bottom: 14px; }
+    .box-summary ul { margin: 0; padding-left: 20px; }
+    .box-summary li { margin-bottom: 8px; font-size: 17px; color: #ccc; }
+    .box-takeaway { background: rgba(245,197,24,0.08); border-left: 4px solid var(--yellow); padding: 20px 24px; margin: 0 0 40px; border-radius: 0 4px 4px 0; }
+    .takeaway-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 10px; }
+    .box-takeaway p { margin: 0; font-size: 18px; font-weight: 600; color: var(--white); line-height: 1.6; }
+
+    /* Footer */
+    footer { border-top: 1px solid rgba(255,255,255,0.07); padding: 32px 40px; text-align: center; font-size: 13px; color: var(--muted); max-width: 900px; margin: 0 auto; }
+    footer a { color: var(--muted); }
+
+    @media (max-width: 600px) {
+      nav, .article-wrap, footer { padding: 20px; }
+      .cta-section { padding: 32px 20px; }
+      .comparison-table { font-size: 14px; }
+      .comparison-table th, .comparison-table td { padding: 10px 10px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="https://nis2klar.se/en/">NIS2<span>Klar</span></a>
+  <a class="nav-back" href="https://nis2klar.se/en/articles.html">← All Articles</a>
+  <div class="lang-switcher">
+    <a href="https://nis2klar.se/artiklar.html" style="color:#888;text-decoration:none;font-weight:600;padding:4px 8px;border-radius:3px;" title="Svenska">SV</a>
+    <a href="https://nis2klar.se/en/articles.html" style="color:#f5c518;text-decoration:none;font-weight:600;padding:4px 8px;border-radius:3px;background:rgba(245,197,24,0.1);" title="English">EN</a>
+    <a href="https://nis2klar.se/da/artikler.html" style="color:#888;text-decoration:none;font-weight:600;padding:4px 8px;border-radius:3px;" title="Dansk">DA</a>
+    <a href="https://nis2klar.se/no/artikler.html" style="color:#888;text-decoration:none;font-weight:600;padding:4px 8px;border-radius:3px;" title="Norsk">NO</a>
+    <a href="https://nis2klar.se/it/articoli.html" style="color:#888;text-decoration:none;font-weight:600;padding:4px 8px;border-radius:3px;" title="Italiano">IT</a>
+  </div>
+  <a class="nav-cta" href="https://nis2klar.se/en/#book">Book consultation →</a>
+</nav>
+
+<article class="article-wrap">
+  <div class="article-category">Data Governance &amp; Compliance</div>
+  <h1>Microsoft Purview vs Varonis: Data Governance for NIS2 Compliance</h1>
+  <div class="article-meta">19 April 2026 · Read time: 9 minutes · Audience: Board, CEO, IT Leadership</div>
+
+  <!-- SUMMARY -->
+  <div class="box-summary">
+    <div class="summary-label">Summary</div>
+    <ul>
+      <li>For Irish essential and important entities choosing between two competing data governance platforms.</li>
+      <li>Microsoft Purview integrates natively with Microsoft 365 but requires hybrid classification maturity.</li>
+      <li>Varonis excels at insider threat detection and DLP enforcement across heterogeneous environments.</li>
+      <li>NIS2 compliance evidence depends on documentation, audit trails, and incident reporting — not the tool brand.</li>
+      <li>The right choice depends on your existing tech stack, budget, and risk tolerance.</li>
+    </ul>
+  </div>
+
+  <!-- KEY TAKEAWAY -->
+  <div class="box-takeaway">
+    <div class="takeaway-label">The Core Tension</div>
+    <p>Neither tool alone makes you NIS2-compliant. The choice between Purview and Varonis hinges on integration depth, alert fidelity, and your ability to document controls to NCSC Ireland — not on feature count.</p>
+  </div>
+
+  <p>
+    The NIS2 Regulations (S.I. No. 322 of 2024) require Irish essential and important entities to implement <strong>data classification, sensitive asset inventory, and insider threat detection</strong> as part of their mandatory security measures.
+  </p>
+
+  <p>
+    Two platforms dominate this space: <strong>Microsoft Purview</strong> (the data governance layer of Microsoft 365) and <strong>Varonis</strong> (a specialised data security and insider threat platform). Both claim to deliver NIS2 readiness. Neither is correct without proper implementation.
+  </p>
+
+  <p>
+    This guide cuts through the marketing and asks the question your board should be asking: <strong>Which tool gives you the evidence that NCSC Ireland will accept, and which fits your actual environment?</strong>
+  </p>
+
+  <h2>What NIS2 Actually Demands on Data Governance</h2>
+
+  <p>
+    Regulation 21 of S.I. 322/2024 (the Irish NIS2 transposition) lists ten mandatory security measures. Three of them directly concern data governance:
+  </p>
+
+  <ol>
+    <li><strong>Asset management and inventory:</strong> You must know what data you hold, where it lives, and who has access to it.</li>
+    <li><strong>Data protection and encryption:</strong> Sensitive data must be classified, labelled, and encrypted at rest and in transit.</li>
+    <li><strong>Access control:</strong> Authentication, authorisation, and monitoring of who accesses sensitive data — including detection of abnormal access patterns (insider threat detection).</li>
+  </ol>
+
+  <p>
+    The fourth and equally important requirement: <strong>you must be able to prove it</strong>. NCSC Ireland does not audit on faith. Audit logs, classification reports, and access reviews must be comprehensive and reproducible.
+  </p>
+
+  <div class="box-info">
+    <strong>Key distinction:</strong> NIS2 compliance is not about having the fanciest tool. It is about having documented, measurable controls that a regulator can inspect. A spreadsheet with manual tracking can technically satisfy NIS2, if it is auditable. Conversely, a sophisticated SIEM tool that produces no meaningful alerts and no board reporting does not help you.
+  </div>
+
+  <h2>Microsoft Purview: Native Integration, Classification-First Approach</h2>
+
+  <h3>What Purview Does Well</h3>
+
+  <p>
+    Microsoft Purview is built into Microsoft 365 and Azure. If your organisation runs primarily on Microsoft products (Outlook, Teams, SharePoint, OneDrive, SQL Server), Purview is the natural choice.
+  </p>
+
+  <p>
+    Its core strengths:
+  </p>
+
+  <ul>
+    <li><strong>Sensitivity labels:</strong> You define data classification (Public, Internal, Confidential, Restricted) and apply them to documents, emails, and files. The labels travel with the data — a Confidential document stays labelled even if exported.</li>
+    <li><strong>Data Loss Prevention (DLP) policies:</strong> Rules that prevent email or upload of sensitive content without encryption or approval.</li>
+    <li><strong>Unified audit logs:</strong> All Microsoft 365 activity is logged centrally, queryable, and exportable to NCSC Ireland on request.</li>
+    <li><strong>Cost efficiency:</strong> If you already pay for Microsoft 365 Business Premium or Enterprise SKU, Purview is included. No additional per-user licensing.</li>
+    <li><strong>Board-friendly reporting:</strong> Out-of-the-box dashboards showing classification rate, policy violations, and user adoption.</li>
+  </ul>
+
+  <p>
+    For organisations with <strong>80%+ of sensitive data in Microsoft 365</strong> and no complex legacy systems, Purview is a direct path to Regulation 21 compliance.
+  </p>
+
+  <h3>Where Purview Shows Weakness</h3>
+
+  <p>
+    Purview's limitations become clear in heterogeneous environments:
+  </p>
+
+  <ul>
+    <li><strong>Non-Microsoft data is invisible:</strong> Files in a third-party file-sharing service, databases in AWS or GCP, or on-premises document repositories outside SharePoint do not automatically show up in Purview. You must integrate connectors (which adds cost and complexity).</li>
+    <li><strong>Insider threat detection is thin:</strong> Purview has an Insider Risk Management module, but it relies on policy violation alerts. It does not natively correlate unusual access patterns, abnormal download volumes, or risky user behaviour — the core of insider threat detection that NIS2 expects.</li>
+    <li><strong>Regulatory audit complexity:</strong> When NCSC Ireland asks to audit DLP enforcement or policy violations, the report format is fixed. You cannot customise queries. Some regulators want narratives that Purview reports do not naturally provide.</li>
+    <li><strong>Implementation maturity required:</strong> Purview is only as good as your data classification. If your organisation has never classified data — if everything is "Confidential" by default — Purview becomes a false sense of security. Classification governance is cultural and procedural, not technical.</li>
+  </ul>
+
+  <div class="box-case">
+    <div class="case-label">Case Study: Irish FinTech, 120 employees</div>
+    <p>
+      <strong>Scenario:</strong> A Dublin-based payment services firm runs core systems on Microsoft 365 but keeps customer transaction data and API logs in PostgreSQL (on-premises) and AWS. Their regulatory obligation is to classify and monitor access to customer data across all three domains.
+    </p>
+    <p>
+      <strong>Purview attempt:</strong> They implement Purview sensitivity labels for Microsoft 365. DLP policies work well for email. But the PostgreSQL database and AWS logs are off-network. To bring them into scope, they need to either:
+      a) mirror the data into Azure and re-classify it (high cost, data governance headache), or
+      b) integrate custom connectors (requires development, ongoing maintenance).
+    </p>
+    <p>
+      <strong>Result:</strong> Purview covers 60% of the data estate. The remaining 40% is managed by a separate database audit tool with no integration to Purview. When NCSC Ireland audits, the firm must present two separate audit trails and explain the gap. Not ideal for a regulated entity.
+    </p>
+    <p>
+      <strong>Lesson:</strong> Purview is powerful in homogeneous Microsoft 365 environments. In hybrid environments, it creates audit and governance blind spots.
+    </p>
+  </div>
+
+  <h2>Varonis: Best-of-Breed Data Security and Insider Threat</h2>
+
+  <h3>What Varonis Does Well</h3>
+
+  <p>
+    Varonis is purpose-built for data security. It is storage-agnostic, meaning it can monitor access to data regardless of where it lives: Microsoft 365, Windows file shares, NAS appliances, AWS S3, Google Cloud Storage, databases, and more.
+  </p>
+
+  <p>
+    Its core strengths:
+  </p>
+
+  <ul>
+    <li><strong>Unified data visibility:</strong> Varonis crawls all connected storage, discovers files and databases, and builds an inventory of sensitive data — with zero manual classification effort. It uses content analysis and metadata to infer sensitivity (e.g., files containing credit card numbers, personal identity data).</li>
+    <li><strong>Insider threat detection at scale:</strong> Varonis continuously monitors access patterns. It flags abnormal behaviour: user accessing files outside their normal department, lateral movement across shares, mass data downloads, changes to file permissions, and account compromise indicators.</li>
+    <li><strong>Enforcement without friction:</strong> Varonis can enforce access controls or block risky actions in real time. Unlike DLP policies that are often reactive, Varonis can prevent an action from completing.</li>
+    <li><strong>Multi-tenant compliance reporting:</strong> If you manage multiple client organisations (as a managed service provider or group holding company), Varonis can generate separate audit trails and reports per tenant — valuable for demonstrating segregation to regulators.</li>
+    <li><strong>Heterogeneous environment advantage:</strong> Whether you run Microsoft 365, AWS, GCP, and legacy on-premises systems, Varonis sees them all from one console. No "blind spots".</li>
+  </ul>
+
+  <p>
+    For organisations with <strong>complex IT infrastructure, multiple data sources, or high insider risk tolerance</strong>, Varonis is unmatched in breadth and depth of threat detection.
+  </p>
+
+  <h3>Where Varonis Shows Limitations</h3>
+
+  <p>
+    Varonis is powerful but comes with trade-offs:
+  </p>
+
+  <ul>
+    <li><strong>Cost:</strong> Varonis is licensed per entity (e.g., per Microsoft 365 tenant, per file share, per database). An organisation with diverse storage will face six-figure annual fees. Microsoft Purview, by contrast, is included in M365 licenses.</li>
+    <li><strong>Alert fatigue:</strong> Varonis detects behaviour anomalies, but anomalies are not always threats. A data analyst accessing large datasets is normal; a contractor doing the same might be suspicious. Tuning the alert thresholds to reduce false positives requires security expertise and time.</li>
+    <li><strong>Classification is automated, not auditable:</strong> Varonis infers sensitivity using machine learning and content analysis. While effective, it is harder for regulators to understand than a human-driven classification policy. If NCSC Ireland asks "how did you classify this file as Confidential?", the answer "Varonis ML detected PII" is less satisfying than "our data classification policy defines customer data as Confidential".</li>
+    <li><strong>Compliance reporting rigidity:</strong> Varonis reports are granular but can feel overwhelming. Extracting a clean, simple narrative for the board or a regulator requires careful filtering and export work. Purview's out-of-the-box dashboards sometimes win on ease of communication.</li>
+    <li><strong>Integration with other tools:</strong> Varonis is strong on data access, but weaker on DLP (preventing data exfiltration). To get both capabilities, you might need Varonis + a separate DLP tool, which creates integration overhead.</li>
+  </ul>
+
+  <h2>Head-to-Head: Key Comparison Points for NIS2</h2>
+
+  <table class="comparison-table">
+    <thead>
+      <tr>
+        <th>Capability</th>
+        <th>Microsoft Purview</th>
+        <th>Varonis</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Data classification (Microsoft 365)</td>
+        <td class="checkmark">✓ Native</td>
+        <td>◐ Requires connector</td>
+      </tr>
+      <tr>
+        <td>Multi-cloud / heterogeneous visibility</td>
+        <td>◐ Limited (connectors needed)</td>
+        <td class="checkmark">✓ Native</td>
+      </tr>
+      <tr>
+        <td>Insider threat detection</td>
+        <td>◐ Policy-based only</td>
+        <td class="checkmark">✓ Behaviour analytics</td>
+      </tr>
+      <tr>
+        <td>DLP enforcement (real-time prevention)</td>
+        <td class="checkmark">✓ Strong</td>
+        <td>◐ Requires integration</td>
+      </tr>
+      <tr>
+        <td>Unified audit trail</td>
+        <td class="checkmark">✓ For M365 data</td>
+        <td class="checkmark">✓ Across all sources</td>
+      </tr>
+      <tr>
+        <td>Total cost of ownership (small org)</td>
+        <td class="checkmark">✓ Included in M365</td>
+        <td>◐ €50k–100k/year+</td>
+      </tr>
+      <tr>
+        <td>Regulatory audit readiness</td>
+        <td class="checkmark">✓ Clean, simple narratives</td>
+        <td>◐ Detailed but complex</td>
+      </tr>
+      <tr>
+        <td>Implementation complexity</td>
+        <td>◐ Requires classification discipline</td>
+        <td>◐ Requires tuning and alerting rules</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>The Real Decision: Stacking or Integration Approach</h2>
+
+  <p>
+    Most boards ask the wrong question: "Which is better, Purview or Varonis?"
+  </p>
+
+  <p>
+    The right question is: <strong>"Given our data estate and risk profile, do we need both, and if so, how do they talk to each other?"</strong>
+  </p>
+
+  <h3>Stack 1: Microsoft-First (Purview + Conditional Access)</h3>
+
+  <p>
+    <strong>Right for:</strong> Organisations where 80%+ of sensitive data is in Microsoft 365, on-premises AD is fully hybrid, and IT is staffed with Microsoft-certified engineers.
+  </p>
+
+  <p>
+    <strong>Architecture:</strong> Sensitivity labels in Purview classify data. DLP policies prevent exfiltration. Microsoft Entra ID Conditional Access restricts risky sessions. Audit logs flow to a central SIEM. Cost: M365 licenses (already budgeted) + SIEM ingestion.
+  </p>
+
+  <p>
+    <strong>NIS2 evidence:</strong> Clean classification report, DLP incident log, Conditional Access block log, audit trail. Simple narrative for regulators.
+  </p>
+
+  <h3>Stack 2: Varonis-Primary (Varonis + DLP tool)</h3>
+
+  <p>
+    <strong>Right for:</strong> Organisations with data scattered across Microsoft 365, AWS, on-premises databases, legacy systems, and SaaS. Insider risk tolerance is high.
+  </p>
+
+  <p>
+    <strong>Architecture:</strong> Varonis discovers and classifies all data automatically. Behavioural alerts flag suspicious access. A separate DLP tool (e.g., a CASB or enterprise DLP solution) prevents exfiltration. Audit logs centralised in Varonis console. Cost: €80k–150k/year depending on data volume.
+  </p>
+
+  <p>
+    <strong>NIS2 evidence:</strong> Data inventory report, insider threat incident log, access review audit, DLP policy enforcement log. Narrative is more complex but comprehensive.
+  </p>
+
+  <h3>Stack 3: Hybrid (Purview for M365, Varonis for Everything Else)</h3>
+
+  <p>
+    <strong>Right for:</strong> Larger organisations with both Microsoft 365 and significant non-Microsoft data, willing to tolerate integration complexity.
+  </p>
+
+  <p>
+    <strong>Architecture:</strong> Purview handles Microsoft 365 classification and DLP. Varonis monitors all other storage (on-prem, AWS, legacy). APIs integrate the two platforms so alerts and inventory flow to a unified dashboard. Cost: M365 + Varonis connectors (€100k–180k/year).
+  </p>
+
+  <p>
+    <strong>NIS2 evidence:</strong> Dual audit trail, two reports, one narrative. Requires explanation of architecture to regulators, but provides broadest visibility.
+  </p>
+
+  <div class="box-warning">
+    <strong>Critical risk:</strong> Do not implement two platforms that do not talk to each other. Fragmented governance is worse than no governance. NCSC Ireland will ask "how do you know all sensitive data is classified?" If Purview covers M365 but Varonis is not yet deployed, you have a blind spot. The gap is auditable and will be noted.
+  </div>
+
+  <h2>Building Your NIS2 Compliance Narrative</h2>
+
+  <p>
+    Neither Purview nor Varonis, alone, makes you NIS2-compliant. What matters is the narrative — the story you tell NCSC Ireland or the CBI (for financial services) about how you control access to sensitive data.
+  </p>
+
+  <p>
+    That narrative has five components:
+  </p>
+
+  <h3>1. Data Inventory</h3>
+  <p>
+    "We have discovered and catalogued all repositories holding sensitive data. This includes Microsoft 365 (repositories X, Y, Z), AWS (buckets A, B, C), and on-prem (shares D, E)." Purview helps here for M365. Varonis helps here for everything. Together, they create a complete picture.
+  </p>
+
+  <h3>2. Classification Policy</h3>
+  <p>
+    "We have defined what 'sensitive' means (our data classification policy, approved by the board on [date]). We classify all data on [schedule]. Classification is enforced via [Purview labels / Varonis rules / manual review]."
+  </p>
+
+  <h3>3. Access Control</h3>
+  <p>
+    "Users are granted access on a need-to-know basis. Access is reviewed quarterly. We monitor access logs for anomalies — specifically, access outside the user's normal scope, mass data downloads, and permission changes. Alerts are generated via [Conditional Access / Varonis / SIEM]."
+  </p>
+
+  <h3>4. Incident Detection and Response</h3>
+  <p>
+    "If an insider or external threat attempts to exfiltrate data, our DLP policies [block / alert]. Our insider threat monitoring [flags abnormal access]. Our SIEM [correlates events and escalates]. The time from detection to notification is [X hours]." (NIS2 Regulation 23 requires 72-hour incident

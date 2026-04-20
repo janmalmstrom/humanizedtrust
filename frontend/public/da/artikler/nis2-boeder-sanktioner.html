@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-BKF3QH9K01"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag("js", new Date());
+    gtag("config", "G-BKF3QH9K01");
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NIS2-bøder og sanktioner: Hvad din virksomhed risikerer | NIS2Klar Danmark</title>
+  <meta name="description" content="NIS2-bøder i Danmark kan nå 10 millioner euro. VD og bestyrelsesmedlemmer er personligt ansvarlige. Læs hvad det faktisk koster at ikke overholde loven.">
+  <meta property="og:title" content="NIS2-bøder og sanktioner: Hvad din virksomhed risikerer">
+  <meta property="og:description" content="NIS2-bøder i Danmark kan nå 10 millioner euro. VD og bestyrelsesmedlemmer er personligt ansvarlige. Læs hvad det faktisk koster at ikke overholde loven.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #141416;
+      --card: #1c1c1f;
+      --yellow: #f5c518;
+      --white: #f0f0f0;
+      --muted: #888;
+      --red: #C61212;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: var(--bg); color: var(--white); font-family: 'Barlow', sans-serif; font-size: 19px; line-height: 1.8; }
+
+    /* Nav */
+    nav { display: flex; justify-content: space-between; align-items: center; padding: 20px 40px; border-bottom: 1px solid rgba(255,255,255,0.07); max-width: 900px; margin: 0 auto; }
+    .nav-logo { font-family: 'Poppins', sans-serif; font-weight: 900; font-size: 20px; color: var(--yellow); text-decoration: none; }
+    .nav-logo span { color: var(--white); }
+    .nav-back { color: var(--muted); text-decoration: none; font-size: 15px; }
+    .nav-back:hover { color: var(--white); }
+    .nav-cta { background: var(--yellow); color: #000; padding: 8px 18px; border-radius: 4px; text-decoration: none; font-weight: 700; font-size: 14px; font-family: 'Poppins', sans-serif; }
+    .lang-switcher { display: flex; gap: 8px; align-items: center; }
+    .lang-switcher a { color: var(--muted); text-decoration: none; font-weight: 600; padding: 4px 8px; border-radius: 3px; font-size: 13px; transition: color 0.2s; }
+    .lang-switcher a:hover { color: var(--white); }
+    .lang-switcher a.active { color: var(--yellow); background: rgba(245,197,24,0.1); }
+
+    /* Article */
+    .article-wrap { max-width: 760px; margin: 0 auto; padding: 60px 40px; }
+    .article-category { font-size: 13px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 16px; }
+    h1 { font-family: 'Poppins', sans-serif; font-size: clamp(30px, 4vw, 44px); font-weight: 900; line-height: 1.2; margin-bottom: 24px; }
+    .article-meta { font-size: 15px; color: var(--muted); margin-bottom: 48px; padding-bottom: 24px; border-bottom: 1px solid rgba(255,255,255,0.07); }
+    h2 { font-family: 'Poppins', sans-serif; font-size: 26px; font-weight: 700; margin: 48px 0 16px; color: var(--white); }
+    h3 { font-family: 'Poppins', sans-serif; font-size: 20px; font-weight: 600; margin: 32px 0 12px; color: var(--yellow); }
+    p { margin-bottom: 22px; }
+    strong { color: var(--white); font-weight: 700; }
+    .highlight { color: var(--yellow); font-weight: 700; }
+    .danger { color: #ff6b6b; font-weight: 700; }
+    ul, ol { margin: 16px 0 24px 24px; }
+    li { margin-bottom: 12px; font-size: 19px; }
+
+    /* Callout boxes */
+    .box-warning { background: rgba(197,17,17,0.12); border-left: 4px solid var(--red); padding: 20px 24px; margin: 32px 0; border-radius: 0 4px 4px 0; }
+    .box-info { background: rgba(245,197,24,0.08); border-left: 4px solid var(--yellow); padding: 20px 24px; margin: 32px 0; border-radius: 0 4px 4px 0; }
+    .box-case { background: var(--card); border: 1px solid rgba(255,255,255,0.08); padding: 28px; margin: 40px 0; border-radius: 4px; }
+    .box-case .case-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 12px; }
+    blockquote { border-left: 3px solid var(--yellow); padding: 12px 20px; margin: 24px 0; font-style: italic; color: #ccc; }
+
+    /* CTA */
+    .cta-section { background: var(--card); border: 1px solid rgba(245,197,24,0.2); border-radius: 4px; padding: 48px 40px; margin: 64px 0 40px; text-align: center; }
+    .cta-section h2 { margin-top: 0; font-size: 26px; }
+    .cta-section p { color: #aaa; max-width: 500px; margin: 0 auto 28px; }
+    .btn-primary { display: inline-block; background: var(--yellow); color: #000; font-family: 'Poppins', sans-serif; font-weight: 800; font-size: 16px; padding: 16px 36px; border-radius: 4px; text-decoration: none; }
+    .btn-primary:hover { background: #e0b010; }
+    .cta-fine { font-size: 13px; color: var(--muted); margin-top: 16px; }
+
+    /* FAQ */
+    .faq-item { border-bottom: 1px solid rgba(255,255,255,0.07); padding: 20px 0; }
+    .faq-q { font-family: 'Poppins', sans-serif; font-weight: 600; margin-bottom: 10px; }
+    .faq-a { color: #bbb; }
+
+    /* Fine table */
+    .fine-table { width: 100%; border-collapse: collapse; margin: 24px 0; }
+    .fine-table th { background: rgba(245,197,24,0.1); color: var(--yellow); font-family: 'Poppins', sans-serif; font-size: 13px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 12px 16px; text-align: left; border-bottom: 1px solid rgba(245,197,24,0.2); }
+    .fine-table td { padding: 14px 16px; border-bottom: 1px solid rgba(255,255,255,0.05); font-size: 15px; }
+    .fine-table tr:last-child td { border-bottom: none; }
+    .fine-table .amount { color: #ff6b6b; font-weight: 700; }
+
+    /* Summary + Key Takeaway */
+    .box-summary { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; padding: 24px 28px; margin: 0 0 32px; }
+    .summary-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-bottom: 14px; }
+    .box-summary ul { margin: 0; padding-left: 20px; }
+    .box-summary li { margin-bottom: 8px; font-size: 17px; color: #ccc; }
+    .box-takeaway { background: rgba(245,197,24,0.08); border-left: 4px solid var(--yellow); padding: 20px 24px; margin: 0 0 40px; border-radius: 0 4px 4px 0; }
+    .takeaway-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 10px; }
+    .box-takeaway p { margin: 0; font-size: 18px; font-weight: 600; color: var(--white); line-height: 1.6; }
+
+    /* Related articles */
+    .related-articles { margin: 2.5rem 0 2rem; padding: 1.5rem; background: #1a1a2e; border-left: 4px solid #f0a500; border-radius: 4px; }
+    .related-articles p:first-child { margin: 0 0 1rem; font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #f0a500; }
+    .related-articles ul { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+    .related-articles a { color: #e0e0e0; text-decoration: none; font-size: 0.95rem; }
+    .related-articles a:hover { color: #f0a500; }
+
+    /* Footer */
+    footer { border-top: 1px solid rgba(255,255,255,0.07); padding: 32px 40px; text-align: center; font-size: 13px; color: var(--muted); max-width: 900px; margin: 0 auto; }
+    footer a { color: var(--muted); text-decoration: none; }
+    footer a:hover { color: var(--white); }
+
+    @media (max-width: 600px) {
+      nav, .article-wrap, footer { padding: 20px; }
+      nav { flex-wrap: wrap; gap: 10px; }
+      .lang-switcher { order: 3; width: 100%; justify-content: center; }
+      .cta-section { padding: 32px 20px; }
+      .fine-table { font-size: 14px; }
+      .fine-table th, .fine-table td { padding: 10px 10px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="https://nis2klar.se/da/">NIS2<span>Klar</span></a>
+  <a class="nav-back" href="https://nis2klar.se/da/artikler.html">← Alle artikler</a>
+  <div class="lang-switcher">
+    <a href="https://nis2klar.se/artiklar.html" title="Svenska">SV</a>
+    <a href="https://nis2klar.se/en/articles.html" title="English">EN</a>
+    <a href="https://nis2klar.se/da/artikler.html" class="active" title="Dansk">DA</a>
+    <a href="https://nis2klar.se/no/artikler.html" title="Norsk">NO</a>
+    <a href="https://nis2klar.se/it/articoli.html" title="Italiano">IT</a>
+  </div>
+  <a class="nav-cta" href="https://nis2klar.se/da/#boka">Book møde →</a>
+</nav>
+
+<article class="article-wrap">
+  <div class="article-category">Sanktioner &amp; Overholdelses risiko</div>
+  <h1>NIS2-bøder og sanktioner: Hvad din virksomhed risikerer</h1>
+  <div class="article-meta">Opdateret 19. april 2026 · Læsning: ca 8 minutter · målgruppe: Direktører og bestyrelser</div>
+
+  <!-- SUMMARY -->
+  <div class="box-summary">
+    <div class="summary-label">Sammenfatning</div>
+    <ul>
+      <li>For direktører og bestyrelsesmedlemmer i NIS2-regulerede sektorer, som ønsker at forstå den faktiske sanktionsrisiko.</li>
+      <li>Bøder kan nå op til <strong>10 millioner euro</strong> eller 2% af den globale omsætning — hvad der er højest.</li>
+      <li>Personligt ansvar kan føre til midlertidig forbud mod at varetage ledelseshverv — ikke kun for virksomheden, men for hele branchen.</li>
+      <li>CFCS (Center for Cybersikkerhed) og sektortilsynene er allerede aktive. Tiden til at "se på det senere" er ovre.</li>
+    </ul>
+  </div>
+
+  <!-- KEY TAKEAWAY -->
+  <div class="box-takeaway">
+    <div class="takeaway-label">Vigtigste indsigt</div>
+    <p>NIS2 er ikke en IT-opgave — det er personligt ansvar for dig som direktør eller bestyrelsesmedlem, med bøder op til 10 millioner euro og risiko for fagligt forbud, hvis organisationen fejler.</p>
+  </div>
+
+  <!-- HOOK -->
+  <p>
+    Cybersikkerhedsloven (Lov nr. 1120 af 2023) trådte i kraft i Danmark i oktober 2024.
+    Den som ikke overholder den risikerer <strong>bøder op til 10 millioner euro</strong> — og et personligt forbud mod at varetage ledelseshverv.
+    Det er ikke IT-afdelingens risiko. Det er dit ansvar som direktør eller bestyrelsesmedlem.
+  </p>
+
+  <div class="box-warning">
+    <strong>Tilsynsmyndighederne er aktive.</strong> CFCS, Finanstilsynet, Energistyrelsen og andre sektortilsyn har allerede påbegyndt kontrolbesøg og granskninger. Der er ikke længere tid til "vi handler på det senere".
+  </div>
+
+  <h2>Hvad siger loven — præcis ordlyd?</h2>
+
+  <p>
+    NIS2-direktivet er EU-lovgivning. I Danmark blev det implementeret gennem <strong>Lov nr. 1120 af 2023 om net- og informationssikkerhed</strong>.
+    Loven gælder for organisationer i <strong>18 samfundskritiske sektorer</strong> — fra finans og sundhed til transport, energi og digital infrastruktur.
+  </p>
+
+  <p>
+    Loven opdeler virksomhederne i to kategorier:
+  </p>
+
+  <ul>
+    <li><strong>Væsentlige enheder</strong> — store organisationer med systemkritisk rolle (typisk over 250 ansatte eller omsætning over 50 mio. EUR)</li>
+    <li><strong>Vigtige enheder</strong> — mellemstore organisationer i regulerede sektorer (50–249 ansatte eller 10–50 mio. EUR i omsætning)</li>
+  </ul>
+
+  <p>
+    Usikker på, om din virksomhed omfattes? Omkostningen ved at gætte forkert er højere end omkostningen ved at få det kontrolleret.
+  </p>
+
+  <h2>Bødestørrelsen — hvad skal du forberede dig på?</h2>
+
+  <p>
+    Sanktionerne er tydelige. Størrelsen afhænger af, om din organisation klassificeres som væsentlig eller vigtig enhed.
+  </p>
+
+  <table class="fine-table">
+    <thead>
+      <tr>
+        <th>Kategori</th>
+        <th>Maksimal bøde</th>
+        <th>Alternativt beregningsgrundlag</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Væsentlig enhed</td>
+        <td class="amount">10 millioner euro</td>
+        <td>2% af global årlig omsætning</td>
+      </tr>
+      <tr>
+        <td>Vigtig enhed</td>
+        <td class="amount">7 millioner euro</td>
+        <td>1,4% af global årlig omsætning</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>
+    Det højeste beløb gælder. En virksomhed med 500 millioner kroner i omsætning (ca. 67 millioner euro), som klassificeres som væsentlig enhed, kan blive bødelagt med op til <strong>10 millioner euro</strong> — ikke 2% af omsætningen, da maksimumtaket på 10 millioner euro er højere.
+  </p>
+
+  <p>
+    Det vigtigste at forstå: Bøder beregnes <strong>pr. manglende sikkerhedsforanstaltning og pr. hændelse</strong>. En organisation kan ikke undgå ved at "være heldig". Hver mangel, hver manglende politik, hver svag proces kan blive til en selvstændig sanktion.
+  </p>
+
+  <div class="box-info">
+    <strong>Vigtig detalje:</strong> Bøder kan udmåles for hver enkelt manglende eller mangelfuld sikkerhedsforanstaltning — ikke som ét samlet maksimum for hele virksomheden. En organisation kan teoretisk blive idømt flere sanktioner parallelt.
+  </div>
+
+  <h2>Det personlige ansvar — du kan miste mere end penge</h2>
+
+  <p>
+    Det som sætter NIS2 markant fra tidligere direktiver er det <strong>personlige ledelsesansvar</strong>.
+    Artikel 20 i direktivet slår fast, at ledelsesorganer — direktør og bestyrelsesmedlemmer — er personligt ansvarlige for, at organisationen opfylder kravene.
+  </p>
+
+  <p>
+    Det er ikke nok at delegere til IT-chefen og håbe på det bedste. Loven kræver, at ledelsen:
+  </p>
+
+  <ol>
+    <li>Aktivt godkender og beslutter om sikkerhedsforanstaltningerne</li>
+    <li>Overvåger og følger deres implementering løbende</li>
+    <li>Kan dokumentere dette via mødereferater, rapporter og beslutningsdokumenter</li>
+  </ol>
+
+  <p>
+    CFCS kan — ved alvorlige eller gentagne mangler — udstede et <strong>midlertidigt forbud for direktør eller bestyrelsesmedlem at varetage ledelseshverv</strong>. Dette forbud gælder ikke blot for den pågældende virksomhed, men kan have konsekvenser på tværs af branchen og for fremtidig karriere.
+  </p>
+
+  <div class="box-warning">
+    <strong>Personlig konsekvens:</strong> Ikke blot en bøde til virksomheden, men et direkte forbud mod dig personligt at lede en organisation. Det kan ikke "betales af" med et styrelsesmøde i efteråret.
+  </div>
+
+  <h2>Hvad udløser en tilsyn og sanktion?</h2>
+
+  <p>
+    Tilsynsmyndighederne gransker situationer baseret på tre hovedscenarier:
+  </p>
+
+  <h3>1. Manglende eller forsinket hændelsesrapportering</h3>
+  <p>
+    <strong>Artikel 23</strong> forpligter organisationer til at rapportere alvorlige cyberincideneter inden <strong>24 timer</strong> (tidlig advarsel) og afgive en fuldstændig rapport inden <strong>72 timer</strong>.
+    Organisationer som oplever et dataindtrængen og prøver at håndtere det internt uden rapportering risikerer dobbelte sanktioner — én for selve hændelsen, én for manglende rapportering.
+  </p>
+
+  <h3>2. Manglende sikkerhedsforanstaltninger</h3>
+  <p>
+    <strong>Artikel 21</strong> specificerer ti obligatoriske sikkerhedsdomæner: risikoanalyse, hændelseshåndtering, driftskontinuitetsplanlægning, leverandørsikkerhed, adgangskontrol, kryptering, authentificering med flere.
+    Hvis organisationen mangler dokumenterede processer inden for en eller flere af disse domæner, er det en sanktionsgrundende mangel — selv hvis der ikke har fundet nogen hændelse sted.
+  </p>
+
+  <h3>3. Reaktiv tilsyn efter anmeldelse eller mistanke</h3>
+  <p>
+    Tilsynet kan starte på baggrund af en anmeldelse fra en medarbejder, kunde, forretningspartner eller fra en anden tilsynsmyndighed.
+    Det er ikke nødvendigt, at et cyberangreb har fundet sted for at udløse en granskning.
+  </p>
+
+  <h2>Hvordan foregår tilsynet i Danmark?</h2>
+
+  <p>
+    Danmark har et struktureret tilsynssystem. CFCS (Center for Cybersikkerhed) er den primære myndighed, men den konkrete tilsyn fordeles til sektortilsyn:
+  </p>
+
+  <ul>
+    <li><strong>Finanstilsynet</strong> — finanssektoren</li>
+    <li><strong>Energistyrelsen</strong> — energisektoren</li>
+    <li><strong>Erhvervsstyrelsen</strong> — telekommunikation og digital infrastruktur</li>
+    <li><strong>Styrelsen for Patientsikkerhed</strong> — sundhedssektoren</li>
+    <li><strong>CFCS</strong> — koordinering og andre sektorer</li>
+  </ul>
+
+  <p>
+    En tilsynsmyndighed der igangsætter en granskning kan anmode om dokumentation med kort varsel — typisk 14 til 30 dage. Virksomheder som mangler processdokumentation står øjeblikkeligt i en krise blot ved at modtage anmodningen.
+  </p>
+
+  <p>
+    Tilsynet fokuserer på <strong>bevisbarhed</strong>, ikke intentioner. Du kan ikke sige "vi arbejder på sikkerheden" — du skal dokumentere det.
+  </p>
+
+  <h2>Hvad regnes for "dokumenteret" overholdelse?</h2>
+
+  <p>
+    Tilsynsmyndighederne vurderer ikke din "bestræbelse" eller "god vilje". De vurderer, om du kan bevise, at specificerede sikkerhedsforanstaltninger eksisterer og fungerer.
+  </p>
+
+  <p>
+    Det som kræves, er sådan her konkret dokumentation:
+  </p>
+
+  <ul>
+    <li>Risikovurdering gennemført, dateret og underskrevet</li>
+    <li>Sikkerhedspolitik vedtaget af bestyrelsen (med mødereferat som bevis)</li>
+    <li>Incidenthåndteringsplan med klare roller, eskalationsveje og testdokumentation</li>
+    <li>Leverandørinventar med dokumenterede sikkerhedskrav</li>
+    <li>Uddannelseslog for ledelse og medarbejdere</li>
+    <li>Styrelsesmøtereferat hvori sikkerhedsforanstaltningerne godkendes (Artikel 20 dokumentation)</li>
+    <li>Certificering eller compliance-rapporter fra revisor eller tredjepart</li>
+  </ul>
+
+  <p>
+    Hvis du mangler disse dokumenter den dag tilsynet starter, betyder det ikke noget, hvad du faktisk gør teknisk set. Bevisbyrden ligger hos dig.
+  </p>
+
+  <div class="box-case">
+    <div class="case-label">Praktisk eksempel</div>
+    <p>
+      <strong>Scenario: Et dansk mellemstort IT-serviceselskab, 180 ansatte.</strong>
+    </p>
+    <p>
+      Klassificeres som vigtig enhed under NIS2. Bliver ramt af et ransomware-angreb i februar 2026.
+      IT-afdelingen opdager indtrænget på dag 1, men direktionen beslutter at afvente intern granskning før rapportering til CFCS.
+      72-timers fristen i Artikel 23 passerer uden, at CFCS er underrettet.
+    </p>
+    <p>
+      En medarbejder eller kunde anmelder driftsforstyrrelserne til Energistyrelsen (da virksomheden leverer systemkritisk infrastruktur).
+      Tilsynsmyndighederne initierer granskning. Under kontrol bliver det klart, at virksomheden mangler:
+      En vedtaget incidenthåndteringsplan, dokumentation af styrelsens godkendelse af sikkerhedsmål, og skriftlig dokumentation af ledelsesansvar.
+    </p>
+    <p>
+      <strong>Resultat:</strong> Sanktionsafgift for manglende rapportering. Yderligere afgift for manglende sikkerhedsdokumentation.
+      Direktøren bliver indskærpet med formelt tilsyn og betinget forbud.
+      Samlet omkostning inklusive juridisk bistand: estimeret <span class="danger">15–25 millioner danske kroner</span>.
+    </p>
+  </div>
+
+  <h2>Ofte stillede spørgsmål</h2>
+
+  <div class="faq-item">
+    <div class="faq-q">Har nogen dansk virksomhed faktisk fået bøder endnu?</div>
+    <div class="faq-a">Loven trådte i kraft oktober 2024, og tilsynsmyndighederne er netop nu i gang med deres første større granskninger. CFCS og sektortilsynene udfører systematiske kontrol af væsentlige enheder. I EU har andre lande allerede udmålt bøder. Danmark følger samme mønster. At vente på at se en konkurrent blive ramt er at vente for længe — det er når kontrollen kommer, at du har brug for dokumentation.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">Vi er ret små — gælder bøderne også os?</div>
+    <div class="faq-a">Det er et berettiget spørgsmål. NIS2 skelner mellem "væsentlige" og "vigtige" enheder. Tærsklen er omkring 50 ansatte eller 10 millioner euro i omsætning inden for en relevant sektor. Under det grænses typisk ud. Over det gælder samme sanktionsregime uanset om du er 55 eller 5000 ansatte. Tjek dine tal mod de 18 sektorer som nævnes i loven — og hvis du er usikker, er det billigere at få en juridisk vurdering end at gætte forkert.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">Holder det ikke hvis IT-afdelingen styrer det her?</div>
+    <div class="faq-a">Det er fristende at delegere, men Artikel 20 løser ikke det på den måde. Loven siger direkte, at <strong>ledelsesorganer</strong> skal godkende og overvåge. Det betyder direktør og bestyrelse. IT-afdelingen kan udføre arbejdet, men ledelsen skal <strong>tale om det</strong>, <strong>beslutte på det</strong>, og <strong>dokumentere</strong> at det er sket. Uden dette papirarbejde har du ikke dekt dit ansvar — uanset hvad IT teknisk gør.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">Hvad hvis vi venter tre måneder mere?</div>
+    <div class="faq-a">Tilsynet venter ikke på din tidsplan. Heller ikke cyberangreb. Hver dag uden dokumenterede sikkerhedsforanstaltninger er en dag hvor en granskning — eller en hændelse — kan ramme dig helt uforberdt. En gap-analyse (sammenligning mellem det du har og det loven kræver) koster næsten intet sammenlignet med at blive granskede uden dokumentation. Start nu, og du sparer både stress og penge.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">Gælder NIS2 selvom vi ikke har haft en cyberincidet?</div>
+    <div class

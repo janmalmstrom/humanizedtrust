@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-BKF3QH9K01"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag("js", new Date());
+    gtag("config", "G-BKF3QH9K01");
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NIS2 Tredjepartsrisk: Komplett guide för leverantörsbedömning | NIS2Klar</title>
+  <meta name="description" content="Leverantörssäkerhet är en av de tre viktigaste NIS2-frågorna. Lär dig hur du bedömer och hanterar tredjepartsrisk med säkerhetsfrågeformulär och styrelsedokumentation.">
+  <meta property="og:title" content="NIS2 Tredjepartsrisk: Komplett guide för leverantörsbedömning">
+  <meta property="og:description" content="Leverantörssäkerhet är en av de tre viktigaste NIS2-frågorna. Lär dig hur du bedömer och hanterar tredjepartsrisk med säkerhetsfrågeformulär och styrelsedokumentation.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #141416;
+      --card: #1c1c1f;
+      --yellow: #f5c518;
+      --white: #f0f0f0;
+      --muted: #888;
+      --red: #C61212;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: var(--bg); color: var(--white); font-family: 'Barlow', sans-serif; font-size: 19px; line-height: 1.8; }
+
+    /* Nav */
+    nav { display: flex; justify-content: space-between; align-items: center; padding: 20px 40px; border-bottom: 1px solid rgba(255,255,255,0.07); max-width: 900px; margin: 0 auto; }
+    .nav-logo { font-family: 'Poppins', sans-serif; font-weight: 900; font-size: 20px; color: var(--yellow); text-decoration: none; }
+    .nav-logo span { color: var(--white); }
+    .nav-back { color: var(--muted); text-decoration: none; font-size: 15px; }
+    .nav-back:hover { color: var(--white); }
+    .nav-cta { background: var(--yellow); color: #000; padding: 8px 18px; border-radius: 4px; text-decoration: none; font-weight: 700; font-size: 14px; font-family: 'Poppins', sans-serif; }
+
+    /* Article */
+    .article-wrap { max-width: 760px; margin: 0 auto; padding: 60px 40px; }
+    .article-category { font-size: 13px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 16px; }
+    h1 { font-family: 'Poppins', sans-serif; font-size: clamp(30px, 4vw, 44px); font-weight: 900; line-height: 1.2; margin-bottom: 24px; }
+    .article-meta { font-size: 15px; color: var(--muted); margin-bottom: 48px; padding-bottom: 24px; border-bottom: 1px solid rgba(255,255,255,0.07); }
+    h2 { font-family: 'Poppins', sans-serif; font-size: 26px; font-weight: 700; margin: 48px 0 16px; color: var(--white); }
+    h3 { font-family: 'Poppins', sans-serif; font-size: 20px; font-weight: 600; margin: 32px 0 12px; color: var(--yellow); }
+    p { margin-bottom: 22px; }
+    strong { color: var(--white); font-weight: 700; }
+    .highlight { color: var(--yellow); font-weight: 700; }
+    .danger { color: #ff6b6b; font-weight: 700; }
+    ul, ol { margin: 16px 0 24px 24px; }
+    li { margin-bottom: 12px; font-size: 19px; }
+
+    /* Callout boxes */
+    .box-warning { background: rgba(197,17,17,0.12); border-left: 4px solid var(--red); padding: 20px 24px; margin: 32px 0; border-radius: 0 4px 4px 0; }
+    .box-info { background: rgba(245,197,24,0.08); border-left: 4px solid var(--yellow); padding: 20px 24px; margin: 32px 0; border-radius: 0 4px 4px 0; }
+    .box-case { background: var(--card); border: 1px solid rgba(255,255,255,0.08); padding: 28px; margin: 40px 0; border-radius: 4px; }
+    .box-case .case-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 12px; }
+    blockquote { border-left: 3px solid var(--yellow); padding: 12px 20px; margin: 24px 0; font-style: italic; color: #ccc; }
+
+    /* CTA */
+    .cta-section { background: var(--card); border: 1px solid rgba(245,197,24,0.2); border-radius: 4px; padding: 48px 40px; margin: 64px 0 40px; text-align: center; }
+    .cta-section h2 { margin-top: 0; font-size: 26px; }
+    .cta-section p { color: #aaa; max-width: 500px; margin: 0 auto 28px; }
+    .btn-primary { display: inline-block; background: var(--yellow); color: #000; font-family: 'Poppins', sans-serif; font-weight: 800; font-size: 16px; padding: 16px 36px; border-radius: 4px; text-decoration: none; }
+    .btn-primary:hover { background: #e0b010; }
+    .cta-fine { font-size: 13px; color: var(--muted); margin-top: 16px; }
+
+    /* FAQ */
+    .faq-item { border-bottom: 1px solid rgba(255,255,255,0.07); padding: 20px 0; }
+    .faq-q { font-family: 'Poppins', sans-serif; font-weight: 600; margin-bottom: 10px; }
+    .faq-a { color: #bbb; }
+
+    /* Fine table */
+    .fine-table { width: 100%; border-collapse: collapse; margin: 24px 0; }
+    .fine-table th { background: rgba(245,197,24,0.1); color: var(--yellow); font-family: 'Poppins', sans-serif; font-size: 13px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 12px 16px; text-align: left; border-bottom: 1px solid rgba(245,197,24,0.2); }
+    .fine-table td { padding: 14px 16px; border-bottom: 1px solid rgba(255,255,255,0.05); font-size: 15px; }
+    .fine-table tr:last-child td { border-bottom: none; }
+    .fine-table .amount { color: #ff6b6b; font-weight: 700; }
+
+    /* Summary + Key Takeaway */
+    .box-summary { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; padding: 24px 28px; margin: 0 0 32px; }
+    .summary-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-bottom: 14px; }
+    .box-summary ul { margin: 0; padding-left: 20px; }
+    .box-summary li { margin-bottom: 8px; font-size: 17px; color: #ccc; }
+    .box-takeaway { background: rgba(245,197,24,0.08); border-left: 4px solid var(--yellow); padding: 20px 24px; margin: 0 0 40px; border-radius: 0 4px 4px 0; }
+    .takeaway-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 10px; }
+    .box-takeaway p { margin: 0; font-size: 18px; font-weight: 600; color: var(--white); line-height: 1.6; }
+
+    /* Footer */
+    footer { border-top: 1px solid rgba(255,255,255,0.07); padding: 32px 40px; text-align: center; font-size: 13px; color: var(--muted); max-width: 900px; margin: 0 auto; }
+    footer a { color: var(--muted); }
+
+    @media (max-width: 600px) {
+      nav, .article-wrap, footer { padding: 20px; }
+      .cta-section { padding: 32px 20px; }
+      .fine-table { font-size: 14px; }
+      .fine-table th, .fine-table td { padding: 10px 10px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="https://nis2klar.se/">NIS2<span>Klar</span></a>
+  <a class="nav-back" href="https://nis2klar.se/artiklar.html">← Alla artiklar</a>
+  <a class="nav-cta" href="https://nis2klar.se/#boka">Boka samtal →</a>
+</nav>
+
+<article class="article-wrap">
+  <div class="article-category">Tredjepartsrisk &amp; Leverantörer</div>
+  <h1>NIS2 Tredjepartsrisk: Komplett guide för leverantörsbedömning</h1>
+  <div class="article-meta">Uppdaterad 19 april 2026 · Lästid: ca 8 minuter · Målgrupp: VD &amp; Styrelse</div>
+
+  <!-- SUMMARY -->
+  <div class="box-summary">
+    <div class="summary-label">Sammanfattning</div>
+    <ul>
+      <li>Leverantörssäkerhet är en av de tre viktigaste frågorna under NIS2 — Artikel 21(2)(e) är obligatorisk.</li>
+      <li>Du är ansvarig för dina leverantörers säkerhet. Deras brister kan utlösa sanktioner mot ditt bolag.</li>
+      <li>Ett strukturerat säkerhetsfrågeformulär + årlig uppföljning är minsta nivå för dokumentation.</li>
+      <li>En operativt kritisk leverantör som inte klarar kraven kräver en explicit riskreduceringsstrategi — inte bara hopp och förhoppningar.</li>
+      <li>Styrelsedokumentation på denna punkt kan spara dig från personligt ansvar enligt Artikel 20.</li>
+    </ul>
+  </div>
+
+  <!-- KEY TAKEAWAY -->
+  <div class="box-takeaway">
+    <div class="takeaway-label">Viktigaste slutsatsen</div>
+    <p>Leverantörsrisken är inte en IT-affär. Det är en styrelsefråga. Du måste kunna visa att du aktivt bedömer, godkänner och övervakar dina leverantörers säkerhet — eller accepterar och dokumenterar risken medvetet.</p>
+  </div>
+
+  <!-- HOOK -->
+  <p>
+    De tre viktigaste säkerhetsfrågorna under NIS2 är inte teknik, teknik och teknik. De är:
+  </p>
+
+  <ol style="margin: 24px 0 32px 24px; font-weight: 600;">
+    <li>Riskanalys &amp; styrelsegodkännande</li>
+    <li>Incidenthantering &amp; rapportering</li>
+    <li><strong>Leverantörssäkerhet &amp; tredjepartsrisk</strong></li>
+  </ol>
+
+  <p>
+    Din organisation använder troligtvis tiotals leverantörer — från molnleverantörer och hosting-företag till konsulter, integratörer och underhållsföretag. Var och en av dem är en potentiell väg in för en angripare. Om en av dina leverantörer blir hackad och datan härifrån används för att attackera dig, kan <strong>du få böterna</strong> — inte leverantören.
+  </p>
+
+  <p>
+    Det är därför <strong>Artikel 21(2)(e)</strong> i NIS2-direktivet kräver att du har en dokumenterad process för <span class="highlight">säkerhetsbedömning, övervakning och hantering av leverantörsrisk</span>. Utan denna process har du en sanktionsgrundande brist — punkt slut.
+  </p>
+
+  <div class="box-warning">
+    <strong>Riskexempel:</strong> Din SaaS-leverantör får ett ransomware-angrepp. Din data läcker. Attackerna använder sedan din organisation för vidare intrång i dina kunders nätverk. Du blir anmäld. Tillsynsmyndigheten granskar och frågar: "Visar ni att ni bedömde denna leverantörs säkerhet innan ni förtroende honom med era data?" Om svaret är nej — eller "IT hanterade det utan dokumentation" — får du en sanktion. Leverantören kan hävda att de inte är reglerade under NIS2 och därmed inte sanktioneras.
+  </div>
+
+  <h2>Varför tredjepartsrisk är en av de tre viktigaste frågorna</h2>
+
+  <p>
+    En organisationscultur där säkerhet är ledningens ansvar börjar med ett enkelt faktum: <strong>du kan inte kontrollera vad du inte kan se</strong>.
+  </p>
+
+  <p>
+    De flesta organisationer använder molntjänster. Du betalar för att någon annan lagrar dina data, kör din applikation och uppdaterar säkerhetspatcherna. Det är en handel: bekvämhet för exponering. NIS2 säger: denna exponering måste du <strong>kartlägga, bedöma, dokumentera och övervaka aktivt</strong>.
+  </p>
+
+  <p>
+    Här är varför det är bland de tre viktigaste frågorna:
+  </p>
+
+  <h3>1. Angripare följer linjen av minsta motstånd</h3>
+  <p>
+    En utomstående som vill in i ditt nätverk börjar inte med dina försvar — de börjar med dina leverantörers försvar. Det är ofta lättare att bryta sig in i en liten underhållsfirma som har fjärråtkomst till dina system än att attackera ditt huvudkontor direkt. Du är så säker som dina svagaste länk — och den länken är ofta en leverantör.
+  </p>
+
+  <h3>2. Du äger ansvaret för deras säkerhet under NIS2</h3>
+  <p>
+    Du kan inte säga "leverantören var ansvarig för att säkra datan". Lagen säger att <strong>du</strong> är ansvarig för att välja leverantörer som är tillräckligt säkra. Det spelar ingen roll att du inte själv är ISO 27001-certifierad — om din molnleverantör inte är det måste du kunna förklara för tillsynsmyndigheten varför du accepterar denna risk.
+  </p>
+
+  <h3>3. Det är en av få områden där dokumentationen är helt under din kontroll</h3>
+  <p>
+    Du kan inte alltid garantera att du aldrig blir hackad. Men du <strong>kan</strong> garantera att du före detta hänt frågade dina leverantörer om säkerhet, dokumenterade deras svar, och återkopplade med dem årligen. Denna dokumentation är ditt försvar mot personligt ansvar enligt Artikel 20.
+  </p>
+
+  <h2>Vad är en "leverantör" enligt NIS2?</h2>
+
+  <p>
+    Definitionen är bred. Det är inte bara dina "kritiska" leverantörer. I NIS2-sammanhang räknas som leverantör:
+  </p>
+
+  <ul>
+    <li><strong>Infrastrukturleverantörer:</strong> hosting, molnplattformar, datacenter (Azure, AWS, on-prem underhållare)</li>
+    <li><strong>Tillämpningsleverantörer:</strong> SaaS-lösningar, arbetsgivaresystem, CRM, ekonomisystem</li>
+    <li><strong>Tjänsteleverantörer:</strong> IT-support, säkerhetsgranskningar, penetrationstester, konsulter</li>
+    <li><strong>Infrastrukturleverantörer:</strong> internetleverantörer, telefoni, fysisk säkerhet</li>
+    <li><strong>Outsourcingpartners:</strong> IT-drift, supportcenter, back-office-processer</li>
+  </ul>
+
+  <p>
+    Du behöver inte bedöma din brevleverantörs cybersäkerhet. Men varje leverantör som hanterar, lagrar eller förmedlar dina digitala data eller har åtkomst till dina system räknas.
+  </p>
+
+  <h2>Steg 1: Inventarisering — Vem är dina leverantörer egentligen?</h2>
+
+  <p>
+    Den vanligaste överraskningen är att organisationen inte vet hur många leverantörer de faktiskt använder. Finance använder ett ekonomisystem. HR använder sitt eget. IT har en molnplattform. Marknadsföring använder ett CRM. Support använder en ticketing-lösning. Och ingen har en master-lista.
+  </p>
+
+  <p>
+    <strong>Börja här:</strong>
+  </p>
+
+  <ol>
+    <li>Genomför en leverantörssamlning från alla avdelningar — finance, HR, IT, drift, juridik, säkerhet</li>
+    <li>Kategorisera varje leverantör efter kritikalitet:
+      <ul style="margin: 8px 0 8px 24px; font-size: 17px;">
+        <li><strong>Kritisk:</strong> Utan denna leverantör stannar verksamheten, eller data läcker direkt</li>
+        <li><strong>Viktig:</strong> Påverkar verksamheten märkbart, men inte omedelbar stopp</li>
+        <li><strong>Stöd:</strong> Nice-to-have eller låg påverkan på säkerhet/drift</li>
+      </ul>
+    </li>
+    <li>Dokumentera för varje leverantör:
+      <ul style="margin: 8px 0 8px 24px; font-size: 17px;">
+        <li>Namn och kontaktuppgifter</li>
+        <li>Vilka data / system de hanterar</li>
+        <li>Värdland (för GDPR &amp; dataresidens-överväganden)</li>
+        <li>Kontraktsstatus</li>
+      </ul>
+    </li>
+  </ol>
+
+  <p>
+    En organisation med 100–500 anställda har ofta 30–80 leverantörer. En större organisation kan ha 200+. Det verkar överväldigande — men du behöver bara bedöma den <strong>kritiska och viktiga</strong> delen aktivt. Resten kan klassificeras som "låg risk" med en enkel motivering.
+  </p>
+
+  <h2>Steg 2: Säkerhetsbedömning — Vad bör du fråga?</h2>
+
+  <p>
+    Du behöver ett säkerhetsfrågeformulär. Det kan vara enkelt — en Google Form räcker för att komma igång. Eller det kan vara ett strukturerat verktyg från en tredje part som CAIQ (Cloud Security Alliance), Canarvy eller liknande.
+  </p>
+
+  <p>
+    <strong>Minsta nivå för ett säkerhetsfrågeformulär:</strong>
+  </p>
+
+  <table class="fine-table">
+    <thead>
+      <tr>
+        <th>Område</th>
+        <th>Exempelfrågor</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Organisation &amp; Styrning</strong></td>
+        <td>Är ni ISO 27001-certifierade? Har ni en informationssäkerhetspolicy? Vem är säkerhetschef?</td>
+      </tr>
+      <tr>
+        <td><strong>Åtkomstkontroll</strong></td>
+        <td>Använder ni multifaktoriell autentisering (MFA)? Hur hanterar ni lösenord? Finns det rollbaserad åtkomstkontroll?</td>
+      </tr>
+      <tr>
+        <td><strong>Data &amp; Kryptering</strong></td>
+        <td>Är data krypterad i transit och i vila? Var lagras data fysiskt? Kan ni garantera dataresidens?</td>
+      </tr>
+      <tr>
+        <td><strong>Incidenthantering</strong></td>
+        <td>Har ni en incidentplan? Hur snabbt kan ni rapportera en säkerhetshändelse? Granskar ni incidenter post-mortem?</td>
+      </tr>
+      <tr>
+        <td><strong>Underleverantörer</strong></td>
+        <td>Använder ni själva underleverantörer? Om ja, hur granskar ni dem?</td>
+      </tr>
+      <tr>
+        <td><strong>Uppdateringar &amp; Patch Management</strong></td>
+        <td>Hur ofta uppdaterar ni systemen? Hur hanterar ni kritiska säkerhetsuppdateringar?</td>
+      </tr>
+      <tr>
+        <td><strong>Säkerhetsgranskning</strong></td>
+        <td>Genomför ni regelbundna säkerhetsgranskar och penetrationstester? Kan ni visa resultat?</td>
+      </tr>
+      <tr>
+        <td><strong>Backup &amp; Kontinuitet</strong></td>
+        <td>Hur ofta tar ni backup? Kan ni återställa efter ransomware? Finns Recovery Time Objective (RTO)?</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>
+    Skicka detta formulär till alla "kritiska" och "viktiga" leverantörer. Ställ ett deadline på två veckor. Dokumentera svaren — även om en leverantör inte svarar är detta värt att dokumentera.
+  </p>
+
+  <div class="box-info">
+    <strong>Praktiskt tips:</strong> För molnleverantörer som Azure, AWS, Google Cloud — de publicerar ofta säkertsrapporter, compliance-dokument och överensstämmelsecertifikat direkt. Du behöver inte skicka ett formulär. Du kan referera till deras offentliga dokumentation och spara tid.
+  </div>
+
+  <h2>Steg 3: Riskbedömning — Vad gör du med svaren?</h2>
+
+  <p>
+    Du får 30 svar på 30 frågor från 10 leverantörer. Vad gör du nu?
+  </p>
+
+  <p>
+    <strong>Gör en enkel riskmatris:</strong>
+  </p>
+
+  <ul>
+    <li><strong>Högt kritisk leverantör + låga säkerhetskontroller = Högrisk:</strong> Omedelbar åtgärd krävs</li>
+    <li><strong>Högt kritisk leverantör + höga säkerhetskontroller = Acceptabel:</strong> Årlig uppföljning</li>
+    <li><strong>Lågt viktig leverantör + låga säkerhetskontroller = Lågrisk:</strong> Acceptera risken, dokumentera beslutet</li>
+  </ul>
+
+  <p>
+    Exempel:
+  </p>
+
+  <table class="fine-table">
+    <thead>
+      <tr>
+        <th>Leverantör</th>
+        <th>Kritikalitet</th>
+        <th>Säkerhetskontroller</th>
+        <th>Risk</th>
+        <th>Åtgärd</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Azure (molnplattform)</td>
+        <td>Kritisk</td>
+        <td>ISO 27001 + SOC 2</td>
+        <td>Låg</td>
+        <td>Årlig uppföljning</td>
+      </tr>
+      <tr>
+        <td>Lokalt IT-support</td>
+        <td>Kritisk</td>
+        <td>Ingen policy, kan inte visa ISO</td>
+        <td><span class="danger">Hög</span></td>
+        <td>Förhandling eller byte</td>
+      </tr>
+      <tr>
+        <td>E-posttjänst (Hotmail-konto för inledande möten)</td>
+        <td>Låg</td>
+        <td>Microsofts standardkontroller</td>
+        <td>Låg</td>
+        <td>Acceptera, dokumentera</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>Steg 4: Hantering av högrisk-leverantörer</h2>
+
+  <p>
+    Det klassiska dilemmat: en leverantör är kritisk för din verksamhet, men de klarar inte de säkerhetskrav du skulle vilja ställa. Vad gör du?
+  </p>
+
+  <p>
+    Du kan inte bara hoppas. Du måste dokumentera en <strong>explicit riskreduceringsstrategi</strong>. Här är tre vägar:
+  </p>
+
+  <h3>Väg 1: Byte av leverantör</h3>
+  <p>
+    Om leverantören inte kan eller vill förbättra sin säkerhet — byt. Det är den enklaste vägen. Riskera inte ett helt bolag för en leverantör. En byte tar 3–6 månader, men det är värt investeringen.
+  </p>
+
+  <h3>Väg 2: Förhandlad förbättring med tidslinje</h3>
+  <p>
+    Leverantören erkänner risken och lovar förbättring. <strong>Dokumentera detta i ett brev</strong> från leverantörens ledare till din VD. Sätt milstolpar: "ISO 27001-certifiering inom 12 månader", "MFA implementerat inom 3 månader", osv. Följ upp vid varje milstolpe. Om de missar, övergå till väg 1 eller 3.
+  </p>
+
+  <h3>Väg 3: Riskminskning genom kompensatoriska kontroller</h3>
+  <p>
+    Leverantören kan inte implementera MFA. Men du kan begränsa vem som har åtkomst, övervaka all åtkomst aktivt, och kräva daglig rapportering. Du kan också begränsa vilka data de har tillgång till.
+  </p>
+
+  <p>
+    Exempel: En lokal IT-supportfirma utan säkerhetscertifiering. Du kan:
+  </p>
+
+  <ul>
+    <li>Ge dem endast åtkomst till specifika ej-kritiska system (inte databasen, inte mailet)</li>
+    <li>Kräva att all åtkomst loggas och granskas veckovis av en intern chef</li>
+    <li>Implementera MFA för <strong>dina</strong> system (även om de inte kan göra det själva)</li>
+    <li>Sätt årliga säkerhetsgranskar av externa granskare för denna leverantör specifikt</li>
+  </ul>
+
+  <div class="box-case">
+    <div class="case-label">Fallstudie: Operativt kritisk leverantör utan certifiering</div>
+    <p>
+      <strong>Scenario:</strong> Medelstort sjukhus i Sverige. IT-systemet drivs av en lokal supportfirma på 8 personer som inte är ISO 27001-certifierade eller har formell säkerhetspolicy. Bytet till en större leverantör skulle ta 18 månader och kosta 2 miljoner kronor. Parallellt är systemet kritiskt för patientvärd.
+    </p>
+    <p>
+      <strong>Strategi:</strong> Sjukhuset dokumenterar:
+    </p>
+    <ol style="margin: 12px 0 12px 24px; font-size: 17px;">
+      <li>Högrisk-status för denna leverantör (kritisk + låga kontroller)</li>
+      <li>Byte skulle påverka patientvården negativt under öv

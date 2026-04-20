@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-BKF3QH9K01"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag("js", new Date());
+    gtag("config", "G-BKF3QH9K01");
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cos'è la Direttiva NIS2? Una guida per le aziende italiane | NIS2Klar</title>
+  <meta name="description" content="Cos'è la Direttiva NIS2 e cosa cambia per le aziende italiane? Una guida chiara per CEO e consigli di amministrazione: obblighi, sanzioni e responsabilità personale.">
+  <meta property="og:title" content="Cos'è la Direttiva NIS2? Una guida per le aziende italiane">
+  <meta property="og:description" content="Cos'è la Direttiva NIS2 e cosa cambia per le aziende italiane? Una guida chiara per CEO e consigli di amministrazione: obblighi, sanzioni e responsabilità personale.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #141416;
+      --card: #1c1c1f;
+      --yellow: #f5c518;
+      --white: #f0f0f0;
+      --muted: #888;
+      --red: #C61212;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: var(--bg); color: var(--white); font-family: 'Barlow', sans-serif; font-size: 19px; line-height: 1.8; }
+
+    /* Nav */
+    nav { display: flex; justify-content: space-between; align-items: center; padding: 20px 40px; border-bottom: 1px solid rgba(255,255,255,0.07); max-width: 900px; margin: 0 auto; }
+    .nav-logo { font-family: 'Poppins', sans-serif; font-weight: 900; font-size: 20px; color: var(--yellow); text-decoration: none; }
+    .nav-logo span { color: var(--white); }
+    .nav-back { color: var(--muted); text-decoration: none; font-size: 15px; }
+    .nav-back:hover { color: var(--white); }
+    .nav-cta { background: var(--yellow); color: #000; padding: 8px 18px; border-radius: 4px; text-decoration: none; font-weight: 700; font-size: 14px; font-family: 'Poppins', sans-serif; }
+
+    /* Article */
+    .article-wrap { max-width: 760px; margin: 0 auto; padding: 60px 40px; }
+    .article-category { font-size: 13px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 16px; }
+    h1 { font-family: 'Poppins', sans-serif; font-size: clamp(30px, 4vw, 44px); font-weight: 900; line-height: 1.2; margin-bottom: 24px; }
+    .article-meta { font-size: 15px; color: var(--muted); margin-bottom: 48px; padding-bottom: 24px; border-bottom: 1px solid rgba(255,255,255,0.07); }
+    h2 { font-family: 'Poppins', sans-serif; font-size: 26px; font-weight: 700; margin: 48px 0 16px; color: var(--white); }
+    h3 { font-family: 'Poppins', sans-serif; font-size: 20px; font-weight: 600; margin: 32px 0 12px; color: var(--yellow); }
+    p { margin-bottom: 22px; }
+    strong { color: var(--white); font-weight: 700; }
+    .highlight { color: var(--yellow); font-weight: 700; }
+    .danger { color: #ff6b6b; font-weight: 700; }
+    ul, ol { margin: 16px 0 24px 24px; }
+    li { margin-bottom: 12px; font-size: 19px; }
+
+    /* Callout boxes */
+    .box-warning { background: rgba(197,17,17,0.12); border-left: 4px solid var(--red); padding: 20px 24px; margin: 32px 0; border-radius: 0 4px 4px 0; }
+    .box-info { background: rgba(245,197,24,0.08); border-left: 4px solid var(--yellow); padding: 20px 24px; margin: 32px 0; border-radius: 0 4px 4px 0; }
+    .box-case { background: var(--card); border: 1px solid rgba(255,255,255,0.08); padding: 28px; margin: 40px 0; border-radius: 4px; }
+    .box-case .case-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 12px; }
+    blockquote { border-left: 3px solid var(--yellow); padding: 12px 20px; margin: 24px 0; font-style: italic; color: #ccc; }
+
+    /* CTA */
+    .cta-section { background: var(--card); border: 1px solid rgba(245,197,24,0.2); border-radius: 4px; padding: 48px 40px; margin: 64px 0 40px; text-align: center; }
+    .cta-section h2 { margin-top: 0; font-size: 26px; }
+    .cta-section p { color: #aaa; max-width: 500px; margin: 0 auto 28px; }
+    .btn-primary { display: inline-block; background: var(--yellow); color: #000; font-family: 'Poppins', sans-serif; font-weight: 800; font-size: 16px; padding: 16px 36px; border-radius: 4px; text-decoration: none; }
+    .btn-primary:hover { background: #e0b010; }
+    .cta-fine { font-size: 13px; color: var(--muted); margin-top: 16px; }
+
+    /* FAQ */
+    .faq-item { border-bottom: 1px solid rgba(255,255,255,0.07); padding: 20px 0; }
+    .faq-q { font-family: 'Poppins', sans-serif; font-weight: 600; margin-bottom: 10px; }
+    .faq-a { color: #bbb; }
+
+    /* Fine table */
+    .fine-table { width: 100%; border-collapse: collapse; margin: 24px 0; }
+    .fine-table th { background: rgba(245,197,24,0.1); color: var(--yellow); font-family: 'Poppins', sans-serif; font-size: 13px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 12px 16px; text-align: left; border-bottom: 1px solid rgba(245,197,24,0.2); }
+    .fine-table td { padding: 14px 16px; border-bottom: 1px solid rgba(255,255,255,0.05); font-size: 15px; }
+    .fine-table tr:last-child td { border-bottom: none; }
+    .fine-table .amount { color: #ff6b6b; font-weight: 700; }
+
+    /* Summary + Key Takeaway */
+    .box-summary { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; padding: 24px 28px; margin: 0 0 32px; }
+    .summary-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-bottom: 14px; }
+    .box-summary ul { margin: 0; padding-left: 20px; }
+    .box-summary li { margin-bottom: 8px; font-size: 17px; color: #ccc; }
+    .box-takeaway { background: rgba(245,197,24,0.08); border-left: 4px solid var(--yellow); padding: 20px 24px; margin: 0 0 40px; border-radius: 0 4px 4px 0; }
+    .takeaway-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 10px; }
+    .box-takeaway p { margin: 0; font-size: 18px; font-weight: 600; color: var(--white); line-height: 1.6; }
+
+    /* Footer */
+    footer { border-top: 1px solid rgba(255,255,255,0.07); padding: 32px 40px; text-align: center; font-size: 13px; color: var(--muted); max-width: 900px; margin: 0 auto; }
+    footer a { color: var(--muted); }
+
+    @media (max-width: 600px) {
+      nav, .article-wrap, footer { padding: 20px; }
+      .cta-section { padding: 32px 20px; }
+      .fine-table { font-size: 14px; }
+      .fine-table th, .fine-table td { padding: 10px 10px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="https://nis2klar.se/it/">NIS2<span>Klar</span></a>
+  <a class="nav-back" href="https://nis2klar.se/it/articoli.html">← Tutti gli articoli</a>
+  <div class="lang-switcher" style="display:flex;gap:8px;align-items:center;font-size:13px;font-family:'Poppins',sans-serif;">
+    <a href="https://nis2klar.se/artiklar.html" style="color:#888;text-decoration:none;font-weight:600;padding:4px 8px;border-radius:3px;" title="Svenska">SV</a>
+    <a href="https://nis2klar.se/en/articles.html" style="color:#888;text-decoration:none;font-weight:600;padding:4px 8px;border-radius:3px;" title="English">EN</a>
+    <a href="https://nis2klar.se/da/artikler.html" style="color:#888;text-decoration:none;font-weight:600;padding:4px 8px;border-radius:3px;" title="Dansk">DA</a>
+    <a href="https://nis2klar.se/no/artikler.html" style="color:#888;text-decoration:none;font-weight:600;padding:4px 8px;border-radius:3px;" title="Norsk">NO</a>
+    <a href="https://nis2klar.se/it/articoli.html" style="color:#f5c518;text-decoration:none;font-weight:600;padding:4px 8px;border-radius:3px;background:rgba(245,197,24,0.1);" title="Italiano">IT</a>
+  </div>
+  <a class="nav-cta" href="/nis2.html#boka">Prenota una chiamata →</a>
+</nav>
+
+<article class="article-wrap">
+  <div class="article-category">Introduzione &amp; Conformità</div>
+  <h1>Cos'è la Direttiva NIS2? Una guida per le aziende italiane</h1>
+  <div class="article-meta">Aggiornato 17 aprile 2026 · Tempo di lettura: ca. 8 minuti · Destinatari: CEO, Presidenti e Consiglieri di Amministrazione</div>
+
+  <!-- SUMMARY -->
+  <div class="box-summary">
+    <div class="summary-label">Sintesi</div>
+    <ul>
+      <li>Per CEO e consiglieri di amministrazione di aziende italiane che vogliono capire cosa cambia davvero con NIS2.</li>
+      <li>In Italia la direttiva è in vigore dal 16 ottobre 2024 attraverso il <strong>D.Lgs. 138/2024</strong>.</li>
+      <li>Le sanzioni arrivano fino a <strong>10 milioni di euro</strong> o il 2% del fatturato mondiale annuo per i soggetti essenziali.</li>
+      <li>I membri dell'organo di amministrazione possono essere <strong>personalmente responsabili</strong> delle violazioni.</li>
+      <li>L'autorità competente è l'<strong>ACN</strong> (Agenzia per la Cybersicurezza Nazionale): le ispezioni sono già attive.</li>
+    </ul>
+  </div>
+
+  <!-- KEY TAKEAWAY -->
+  <div class="box-takeaway">
+    <div class="takeaway-label">Conclusione chiave</div>
+    <p>NIS2 non è una questione tecnica da delegare all'IT. È una responsabilità personale per ogni CEO e consigliere di amministrazione — con sanzioni fino a 10 milioni di euro e un rischio concreto di responsabilità individuale se l'organizzazione non è conforme.</p>
+  </div>
+
+  <!-- HOOK -->
+  <p>
+    Immaginate di ricevere una lettera dall'ACN. Non è indirizzata all'ufficio IT. È indirizzata a voi, personalmente, in quanto amministratore delegato o membro del consiglio di amministrazione. Chiede conto delle misure di cybersicurezza adottate dalla vostra azienda — e fissa un termine di 30 giorni per rispondere con la documentazione a supporto.
+  </p>
+
+  <p>
+    Questo scenario non è ipotetico. Dal 16 ottobre 2024, il <strong>D.Lgs. 138/2024</strong> — il decreto legislativo italiano che recepisce la Direttiva europea NIS2 — è legge vigente in Italia. L'Agenzia per la Cybersicurezza Nazionale è l'autorità competente e ha già avviato le prime attività di supervisione. Le aziende che non si sono ancora mosse si trovano in una posizione di piena esposizione al rischio, sia patrimoniale che personale.
+  </p>
+
+  <p>
+    Questa guida è scritta per chi non ha un background tecnico ma ha la responsabilità di guidare un'organizzazione. Non troverete tecnicismi. Troverete quello che dovete sapere per prendere decisioni informate — prima che qualcun altro le prenda per voi.
+  </p>
+
+  <div class="box-warning">
+    <strong>L'ACN è operativa.</strong> Le aziende italiane nei settori regolati devono registrarsi sulla piattaforma ACN entro i termini stabiliti e dimostrare la conformità agli obblighi del D.Lgs. 138/2024. Non registrarsi non significa essere invisibili: significa essere in violazione.
+  </div>
+
+  <h2>Perché esiste NIS2 — e perché adesso?</h2>
+
+  <p>
+    Per capire NIS2 bisogna capire il problema che cerca di risolvere. Negli ultimi anni, gli attacchi informatici contro infrastrutture critiche sono aumentati in modo esponenziale. Ospedali bloccati da ransomware. Reti energetiche messe sotto pressione. Sistemi di distribuzione idrica compromessi. Queste non sono storie da film di fantascienza: sono eventi documentati, accaduti in Europa, in alcuni casi anche in Italia.
+  </p>
+
+  <p>
+    La prima versione della direttiva europea sulla sicurezza delle reti e dei sistemi informativi — la cosiddetta NIS1 — fu adottata nel 2016. Era un passo nella giusta direzione, ma mostrava limiti evidenti: copertura settoriale troppo ristretta, obblighi poco uniformi tra Stati membri, sanzioni inadeguate. Nel 2022 l'Unione Europea ha risposto con NIS2, una revisione profonda che allarga il perimetro, inasprisce gli obblighi e — soprattutto — aumenta drasticamente il peso della responsabilità ai vertici delle organizzazioni.
+  </p>
+
+  <p>
+    L'Italia ha recepito la direttiva con il <strong>D.Lgs. 138/2024</strong>, entrato in vigore il 16 ottobre 2024. Non si tratta di un adempimento burocratico di secondo piano. È una legge con effetti immediati, autorità reali con poteri sanzionatori reali, e — aspetto che molti ancora sottovalutano — conseguenze personali per chi siede nei vertici aziendali.
+  </p>
+
+  <h2>Chi è coinvolto? I 18 settori e le due categorie</h2>
+
+  <p>
+    NIS2 identifica <strong>18 settori</strong> considerati critici per la società e l'economia europea. Se la vostra organizzazione opera in uno di questi settori — anche come fornitore o come parte di una catena di approvvigionamento — è probabile che siate soggetti agli obblighi del decreto.
+  </p>
+
+  <p>I settori coperti includono:</p>
+
+  <ul>
+    <li>Energia (elettricità, gas, petrolio, idrogeno, teleriscaldamento)</li>
+    <li>Trasporti (aereo, ferroviario, stradale, marittimo)</li>
+    <li>Banche e infrastrutture dei mercati finanziari</li>
+    <li>Sanità (ospedali, laboratori, ricerca farmaceutica)</li>
+    <li>Acqua potabile e acque reflue</li>
+    <li>Infrastrutture digitali (data center, DNS, cloud, reti di comunicazione)</li>
+    <li>Gestione dei servizi TIC</li>
+    <li>Pubblica amministrazione</li>
+    <li>Spazio</li>
+    <li>Servizi postali e di corriere</li>
+    <li>Gestione dei rifiuti</li>
+    <li>Sostanze chimiche</li>
+    <li>Produzione e distribuzione di alimenti</li>
+    <li>Fabbricazione (dispositivi medici, elettronica, macchinari, autoveicoli)</li>
+    <li>Fornitori digitali (marketplace, motori di ricerca, social network)</li>
+    <li>Ricerca</li>
+  </ul>
+
+  <p>
+    All'interno di questi settori, la legge distingue due categorie di soggetti:
+  </p>
+
+  <ul>
+    <li><strong>Soggetti essenziali</strong> — grandi organizzazioni con ruolo sistemico (in genere oltre 250 dipendenti o fatturato superiore a 50 milioni di euro). Sono soggetti alla vigilanza più stringente e alle sanzioni più elevate.</li>
+    <li><strong>Soggetti importanti</strong> — organizzazioni di medie dimensioni (50–249 dipendenti o fatturato tra 10 e 50 milioni di euro) nei settori regolati. Gli obblighi sono analoghi, le sanzioni leggermente inferiori ma comunque significative.</li>
+  </ul>
+
+  <p>
+    Non siete sicuri di rientrare in una delle due categorie? Il costo di un'analisi è infinitamente inferiore al costo di scoprirlo durante un'ispezione.
+  </p>
+
+  <h2>Cosa richiede concretamente NIS2?</h2>
+
+  <p>
+    La direttiva — e il decreto italiano che la recepisce — non si limitano a dire alle aziende di "fare di più per la cybersicurezza". Specificano con precisione quali misure devono essere adottate, documentate e dimostrabili. Vediamo le aree principali.
+  </p>
+
+  <h3>1. Governance della sicurezza — il ruolo del vertice</h3>
+  <p>
+    Questo è il punto che più sorprende i CEO e i consiglieri di amministrazione che incontriamo. NIS2 — e il corrispondente <strong>Art. 23 del D.Lgs. 138/2024</strong> — stabilisce che l'organo di amministrazione deve approvare le misure di gestione del rischio, supervisionarne l'attuazione e rispondere personalmente delle carenze. Non basta delegare: la legge richiede una partecipazione attiva e documentata del vertice aziendale.
+  </p>
+
+  <h3>2. Gestione del rischio e misure di sicurezza</h3>
+  <p>
+    Le organizzazioni devono adottare un approccio sistematico alla gestione del rischio informatico. Questo include: l'identificazione e la valutazione dei rischi, le politiche di sicurezza delle reti e dei sistemi, la crittografia, la gestione degli accessi, l'autenticazione a più fattori, e la sicurezza dei dispositivi e degli endpoint. Tutte queste misure devono essere documentate in modo che, in caso di ispezione, si possa dimostrare non solo che esistono ma che funzionano.
+  </p>
+
+  <h3>3. Continuità operativa e gestione delle crisi</h3>
+  <p>
+    Le aziende devono disporre di piani documentati per garantire la continuità del servizio in caso di incidente grave. Questo comprende la gestione dei backup, il ripristino dei sistemi, e la comunicazione interna ed esterna durante una crisi. Un piano che esiste solo nella mente del responsabile IT non è un piano: è un rischio.
+  </p>
+
+  <h3>4. Sicurezza della catena di approvvigionamento</h3>
+  <p>
+    NIS2 estende gli obblighi alla catena dei fornitori. Non basta che la vostra organizzazione sia sicura: dovete poter dimostrare che i vostri fornitori critici lo sono altrettanto. Questo significa inventariare i fornitori, classificarli per livello di rischio, e avere contratti e procedure che garantiscano standard di sicurezza adeguati lungo tutta la filiera.
+  </p>
+
+  <h3>5. Notifica degli incidenti</h3>
+  <p>
+    Uno degli obblighi più immediati e operativi riguarda la segnalazione degli incidenti all'ACN. La procedura è strutturata in tre fasi:
+  </p>
+
+  <ol>
+    <li><strong>Allerta precoce entro 24 ore</strong> dall'identificazione dell'incidente significativo</li>
+    <li><strong>Notifica completa dell'incidente entro 72 ore</strong>, con una prima valutazione di impatto e gravità</li>
+    <li><strong>Relazione finale entro un mese</strong>, con un'analisi dettagliata delle cause, delle misure adottate e delle lezioni apprese</li>
+  </ol>
+
+  <p>
+    Attendere di capire l'entità del danno prima di notificare non è un'opzione legale. La notifica deve avvenire anche in presenza di incertezza, e il mancato rispetto delle scadenze è esso stesso una violazione sanzionabile.
+  </p>
+
+  <h2>Le sanzioni — in numeri concreti</h2>
+
+  <p>
+    Le sanzioni previste dal D.Lgs. 138/2024 sono tra le più elevate mai introdotte nell'ordinamento italiano in materia di sicurezza informatica. Non si tratta di ammende simboliche.
+  </p>
+
+  <table class="fine-table">
+    <thead>
+      <tr>
+        <th>Categoria</th>
+        <th>Sanzione massima</th>
+        <th>Alternativa</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Soggetti essenziali</td>
+        <td class="amount">10 milioni di euro</td>
+        <td>2% del fatturato mondiale annuo</td>
+      </tr>
+      <tr>
+        <td>Soggetti importanti</td>
+        <td class="amount">7 milioni di euro</td>
+        <td>1,4% del fatturato mondiale annuo</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>
+    Si applica il valore più alto tra i due. Per un'azienda con un fatturato di 200 milioni di euro classificata come soggetto essenziale, la sanzione potrebbe arrivare a 4 milioni di euro (il 2% del fatturato), ma il tetto rimane comunque i 10 milioni di euro nel caso in cui il 2% fosse superiore.
+  </p>
+
+  <div class="box-info">
+    <strong>Nota importante:</strong> Le sanzioni possono essere cumulate. Un'organizzazione che non ha adottato le misure tecniche obbligatorie <em>e</em> non ha notificato un incidente nei termini previsti può ricevere sanzioni separate per ciascuna violazione. Il tetto massimo si applica per singola infrazione, non per l'intero rapporto con l'autorità di vigilanza.
+  </div>
+
+  <h2>Il punto che cambia tutto: la responsabilità personale</h2>
+
+  <p>
+    Se c'è una sola cosa che ogni CEO e consigliere di amministrazione deve portare via da questa lettura, è questa: <strong>NIS2 introduce la responsabilità personale del vertice aziendale</strong>.
+  </p>
+
+  <p>
+    L'<strong>Art. 23 del D.Lgs. 138/2024</strong> non lascia spazio a interpretazioni: i membri dell'organo di amministrazione possono essere ritenuti personalmente responsabili delle violazioni degli obblighi previsti dalla legge. Questo significa che non è sufficiente che la società paghi una multa. La responsabilità può ricadere direttamente sulla persona fisica che ricopre il ruolo di amministratore.
+  </p>
+
+  <p>
+    In termini pratici, questo si traduce in tre implicazioni concrete:
+  </p>
+
+  <ol>
+    <li>Il consiglio di amministrazione deve approvare formalmente le politiche di sicurezza — non solo "prenderne atto"</li>
+    <li>Deve esistere documentazione che attesti questa approvazione, con verbali di consiglio che riportino le delibere specifiche</li>
+    <li>Il vertice deve dimostrare di aver monitorato nel tempo l'attuazione delle misure, non solo di averle avallate una volta</li>
+  </ol>
+
+  <p>
+    Non si tratta di una formalità gestibile con un paragrafo aggiunto al prossimo verbale del CdA. È un cambiamento strutturale nel modo in cui il rischio informatico deve essere governato ai vertici dell'azienda.
+  </p>
+
+  <div class="box-warning">
+    <strong>Rischio personale diretto:</strong> In caso di violazioni gravi e reiterate, le autorità competenti possono richiedere misure che limitino temporaneamente lo svolgimento di funzioni dirigenziali da parte dei responsabili aziendali. Non è una conseguenza che ricade solo sull'organizzazione — ricade su di voi come individui.
+  </div>
+
+  <h2>Chi vigila in Italia — le autorità competenti</h2>
+
+  <p>
+    L'Italia ha un sistema di vigilanza che ripartisce le responsabilità tra più autorità, ciascuna competente per il proprio settore:
+  </p>
+
+  <ul>
+    <li><strong>ACN — Agenzia per la Cybersicurezza Nazionale:</strong> autorità primaria e punto di riferimento per l'applicazione del D.Lgs. 138/2024 in tutti i settori. Gestisce la piattaforma di registrazione, coordina le attività di supervisione e riceve le notifiche degli incidenti.</li>
+    <li><strong>Banca d'Italia:</strong> autorità di settore per il sistema finanziario, banche e infrastrutture dei mercati finanziari.</li>
+    <li><strong>ARERA:</strong> autorità per i settori dell'energia, del gas e dell'acqua.</li>
+    <li><strong>AGCOM:</strong> autorità per le telecomunicazioni e i servizi postali.</li>
+    <li><strong>Ministero della Salute:</strong> autorità di riferimento per il settore sanitario.</li>
+  </ul>
+
+  <p>
+    Questo significa che, a seconda del settore in cui operate, potreste trovarvi sotto la vigilanza di più autorità contemporaneamente. Un'azienda farmaceutica, ad esempio, può essere soggetta alla supervisione dell'ACN come autorità primaria e del Ministero della Salute come autorità di settore.
+  </p>
+
+  <h2>Come funziona un'ispezione</h2>
+
+  <p>
+    Le autorità possono avviare un'ispezione in tre modi principali: su iniziativa propria nell'ambito di programmi di vigilanza periodica, a seguito di un incidente notificato o non notificato, oppure su segnalazione di un dipendente, un fornitore, un cliente o un'autorità di un altro Stato membro dell'UE.
+  </p>
+
+  <p>
+    Quando l'ispezione viene avviata, l'autorità richiede la documentazione delle misure adottate — tipicamente con un preavviso di poche settimane. Le organizzazioni che non hanno questa documentazione già pronta si trovano immediatamente in una posizione di svantaggio, indipendentemente da quanto stiano effettivamente facendo sul piano tecnico. La legge non premia le intenzioni: premia la documentazione.
+  </p>
+
+  <div class="box-case">
+    <div class="case-label">Scenario illustrativo</div>
+    <p>
+      <strong>Azienda manifatturiera italiana, 160 dipendenti, fatturato 35 milioni di euro.</strong>
+    </p>
+    <p>
+      L'azienda opera nel settore della fabbricazione di componenti elettronici ed è classificata come soggetto importante ai sensi del D.Lgs. 138/2024. A febbraio 2026, un attacco ransomware colpisce i sistemi di produzione causando tre giorni di fermo impianto.
+    </p>
+    <p>
+      Il responsabile IT identifica l'incidente nelle prime ore. Il CEO, preoccupato per le conseguenze reputazionali, decide di gestire internamente la situazione prima di procedere con qualsiasi comunicazione esterna. La finestra di 24 ore per l'allerta precoce all'ACN trascorre senza che venga inviata alcuna notifica.
+    </p>
+    <p>
+      Una settimana dopo, un cliente tedesco segnala anomalie nei dati condivisi attraverso una piattaforma comune. L'autorità tedesca competente notifica l'ACN. L'ACN avvia un'ispezione. Emerge che l'azienda non ha mai completato la registrazione sulla piattaforma ACN, non dispone di una politica di gestione degli incidenti approvata dal CdA, e non ha documentazione sulle misure di sicurezza della catena di approvvigionamento.
+    </p>
+    <p>
+      <strong>Esito:</strong> Sanzione per mancata notifica nei termini. Sanzione per carenza nelle misure di sicurezza obbligatorie. Avvio di procedimento per responsabilità personale dell'amministratore delegato ai sensi dell'Art. 23. Costo complessivo stimato — includendo sanzioni, consulenza legale e misure correttive imposte — <span class="danger">tra 2 e 4 milioni di euro</span>, oltre al danno reputazionale verso il mercato tedesco.
+    </p>
+  </div>
+
+  <h2>Le domande che ci vengono poste più spesso</h2>
+
+  <div class="faq-item">
+    <div class="faq-q">La nostra azienda è piccola. NIS2 riguarda davvero anche noi?</div>
+    <div class="faq-a">Dipende dal settore e dalle dimensioni. La soglia minima per essere classificati come soggetto importante è di 50 dipendenti o 10 milioni di euro di fatturato, all'interno di uno dei 18 settori regolati. Se siete sopra questa soglia e operate in un settore rilevante, la risposta è sì. Se siete sotto entrambe le soglie, probabilmente no — ma è prudente verificarlo formalmente, perché alcune categorie di aziende sono incluse indipendentemente dalle dimensioni.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">Possiamo delegare tutto all'IT o a un consulente esterno?</div>
+    <div class="faq-a">La delega operativa è possibile e spesso necessaria. Ma la responsabilità legale non si delega. L'Art. 23 del D.Lgs. 138/2024 stabilisce che i membri dell'organo di amministrazione rispondono personalmente. Questo significa che il CdA deve approvare le politiche, non solo sapere che esistono. La firma nel verbale del consiglio non è una formalità: è la prova della vostra partecipazione attiva al processo di governance della sicurezza.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">Non abbiamo mai avuto un incidente informatico. Dobbiamo comunque conformarci?</div>
+    <div class="faq-a">Assolutamente sì. La conformità a NIS2 non è condizionata al verificarsi di un incidente. Le autorità possono avviare un'ispezione in qualsiasi momento — e la mancanza di misure documentate è una violazione in sé, indipendentemente da quanto siate stati fortunati fino ad oggi. Aspettare un incidente per iniziare a conformarsi significa affrontare una crisi su due fronti contemporaneamente: quello operativo e quello legale.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">Cosa succede se non ci registriamo sulla piattaforma ACN?</div>
+    <div class="faq-a">La registrazione non è facoltativa per i soggetti che rientrano nell'ambito di applicazione del decreto. Non registrarsi equivale a violare gli obblighi di legge, con conseguente esposizione alle sanzioni previste. Inoltre, senza registrazione non si è inclusi nelle liste ufficiali dei soggetti essenziali e importanti, il che non comporta esonero dagli obblighi — ma piuttosto una situazione di irregolarità che può aggravare la posizione in caso di successiva ispezione.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">Abbiamo già la certificazione ISO 27001. È sufficiente?</div>
+    <div class="faq-a">La ISO 27001 è un ottimo punto di partenza e dimostra una cultura della sicurezza strutturata. Tuttavia, non copre tutti gli obblighi specifici del D.Lgs. 138/2024 — in particolare quelli relativi alla notifica degli incidenti all'ACN, alla governance del vertice aziendale e alla sicurezza della catena di approvvigionamento secondo i criteri NIS2. La certificazione è un vantaggio, non una garanzia di conformità automatica.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">Quanto tempo abbiamo ancora per metterci in regola?</div>
+    <div class="faq-a">La legge è in vigore dal 16 ottobre 2024. Non c'è un periodo di grazia esteso. L'ACN sta pubblicando le liste dei soggetti essenziali e importanti e avviando le attività di supervisione. Ogni mese che passa senza documentazione in ordine è un mese di piena esposizione al rischio. Il momento migliore per iniziare era ieri. Il secondo momento migliore è oggi.</div>
+  </div>
+
+  <div class="box-info" style="margin: 48px 0 32px;">
+    <div style="font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color: var(--yellow); margin-bottom:10px;">🔧 STRUMENTI &amp; SOLUZIONI</div>
+    <p style="margin:0; font-size:17px; color: #ddd; line-height:1.7;">Per documentare la conformità NIS2 in modo strutturato e dimostrabile all'ACN, strumenti come <strong>Microsoft Defender Secure Score</strong> e <strong>Microsoft Compliance Manager</strong> permettono al vertice aziendale di avere una visione chiara dello stato di sicurezza — con KPI comprensibili anche senza background tecnico. Per le organizzazioni che necessitano di copertura ampia su MFA, backup, protezione degli endpoint e compliance, <strong>Microsoft 365 Business Premium</strong> offre una soluzione integrata. Un partner Microsoft certificato può effettuare un'analisi del gap iniziale senza costi — e mostrare esattamente dove si è coperti e dove no.</p>
+  </div>
+
+  <!-- NEWSLETTER -->
+  <div style="background:#111; border:1px solid rgba(255,255,255,0.1); border-left:3px solid #f5c518; border-radius:4px; padding:32px 36px; margin:40px 0 0; text-align:center; max-width:760px; margin-left:auto; margin-right:auto;">
+    <div style="font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:#f5c518; margin-bottom:12px;">📬 AGGIORNAMENTI NIS2</div>
+    <h3 style="font-family:'Poppins',sans-serif; font-size:20px; font-weight:800; margin:0 0 8px; color:#f0f0f0;">Un nuovo articolo NIS2 ogni settimana — direttamente nella tua casella</h3>
+    <p style="color:#888; font-size:15px; margin:0 0 20px;">Nessun pitch di vendita. Solo guida pratica per CEO e consigli di amministrazione.</p>
+    <form id="nlForm-cos_e_la_direttiva_nis2" onsubmit="submitNewsletter_cos_e_la_direttiva_nis2(event)" style="display:flex; gap:10px; flex-wrap:wrap; justify-content:center; max-width:460px; margin:0 auto;">
+      <input type="email" id="nlEmail-cos_e_la_direttiva_nis2" placeholder="tuo@azienda.it" required style="flex:1; min-width:200px; padding:12px 16px; background:#1c1c1f; border:1px solid rgba(255,255,255,0.15); border-radius:4px; color:#f0f0f0; font-size:15px; outline:none;" />
+      <button type="submit" id="nlSubmit-cos_e_la_direttiva_nis2" style="padding:12px 22px; background:#f5c518; color:#141416; font-weight:700; font-size:15px; border:none; border-radius:4px; cursor:pointer; white-space:nowrap;">Iscriviti gratis →</button>
+    </form>
+    <p style="font-size:12px; color:#555; margin:12px 0 0;">Puoi cancellarti in qualsiasi momento. Non condividiamo mai la tua email.</p>
+    <div id="nlThanks-cos_e_la_direttiva_nis2" style="display:none; color:#4ade80; font-size:16px; font-weight:600; margin-top:14px;">✅ Sei iscritto! Il prossimo articolo arriverà nella tua casella.</div>
+  </div>
+
+  <!-- CTA -->
+  <div class="cta-section">
+    <h2>Sai dove si trova la tua organizzazione oggi?</h2>
+    <p>Un'analisi del gap gratuita con un partner Microsoft certificato mostra esattamente cosa hai già coperto — e cosa manca.</p>
+    <a href="/nis2.html#boka" class="btn-primary">Prenota analisi gap gratuita →</a>
+    <p class="cta-fine">Le sanzioni arrivano fino a <strong>10 milioni di euro</strong>. L'analisi del gap è gratuita.</p>
+  </div>
+
+</article>
+
+<div class="related-articles" style="margin:2.5rem auto 2rem; max-width:760px; padding:0 40px;">
+  <div style="padding:1.5rem; background:#1a1a2e; border-left:4px solid #f0a500; border-radius:4px;">
+    <p style="margin:0 0 1rem; font-size:0.85rem; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; color:#f0a500;">Leggi anche</p>
+    <ul style="margin:0; padding:0; list-style:none; display:flex; flex-direction:column; gap:0.5rem;">
+      <li><a href="/it/articoli/responsabilita-personale-cda-nis2.html" style="color:#e0e0e0; text-decoration:none; font-size:0.95rem;">→ La responsabilità personale del consiglio di amministrazione</a></li>
+      <li><a href="/it/articoli/notifica-incidenti-nis2-italia.html" style="color:#e0e0e0; text-decoration:none; font-size:0.95rem;">→ Come funziona la notifica degli incidenti all'ACN</a></li>
+      <li><a href="/it/articoli/quali-aziende-sono-soggette-nis2.html" style="color:#e0e0e0; text-decoration:none; font-size:0.95rem;">→ Quali aziende italiane sono soggette a NIS2?</a></li>
+    </ul>
+    <p style="margin:1.25rem 0 0; font-size:0.85rem; color:#aaa;">← <a href="https://nis2klar.se/it/" style="color:#f0a500; text-decoration:none;">NIS2Klar Home</a> &nbsp;·&nbsp; <a href="https://nis2klar.se/it/articoli.html" style="color:#f0a500; text-decoration:none;">Tutti gli articoli</a></p>
+  </div>
+</div>
+
+<footer>
+  © 2026 M&amp;J Trusted Marketing KB ·
+  <a href="mailto:support@trustedmarketing.se">support@trustedmarketing.se</a> · <a href="tel:+46470597003">+46 470 59 70 03</a> ·
+  <a href="https://nis2klar.se/it/">Torna alla home</a> ·
+  <a href="/privacy.html">Privacy Policy</a>
+  <p style="margin-top:12px; font-size:11px; color: #555; line-height:1.5;">Microsoft, Microsoft 365, Azure e i relativi nomi di prodotto sono marchi di Microsoft Corporation. nis2klar.se non è affiliata né approvata da Microsoft Corporation.</p>
+</footer>
+
+<script>
+  async function submitNewsletter_cos_e_la_direttiva_nis2(e) {
+    e.preventDefault();
+    const btn = document.getElementById('nlSubmit-cos_e_la_direttiva_nis2');
+    btn.disabled = true; btn.textContent = '...';
+    const email = document.getElementById('nlEmail-cos_e_la_direttiva_nis2').value.trim();
+    try {
+      const res = await fetch('/api/newsletter/subscribe', { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({ email, source: 'articolo-it-cos_e_la_direttiva_nis2' }) });
+      const data = await res.json();
+      if (data.success) { document.getElementById('nlForm-cos_e_la_direttiva_nis2').style.display='none'; document.getElementById('nlThanks-cos_e_la_direttiva_nis2').style.display='block'; }
+      else { btn.disabled=false; btn.textContent='Iscriviti gratis →'; }
+    } catch { btn.disabled=false; btn.textContent='Iscriviti gratis →'; }
+  }
+</script>
+</body>
+</html>

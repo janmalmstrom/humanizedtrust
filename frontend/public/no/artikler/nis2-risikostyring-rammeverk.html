@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-BKF3QH9K01"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag("js", new Date());
+    gtag("config", "G-BKF3QH9K01");
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NIS2-risikostyringsrammeverk: En veiledning på styrenivå | NIS2Klar</title>
+  <meta name="description" content="Slik bygger du et NIS2-compliant risikostyringsrammeverk. Styreansvar, ISO 27001-justering, ENISA-retningslinjer og risikotoleranse forklart for ledelsen.">
+  <meta property="og:title" content="NIS2-risikostyringsrammeverk: En veiledning på styrenivå">
+  <meta property="og:description" content="Slik bygger du et NIS2-compliant risikostyringsrammeverk. Styreansvar, ISO 27001-justering, ENISA-retningslinjer og risikotoleranse forklart for ledelsen.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #141416;
+      --card: #1c1c1f;
+      --yellow: #f5c518;
+      --white: #f0f0f0;
+      --muted: #888;
+      --red: #C61212;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: var(--bg); color: var(--white); font-family: 'Barlow', sans-serif; font-size: 19px; line-height: 1.8; }
+
+    /* Nav */
+    nav { display: flex; justify-content: space-between; align-items: center; padding: 20px 40px; border-bottom: 1px solid rgba(255,255,255,0.07); max-width: 900px; margin: 0 auto; }
+    .nav-logo { font-family: 'Poppins', sans-serif; font-weight: 900; font-size: 20px; color: var(--yellow); text-decoration: none; }
+    .nav-logo span { color: var(--white); }
+    .nav-back { color: var(--muted); text-decoration: none; font-size: 15px; }
+    .nav-back:hover { color: var(--white); }
+    .nav-cta { background: var(--yellow); color: #000; padding: 8px 18px; border-radius: 4px; text-decoration: none; font-weight: 700; font-size: 14px; font-family: 'Poppins', sans-serif; }
+    .lang-switcher { display: flex; gap: 8px; align-items: center; font-size: 13px; font-family: 'Poppins', sans-serif; }
+    .lang-switcher a { color: #888; text-decoration: none; font-weight: 600; padding: 4px 8px; border-radius: 3px; }
+    .lang-switcher a:hover { color: var(--white); }
+    .lang-switcher a.active { color: var(--yellow); background: rgba(245,197,24,0.1); }
+
+    /* Article */
+    .article-wrap { max-width: 760px; margin: 0 auto; padding: 60px 40px; }
+    .article-category { font-size: 13px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 16px; }
+    h1 { font-family: 'Poppins', sans-serif; font-size: clamp(30px, 4vw, 44px); font-weight: 900; line-height: 1.2; margin-bottom: 24px; }
+    .article-meta { font-size: 15px; color: var(--muted); margin-bottom: 48px; padding-bottom: 24px; border-bottom: 1px solid rgba(255,255,255,0.07); }
+    h2 { font-family: 'Poppins', sans-serif; font-size: 26px; font-weight: 700; margin: 48px 0 16px; color: var(--white); }
+    h3 { font-family: 'Poppins', sans-serif; font-size: 20px; font-weight: 600; margin: 32px 0 12px; color: var(--yellow); }
+    p { margin-bottom: 22px; }
+    strong { color: var(--white); font-weight: 700; }
+    .highlight { color: var(--yellow); font-weight: 700; }
+    .danger { color: #ff6b6b; font-weight: 700; }
+    ul, ol { margin: 16px 0 24px 24px; }
+    li { margin-bottom: 12px; font-size: 19px; }
+
+    /* Callout boxes */
+    .box-warning { background: rgba(197,17,17,0.12); border-left: 4px solid var(--red); padding: 20px 24px; margin: 32px 0; border-radius: 0 4px 4px 0; }
+    .box-info { background: rgba(245,197,24,0.08); border-left: 4px solid var(--yellow); padding: 20px 24px; margin: 32px 0; border-radius: 0 4px 4px 0; }
+    .box-case { background: var(--card); border: 1px solid rgba(255,255,255,0.08); padding: 28px; margin: 40px 0; border-radius: 4px; }
+    .box-case .case-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 12px; }
+    blockquote { border-left: 3px solid var(--yellow); padding: 12px 20px; margin: 24px 0; font-style: italic; color: #ccc; }
+
+    /* CTA */
+    .cta-section { background: var(--card); border: 1px solid rgba(245,197,24,0.2); border-radius: 4px; padding: 48px 40px; margin: 64px 0 40px; text-align: center; }
+    .cta-section h2 { margin-top: 0; font-size: 26px; }
+    .cta-section p { color: #aaa; max-width: 500px; margin: 0 auto 28px; }
+    .btn-primary { display: inline-block; background: var(--yellow); color: #000; font-family: 'Poppins', sans-serif; font-weight: 800; font-size: 16px; padding: 16px 36px; border-radius: 4px; text-decoration: none; }
+    .btn-primary:hover { background: #e0b010; }
+    .cta-fine { font-size: 13px; color: var(--muted); margin-top: 16px; }
+
+    /* FAQ */
+    .faq-item { border-bottom: 1px solid rgba(255,255,255,0.07); padding: 20px 0; }
+    .faq-q { font-family: 'Poppins', sans-serif; font-weight: 600; margin-bottom: 10px; }
+    .faq-a { color: #bbb; }
+
+    /* Summary + Key Takeaway */
+    .box-summary { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; padding: 24px 28px; margin: 0 0 32px; }
+    .summary-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-bottom: 14px; }
+    .box-summary ul { margin: 0; padding-left: 20px; }
+    .box-summary li { margin-bottom: 8px; font-size: 17px; color: #ccc; }
+    .box-takeaway { background: rgba(245,197,24,0.08); border-left: 4px solid var(--yellow); padding: 20px 24px; margin: 0 0 40px; border-radius: 0 4px 4px 0; }
+    .takeaway-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 10px; }
+    .box-takeaway p { margin: 0; font-size: 18px; font-weight: 600; color: var(--white); line-height: 1.6; }
+
+    /* Related articles */
+    .related-articles { margin: 2.5rem 0 2rem; padding: 1.5rem; background: #1a1a2e; border-left: 4px solid #f0a500; border-radius: 4px; }
+    .related-articles p:first-child { margin: 0 0 1rem; font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #f0a500; }
+    .related-articles ul { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+    .related-articles li { margin: 0; }
+    .related-articles a { color: #e0e0e0; text-decoration: none; font-size: 0.95rem; }
+    .related-articles a:hover { color: #f0a500; }
+    .related-articles p:last-child { margin: 1.25rem 0 0; font-size: 0.85rem; color: #aaa; }
+
+    /* Footer */
+    footer { border-top: 1px solid rgba(255,255,255,0.07); padding: 32px 40px; text-align: center; font-size: 13px; color: var(--muted); max-width: 900px; margin: 0 auto; }
+    footer a { color: var(--muted); text-decoration: none; }
+    footer a:hover { color: var(--white); }
+
+    @media (max-width: 600px) {
+      nav, .article-wrap, footer { padding: 20px; }
+      nav { flex-wrap: wrap; gap: 16px; }
+      .lang-switcher { order: 3; width: 100%; }
+      .cta-section { padding: 32px 20px; }
+      .related-articles { padding: 1.25rem; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="https://nis2klar.se/no/">NIS2<span>Klar</span></a>
+  <a class="nav-back" href="https://nis2klar.se/no/artikler.html">← Alle artikler</a>
+  <div class="lang-switcher">
+    <a href="https://nis2klar.se/artiklar.html" title="Svenska">SV</a>
+    <a href="https://nis2klar.se/en/articles.html" title="English">EN</a>
+    <a href="https://nis2klar.se/da/artikler.html" title="Dansk">DA</a>
+    <a href="https://nis2klar.se/no/artikler.html" class="active" title="Norsk">NO</a>
+    <a href="https://nis2klar.se/it/articoli.html" title="Italiano">IT</a>
+  </div>
+</nav>
+
+<article class="article-wrap">
+  <div class="article-category">Styresikkerhet &amp; Rammeverk</div>
+  <h1>NIS2-risikostyringsrammeverk: En veiledning på styrenivå</h1>
+  <div class="article-meta">Oppdatert 19. april 2026 · Lesetid: ca 8 minutter · Målgruppe: Direktører og styremedlemmer</div>
+
+  <!-- SUMMARY -->
+  <div class="box-summary">
+    <div class="summary-label">Sammendrag</div>
+    <ul>
+      <li>Et NIS2-compliant risikostyringsrammeverk er ikke valgfritt — det er lovpålagt når regelverket trer i kraft i Norge.</li>
+      <li>Rammeverket må være godkjent av styret og dokumentert på en måte som holder ved tilsyn fra NSM (Nasjonal sikkerhetsmyndighet).</li>
+      <li>Risikoregistrering, residual risk acceptance og årlig revisjon er kjerneelementer som styret må føre tilsyn med.</li>
+      <li>ISO 27001 og ENISA-retningslinjer gir det faglige grunnlaget — men styret må forstå og godkjenne det praktiske innholdet.</li>
+    </ul>
+  </div>
+
+  <!-- KEY TAKEAWAY -->
+  <div class="box-takeaway">
+    <div class="takeaway-label">Viktigste sluttsatsen</div>
+    <p>Et risikostyringsrammeverk er ikke noe IT-verktøy — det er et styredokument som beviser at ledelsen forstår, godkjenner og oversees de sikkerhetstiltakene som beskytter organisasjonen. Når NSM gransker, er det dette dokumentet som må ligge på bordet.</p>
+  </div>
+
+  <h2>Hvorfor trenger du et risikostyringsrammeverk?</h2>
+
+  <p>
+    NIS2 krever ikke et spesifikt navn på dokumentet. Det krever ikke at du kjøper en bestemt programvare.
+    Det som kreves er at organisasjonen har <strong>systematisk og dokumentert prosess for å identifisere, vurdere og håndtere cybersikkerhetsrisiko</strong>.
+  </p>
+
+  <p>
+    Når regelverket trer i kraft i Norge — forventes fullført innlemming i løpet av 2025–2026 — vil NSM (Nasjonal sikkerhetsmyndighet) og de relevante sektortilsynene begynne å granske.
+    De vil ikke spørre: <em>"Har dere gjort sitt beste?"</em>
+    De vil spørre: <em>"Vis meg rammeverket. Vis meg styrebeslutningen. Vis meg risikotoleransen. Vis meg hvem som eier hver risiko."</em>
+  </p>
+
+  <p>
+    Uten et dokumentert rammeverk står du uten forsvar — selv om du teknisk har implementert gode sikkerhetstiltak.
+  </p>
+
+  <div class="box-warning">
+    <strong>Personlig ansvar for styret:</strong> NIS2 slår fast at ledelsesorgan (styret og direktør) er personlig ansvarlig for at organisasjonen har og opprettholder et sikkerhetsstyringsrammeverk. Dette er ikke delegérbart. Det er ikke "IT-sjefens ansvar".
+  </div>
+
+  <h2>De fire pilarene i et NIS2-compliant rammeverk</h2>
+
+  <h3>1. Risikoidentifikasjon og -kartlegging</h3>
+
+  <p>
+    Før du kan styres risiko, må du kjenne den. Et rammeverk starter med en systematisk kartlegging av:
+  </p>
+
+  <ul>
+    <li><strong>IT-eiendeler</strong> — servere, databaser, applikasjoner, nettverksutstyr</li>
+    <li><strong>Kritiske forretningsprosesser</strong> — hvilke prosesser, hvis de brytes ned, skader organisasjonen alvorlig?</li>
+    <li><strong>Avhengigheter og kjedeprosesser</strong> — hvem er leverandørene og partnerne som sikkerhet avhenger av?</li>
+    <li><strong>Trusselaktører og trusselscenarioer</strong> — ikke bare "hackers", men også utilsiktet sletting, maskinvarefeil, rogue employees</li>
+  </ul>
+
+  <p>
+    Denne kartleggingen gjøres ikke en gang og aldri igjen. Det er en årlig oppgave som styret må følge opp med spørsmål som:
+    <em>"Hvilke nye systemer eller prosesser har vi implementert siden sist?"</em>
+    <em>"Har vi identifisert nye leverandørrisiko?"</em>
+  </p>
+
+  <h3>2. Risikovurdering og scoring</h3>
+
+  <p>
+    Når du har kartlagt risiko, må du vurdere den. En risikovurdering består av:
+  </p>
+
+  <ul>
+    <li><strong>Sannsynlighet</strong> — hvor trolig er det at denne trusselen realiseres?</li>
+    <li><strong>Påvirkning</strong> — hvis den realiseres, hvor alvorlig er skaden på organisasjonen?</li>
+    <li><strong>Risikoscore</strong> — kombinasjonen av sannsynlighet og påvirkning gir en poengsum</li>
+  </ul>
+
+  <p>
+    Det som skilles mellom høyrisikoer som krever umiddelbar handling, og mellomrisiko som kan håndteres over lengre tid.
+  </p>
+
+  <div class="box-info">
+    <strong>Styrets rolle:</strong> Du trenger ikke å sette poengsummene selv. Du må imidlertid forstå metodikken, stille kritiske spørsmål om vurderingene, og godkjenne risikoscoringsmatrisen før den brukes.
+  </div>
+
+  <h3>3. Risikohåndtering og kontroller</h3>
+
+  <p>
+    For hver identifisert risiko må det finnes en håndteringsstrategi:
+  </p>
+
+  <ul>
+    <li><strong>Reduksjon (Mitigation)</strong> — implementer sikkerhetstiltak som senker sannsynligheten eller påvirkningen</li>
+    <li><strong>Aksept (Acceptance)</strong> — dokumenter at risikoen er akseptabel basert på organisasjonens risikoappetitt</li>
+    <li><strong>Overføring (Transfer)</strong> — kjøp forsikring eller outsource til en leverandør som bærer risikoen</li>
+    <li><strong>Unngåelse (Avoidance)</strong> — slutt med aktiviteten som skaper risikoen</li>
+  </ul>
+
+  <p>
+    Hver håndteringsstrategi må kobles til konkrete sikkerhetstiltak (kontroller) og gjennomgang av ansvar.
+  </p>
+
+  <h3>4. Residual risk acceptance (RRA)</h3>
+
+  <p>
+    Dette er det kritiske elementet som mange overseer. Etter at du har implementert sikkerhetstiltak, vil det fortsatt være <strong>gjenværende risiko</strong> som du ikke kan eller vil eliminere helt.
+  </p>
+
+  <p>
+    Et eksempel: Du implementerer MFA for alle e-postkontoer (reduksjon). Men du vil fortsatt ha en liten risiko for at en ansatt blir phishet eller sosial engineered. Denne gjenværende risikoen må du <strong>formelt godta</strong> basert på din risikoappetitt.
+  </p>
+
+  <blockquote>
+    "Residual risk acceptance" betyr at styret aktivt har sagt: "Denne risikoen er akseptabel for oss, gitt vår virksomhet og ressurser." Det må dokumenteres med dato og godkjenning fra styret.
+  </blockquote>
+
+  <p>
+    Når NSM kommer på tilsyn og spør: <em>"Hvorfor har dere ikke 100% beskyttelse mot dette?"</em>
+    Kan du svare med dokumentasjon: <em>"Vi vurderte det. Vi implementerte disse tiltakene. Vi godtok denne gjenværende risikoen i styret på denne datoen, fordi..."</em>
+  </p>
+
+  <div class="box-warning">
+    <strong>Uten formell RRA-dokumentasjon</strong> vil NSM se det som en uakseptabel manglende kontroll, ikke som en dokumentert risikoaksept. Skillet mellom "vi visste ikke" og "vi visste og godtok det" er det som gjør eller bryter saken ved tilsyn.
+  </div>
+
+  <h2>Struktur på risikostyringsrammeverket — hva må ligge i dokumentet?</h2>
+
+  <p>
+    Et NIS2-compliant rammeverk bør inneholde følgende deler:
+  </p>
+
+  <h3>Del 1: Policy og styrende retningslinjer</h3>
+  <ul>
+    <li>Overordnet sikkerhetspolicy godkjent av styret</li>
+    <li>Definisjon av risikoappetitt og risikoaksept — "Hva slags risiko er akseptabel for oss?"</li>
+    <li>Rolle- og ansvarsmatrise — hvem gjør hva?</li>
+    <li>Styringsstruktur — hvor møtes sikkerhetslederskap? Hvor rapporteres avvik?</li>
+  </ul>
+
+  <h3>Del 2: Risikoregister</h3>
+  <ul>
+    <li>Liste over alle kartlagte og vurderte risiko</li>
+    <li>For hver risiko: beskrivelse, trusselaktør, sannsynlighet, påvirkning, score</li>
+    <li>Håndteringsstrategi og eier</li>
+    <li>Kontroller som implementeres</li>
+    <li>Status og planlagt sluttdato</li>
+  </ul>
+
+  <p>
+    Dette trenger ikke være et enkelt, maskinelt register — det kan være en mattable, et regneark, eller et spesialisert verktøy. Poenget er at det er systematisk, oppdatert, og sporbar.
+  </p>
+
+  <h3>Del 3: Kontrollkatalog</h3>
+  <ul>
+    <li>Liste over alle sikkerhetstiltak (kontroller) som er implementert eller planlagt</li>
+    <li>Kobling til NIS2-krav (Artikkel 21) — hvilke av de 10 obligatoriske domenene dekker denne kontrollen?</li>
+    <li>Ansvar og frekvens for testing eller revisjon</li>
+  </ul>
+
+  <h3>Del 4: Styredokumentasjon</h3>
+  <ul>
+    <li>Styringsmøtereferater hvor sikkerhet er behandlet</li>
+    <li>Styrets godkjenning av rammeverket, inklusive dato og signatur</li>
+    <li>Styrens godkjenning av residual risk acceptance — med begrunnelse</li>
+    <li>Årlig revisjonsrapport fra internrevisor eller ekstern cybersikkerhetsrevisor</li>
+  </ul>
+
+  <h2>Justering med ISO 27001 og ENISA-retningslinjer</h2>
+
+  <p>
+    Du behøver ikke å være ISO 27001-sertifisert for å være NIS2-compliant. Men mange organisasjoner finner det hensiktsmessig å bygge sitt NIS2-rammeverk på ISO 27001-rammeverket, fordi:
+  </p>
+
+  <ul>
+    <li><strong>ISO 27001 dekker alle NIS2-domenene</strong> — Artikkel 21 i NIS2 nevner 10 domener (risikohandstering, incident response, business continuity etc.), og ISO 27001 har kontroller for alle disse</li>
+    <li><strong>ISO 27001 er språklig og metodisk kjent</strong> — hvis dere allerede har noen sikkerhetstiltak, kan dere mappe dem til ISO 27001 og deretter til NIS2</li>
+    <li><strong>Ekstern revisjon er lettere</strong> — en revisor som kjenner ISO 27001 kan raskt vurdere hvor dere står</li>
+  </ul>
+
+  <p>
+    ENISA (European Union Agency for Cybersecurity) har også gitt detaljert veiledning om hvordan man implementerer NIS2-kravene. ENISA-retningslinjer fokuserer på:
+  </p>
+
+  <ul>
+    <li>Governance og styring på ledelsesnivå</li>
+    <li>Incident reporting og response</li>
+    <li>Business continuity og disaster recovery</li>
+    <li>Leverandørsikkerhet og tillit</li>
+  </ul>
+
+  <p>
+    Kombinasjonen ISO 27001 + ENISA-veiledning + og lokale myndighetskrav gir deg et fullstendig rammeverk.
+  </p>
+
+  <div class="box-case">
+    <div class="case-label">Casestudie</div>
+    <p>
+      <strong>Scenario: Energiselskap i Norge, 120 anställda, klassifisert som viktig entitet under NIS2.</strong>
+    </p>
+    <p>
+      I Q3 2025 initierer NVE (Norges vassdrags- og energidirektorat) en tilsyn basert på ENISA-retningslinjer.
+      Selskapet har IT-sikkerhet, men ingen formelt godkjent risikostyringsrammeverk.
+    </p>
+    <p>
+      Ved første møte spør NVE: "Vis oss deres risikoregister. Vis oss styrens godkjenning av rammeverket. Vis oss RRA-dokumentasjonen."
+    </p>
+    <p>
+      Selskapet kan ikke levere. De har "implisitt" sikkerhet, men ikke dokumentert rammeverk.
+    </p>
+    <p>
+      <strong>Resultat:</strong> NVE utsteder en avviksmeldelse med krav om å levere formelt rammeverk innen 90 dager.
+      I løpet av disse 90 dagene må selskapet bygge og godta sitt første formelle risikostyringsrammeverk.
+      Kostnader for revisor, konsulent og intern tid: ca. 250–400k NOK. Hvis rammeverket ikke godtas, kommer bøter på opptil 7 millioner euro (for viktig entitet).
+    </p>
+  </div>
+
+  <h2>Styrets konkrete oppgaver i rammeverket</h2>
+
+  <p>
+    Det er ikke nok at "sikkerhet er behandlet på styremøtet". Styret må:
+  </p>
+
+  <h3>1. Godkjenne rammeverket formelt</h3>
+  <p>
+    I et styremøte skal det foreligge et forslag til risikostyringsrammeverk. Styret diskuterer, stiller spørsmål, og godkjenner det (eller ber om revisjoner).
+    Godkjenningen dokumenteres i styreprotokollen med dato.
+  </p>
+
+  <h3>2. Godkjenne risikoappetit</h3>
+  <p>
+    Styret må eksplisitt ta stilling til: Hvor mye risiko er vi villige til å akseptere?
+    For en bank kunne dette være: "Vi aksepterer maksimalt 1 time nedetid per år på kritiske systemer."
+    For et mindre selskap kunne det være: "Vi aksepterer risiko på ikke-kritiske systemer så lenge kritiske prosesser er beskyttet."
+  </p>
+
+  <h3>3. Godkjenne residual risks</h3>
+  <p>
+    Styret skal møte en oppsummering av gjenværende risiko som ikke kan reduseres videre, og formelt godta dem.
+    Dette skal minne: "Vi vet at disse trusselene eksisterer, vi har gjort det vi kan, og vi godtar det gjenværende."
+  </p>
+
+  <h3>4. Følge opp implementering</h3>
+  <p>
+    Minst en gang i året skal styret høre rapportering om implementeringsstatus:
+    Hvor langt har vi kommet med kontrollene? Har noen risiko endret seg?
+    Hva er gjeldende topprisikoer?
+  </p>
+
+  <h3>5. Utnevne ansvarlig leder</h3>
+  <p>
+    Styret skal utnevne en person (gjerne direktøren eller en styremedlem) som er ansvarlig for at rammeverket oppdateres og opprettholdes.
+  </p>
+
+  <h2>Vanlige fallgruver når du bygger rammeverket</h2>
+
+  <h3>Fallgruv 1: "Vi lager et rammeverk på papir og gjlemmer det"</h3>
+  <p>
+    Et rammeverk som ikke er levende er verdiløst. Det må oppdateres minst årlig, ideelt oftere.
+    Hvis NSM gransker og rammeverket er fra 2025 men vi er nå i 2026 uten oppdateringer, vil det reise røde flagg.
+  </p>
+
+  <h3>Fallgruv 2: "Rammeverket er så teknisk at styret ikke forstår det"</h3>
+  <p>
+    Rammeverket skal være styreadministrert. Det betyr at styret skal forstå de viktigste elementene.
+    Hvis rammeverket er fullt av IT-jargon og mål som "

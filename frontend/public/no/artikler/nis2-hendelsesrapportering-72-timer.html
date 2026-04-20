@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-BKF3QH9K01"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag("js", new Date());
+    gtag("config", "G-BKF3QH9K01");
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NIS2 72-timers hendelsesrapportering: Komplett veiledning | NIS2Klar</title>
+  <meta name="description" content="Detaljert guide til NIS2s 72-timers hendelsesrapporteringskrav. Hva må rapporteres? Hvordan unngår du sanksjoner? Mal for melding til NSM.">
+  <meta property="og:title" content="NIS2 72-timers hendelsesrapportering: Komplett veiledning">
+  <meta property="og:description" content="Detaljert guide til NIS2s 72-timers hendelsesrapporteringskrav. Hva må rapporteres? Hvordan unngår du sanksjoner? Mal for melding til NSM.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #141416;
+      --card: #1c1c1f;
+      --yellow: #f5c518;
+      --white: #f0f0f0;
+      --muted: #888;
+      --red: #C61212;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: var(--bg); color: var(--white); font-family: 'Barlow', sans-serif; font-size: 19px; line-height: 1.8; }
+
+    /* Nav */
+    nav { display: flex; justify-content: space-between; align-items: center; padding: 20px 40px; border-bottom: 1px solid rgba(255,255,255,0.07); max-width: 900px; margin: 0 auto; }
+    .nav-logo { font-family: 'Poppins', sans-serif; font-weight: 900; font-size: 20px; color: var(--yellow); text-decoration: none; }
+    .nav-logo span { color: var(--white); }
+    .nav-back { color: var(--muted); text-decoration: none; font-size: 15px; }
+    .nav-back:hover { color: var(--white); }
+    .lang-switcher { display: flex; gap: 8px; align-items: center; font-size: 13px; font-family: 'Poppins', sans-serif; }
+    .lang-switcher a { color: #888; text-decoration: none; font-weight: 600; padding: 4px 8px; border-radius: 3px; }
+    .lang-switcher a:hover { color: var(--white); }
+    .nav-cta { background: var(--yellow); color: #000; padding: 8px 18px; border-radius: 4px; text-decoration: none; font-weight: 700; font-size: 14px; font-family: 'Poppins', sans-serif; }
+
+    /* Article */
+    .article-wrap { max-width: 760px; margin: 0 auto; padding: 60px 40px; }
+    .article-category { font-size: 13px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 16px; }
+    h1 { font-family: 'Poppins', sans-serif; font-size: clamp(30px, 4vw, 44px); font-weight: 900; line-height: 1.2; margin-bottom: 24px; }
+    .article-meta { font-size: 15px; color: var(--muted); margin-bottom: 48px; padding-bottom: 24px; border-bottom: 1px solid rgba(255,255,255,0.07); }
+    h2 { font-family: 'Poppins', sans-serif; font-size: 26px; font-weight: 700; margin: 48px 0 16px; color: var(--white); }
+    h3 { font-family: 'Poppins', sans-serif; font-size: 20px; font-weight: 600; margin: 32px 0 12px; color: var(--yellow); }
+    p { margin-bottom: 22px; }
+    strong { color: var(--white); font-weight: 700; }
+    .highlight { color: var(--yellow); font-weight: 700; }
+    .danger { color: #ff6b6b; font-weight: 700; }
+    ul, ol { margin: 16px 0 24px 24px; }
+    li { margin-bottom: 12px; font-size: 19px; }
+
+    /* Callout boxes */
+    .box-warning { background: rgba(197,17,17,0.12); border-left: 4px solid var(--red); padding: 20px 24px; margin: 32px 0; border-radius: 0 4px 4px 0; }
+    .box-info { background: rgba(245,197,24,0.08); border-left: 4px solid var(--yellow); padding: 20px 24px; margin: 32px 0; border-radius: 0 4px 4px 0; }
+    .box-case { background: var(--card); border: 1px solid rgba(255,255,255,0.08); padding: 28px; margin: 40px 0; border-radius: 4px; }
+    .box-case .case-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 12px; }
+    blockquote { border-left: 3px solid var(--yellow); padding: 12px 20px; margin: 24px 0; font-style: italic; color: #ccc; }
+
+    /* CTA */
+    .cta-section { background: var(--card); border: 1px solid rgba(245,197,24,0.2); border-radius: 4px; padding: 48px 40px; margin: 64px 0 40px; text-align: center; }
+    .cta-section h2 { margin-top: 0; font-size: 26px; }
+    .cta-section p { color: #aaa; max-width: 500px; margin: 0 auto 28px; }
+    .btn-primary { display: inline-block; background: var(--yellow); color: #000; font-family: 'Poppins', sans-serif; font-weight: 800; font-size: 16px; padding: 16px 36px; border-radius: 4px; text-decoration: none; }
+    .btn-primary:hover { background: #e0b010; }
+    .cta-fine { font-size: 13px; color: var(--muted); margin-top: 16px; }
+
+    /* FAQ */
+    .faq-item { border-bottom: 1px solid rgba(255,255,255,0.07); padding: 20px 0; }
+    .faq-q { font-family: 'Poppins', sans-serif; font-weight: 600; margin-bottom: 10px; }
+    .faq-a { color: #bbb; }
+
+    /* Fine table */
+    .fine-table { width: 100%; border-collapse: collapse; margin: 24px 0; }
+    .fine-table th { background: rgba(245,197,24,0.1); color: var(--yellow); font-family: 'Poppins', sans-serif; font-size: 13px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 12px 16px; text-align: left; border-bottom: 1px solid rgba(245,197,24,0.2); }
+    .fine-table td { padding: 14px 16px; border-bottom: 1px solid rgba(255,255,255,0.05); font-size: 15px; }
+    .fine-table tr:last-child td { border-bottom: none; }
+    .fine-table .amount { color: #ff6b6b; font-weight: 700; }
+
+    /* Summary + Key Takeaway */
+    .box-summary { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; padding: 24px 28px; margin: 0 0 32px; }
+    .summary-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-bottom: 14px; }
+    .box-summary ul { margin: 0; padding-left: 20px; }
+    .box-summary li { margin-bottom: 8px; font-size: 17px; color: #ccc; }
+    .box-takeaway { background: rgba(245,197,24,0.08); border-left: 4px solid var(--yellow); padding: 20px 24px; margin: 0 0 40px; border-radius: 0 4px 4px 0; }
+    .takeaway-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 10px; }
+    .box-takeaway p { margin: 0; font-size: 18px; font-weight: 600; color: var(--white); line-height: 1.6; }
+
+    /* Related Articles */
+    .related-articles { margin: 2.5rem 0 2rem; padding: 1.5rem; background: #1a1a2e; border-left: 4px solid #f0a500; border-radius: 4px; }
+    .related-articles > p { margin: 0 0 1rem; font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #f0a500; }
+    .related-articles ul { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+    .related-articles li { margin: 0; }
+    .related-articles a { color: #e0e0e0; text-decoration: none; font-size: 0.95rem; }
+    .related-articles a:hover { color: #f0a500; }
+    .related-articles .nav-back-line { margin: 1.25rem 0 0; font-size: 0.85rem; color: #aaa; }
+    .related-articles .nav-back-line a { color: #f0a500; }
+
+    /* Footer */
+    footer { border-top: 1px solid rgba(255,255,255,0.07); padding: 32px 40px; text-align: center; font-size: 13px; color: var(--muted); max-width: 900px; margin: 0 auto; }
+    footer a { color: var(--muted); }
+    footer a:hover { color: var(--white); }
+
+    @media (max-width: 600px) {
+      nav, .article-wrap, footer { padding: 20px; }
+      nav { flex-wrap: wrap; gap: 12px; }
+      .cta-section { padding: 32px 20px; }
+      .fine-table { font-size: 14px; }
+      .fine-table th, .fine-table td { padding: 10px 10px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="https://nis2klar.se/no/">NIS2<span>Klar</span></a>
+  <a class="nav-back" href="https://nis2klar.se/no/artikler.html">← Alle artikler</a>
+  <div class="lang-switcher">
+    <a href="https://nis2klar.se/artiklar.html" style="color:#888;" title="Svenska">SV</a>
+    <a href="https://nis2klar.se/en/articles.html" style="color:#888;" title="English">EN</a>
+    <a href="https://nis2klar.se/da/artikler.html" style="color:#888;" title="Dansk">DA</a>
+    <a href="https://nis2klar.se/no/artikler.html" style="color:#f5c518;background:rgba(245,197,24,0.1);" title="Norsk">NO</a>
+    <a href="https://nis2klar.se/it/articoli.html" style="color:#888;" title="Italiano">IT</a>
+  </div>
+  <a class="nav-cta" href="https://nis2klar.se/no/#boka">Book møte →</a>
+</nav>
+
+<article class="article-wrap">
+  <div class="article-category">Hendelsesrapportering &amp; Plikt</div>
+  <h1>NIS2 72-timers hendelsesrapportering: Komplett veiledning</h1>
+  <div class="article-meta">Oppdatert 19. april 2026 · Lesetid: ca 8 minutter · Målgruppe: Direktører og styremedlemmer</div>
+
+  <!-- SUMMARY -->
+  <div class="box-summary">
+    <div class="summary-label">Sammendrag</div>
+    <ul>
+      <li>NIS2 krever at sikkerhetshendelser rapporteres til NSM innen <strong>24 timer</strong> (tidlig varsel) og full rapport innen <strong>72 timer</strong>.</li>
+      <li>Dersom du ikke rapporterer — eller rapporterer for sent — risikerer du sanksjoner helt opp til <strong>10 millioner euro</strong> eller 2% av global omsetning.</li>
+      <li>Det er ikke bare IT-avdelingens ansvar. Direktøren og styremedlemmer er personlig ansvarlige for at prosessen fungerer.</li>
+      <li>Mindre feil i rapporteringen kan rettes, men manglende rapportering kan ikke.</li>
+      <li>Denne veiledningen viser deg nøyaktig hva som må rapporteres, når og hvordan — og hvilke konsekvenser som venter dersom du mislykkes.</li>
+    </ul>
+  </div>
+
+  <!-- KEY TAKEAWAY -->
+  <div class="box-takeaway">
+    <div class="takeaway-label">Viktigste poeng</div>
+    <p>72-timers hendelsesrapportering er ikke frivillig — det er en juridisk forpliktelse som hviler på ledelsen. Manglende eller sen rapportering kan isolert sett utløse sanksjoner helt uavhengig av hvor alvorlig hendelsen er.</p>
+  </div>
+
+  <h2>Hvorfor 72 timer? Konteksten</h2>
+
+  <p>
+    Da NIS2-direktivet ble utformet, var målet klart: øke samfunnets evne til å håndtere cyberangrep i sanntid.
+    En hendelse som hadde vært hemmeligheten i flere uker på 2010-tallet, måtte nå rapporteres innen tre dager.
+    Det gir myndigheten — i Norge er det NSM (Nasjonal sikkerhetsmyndighet) — mulighet til å varsle andre organisasjoner og koordinere et respons før situasjonen eskalerer.
+  </p>
+
+  <p>
+    Regelverket forventes implementert i Norge gjennom EØS-avtalen i løpet av 2025–2026.
+    Når det trer i kraft, vil samme 72-timers plikt gjelde norske organisasjoner i de 18 samhunnsviktige sektorene — fra finans og energi til helse, transport og digital infrastruktur.
+  </p>
+
+  <div class="box-info">
+    <strong>Viktig for Norge:</strong> Norge er EØS-land, ikke EU-medlem. NIS2 implementeres via EØS-avtalen. Når regelverket trer i kraft, vil NSM være primærmyndighet for rapportering — ikke en EU-myndighet.
+  </div>
+
+  <h2>Hva er en «betydelig hendelse»?</h2>
+
+  <p>
+    Ikke alle IT-problemer må rapporteres. NIS2-direktivet definerer «betydelige hendelser» som hendelser som påvirker:
+  </p>
+
+  <ul>
+    <li>Tilgjengeligheten til en systemkritisk tjeneste</li>
+    <li>Konfidensialiteten eller integriteten av persondata i større omfang</li>
+    <li>Andre sider av systemsikkerheten</li>
+  </ul>
+
+  <p>
+    I praksis handler det om: «Ville NSM eller mine kunder være interessert i å vite om dette?»
+  </p>
+
+  <p>
+    Eksempler på hendelser som må rapporteres:
+  </p>
+
+  <ul>
+    <li>Ransomware-angrep som påvirker driftskritiske systemer</li>
+    <li>Datainnbrudd som eksponerer kundeopplysninger</li>
+    <li>DDoS-angrep som gjør tjenester utilgjengelige i lengre tid</li>
+    <li>Unautorisert tilgang til administrator-kontoer</li>
+    <li>Malware funnet på kritisk infrastruktur</li>
+  </ul>
+
+  <p>
+    Eksempler på hendelser som ikke trenger rapporteres:
+  </p>
+
+  <ul>
+    <li>En ansatt glemte passord (sikker håndtering av passordtilbakestilling)</li>
+    <li>En bruker klikket på en phishing-lenke, men sikkerhetsmekanismer stoppet angreppet</li>
+    <li>En server gikk ned på grunn av planlagt vedlikehold</li>
+  </ul>
+
+  <p>
+    Den gule fargen: hvis du er usikker, er det tryggere å rapportere enn å ikke rapportere.
+    En harmløs rapport er ikke et problem. Manglende rapport på en faktisk alvorlig hendelse er dårlig.
+  </p>
+
+  <div class="box-warning">
+    <strong>Omdømmerisiko:</strong> En organisasjon som oppdager en hendelse, men ikke rapporterer den, risikerer ikke bare sanksjoner. Når mediene eller andre mennesker senere avdekker hemmeligheten, er tilliten større brutt enn hvis organisasjonen hadde vært transparent fra start.
+  </div>
+
+  <h2>Tidslinjen: 24 timer, så 72 timer</h2>
+
+  <p>
+    Rapporteringsplikten har to faser:
+  </p>
+
+  <h3>1. Tidlig varsel — innen 24 timer</h3>
+
+  <p>
+    <strong>Hva:</strong> En kort preliminary melding som sier at en hendelse har skjedd, og at full rapport kommer.
+  </p>
+
+  <p>
+    <strong>Hvem mottar det:</strong> NSM (Nasjonal sikkerhetsmyndighet) og relevant sektormyndighet (f.eks. Finanstilsynet for banker, Direktoratet for e-helse for helsefaglige organisasjoner, NVE for energi).
+  </p>
+
+  <p>
+    <strong>Innhold:</strong> Minimal informasjon — hvem du er, at en hendelse er funnet, og når du forventer å ha mer informasjon.
+  </p>
+
+  <p>
+    <strong>Format:</strong> En e-post eller en meldingskanal bestemt av NSM.
+  </p>
+
+  <h3>2. Fullstendig rapport — innen 72 timer</h3>
+
+  <p>
+    <strong>Hva:</strong> En detaljert beskrivelse av hendelsen med all relevant teknisk informasjon.
+  </p>
+
+  <p>
+    <strong>Hvem mottar det:</strong> NSM og relevant sektormyndighet, pluss andre myndigheter dersom hendelsen berører dem.
+  </p>
+
+  <p>
+    <strong>Innhold:</strong> Se seksjonen «Hva må rapporteringen inneholde?» nedenfor.
+  </p>
+
+  <p>
+    <strong>Tidsfristen starter:</strong> Fra det øyeblikket organisasjonen <strong>oppdager</strong> hendelsen, ikke fra det øyeblikket den inntraff. En hendelse som skjedde mandag, men som du oppdaget onsdag, har 72 timer fra onsdag.
+  </p>
+
+  <blockquote>
+    «Anta at du oppdager et ransomware-angrep på tirsdag kl. 14:00. Tidlig varsel må være sendt senest onsdag kl. 14:00. Fullstendig rapport må være sendt senest fredag kl. 14:00.»
+  </blockquote>
+
+  <h2>Hva må rapporteringen inneholde?</h2>
+
+  <p>
+    NSM forventer at hver hendelsesrapport har følgende elementer:
+  </p>
+
+  <table class="fine-table">
+    <thead>
+      <tr>
+        <th>Område</th>
+        <th>Hva som skal inkluderes</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Identifikasjon</strong></td>
+        <td>Organisasjonsnavn, organisasjonsnummer, kontaktperson(er), telefon og e-post</td>
+      </tr>
+      <tr>
+        <td><strong>Tidsfremmstilling</strong></td>
+        <td>Når hendelsen ble oppdaget, når den antas å ha startet, hvilke systemer som var påvirket over tid</td>
+      </tr>
+      <tr>
+        <td><strong>Beskrivelse av hendelsen</strong></td>
+        <td>Hva som skjedde, hvordan det ble oppdaget, hvilke data eller tjenester som ble påvirket</td>
+      </tr>
+      <tr>
+        <td><strong>Påvirket område</strong></td>
+        <td>Omfang — hvor mange brukere, hvor mange records, kritikalitet til systemene</td>
+      </tr>
+      <tr>
+        <td><strong>Årsak (foreløpig)</strong></td>
+        <td>Din første vurdering av rotutsaken — konfigfeilvurdering, svak passord, kjente CVE-er, osv.</td>
+      </tr>
+      <tr>
+        <td><strong>Respons og tiltak</strong></td>
+        <td>Hva du har gjort for å stoppe angrepet, isolere systemer, logge data, varsle kunder</td>
+      </tr>
+      <tr>
+        <td><strong>Forventet oppfølging</strong></td>
+        <td>Når forventer du å ha en rotårsaksanalyse, når forventer du å være tilbake til normal drift</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>
+    Rapporten trenger ikke å være perfekt eller komplett. Det er helt normalt at du skriver «undersøkelse pågår» i flere felt.
+    Poenget er at NSM får tilstrekkelig informasjon til å vurdere alvorlighetsgraden og beslutte om å advare andre organisasjoner.
+  </p>
+
+  <div class="box-info">
+    <strong>Språk:</strong> Norsk eller engelsk. NSM aksepterer begge.
+  </div>
+
+  <h2>Hva skjer hvis du ikke rapporterer?</h2>
+
+  <p>
+    Sanksjoner for manglende eller sen rapportering er klare:
+  </p>
+
+  <ul>
+    <li><strong>For vesentlige enheter:</strong> Opp til 10 millioner euro eller 2% av global omsetning (det som er høyest)</li>
+    <li><strong>For viktige enheter:</strong> Opp til 7 millioner euro eller 1,4% av global omsetning (det som er høyest)</li>
+  </ul>
+
+  <p>
+    En organisasjon som ikke rapporterer en hendelse risikerer samme eller enda høyere sanksjon enn en som rapporterer, men sent.
+    Transparens er premisset — det eneste som gjør det verre er å ikke rapportere i det hele tatt.
+  </p>
+
+  <p>
+    I tillegg kommer det faktum at NSM eller andre myndigheter kan få informasjonen fra andre kilder — fra kunder, affærspartnere eller internasjonale cybersikkerhetsteam.
+    Når NSM da oppdager at organisasjonen visste om hendelsen, men ikke rapporterte, blir tilliten brutt og sanksjonen ofte strengere.
+  </p>
+
+  <div class="box-case">
+    <div class="case-label">Eksempel fra praksis</div>
+    <p>
+      <strong>Scenario: En norsk bank med 300 ansatte (vesentlig enhet)</strong>
+    </p>
+    <p>
+      En utenlandsk ransomware-gjeng bryter seg inn i banken på mandag morgen. Banken oppdager det tirsdag ettermiddag.
+      Direktøren og sikkerhetssjefen diskuterer situasjonen, men bestemmer seg for å håndtere det internt «uten å få panikk i markedet». De betaler løsepengene (stiltiende), fjerner malwaren onsdag og tror problemet er løst.
+    </p>
+    <p>
+      Fredagen ringer NSM med spørsmål: de har blitt kontaktet av en internasjonal cybersikkerhetsfirma som oppdaget banken i en «infected hosts»-database. NSM spør hvorfor banken ikke rapporterte.
+    </p>
+    <p>
+      <strong>Konsekvenser:</strong>
+    </p>
+    <ul>
+      <li>Sanksjon for manglende rapportering: 5–10 millioner euro</li>
+      <li>Sanksjon for manglende sikkerhetsprosesser: 2–5 millioner euro</li>
+      <li>Personlig tilsyn av direktør under Artikkel 20</li>
+      <li>Redaksjonen: «Norsk bank betalte løsepenger og holdt det skjult»</li>
+      <li>Kundekap når historien blir kjent</li>
+    </ul>
+    <p>
+      Hvis banken hadde rapportert på torsdag morgen (bare tre timer før NSM ringte), ville situasjonen vært helt annerledes. Sannsynligvis mindre eller ingen sanksjon, og en ordentlig dialog med myndighetene.
+    </p>
+  </div>
+
+  <h2>Mal for 72-timers rapport til NSM</h2>
+
+  <p>
+    Her er en enkel struktur du kan bruke:
+  </p>
+
+  <blockquote>
+    <strong>EMNE: Hendelsesrapport — [Organisasjonsnavn] — [kort beskrivelse av hendelse]</strong>
+    <br><br>
+    <strong>Organisasjon:</strong> [Navn], Organisasjonsnummer: [nummer]
+    <br>
+    <strong>Rapportert av:</strong> [Navn], [tittel], [e-post], [telefon]
+    <br>
+    <strong>Rapportdato:</strong> [dato og klokkeslett]
+    <br><br>
+    <strong>1. HENDELSEBESKRIVELSE</strong>
+    <br>
+    [Kort summary av hva som skjedde — gjerne 2–3 setninger]
+    <br><br>
+    <strong>2. TIDSLINJE</strong>
+    <br>
+    - Hendelsen oppsto anslått: [dato, tid]
+    <br>
+    - Hendelsen oppdaget: [dato, tid]
+    <br>
+    - Første respons iverksatt: [dato, tid]
+    <br>
+    - Denne rapport sendt: [dato, tid]
+    <br><br>
+    <strong>3. PÅVIRKEDE SYSTEMER OG DATA</strong>
+    <br>
+    - Systemer: [server, database, tjeneste]
+    <br>
+    - Data eksponert: [antall records, type data — persondata, finansdata, osv.]
+    <br>
+    - Brukere påvirket: [antall direkter eller estimat]
+    <br><br>
+    <strong>4. FORELØPIG ROTÅRSAK</strong>
+    <br>
+    [Hva tror du årsaken er — f.eks. «Kjent sårbarhet CVE-2025-1234», «Svake legitimasjoner», «Fisking-angrep»]
+    <br><br>
+    <strong>5. TILTAK IVERKSATT</strong>
+    <br>
+    - [Isolert påvirkede systemer]
+    <br>
+    - [Varslert brukere]
+    <br>
+    - [Sanket loggdata]
+    <br>
+    - [Engasjert ekstern respons / forensikk]
+    <br><br>
+    <strong>6. FORVENTET OPPFØLGING</strong>
+    <br>
+    - Fullstendig rotårsaksanalyse: forventet [dato]
+    <br>
+    - Tilbake til normal drift: forventet [dato]
+    <br>
+    - Oppfølgende tiltak: [liste over sikkerhetstiltak som planlegges]
+    <br><br>
+    <strong>7

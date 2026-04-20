@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-BKF3QH9K01"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag("js", new Date());
+    gtag("config", "G-BKF3QH9K01");
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NIS2-implementeringstidslinje: Din 12-måneders plan | NIS2Klar Danmark</title>
+  <meta name="description" content="12-månedersplan for NIS2-implementering. Fra gapanalyse til mock-audit. Realistisk for virksomheder med 50–500 ansatte. Dato-satte milepæle og konkrete trin.">
+  <meta property="og:title" content="NIS2-implementeringstidslinje: Din 12-måneders plan">
+  <meta property="og:description" content="12-månedersplan for NIS2-implementering. Fra gapanalyse til mock-audit. Realistisk for virksomheder med 50–500 ansatte.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #141416;
+      --card: #1c1c1f;
+      --yellow: #f5c518;
+      --white: #f0f0f0;
+      --muted: #888;
+      --red: #C61212;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: var(--bg); color: var(--white); font-family: 'Barlow', sans-serif; font-size: 19px; line-height: 1.8; }
+
+    /* Nav */
+    nav { display: flex; justify-content: space-between; align-items: center; padding: 20px 40px; border-bottom: 1px solid rgba(255,255,255,0.07); max-width: 900px; margin: 0 auto; }
+    .nav-logo { font-family: 'Poppins', sans-serif; font-weight: 900; font-size: 20px; color: var(--yellow); text-decoration: none; }
+    .nav-logo span { color: var(--white); }
+    .nav-back { color: var(--muted); text-decoration: none; font-size: 15px; }
+    .nav-back:hover { color: var(--white); }
+    .nav-cta { background: var(--yellow); color: #000; padding: 8px 18px; border-radius: 4px; text-decoration: none; font-weight: 700; font-size: 14px; font-family: 'Poppins', sans-serif; }
+    .lang-switcher { display: flex; gap: 8px; align-items: center; font-size: 13px; font-family: 'Poppins', sans-serif; }
+    .lang-switcher a { color: #888; text-decoration: none; font-weight: 600; padding: 4px 8px; border-radius: 3px; }
+    .lang-switcher a:hover { color: var(--white); }
+    .lang-switcher a.active { color: var(--yellow); background: rgba(245,197,24,0.1); }
+
+    /* Article */
+    .article-wrap { max-width: 760px; margin: 0 auto; padding: 60px 40px; }
+    .article-category { font-size: 13px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 16px; }
+    h1 { font-family: 'Poppins', sans-serif; font-size: clamp(30px, 4vw, 44px); font-weight: 900; line-height: 1.2; margin-bottom: 24px; }
+    .article-meta { font-size: 15px; color: var(--muted); margin-bottom: 48px; padding-bottom: 24px; border-bottom: 1px solid rgba(255,255,255,0.07); }
+    h2 { font-family: 'Poppins', sans-serif; font-size: 26px; font-weight: 700; margin: 48px 0 16px; color: var(--white); }
+    h3 { font-family: 'Poppins', sans-serif; font-size: 20px; font-weight: 600; margin: 32px 0 12px; color: var(--yellow); }
+    p { margin-bottom: 22px; }
+    strong { color: var(--white); font-weight: 700; }
+    .highlight { color: var(--yellow); font-weight: 700; }
+    .danger { color: #ff6b6b; font-weight: 700; }
+    ul, ol { margin: 16px 0 24px 24px; }
+    li { margin-bottom: 12px; font-size: 19px; }
+
+    /* Callout boxes */
+    .box-warning { background: rgba(197,17,17,0.12); border-left: 4px solid var(--red); padding: 20px 24px; margin: 32px 0; border-radius: 0 4px 4px 0; }
+    .box-info { background: rgba(245,197,24,0.08); border-left: 4px solid var(--yellow); padding: 20px 24px; margin: 32px 0; border-radius: 0 4px 4px 0; }
+    .box-case { background: var(--card); border: 1px solid rgba(255,255,255,0.08); padding: 28px; margin: 40px 0; border-radius: 4px; }
+    .box-case .case-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 12px; }
+    blockquote { border-left: 3px solid var(--yellow); padding: 12px 20px; margin: 24px 0; font-style: italic; color: #ccc; }
+
+    /* CTA */
+    .cta-section { background: var(--card); border: 1px solid rgba(245,197,24,0.2); border-radius: 4px; padding: 48px 40px; margin: 64px 0 40px; text-align: center; }
+    .cta-section h2 { margin-top: 0; font-size: 26px; }
+    .cta-section p { color: #aaa; max-width: 500px; margin: 0 auto 28px; }
+    .btn-primary { display: inline-block; background: var(--yellow); color: #000; font-family: 'Poppins', sans-serif; font-weight: 800; font-size: 16px; padding: 16px 36px; border-radius: 4px; text-decoration: none; }
+    .btn-primary:hover { background: #e0b010; }
+    .cta-fine { font-size: 13px; color: var(--muted); margin-top: 16px; }
+
+    /* Timeline */
+    .timeline { margin: 32px 0; }
+    .timeline-item { background: var(--card); border-left: 3px solid var(--yellow); padding: 24px; margin-bottom: 16px; border-radius: 0 4px 4px 0; }
+    .timeline-month { font-family: 'Poppins', sans-serif; font-weight: 700; color: var(--yellow); font-size: 14px; margin-bottom: 8px; }
+    .timeline-title { font-family: 'Poppins', sans-serif; font-weight: 600; font-size: 18px; margin-bottom: 8px; color: var(--white); }
+    .timeline-desc { font-size: 16px; color: #bbb; }
+
+    /* FAQ */
+    .faq-item { border-bottom: 1px solid rgba(255,255,255,0.07); padding: 20px 0; }
+    .faq-q { font-family: 'Poppins', sans-serif; font-weight: 600; margin-bottom: 10px; }
+    .faq-a { color: #bbb; }
+
+    /* Summary + Key Takeaway */
+    .box-summary { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; padding: 24px 28px; margin: 0 0 32px; }
+    .summary-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-bottom: 14px; }
+    .box-summary ul { margin: 0; padding-left: 20px; }
+    .box-summary li { margin-bottom: 8px; font-size: 17px; color: #ccc; }
+    .box-takeaway { background: rgba(245,197,24,0.08); border-left: 4px solid var(--yellow); padding: 20px 24px; margin: 0 0 40px; border-radius: 0 4px 4px 0; }
+    .takeaway-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 10px; }
+    .box-takeaway p { margin: 0; font-size: 18px; font-weight: 600; color: var(--white); line-height: 1.6; }
+
+    /* Footer */
+    footer { border-top: 1px solid rgba(255,255,255,0.07); padding: 32px 40px; text-align: center; font-size: 13px; color: var(--muted); max-width: 900px; margin: 0 auto; }
+    footer a { color: var(--muted); text-decoration: none; }
+    footer a:hover { color: var(--white); }
+
+    .related-articles { margin: 2.5rem 0 2rem; padding: 1.5rem; background: #1a1a2e; border-left: 4px solid #f0a500; border-radius: 4px; max-width: 760px; }
+    .related-articles p { margin: 0; }
+    .related-articles ul { list-style: none; padding: 0; margin: 0; }
+    .related-articles li { margin-bottom: 0.5rem; }
+    .related-articles a { text-decoration: none; color: #e0e0e0; }
+    .related-articles a:hover { color: #f0a500; }
+
+    @media (max-width: 600px) {
+      nav, .article-wrap, footer { padding: 20px; }
+      nav { flex-direction: column; gap: 12px; }
+      .cta-section { padding: 32px 20px; }
+      .timeline-item { padding: 16px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="https://nis2klar.se/da/">NIS2<span>Klar</span></a>
+  <div style="display: flex; align-items: center; gap: 20px;">
+    <a class="nav-back" href="https://nis2klar.se/da/artikler.html">← Alle artikler</a>
+    <div class="lang-switcher">
+      <a href="https://nis2klar.se/artiklar.html" title="Svenska">SV</a>
+      <a href="https://nis2klar.se/en/articles.html" title="English">EN</a>
+      <a href="https://nis2klar.se/da/artikler.html" class="active" title="Dansk">DA</a>
+      <a href="https://nis2klar.se/no/artikler.html" title="Norsk">NO</a>
+      <a href="https://nis2klar.se/it/articoli.html" title="Italiano">IT</a>
+    </div>
+  </div>
+  <a class="nav-cta" href="https://nis2klar.se/da/#boka">Book møde →</a>
+</nav>
+
+<article class="article-wrap">
+  <div class="article-category">Implementering &amp; Tidsplaner</div>
+  <h1>NIS2-implementeringstidslinje: Din trin-for-trin plan</h1>
+  <div class="article-meta">19. april 2026 · Læsestid: ca 8 minutter · Målgruppe: Direktør, bestyrelsesformand</div>
+
+  <!-- SUMMARY -->
+  <div class="box-summary">
+    <div class="summary-label">Opsummering</div>
+    <ul>
+      <li>For direktører og bestyrelsesmedlemmer, der skal implementere NIS2 inden deadline — og gøre det realistisk.</li>
+      <li>12-måneders køreplan: fra gapanalyse (måned 1–2) til mock-audit (måned 12).</li>
+      <li>Designet til virksomheder med 50–500 ansatte og delt på seks faser med konkrete leverancer.</li>
+      <li>Hver fase har et ansvarligt ledelsesorgan og dokumentationskrav til styreprotokol.</li>
+    </ul>
+  </div>
+
+  <!-- KEY TAKEAWAY -->
+  <div class="box-takeaway">
+    <div class="takeaway-label">Vigtigste pointer</div>
+    <p>NIS2 kræver ikke en "big bang"-ændring — det kræver struktur, tidsplan og tilsyn fra ledelsen. Denne køreplan sikrer, at du ikke vælter halvvejs, og at du kan dokumentere til CFCS eller sektortilsynet, at arbejdet blev udført metodisk.</p>
+  </div>
+
+  <p>
+    Du skal implementere NIS2 før oktober 2025. Det lyder langt væk, men uden en trin-for-trin plan ender du med at se fristen nærme sig, uden at du ved, hvor du står.
+  </p>
+
+  <p>
+    Denne 12-måneders køreplan er designet til virksomheder med 50–500 ansatte og opdelt i seks implementeringsfaser. Hver fase har konkrete leverancer, som skal dokumenteres i styreprotokollen. Hvis du følger den, kan du den dag CFCS eller dit sektortilsyn banker på døren, fremvise dokumentation for, at arbejdet blev gjort — systematisk og under ledelsestilsyn.
+  </p>
+
+  <div class="box-warning">
+    <strong>Tidsplan og ansvar:</strong> NIS2-implementering er ikke IT-afdelingens projekt — det er din. Du som direktør eller styrelseformand skal være aktiv sponsor, mødet skal behandle status hver måned, og alle vigtige beslutninger skal gemmes i protokollerne.
+  </div>
+
+  <h2>Fase 1: Gapanalyse &amp; Forberedelses (Måned 1–2)</h2>
+
+  <h3>Måling: Hvor er vi i dag?</h3>
+
+  <p>
+    Start med at fastslå, hvilke dele af NIS2 der vedrører din virksomhed. Det afgørende spørgsmål: opererer du i en af de 18 NIS2-sektorer, og har du over 50 ansatte eller omsætning over 10 millioner euro?
+  </p>
+
+  <p>
+    De 18 sektorer er: energi, transport, bank, finansielle markedsinfrastrukturer, sundhed, drikkevand, spildevand, digital infrastruktur, IKT-serviceforvaltning, offentlig administration, rumfart, post, affaldshåndtering, kemikalier, fødevarer, fremstilling, digitale udbydere og forskning.
+  </p>
+
+  <div class="timeline">
+    <div class="timeline-item">
+      <div class="timeline-month">MÅNED 1</div>
+      <div class="timeline-title">Gapanalyse &amp; Klassificering</div>
+      <div class="timeline-desc">
+        • Bekræft hvilken kategori: "væsentlig enhed" (250+ ansatte eller 50M€ omsætning) eller "vigtig enhed" (50–249 ansatte, 10–50M€ omsætning)<br>
+        • Dokumenter IT-infrastruktur: netværk, data, systemer, cloudtjenester<br>
+        • Auditgap: sammenlign nuværende tilstand med NIS2-kravene i artikel 21 (de 10 sikkerhedsdomæner)<br>
+        • Leverance: Gapanalyse-rapport til styreprotokol
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-month">MÅNED 2</div>
+      <div class="timeline-title">Projektplan &amp; Governance</div>
+      <div class="timeline-desc">
+        • Etabler NIS2-projektteam: projektleder, IT-chef, compliance-ansvarlig, en styrelserepræsentant<br>
+        • Definer styreprocessen: styret behandler hver måned, direktør rappor terer status<br>
+        • Godkend denne 12-måneders køreplan i styret og underskrift fra direktør<br>
+        • Leverance: Projektbehandling og styreprotokol med godkendelse
+      </div>
+    </div>
+  </div>
+
+  <p>
+    <strong>Hvad skal styreprotokollen indeholde efter fase 1:</strong>
+  </p>
+
+  <ul>
+    <li>Bekræftelse af kategori (væsentlig/vigtig enhed)</li>
+    <li>Gapanalyse-resumé (3-5 sider)</li>
+    <li>Projektplan med milepæle for alle 12 måneder</li>
+    <li>Godkendelse fra styreformand og direktør</li>
+  </ul>
+
+  <h2>Fase 2: Governancestrukturer &amp; Politikker (Måned 3–4)</h2>
+
+  <h3>Etablering: Rammen for sikkerhed</h3>
+
+  <p>
+    Nu skal du bygge det formelle apparat. NIS2 er ikke kun teknik — det er process, ansvar og dokumentation.
+  </p>
+
+  <div class="timeline">
+    <div class="timeline-item">
+      <div class="timeline-month">MÅNED 3</div>
+      <div class="timeline-title">Sikkerhedspolitik &amp; Risikostyring</div>
+      <div class="timeline-desc">
+        • Udarbejd Cyber Security Policy, der dækker artikel 21's krav (10 domæner)<br>
+        • Definer roller: sikkerhedschef, incidentkoordinator, dataforvaltere<br>
+        • Etabler risikovurderingsmetode (kvalitativ eller kvantitativ — vælg en)<br>
+        • Gennemfør første risikovurdering: identificer top-10 risici<br>
+        • Leverance: Sikkerhedspolitik, rollematrix, risikovurderingsrapport til styreprotokol
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-month">MÅNED 4</div>
+      <div class="timeline-title">Incidenthåndtering &amp; Kontinuitetsplaner</div>
+      <div class="timeline-desc">
+        • Udarbejd Incident Response Plan (hvem gør hvad, når, hvor der rapporteres)<br>
+        • Definer eskaleringsmatrix: hvilke typer incidents skal rapporteres til CFCS inden 24 timer?<br>
+        • Business Continuity Plan: hvordan genopretter vi drift efter cyberangrebet?<br>
+        • Backup- og gendannelsesprocedure: test dem på papir<br>
+        • Leverance: Incident Response Plan, BC/DR-plan, eskaleringsmtrix til styreprotokol
+      </div>
+    </div>
+  </div>
+
+  <p>
+    <strong>Hvad skal styreprotokollen indeholde efter fase 2:</strong>
+  </p>
+
+  <ul>
+    <li>Godkendt Cyber Security Policy</li>
+    <li>Roller- og ansvarsmatrix med navne</li>
+    <li>Risikovurdering: top-10 risici, prioritering</li>
+    <li>Incident Response Plan med test-tabel</li>
+    <li>Business Continuity Plan med RTO/RPO (Recovery Time/Point Objectives)</li>
+  </ul>
+
+  <div class="box-info">
+    <strong>Vigtig detalje — artikel 20:</strong> Styreprotokollen skal dokumentere, at ledelsen aktivt har behandlet og godkendt disse planer. "IT fik besked på at lave det" holder ikke over for CFCS. Du skal kunne vise, at direkt ør og styreformand kender detaljerne og har godkendt dem.
+  </div>
+
+  <h2>Fase 3: Tekniske Sikkerhedsforanstaltninger (Måned 5–7)</h2>
+
+  <h3>Implementation: De 10 Sikkerhedsdomæner</h3>
+
+  <p>
+    Artikel 21 i NIS2-loven lister 10 obligatoriske sikkerhedskontroller. Du skal have dem alle dokumenteret på plads. Her er tidsplanen for implementering:
+  </p>
+
+  <div class="timeline">
+    <div class="timeline-item">
+      <div class="timeline-month">MÅNED 5</div>
+      <div class="timeline-title">Adgangskontrol &amp; Autentisering</div>
+      <div class="timeline-desc">
+        • Multi-faktor autentisering (MFA) for alle brugere — pilotfase på 30%<br>
+        • Rollbaseret adgangskontrol (RBAC): hvem har adgang til hvilke systemer?<br>
+        • Implementer tidsbegrænset og privilegeret adgang for administrators<br>
+        • Leverance: MFA-implementeringsrapport, RBAC-matri x, policy for privilegeret adgang
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-month">MÅNED 5–6</div>
+      <div class="timeline-title">Kryptering &amp; Data Protection</div>
+      <div class="timeline-desc">
+        • Klassificér all data: offentlig, intern, fortrolig, hemmeligt<br>
+        • Implementer kryptering i transit (TLS 1.2+) og i rest for følsomme data<br>
+        • Etabler Data Loss Prevention (DLP) kontroller<br>
+        • Backup af alle kritiske systemer til isoleret opbevaring<br>
+        • Leverance: Data klassificeringsmatrix, krypteringsinventar, DLP-policy
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-month">MÅNED 6</div>
+      <div class="timeline-title">Overvågning &amp; Logging</div>
+      <div class="timeline-desc">
+        • Etabler central log-opsamling for kritiske systemer<br>
+        • Konfigurér alert-regler for mistænkelig aktivitet<br>
+        • Implementer network monitoring (SIEM eller lign .) — pilotfase<br>
+        • Definer log-opbevaringsperiode: minimum 1 år<br>
+        • Leverance: Logging-policy, alert-katalog, SIEM-arkitektur-skitse
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-month">MÅNED 6–7</div>
+      <div class="timeline-title">Vulnerability Management &amp; Patching</div>
+      <div class="timeline-desc">
+        • Gennemfør vulnerability scan af hele infrastrukturen<br>
+        • Definer patch-procedure: hvornår og hvordan udrulles kritiske patches?<br>
+        • Etabler "security update calendar" — hvornår stubs tjekkes hver måned<br>
+        • Leverance: Vulnerability-rapport, patch-procedure, update-kalender
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-month">MÅNED 7</div>
+      <div class="timeline-title">Supply Chain &amp; Third-party Risk</div>
+      <div class="timeline-desc">
+        • Inventarisér alle leverandører, især de der har IT-adgang<br>
+        • Kræv sikkerhedserklæringer fra kritiske leverandører<br>
+        • Etabler SLA'er for sikkerhed i indkøbsaftaler<br>
+        • Leverance: Leverandørinventar med risikoklassificering
+      </div>
+    </div>
+  </div>
+
+  <p>
+    <strong>Hvad skal styreprotokollen indeholde efter fase 3:</strong>
+  </p>
+
+  <ul>
+    <li>Status på alle 10 sikkerhedsdomæner (implementeret / under implementering / planlagt)</li>
+    <li>MFA-implementering % (target: 90%+ inden måned 7)</li>
+    <li>Kryptering-status: hvilke data er beskyttet?</li>
+    <li>Vulnerability-rapport: antal kritiske / høj / medium / lav</li>
+    <li>Leverandørrisikoklassificering</li>
+  </ul>
+
+  <h2>Fase 4: Leverandør &amp; Third-party Review (Måned 8–9)</h2>
+
+  <h3>Dependensvurdering: Hvem er du afhængig af?</h3>
+
+  <p>
+    Du kan ikke skjule bag "vores leverandør tog den på sig". NIS2 gør ledelsen ansvarlig for hele supply chain'en.
+  </p>
+
+  <div class="timeline">
+    <div class="timeline-item">
+      <div class="timeline-month">MÅNED 8</div>
+      <div class="timeline-title">Leverandørrisiko &amp; Kontraktuering</div>
+      <div class="timeline-desc">
+        • Opdater alle IT-leverandørkontrakter med sikkerhedskrav<br>
+        • Kræv at leverandører kan dokumentere deres eget NIS2-arbejde (eller ISO 27001)<br>
+        • Etabler audit-rettigheder: du skal kunne granske deres sikkerhed<br>
+        • Leverance: Opdateret leverandørkontrakt-template, audit-rettigheder dokumenteret
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-month">MÅNED 9</div>
+      <div class="timeline-title">Cloud &amp; Outsourcing Audit</div>
+      <div class="timeline-desc">
+        • Hvis du bruger cloudtjenester: få databehandlerdeklaration (DPA)<br>
+        • Gennemfør SOC 2 Type II audit af kritiske cloud-leverandører<br>
+        • Dokumenter hvor data befinder sig, hvilket land, hvilke backups<br>
+        • Leverance: DPA'er, SOC 2 rapporter, data-lokaliserings-matrice
+      </div>
+    </div>
+  </div>
+
+  <p>
+    <strong>Hvad skal styreprotokollen indeholde efter fase 4:</strong>
+  </p>
+
+  <ul>
+    <li>Liste over alle IT-leverandører med klassificering (kritisk / vigtig / lav)</li>
+    <li>Kontrakt-status: hvilke er opdateret med NIS2-krav?</li>
+    <li>Audit-rettigheder: dokumentation for at du kan inspicere leverandør</li>
+    <li>Cloud-sikkerhed: DPA'er på plads, SOC 2 rapporter indhentet</li>
+  </ul>
+
+  <div class="box-case">
+    <div class="case-label">Praktisk eksempel</div>
+    <p>
+      <strong>Scenario: Du er direktør for et finansielt serviceselskab med 120 ansatte.</strong>
+    </p>
+    <p>
+      Du bruger et SaaS-system til kundedata, hostet på tysk server. Du har ikke aktivt sat dig ind i deres sikkerhed — der var bare en serviceaftale.
+    </p>
+    <p>
+      I måned 8 gennemgår du leverandørkontrakten. Der står intet om sikkerhed, backup eller hvad der sker hvis leverandøren bliver hacket.
+    </p>
+    <p>
+      Du kontakter leverandøren og kræver opdateret kontrakt med: backup-procedure, incident-rapportering SLA, audit-rettigheder for dig.
+      Leverandør siger: "Normalt har vi ikke sådan — men vi kan sende dig vores ISO 27001-sertifikat."
+    </p>
+    <p>
+      Du dokumenterer, at ISO 27001-sertifikatet dækker deres kontroller, at du kan kræve security updates, og at der er klare eskaleringsregler hvis der bliver problemer.
+      <strong>Resultat:</strong> Når tilsynet spørger "hvem passer dine kundedata", kan du fremvise dokumentation for at du har gjort due diligence.
+    </p>
+  </div>
+
+  <h2>Fase 5: Uddannelse &amp; Bevidsthed (Måned 10–11)</h2>
+
+  <h3>Kulturændring: Sikkerhed er alles

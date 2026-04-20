@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-BKF3QH9K01"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag("js", new Date());
+    gtag("config", "G-BKF3QH9K01");
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NIS2 vs. GDPR: De vigtigste forskelle enhver bestyrelse skal kende | NIS2Klar</title>
+  <meta name="description" content="NIS2 og GDPR er to helt forskellige love. Du kan være GDPR-compliant og stadig fejle NIS2. Læs de kritiske forskelle og hvor dit ansvar ligger som direktør eller bestyrelsesmedlem.">
+  <meta property="og:title" content="NIS2 vs. GDPR: De vigtigste forskelle enhver bestyrelse skal kende">
+  <meta property="og:description" content="NIS2 og GDPR er to helt forskellige love. Du kan være GDPR-compliant og stadig fejle NIS2. Læs de kritiske forskelle og hvor dit ansvar ligger som direktør eller bestyrelsesmedlem.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #141416;
+      --card: #1c1c1f;
+      --yellow: #f5c518;
+      --white: #f0f0f0;
+      --muted: #888;
+      --red: #C61212;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: var(--bg); color: var(--white); font-family: 'Barlow', sans-serif; font-size: 19px; line-height: 1.8; }
+
+    /* Nav */
+    nav { display: flex; justify-content: space-between; align-items: center; padding: 20px 40px; border-bottom: 1px solid rgba(255,255,255,0.07); max-width: 900px; margin: 0 auto; }
+    .nav-logo { font-family: 'Poppins', sans-serif; font-weight: 900; font-size: 20px; color: var(--yellow); text-decoration: none; }
+    .nav-logo span { color: var(--white); }
+    .nav-back { color: var(--muted); text-decoration: none; font-size: 15px; }
+    .nav-back:hover { color: var(--white); }
+    .lang-switcher { display: flex; gap: 8px; align-items: center; font-size: 13px; font-family: 'Poppins', sans-serif; }
+    .lang-switcher a { color: #888; text-decoration: none; font-weight: 600; padding: 4px 8px; border-radius: 3px; }
+    .nav-cta { background: var(--yellow); color: #000; padding: 8px 18px; border-radius: 4px; text-decoration: none; font-weight: 700; font-size: 14px; font-family: 'Poppins', sans-serif; }
+
+    /* Article */
+    .article-wrap { max-width: 760px; margin: 0 auto; padding: 60px 40px; }
+    .article-category { font-size: 13px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 16px; }
+    h1 { font-family: 'Poppins', sans-serif; font-size: clamp(30px, 4vw, 44px); font-weight: 900; line-height: 1.2; margin-bottom: 24px; }
+    .article-meta { font-size: 15px; color: var(--muted); margin-bottom: 48px; padding-bottom: 24px; border-bottom: 1px solid rgba(255,255,255,0.07); }
+    h2 { font-family: 'Poppins', sans-serif; font-size: 26px; font-weight: 700; margin: 48px 0 16px; color: var(--white); }
+    h3 { font-family: 'Poppins', sans-serif; font-size: 20px; font-weight: 600; margin: 32px 0 12px; color: var(--yellow); }
+    p { margin-bottom: 22px; }
+    strong { color: var(--white); font-weight: 700; }
+    .highlight { color: var(--yellow); font-weight: 700; }
+    .danger { color: #ff6b6b; font-weight: 700; }
+    ul, ol { margin: 16px 0 24px 24px; }
+    li { margin-bottom: 12px; font-size: 19px; }
+
+    /* Callout boxes */
+    .box-warning { background: rgba(197,17,17,0.12); border-left: 4px solid var(--red); padding: 20px 24px; margin: 32px 0; border-radius: 0 4px 4px 0; }
+    .box-info { background: rgba(245,197,24,0.08); border-left: 4px solid var(--yellow); padding: 20px 24px; margin: 32px 0; border-radius: 0 4px 4px 0; }
+    .box-case { background: var(--card); border: 1px solid rgba(255,255,255,0.08); padding: 28px; margin: 40px 0; border-radius: 4px; }
+    .box-case .case-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 12px; }
+    blockquote { border-left: 3px solid var(--yellow); padding: 12px 20px; margin: 24px 0; font-style: italic; color: #ccc; }
+
+    /* CTA */
+    .cta-section { background: var(--card); border: 1px solid rgba(245,197,24,0.2); border-radius: 4px; padding: 48px 40px; margin: 64px 0 40px; text-align: center; }
+    .cta-section h2 { margin-top: 0; font-size: 26px; }
+    .cta-section p { color: #aaa; max-width: 500px; margin: 0 auto 28px; }
+    .btn-primary { display: inline-block; background: var(--yellow); color: #000; font-family: 'Poppins', sans-serif; font-weight: 800; font-size: 16px; padding: 16px 36px; border-radius: 4px; text-decoration: none; }
+    .btn-primary:hover { background: #e0b010; }
+    .cta-fine { font-size: 13px; color: var(--muted); margin-top: 16px; }
+
+    /* FAQ */
+    .faq-item { border-bottom: 1px solid rgba(255,255,255,0.07); padding: 20px 0; }
+    .faq-q { font-family: 'Poppins', sans-serif; font-weight: 600; margin-bottom: 10px; }
+    .faq-a { color: #bbb; }
+
+    /* Comparison table */
+    .comparison-table { width: 100%; border-collapse: collapse; margin: 24px 0; }
+    .comparison-table th { background: rgba(245,197,24,0.1); color: var(--yellow); font-family: 'Poppins', sans-serif; font-size: 13px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 12px 16px; text-align: left; border-bottom: 1px solid rgba(245,197,24,0.2); }
+    .comparison-table td { padding: 14px 16px; border-bottom: 1px solid rgba(255,255,255,0.05); font-size: 15px; }
+    .comparison-table tr:last-child td { border-bottom: none; }
+    .comparison-table .nis2 { color: #4ade80; font-weight: 600; }
+    .comparison-table .gdpr { color: #60a5fa; font-weight: 600; }
+
+    /* Summary + Key Takeaway */
+    .box-summary { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; padding: 24px 28px; margin: 0 0 32px; }
+    .summary-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-bottom: 14px; }
+    .box-summary ul { margin: 0; padding-left: 20px; }
+    .box-summary li { margin-bottom: 8px; font-size: 17px; color: #ccc; }
+    .box-takeaway { background: rgba(245,197,24,0.08); border-left: 4px solid var(--yellow); padding: 20px 24px; margin: 0 0 40px; border-radius: 0 4px 4px 0; }
+    .takeaway-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 10px; }
+    .box-takeaway p { margin: 0; font-size: 18px; font-weight: 600; color: var(--white); line-height: 1.6; }
+
+    /* Related articles */
+    .related-articles { margin: 2.5rem 0 2rem; padding: 1.5rem; background: #1a1a2e; border-left: 4px solid #f0a500; border-radius: 4px; }
+    .related-articles p { margin: 0 0 1rem; font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #f0a500; }
+    .related-articles ul { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+    .related-articles li { margin: 0; font-size: 0.95rem; }
+    .related-articles a { color: #e0e0e0; text-decoration: none; }
+    .related-articles a:hover { color: #f0a500; }
+    .related-articles .footer-links { margin: 1.25rem 0 0; font-size: 0.85rem; color: #aaa; }
+
+    /* Footer */
+    footer { border-top: 1px solid rgba(255,255,255,0.07); padding: 32px 40px; text-align: center; font-size: 13px; color: var(--muted); max-width: 900px; margin: 0 auto; }
+    footer a { color: var(--muted); }
+    footer a:hover { color: var(--white); }
+
+    @media (max-width: 600px) {
+      nav, .article-wrap, footer { padding: 20px; }
+      .cta-section { padding: 32px 20px; }
+      .comparison-table { font-size: 14px; }
+      .comparison-table th, .comparison-table td { padding: 10px 10px; }
+      .lang-switcher { gap: 4px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="https://nis2klar.se/da/">NIS2<span>Klar</span></a>
+  <a class="nav-back" href="https://nis2klar.se/da/artikler.html">← Alle artikler</a>
+  <div class="lang-switcher">
+    <a href="https://nis2klar.se/artiklar.html" style="color:#888;text-decoration:none;font-weight:600;padding:4px 8px;border-radius:3px;" title="Svenska">SV</a>
+    <a href="https://nis2klar.se/en/articles.html" style="color:#888;text-decoration:none;font-weight:600;padding:4px 8px;border-radius:3px;" title="English">EN</a>
+    <a href="https://nis2klar.se/da/artikler.html" style="color:#f5c518;text-decoration:none;font-weight:600;padding:4px 8px;border-radius:3px;background:rgba(245,197,24,0.1);" title="Dansk">DA</a>
+    <a href="https://nis2klar.se/no/artikler.html" style="color:#888;text-decoration:none;font-weight:600;padding:4px 8px;border-radius:3px;" title="Norsk">NO</a>
+    <a href="https://nis2klar.se/it/articoli.html" style="color:#888;text-decoration:none;font-weight:600;padding:4px 8px;border-radius:3px;" title="Italiano">IT</a>
+  </div>
+  <a class="nav-cta" href="https://nis2klar.se/da/#boka">Book samtal →</a>
+</nav>
+
+<article class="article-wrap">
+  <div class="article-category">Lovgivning &amp; Regulering</div>
+  <h1>NIS2 vs. GDPR: De vigtigste forskelle enhver bestyrelse skal kende</h1>
+  <div class="article-meta">19. april 2026 · Læsetid: ca 8 minutter · Målgruppe: Direktører og bestyrelser</div>
+
+  <!-- SUMMARY -->
+  <div class="box-summary">
+    <div class="summary-label">Sammenfattning</div>
+    <ul>
+      <li>NIS2 og GDPR er to helt separate love med forskellige formål, sektorer og sanktioner.</li>
+      <li>Du kan være fuldt GDPR-compliant og stadig fejle NIS2 — de fokuserer på helt forskellige områder.</li>
+      <li>NIS2 handler om operationel modstandskraft; GDPR handler om databeskyttelse.</li>
+      <li>Nogle organisationer er omfattet af begge love. Mange er kun omfattet af én.</li>
+      <li>Forvirring mellem de to koster virksomheder millioner i unødvendige tiltag — og efterlader dem uubeskyttede mod de rigtige risici.</li>
+    </ul>
+  </div>
+
+  <!-- KEY TAKEAWAY -->
+  <div class="box-takeaway">
+    <div class="takeaway-label">Vigtigste konklusion</div>
+    <p>GDPR beskytter dine kunders persondata. NIS2 beskytter infrastrukturen, som dataene ligger på. En påløb er ikke det samme som et bredt netværksangreab — og omvendt. Dit ansvar som leder afhænger af, hvilken lov der gælder for dig.</p>
+  </div>
+
+  <!-- HOOK -->
+  <p>
+    Siden GDPR trådte i kraft i 2018, har tusinder af danske virksomheder investeret i databeskyttelse. De har dokumenteret dataflow, nævnt et databehandleraftale, og implementeret en cookie-banner.
+  </p>
+
+  <p>
+    Derefter kom NIS2.
+  </p>
+
+  <p>
+    Og mange ledelser opdager nu, at alt det GDPR-arbejde ikke løste det, som NIS2 kræver. Værre endnu: nogle virksomheder bruger millioner på GDPR-compliance og tror, at de er cybersikkerhedsmæssigt beskyttet — det er de ikke.
+  </p>
+
+  <p>
+    Det er som at sætte røgalarmer op (GDPR: folk skal vide, hvis deres data brænder) uden at slukkere brandalarmerne (NIS2: bygningen skal ikke brænde ned i første omgang).
+  </p>
+
+  <div class="box-warning">
+    <strong>Risiko:</strong> At blande NIS2 og GDPR berettelser betyder ofte, at organisationer lukker øjnene for helt centrale sikkerhedskrav — fordi de har fokuseret på databeskyttelse i stedet for netværksmodstandskraft.
+  </div>
+
+  <h2>Sidestilling: Den hurtige oversigt</h2>
+
+  <table class="comparison-table">
+    <thead>
+      <tr>
+        <th>Område</th>
+        <th class="nis2">NIS2</th>
+        <th class="gdpr">GDPR</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Formål</strong></td>
+        <td class="nis2">Operationel modstandskraft. Sikrer, at kritisk infrastruktur ikke styrter sammen.</td>
+        <td class="gdpr">Databeskyttelse. Sikrer, at persondata behandles lovligt og sikkert.</td>
+      </tr>
+      <tr>
+        <td><strong>Udgangspunkt</strong></td>
+        <td class="nis2">Netværk og IKT-systemer</td>
+        <td class="gdpr">Persondata (hvem som helst har persondata, uanset sektor)</td>
+      </tr>
+      <tr>
+        <td><strong>Sektorer</strong></td>
+        <td class="nis2">18 specificerede sektorer: energi, sundhed, bank, telekommunikation osv. — kun kritiske sektorer</td>
+        <td class="gdpr">Alle sektorer. Alle, der behandler persondata.</td>
+      </tr>
+      <tr>
+        <td><strong>Hvem der omfattes</strong></td>
+        <td class="nis2">Væsentlige enheder (250+ ansatte eller 50 mio. € omsætning) og vigtige enheder (50–249 ansatte eller 10–50 mio. €)</td>
+        <td class="gdpr">Ethvert firma, uanset størrelse, der behandler persondata</td>
+      </tr>
+      <tr>
+        <td><strong>Maksimalbøde</strong></td>
+        <td class="nis2">10 mio. € eller 2% af global omsætning (væsentlige) · 7 mio. € eller 1,4% (vigtige)</td>
+        <td class="gdpr">20 mio. € eller 4% af global omsætning</td>
+      </tr>
+      <tr>
+        <td><strong>Hændelsesrapportering</strong></td>
+        <td class="nis2">24 timer (tidig advarsel) → 72 timer (fuld rapport) til CFCS eller sektortilsyn</td>
+        <td class="gdpr">30 dage til relevante myndigheder (hvis ikke høj risiko); 3 dage til den berørte, hvis høj risiko</td>
+      </tr>
+      <tr>
+        <td><strong>Personligt ansvar</strong></td>
+        <td class="nis2">Ja. VD og bestyrelsesmedlemmer kan få forbud mod ledelseshverv.</td>
+        <td class="gdpr">Ja, men mere fokus på juridisk ansvar end forbud mod ledelse.</td>
+      </tr>
+      <tr>
+        <td><strong>Tilsynsmyndighed i Danmark</strong></td>
+        <td class="nis2">CFCS (Center for Cybersikkerhed), sektortilsynsmyndigheder</td>
+        <td class="gdpr">IMY (Datatilsynet)</td>
+      </tr>
+      <tr>
+        <td><strong>Dokumentationsfokus</strong></td>
+        <td class="nis2">Risikoledelse, incident-håndtering, backup, MFA, kryptering, leverandørsikkerhed</td>
+        <td class="gdpr">Samtykke, databehandleraftale, dataflowdokumentation, privatlivspolitik, DPA</td>
+      </tr>
+      <tr>
+        <td><strong>Hvor det svarer</strong></td>
+        <td class="nis2">Begge kræver dokumentation · Begge kræver ledelsesansvar · Begge kræver trainingsdokumentation</td>
+        <td class="gdpr">Se NIS2-kolonne til venstre</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="box-info">
+    <strong>Vigtig note:</strong> Et firma kan være omfattet af <strong>både</strong> NIS2 og GDPR. En bank er både kritisk infrastruktur (NIS2) og behandler persondata (GDPR). En lille consultant-virksomhed uden kunder i regulerede sektorer kan være omfattet af GDPR, men ikke NIS2. En energiforsyning kan være omfattet af NIS2, men hvis den ikke behandler persondata i relevante databaser, ikke GDPR.
+  </div>
+
+  <h2>Hvad betyder "operationel modstandskraft" egentlig?</h2>
+
+  <p>
+    NIS2 kræver, at organisationer kan fortsætte eller genvinde deres kritiske funktioner, selv hvis der sker et cyberangreab.
+  </p>
+
+  <p>
+    Det handler ikke primært om, hvem dataene tilhører. Det handler om, at systemerne skal være tilstrækkelig sikret til, at:
+  </p>
+
+  <ul>
+    <li>En ransomware-infektion ikke lukker hele operationen ned</li>
+    <li>En DDoS-angreab på en digital tjeneste ikke gør den utilgængelig i uger</li>
+    <li>Tabet af en server ikke betyder tab af alle vigtige filer (backup)</li>
+    <li>Et bredt af et leverandørsystem ikke forbreder sig til dit eget netværk</li>
+  </ul>
+
+  <p>
+    Arbejdet handler om:<br/>
+    <strong>Risikovurderinger</strong> (hvad kan gå galt?) · <strong>Sikringstiltag</strong> (MFA, backup, kryptering, netværksadskillelse) · <strong>Hændelsesplaner</strong> (hvad gør vi, hvis det sker?) · <strong>Leverandørcheck</strong> (hvad hvis leverandøren bliver angrebet?) · <strong>Trainin</strong>g (hvordan undgår vi, at en ansat bliver phishet?).
+  </p>
+
+  <p>
+    GDPR berører <em>nogle</em> af disse områder (f.eks. kryptering), men fokuserer derimod på:
+  </p>
+
+  <ul>
+    <li>Hvordan dataene skal behandles retmæssigt</li>
+    <li>Hvem der må se dem</li>
+    <li>Hvor længe de må gemmes</li>
+    <li>Samtykket fra den, data tilhører</li>
+  </ul>
+
+  <p>
+    En bank kan være GDPR-compliant ved at have stramme databeskyttelsesprocedurer, men stadig fejle NIS2, hvis systemerne mangler redundans eller hvis den ikke har en solidarisk hændelsesplan for cyberangreab.
+  </p>
+
+  <h2>Hvorfor nogle virksomheder må følge begge love</h2>
+
+  <p>
+    En dansk bank. Et sundhedsvæsen. Et telefonselskab. En energiforsyning. En større IKT-serviceudbyder. Alle disse organisationer er blandt de 18 NIS2-sektorer <strong>og</strong> behandler persondata.
+  </p>
+
+  <p>
+    De skal følge både NIS2 og GDPR. Det betyder ikke, at arbejdet er dobbelt — nogle tiltag hjælper begge love (f.eks. kryptering af data i transit). Men det betyder, at ledelsen skal sikre, at begge sæt af krav opfyldes.
+  </p>
+
+  <div class="box-case">
+    <div class="case-label">Scenarie: En stor sundhedsklinik</div>
+    <p>
+      <strong>Klassificering:</strong> Væsentlig NIS2-enhed (sundhed er en af de 18 sektorer) · Datakontrollør efter GDPR (behandler patientdata).
+    </p>
+    <p>
+      <strong>GDPR kræver:</strong> Patientdataene skal være adskilt fra øvrig IKT, der må kun være lægeadgang, samtykke skal dokumenteres, patienterne skal kunne anmode om sletning, databehandleraftalerne med IT-leverandøren skal være på plads.
+    </p>
+    <p>
+      <strong>NIS2 kræver:</strong> Systemerne skal kunne genvinde sig efter ransomware, der skal være MFA på alle konti, backup skal være immutable (uforanderligt), der skal være en plan for at håndtere et cyberangreb uden at miste patientoversigten, leverandørerne skal være verificerede for sikkerhed.
+    </p>
+    <p>
+      <strong>Konflikt:</strong> Nej — de er komplementære. Men hvis klinikkens direktør prioriterer GDPR-compliance og glemmer redundans og backupplanlægning, får den ikke engang halvdelen af det sikkerhedsarbejde, den faktisk har brug for.
+    </p>
+  </div>
+
+  <h2>Ansvar og håndhævelse: Hvem straffer, og hvordan?</h2>
+
+  <p>
+    To helt forskellige myndighedshierarkier.
+  </p>
+
+  <h3>NIS2 — CFCS og sektortilsyn</h3>
+  <p>
+    I Danmark er <strong>CFCS (Center for Cybersikkerhed)</strong> hovedmyndighed, men den faktiske tilsyn deles blandt sektortilsynsmyndigheder:
+  </p>
+  <ul>
+    <li><strong>Finanstilsynet</strong> — finanssektoren</li>
+    <li><strong>Energistyrelsen</strong> — energisektoren</li>
+    <li><strong>Erhvervsstyrelsen</strong> — telekommunikation</li>
+    <li>Øvrige sektorer — CFCS direkte</li>
+  </ul>
+  <p>
+    Disse myndigheder kan udstede øjeblikkelige påbud, kræve tiltag inden for 30 dage, og udstede bøder. De kan også (<strong>kritisk</strong>) midlertidigt eller varigt forbyde en VD eller bestyrelsesmedlem at varetage ledelseshverv.
+  </p>
+
+  <h3>GDPR — IMY (Datatilsynet)</h3>
+  <p>
+    <strong>Datatilsynet (IMY)</strong> håndhæver GDPR. Det modtager klager om databeskyttelse, udfører tilsyn og kan udstede administrativ bøder. Fokus er på, hvordan persondata behandles — ikke på systemernes stabilitet.
+  </p>
+
+  <h3>De vigtigste lovforskelle for ledelsen</h3>
+  <ul>
+    <li><strong>NIS2-straffe</strong> kan være både økonomisk (bøder) og personlig (forbud mod ledelse).</li>
+    <li><strong>GDPR-straffe</strong> er primært økonomisk (bøder), selvom ledelsen kan stilles juridisk til regnskab.</li>
+    <li><strong>NIS2 kræver</strong> at ledelsen aktivt godkender sikkerhedsåtgordre og kan vise dokumentation heraf.</li>
+    <li><strong>GDPR kræver</strong> at der er en databeskyttelsesperson (eller dokumenteret vurdering af, at der ikke skal være en), og at samtykke-aftaler er på plads.</li>
+  </ul>
+
+  <h2>Kan du være GDPR-compliant og stadig fejle NIS2?</h2>
+
+  <p>
+    <strong>Ja. Helt klart.</strong>
+  </p>
+
+  <p>
+    Eksempel: En e-commerce-virksomhed sælger online beklædning. Den behandler kundedata (navn, adresse, betalingskort) — derfor GDPR. Men den er ikke en del af nogen af de 18 kritiske sektorer — derfor ikke NIS2.
+  </p>
+
+  <p>
+    Den virksomhed kan være fuld GDPR-compliant (kryptering af data, privacy policy, samtykke) uden at være omfattet af NIS2.
+  </p>
+
+  <p>
+    <strong>Omvendt eksempel:</strong> En bank er både GDPR og NIS2. Den kan have en glimrende databeskyttelsespolitik (GDPR) men manglende backup-planlægning og MFA (NIS2-fejl). Det ville være en alvorlig svaghed.
+  </p>
+
+  <p>
+    Eller:<br/>
+    En energiforsyning kan være teknisk sikret mod cyberangreab (NIS2) men behandle kundedata uden dokumenteret samtykke (GDPR).
+  </p>
+
+  <div class="box-warning">
+    <strong>Almindelig fejl:</strong> Mange virksomheder tror, at hvis de har løst GDPR, har de også løst cybersikkerhed. Det er en meget kostbar misforståelse.
+  </div>
+
+  <h2>Hvad skal du gøre — konkret — som direktør?</h2>
+
+  <h3>Trin 1: Vurdér, hvad der gælder for dig

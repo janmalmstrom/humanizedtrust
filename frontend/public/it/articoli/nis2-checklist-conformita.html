@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-BKF3QH9K01"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag("js", new Date());
+    gtag("config", "G-BKF3QH9K01");
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Checklist di Conformità NIS2: La Tua Organizzazione è Pronta? | NIS2Klar</title>
+  <meta name="description" content="Checklist completa di conformità NIS2 per CEO e consigli di amministrazione italiani. Tutti i requisiti dell'Art. 21 del D.Lgs. 138/2024: governance, rischio, incidenti, fornitori e molto altro.">
+  <meta property="og:title" content="Checklist di Conformità NIS2: La Tua Organizzazione è Pronta?">
+  <meta property="og:description" content="Checklist completa di conformità NIS2 per CEO e consigli di amministrazione italiani. Tutti i requisiti dell'Art. 21 del D.Lgs. 138/2024: governance, rischio, incidenti, fornitori e molto altro.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #141416;
+      --card: #1c1c1f;
+      --yellow: #f5c518;
+      --white: #f0f0f0;
+      --muted: #888;
+      --red: #C61212;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: var(--bg); color: var(--white); font-family: 'Barlow', sans-serif; font-size: 19px; line-height: 1.8; }
+
+    /* Nav */
+    nav { display: flex; justify-content: space-between; align-items: center; padding: 20px 40px; border-bottom: 1px solid rgba(255,255,255,0.07); max-width: 900px; margin: 0 auto; }
+    .nav-logo { font-family: 'Poppins', sans-serif; font-weight: 900; font-size: 20px; color: var(--yellow); text-decoration: none; }
+    .nav-logo span { color: var(--white); }
+    .nav-back { color: var(--muted); text-decoration: none; font-size: 15px; }
+    .nav-back:hover { color: var(--white); }
+    .nav-cta { background: var(--yellow); color: #000; padding: 8px 18px; border-radius: 4px; text-decoration: none; font-weight: 700; font-size: 14px; font-family: 'Poppins', sans-serif; }
+
+    /* Article */
+    .article-wrap { max-width: 760px; margin: 0 auto; padding: 60px 40px; }
+    .article-category { font-size: 13px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 16px; }
+    h1 { font-family: 'Poppins', sans-serif; font-size: clamp(30px, 4vw, 44px); font-weight: 900; line-height: 1.2; margin-bottom: 24px; }
+    .article-meta { font-size: 15px; color: var(--muted); margin-bottom: 48px; padding-bottom: 24px; border-bottom: 1px solid rgba(255,255,255,0.07); }
+    h2 { font-family: 'Poppins', sans-serif; font-size: 26px; font-weight: 700; margin: 48px 0 16px; color: var(--white); }
+    h3 { font-family: 'Poppins', sans-serif; font-size: 20px; font-weight: 600; margin: 32px 0 12px; color: var(--yellow); }
+    p { margin-bottom: 22px; }
+    strong { color: var(--white); font-weight: 700; }
+    .highlight { color: var(--yellow); font-weight: 700; }
+    .danger { color: #ff6b6b; font-weight: 700; }
+    ul, ol { margin: 16px 0 24px 24px; }
+    li { margin-bottom: 12px; font-size: 19px; }
+
+    /* Callout boxes */
+    .box-warning { background: rgba(197,17,17,0.12); border-left: 4px solid var(--red); padding: 20px 24px; margin: 32px 0; border-radius: 0 4px 4px 0; }
+    .box-info { background: rgba(245,197,24,0.08); border-left: 4px solid var(--yellow); padding: 20px 24px; margin: 32px 0; border-radius: 0 4px 4px 0; }
+    .box-case { background: var(--card); border: 1px solid rgba(255,255,255,0.08); padding: 28px; margin: 40px 0; border-radius: 4px; }
+    .box-case .case-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 12px; }
+    blockquote { border-left: 3px solid var(--yellow); padding: 12px 20px; margin: 24px 0; font-style: italic; color: #ccc; }
+
+    /* CTA */
+    .cta-section { background: var(--card); border: 1px solid rgba(245,197,24,0.2); border-radius: 4px; padding: 48px 40px; margin: 64px 0 40px; text-align: center; }
+    .cta-section h2 { margin-top: 0; font-size: 26px; }
+    .cta-section p { color: #aaa; max-width: 500px; margin: 0 auto 28px; }
+    .btn-primary { display: inline-block; background: var(--yellow); color: #000; font-family: 'Poppins', sans-serif; font-weight: 800; font-size: 16px; padding: 16px 36px; border-radius: 4px; text-decoration: none; }
+    .btn-primary:hover { background: #e0b010; }
+    .cta-fine { font-size: 13px; color: var(--muted); margin-top: 16px; }
+
+    /* FAQ */
+    .faq-item { border-bottom: 1px solid rgba(255,255,255,0.07); padding: 20px 0; }
+    .faq-q { font-family: 'Poppins', sans-serif; font-weight: 600; margin-bottom: 10px; }
+    .faq-a { color: #bbb; }
+
+    /* Fine table */
+    .fine-table { width: 100%; border-collapse: collapse; margin: 24px 0; }
+    .fine-table th { background: rgba(245,197,24,0.1); color: var(--yellow); font-family: 'Poppins', sans-serif; font-size: 13px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 12px 16px; text-align: left; border-bottom: 1px solid rgba(245,197,24,0.2); }
+    .fine-table td { padding: 14px 16px; border-bottom: 1px solid rgba(255,255,255,0.05); font-size: 15px; }
+    .fine-table tr:last-child td { border-bottom: none; }
+    .fine-table .amount { color: #ff6b6b; font-weight: 700; }
+
+    /* Summary + Key Takeaway */
+    .box-summary { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; padding: 24px 28px; margin: 0 0 32px; }
+    .summary-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-bottom: 14px; }
+    .box-summary ul { margin: 0; padding-left: 20px; }
+    .box-summary li { margin-bottom: 8px; font-size: 17px; color: #ccc; }
+    .box-takeaway { background: rgba(245,197,24,0.08); border-left: 4px solid var(--yellow); padding: 20px 24px; margin: 0 0 40px; border-radius: 0 4px 4px 0; }
+    .takeaway-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 10px; }
+    .box-takeaway p { margin: 0; font-size: 18px; font-weight: 600; color: var(--white); line-height: 1.6; }
+
+    /* Checklist styles */
+    .checklist-section { background: var(--card); border: 1px solid rgba(255,255,255,0.08); border-radius: 4px; padding: 28px 32px; margin: 32px 0; }
+    .checklist-section h3 { margin-top: 0; margin-bottom: 16px; }
+    .checklist-item { display: flex; align-items: flex-start; gap: 14px; padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
+    .checklist-item:last-child { border-bottom: none; padding-bottom: 0; }
+    .check-box { width: 22px; height: 22px; min-width: 22px; border: 2px solid rgba(245,197,24,0.4); border-radius: 3px; margin-top: 4px; display: flex; align-items: center; justify-content: center; }
+    .checklist-item p { margin: 0; font-size: 17px; line-height: 1.6; color: #ddd; }
+    .checklist-item strong { color: var(--white); }
+
+    /* Score table */
+    .score-table { width: 100%; border-collapse: collapse; margin: 24px 0; }
+    .score-table th { background: rgba(245,197,24,0.1); color: var(--yellow); font-family: 'Poppins', sans-serif; font-size: 13px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 12px 16px; text-align: left; border-bottom: 1px solid rgba(245,197,24,0.2); }
+    .score-table td { padding: 14px 16px; border-bottom: 1px solid rgba(255,255,255,0.05); font-size: 16px; }
+    .score-table tr:last-child td { border-bottom: none; }
+    .score-red { color: #ff6b6b; font-weight: 700; }
+    .score-orange { color: #f5a623; font-weight: 700; }
+    .score-green { color: #4ade80; font-weight: 700; }
+
+    /* Footer */
+    footer { border-top: 1px solid rgba(255,255,255,0.07); padding: 32px 40px; text-align: center; font-size: 13px; color: var(--muted); max-width: 900px; margin: 0 auto; }
+    footer a { color: var(--muted); }
+
+    @media (max-width: 600px) {
+      nav, .article-wrap, footer { padding: 20px; }
+      .cta-section { padding: 32px 20px; }
+      .fine-table { font-size: 14px; }
+      .fine-table th, .fine-table td { padding: 10px 10px; }
+      .score-table { font-size: 14px; }
+      .score-table th, .score-table td { padding: 10px 10px; }
+      .checklist-section { padding: 20px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="https://nis2klar.se/it/">NIS2<span>Klar</span></a>
+  <a class="nav-back" href="https://nis2klar.se/it/articoli.html">← Tutti gli articoli</a>
+  <div class="lang-switcher" style="display:flex;gap:8px;align-items:center;font-size:13px;font-family:'Poppins',sans-serif;">
+    <a href="https://nis2klar.se/artiklar.html" style="color:#888;text-decoration:none;font-weight:600;padding:4px 8px;border-radius:3px;" title="Svenska">SV</a>
+    <a href="https://nis2klar.se/en/articles.html" style="color:#888;text-decoration:none;font-weight:600;padding:4px 8px;border-radius:3px;" title="English">EN</a>
+    <a href="https://nis2klar.se/da/artikler.html" style="color:#888;text-decoration:none;font-weight:600;padding:4px 8px;border-radius:3px;" title="Dansk">DA</a>
+    <a href="https://nis2klar.se/no/artikler.html" style="color:#888;text-decoration:none;font-weight:600;padding:4px 8px;border-radius:3px;" title="Norsk">NO</a>
+    <a href="https://nis2klar.se/it/articoli.html" style="color:#f5c518;text-decoration:none;font-weight:600;padding:4px 8px;border-radius:3px;background:rgba(245,197,24,0.1);" title="Italiano">IT</a>
+  </div>
+  <a class="nav-cta" href="/nis2.html#boka">Prenota una chiamata →</a>
+</nav>
+
+<article class="article-wrap">
+  <div class="article-category">Conformità &amp; Governance</div>
+  <h1>Checklist di Conformità NIS2: La Tua Organizzazione è Pronta?</h1>
+  <div class="article-meta">Aggiornato il 17 aprile 2026 · Tempo di lettura: circa 9 minuti · Destinatari: CEO, Presidente e Consiglieri di Amministrazione</div>
+
+  <!-- SUMMARY -->
+  <div class="box-summary">
+    <div class="summary-label">Sintesi</div>
+    <ul>
+      <li>Per CEO e consigli di amministrazione di aziende italiane nei settori regolamentati NIS2 che vogliono sapere con certezza dove si trovano.</li>
+      <li>Il D.Lgs. 138/2024 è in vigore dal 16 ottobre 2024: l'ACN ha già avviato le attività di vigilanza e registrazione.</li>
+      <li>L'Art. 21 elenca otto aree di sicurezza obbligatorie — tutte richiedono documentazione verificabile, non semplici intenzioni.</li>
+      <li>L'Art. 23 del D.Lgs. 138/2024 stabilisce la <strong>responsabilità personale</strong> dei membri dell'organo di amministrazione: ignorare NIS2 è un rischio diretto per chi siede in CdA.</li>
+      <li>Le sanzioni raggiungono <strong>10 milioni di euro</strong> o il 2% del fatturato mondiale per i soggetti essenziali.</li>
+    </ul>
+  </div>
+
+  <!-- KEY TAKEAWAY -->
+  <div class="box-takeaway">
+    <div class="takeaway-label">La cosa più importante</div>
+    <p>NIS2 non è un progetto IT. È una responsabilità personale per ogni membro del consiglio di amministrazione. Questa checklist ti mostra esattamente dove la tua organizzazione è esposta — prima che lo faccia l'ACN.</p>
+  </div>
+
+  <!-- HOOK -->
+  <p>
+    Immagina di ricevere una comunicazione dall'<strong>Agenzia per la Cybersicurezza Nazionale (ACN)</strong> che annuncia l'avvio di un'ispezione sulla tua organizzazione. Hai 14 giorni per produrre la documentazione relativa alle misure di sicurezza adottate. In quel momento, cosa sareste in grado di consegnare?
+  </p>
+
+  <p>
+    Se la risposta onesta è "non lo so" oppure "devo sentire l'IT", allora questa checklist è per te. Il D.Lgs. 138/2024 — il decreto legislativo italiano di recepimento della Direttiva NIS2 — è in vigore dal 16 ottobre 2024. L'ACN ha già avviato la registrazione dei soggetti essenziali e importanti. Le ispezioni non aspettano che la tua agenda si liberi.
+  </p>
+
+  <div class="box-warning">
+    <strong>Attenzione: responsabilità personale.</strong> L'Art. 23 del D.Lgs. 138/2024 stabilisce che i membri dell'organo di amministrazione possono essere ritenuti personalmente responsabili delle violazioni NIS2. Non si tratta di una sanzione che ricade solo sull'azienda. Ricade su di te, in quanto persona fisica che ricopre una carica di vertice.
+  </div>
+
+  <h2>Come funziona questa checklist</h2>
+
+  <p>
+    Questa checklist copre tutte le otto aree di misure di sicurezza obbligatorie previste dall'<strong>Art. 21 del D.Lgs. 138/2024</strong>, che recepisce l'Art. 21 della Direttiva NIS2. Per ogni area trovi i controlli specifici che l'ACN si aspetta di trovare documentati.
+  </p>
+
+  <p>
+    Per ogni voce assegna un punteggio:
+  </p>
+
+  <ul>
+    <li><strong>2 punti</strong> — Fatto e documentato: la misura è in atto e puoi produrre evidenza scritta oggi stesso.</li>
+    <li><strong>1 punto</strong> — Parzialmente fatto: la misura esiste ma la documentazione è incompleta o non aggiornata.</li>
+    <li><strong>0 punti</strong> — Non fatto: la misura non è stata implementata o non c'è alcuna documentazione.</li>
+  </ul>
+
+  <p>
+    Alla fine somma i punti e consulta la tabella di valutazione. Sii onesto: l'unico modo per proteggerti è conoscere la realtà prima che la conosca l'autorità di vigilanza.
+  </p>
+
+  <h2>Area 1 — Governance e responsabilità del vertice</h2>
+
+  <p>
+    Il punto di partenza non è tecnico: è organizzativo. NIS2 richiede che il vertice aziendale — il consiglio di amministrazione nella sua interezza, non solo l'IT — comprenda, approvi e supervisioni attivamente le misure di sicurezza informatica.
+  </p>
+
+  <div class="checklist-section">
+    <h3>Checklist Governance</h3>
+    <div class="checklist-item">
+      <div class="check-box"></div>
+      <p><strong>Politica di sicurezza informatica approvata dal CdA:</strong> il consiglio ha formalmente approvato una policy di cybersecurity aggiornata, con data e firme dei membri dell'organo.</p>
+    </div>
+    <div class="checklist-item">
+      <div class="check-box"></div>
+      <p><strong>Ruoli e responsabilità assegnati:</strong> è chiaramente definito chi risponde della sicurezza informatica a livello operativo (es. CISO o responsabile equivalente) e chi ha responsabilità di supervisione a livello di CdA.</p>
+    </div>
+    <div class="checklist-item">
+      <div class="check-box"></div>
+      <p><strong>Verbali di CdA con punto sicurezza:</strong> nei verbali degli ultimi 12 mesi sono presenti almeno due occasioni in cui il consiglio ha discusso e deliberato su temi di sicurezza informatica.</p>
+    </div>
+    <div class="checklist-item">
+      <div class="check-box"></div>
+      <p><strong>Registrazione sulla piattaforma ACN:</strong> l'organizzazione ha completato la registrazione presso l'ACN nei termini stabiliti e ha ricevuto conferma dell'avvenuta iscrizione come soggetto essenziale o importante.</p>
+    </div>
+    <div class="checklist-item">
+      <div class="check-box"></div>
+      <p><strong>Formazione del vertice:</strong> i membri del CdA e il CEO hanno partecipato ad almeno una sessione di formazione su NIS2 e cybersecurity nell'ultimo anno, con relativo registro di partecipazione.</p>
+    </div>
+  </div>
+
+  <h2>Area 2 — Gestione del rischio</h2>
+
+  <p>
+    L'Art. 21 richiede che ogni soggetto essenziale e importante conduca una valutazione del rischio sistematica e documentata. Non si tratta di una lista di preoccupazioni generiche: deve essere un'analisi strutturata che identifica gli asset critici, le minacce plausibili e le misure di mitigazione adottate.
+  </p>
+
+  <div class="checklist-section">
+    <h3>Checklist Gestione del Rischio</h3>
+    <div class="checklist-item">
+      <div class="check-box"></div>
+      <p><strong>Valutazione del rischio datata e firmata:</strong> esiste un documento di risk assessment aggiornato negli ultimi 12 mesi, approvato dal vertice aziendale.</p>
+    </div>
+    <div class="checklist-item">
+      <div class="check-box"></div>
+      <p><strong>Inventario degli asset critici:</strong> sono censiti i sistemi informativi, le reti e i dati considerati critici per la continuità operativa dell'organizzazione.</p>
+    </div>
+    <div class="checklist-item">
+      <div class="check-box"></div>
+      <p><strong>Analisi delle minacce rilevanti per il settore:</strong> la valutazione del rischio tiene conto delle minacce specifiche del settore di riferimento (es. attacchi ransomware nel manifatturiero, frodi informatiche nel finanziario).</p>
+    </div>
+    <div class="checklist-item">
+      <div class="check-box"></div>
+      <p><strong>Piano di trattamento del rischio:</strong> per ogni rischio identificato esiste un piano con misure di mitigazione, responsabile e scadenza.</p>
+    </div>
+  </div>
+
+  <h2>Area 3 — Gestione degli incidenti</h2>
+
+  <p>
+    Quando accade un incidente informatico grave — e nel 2026 la domanda non è "se" ma "quando" — la legge stabilisce tempi precisi e inderogabili. L'ACN deve essere notificata con un'<strong>allerta precoce entro 24 ore</strong> dall'individuazione dell'incidente, seguita da una <strong>notifica completa entro 72 ore</strong> e da una <strong>relazione finale entro un mese</strong>. Chi non rispetta questi termini rischia sanzioni cumulative per l'incidente e per la mancata notifica.
+  </p>
+
+  <div class="checklist-section">
+    <h3>Checklist Gestione degli Incidenti</h3>
+    <div class="checklist-item">
+      <div class="check-box"></div>
+      <p><strong>Piano di risposta agli incidenti documentato:</strong> esiste una procedura scritta che descrive cosa fare nelle prime ore dopo la scoperta di un incidente, con ruoli, escalation e contatti ACN.</p>
+    </div>
+    <div class="checklist-item">
+      <div class="check-box"></div>
+      <p><strong>Criteri di classificazione della gravità:</strong> il piano definisce quali eventi costituiscono un "incidente significativo" ai sensi del D.Lgs. 138/2024 e richiedono notifica all'ACN.</p>
+    </div>
+    <div class="checklist-item">
+      <div class="check-box"></div>
+      <p><strong>Canale di notifica all'ACN identificato:</strong> il team sa esattamente come e dove notificare un incidente all'ACN — il processo è stato verificato e non scoperto al momento dell'emergenza.</p>
+    </div>
+    <div class="checklist-item">
+      <div class="check-box"></div>
+      <p><strong>Esercitazione o test del piano:</strong> il piano di risposta agli incidenti è stato testato almeno una volta (tabletop exercise o simulazione) con relativo verbale.</p>
+    </div>
+    <div class="checklist-item">
+      <div class="check-box"></div>
+      <p><strong>Strumenti di rilevamento attivi:</strong> è in funzione un sistema di monitoraggio degli eventi di sicurezza (SIEM o equivalente) che consente di individuare tempestivamente gli incidenti.</p>
+    </div>
+  </div>
+
+  <h2>Area 4 — Continuità operativa e gestione delle crisi</h2>
+
+  <p>
+    NIS2 richiede che le organizzazioni siano in grado di continuare a operare — o di riprendere rapidamente le operazioni — anche in seguito a un incidente grave. Questo include backup verificati, piani di disaster recovery e gestione delle crisi a livello di vertice.
+  </p>
+
+  <div class="checklist-section">
+    <h3>Checklist Continuità Operativa</h3>
+    <div class="checklist-item">
+      <div class="check-box"></div>
+      <p><strong>Piano di continuità operativa (BCP) aggiornato:</strong> esiste un piano documentato che descrive come mantenere le funzioni critiche durante e dopo un incidente, approvato dal CdA.</p>
+    </div>
+    <div class="checklist-item">
+      <div class="check-box"></div>
+      <p><strong>Backup regolari e verificati:</strong> i backup dei sistemi e dei dati critici vengono eseguiti con frequenza definita e la loro integrità viene testata periodicamente con test di ripristino documentati.</p>
+    </div>
+    <div class="checklist-item">
+      <div class="check-box"></div>
+      <p><strong>Backup isolati dalla rete principale (immutabili):</strong> almeno una copia dei dati critici è conservata in un ambiente separato dalla rete operativa, non modificabile da attacchi ransomware.</p>
+    </div>
+    <div class="checklist-item">
+      <div class="check-box"></div>
+      <p><strong>Obiettivi RTO e RPO definiti:</strong> sono stabiliti tempi massimi di ripristino (RTO) e perdita dati accettabile (RPO) per ogni sistema critico.</p>
+    </div>
+  </div>
+
+  <h2>Area 5 — Sicurezza della catena di fornitura</h2>
+
+  <p>
+    Molti degli attacchi informatici più devastanti degli ultimi anni non hanno colpito le aziende direttamente, ma attraverso i loro fornitori. NIS2 richiede esplicitamente che le organizzazioni estendano i requisiti di sicurezza lungo tutta la catena di fornitura — inclusi i fornitori di servizi cloud, di software e di outsourcing IT.
+  </p>
+
+  <div class="checklist-section">
+    <h3>Checklist Sicurezza della Catena di Fornitura</h3>
+    <div class="checklist-item">
+      <div class="check-box"></div>
+      <p><strong>Inventario dei fornitori critici:</strong> è disponibile una lista aggiornata dei fornitori che hanno accesso ai sistemi informativi o ai dati dell'organizzazione, con classificazione per livello di rischio.</p>
+    </div>
+    <div class="checklist-item">
+      <div class="check-box"></div>
+      <p><strong>Requisiti di sicurezza nei contratti:</strong> i contratti con i fornitori critici includono clausole specifiche su cybersecurity, notifica degli incidenti e diritto di audit.</p>
+    </div>
+    <div class="checklist-item">
+      <div class="check-box"></div>
+      <p><strong>Valutazione periodica dei fornitori:</strong> viene condotta almeno una valutazione annuale del livello di sicurezza dei fornitori critici, con documentazione dei risultati.</p>
+    </div>
+    <div class="checklist-item">
+      <div class="check-box"></div>
+      <p><strong>Gestione degli accessi privilegiati dei fornitori:</strong> i fornitori esterni hanno accesso solo ai sistemi strettamente necessari per le loro attività, con credenziali dedicate e monitorate.</p>
+    </div>
+  </div>
+
+  <h2>Area 6 — Controllo degli accessi e autenticazione</h2>
+
+  <p>
+    Il controllo degli accessi è una delle aree dove le carenze sono più frequenti — e più facili da sfruttare per un attaccante. NIS2 richiede che l'accesso ai sistemi critici sia concesso secondo il principio del minimo privilegio e protetto da autenticazione robusta.
+  </p>
+
+  <div class="checklist-section">
+    <h3>Checklist Controllo degli Accessi</h3>
+    <div class="checklist-item">
+      <div class="check-box"></div>
+      <p><strong>Autenticazione a più fattori (MFA) sui sistemi critici:</strong> l'accesso ai sistemi, alle applicazioni e agli strumenti di gestione remota richiede MFA per tutti gli utenti, inclusi i dirigenti.</p>
+    </div>
+    <div class="checklist-item">
+      <div class="check-box"></div>
+      <p><strong>Principio del minimo privilegio applicato:</strong> ogni utente e ogni account di servizio ha solo i permessi strettamente necessari per svolgere la propria funzione.</p>
+    </div>
+    <div class="checklist-item">
+      <div class="check-box"></div>
+      <p><strong>Gestione degli account privilegiati (PAM):</strong> gli account con privilegi amministrativi sono censiti, gestiti separatamente e soggetti a monitoraggio rafforzato.</p>
+    </div>
+    <div class="checklist-item">
+      <div class="check-box"></div>
+      <p><strong>Procedura di revoca accessi tempestiva:</strong> esiste un processo documentato per revocare immediatamente gli accessi in caso di cessazione del rapporto di lavoro o cambio di ruolo.</p>
+    </div>
+  </div>
+
+  <h2>Area 7 — Crittografia e protezione dei dati</h2>
+
+  <p>
+    La crittografia non è più un'opzione riservata alle banche o ai militari. NIS2 la include esplicitamente tra le misure obbligatorie per tutti i soggetti essenziali e importanti. La protezione dei dati sensibili — sia in transito che a riposo — è un requisito minimo di conformità.
+  </p>
+
+  <div class="checklist-section">
+    <h3>Checklist Crittografia</h3>
+    <div class="checklist-item">
+      <div class="check-box"></div>
+      <p><strong>Crittografia dei dati in transito:</strong> tutte le comunicazioni che coinvolgono dati sensibili o critici utilizzano protocolli crittografati (TLS 1.2 o superiore, VPN per accessi remoti).</p>
+    </div>
+    <div class="checklist-item">
+      <div class="check-box"></div>
+      <p><strong>Crittografia dei dati a riposo:</strong> i dispositivi mobili, i laptop e i repository contenenti dati critici sono protetti da crittografia del disco.</p>
+    </div>
+    <div class="checklist-item">
+      <div class="check-box"></div>
+      <p><strong>Classificazione dei dati:</strong> esiste una policy di classificazione delle informazioni che stabilisce come trattare i diversi livelli di sensibilità dei dati aziendali.</p>
+    </div>
+    <div class="checklist-item">
+      <div class="check-box"></div>
+      <p><strong>Gestione sicura delle chiavi crittografiche:</strong> le chiavi di cifratura sono gestite con procedure documentate che ne garantiscono la riservatezza e la rotazione periodica.</p>
+    </div>
+  </div>
+
+  <h2>Area 8 — Formazione e cultura della sicurezza</h2>
+
+  <p>
+    Il fattore umano rimane la principale causa di incidenti informatici. La formazione non è una voce di costo da tagliare: è un requisito esplicito di NIS2 e una delle prime cose che l'ACN verifica. Questo vale per tutti — dal personale operativo al consiglio di amministrazione.
+  </p>
+
+  <div class="checklist-section">
+    <h3>Checklist Formazione</h3>
+    <div class="checklist-item">
+      <div class="check-box"></div>
+      <p><strong>Programma di formazione annuale documentato:</strong> tutti i dipendenti ricevono almeno una formazione annuale su cybersecurity e igiene informatica, con registro delle presenze.</p>
+    </div>
+    <div class="checklist-item">
+      <div class="check-box"></div>
+      <p><strong>Formazione specifica per il vertice:</strong> CEO e consiglieri di amministrazione hanno partecipato a sessioni di formazione dedicate ai loro obblighi NIS2 nell'ultimo anno.</p>
+    </div>
+    <div class="checklist-item">
+      <div class="check-box"></div>
+      <p><strong>Simulazioni di phishing:</strong> vengono condotte simulazioni periodiche di attacchi phishing per misurare e migliorare la consapevolezza del personale, con reportistica documentata.</p>
+    </div>
+    <div class="checklist-item">
+      <div class="check-box"></div>
+      <p><strong>Procedura di segnalazione interna degli incidenti:</strong> i dipendenti sanno come segnalare internamente un sospetto incidente informatico e il processo è comunicato chiaramente.</p>
+    </div>
+  </div>
+
+  <h2>Il tuo punteggio: dove si trova la tua organizzazione?</h2>
+
+  <p>
+    Somma tutti i punti ottenuti. Il punteggio massimo è <strong>48 punti</strong> (24 voci × 2 punti ciascuna). Consulta la tabella seguente per capire il tuo livello di esposizione.
+  </p>
+
+  <table class="score-table">
+    <thead>
+      <tr>
+        <th>Punteggio</th>
+        <th>Valutazione</th>
+        <th>Implicazione</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>40–48</strong></td>
+        <td class="score-green">Buona conformità di base</td>
+        <td>Stai lavorando nella direzione giusta. Consolida la documentazione e pianifica revisioni periodiche.</td>
+      </tr>
+      <tr>
+        <td><strong>28–39</strong></td>
+        <td class="score-orange">Conformità parziale</td>
+        <td>Esistono lacune significative. Un'ispezione ACN in questo momento ti esporrebbe a sanzioni. È necessaria un'azione prioritaria.</td>
+      </tr>
+      <tr>
+        <td><strong>14–27</strong></td>
+        <td class="score-red">Esposizione elevata</td>
+        <td>La tua organizzazione presenta carenze gravi in più aree obbligatorie. Il rischio di sanzioni è concreto e il rischio operativo è reale.</td>
+      </tr>
+      <tr>
+        <td><strong>0–13</strong></td>
+        <td class="score-red">Esposizione critica</td>
+        <td>La conformità è assente in aree fondamentali. Un incidente o un'ispezione oggi potrebbe avere conseguenze gravi sia per l'organizzazione che per i singoli amministratori.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="box-info">
+    <strong>Importante:</strong> questa checklist è uno strumento di autovalutazione, non una certificazione di conformità. L'ACN non valuta le intenzioni ma le evidenze documentali. Anche un punteggio elevato in questa checklist deve essere supportato da documentazione verificabile e aggiornata.
+  </div>
+
+  <h2>Le sanzioni: cosa rischi concretamente</h2>
+
+  <p>
+    Prima di passare alle domande frequenti, è utile avere chiaro il quadro sanzionatorio italiano. Il D.Lgs. 138/2024 distingue tra due categorie di soggetti:
+  </p>
+
+  <table class="fine-table">
+    <thead>
+      <tr>
+        <th>Categoria</th>
+        <th>Sanzione massima</th>
+        <th>Alternativa percentuale</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Soggetti essenziali</td>
+        <td class="amount">10 milioni di euro</td>
+        <td>2% del fatturato mondiale annuo</td>
+      </tr>
+      <tr>
+        <td>Soggetti importanti</td>
+        <td class="amount">7 milioni di euro</td>
+        <td>1,4% del fatturato mondiale annuo</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>
+    Si applica il valore più alto. Un'azienda manifatturiera italiana con 300 milioni di euro di fatturato classificata come soggetto essenziale potrebbe vedersi infliggere sanzioni fino a <span class="danger">10 milioni di euro</span> — per carenze documentali, non solo per aver subìto un attacco.
+  </p>
+
+  <p>
+    A queste si aggiunge la responsabilità personale prevista dall'<strong>Art. 23 del D.Lgs. 138/2024</strong>. I membri dell'organo di amministrazione che non abbiano esercitato la dovuta vigilanza sulle misure di sicurezza possono essere ritenuti personalmente responsabili. Ciò può tradursi in sanzioni personali e, nei casi più gravi, in misure che limitano la possibilità di ricoprire ruoli dirigenziali.
+  </p>
+
+  <div class="box-case">
+    <div class="case-label">Scenario Esemplificativo</div>
+    <p>
+      <strong>Azienda del settore energetico, nord Italia, 220 dipendenti.</strong>
+    </p>
+    <p>
+      Classificata come soggetto essenziale ai sensi del D.Lgs. 138/2024. A marzo 2026 subisce un attacco ransomware che blocca i sistemi di gestione operativa per 72 ore. Il team IT individua la violazione nella notte tra giovedì e venerdì, ma l'amministratore delegato — rientrato da un viaggio — viene informato solo sabato mattina. La decisione di notificare l'ACN viene rimandata all'inizio della settimana successiva per non creare allarme nel fine settimana.
+    </p>
+    <p>
+      L'allerta precoce di 24 ore è già scaduta. La notifica completa di 72 ore trascorre anch'essa senza comunicazione all'ACN. Un fornitore colpito dagli stessi problemi di connettività segnala l'accaduto all'autorità settoriale — ARERA — che avvia verifiche coordinate con l'ACN.
+    </p>
+    <p>
+      All'ispezione emerge che l'azienda non ha una procedura di notifica degli incidenti documentata, che il CdA non ha mai approvato formalmente una politica di sicurezza e che i backup non sono stati testati negli ultimi 18 mesi.
+    </p>
+    <p>
+      <strong>Risultato ipotetico:</strong> Sanzione per mancata notifica nei termini. Sanzione aggiuntiva per carenze nelle misure di sicurezza obbligatorie ex Art. 21. Avvio di procedimento per accertamento della responsabilità personale dell'amministratore delegato. Costo stimato complessivo — incluse spese legali, ripristino sistemi e danno reputazionale — <span class="danger">superiore a 8 milioni di euro</span>.
+    </p>
+  </div>
+
+  <h2>Le domande che ci vengono poste più spesso</h2>
+
+  <div class="faq-item">
+    <div class="faq-q">Dobbiamo registrarci sull'apposita piattaforma ACN anche se pensiamo di non rientrare nei soggetti NIS2?</div>
+    <div class="faq-a">Se operate in uno dei 18 settori regolamentati e superate le soglie dimensionali (in linea generale: più di 50 dipendenti o oltre 10 milioni di euro di fatturato), siete tenuti a verificare la vostra classificazione e a registrarvi sulla piattaforma ACN entro i termini stabiliti. Il mancato adempimento è già di per sé un illecito. L'ACN pubblica le liste dei soggetti essenziali e importanti: se non sapete con certezza dove collocarvi, l'unica mossa sicura è verificarlo subito.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">Il CISO o il responsabile IT può gestire tutto questo senza il coinvolgimento del CdA?</div>
+    <div class="faq-a">No, e questa è probabilmente la cosa più importante da comprendere. L'Art. 23 del D.Lgs. 138/2024 è esplicito: i membri dell'organo di amministrazione devono approvare le misure di sicurezza e supervisionarne l'attuazione. Delegare tutto all'IT non esonera i consiglieri dalla responsabilità personale — anzi, può aggravarla se dovesse emergere che non erano a conoscenza della situazione reale. Il CdA deve essere informato, deve deliberare e deve documentare le proprie decisioni in materia di cybersecurity.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">Abbiamo già una certificazione ISO 27001. Siamo conformi a NIS2?</div>
+    <div class="faq-a">La ISO 27001 è un ottimo punto di partenza e copre molte delle aree richieste da NIS2. Tuttavia non è sufficiente di per sé. NIS2 aggiunge requisiti specifici che ISO 27001 non necessariamente copre nella stessa misura, in particolare sulla notifica degli incidenti all'ACN entro i termini di legge, sulla responsabilità personale del vertice e sulla sicurezza della catena di fornitura. Una gap analysis specifica è comunque raccomandata anche per le organizzazioni già certificate.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">L'ACN può ispezionare anche senza che sia avvenuto un incidente?</div>
+    <div class="faq-a">Sì. L'ACN ha poteri di vigilanza proattiva: può avviare ispezioni su iniziativa propria, su segnalazione di terzi o nell'ambito di programmi di verifica periodica. Non è necessario che sia avvenuto un incidente per essere oggetto di un'ispezione. Le carenze nelle misure di sicurezza obbligatorie ex Art. 21 sono sanzionabili indipendentemente dal fatto che abbiano causato un danno concreto.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">Qual è il primo passo concreto che dovremmo fare questa settimana?</div>
+    <div class="faq-a">Il primo passo è condurre una gap analysis strutturata. Prima di investire in nuove tecnologie o in processi complessi, è necessario capire con precisione cosa manca — e cosa invece è già in atto ma semplicemente non documentato. Una gap analysis con un esperto certificato richiede in genere pochi giorni e produce un quadro chiaro delle priorità. È il modo più economico per trasformare questa checklist da autovalutazione a piano d'azione concreto.</div>
+  </div>
+
+  <div class="box-info" style="margin: 48px 0 32px;">
+    <div style="font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color: var(--yellow); margin-bottom:10px;">🔧 STRUMENTI &amp; SOLUZIONI</div>
+    <p style="margin:0; font-size:17px; color: #ddd; line-height:1.7;">Per coprire tutte le aree di questa checklist con strumenti già integrati e pronti per la documentazione ACN, le soluzioni più efficaci combinano: <strong>Microsoft Defender Secure Score + Compliance Manager</strong> per la governance e l'analisi del rischio (il Secure Score fornisce un KPI da 0 a 100 immediatamente presentabile al CdA); <strong>Microsoft Sentinel</strong> come SIEM per il rilevamento e la gestione degli incidenti; <strong>Microsoft 365 Backup + Azure Backup con Immutable Vault</strong> per i backup immutabili; <strong>Microsoft Entra ID Conditional Access</strong> con FIDO2 per l'autenticazione robusta; <strong>Microsoft Purview Sensitivity Labels + Azure Key Vault</strong> per la crittografia e la classificazione dei dati; <strong>Microsoft Defender for Office 365 Attack Simulation Training</strong> per le simulazioni di phishing e la formazione. Un partner Microsoft certificato può impostare queste soluzioni nell'ambito di una gap analysis gratuita — a un costo ampiamente inferiore alla sanzione minima NIS2.</p>
+  </div>
+
+  <!-- NEWSLETTER -->
+  <div style="background:#111; border:1px solid rgba(255,255,255,0.1); border-left:3px solid #f5c518; border-radius:4px; padding:32px 36px; margin:40px 0 0; text-align:center; max-width:760px; margin-left:auto; margin-right:auto;">
+    <div style="font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:#f5c518; margin-bottom:12px;">📬 AGGIORNAMENTI NIS2</div>
+    <h3 style="font-family:'Poppins',sans-serif; font-size:20px; font-weight:800; margin:0 0 8px; color:#f0f0f0;">Un nuovo articolo NIS2 ogni settimana — direttamente nella tua casella</h3>
+    <p style="color:#888; font-size:15px; margin:0 0 20px;">Nessun pitch di vendita. Solo guida pratica per CEO e consigli di amministrazione.</p>
+    <form id="nlForm-nis2_checklist_conformita" onsubmit="submitNewsletter_nis2_checklist_conformita(event)" style="display:flex; gap:10px; flex-wrap:wrap; justify-content:center; max-width:460px; margin:0 auto;">
+      <input type="email" id="nlEmail-nis2_checklist_conformita" placeholder="tuo@azienda.it" required style="flex:1; min-width:200px; padding:12px 16px; background:#1c1c1f; border:1px solid rgba(255,255,255,0.15); border-radius:4px; color:#f0f0f0; font-size:15px; outline:none;" />
+      <button type="submit" id="nlSubmit-nis2_checklist_conformita" style="padding:12px 22px; background:#f5c518; color:#141416; font-weight:700; font-size:15px; border:none; border-radius:4px; cursor:pointer; white-space:nowrap;">Iscriviti gratis →</button>
+    </form>
+    <p style="font-size:12px; color:#555; margin:12px 0 0;">Puoi cancellarti in qualsiasi momento. Non condividiamo mai la tua email.</p>
+    <div id="nlThanks-nis2_checklist_conformita" style="display:none; color:#4ade80; font-size:16px; font-weight:600; margin-top:14px;">✅ Sei iscritto! Il prossimo articolo arriverà nella tua casella.</div>
+  </div>
+
+  <!-- CTA -->
+  <div class="cta-section">
+    <h2>Sai dove si trova la tua organizzazione oggi?</h2>
+    <p>Un'analisi del gap gratuita con un partner Microsoft certificato mostra esattamente cosa hai già coperto — e cosa manca.</p>
+    <a href="/nis2.html#boka" class="btn-primary">Prenota analisi gap gratuita →</a>
+    <p class="cta-fine">Le sanzioni arrivano fino a <strong>10 milioni di euro</strong>. L'analisi del gap è gratuita.</p>
+  </div>
+
+</article>
+
+<div class="related-articles" style="margin:2.5rem 0 2rem;padding:1.5rem;background:#1a1a2e;border-left:4px solid #f0a500;border-radius:4px;max-width:760px;margin-left:auto;margin-right:auto;">
+  <p style="margin:0 0 1rem;font-size:0.85rem;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:#f0a500;">Leggi anche</p>
+  <ul style="margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:0.5rem;">
+    <li><a href="/it/articoli/nis2-responsabilita-personale-cda.html" style="color:#e0e0e0;text-decoration:none;font-size:0.95rem;">→ Responsabilità personale del CdA sotto NIS2</a></li>
+    <li><a href="/it/articoli/nis2-sanzioni-italia.html" style="color:#e0e0e0;text-decoration:none;font-size:0.95rem;">→ Sanzioni NIS2 in Italia: cosa rischi concretamente</a></li>
+    <li><a href="/it/articoli/nis2-quali-aziende-sono-soggette.html" style="color:#e0e0e0;text-decoration:none;font-size:0.95rem;">→ Quali aziende sono soggette a NIS2 in Italia?</a></li>
+  </ul>
+  <p style="margin:1.25rem 0 0;font-size:0.85rem;color:#aaa;">← <a href="https://nis2klar.se/it/" style="color:#f0a500;text-decoration:none;">Home NIS2Klar Italia</a> &nbsp;·&nbsp; <a href="https://nis2klar.se/it/articoli.html" style="color:#f0a500;text-decoration:none;">Tutte le guide</a></p>
+</div>
+
+<footer>
+  © 2026 M&amp;J Trusted Marketing KB ·
+  <a href="mailto:support@trustedmarketing.se">support@trustedmarketing.se</a> · <a href="tel:+46470597003">+46 470 59 70 03</a> ·
+  <a href="https://nis2klar.se/it/">Torna alla home</a> ·
+  <a href="/privacy.html">Informativa sulla privacy</a>
+  <p style="margin-top:12px; font-size:11px; color: #555; line-height:1.5;">Microsoft, Microsoft 365, Azure e i relativi nomi di prodotto sono marchi di Microsoft Corporation. nis2klar.se non è affiliata né approvata da Microsoft Corporation.</p>
+</footer>
+
+<script>
+  async function submitNewsletter_nis2_checklist_conformita(e) {
+    e.preventDefault();
+    const btn = document.getElementById('nlSubmit-nis2_checklist_conformita');
+    btn.disabled = true; btn.textContent = '...';
+    const email = document.getElementById('nlEmail-nis2_checklist_conformita').value.trim();
+    try {
+      const res = await fetch('/api/newsletter/subscribe', { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({ email, source: 'articolo-it-nis2_checklist_conformita' }) });
+      const data = await res.json();
+      if (data.success) { document.getElementById('nlForm-nis2_checklist_conformita').style.display='none'; document.getElementById('nlThanks-nis2_checklist_conformita').style.display='block'; }
+      else { btn.disabled=false; btn.textContent='Iscriviti gratis →'; }
+    } catch { btn.disabled=false; btn.textContent='Iscriviti gratis →'; }
+  }
+</script>
+</body>
+</html>

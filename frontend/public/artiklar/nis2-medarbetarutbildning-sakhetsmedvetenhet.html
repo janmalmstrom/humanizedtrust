@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-BKF3QH9K01"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag("js", new Date());
+    gtag("config", "G-BKF3QH9K01");
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NIS2 Medarbetarutbildning: Säkerhetsmedvetenhet och vad som faktiskt räknas | NIS2Klar</title>
+  <meta name="description" content="NIS2 kräver utbildning på två nivåer: ledning (Artikel 20) och anställda. Läs vad tillsynsmyndigheten faktiskt granskar, hur du mäter effekt och varför phishing-simuleringar inte är nog.">
+  <meta property="og:title" content="NIS2 Medarbetarutbildning: Säkerhetsmedvetenhet och vad som faktiskt räknas">
+  <meta property="og:description" content="Två nivåer av utbildning, dokumentation som bevisbörda och phishing-simuleringar som mätvärde. Det här är vad tillsynsmyndigheten granskar.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #141416;
+      --card: #1c1c1f;
+      --yellow: #f5c518;
+      --white: #f0f0f0;
+      --muted: #888;
+      --red: #C61212;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: var(--bg); color: var(--white); font-family: 'Barlow', sans-serif; font-size: 19px; line-height: 1.8; }
+
+    /* Nav */
+    nav { display: flex; justify-content: space-between; align-items: center; padding: 20px 40px; border-bottom: 1px solid rgba(255,255,255,0.07); max-width: 900px; margin: 0 auto; }
+    .nav-logo { font-family: 'Poppins', sans-serif; font-weight: 900; font-size: 20px; color: var(--yellow); text-decoration: none; }
+    .nav-logo span { color: var(--white); }
+    .nav-back { color: var(--muted); text-decoration: none; font-size: 15px; }
+    .nav-back:hover { color: var(--white); }
+    .nav-cta { background: var(--yellow); color: #000; padding: 8px 18px; border-radius: 4px; text-decoration: none; font-weight: 700; font-size: 14px; font-family: 'Poppins', sans-serif; }
+
+    /* Article */
+    .article-wrap { max-width: 760px; margin: 0 auto; padding: 60px 40px; }
+    .article-category { font-size: 13px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 16px; }
+    h1 { font-family: 'Poppins', sans-serif; font-size: clamp(30px, 4vw, 44px); font-weight: 900; line-height: 1.2; margin-bottom: 24px; }
+    .article-meta { font-size: 15px; color: var(--muted); margin-bottom: 48px; padding-bottom: 24px; border-bottom: 1px solid rgba(255,255,255,0.07); }
+    h2 { font-family: 'Poppins', sans-serif; font-size: 26px; font-weight: 700; margin: 48px 0 16px; color: var(--white); }
+    h3 { font-family: 'Poppins', sans-serif; font-size: 20px; font-weight: 600; margin: 32px 0 12px; color: var(--yellow); }
+    p { margin-bottom: 22px; }
+    strong { color: var(--white); font-weight: 700; }
+    .highlight { color: var(--yellow); font-weight: 700; }
+    .danger { color: #ff6b6b; font-weight: 700; }
+    ul, ol { margin: 16px 0 24px 24px; }
+    li { margin-bottom: 12px; font-size: 19px; }
+
+    /* Callout boxes */
+    .box-warning { background: rgba(197,17,17,0.12); border-left: 4px solid var(--red); padding: 20px 24px; margin: 32px 0; border-radius: 0 4px 4px 0; }
+    .box-info { background: rgba(245,197,24,0.08); border-left: 4px solid var(--yellow); padding: 20px 24px; margin: 32px 0; border-radius: 0 4px 4px 0; }
+    .box-case { background: var(--card); border: 1px solid rgba(255,255,255,0.08); padding: 28px; margin: 40px 0; border-radius: 4px; }
+    .box-case .case-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 12px; }
+    blockquote { border-left: 3px solid var(--yellow); padding: 12px 20px; margin: 24px 0; font-style: italic; color: #ccc; }
+
+    /* CTA */
+    .cta-section { background: var(--card); border: 1px solid rgba(245,197,24,0.2); border-radius: 4px; padding: 48px 40px; margin: 64px 0 40px; text-align: center; }
+    .cta-section h2 { margin-top: 0; font-size: 26px; }
+    .cta-section p { color: #aaa; max-width: 500px; margin: 0 auto 28px; }
+    .btn-primary { display: inline-block; background: var(--yellow); color: #000; font-family: 'Poppins', sans-serif; font-weight: 800; font-size: 16px; padding: 16px 36px; border-radius: 4px; text-decoration: none; }
+    .btn-primary:hover { background: #e0b010; }
+    .cta-fine { font-size: 13px; color: var(--muted); margin-top: 16px; }
+
+    /* FAQ */
+    .faq-item { border-bottom: 1px solid rgba(255,255,255,0.07); padding: 20px 0; }
+    .faq-q { font-family: 'Poppins', sans-serif; font-weight: 600; margin-bottom: 10px; }
+    .faq-a { color: #bbb; }
+
+    /* Fine table */
+    .fine-table { width: 100%; border-collapse: collapse; margin: 24px 0; }
+    .fine-table th { background: rgba(245,197,24,0.1); color: var(--yellow); font-family: 'Poppins', sans-serif; font-size: 13px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 12px 16px; text-align: left; border-bottom: 1px solid rgba(245,197,24,0.2); }
+    .fine-table td { padding: 14px 16px; border-bottom: 1px solid rgba(255,255,255,0.05); font-size: 15px; }
+    .fine-table tr:last-child td { border-bottom: none; }
+    .fine-table .amount { color: #ff6b6b; font-weight: 700; }
+
+    /* Summary + Key Takeaway */
+    .box-summary { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; padding: 24px 28px; margin: 0 0 32px; }
+    .summary-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-bottom: 14px; }
+    .box-summary ul { margin: 0; padding-left: 20px; }
+    .box-summary li { margin-bottom: 8px; font-size: 17px; color: #ccc; }
+    .box-takeaway { background: rgba(245,197,24,0.08); border-left: 4px solid var(--yellow); padding: 20px 24px; margin: 0 0 40px; border-radius: 0 4px 4px 0; }
+    .takeaway-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 10px; }
+    .box-takeaway p { margin: 0; font-size: 18px; font-weight: 600; color: var(--white); line-height: 1.6; }
+
+    /* Footer */
+    footer { border-top: 1px solid rgba(255,255,255,0.07); padding: 32px 40px; text-align: center; font-size: 13px; color: var(--muted); max-width: 900px; margin: 0 auto; }
+    footer a { color: var(--muted); }
+
+    @media (max-width: 600px) {
+      nav, .article-wrap, footer { padding: 20px; }
+      .cta-section { padding: 32px 20px; }
+      .fine-table { font-size: 14px; }
+      .fine-table th, .fine-table td { padding: 10px 10px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="https://nis2klar.se/">NIS2<span>Klar</span></a>
+  <a class="nav-back" href="https://nis2klar.se/artiklar.html">← Alla artiklar</a>
+  <a class="nav-cta" href="https://nis2klar.se/#boka">Boka samtal →</a>
+</nav>
+
+<article class="article-wrap">
+  <div class="article-category">Utbildning &amp; Medvetenhet</div>
+  <h1>NIS2 Medarbetarutbildning: Säkerhetsmedvetenhet och vad som faktiskt räknas</h1>
+  <div class="article-meta">Publicerad 19 april 2026 · Lästid: ca 8 minuter · Målgrupp: Ledning &amp; VD</div>
+
+  <!-- SUMMARY -->
+  <div class="box-summary">
+    <div class="summary-label">Sammanfattning</div>
+    <ul>
+      <li>NIS2 kräver utbildning på två helt olika nivåer: ledning (Artikel 20) och alla anställda (Artikel 21).</li>
+      <li>Tillsynsmyndigheten granskar inte intentioner — de granskar dokumentation: utbildningsplaner, deltagarsignering, effektmätningar.</li>
+      <li>Phishing-simuleringar är ett mätvärde på säkerhetsmedvetenhet, men bara en del av ett större utbildningsekosystem.</li>
+      <li>Utan dokumentation räknas utbildningen inte, oavsett hur mycket tid du investerar i den.</li>
+    </ul>
+  </div>
+
+  <!-- KEY TAKEAWAY -->
+  <div class="box-takeaway">
+    <div class="takeaway-label">Viktigaste slutsatsen</div>
+    <p>Du kan inte delegera detta till HR och hoppas på det bästa. Ledningen måste aktivt godkänna och övervaka utbildningen enligt Artikel 20. Utan detta löser du inte NIS2-ansvaret.</p>
+  </div>
+
+  <!-- HOOK -->
+  <p>
+    Många organisationer tror att NIS2-utbildning handlar om att skicka en email med ett länk till en e-learning-kurs en gång om året.
+    Det är en dyr missuppfattning.
+  </p>
+
+  <p>
+    Cybersäkerhetslagen är mycket specifik: det finns <strong>två nivåer av utbildning</strong> — en för ledningen och en för alla andra.
+    Tillsynsmyndigheten granskar inte om folk "faktiskt lärde sig något".
+    De granskar om du kan bevisa att du har en <strong>plan</strong>, att personalen deltog <strong>och att du mäter effekten</strong>.
+  </p>
+
+  <p>
+    Det här är skillnaden mellan att se ut som om du följer lagen och att faktiskt göra det.
+  </p>
+
+  <h2>Vad säger NIS2 exakt om utbildning?</h2>
+
+  <p>
+    Artikel 21.2(g) i NIS2-direktivet kräver att väsentliga och viktiga entiteter genomför utbildning inom cybersäkerhet.
+    Men texten är kortfattad. Det är Artikel 20 som gör detta till ett personligt ledningsansvar.
+  </p>
+
+  <blockquote>
+    "Ledningsorganen ska regelbundet på högt nivå bedöma och granska hur väl säkerhetsåtgärderna genomförts."
+    — NIS2, Artikel 20
+  </blockquote>
+
+  <p>
+    Det ordet "regelbundet" är nyckel. Det räcker inte att säga att vi har utbildning. Du måste kunna visa att du <strong>följer upp den</strong>.
+  </p>
+
+  <p>
+    I Sverige övervakad denna bedömning av tillsynsmyndigheterna — främst MSB och sektorsspecifika organ.
+    När de granskar en organisation är en av de första dokumenten de frågar efter: <strong>"Vad är er utbildningsplan för säkerhet?"</strong>
+  </p>
+
+  <h2>Två nivåer av utbildning — och varför de är olika</h2>
+
+  <h3>Nivå 1: Ledningsutbildning (Artikel 20)</h3>
+
+  <p>
+    Din styrelse och VD behöver förstå:
+  </p>
+
+  <ul>
+    <li>Vilka risker organisationen står inför (från er riskanalys)</li>
+    <li>Vilka säkerhetsåtgärder ni har vidtagit</li>
+    <li>Hur dessa åtgärder genomförs i praktiken</li>
+    <li>Vilka indikatorer som visar om de fungerar</li>
+  </ul>
+
+  <p>
+    Det här är <strong>inte</strong> en IT-kurs. Det är ett beslutsunderlag.
+    Styrelsen behöver kunna fatta informerade beslut om säkerhet, precis som de gör om ekonomi eller juridik.
+  </p>
+
+  <p>
+    Utan denna utbildning kan styrelseledamöter inte uppfylla sitt ansvar enligt Artikel 20.
+    Och utan dokumentation på att detta skett, kan tillsynsmyndigheten hävda att ansvaret inte uppfylldes.
+  </p>
+
+  <div class="box-info">
+    <strong>Praktiskt exempel:</strong> En styrelse godkänner en säkerhetspolicy utan att förstå vad den innebär. Sex månader senare händer ett cyberangrepp som visar att policyn aldrig implementerades korrekt. Tillsynsmyndigheten kommer att fråga: "Kan ni visa dokumentation på att ni diskuterade denna risk före beslutet?" Utan detta kan sanktionen för styrelseledamöterna bli omfattande.
+  </div>
+
+  <h3>Nivå 2: Utbildning för alla anställda</h3>
+
+  <p>
+    Enligt Artikel 21 ska "personal som har tillgång till nätverken och informationssystem" utbildas i säkerhet.
+  </p>
+
+  <p>
+    Det omfattar långt mer än IT-avdelningen. Det inkluderar:
+  </p>
+
+  <ul>
+    <li>Administrativa medarbetare (e-postsäkerhet, phishing)</li>
+    <li>Ledning på alla nivåer (beslutsfattande, rapportering)</li>
+    <li>Kundsupportpersonal (dataskydd, autentisering)</li>
+    <li>Personal med åtkomst till kritiska system</li>
+  </ul>
+
+  <p>
+    Denna utbildning måste genomföras <strong>regelbundet</strong> — vilket inte betyder årligen.
+    Det betyder att du har ett schema för uppfräskning och att du kan dokumentera det.
+  </p>
+
+  <p>
+    En typisk organisation håller denna utbildning:
+  </p>
+
+  <ul>
+    <li>En gång vid anställning (nyanställdutbildning)</li>
+    <li>En uppdatering varje 12–18 månader för befintlig personal</li>
+    <li>Snabba insatser när nya hot dyker upp (t.ex. en ny phishing-trend)</li>
+  </ul>
+
+  <h2>Vad räknas som "genomfört" för tillsynsmyndigheten?</h2>
+
+  <p>
+    En vanlig misstro är att tillsynsmyndigheten kommer att granska "hur mycket lärt sig folk faktiskt?"
+    De gör inte det. De granskar:
+  </p>
+
+  <ol>
+    <li><strong>Utbildningsplan.</strong> Finns det ett dokument som beskriver vad, när och för vem?</li>
+    <li><strong>Genomförande.</strong> Kan ni lista vem som deltog och när?</li>
+    <li><strong>Innehål.</strong> Vad täcktes i utbildningen? (Kan vara e-learning, workshops, eller handledning.)</li>
+    <li><strong>Effektmätning.</strong> Hur följer ni upp att det fungerar?</li>
+  </ol>
+
+  <p>
+    Helt konkret är detta vad tillsynsmyndigheten frågar efter vid en granskning:
+  </p>
+
+  <ul>
+    <li>"Visa er utbildningsplan för de senaste 24 månaderna."</li>
+    <li>"Vilka deltog i utbildningen?" (Excel-lista med datum duger.)</li>
+    <li>"Hur många phishing-attacker har ni testat och vilka var resultaten?"</li>
+    <li>"Vilka åtgärder tog ni utifrån svaga resultat?"</li>
+    <li>"Kan ni visa styrelseprotokoll där ni diskuterat utbildningsresultaten?"</li>
+  </ul>
+
+  <p>
+    Organisationer som har dessa dokument kommer att klara sig väl. Organisationer som inte har dem — oavsett hur duktig säkerhetskulturen är — kommer att klassas som icke-efterlevande.
+  </p>
+
+  <div class="box-warning">
+    <strong>Bevisbördan ligger på dig.</strong> Du måste bevisa att utbildningen genomfördes, inte att tillsynsmyndigheten måste bevisa att den inte gjorde det. Om dokumentationen saknas räknas utbildningen inte — punktslut.
+  </div>
+
+  <h2>Phishing-simuleringar: Mätvärde, inte lösning</h2>
+
+  <p>
+    Phishing-simuleringar — eller "attack simulation training" — har blivit populära som ett sätt att mäta effektiviteten av säkerhetsutbildning.
+    Det är ett bra verktyg. Men det är viktigt att förstå vad det mäter och vad det inte mäter.
+  </p>
+
+  <h3>Vad phishing-simuleringar visar</h3>
+
+  <p>
+    En simulering skickar ett falskt phishing-e-postmeddelande till slumpmässigt utvalda anställda.
+    Systemet räknar hur många som klickar på länken, matar in lösenord eller laddar ned en fil.
+  </p>
+
+  <p>
+    Resultatet ger ett mätvärde: <strong>"X procent av personalen föll för detta phishing-försök."</strong>
+  </p>
+
+  <p>
+    Det är värdefullt data. Det visar:
+  </p>
+
+  <ul>
+    <li>Var säkerhetsmedvetenheten är svag</li>
+    <li>Om utbildningen har effekt (genom att upprepa simuleringar och mäta förbättring)</li>
+    <li>Vilka team som behöver fokuserad utbildning</li>
+  </ul>
+
+  <h3>Vad phishing-simuleringar inte visar</h3>
+
+  <p>
+    De visar inte:
+  </p>
+
+  <ul>
+    <li>Om organisationen kan hantera en <strong>faktisk</strong> phishing-attack (vilket kräver incident response-processer)</li>
+    <li>Om lösenord är starkt skyddade (vilket kräver tekniska åtgärder som MFA och lösenordshanterare)</li>
+    <li>Om organisationen rapporterar incidenter korrekt (vilket kräver processer och träning)</li>
+  </ul>
+
+  <p>
+    En organisation med 5 % phishing-träffar och en dokumenterad incident response-plan är bättre förberedd än en organisation med 2 % träffar men ingen incidenthantering.
+  </p>
+
+  <p>
+    Det är därför phishing-simuleringar måste vara <strong>en del av</strong> ett större utbildnings- och säkerhetsekosystem — inte hela lösningen.
+  </p>
+
+  <h3>Hur ofta ska du köra phishing-simuleringar?</h3>
+
+  <p>
+    Det finns ingen bindande regel i NIS2, men bäst praktik är:
+  </p>
+
+  <ul>
+    <li><strong>Åtminstone två gånger per år</strong> för grundmätning</li>
+    <li><strong>Kvartalsvis</strong> om du identifierat höga riskgrupper</li>
+    <li><strong>Efter varje större utbildningsinsats</strong> för att mäta effekt</li>
+  </ul>
+
+  <p>
+    Det viktiga är inte frekvensen — det är att du <strong>dokumenterar den</strong> och att du använder resultaten för att justera utbildningen.
+  </p>
+
+  <div class="box-case">
+    <div class="case-label">Fallstudie</div>
+    <p>
+      <strong>Ett finansföretag med 120 anställda genomför sin första phishing-simulering i januari 2026.</strong>
+    </p>
+    <p>
+      Resultat: 23 % av personalen klickar på den falska länken. Av dessa laddar 8 % ned den bifogade "lönespecifikationen" (som var en trojanmask).
+    </p>
+    <p>
+      Ledningen inser att detta är för högt och sätter igång en månadslång utbildningskampanj.
+      I mars genomför de en ny simulering. Denna gång är siffran nere på 12 % — en förbättring.
+    </p>
+    <p>
+      Under samma period implementerar de också MFA (multifaktorautentisering) på alla användarkonten.
+      Det gör det omöjligt att bara använda ett stulet lösenord för att komma in i systemet.
+    </p>
+    <p>
+      Sex månader senare granskas företaget av Finansinspektionen.
+      Ledningen presenterar:
+    </p>
+    <ul>
+      <li>En utbildningsplan med mål och mätningar</li>
+      <li>Simuleringsresultaten från både januari och mars</li>
+      <li>Dokumentation på MFA-implementeringen</li>
+      <li>Styrelseprotokoll där ledningen diskuterade dessa resultat och antog åtgärder</li>
+    </ul>
+    <p>
+      <strong>Resultat:</strong> Tillsynsmyndigheten konstaterar att organisationen agerat på högsta nivå för att förbättra säkerheten. Ingen sanktion utfärdas. Istället klassas företaget som ett föredömligt exempel på NIS2-efterlevnad inom sin sektor.
+    </p>
+  </div>
+
+  <h2>Praktisk genomföringsplan: Steg för steg</h2>
+
+  <p>
+    Här är vad du behöver göra nästa vecka för att komma igång:
+  </p>
+
+  <h3>Vecka 1–2: Skapa en utbildningsplan</h3>
+
+  <p>
+    Dokumentera:
+  </p>
+
+  <ul>
+    <li><strong>Målgrupper:</strong> Styrelse, ledning, alla anställda, specifika riskgrupper</li>
+    <li><strong>Innehål:</strong> Vad varje grupp behöver lära sig</li>
+    <li><strong>Frekvens:</strong> När och hur ofta utbildningen genomförs</li>
+    <li><strong>Format:</strong> E-learning, workshops, filmade instruktioner, eller ett mix</li>
+    <li><strong>Mätning:</strong> Phishing-simuleringar, frågesporter, eller loggar över deltagande</li>
+  </ul>
+
+  <h3>Vecka 3–4: Implementera</h3>
+
+  <p>
+    Genomför den första utbildningsrundan. Skapa en deltagarlista med datum.
+    Spara allt — e-learning-rapporter, signering, completion-loggar.
+  </p>
+
+  <h3>Månad 2: Kör en phishing-simulering</h3>
+
+  <p>
+    Använd ett verktyg (se Verktyg &amp; lösningar nedan) för att köra en simulering.
+    Dokumentera resultaten.
+  </p>
+
+  <h3>Månad 3: Rapportera till ledningen</h3>
+
+  <p>
+    Presentera utbildningsresultaten för styrelsen eller ledningsgruppen.
+    Anteckna detta i styrelsebeslut eller ledningsprotokoll.
+    Planera nästa iteration av utbildning baserat på svaga områden.
+  </p>
+
+  <p>
+    Det är det. Detta är inte komplicerat — det är dokumenterat och repeterat.
+  </p>
+
+  <h2>Vanliga frågor om utbildning</h2>
+
+  <div class="faq-item">
+    <div class="faq-q">Räcker det med en e-learning-kurs en gång om året?</div>
+    <div class="faq-a">Tekniskt ja, men praktiskt nej. En kurs per år uppfyller minimikravet för "regelbunden utbildning", men utan uppföljning (phishing-simuleringar, diskussioner i ledningen, uppdateringar när nya hot dyker upp) kommer tillsynsmyndigheten att klassificera det som otillräckligt. Bättre att ha två kortare kurser plus simuleringar och aktiv ledningsövervakning än en lång kurs och tystnad i övrigt.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">Vad händer om någon fortsätter att klicka på phishing-e-post trots utbildning?</div>
+    <div class="faq-a">Det är normalt. Medelvärdet för branschen är cirka 5–15 % beroende på hur övertyga förfalskningarna är. Du behöver inte få det till noll. Du behöver visa att du mäter det, att du försöker förbättra det, och att du använder resultaten för att anpassa utbildningen. En person som klickar är inte ett problem. Att inte agera på det är ett problem.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">Kan vi köpa en utbildningsplattform och säga att vi är klara?</div>
+    <div class="faq-a">Nej. Plattformen är ett verktyg, inte löningen. Du behöver fortfarande dokumentera att folk faktiskt deltog, mäta effekten, och rapportera resultat till ledningen. En plattform sparar tid, men den ersätter inte styrelsens ansvar enligt Artikel 20 att aktivt övervaka säkerhetsåtgärderna.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">Måste vi ha en säkerhetschef för att köra detta?</div>
+    <div class="faq-a">Nej, men någon måste ha ansvaret. Det kan vara IT-chefen, en dedikerad compliance-person eller till och med VD:n i små organisationer. Det viktiga är att ansvaret är klart dokumenterat och att personen rapporterar regelbundet till ledningen.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">Vad gör vi med anställda som inte följer utbildningen?</div>
+    <div class="faq-a">Det beror på din organisationskultur. Några gör den obligatorisk och spårar genomförande. Andra gör den optional men mäter deltagande. Från en NIS2-synvinkel behöver du kunna visa att du har en policy för detta och att du agerar på den. Utan någon form av incitament eller tvång kommer många att skjuta upp den — och då har du ingen dokumentation på att "regelbundna utbildningar" faktiskt h

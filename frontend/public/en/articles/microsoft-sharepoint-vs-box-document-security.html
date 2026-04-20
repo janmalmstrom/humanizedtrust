@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-BKF3QH9K01"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag("js", new Date());
+    gtag("config", "G-BKF3QH9K01");
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Microsoft SharePoint vs Box: Document Security for NIS2 | NIS2Klar</title>
+  <meta name="description" content="Compare SharePoint and Box for NIS2 compliance. Encryption, access control, audit logging, and data residency requirements for sensitive operational documents in Ireland.">
+  <meta property="og:title" content="Microsoft SharePoint vs Box: Document Security for NIS2">
+  <meta property="og:description" content="Compare SharePoint and Box for NIS2 compliance. Encryption, access control, audit logging, and data residency requirements for sensitive operational documents in Ireland.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #141416;
+      --card: #1c1c1f;
+      --yellow: #f5c518;
+      --white: #f0f0f0;
+      --muted: #888;
+      --red: #C61212;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: var(--bg); color: var(--white); font-family: 'Barlow', sans-serif; font-size: 19px; line-height: 1.8; }
+
+    /* Nav */
+    nav { display: flex; justify-content: space-between; align-items: center; padding: 20px 40px; border-bottom: 1px solid rgba(255,255,255,0.07); max-width: 900px; margin: 0 auto; }
+    .nav-logo { font-family: 'Poppins', sans-serif; font-weight: 900; font-size: 20px; color: var(--yellow); text-decoration: none; }
+    .nav-logo span { color: var(--white); }
+    .nav-back { color: var(--muted); text-decoration: none; font-size: 15px; }
+    .nav-back:hover { color: var(--white); }
+    .lang-switcher { display: flex; gap: 8px; align-items: center; font-size: 13px; font-family: 'Poppins', sans-serif; }
+    .nav-cta { background: var(--yellow); color: #000; padding: 8px 18px; border-radius: 4px; text-decoration: none; font-weight: 700; font-size: 14px; font-family: 'Poppins', sans-serif; }
+
+    /* Article */
+    .article-wrap { max-width: 760px; margin: 0 auto; padding: 60px 40px; }
+    .article-category { font-size: 13px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 16px; }
+    h1 { font-family: 'Poppins', sans-serif; font-size: clamp(30px, 4vw, 44px); font-weight: 900; line-height: 1.2; margin-bottom: 24px; }
+    .article-meta { font-size: 15px; color: var(--muted); margin-bottom: 48px; padding-bottom: 24px; border-bottom: 1px solid rgba(255,255,255,0.07); }
+    h2 { font-family: 'Poppins', sans-serif; font-size: 26px; font-weight: 700; margin: 48px 0 16px; color: var(--white); }
+    h3 { font-family: 'Poppins', sans-serif; font-size: 20px; font-weight: 600; margin: 32px 0 12px; color: var(--yellow); }
+    p { margin-bottom: 22px; }
+    strong { color: var(--white); font-weight: 700; }
+    .highlight { color: var(--yellow); font-weight: 700; }
+    .danger { color: #ff6b6b; font-weight: 700; }
+    ul, ol { margin: 16px 0 24px 24px; }
+    li { margin-bottom: 12px; font-size: 19px; }
+
+    /* Callout boxes */
+    .box-warning { background: rgba(197,17,17,0.12); border-left: 4px solid var(--red); padding: 20px 24px; margin: 32px 0; border-radius: 0 4px 4px 0; }
+    .box-info { background: rgba(245,197,24,0.08); border-left: 4px solid var(--yellow); padding: 20px 24px; margin: 32px 0; border-radius: 0 4px 4px 0; }
+    .box-case { background: var(--card); border: 1px solid rgba(255,255,255,0.08); padding: 28px; margin: 40px 0; border-radius: 4px; }
+    .box-case .case-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 12px; }
+    blockquote { border-left: 3px solid var(--yellow); padding: 12px 20px; margin: 24px 0; font-style: italic; color: #ccc; }
+
+    /* CTA */
+    .cta-section { background: var(--card); border: 1px solid rgba(245,197,24,0.2); border-radius: 4px; padding: 48px 40px; margin: 64px 0 40px; text-align: center; }
+    .cta-section h2 { margin-top: 0; font-size: 26px; }
+    .cta-section p { color: #aaa; max-width: 500px; margin: 0 auto 28px; }
+    .btn-primary { display: inline-block; background: var(--yellow); color: #000; font-family: 'Poppins', sans-serif; font-weight: 800; font-size: 16px; padding: 16px 36px; border-radius: 4px; text-decoration: none; }
+    .btn-primary:hover { background: #e0b010; }
+    .cta-fine { font-size: 13px; color: var(--muted); margin-top: 16px; }
+
+    /* Comparison table */
+    .comparison-table { width: 100%; border-collapse: collapse; margin: 24px 0; }
+    .comparison-table th { background: rgba(245,197,24,0.1); color: var(--yellow); font-family: 'Poppins', sans-serif; font-size: 13px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 12px 16px; text-align: left; border-bottom: 1px solid rgba(245,197,24,0.2); }
+    .comparison-table td { padding: 14px 16px; border-bottom: 1px solid rgba(255,255,255,0.05); font-size: 15px; }
+    .comparison-table tr:last-child td { border-bottom: none; }
+    .comparison-table .feature { font-weight: 600; color: var(--white); }
+    .comparison-table .checkmark { color: #4ade80; font-weight: 700; }
+    .comparison-table .partial { color: var(--yellow); font-weight: 600; }
+    .comparison-table .cross { color: #ff6b6b; font-weight: 700; }
+
+    /* Summary + Key Takeaway */
+    .box-summary { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; padding: 24px 28px; margin: 0 0 32px; }
+    .summary-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-bottom: 14px; }
+    .box-summary ul { margin: 0; padding-left: 20px; }
+    .box-summary li { margin-bottom: 8px; font-size: 17px; color: #ccc; }
+    .box-takeaway { background: rgba(245,197,24,0.08); border-left: 4px solid var(--yellow); padding: 20px 24px; margin: 0 0 40px; border-radius: 0 4px 4px 0; }
+    .takeaway-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 10px; }
+    .box-takeaway p { margin: 0; font-size: 18px; font-weight: 600; color: var(--white); line-height: 1.6; }
+
+    /* FAQ */
+    .faq-item { border-bottom: 1px solid rgba(255,255,255,0.07); padding: 20px 0; }
+    .faq-q { font-family: 'Poppins', sans-serif; font-weight: 600; margin-bottom: 10px; }
+    .faq-a { color: #bbb; }
+
+    /* Footer */
+    footer { border-top: 1px solid rgba(255,255,255,0.07); padding: 32px 40px; text-align: center; font-size: 13px; color: var(--muted); max-width: 900px; margin: 0 auto; }
+    footer a { color: var(--muted); }
+
+    /* Related articles */
+    .related-articles { margin: 2.5rem 0 2rem; padding: 1.5rem; background: #1a1a2e; border-left: 4px solid #f0a500; border-radius: 4px; }
+    .related-articles p { margin: 0 0 1rem; font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #f0a500; }
+    .related-articles ul { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+    .related-articles li { margin: 0; }
+    .related-articles a { color: #e0e0e0; text-decoration: none; font-size: 0.95rem; }
+    .related-articles a:hover { color: #f0a500; }
+
+    @media (max-width: 600px) {
+      nav, .article-wrap, footer { padding: 20px; }
+      .cta-section { padding: 32px 20px; }
+      .comparison-table { font-size: 14px; }
+      .comparison-table th, .comparison-table td { padding: 10px 10px; }
+      .lang-switcher { gap: 4px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="https://nis2klar.se/en/">NIS2<span>Klar</span></a>
+  <div style="display: flex; align-items: center; gap: 20px;">
+    <a class="nav-back" href="https://nis2klar.se/en/articles.html">← All Articles</a>
+    <div class="lang-switcher">
+      <a href="https://nis2klar.se/artiklar.html" style="color:#888;text-decoration:none;font-weight:600;padding:4px 8px;border-radius:3px;" title="Svenska">SV</a>
+      <a href="https://nis2klar.se/en/articles.html" style="color:#f5c518;text-decoration:none;font-weight:600;padding:4px 8px;border-radius:3px;background:rgba(245,197,24,0.1);" title="English">EN</a>
+      <a href="https://nis2klar.se/da/artikler.html" style="color:#888;text-decoration:none;font-weight:600;padding:4px 8px;border-radius:3px;" title="Dansk">DA</a>
+      <a href="https://nis2klar.se/no/artikler.html" style="color:#888;text-decoration:none;font-weight:600;padding:4px 8px;border-radius:3px;" title="Norsk">NO</a>
+      <a href="https://nis2klar.se/it/articoli.html" style="color:#888;text-decoration:none;font-weight:600;padding:4px 8px;border-radius:3px;" title="Italiano">IT</a>
+    </div>
+  </div>
+  <a class="nav-cta" href="https://nis2klar.se/en/#boka">Book call →</a>
+</nav>
+
+<article class="article-wrap">
+  <div class="article-category">Document Security &amp; Compliance</div>
+  <h1>Microsoft SharePoint vs Box: Document Security for NIS2</h1>
+  <div class="article-meta">Updated 19 April 2026 · Reading time: ~8 minutes · For: CEOs and Boards in Ireland</div>
+
+  <!-- SUMMARY -->
+  <div class="box-summary">
+    <div class="summary-label">Summary</div>
+    <ul>
+      <li>For CEOs and boards deciding on document platforms that must meet NIS2 requirements.</li>
+      <li>Document security under NIS2 (S.I. No. 322 of 2024) is non-negotiable: encryption at rest and in transit, granular access control, audit logging, and compliant data residency.</li>
+      <li>SharePoint and Box each have strengths; the right choice depends on your threat model, sector, and integration depth.</li>
+      <li>Neither tool alone ensures NIS2 compliance — they are <strong>components of a compliance program</strong>, not substitutes for governance.</li>
+      <li>NCSC Ireland and your sector regulator (CBI, ComReg, CRU, or others) will audit your controls, not your platform choice.</li>
+    </ul>
+  </div>
+
+  <!-- KEY TAKEAWAY -->
+  <div class="box-takeaway">
+    <div class="takeaway-label">Key Takeaway</div>
+    <p>The NIS2 Regulations in Ireland require you to protect sensitive operational documents with encryption, access controls, and audit trails. Your choice of SharePoint or Box matters only insofar as it supports those technical measures and your governance. A poorly secured SharePoint is worse than a well-configured Box, and vice versa.</p>
+  </div>
+
+  <!-- HOOK -->
+  <p>
+    You've received the guidance: sensitive operational documentation must be protected under the NIS2 Regulations (S.I. No. 322 of 2024).
+    Your board is asking a practical question: SharePoint or Box?
+  </p>
+  <p>
+    The honest answer: it depends. But the question matters less than the answer to a deeper one: <strong>Can you prove that documents are encrypted, access is controlled, changes are logged, and data stays in Ireland?</strong>
+  </p>
+  <p>
+    This comparison is for essential entities and important entities in Irish banking, financial services, health, digital infrastructure, and telecoms — the sectors where NCSC Ireland, CBI, ComReg, and CRU are actively checking.
+  </p>
+
+  <div class="box-warning">
+    <strong>Critical point:</strong> Neither SharePoint nor Box automatically equals NIS2 compliance. Both require configuration, governance, and verification. A misconfigured platform exposes you to fines up to €10 million (for essential entities) and personal liability for board members.
+  </div>
+
+  <h2>The NIS2 Document Security Baseline</h2>
+
+  <p>
+    Under Regulation 21 of S.I. No. 322 of 2024, your organisation must implement 10 core security measures. Three of them directly govern how documents are protected:
+  </p>
+
+  <h3>1. Encryption at Rest and in Transit</h3>
+  <p>
+    Sensitive operational documents must be encrypted both when stored and when transmitted. This means:
+  </p>
+  <ul>
+    <li>AES-256 (or equivalent) for data at rest</li>
+    <li>TLS 1.2+ for data in transit</li>
+    <li>Key management that you (or your vendor) control — not shared keys, not unencrypted backups</li>
+  </ul>
+
+  <h3>2. Access Control &amp; Authentication</h3>
+  <p>
+    Documents must be accessible only to users with a defined business need. This requires:
+  </p>
+  <ul>
+    <li>Multi-factor authentication (MFA) for anyone accessing sensitive documents</li>
+    <li>Role-based access control (RBAC) — different permissions for different user types</li>
+    <li>Principle of least privilege — the minimum access needed for a job</li>
+    <li>Time-bound access revocation when someone leaves or changes role</li>
+  </ul>
+
+  <h3>3. Audit Logging &amp; Detection</h3>
+  <p>
+    You must log who accessed what document, when, from where, and what they did. This data must be:
+  </p>
+  <ul>
+    <li>Immutable (cannot be edited or deleted retroactively)</li>
+    <li>Retained for at least 90 days (and longer for forensics)</li>
+    <li>Reviewed regularly for anomalies</li>
+    <li>Available to NCSC Ireland and sector regulators within 72 hours if requested</li>
+  </ul>
+
+  <p>
+    Add to this: <strong>data residency</strong> (no document can leave Ireland without explicit governance), <strong>supplier oversight</strong> (if Box or SharePoint uses subprocessors, you must audit them), and <strong>incident response</strong> (if documents are compromised, you have 24 hours to alert NCSC Ireland).
+  </p>
+
+  <h2>SharePoint: Architecture &amp; NIS2 Fit</h2>
+
+  <p>
+    SharePoint is a document management and collaboration platform. When deployed within Microsoft 365, it typically offers:
+  </p>
+
+  <h3>Encryption</h3>
+  <ul>
+    <li><strong>At rest:</strong> AES-256 by default in Microsoft datacentres. You can add further encryption via sensitivity labels or bring-your-own-key (BYOK).</li>
+    <li><strong>In transit:</strong> TLS 1.2+ by default.</li>
+    <li><strong>Ireland-specific:</strong> Microsoft maintains EU datacentres in Dublin. Confirm your tenant is provisioned there — not all subscriptions default to Ireland.</li>
+  </ul>
+
+  <p>
+    <span class="highlight">Strength:</span> If properly configured, encryption is transparent to users; no password management overhead.
+  </p>
+  <p>
+    <span class="danger">Risk:</span> Misconfiguration is common. Default sharing settings are often too permissive. Many organisations enable external sharing without encryption enforcement.
+  </p>
+
+  <h3>Access Control</h3>
+  <ul>
+    <li><strong>Native MFA:</strong> Azure Active Directory (now Entra ID) enforces MFA for cloud access. Conditional Access policies can block logins from outside Ireland or from unmanaged devices.</li>
+    <li><strong>Granular permissions:</strong> Site-level, folder-level, and document-level permissions. RBAC is built in via Office 365 groups and security groups.</li>
+    <li><strong>External sharing controls:</strong> You can disable external sharing entirely, restrict it to specific domains, or require anonymous sharing links to expire.</li>
+  </ul>
+
+  <p>
+    <span class="highlight">Strength:</span> Deep integration with Azure AD means one identity system for all cloud and on-premises users.
+  </p>
+  <p>
+    <span class="danger">Risk:</span> Complexity. Conditional Access policies require skilled administration. Wrong policy = legitimate users locked out, or overly permissive access.</p>
+
+  <h3>Audit Logging</h3>
+  <ul>
+    <li><strong>Built-in audit log:</strong> SharePoint logs file access, modifications, and sharing changes.</li>
+    <li><strong>Retention:</strong> 90 days by default; can extend to 7 years with eDiscovery.</li>
+    <li><strong>Export:</strong> Logs can be downloaded or piped to a SIEM (security information and event management) tool for real-time monitoring.</li>
+  </ul>
+
+  <p>
+    <span class="highlight">Strength:</span> Logs are comprehensive and immutable by default.
+  </p>
+  <p>
+    <span class="danger">Risk:</span> Raw logs are hard to interpret without tooling. Most organisations need a SIEM to spot anomalies. Additional cost.</p>
+
+  <h3>Data Residency</h3>
+  <ul>
+    <li>Microsoft offers Ireland and EU-only datacentre options. Requires explicit negotiation and geo-pinning in tenant settings.</li>
+    <li>Not all Microsoft 365 services honour the same geo-pin — backup, archives, and some compliance services may store data outside Ireland.</li>
+  </ul>
+
+  <p>
+    <span class="highlight">Strength:</span> You can contractually commit to Ireland-only storage.
+  </p>
+  <p>
+    <span class="danger">Risk:</span> Requires careful configuration and regular audit. Microsoft's subprocessors (e.g., third-party backup vendors) may not respect the same geo-pin.</p>
+
+  <h2>Box: Architecture &amp; NIS2 Fit</h2>
+
+  <p>
+    Box is a cloud content management and collaboration platform. It positions itself as security-first:
+  </p>
+
+  <h3>Encryption</h3>
+  <ul>
+    <li><strong>At rest:</strong> AES-256 with keys managed by Box (or BYOK options for enterprise accounts).</li>
+    <li><strong>In transit:</strong> TLS 1.2+ mandatory.</li>
+    <li><strong>Ireland-specific:</strong> Box's EU datacentre is in Dublin. You can contractually restrict storage to that region.</li>
+  </ul>
+
+  <p>
+    <span class="highlight">Strength:</span> Encryption is non-negotiable; no configuration weakens it.
+  </p>
+  <p>
+    <span class="danger">Risk:</span> Less flexibility than SharePoint if you need to integrate with legacy on-premises systems that expect unencrypted data.</p>
+
+  <h3>Access Control</h3>
+  <ul>
+    <li><strong>MFA:</strong> Supported via SAML/OIDC integration with identity providers. Can be mandated per user or user group.</li>
+    <li><strong>Granular permissions:</strong> Folder-level and file-level access. Co-owners, editors, viewers, and custom roles. Shared link password protection.</li>
+    <li><strong>External sharing controls:</strong> Can restrict sharing to company domain, disable public links, or require approvals.</li>
+  </ul>
+
+  <p>
+    <span class="highlight">Strength:</span> Simpler to configure than SharePoint; defaults are conservative.
+  </p>
+  <p>
+    <span class="danger">Risk:</span> Less integration with identity systems than SharePoint. If you use Azure AD, Box requires SAML sync — an extra layer to manage and troubleshoot.</p>
+
+  <h3>Audit Logging</h3>
+  <ul>
+    <li><strong>Content Security Event Log:</strong> Tracks access, edits, deletions, and sharing changes in real-time.</li>
+    <li><strong>Retention:</strong> 1 year by default, extensible to 7 years.</li>
+    <li><strong>Export:</strong> Native export to security tools; Box integrates with SIEM platforms.</li>
+  </ul>
+
+  <p>
+    <span class="highlight">Strength:</span> Real-time event streaming; easier to monitor than SharePoint's batch logs.
+  </p>
+  <p>
+    <span class="danger">Risk:</span> Limited to Box-native events. If users download and re-upload documents, Box cannot track the external versions.</p>
+
+  <h3>Data Residency</h3>
+  <ul>
+    <li>Box commits to EU/Ireland-only storage for European accounts. Simpler contractual model than Microsoft.</li>
+    <li>Less complexity around subprocessors because Box's core architecture is simpler than the Microsoft 365 ecosystem.</li>
+  </ul>
+
+  <p>
+    <span class="highlight">Strength:</span> Clearer data residency commitment; easier to audit.
+  </p>
+  <p>
+    <span class="danger">Risk:</span> Less flexibility if you need to expand beyond Ireland in the future.</p>
+
+  <h2>Head-to-Head Comparison</h2>
+
+  <table class="comparison-table">
+    <thead>
+      <tr>
+        <th>NIS2 Requirement</th>
+        <th>SharePoint</th>
+        <th>Box</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="feature">Encryption at Rest (AES-256)</td>
+        <td class="checkmark">✓ Default</td>
+        <td class="checkmark">✓ Default</td>
+      </tr>
+      <tr>
+        <td class="feature">Encryption in Transit (TLS 1.2+)</td>
+        <td class="checkmark">✓ Mandatory</td>
+        <td class="checkmark">✓ Mandatory</td>
+      </tr>
+      <tr>
+        <td class="feature">MFA Support</td>
+        <td class="checkmark">✓ Built-in via Entra ID</td>
+        <td class="checkmark">✓ Via SAML/OIDC</td>
+      </tr>
+      <tr>
+        <td class="feature">Role-Based Access Control</td>
+        <td class="checkmark">✓ Granular</td>
+        <td class="checkmark">✓ Granular</td>
+      </tr>
+      <tr>
+        <td class="feature">External Sharing Controls</td>
+        <td class="checkmark">✓ Configurable</td>
+        <td class="checkmark">✓ Conservative defaults</td>
+      </tr>
+      <tr>
+        <td class="feature">Immutable Audit Logs</td>
+        <td class="checkmark">✓ 90 days–7 years</td>
+        <td class="checkmark">✓ 1–7 years</td>
+      </tr>
+      <tr>
+        <td class="feature">Real-Time Event Streaming</td>
+        <td class="partial">◐ Via SIEM integration</td>
+        <td class="checkmark">✓ Native</td>
+      </tr>
+      <tr>
+        <td class="feature">Ireland-Only Data Residency</td>
+        <td class="partial">◐ Requires configuration</td>
+        <td class="checkmark">✓ Default</td>
+      </tr>
+      <tr>
+        <td class="feature">BYOK (Bring Your Own Key)</td>
+        <td class="checkmark">✓ Available</td>
+        <td class="checkmark">✓ Available</td>
+      </tr>
+      <tr>
+        <td class="feature">Integration with Azure AD</td>
+        <td class="checkmark">✓ Native</td>
+        <td class="cross">✗ SAML sync only</td>
+      </tr>
+      <tr>
+        <td class="feature">Existing Microsoft 365 Ecosystem</td>
+        <td class="checkmark">✓ Seamless</td>
+        <td class="cross">✗ Requires bridge</td>
+      </tr>
+      <tr>
+        <td class="feature">Supplier Audit Burden</td>
+        <td class="cross">✗ High (many subprocessors)</td>
+        <td class="checkmark">✓ Lower</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>The Real Differentiators</h2>
+
+  <h3>1. Your Current Environment</h3>
+  <p>
+    If your organisation already uses Microsoft 365 (Exchange, Teams, Office, Entra ID), SharePoint is the path of least resistance. You get a single identity system, unified audit logs, and native MFA.
+  </p>
+  <p>
+    If you are platform-agnostic or prefer best-of-breed tools, Box is simpler to configure from scratch and has fewer integration dependencies.
+  </p>
+
+  <h3>2. External Collaboration</h3>
+  <p>
+    SharePoint's external sharing is rich but dangerous. You can share with anyone, generate anonymous links, and grant edit permissions. This flexibility makes misconfiguration likely.
+  </p>
+  <p>
+    Box's external sharing is more restricted by default. Password-protected links, limited-time access, and per-link audit trails make it harder to accidentally expose sensitive documents.
+  </p>
+  <p>
+    <strong>For NIS2:</strong> If you frequently collaborate with external partners, Box's guardrails reduce your risk.
+  </p>
+
+  <h3>3. Audit &amp; Forensics</h3>
+  <p>
+    SharePoint logs are batch-processed and exported. If an insider steals 10,000 documents over a week, you may not spot it until the audit log is reviewed manually.
+  </p>
+  <p>
+    Box streams events in real-time. A SIEM or Box's own analytics can trigger alerts if a user downloads an unusually large number of files.
+  </p>
+  <p>
+    <strong>For NIS2 incident response:</strong> Real-time detection reduces your notification window from 72 hours to minutes.
+  </p>
+
+  <h3>4. Data Residency Compliance</h3>
+  <p>
+    With SharePoint, Ireland-only residency requires active tenant management and regular audits. If you use backup services, archival, or certain compliance features, they may route data to EU or global datacentres without you realising.
+  </p>
+  <p>
+    With Box, Ireland residency is the default. You get a clearer contract and fewer hidden dependencies.
+  </p>
+  <p>
+    <strong>For NIS2 audits:</strong> Simpler is better. NCSC Ireland

@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-BKF3QH9K01"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag("js", new Date());
+    gtag("config", "G-BKF3QH9K01");
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ServiceNow vs Microsoft Compliance Manager: GRC-plattformar för NIS2 | NIS2Klar</title>
+  <meta name="description" content="Jämför ServiceNow och Microsoft Compliance Manager för NIS2-efterlevnad. Hur automatiserar de dokumentation? Vad kostar det? Vilket passar din organisation?">
+  <meta property="og:title" content="ServiceNow vs Microsoft Compliance Manager: GRC-plattformar för NIS2">
+  <meta property="og:description" content="Jämför ServiceNow och Microsoft Compliance Manager för NIS2-efterlevnad. Hur automatiserar de dokumentation? Vad kostar det? Vilket passar din organisation?">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #141416;
+      --card: #1c1c1f;
+      --yellow: #f5c518;
+      --white: #f0f0f0;
+      --muted: #888;
+      --red: #C61212;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: var(--bg); color: var(--white); font-family: 'Barlow', sans-serif; font-size: 19px; line-height: 1.8; }
+
+    /* Nav */
+    nav { display: flex; justify-content: space-between; align-items: center; padding: 20px 40px; border-bottom: 1px solid rgba(255,255,255,0.07); max-width: 900px; margin: 0 auto; }
+    .nav-logo { font-family: 'Poppins', sans-serif; font-weight: 900; font-size: 20px; color: var(--yellow); text-decoration: none; }
+    .nav-logo span { color: var(--white); }
+    .nav-back { color: var(--muted); text-decoration: none; font-size: 15px; }
+    .nav-back:hover { color: var(--white); }
+    .nav-cta { background: var(--yellow); color: #000; padding: 8px 18px; border-radius: 4px; text-decoration: none; font-weight: 700; font-size: 14px; font-family: 'Poppins', sans-serif; }
+
+    /* Article */
+    .article-wrap { max-width: 760px; margin: 0 auto; padding: 60px 40px; }
+    .article-category { font-size: 13px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 16px; }
+    h1 { font-family: 'Poppins', sans-serif; font-size: clamp(30px, 4vw, 44px); font-weight: 900; line-height: 1.2; margin-bottom: 24px; }
+    .article-meta { font-size: 15px; color: var(--muted); margin-bottom: 48px; padding-bottom: 24px; border-bottom: 1px solid rgba(255,255,255,0.07); }
+    h2 { font-family: 'Poppins', sans-serif; font-size: 26px; font-weight: 700; margin: 48px 0 16px; color: var(--white); }
+    h3 { font-family: 'Poppins', sans-serif; font-size: 20px; font-weight: 600; margin: 32px 0 12px; color: var(--yellow); }
+    p { margin-bottom: 22px; }
+    strong { color: var(--white); font-weight: 700; }
+    .highlight { color: var(--yellow); font-weight: 700; }
+    .danger { color: #ff6b6b; font-weight: 700; }
+    ul, ol { margin: 16px 0 24px 24px; }
+    li { margin-bottom: 12px; font-size: 19px; }
+
+    /* Callout boxes */
+    .box-warning { background: rgba(197,17,17,0.12); border-left: 4px solid var(--red); padding: 20px 24px; margin: 32px 0; border-radius: 0 4px 4px 0; }
+    .box-info { background: rgba(245,197,24,0.08); border-left: 4px solid var(--yellow); padding: 20px 24px; margin: 32px 0; border-radius: 0 4px 4px 0; }
+    .box-case { background: var(--card); border: 1px solid rgba(255,255,255,0.08); padding: 28px; margin: 40px 0; border-radius: 4px; }
+    .box-case .case-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 12px; }
+    blockquote { border-left: 3px solid var(--yellow); padding: 12px 20px; margin: 24px 0; font-style: italic; color: #ccc; }
+
+    /* CTA */
+    .cta-section { background: var(--card); border: 1px solid rgba(245,197,24,0.2); border-radius: 4px; padding: 48px 40px; margin: 64px 0 40px; text-align: center; }
+    .cta-section h2 { margin-top: 0; font-size: 26px; }
+    .cta-section p { color: #aaa; max-width: 500px; margin: 0 auto 28px; }
+    .btn-primary { display: inline-block; background: var(--yellow); color: #000; font-family: 'Poppins', sans-serif; font-weight: 800; font-size: 16px; padding: 16px 36px; border-radius: 4px; text-decoration: none; }
+    .btn-primary:hover { background: #e0b010; }
+    .cta-fine { font-size: 13px; color: var(--muted); margin-top: 16px; }
+
+    /* FAQ */
+    .faq-item { border-bottom: 1px solid rgba(255,255,255,0.07); padding: 20px 0; }
+    .faq-q { font-family: 'Poppins', sans-serif; font-weight: 600; margin-bottom: 10px; }
+    .faq-a { color: #bbb; }
+
+    /* Comparison table */
+    .comparison-table { width: 100%; border-collapse: collapse; margin: 24px 0; }
+    .comparison-table th { background: rgba(245,197,24,0.1); color: var(--yellow); font-family: 'Poppins', sans-serif; font-size: 13px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 12px 16px; text-align: left; border-bottom: 1px solid rgba(245,197,24,0.2); }
+    .comparison-table td { padding: 14px 16px; border-bottom: 1px solid rgba(255,255,255,0.05); font-size: 15px; }
+    .comparison-table tr:last-child td { border-bottom: none; }
+    .comparison-table .checkmark { color: #4ade80; font-weight: 700; }
+    .comparison-table .cross { color: #ff6b6b; font-weight: 700; }
+
+    /* Summary + Key Takeaway */
+    .box-summary { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; padding: 24px 28px; margin: 0 0 32px; }
+    .summary-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-bottom: 14px; }
+    .box-summary ul { margin: 0; padding-left: 20px; }
+    .box-summary li { margin-bottom: 8px; font-size: 17px; color: #ccc; }
+    .box-takeaway { background: rgba(245,197,24,0.08); border-left: 4px solid var(--yellow); padding: 20px 24px; margin: 0 0 40px; border-radius: 0 4px 4px 0; }
+    .takeaway-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 10px; }
+    .box-takeaway p { margin: 0; font-size: 18px; font-weight: 600; color: var(--white); line-height: 1.6; }
+
+    /* Footer */
+    footer { border-top: 1px solid rgba(255,255,255,0.07); padding: 32px 40px; text-align: center; font-size: 13px; color: var(--muted); max-width: 900px; margin: 0 auto; }
+    footer a { color: var(--muted); }
+
+    @media (max-width: 600px) {
+      nav, .article-wrap, footer { padding: 20px; }
+      .cta-section { padding: 32px 20px; }
+      .comparison-table { font-size: 14px; }
+      .comparison-table th, .comparison-table td { padding: 10px 10px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="https://nis2klar.se/">NIS2<span>Klar</span></a>
+  <a class="nav-back" href="https://nis2klar.se/artiklar.html">← Alla artiklar</a>
+  <a class="nav-cta" href="https://nis2klar.se/#boka">Boka samtal →</a>
+</nav>
+
+<article class="article-wrap">
+  <div class="article-category">GRC-verktyg &amp; Automation</div>
+  <h1>ServiceNow vs Microsoft Compliance Manager: GRC-plattformar för NIS2</h1>
+  <div class="article-meta">Uppdaterad 19 april 2026 · Lästid: ca 8 minuter · Målgrupp: VD, styrelse</div>
+
+  <!-- SUMMARY -->
+  <div class="box-summary">
+    <div class="summary-label">Sammanfattning</div>
+    <ul>
+      <li>Du behöver ett GRC-verktyg (Governance, Risk, Compliance) för att dokumentera och bevisa NIS2-efterlevnad.</li>
+      <li>ServiceNow och Microsoft Compliance Manager är de två dominerande alternativen för svenska organisationer.</li>
+      <li>ServiceNow är kraftfullt men dyrt och komplext — passar större organisationer med dedikerad resursbehov.</li>
+      <li>Microsoft Compliance Manager är inkluderat i Microsoft 365 — lägre kostnad, snabbare att implementera, räcker för 200–2000 anställda.</li>
+      <li>Båda automatiserar dokumentation, spårar evidens och genererar rapporter som tillsynsmyndigheten förväntar sig.</li>
+    </ul>
+  </div>
+
+  <!-- KEY TAKEAWAY -->
+  <div class="box-takeaway">
+    <div class="takeaway-label">Viktigaste slutsatsen</div>
+    <p>För en organisation med 200–2000 anställda som ska dokumentera NIS2-efterlevnad: börja med Microsoft Compliance Manager. Det kostar ingenting extra om ni redan har Microsoft 365 — och det räcker för att ge styrelsen ett försvarbart underlag. ServiceNow är nästa nivå när ni växer eller behöver fullt automatiserad risk- och incidenthantering över hela organisationen.</p>
+  </div>
+
+  <!-- HOOK -->
+  <p>
+    Du som VD eller styrelseledamot vet att NIS2 kräver dokumentation. Artikel 20 säger att ni måste kunna påvisa att ni <strong>aktivt godkänt</strong> och <strong>övervakat</strong> säkerhetsåtgärderna.
+    Det räcker inte med en säkerhetschef som säger "vi har gjort det här". Ni behöver ett system som låter styrelsen se det själv — i realtid, uppdaterat, bevisbart.
+  </p>
+
+  <p>
+    Två verktyg dominerar denna marknad: <strong>ServiceNow</strong> och <strong>Microsoft Compliance Manager</strong>. Båda gör samma sak i grunden — de samlar evidens, automatiserar dokumentation och skapar rapporter — men på helt olika sätt, till helt olika priser, och med helt olika komplexitet.
+  </p>
+
+  <p>
+    Den här artikeln hjälper dig att välja rätt. Om du är under 500 anställda och redan använder Microsoft 365 är svaret troligt redan bestämt. Men låt oss se båda alternativen rent.
+  </p>
+
+  <h2>Vad är en GRC-plattform egentligen?</h2>
+
+  <p>
+    GRC står för Governance, Risk och Compliance. En GRC-plattform är ett centralt verktyg som:
+  </p>
+
+  <ul>
+    <li><strong>Samlar evidens</strong> — automatiskt från din IT-miljö (servrar, nätverk, molnkonton) eller manuellt från processer</li>
+    <li><strong>Mappar till krav</strong> — kopplar varje evidens till ett specifikt NIS2-krav (t.ex. Artikel 21.1 om riskanalys)</li>
+    <li><strong>Spårar status</strong> — visar styresen vilka åtgärder som är implementerade, vilka som är på väg, vilka som saknas</li>
+    <li><strong>Automatiserar rapportering</strong> — skapar dokumentation som tillsynsmyndigheten kan läsa utan att du behöver skriva allt för hand</li>
+    <li><strong>Dokumenterar ansvar</strong> — visar vem som är ansvarig för varje åtgärd och när den ska vara klar</li>
+  </ul>
+
+  <p>
+    Utan ett GRC-verktyg är du beroende av manuell skattning — Which Cloud-sheets, Word-dokument, loggbok i Outlook. Det är inte bara ineffektivt. Det är ohållbart när tillsynsmyndigheten ringer och ber om bevis för vad som är gjort.
+  </p>
+
+  <h2>ServiceNow: kraftfull, komplett, dyr</h2>
+
+  <h3>Vad gör ServiceNow?</h3>
+
+  <p>
+    ServiceNow är en molnplattform som ursprungligen byggdes för IT Service Management (ticketsystem för IT-support). Men de har vuxit in i att täcka nästan all organisatorisk komplexitet — från HR till juridik till säkerhet.
+  </p>
+
+  <p>
+    För NIS2 relevanta moduler:
+  </p>
+
+  <ul>
+    <li><strong>ServiceNow GRC</strong> — huvudmodulen för styrning, risker och compliance</li>
+    <li><strong>Risk Management</strong> — automatiserad riskanalys kopplad till verksamheten</li>
+    <li><strong>Third Party Risk Management</strong> — spårar och granskар leverantörer (Artikel 21.3 i NIS2)</li>
+    <li><strong>Incident Management</strong> — hantering av cyberincidenter med automatisk eskalering</li>
+    <li><strong>Security Operations Center (SOC) Insights</strong> — real-time övervakning</li>
+  </ul>
+
+  <h3>Hur automatiserar ServiceNow dokumentation?</h3>
+
+  <p>
+    ServiceNow kan kopplas till nästan allt — din Okta-miljö, dina servrar, din Azure-miljö, din Slack. Det kan automatiskt hämta in:
+  </p>
+
+  <ul>
+    <li>Vilka användare har administratörsåtkomst (evidens för åtkomstkontroll — Artikel 21.5)</li>
+    <li>Vilka servrar som saknar säkerhetsuppdateringar (evidens för patchning)</li>
+    <li>Vilka incidenter som har rapporterats och när (evidens för incidenthantering — Artikel 23)</li>
+    <li>Status på alla integrationsprojekt (för kontinuitet och affärskontinuitetsplanering — Artikel 21.2)</li>
+  </ul>
+
+  <p>
+    Det sparar tid. Men det kräver att någon först sätter upp alla dessa integrationerar — vilket är ett jobbigt projekt i sig.
+  </p>
+
+  <h3>Kostnader för ServiceNow</h3>
+
+  <p>
+    ServiceNow säljs per användare och modul. En typisk installation för en organisation med 200–500 anställda kostar:
+  </p>
+
+  <ul>
+    <li><strong>Licenser:</strong> 100–150 kronor per månad per "concurrent user" (användare som är aktiv samtidigt) × antal moduler</li>
+    <li><strong>Implementering:</strong> 200 000–500 000 kronor för att sätta upp och integrera mot er miljö</li>
+    <li><strong>Support och underhål:</strong> 15–20 % av licenskostnaden per år</li>
+    <li><strong>Anpassningar:</strong> ofta hundratusentals kronor för er specifika konfigurationer</li>
+  </ul>
+
+  <p>
+    En realistisk första år-budget för ServiceNow: <strong>500 000–1 000 000 kronor</strong> för en organisation med 300 anställda. År två och framåt: 200 000–400 000 kronor per år.
+  </p>
+
+  <div class="box-warning">
+    <strong>ServiceNow-fällan:</strong> Det är lätt att börja moduler som man "kanske behöver senare". Varje ny modul lägger till komplexitet och kostnader. En GRC-implementering kan snabbt växa från "vi bara behöver compliance" till ett tjugo-personers projekt.
+  </div>
+
+  <h3>Vem passar ServiceNow för?</h3>
+
+  <ul>
+    <li>Organisationer över 500 anställda</li>
+    <li>Multinationella företag som behöver spåra compliance över flera länder och sektorer</li>
+    <li>Organisationer som redan använder ServiceNow för IT-drift (då blir integrationen smidigare)</li>
+    <li>Företag som vill helt automatiserad risk- och incidenthantering</li>
+  </ul>
+
+  <h2>Microsoft Compliance Manager: enkelt, inkluderat, räcker</h2>
+
+  <h3>Vad är Microsoft Compliance Manager?</h3>
+
+  <p>
+    Microsoft Compliance Manager är ett verktyg som är <strong>inkluderat i Microsoft 365</strong> (Office 365, Teams, SharePoint osv). Du behöver inte köpa något extra.
+  </p>
+
+  <p>
+    Det är enklare än ServiceNow. Det är inte ett ticketsystem. Det är en databas av befintliga NIS2-krav — och en plats där du dokumenterar hur du uppfyller dem.
+  </p>
+
+  <h3>Hur fungerar Microsoft Compliance Manager för NIS2?</h3>
+
+  <p>
+    Microsoft har redan mappat alla NIS2-artiklar och alla krav till deras egna produkter. I Compliance Manager ser du:
+  </p>
+
+  <ul>
+    <li><strong>Alla NIS2-krav</strong> listade och beskrivna</li>
+    <li><strong>Microsoft-rekommendationer</strong> för hur du uppfyller varje krav (med svar som "använd Azure Multi-Factor Authentication" eller "implementera Microsoft Defender for Endpoint")</li>
+    <li><strong>Automatisk status</strong> på vissa åtgärder — om du aktiverar MFA i Entra ID, märker Compliance Manager det själv</li>
+    <li><strong>Evidens-upload</strong> — du kan lägga in dina egna dokument (policydokument, riskanalyser) för åtgärder som Microsoft inte kan se</li>
+    <li><strong>Rapportgenerering</strong> — en rapport som visar styrelsen: "Vi uppfyller 87 % av NIS2-kraven idag"</li>
+  </ul>
+
+  <h3>Hur automatiserar Microsoft Compliance Manager dokumentation?</h3>
+
+  <p>
+    Delvis. Microsoft automatiserar vad den kan se i din Microsoft 365-miljö:
+  </p>
+
+  <ul>
+    <li>Om du använder Microsoft Defender Secure Score, märker Compliance Manager din nuvarande säkerhetsstatus</li>
+    <li>Om du aktiverar MFA i Entra ID, märker det att kravet "multifaktorsautentisering" är implementerat</li>
+    <li>Om du använder Microsoft Information Protection (kryptering), ser den att datakryptering är aktiv</li>
+  </ul>
+
+  <p>
+    Men för åtgärder som finns utanför Microsoft 365 — din fysiska infrastruktur, dina On-Prem-servrar, dina leverantörers säkerhet — måste du ladda upp dokumentation själv.
+  </p>
+
+  <p>
+    Det är ingen nackdel. Det är normen. Till och med ServiceNow kräver ofta manuell dokumentation för icke-IT-processer.
+  </p>
+
+  <h3>Kostnader för Microsoft Compliance Manager</h3>
+
+  <p>
+    <strong>Gratis</strong> om du redan har Microsoft 365.
+  </p>
+
+  <p>
+    Det är ingen dolda avgift. Det är verkligen inkluderat. Microsoft tjänar på att du använder deras säkerhetsprodukter — om Compliance Manager hjälper dig att implementera "använd Azure Key Vault för kryptering", tjänar Microsoft på det.
+  </p>
+
+  <p>
+    Vad kostar det i praktiken? Din tid:
+  </p>
+
+  <ul>
+    <li><strong>Implementering:</strong> 20–40 timmar för en säkerhetschef att gå igenom alla krav, förstå dem och länka evidens</li>
+    <li><strong>Löpande underhål:</strong> 2–4 timmar per månad för att uppdatera status när nya åtgärder genomförs</li>
+  </ul>
+
+  <p>
+    En certifierad Microsoft-partner kan ofta hjälpa till med detta utan separat kostnad — som en del av deras säkerhetskonsultation.
+  </p>
+
+  <div class="box-info">
+    <strong>Microsoft-fördelen:</strong> Compliance Manager är tightly integrated med Microsoft Defender Secure Score — en 0–100 poängskala som helt automatiskt visar styrelsen hur säker er miljö är. Det är en perfekt KPI för styrelsedashboard.
+  </div>
+
+  <h3>Vem passar Microsoft Compliance Manager för?</h3>
+
+  <ul>
+    <li>Organisationer med 50–1000 anställda</li>
+    <li>Organisationer som redan använder Microsoft 365</li>
+    <li>Företag som inte har dedikerad GRC-personal</li>
+    <li>Organisationer som vill snabb implementering — "vi behöver dokumentation inom 3 månader"</li>
+    <li>Företag med begränsad budget</li>
+  </ul>
+
+  <h2>Direkt jämförelse</h2>
+
+  <table class="comparison-table">
+    <thead>
+      <tr>
+        <th>Aspekt</th>
+        <th>ServiceNow GRC</th>
+        <th>Microsoft Compliance Manager</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Initialkostnad</strong></td>
+        <td>500 k–1 M kronor</td>
+        <td>Gratis (inkluderat i M365)</td>
+      </tr>
+      <tr>
+        <td><strong>Årlig kostnad (år 2+)</strong></td>
+        <td>200–400 k kronor</td>
+        <td>Gratis (ev. konsultstöd)</td>
+      </tr>
+      <tr>
+        <td><strong>Implementeringstid</strong></td>
+        <td>3–6 månader</td>
+        <td>1–2 månader</td>
+      </tr>
+      <tr>
+        <td><strong>Automatisk evidenshämtning</strong></td>
+        <td class="checkmark">Ja, omfattande</td>
+        <td>Ja, begränsad (M365-miljö)</td>
+      </tr>
+      <tr>
+        <td><strong>Risk Management</strong></td>
+        <td class="checkmark">Ja, dedikerad modul</td>
+        <td>Enkel, integrerad</td>
+      </tr>
+      <tr>
+        <td><strong>Third Party Risk</strong></td>
+        <td class="checkmark">Ja, dedikerad modul</td>
+        <td>Enkel, manual process</td>
+      </tr>
+      <tr>
+        <td><strong>Incident Management</strong></td>
+        <td class="checkmark">Ja, fullt automatiserad</td>
+        <td>Integrerad (via Sentinel)</td>
+      </tr>
+      <tr>
+        <td><strong>Skalbarhet</strong></td>
+        <td class="checkmark">Till 10 000+ anställda</td>
+        <td>Till 2–3 000 anställda</td>
+      </tr>
+      <tr>
+        <td><strong>Komplexitet</strong></td>
+        <td>Hög — lång inlärningskurva</td>
+        <td>Låg — "click and document"</td>
+      </tr>
+      <tr>
+        <td><strong>Integration med övrig IT</strong></td>
+        <td class="checkmark">Nästan allt är möjligt</td>
+        <td>Bäst med Microsoft-stack</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>Fallstudie: en organisation på 250 anställda</h2>
+
+  <div class="box-case">
+    <div class="case-label">Praktiskt val</div>
+    <p>
+      <strong>Scenario:</strong> Medelstort svenskt IT-konsultföretag, 250 anställda. Använder Microsoft 365. Behöver dokumentera NIS2-efterlevnad för att behålla kundkontrakt (flera kunder kräver det).
+    </p>
+    <p>
+      <strong>Väg 1 — ServiceNow:</strong>
+      <br>
+      Implementeringskostnad: 600 000 kronor. Tid: 4 månader. Personalinsats: 40 % av en säkerhetschef + 20 % av en IT-arkitekt. 
+      <br>
+      Resultat: en fullt automatiserad GRC-plattform som kan växa med bolaget.
+      <br>
+      Risk: överväxing — man böjar med GRC men lägger till risk management, third party risk, osv. Total ägarkostnad år 1: 750 000 kronor.
+    </p>
+    <p>
+      <strong>Väg 2 — Microsoft Compliance Manager:</strong>
+      <br>
+      Implementeringskostnad: 0 kronor (eller 30 000 kronor om ni köper 40 timmars konsultstöd). Tid: 2 månader. Personalinsats: 20 % av en säkerhetschef.
+      <br>
+      Resultat: ett strukturerat dokumentsystem där styrelsen kan se status på alla NIS2-krav. Realt eller ej, det ser likvärdigt ut när kunderna frågar.
+      <br>
+      Årlig kostnad: gratis. Denna väg är en "start här" för nästan alla organisationer i denna storlek.
+    </p>
+    <p>
+      <strong>Slutsats:</strong> Börja med Compliance Manager. Om ni växer till 500+ anställda och realiserсer att ni behöver fullt automatiserad risk- och incidenthantering, migrera till ServiceNow då. Men för en organisation på 250 anställda är Compliance Manager rätt svar 95 % av tiden.
+    </p>
+  </div>
+
+  <h2>Vad saknar båda alternativen?</h2>
+
+  <p>
+    Varken ServiceNow eller Compliance Manager gör ditt cybersäkerhet-jobb åt dig. De dokumenterar bara att du gjort det.
+  </p>
+
+  <p>
+    Du behöver fortfarande:
+  </p>
+
+  <ul>
+    <li>En faktisk riskanalys (någon som identifierar dina kritiska system och hot)</li>
+    <li>En faktisk säkerhetspolicy (antagen av styrelsen, inte bara en Word-fil)</li>
+    <li>En faktisk incidenthanteringsplan (testerad, med definierade roller)</li>
+    <li>En faktisk kontinuitetsplan (säkerhetskopior, redundans, tidplan för återhäm

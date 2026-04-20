@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-BKF3QH9K01"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag("js", new Date());
+    gtag("config", "G-BKF3QH9K01");
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Microsoft Sentinel: Kostnadskalkyl och vad ni faktiskt betalar | NIS2Klar</title>
+  <meta name="description" content="Microsoft Sentinel prissätts per GB ingesterad data. Läs hur du beräknar kostnaden för en organisation med 200–500 anställda, vilka data som måste loggas, och jämföring med alternativa SIEM-lösningar.">
+  <meta property="og:title" content="Microsoft Sentinel: Kostnadskalkyl och vad ni faktiskt betalar">
+  <meta property="og:description" content="Microsoft Sentinel prissätts per GB ingesterad data. Läs hur du beräknar kostnaden för en organisation med 200–500 anställda, vilka data som måste loggas, och jämföring med alternativa SIEM-lösningar.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #141416;
+      --card: #1c1c1f;
+      --yellow: #f5c518;
+      --white: #f0f0f0;
+      --muted: #888;
+      --red: #C61212;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: var(--bg); color: var(--white); font-family: 'Barlow', sans-serif; font-size: 19px; line-height: 1.8; }
+
+    /* Nav */
+    nav { display: flex; justify-content: space-between; align-items: center; padding: 20px 40px; border-bottom: 1px solid rgba(255,255,255,0.07); max-width: 900px; margin: 0 auto; }
+    .nav-logo { font-family: 'Poppins', sans-serif; font-weight: 900; font-size: 20px; color: var(--yellow); text-decoration: none; }
+    .nav-logo span { color: var(--white); }
+    .nav-back { color: var(--muted); text-decoration: none; font-size: 15px; }
+    .nav-back:hover { color: var(--white); }
+    .nav-cta { background: var(--yellow); color: #000; padding: 8px 18px; border-radius: 4px; text-decoration: none; font-weight: 700; font-size: 14px; font-family: 'Poppins', sans-serif; }
+
+    /* Article */
+    .article-wrap { max-width: 760px; margin: 0 auto; padding: 60px 40px; }
+    .article-category { font-size: 13px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 16px; }
+    h1 { font-family: 'Poppins', sans-serif; font-size: clamp(30px, 4vw, 44px); font-weight: 900; line-height: 1.2; margin-bottom: 24px; }
+    .article-meta { font-size: 15px; color: var(--muted); margin-bottom: 48px; padding-bottom: 24px; border-bottom: 1px solid rgba(255,255,255,0.07); }
+    h2 { font-family: 'Poppins', sans-serif; font-size: 26px; font-weight: 700; margin: 48px 0 16px; color: var(--white); }
+    h3 { font-family: 'Poppins', sans-serif; font-size: 20px; font-weight: 600; margin: 32px 0 12px; color: var(--yellow); }
+    p { margin-bottom: 22px; }
+    strong { color: var(--white); font-weight: 700; }
+    .highlight { color: var(--yellow); font-weight: 700; }
+    .danger { color: #ff6b6b; font-weight: 700; }
+    ul, ol { margin: 16px 0 24px 24px; }
+    li { margin-bottom: 12px; font-size: 19px; }
+
+    /* Callout boxes */
+    .box-warning { background: rgba(197,17,17,0.12); border-left: 4px solid var(--red); padding: 20px 24px; margin: 32px 0; border-radius: 0 4px 4px 0; }
+    .box-info { background: rgba(245,197,24,0.08); border-left: 4px solid var(--yellow); padding: 20px 24px; margin: 32px 0; border-radius: 0 4px 4px 0; }
+    .box-case { background: var(--card); border: 1px solid rgba(255,255,255,0.08); padding: 28px; margin: 40px 0; border-radius: 4px; }
+    .box-case .case-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 12px; }
+    blockquote { border-left: 3px solid var(--yellow); padding: 12px 20px; margin: 24px 0; font-style: italic; color: #ccc; }
+
+    /* CTA */
+    .cta-section { background: var(--card); border: 1px solid rgba(245,197,24,0.2); border-radius: 4px; padding: 48px 40px; margin: 64px 0 40px; text-align: center; }
+    .cta-section h2 { margin-top: 0; font-size: 26px; }
+    .cta-section p { color: #aaa; max-width: 500px; margin: 0 auto 28px; }
+    .btn-primary { display: inline-block; background: var(--yellow); color: #000; font-family: 'Poppins', sans-serif; font-weight: 800; font-size: 16px; padding: 16px 36px; border-radius: 4px; text-decoration: none; }
+    .btn-primary:hover { background: #e0b010; }
+    .cta-fine { font-size: 13px; color: var(--muted); margin-top: 16px; }
+
+    /* FAQ */
+    .faq-item { border-bottom: 1px solid rgba(255,255,255,0.07); padding: 20px 0; }
+    .faq-q { font-family: 'Poppins', sans-serif; font-weight: 600; margin-bottom: 10px; }
+    .faq-a { color: #bbb; }
+
+    /* Fine table */
+    .fine-table { width: 100%; border-collapse: collapse; margin: 24px 0; }
+    .fine-table th { background: rgba(245,197,24,0.1); color: var(--yellow); font-family: 'Poppins', sans-serif; font-size: 13px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 12px 16px; text-align: left; border-bottom: 1px solid rgba(245,197,24,0.2); }
+    .fine-table td { padding: 14px 16px; border-bottom: 1px solid rgba(255,255,255,0.05); font-size: 15px; }
+    .fine-table tr:last-child td { border-bottom: none; }
+    .fine-table .amount { color: #ff6b6b; font-weight: 700; }
+
+    /* Summary + Key Takeaway */
+    .box-summary { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; padding: 24px 28px; margin: 0 0 32px; }
+    .summary-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-bottom: 14px; }
+    .box-summary ul { margin: 0; padding-left: 20px; }
+    .box-summary li { margin-bottom: 8px; font-size: 17px; color: #ccc; }
+    .box-takeaway { background: rgba(245,197,24,0.08); border-left: 4px solid var(--yellow); padding: 20px 24px; margin: 0 0 40px; border-radius: 0 4px 4px 0; }
+    .takeaway-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 10px; }
+    .box-takeaway p { margin: 0; font-size: 18px; font-weight: 600; color: var(--white); line-height: 1.6; }
+
+    /* Footer */
+    footer { border-top: 1px solid rgba(255,255,255,0.07); padding: 32px 40px; text-align: center; font-size: 13px; color: var(--muted); max-width: 900px; margin: 0 auto; }
+    footer a { color: var(--muted); }
+
+    @media (max-width: 600px) {
+      nav, .article-wrap, footer { padding: 20px; }
+      .cta-section { padding: 32px 20px; }
+      .fine-table { font-size: 14px; }
+      .fine-table th, .fine-table td { padding: 10px 10px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="https://nis2klar.se/">NIS2<span>Klar</span></a>
+  <a class="nav-back" href="https://nis2klar.se/artiklar.html">← Alla artiklar</a>
+  <a class="nav-cta" href="https://nis2klar.se/#boka">Boka samtal →</a>
+</nav>
+
+<article class="article-wrap">
+  <div class="article-category">SIEM &amp; Loggning</div>
+  <h1>Microsoft Sentinel: Kostnadskalkyl och vad ni faktiskt betalar</h1>
+  <div class="article-meta">Uppdaterad 19 april 2026 · Lästid: ca 8 minuter · Målgrupp: VD, CFO, IT-ledning</div>
+
+  <!-- SUMMARY -->
+  <div class="box-summary">
+    <div class="summary-label">Sammanfattning</div>
+    <ul>
+      <li>Sentinel prissätts per gigabyte ingesterad data — kostnaderna kan eskalera snabbt om ni inte är medvetna.</li>
+      <li>För en 200–500-personersorganisation ligger rimlig månadskostnad på <strong>15 000–45 000 kronor</strong>, beroende på loggvolym.</li>
+      <li>NIS2-krav tvingar er att logga mycket — men inte allt. Kostnadsoptimering betyder smart filtrering, inte skäringning på säkerhet.</li>
+      <li>Alternativa SIEM-lösningar existerar, men Sentinel ger bäst ROI för organisationer redan på Microsoft 365.</li>
+    </ul>
+  </div>
+
+  <!-- KEY TAKEAWAY -->
+  <div class="box-takeaway">
+    <div class="takeaway-label">Viktigaste slutsatsen</div>
+    <p>En SIEM-lösning utan kostnadsplanering blir snabbt en dold utgift som överraskar både IT-budget och styrelse. Räkna datavolymen innan du skriver på, inte efter.</p>
+  </div>
+
+  <!-- HOOK -->
+  <p>
+    Du behöver en SIEM-lösning för att uppfylla NIS2-kraven. Du vet redan detta. Men vad du kanske inte vet är hur snabbt kostnaderna blir en budgetskräck — eller hur du undviker det.
+  </p>
+
+  <p>
+    Sentinel är kraftfull, flexibel och integreras naturligt med Microsoft 365. Men prissättningen — <strong>per gigabyte ingesterad data</strong> — gör att samma lösning kan kosta 10 000 kronor eller 100 000 kronor i månaden beroende på hur väl du förstår vad du ska logga.
+  </p>
+
+  <p>
+    Den här artikeln är för dig som vill veta: Vad kostar det? Vad är rimligt för min organisation? Och vad kan jag skippa utan att bryta NIS2-lagen?
+  </p>
+
+  <h2>Hur fungerar Sentinels prissättning?</h2>
+
+  <p>
+    Microsoft Sentinel är ett molnbaserat SIEM-verktyg — log aggregation, anomalidetektering, hotresponse i ett gränssnitt.
+  </p>
+
+  <p>
+    Priset beräknas så här:
+  </p>
+
+  <ul>
+    <li><strong>Ingestion-kostnad:</strong> Du betalar för varje gigabyte data som strömmas in i Sentinel. Ungefär <strong>3,75 SEK per GB</strong> (eller motsvarande USD-pris, som varierar efter växelkurs).</li>
+    <li><strong>Retention-kostnad:</strong> Hur länge data lagras. Retention mellan 30–90 dagar ingår i ingestion-kostnaden. Längre lagring kostar extra — ungefär <strong>0,55 SEK per GB per månad</strong>.</li>
+    <li><strong>Analytic Rules och Automation:</strong> De flesta analysregler är gratis. Dyr automation kan räknas separat i vissa fall, men oftast inte.</li>
+  </ul>
+
+  <p>
+    I praktiken betyder detta: <strong>Din månadskostnad beror helt på hur mycket data du för in per dag.</strong>
+  </p>
+
+  <div class="box-info">
+    <strong>Räknelexempel:</strong> En organisation som ingestererar 500 GB data per dag betalar ungefär 500 GB × 3,75 SEK × 30 dagar = <strong>56 250 SEK per månad</strong> (enbart ingestion, utan retention). Det är innan någon analytics-regel körs eller någon incident hanteras.
+  </div>
+
+  <h2>Vad är en rimlig datavolym för 200–500 anställda?</h2>
+
+  <p>
+    Det finns ingen universell sanning här — det beror på vilka system ni kopplar till Sentinel. Men vi kan skissa ett realistiskt scenario.
+  </p>
+
+  <p>
+    För en organisation med 200–500 anställda som kör Microsoft 365, någon on-prem-miljö och ett par företagsapplikationer:
+  </p>
+
+  <table class="fine-table">
+    <thead>
+      <tr>
+        <th>Källsystem</th>
+        <th>Ungefärlig daglig volym</th>
+        <th>Förklaring</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Microsoft Defender for Endpoint (EDR)</td>
+        <td class="amount">30–80 GB</td>
+        <td>Process-execution, file-events, network-events från 250–500 endpoints</td>
+      </tr>
+      <tr>
+        <td>Microsoft Defender for Office 365</td>
+        <td class="amount">5–15 GB</td>
+        <td>E-post-traffic, phishing-detections, URL-clicks</td>
+      </tr>
+      <tr>
+        <td>Azure Active Directory / Entra ID sign-in logs</td>
+        <td class="amount">2–5 GB</td>
+        <td>Login-events, MFA-events, application access</td>
+      </tr>
+      <tr>
+        <td>Windows Event Logs (on-prem/hybrid)</td>
+        <td class="amount">10–30 GB</td>
+        <td>Security events, system events från servrar och klienter</td>
+      </tr>
+      <tr>
+        <td>Firewall / Network logs</td>
+        <td class="amount">5–20 GB</td>
+        <td>Beroende på vilken brandvägg och konfiguration</td>
+      </tr>
+      <tr>
+        <td>Applikationsloggar (verksamhetssystem)</td>
+        <td class="amount">2–10 GB</td>
+        <td>ERP, CRM, databaskörningar — varierar mycket</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>
+    <strong>Totalt: 54–160 GB per dag för en organisation i denna storlek.</strong>
+  </p>
+
+  <p>
+    Med detta räknat blir månadskostnaden:
+  </p>
+
+  <ul>
+    <li><strong>Låg-end (54 GB/dag):</strong> ~20 000 SEK/månad</li>
+    <li><strong>Mitt (100 GB/dag):</strong> ~37 500 SEK/månad</li>
+    <li><strong>Högt (160 GB/dag):</strong> ~60 000 SEK/månad</li>
+  </ul>
+
+  <p>
+    Om ni dessutom lagrar data längre än 90 dagar — vilket är rimligt för incidentutredning och compliance — läggs retention-kostnader på. En organisation som lagrar 100 GB/dag under 180 dagar (6 månader) lagring betalar ytterligare ~33 000 SEK/månad för retention.
+  </p>
+
+  <div class="box-warning">
+    <strong>Varning:</strong> Det är lätt att komma upp till 200+ GB per dag om ni börjar logga allt — alla Event ID från Windows, alla syslog-nivåer, alla databastransaktioner. Det kan bli 150 000+ SEK i månaden mycket snabbt utan disciplin.
+  </div>
+
+  <h2>Vad måste ni logga enligt NIS2?</h2>
+
+  <p>
+    NIS2 tvingar er att implementera loggning och övervakning. Men texten är inte så specifik att den säger "du måste logga Event ID 4624 från Windows" eller liknande.
+  </p>
+
+  <p>
+    Istället säger <strong>Artikel 21.2</strong> att ni måste ha:
+  </p>
+
+  <ul>
+    <li>Registrering av säkerhetshändelser (security events)</li>
+    <li>Övervakning av obehörig åtkomst (unauthorized access attempts)</li>
+    <li>Spårning av ändringar i systemkonfiguration (configuration changes)</li>
+    <li>Loggning av administratörsaktiviteter (admin actions)</li>
+  </ul>
+
+  <p>
+    Det betyder att ni <strong>måste</strong> logga:
+  </p>
+
+  <ul>
+    <li>Login-events (lyckade och misslyckade)</li>
+    <li>Åtkomst till känslig data</li>
+    <li>Ändringar av användarrättigheter</li>
+    <li>Ändringar av säkerhetskonfiguration</li>
+    <li>Administratörsåtgärder</li>
+    <li>Malware-detections och säkerhetsvarningar</li>
+    <li>Nätverksåtkomst till kritiska system</li>
+  </ul>
+
+  <p>
+    Vad ni <strong>kan</strong> skippa utan att bryta NIS2:
+  </p>
+
+  <ul>
+    <li>Varje enskild HTTP-request från webbservrar (logg felkoder, inte alla requests)</li>
+    <li>Alla syslog-nivåer från applikationer (fokusera på ERROR och CRITICAL)</li>
+    <li>Detaljerade databastransaktioner i OLTP-miljöer (om inte data är klassificerad som känslig)</li>
+    <li>Fullständiga nätverkspaketer / deep packet inspection (flow-data räcker)</li>
+    <li>Användaraktivitet i icke-kritiska applikationer</li>
+  </ul>
+
+  <div class="box-case">
+    <div class="case-label">Kostnadsoptimering i praktiken</div>
+    <p>
+      <strong>Scenario: Mediebolag med 280 anställda, på Microsoft 365 + hybrid on-prem servermiljö.</strong>
+    </p>
+    <p>
+      <strong>Problem:</strong> IT-chefen vill logga allt för "full visibility" och kopplat in alla Windows Event ID:n från servrar och klienter. Ungefärlig datavolym: 210 GB/dag.
+      Kostnad: ~79 000 SEK/månad + retention.
+    </p>
+    <p>
+      <strong>Lösning:</strong> Gap-analys identifierar att 70 % av datavolymen kommer från Event ID:n som inte är relevanta för NIS2-krav. IT-chefen justerar loggningen:
+    </p>
+    <ul style="margin: 12px 0 12px 24px; font-size: 16px;">
+      <li>Bara kritiska Event ID:n från Windows (4624, 4625, 4720, 4728, 4732, 4756) — sparar 50 GB/dag</li>
+      <li>Application logs på ERROR-nivå endast, inte INFO/DEBUG — sparar 30 GB/dag</li>
+      <li>Network flows istället för fullt packet capture — sparar 25 GB/dag</li>
+      <li>Filserver-loggning bara för ändringar av känslig data, inte läsningar — sparar 20 GB/dag</li>
+    </ul>
+    <p>
+      <strong>Resultat:</strong> Datavolym sjunker till 85 GB/dag. Månadskostnad: ~32 000 SEK istället för 79 000 SEK.
+      <span class="highlight">Sparar 47 000 SEK per månad.</span> Säkerheten förändras inte — fortfarande fullt NIS2-kompatibel.
+      Styrelsen får grönt ljus för investeringen.
+    </p>
+  </div>
+
+  <h2>Alternativa SIEM-lösningar — snabbt jämförelser</h2>
+
+  <p>
+    Sentinel är inte det enda alternativet. Här är hur andra lösningar matchar sig mot prissättning och NIS2-relevans:
+  </p>
+
+  <table class="fine-table">
+    <thead>
+      <tr>
+        <th>SIEM-lösning</th>
+        <th>Prismodell</th>
+        <th>Bäst för</th>
+        <th>NIS2-gap</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Splunk Enterprise</strong></td>
+        <td class="amount">Årligt avtal, 1 500–5 000 SEK per GB/dag</td>
+        <td>Större organisationer, hybrid-miljöer</td>
+        <td>Mycket bra — etablerad standard</td>
+      </tr>
+      <tr>
+        <td><strong>Datadog Security Monitoring</strong></td>
+        <td class="amount">Per agent + storage, ~2 000–8 000 SEK/månad för små org</td>
+        <td>Cloud-first och agile-organisationer</td>
+        <td>God, men kräver konfiguration</td>
+      </tr>
+      <tr>
+        <td><strong>Elastic Stack (open source)</strong></td>
+        <td class="amount">Gratis + hosting ~3 000–15 000 SEK/månad</td>
+        <td>Budget-bewusta organisationer med IT-mognad</td>
+        <td>Bra, men kräver eget arbete</td>
+      </tr>
+      <tr>
+        <td><strong>Microsoft Sentinel</strong></td>
+        <td class="amount">~3,75 SEK per GB ingesterad</td>
+        <td>Microsoft 365-organisationer, hybrid</td>
+        <td>Utmärkt — integrerad i Microsoft-stacken</td>
+      </tr>
+      <tr>
+        <td><strong>Crowdstrike Falcon LogScale</strong></td>
+        <td class="amount">Variabel, ~100–300 USD per TB/dag</td>
+        <td>Endpoint-centric säkerhetsresurser</td>
+        <td>God, fokuserad på threat hunting</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>
+    <strong>För en organisation redan på Microsoft 365 är Sentinel nästan alltid det ekonomiska valet.</strong>
+  </p>
+
+  <p>
+    Varför? Eftersom Sentinel redan kommer med Microsoft Defender-integrationen utan extra kostnad — du betalar bara för ingestionen. Om du skulle välja Splunk eller Datadog måste du dessutom bygga in samma integreringar själv, vilket kostar konsultarbete.
+  </p>
+
+  <p>
+    Om du har en ren on-prem-miljö eller är helt fri från Microsoft kan Splunk eller Elastic Stack vara mindre dyrt. Men då måste du väga det mot behovet av egna integrationer.
+  </p>
+
+  <h2>Fyra kostnadsbesparingsprinciper</h2>
+
+  <h3>1. Logg inte "allt för säkerhetens skull"</h3>
+  <p>
+    Mer data betyder inte mer säkerhet. Det betyder mer brus, längre analysider och högre kostnader. Logga det som NIS2 tvingar dig att logga — och bara det.
+  </p>
+
+  <h3>2. Använd filtrering vid källan, inte i Sentinel</h3>
+  <p>
+    Om Windows-servrar skickar logg-data till Sentinel filtreras bäst på servern innan dataöverföring, inte i Sentinel självt. Mindre data in = lägre kostnad.
+  </p>
+
+  <h3>3. Justera retention baserat på regelverk, inte önsketänkande</h3>
+  <p>
+    NIS2 säger att du ska kunna spåra säkerhetshändelser — men det betyder inte 5 år. De flesta organisationer kan nöja sig med 6–12 månaders retention för incidentutredning. Längre retention för compliance kan ligga i billigare lagring (archive).
+  </p>
+
+  <h3>4. Automatisera responsen för att minska manuell granskning</h3>
+  <p>
+    Analytics rules i Sentinel kan skapa automationsjobb — t.ex. att låsa ett konto vid N misslyckade inloggningar. Det sparar analystimmar och gör säkerheten snabbare.
+  </p>
+
+  <h2>Ett ord om dolt dataöverförings-kostnader</h2>
+
+  <p>
+    Sentinel debiteras för <strong>ingesterad data</strong>. Men data måste först transporteras från källan — och där kan det gömma sig kostnad.
+  </p>
+
+  <p>
+    Om din miljö är helt på Azure / Microsoft 365 är dataöverföringen gratis eller minimal. Men om du har on-prem-servrar eller serverless-funktioner som skickar logg via nätverket kan du stöta på utgående bandbreddskostnader (data egress).
+  </p>
+
+  <p>
+    En Log Analytics Agent på en on-prem-server skickar data över internet eller VPN — och detta kan debiteras av din internet-operatör eller din Azure-préstanda-kostnad. Det är vanligtvis små summor (100–500 SEK/månad för små miljöer), men det är värt att veta om.
+  </p>
+
+  <h2>Budget-planeringschecklista</h2>
+
+  <p>
+    Innan du godkänner Sentinel-investeringen, gå igenom denna:
+  </p>
+
+  <ul>
+    <li>☐ Gap-analys genomförd: Vilka system ska loggas? (Se tabell ovan)</li>
+    <li>☐ Datavolym uppskattad: GB per dag för varje källsystem</li>
+    <li>☐ Retention-behov definierat: Hur länge måste data lagras?</li>
+    <li>☐ Compliance-krav kartlagd: Vad säger NIS2, GDPR, andra regler?</li>
+    <li>☐ Automations-plan: Vilka events behöver automatisk respons?</li>
+    <li>☐ Monitoring-ansvar klart: Vem övervakar Sentinel dagligen?</li>
+    <li>☐ Budget för 12 månader: Ingestion + retention + drift</li>
+    <li>☐ Jämförelse med alternativ: Splunk, Datadog, Elastic — gjort?</li>
+  </ul>
+
+  <div class="box-info" style="margin: 48px 0 32px;">
+    <div style="font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color: var(--yellow); margin-bottom:10px;">🔧 VERKTYG &amp; LÖSNINGAR</div>
+    <p style="margin:0; font-size:17

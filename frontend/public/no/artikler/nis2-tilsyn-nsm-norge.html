@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-BKF3QH9K01"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag("js", new Date());
+    gtag("config", "G-BKF3QH9K01");
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NIS2-tilsyn i Norge: Slik håndhever NSM etterlevelse | nis2klar.se</title>
+  <meta name="description" content="NIS2-tilsynet i Norge håndheves av NSM og sektormyndigheter. Les hvordan etterforskning utløses, hvilke krefter tilsynsmyndighetene har, og hvordan sanksjoner eskalerer fra advarsel til multi-millioneuro-bøter.">
+  <meta property="og:title" content="NIS2-tilsyn i Norge: Slik håndhever NSM etterlevelse">
+  <meta property="og:description" content="NIS2-tilsynet i Norge håndheves av NSM og sektormyndigheter. Les hvordan etterforskning utløses, hvilke krefter tilsynsmyndighetene har, og hvordan sanksjoner eskalerer fra advarsel til multi-millioneuro-bøter.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #141416;
+      --card: #1c1c1f;
+      --yellow: #f5c518;
+      --white: #f0f0f0;
+      --muted: #888;
+      --red: #C61212;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: var(--bg); color: var(--white); font-family: 'Barlow', sans-serif; font-size: 19px; line-height: 1.8; }
+
+    /* Nav */
+    nav { display: flex; justify-content: space-between; align-items: center; padding: 20px 40px; border-bottom: 1px solid rgba(255,255,255,0.07); max-width: 900px; margin: 0 auto; gap: 20px; }
+    .nav-logo { font-family: 'Poppins', sans-serif; font-weight: 900; font-size: 20px; color: var(--yellow); text-decoration: none; }
+    .nav-logo span { color: var(--white); }
+    .nav-back { color: var(--muted); text-decoration: none; font-size: 15px; }
+    .nav-back:hover { color: var(--white); }
+    .lang-switcher { display: flex; gap: 8px; align-items: center; font-size: 13px; font-family: 'Poppins', sans-serif; margin-left: auto; }
+    .lang-switcher a { color: #888; text-decoration: none; font-weight: 600; padding: 4px 8px; border-radius: 3px; }
+    .lang-switcher a:hover { color: var(--white); }
+    .lang-switcher a.active { color: var(--yellow); background: rgba(245, 197, 24, 0.1); }
+    .nav-cta { background: var(--yellow); color: #000; padding: 8px 18px; border-radius: 4px; text-decoration: none; font-weight: 700; font-size: 14px; font-family: 'Poppins', sans-serif; white-space: nowrap; }
+
+    /* Article */
+    .article-wrap { max-width: 760px; margin: 0 auto; padding: 60px 40px; }
+    .article-category { font-size: 13px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 16px; }
+    h1 { font-family: 'Poppins', sans-serif; font-size: clamp(30px, 4vw, 44px); font-weight: 900; line-height: 1.2; margin-bottom: 24px; }
+    .article-meta { font-size: 15px; color: var(--muted); margin-bottom: 48px; padding-bottom: 24px; border-bottom: 1px solid rgba(255,255,255,0.07); }
+    h2 { font-family: 'Poppins', sans-serif; font-size: 26px; font-weight: 700; margin: 48px 0 16px; color: var(--white); }
+    h3 { font-family: 'Poppins', sans-serif; font-size: 20px; font-weight: 600; margin: 32px 0 12px; color: var(--yellow); }
+    p { margin-bottom: 22px; }
+    strong { color: var(--white); font-weight: 700; }
+    .highlight { color: var(--yellow); font-weight: 700; }
+    .danger { color: #ff6b6b; font-weight: 700; }
+    ul, ol { margin: 16px 0 24px 24px; }
+    li { margin-bottom: 12px; font-size: 19px; }
+
+    /* Callout boxes */
+    .box-warning { background: rgba(197,17,17,0.12); border-left: 4px solid var(--red); padding: 20px 24px; margin: 32px 0; border-radius: 0 4px 4px 0; }
+    .box-info { background: rgba(245,197,24,0.08); border-left: 4px solid var(--yellow); padding: 20px 24px; margin: 32px 0; border-radius: 0 4px 4px 0; }
+    .box-case { background: var(--card); border: 1px solid rgba(255,255,255,0.08); padding: 28px; margin: 40px 0; border-radius: 4px; }
+    .box-case .case-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 12px; }
+    blockquote { border-left: 3px solid var(--yellow); padding: 12px 20px; margin: 24px 0; font-style: italic; color: #ccc; }
+
+    /* CTA */
+    .cta-section { background: var(--card); border: 1px solid rgba(245,197,24,0.2); border-radius: 4px; padding: 48px 40px; margin: 64px 0 40px; text-align: center; }
+    .cta-section h2 { margin-top: 0; font-size: 26px; }
+    .cta-section p { color: #aaa; max-width: 500px; margin: 0 auto 28px; }
+    .btn-primary { display: inline-block; background: var(--yellow); color: #000; font-family: 'Poppins', sans-serif; font-weight: 800; font-size: 16px; padding: 16px 36px; border-radius: 4px; text-decoration: none; }
+    .btn-primary:hover { background: #e0b010; }
+    .cta-fine { font-size: 13px; color: var(--muted); margin-top: 16px; }
+
+    /* FAQ */
+    .faq-item { border-bottom: 1px solid rgba(255,255,255,0.07); padding: 20px 0; }
+    .faq-q { font-family: 'Poppins', sans-serif; font-weight: 600; margin-bottom: 10px; }
+    .faq-a { color: #bbb; }
+
+    /* Fine table */
+    .fine-table { width: 100%; border-collapse: collapse; margin: 24px 0; }
+    .fine-table th { background: rgba(245,197,24,0.1); color: var(--yellow); font-family: 'Poppins', sans-serif; font-size: 13px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 12px 16px; text-align: left; border-bottom: 1px solid rgba(245,197,24,0.2); }
+    .fine-table td { padding: 14px 16px; border-bottom: 1px solid rgba(255,255,255,0.05); font-size: 15px; }
+    .fine-table tr:last-child td { border-bottom: none; }
+    .fine-table .amount { color: #ff6b6b; font-weight: 700; }
+
+    /* Summary + Key Takeaway */
+    .box-summary { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; padding: 24px 28px; margin: 0 0 32px; }
+    .summary-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-bottom: 14px; }
+    .box-summary ul { margin: 0; padding-left: 20px; }
+    .box-summary li { margin-bottom: 8px; font-size: 17px; color: #ccc; }
+    .box-takeaway { background: rgba(245,197,24,0.08); border-left: 4px solid var(--yellow); padding: 20px 24px; margin: 0 0 40px; border-radius: 0 4px 4px 0; }
+    .takeaway-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 10px; }
+    .box-takeaway p { margin: 0; font-size: 18px; font-weight: 600; color: var(--white); line-height: 1.6; }
+
+    /* Related articles */
+    .related-articles { margin: 2.5rem 0 2rem; padding: 1.5rem; background: #1a1a2e; border-left: 4px solid #f0a500; border-radius: 4px; }
+    .related-articles p { margin: 0; font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #f0a500; }
+    .related-articles ul { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+    .related-articles li { margin: 0; font-size: 0.95rem; }
+    .related-articles a { color: #e0e0e0; text-decoration: none; }
+    .related-articles .back-links { margin: 1.25rem 0 0; font-size: 0.85rem; color: #aaa; }
+    .related-articles .back-links a { color: #f0a500; }
+
+    /* Footer */
+    footer { border-top: 1px solid rgba(255,255,255,0.07); padding: 32px 40px; text-align: center; font-size: 13px; color: var(--muted); max-width: 900px; margin: 0 auto; }
+    footer a { color: var(--muted); }
+    footer p { margin: 0; }
+
+    @media (max-width: 600px) {
+      nav { flex-wrap: wrap; padding: 16px 20px; }
+      .lang-switcher { margin-left: 0; width: 100%; justify-content: center; order: 3; }
+      .article-wrap { padding: 40px 20px; }
+      .cta-section { padding: 32px 20px; }
+      .fine-table { font-size: 14px; }
+      .fine-table th, .fine-table td { padding: 10px 10px; }
+      h1 { font-size: 28px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="https://nis2klar.se/no/">NIS2<span>Klar</span></a>
+  <a class="nav-back" href="https://nis2klar.se/no/artikler.html">← Alle artikler</a>
+  <div class="lang-switcher">
+    <a href="https://nis2klar.se/artiklar.html" style="color:#888;text-decoration:none;font-weight:600;padding:4px 8px;border-radius:3px;" title="Svenska">SV</a>
+    <a href="https://nis2klar.se/en/articles.html" style="color:#888;text-decoration:none;font-weight:600;padding:4px 8px;border-radius:3px;" title="English">EN</a>
+    <a href="https://nis2klar.se/da/artikler.html" style="color:#888;text-decoration:none;font-weight:600;padding:4px 8px;border-radius:3px;" title="Dansk">DA</a>
+    <a href="https://nis2klar.se/no/artikler.html" style="color:#f5c518;text-decoration:none;font-weight:600;padding:4px 8px;border-radius:3px;background:rgba(245,197,24,0.1);" title="Norsk">NO</a>
+    <a href="https://nis2klar.se/it/articoli.html" style="color:#888;text-decoration:none;font-weight:600;padding:4px 8px;border-radius:3px;" title="Italiano">IT</a>
+  </div>
+  <a class="nav-cta" href="https://nis2klar.se/no/#boka">Book samtal →</a>
+</nav>
+
+<article class="article-wrap">
+  <div class="article-category">Tilsyn & Håndhevelse</div>
+  <h1>NIS2-tilsyn i Norge: Slik håndhever NSM etterlevelse</h1>
+  <div class="article-meta">Oppdatert 19. april 2026 · Lesetid: ca 9 minutter · For: Direktører og styremedlemmer</div>
+
+  <!-- SUMMARY -->
+  <div class="box-summary">
+    <div class="summary-label">Kort sammendrag</div>
+    <ul>
+      <li>NSM (Nasjonal sikkerhetsmyndighet) er primærmyndighet for NIS2-tilsyn i Norge, med sektormyndigheter som nærmest håndhever.</li>
+      <li>Tilsynet kan være proaktivt (stikkprøver) eller reaktivt (etter hendelse eller klage) — du vet ikke når det kommer.</li>
+      <li>Bøter går opp til <strong>10 millioner euro eller 2 % av global omsetning</strong> for vesentlige enheter; <strong>7 millioner euro eller 1,4 %</strong> for viktige enheter.</li>
+      <li>Sanksjoner eskalerer: første advarsel → pålegg → midlertidig administrativ råderett over styrene for ledelsesmedlemmer.</li>
+      <li>Hendelsesrapportering må skje innen 24 timer (tidlig varsel) og 72 timer (full rapport) — utebliss er en egen sanksjon.</li>
+    </ul>
+  </div>
+
+  <!-- KEY TAKEAWAY -->
+  <div class="box-takeaway">
+    <div class="takeaway-label">Viktigste poeng</div>
+    <p>NSM og sektormyndigheter kan starte tilsyn uten varsel, og sanksjoner eskaleres raskt fra advarsel til millionbøter og personlige yrkestak. Din beste forsvar er dokumentasjon — og den må være på plass før tilsynet ankommer.</p>
+  </div>
+
+  <!-- HOOK -->
+  <p>
+    NSM (Nasjonal sikkerhetsmyndighet) er ikke til for å gi tips. Den er der for å kontrollere at du etterfølger loven.
+    Og den kan ankommer når som helst — både som planlagt stikkprøve og som plutselig reagering på en cyberincident eller en klage fra en ansatt.
+  </p>
+
+  <p>
+    Når tilsynet begynner, er det for sent å bygge politikken. Du må bevise at den allerede eksisterer.
+  </p>
+
+  <div class="box-warning">
+    <strong>NSM og sektormyndigheter gjennomfører allerede NIS2-tilsyn.</strong> Implementeringen av NIS2-direktivet i Norge forventes fullført i løpet av 2025–2026 via EØS-avtalen. Tilsynene starter før regelverket er formelt på plass. Om organisasjonen din ligger i energi-, finans-, helse- eller transportsektoren, er du allerede på radaren.
+  </div>
+
+  <h2>Hvem tilsynet NSM-regelverket i Norge?</h2>
+
+  <p>
+    Norge er ikke EU-medlem, men er EØS-tilknyttet. NIS2-direktivet implementeres gjennom EØS-avtalen, og når regelverket trer i kraft, vil tilsynet følge samme prinsipaler som i EU — men med norske myndigheter.
+  </p>
+
+  <p>
+    Det primære tilsyn utføres av:
+  </p>
+
+  <ul>
+    <li><strong>NSM (Nasjonal sikkerhetsmyndighet)</strong> — overordnet koordinering og tilsyn for kritisk infrastruktur og digital sikkerhet</li>
+    <li><strong>NVE (Norges vassdrags- og energidirektorat)</strong> — energisektoren</li>
+    <li><strong>Finanstilsynet</strong> — finanssektoren og finansmarkedsinfrastruktur</li>
+    <li><strong>Direktoratet for e-helse</strong> — helse- og omsorgssektoren</li>
+    <li><strong>Statens vegvesen, Avinor og andre sektortilsyn</strong> — transport og logistikk</li>
+  </ul>
+
+  <p>
+    Disse myndigheten kan starte tilsyn uavhengig av hverandre. En organisasjon som opererer i flere sektorer kan få besøk fra flere tilsynsmyndigheter samtidig.
+  </p>
+
+  <h2>Proaktivt versus reaktivt tilsyn — hva som utløser en gransking</h2>
+
+  <p>
+    Tilsynet kan starte på to måter:
+  </p>
+
+  <h3>Proaktivt tilsyn (stikkprøver)</h3>
+  <p>
+    Tilsynsmyndighetene velger organisasjoner basert på sektor, størrelse eller annen risikofaktor. De sender en forespørsel om dokumentasjon med kort frist (gjerne 14–30 dager). Du får ikke velge om du skal delta.
+  </p>
+
+  <p>
+    Proaktivt tilsyn starter gjerne ved at myndigheten etterspør:
+  </p>
+
+  <ul>
+    <li>Riskogramsystem og risikobedømming (Artikel 18 i NIS2)</li>
+    <li>Sikkerhetspoliser godkjent av styret</li>
+    <li>Incidenthåndteringsplan med dokumenterte roller</li>
+    <li>Systemkontinuitet- og gjenoppretting-plan</li>
+    <li>Leverandørregistrering og sikkerhetskrav</li>
+    <li>Styrelsesmøteprotokoller som viser godkjenning av sikkerhetstiltak (Artikel 20)</li>
+  </ul>
+
+  <h3>Reaktivt tilsyn</h3>
+  <p>
+    Dette utløses av en konkret hendelse eller klage:
+  </p>
+
+  <ul>
+    <li><strong>Cyberincident</strong> — organisasjonen rapporterer en alvorlig hendelse til NSM eller sektormyndighet. Tilsynen kan initieres for å sjekke om organisasjonen håndterte det riktig, eller for å ettergransker funn.</li>
+    <li><strong>Uteblitt rapportering</strong> — hvis NSM får vite om en alvorlig hendelse som organisasjonen ikke rapporterte innen fristen, starter etterforsking automatisk.</li>
+    <li><strong>Klage</strong> — ansatte, konkurrenter eller partnere kan klage til tilsynsmyndigheten dersom de mistenker brudd.</li>
+    <li><strong>Medieoppslag</strong> — større sikkerhetsbrud som dukker opp i pressen kan utløse tilsyn.</li>
+  </ul>
+
+  <div class="box-info">
+    <strong>Du kan ikke "unngå" tilsyn ved å holde lav profil.</strong> Reaktivt tilsyn startes uavhengig av organisasjonens ønske. Dersom en ansatt anmelder at sikkerhetspolitikken ikke blir fulgt, eller at ledelsen ikke har tatt sikkerhet på alvor, starter granskingen.
+  </div>
+
+  <h2>Hva har tilsynsmyndighetene av krefter?</h2>
+
+  <p>
+    Når tilsynsmyndighetene begynner en gransking, har de betydelige fullmakter:
+  </p>
+
+  <h3>1. Innhentingsrett</h3>
+  <p>
+    Myndigheten kan kreve all dokumentasjon som anses relevant for å vurdere etterlevelse. Dette inkluderer:
+  </p>
+
+  <ul>
+    <li>Loggfiler fra servere og nettverk</li>
+    <li>E-post og interne kommunikasjoner</li>
+    <li>IT-revisjoner og penetrasjonstester</li>
+    <li>Styrelsesvedtak og møteprotokoller</li>
+    <li>Ansattopplæringslister</li>
+  </ul>
+
+  <p>
+    Organisasjonen må oppfylle fristen. Unnlatelse eller forsinkelse regnes som en egen brist.
+  </p>
+
+  <h3>2. Gjennomgang på stedet</h3>
+  <p>
+    Tilsynsmyndighetene kan be om adgang til lokaler for å gjennomføre fysisk inspeksjon, intervjue ansatte og sjekke IT-systemer. Dette kalles "on-site inspeksjon".
+  </p>
+
+  <h3>3. Intervjurett</h3>
+  <p>
+    Myndigheten kan kalle inn ledelsesmedlemmer, IT-personell og andre relevante ansatte til samtale.
+    Det er en god ide å forberede svarene på forhånd.
+  </p>
+
+  <h3>4. Ekspertsamtaler</h3>
+  <p>
+    Tilsynsmyndighetene kan bringe inn eksterne sikkerhetskonsulenter som gjennomfører egne vurderinger.
+  </p>
+
+  <h2>Slik eskalerer sanksjonene — fra advarsel til bøter og yrkestak</h2>
+
+  <p>
+    NSM og sektormyndigheter er ikke interessert i å la være å reagere. Når brister identifiseres, eskalerer gjengifølende prosessen:
+  </p>
+
+  <h3>Trinn 1: Advarsel</h3>
+  <p>
+    Hvis tillsynet finner mindre brister, starter prosessen ofte med en formell advarsel. Myndigheten gir organisasjonen en frist (gjerne 3–6 måneder) til å rette opp.
+  </p>
+
+  <p>
+    En advarsel betyr ikke at du er ute av skogen. Det betyr at du nå må bevise at du har rettet det opp, og at du må vente på en ny gjennomgang.
+  </p>
+
+  <h3>Trinn 2: Pålegg (administrative påbud)</h3>
+  <p>
+    Hvis advarselen ignoreres eller hvis bristene er alvorlige, utsteder myndigheten et bindende pålegg. Dette kan være:
+  </p>
+
+  <ul>
+    <li>Direkte pålegg om å implementere spesifikke sikkerhetstiltak</li>
+    <li>Forbud mot spesifikke handlinger (f.eks. å lagre data i usikre miljøer)</li>
+    <li>Pålegg om å ansette en sikkerhetskonsulent eller revisor</li>
+  </ul>
+
+  <p>
+    Pålegg er juridisk bindende. Unnlatelse å oppfylle pålegget innen fristen fører til eskalering til sanksjoner.
+  </p>
+
+  <h3>Trinn 3: Bøter (administrative sanksjonsinstrumenter)</h3>
+  <p>
+    Når pålegg brytes eller brister er alvorlige, utstedes bøter. Her er nivåene:
+  </p>
+
+  <table class="fine-table">
+    <thead>
+      <tr>
+        <th>Kategori</th>
+        <th>Maksimalbøter</th>
+        <th>Alternativt tak</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Vesentlig enhet</td>
+        <td class="amount">10 millioner euro</td>
+        <td>2% av global årlig omsetning</td>
+      </tr>
+      <tr>
+        <td>Viktig enhet</td>
+        <td class="amount">7 millioner euro</td>
+        <td>1,4% av global årlig omsetning</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>
+    Bøtene beregnes per sanksjonbar handling. En organisasjon som ikke har dokumentert sin incidenthåndteringsplan OG ikke har en godkjent sikkerhetspolicy, kan få flere samtidige bøter. De summeres ikke mot samme tak — hver brist vurderes separat.
+  </p>
+
+  <div class="box-warning">
+    <strong>Uteblitt incidentrapportering fordobler risikoen.</strong> Hvis NSM eller sektormyndighetene oppdager at en alvorlig hendelse ikke ble rapportert innen 24–72 timer, er det en egen sanksjonbar handling — i tillegg til bøten for selve sikkerhetssvikten.
+  </div>
+
+  <h3>Trinn 4: Personlig ansvar — yrkestak for ledelsesmedlemmer</h3>
+  <p>
+    Dette er det alvorligste. Ifølge Artikel 20 i NIS2 kan ledelsen — VD, styreformann og styremedlemmer — holdes personlig ansvarlig.
+  </p>
+
+  <p>
+    I praksis betyr det at tilsynsmyndigheten kan:
+  </p>
+
+  <ul>
+    <li>Utstede en formell tilsigelse til enkeltpersonen</li>
+    <li>Vedta at personen <strong>midlertidig eller permanent</strong> ikke kan inneha ledende befattning</li>
+    <li>Dette er ikke begrenset til bedriften som ble granskalt — det kan gjelde bransjens organisasjoner generelt</li>
+  </ul>
+
+  <p>
+    Et yrkestak betyr at du ikke kan bli styreleder, VD, CFO eller annen leder i noen som helst organisasjon som er underlagt NIS2 — potensielt i hele Europa via EØS-avtalen.
+  </p>
+
+  <blockquote>
+    "Det er ikke IT-avdelingens risiko. Det er styrelsens risiko. Og det er din personlige risiko som styremedlem eller VD."
+  </blockquote>
+
+  <h2>Hendelsesrapportering — frister som du ikke kan overse</h2>
+
+  <p>
+    En av de raskeste måtene å få sanksjoner på er å ikke rapportere en hendelse til rett tid.
+  </p>
+
+  <p>
+    NIS2 setter klare frister:
+  </p>
+
+  <ul>
+    <li><strong>24 timer:</strong> Tidlig varsel til NSM eller sektormyndighet om at en alvorlig hendelse har oppstått</li>
+    <li><strong>72 timer:</strong> Fullstendig hendelsesrapport skal være levert</li>
+    <li><strong>1 måned:</strong> Sluttrapport med analyse og læringspunkter</li>
+  </ul>
+
+  <p>
+    Et "alvorlig" hendelse er definert som en hendelse som påvirker tilgjengeligheten, integriteten eller konfidensialiteten til systemene eller dataene til organisasjonen på en måte som skader organisasjonens kritiske tjeneste.
+  </p>
+
+  <p>
+    I praksis betyr dette at de fleste cyberangrep, datalekkasjer og systemkrasj som varer mer enn noen timer må rapporteres.
+  </p>
+
+  <div class="box-case">
+    <div class="case-label">Eksempel fra praksis</div>
+    <p>
+      <strong>Scenario: Norsk energiselskap, 400 ansatte, klassifisert som vesentlig enhet.</strong>
+    </p>
+    <p>
+      Et ransomware-angrep treffar kraftfordelingssystemet torsdag ettermiddag. Systemet går ned og påvirker 50 000 kunder.
+      Ledelsen og IT-sjefen møtes for å vurdere situasjonen. De bestemmer seg for å arbeide internt først — "vi løser dette selv før vi involverer myndighetene

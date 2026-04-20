@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-BKF3QH9K01"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag("js", new Date());
+    gtag("config", "G-BKF3QH9K01");
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NIS2-dokumentation i Sverige: Vad som krävs och vilka mallar som hjälper | NIS2Klar</title>
+  <meta name="description" content="Sju nyckelkategorier av NIS2-dokumentation, arkivering, uppdatering och vanligaste krav från tillsynsmyndigheter. Mallar och vägledning för VD och styrelse.">
+  <meta property="og:title" content="NIS2-dokumentation i Sverige: Vad som krävs och vilka mallar som hjälper">
+  <meta property="og:description" content="Sju nyckelkategorier av NIS2-dokumentation, arkivering, uppdatering och vanligaste krav från tillsynsmyndigheter. Mallar och vägledning för VD och styrelse.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #141416;
+      --card: #1c1c1f;
+      --yellow: #f5c518;
+      --white: #f0f0f0;
+      --muted: #888;
+      --red: #C61212;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: var(--bg); color: var(--white); font-family: 'Barlow', sans-serif; font-size: 19px; line-height: 1.8; }
+
+    /* Nav */
+    nav { display: flex; justify-content: space-between; align-items: center; padding: 20px 40px; border-bottom: 1px solid rgba(255,255,255,0.07); max-width: 900px; margin: 0 auto; }
+    .nav-logo { font-family: 'Poppins', sans-serif; font-weight: 900; font-size: 20px; color: var(--yellow); text-decoration: none; }
+    .nav-logo span { color: var(--white); }
+    .nav-back { color: var(--muted); text-decoration: none; font-size: 15px; }
+    .nav-back:hover { color: var(--white); }
+    .nav-cta { background: var(--yellow); color: #000; padding: 8px 18px; border-radius: 4px; text-decoration: none; font-weight: 700; font-size: 14px; font-family: 'Poppins', sans-serif; }
+
+    /* Article */
+    .article-wrap { max-width: 760px; margin: 0 auto; padding: 60px 40px; }
+    .article-category { font-size: 13px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 16px; }
+    h1 { font-family: 'Poppins', sans-serif; font-size: clamp(30px, 4vw, 44px); font-weight: 900; line-height: 1.2; margin-bottom: 24px; }
+    .article-meta { font-size: 15px; color: var(--muted); margin-bottom: 48px; padding-bottom: 24px; border-bottom: 1px solid rgba(255,255,255,0.07); }
+    h2 { font-family: 'Poppins', sans-serif; font-size: 26px; font-weight: 700; margin: 48px 0 16px; color: var(--white); }
+    h3 { font-family: 'Poppins', sans-serif; font-size: 20px; font-weight: 600; margin: 32px 0 12px; color: var(--yellow); }
+    p { margin-bottom: 22px; }
+    strong { color: var(--white); font-weight: 700; }
+    .highlight { color: var(--yellow); font-weight: 700; }
+    .danger { color: #ff6b6b; font-weight: 700; }
+    ul, ol { margin: 16px 0 24px 24px; }
+    li { margin-bottom: 12px; font-size: 19px; }
+
+    /* Callout boxes */
+    .box-warning { background: rgba(197,17,17,0.12); border-left: 4px solid var(--red); padding: 20px 24px; margin: 32px 0; border-radius: 0 4px 4px 0; }
+    .box-info { background: rgba(245,197,24,0.08); border-left: 4px solid var(--yellow); padding: 20px 24px; margin: 32px 0; border-radius: 0 4px 4px 0; }
+    .box-case { background: var(--card); border: 1px solid rgba(255,255,255,0.08); padding: 28px; margin: 40px 0; border-radius: 4px; }
+    .box-case .case-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 12px; }
+    blockquote { border-left: 3px solid var(--yellow); padding: 12px 20px; margin: 24px 0; font-style: italic; color: #ccc; }
+
+    /* CTA */
+    .cta-section { background: var(--card); border: 1px solid rgba(245,197,24,0.2); border-radius: 4px; padding: 48px 40px; margin: 64px 0 40px; text-align: center; }
+    .cta-section h2 { margin-top: 0; font-size: 26px; }
+    .cta-section p { color: #aaa; max-width: 500px; margin: 0 auto 28px; }
+    .btn-primary { display: inline-block; background: var(--yellow); color: #000; font-family: 'Poppins', sans-serif; font-weight: 800; font-size: 16px; padding: 16px 36px; border-radius: 4px; text-decoration: none; }
+    .btn-primary:hover { background: #e0b010; }
+    .cta-fine { font-size: 13px; color: var(--muted); margin-top: 16px; }
+
+    /* FAQ */
+    .faq-item { border-bottom: 1px solid rgba(255,255,255,0.07); padding: 20px 0; }
+    .faq-q { font-family: 'Poppins', sans-serif; font-weight: 600; margin-bottom: 10px; }
+    .faq-a { color: #bbb; }
+
+    /* Table */
+    .doc-table { width: 100%; border-collapse: collapse; margin: 24px 0; }
+    .doc-table th { background: rgba(245,197,24,0.1); color: var(--yellow); font-family: 'Poppins', sans-serif; font-size: 13px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 12px 16px; text-align: left; border-bottom: 1px solid rgba(245,197,24,0.2); }
+    .doc-table td { padding: 14px 16px; border-bottom: 1px solid rgba(255,255,255,0.05); font-size: 15px; }
+    .doc-table tr:last-child td { border-bottom: none; }
+
+    /* Summary + Key Takeaway */
+    .box-summary { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; padding: 24px 28px; margin: 0 0 32px; }
+    .summary-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-bottom: 14px; }
+    .box-summary ul { margin: 0; padding-left: 20px; }
+    .box-summary li { margin-bottom: 8px; font-size: 17px; color: #ccc; }
+    .box-takeaway { background: rgba(245,197,24,0.08); border-left: 4px solid var(--yellow); padding: 20px 24px; margin: 0 0 40px; border-radius: 0 4px 4px 0; }
+    .takeaway-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 10px; }
+    .box-takeaway p { margin: 0; font-size: 18px; font-weight: 600; color: var(--white); line-height: 1.6; }
+
+    /* Footer */
+    footer { border-top: 1px solid rgba(255,255,255,0.07); padding: 32px 40px; text-align: center; font-size: 13px; color: var(--muted); max-width: 900px; margin: 0 auto; }
+    footer a { color: var(--muted); }
+
+    @media (max-width: 600px) {
+      nav, .article-wrap, footer { padding: 20px; }
+      .cta-section { padding: 32px 20px; }
+      .doc-table { font-size: 14px; }
+      .doc-table th, .doc-table td { padding: 10px 10px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="https://nis2klar.se/">NIS2<span>Klar</span></a>
+  <a class="nav-back" href="https://nis2klar.se/artiklar.html">← Alla artiklar</a>
+  <a class="nav-cta" href="https://nis2klar.se/#boka">Boka samtal →</a>
+</nav>
+
+<article class="article-wrap">
+  <div class="article-category">Dokumentation &amp; Processer</div>
+  <h1>NIS2-dokumentation i Sverige: Vad som krävs och vilka mallar som hjälper</h1>
+  <div class="article-meta">Uppdaterad 19 april 2026 · Lästid: ca 9 minuter · Målgrupp: VD, Styrelse</div>
+
+  <!-- SUMMARY -->
+  <div class="box-summary">
+    <div class="summary-label">Sammanfattning</div>
+    <ul>
+      <li>NIS2-dokumentation är inte valfritt — det är ditt enda försvar vid en tillsynsgranskning.</li>
+      <li>Sju nyckelkategorier av dokumentation måste finnas på plats innan tillsynen inleds.</li>
+      <li>Tillsynsmyndigheter begär dokumentationen inom 14–30 dagar. Saknar du den är du redan förlorad.</li>
+      <li>Arkivering och versionshantering måste vara systematisk — en chaotisk mapp räcker inte.</li>
+      <li>Vi visar dig mallstruktur och vanligaste gränskningskriterierna.</li>
+    </ul>
+  </div>
+
+  <!-- KEY TAKEAWAY -->
+  <div class="box-takeaway">
+    <div class="takeaway-label">Viktigaste slutsatsen</div>
+    <p>Din organisation är bara så säker som din dokumentation kan bevisa. Tillsynsmyndigheterna bedömer inte vad du gör — de bedömer vad du kan visa att du gjorde. Dokumentation är ditt försvar.</p>
+  </div>
+
+  <h2>Varför dokumentation är livsavgörande — inte bara "bra att ha"</h2>
+
+  <p>
+    Cybersäkerhetslagen (2024:1056) kräver inte bara att du <em>genomför</em> säkerhetsåtgärder. Den kräver att du kan <strong>bevisa</strong> att du gjorde det.
+    Artikel 20 säger detta explicit: ledningsorganen måste godkänna säkerhetsåtgärderna och övervaka deras genomförande — och det måste dokumenteras.
+  </p>
+
+  <p>
+    En tillsynsmyndighet som inleder en granskning av din organisation kommer att begära dokumentation. Oftast inte "vad ni har tänkt" eller "vad ni planerar" — utan <strong>vad ni redan genomfört</strong>, varav det finns skrift.
+  </p>
+
+  <p>
+    Om du inte kan visa:
+  </p>
+
+  <ul>
+    <li>En godkänd riskbedömning</li>
+    <li>Styrelsebeslut om säkerhetsåtgärder</li>
+    <li>Incidenthanteringsplan</li>
+    <li>Leverantörsinventering med säkerhetskrav</li>
+    <li>Utbildningslogg</li>
+    <li>Backup- och kontinuitetsplan</li>
+    <li>Revisionsloggar och åtkomsthistorik</li>
+  </ul>
+
+  <p>
+    ...så kommer tillsynsmyndigheten att klassificera detta som en sanktionsgrundande brist. Inte för att du inte gör något, utan för att du inte kan bevisa det.
+  </p>
+
+  <div class="box-warning">
+    <strong>Detta är den viktigaste poängen:</strong> En liten organisation med perfekt dokumentation kan försvara sig bättre än en stor organisation med god säkerhet men dålig dokumentation.
+  </div>
+
+  <h2>De sju nyckelkategorierna av NIS2-dokumentation</h2>
+
+  <p>
+    För att förstå vad du behöver dokumentera kan du dela upp allt i sju kategorier. Denna struktur följer NIS2-artikelns logik och är enkel att överföra till en arkivering.
+  </p>
+
+  <h3>1. Styrning &amp; Ansvar (Artikel 20)</h3>
+
+  <p>
+    <strong>Vad det är:</strong> Bevis på att ledningen aktivt har godkänt och övervakar säkerhetsarbetet.
+  </p>
+
+  <p>
+    <strong>Dokumentation som krävs:</strong>
+  </p>
+  <ul>
+    <li>Styrelsebeslut om säkerhetspolicy (undertecknad, daterad)</li>
+    <li>Styrelsebeslut om godkännande av säkerhetsåtgärder enligt Artikel 21</li>
+    <li>Styrelsebeslut om riskhanterings- och incidenthanteringsstrategi</li>
+    <li>Styrelsemötes protokoll med säkerhetsdiskussioner (minst två gånger per år)</li>
+    <li>VD:s/säkerhetsledarens rapporter till styrelsen (resultat, nyckeltal, incidenter)</li>
+  </ul>
+
+  <p>
+    <strong>Varför det är kritiskt:</strong> Denna kategori är det första tillsynsmyndigheten kontrollerar. Om styrelsen inte kan visa att de har godkänt något är allt annat försvarslöst.
+  </p>
+
+  <h3>2. Riskhantering &amp; Bedömning (Artikel 21.1)</h3>
+
+  <p>
+    <strong>Vad det är:</strong> Den systematiska identifieringen av vilka risker din organisation står inför.
+  </p>
+
+  <p>
+    <strong>Dokumentation som krävs:</strong>
+  </p>
+  <ul>
+    <li>Riskbedömning (risk assessment) — daterad och undertecknad</li>
+    <li>Inventering av kritiska tillgångar (system, data, processer)</li>
+    <li>Hotanalys (vilka motståndare kan gå efter dig? vilka metoder använder de?)</li>
+    <li>Sårbarhetsskanning och rapporter från it-verktyg</li>
+    <li>Riskmatris (högt/medel/lågt) med åtgärdsplaner för varje identifierad risk</li>
+    <li>Uppdateringsprotokoll — visar när riskbedömningen senast granskades</li>
+  </ul>
+
+  <p>
+    <strong>Vanligast gatekriterie:</strong> "Riskbedömningen är gjord men inte uppdaterad på 18 månader" eller "identifierade risker har ingen åtgärdsplan".
+  </p>
+
+  <h3>3. Säkerhetsåtgärder &amp; Tekniska Kontroller (Artikel 21.2)</h3>
+
+  <p>
+    <strong>Vad det är:</strong> De tio obligatoriska säkerhetsdomänerna från NIS2. För varje domän måste du visa vad du gör och hur du övervakar det.
+  </p>
+
+  <p>
+    <strong>De tio domänerna är:</strong> Riskhantering, incidenthantering, affärskontinuitet, leverantörshantering, grundläggande hygien, kryptering, fysisk/miljösäkerhet, tillgångskontroll, personalhantering, och säkerhet i utveckling.
+  </p>
+
+  <p>
+    <strong>Dokumentation som krävs för varje domän:</strong>
+  </p>
+  <ul>
+    <li>Policy eller direktiv (ska det existera?)</li>
+    <li>Implementeringsplan (vad har vi gjort konkret?)</li>
+    <li>Bevis på genomförande (loggfiler, screenshoot, rapport från verktyg)</li>
+    <li>Övervakningsrapport (hur vet vi att det fungerar?)</li>
+    <li>Avvikelserapport (vad fungerar inte? vad ska åtgärdas?)</li>
+  </ul>
+
+  <p>
+    Det här är den mest omfattande kategorin. En typisk organisation kan ha 50–100 dokument här.
+  </p>
+
+  <h3>4. Incidenthantering &amp; Rapportering (Artikel 23)</h3>
+
+  <p>
+    <strong>Vad det är:</strong> Din process för att upptäcka, undersöka och rapportera cybersäkerhetshändelser.
+  </p>
+
+  <p>
+    <strong>Dokumentation som krävs:</strong>
+  </p>
+  <ul>
+    <li>Incidenthanteringsplan (kallas också "svarplan" eller incident response plan)</li>
+    <li>Rolldefiniering — vem gör vad? eskalering, kommunikation, extern rapportering</li>
+    <li>Incidentlogg — varje incident som har uppstått (även små), med datum, beskrivning och åtgärd</li>
+    <li>Rapporter till MSB (på alla allvarliga incidenter) — kopior av notifieringarna</li>
+    <li>Post-incident-rapporter ("what-we-learned-lessons") för varje allvarlig incident</li>
+    <li>Testrapporter från årliga incidentsimuleringsövningar</li>
+  </ul>
+
+  <p>
+    <strong>Kritisk punkt:</strong> Om du har haft en incident och inte rapporterat den till MSB inom 72 timmar är detta den värsta dokumentbrist du kan ha — den leder nästan alltid till sanktion.
+  </p>
+
+  <h3>5. Leverantörs- &amp; Tredjepartssäkerhet (Artikel 21.2 f)</h3>
+
+  <p>
+    <strong>Vad det är:</strong> Hantering av risker från leverantörer, molnleverantörer och andra tredjeparter.
+  </p>
+
+  <p>
+    <strong>Dokumentation som krävs:</strong>
+  </p>
+  <ul>
+    <li>Leverantörinventering — lista över alla kritiska tredjeparter</li>
+    <li>Säkerhetskravspecifikation (vad förväntar vi oss från leverantören?)</li>
+    <li>Kontrakt med säkerhetskrav och ansvarsfördeling</li>
+    <li>Leverantörsutvärderingar (säkerhetsgranskning vid inköp)</li>
+    <li>Övervakningsrapporter — visar att ni följer upp leverantörernas säkerhet över tid</li>
+    <li>Incidentrapporter från leverantörer (kopior av meddelanden om deras säkerhetsincidenter)</li>
+  </ul>
+
+  <p>
+    <strong>Vanligast brister:</strong> Kontrakt utan säkerhetskrav, eller kontrakt som är gamla och inte uppdaterade.
+  </p>
+
+  <h3>6. Utbildning &amp; Medvetenhet (Artikel 21.2 e)</h3>
+
+  <p>
+    <strong>Vad det är:</strong> Bevis på att personalen tränas i säkerhet och att du övervakar deras beteende.
+  </p>
+
+  <p>
+    <strong>Dokumentation som krävs:</strong>
+  </p>
+  <ul>
+    <li>Utbildningsplan — vilka utbildningar är obligatoriska? hur ofta?</li>
+    <li>Utbildningslogg — vem har genomfört vad och när?</li>
+    <li>Kopior av utbildningsmaterial (eller minst namn på utbildning, leverantör, datum)</li>
+    <li>Phishing-simuleringsrapporter — visar andelen anställda som klickade på falsk länk</li>
+    <li>Incidentlogg kopplad till utbildning — visar att utbildningen fungerar</li>
+  </ul>
+
+  <p>
+    <strong>Kritisk punkt:</strong> En organisation utan dokumenterad utbildningslogg kan inte visa att personalen tränas, oavsett vad ni faktiskt gör.
+  </p>
+
+  <h3>7. Backup, Kontinuitet &amp; Återhämtning (Artikel 21.2 b–c)</h3>
+
+  <p>
+    <strong>Vad det är:</strong> Din förmåga att återställa tjänster om något går sönder eller blir angripet.
+  </p>
+
+  <p>
+    <strong>Dokumentation som krävs:</strong>
+  </p>
+  <ul>
+    <li>Backup-policy (hur ofta, vad backas upp, hur länge förvaras det?)</li>
+    <li>Backup-logg — visar att backup genomfördes enligt schema</li>
+    <li>Backup-testrapporter — visar att backup faktiskt kan återställas</li>
+    <li>Kontinuitetsplan (Business Continuity Plan, BCP) och katastrofberedskapsplan (Disaster Recovery Plan, DRP)</li>
+    <li>RTO/RPO-definition — Recovery Time Objective (hur snabbt måste vi vara uppe?) och Recovery Point Objective (hur mycket data kan vi förlora?)</li>
+    <li>Testa DRP åtminstone årligen — dokumentera resultatet</li>
+  </ul>
+
+  <p>
+    <strong>Klassisk brist:</strong> "Vi har backup" men ingen logg som visar att den genomfördes, och ingen testad plan för återställning.
+  </p>
+
+  <h2>Hur arkiveras dokumentationen?</h2>
+
+  <p>
+    Det räcker inte att ha dokumenten. De måste vara organiserade, lätta att hitta och bevarade enligt lag.
+  </p>
+
+  <p>
+    <strong>Rekommenderad struktur (mapp/katalog):</strong>
+  </p>
+
+  <table class="doc-table">
+    <thead>
+      <tr>
+        <th>Mappnivå 1</th>
+        <th>Mappnivå 2</th>
+        <th>Exempel</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>01 Styrning</td>
+        <td>Styrelsebeslut</td>
+        <td>2026-04-15_Styrelsebeslut_Säkerhetspolicy.pdf</td>
+      </tr>
+      <tr>
+        <td>01 Styrning</td>
+        <td>Styrelsemöte</td>
+        <td>2026-04-10_Styrelsemöte_Protokoll_Säkerhetspunkt.pdf</td>
+      </tr>
+      <tr>
+        <td>02 Riskhantering</td>
+        <td>Riskbedömning</td>
+        <td>2026-03-01_Riskbedömning_v3.0_Undertecknad.pdf</td>
+      </tr>
+      <tr>
+        <td>02 Riskhantering</td>
+        <td>Uppdateringshistorik</td>
+        <td>2026-04-15_Riskbedömning_Uppdateringsprotokoll.xlsx</td>
+      </tr>
+      <tr>
+        <td>03 Säkerhetsåtgärder</td>
+        <td>Åtgärd 1 — MFA</td>
+        <td>2026-04-01_MFA_Implementeringsplan.pdf<br>2026-04-15_MFA_Genomföranderapport.pdf</td>
+      </tr>
+      <tr>
+        <td>03 Säkerhetsåtgärder</td>
+        <td>Åtgärd 2 — Backup</td>
+        <td>2026-04-15_Backup_Logg_April.xlsx</td>
+      </tr>
+      <tr>
+        <td>04 Incidenter</td>
+        <td>Incidentlogg</td>
+        <td>2026_Incidentlogg_Löpande.xlsx</td>
+      </tr>
+      <tr>
+        <td>04 Incidenter</td>
+        <td>Rapporter till MSB</td>
+        <td>2026-03-20_MSB_Notifiering_Ransomware.pdf</td>
+      </tr>
+      <tr>
+        <td>05 Leverantörer</td>
+        <td>Inventering</td>
+        <td>2026-04-15_Leverantörinventering.xlsx</td>
+      </tr>
+      <tr>
+        <td>05 Leverantörer</td>
+        <td>Kontrakt</td>
+        <td>2026-01-10_Kontrakt_CloudProvider_ABC_Signerat.pdf</td>
+      </tr>
+      <tr>
+        <td>06 Utbildning</td>
+        <td>Utbildningslogg</td>
+        <td>2026_Utbildningslogg_Löpande.xlsx</td>
+      </tr>
+      <tr>
+        <td>06 Utbildning</td>
+        <td>Phishing-simulering</td>
+        <td>2026-04-10_PhishingSimulering_Rapport.pdf</td>
+      </tr>
+      <tr>
+        <td>07 Kontinuitet</td>
+        <td>Backup-logg</td>
+        <td>2026-04_Backup_Logg.xlsx</td>
+      </tr>
+      <tr>
+        <td>07 Kontinuitet</td>
+        <td>DRP-test</td>
+        <td>2026-03-20_DRP_Test_Rapport.pdf</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>
+    <strong>Namnkonvention:</strong> ÅÅÅÅ-MM-DD_DocumentNamn_Version.filtyp
+  </p>
+
+  <p>
+    Detta gör det möjligt att snabbt hitta dokument och att visa en loggfil som visar när saker uppdaterades.
+  </p>
+
+  <div class="box-info">
+    <strong>Lagringskrav:</strong> Dokumentation måste sparas i minst 3 år (ofta längre enligt andra regler). Använd en molnlösning med versionskontroll och åtkomstloggar — enkla mappar på filserver räcker inte.
+  </div>
+
+  <h2>Hur ofta måste dokumentationen uppdateras?</h2>
+
+  <p>
+    Det är en vanlig fråga: "Räcker det att göra detta en gång?"
+  </p>
+
+  <p>
+    Svaret är <strong>nej</strong>. NIS2 kräver löpande övervakning och uppdatering.
+  </p>
+
+  <table class="doc-table">
+    <thead>
+      <tr>
+        <th>Dokumenttyp</th>
+        <th>Uppdateringsfrekvens</th>
+        <th>Ansvar</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Riskbedömning</td>
+        <td>Minst årligen, oftare vid större förändringar</td>
+        <td>Säkerhetsledare + IT-ledning</td>
+      </tr>
+      <tr>
+        <td>Säkerhetspolicy</td>
+        <td>Minst årligen, granskas av styrelsen</td>
+        <td>Säkerhetsledare + Styrelse</td>
+      </tr>
+      <tr>
+        <td>Incidentlogg</td>
+        <td>Löpande, realtid</td>
+        <td>IT-drift/

@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-BKF3QH9K01"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag("js", new Date());
+    gtag("config", "G-BKF3QH9K01");
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Supervisione NIS2 in Italia: Come l'ACN Applica la Conformità | NIS2Klar</title>
+  <meta name="description" content="Come l'ACN supervisiona la conformità NIS2 in Italia: ispezioni proattive e reattive, poteri sanzionatori, escalation dalle diffide ai divieti personali. Guida per CEO e CdA.">
+  <meta property="og:title" content="Supervisione NIS2 in Italia: Come l'ACN Applica la Conformità">
+  <meta property="og:description" content="Come l'ACN supervisiona la conformità NIS2 in Italia: ispezioni proattive e reattive, poteri sanzionatori, escalation dalle diffide ai divieti personali. Guida per CEO e CdA.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #141416;
+      --card: #1c1c1f;
+      --yellow: #f5c518;
+      --white: #f0f0f0;
+      --muted: #888;
+      --red: #C61212;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: var(--bg); color: var(--white); font-family: 'Barlow', sans-serif; font-size: 19px; line-height: 1.8; }
+
+    /* Nav */
+    nav { display: flex; justify-content: space-between; align-items: center; padding: 20px 40px; border-bottom: 1px solid rgba(255,255,255,0.07); max-width: 900px; margin: 0 auto; }
+    .nav-logo { font-family: 'Poppins', sans-serif; font-weight: 900; font-size: 20px; color: var(--yellow); text-decoration: none; }
+    .nav-logo span { color: var(--white); }
+    .nav-back { color: var(--muted); text-decoration: none; font-size: 15px; }
+    .nav-back:hover { color: var(--white); }
+    .nav-cta { background: var(--yellow); color: #000; padding: 8px 18px; border-radius: 4px; text-decoration: none; font-weight: 700; font-size: 14px; font-family: 'Poppins', sans-serif; }
+
+    /* Article */
+    .article-wrap { max-width: 760px; margin: 0 auto; padding: 60px 40px; }
+    .article-category { font-size: 13px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 16px; }
+    h1 { font-family: 'Poppins', sans-serif; font-size: clamp(30px, 4vw, 44px); font-weight: 900; line-height: 1.2; margin-bottom: 24px; }
+    .article-meta { font-size: 15px; color: var(--muted); margin-bottom: 48px; padding-bottom: 24px; border-bottom: 1px solid rgba(255,255,255,0.07); }
+    h2 { font-family: 'Poppins', sans-serif; font-size: 26px; font-weight: 700; margin: 48px 0 16px; color: var(--white); }
+    h3 { font-family: 'Poppins', sans-serif; font-size: 20px; font-weight: 600; margin: 32px 0 12px; color: var(--yellow); }
+    p { margin-bottom: 22px; }
+    strong { color: var(--white); font-weight: 700; }
+    .highlight { color: var(--yellow); font-weight: 700; }
+    .danger { color: #ff6b6b; font-weight: 700; }
+    ul, ol { margin: 16px 0 24px 24px; }
+    li { margin-bottom: 12px; font-size: 19px; }
+
+    /* Callout boxes */
+    .box-warning { background: rgba(197,17,17,0.12); border-left: 4px solid var(--red); padding: 20px 24px; margin: 32px 0; border-radius: 0 4px 4px 0; }
+    .box-info { background: rgba(245,197,24,0.08); border-left: 4px solid var(--yellow); padding: 20px 24px; margin: 32px 0; border-radius: 0 4px 4px 0; }
+    .box-case { background: var(--card); border: 1px solid rgba(255,255,255,0.08); padding: 28px; margin: 40px 0; border-radius: 4px; }
+    .box-case .case-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 12px; }
+    blockquote { border-left: 3px solid var(--yellow); padding: 12px 20px; margin: 24px 0; font-style: italic; color: #ccc; }
+
+    /* CTA */
+    .cta-section { background: var(--card); border: 1px solid rgba(245,197,24,0.2); border-radius: 4px; padding: 48px 40px; margin: 64px 0 40px; text-align: center; }
+    .cta-section h2 { margin-top: 0; font-size: 26px; }
+    .cta-section p { color: #aaa; max-width: 500px; margin: 0 auto 28px; }
+    .btn-primary { display: inline-block; background: var(--yellow); color: #000; font-family: 'Poppins', sans-serif; font-weight: 800; font-size: 16px; padding: 16px 36px; border-radius: 4px; text-decoration: none; }
+    .btn-primary:hover { background: #e0b010; }
+    .cta-fine { font-size: 13px; color: var(--muted); margin-top: 16px; }
+
+    /* FAQ */
+    .faq-item { border-bottom: 1px solid rgba(255,255,255,0.07); padding: 20px 0; }
+    .faq-q { font-family: 'Poppins', sans-serif; font-weight: 600; margin-bottom: 10px; }
+    .faq-a { color: #bbb; }
+
+    /* Fine table */
+    .fine-table { width: 100%; border-collapse: collapse; margin: 24px 0; }
+    .fine-table th { background: rgba(245,197,24,0.1); color: var(--yellow); font-family: 'Poppins', sans-serif; font-size: 13px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 12px 16px; text-align: left; border-bottom: 1px solid rgba(245,197,24,0.2); }
+    .fine-table td { padding: 14px 16px; border-bottom: 1px solid rgba(255,255,255,0.05); font-size: 15px; }
+    .fine-table tr:last-child td { border-bottom: none; }
+    .fine-table .amount { color: #ff6b6b; font-weight: 700; }
+
+    /* Summary + Key Takeaway */
+    .box-summary { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; padding: 24px 28px; margin: 0 0 32px; }
+    .summary-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-bottom: 14px; }
+    .box-summary ul { margin: 0; padding-left: 20px; }
+    .box-summary li { margin-bottom: 8px; font-size: 17px; color: #ccc; }
+    .box-takeaway { background: rgba(245,197,24,0.08); border-left: 4px solid var(--yellow); padding: 20px 24px; margin: 0 0 40px; border-radius: 0 4px 4px 0; }
+    .takeaway-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 10px; }
+    .box-takeaway p { margin: 0; font-size: 18px; font-weight: 600; color: var(--white); line-height: 1.6; }
+
+    /* Footer */
+    footer { border-top: 1px solid rgba(255,255,255,0.07); padding: 32px 40px; text-align: center; font-size: 13px; color: var(--muted); max-width: 900px; margin: 0 auto; }
+    footer a { color: var(--muted); }
+
+    @media (max-width: 600px) {
+      nav, .article-wrap, footer { padding: 20px; }
+      .cta-section { padding: 32px 20px; }
+      .fine-table { font-size: 14px; }
+      .fine-table th, .fine-table td { padding: 10px 10px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="https://nis2klar.se/it/">NIS2<span>Klar</span></a>
+  <a class="nav-back" href="https://nis2klar.se/it/articoli.html">← Tutti gli articoli</a>
+  <div class="lang-switcher" style="display:flex;gap:8px;align-items:center;font-size:13px;font-family:'Poppins',sans-serif;">
+    <a href="https://nis2klar.se/artiklar.html" style="color:#888;text-decoration:none;font-weight:600;padding:4px 8px;border-radius:3px;" title="Svenska">SV</a>
+    <a href="https://nis2klar.se/en/articles.html" style="color:#888;text-decoration:none;font-weight:600;padding:4px 8px;border-radius:3px;" title="English">EN</a>
+    <a href="https://nis2klar.se/da/artikler.html" style="color:#888;text-decoration:none;font-weight:600;padding:4px 8px;border-radius:3px;" title="Dansk">DA</a>
+    <a href="https://nis2klar.se/no/artikler.html" style="color:#888;text-decoration:none;font-weight:600;padding:4px 8px;border-radius:3px;" title="Norsk">NO</a>
+    <a href="https://nis2klar.se/it/articoli.html" style="color:#f5c518;text-decoration:none;font-weight:600;padding:4px 8px;border-radius:3px;background:rgba(245,197,24,0.1);" title="Italiano">IT</a>
+  </div>
+  <a class="nav-cta" href="/nis2.html#boka">Prenota consulenza →</a>
+</nav>
+
+<article class="article-wrap">
+  <div class="article-category">Supervisione &amp; Enforcement</div>
+  <h1>Supervisione NIS2 in Italia: Come l'ACN Applica la Conformità</h1>
+  <div class="article-meta">Aggiornato il 17 aprile 2026 · Tempo di lettura: ca. 8 minuti · Destinatari: CEO, Presidente CdA, Consiglieri</div>
+
+  <!-- SUMMARY -->
+  <div class="box-summary">
+    <div class="summary-label">Sintesi</div>
+    <ul>
+      <li>L'ACN (Agenzia per la Cybersicurezza Nazionale) è l'autorità competente primaria in Italia per l'applicazione del D.Lgs. 138/2024.</li>
+      <li>La supervisione è sia <strong>proattiva</strong> (ispezioni programmate) sia <strong>reattiva</strong> (avviata da incidenti o segnalazioni).</li>
+      <li>L'escalation sanzionatoria parte dalla diffida formale e può arrivare fino al <strong>divieto temporaneo di esercitare funzioni dirigenziali</strong> per gli amministratori.</li>
+      <li>Le sanzioni raggiungono <strong>10 milioni di euro o il 2% del fatturato mondiale</strong> per i soggetti essenziali.</li>
+      <li>L'Art. 23 del D.Lgs. 138/2024 stabilisce la <strong>responsabilità personale</strong> dei membri dell'organo di amministrazione: non è un rischio dell'IT, è il tuo rischio.</li>
+    </ul>
+  </div>
+
+  <!-- KEY TAKEAWAY -->
+  <div class="box-takeaway">
+    <div class="takeaway-label">Conclusione chiave</div>
+    <p>L'ACN non aspetta che qualcosa vada storto per bussare alla tua porta. Conduce verifiche programmate, analizza i dati di registrazione e risponde a segnalazioni esterne. Se la tua organizzazione non è pronta oggi, l'ispezione di domani diventa una crisi da gestire in tempo reale.</p>
+  </div>
+
+  <!-- HOOK -->
+  <p>
+    Il D.Lgs. 138/2024 è in vigore dal 16 ottobre 2024. Con esso, l'Italia ha consegnato all'ACN poteri di supervisione e sanzione tra i più ampi mai attribuiti a un'autorità di cybersicurezza nel nostro Paese. Non si tratta di linee guida volontarie o codici di condotta. Si tratta di obblighi di legge con conseguenze concrete — per l'azienda e, soprattutto, per chi la guida.
+  </p>
+  <p>
+    Come CEO o membro del consiglio di amministrazione, potresti credere che la conformità NIS2 sia una questione tecnica delegabile al responsabile IT o al CISO. È un errore che può costare carissimo. Questa guida ti spiega come funziona il sistema di supervisione italiano, cosa può innescare un'indagine, quali poteri ha l'ACN e come il percorso sanzionatorio escalates — dalla semplice diffida fino al divieto personale di esercitare ruoli dirigenziali.
+  </p>
+
+  <div class="box-warning">
+    <strong>Attenzione:</strong> L'ACN ha già pubblicato le prime liste di soggetti essenziali e importanti. Se la tua organizzazione è inclusa in quelle liste, sei già sotto l'ombrello della supervisione. Non aspettare di ricevere una comunicazione formale per iniziare a muoverti.
+  </div>
+
+  <h2>L'architettura della supervisione NIS2 in Italia</h2>
+
+  <p>
+    Il D.Lgs. 138/2024 assegna all'ACN il ruolo di autorità competente NIS2 primaria. Ma il sistema italiano non è monolitico: accanto all'ACN operano autorità di settore con competenze specifiche — Banca d'Italia per il settore finanziario, ARERA per l'energia, AGCOM per le telecomunicazioni e il Ministero della Salute per la sanità. Nei rispettivi ambiti, queste autorità possono condurre ispezioni autonome o coordinarsi con l'ACN.
+  </p>
+  <p>
+    Questo significa che se operi in un settore regolato, la supervisione non arriva da un'unica direzione. Un'azienda energetica, per esempio, può trovarsi a rispondere sia all'ARERA che all'ACN — con richieste documentali potenzialmente sovrapposte ma distinte. La complessità del sistema è, paradossalmente, un ulteriore incentivo a essere preparati in anticipo piuttosto che rincorrere le richieste una volta arrivate.
+  </p>
+
+  <h2>Supervisione proattiva: quando l'ACN arriva senza che sia successo nulla</h2>
+
+  <p>
+    Una delle novità più significative introdotte dal D.Lgs. 138/2024 è la previsione di una supervisione <strong>proattiva</strong>: l'ACN non deve aspettare un incidente o una segnalazione per avviare una verifica. Può farlo di propria iniziativa, sulla base di un piano programmato o a seguito di analisi interne sui dati di registrazione.
+  </p>
+  <p>
+    In pratica, la supervisione proattiva si manifesta in due forme principali:
+  </p>
+  <ul>
+    <li><strong>Audit documentali:</strong> L'ACN richiede la trasmissione di documenti — politiche di sicurezza, valutazioni del rischio, piani di continuità operativa, registri degli incidenti — entro un termine definito, solitamente tra i 15 e i 30 giorni dalla notifica. La mancata risposta o la risposta incompleta è essa stessa una violazione sanzionabile.</li>
+    <li><strong>Ispezioni in loco:</strong> Team dell'ACN o suoi delegati accedono fisicamente o da remoto ai sistemi e alle infrastrutture dell'organizzazione per verificare l'effettiva implementazione delle misure di sicurezza dichiarate.</li>
+  </ul>
+  <p>
+    La supervisione proattiva è applicata prioritariamente ai <strong>soggetti essenziali</strong> — le organizzazioni di maggiori dimensioni con ruolo critico per l'economia e la società — ma può estendersi anche ai soggetti importanti in funzione dei rischi identificati a livello di settore o di scenario nazionale.
+  </p>
+
+  <h2>Supervisione reattiva: cosa innesca un'indagine</h2>
+
+  <p>
+    La supervisione <strong>reattiva</strong> è quella avviata in risposta a un evento specifico. I trigger più comuni sono tre.
+  </p>
+
+  <h3>1. Un incidente significativo non notificato nei tempi</h3>
+  <p>
+    Il D.Lgs. 138/2024 fissa una catena di notifica precisa: allerta precoce all'ACN entro 24 ore dall'identificazione dell'incidente, notifica completa entro 72 ore, relazione finale entro un mese. Se un'organizzazione subisce un attacco ransomware, un'interruzione di servizio o una violazione di dati e non rispetta questa sequenza, l'ACN ne viene quasi certamente a conoscenza per altre vie — attraverso segnalazioni di partner, clienti, fornitori o autorità estere — e avvia un'indagine. In questo scenario, l'organizzazione si trova a dover gestire contemporaneamente l'incidente tecnico, il procedimento di supervisione e le potenziali sanzioni per il ritardo nella notifica.
+  </p>
+
+  <h3>2. Una segnalazione esterna</h3>
+  <p>
+    Il sistema NIS2 prevede canali per la ricezione di segnalazioni da parte di terzi. Un dipendente, un fornitore, un cliente o persino un'autorità competente di un altro Stato membro UE possono segnalare all'ACN carenze nei sistemi di sicurezza di un'organizzazione. Non è necessario che un incidente sia già avvenuto: il sospetto di inadeguatezza strutturale delle misure è sufficiente per aprire un fascicolo.
+  </p>
+
+  <h3>3. Un'analisi di rischio settoriale</h3>
+  <p>
+    L'ACN pubblica periodicamente valutazioni del rischio a livello settoriale. Se un determinato comparto — poniamo la manifattura di componenti critici o la logistica — viene identificato come strutturalmente vulnerabile, l'Agenzia può avviare verifiche a campione su più organizzazioni contemporaneamente, indipendentemente da incidenti specifici.
+  </p>
+
+  <div class="box-info">
+    <strong>Da sapere:</strong> La supervisione reattiva non è necessariamente più benevola di quella proattiva. Anzi: un'indagine avviata dopo un incidente non notificato puntualmente mette l'organizzazione in una posizione di partenza sfavorevole, con il rischio di sanzioni cumulative — una per l'inadempimento tecnico, una per il ritardo nella notifica.
+  </div>
+
+  <h2>I poteri dell'ACN: cosa può fare concretamente</h2>
+
+  <p>
+    Il D.Lgs. 138/2024 attribuisce all'ACN un arsenale di poteri che va ben oltre la semplice facoltà di emettere raccomandazioni. Ecco cosa può fare l'Agenzia nei confronti di un'organizzazione sotto supervisione.
+  </p>
+
+  <h3>Poteri istruttori</h3>
+  <ul>
+    <li>Richiedere la trasmissione di documentazione tecnica e organizzativa entro termini perentori</li>
+    <li>Accedere ai locali e ai sistemi informativi dell'organizzazione (anche da remoto)</li>
+    <li>Audire dirigenti, responsabili tecnici e membri dell'organo di amministrazione</li>
+    <li>Richiedere informazioni ai fornitori dell'organizzazione soggetta a verifica</li>
+  </ul>
+
+  <h3>Poteri correttivi</h3>
+  <ul>
+    <li>Emettere istruzioni vincolanti per adottare misure di sicurezza specifiche entro un termine definito</li>
+    <li>Ordinare la comunicazione agli utenti del servizio di un rischio specifico</li>
+    <li>Imporre la certificazione obbligatoria di determinati prodotti o servizi ICT da parte di organismi accreditati</li>
+    <li>Vietare temporaneamente l'offerta di determinati servizi in caso di rischio grave per la sicurezza pubblica</li>
+  </ul>
+
+  <h3>Poteri sanzionatori</h3>
+  <p>
+    Le sanzioni amministrative pecuniarie sono il livello più visibile dell'enforcement, ma non l'unico. La tabella seguente riassume i massimali previsti dalla legge.
+  </p>
+
+  <table class="fine-table">
+    <thead>
+      <tr>
+        <th>Categoria</th>
+        <th>Sanzione massima</th>
+        <th>In alternativa</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Soggetti essenziali</td>
+        <td class="amount">10.000.000 di euro</td>
+        <td>2% del fatturato mondiale annuo</td>
+      </tr>
+      <tr>
+        <td>Soggetti importanti</td>
+        <td class="amount">7.000.000 di euro</td>
+        <td>1,4% del fatturato mondiale annuo</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>
+    Si applica il valore più elevato tra i due criteri. Un'azienda manifatturiera classificata come soggetto essenziale con un fatturato globale di 600 milioni di euro si trova esposta a una sanzione potenziale di <span class="danger">12 milioni di euro</span> — superiore al tetto fisso di 10 milioni, quindi calcolata come 2% del fatturato.
+  </p>
+
+  <h2>Come escalates il percorso sanzionatorio</h2>
+
+  <p>
+    L'applicazione delle sanzioni non avviene normalmente con un salto diretto al massimo edittale. Il D.Lgs. 138/2024 prevede un meccanismo di escalation graduata che è utile comprendere — non per sottovalutare i rischi, ma per capire dove si trovano i punti di non ritorno.
+  </p>
+
+  <h3>Fase 1 — Avvertimento e diffida</h3>
+  <p>
+    In caso di carenze identificate durante un audit documentale o un'ispezione, l'ACN può emettere un <strong>avvertimento formale</strong> o una <strong>diffida</strong> a conformarsi entro un termine stabilito. Questa fase rappresenta spesso l'ultima opportunità per un'organizzazione di rimediare senza conseguenze economiche dirette. Ignorare una diffida — o rispondere con documentazione insufficiente — chiude automaticamente la porta a questa finestra.
+  </p>
+
+  <h3>Fase 2 — Istruzione vincolante</h3>
+  <p>
+    Se la diffida non produce effetti, l'ACN può emettere un'istruzione vincolante specificando le misure da adottare, le modalità e i tempi. Il mancato rispetto di un'istruzione vincolante è, di per sé, una violazione ulteriore e autonoma — che si somma alle carenze originarie nel calcolo delle sanzioni.
+  </p>
+
+  <h3>Fase 3 — Sanzione pecuniaria</h3>
+  <p>
+    Le sanzioni amministrative pecuniarie vengono applicate tenendo conto della gravità delle violazioni, della durata, del numero di persone fisiche o giuridiche interessate, dei danni materiali e immateriali causati e del comportamento collaborativo o non collaborativo dell'organizzazione durante l'indagine. Un'organizzazione che coopera attivamente con l'ACN, fornisce documentazione puntuale e dimostra buona fede nel processo correttivo può beneficiare di una sanzione ridotta rispetto al massimo applicabile.
+  </p>
+
+  <h3>Fase 4 — Misure straordinarie e divieto personale</h3>
+  <p>
+    Questa è la fase che i CEO e i consiglieri di amministrazione non devono sottovalutare. Nei casi più gravi — violazioni reiterate, mancata cooperazione con l'ACN, o rischio significativo per la sicurezza pubblica — il D.Lgs. 138/2024 consente all'ACN di richiedere all'autorità giudiziaria l'adozione di misure straordinarie, incluso il <strong>divieto temporaneo per i responsabili apicali di esercitare funzioni dirigenziali</strong> all'interno dell'organizzazione.
+  </p>
+  <p>
+    Non si tratta di una sanzione che colpisce la società. Si tratta di una misura che colpisce te, personalmente, nella tua capacità di ricoprire ruoli di leadership. Il mercato del lavoro, i soci e gli investitori ne vengono inevitabilmente a conoscenza.
+  </p>
+
+  <div class="box-warning">
+    <strong>Responsabilità personale — Art. 23 D.Lgs. 138/2024:</strong> I membri dell'organo di amministrazione sono personalmente responsabili per le violazioni NIS2. Non è sufficiente delegare al CISO o all'IT manager. La legge richiede che il vertice aziendale approvi attivamente le misure di sicurezza, ne monitori l'attuazione e possa dimostrarlo con documentazione. In assenza di prove di questo coinvolgimento attivo, la responsabilità personale degli amministratori è pienamente applicabile.
+  </div>
+
+  <h2>La responsabilità personale nel dettaglio: cosa chiede la legge a te come amministratore</h2>
+
+  <p>
+    L'Art. 23 del D.Lgs. 138/2024 non è una norma di stile. È una disposizione operativa che definisce obblighi precisi per i membri degli organi di amministrazione delle organizzazioni soggette a NIS2. Vale la pena leggerla con attenzione, perché molti CEO e consiglieri ne ignorano ancora l'esistenza.
+  </p>
+  <p>
+    In sintesi, la legge richiede che:
+  </p>
+  <ol>
+    <li>L'organo di amministrazione <strong>approvi formalmente</strong> le misure di gestione del rischio cyber adottate dall'organizzazione</li>
+    <li>I singoli membri dell'organo di amministrazione <strong>seguano una formazione adeguata</strong> in materia di cybersicurezza — non una formazione tecnica approfondita, ma sufficiente a comprendere i rischi e valutare le misure adottate</li>
+    <li>Sia assicurata la <strong>supervisione continua</strong> dell'implementazione delle misure di sicurezza</li>
+    <li>Tutta questa attività sia <strong>documentata</strong> in modo da poter essere esibita all'ACN in caso di verifica</li>
+  </ol>
+  <p>
+    Il punto critico è il quarto. La documentazione è la differenza tra un'organizzazione che può difendere la propria posizione e una che non può. Un verbale del consiglio di amministrazione che attesta l'approvazione della politica di sicurezza, un registro delle formazioni seguite dagli amministratori, un report periodico sui KPI di sicurezza presentato al CdA: questi non sono adempimenti burocratici, sono la tua protezione personale.
+  </p>
+
+  <h2>Cosa cercano gli ispettori dell'ACN durante una verifica</h2>
+
+  <p>
+    Indipendentemente dalla natura dell'ispezione — proattiva o reattiva — gli ispettori dell'ACN valutano la conformità rispetto alle misure di sicurezza previste dall'Art. 24 del D.Lgs. 138/2024, che recepisce l'Art. 21 della Direttiva NIS2. Esistono dieci domini obbligatori:
+  </p>
+  <ul>
+    <li>Politiche di analisi dei rischi e sicurezza dei sistemi informativi</li>
+    <li>Gestione degli incidenti (procedure di identificazione, risposta, notifica)</li>
+    <li>Continuità operativa e gestione delle crisi (backup, disaster recovery)</li>
+    <li>Sicurezza della catena di approvvigionamento (fornitori e prestatori di servizi)</li>
+    <li>Sicurezza nell'acquisizione, sviluppo e manutenzione dei sistemi</li>
+    <li>Politiche e procedure per valutare l'efficacia delle misure di sicurezza</li>
+    <li>Pratiche di igiene informatica di base e formazione in materia di cybersicurezza</li>
+    <li>Politiche sull'uso della crittografia</li>
+    <li>Sicurezza delle risorse umane, controllo degli accessi e gestione degli asset</li>
+    <li>Uso di soluzioni di autenticazione a più fattori e di comunicazioni sicure</li>
+  </ul>
+  <p>
+    La presenza o assenza di ciascuno di questi elementi viene valutata non in termini di intenzioni o piani futuri, ma di implementazione effettiva e documentata al momento dell'ispezione. Se il tuo team IT sta "lavorando" su uno di questi punti da mesi senza averlo completato, dal punto di vista dell'ACN quella lacuna esiste.
+  </p>
+
+  <div class="box-case">
+    <div class="case-label">Scenario illustrativo</div>
+    <p>
+      <strong>Azienda italiana di medie dimensioni nel settore alimentare, 220 dipendenti, fatturato 85 milioni di euro — classificata soggetto essenziale.</strong>
+    </p>
+    <p>
+      A marzo 2026, l'azienda subisce un attacco informatico che compromette i sistemi di controllo della produzione. Il responsabile IT gestisce l'incidente internamente e lo risolve in quattro giorni. La direzione decide di non notificare l'ACN, ritenendo l'episodio "sotto controllo" e non sufficientemente grave da richiedere comunicazione esterna.
+    </p>
+    <p>
+      A distanza di tre settimane, un fornitore che aveva subito disservizi durante l'incidente presenta una segnalazione all'ACN. L'Agenzia avvia un'indagine reattiva. Viene richiesta la documentazione entro 20 giorni. L'azienda non dispone di un piano di gestione degli incidenti formalmente approvato dal CdA, né di un registro delle valutazioni del rischio aggiornato. Il verbale del consiglio di amministrazione più recente in materia di cybersicurezza risale a 18 mesi prima.
+    </p>
+    <p>
+      L'ACN emette una diffida, seguita da un'istruzione vincolante. Dopo ulteriori verifiche, viene avviato il procedimento sanzionatorio per: (1) mancata notifica dell'incidente nei termini previsti, (2) assenza di misure di gestione del rischio documentate, (3) mancata supervisione da parte dell'organo di amministrazione ai sensi dell'Art. 23.
+    </p>
+    <p>
+      <strong>Esito:</strong> Sanzione pecuniaria per violazioni multiple. Il CEO riceve una notifica formale di responsabilità personale. Il consiglio di amministrazione viene convocato per un'audizione presso l'ACN. I costi legali, organizzativi e reputazionali stimati superano <span class="danger">1,5 milioni di euro</span> — oltre all'eventuale sanzione definitiva.
+    </p>
+  </div>
+
+  <h2>Le domande che i CEO ci pongono più spesso</h2>
+
+  <div class="faq-item">
+    <div class="faq-q">L'ACN ha già avviato ispezioni in Italia o è ancora tutto teorico?</div>
+    <div class="faq-a">L'ACN è operativa e ha già pubblicato le prime liste di soggetti essenziali e importanti. Le attività di registrazione sono in corso e le prime verifiche documentali sono già iniziate per alcune categorie di soggetti essenziali. Il D.Lgs. 138/2024 è legge vigente dal 16 ottobre 2024. Attendere ulteriore "segnale" prima di muoversi significa accettare il rischio di essere trovati impreparati durante una verifica già in corso.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">Siamo una PMI. NIS2 si applica davvero anche a noi?</div>
+    <div class="faq-a">Dipende dal settore e dalle dimensioni. La soglia minima per essere considerato soggetto importante è 50 dipendenti o 10 milioni di euro di fatturato annuo — purché si operi in uno dei 18 settori previsti dalla Direttiva. Al di sotto di queste soglie, la regola generale è l'esenzione. Ma esistono eccezioni importanti: un'azienda piccola che fornisce servizi critici per l'infrastruttura nazionale può essere inclusa indipendentemente dalle dimensioni. Verificare la propria posizione non è un'opzione, è un obbligo implicito della legge.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">La nostra azienda è già certificata ISO 27001. Siamo a posto?</div>
+    <div class="faq-a">ISO 27001 è un ottimo punto di partenza e l'ACN la riconosce come indicatore positivo di maturità. Tuttavia, la certificazione non sostituisce la conformità NIS2. Ci sono requisiti specifici del D.Lgs. 138/2024 — come la responsabilità personale degli amministratori, le tempistiche di notifica degli incidenti e la registrazione sulla piattaforma ACN — che non sono coperti dalla sola certificazione ISO. È necessario un gap analysis specifico rispetto ai requisiti NIS2.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">Come funziona il processo di registrazione sulla piattaforma ACN?</div>
+    <div class="faq-a">Le organizzazioni soggette a NIS2 sono tenute a registrarsi sulla piattaforma digitale dell'ACN entro i termini stabiliti dall'Agenzia. La registrazione include la dichiarazione del settore di appartenenza, delle dimensioni, dei servizi forniti e dei referenti designati per la sicurezza. La mancata registrazione è una violazione autonoma, indipendente dal livello di maturità della sicurezza interna. Controlla il sito ufficiale dell'ACN per i termini aggiornati applicabili alla tua categoria.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">Cosa succede se un incidente avviene nel fine settimana e non riusciamo a notificare entro 24 ore?</div>
+    <div class="faq-a">La norma non prevede eccezioni legate ai giorni festivi o alle ore notturne. Le 24 ore per l'allerta precoce decorrono dal momento in cui l'organizzazione è a conoscenza dell'incidente — non dal lunedì mattina successivo. Questo significa che le organizzazioni soggette a NIS2 devono disporre di un presidio di risposta agli incidenti operativo 24/7, o almeno di un sistema che garantisca la notifica anche fuori dall'orario lavorativo. È uno dei requisiti pratici che molte organizzazioni trascurano nelle prime fasi di implementazione.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">Posso delegare tutta la conformità NIS2 al nostro provider IT esterno?</div>
+    <div class="faq-a">No. I provider IT esterni possono gestire implementazioni tecniche, ma la responsabilità legale rimane in capo all'organizzazione e, per l'Art. 23, ai suoi amministratori. Affidarsi completamente a un fornitore esterno senza presidiare internamente la conformità espone l'azienda a un rischio doppio: quello di non essere effettivamente conformi, e quello di non poter dimostrare all'ACN che il CdA era coinvolto nelle decisioni di sicurezza. La supervisione deve essere interna.</div>
+  </div>
+
+  <div class="box-info" style="margin: 48px 0 32px;">
+    <div style="font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color: var(--yellow); margin-bottom:10px;">🔧 STRUMENTI &amp; SOLUZIONI</div>
+    <p style="margin:0; font-size:17px; color: #ddd; line-height:1.7;">Per la supervisione e l'audit NIS2 — inclusa la documentazione del coinvolgimento del CdA richiesta dall'Art. 23 — <strong>Microsoft Defender Compliance Manager</strong> fornisce una dashboard di conformità strutturata con valutazioni pronte per i revisori, mentre <strong>Microsoft Defender Secure Score</strong> offre un KPI da 0 a 100 immediatamente comprensibile dal consiglio di amministrazione. Un partner Microsoft certificato può configurare questi strumenti nell'ambito di un'analisi del gap gratuita, permettendoti di presentare all'ACN prove concrete del tuo programma di conformità fin dal primo giorno.</p>
+  </div>
+
+  <!-- NEWSLETTER -->
+  <div style="background:#111; border:1px solid rgba(255,255,255,0.1); border-left:3px solid #f5c518; border-radius:4px; padding:32px 36px; margin:40px 0 0; text-align:center; max-width:760px; margin-left:auto; margin-right:auto;">
+    <div style="font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:#f5c518; margin-bottom:12px;">📬 AGGIORNAMENTI NIS2</div>
+    <h3 style="font-family:'Poppins',sans-serif; font-size:20px; font-weight:800; margin:0 0 8px; color:#f0f0f0;">Un nuovo articolo NIS2 ogni settimana — direttamente nella tua casella</h3>
+    <p style="color:#888; font-size:15px; margin:0 0 20px;">Nessun pitch di vendita. Solo guida pratica per CEO e consigli di amministrazione.</p>
+    <form id="nlForm-nis2_supervisione_acn_italia" onsubmit="submitNewsletter_nis2_supervisione_acn_italia(event)" style="display:flex; gap:10px; flex-wrap:wrap; justify-content:center; max-width:460px; margin:0 auto;">
+      <input type="email" id="nlEmail-nis2_supervisione_acn_italia" placeholder="tuo@azienda.it" required style="flex:1; min-width:200px; padding:12px 16px; background:#1c1c1f; border:1px solid rgba(255,255,255,0.15); border-radius:4px; color:#f0f0f0; font-size:15px; outline:none;" />
+      <button type="submit" id="nlSubmit-nis2_supervisione_acn_italia" style="padding:12px 22px; background:#f5c518; color:#141416; font-weight:700; font-size:15px; border:none; border-radius:4px; cursor:pointer; white-space:nowrap;">Iscriviti gratis →</button>
+    </form>
+    <p style="font-size:12px; color:#555; margin:12px 0 0;">Puoi cancellarti in qualsiasi momento. Non condividiamo mai la tua email.</p>
+    <div id="nlThanks-nis2_supervisione_acn_italia" style="display:none; color:#4ade80; font-size:16px; font-weight:600; margin-top:14px;">✅ Sei iscritto! Il prossimo articolo arriverà nella tua casella.</div>
+  </div>
+
+  <!-- CTA -->
+  <div class="cta-section">
+    <h2>Sai dove si trova la tua organizzazione oggi?</h2>
+    <p>Un'analisi del gap gratuita con un partner Microsoft certificato mostra esattamente cosa hai già coperto — e cosa manca.</p>
+    <a href="/nis2.html#boka" class="btn-primary">Prenota analisi gap gratuita →</a>
+    <p class="cta-fine">Le sanzioni arrivano fino a <strong>10 milioni di euro</strong>. L'analisi del gap è gratuita.</p>
+  </div>
+
+</article>
+
+<div class="related-articles" style="margin:2.5rem auto 2rem;padding:1.5rem;background:#1a1a2e;border-left:4px solid #f0a500;border-radius:4px;max-width:760px;">
+  <p style="margin:0 0 1rem;font-size:0.85rem;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:#f0a500;">Leggi anche</p>
+  <ul style="margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:0.5rem;">
+    <li><a href="/it/articoli/nis2-responsabilita-personale-cda.html" style="color:#e0e0e0;text-decoration:none;font-size:0.95rem;">→ Responsabilità personale del CdA sotto NIS2</a></li>
+    <li><a href="/it/articoli/nis2-sanzioni-italia.html" style="color:#e0e0e0;text-decoration:none;font-size:0.95rem;">→ Sanzioni NIS2 in Italia: quanto costa la non conformità?</a></li>
+    <li><a href="/it/articoli/nis2-quali-aziende-sono-obbligate.html" style="color:#e0e0e0;text-decoration:none;font-size:0.95rem;">→ Quali aziende sono soggette a NIS2 in Italia?</a></li>
+  </ul>
+  <p style="margin:1.25rem 0 0;font-size:0.85rem;color:#aaa;">← <a href="https://nis2klar.se/it/" style="color:#f0a500;text-decoration:none;">NIS2Klar Italia</a> &nbsp;·&nbsp; <a href="https://nis2klar.se/it/articoli.html" style="color:#f0a500;text-decoration:none;">Tutti gli articoli</a></p>
+</div>
+
+<footer>
+  © 2026 M&amp;J Trusted Marketing KB ·
+  <a href="mailto:support@trustedmarketing.se">support@trustedmarketing.se</a> · <a href="tel:+46470597003">+46 470 59 70 03</a> ·
+  <a href="https://nis2klar.se/it/">Torna alla home</a> ·
+  <a href="/privacy.html">Informativa sulla privacy</a>
+  <p style="margin-top:12px; font-size:11px; color: #555; line-height:1.5;">Microsoft, Microsoft 365, Azure e i relativi nomi di prodotto sono marchi di Microsoft Corporation. nis2klar.se non è affiliata né approvata da Microsoft Corporation.</p>
+</footer>
+
+<script>
+  async function submitNewsletter_nis2_supervisione_acn_italia(e) {
+    e.preventDefault();
+    const btn = document.getElementById('nlSubmit-nis2_supervisione_acn_italia');
+    btn.disabled = true; btn.textContent = '...';
+    const email = document.getElementById('nlEmail-nis2_supervisione_acn_italia').value.trim();
+    try {
+      const res = await fetch('/api/newsletter/subscribe', { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({ email, source: 'articolo-it-nis2_supervisione_acn_italia' }) });
+      const data = await res.json();
+      if (data.success) { document.getElementById('nlForm-nis2_supervisione_acn_italia').style.display='none'; document.getElementById('nlThanks-nis2_supervisione_acn_italia').style.display='block'; }
+      else { btn.disabled=false; btn.textContent='Iscriviti gratis →'; }
+    } catch { btn.disabled=false; btn.textContent='Iscriviti gratis →'; }
+  }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-BKF3QH9K01"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag("js", new Date());
+    gtag("config", "G-BKF3QH9K01");
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Microsoft Azure vs AWS: Cloud Security for NIS2 Compliance — NIS2Klar</title>
+  <meta name="description" content="Azure vs AWS from a NIS2 compliance perspective: data residency, shared responsibility, incident response. Guidance for CEOs evaluating cloud platforms for Ireland.">
+  <meta property="og:title" content="Microsoft Azure vs AWS: Cloud Security for NIS2 Compliance">
+  <meta property="og:description" content="Azure vs AWS from a NIS2 compliance perspective: data residency, shared responsibility, incident response. Guidance for CEOs evaluating cloud platforms for Ireland.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #141416;
+      --card: #1c1c1f;
+      --yellow: #f5c518;
+      --white: #f0f0f0;
+      --muted: #888;
+      --red: #C61212;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: var(--bg); color: var(--white); font-family: 'Barlow', sans-serif; font-size: 19px; line-height: 1.8; }
+
+    /* Nav */
+    nav { display: flex; justify-content: space-between; align-items: center; padding: 20px 40px; border-bottom: 1px solid rgba(255,255,255,0.07); max-width: 1200px; margin: 0 auto; flex-wrap: wrap; gap: 16px; }
+    .nav-logo { font-family: 'Poppins', sans-serif; font-weight: 900; font-size: 20px; color: var(--yellow); text-decoration: none; }
+    .nav-logo span { color: var(--white); }
+    .nav-back { color: var(--muted); text-decoration: none; font-size: 15px; }
+    .nav-back:hover { color: var(--white); }
+    .lang-switcher { display: flex; gap: 8px; align-items: center; font-size: 13px; font-family: 'Poppins', sans-serif; }
+    .lang-switcher a { color: #888; text-decoration: none; font-weight: 600; padding: 4px 8px; border-radius: 3px; }
+    .lang-switcher a:hover { color: var(--white); }
+    .nav-cta { background: var(--yellow); color: #000; padding: 8px 18px; border-radius: 4px; text-decoration: none; font-weight: 700; font-size: 14px; font-family: 'Poppins', sans-serif; }
+
+    /* Article */
+    .article-wrap { max-width: 760px; margin: 0 auto; padding: 60px 40px; }
+    .article-category { font-size: 13px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 16px; }
+    h1 { font-family: 'Poppins', sans-serif; font-size: clamp(30px, 4vw, 44px); font-weight: 900; line-height: 1.2; margin-bottom: 24px; }
+    .article-meta { font-size: 15px; color: var(--muted); margin-bottom: 48px; padding-bottom: 24px; border-bottom: 1px solid rgba(255,255,255,0.07); }
+    h2 { font-family: 'Poppins', sans-serif; font-size: 26px; font-weight: 700; margin: 48px 0 16px; color: var(--white); }
+    h3 { font-family: 'Poppins', sans-serif; font-size: 20px; font-weight: 600; margin: 32px 0 12px; color: var(--yellow); }
+    p { margin-bottom: 22px; }
+    strong { color: var(--white); font-weight: 700; }
+    .highlight { color: var(--yellow); font-weight: 700; }
+    .danger { color: #ff6b6b; font-weight: 700; }
+    ul, ol { margin: 16px 0 24px 24px; }
+    li { margin-bottom: 12px; font-size: 19px; }
+
+    /* Callout boxes */
+    .box-warning { background: rgba(197,17,17,0.12); border-left: 4px solid var(--red); padding: 20px 24px; margin: 32px 0; border-radius: 0 4px 4px 0; }
+    .box-info { background: rgba(245,197,24,0.08); border-left: 4px solid var(--yellow); padding: 20px 24px; margin: 32px 0; border-radius: 0 4px 4px 0; }
+    .box-case { background: var(--card); border: 1px solid rgba(255,255,255,0.08); padding: 28px; margin: 40px 0; border-radius: 4px; }
+    .box-case .case-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 12px; }
+    blockquote { border-left: 3px solid var(--yellow); padding: 12px 20px; margin: 24px 0; font-style: italic; color: #ccc; }
+
+    /* CTA */
+    .cta-section { background: var(--card); border: 1px solid rgba(245,197,24,0.2); border-radius: 4px; padding: 48px 40px; margin: 64px 0 40px; text-align: center; }
+    .cta-section h2 { margin-top: 0; font-size: 26px; }
+    .cta-section p { color: #aaa; max-width: 500px; margin: 0 auto 28px; }
+    .btn-primary { display: inline-block; background: var(--yellow); color: #000; font-family: 'Poppins', sans-serif; font-weight: 800; font-size: 16px; padding: 16px 36px; border-radius: 4px; text-decoration: none; }
+    .btn-primary:hover { background: #e0b010; }
+    .cta-fine { font-size: 13px; color: var(--muted); margin-top: 16px; }
+
+    /* FAQ */
+    .faq-item { border-bottom: 1px solid rgba(255,255,255,0.07); padding: 20px 0; }
+    .faq-q { font-family: 'Poppins', sans-serif; font-weight: 600; margin-bottom: 10px; }
+    .faq-a { color: #bbb; }
+
+    /* Comparison table */
+    .comparison-table { width: 100%; border-collapse: collapse; margin: 24px 0; }
+    .comparison-table th { background: rgba(245,197,24,0.1); color: var(--yellow); font-family: 'Poppins', sans-serif; font-size: 13px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 12px 16px; text-align: left; border-bottom: 1px solid rgba(245,197,24,0.2); }
+    .comparison-table td { padding: 14px 16px; border-bottom: 1px solid rgba(255,255,255,0.05); font-size: 15px; }
+    .comparison-table tr:last-child td { border-bottom: none; }
+    .comparison-table .check { color: #4ade80; font-weight: 700; }
+    .comparison-table .cross { color: #ff6b6b; font-weight: 700; }
+
+    /* Summary + Key Takeaway */
+    .box-summary { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; padding: 24px 28px; margin: 0 0 32px; }
+    .summary-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-bottom: 14px; }
+    .box-summary ul { margin: 0; padding-left: 20px; }
+    .box-summary li { margin-bottom: 8px; font-size: 17px; color: #ccc; }
+    .box-takeaway { background: rgba(245,197,24,0.08); border-left: 4px solid var(--yellow); padding: 20px 24px; margin: 0 0 40px; border-radius: 0 4px 4px 0; }
+    .takeaway-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 10px; }
+    .box-takeaway p { margin: 0; font-size: 18px; font-weight: 600; color: var(--white); line-height: 1.6; }
+
+    /* Related articles */
+    .related-articles { margin: 2.5rem 0 2rem; padding: 1.5rem; background: #1a1a2e; border-left: 4px solid #f0a500; border-radius: 4px; }
+    .related-articles p { margin: 0 0 1rem; font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #f0a500; }
+    .related-articles ul { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+    .related-articles li { margin: 0; }
+    .related-articles a { color: #e0e0e0; text-decoration: none; font-size: 0.95rem; }
+    .related-articles a:hover { color: #f0a500; }
+    .related-articles > p:last-of-type { margin: 1.25rem 0 0; font-size: 0.85rem; color: #aaa; }
+
+    /* Footer */
+    footer { border-top: 1px solid rgba(255,255,255,0.07); padding: 32px 40px; text-align: center; font-size: 13px; color: var(--muted); max-width: 1200px; margin: 0 auto; }
+    footer a { color: var(--muted); }
+
+    @media (max-width: 600px) {
+      nav { padding: 16px 20px; }
+      .article-wrap, footer { padding: 20px; }
+      .cta-section { padding: 32px 20px; }
+      .comparison-table { font-size: 14px; }
+      .comparison-table th, .comparison-table td { padding: 10px 10px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="https://nis2klar.se/en/">NIS2<span>Klar</span></a>
+  <a class="nav-back" href="https://nis2klar.se/en/articles.html">← All Articles</a>
+  <div class="lang-switcher">
+    <a href="https://nis2klar.se/artiklar.html" title="Svenska">SV</a>
+    <a href="https://nis2klar.se/en/articles.html" style="color:#f5c518;background:rgba(245,197,24,0.1);" title="English">EN</a>
+    <a href="https://nis2klar.se/da/artikler.html" title="Dansk">DA</a>
+    <a href="https://nis2klar.se/no/artikler.html" title="Norsk">NO</a>
+    <a href="https://nis2klar.se/it/articoli.html" title="Italiano">IT</a>
+  </div>
+  <a class="nav-cta" href="https://nis2klar.se/en/#book">Book call →</a>
+</nav>
+
+<article class="article-wrap">
+  <div class="article-category">Cloud Procurement &amp; Compliance</div>
+  <h1>Microsoft Azure vs AWS: Cloud Security for NIS2 Compliance</h1>
+  <div class="article-meta">19 April 2026 · Read time: ca 8 minutes · For: Boards &amp; CEOs</div>
+
+  <!-- SUMMARY -->
+  <div class="box-summary">
+    <div class="summary-label">Summary</div>
+    <ul>
+      <li>For Irish CEOs choosing between Azure and AWS for essential or important entity operations under NIS2.</li>
+      <li>Both platforms meet NIS2 compliance requirements — but shared responsibility models differ significantly.</li>
+      <li>Data residency in EU/EEA is mandatory for most NIS2 entities; both platforms offer EU-based storage.</li>
+      <li>Your personal liability under NIS2 Regulation 32 depends on your cloud provider's incident response capability and your contractual protection.</li>
+      <li>The wrong cloud choice can turn a manageable breach into an existential board crisis.</li>
+    </ul>
+  </div>
+
+  <!-- KEY TAKEAWAY -->
+  <div class="box-takeaway">
+    <div class="takeaway-label">The Critical Point</div>
+    <p>Choosing a cloud platform under NIS2 is not a technical procurement decision — it is a governance and liability decision. Your shared responsibility agreement must be explicit, your data residency must be contractually guaranteed, and your incident response capability must be board-reviewable within 24 hours.</p>
+  </div>
+
+  <!-- HOOK -->
+  <p>
+    You are evaluating cloud platforms for your Irish-registered essential or important entity. Your board is asking: Azure or AWS?
+  </p>
+
+  <p>
+    The honest answer is: either one can work under NIS2 — but only if you understand the shared responsibility model, lock down your data residency, and contractually guarantee your incident response timeline.
+    Choose wrong, and a breach becomes a personal liability event under <strong>Regulation 32 of S.I. No. 322 of 2024</strong> (the Irish NIS2 Regulations).
+  </p>
+
+  <div class="box-warning">
+    <strong>This is not a technical review.</strong> This is a board-level decision framework. NCSC Ireland will not forgive a cloud provider selection that breaches your data residency obligations or incident reporting timeline. The fines are up to €10 million or 2% of global turnover for essential entities — and board members are personally liable for the decision.
+  </div>
+
+  <h2>Why the Cloud Choice Matters for NIS2</h2>
+
+  <p>
+    Under the Irish NIS2 Regulations (S.I. No. 322/2024), your organisation must meet three cloud-specific NIS2 requirements:
+  </p>
+
+  <ol>
+    <li><strong>Data residency:</strong> Sensitive data must remain within EU/EEA borders (with limited exceptions for processing).</li>
+    <li><strong>Shared responsibility clarity:</strong> You must know — in writing — what the cloud provider secures and what you must secure yourself.</li>
+    <li><strong>Incident response SLA:</strong> You must be able to notify NCSC Ireland within 24 hours of discovering a breach. Your cloud provider must support this timeline.</li>
+  </ol>
+
+  <p>
+    Both Azure and AWS can meet these requirements. But they structure their services differently, and those differences create vastly different liability exposures for your board.
+  </p>
+
+  <p>
+    NCSC Ireland does not care which platform you chose. It cares that you documented your choice, understood your shared responsibility model, and can prove you met your incident reporting obligations.
+  </p>
+
+  <h2>Azure vs AWS: The NIS2 Compliance Comparison</h2>
+
+  <table class="comparison-table">
+    <thead>
+      <tr>
+        <th>NIS2 Requirement</th>
+        <th>Microsoft Azure</th>
+        <th>Amazon AWS</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>EU Data Residency</strong></td>
+        <td class="check">✓ EU region default (Dublin, Amsterdam, Frankfurt)</td>
+        <td class="check">✓ EU region available (Ireland, Frankfurt, Paris)</td>
+      </tr>
+      <tr>
+        <td><strong>Data Residency Contractual Lock</strong></td>
+        <td class="check">✓ Data Processing Amendment (DPA) covers EU residency commitment</td>
+        <td class="check">✓ AWS Customer Agreement + Data Processing Addendum available</td>
+      </tr>
+      <tr>
+        <td><strong>Shared Responsibility Documentation</strong></td>
+        <td class="check">✓ Detailed responsibility matrix per service</td>
+        <td class="check">✓ Detailed responsibility matrix per service</td>
+      </tr>
+      <tr>
+        <td><strong>Incident Response SLA (24-72hr)</strong></td>
+        <td class="check">✓ Service Health Dashboard + 24h early warning to customer</td>
+        <td class="check">✓ AWS Health Dashboard + incident notification available</td>
+      </tr>
+      <tr>
+        <td><strong>Board-Facing Compliance Reports</strong></td>
+        <td class="check">✓ Compliance Manager + regular audit reports</td>
+        <td class="check">✓ AWS Artifact + SOC 2/ISO 27001 reports available</td>
+      </tr>
+      <tr>
+        <td><strong>SIEM Integration for Monitoring</strong></td>
+        <td class="check">✓ Native integration with security tools</td>
+        <td class="check">✓ CloudTrail + third-party SIEM integration standard</td>
+      </tr>
+      <tr>
+        <td><strong>Backup Immutability (Data Protection)</strong></td>
+        <td class="check">✓ Azure Backup with immutable storage options</td>
+        <td class="check">✓ S3 Object Lock for immutable backup</td>
+      </tr>
+      <tr>
+        <td><strong>Managed Detection &amp; Response (24/7)</strong></td>
+        <td class="check">✓ Built into Azure security services</td>
+        <td class="check">✓ Available via AWS GuardDuty + partner integrations</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>
+    The table shows: both platforms are technically capable of meeting NIS2 requirements. The difference lies in contractual clarity and your ability to prove compliance to NCSC Ireland.
+  </p>
+
+  <h2>Data Residency: The Non-Negotiable</h2>
+
+  <p>
+    Under NIS2, your organisation must know exactly where your data lives. For Irish essential entities (banking, health, utilities, critical digital infrastructure), this is typically:
+  </p>
+
+  <ul>
+    <li>Primary data centre: EU (usually Ireland or an adjacent EU country)</li>
+    <li>Backup: EU-based (for recovery)</li>
+    <li>Processing: EU-based (except third-country agreements that are explicitly documented)</li>
+  </ul>
+
+  <p>
+    Both Azure and AWS allow you to set this. But here's where board-level clarity matters:
+  </p>
+
+  <h3>Azure's Approach</h3>
+  <p>
+    Azure offers <strong>Ireland, Netherlands, and Frankfurt</strong> as primary EU regions. Your data stays in your chosen region unless you explicitly replicate it elsewhere.
+    The Azure Data Processing Amendment (DPA) legally commits to this.
+    Your IT team configures it once; compliance is embedded in the service.
+  </p>
+
+  <h3>AWS's Approach</h3>
+  <p>
+    AWS offers <strong>Ireland, Frankfurt, and Paris</strong> as EU regions. But AWS requires you to actively configure and manage regional settings for each service.
+    Some services (particularly analytics and AI) may default to US-region processing unless you explicitly lock them down.
+    This is not a flaw — it is a design choice that puts more control (and responsibility) on your organisation.
+  </p>
+
+  <p>
+    For a board: if your cloud team lacks deep AWS expertise, the active configuration requirement creates a risk. One misconfigured service can violate your data residency obligation.
+  </p>
+
+  <div class="box-info">
+    <strong>Action for your board:</strong> Whichever platform you choose, your procurement contract must include a data residency addendum that specifies the exact regions your data can reside in, and includes audit rights so you can verify compliance quarterly. This addendum must be reviewed by your legal team before signing.
+  </div>
+
+  <h2>Shared Responsibility: Where Liability Actually Sits</h2>
+
+  <p>
+    This is the critical governance point that many boards miss.
+  </p>
+
+  <p>
+    Under NIS2 Regulation 21 (security measures), your organisation is accountable for 10 specific security domains: risk management, incident management, supply chain security, access control, cryptography, authentication, backup/recovery, physical security, personnel security, and security monitoring.
+  </p>
+
+  <p>
+    Your cloud provider secures the infrastructure. You secure the application, the data, and the access controls. But which platform makes this division clearer?
+  </p>
+
+  <h3>Azure's Model</h3>
+  <p>
+    Azure publishes a detailed <strong>Microsoft responsibility matrix</strong> for each service (IaaS, PaaS, SaaS). 
+    Example: if you use Azure SQL Database (PaaS), Microsoft secures the database engine, patching, and backup infrastructure. You secure the data encryption keys, authentication, and access policies.
+    The matrix is straightforward: each security domain is explicitly assigned.
+  </p>
+
+  <h3>AWS's Model</h3>
+  <p>
+    AWS uses the <strong>"Shared Responsibility Model"</strong> — similar to Azure, but the assignment of responsibility can be less obvious at the service level.
+    Some AWS services are more opaque about what "managed" actually means. This is not malice; it is the cost of AWS's service breadth.
+    Your security team must read the fine print for each service.
+  </p>
+
+  <p>
+    For a board: choose the platform whose responsibility matrix your legal and security teams can defend to NCSC Ireland inspectors. If you cannot explain, in writing, who is responsible for each NIS2 security domain, you have chosen wrong.
+  </p>
+
+  <h2>Incident Response: The 24-Hour Test</h2>
+
+  <p>
+    This is where cloud choice becomes a personal liability question for your board.
+  </p>
+
+  <p>
+    Under S.I. No. 322/2024, you must notify NCSC Ireland within <strong>24 hours</strong> of discovering a security incident that affects the availability, integrity, or confidentiality of your systems or data.
+  </p>
+
+  <p>
+    Your cloud provider is not required to report for you. You are. But your cloud provider's incident detection and notification speed determines whether you can meet the 24-hour window.
+  </p>
+
+  <h3>Azure's Incident Response</h3>
+  <p>
+    Azure offers <strong>Microsoft Sentinel</strong> (a SIEM — Security Information and Event Management tool) that integrates directly with Azure services.
+    When a breach occurs, alerts are generated and sent to your security team within minutes.
+    Azure's own security operations centre (SOC) also monitors infrastructure anomalies and can escalate to you.
+    For a board: Azure's incident detection is deeply integrated into the platform. Alerts are fast and granular.
+  </p>
+
+  <h3>AWS's Incident Response</h3>
+  <p>
+    AWS offers <strong>CloudTrail</strong> (API activity logging) and <strong>GuardDuty</strong> (threat detection).
+    These are robust, but they require you to actively integrate them into your own SIEM or security monitoring platform.
+    AWS will not automatically alert you to a breach; you must configure alerting rules yourself.
+    For a board: AWS incident detection is powerful but requires active configuration. If you do not have a mature security operations centre, detection may be slower.
+  </p>
+
+  <div class="box-case">
+    <div class="case-label">Real Scenario: The 24-Hour Breach</div>
+    <p>
+      <strong>Situation:</strong> An Irish health-sector essential entity (100+ employees) detects suspicious activity in their cloud database on a Friday afternoon at 14:00.
+    </p>
+    <p>
+      <strong>Azure pathway:</strong> Azure Sentinel alert triggers automatically. Security team sees it within 5 minutes. They begin triage, confirm the breach, and notify NCSC Ireland by 16:30 (2.5 hours). They meet the 24-hour window with time to spare.
+    </p>
+    <p>
+      <strong>AWS pathway (poorly configured):</strong> The same breach occurs, but GuardDuty alerts are not connected to the team's SIEM. No one sees the alert until Monday morning. NCSC Ireland is notified 72 hours later. The organisation has breached the 24-hour notification requirement.
+    </p>
+    <p>
+      <strong>Outcome:</strong> Azure scenario = compliant. AWS scenario = sanction under S.I. No. 322/2024, plus reputational damage, plus potential board member personal liability for negligence in incident response design.
+    </p>
+  </div>
+
+  <h2>Certification &amp; Audit: Proving Compliance to NCSC Ireland</h2>
+
+  <p>
+    NCSC Ireland will eventually audit your security posture. Your cloud provider's certifications matter, but what matters more is your contractual right to audit your provider.
+  </p>
+
+  <p>
+    Both Azure and AWS publish:
+  </p>
+
+  <ul>
+    <li>ISO 27001 certificates</li>
+    <li>SOC 2 Type II reports</li>
+    <li>GDPR Data Processing Addenda</li>
+    <li>Regular third-party penetration test results</li>
+  </ul>
+
+  <p>
+    But can you audit them yourself? This is where the contractual language matters.
+  </p>
+
+  <h3>Azure's Audit Rights</h3>
+  <p>
+    Azure's Enterprise Agreement includes explicit audit rights. You can (with notice) request evidence of their security controls. Microsoft Compliance Manager also provides a real-time dashboard of your own configuration compliance.
+  </p>
+
+  <h3>AWS's Audit Rights</h3>
+  <p>
+    AWS grants audit rights via their Business Associate Agreement (BAA) for certain regulated sectors, and via the Customer Agreement for others. The audit rights are conditional and may require legal negotiation.
+  </p>
+
+  <p>
+    For a board: ensure your procurement includes explicit audit rights. You will need them when NCSC Ireland asks, "How do you know your cloud provider is actually secure?"
+  </p>
+
+  <h2>Cost &amp; Governance: The Hidden Liability</h2>
+
+  <p>
+    Cloud costs are not board-level decisions — except when they are.
+  </p>
+
+  <p>
+    Both Azure and AWS offer pricing models. But misconfigured security settings (which are often the free or low-cost options) create future liability:
+  </p>
+
+  <ul>
+    <li>Unencrypted data in transit (costs less than encryption, but violates NIS2)</li>
+    <li>Single-region deployment without backup (saves money, violates continuity requirements)</li>
+    <li>Basic access control instead of identity-and-access management (simpler, but exposes the system to breach)</li>
+  </ul>
+
+  <p>
+    Your procurement team may choose the cheaper option. Your board must ensure the procurement includes mandatory security baselines — not optional extras.
+  </p>
+
+  <div class="box-warning">
+    <strong>Procurement risk:</strong> A cloud contract that does not mandate NIS2 compliance baseline settings will result in a system that cannot pass NCSC Ireland inspection. The cost difference between a "cheap" cloud setup and a compliant one is typically 15–25%. Saving that 15% now means spending millions on breach remediation later.
+  </div>
+
+  <h2>What If You Already Have Both?</h2>
+
+  <p>
+    Some large Irish organisations use both Azure and AWS. This creates a hybrid compliance challenge:
+  </p>
+
+  <ul>
+    <li>Your risk assessment must cover both platforms separately</li>
+    <li>Your incident response process must work across both (or you have two separate processes)</li>
+    <li>Your data residency must be documented for both</li>
+    <li>Your board accountability increases because you have twice as many variables to control</li>
+  </ul>
+
+  <p>
+    If you use both platforms, ensure your CISO/security leader reports to the board on the complexity and the mitigation strategy. Hybrid cloud under NIS2 is feasible but riskier.
+  </p>
+
+  <h2>Questions Your Board Should Ask Before Committing</h2>
+
+  <div class="faq-item">
+    <div class="faq-q">Where will our data physically reside, and can we audit that monthly?</div>
+    <div class="faq-a">Get a specific answer: which data centre(s), in which country/region, with contractual guarantees. "It will be in Europe somewhere" is not an answer. Require the vendor to commit to quarterly compliance reports proving data residency.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">Who detects a breach first — us or the cloud provider?</div>
+    <div class="faq-a">If the cloud provider detects it first, what is their SLA for notifying you? You need this in writing. The 24-hour window is yours; the notification SLA is theirs.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">What happens if the cloud provider has an incident?</div>
+    <div class="faq-a">Their incident becomes your incident. Your contract must specify: their incident timeline, your notification timeline, and your right to migrate off their platform if they are breached.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">Can we terminate the contract

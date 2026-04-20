@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-BKF3QH9K01"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag("js", new Date());
+    gtag("config", "G-BKF3QH9K01");
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Microsoft Defender vs Symantec: Dataskydd och DLP under NIS2 | NIS2Klar</title>
+  <meta name="description" content="Jämföra Microsoft Defender Information Protection och Symantec DLP för NIS2-efterlevnad. Vad täcker vardera? Integrationsmöjligheter med Microsoft-miljö.">
+  <meta property="og:title" content="Microsoft Defender vs Symantec: Dataskydd och DLP under NIS2">
+  <meta property="og:description" content="Jämföra Microsoft Defender Information Protection och Symantec DLP för NIS2-efterlevnad. Vad täcker vardera? Integrationsmöjligheter med Microsoft-miljö.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #141416;
+      --card: #1c1c1f;
+      --yellow: #f5c518;
+      --white: #f0f0f0;
+      --muted: #888;
+      --red: #C61212;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: var(--bg); color: var(--white); font-family: 'Barlow', sans-serif; font-size: 19px; line-height: 1.8; }
+
+    /* Nav */
+    nav { display: flex; justify-content: space-between; align-items: center; padding: 20px 40px; border-bottom: 1px solid rgba(255,255,255,0.07); max-width: 900px; margin: 0 auto; }
+    .nav-logo { font-family: 'Poppins', sans-serif; font-weight: 900; font-size: 20px; color: var(--yellow); text-decoration: none; }
+    .nav-logo span { color: var(--white); }
+    .nav-back { color: var(--muted); text-decoration: none; font-size: 15px; }
+    .nav-back:hover { color: var(--white); }
+    .nav-cta { background: var(--yellow); color: #000; padding: 8px 18px; border-radius: 4px; text-decoration: none; font-weight: 700; font-size: 14px; font-family: 'Poppins', sans-serif; }
+
+    /* Article */
+    .article-wrap { max-width: 760px; margin: 0 auto; padding: 60px 40px; }
+    .article-category { font-size: 13px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 16px; }
+    h1 { font-family: 'Poppins', sans-serif; font-size: clamp(30px, 4vw, 44px); font-weight: 900; line-height: 1.2; margin-bottom: 24px; }
+    .article-meta { font-size: 15px; color: var(--muted); margin-bottom: 48px; padding-bottom: 24px; border-bottom: 1px solid rgba(255,255,255,0.07); }
+    h2 { font-family: 'Poppins', sans-serif; font-size: 26px; font-weight: 700; margin: 48px 0 16px; color: var(--white); }
+    h3 { font-family: 'Poppins', sans-serif; font-size: 20px; font-weight: 600; margin: 32px 0 12px; color: var(--yellow); }
+    p { margin-bottom: 22px; }
+    strong { color: var(--white); font-weight: 700; }
+    .highlight { color: var(--yellow); font-weight: 700; }
+    .danger { color: #ff6b6b; font-weight: 700; }
+    ul, ol { margin: 16px 0 24px 24px; }
+    li { margin-bottom: 12px; font-size: 19px; }
+
+    /* Callout boxes */
+    .box-warning { background: rgba(197,17,17,0.12); border-left: 4px solid var(--red); padding: 20px 24px; margin: 32px 0; border-radius: 0 4px 4px 0; }
+    .box-info { background: rgba(245,197,24,0.08); border-left: 4px solid var(--yellow); padding: 20px 24px; margin: 32px 0; border-radius: 0 4px 4px 0; }
+    .box-case { background: var(--card); border: 1px solid rgba(255,255,255,0.08); padding: 28px; margin: 40px 0; border-radius: 4px; }
+    .box-case .case-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 12px; }
+    blockquote { border-left: 3px solid var(--yellow); padding: 12px 20px; margin: 24px 0; font-style: italic; color: #ccc; }
+
+    /* CTA */
+    .cta-section { background: var(--card); border: 1px solid rgba(245,197,24,0.2); border-radius: 4px; padding: 48px 40px; margin: 64px 0 40px; text-align: center; }
+    .cta-section h2 { margin-top: 0; font-size: 26px; }
+    .cta-section p { color: #aaa; max-width: 500px; margin: 0 auto 28px; }
+    .btn-primary { display: inline-block; background: var(--yellow); color: #000; font-family: 'Poppins', sans-serif; font-weight: 800; font-size: 16px; padding: 16px 36px; border-radius: 4px; text-decoration: none; }
+    .btn-primary:hover { background: #e0b010; }
+    .cta-fine { font-size: 13px; color: var(--muted); margin-top: 16px; }
+
+    /* FAQ */
+    .faq-item { border-bottom: 1px solid rgba(255,255,255,0.07); padding: 20px 0; }
+    .faq-q { font-family: 'Poppins', sans-serif; font-weight: 600; margin-bottom: 10px; }
+    .faq-a { color: #bbb; }
+
+    /* Comparison table */
+    .comparison-table { width: 100%; border-collapse: collapse; margin: 24px 0; }
+    .comparison-table th { background: rgba(245,197,24,0.1); color: var(--yellow); font-family: 'Poppins', sans-serif; font-size: 13px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 12px 16px; text-align: left; border-bottom: 1px solid rgba(245,197,24,0.2); }
+    .comparison-table td { padding: 14px 16px; border-bottom: 1px solid rgba(255,255,255,0.05); font-size: 15px; }
+    .comparison-table tr:last-child td { border-bottom: none; }
+    .feature-yes { color: #4ade80; font-weight: 700; }
+    .feature-partial { color: var(--yellow); font-weight: 700; }
+    .feature-no { color: #ff6b6b; font-weight: 700; }
+
+    /* Summary + Key Takeaway */
+    .box-summary { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; padding: 24px 28px; margin: 0 0 32px; }
+    .summary-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-bottom: 14px; }
+    .box-summary ul { margin: 0; padding-left: 20px; }
+    .box-summary li { margin-bottom: 8px; font-size: 17px; color: #ccc; }
+    .box-takeaway { background: rgba(245,197,24,0.08); border-left: 4px solid var(--yellow); padding: 20px 24px; margin: 0 0 40px; border-radius: 0 4px 4px 0; }
+    .takeaway-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 10px; }
+    .box-takeaway p { margin: 0; font-size: 18px; font-weight: 600; color: var(--white); line-height: 1.6; }
+
+    /* Footer */
+    footer { border-top: 1px solid rgba(255,255,255,0.07); padding: 32px 40px; text-align: center; font-size: 13px; color: var(--muted); max-width: 900px; margin: 0 auto; }
+    footer a { color: var(--muted); }
+
+    @media (max-width: 600px) {
+      nav, .article-wrap, footer { padding: 20px; }
+      .cta-section { padding: 32px 20px; }
+      .comparison-table { font-size: 14px; }
+      .comparison-table th, .comparison-table td { padding: 10px 10px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="https://nis2klar.se/">NIS2<span>Klar</span></a>
+  <a class="nav-back" href="https://nis2klar.se/artiklar.html">← Alla artiklar</a>
+  <a class="nav-cta" href="https://nis2klar.se/#boka">Boka samtal →</a>
+</nav>
+
+<article class="article-wrap">
+  <div class="article-category">Dataskydd &amp; DLP</div>
+  <h1>Microsoft Defender vs Symantec: Dataskydd och DLP under NIS2</h1>
+  <div class="article-meta">Uppdaterad 19 april 2026 · Lästid: ca 8 minuter · Målgrupp: IT-ledning &amp; styrelser</div>
+
+  <!-- SUMMARY -->
+  <div class="box-summary">
+    <div class="summary-label">Sammanfattning</div>
+    <ul>
+      <li>Dataförlustskydd (DLP) är ett obligatoriskt säkerhetskrav under NIS2 — artikel 21 d.</li>
+      <li>Microsoft Defender Information Protection är integrerat i Microsoft 365 och stöder gränslös datakontroll.</li>
+      <li>Symantec DLP är en fristående lösning med djupare nätverks- och cloud-kontroll för heterogena miljöer.</li>
+      <li>Valet beror på er infrastruktur: Microsoft-miljö → Defender. Blandmiljö → Symantec eller hybrid-tillvägagångssätt.</li>
+      <li>Båda täcker NIS2-kraven, men endast Defender ger försvarbar dokumentation utan separata integrationsarbeten.</li>
+    </ul>
+  </div>
+
+  <!-- KEY TAKEAWAY -->
+  <div class="box-takeaway">
+    <div class="takeaway-label">Viktigaste slutsatsen</div>
+    <p>DLP är inte valfritt under NIS2 — det är en lagkrav för att förhindra obehörig dataöverföring. Välj det verktyg som integreras bäst med er befintliga miljö, inte det som ser bäst ut på ett demo.</p>
+  </div>
+
+  <h2>Varför DLP är obligatoriskt under NIS2</h2>
+
+  <p>
+    NIS2-direktivet, implementerat i Sverige genom cybersäkerhetslagen (2024:1056), är tydligt på en punkt: <strong>du måste veta vad som är data, var den befinner sig, och du måste kunna förhindra att den lämnar organisationen obehörig</strong>.
+  </p>
+
+  <p>
+    Artikel 21 d säger att väsentliga och viktiga entiteter ska implementera <strong>"åtgärder för att säkerställa dataskydd och hantering av dataöverföring"</strong>. Det är inte en rekommendation. Det är ett krav.
+  </p>
+
+  <p>
+    En incidentrapportering till MSB eller en sektor-tillsynsmyndighet kommer inom kort att innehålla frågor om:
+  </p>
+
+  <ul>
+    <li>Hade ni klassificerad data innan incidenten?</li>
+    <li>Hade ni DLP-regler som skulle ha blockerat denna överföring?</li>
+    <li>Varför fanns ingen sådan regel på plats?</li>
+    <li>Vilken dokumentation finns över ert beslut att inte implementera DLP?</li>
+  </ul>
+
+  <p>
+    Kan du svara "vi implementerade aldrig DLP för att vi trodde det inte behövdes" hamnar du i en sanktionsomfattande situation. Du kan riskera böter upp till <span class="highlight">10 miljoner euro</span> för väsentliga entiteter — eller upp till <span class="highlight">7 miljoner euro</span> för viktiga entiteter.
+  </p>
+
+  <div class="box-info">
+    <strong>Dokumentation räcker långt:</strong> Tillsynsmyndigheten granskar inte bara tekniken — den granskar att ni gjort ett aktivt val och kan försvara det. "Vi har Microsoft Defender Information Protection aktiverat och vi har skapat regler för klassificerad data" är en försvarbar position. "Vi var inte säkra på vad DLP var" är det inte.
+  </div>
+
+  <h2>Vad är DLP, och vad löser det?</h2>
+
+  <p>
+    Dataförlustskydd (Data Loss Prevention) är en uppsättning tekniska och policybaser regler som identifierar känslig data och förhindrar att den lämnar organisationen på vägar som inte är godkända.
+  </p>
+
+  <p>
+    En DLP-lösning kan stoppa:
+  </p>
+
+  <ul>
+    <li>En anställd som försöker mejla en kundlista till ett privat e-postkonto</li>
+    <li>En leverantör som laddar ned en design från en OneDrive före avtalet är undertecknat</li>
+    <li>Autentiserad molndrift till en cloud-tjänst som inte är godkänd (shadow IT)</li>
+    <li>USB-överföringar av källkod till en extern enhet</li>
+    <li>En egenentreprenad AI-tjänst som matar in organisationens data utan kontroll</li>
+  </ul>
+
+  <p>
+    DLP är därför både en <strong>kontroll</strong> (stoppet) och en <strong>insyn</strong> (loggningen av försöken).
+  </p>
+
+  <h2>Microsoft Defender Information Protection — fördelar och begränsningar</h2>
+
+  <h3>Vad Defender täcker</h3>
+
+  <p>
+    Microsoft Defender Information Protection är en del av Microsoft Purview (tidigare Microsoft Information Protection). Det är integrerat i alla stora Microsoft 365-tjänster: Exchange, SharePoint, OneDrive, Teams och Word/Excel/PowerPoint.
+  </p>
+
+  <p>
+    Med Defender Information Protection kan du:
+  </p>
+
+  <ul>
+    <li><strong>Klassificera data</strong> automatiskt eller manuellt (Confidential, Internal, Public med dina egna etiketter)</li>
+    <li><strong>Tillämpa regler på mejl</strong> — blockera mejl med klassificerad data som går utanför organisationen</li>
+    <li><strong>Tillämpa regler på molnfiler</strong> — förhindra nedladdning av klassificerad data från SharePoint/OneDrive</li>
+    <li><strong>Blockera USB och lokala enheter</strong> — förhindra kopiering av data till USB eller lokala mappar</li>
+    <li><strong>Automatisk kryptering</strong> — data märkt som hemlig blir automatiskt krypterad och åtkomstrollen kontrolleras</li>
+    <li><strong>Granskningsloggar</strong> — se vem som öppnade, delade eller försökte kopiera klassificerad data</li>
+    <li><strong>Unified labeling</strong> — samma etikett fungerar i Word, Outlook, Excel och Power BI</li>
+  </ul>
+
+  <h3>Där Defender glimrar</h3>
+
+  <p>
+    Om er infrastruktur är huvudsakligen Microsoft — Exchange/Office 365, SharePoint/OneDrive, Azure AD, Teams — är Defender den enkla vägen. Allt är redan integrerat. Ingen separat agent behövs på arbetsstation. Ingen separat console. Kostnaderna är redan i Microsoft 365-prenumerationen.
+  </p>
+
+  <p>
+    Det finns <strong>ingen separat licens</strong> för Defender Information Protection i Microsoft 365 Business Premium, Enterprise E5 eller andra bundlade planer.
+  </p>
+
+  <h3>Där Defender har gränser</h3>
+
+  <p>
+    Microsoft Defender Information Protection är <strong>molnorienterad</strong> och <strong>endpoint-fokuserad</strong>. Den har begränsningar för:
+  </p>
+
+  <ul>
+    <li><strong>Nätverkskontroll:</strong> DLP för nätverkstrafik (t.ex. FTP, SSH, webb-proxys) är mycket begränsad</li>
+    <li><strong>Print-kontroll:</strong> Ingen inbyggd policy för att förhindra utskrift av klassificerad data</li>
+    <li><strong>On-premise-filresurser:</strong> Svårt att tillämpa DLP-regler på äldre filservrar eller SMB-resurser utan separat gateway</li>
+    <li><strong>Icke-Microsoft-cloud:</strong> Om ni använder Salesforce, Slack, Google Workspace eller andra SaaS är inte integreringen lika sömlös</li>
+    <li><strong>Tredjepartsapplikationer:</strong> DLP för in-house-utvecklade appar eller Enterprise-systemer kräver API-integration</li>
+  </ul>
+
+  <p>
+    Summa: Defender är utmärkt för moderna Microsoft-miljöer. Den är svagare för heterogena miljöer eller äldre infrastruktur.
+  </p>
+
+  <h2>Symantec DLP — fördelar och begränsningar</h2>
+
+  <h3>Vad Symantec täcker</h3>
+
+  <p>
+    Symantec DLP (tidigare Broadcom DLP) är en <strong>fristående, företagsomfattande</strong> DLP-plattform. Den är inte bunden till någon cloud-leverantör och kan distribueras on-premise, hybrid eller molnet.
+  </p>
+
+  <p>
+    Med Symantec DLP kan du:
+  </p>
+
+  <ul>
+    <li><strong>Nätverkskontroll:</strong> Inspektera all nätverkstrafik (e-post, FTP, HTTP, HTTPS, SSL/TLS) för känslig data</li>
+    <li><strong>Endpoint-kontroll:</strong> Blockera USB, skrivare, removable media på Windows och Mac</li>
+    <li><strong>Cloud-access:</strong> Övervaka och blockera överföringar till SaaS-appar (Salesforce, Dropbox, OneDrive externa konton, etc.)</li>
+    <li><strong>Print-kontroll:</strong> Förhindra utskrift av klassificerad data via fysiska och PDF-skrivare</li>
+    <li><strong>Fördefinierade detektorer:</strong> Hundratals inbyggda mönster för personnummer, bankkontonummer, medicinsk data, källkod, etc.</li>
+    <li><strong>Incident-rapportering:</strong> Detaljerade rapporter om vad, vem, när, var och till vad data försökte överföras</li>
+    <li><strong>Integration via API:</strong> Kan kopplas till tredjepartsappar och anpassade arbetsflöden</li>
+  </ul>
+
+  <h3>Där Symantec glimrar</h3>
+
+  <p>
+    För organisationer med <strong>komplexa IT-miljöer</strong> — blandning av Windows, Mac, Linux, äldre filservrar, on-premise-databaser, och en mix av SaaS-tjänster — är Symantec ofta det bättre valet. Den är <strong>plattformsneutral</strong> och kan appliceras på vilken dataöverföring som helst.
+  </p>
+
+  <p>
+    Symantec är också <strong>starkast på nätverksnivå</strong>. Om en anställd försöker överföra känslig data via ett VPN-tunnel eller privat nätverksanslutning kan Symantec se och stoppa det. Defender kan inte göra det på samma detaljnivå.
+  </p>
+
+  <h3>Där Symantec har gränser</h3>
+
+  <p>
+    Symantec är en <strong>separat produkt</strong> med egen console, egen licensiering och separat support. Det innebär:
+  </p>
+
+  <ul>
+    <li><strong>Implementeringskomplexitet:</strong> Installation av agenter, konfiguration av policys och tuning tar veckor eller månader</li>
+    <li><strong>Kostnad:</strong> Licensiering per endpoint eller per nätverkskontroll kan bli dyrare än Defender för stora organisationer</li>
+    <li><strong>Overhead:</strong> En extra säkerhetstool betyder mer träning för IT-team, fler incidenter att triagera, fler falskalarm att justera</li>
+    <li><strong>Microsoft-integration:</strong> Inte lika naturlig integration med Microsoft 365 som Defender har</li>
+    <li><strong>Moderna cloud-patternmönster:</strong> Symantec är starkast för traditionella dataöverföringsmönster (e-post, fildelning, print). För moderna edge-cases som AI-modeller som matar in data kan det kräva custom-regler</li>
+  </ul>
+
+  <p>
+    Symantec är också <strong>en löpande engagemang</strong>. Regelverken måste uppdateras, falska positiva måste finjusteras, och ny data-typ-klassificering måste läggas till löpande.
+  </p>
+
+  <div class="box-warning">
+    <strong>Vanlig fallgrop:</strong> Många organisationer implementerar Symantec, sätter det på "monitoring-mode" för att "fokusera på annat", och glömmer sedan att aktivera blocking-reglerna. Det dokumenteras aldrig, och när tillsynen kommer är det ingen DLP-policy på plats. Spara Symantec-investeringen om ni inte kan engagera er för att faktiskt använda den.
+  </div>
+
+  <h2>Jämförelsetabell — Defender vs Symantec</h2>
+
+  <table class="comparison-table">
+    <thead>
+      <tr>
+        <th>Funktion</th>
+        <th>Microsoft Defender</th>
+        <th>Symantec DLP</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>E-post-DLP</strong></td>
+        <td><span class="feature-yes">Ja</span></td>
+        <td><span class="feature-yes">Ja</span></td>
+      </tr>
+      <tr>
+        <td><strong>Cloud-filkontroll (SharePoint/OneDrive)</strong></td>
+        <td><span class="feature-yes">Ja</span></td>
+        <td><span class="feature-partial">Partiell</span></td>
+      </tr>
+      <tr>
+        <td><strong>Nätverkskontroll</strong></td>
+        <td><span class="feature-no">Nej</span></td>
+        <td><span class="feature-yes">Ja</span></td>
+      </tr>
+      <tr>
+        <td><strong>Endpoint USB/Print-kontroll</strong></td>
+        <td><span class="feature-yes">Ja</span></td>
+        <td><span class="feature-yes">Ja</span></td>
+      </tr>
+      <tr>
+        <td><strong>SaaS-app-kontroll</strong></td>
+        <td><span class="feature-partial">Begränsad</span></td>
+        <td><span class="feature-yes">Ja</span></td>
+      </tr>
+      <tr>
+        <td><strong>Automatisk klassificering</strong></td>
+        <td><span class="feature-yes">Ja</span></td>
+        <td><span class="feature-yes">Ja</span></td>
+      </tr>
+      <tr>
+        <td><strong>Fördefinierade detektorer</strong></td>
+        <td><span class="feature-partial">Grundläggande</span></td>
+        <td><span class="feature-yes">Omfattande</span></td>
+      </tr>
+      <tr>
+        <td><strong>Separat licens</strong></td>
+        <td><span class="feature-no">Nej (ingår i M365)</span></td>
+        <td><span class="feature-yes">Ja</span></td>
+      </tr>
+      <tr>
+        <td><strong>Implementeringstid</strong></td>
+        <td><span class="feature-yes">Veckor</span></td>
+        <td><span class="feature-no">Månader</span></td>
+      </tr>
+      <tr>
+        <td><strong>Driftöversyn</strong></td>
+        <td><span class="feature-yes">Låg</span></td>
+        <td><span class="feature-no">Hög</span></td>
+      </tr>
+      <tr>
+        <td><strong>Lämplig för rent Microsoft-miljö</strong></td>
+        <td><span class="feature-yes">Ja</span></td>
+        <td><span class="feature-partial">Ja, men överengineering</span></td>
+      </tr>
+      <tr>
+        <td><strong>Lämplig för blandmiljö</strong></td>
+        <td><span class="feature-partial">Med inskränkningar</span></td>
+        <td><span class="feature-yes">Ja</span></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>NIS2-perspektivet — vad säger lagen?</h2>
+
+  <p>
+    NIS2 prescriberar inte ett specifikt DLP-verktyg. Det säger bara att du måste ha <strong>"åtgärder för att säkerställa dataskydd och hantering av dataöverföring"</strong>.
+  </p>
+
+  <p>
+    En tillsynsmyndighet granskar två saker:
+  </p>
+
+  <ol>
+    <li><strong>Existens:</strong> Finns en DLP-policy på plats? Är den dokumenterad? Har styrelsen godkänt den?</li>
+    <li><strong>Effektivitet:</strong> Blockerar den faktiska känslig data från att lämna organisationen? Finns loggarna som bevisar det?</li>
+  </ol>
+
+  <p>
+    Både Defender och Symantec kan svara ja på båda frågorna. Valet handlar om <strong>integration</strong> och <strong>driftskomplexitet</strong>, inte om rättskrav.
+  </p>
+
+  <div class="box-case">
+    <div class="case-label">Fallstudie: Sjukvårdsklinik</div>
+    <p>
+      <strong>Scenario:</strong> En privat psykiatriklinik i Sverige, 45 anställda. Klassas som viktig entitet under NIS2 på grund av patientdata.
+      Använder Office 365 för mejl och dokumenthantering, men också Salesforce för patienthantering och en legacy on-premise filserver för arkiv.
+    </p>
+    <p>
+      <strong>Valet:</strong> Hybrid-tillvägagångssätt.
+      Implementerar Defender Information Protection för Office 365 (klassificering av patient-PHI, blockering av mejl-överföring).
+      Implementerar en enklare Symantec-gateway bara för filserver och Salesforce-åtkomst.
+    </p>
+    <p>
+      <strong>Resultat:</strong> MSB granskar efter en incidentanmälan. Kliniken kan visa:
+      – Defender-logg som bevisar att ett försök att mejla patientdata till privat konto blockerades
+      – Symantec-logg som visar blockering av nedladdning från legacy-servern utan myndighet
+      – Styrelsebeslut från januari 2025 som godkänner båda DLP-policys
+    </p>
+    <p>
+      <strong>Utfall:</strong>

@@ -1,0 +1,1794 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-BKF3QH9K01"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag("js", new Date());
+    gtag("config", "G-BKF3QH9K01");
+  </script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NIS2 — Er din virksomhed klar?</title>
+  <meta name="description" content="NIS2-loven gælder nu. Bestyrelsesmedlemmer er personligt ansvarlige. Vi hjælper dig forstå, hvad det betyder — uden teknisk jargon." />
+
+  <link rel="canonical" href="https://nis2klar.se/da/nis2.html">
+  <link rel="alternate" hreflang="sv" href="https://nis2klar.se/nis2.html">
+  <link rel="alternate" hreflang="en" href="https://nis2klar.se/en/nis2.html">
+  <link rel="alternate" hreflang="da" href="https://nis2klar.se/da/nis2.html">
+  <link rel="alternate" hreflang="no" href="https://nis2klar.se/no/nis2.html">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&family=Barlow:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --black:   #141416;
+      --dark:    #1c1c1f;
+      --card:    #222226;
+      --border:  #2e2e33;
+      --yellow:  #f5e642;
+      --yellow2: #e8d800;
+      --white:   #ffffff;
+      --gray:    #888888;
+      --lightgray: #cccccc;
+      --red:     #ff4444;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Barlow', sans-serif;
+      background: var(--black);
+      color: var(--white);
+      line-height: 1.6;
+      font-size: 18px;
+    }
+
+    /* ── TOPBAR ── */
+    .topbar {
+      background: var(--red);
+      text-align: center;
+      padding: 10px 20px;
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(20,20,22,0.96);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+      padding: 16px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav-logo {
+      font-size: 20px;
+      font-weight: 800;
+      color: var(--yellow);
+      text-decoration: none;
+      letter-spacing: -0.5px;
+    }
+    .nav-logo span { color: var(--white); }
+    .nav-cta {
+      background: var(--yellow);
+      color: var(--black);
+      font-weight: 700;
+      font-size: 14px;
+      padding: 10px 22px;
+      border-radius: 4px;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+    .nav-cta:hover { background: var(--yellow2); }
+
+    /* ── SECTIONS ── */
+    section { padding: 100px 40px; }
+    .container { max-width: 900px; margin: 0 auto; }
+    .container-wide { max-width: 1100px; margin: 0 auto; }
+
+    /* ── HERO ── */
+    .hero {
+      background: var(--black);
+      padding: 120px 40px 100px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -200px; left: 50%;
+      transform: translateX(-50%);
+      width: 600px; height: 600px;
+      background: radial-gradient(circle, rgba(245,230,66,0.12) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero-tag {
+      display: inline-block;
+      background: rgba(245,230,66,0.15);
+      border: 1px solid rgba(245,230,66,0.3);
+      color: var(--yellow);
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      padding: 6px 16px;
+      border-radius: 3px;
+      margin-bottom: 32px;
+    }
+    .hero h1 {
+      font-size: clamp(36px, 6vw, 68px);
+      font-weight: 900;
+      line-height: 1.1;
+      letter-spacing: -2px;
+      margin-bottom: 24px;
+    }
+    .hero h1 em {
+      font-style: normal;
+      color: var(--yellow);
+    }
+    .hero-sub {
+      font-size: clamp(18px, 2.5vw, 22px);
+      color: var(--lightgray);
+      max-width: 620px;
+      margin: 0 auto 48px;
+      line-height: 1.7;
+    }
+    .hero-actions {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .btn-primary {
+      background: var(--yellow);
+      color: var(--black);
+      font-weight: 800;
+      font-size: 16px;
+      padding: 16px 36px;
+      border-radius: 4px;
+      text-decoration: none;
+      transition: transform 0.15s, background 0.2s;
+      display: inline-block;
+    }
+    .btn-primary:hover { background: var(--yellow2); transform: translateY(-2px); }
+    .btn-ghost {
+      background: transparent;
+      color: var(--white);
+      font-weight: 600;
+      font-size: 16px;
+      padding: 16px 36px;
+      border-radius: 4px;
+      border: 1px solid var(--border);
+      text-decoration: none;
+      transition: border-color 0.2s, transform 0.15s;
+      display: inline-block;
+    }
+    .btn-ghost:hover { border-color: var(--yellow); color: var(--yellow); transform: translateY(-2px); }
+
+    /* ── STATS BAR ── */
+    .stats-bar {
+      background: var(--card);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 40px;
+    }
+    .stats-grid {
+      max-width: 900px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 32px;
+      text-align: center;
+    }
+    .stat-num {
+      font-size: 42px;
+      font-weight: 900;
+      color: var(--yellow);
+      letter-spacing: -1px;
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+    .stat-label {
+      font-size: 14px;
+      color: var(--gray);
+      line-height: 1.4;
+    }
+
+    /* ── SECTION HEADINGS ── */
+    .section-tag {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--yellow);
+      margin-bottom: 16px;
+    }
+    h1, h2, h3, h4 {
+      font-family: 'Poppins', sans-serif;
+    }
+    h2 {
+      font-size: clamp(28px, 4vw, 44px);
+      font-weight: 800;
+      letter-spacing: -1px;
+      line-height: 1.2;
+      margin-bottom: 20px;
+    }
+    h2 em { font-style: normal; color: var(--yellow); }
+    .section-lead {
+      font-size: 18px;
+      color: var(--lightgray);
+      line-height: 1.7;
+      margin-bottom: 48px;
+      max-width: 700px;
+    }
+
+    /* ── AGREE SECTION ── */
+    .agree-section { background: var(--dark); }
+    .quote-block {
+      background: var(--card);
+      border-left: 4px solid var(--yellow);
+      border-radius: 0 12px 12px 0;
+      padding: 28px 32px;
+      margin: 32px 0;
+      font-size: 20px;
+      font-style: italic;
+      color: var(--lightgray);
+      line-height: 1.6;
+    }
+    .quote-block strong { color: var(--white); font-style: normal; }
+
+    /* ── PAIN CARDS ── */
+    .pain-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px;
+      margin-top: 40px;
+    }
+    .pain-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 28px;
+      transition: border-color 0.2s;
+    }
+    .pain-card:hover { border-color: rgba(245,230,66,0.3); }
+    .pain-icon { font-size: 32px; margin-bottom: 16px; }
+    .pain-card h3 { font-size: 18px; font-weight: 700; margin-bottom: 10px; }
+    .pain-card p { font-size: 15px; color: var(--gray); line-height: 1.6; }
+
+    /* ── REFRAME: WHAT IS NIS2 ── */
+    .villain-section { background: var(--black); }
+    .villain-section h2 { font-size: clamp(26px, 3.5vw, 40px); }
+    .villain-quote { border-left: 3px solid var(--yellow); padding: 20px 28px; margin: 32px 0; font-size: 20px; color: var(--white); font-style: italic; }
+    .villain-note { background: rgba(245,197,24,0.07); border: 1px solid rgba(245,197,24,0.2); border-radius: 8px; padding: 24px 28px; margin-top: 32px; color: #ccc; font-size: 17px; }
+    .villain-note strong { color: var(--yellow); }
+    .reframe-section { background: var(--dark); }
+    .law-block {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 40px;
+      margin: 40px 0;
+    }
+    .law-block h3 {
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--yellow);
+      margin-bottom: 16px;
+    }
+    .law-block p { color: var(--lightgray); line-height: 1.7; margin-bottom: 16px; }
+    .law-block p:last-child { margin-bottom: 0; }
+
+    /* ── WHO IS AFFECTED ── */
+    .sectors-section { background: var(--dark); }
+    .sectors-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+      margin-top: 40px;
+    }
+    .sector-item {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 20px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 15px;
+      font-weight: 500;
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .sector-item:hover { border-color: var(--yellow); background: rgba(245,230,66,0.05); }
+    .sector-item.highlight { border-color: rgba(245,230,66,0.4); background: rgba(245,230,66,0.07); }
+    .sector-emoji { font-size: 22px; flex-shrink: 0; }
+
+    /* ── LIABILITY SECTION ── */
+    .liability-section { background: var(--black); }
+    .liability-box {
+      background: linear-gradient(135deg, rgba(255,68,68,0.1) 0%, rgba(245,230,66,0.05) 100%);
+      border: 1px solid rgba(255,68,68,0.3);
+      border-radius: 4px;
+      padding: 48px;
+      margin: 40px 0;
+      text-align: center;
+    }
+    .liability-box h3 {
+      font-size: 28px;
+      font-weight: 800;
+      margin-bottom: 20px;
+    }
+    .liability-box p {
+      font-size: 18px;
+      color: var(--lightgray);
+      line-height: 1.7;
+      max-width: 650px;
+      margin: 0 auto 24px;
+    }
+    .fine-tag {
+      display: inline-block;
+      background: rgba(255,68,68,0.2);
+      border: 1px solid rgba(255,68,68,0.4);
+      color: #ff8888;
+      font-size: 14px;
+      font-weight: 700;
+      padding: 6px 16px;
+      border-radius: 3px;
+      margin: 4px;
+    }
+
+    /* ── ROI SECTION ── */
+    /* ── TEASER HOOK ── */
+    .teaser-hook {
+      background: var(--dark);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 32px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 24px;
+      flex-wrap: wrap;
+      text-align: center;
+    }
+    .teaser-hook-text { font-size: 16px; color: var(--lightgray); line-height: 1.5; }
+    .teaser-hook-text strong { color: var(--white); font-family: 'Poppins', sans-serif; }
+    .teaser-hook-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: transparent;
+      border: 2px solid var(--yellow);
+      color: var(--yellow);
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+      font-size: 14px;
+      padding: 12px 22px;
+      border-radius: 4px;
+      text-decoration: none;
+      white-space: nowrap;
+      transition: background 0.2s, color 0.2s;
+      flex-shrink: 0;
+    }
+    .teaser-hook-link:hover { background: var(--yellow); color: var(--black); }
+
+    .roi-section { background: var(--dark); }
+    .roi-headline {
+      font-size: clamp(28px, 4vw, 42px);
+      font-weight: 900;
+      line-height: 1.2;
+      margin-bottom: 16px;
+    }
+    .roi-table {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin: 48px 0;
+    }
+    @media (max-width: 640px) { .roi-table { grid-template-columns: 1fr; } }
+    .roi-col {
+      border-radius: 4px;
+      padding: 40px 36px;
+    }
+    .roi-col.risk {
+      background: rgba(255,68,68,0.07);
+      border: 1px solid rgba(255,68,68,0.25);
+    }
+    .roi-col.safe {
+      background: rgba(245,230,66,0.06);
+      border: 1px solid rgba(245,230,66,0.3);
+    }
+    .roi-col-label {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+    .roi-col.risk .roi-col-label { color: #ff8888; }
+    .roi-col.safe .roi-col-label { color: var(--yellow); }
+    .roi-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      padding: 14px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      gap: 16px;
+    }
+    .roi-row:last-child { border-bottom: none; }
+    .roi-row-label { font-size: 15px; color: var(--lightgray); }
+    .roi-row-value { font-size: 17px; font-weight: 700; white-space: nowrap; }
+    .roi-col.risk .roi-row-value { color: #ff8888; }
+    .roi-col.safe .roi-row-value { color: var(--yellow); }
+    .roi-verdict {
+      background: rgba(245,230,66,0.08);
+      border: 1px solid rgba(245,230,66,0.25);
+      border-radius: 4px;
+      padding: 36px 48px;
+      text-align: center;
+      margin-top: 8px;
+    }
+    .roi-verdict p {
+      font-size: clamp(18px, 2.5vw, 24px);
+      font-weight: 700;
+      line-height: 1.5;
+      color: var(--white);
+      max-width: 640px;
+      margin: 0 auto;
+    }
+    .roi-verdict em { color: var(--yellow); font-style: normal; }
+
+    /* ── GDPR PRECEDENT BLOCK ── */
+    .gdpr-block {
+      margin-top: 48px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-left: 4px solid var(--yellow);
+      border-radius: 4px;
+      padding: 40px 48px;
+    }
+    .gdpr-block .gdpr-label {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--yellow);
+      margin-bottom: 16px;
+    }
+    .gdpr-block blockquote {
+      font-family: 'Poppins', sans-serif;
+      font-size: clamp(20px, 3vw, 28px);
+      font-weight: 700;
+      line-height: 1.4;
+      color: var(--white);
+      margin-bottom: 24px;
+    }
+    .gdpr-block blockquote em { color: var(--yellow); font-style: normal; }
+    .gdpr-block .gdpr-source {
+      font-size: 14px;
+      color: var(--gray);
+      border-top: 1px solid var(--border);
+      padding-top: 20px;
+      margin-top: 8px;
+      display: flex;
+      gap: 32px;
+      flex-wrap: wrap;
+    }
+    .gdpr-block .gdpr-stat { display: flex; flex-direction: column; gap: 4px; }
+    .gdpr-block .gdpr-stat strong { font-size: 22px; font-weight: 800; color: var(--white); }
+
+    /* ── REQUIREMENTS ── */
+    .req-section { background: var(--black); }
+    .req-list {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      margin-top: 40px;
+    }
+    .req-item {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 24px 28px;
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;
+      transition: border-color 0.2s;
+    }
+    .req-item:hover { border-color: rgba(245,230,66,0.3); }
+    .req-num {
+      background: var(--yellow);
+      color: var(--black);
+      font-weight: 900;
+      font-size: 14px;
+      width: 32px; height: 32px;
+      border-radius: 4px;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .req-item h4 { font-size: 17px; font-weight: 700; margin-bottom: 6px; }
+    .req-item p { font-size: 15px; color: var(--gray); line-height: 1.5; }
+
+    /* ── HOW WE HELP ── */
+    .help-section { background: var(--black); }
+    .steps-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 24px;
+      margin-top: 48px;
+    }
+    .step-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 32px;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.2s, border-color 0.2s;
+    }
+    .step-card:hover { transform: translateY(-4px); border-color: rgba(245,230,66,0.3); }
+    .step-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: var(--yellow);
+      opacity: 0;
+      transition: opacity 0.2s;
+    }
+    .step-card:hover::before { opacity: 1; }
+    .step-card .step-icon { font-size: 36px; margin-bottom: 20px; }
+    .step-card h3 { font-size: 19px; font-weight: 700; margin-bottom: 12px; }
+    .step-card p { font-size: 15px; color: var(--gray); line-height: 1.6; }
+
+    /* ── STORY SECTION ── */
+    .story-section { background: var(--dark); }
+    .story-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+      margin-top: 48px;
+    }
+    @media (max-width: 768px) { .story-grid { grid-template-columns: 1fr; } }
+    .story-text h2 { margin-bottom: 16px; }
+    .story-text p { color: var(--lightgray); line-height: 1.7; margin-bottom: 16px; }
+    .story-visual {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 36px;
+    }
+    .timeline {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+    .timeline-item {
+      display: flex;
+      gap: 16px;
+      padding-bottom: 28px;
+      position: relative;
+    }
+    .timeline-item:last-child { padding-bottom: 0; }
+    .timeline-item:not(:last-child)::before {
+      content: '';
+      position: absolute;
+      left: 15px;
+      top: 32px;
+      bottom: 0;
+      width: 2px;
+      background: var(--border);
+    }
+    .tl-dot {
+      width: 32px; height: 32px;
+      border-radius: 50%;
+      background: var(--yellow);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 14px;
+      font-weight: 800;
+      color: var(--black);
+      flex-shrink: 0;
+      position: relative;
+      z-index: 1;
+    }
+    .tl-dot.done { background: #44ff88; }
+    .tl-dot.now { background: var(--red); }
+    .tl-content h4 { font-size: 15px; font-weight: 700; margin-bottom: 4px; }
+    .tl-content p { font-size: 13px; color: var(--gray); }
+
+    /* ── FAQ ── */
+    .faq-section { background: var(--black); }
+    .faq-list { margin-top: 40px; display: flex; flex-direction: column; gap: 12px; }
+    .faq-item {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      overflow: hidden;
+    }
+    .faq-q {
+      padding: 22px 28px;
+      font-size: 17px;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      user-select: none;
+      transition: color 0.2s;
+    }
+    .faq-q:hover { color: var(--yellow); }
+    .faq-chevron {
+      font-size: 18px;
+      color: var(--yellow);
+      transition: transform 0.3s;
+      flex-shrink: 0;
+    }
+    .faq-a {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.35s ease;
+    }
+    .faq-a.open { max-height: 400px; }
+    .faq-a-inner {
+      padding: 0 28px 24px;
+      font-size: 16px;
+      color: var(--lightgray);
+      line-height: 1.7;
+    }
+    .faq-item.active .faq-chevron { transform: rotate(180deg); }
+
+    /* ── CTA SECTION ── */
+    .cta-section {
+      background: var(--dark);
+      border-top: 3px solid var(--yellow);
+      padding: 100px 40px;
+      text-align: center;
+    }
+    .cta-section h2 {
+      color: var(--white);
+      font-size: clamp(28px, 4vw, 46px);
+      margin-bottom: 20px;
+    }
+    .cta-section .cta-sub {
+      color: var(--lightgray);
+      font-size: 18px;
+      max-width: 580px;
+      margin: 0 auto 28px;
+      line-height: 1.7;
+    }
+    .cta-urgency {
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--yellow);
+      margin-bottom: 32px;
+    }
+    .cta-capture-form {
+      max-width: 480px;
+      margin: 0 auto 28px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      text-align: left;
+    }
+    .cta-capture-form input {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 14px 18px;
+      font-size: 16px;
+      color: var(--white);
+      font-family: 'Barlow', sans-serif;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    .cta-capture-form input:focus { border-color: var(--yellow); }
+    .cta-capture-form input::placeholder { color: var(--gray); }
+    .cta-capture-form button {
+      background: var(--yellow);
+      color: var(--black);
+      border: none;
+      border-radius: 4px;
+      padding: 16px 28px;
+      font-family: 'Poppins', sans-serif;
+      font-size: 16px;
+      font-weight: 800;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.15s;
+    }
+    .cta-capture-form button:hover { background: var(--yellow2); transform: translateY(-1px); }
+    .cta-capture-form button:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
+    .cta-flattery {
+      font-size: 15px;
+      color: var(--gray);
+      max-width: 480px;
+      margin: 0 auto;
+      line-height: 1.6;
+      font-style: italic;
+    }
+    .cta-thanks {
+      padding: 16px 24px;
+      background: rgba(34,197,94,0.1);
+      border: 1px solid rgba(34,197,94,0.3);
+      border-radius: 4px;
+      color: #86efac;
+      font-size: 16px;
+      text-align: center;
+      max-width: 480px;
+      margin: 0 auto 24px;
+      display: none;
+    }
+    .btn-dark {
+      background: var(--black);
+      color: var(--yellow);
+      font-weight: 800;
+      font-size: 17px;
+      padding: 18px 42px;
+      border-radius: 4px;
+      text-decoration: none;
+      display: inline-block;
+      transition: transform 0.15s, background 0.2s;
+    }
+    .btn-dark:hover { background: #1a1a1a; transform: translateY(-2px); }
+
+    /* ── ABOUT / WHO WE ARE SECTION ── */
+    .about-section {
+      background: var(--dark);
+      padding: 100px 40px;
+    }
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      margin-top: 40px;
+      align-items: start;
+    }
+    @media (max-width: 768px) { .about-grid { grid-template-columns: 1fr; } }
+    .about-cred-list {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .about-cred-item {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--yellow);
+      border-radius: 4px;
+      padding: 16px 20px;
+      font-size: 16px;
+      color: var(--lightgray);
+      line-height: 1.5;
+    }
+    .about-stat-block {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 40px 32px;
+      text-align: center;
+    }
+    .about-stat-num {
+      font-family: 'Poppins', sans-serif;
+      font-size: 42px;
+      font-weight: 900;
+      color: var(--yellow);
+      letter-spacing: -1px;
+      line-height: 1.1;
+      margin-bottom: 12px;
+    }
+    .about-stat-desc {
+      font-size: 15px;
+      color: var(--gray);
+      line-height: 1.5;
+    }
+
+    /* ── SCENARIO STORY SECTION ── */
+    .story-case-block {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-left: 4px solid #ff4444;
+      border-radius: 4px;
+      padding: 40px;
+      margin-top: 40px;
+    }
+    .story-case-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #ff8888;
+      margin-bottom: 20px;
+    }
+    .story-case-block p {
+      font-size: 16px;
+      color: var(--lightgray);
+      line-height: 1.8;
+      margin-bottom: 16px;
+    }
+    .story-case-block p:last-child { margin-bottom: 0; }
+    .story-case-block .story-conclusion {
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--white);
+      font-style: italic;
+      border-top: 1px solid var(--border);
+      padding-top: 20px;
+      margin-top: 8px;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--dark);
+      border-top: 1px solid var(--border);
+      padding: 40px;
+      text-align: center;
+      color: var(--gray);
+      font-size: 14px;
+    }
+    footer a { color: var(--yellow); text-decoration: none; }
+
+    /* ── DIVIDER ── */
+    .divider {
+      width: 60px; height: 3px;
+      background: var(--yellow);
+      border-radius: 2px;
+      margin: 20px 0 32px;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      section { padding: 70px 24px; }
+      nav { padding: 16px 24px; }
+      .stats-grid { grid-template-columns: repeat(2, 1fr); }
+      .hero { padding: 80px 24px 70px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- TOPBAR -->
+  <div class="topbar">
+    ⚠️ NIS2-loven er i kraft. Bestyrelsesmedlemmer er personligt ansvarlige. Ved du, hvad det betyder for dig?
+  </div>
+
+  <!-- NAV -->
+  <nav>
+    <a href="https://nis2klar.se/da/nis2.html" class="nav-logo">NIS2<span>Klar</span></a>
+    <div style="display:flex;gap:6px;align-items:center;"><a href="https://nis2klar.se/nis2.html" style="color:#888;text-decoration:none;font-weight:700;font-size:13px;padding:4px 8px;border-radius:3px;" title="SV">SV</a><a href="https://nis2klar.se/en/" style="color:#888;text-decoration:none;font-weight:700;font-size:13px;padding:4px 8px;border-radius:3px;" title="EN">EN</a><a href="https://nis2klar.se/da/" style="color:#f5e642;text-decoration:none;font-weight:700;font-size:13px;padding:4px 8px;border-radius:3px;background:rgba(245,230,66,0.1);" title="DA">DA</a><a href="https://nis2klar.se/no/" style="color:#888;text-decoration:none;font-weight:700;font-size:13px;padding:4px 8px;border-radius:3px;" title="NO">NO</a></div>
+    <a href="https://nis2klar.se/da/artikler.html" style="color:#ccc;text-decoration:none;font-size:14px;font-weight:600;font-family:'Poppins',sans-serif;">Læs NIS2-artikler →</a>
+    <a href="#boka" class="nav-cta">Book et møde →</a>
+  </nav>
+
+  <!-- ═══════════════════════════════════════════
+       HERO
+  ════════════════════════════════════════════ -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-tag">NIS2 · Cybersikkerhed · Personligt ansvar</div>
+      <h1>
+        Du sidder i ledelsen.<br/>
+        NIS2-ansvaret er <em>dit personligt.</em>
+      </h1>
+      <p class="hero-sub">
+        Fra oktober 2024 er du — som bestyrelsesmedlem eller direktør — personligt ansvarlig,
+        hvis jeres virksomhed rammes af et cyberangreb uden det rette sikkerhedsgrundlag på plads.
+        Det er ikke IT-chefens problem længere. Det er dit.
+        Og bruger I allerede moderne cloudtjenester, har I sandsynligvis et forspring.
+      </p>
+      <div class="hero-actions">
+        <a href="#boka" class="btn-primary">Book et gratis møde</a>
+        <a href="#hvad-er-nis2" class="btn-ghost">Hvad er NIS2? →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS BAR -->
+  <div class="stats-bar">
+    <div class="stats-grid">
+      <div>
+        <div class="stat-num">18+</div>
+        <div class="stat-label">Sektorer omfattet<br/>af NIS2</div>
+      </div>
+      <div>
+        <div class="stat-num">10 M€</div>
+        <div class="stat-label">Maks. bøde for<br/>væsentlige enheder</div>
+      </div>
+      <div>
+        <div class="stat-num">72t</div>
+        <div class="stat-label">Frist til at rapportere<br/>en hændelse til CFCS</div>
+      </div>
+      <div>
+        <div class="stat-num">I kraft</div>
+        <div class="stat-label">NIS2-loven gælder<br/>i Danmark — oktober 2024</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════
+       AGREE — Vi forstår din bekymring
+  ════════════════════════════════════════════ -->
+  <section class="agree-section">
+    <div class="container">
+      <div class="section-tag">1. Vi forstår</div>
+      <h2>Du har sikkert allerede<br/>mærket denne bekymring.</h2>
+      <div class="divider"></div>
+      <p class="section-lead">
+        Måske har du hørt om NIS2. Måske har du fået et brev fra en konsulent,
+        der vil sælge dig en dyr udredning. Måske tænkte du: "Vi tager det senere."
+      </p>
+
+      <div class="quote-block">
+        "Vi er en mellemstor virksomhed. Vi har ikke råd til at opbygge en hel IT-sikkerhedsafdeling.
+        <strong>Men vi har heller ikke råd til at ignorere det.</strong>"
+      </div>
+
+      <p class="section-lead">
+        Det er præcis der, de fleste virksomheder befinder sig lige nu. Og det er okay.
+        Problemet er, at loven ikke interesserer sig for, om du har haft tid.
+      </p>
+
+      <div class="pain-grid">
+        <div class="pain-card">
+          <div class="pain-icon">😰</div>
+          <h3>Du ved ikke, hvor du skal starte</h3>
+          <p>NIS2 er en EU-lov fuld af juridisk tekst. Hvad gælder for netop din virksomhed? Det er uklart.</p>
+        </div>
+        <div class="pain-card">
+          <div class="pain-icon">💸</div>
+          <h3>Konsulenter er for dyre</h3>
+          <p>De fleste sikkerhedsfirmaer sigter mod store selskaber. Priserne er ikke bygget til dig.</p>
+        </div>
+        <div class="pain-card">
+          <div class="pain-icon">⏰</div>
+          <h3>Loven gælder allerede nu</h3>
+          <p>Danmark implementerede NIS2 i oktober 2024. Det er ikke et fremtidsspørgsmål. Det er nu.</p>
+        </div>
+        <div class="pain-card">
+          <div class="pain-icon">🎯</div>
+          <h3>Du er personligt ansvarlig</h3>
+          <p>Som bestyrelsesmedlem kan du holdes personligt ansvarlig. Det er en ny del af loven, mange overser.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════
+       VILLAIN — Fjenden
+  ════════════════════════════════════════════ -->
+  <section class="villain-section">
+    <div class="container">
+      <div class="section-tag">Virkeligheden</div>
+      <h2>Ja, det kom fra Bruxelles.<br/><em>Konsekvenserne er stadig dine.</em></h2>
+      <div class="divider"></div>
+      <p class="section-lead">
+        Vi forstår frustrationen. Endnu et EU-direktiv. Endnu en gang skal danske virksomheder
+        tilpasse sig regler skabt langt fra den daglige virkelighed.
+      </p>
+
+      <div class="villain-quote">
+        "Vi var optaget af at bygge virksomheden — ikke navigere EU-direktiver."
+      </div>
+
+      <p class="section-lead">
+        Det er en fuldt forståelig reaktion. Men her er problemet: loven interesserer sig ikke for din
+        frustration. CFCS — Center for Cybersikkerhed — interesserer sig ikke for, hvem der fandt på idéen
+        i Bruxelles. De interesserer sig for, om din virksomhed overholder reglerne — og gør den ikke det,
+        er det <em>dig</em>, der sidder i bestyrelseslokalet, der får regningen.
+      </p>
+
+      <p class="section-lead">
+        Det farligste du kan sige er: <strong style="color:var(--white)">"IT tager sig af det."</strong><br/>
+        NIS2 gør dig personligt ansvarlig uanset, hvad IT-afdelingen siger eller gør.
+        Loven retter sig mod dig som sidder i ledelsen — ikke mod dine systemer.
+      </p>
+
+      <div class="villain-note">
+        <strong>Vi bryder os heller ikke om det.</strong> Men vi hjælper dig håndtere det —
+        hurtigt, konkret og uden at du behøver blive ekspert i EU-ret.
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════
+       REFRAME — Hvad er egentlig NIS2?
+  ════════════════════════════════════════════ -->
+  <section class="reframe-section" id="hvad-er-nis2">
+    <div class="container">
+      <div class="section-tag">2. Forstå billedet</div>
+      <h2>Hvad er NIS2 — <em>egentlig?</em></h2>
+      <div class="divider"></div>
+      <p class="section-lead">
+        Tænk dig, at alle virksomheder i EU spiller et spil med cyberangreb.
+        NIS2 er de nye spilleregler — og den, der ikke følger dem, betaler bøde.
+      </p>
+
+      <div class="law-block">
+        <h3>📜 Den enkle forklaring</h3>
+        <p>
+          NIS2 (Network and Information Security Directive) er et EU-direktiv implementeret i dansk lov
+          som Lov nr. 1120 af 2023 om net- og informationssikkerhed — i kraft fra oktober 2024.
+          Den siger, at virksomheder inden for vigtige samfundssektorer skal have
+          <strong>et grundlæggende cybersikkerhedsniveau på plads.</strong>
+        </p>
+        <p>
+          Det handler ikke om at blive en tech-virksomhed. Det handler om at have dokumenterede procedurer,
+          et system til at håndtere hændelser og — vigtigst af alt — at <strong>ledelsen tager ansvar.</strong>
+        </p>
+        <p>
+          I praksis: hvis din virksomhed rammes af et databrud, og I ikke kan dokumentere, at I tog
+          sikkerheden alvorligt, kan CFCS rette sine sanktioner direkte mod dig personligt.
+        </p>
+      </div>
+
+      <div class="law-block">
+        <h3>⚖️ Det nye, ingen taler om</h3>
+        <p>
+          Tidligere var cybersikkerhed et IT-spørgsmål. NIS2 ændrer det.
+          <strong>Direktionen og bestyrelsen er nu direkte ansvarlige</strong> for,
+          at cybersikkerhedsarbejdet faktisk fungerer — ikke blot at det eksisterer på papir.
+        </p>
+        <p>
+          Det betyder, at du som CEO eller bestyrelsesmedlem skal <em>forstå risiciene</em>,
+          <em>godkende tiltag</em> og <em>kunne dokumentere, hvad I har gjort</em>,
+          hvis CFCS eller en domstol spørger. CFCS kan udstede midlertidigt forbud mod at
+          varetage ledelseshverv — det er ikke kun bøder til selskabet.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════
+       WHO IS AFFECTED
+  ════════════════════════════════════════════ -->
+  <section class="sectors-section">
+    <div class="container-wide">
+      <div class="section-tag">Hvem er berørt?</div>
+      <h2>Gælder det <em>din</em> virksomhed?</h2>
+      <div class="divider"></div>
+      <p class="section-lead">
+        NIS2 gælder alle virksomheder med <strong>mere end 50 ansatte</strong> (eller omsætning over 10 MEUR)
+        inden for disse sektorer. Er din virksomhed på listen?
+      </p>
+      <div class="sectors-grid">
+        <div class="sector-item highlight"><span class="sector-emoji">🏥</span> Sundhedssektoren</div>
+        <div class="sector-item highlight"><span class="sector-emoji">⚡</span> Energi (el, gas, fjernvarme)</div>
+        <div class="sector-item highlight"><span class="sector-emoji">🚛</span> Transport &amp; logistik</div>
+        <div class="sector-item highlight"><span class="sector-emoji">🏦</span> Finans &amp; bank (Finanstilsynet)</div>
+        <div class="sector-item highlight"><span class="sector-emoji">💻</span> Digital infrastruktur &amp; IT</div>
+        <div class="sector-item highlight"><span class="sector-emoji">🏭</span> Fremstillingsindustri</div>
+        <div class="sector-item"><span class="sector-emoji">💧</span> Vand &amp; spildevand</div>
+        <div class="sector-item"><span class="sector-emoji">🏛️</span> Offentlig forvaltning</div>
+        <div class="sector-item"><span class="sector-emoji">📮</span> Post &amp; kurertjenester</div>
+        <div class="sector-item"><span class="sector-emoji">🍎</span> Fødevarer</div>
+        <div class="sector-item"><span class="sector-emoji">🧪</span> Kemikalier</div>
+        <div class="sector-item"><span class="sector-emoji">🔬</span> Forskning</div>
+      </div>
+      <p style="margin-top: 24px; font-size: 15px; color: var(--gray);">
+        ✳️ <strong style="color: var(--lightgray);">Markerede sektorer</strong> har højest prioritet under NIS2 og tilses først af CFCS og sektortilsynene (Finanstilsynet, Energistyrelsen, Erhvervsstyrelsen).
+      </p>
+    </div>
+  </section>
+
+  <!-- LIABILITY -->
+  <section class="liability-section">
+    <div class="container">
+      <div class="section-tag">Personligt ansvar</div>
+      <h2>Det <em>personlige</em> ansvar<br/>er det nye.</h2>
+      <div class="divider"></div>
+
+      <div class="liability-box">
+        <h3>⚠️ Det handler om dig — ikke kun om selskabet.</h3>
+        <p>
+          Under NIS2 kan CFCS kræve, at <strong>et specifikt bestyrelsesmedlem
+          eller direktør midlertidigt forbydes</strong> at varetage sin rolle, hvis virksomheden
+          ikke overholder loven. Det er ikke kun bøder til selskabet. Det er sanktioner rettet mod dig personligt.
+        </p>
+        <div>
+          <span class="fine-tag">Op til 10 MEUR for væsentlige enheder</span>
+          <span class="fine-tag">Op til 7 MEUR for vigtige enheder</span>
+          <span class="fine-tag">Personligt ansvar for ledelsen</span>
+          <span class="fine-tag">Midlertidigt ledelseforbud</span>
+        </div>
+      </div>
+
+      <p class="section-lead" style="margin-top: 32px;">
+        Det bedste forsvar mod det? At have gjort arbejdet — og kunne dokumentere det.
+        Ikke fordi du er nødt til det. Men fordi det beskytter dig, dine ejere og dine medarbejdere.
+      </p>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════
+       MICROSOFT ANGLE — Zero Trust = NIS2
+  ════════════════════════════════════════════ -->
+  <section class="reframe-section">
+    <div class="container">
+      <div class="section-tag">Dit forspring</div>
+      <h2>Bruger I allerede Microsoft 365?<br/><em>Så har I et forspring.</em></h2>
+      <div class="divider"></div>
+      <p class="section-lead">
+        De fleste danske SMV'er bruger allerede Microsoft 365 til e-mail, samarbejde og fildeling.
+        Microsoft 365 — korrekt konfigureret — dækker en stor del af NIS2's krav direkte via Microsoft Zero Trust-rammen.
+        Problemet er, at standardindstillingerne sjældent er nok. Det er præcis det hul en certificeret Microsoft-partner lukker.
+      </p>
+
+      <div class="law-block">
+        <h3>🔐 NIS2's 10 krav mappet til Microsoft Zero Trust</h3>
+        <p>Microsoft Zero Trust-arkitekturen er bygget til at imødekomme præcis de krav, NIS2 stiller. Her er sammenhængen:</p>
+        <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(280px,1fr)); gap:12px; margin-top:20px;">
+          <div style="background:var(--card); border:1px solid var(--border); border-radius:4px; padding:16px;">
+            <div style="font-size:12px; font-weight:700; letter-spacing:1px; text-transform:uppercase; color:var(--yellow); margin-bottom:8px;">Krav (a) Risikoanalyse &amp; politik</div>
+            <div style="font-size:14px; color:var(--lightgray);">Microsoft Defender Secure Score + Compliance Manager — måler og dokumenterer jeres efterlevelsesniveau løbende</div>
+          </div>
+          <div style="background:var(--card); border:1px solid var(--border); border-radius:4px; padding:16px;">
+            <div style="font-size:12px; font-weight:700; letter-spacing:1px; text-transform:uppercase; color:var(--yellow); margin-bottom:8px;">Krav (b) Hændelseshåndtering</div>
+            <div style="font-size:14px; color:var(--lightgray);">Microsoft Sentinel (SIEM) + Microsoft Defender XDR — automatisk hændelsesdetektering, undersøgelse og respons</div>
+          </div>
+          <div style="background:var(--card); border:1px solid var(--border); border-radius:4px; padding:16px;">
+            <div style="font-size:12px; font-weight:700; letter-spacing:1px; text-transform:uppercase; color:var(--yellow); margin-bottom:8px;">Krav (c) Backup &amp; driftskontinuitet</div>
+            <div style="font-size:14px; color:var(--lightgray);">Microsoft 365 Backup + Azure Backup med immutable vault — geo-redundant, ransomware-beskyttet</div>
+          </div>
+          <div style="background:var(--card); border:1px solid var(--border); border-radius:4px; padding:16px;">
+            <div style="font-size:12px; font-weight:700; letter-spacing:1px; text-transform:uppercase; color:var(--yellow); margin-bottom:8px;">Krav (j) MFA &amp; Zero Trust</div>
+            <div style="font-size:14px; color:var(--lightgray);">Microsoft Entra ID Conditional Access + phishing-resistent MFA (FIDO2 / Windows Hello for Business)</div>
+          </div>
+          <div style="background:var(--card); border:1px solid var(--border); border-radius:4px; padding:16px;">
+            <div style="font-size:12px; font-weight:700; letter-spacing:1px; text-transform:uppercase; color:var(--yellow); margin-bottom:8px;">Krav (h) Kryptering</div>
+            <div style="font-size:14px; color:var(--lightgray);">Microsoft Purview Sensitivity Labels + Azure Key Vault — kryptering og klassificering af data i hvile og transit</div>
+          </div>
+          <div style="background:var(--card); border:1px solid var(--border); border-radius:4px; padding:16px;">
+            <div style="font-size:12px; font-weight:700; letter-spacing:1px; text-transform:uppercase; color:var(--yellow); margin-bottom:8px;">Krav (g) Uddannelse &amp; hygiejne</div>
+            <div style="font-size:14px; color:var(--lightgray);">Microsoft Defender for Office 365 Attack Simulation Training — realistiske phishing-tests og målbar uddannelse</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="villain-note">
+        <strong>Microsoft 365 Business Premium + korrekt konfiguration</strong> dækker størstedelen af NIS2's tekniske krav.
+        Det, I sandsynligvis mangler, er ikke licensen — det er konfigurationen, dokumentationen og et uafhængigt bevis.
+        Det er præcis, hvad en gap-analyse med en certificeret Microsoft-partner leverer.
+      </div>
+    </div>
+  </section>
+
+  <!-- TEASER HOOK -->
+  <div class="teaser-hook">
+    <div class="teaser-hook-text">
+      <strong>Ved du, hvor din virksomhed faktisk står?</strong><br/>
+      Tre gratis værktøjer — tjekliste, beregner og bestyrelsespakke — tager dig fra usikkerhed til klarhed på under 10 minutter.
+    </div>
+    <a class="teaser-hook-link" href="#ressourcer">
+      Se de gratis værktøjer ↓
+    </a>
+  </div>
+
+  <!-- ═══════════════════════════════════════════
+       ROI — BANK THE MONEY
+  ════════════════════════════════════════════ -->
+  <section class="roi-section">
+    <div class="container">
+      <div class="section-tag">Regnestykket</div>
+      <h2 class="roi-headline">I har bygget denne virksomhed.<br/>Lad ikke en myndighed tage del af den.</h2>
+      <div class="divider"></div>
+      <p class="section-lead">
+        NIS2-efterlevelse handler ikke om en udgift. Det handler om at beskytte det, I allerede har bygget op.
+        Se på tallene — og beslut jer derefter.
+      </p>
+
+      <div class="roi-table">
+        <div class="roi-col risk">
+          <div class="roi-col-label">🔴 Uden efterlevelse — risikoen</div>
+          <div class="roi-row">
+            <span class="roi-row-label">Maks. bøde (væsentlige enheder)</span>
+            <span class="roi-row-value">10 000 000 €</span>
+          </div>
+          <div class="roi-row">
+            <span class="roi-row-label">Maks. bøde (vigtige enheder)</span>
+            <span class="roi-row-value">7 000 000 €</span>
+          </div>
+          <div class="roi-row">
+            <span class="roi-row-label">Gennemsnitlig omkostning ved et databrud (dansk SMV)</span>
+            <span class="roi-row-value">~2 000 000 kr</span>
+          </div>
+          <div class="roi-row">
+            <span class="roi-row-label">Driftstop ved ransomware-angreb</span>
+            <span class="roi-row-value">18–21 dage</span>
+          </div>
+          <div class="roi-row">
+            <span class="roi-row-label">Personligt ansvar — bestyrelsesmedlem</span>
+            <span class="roi-row-value">Ubegrænset</span>
+          </div>
+          <div class="roi-row">
+            <span class="roi-row-label">Midlertidigt ledelseforbud (CFCS)</span>
+            <span class="roi-row-value">Muligt</span>
+          </div>
+        </div>
+
+        <div class="roi-col safe">
+          <div class="roi-col-label">🟡 Med korrekt konfiguration + certificeret partner</div>
+          <div class="roi-row">
+            <span class="roi-row-label">NIS2-gap-analyse &amp; risikovurdering</span>
+            <span class="roi-row-value">Inkluderet</span>
+          </div>
+          <div class="roi-row">
+            <span class="roi-row-label">Dokumentation &amp; politikker</span>
+            <span class="roi-row-value">Inkluderet</span>
+          </div>
+          <div class="roi-row">
+            <span class="roi-row-label">Hændelseshåndteringsplan (72h)</span>
+            <span class="roi-row-value">Inkluderet</span>
+          </div>
+          <div class="roi-row">
+            <span class="roi-row-label">Løbende support &amp; tilsynsforberedelse</span>
+            <span class="roi-row-value">Inkluderet</span>
+          </div>
+          <div class="roi-row">
+            <span class="roi-row-label">Bestyrelsesdokumentation — I gjorde arbejdet</span>
+            <span class="roi-row-value">Inkluderet</span>
+          </div>
+          <div class="roi-row">
+            <span class="roi-row-label">Ro i sindet for dig og bestyrelsen</span>
+            <span class="roi-row-value">Uvurderligt</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="roi-verdict">
+        <p>
+          En investering i NIS2-efterlevelse koster en <em>brøkdel</em> af, hvad et enkelt brud eller
+          en enkelt bøde koster. Det er ikke en udgift — det er <em>penge i banken.</em>
+        </p>
+      </div>
+
+      <div class="gdpr-block">
+        <div class="gdpr-label">Bevis — dette er ikke en tom advarsel</div>
+        <blockquote>
+          "Det samme sagde man om GDPR i 2018 — <em>ingen vil egentlig blive bødelagt.</em>
+          I 2025 udstedte EU's tilsynsmyndigheder <em>2,1 milliarder euro</em> i GDPR-bøder.
+          På ét enkelt år."
+        </blockquote>
+        <p style="color: var(--lightgray); font-size: 16px; margin-bottom: 24px; line-height: 1.7;">
+          NIS2 er skrevet af de samme myndigheder, med den samme model, den samme håndhævelseslogik —
+          og med endnu skarpere personligt ansvar for bestyrelsen. CFCS opbygger allerede håndhævelseskapacitet.
+          Loven er i kraft nu. Uret tikker.
+        </p>
+        <div class="gdpr-source">
+          <div class="gdpr-stat">
+            <strong>€2,1 mia.</strong>
+            <span>GDPR-bøder udstedt i EU i 2025</span>
+          </div>
+          <div class="gdpr-stat">
+            <strong>+40%</strong>
+            <span>Stigning fra 2024 — tendensen accelererer</span>
+          </div>
+          <div class="gdpr-stat">
+            <strong>2023</strong>
+            <span>NIS2 implementeret i Danmark via Lov nr. 1120</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- THREE HOOKS -->
+  <section style="background: var(--dark); padding: 100px 40px;">
+    <div class="container-wide">
+      <div class="section-tag">Hvilken situation er du i?</div>
+      <h2>NIS2 er relevant — uanset hvor du står i dag.</h2>
+      <div class="divider"></div>
+      <p class="section-lead">Tre forskellige situationer. Samme konklusion.</p>
+
+      <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap:24px; margin-top:48px;">
+
+        <div style="background:var(--card); border:1px solid var(--border); border-left: 4px solid #ff4444; border-radius:4px; padding:36px; display:flex; flex-direction:column; gap:16px;">
+          <div style="font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:#ff8888;">Situation 1</div>
+          <h3 style="font-family:'Poppins',sans-serif; font-size:20px; font-weight:700; line-height:1.3;">I er ikke begyndt på NIS2-arbejdet endnu</h3>
+          <p style="font-size:15px; color:var(--lightgray); line-height:1.7;">
+            Du er personligt ansvarlig som bestyrelsesmedlem. Hver dag uden handling er en dag, du bærer en risiko, du ikke behøver at bære. CFCS behøver ikke vente på et brud for at handle — manglende overholdelse er nok.
+          </p>
+          <p style="font-size:15px; color:var(--lightgray); line-height:1.7;">
+            Men der er en fordel: dine konkurrenter er lige så langsomme. Den der handler nu, vil være compliant, mens andre stadig diskuterer det — og opnår konkurrencefordelen hurtigere.
+          </p>
+          <div style="margin-top:auto; padding-top:20px; border-top:1px solid var(--border);">
+            <div style="font-size:13px; color:#ff8888; font-weight:600;">Risiko: Personligt ansvar + bøder op til 10.000.000 €</div>
+            <div style="font-size:13px; color:#4ade80; font-weight:600; margin-top:6px;">Mulighed: Først compliant = først i køen hos store kunder</div>
+          </div>
+        </div>
+
+        <div style="background:var(--card); border:1px solid var(--border); border-left: 4px solid var(--yellow); border-radius:4px; padding:36px; display:flex; flex-direction:column; gap:16px;">
+          <div style="font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--yellow);">Situation 2</div>
+          <h3 style="font-family:'Poppins',sans-serif; font-size:20px; font-weight:700; line-height:1.3;">I er compliant — men er jeres leverandører det?</h3>
+          <p style="font-size:15px; color:var(--lightgray); line-height:1.7;">
+            NIS2 kræver, at du aktivt sikrer sikkerheden i hele din forsyningskæde. En sårbar underleverandør er din risiko — ikke kun deres. Hvis de rammes af et brud, der påvirker din drift, er det dig, der skal svare over for tilsynsmyndigheden.
+          </p>
+          <p style="font-size:15px; color:var(--lightgray); line-height:1.7;">
+            Og ligesom med dine egne konkurrenter: leverandører, der håndterer dette hurtigt, styrker deres position. Hjælp din kæde med at blive compliant — det beskytter dig og gør dig til en stærkere partner.
+          </p>
+          <div style="margin-top:auto; padding-top:20px; border-top:1px solid var(--border);">
+            <div style="font-size:13px; color:var(--yellow); font-weight:600;">Risiko: Kædeansvar — du ejer hele flowet</div>
+            <div style="font-size:13px; color:#4ade80; font-weight:600; margin-top:6px;">Mulighed: En compliant kæde er et stærkere tilbud</div>
+          </div>
+        </div>
+
+        <div style="background:var(--card); border:1px solid var(--border); border-left: 4px solid #4ade80; border-radius:4px; padding:36px; display:flex; flex-direction:column; gap:16px;">
+          <div style="font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:#4ade80;">Situation 3</div>
+          <h3 style="font-family:'Poppins',sans-serif; font-size:20px; font-weight:700; line-height:1.3;">I er compliant — og det er en konkurrencefordel</h3>
+          <p style="font-size:15px; color:var(--lightgray); line-height:1.7;">
+            Store kunder og den offentlige sektor vælger allerede leverandører, der kan dokumentere deres cybersikkerhed. Dine konkurrenter er sandsynligvis ikke klar. I har allerede gjort arbejdet — brug det aktivt i jeres tilbud, rammeaftaler og partnerdialog. Compliance er ikke kun beskyttelse. Det er et salgsargument.
+          </p>
+          <div style="margin-top:auto; padding-top:20px; border-top:1px solid var(--border);">
+            <div style="font-size:13px; color:#4ade80; font-weight:600;">Mulighed: Vind kontrakter, som konkurrenterne ikke kan tage</div>
+          </div>
+        </div>
+
+      </div>
+
+      <div style="text-align:center; margin-top:56px;">
+        <p style="font-size:17px; color:var(--lightgray); margin-bottom:28px;">
+          Uanset hvilken situation du er i — vi kan hjælpe dig med at tage næste skridt.
+        </p>
+        <a href="#kontakt" style="display:inline-block; background:var(--yellow); color:var(--black); font-family:'Poppins',sans-serif; font-weight:700; font-size:16px; padding:16px 40px; border-radius:4px; text-decoration:none;">
+          Book et opkald →
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- LEAD MAGNETS -->
+  <section id="ressourcer" style="background: var(--black); padding: 100px 40px;">
+    <div class="container-wide">
+      <div class="section-tag">Gratis ressourcer</div>
+      <h2>Tag det første skridt — gratis</h2>
+      <div class="divider"></div>
+      <p class="section-lead">Fire værktøjer, der hjælper dig med at forstå, hvor I står, og hvad der kræves — inden vi overhovedet taler sammen.</p>
+      <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap:24px; margin-top:16px;">
+
+        <div style="background:var(--card); border:2px solid var(--yellow); border-radius:4px; padding:32px; display:flex; flex-direction:column; gap:16px; position:relative;">
+          <div style="position:absolute;top:-12px;left:24px;background:var(--yellow);color:var(--black);font-size:11px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;padding:3px 12px;border-radius:3px;">Nyt</div>
+          <div style="font-size:36px;">📊</div>
+          <div style="font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--yellow);">Gap-analyse</div>
+          <h3 style="font-family:'Poppins',sans-serif; font-size:18px; font-weight:700; line-height:1.3;">25-spørgsmåls NIS2 gap-analyse</h3>
+          <p style="font-size:14px; color:var(--gray); line-height:1.6;">5 domæner · 8 minutter · Tilpasset rapport med jeres specifikke gaps og konkrete handlinger for hvert gap.</p>
+          <a href="/nis2-gap-analys.html" target="_blank" style="margin-top:auto; display:inline-block; background:var(--yellow); color:var(--black); font-family:'Poppins',sans-serif; font-weight:700; font-size:14px; padding:12px 24px; border-radius:4px; text-decoration:none; text-align:center;">Start gap-analysen →</a>
+        </div>
+
+        <div style="background:var(--card); border:1px solid var(--border); border-radius:4px; padding:32px; display:flex; flex-direction:column; gap:16px;">
+          <div style="font-size:36px;">✅</div>
+          <div style="font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--yellow);">Tjekliste</div>
+          <h3 style="font-family:'Poppins',sans-serif; font-size:18px; font-weight:700; line-height:1.3;">10-punkts selvevaluering</h3>
+          <p style="font-size:14px; color:var(--gray); line-height:1.6;">10 ja/nej-spørgsmål. 5 minutter. Se din risikoprofil med det samme — og hvilket område du bør adressere først.</p>
+          <a href="/nis2-checklista.html" target="_blank" style="margin-top:auto; display:inline-block; background:var(--yellow); color:var(--black); font-family:'Poppins',sans-serif; font-weight:700; font-size:14px; padding:12px 24px; border-radius:4px; text-decoration:none; text-align:center;">Åbn tjeklisten →</a>
+        </div>
+
+        <div style="background:var(--card); border:1px solid var(--border); border-radius:4px; padding:32px; display:flex; flex-direction:column; gap:16px;">
+          <div style="font-size:36px;">🧮</div>
+          <div style="font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--yellow);">Beregner</div>
+          <h3 style="font-family:'Poppins',sans-serif; font-size:18px; font-weight:700; line-height:1.3;">Hvad vil et brud koste din virksomhed?</h3>
+          <p style="font-size:14px; color:var(--gray); line-height:1.6;">Angiv omsætning, antal ansatte og sektor — se din maksimale bøderisiko og estimerede brudomkostning.</p>
+          <a href="/nis2-kalkylator.html" target="_blank" style="margin-top:auto; display:inline-block; background:var(--yellow); color:var(--black); font-family:'Poppins',sans-serif; font-weight:700; font-size:14px; padding:12px 24px; border-radius:4px; text-decoration:none; text-align:center;">Åbn beregneren →</a>
+        </div>
+
+        <div style="background:var(--card); border:1px solid var(--border); border-radius:4px; padding:32px; display:flex; flex-direction:column; gap:16px;">
+          <div style="font-size:36px;">📋</div>
+          <div style="font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--yellow);">Bestyrelsespakke</div>
+          <h3 style="font-family:'Poppins',sans-serif; font-size:18px; font-weight:700; line-height:1.3;">Hvad du skal vise revisoren</h3>
+          <p style="font-size:14px; color:var(--gray); line-height:1.6;">Komplet dokumentationsguide til bestyrelsesmedlemmer og direktører — krav, tjeklister, rapporteringstider og underskriftblokke.</p>
+          <a href="/nis2-styrelsepaket.html" target="_blank" style="margin-top:auto; display:inline-block; background:var(--yellow); color:var(--black); font-family:'Poppins',sans-serif; font-weight:700; font-size:14px; padding:12px 24px; border-radius:4px; text-decoration:none; text-align:center;">Åbn bestyrelsespakken →</a>
+        </div>
+
+      </div>
+
+      <div style="margin-top:2.5rem; text-align:center; padding:2rem; background:rgba(240,165,0,0.08); border-radius:8px; border:1px solid rgba(240,165,0,0.2);">
+        <div style="font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--yellow); margin-bottom:0.5rem;">Dybere indsigt</div>
+        <h3 style="font-family:'Poppins',sans-serif; font-size:20px; font-weight:700; margin:0 0 0.75rem;">2 NIS2-guider — skrevet til beslutningstagere</h3>
+        <p style="font-size:14px; color:var(--gray); margin:0 0 1.25rem;">Fra bøder og tilsyn til tekniske krav og bestyrelsens ansvar — alt hvad du behøver at vide på ét sted.</p>
+        <a href="/da/artikler.html" style="display:inline-block; background:var(--yellow); color:var(--black); font-family:'Poppins',sans-serif; font-weight:700; font-size:14px; padding:12px 28px; border-radius:4px; text-decoration:none;">Læs alle NIS2-guider →</a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- REQUIREMENTS -->
+  <section class="req-section">
+    <div class="container">
+      <div class="section-tag">Hvad kræves?</div>
+      <h2>Hvad skal I <em>faktisk gøre?</em></h2>
+      <div class="divider"></div>
+      <p class="section-lead">
+        NIS2 kræver ikke perfektion. Det kræver, at I <em>tager ansvar</em> og kan <em>vise, hvad I har gjort.</em>
+        Her er de vigtigste krav:
+      </p>
+      <div class="req-list">
+        <div class="req-item">
+          <div class="req-num">1</div>
+          <div>
+            <h4>Risikostyring</h4>
+            <p>I skal kende de digitale risici i jeres virksomhed — og have en plan for dem. Tænk: "Hvad sker der, hvis vores e-mail holder op med at fungere i en uge?"</p>
+          </div>
+        </div>
+        <div class="req-item">
+          <div class="req-num">2</div>
+          <div>
+            <h4>Hændelseshåndtering</h4>
+            <p>Hvis noget går galt — et databrud, en virus — skal I have en proces. Og I skal rapportere det til myndigheden inden for 72 timer.</p>
+          </div>
+        </div>
+        <div class="req-item">
+          <div class="req-num">3</div>
+          <div>
+            <h4>Forsyningskædesikkerhed</h4>
+            <p>Jeres leverandører og samarbejdspartnere er en del af jeres sikkerhed. I er ansvarlige for, at de også opfylder rimelige sikkerhedskrav.</p>
+          </div>
+        </div>
+        <div class="req-item">
+          <div class="req-num">4</div>
+          <div>
+            <h4>Backup og gendannelse</h4>
+            <p>I skal have sikkerhedskopier og en plan for, hvordan I genopretter jer, hvis systemer crasher, eller hvis I rammes af ransomware.</p>
+          </div>
+        </div>
+        <div class="req-item">
+          <div class="req-num">5</div>
+          <div>
+            <h4>Uddannelse og procedurer</h4>
+            <p>Medarbejderne har brug for grundlæggende sikkerhedsuddannelse. Og I har brug for skriftlige procedurer — ikke bare "vi plejer at gøre det sådan."</p>
+          </div>
+        </div>
+        <div class="req-item">
+          <div class="req-num">6</div>
+          <div>
+            <h4>Ledelsens godkendelse</h4>
+            <p>Bestyrelsen og direktøren skal aktivt godkende sikkerhedsarbejdet — og dokumentere det. Det er ikke nok at delegere det til IT-afdelingen og glemme det.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SCENARIO STORY -->
+  <section style="background: var(--black); padding: 100px 40px;">
+    <div class="container">
+      <div class="section-tag">Virkeligheden — et scenarie</div>
+      <h2>En fredag eftermiddag.<br/><em>Telefonen ringer.</em></h2>
+      <div class="divider"></div>
+      <p class="section-lead">
+        Dette er et sammensat scenarie baseret på, hvordan NIS2-tilsyn kan se ud for en mellemstor produktionsvirksomhed.
+      </p>
+
+      <div class="story-case-block">
+        <div class="story-case-label">Scenarie — produktionsvirksomhed · 180 ansatte</div>
+        <p>
+          Transportsektoren. 180 ansatte. Klassificeret som vigtig enhed under NIS2. På bestyrelsesmødet i september 2025
+          nævnes NIS2 kort. IT-chefen siger, at han "kigger på det". Der træffes ingen beslutning. Der udarbejdes ingen dokumentation.
+          Spørgsmålet lægges til side.
+        </p>
+        <p>
+          I februar 2026 rammer et ransomware-angreb. Fire dages nedetid. En kunde, der er berørt af forstyrrelserne,
+          anmelder hændelsen til CFCS. Tilsynsmyndigheden indleder en undersøgelse. De anmoder om dokumentation
+          inden for 21 dage.
+        </p>
+        <p>
+          IT-chefen har de tekniske logfiler. Men der er ingen bestyrelsesafgørelse, der godkender sikkerhedsforanstaltningerne.
+          Ingen dokumenteret risikovurdering fremlagt for ledelsen. Direktøren siger: "IT håndterer de spørgsmål."
+          Ingen kan vise, at bestyrelsen opfyldte sit ansvar i henhold til Artikel 20.
+        </p>
+        <p>
+          Resultatet: sanktionsbøde. En formel advarsel til direktøren. Bestyrelsesformanden modtager en meddelelse
+          om, at et midlertidigt ledelseforbud er overvejet. Samlet omkostning inkl. bøder,
+          konsulenter, juridisk håndtering og tabte kunder: anslået til 12–18 mio. kr.
+        </p>
+        <p class="story-conclusion">
+          Det, der manglede, var ikke teknologien. Det var papirerne — og bestyrelsens aktive deltagelse.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW WE HELP -->
+  <section class="story-section">
+    <div class="container">
+      <div class="section-tag">3. Hvordan foregår det?</div>
+      <h2>Tre trin.<br/>Ingen bøvl.</h2>
+      <div class="divider"></div>
+    </div>
+    <div class="container-wide">
+      <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap:24px; margin-top:48px;">
+
+        <div style="background:var(--card); border:1px solid var(--border); border-radius:4px; padding:36px; display:flex; flex-direction:column; gap:12px;">
+          <div style="font-size:28px; font-weight:900; color:var(--yellow); font-family:'Poppins',sans-serif;">01</div>
+          <h3 style="font-family:'Poppins',sans-serif; font-size:18px; font-weight:700;">Vi taler</h3>
+          <p style="font-size:15px; color:var(--lightgray); line-height:1.7;">
+            20 minutter. Du fortæller om din virksomhed — vi giver dig et ærligt billede af, hvor I står i forhold til NIS2.
+          </p>
+        </div>
+
+        <div style="background:var(--card); border:1px solid var(--border); border-radius:4px; padding:36px; display:flex; flex-direction:column; gap:12px;">
+          <div style="font-size:28px; font-weight:900; color:var(--yellow); font-family:'Poppins',sans-serif;">02</div>
+          <h3 style="font-family:'Poppins',sans-serif; font-size:18px; font-weight:700;">Vi identificerer hullerne</h3>
+          <p style="font-size:15px; color:var(--lightgray); line-height:1.7;">
+            Hvilke krav gælder for jer? Hvad mangler i dag? Du får et klart billede uden teknisk jargon.
+          </p>
+        </div>
+
+        <div style="background:var(--card); border:1px solid var(--border); border-radius:4px; padding:36px; display:flex; flex-direction:column; gap:12px;">
+          <div style="font-size:28px; font-weight:900; color:var(--yellow); font-family:'Poppins',sans-serif;">03</div>
+          <h3 style="font-family:'Poppins',sans-serif; font-size:18px; font-weight:700;">Du får en vej fremad</h3>
+          <p style="font-size:15px; color:var(--lightgray); line-height:1.7;">
+            Konkret. Prioriteret. Uden at du skal blive ekspert i cybersikkerhed for at forstå det.
+          </p>
+        </div>
+
+      </div>
+      <div style="text-align:center; margin-top:48px;">
+        <a href="#book" class="btn-primary">Book et opkald →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="about-section">
+    <div class="container">
+      <div class="section-tag">Om os</div>
+      <h2>Rådgivere, der forstår —<br/><em>virksomheden, ikke kun loven</em></h2>
+      <div class="divider"></div>
+
+      <div style="display:flex; align-items:flex-start; gap:32px; margin-bottom:48px; flex-wrap:wrap;">
+        <div style="flex:1; min-width:280px;">
+          <p style="font-size:19px; font-weight:700; color:var(--white); margin-bottom:4px;">Jan Malmström</p>
+          <p style="font-size:14px; color:var(--yellow); margin-bottom:16px;">
+            Grundlægger, M&amp;J Trusted Marketing KB &nbsp;·&nbsp;
+            <a href="https://www.linkedin.com/in/businessmarketingsmall/" target="_blank" rel="noopener" style="color:var(--yellow); text-decoration:underline;">LinkedIn →</a>
+          </p>
+          <p style="font-size:17px; color:var(--lightgray); line-height:1.7;">
+            Jan hjælper mellemstore virksomheder med at navigere NIS2 uden at skulle bygge et internt compliance-team.
+            Fokus: klart sprog, konkrete handlingsplaner og dokumentation, der faktisk holder ved et tilsyn —
+            med fuld hensyntagen til NIS2-direktivet som implementeret i dansk ret, CFCS' vejledning og sektorspecifikke tilsynskrav.
+          </p>
+        </div>
+      </div>
+
+      <div class="about-grid">
+        <div class="about-cred-list">
+          <div class="about-cred-item">Vi arbejder udelukkende med NIS2 og cybersikkerhedsstyring — det er vores eneste fokus.</div>
+          <div class="about-cred-item">Vi kommunikerer på klart sprog — med jer, med myndighederne og med jeres leverandører.</div>
+          <div class="about-cred-item">Vi hjælper jer med at udarbejde dokumentation, I faktisk kan bruge ved et tilsynseftersyn.</div>
+        </div>
+        <div class="about-stat-block">
+          <div class="about-stat-num">4.000+</div>
+          <div class="about-stat-desc">virksomheder berørt af NIS2.<br/>Du er en af dem.</div>
+        </div>
+      </div>
+
+      <div style="text-align: center; margin-top: 56px;">
+        <a href="#book" class="btn-primary">Book et gratis opkald →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="faq-section" id="faq">
+    <div class="container">
+      <div class="section-tag">4. Hyppige spørgsmål</div>
+      <h2>Spørgsmål vi hører<br/><em>hele tiden.</em></h2>
+      <div class="divider"></div>
+
+      <div class="faq-list">
+        <div class="faq-item">
+          <div class="faq-q">
+            Vi er ikke en tech-virksomhed — gælder NIS2 os?
+            <span class="faq-chevron">▾</span>
+          </div>
+          <div class="faq-a">
+            <div class="faq-a-inner">
+              Vi forstår den tanke — og den er almindelig. NIS2 handler ikke om teknologi, men om sektorer. Hvis I opererer inden for energi, transport, sundhed, finans, produktion eller digital infrastruktur — og har mere end 50 ansatte — gælder loven for jer, uanset om I har en IT-afdeling eller ej. Spørgsmålet er egentlig: <strong>opererer I inden for en sektor, som samfundet er afhængigt af?</strong> Så gælder den.
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-q">
+            Vi har allerede antivirussoftware. Er det ikke nok?
+            <span class="faq-chevron">▾</span>
+          </div>
+          <div class="faq-a">
+            <div class="faq-a-inner">
+              Antivirussoftware er som en lås på hoveddøren. Det hjælper — men NIS2 spørger, om I har alarm, kameraer, procedurer for, hvad der sker, hvis nogen alligevel bryder ind, og om bestyrelsen ved alt dette. <strong>Teknologi er en del af svaret. Dokumentation og ledelsesansvar er resten.</strong> De fleste virksomheder har teknologien, men mangler papirerne og processerne.
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-q">
+            Hvor lang tid tager det at blive compliant?
+            <span class="faq-chevron">▾</span>
+          </div>
+          <div class="faq-a">
+            <div class="faq-a-inner">
+              Det afhænger af, hvor I er i dag. Nogle ting kan gå hurtigt — andre tager tid. Det vi ved, er, at hver uge I venter, er en uge uden beskyttelse. <strong>Det bedste er at starte med at forstå, hvad der faktisk kræves af jer</strong> — det tager et opkald.
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-q">
+            Hvad koster det?
+            <span class="faq-chevron">▾</span>
+          </div>
+          <div class="faq-a">
+            <div class="faq-a-inner">
+              Det afhænger af jeres størrelse, jeres nuværende modenhedsniveau og, hvor meget der skal gøres. Vi giver ikke standardpriser — vi giver den rigtige pris for jeres specifikke situation. Det vi kan sige, er, at <strong>et opkald ikke koster noget</strong>, og at vi efter en time kan give jer et klart billede af, hvad der er nødvendigt, og hvad det koster. Vil du have, at vi tager det opkald?
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-q">
+            Er dette virkelig vigtigt nu, eller kan vi vente?
+            <span class="faq-chevron">▾</span>
+          </div>
+          <div class="faq-a">
+            <div class="faq-a-inner">
+              Vi forstår, at man tænker sådan. Sandheden er, at Danmark implementerede NIS2 via Lov nr. 1120 af 2023 — loven gælder allerede. CFCS opbygger sin håndhævelseskapacitet og begynder at gennemgå virksomheder nu i 2025–2026. Det er som brandskyddsregler: ingen kontrollerer dig hver dag — men hvis noget sker, og du ikke kan vise, at du tog ansvar, er det for sent. <strong>Det bedste tidspunkt at starte var i går. Det næstbedste er i dag.</strong>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <div id="kontakt"></div>
+  <section class="cta-section" id="book">
+    <div class="container">
+      <h2>Book en gratis gap-analyse</h2>
+      <p class="cta-sub">
+        20 minutter. Vi kigger på, hvad I allerede har, og hvad der faktisk mangler — en gap-analyse med en certificeret partner.
+        Intet salgspres. Bare en ærlig samtale.
+      </p>
+      <p class="cta-urgency">⏱ Vi tager maksimalt 5 nye opkald om ugen — book din tid nu</p>
+      <form class="cta-capture-form" id="ctaCaptureForm" onsubmit="submitCapture(event)">
+        <input type="text"  id="ctaName"    placeholder="Dit navn"             autocomplete="name" />
+        <input type="email" id="ctaEmail"   placeholder="E-mailadresse *"      autocomplete="email" required />
+        <input type="tel"   id="ctaPhone"   placeholder="Telefonnummer"        autocomplete="tel" />
+        <input type="text"  id="ctaCompany" placeholder="Virksomhedens navn *" required />
+        <button type="submit" id="ctaSubmit">Book gratis gap-analyse →</button>
+      </form>
+      <div class="cta-thanks" id="ctaThanks">✅ Tak! Vi vender tilbage inden for 24 timer.</div>
+      <p style="font-size:13px; color:#888; margin-top:16px; text-align:center;">
+        🔒 Gratis · Ingen binding · Intet salgspres · Jan svarer personligt inden for 24h
+      </p>
+      <p class="cta-flattery">
+        Det faktum, at du er her — og ikke ignorerer spørgsmålet — sætter dig allerede foran 70% af din branche.
+      </p>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div style="display:flex; justify-content:center; gap:16px; flex-wrap:wrap; margin-bottom:28px;">
+      <div style="display:flex; align-items:center; gap:8px; background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.12); border-radius:6px; padding:10px 18px;">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#4ade80" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        <span style="font-size:13px; font-weight:700; color:#f0f0f0;">GDPR-kompatibel</span>
+      </div>
+      <div style="display:flex; align-items:center; gap:8px; background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.12); border-radius:6px; padding:10px 18px;">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#f5c518" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+        <span style="font-size:13px; font-weight:700; color:#f0f0f0;">SSL-krypteret</span>
+      </div>
+      <div style="display:flex; align-items:center; gap:8px; background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.12); border-radius:6px; padding:10px 18px;">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#60a5fa" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        <span style="font-size:13px; font-weight:700; color:#f0f0f0;">Svar inden for 24h</span>
+      </div>
+      <div style="display:flex; align-items:center; gap:8px; background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.12); border-radius:6px; padding:10px 18px;">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#4ade80" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        <span style="font-size:13px; font-weight:700; color:#f0f0f0;">Ingen binding</span>
+      </div>
+    </div>
+
+    <p>© 2026 M &amp; J Trusted Marketing KB — NIS2-rådgivning for virksomheder</p>
+    <p style="margin-top:6px; font-size:13px; color:#666;">Org.nr 969775-6725 &nbsp;·&nbsp; Växjö, Sverige &nbsp;·&nbsp; Jan Malmström</p>
+    <p style="margin-top: 8px;">
+      <a href="mailto:jan@nis2klar.se">jan@nis2klar.se</a>
+      &nbsp;·&nbsp;
+      <a href="tel:+46470597003">+46 470 59 70 03</a>
+      &nbsp;·&nbsp;
+      <a href="https://nis2klar.se">nis2klar.se</a>
+    </p>
+    <p style="margin-top: 12px; font-size: 13px;">
+      <a href="/integritetspolicy.html">Privatlivspolitik</a>
+      &nbsp;·&nbsp;
+      <a href="/cookies.html">Cookies</a>
+      &nbsp;·&nbsp;
+      <a href="/anvandarvillkor.html">Brugsbetingelser</a>
+    </p>
+    <p style="margin-top:12px; font-size:11px; color: #555; max-width:600px; margin-left:auto; margin-right:auto; line-height:1.5;">Produktnavne for cloud-tjenester og sikkerhedsløsninger nævnt på denne side tilhører deres respektive ejere. nis2klar.se er ikke tilknyttet eller godkendt af disse virksomheder.</p>
+  </footer>
+
+  <script>
+    async function submitCapture(e) {
+      e.preventDefault();
+      const btn = document.getElementById('ctaSubmit');
+      btn.disabled = true;
+      btn.textContent = 'Sender...';
+      const payload = {
+        name:       document.getElementById('ctaName').value.trim(),
+        email:      document.getElementById('ctaEmail').value.trim(),
+        phone:      document.getElementById('ctaPhone').value.trim() || null,
+        company:    document.getElementById('ctaCompany').value.trim(),
+        source:     'nis2-da',
+        score_data: null
+      };
+      try {
+        const res  = await fetch('/api/inbound', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) });
+        const data = await res.json();
+        if (data.success) {
+          document.getElementById('ctaCaptureForm').style.display = 'none';
+          const thanks = document.getElementById('ctaThanks');
+          thanks.style.display = 'block';
+        } else {
+          btn.disabled = false;
+          btn.textContent = 'Book gratis gap-analyse →';
+          alert('Noget gik galt, prøv venligst igen.');
+        }
+      } catch (err) {
+        btn.disabled = false;
+        btn.textContent = 'Book gratis gap-analyse →';
+        alert('Noget gik galt, prøv venligst igen.');
+      }
+    }
+
+    document.querySelectorAll('.faq-q').forEach(q => {
+      q.addEventListener('click', () => {
+        const item = q.parentElement;
+        const answer = item.querySelector('.faq-a');
+        const isOpen = item.classList.contains('active');
+        document.querySelectorAll('.faq-item').forEach(i => {
+          i.classList.remove('active');
+          i.querySelector('.faq-a').classList.remove('open');
+        });
+        if (!isOpen) {
+          item.classList.add('active');
+          answer.classList.add('open');
+        }
+      });
+    });
+
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', e => {
+        const target = document.querySelector(a.getAttribute('href'));
+        if (target) {
+          e.preventDefault();
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+  </script>
+  <script>
+    (function() {
+      var PAGE = 'nis2-da';
+      new Image().src = '/api/track/pixel?page=' + PAGE;
+      var token = new URLSearchParams(window.location.search).get('t');
+      if (token) {
+        fetch('/api/track?t=' + encodeURIComponent(token) + '&page=' + PAGE, { method: 'GET', redirect: 'manual' })
+          .catch(function(){});
+      }
+    })();
+  </script>
+  <script src="/cookie-banner.js"></script>
+</body>
+</html>

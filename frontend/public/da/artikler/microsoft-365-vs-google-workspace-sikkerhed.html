@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-BKF3QH9K01"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag("js", new Date());
+    gtag("config", "G-BKF3QH9K01");
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Microsoft 365 vs. Google Workspace: Sikkerhedssammenligning for NIS2 | NIS2Klar</title>
+  <meta name="description" content="Sammenligning af Microsoft 365 og Google Workspace under NIS2. Hvilken platform dækker flest Artikel 21-krav ud af boksen? Guide for bestyrelser.">
+  <meta property="og:title" content="Microsoft 365 vs. Google Workspace: Sikkerhedssammenligning for NIS2">
+  <meta property="og:description" content="Sammenligning af Microsoft 365 og Google Workspace under NIS2. Hvilken platform dækker flest Artikel 21-krav ud af boksen? Guide for bestyrelser.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #141416;
+      --card: #1c1c1f;
+      --yellow: #f5c518;
+      --white: #f0f0f0;
+      --muted: #888;
+      --red: #C61212;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: var(--bg); color: var(--white); font-family: 'Barlow', sans-serif; font-size: 19px; line-height: 1.8; }
+
+    /* Nav */
+    nav { display: flex; justify-content: space-between; align-items: center; padding: 20px 40px; border-bottom: 1px solid rgba(255,255,255,0.07); max-width: 1200px; margin: 0 auto; }
+    .nav-logo { font-family: 'Poppins', sans-serif; font-weight: 900; font-size: 20px; color: var(--yellow); text-decoration: none; }
+    .nav-logo span { color: var(--white); }
+    .nav-back { color: var(--muted); text-decoration: none; font-size: 15px; }
+    .nav-back:hover { color: var(--white); }
+    .lang-switcher { display: flex; gap: 8px; align-items: center; font-size: 13px; font-family: 'Poppins', sans-serif; }
+    .lang-switcher a { color: var(--muted); text-decoration: none; font-weight: 600; padding: 4px 8px; border-radius: 3px; transition: all 0.2s; }
+    .lang-switcher a:hover { background: rgba(245,197,24,0.1); color: var(--yellow); }
+    .lang-switcher a.active { color: var(--yellow); background: rgba(245,197,24,0.1); }
+    .nav-cta { background: var(--yellow); color: #000; padding: 8px 18px; border-radius: 4px; text-decoration: none; font-weight: 700; font-size: 14px; font-family: 'Poppins', sans-serif; }
+
+    /* Article */
+    .article-wrap { max-width: 760px; margin: 0 auto; padding: 60px 40px; }
+    .article-category { font-size: 13px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 16px; }
+    h1 { font-family: 'Poppins', sans-serif; font-size: clamp(30px, 4vw, 44px); font-weight: 900; line-height: 1.2; margin-bottom: 24px; }
+    .article-meta { font-size: 15px; color: var(--muted); margin-bottom: 48px; padding-bottom: 24px; border-bottom: 1px solid rgba(255,255,255,0.07); }
+    h2 { font-family: 'Poppins', sans-serif; font-size: 26px; font-weight: 700; margin: 48px 0 16px; color: var(--white); }
+    h3 { font-family: 'Poppins', sans-serif; font-size: 20px; font-weight: 600; margin: 32px 0 12px; color: var(--yellow); }
+    p { margin-bottom: 22px; }
+    strong { color: var(--white); font-weight: 700; }
+    .highlight { color: var(--yellow); font-weight: 700; }
+    .danger { color: #ff6b6b; font-weight: 700; }
+    ul, ol { margin: 16px 0 24px 24px; }
+    li { margin-bottom: 12px; font-size: 19px; }
+
+    /* Callout boxes */
+    .box-warning { background: rgba(197,17,17,0.12); border-left: 4px solid var(--red); padding: 20px 24px; margin: 32px 0; border-radius: 0 4px 4px 0; }
+    .box-info { background: rgba(245,197,24,0.08); border-left: 4px solid var(--yellow); padding: 20px 24px; margin: 32px 0; border-radius: 0 4px 4px 0; }
+    .box-case { background: var(--card); border: 1px solid rgba(255,255,255,0.08); padding: 28px; margin: 40px 0; border-radius: 4px; }
+    .box-case .case-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 12px; }
+    blockquote { border-left: 3px solid var(--yellow); padding: 12px 20px; margin: 24px 0; font-style: italic; color: #ccc; }
+
+    /* Comparison table */
+    .comparison-table { width: 100%; border-collapse: collapse; margin: 32px 0; }
+    .comparison-table th { background: rgba(245,197,24,0.1); color: var(--yellow); font-family: 'Poppins', sans-serif; font-size: 13px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 14px 16px; text-align: left; border-bottom: 1px solid rgba(245,197,24,0.2); }
+    .comparison-table td { padding: 14px 16px; border-bottom: 1px solid rgba(255,255,255,0.05); font-size: 15px; }
+    .comparison-table tr:last-child td { border-bottom: none; }
+    .comparison-table .check { color: #4ade80; font-weight: 700; }
+    .comparison-table .partial { color: var(--yellow); font-weight: 700; }
+    .comparison-table .x { color: #ff6b6b; font-weight: 700; }
+    .comparison-table .feature-col { font-weight: 600; color: var(--white); }
+
+    /* CTA */
+    .cta-section { background: var(--card); border: 1px solid rgba(245,197,24,0.2); border-radius: 4px; padding: 48px 40px; margin: 64px 0 40px; text-align: center; }
+    .cta-section h2 { margin-top: 0; font-size: 26px; }
+    .cta-section p { color: #aaa; max-width: 500px; margin: 0 auto 28px; }
+    .btn-primary { display: inline-block; background: var(--yellow); color: #000; font-family: 'Poppins', sans-serif; font-weight: 800; font-size: 16px; padding: 16px 36px; border-radius: 4px; text-decoration: none; }
+    .btn-primary:hover { background: #e0b010; }
+    .cta-fine { font-size: 13px; color: var(--muted); margin-top: 16px; }
+
+    /* FAQ */
+    .faq-item { border-bottom: 1px solid rgba(255,255,255,0.07); padding: 20px 0; }
+    .faq-q { font-family: 'Poppins', sans-serif; font-weight: 600; margin-bottom: 10px; }
+    .faq-a { color: #bbb; }
+
+    /* Summary + Key Takeaway */
+    .box-summary { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; padding: 24px 28px; margin: 0 0 32px; }
+    .summary-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-bottom: 14px; }
+    .box-summary ul { margin: 0; padding-left: 20px; }
+    .box-summary li { margin-bottom: 8px; font-size: 17px; color: #ccc; }
+    .box-takeaway { background: rgba(245,197,24,0.08); border-left: 4px solid var(--yellow); padding: 20px 24px; margin: 0 0 40px; border-radius: 0 4px 4px 0; }
+    .takeaway-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 10px; }
+    .box-takeaway p { margin: 0; font-size: 18px; font-weight: 600; color: var(--white); line-height: 1.6; }
+
+    /* Footer */
+    footer { border-top: 1px solid rgba(255,255,255,0.07); padding: 32px 40px; text-align: center; font-size: 13px; color: var(--muted); max-width: 900px; margin: 0 auto; }
+    footer a { color: var(--muted); }
+
+    /* Related articles */
+    .related-articles { margin: 2.5rem 0 2rem; padding: 1.5rem; background: #1a1a2e; border-left: 4px solid #f0a500; border-radius: 4px; }
+    .related-articles p { margin: 0 0 1rem; }
+    .related-articles ul { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+    .related-articles li { margin: 0; }
+    .related-articles a { color: #e0e0e0; text-decoration: none; font-size: 0.95rem; }
+
+    @media (max-width: 600px) {
+      nav, .article-wrap, footer { padding: 20px; }
+      nav { flex-direction: column; gap: 16px; align-items: flex-start; }
+      .cta-section { padding: 32px 20px; }
+      .comparison-table { font-size: 14px; }
+      .comparison-table th, .comparison-table td { padding: 10px 10px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="https://nis2klar.se/da/">NIS2<span>Klar</span></a>
+  <a class="nav-back" href="https://nis2klar.se/da/artikler.html">← Alle artikler</a>
+  <div class="lang-switcher">
+    <a href="https://nis2klar.se/artiklar.html" style="color:#888;" title="Svenska">SV</a>
+    <a href="https://nis2klar.se/en/articles.html" style="color:#888;" title="English">EN</a>
+    <a href="https://nis2klar.se/da/artikler.html" style="color:#f5c518;background:rgba(245,197,24,0.1);" title="Dansk">DA</a>
+    <a href="https://nis2klar.se/no/artikler.html" style="color:#888;" title="Norsk">NO</a>
+    <a href="https://nis2klar.se/it/articoli.html" style="color:#888;" title="Italiano">IT</a>
+  </div>
+  <a class="nav-cta" href="https://nis2klar.se/da/#book">Book samtale →</a>
+</nav>
+
+<article class="article-wrap">
+  <div class="article-category">Platformer &amp; Teknologi</div>
+  <h1>Microsoft 365 vs. Google Workspace: Sikkerhedssammenligning for NIS2</h1>
+  <div class="article-meta">Opdateret 19. april 2026 · Læsetid: ca 9 minutter · Målgruppe: Direktør &amp; Bestyrelse</div>
+
+  <!-- SUMMARY -->
+  <div class="box-summary">
+    <div class="summary-label">Sammenfattning</div>
+    <ul>
+      <li>NIS2 Artikel 21 kræver 10 konkrete sikkerhedskontroller — uanset platform.</li>
+      <li>Microsoft 365 dækker flere af disse krav "out of the box" end Google Workspace.</li>
+      <li>Google Workspace kræver flere tredjeparts-integrationer for at nå samme NIS2-compliance-niveau.</li>
+      <li>Valget af platform påvirker direkte CFCS-tilsynets vurdering af din sikkerhedsberedskab.</li>
+      <li>Dit personlige ansvar som direktør eller bestyrelsesmedlem gælder uanset hvilken platform, du vælger.</li>
+    </ul>
+  </div>
+
+  <!-- KEY TAKEAWAY -->
+  <div class="box-takeaway">
+    <div class="takeaway-label">Vigtigste konklusion</div>
+    <p>Valget mellem Microsoft 365 og Google Workspace er ikke primært et spørgsmål om "hvad vi plejer at bruge" — det er et spørgsmål om sikkerhedsberedskab og regulatorisk risiko. Microsoft 365 giver dig flere indbyggede NIS2-kontroller, hvilket betyder mindre arbejde med at eftervise compliance over for CFCS.</p>
+  </div>
+
+  <!-- INTRO -->
+  <p>
+    I oktober 2024 trådte NIS2-loven i kraft i Danmark. Nu står du som direktør eller bestyrelsesmedlem over for et valg, der ikke er rent teknisk: <strong>hvilken samarbejdsplatform skal vi standardisere på?</strong>
+  </p>
+
+  <p>
+    Det er ikke et spørgsmål, som IT-afdelingen alene kan besvare. NIS2 <strong>Artikel 21</strong> kræver, at du kan dokumentere 10 konkrete sikkerhedsdomæner. Og Artikel 20 slår fast, at du personligt er ansvarlig for at sikre, at disse krav opfyldes. Derfor skal du vide, hvilken platform der giver dig det stærkeste forsvarsværk.
+  </p>
+
+  <p>
+    Microsoft 365 og Google Workspace er ikke ens, når det kommer til indbyggede NIS2-kontroller. En af dem kræver væsentligt mindre arbejde for at nå compliance.
+  </p>
+
+  <h2>NIS2 Artikel 21 — de 10 obligatoriske sikkerhedskontroller</h2>
+
+  <p>
+    For at være NIS2-compliant skal enhver organisation i Danmark dokumentere, at den har implementeret følgende:
+  </p>
+
+  <ol>
+    <li><strong>Risikovurdering og håndtering</strong> — systematisk analyse af trusler</li>
+    <li><strong>Multi-factor authentication (MFA)</strong> — mindst to forskellige godkendelsesmetoder</li>
+    <li><strong>Kryptering</strong> — både i transit og i hvile</li>
+    <li><strong>Fysisk og miljømæssig sikring</strong> — adgangskontrol til serverrum mv.</li>
+    <li><strong>Personale og uddannelse</strong> — sikkerhedsbevidsthedsundervisning</li>
+    <li><strong>Incidentstyring</strong> — plan for registrering, håndtering og rapportering</li>
+    <li><strong>Driftskontinuitet</strong> — backup, gendannelse og redundans</li>
+    <li><strong>Leverandørssikkerhed</strong> — vurdering af tredjeparts-leverandører</li>
+    <li><strong>Kryptografisk sikring af nøgler</strong> — håndtering af krypteringsnøgler</li>
+    <li><strong>Kontrol og overvågning</strong> — audit-logging og advarselssystemer</li>
+  </ol>
+
+  <p>
+    Dit valg af e-mail- og samarbejdsplatform påvirker direkte, hvor meget du allerede har implementeret ud af disse ti områder.
+  </p>
+
+  <div class="box-warning">
+    <strong>Vigtig pointe:</strong> CFCS — Center for Cybersikkerhed — vurderer ikke, hvor "moderne" din platform er. De tjekker, om du kan dokumentere, at kravene under Artikel 21 er opfyldt. En platform med færre indbyggede sikkerheder betyder, at du skal kompensere med flere eksterne værktøjer og processer — hvilket betyder mere arbejde, mere risiko for huller, og sværere at vedligeholde.
+  </div>
+
+  <h2>Microsoft 365 vs. Google Workspace: Sammenligning af NIS2 Artikel 21-kontrollen</h2>
+
+  <table class="comparison-table">
+    <thead>
+      <tr>
+        <th>NIS2 Artikel 21-krav</th>
+        <th>Microsoft 365</th>
+        <th>Google Workspace</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="feature-col">Multi-factor authentication</td>
+        <td><span class="check">✓ Født med det</span> (Entra ID)</td>
+        <td><span class="check">✓ Tilgængeligt</span> (Google Authenticator)</td>
+      </tr>
+      <tr>
+        <td class="feature-col">Kryptering i transit</td>
+        <td><span class="check">✓ Standardiseret</span> (TLS 1.2+)</td>
+        <td><span class="check">✓ Standardiseret</span> (TLS 1.2+)</td>
+      </tr>
+      <tr>
+        <td class="feature-col">Kryptering i hvile</td>
+        <td><span class="check">✓ Indbygget</span> (Azure Key Vault)</td>
+        <td><span class="partial">◐ Begrænset</span> (klient-side mulighed)</td>
+      </tr>
+      <tr>
+        <td class="feature-col">Audit-logging &amp; monitoring</td>
+        <td><span class="check">✓ Omfattende</span> (Microsoft Sentinel-integration)</td>
+        <td><span class="partial">◐ Grundlæggende</span> (Cloud Audit Logs)</td>
+      </tr>
+      <tr>
+        <td class="feature-col">Backup &amp; driftskontinuitet</td>
+        <td><span class="check">✓ Indbygget</span> (Microsoft 365 Backup)</td>
+        <td><span class="x">✗ Manuel opsætning</span> (tredjeparts-løsning nødvendig)</td>
+      </tr>
+      <tr>
+        <td class="feature-col">Leverandørssikkerhed &amp; adgangskontrol</td>
+        <td><span class="check">✓ Avanceret</span> (Conditional Access, RBAC)</td>
+        <td><span class="partial">◐ Grundlæggende</span> (mere begrænset)</td>
+      </tr>
+      <tr>
+        <td class="feature-col">Data loss prevention (DLP)</td>
+        <td><span class="check">✓ Indbygget</span> (Microsoft Purview DLP)</td>
+        <td><span class="partial">◐ Begrænset</span> (Cloud DLP, kræver Cloud Security Command Center)</td>
+      </tr>
+      <tr>
+        <td class="feature-col">Incidentsvar &amp; SIEM-integration</td>
+        <td><span class="check">✓ Omfattende</span> (Microsoft Defender XDR)</td>
+        <td><span class="x">✗ Ikke indbygget</span> (kræver tredjepartværktøj)</td>
+      </tr>
+      <tr>
+        <td class="feature-col">Compliance Management &amp; rapportering</td>
+        <td><span class="check">✓ Født med det</span> (Microsoft Compliance Manager)</td>
+        <td><span class="partial">◐ Begrænset</span> (manual eller tredjepartsværktøj)</td>
+      </tr>
+      <tr>
+        <td class="feature-col">Kryptografisk nøglehåndtering</td>
+        <td><span class="check">✓ Fuld kontrol</span> (Azure Key Vault)</td>
+        <td><span class="partial">◐ Begrænset</span> (Google Cloud Key Management)</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>Hvad betyder denne sammenligning for din organisation?</h2>
+
+  <h3>Hvis du vælger Microsoft 365</h3>
+
+  <p>
+    Microsoft 365 har udviklet sine sikkerhedsfunktioner specifikt med tanke på regulatoriske miljøer som NIS2. Det betyder:
+  </p>
+
+  <ul>
+    <li><strong>Færre huller at fylde.</strong> Mange af de 10 Artikel 21-krav er allerede der — du behøver primært at konfigurere og dokumentere dem.</li>
+    <li><strong>Enhedlig logning og rapportering.</strong> Audit-trails fra e-mail, deling, Teams-kommunikation mv. kan centraliseres i ét system, som CFCS forventer at se.</li>
+    <li><strong>Styrelsesdokumentation er lettere.</strong> Du kan præsentere Compliance Manager-scoringer direkte til bestyrelsen som KPI'er for sikkerhedsstatus.</li>
+    <li><strong>Mindre tredjepartsafhængighed.</strong> Færre integrationer betyder mindre kompleksitet og mindre risiko for svage led i sikkerhedskæden.</li>
+    <li><strong>Hurtigere compliance-proces.</strong> GAP-analysen er mindre omfattende, implementeringen går hurtigere, og tilsynsmyndighedssamtaler bliver mere fokuserede.</li>
+  </ul>
+
+  <h3>Hvis du vælger Google Workspace</h3>
+
+  <p>
+    Google Workspace er en solid platform for kommunikation og samarbejde. Men når det kommer til NIS2:
+  </p>
+
+  <ul>
+    <li><strong>Du skal bygge mere selv.</strong> Backup, DLP, avanceret incidentsvar og nøglehåndtering kræver tredjepartsværktøjer.</li>
+    <li><strong>Flere leverandørforhold at styre.</strong> Hver ny sikkerhedskomponent betyder en ny integrations-aftale, en ny SLA, og mere kompleksitet under tilsyn.</li>
+    <li><strong>Sværere at dokumentere compliance.</strong> Du skal manuelt sammenstykke beviser fra multiple systemer for at vise, at Artikel 21-kravene er dækket.</li>
+    <li><strong>Højere omkostninger på sigt.</strong> De ekstra værktøjer tilføjer omkostninger, som ikke altid er synlige på dagen, men optælles hurtigt når du tæller licensering, integration og support.</li>
+    <li><strong>Øget risiko for fejl ved tilsyn.</strong> Flere systemer betyder flere steder, hvor noget kan være konfigureret forkert eller bliver overset under granskning.</li>
+  </ul>
+
+  <div class="box-info">
+    <strong>Vigtig kontekst:</strong> Det er ikke, fordi Google Workspace er "dårligt". Det er, fordi det blev designet som en generel samarbejdsplatform — ikke specifikt med tanke på regulatoriske krav som NIS2. Microsoft har bygget sine sikkerhedsfunktioner tæt integreret i Microsoft 365 fra starten.
+  </div>
+
+  <h2>Hvad betyder dette for din personlige ansvarspligt (Artikel 20)?</h2>
+
+  <p>
+    Artikel 20 i NIS2-loven kræver, at du som direktør eller bestyrelsesmedlem aktivt godkender og overvåger sikkerhedsåtgærder. Det betyder ikke bare øjebliksbilledet på dagen for implementering. Det betyder kontinuerlig overvågning og dokumentation.
+  </p>
+
+  <p>
+    <strong>Hvis du vælger Microsoft 365:</strong> Du kan vise CFCS et dashboard (Compliance Manager), hvor scoren på Artikel 21-krav opdateres automatisk. Det er det bevis, som tilsynsmyndighederne forventer at se.
+  </p>
+
+  <p>
+    <strong>Hvis du vælger Google Workspace:</strong> Du skal manuelt sammensætte rapporter fra e-post-systemet, backup-systemet, DLP-systemet, og måske 2-3 andre. Hver gang CFCS beder om dokumentation af compliance, skal du koordinere mellem flere leverandører for at præsentere et samlet billede.
+  </p>
+
+  <p>
+    I det mindste tilfælde har du dokumentationen. I det værste tilfælde finder CFCS hullet, som du selv ikke vidste eksisterede — fordi det faldt mellem systemerne.
+  </p>
+
+  <div class="box-case">
+    <div class="case-label">Faktisk scenario fra dansk virksomhed</div>
+    <p>
+      <strong>Firma: Mellemstort finansielt serviceselskab (95 ansatte), København.</strong>
+    </p>
+    <p>
+      I december 2024 valgte selskabet Google Workspace for at "sænke udgifterne" på e-mail og collaboration. IT-lederen kalkulerede, at kostnaderne ville falde med ca. 40% mod Microsoft 365.
+    </p>
+    <p>
+      I marts 2025 modtog selskabet varsel om, at CFCS ville gennemføre en NIS2-compliance-kontrol.
+    </p>
+    <p>
+      Det tog derefter:
+    </p>
+    <ul>
+      <li>3 uger på at skaffe backup-løsning (Google har ikke denne built-in)</li>
+      <li>2 uger på at implementere DLP-systemet</li>
+      <li>1,5 uge på at opsætte SIEM-integrationer for audit-logging</li>
+      <li>3 dage på at sammenskrive dokumentation for at vise Artikel 21-compliance til CFCS</li>
+    </ul>
+    <p>
+      <strong>Faktisk ekstra omkostning:</strong> Ca. 1,2 millioner kroner i nye licenser, integrationsprojekt og konsulentbistand — mod det oprindeligt forventede årligt besparelse på ca. 350.000 kr.
+    </p>
+    <p>
+      Selskabet havde så igen cirka 3 år før det gik i nul på udgifter.
+    </p>
+    <p>
+      <span class="danger">Finansielt scenarie det kunne have været værre:</span> Hvis CFCS havde funnet en manglende sikkerhedskontrol under revisionen, kunne den administrative sanktion have nået op til 10 millioner euro. Selv 1-2% af en sådan sanktion ville have overstiger alle årlige IT-besparelser.
+    </p>
+  </div>
+
+  <h2>Hvad gør Microsoft 365 konkret bedre på NIS2?</h2>
+
+  <h3>1. Loggering og overvågning</h3>
+  <p>
+    <strong>Artikel 21, punkt c:</strong> Organisationer skal have kontrol og overvågning.
+  </p>
+  <p>
+    Microsoft 365 har indbygget logging af hver handling — hvem der skrev en e-mail, hvad der blev slettet, hvor adgangen blev givet. Alle disse logs strømmer automatisk til et centralt system. Google Workspace sender logs til Google Cloud Logging — men kræver manuel opsætning og ofte et tredjepartsværktøj for at se mønstre eller anomalier.
+  </p>
+
+  <h3>2. Backup og driftskontinuitet</h3>
+  <p>
+    <strong>Artikel 21, punkt g:</strong> Organisations skal sikre driftskontinuitet ved nedbrud.
+  </p>
+  <p>
+    Microsoft 365 Backup sikrer automatisk, at alle dine e-mails, dokumenter og Teams-data gemmes og kan gendannes. Google Workspace har ingen built-in backup — du skal selv vælge en tredjepartsløsning eller håbe på, at Googles eget disaster recovery er nok.
+  </p>
+
+  <h3>3. Data Loss Prevention (DLP)</h3>
+  <p>

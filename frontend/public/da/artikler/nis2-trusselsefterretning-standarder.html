@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-BKF3QH9K01"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag("js", new Date());
+    gtag("config", "G-BKF3QH9K01");
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NIS2-trusselsefterretning: Standarder og Krav — Hvad Skal Du Vide? | NIS2Klar</title>
+  <meta name="description" content="NIS2 kræver aktiv trusselsefterretning og deling af cyber-intelligens med CFCS. Læs om MITRE ATT&CK, STIX/TAXII og hvad du skal budgettere.">
+  <meta property="og:title" content="NIS2-trusselsefterretning: Standarder og Krav — Hvad Skal Du Vide?">
+  <meta property="og:description" content="NIS2 kræver aktiv trusselsefterretning og deling af cyber-intelligens med CFCS. Læs om MITRE ATT&CK, STIX/TAXII og hvad du skal budgettere.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #141416;
+      --card: #1c1c1f;
+      --yellow: #f5c518;
+      --white: #f0f0f0;
+      --muted: #888;
+      --red: #C61212;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: var(--bg); color: var(--white); font-family: 'Barlow', sans-serif; font-size: 19px; line-height: 1.8; }
+
+    /* Nav */
+    nav { display: flex; justify-content: space-between; align-items: center; padding: 20px 40px; border-bottom: 1px solid rgba(255,255,255,0.07); max-width: 900px; margin: 0 auto; flex-wrap: wrap; gap: 16px; }
+    .nav-logo { font-family: 'Poppins', sans-serif; font-weight: 900; font-size: 20px; color: var(--yellow); text-decoration: none; }
+    .nav-logo span { color: var(--white); }
+    .nav-back { color: var(--muted); text-decoration: none; font-size: 15px; }
+    .nav-back:hover { color: var(--white); }
+    .nav-cta { background: var(--yellow); color: #000; padding: 8px 18px; border-radius: 4px; text-decoration: none; font-weight: 700; font-size: 14px; font-family: 'Poppins', sans-serif; }
+    .lang-switcher { display: flex; gap: 8px; align-items: center; font-size: 13px; font-family: 'Poppins', sans-serif; }
+    .lang-switcher a { color: #888; text-decoration: none; font-weight: 600; padding: 4px 8px; border-radius: 3px; transition: all 0.2s; }
+    .lang-switcher a:hover { color: var(--white); }
+
+    /* Article */
+    .article-wrap { max-width: 760px; margin: 0 auto; padding: 60px 40px; }
+    .article-category { font-size: 13px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 16px; }
+    h1 { font-family: 'Poppins', sans-serif; font-size: clamp(30px, 4vw, 44px); font-weight: 900; line-height: 1.2; margin-bottom: 24px; }
+    .article-meta { font-size: 15px; color: var(--muted); margin-bottom: 48px; padding-bottom: 24px; border-bottom: 1px solid rgba(255,255,255,0.07); }
+    h2 { font-family: 'Poppins', sans-serif; font-size: 26px; font-weight: 700; margin: 48px 0 16px; color: var(--white); }
+    h3 { font-family: 'Poppins', sans-serif; font-size: 20px; font-weight: 600; margin: 32px 0 12px; color: var(--yellow); }
+    p { margin-bottom: 22px; }
+    strong { color: var(--white); font-weight: 700; }
+    .highlight { color: var(--yellow); font-weight: 700; }
+    .danger { color: #ff6b6b; font-weight: 700; }
+    ul, ol { margin: 16px 0 24px 24px; }
+    li { margin-bottom: 12px; font-size: 19px; }
+
+    /* Callout boxes */
+    .box-warning { background: rgba(197,17,17,0.12); border-left: 4px solid var(--red); padding: 20px 24px; margin: 32px 0; border-radius: 0 4px 4px 0; }
+    .box-info { background: rgba(245,197,24,0.08); border-left: 4px solid var(--yellow); padding: 20px 24px; margin: 32px 0; border-radius: 0 4px 4px 0; }
+    .box-case { background: var(--card); border: 1px solid rgba(255,255,255,0.08); padding: 28px; margin: 40px 0; border-radius: 4px; }
+    .box-case .case-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 12px; }
+    blockquote { border-left: 3px solid var(--yellow); padding: 12px 20px; margin: 24px 0; font-style: italic; color: #ccc; }
+
+    /* CTA */
+    .cta-section { background: var(--card); border: 1px solid rgba(245,197,24,0.2); border-radius: 4px; padding: 48px 40px; margin: 64px 0 40px; text-align: center; }
+    .cta-section h2 { margin-top: 0; font-size: 26px; }
+    .cta-section p { color: #aaa; max-width: 500px; margin: 0 auto 28px; }
+    .btn-primary { display: inline-block; background: var(--yellow); color: #000; font-family: 'Poppins', sans-serif; font-weight: 800; font-size: 16px; padding: 16px 36px; border-radius: 4px; text-decoration: none; }
+    .btn-primary:hover { background: #e0b010; }
+    .cta-fine { font-size: 13px; color: var(--muted); margin-top: 16px; }
+
+    /* FAQ */
+    .faq-item { border-bottom: 1px solid rgba(255,255,255,0.07); padding: 20px 0; }
+    .faq-q { font-family: 'Poppins', sans-serif; font-weight: 600; margin-bottom: 10px; }
+    .faq-a { color: #bbb; }
+
+    /* Summary + Key Takeaway */
+    .box-summary { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; padding: 24px 28px; margin: 0 0 32px; }
+    .summary-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-bottom: 14px; }
+    .box-summary ul { margin: 0; padding-left: 20px; }
+    .box-summary li { margin-bottom: 8px; font-size: 17px; color: #ccc; }
+    .box-takeaway { background: rgba(245,197,24,0.08); border-left: 4px solid var(--yellow); padding: 20px 24px; margin: 0 0 40px; border-radius: 0 4px 4px 0; }
+    .takeaway-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 10px; }
+    .box-takeaway p { margin: 0; font-size: 18px; font-weight: 600; color: var(--white); line-height: 1.6; }
+
+    /* Related articles */
+    .related-articles { margin: 2.5rem 0 2rem; padding: 1.5rem; background: #1a1a2e; border-left: 4px solid #f0a500; border-radius: 4px; }
+    .related-articles p { font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #f0a500; margin: 0 0 1rem; }
+    .related-articles ul { margin: 0; padding: 0; list-style: none; }
+    .related-articles li { margin-bottom: 0.5rem; }
+    .related-articles a { color: #e0e0e0; text-decoration: none; font-size: 0.95rem; }
+    .related-articles a:hover { color: #f0a500; }
+    .related-articles .meta { font-size: 0.85rem; color: #aaa; margin-top: 1.25rem; }
+    .related-articles .meta a { font-size: 0.85rem; color: #f0a500; }
+
+    /* Footer */
+    footer { border-top: 1px solid rgba(255,255,255,0.07); padding: 32px 40px; text-align: center; font-size: 13px; color: var(--muted); max-width: 900px; margin: 0 auto; }
+    footer a { color: var(--muted); }
+    footer a:hover { color: var(--white); }
+
+    @media (max-width: 600px) {
+      nav, .article-wrap, footer { padding: 20px; }
+      .cta-section { padding: 32px 20px; }
+      nav { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="https://nis2klar.se/da/">NIS2<span>Klar</span></a>
+  <a class="nav-back" href="https://nis2klar.se/da/artikler.html">← Alle artikler</a>
+  <div class="lang-switcher">
+    <a href="https://nis2klar.se/artiklar.html" title="Svenska">SV</a>
+    <a href="https://nis2klar.se/en/articles.html" title="English">EN</a>
+    <a href="https://nis2klar.se/da/artikler.html" style="color:#f5c518;background:rgba(245,197,24,0.1);" title="Dansk">DA</a>
+    <a href="https://nis2klar.se/no/artikler.html" title="Norsk">NO</a>
+    <a href="https://nis2klar.se/it/articoli.html" title="Italiano">IT</a>
+  </div>
+  <a class="nav-cta" href="https://nis2klar.se/da/#boka">Book samtal →</a>
+</nav>
+
+<article class="article-wrap">
+  <div class="article-category">Trusselsefterretning &amp; Risikoledelse</div>
+  <h1>NIS2-trusselsefterretning: Standarder og Krav</h1>
+  <div class="article-meta">19. april 2026 · Læsetid: ca 8 minutter · Målgruppe: Direktør &amp; Bestyrelse</div>
+
+  <!-- SUMMARY -->
+  <div class="box-summary">
+    <div class="summary-label">Resumé</div>
+    <ul>
+      <li>NIS2 kræver ikke bare forsvar — det kræver aktiv <strong>trusselsefterretning</strong> og deling af intelligens med CFCS.</li>
+      <li>Du skal kunne dokumentere, at du modtager, analyserer og handler på trusseldata — ikke blot at du har et IT-system.</li>
+      <li>Standarder som MITRE ATT&CK og STIX/TAXII er ikke valgfri — de er det sprog, som dansk myndighed og andre organisationer bruger.</li>
+      <li>Budgetteret jeg? De fleste VD'er har ikke — og det koster penge at implementere rigtig.</li>
+    </ul>
+  </div>
+
+  <!-- KEY TAKEAWAY -->
+  <div class="box-takeaway">
+    <div class="takeaway-label">Vigtigste pointe</div>
+    <p>NIS2-trusselsefterretning er ikke en øvelse i at købe software. Det er din organisations evne til at lytte, forstå og reagere på trusler i realtid — og kunne bevise det over for CFCS.</p>
+  </div>
+
+  <h2>Hvad betyder "trusselsefterretning" i NIS2-sammenhæng?</h2>
+
+  <p>
+    Da <strong>Lov nr. 1120 af 2023 om net- og informationssikkerhed</strong> trådte i kraft i oktober 2024, kom der ikke kun krav om hændelseshåndtering og risikoanalyse. Der kom også et krav om aktiv <strong>overvågning af trussellandskabet</strong> — altså evnen til at se, hvem der angriber hvem, hvilke metoder de bruger, og hvordan du skal forsvare dig.
+  </p>
+
+  <p>
+    Artikel 21 i NIS2 (implementeret i dansk lov) skriver ned, at væsentlige og vigtige enheder skal have:
+  </p>
+
+  <ol>
+    <li>Processer til <strong>indsamling og analyse af trusselinformation</strong></li>
+    <li>Evne til at <strong>dele relevant intelligence</strong> med offentlige myndigheder (CFCS) og hinanden</li>
+    <li>Dokumentation på, at <strong>trusselsejtemperamenter påvirker</strong> dit forsvar — ikke blot som teoretisk øvelse, men konkret</li>
+  </ol>
+
+  <p>
+    Det betyder: Du kan ikke længere sige "Vi beskytter os selv baseret på best practice." Du skal kunne sige "Vi modtager trusseldata fra kilder X og Y, vi analyserer det ved hjælp af standarder som MITRE ATT&CK, og her er de fire konkrete tiltag vi har taget baseret på det."
+  </p>
+
+  <div class="box-warning">
+    <strong>Hyppig misforståelse:</strong> Mange direktører tror, at "trusselsefterretning" betyder "læse cybersikkerhed nyheder". Det betyder noget helt tredje. Det betyder struktureret, løbende indsamling af data om, hvem der angriber organisationer som din, med hvilke værktøjer, og hvad du kan gøre imod det. Og du skal kunne bevise, at du gjorde det.
+  </div>
+
+  <h2>De tre kilder til trusselsefterretning du skal kende</h2>
+
+  <h3>1. Ekstern intelligence fra myndigheder og ISACs</h3>
+
+  <p>
+    Danmark har et institut: <strong>CFCS (Center for Cybersikkerhed)</strong>, som Erhvervsstyrelsen driver. CFCS udgiver regelmæssigt trusselvarslinger, såkaldte "advisories" — warnende meddelelser om nye angrebsmetoder, identificerede sårbarhedskampagner, og hvad du skal gøre.
+  </p>
+
+  <p>
+    Derudover findes der sektor-specifikke varslingsfora — kanal-trupper i enkelte brancher (finans, energi, sundhed osv.). Hvis du sidder i bank- eller forsikringssektoren, sender Finanstilsynet dig trusseldata. Hvis du er i energi, sender Energistyrelsen trusseldata.
+  </p>
+
+  <p>
+    Dit job som direktion: I skal have en proces, der sikrer, at når CFCS udsteder en advisory, modtager du det, evaluererer det, og dokumenterer hvad du gør ved det. Det næste punkt i dit styrelsesmøde-referat skal kunne sige: "CFCS advarede om campaign X mod dansk industri. Vi kontrollerede vores systemer for IoC'erne (indikatorer on compromise). Resultat: [X blev ikke fundet / Y blev isoleret og handlet på]."
+  </p>
+
+  <h3>2. Intern data fra dine egne systemer</h3>
+
+  <p>
+    Dit network, dine endpoints, dine logs — de genererer millioner af datapunkter hver dag. De vigtigste af dem skal samles op i et SIEM-værktøj (Security Information and Event Management), analyseres for anomalier, og korreleres med kendt dårlig adfærd.
+  </p>
+
+  <p>
+    Her kommer <strong>MITRE ATT&CK</strong> ind i billedet. Det er en frit tilgængelig database over, hvad angribere faktisk gør — ikke hvad man tror de gør, men hvad de observeres gøre. Den klasificerer angreb efter "taktikker" (fx "Initial Access," "Privilege Escalation") og "teknikker" (fx "Phishing," "Windows Registry Modification"). Når du ser anomalier i dine logs, kan du krydsreferere til MITRE ATT&CK og spørge: "Ser dette ud som en kendt teknik? Ja — så det her er prioriteret."
+  </p>
+
+  <p>
+    Dit job: I skal have (eller have adgang til) log-data fra kritiske systemer — og mindst én gang hver måned se på det, ikke som IT-teknikere, men som ledelse. "Hvad truslede os denne måned? Var det noget kendt? Hvad gjorde vi ved det?"
+  </p>
+
+  <h3>3. Data delt fra andre virksomheder og samarbejdsorganisationer</h3>
+
+  <p>
+    En virksomhed i din sektor bliver angrebet — og deler detaljer om angrebmet med andre virksomheder i samme sektor. Det øger hele branchens immunitet. Danmark har sektor-specifikke informationsdeling-netværk, og der er også internationale standarder for det.
+  </p>
+
+  <p>
+    <strong>STIX</strong> (Structured Threat Information Expression) og <strong>TAXII</strong> (Trusted Automated eXchange of Indicator Information) er de formater, som sådan information udveksles i. De definerer, hvordan du strukturerer data om trusler ("her er en virus-hash"), og hvordan du sikkert transporterer det mellem organisationer uden at afsløre dine kilder eller kompromittere operationel sikkerhed.
+  </p>
+
+  <p>
+    Dit job: Hvis din branche har et informationsdeling-samarbejde (og den bør), skal du vide, at data kommer i STIX-format. Du behøver ikke at forstå XML-syntaks, men du skal sikre dig, at dit SIEM-værktøj eller din analyse-platform kan læse og tolke det — og at du har designeret én person til at stå for modtagelse og distribuering af sådan intelligence internt.
+  </p>
+
+  <div class="box-info">
+    <strong>Jargon-hjælp:</strong> IoC = Indicator of Compromise (en fil-hash, en IP-adresse, et domæne, som du kan søge på for at se, om du blev ramt). TTPs = Tactics, Techniques, Procedures (angribers arbejdsmåde — værdifuldt at dele, fordi hvis andre ved, hvad angriberen gør, kan de også forsvare sig).
+  </div>
+
+  <h2>NIS2 kræver ikke bare data — det kræver dokumenteret handling</h2>
+
+  <p>
+    Mange organisationer køber en SIEM-platform eller tilmelder sig en trusseldata-tjeneste og tror så, at de lever op til kravet. Det stemmer ikke. CFCS og andre tilsynsmyndigheder vil ikke blive imponeret af, at du har det bedste værktøj — de vil blive imponeret af, at du kan vise:
+  </p>
+
+  <ul>
+    <li><strong>Hvem modtager data?</strong> Er der en navngiven person eller team, der har ansvaret for at høre på advarsler?</li>
+    <li><strong>Hvad gøres der ved det?</strong> Når I modtager en advisory fra CFCS, hvad er proceduren for evaluering og handling?</li>
+    <li><strong>Hvem afgør prioritet?</strong> Hvis MITRE ATT&CK-analysen viser, at en mulig trussel kunne påvirke jeres kerneprocesninger, hvem (på direksjonsniveau) skal informeres?</li>
+    <li><strong>Er der spor?</strong> Kan du vise styrelses-referater, hvor trusselsejtemperamenter blev drøftet? Kan du vise log-analyser, hvor du dokumenterer, at du kiggede på det, og hvad du fandt?</li>
+  </ul>
+
+  <p>
+    Det sidste punkt er kritisk. En tilsynskontrol vil ikke bare spørge "Har I en SIEM?" Men: "Vis mig de sidste tre måneders analyse-rapporter. Hvad var threatlandskabet? Hvad fandt I? Hvad gik I i gang med?" Hvis du siger "Det håndterer IT," er du ikke klar til at blive granskningsinterviewet.
+  </p>
+
+  <div class="box-case">
+    <div class="case-label">Virkelighed: En dansk sundhedsorganisation</div>
+    <p>
+      <strong>Scenario:</strong> Regional sygehus klassificeret som væsentlig entitet under NIS2.
+      IT-direktør implementerer SIEM, integrerer CFCS threat feeds.
+      Data strømmer ind. Men der er ingen proces for, hvem der skal se på det, og ingen møde i retslægeudvalget om truslerne.
+      Februar 2025: En dataleak fra sundhedssektoren bliver offentlig. CFCS gennemfører hurtig kontrol.
+    </p>
+    <p>
+      <strong>Granskningen viser:</strong> Sygehuset havde SIEM-data, som viste login-mønstre, der lignede lateral movement (angriber der bevæger sig rundt inde i netværket), men datoen på analysen var tre måneder gammel — og ingen i ledelsen havde set det.
+    </p>
+    <p>
+      <strong>Resultat:</strong> Ikke bare for udebleven hændelsesrapportering. Også for fejlet trusselsefterretning — organisationen havde dataene, men ingen kultur for at handle på dem.
+      Bød fra CFCS: øget tilsyn næste to år, og dokumentation af månedlige trusselsreview på direktionsniveau.
+    </p>
+  </div>
+
+  <h2>Hvad skal du budgettere til?</h2>
+
+  <p>
+    Trusselsefterretning er ikke gratis. Her er de hoveddele:
+  </p>
+
+  <h3>1. Værktøjer</h3>
+  <p>
+    En SIEM-platform eller log-analyseværktøj: <strong>300.000–2.000.000 kr./år</strong> afhængig af skala og udbyder.
+    Et threat intelligence-abonnement (hyppigt fra specialiserede leverandører): <strong>200.000–800.000 kr./år</strong>.
+    Integration og opsætning (engangsomkostning): <strong>500.000–3.000.000 kr.</strong>
+  </p>
+
+  <h3>2. Mennesker</h3>
+  <p>
+    En threat analyst eller security engineer, der bruger 40–50% af tiden på at læse, tolke og dele trusselintelligence.
+    En CISO eller Head of Security (hvis du ikke allerede har en), som kan matche threat landscape til organisationens risikoprofil.
+    Årlig omkostning: <strong>1.000.000–2.500.000 kr.</strong> alt efter niveau og lokalisering.
+  </p>
+
+  <h3>3. Uddannelse og dokumentation</h3>
+  <p>
+    Dit ledelse og styrelse skal forstå, hvad MITRE ATT&CK er, og hvorfor STIX/TAXII betyder noget. Det er ikke en 8-timers workshop — det er løbende kontekst.
+    Årlig budget: <strong>100.000–300.000 kr.</strong>
+  </p>
+
+  <p>
+    <strong>Samlet årligt budget for en mindre organisation:</strong> 1.5–3 millioner kroner. For en større: 3–8 millioner.
+  </p>
+
+  <p>
+    Hvis det lyder dyrt: Det er det. Men bøderne for at være uden det er op til <strong>10 millioner euro</strong> eller 2% af din globale omsætning — hvilket som helst er størst. Og det er uden at tælle omkostninger ved faktiske brud.
+  </p>
+
+  <h2>De konkrete standarder du skal kende navn på</h2>
+
+  <h3>MITRE ATT&CK</h3>
+  <p>
+    En <strong>frit tilgængelig</strong> database over angrebsmetoder, som udbyder taktikker og teknikker brugt af kendte angribere. Du bruger den til at:
+  </p>
+  <ul>
+    <li>Klassificere dine egne trusler ("Hvis vi ser denne adfærd, hvad betyder det i MITRE-termer?")</li>
+    <li>Sammenligne med rapporter fra trusleskuespillere ("Denne kampagne bruger teknik T1548: Abuse Elevation Control Mechanism — vi skal sikre, at vores privilege escalation controls er strammet op")</li>
+  </ul>
+
+  <h3>STIX 2.1</h3>
+  <p>
+    En XML/JSON-standard, som definerer, hvordan du strukturerer trusselinformation — så en anden organisation kan læse det.
+    Eksempel: I stedet for at sige "Vi blev ramt af en virus," skriver du i STIX: "[File-hash] relates to [Malware: Emotet variant] relates to [Attack pattern: T1566.002 Phishing]. Den anden organisation kan så importere det direkte i deres værktøjer.
+  </p>
+
+  <h3>TAXII 2.1</h3>
+  <p>
+    Standarden for <strong>hvordan</strong> du transporterer STIX-data mellem organisationer sikkert. Den definerer endpoints, authentificering, og protokoller — så du ikke blot sender sensible trusseldata over usikret email.
+  </p>
+
+  <p>
+    Dit job som direktør: Du behøver ikke at kunne implementere disse formater selv. Men du skal vide:
+  </p>
+  <ol>
+    <li>At de eksisterer</li>
+    <li>At dine leverandører skal understøtte dem</li>
+    <li>At du skal spørge til dem, når du evaluerer værktøjer</li>
+    <li>At hvis en leverandør siger "Vi bruger vores eget format," er det et rødt flag</li>
+  </ol>
+
+  <h2>Hvad skal dine leverandører kunne?</h2>
+
+  <p>
+    Når du køber eller outsourcer trusselsefterretning, skal du stille disse spørgsmål:
+  </p>
+
+  <ul>
+    <li><strong>"Kan du integrere CFCS trusselfeeds?"</strong> Ja eller nej. Der er ingen farve mellem.</li>
+    <li><strong>"Outputter du data i STIX-format?"</strong> Hvis ikke, hvordan skal jeg dele med andre organisationer?</li>
+    <li><strong>"Hvordan klassificerer du trusler mod MITRE ATT&CK?"</strong> Hvis de ikke mapper data til MITRE, siger de praktisk talt "Vi taler ikke samme sprog som hele branschen."</li>
+    <li><strong>"Hvem ser på data hver dag?"</strong> Er det en automat (mindre værd) eller en human analyst (mere værd)?</li>
+    <li><strong>"Kan jeg få månedlige rapporter til min styrelse?"</strong> Ikke tekniske rapporter — rapporter, som en ikke-teknisk direktør kan læse og handle på.</li>
+  </ul>
+
+  <div class="box-warning">
+    <strong>Hyppig fejl:</strong> Ledelser køber threat intelligence-abonnement og forventer, at det "bare virker." Det gør det ikke. Dataene ankommer — og så hvad? Der skal være mennesker, der læser det, og processer, der sikrer, at risici bliver håndteret. Hvis du ikke har tildelt ressourcer dertil, køber du lykken i en flaske.
+  </div>
+
+  <h2>Trin-for-trin: Sådan starter du</h2>
+
+  <h3>Trin 1: Audit (

@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-BKF3QH9K01"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag("js", new Date());
+    gtag("config", "G-BKF3QH9K01");
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Preparazione all'Audit NIS2: Come Prepararsi alla Verifica dell'ACN | NIS2Klar</title>
+  <meta name="description" content="Cosa succede durante una verifica ACN? Quali documenti servono? Chi deve essere presente? Checklist mock audit NIS2 per CEO e consigli di amministrazione italiani.">
+  <meta property="og:title" content="Preparazione all'Audit NIS2: Come Prepararsi alla Verifica dell'ACN">
+  <meta property="og:description" content="Cosa succede durante una verifica ACN? Quali documenti servono? Chi deve essere presente? Checklist mock audit NIS2 per CEO e consigli di amministrazione italiani.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #141416;
+      --card: #1c1c1f;
+      --yellow: #f5c518;
+      --white: #f0f0f0;
+      --muted: #888;
+      --red: #C61212;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: var(--bg); color: var(--white); font-family: 'Barlow', sans-serif; font-size: 19px; line-height: 1.8; }
+
+    /* Nav */
+    nav { display: flex; justify-content: space-between; align-items: center; padding: 20px 40px; border-bottom: 1px solid rgba(255,255,255,0.07); max-width: 900px; margin: 0 auto; }
+    .nav-logo { font-family: 'Poppins', sans-serif; font-weight: 900; font-size: 20px; color: var(--yellow); text-decoration: none; }
+    .nav-logo span { color: var(--white); }
+    .nav-back { color: var(--muted); text-decoration: none; font-size: 15px; }
+    .nav-back:hover { color: var(--white); }
+    .nav-cta { background: var(--yellow); color: #000; padding: 8px 18px; border-radius: 4px; text-decoration: none; font-weight: 700; font-size: 14px; font-family: 'Poppins', sans-serif; }
+
+    /* Article */
+    .article-wrap { max-width: 760px; margin: 0 auto; padding: 60px 40px; }
+    .article-category { font-size: 13px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 16px; }
+    h1 { font-family: 'Poppins', sans-serif; font-size: clamp(30px, 4vw, 44px); font-weight: 900; line-height: 1.2; margin-bottom: 24px; }
+    .article-meta { font-size: 15px; color: var(--muted); margin-bottom: 48px; padding-bottom: 24px; border-bottom: 1px solid rgba(255,255,255,0.07); }
+    h2 { font-family: 'Poppins', sans-serif; font-size: 26px; font-weight: 700; margin: 48px 0 16px; color: var(--white); }
+    h3 { font-family: 'Poppins', sans-serif; font-size: 20px; font-weight: 600; margin: 32px 0 12px; color: var(--yellow); }
+    p { margin-bottom: 22px; }
+    strong { color: var(--white); font-weight: 700; }
+    .highlight { color: var(--yellow); font-weight: 700; }
+    .danger { color: #ff6b6b; font-weight: 700; }
+    ul, ol { margin: 16px 0 24px 24px; }
+    li { margin-bottom: 12px; font-size: 19px; }
+
+    /* Callout boxes */
+    .box-warning { background: rgba(197,17,17,0.12); border-left: 4px solid var(--red); padding: 20px 24px; margin: 32px 0; border-radius: 0 4px 4px 0; }
+    .box-info { background: rgba(245,197,24,0.08); border-left: 4px solid var(--yellow); padding: 20px 24px; margin: 32px 0; border-radius: 0 4px 4px 0; }
+    .box-case { background: var(--card); border: 1px solid rgba(255,255,255,0.08); padding: 28px; margin: 40px 0; border-radius: 4px; }
+    .box-case .case-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 12px; }
+    blockquote { border-left: 3px solid var(--yellow); padding: 12px 20px; margin: 24px 0; font-style: italic; color: #ccc; }
+
+    /* CTA */
+    .cta-section { background: var(--card); border: 1px solid rgba(245,197,24,0.2); border-radius: 4px; padding: 48px 40px; margin: 64px 0 40px; text-align: center; }
+    .cta-section h2 { margin-top: 0; font-size: 26px; }
+    .cta-section p { color: #aaa; max-width: 500px; margin: 0 auto 28px; }
+    .btn-primary { display: inline-block; background: var(--yellow); color: #000; font-family: 'Poppins', sans-serif; font-weight: 800; font-size: 16px; padding: 16px 36px; border-radius: 4px; text-decoration: none; }
+    .btn-primary:hover { background: #e0b010; }
+    .cta-fine { font-size: 13px; color: var(--muted); margin-top: 16px; }
+
+    /* FAQ */
+    .faq-item { border-bottom: 1px solid rgba(255,255,255,0.07); padding: 20px 0; }
+    .faq-q { font-family: 'Poppins', sans-serif; font-weight: 600; margin-bottom: 10px; }
+    .faq-a { color: #bbb; }
+
+    /* Fine table */
+    .fine-table { width: 100%; border-collapse: collapse; margin: 24px 0; }
+    .fine-table th { background: rgba(245,197,24,0.1); color: var(--yellow); font-family: 'Poppins', sans-serif; font-size: 13px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 12px 16px; text-align: left; border-bottom: 1px solid rgba(245,197,24,0.2); }
+    .fine-table td { padding: 14px 16px; border-bottom: 1px solid rgba(255,255,255,0.05); font-size: 15px; }
+    .fine-table tr:last-child td { border-bottom: none; }
+    .fine-table .amount { color: #ff6b6b; font-weight: 700; }
+
+    /* Summary + Key Takeaway */
+    .box-summary { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; padding: 24px 28px; margin: 0 0 32px; }
+    .summary-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-bottom: 14px; }
+    .box-summary ul { margin: 0; padding-left: 20px; }
+    .box-summary li { margin-bottom: 8px; font-size: 17px; color: #ccc; }
+    .box-takeaway { background: rgba(245,197,24,0.08); border-left: 4px solid var(--yellow); padding: 20px 24px; margin: 0 0 40px; border-radius: 0 4px 4px 0; }
+    .takeaway-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 10px; }
+    .box-takeaway p { margin: 0; font-size: 18px; font-weight: 600; color: var(--white); line-height: 1.6; }
+
+    /* Footer */
+    footer { border-top: 1px solid rgba(255,255,255,0.07); padding: 32px 40px; text-align: center; font-size: 13px; color: var(--muted); max-width: 900px; margin: 0 auto; }
+    footer a { color: var(--muted); }
+
+    @media (max-width: 600px) {
+      nav, .article-wrap, footer { padding: 20px; }
+      .cta-section { padding: 32px 20px; }
+      .fine-table { font-size: 14px; }
+      .fine-table th, .fine-table td { padding: 10px 10px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="https://nis2klar.se/it/">NIS2<span>Klar</span></a>
+  <a class="nav-back" href="https://nis2klar.se/it/articoli.html">← Tutti gli articoli</a>
+  <div class="lang-switcher" style="display:flex;gap:8px;align-items:center;font-size:13px;font-family:'Poppins',sans-serif;">
+    <a href="https://nis2klar.se/artiklar.html" style="color:#888;text-decoration:none;font-weight:600;padding:4px 8px;border-radius:3px;" title="Svenska">SV</a>
+    <a href="https://nis2klar.se/en/articles.html" style="color:#888;text-decoration:none;font-weight:600;padding:4px 8px;border-radius:3px;" title="English">EN</a>
+    <a href="https://nis2klar.se/da/artikler.html" style="color:#888;text-decoration:none;font-weight:600;padding:4px 8px;border-radius:3px;" title="Dansk">DA</a>
+    <a href="https://nis2klar.se/no/artikler.html" style="color:#888;text-decoration:none;font-weight:600;padding:4px 8px;border-radius:3px;" title="Norsk">NO</a>
+    <a href="https://nis2klar.se/it/articoli.html" style="color:#f5c518;text-decoration:none;font-weight:600;padding:4px 8px;border-radius:3px;background:rgba(245,197,24,0.1);" title="Italiano">IT</a>
+  </div>
+  <a class="nav-cta" href="/nis2.html#boka">Prenota una chiamata →</a>
+</nav>
+
+<article class="article-wrap">
+  <div class="article-category">Supervisione &amp; Conformità</div>
+  <h1>Preparazione all'Audit NIS2: Come Prepararsi alla Verifica dell'ACN</h1>
+  <div class="article-meta">Aggiornato 17 aprile 2026 · Tempo di lettura: circa 9 minuti · Destinatari: CEO, Presidente CdA, Consiglieri</div>
+
+  <!-- SUMMARY -->
+  <div class="box-summary">
+    <div class="summary-label">Sintesi</div>
+    <ul>
+      <li>Per CEO e membri del consiglio di amministrazione di aziende nei settori regolamentati NIS2 che vogliono sapere cosa accade concretamente durante una verifica ACN.</li>
+      <li>L'ACN può richiedere documentazione con <strong>preavviso di soli 15-30 giorni</strong>: chi non è pronto, lo scopre nel momento peggiore.</li>
+      <li>La responsabilità personale degli amministratori è sancita dall'<strong>Art. 23 del D.Lgs. 138/2024</strong>: non basta delegare all'IT.</li>
+      <li>Una verifica non inizia solo dopo un incidente — l'ACN può avviare ispezioni proattive in qualsiasi momento.</li>
+    </ul>
+  </div>
+
+  <!-- KEY TAKEAWAY -->
+  <div class="box-takeaway">
+    <div class="takeaway-label">Conclusione chiave</div>
+    <p>Prepararsi a una verifica ACN non è un esercizio burocratico. È la prova che voi, come vertice aziendale, avete governato attivamente la sicurezza informatica. Senza quella prova, le sanzioni — e la responsabilità personale — diventano reali.</p>
+  </div>
+
+  <!-- HOOK -->
+  <p>
+    Immaginate di ricevere una comunicazione ufficiale dall'<strong>Agenzia per la Cybersicurezza Nazionale</strong>: avete trenta giorni per mettere a disposizione la documentazione relativa alle misure di sicurezza adottate dalla vostra organizzazione. Cosa consegnate?
+  </p>
+
+  <p>
+    Per molte aziende italiane, questa domanda provoca una corsa affannosa: riunioni di emergenza, richieste urgenti all'IT, tentativi di ricostruire a posteriori decisioni che non sono mai state formalizzate. È esattamente la situazione che il <strong>D.Lgs. 138/2024</strong> — il decreto legislativo con cui l'Italia ha recepito la Direttiva NIS2, in vigore dal 16 ottobre 2024 — intende sanzionare.
+  </p>
+
+  <p>
+    Questo articolo vi guida attraverso quello che accade realmente durante una verifica dell'ACN, cosa viene richiesto, chi deve essere disponibile e come presentare in modo credibile la vostra postura di sicurezza all'autorità competente.
+  </p>
+
+  <div class="box-warning">
+    <strong>Attenzione: la verifica può arrivare senza che sia avvenuto alcun incidente.</strong> L'ACN ha il potere di avviare ispezioni proattive su qualsiasi soggetto essenziale o importante registrato. Non aspettate un cyberattacco per cominciare a prepararvi.
+  </div>
+
+  <h2>Chi è l'ACN e quali poteri ha?</h2>
+
+  <p>
+    L'<strong>Agenzia per la Cybersicurezza Nazionale</strong> è l'autorità primaria di supervisione NIS2 in Italia. Affiancano l'ACN le autorità di settore: la <strong>Banca d'Italia</strong> per la finanza, l'<strong>ARERA</strong> per l'energia, l'<strong>AGCOM</strong> per le telecomunicazioni, il <strong>Ministero della Salute</strong> per la sanità. A seconda del vostro settore, potreste ricevere una verifica dall'ACN, dall'autorità di settore, o da entrambe in modo coordinato.
+  </p>
+
+  <p>
+    I poteri di supervisione dell'ACN includono:
+  </p>
+
+  <ul>
+    <li>Richiedere documentazione tecnica e organizzativa con termine stabilito</li>
+    <li>Effettuare ispezioni in loco con o senza preavviso (nel caso di ispezioni d'urgenza)</li>
+    <li>Ordinare audit di sicurezza condotti da soggetti terzi qualificati a spese dell'organizzazione verificata</li>
+    <li>Imporre misure correttive con scadenze vincolanti</li>
+    <li>Irrogare sanzioni amministrative fino a <strong>10 milioni di euro o il 2% del fatturato mondiale</strong> per i soggetti essenziali</li>
+    <li>Segnalare alle autorità giudiziarie i casi di responsabilità personale degli amministratori</li>
+  </ul>
+
+  <p>
+    Il D.Lgs. 138/2024 distingue tra <strong>soggetti essenziali</strong> (grandi organizzazioni con ruolo sistemico) e <strong>soggetti importanti</strong> (organizzazioni medie nei settori regolamentati). I primi sono soggetti a una supervisione ex ante più stringente; i secondi a una supervisione prevalentemente ex post, ma con le stesse obbligazioni sostanziali.
+  </p>
+
+  <h2>Come si avvia una verifica ACN?</h2>
+
+  <p>
+    Le verifiche dell'ACN possono essere avviate in tre modi principali. Comprendere quale meccanismo le innesca vi aiuta a calibrare il livello di preparazione necessario.
+  </p>
+
+  <h3>1. Verifica proattiva programmata</h3>
+  <p>
+    L'ACN pubblica piani di supervisione periodici. Le organizzazioni registrate come soggetti essenziali o importanti possono essere selezionate per una verifica ordinaria anche in assenza di qualsiasi incidente o segnalazione. La comunicazione formale arriva tipicamente con un preavviso di <strong>15-30 giorni</strong>, accompagnata da un elenco dettagliato della documentazione richiesta.
+  </p>
+
+  <h3>2. Verifica reattiva post-incidente</h3>
+  <p>
+    Se la vostra organizzazione ha notificato un incidente all'ACN — come previsto dall'obbligo di allerta precoce entro 24 ore e notifica completa entro 72 ore — l'autorità può avviare una verifica approfondita per accertare che le misure di sicurezza previste dall'Art. 24 del D.Lgs. 138/2024 fossero effettivamente in essere prima dell'evento. In questo scenario, i tempi sono compressi e la pressione è massima.
+  </p>
+
+  <h3>3. Verifica su segnalazione</h3>
+  <p>
+    Un dipendente, un fornitore, un cliente o un'autorità di un altro Stato membro UE può segnalare carenze all'ACN. La segnalazione è sufficiente ad avviare un'istruttoria. Non serve un incidente conclamato: basta il ragionevole sospetto di inadempienza.
+  </p>
+
+  <h2>Cosa viene richiesto durante la verifica?</h2>
+
+  <p>
+    La lista documentale tipicamente richiesta dall'ACN nelle verifiche NIS2 si articola in sei aree principali. Questa non è una lista esaustiva — l'autorità può richiedere documentazione aggiuntiva specifica per il vostro settore — ma rappresenta il nucleo minimo atteso.
+  </p>
+
+  <h3>Area 1 — Governance e responsabilità della dirigenza</h3>
+  <ul>
+    <li>Verbali del consiglio di amministrazione in cui le misure di sicurezza informatica sono state discusse, approvate e monitorate (requisito esplicito dell'Art. 23 D.Lgs. 138/2024)</li>
+    <li>Policy di sicurezza informatica firmata dall'organo di amministrazione e datata</li>
+    <li>Documentazione dell'assegnazione formale delle responsabilità in materia di cybersecurity (es. nomina CISO o equivalente)</li>
+    <li>Registro delle formazioni obbligatorie completate da dirigenti e amministratori</li>
+  </ul>
+
+  <h3>Area 2 — Gestione del rischio</h3>
+  <ul>
+    <li>Valutazione del rischio informatico aggiornata, con metodologia documentata e data di approvazione</li>
+    <li>Piano di trattamento del rischio con misure, responsabili e scadenze</li>
+    <li>Inventario degli asset critici (sistemi, dati, infrastrutture) collegato alla valutazione del rischio</li>
+  </ul>
+
+  <h3>Area 3 — Misure tecniche e organizzative</h3>
+  <ul>
+    <li>Documentazione delle misure adottate nelle dieci aree previste dall'Art. 24: autenticazione, crittografia, controllo degli accessi, segmentazione di rete, gestione delle patch, monitoraggio degli eventi di sicurezza e altre</li>
+    <li>Procedure operative per la gestione delle vulnerabilità</li>
+    <li>Politica di backup e ripristino con evidenza di test periodici</li>
+  </ul>
+
+  <h3>Area 4 — Gestione degli incidenti</h3>
+  <ul>
+    <li>Piano di risposta agli incidenti con ruoli, responsabilità ed escalation chiaramente definiti</li>
+    <li>Procedure di notifica all'ACN (allerta precoce 24h, notifica 72h, relazione finale 1 mese) con indicazione dei responsabili interni</li>
+    <li>Registro degli incidenti pregressi e delle azioni correttive adottate</li>
+    <li>Evidenza di esercitazioni o test del piano di risposta</li>
+  </ul>
+
+  <h3>Area 5 — Sicurezza della catena di fornitura</h3>
+  <ul>
+    <li>Inventario dei fornitori critici con valutazione del rischio per ciascuno</li>
+    <li>Clausole contrattuali di sicurezza nei contratti con i fornitori principali</li>
+    <li>Procedura di onboarding e monitoraggio continuativo dei fornitori terzi</li>
+  </ul>
+
+  <h3>Area 6 — Continuità operativa</h3>
+  <ul>
+    <li>Piano di continuità operativa (BCP) e piano di ripristino in caso di disastro (DRP) approvati e aggiornati</li>
+    <li>Risultati dei test di continuità con data e firme dei responsabili</li>
+    <li>Analisi dell'impatto sul business (BIA) documentata</li>
+  </ul>
+
+  <div class="box-info">
+    <strong>Nota pratica:</strong> L'ACN non valuta soltanto se i documenti esistono, ma se sono <em>operativi</em>. Un piano di risposta agli incidenti scritto due anni fa e mai aggiornato, o una policy di sicurezza che nessuno conosce, non soddisfa il requisito. La documentazione deve essere viva, datata e riconducibile a decisioni reali del vertice aziendale.
+  </div>
+
+  <h2>Chi deve essere disponibile durante la verifica?</h2>
+
+  <p>
+    Questo è il punto che sorprende di più i CEO che affrontano una verifica per la prima volta: l'ACN non si limita a esaminare i documenti. Vuole anche parlare con le persone responsabili.
+  </p>
+
+  <p>
+    Le figure che tipicamente vengono coinvolte in un'ispezione in loco o in una verifica documentale approfondita sono:
+  </p>
+
+  <ul>
+    <li><strong>CEO / Amministratore Delegato</strong> — per rispondere in merito alla governance complessiva e alla supervisione delle misure di sicurezza. Non è accettabile rispondere "non è una mia area di competenza".</li>
+    <li><strong>Responsabile della sicurezza informatica (CISO o equivalente)</strong> — per illustrare le misure tecniche adottate, i processi di gestione del rischio e le procedure di risposta agli incidenti.</li>
+    <li><strong>Responsabile IT o CTO</strong> — per dettagli operativi sull'infrastruttura, la gestione delle patch, il monitoraggio e il backup.</li>
+    <li><strong>Responsabile legale o compliance</strong> — per questioni relative alle notifiche obbligatorie, ai contratti con i fornitori e alla documentazione normativa.</li>
+    <li><strong>Un membro del consiglio di amministrazione</strong> — in alcuni casi, soprattutto quando si verifica la governance ai sensi dell'Art. 23, l'ACN può richiedere di incontrare un rappresentante del CdA.</li>
+  </ul>
+
+  <p>
+    La preparazione di queste persone è fondamentale. Un CEO che non sa rispondere a domande elementari sulla politica di sicurezza della propria organizzazione trasmette un segnale inequivocabile all'autorità di vigilanza: la governance è assente. E l'assenza di governance è esattamente ciò che l'Art. 23 sanziona.
+  </p>
+
+  <h2>La responsabilità personale degli amministratori: cosa dice la legge</h2>
+
+  <p>
+    L'<strong>Art. 23 del D.Lgs. 138/2024</strong> è la norma che cambia le regole del gioco rispetto a qualsiasi obbligo di cybersecurity precedente. Stabilisce che i membri dell'organo di amministrazione delle organizzazioni soggette alla NIS2 sono <strong>personalmente responsabili</strong> del rispetto degli obblighi previsti dal decreto.
+  </p>
+
+  <p>
+    Questo significa concretamente:
+  </p>
+
+  <ol>
+    <li>L'organo di amministrazione deve approvare le misure di gestione del rischio informatico</li>
+    <li>Deve sorvegliarne l'attuazione</li>
+    <li>Deve ricevere formazione adeguata in materia di cybersecurity</li>
+    <li>Deve essere in grado di dimostrare — con documentazione — che tutto ciò è avvenuto</li>
+  </ol>
+
+  <p>
+    Non è sufficiente che il CDA abbia "delegato la questione all'IT". La delega non elimina la responsabilità; semmai, in assenza di supervisione documentata, la aggrava. In caso di violazioni gravi, l'ACN può richiedere all'autorità giudiziaria competente di irrogare sanzioni personali nei confronti degli amministratori, inclusa la possibilità di limitarne temporaneamente le funzioni di gestione.
+  </p>
+
+  <div class="box-warning">
+    <strong>Responsabilità personale — non soltanto aziendale:</strong> Se la verifica dell'ACN accerta che il consiglio di amministrazione non ha mai discusso, approvato o monitorato le misure di sicurezza informatica, le conseguenze non ricadono solo sul bilancio dell'azienda. Ricadono su di voi come individui. Nessun verbale di riunione scritto a posteriori può sanare questa lacuna.
+  </div>
+
+  <h2>La checklist del mock audit: come fare una simulazione interna</h2>
+
+  <p>
+    Il modo più efficace per prepararsi a una verifica reale è condurre in anticipo una simulazione interna — un "mock audit" — che riproduca le domande e le richieste documentali dell'ACN. Di seguito trovate una checklist operativa organizzata per aree di verifica.
+  </p>
+
+  <h3>Checklist Governance</h3>
+  <ul>
+    <li>☐ Esiste una policy di sicurezza informatica approvata formalmente dal CdA negli ultimi 12 mesi?</li>
+    <li>☐ I verbali del CdA documentano discussioni specifiche su rischi informatici e misure adottate?</li>
+    <li>☐ Esiste un responsabile formalmente nominato per la cybersecurity con ruolo e responsabilità documentati?</li>
+    <li>☐ Gli amministratori hanno completato una formazione specifica su NIS2 e cybersecurity negli ultimi 12 mesi?</li>
+  </ul>
+
+  <h3>Checklist Gestione del Rischio</h3>
+  <ul>
+    <li>☐ La valutazione del rischio è datata, firmata e aggiornata negli ultimi 12 mesi?</li>
+    <li>☐ Il piano di trattamento del rischio ha scadenze e responsabili assegnati?</li>
+    <li>☐ Esiste un inventario degli asset critici collegato alla valutazione del rischio?</li>
+  </ul>
+
+  <h3>Checklist Misure Tecniche</h3>
+  <ul>
+    <li>☐ L'autenticazione multifattore (MFA) è attiva per tutti gli accessi privilegiati?</li>
+    <li>☐ Esiste una procedura documentata di gestione delle patch con evidenza di applicazione?</li>
+    <li>☐ Il monitoraggio degli eventi di sicurezza è attivo e vengono conservati i log per il periodo previsto?</li>
+    <li>☐ I backup vengono eseguiti regolarmente e testati periodicamente con risultati documentati?</li>
+    <li>☐ La crittografia è applicata ai dati sensibili in transito e a riposo?</li>
+  </ul>
+
+  <h3>Checklist Gestione degli Incidenti</h3>
+  <ul>
+    <li>☐ Il piano di risposta agli incidenti è documentato e aggiornato?</li>
+    <li>☐ I responsabili della notifica all'ACN (24h/72h) sono identificati e formati?</li>
+    <li>☐ È stata condotta almeno una esercitazione di risposta agli incidenti negli ultimi 12 mesi?</li>
+    <li>☐ Esiste un registro degli incidenti pregressi con azioni correttive documentate?</li>
+  </ul>
+
+  <h3>Checklist Fornitori</h3>
+  <ul>
+    <li>☐ Esiste un inventario dei fornitori critici con valutazione del rischio?</li>
+    <li>☐ I contratti con i fornitori principali includono clausole di sicurezza informatica?</li>
+    <li>☐ Esiste una procedura di revisione periodica della sicurezza dei fornitori?</li>
+  </ul>
+
+  <h3>Checklist Continuità Operativa</h3>
+  <ul>
+    <li>☐ BCP e DRP sono approvati, datati e distribuiti ai responsabili?</li>
+    <li>☐ I test di continuità sono stati eseguiti e i risultati sono documentati?</li>
+    <li>☐ L'analisi BIA è aggiornata e collegata al piano di continuità?</li>
+  </ul>
+
+  <p>
+    Se avete risposto "no" o "non so" a più di tre voci in una singola area, quella è la vostra priorità immediata prima che arrivi una comunicazione dall'ACN.
+  </p>
+
+  <h2>Come presentare la postura di sicurezza in modo credibile</h2>
+
+  <p>
+    Presentarsi a una verifica ACN con una cartella di documenti prodotti nell'ultimo mese non convince nessuno. L'autorità sa riconoscere la differenza tra una governance reale e una documentazione assemblata di fretta. Ecco come costruire una presentazione credibile.
+  </p>
+
+  <h3>Principio 1 — La datazione conta</h3>
+  <p>
+    Ogni documento deve avere una data di redazione, una data di ultima revisione e le firme dei responsabili. Una policy di sicurezza datata tre settimane prima della verifica, con una valutazione del rischio prodotta la settimana precedente, è una bandiera rossa. La storicità della documentazione dimostra che la governance è una pratica continuativa, non una performance.
+  </p>
+
+  <h3>Principio 2 — I verbali del CdA sono la vostra prova più importante</h3>
+  <p>
+    Niente dimostra la governance della dirigenza quanto i verbali del consiglio di amministrazione. Se negli ultimi dodici mesi il CdA ha discusso — anche una sola volta — lo stato della sicurezza informatica, approvato la policy e ricevuto un aggiornamento sui rischi, questo va documentato nei verbali in modo specifico. Non basta un generico "si è discusso di ICT": serve il dettaglio delle misure approvate e delle decisioni prese.
+  </p>
+
+  <h3>Principio 3 — Mostrate le lacune che avete già identificato e affrontato</h3>
+  <p>
+    Un'organizzazione che dimostra di aver identificato autonomamente una carenza, di averla documentata e di aver avviato un piano correttivo con scadenze realistiche è percepita dall'autorità in modo molto diverso rispetto a un'organizzazione che presenta solo un quadro perfetto e privo di ombre. La maturità nella gestione della sicurezza non significa assenza di problemi: significa averli sotto controllo.
+  </p>
+
+  <h3>Principio 4 — Un interlocutore unico, preparato</h3>
+  <p>
+    Durante la verifica, designate un unico punto di contatto per l'ACN — tipicamente il CISO o il responsabile compliance — che coordini tutte le comunicazioni e le richieste documentali. Evitate che i verificatori ricevano risposte contraddittorie da interlocutori diversi. Prima della verifica, fate una sessione di preparazione con tutte le persone che potrebbero essere intervistate.
+  </p>
+
+  <h3>Principio 5 — KPI misurabili, non solo affermazioni</h3>
+  <p>
+    Portate numeri. Quante vulnerabilità critiche sono state identificate e risolte negli ultimi sei mesi? Qual è il tempo medio di risposta agli incidenti? Quale percentuale di dipendenti ha completato la formazione sulla sicurezza? I verificatori apprezzano le organizzazioni che misurano la propria postura di sicurezza con indicatori quantitativi, perché significa che il monitoraggio è reale e non solo dichiarato.
+  </p>
+
+  <div class="box-case">
+    <div class="case-label">Scenario reale</div>
+    <p>
+      <strong>Azienda manifatturiera italiana, 320 dipendenti, classificata come soggetto essenziale nel settore produzione avanzata.</strong>
+    </p>
+    <p>
+      A febbraio 2026 riceve una comunicazione dell'ACN: verifica documentale programmata con termine di 30 giorni. L'azienda ha un reparto IT competente, ma la governance della sicurezza non è mai passata formalmente dal consiglio di amministrazione. La policy di sicurezza è un documento interno mai portato all'attenzione del CdA. Non esistono verbali che documentino discussioni sulla cybersecurity. La valutazione del rischio è stata fatta dall'IT due anni prima, ma non è mai stata approvata formalmente né aggiornata.
+    </p>
+    <p>
+      Nei trenta giorni disponibili, l'azienda convoca un CdA straordinario, approva una policy aggiornata e formalizza la valutazione del rischio. I documenti vengono consegnati all'ACN entro termine.
+    </p>
+    <p>
+      L'ACN, tuttavia, rileva che la documentazione è priva di storicità: tutto è stato prodotto nelle ultime quattro settimane. Avvia una verifica approfondita che include un'ispezione in loco. Durante l'ispezione emerge l'assenza di un piano di risposta agli incidenti testato e la mancanza di clausole di sicurezza nei contratti con i principali fornitori cloud.
+    </p>
+    <p>
+      <strong>Esito:</strong> L'ACN emette un ordine di adeguamento con scadenze vincolanti e avvia un procedimento sanzionatorio per le carenze documentate. L'AD riceve una comunicazione formale di responsabilità personale ai sensi dell'Art. 23. Il costo complessivo — sanzioni, consulenze di emergenza, audit esterno obbligatorio a spese dell'azienda — supera <span class="danger">800.000 euro</span>, oltre ai costi reputazionali e operativi dell'ispezione.
+    </p>
+    <p>
+      Se la governance fosse stata costruita nei mesi precedenti, la stessa verifica si sarebbe conclusa con una nota positiva.
+    </p>
+  </div>
+
+  <h2>Le domande che i CEO pongono più spesso</h2>
+
+  <div class="faq-item">
+    <div class="faq-q">L'ACN ha già avviato verifiche in Italia?</div>
+    <div class="faq-a">Sì. Il D.Lgs. 138/2024 è in vigore dal 16 ottobre 2024. L'ACN ha già avviato le attività di registrazione dei soggetti essenziali e importanti e ha comunicato i piani di supervisione per il 2025-2026. Le prime verifiche formali sono in corso. Attendere che sia un'altra azienda a essere verificata prima di agire significa presentarsi impreparati nel momento peggiore.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">Come facciamo a sapere se siamo soggetti essenziali o importanti?</div>
+    <div class="faq-a">L'ACN pubblica le liste dei soggetti essenziali e importanti e le organizzazioni devono registrarsi sulla piattaforma ACN entro i termini stabiliti. In linea generale, i soggetti essenziali sono grandi organizzazioni (oltre 250 dipendenti o fatturato superiore a 50 milioni di euro) nei settori critici; i soggetti importanti sono organizzazioni medie (50-249 dipendenti o fatturato tra 10 e 50 milioni di euro) negli stessi settori. Se operate in uno dei 18 settori NIS2 e non avete ancora verificato la vostra classificazione, questo è il primo passo.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">Possiamo delegare tutta la preparazione all'audit al responsabile IT?</div>
+    <div class="faq-a">No — almeno non completamente. La preparazione tecnica è responsabilità dell'IT. Ma la governance — l'approvazione delle misure, la supervisione della loro attuazione, la formazione degli amministratori — deve necessariamente coinvolgere il consiglio di amministrazione e il CEO. L'Art. 23 del D.Lgs. 138/2024 non lascia margini di interpretazione: la responsabilità personale degli amministratori è esplicita. Delegare senza supervisionare è esattamente il comportamento che la norma sanziona.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">Cosa succede se durante la verifica vengono trovate lacune?</div>
+    <div class="faq-a">Dipende dalla gravità e dalla natura delle lacune. L'ACN può emettere raccomandazioni non vincolanti per carenze minori, ordini vincolanti con scadenze per carenze significative, o avviare procedimenti sanzionatori per violazioni gravi. In presenza di rischi immediati per la continuità dei servizi o per la sicurezza pubblica, l'ACN può imporre misure cautelari immediate. La trasparenza durante la verifica — riconoscere le lacune e presentare un piano correttivo realistico — è sempre preferibile al tentativo di minimizzare.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">Quanto tempo ci vuole per prepararsi adeguatamente?</div>
+    <div class="faq-a">Dipende dallo stato attuale. Un'organizzazione che ha già processi di sicurezza in atto ma mancante di formalizzazione e documentazione può prepararsi in 2-3 mesi. Un'organizzazione che parte da zero ha bisogno di 6-12 mesi per costruire una governance solida e verificabile. In entrambi i casi, il momento migliore per iniziare era ieri. Il secondo momento migliore è oggi.</div>
+  </div>
+
+  <div class="box-info" style="margin: 48px 0 32px;">
+    <div style="font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color: var(--yellow); margin-bottom:10px;">🔧 STRUMENTI &amp; SOLUZIONI</div>
+    <p style="margin:0; font-size:17px; color: #ddd; line-height:1.7;">Per dimostrare all'ACN una postura di sicurezza misurabile e documentata, <strong>Microsoft Defender Compliance Manager</strong> consente di mappare i controlli NIS2 con evidenze verificabili, mentre <strong>Microsoft Defender Secure Score</strong> fornisce un KPI numerico da 0 a 100 immediatamente leggibile dal consiglio di amministrazione — senza richiedere competenze tecniche. Un partner Microsoft certificato può configurare questi strumenti nell'ambito di un'analisi del gap gratuita, fornendovi la documentazione pronta per la verifica ACN.</p>
+  </div>
+
+  <!-- NEWSLETTER -->
+  <div style="background:#111; border:1px solid rgba(255,255,255,0.1); border-left:3px solid #f5c518; border-radius:4px; padding:32px 36px; margin:40px 0 0; text-align:center; max-width:760px; margin-left:auto; margin-right:auto;">
+    <div style="font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:#f5c518; margin-bottom:12px;">📬 AGGIORNAMENTI NIS2</div>
+    <h3 style="font-family:'Poppins',sans-serif; font-size:20px; font-weight:800; margin:0 0 8px; color:#f0f0f0;">Un nuovo articolo NIS2 ogni settimana — direttamente nella tua casella</h3>
+    <p style="color:#888; font-size:15px; margin:0 0 20px;">Nessun pitch di vendita. Solo guida pratica per CEO e consigli di amministrazione.</p>
+    <form id="nlForm-nis2_preparazione_audit" onsubmit="submitNewsletter_nis2_preparazione_audit(event)" style="display:flex; gap:10px; flex-wrap:wrap; justify-content:center; max-width:460px; margin:0 auto;">
+      <input type="email" id="nlEmail-nis2_preparazione_audit" placeholder="tuo@azienda.it" required style="flex:1; min-width:200px; padding:12px 16px; background:#1c1c1f; border:1px solid rgba(255,255,255,0.15); border-radius:4px; color:#f0f0f0; font-size:15px; outline:none;" />
+      <button type="submit" id="nlSubmit-nis2_preparazione_audit" style="padding:12px 22px; background:#f5c518; color:#141416; font-weight:700; font-size:15px; border:none; border-radius:4px; cursor:pointer; white-space:nowrap;">Iscriviti gratis →</button>
+    </form>
+    <p style="font-size:12px; color:#555; margin:12px 0 0;">Puoi cancellarti in qualsiasi momento. Non condividiamo mai la tua email.</p>
+    <div id="nlThanks-nis2_preparazione_audit" style="display:none; color:#4ade80; font-size:16px; font-weight:600; margin-top:14px;">✅ Sei iscritto! Il prossimo articolo arriverà nella tua casella.</div>
+  </div>
+
+  <!-- CTA -->
+  <div class="cta-section">
+    <h2>Sai dove si trova la tua organizzazione oggi?</h2>
+    <p>Un'analisi del gap gratuita con un partner Microsoft certificato mostra esattamente cosa hai già coperto — e cosa manca.</p>
+    <a href="/nis2.html#boka" class="btn-primary">Prenota analisi gap gratuita →</a>
+    <p class="cta-fine">Le sanzioni arrivano fino a <strong>10 milioni di euro</strong>. L'analisi del gap è gratuita.</p>
+  </div>
+
+</article>
+
+<div class="related-articles" style="margin:2.5rem 0 2rem;padding:1.5rem;background:#1a1a2e;border-left:4px solid #f0a500;border-radius:4px;max-width:760px;margin-left:auto;margin-right:auto;">
+  <p style="margin:0 0 1rem;font-size:0.85rem;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:#f0a500;">Leggi anche</p>
+  <ul style="margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:0.5rem;">
+    <li><a href="/it/articoli/nis2-responsabilita-personale-amministratori.html" style="color:#e0e0e0;text-decoration:none;font-size:0.95rem;">→ Responsabilità personale degli amministratori NIS2</a></li>
+    <li><a href="/it/articoli/nis2-sanzioni-italia.html" style="color:#e0e0e0;text-decoration:none;font-size:0.95rem;">→ Sanzioni NIS2 in Italia: quanto costa non conformarsi?</a></li>
+    <li><a href="/it/articoli/nis2-quali-aziende-sono-coinvolte.html" style="color:#e0e0e0;text-decoration:none;font-size:0.95rem;">→ Quali aziende sono soggette alla NIS2?</a></li>
+  </ul>
+  <p style="margin:1.25rem 0 0;font-size:0.85rem;color:#aaa;">← <a href="https://nis2klar.se/it/" style="color:#f0a500;text-decoration:none;">NIS2Klar Homepage</a> &nbsp;·&nbsp; <a href="https://nis2klar.se/it/articoli.html" style="color:#f0a500;text-decoration:none;">Tutte le guide</a></p>
+</div>
+
+<footer>
+  © 2026 M&amp;J Trusted Marketing KB ·
+  <a href="mailto:support@trustedmarketing.se">support@trustedmarketing.se</a> · <a href="tel:+46470597003">+46 470 59 70 03</a> ·
+  <a href="https://nis2klar.se/it/">Torna alla homepage</a> ·
+  <a href="/privacy.html">Informativa sulla privacy</a>
+  <p style="margin-top:12px; font-size:11px; color: #555; line-height:1.5;">Microsoft, Microsoft 365, Azure e i relativi nomi di prodotto sono marchi di Microsoft Corporation. nis2klar.se non è affiliata né approvata da Microsoft Corporation.</p>
+</footer>
+
+<script data-cfasync="false">
+  async function submitNewsletter_nis2_preparazione_audit(e) {
+    e.preventDefault();
+    const btn = document.getElementById('nlSubmit-nis2_preparazione_audit');
+    btn.disabled = true; btn.textContent = '...';
+    const email = document.getElementById('nlEmail-nis2_preparazione_audit').value.trim();
+    try {
+      const res = await fetch('/api/newsletter/subscribe', { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({ email, source: 'articolo-it-nis2_preparazione_audit' }) });
+      const data = await res.json();
+      if (data.success) { document.getElementById('nlForm-nis2_preparazione_audit').style.display='none'; document.getElementById('nlThanks-nis2_preparazione_audit').style.display='block'; }
+      else { btn.disabled=false; btn.textContent='Iscriviti gratis →'; }
+    } catch { btn.disabled=false; btn.textContent='Iscriviti gratis →'; }
+  }
+</script>
+
+</body>
+</html>

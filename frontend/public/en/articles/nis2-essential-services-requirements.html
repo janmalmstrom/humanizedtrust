@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-BKF3QH9K01"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag("js", new Date());
+    gtag("config", "G-BKF3QH9K01");
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NIS2 Essential Services Requirements: What Operators Must Do | NIS2Klar Ireland</title>
+  <meta name="description" content="Essential service operators in Ireland under NIS2 face €10M fines and personal board liability. Registration, security requirements, incident reporting, and supervisory cooperation explained.">
+  <meta property="og:title" content="NIS2 Essential Services Requirements: What Operators Must Do">
+  <meta property="og:description" content="Essential service operators in Ireland under NIS2 face €10M fines and personal board liability. Registration, security requirements, incident reporting, and supervisory cooperation explained.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #141416;
+      --card: #1c1c1f;
+      --yellow: #f5c518;
+      --white: #f0f0f0;
+      --muted: #888;
+      --red: #C61212;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: var(--bg); color: var(--white); font-family: 'Barlow', sans-serif; font-size: 19px; line-height: 1.8; }
+
+    /* Nav */
+    nav { display: flex; justify-content: space-between; align-items: center; padding: 20px 40px; border-bottom: 1px solid rgba(255,255,255,0.07); max-width: 1200px; margin: 0 auto; gap: 16px; flex-wrap: wrap; }
+    .nav-logo { font-family: 'Poppins', sans-serif; font-weight: 900; font-size: 20px; color: var(--yellow); text-decoration: none; }
+    .nav-logo span { color: var(--white); }
+    .nav-back { color: var(--muted); text-decoration: none; font-size: 15px; }
+    .nav-back:hover { color: var(--white); }
+    .lang-switcher { display: flex; gap: 8px; align-items: center; font-size: 13px; font-family: 'Poppins', sans-serif; }
+    .lang-switcher a { text-decoration: none; font-weight: 600; padding: 4px 8px; border-radius: 3px; color: var(--muted); }
+    .lang-switcher a:hover { color: var(--yellow); }
+    .nav-cta { background: var(--yellow); color: #000; padding: 8px 18px; border-radius: 4px; text-decoration: none; font-weight: 700; font-size: 14px; font-family: 'Poppins', sans-serif; white-space: nowrap; }
+
+    /* Article */
+    .article-wrap { max-width: 760px; margin: 0 auto; padding: 60px 40px; }
+    .article-category { font-size: 13px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 16px; }
+    h1 { font-family: 'Poppins', sans-serif; font-size: clamp(30px, 4vw, 44px); font-weight: 900; line-height: 1.2; margin-bottom: 24px; }
+    .article-meta { font-size: 15px; color: var(--muted); margin-bottom: 48px; padding-bottom: 24px; border-bottom: 1px solid rgba(255,255,255,0.07); }
+    h2 { font-family: 'Poppins', sans-serif; font-size: 26px; font-weight: 700; margin: 48px 0 16px; color: var(--white); }
+    h3 { font-family: 'Poppins', sans-serif; font-size: 20px; font-weight: 600; margin: 32px 0 12px; color: var(--yellow); }
+    p { margin-bottom: 22px; }
+    strong { color: var(--white); font-weight: 700; }
+    .highlight { color: var(--yellow); font-weight: 700; }
+    .danger { color: #ff6b6b; font-weight: 700; }
+    ul, ol { margin: 16px 0 24px 24px; }
+    li { margin-bottom: 12px; font-size: 19px; }
+
+    /* Callout boxes */
+    .box-warning { background: rgba(197,17,17,0.12); border-left: 4px solid var(--red); padding: 20px 24px; margin: 32px 0; border-radius: 0 4px 4px 0; }
+    .box-info { background: rgba(245,197,24,0.08); border-left: 4px solid var(--yellow); padding: 20px 24px; margin: 32px 0; border-radius: 0 4px 4px 0; }
+    .box-case { background: var(--card); border: 1px solid rgba(255,255,255,0.08); padding: 28px; margin: 40px 0; border-radius: 4px; }
+    .box-case .case-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 12px; }
+    blockquote { border-left: 3px solid var(--yellow); padding: 12px 20px; margin: 24px 0; font-style: italic; color: #ccc; }
+
+    /* CTA */
+    .cta-section { background: var(--card); border: 1px solid rgba(245,197,24,0.2); border-radius: 4px; padding: 48px 40px; margin: 64px 0 40px; text-align: center; }
+    .cta-section h2 { margin-top: 0; font-size: 26px; }
+    .cta-section p { color: #aaa; max-width: 500px; margin: 0 auto 28px; }
+    .btn-primary { display: inline-block; background: var(--yellow); color: #000; font-family: 'Poppins', sans-serif; font-weight: 800; font-size: 16px; padding: 16px 36px; border-radius: 4px; text-decoration: none; }
+    .btn-primary:hover { background: #e0b010; }
+    .cta-fine { font-size: 13px; color: var(--muted); margin-top: 16px; }
+
+    /* FAQ */
+    .faq-item { border-bottom: 1px solid rgba(255,255,255,0.07); padding: 20px 0; }
+    .faq-q { font-family: 'Poppins', sans-serif; font-weight: 600; margin-bottom: 10px; }
+    .faq-a { color: #bbb; }
+
+    /* Table */
+    .fine-table { width: 100%; border-collapse: collapse; margin: 24px 0; }
+    .fine-table th { background: rgba(245,197,24,0.1); color: var(--yellow); font-family: 'Poppins', sans-serif; font-size: 13px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 12px 16px; text-align: left; border-bottom: 1px solid rgba(245,197,24,0.2); }
+    .fine-table td { padding: 14px 16px; border-bottom: 1px solid rgba(255,255,255,0.05); font-size: 15px; }
+    .fine-table tr:last-child td { border-bottom: none; }
+    .fine-table .amount { color: #ff6b6b; font-weight: 700; }
+
+    /* Summary + Key Takeaway */
+    .box-summary { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; padding: 24px 28px; margin: 0 0 32px; }
+    .summary-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-bottom: 14px; }
+    .box-summary ul { margin: 0; padding-left: 20px; }
+    .box-summary li { margin-bottom: 8px; font-size: 17px; color: #ccc; }
+    .box-takeaway { background: rgba(245,197,24,0.08); border-left: 4px solid var(--yellow); padding: 20px 24px; margin: 0 0 40px; border-radius: 0 4px 4px 0; }
+    .takeaway-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 10px; }
+    .box-takeaway p { margin: 0; font-size: 18px; font-weight: 600; color: var(--white); line-height: 1.6; }
+
+    /* Related Articles */
+    .related-articles { margin: 2.5rem 0 2rem; padding: 1.5rem; background: #1a1a2e; border-left: 4px solid #f0a500; border-radius: 4px; }
+    .related-articles p { margin: 0 0 1rem; font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #f0a500; }
+    .related-articles ul { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+    .related-articles li { margin: 0; }
+    .related-articles a { color: #e0e0e0; text-decoration: none; font-size: 0.95rem; }
+    .related-articles a:hover { color: #f0a500; }
+    .related-articles-footer { margin: 1.25rem 0 0; font-size: 0.85rem; color: #aaa; }
+    .related-articles-footer a { color: #f0a500; text-decoration: none; }
+
+    /* Footer */
+    footer { border-top: 1px solid rgba(255,255,255,0.07); padding: 32px 40px; text-align: center; font-size: 13px; color: var(--muted); max-width: 900px; margin: 0 auto; }
+    footer a { color: var(--muted); }
+    footer a:hover { color: var(--white); }
+
+    @media (max-width: 600px) {
+      nav, .article-wrap, footer { padding: 20px; }
+      .cta-section { padding: 32px 20px; }
+      .fine-table { font-size: 14px; }
+      .fine-table th, .fine-table td { padding: 10px 10px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="https://nis2klar.se/en/">NIS2<span>Klar</span></a>
+  <a class="nav-back" href="https://nis2klar.se/en/articles.html">← All Articles</a>
+  <div class="lang-switcher">
+    <a href="https://nis2klar.se/artiklar.html" title="Svenska">SV</a>
+    <a href="https://nis2klar.se/en/articles.html" style="color:#f5c518;background:rgba(245,197,24,0.1);" title="English">EN</a>
+    <a href="https://nis2klar.se/da/artikler.html" title="Dansk">DA</a>
+    <a href="https://nis2klar.se/no/artikler.html" title="Norsk">NO</a>
+    <a href="https://nis2klar.se/it/articoli.html" title="Italiano">IT</a>
+  </div>
+  <a class="nav-cta" href="https://nis2klar.se/en/#boka">Book a call →</a>
+</nav>
+
+<article class="article-wrap">
+  <div class="article-category">Compliance & Supervision</div>
+  <h1>NIS2 Essential Services Requirements: What Operators Must Do</h1>
+  <div class="article-meta">Updated 19 April 2026 · Reading time: ca 8 minutes · Audience: CEOs and Boards</div>
+
+  <!-- SUMMARY -->
+  <div class="box-summary">
+    <div class="summary-label">Summary</div>
+    <ul>
+      <li>Essential service operators under NIS2 in Ireland face fines up to <strong>€10 million or 2% of global turnover</strong> — whichever is higher.</li>
+      <li>Registration with NCSC Ireland is mandatory; failure to register is itself a breach.</li>
+      <li>Board members are personally liable under Regulation 32 of S.I. 322/2024 — not just the company.</li>
+      <li>Incident reporting to NCSC Ireland must follow strict timelines: 24h early warning, 72h full notification, 1 month final report.</li>
+      <li>Essential services differ from important entities in scope, supervisory intensity, and penalty levels — understand which category you are in.</li>
+    </ul>
+  </div>
+
+  <!-- KEY TAKEAWAY -->
+  <div class="box-takeaway">
+    <div class="takeaway-label">Key Takeaway</div>
+    <p>Being an essential service operator under NIS2 is not a compliance box-ticking exercise. It is a governance obligation that puts your board at personal legal and reputational risk. NCSC Ireland and sector regulators are now actively supervising. The time to act is now, not when you receive a notice of inspection.</p>
+  </div>
+
+  <!-- HOOK -->
+  <p>
+    Ireland transposed the NIS2 Directive into law in October 2024. S.I. No. 322 of 2024 (the NIS2 Regulations) created a new category of compliance obligation for operators of essential services.
+  </p>
+
+  <p>
+    If your organisation operates critical infrastructure in one of 18 EU-designated sectors — energy, transport, banking, health, digital infrastructure, and others — you are almost certainly covered.
+    And if you are covered, your board faces <strong>personal liability</strong> for breaches, with fines reaching <strong>€10 million</strong> or 2% of global annual turnover.
+  </p>
+
+  <p>
+    This article explains exactly what being an essential service operator means in the Irish context, what you must do, and why it matters more than you might think.
+  </p>
+
+  <div class="box-warning">
+    <strong>NCSC Ireland is active.</strong> The National Cyber Security Centre has already issued guidance to essential service operators and begun preliminary engagement with sector regulators (CBI for finance, ComReg for telecoms, CRU for energy, and others). This is not a future problem — it is a present one.
+  </div>
+
+  <h2>What Makes You an "Essential Service" Under NIS2?</h2>
+
+  <p>
+    The NIS2 Regulations apply to organisations in 18 sectors that are critical to the functioning of Irish society and the EU economy. These are not niche categories.
+  </p>
+
+  <p>
+    The 18 sectors are:
+  </p>
+
+  <ol>
+    <li>Energy</li>
+    <li>Transport</li>
+    <li>Banking</li>
+    <li>Financial market infrastructure</li>
+    <li>Health</li>
+    <li>Drinking water and wastewater management</li>
+    <li>Digital infrastructure</li>
+    <li>ICT service providers</li>
+    <li>Public administration</li>
+    <li>Space</li>
+    <li>Postal services</li>
+    <li>Waste management</li>
+    <li>Chemicals</li>
+    <li>Food production and distribution</li>
+    <li>Manufacturing</li>
+    <li>Digital service providers</li>
+    <li>Research and development</li>
+    <li>Telecommunications</li>
+  </ol>
+
+  <p>
+    Within each sector, NIS2 defines two categories: <strong>essential entities</strong> and <strong>important entities</strong>. The threshold depends on your sector.
+  </p>
+
+  <h3>Essential vs. Important — The Size Threshold</h3>
+
+  <p>
+    In most sectors, an organisation qualifies as an <strong>essential entity</strong> if it meets one of these criteria:
+  </p>
+
+  <ul>
+    <li>More than 250 employees, OR</li>
+    <li>Annual turnover exceeding €50 million</li>
+  </ul>
+
+  <p>
+    An <strong>important entity</strong> falls below this but still meets sector-specific registration thresholds (typically 50–249 employees or €10–50 million turnover).
+  </p>
+
+  <p>
+    Why this matters: essential entities face stricter supervisory oversight and higher fines. Important entities have a slightly lower bar — but are still legally bound by most of the same security requirements.
+  </p>
+
+  <div class="box-info">
+    <strong>Irish Context:</strong> Ireland hosts many EU headquarters for multinational firms — Big Tech, pharma, financial services. If your organisation is registered in Ireland and operates in one of the 18 sectors, you likely need to determine your classification now. Even if your operational base is elsewhere in the EU, Irish registration may trigger NIS2 obligations under S.I. 322/2024.
+  </div>
+
+  <h2>The Five Core Obligations for Essential Service Operators</h2>
+
+  <h3>1. Registration with NCSC Ireland</h3>
+
+  <p>
+    There is no hiding. Essential and important entities must register with the <strong>National Cyber Security Centre (NCSC Ireland)</strong> and provide:
+  </p>
+
+  <ul>
+    <li>Organisation name and legal structure</li>
+    <li>Sector classification and confirmation of essential/important status</li>
+    <li>Contact details for the cybersecurity point of contact</li>
+    <li>Basic details of services and infrastructure operated</li>
+  </ul>
+
+  <p>
+    Failure to register is itself a breach. NCSC Ireland maintains a register and shares information with sector regulators (CBI, ComReg, CRU, etc.).
+    An organisation that has not registered cannot claim it was unaware of the obligation.
+  </p>
+
+  <p>
+    Registration is not a one-time event. Changes in ownership, sector classification, or operating scope must be reported to NCSC Ireland.
+  </p>
+
+  <h3>2. Implementation of Mandatory Security Measures (Article 21)</h3>
+
+  <p>
+    Article 21 of the NIS2 Regulation lists 10 mandatory security domains. Essential entities must implement measures in all 10; important entities in 7 of them (with some flexibility).
+  </p>
+
+  <p>
+    The domains are:
+  </p>
+
+  <ol>
+    <li><strong>Risk management and analysis</strong> — regular, documented risk assessments</li>
+    <li><strong>Incident handling and response</strong> — process for detecting, investigating, and responding to incidents</li>
+    <li><strong>Backup and continuity planning</strong> — recovery capabilities and disaster recovery documentation</li>
+    <li><strong>Supplier and third-party security</strong> — vetting and contractual security requirements for vendors</li>
+    <li><strong>Personnel security</strong> — access controls, training, and off-boarding procedures</li>
+    <li><strong>Physical and environmental security</strong> — protection of data centres, equipment, and facilities</li>
+    <li><strong>Cryptography and encryption</strong> — protection of sensitive data in transit and at rest</li>
+    <li><strong>Multi-factor authentication and access control</strong> — MFA for privileged users, role-based access</li>
+    <li><strong>Monitoring and logging</strong> — detection of unauthorised access and abnormal activity</li>
+    <li><strong>Management of ICT vulnerabilities</strong> — patching, vulnerability scanning, and remediation</li>
+  </ol>
+
+  <p>
+    Each domain requires documented processes, assigned responsibility, regular review, and board oversight.
+    A security tool alone does not satisfy these requirements — you must demonstrate governance and decision-making around the tool.
+  </p>
+
+  <h3>3. Incident Reporting to NCSC Ireland (Article 23)</h3>
+
+  <p>
+    If your organisation experiences a significant cybersecurity incident, you must report it to NCSC Ireland in strict timelines:
+  </p>
+
+  <table class="fine-table">
+    <thead>
+      <tr>
+        <th>Phase</th>
+        <th>Timeline</th>
+        <th>Content</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Early Warning</strong></td>
+        <td>24 hours from detection</td>
+        <td>Preliminary confirmation that an incident occurred; basic facts</td>
+      </tr>
+      <tr>
+        <td><strong>Full Notification</strong></td>
+        <td>72 hours from detection</td>
+        <td>Detailed incident information, systems affected, initial impact assessment</td>
+      </tr>
+      <tr>
+        <td><strong>Final Report</strong></td>
+        <td>1 month from detection</td>
+        <td>Complete incident analysis, root cause, remediation actions, lessons learned</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>
+    These timelines are not advisory. Missing the 72-hour window is itself a regulatory breach, separate from the incident itself.
+    Many organisations have been sanctioned not because the incident was severe, but because they failed to report in time.
+  </p>
+
+  <p>
+    Incident reporting goes to NCSC Ireland, not to police or another authority. NCSC Ireland then coordinates with sector regulators as needed.
+  </p>
+
+  <h3>4. Board Approval and Personal Accountability (Regulation 32)</h3>
+
+  <p>
+    This is the provision that keeps boards awake at night — and should.
+  </p>
+
+  <p>
+    Regulation 32 of S.I. 322/2024 states that members of the management body (board of directors, CEO, executive management) are personally responsible for ensuring that the organisation complies with the security requirements.
+  </p>
+
+  <p>
+    This means:
+  </p>
+
+  <ul>
+    <li>You cannot delegate cybersecurity entirely to the CTO or Chief Information Security Officer (CISO) and walk away.</li>
+    <li>You must actively review and approve security policies, risk assessments, and incident response plans.</li>
+    <li>You must maintain documented evidence that you have done this — board minutes, meeting notes, sign-offs.</li>
+    <li>If NCSC Ireland or a sector regulator finds material breaches, they can impose fines on the company AND investigate individual directors for personal liability.</li>
+  </ul>
+
+  <p>
+    Personal liability can extend to temporary disqualification from holding a management position — effectively a professional ban.
+  </p>
+
+  <h3>5. Cooperation with Supervisory Authorities</h3>
+
+  <p>
+    NCSC Ireland and sector regulators have broad inspection and information-gathering powers. When they come knocking, you must cooperate:
+  </p>
+
+  <ul>
+    <li>Provide documentation on request within specified timeframes (often 14–30 days)</li>
+    <li>Permit on-site inspections of facilities and IT systems</li>
+    <li>Attend meetings with regulators to discuss compliance</li>
+    <li>Report material changes to your security posture within a reasonable timeframe</li>
+  </ul>
+
+  <p>
+    Obstruction or failure to provide information is a separate breach and can lead to additional fines.
+  </p>
+
+  <h2>How Essential Service Requirements Differ From Important Entities</h2>
+
+  <p>
+    Important entities are governed by NIS2, but with a lighter regulatory touch. Here are the key differences:
+  </p>
+
+  <table class="fine-table">
+    <thead>
+      <tr>
+        <th>Dimension</th>
+        <th>Essential Entities</th>
+        <th>Important Entities</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Mandatory security domains</strong></td>
+        <td>All 10 required</td>
+        <td>7 of 10 required (with flexibility)</td>
+      </tr>
+      <tr>
+        <td><strong>Risk assessment frequency</strong></td>
+        <td>Annual or after significant change</td>
+        <td>Every 2 years or after significant change</td>
+      </tr>
+      <tr>
+        <td><strong>Supervisory oversight</strong></td>
+        <td>Active, proactive inspections</td>
+        <td>Reactive, complaint-driven</td>
+      </tr>
+      <tr>
+        <td><strong>Maximum fine</strong></td>
+        <td>€10 million or 2% turnover</td>
+        <td>€7 million or 1.4% turnover</td>
+      </tr>
+      <tr>
+        <td><strong>Incident reporting timelines</strong></td>
+        <td>24h / 72h / 1 month</td>
+        <td>24h / 72h / 1 month (same)</td>
+      </tr>
+      <tr>
+        <td><strong>Board documentation</strong></td>
+        <td>Mandatory, strict requirements</td>
+        <td>Required but slightly less stringent</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>
+    The difference is real but not as dramatic as some vendors claim. Important entities still face significant fines and still have personal board liability. Do not treat an important entity classification as a free pass.
+  </p>
+
+  <h2>Sector-Specific Regulators in Ireland</h2>
+
+  <p>
+    While NCSC Ireland coordinates overall NIS2 implementation, sector regulators are the enforcers:
+  </p>
+
+  <ul>
+    <li><strong>Central Bank of Ireland (CBI)</strong> — banks, financial services, market infrastructure</li>
+    <li><strong>ComReg</strong> — telecommunications providers, digital infrastructure operators</li>
+    <li><strong>Commission for Regulation of Utilities (CRU)</strong> — energy (electricity, gas, water) providers</li>
+    <li><strong>Health Service Executive (HSE) + Department of Health</strong> — healthcare and health data processors</li>
+    <li><strong>Other sectoral bodies</strong> — transport, postal services, waste, chemicals, food, manufacturing, research</li>
+  </ul>
+
+  <p>
+    If you are a bank, the CBI is your regulator and will conduct CBI-specific cybersecurity examinations on top of NIS2 compliance checks.
+    If you operate a water utility, CRU will lead supervisory activities.
+    This layering of oversight means essential service operators face multiple, sometimes overlapping inspection schedules.
+  </p>
+
+  <h2>Real-World Scenario: What Happens When NCSC Ireland Initiates an Inspection</h2>
+
+  <div class="box-case">
+    <div class="case-label">Case Study</div>
+    <p>
+      <strong>Scenario: Mid-sized telecommunications provider, registered in Ireland, 180 employees, €35 million annual revenue.</strong>
+    </p>
+    <p>
+      Classification: Essential entity (meets the 250-employee or €50M threshold? No, but ComReg determined it operates critical digital infrastructure). 
+    </p>
+    <p>
+      <strong>January 2026:</strong> A disgruntled former employee files a complaint with ComReg alleging weak access controls and lack of staff training on data protection.
+    </p>
+    <p>
+      <strong>February 2026:</strong> ComReg notifies NCSC Ireland, which opens a preliminary assessment. A formal notice is issued: "Provide documentation on risk management, incident response, supplier vetting, and access control within 21 days."
+    </p>
+    <p>
+      <strong>The Crisis:</strong> The organisation has no documented risk management process. Risk assessments exist in email threads and spreadsheets, not in a formal, dated, signed-off report. The board has never formally approved a cybersecurity policy. Incident response procedures exist in the CISO's head but not in a company policy document.
+    </p>
+    <p>
+      <strong>March 2026:</strong> The organisation submits incomplete documentation. NCSC Ireland and ComReg conduct an on-site inspection. They find:
+    </p>
+    <ul style="margin-left: 24px;">
+      <li>No evidence of board oversight on Article 21 security measures</li>
+      <li>Supplier contracts lack cybersecurity clauses</li>
+      <li>Access controls not formally reviewed in 18 months</li>
+    </ul>
+    <p>
+      <strong>Outcome:</strong> The organisation receives a formal enforcement notice. A fine of €2.5–4 million is proposed for failure to implement mandatory security measures and lack of board governance. The CEO and Chair are individually notified of potential personal liability proceedings. Legal fees exceed €500,000 before any settlement. Reputational damage leads to customer churn and lost business.
+    </p>
+    <p>
+      <strong>Lesson:</strong> This was not caused by a breach or cyberattack. It was caused by absent documentation and governance.
+    </p>
+  </div>
+
+  <h2>The Board's Checklist: What You Must Document Now</h2>
+
+  <p>
+    To satisfy Regulation 32 and Article 21, your board must have documented evidence of:
+  </p>
+
+  <ul>
+    <li><strong>Formal NIS2 classification decision</strong> — board resolution confirming you are aware of your essential/important entity status</li>
+    <li><strong>Approved cybersecurity policy</strong> — drafted by management, formally approved by the board, dated and signed</li>
+    <li><strong>Annual risk assessment</strong> — comprehensive assessment of cyber risks to your critical systems, dated, with clear ownership</li>
+    <li><strong

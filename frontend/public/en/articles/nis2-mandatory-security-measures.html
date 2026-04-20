@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-BKF3QH9K01"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag("js", new Date());
+    gtag("config", "G-BKF3QH9K01");
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NIS2 Mandatory Security Measures: The Complete Requirements List | NIS2Klar</title>
+  <meta name="description" content="Article 21 of NIS2 lists 10 mandatory security measures. Learn what each means, what auditors look for, and minimum viable implementations for Irish organisations.">
+  <meta property="og:title" content="NIS2 Mandatory Security Measures: The Complete Requirements List">
+  <meta property="og:description" content="Article 21 of NIS2 lists 10 mandatory security measures. Learn what each means, what auditors look for, and minimum viable implementations for Irish organisations.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #141416;
+      --card: #1c1c1f;
+      --yellow: #f5c518;
+      --white: #f0f0f0;
+      --muted: #888;
+      --red: #C61212;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: var(--bg); color: var(--white); font-family: 'Barlow', sans-serif; font-size: 19px; line-height: 1.8; }
+
+    /* Nav */
+    nav { display: flex; justify-content: space-between; align-items: center; padding: 20px 40px; border-bottom: 1px solid rgba(255,255,255,0.07); max-width: 900px; margin: 0 auto; flex-wrap: wrap; gap: 16px; }
+    .nav-logo { font-family: 'Poppins', sans-serif; font-weight: 900; font-size: 20px; color: var(--yellow); text-decoration: none; }
+    .nav-logo span { color: var(--white); }
+    .nav-back { color: var(--muted); text-decoration: none; font-size: 15px; }
+    .nav-back:hover { color: var(--white); }
+    .lang-switcher { display: flex; gap: 8px; align-items: center; font-size: 13px; font-family: 'Poppins', sans-serif; }
+    .lang-switcher a { color: #888; text-decoration: none; font-weight: 600; padding: 4px 8px; border-radius: 3px; }
+    .lang-switcher a:hover { color: var(--white); }
+    .nav-cta { background: var(--yellow); color: #000; padding: 8px 18px; border-radius: 4px; text-decoration: none; font-weight: 700; font-size: 14px; font-family: 'Poppins', sans-serif; }
+
+    /* Article */
+    .article-wrap { max-width: 760px; margin: 0 auto; padding: 60px 40px; }
+    .article-category { font-size: 13px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 16px; }
+    h1 { font-family: 'Poppins', sans-serif; font-size: clamp(30px, 4vw, 44px); font-weight: 900; line-height: 1.2; margin-bottom: 24px; }
+    .article-meta { font-size: 15px; color: var(--muted); margin-bottom: 48px; padding-bottom: 24px; border-bottom: 1px solid rgba(255,255,255,0.07); }
+    h2 { font-family: 'Poppins', sans-serif; font-size: 26px; font-weight: 700; margin: 48px 0 16px; color: var(--white); }
+    h3 { font-family: 'Poppins', sans-serif; font-size: 20px; font-weight: 600; margin: 32px 0 12px; color: var(--yellow); }
+    p { margin-bottom: 22px; }
+    strong { color: var(--white); font-weight: 700; }
+    .highlight { color: var(--yellow); font-weight: 700; }
+    .danger { color: #ff6b6b; font-weight: 700; }
+    ul, ol { margin: 16px 0 24px 24px; }
+    li { margin-bottom: 12px; font-size: 19px; }
+
+    /* Callout boxes */
+    .box-warning { background: rgba(197,17,17,0.12); border-left: 4px solid var(--red); padding: 20px 24px; margin: 32px 0; border-radius: 0 4px 4px 0; }
+    .box-info { background: rgba(245,197,24,0.08); border-left: 4px solid var(--yellow); padding: 20px 24px; margin: 32px 0; border-radius: 0 4px 4px 0; }
+    .box-case { background: var(--card); border: 1px solid rgba(255,255,255,0.08); padding: 28px; margin: 40px 0; border-radius: 4px; }
+    .box-case .case-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 12px; }
+    blockquote { border-left: 3px solid var(--yellow); padding: 12px 20px; margin: 24px 0; font-style: italic; color: #ccc; }
+
+    /* CTA */
+    .cta-section { background: var(--card); border: 1px solid rgba(245,197,24,0.2); border-radius: 4px; padding: 48px 40px; margin: 64px 0 40px; text-align: center; }
+    .cta-section h2 { margin-top: 0; font-size: 26px; }
+    .cta-section p { color: #aaa; max-width: 500px; margin: 0 auto 28px; }
+    .btn-primary { display: inline-block; background: var(--yellow); color: #000; font-family: 'Poppins', sans-serif; font-weight: 800; font-size: 16px; padding: 16px 36px; border-radius: 4px; text-decoration: none; }
+    .btn-primary:hover { background: #e0b010; }
+    .cta-fine { font-size: 13px; color: var(--muted); margin-top: 16px; }
+
+    /* FAQ */
+    .faq-item { border-bottom: 1px solid rgba(255,255,255,0.07); padding: 20px 0; }
+    .faq-q { font-family: 'Poppins', sans-serif; font-weight: 600; margin-bottom: 10px; }
+    .faq-a { color: #bbb; }
+
+    /* Fine table */
+    .measure-table { width: 100%; border-collapse: collapse; margin: 24px 0; }
+    .measure-table th { background: rgba(245,197,24,0.1); color: var(--yellow); font-family: 'Poppins', sans-serif; font-size: 13px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 12px 16px; text-align: left; border-bottom: 1px solid rgba(245,197,24,0.2); }
+    .measure-table td { padding: 14px 16px; border-bottom: 1px solid rgba(255,255,255,0.05); font-size: 15px; }
+    .measure-table tr:last-child td { border-bottom: none; }
+
+    /* Summary + Key Takeaway */
+    .box-summary { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; padding: 24px 28px; margin: 0 0 32px; }
+    .summary-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-bottom: 14px; }
+    .box-summary ul { margin: 0; padding-left: 20px; }
+    .box-summary li { margin-bottom: 8px; font-size: 17px; color: #ccc; }
+    .box-takeaway { background: rgba(245,197,24,0.08); border-left: 4px solid var(--yellow); padding: 20px 24px; margin: 0 0 40px; border-radius: 0 4px 4px 0; }
+    .takeaway-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 10px; }
+    .box-takeaway p { margin: 0; font-size: 18px; font-weight: 600; color: var(--white); line-height: 1.6; }
+
+    /* Related articles */
+    .related-articles { margin: 2.5rem 0 2rem; padding: 1.5rem; background: #1a1a2e; border-left: 4px solid #f0a500; border-radius: 4px; }
+    .related-articles p { margin: 0 0 1rem; font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #f0a500; }
+    .related-articles ul { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+    .related-articles li a { color: #e0e0e0; text-decoration: none; font-size: 0.95rem; }
+    .related-articles li a:hover { color: #f0a500; }
+    .related-articles .footer-nav { margin: 1.25rem 0 0; font-size: 0.85rem; color: #aaa; }
+    .related-articles .footer-nav a { color: #f0a500; text-decoration: none; }
+
+    /* Footer */
+    footer { border-top: 1px solid rgba(255,255,255,0.07); padding: 32px 40px; text-align: center; font-size: 13px; color: var(--muted); max-width: 900px; margin: 0 auto; }
+    footer a { color: var(--muted); }
+    footer a:hover { color: var(--white); }
+
+    @media (max-width: 600px) {
+      nav, .article-wrap, footer { padding: 20px; }
+      nav { flex-direction: column; align-items: flex-start; }
+      .cta-section { padding: 32px 20px; }
+      .measure-table { font-size: 14px; }
+      .measure-table th, .measure-table td { padding: 10px 10px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="https://nis2klar.se/en/">NIS2<span>Klar</span></a>
+  <a class="nav-back" href="https://nis2klar.se/en/articles.html">← All Articles</a>
+  <div class="lang-switcher">
+    <a href="https://nis2klar.se/artiklar.html" title="Svenska">SV</a>
+    <a href="https://nis2klar.se/en/articles.html" style="color:#f5c518;background:rgba(245,197,24,0.1);" title="English">EN</a>
+    <a href="https://nis2klar.se/da/artikler.html" title="Dansk">DA</a>
+    <a href="https://nis2klar.se/no/artikler.html" title="Norsk">NO</a>
+    <a href="https://nis2klar.se/it/articoli.html" title="Italiano">IT</a>
+  </div>
+  <a class="nav-cta" href="https://nis2klar.se/en/#book">Book call →</a>
+</nav>
+
+<article class="article-wrap">
+  <div class="article-category">Compliance &amp; Requirements</div>
+  <h1>NIS2 Mandatory Security Measures: The Complete Requirements List</h1>
+  <div class="article-meta">Updated 19 April 2026 · Read time: 8 minutes · Audience: CEOs &amp; Board Members</div>
+
+  <!-- SUMMARY -->
+  <div class="box-summary">
+    <div class="summary-label">Summary</div>
+    <ul>
+      <li>Article 21 of NIS2 mandates 10 specific security measures for essential and important entities in Ireland.</li>
+      <li>Each measure has documented evidence requirements — auditors will ask to see them.</li>
+      <li>Compliance is not optional; the NCSC Ireland and sector regulators inspect for these measures regardless of whether an incident has occurred.</li>
+      <li>Your board must approve and document implementation of each measure under your personal responsibility (Regulation 32, S.I. 322/2024).</li>
+    </ul>
+  </div>
+
+  <!-- KEY TAKEAWAY -->
+  <div class="box-takeaway">
+    <div class="takeaway-label">Critical Point</div>
+    <p>Article 21 is not a checklist of "best practices." It is a legally binding list of 10 security domains you must document, implement, and be prepared to demonstrate to auditors. Your board's inability to produce evidence of these measures is itself a sanctionable breach.</p>
+  </div>
+
+  <!-- HOOK -->
+  <p>
+    The NIS2 Regulations (S.I. No. 322 of 2024) require Irish essential and important entities to implement 10 mandatory security measures.
+    These are not suggestions. They are statutory obligations backed by fines up to <strong>€10 million for essential entities</strong> and <strong>€7 million for important entities</strong>.
+  </p>
+
+  <p>
+    What many boards don't yet understand is that the NCSC Ireland and sector regulators (CBI for finance, ComReg for telecoms, CRU for energy, etc.) are already conducting inspections.
+    They are looking for documentation of these 10 measures. If the documentation is absent, you are in breach — even if no cyberattack has occurred.
+  </p>
+
+  <div class="box-warning">
+    <strong>The NCSC Ireland is active.</strong> Notification of the competent authority is mandatory within 72 hours of a serious incident. Regulators use these notifications as entry points for full audits of your security posture. Plan to be inspected.
+  </div>
+
+  <h2>What Are the 10 Mandatory Measures?</h2>
+
+  <p>
+    Article 21 of the NIS2 Directive (transposed in Ireland as S.I. 322/2024) requires:
+  </p>
+
+  <table class="measure-table">
+    <thead>
+      <tr>
+        <th>Measure</th>
+        <th>Focus Area</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>1. Risk Assessment &amp; Management</strong></td>
+        <td>Identify, assess, and document all cyber risks</td>
+      </tr>
+      <tr>
+        <td><strong>2. Incident Handling &amp; Reporting</strong></td>
+        <td>Detect, respond, and report incidents within legal timelines</td>
+      </tr>
+      <tr>
+        <td><strong>3. Business Continuity &amp; Disaster Recovery</strong></td>
+        <td>Maintain operations and recover data after disruptions</td>
+      </tr>
+      <tr>
+        <td><strong>4. Supply Chain &amp; Third-Party Security</strong></td>
+        <td>Manage risks from vendors, suppliers, and external services</td>
+      </tr>
+      <tr>
+        <td><strong>5. Security by Design &amp; Development</strong></td>
+        <td>Build security into systems from inception</td>
+      </tr>
+      <tr>
+        <td><strong>6. Asset Management &amp; Inventory</strong></td>
+        <td>Know what you own, where it is, and who accesses it</td>
+      </tr>
+      <tr>
+        <td><strong>7. Access Control &amp; Authentication</strong></td>
+        <td>Restrict who can access systems and verify their identity</td>
+      </tr>
+      <tr>
+        <td><strong>8. Cryptography &amp; Data Protection</strong></td>
+        <td>Encrypt sensitive data at rest and in transit</td>
+      </tr>
+      <tr>
+        <td><strong>9. Physical &amp; Environmental Security</strong></td>
+        <td>Protect facilities, hardware, and infrastructure</td>
+      </tr>
+      <tr>
+        <td><strong>10. Personnel &amp; Awareness Training</strong></td>
+        <td>Train staff and manage human security risks</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>
+    Below, we break down each measure in plain language, explain what auditors will look for, and outline a minimum viable implementation.
+  </p>
+
+  <h2>Measure 1: Risk Assessment &amp; Management</h2>
+
+  <h3>What It Means</h3>
+  <p>
+    You must formally identify all cyber risks to your organisation — from external threats (ransomware, data theft) to internal weaknesses (poor access controls, outdated software).
+    This assessment must be documented, reviewed at least annually, and approved by the board.
+  </p>
+
+  <h3>What Auditors Look For</h3>
+  <ul>
+    <li>A written risk assessment covering all IT systems, data, and business processes</li>
+    <li>Evidence that risks have been scored (e.g., high/medium/low)</li>
+    <li>A mitigation plan for each significant risk</li>
+    <li>Board minutes showing approval of the risk assessment and mitigation strategy</li>
+    <li>Annual review and update of the assessment</li>
+  </ul>
+
+  <h3>Minimum Viable Implementation</h3>
+  <p>
+    Conduct a risk assessment workshop with IT, operations, and business leaders. Document:
+    the scope of systems covered, the risks identified, their likelihood and impact, and assigned owners for mitigation.
+    Present findings to the board with a written recommendation for approval.
+    Schedule annual review dates and maintain a log of updates.
+    Cost estimate: €3,000–€8,000 for external consultant-led assessment, or internal staff time if expertise exists.
+  </p>
+
+  <h2>Measure 2: Incident Handling &amp; Reporting</h2>
+
+  <h3>What It Means</h3>
+  <p>
+    When a serious incident occurs — data breach, system compromise, ransomware infection — you must detect it, contain it, investigate it, and report it to the NCSC Ireland within strict legal timelines.
+    The reporting timeline is: <strong>24-hour early warning, 72-hour full notification, 1-month final report</strong>.
+  </p>
+
+  <h3>What Auditors Look For</h3>
+  <ul>
+    <li>An incident response plan with roles, responsibilities, and escalation procedures</li>
+    <li>A defined list of what constitutes a "serious" incident (impact thresholds)</li>
+    <li>Evidence of incident detection capabilities (logs, alerts, monitoring)</li>
+    <li>A contact list for NCSC Ireland notification with backup contacts</li>
+    <li>Template for incident reporting and communication</li>
+    <li>Training records showing staff understand escalation procedures</li>
+  </ul>
+
+  <h3>Minimum Viable Implementation</h3>
+  <p>
+    Draft an incident response plan (template available from NCSC Ireland website).
+    Assign an incident lead, a technical investigator, a communications lead, and a legal lead.
+    Define "serious incident" thresholds (e.g., >500 records affected, >4 hours downtime, >€50k impact).
+    Store NCSC Ireland contact details in a secure, accessible location.
+    Conduct a tabletop exercise simulating an incident to test the plan.
+    Cost: €2,000–€5,000 for plan development; ongoing: staff time for drills and updates.
+  </p>
+
+  <div class="box-info">
+    <strong>Critical timeline:</strong> Missing the 24-hour early warning window or 72-hour notification deadline is itself a sanctionable breach, separate from the underlying incident. Build margin into your reporting process.
+  </div>
+
+  <h2>Measure 3: Business Continuity &amp; Disaster Recovery</h2>
+
+  <h3>What It Means</h3>
+  <p>
+    Your organisation must be able to recover from a major disruption (cyberattack, data loss, facility damage) and restore critical business functions within defined timeframes.
+    You must have backup systems, documented recovery procedures, and regular testing.
+  </p>
+
+  <h3>What Auditors Look For</h3>
+  <ul>
+    <li>A documented business continuity and disaster recovery plan (BCDRP)</li>
+    <li>Identification of critical business functions and their recovery time objectives (RTO) and recovery point objectives (RPO)</li>
+    <li>Backup strategy with documented retention periods</li>
+    <li>Evidence of backup testing (logs, test results, dates)</li>
+    <li>Disaster recovery testing records (at least annually)</li>
+    <li>An off-site or geographically separated backup location</li>
+  </ul>
+
+  <h3>Minimum Viable Implementation</h3>
+  <p>
+    Identify your 5–10 most critical business processes. Define acceptable recovery times (e.g., email within 4 hours, financial systems within 8 hours).
+    Set up automated backups to a geographically separate location (cloud provider meets this requirement).
+    Test restore procedures quarterly.
+    Document results and remediate any gaps.
+    Board approval of RTO/RPO targets and annual review of recovery test results.
+    Cost: €1,000–€3,000 for planning; backup infrastructure cost varies (often included in cloud subscriptions).
+  </p>
+
+  <h2>Measure 4: Supply Chain &amp; Third-Party Security</h2>
+
+  <h3>What It Means</h3>
+  <p>
+    Every vendor, cloud provider, outsourced service, and contractor that touches your systems or data creates a risk.
+    You must evaluate their security practices, define contractual security requirements, and monitor their compliance.
+  </p>
+
+  <h3>What Auditors Look For</h3>
+  <ul>
+    <li>A vendor inventory listing all third parties with access to systems or data</li>
+    <li>Security assessment questionnaires (SAQs) or audit reports from critical vendors</li>
+    <li>Contracts that include security clauses (incident reporting, breach notification, audit rights)</li>
+    <li>Evidence of due diligence — interviews, reviews, certifications (ISO 27001, SOC 2)</li>
+    <li>A risk rating for each vendor (high/medium/low)</li>
+    <li>Monitoring schedule for ongoing compliance</li>
+  </ul>
+
+  <h3>Minimum Viable Implementation</h3>
+  <p>
+    Create a spreadsheet of all vendors with system or data access (cloud, IT support, payroll, legal, consulting, telecommunications).
+    For "critical" vendors (those with high system or data access), request a security assessment or audit report.
+    Review vendor contracts for security clauses; add them if missing.
+    Rate each vendor by risk.
+    Schedule annual re-assessments.
+    Board awareness of critical vendor risks and mitigation.
+    Cost: €1,500–€4,000 for initial assessment and vendor outreach; ongoing: time for monitoring.
+  </p>
+
+  <h2>Measure 5: Security by Design &amp; Development</h2>
+
+  <h3>What It Means</h3>
+  <p>
+    If your organisation develops custom software, operates cloud applications, or manages significant IT systems, security must be built in from the start — not bolted on as an afterthought.
+    This covers secure coding, testing, and deployment practices.
+  </p>
+
+  <h3>What Auditors Look For</h3>
+  <ul>
+    <li>Secure development lifecycle (SDLC) policies and procedures</li>
+    <li>Security requirements in design specifications</li>
+    <li>Code review and vulnerability scanning practices</li>
+    <li>Testing protocols (unit tests, integration tests, security tests)</li>
+    <li>Change management procedures (approvals before deployment)</li>
+    <li>Patch management policy and implementation log</li>
+  </ul>
+
+  <h3>Minimum Viable Implementation</h3>
+  <p>
+    If you develop software, adopt a secure SDLC framework (e.g., OWASP or NIST guidelines).
+    Mandate code reviews before production deployment.
+    Use automated vulnerability scanning tools in the build pipeline.
+    Document your patch management process: who approves patches, how quickly they're deployed, how they're tested.
+    Train developers on secure coding principles.
+    Cost: €2,000–€6,000 for process development and tooling; ongoing: tool subscriptions and training.
+  </p>
+
+  <h2>Measure 6: Asset Management &amp; Inventory</h2>
+
+  <h3>What It Means</h3>
+  <p>
+    You must know what IT assets you own, where they are located, who is responsible for them, what data they hold, and who has access to them.
+    This includes servers, laptops, mobile devices, software licenses, databases, and cloud services.
+  </p>
+
+  <h3>What Auditors Look For</h3>
+  <ul>
+    <li>A comprehensive IT asset register or CMDB (configuration management database)</li>
+    <li>Assets classified by criticality and sensitivity</li>
+    <li>Owner assigned to each asset</li>
+    <li>Location, status (active/retired), and end-of-life date documented</li>
+    <li>Access logs showing who can access each asset</li>
+    <li>Regular reconciliation (at least annually) of inventory against actual assets</li>
+  </ul>
+
+  <h3>Minimum Viable Implementation</h3>
+  <p>
+    Build a spreadsheet (or use free IT asset management tools) listing all servers, workstations, network devices, software, and cloud services.
+    Include owner, location, criticality, data classification, and decommissioning schedule.
+    Reconcile against actual systems annually.
+    Identify and classify sensitive assets (payment systems, customer databases, HR data).
+    Document who has access and why.
+    Cost: €1,000–€2,500 for tool setup and initial inventory; ongoing: staff time for updates.
+  </p>
+
+  <h2>Measure 7: Access Control &amp; Authentication</h2>
+
+  <h3>What It Means</h3>
+  <p>
+    Not everyone should be able to access everything. Access must be granted on a "need-to-know" basis, regularly reviewed, and revoked when it's no longer needed.
+    Authentication (proving who you are) must be strong — ideally multi-factor.
+  </p>
+
+  <h3>What Auditors Look For</h3>
+  <ul>
+    <li>Access control policy (principle of least privilege)</li>
+    <li>User access lists for critical systems, segregated by role</li>
+    <li>Approval process for granting access (manager sign-off required)</li>
+    <li>Regular access reviews (at least semi-annually)</li>
+    <li>Deprovisioning procedure (access removed on termination or role change)</li>
+    <li>Multi-factor authentication (MFA) enabled for remote access and privileged accounts</li>
+    <li>Logs of access grant/revoke activity</li>
+  </ul>
+
+  <h3>Minimum Viable Implementation</h3>
+  <p>
+    Document your access control policy: define roles (admin, user, guest), specify who can approve access, and set access review cycles.
+    Implement MFA for all remote access (VPN, email, cloud applications) and for any privileged admin accounts.
+    Use a directory service (Active Directory, Entra ID) to centrally manage user identities and access.
+    Schedule quarterly or semi-annual access reviews by business managers.
+    Maintain logs of access changes.
+    Cost: €2,000–€5,000 for policy development and MFA implementation; ongoing: staff time for reviews.
+  </p>
+
+  <h2>Measure 8: Cryptography &amp; Data Protection</h2>
+
+  <h3>What It Means</h3>
+  <p>
+    Sensitive data (customer information, financial data, trade secrets, personal data) must be encrypted when stored ("at rest") and when transmitted ("in transit").
+    Encryption keys must be securely stored and managed.
+  </p>
+
+  <h3>What Auditors Look For</h3>
+  <ul>
+    <li>A data classification policy (public, internal, confidential, restricted)</li>
+    <li>Identification of what data is sensitive and where it is stored</li>
+    <li>Encryption in use for all confidential and restricted data (at rest and in transit)</li>
+    <li>Key management procedures: who holds keys, how they're stored, rotation schedules</li>
+    <li>Evidence of encryption implementation (configuration checks, certificate audits)</li>
+    <li>Data retention and destruction policy (how long is data kept, how is it securely deleted)</li>
+  </ul>
+
+  <h3>Minimum Viable Implementation</h3>
+  <p>
+    Classify your data by sensitivity.
+    Enable encryption for all cloud storage (AWS S3 encryption, Azure encryption, Google Cloud encryption).
+    Enforce HTTPS/TLS for all web applications and data in transit.
+    Use Full Disk Encryption (BitLocker, FileVault) on all laptops and workstations.
+    Implement database encryption for any on-premises databases holding sensitive data.
+    Define key rotation schedules (annually or per industry standard).
+    Document your data retention policy and implement automated deletion of expired data.
+    Cost: €1,500–€4,000 for encryption tool setup; cloud providers often include encryption at no extra cost.
+  </p>
+
+  <h2>Measure 9: Physical &amp; Environmental Security</h2>
+
+  <h3>What It Means</h3>
+  <p>
+    Servers, network

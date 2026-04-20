@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-BKF3QH9K01"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag("js", new Date());
+    gtag("config", "G-BKF3QH9K01");
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Which Companies Must Comply With NIS2? Check If Yours Qualifies | NIS2Klar</title>
+  <meta name="description" content="Essential vs Important entities, size thresholds, and the 18 NIS2 sectors explained for Irish CEOs and boards. Use our simple yes/no test to find out if your company is in scope.">
+  <meta property="og:title" content="Which Companies Must Comply With NIS2? Check If Yours Qualifies">
+  <meta property="og:description" content="Essential vs Important entities, size thresholds, and the 18 NIS2 sectors explained for Irish CEOs and boards. Use our simple yes/no test to find out if your company is in scope.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #141416;
+      --card: #1c1c1f;
+      --yellow: #f5c518;
+      --white: #f0f0f0;
+      --muted: #888;
+      --red: #C61212;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: var(--bg); color: var(--white); font-family: 'Barlow', sans-serif; font-size: 19px; line-height: 1.8; }
+
+    /* Nav */
+    nav { display: flex; justify-content: space-between; align-items: center; padding: 20px 40px; border-bottom: 1px solid rgba(255,255,255,0.07); max-width: 900px; margin: 0 auto; }
+    .nav-logo { font-family: 'Poppins', sans-serif; font-weight: 900; font-size: 20px; color: var(--yellow); text-decoration: none; }
+    .nav-logo span { color: var(--white); }
+    .nav-back { color: var(--muted); text-decoration: none; font-size: 15px; }
+    .nav-back:hover { color: var(--white); }
+    .nav-cta { background: var(--yellow); color: #000; padding: 8px 18px; border-radius: 4px; text-decoration: none; font-weight: 700; font-size: 14px; font-family: 'Poppins', sans-serif; }
+
+    /* Article */
+    .article-wrap { max-width: 760px; margin: 0 auto; padding: 60px 40px; }
+    .article-category { font-size: 13px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 16px; }
+    h1 { font-family: 'Poppins', sans-serif; font-size: clamp(30px, 4vw, 44px); font-weight: 900; line-height: 1.2; margin-bottom: 24px; }
+    .article-meta { font-size: 15px; color: var(--muted); margin-bottom: 48px; padding-bottom: 24px; border-bottom: 1px solid rgba(255,255,255,0.07); }
+    h2 { font-family: 'Poppins', sans-serif; font-size: 26px; font-weight: 700; margin: 48px 0 16px; color: var(--white); }
+    h3 { font-family: 'Poppins', sans-serif; font-size: 20px; font-weight: 600; margin: 32px 0 12px; color: var(--yellow); }
+    p { margin-bottom: 22px; }
+    strong { color: var(--white); font-weight: 700; }
+    .highlight { color: var(--yellow); font-weight: 700; }
+    .danger { color: #ff6b6b; font-weight: 700; }
+    ul, ol { margin: 16px 0 24px 24px; }
+    li { margin-bottom: 12px; font-size: 19px; }
+
+    /* Callout boxes */
+    .box-warning { background: rgba(197,17,17,0.12); border-left: 4px solid var(--red); padding: 20px 24px; margin: 32px 0; border-radius: 0 4px 4px 0; }
+    .box-info { background: rgba(245,197,24,0.08); border-left: 4px solid var(--yellow); padding: 20px 24px; margin: 32px 0; border-radius: 0 4px 4px 0; }
+    .box-case { background: var(--card); border: 1px solid rgba(255,255,255,0.08); padding: 28px; margin: 40px 0; border-radius: 4px; }
+    .box-case .case-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 12px; }
+    blockquote { border-left: 3px solid var(--yellow); padding: 12px 20px; margin: 24px 0; font-style: italic; color: #ccc; }
+
+    /* CTA */
+    .cta-section { background: var(--card); border: 1px solid rgba(245,197,24,0.2); border-radius: 4px; padding: 48px 40px; margin: 64px 0 40px; text-align: center; }
+    .cta-section h2 { margin-top: 0; font-size: 26px; }
+    .cta-section p { color: #aaa; max-width: 500px; margin: 0 auto 28px; }
+    .btn-primary { display: inline-block; background: var(--yellow); color: #000; font-family: 'Poppins', sans-serif; font-weight: 800; font-size: 16px; padding: 16px 36px; border-radius: 4px; text-decoration: none; }
+    .btn-primary:hover { background: #e0b010; }
+    .cta-fine { font-size: 13px; color: var(--muted); margin-top: 16px; }
+
+    /* FAQ */
+    .faq-item { border-bottom: 1px solid rgba(255,255,255,0.07); padding: 20px 0; }
+    .faq-q { font-family: 'Poppins', sans-serif; font-weight: 600; margin-bottom: 10px; }
+    .faq-a { color: #bbb; }
+
+    /* Fine table */
+    .fine-table { width: 100%; border-collapse: collapse; margin: 24px 0; }
+    .fine-table th { background: rgba(245,197,24,0.1); color: var(--yellow); font-family: 'Poppins', sans-serif; font-size: 13px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 12px 16px; text-align: left; border-bottom: 1px solid rgba(245,197,24,0.2); }
+    .fine-table td { padding: 14px 16px; border-bottom: 1px solid rgba(255,255,255,0.05); font-size: 15px; }
+    .fine-table tr:last-child td { border-bottom: none; }
+    .fine-table .amount { color: #ff6b6b; font-weight: 700; }
+
+    /* Summary + Key Takeaway */
+    .box-summary { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; padding: 24px 28px; margin: 0 0 32px; }
+    .summary-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-bottom: 14px; }
+    .box-summary ul { margin: 0; padding-left: 20px; }
+    .box-summary li { margin-bottom: 8px; font-size: 17px; color: #ccc; }
+    .box-takeaway { background: rgba(245,197,24,0.08); border-left: 4px solid var(--yellow); padding: 20px 24px; margin: 0 0 40px; border-radius: 0 4px 4px 0; }
+    .takeaway-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 10px; }
+    .box-takeaway p { margin: 0; font-size: 18px; font-weight: 600; color: var(--white); line-height: 1.6; }
+
+    /* Footer */
+    footer { border-top: 1px solid rgba(255,255,255,0.07); padding: 32px 40px; text-align: center; font-size: 13px; color: var(--muted); max-width: 900px; margin: 0 auto; }
+    footer a { color: var(--muted); }
+
+    /* Self-assessment test */
+    .test-step { background: var(--card); border: 1px solid rgba(255,255,255,0.08); border-radius: 4px; padding: 20px 24px; margin: 16px 0; display: flex; gap: 18px; align-items: flex-start; }
+    .test-step-num { font-family: 'Poppins', sans-serif; font-weight: 900; font-size: 22px; color: var(--yellow); min-width: 32px; line-height: 1.3; }
+    .test-step-content { flex: 1; }
+    .test-step-content strong { display: block; font-family: 'Poppins', sans-serif; font-size: 16px; margin-bottom: 4px; }
+    .test-step-content span { font-size: 15px; color: #bbb; line-height: 1.6; }
+    .test-outcome { border-radius: 4px; padding: 16px 20px; margin: 12px 0; font-size: 16px; }
+    .test-outcome.yes { background: rgba(197,17,17,0.12); border-left: 4px solid var(--red); }
+    .test-outcome.no { background: rgba(74,222,128,0.08); border-left: 4px solid #4ade80; }
+    .test-outcome .outcome-label { font-family: 'Poppins', sans-serif; font-weight: 700; font-size: 13px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 4px; }
+    .test-outcome.yes .outcome-label { color: #ff6b6b; }
+    .test-outcome.no .outcome-label { color: #4ade80; }
+
+    @media (max-width: 600px) {
+      nav, .article-wrap, footer { padding: 20px; }
+      .cta-section { padding: 32px 20px; }
+      .fine-table { font-size: 14px; }
+      .fine-table th, .fine-table td { padding: 10px 10px; }
+      .test-step { flex-direction: column; gap: 8px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="https://nis2klar.se/">NIS2<span>Klar</span></a>
+  <a class="nav-back" href="https://nis2klar.se/en/articles.html">← All Articles</a>
+  <div class="lang-switcher" style="display:flex;gap:8px;align-items:center;font-size:13px;font-family:'Poppins',sans-serif;">
+    <a href="https://nis2klar.se/artiklar.html" style="color:#888;text-decoration:none;font-weight:600;padding:4px 8px;border-radius:3px;" title="Svenska">SV</a>
+    <a href="https://nis2klar.se/en/articles.html" style="color:#f5c518;text-decoration:none;font-weight:600;padding:4px 8px;border-radius:3px;background:rgba(245,197,24,0.1);" title="English">EN</a>
+    <a href="https://nis2klar.se/da/artikler.html" style="color:#888;text-decoration:none;font-weight:600;padding:4px 8px;border-radius:3px;" title="Dansk">DA</a>
+    <a href="https://nis2klar.se/no/artikler.html" style="color:#888;text-decoration:none;font-weight:600;padding:4px 8px;border-radius:3px;" title="Norsk">NO</a>
+  </div>
+  <a class="nav-cta" href="/nis2.html#boka">Book a call →</a>
+</nav>
+
+<article class="article-wrap">
+  <div class="article-category">Scope &amp; Compliance</div>
+  <h1>Which Companies Must Comply With NIS2? Check If Yours Qualifies</h1>
+  <div class="article-meta">Updated 17 April 2026 · Reading time: approx. 8 minutes · Audience: CEOs, board chairs, board members</div>
+
+  <!-- SUMMARY -->
+  <div class="box-summary">
+    <div class="summary-label">Summary</div>
+    <ul>
+      <li>NIS2 is now Irish law — S.I. No. 322 of 2024 transposed the directive in October 2024.</li>
+      <li>Your company may be in scope without knowing it — especially if you operate in one of 18 designated sectors.</li>
+      <li>Two categories apply: <strong>Essential Entities</strong> and <strong>Important Entities</strong> — each with different obligations and penalty levels.</li>
+      <li>Irish-registered EU headquarters face additional cross-border obligations as the "home" competent authority defaults to Ireland.</li>
+      <li>Use the five-question self-assessment test in this article to determine your status in under five minutes.</li>
+    </ul>
+  </div>
+
+  <!-- KEY TAKEAWAY -->
+  <div class="box-takeaway">
+    <div class="takeaway-label">Key Takeaway</div>
+    <p>NIS2 scope is not self-declared — it is determined by sector, size, and criticality. If your organisation meets the thresholds and operates in a regulated sector, you are legally obligated to comply whether or not you have registered with the NCSC Ireland. Ignorance is not a defence.</p>
+  </div>
+
+  <!-- HOOK -->
+  <p>
+    There is a question that should be on every Irish board agenda right now, and it is simpler than most executives assume: <strong>does NIS2 apply to us?</strong> The answer has legal and financial consequences either way — but the cost of getting it wrong in one direction is dramatically higher than the other.
+  </p>
+
+  <p>
+    Since October 2024, NIS2 has been enforceable Irish law under <strong>S.I. No. 322 of 2024</strong>. The National Cyber Security Centre (NCSC Ireland) is the primary competent authority, and sector regulators including the Central Bank of Ireland, ComReg, and the Commission for Regulation of Utilities are already active in their respective domains. Fines for essential entities reach <strong>€10 million or 2% of global annual turnover</strong> — whichever is higher. Management body members can be held <strong>personally liable</strong> under Regulation 32.
+  </p>
+
+  <p>
+    This article gives you a clear, practical framework for determining whether your organisation is in scope, which category you fall into, and what that means for your obligations as a CEO or board member.
+  </p>
+
+  <div class="box-warning">
+    <strong>Don't assume you're exempt.</strong> Many Irish-registered companies — particularly EU headquarters in technology, pharmaceuticals, and financial services — are caught by NIS2 as essential entities, sometimes without realising it. Being registered in Ireland means NCSC Ireland is your primary supervisory authority, with all the obligations and enforcement powers that entails.
+  </div>
+
+  <h2>The Legal Foundation: What S.I. No. 322 of 2024 Actually Says</h2>
+
+  <p>
+    The NIS2 Directive (EU 2022/2555) was transposed into Irish law in October 2024 through <strong>S.I. No. 322 of 2024</strong>, commonly referred to as the NIS2 Regulations. This statutory instrument gives NCSC Ireland the authority to supervise, investigate, and sanction organisations that fall within scope of the directive.
+  </p>
+
+  <p>
+    Unlike previous Irish cybersecurity obligations — which were largely sector-specific and advisory in tone — the NIS2 Regulations are mandatory, enforceable, and carry significant penalties for non-compliance. The law does not require an incident to have occurred before enforcement action can be taken. Structural non-compliance — failing to have the right policies, risk assessments, and governance structures in place — is itself a breach.
+  </p>
+
+  <p>
+    The first question every CEO and board chair needs to answer is not "are we secure?" It is: <strong>"are we in scope?"</strong> Because if you are, the law requires specific actions and documentation regardless of your current security posture.
+  </p>
+
+  <h2>The Two Categories: Essential vs Important Entities</h2>
+
+  <p>
+    NIS2 divides regulated organisations into two distinct categories. Which category you fall into determines the intensity of your obligations, the supervisory approach applied to you, and the maximum penalties you face.
+  </p>
+
+  <table class="fine-table">
+    <thead>
+      <tr>
+        <th>Category</th>
+        <th>Size Threshold</th>
+        <th>Max Fine</th>
+        <th>Supervisory Approach</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Essential Entity</strong></td>
+        <td>250+ employees OR €50M+ turnover AND €43M+ balance sheet</td>
+        <td class="amount">€10M or 2% global turnover</td>
+        <td>Proactive — NCSC Ireland can audit without an incident trigger</td>
+      </tr>
+      <tr>
+        <td><strong>Important Entity</strong></td>
+        <td>50–249 employees OR €10M–€50M turnover</td>
+        <td class="amount">€7M or 1.4% global turnover</td>
+        <td>Reactive — supervision typically follows an incident or complaint</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>
+    The higher figure always applies. A large Irish-headquartered technology company with €2 billion in global turnover and 3,000 employees classified as an essential entity faces a potential fine of <span class="danger">€40 million</span> — not the €10 million cap, because 2% of €2 billion is the larger number.
+  </p>
+
+  <div class="box-info">
+    <strong>Important note on size thresholds:</strong> Both conditions must be met — sector AND size. A company with 300 employees that operates exclusively outside the 18 NIS2 sectors is not in scope. Equally, a company in a regulated sector with only 30 employees and €8 million turnover is likely below the threshold for Important Entity status. However, certain critical entities — particularly in digital infrastructure and public administration — may be designated regardless of size.
+  </div>
+
+  <h2>The 18 NIS2 Sectors: Is Yours on the List?</h2>
+
+  <p>
+    NIS2 applies to organisations operating in 18 designated sectors. These are split into two annexes: highly critical sectors (Annex I) and other critical sectors (Annex II). The annex your sector falls under partly determines your default classification.
+  </p>
+
+  <h3>Annex I — Highly Critical Sectors (typically Essential Entities)</h3>
+  <ul>
+    <li>Energy (electricity, oil, gas, hydrogen, district heating)</li>
+    <li>Transport (air, rail, water, road)</li>
+    <li>Banking and credit institutions</li>
+    <li>Financial market infrastructure (trading venues, central counterparties)</li>
+    <li>Health (hospitals, laboratories, pharmaceutical manufacturers, medical device manufacturers)</li>
+    <li>Drinking water supply and distribution</li>
+    <li>Wastewater management</li>
+    <li>Digital infrastructure (internet exchange points, DNS providers, TLD registries, cloud computing providers, data centres, CDNs, trust service providers, electronic communications networks)</li>
+    <li>ICT service management (managed service providers, managed security service providers)</li>
+    <li>Public administration</li>
+    <li>Space</li>
+  </ul>
+
+  <h3>Annex II — Other Critical Sectors (typically Important Entities)</h3>
+  <ul>
+    <li>Postal and courier services</li>
+    <li>Waste management</li>
+    <li>Manufacture, production and distribution of chemicals</li>
+    <li>Production, processing and distribution of food</li>
+    <li>Manufacturing (medical devices, computers, electronics, optical products, electrical equipment, machinery, motor vehicles, transport equipment)</li>
+    <li>Digital providers (online marketplaces, online search engines, social networking platforms)</li>
+    <li>Research organisations</li>
+  </ul>
+
+  <p>
+    If your organisation operates in any of these sectors and meets the relevant size thresholds, you are in scope. The classification is not optional or self-selected — it is determined by the legal criteria set out in S.I. No. 322 of 2024.
+  </p>
+
+  <h2>A Special Note for Irish-Registered EU Headquarters</h2>
+
+  <p>
+    Ireland occupies a unique position in the EU NIS2 landscape. Dozens of major technology companies, pharmaceutical groups, and financial services firms have their European headquarters registered in Ireland — including organisations that employ tens of thousands of people across the EU and generate revenues in the billions.
+  </p>
+
+  <p>
+    Under NIS2, the <strong>principal establishment rule</strong> means that where an organisation provides services across multiple EU member states, its primary supervisory authority is the competent authority in the country where it has its main EU establishment. For most of Ireland's major EU headquarters, that means <strong>NCSC Ireland is the lead authority</strong> — not a regulator in another member state.
+  </p>
+
+  <p>
+    This has two significant implications. First, NCSC Ireland has direct supervisory and enforcement jurisdiction over these organisations' NIS2 compliance across all their EU operations. Second, any enforcement action taken by NCSC Ireland — including fines, sanctions, and personal liability determinations — applies to the entity registered and managed in Ireland.
+  </p>
+
+  <p>
+    If your organisation is an EU headquarters registered in Ireland and you have not yet assessed your NIS2 obligations, this is the most urgent action item on your compliance agenda.
+  </p>
+
+  <h2>The Five-Question Self-Assessment Test</h2>
+
+  <p>
+    Use this structured test to determine, in under five minutes, whether your organisation is likely in scope under S.I. No. 322 of 2024. This is a starting-point assessment — not a substitute for legal advice — but it will tell you whether a deeper review is warranted.
+  </p>
+
+  <div class="test-step">
+    <div class="test-step-num">1</div>
+    <div class="test-step-content">
+      <strong>Does your organisation operate in one of the 18 NIS2 sectors listed above?</strong>
+      <span>Include any significant operational activity in those sectors — not just your primary revenue line. A manufacturing company that operates its own cloud infrastructure may be caught under the digital infrastructure sector as well as manufacturing.</span>
+    </div>
+  </div>
+  <div class="test-outcome yes">
+    <div class="outcome-label">If YES → proceed to Question 2</div>
+  </div>
+  <div class="test-outcome no">
+    <div class="outcome-label">If NO → likely out of scope</div>
+    <span style="font-size:15px;color:#bbb;">But verify: if you provide critical services to organisations in regulated sectors (as an MSP, supplier, or contractor), you may be in scope in your own right.</span>
+  </div>
+
+  <div class="test-step">
+    <div class="test-step-num">2</div>
+    <div class="test-step-content">
+      <strong>Does your organisation have 50 or more employees, OR €10 million or more in annual turnover?</strong>
+      <span>Use global figures if your organisation is an EU headquarters. The thresholds apply to the legal entity or enterprise group, not individual national subsidiaries in isolation.</span>
+    </div>
+  </div>
+  <div class="test-outcome yes">
+    <div class="outcome-label">If YES → proceed to Question 3</div>
+  </div>
+  <div class="test-outcome no">
+    <div class="outcome-label">If NO → likely below threshold for Important Entity status</div>
+    <span style="font-size:15px;color:#bbb;">However, certain categories (DNS providers, TLD registries, trust service providers) are in scope regardless of size. Check with a qualified advisor.</span>
+  </div>
+
+  <div class="test-step">
+    <div class="test-step-num">3</div>
+    <div class="test-step-content">
+      <strong>Does your organisation have 250 or more employees, OR €50 million or more in annual turnover AND €43 million or more on the balance sheet?</strong>
+      <span>If yes, you are likely an Essential Entity — subject to the higher penalty tier and proactive supervision by NCSC Ireland.</span>
+    </div>
+  </div>
+  <div class="test-outcome yes">
+    <div class="outcome-label">If YES → You are likely an Essential Entity</div>
+    <span style="font-size:15px;color:#bbb;">Maximum fines: €10 million or 2% of global annual turnover. NCSC Ireland can audit you proactively. Management body members are personally liable under Regulation 32.</span>
+  </div>
+  <div class="test-outcome no">
+    <div class="outcome-label">If NO → You are likely an Important Entity</div>
+    <span style="font-size:15px;color:#bbb;">Maximum fines: €7 million or 1.4% of global annual turnover. Supervision is primarily reactive, but the security obligations under Article 21 are substantially the same.</span>
+  </div>
+
+  <div class="test-step">
+    <div class="test-step-num">4</div>
+    <div class="test-step-content">
+      <strong>Is your organisation registered or principally established in Ireland?</strong>
+      <span>If yes, NCSC Ireland is your primary supervisory authority. If you operate across multiple EU member states from an Irish headquarters, NCSC Ireland leads on cross-border supervision and enforcement coordination.</span>
+    </div>
+  </div>
+  <div class="test-outcome yes">
+    <div class="outcome-label">If YES → NCSC Ireland is your lead authority</div>
+    <span style="font-size:15px;color:#bbb;">Report incidents to NCSC Ireland. Register your NIS2 status with NCSC Ireland. Sector-specific supervision may also apply through CBI, ComReg, or CRU depending on your industry.</span>
+  </div>
+
+  <div class="test-step">
+    <div class="test-step-num">5</div>
+    <div class="test-step-content">
+      <strong>Does your organisation have documented security measures, a risk assessment, an incident response plan, and board-level sign-off on cybersecurity governance?</strong>
+      <span>This is the compliance readiness question. Being in scope and being compliant are two different things. Both matter.</span>
+    </div>
+  </div>
+  <div class="test-outcome yes">
+    <div class="outcome-label">If YES → You have a defensible foundation</div>
+    <span style="font-size:15px;color:#bbb;">A gap analysis will confirm whether your existing documentation meets the specific requirements of S.I. No. 322 of 2024 — many organisations have security in place but lack the governance documentation NIS2 explicitly requires.</span>
+  </div>
+  <div class="test-outcome no">
+    <div class="outcome-label">If NO → You are exposed</div>
+    <span style="font-size:15px;color:#bbb;">A structural non-compliance finding — no incident required — can trigger sanctions. This is the most urgent gap to close.</span>
+  </div>
+
+  <h2>What Being "In Scope" Actually Requires</h2>
+
+  <p>
+    Once your organisation is determined to be in scope, the obligations are not vague aspirations — they are specific, documented requirements. The core security obligations under Article 21 of the NIS2 Directive (implemented through S.I. No. 322 of 2024) cover ten domains:
+  </p>
+
+  <ol>
+    <li><strong>Risk analysis and information security policies</strong> — written, dated, and board-approved</li>
+    <li><strong>Incident handling</strong> — documented process with defined roles, escalation paths, and a communication plan</li>
+    <li><strong>Business continuity and crisis management</strong> — tested recovery procedures and backup strategies</li>
+    <li><strong>Supply chain security</strong> — security requirements documented for key suppliers and service providers</li>
+    <li><strong>Security in network and information systems acquisition</strong> — including vulnerability management and patching</li>
+    <li><strong>Policies and procedures to assess the effectiveness of security measures</strong> — including audit and review processes</li>
+    <li><strong>Basic cyber hygiene practices and cybersecurity training</strong> — with training logs for staff and management</li>
+    <li><strong>Cryptography and encryption policies</strong> — where relevant to data at rest and in transit</li>
+    <li><strong>Human resources security, access control, and asset management</strong></li>
+    <li><strong>Use of multi-factor authentication and secure communications</strong></li>
+  </ol>
+
+  <p>
+    Crucially, these are not just technical measures — they require governance decisions made at board level. Under Regulation 32 of S.I. No. 322 of 2024, members of the management body are personally responsible for approving the organisation's security measures and overseeing their implementation. A CEO or board chair who delegates this entirely to a head of IT, without active oversight and documented sign-off, is personally exposed to enforcement action.
+  </p>
+
+  <h2>Personal Liability: What Regulation 32 Means for You</h2>
+
+  <p>
+    This is the provision that changes the conversation from an IT compliance matter to a boardroom priority. Regulation 32 of S.I. No. 322 of 2024 — implementing Article 20 of the NIS2 Directive — establishes that members of the management body of an in-scope organisation are <strong>personally liable</strong> for the organisation's failure to comply with the security obligations.
+  </p>
+
+  <p>
+    In practical terms, this means:
+  </p>
+
+  <ul>
+    <li>You cannot delegate compliance responsibility away from the board — you can delegate the work, but not the accountability.</li>
+    <li>You must be able to demonstrate that the board actively approved security measures, received regular reports, and understood the organisation's risk posture.</li>
+    <li>NCSC Ireland can, in serious cases, seek a <strong>temporary ban on an individual from holding management roles</strong> — not just a fine against the company.</li>
+    <li>If an essential entity suffers a significant breach and the investigation reveals the board had no meaningful oversight of cybersecurity governance, individual directors face direct personal consequences.</li>
+  </ul>
+
+  <p>
+    The defence available to you as a board member is not "I didn't know" — it is documented evidence that you did know, that you asked the right questions, that you approved the right policies, and that you received regular updates. Build that paper trail now, not after an incident.
+  </p>
+
+  <div class="box-case">
+    <div class="case-label">Illustrative Scenario</div>
+    <p>
+      <strong>Scenario: Irish-registered EU headquarters of a mid-size software company, 340 employees, €85 million annual turnover.</strong>
+    </p>
+    <p>
+      Classified as an essential entity under NIS2 — operates in the digital providers sector and provides services to clients across eight EU member states. NCSC Ireland is the primary competent authority. The board was aware of NIS2 but understood it as an IT project and delegated responsibility to the CTO in early 2025.
+    </p>
+    <p>
+      In Q1 2026, a supply chain attack compromises the company's update infrastructure. The security team identifies the intrusion on day one but does not escalate to the CEO until day two. The 24-hour early warning to NCSC Ireland — required under Regulation 23 of S.I. 322/2024 — is missed. The 72-hour full notification window is also missed as internal legal review delays the filing.
+    </p>
+    <p>
+      NCSC Ireland initiates a supervisory review. During the review, investigators find that: no board-approved risk assessment exists; the incident response plan was a draft document never formally adopted; and there is no board minute recording approval of security measures as required by Regulation 32.
+    </p>
+    <p>
+      <strong>Outcome:</strong> Enforcement notice issued for failure to meet incident reporting timelines. Separate finding of structural non-compliance with Article 21 security obligations. Formal notice to the CEO and two non-executive directors under Regulation 32 regarding personal liability. Total financial exposure including sanctions, legal costs, and remediation: <span class="danger">estimated €3–6 million</span>. CEO subject to formal investigation regarding management body obligations.
+    </p>
+  </div>
+
+  <h2>The Incident Reporting Timeline You Cannot Miss</h2>
+
+  <p>
+    If your organisation is in scope and experiences a significant cybersecurity incident, the clock starts immediately. The reporting timeline under S.I. No. 322 of 2024 is:
+  </p>
+
+  <ul>
+    <li><strong>24 hours:</strong> Early warning to NCSC Ireland — notifying that a significant incident has occurred or is suspected</li>
+    <li><strong>72 hours:</strong> Incident notification — more detailed report including initial assessment of severity, impact, and indicators of compromise</li>
+    <li><strong>1 month:</strong> Final report — comprehensive analysis of the incident, root cause, actions taken, and measures implemented to prevent recurrence</li>
+  </ul>
+
+  <p>
+    Missing these windows is itself a compliance breach — separate from, and additional to, any sanctions related to the incident itself or underlying security failures. Organisations that attempt to manage incidents internally before notifying NCSC Ireland routinely face compounded enforcement exposure.
+  </p>
+
+  <h2>Common Misconceptions That Put Boards at Risk</h2>
+
+  <div class="faq-item">
+    <div class="faq-q">We haven't registered with NCSC Ireland, so NIS2 doesn't apply to us yet.</div>
+    <div class="faq-a">Incorrect. NIS2 obligations apply from the moment you meet the criteria — sector, size, and establishment in Ireland. The law does not require registration as a precondition for compliance obligations or enforcement action. Self-identification requirements exist precisely because the law presumes you know whether you qualify.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">We're a B2B company — we don't handle consumer data, so we're lower risk.</div>
+    <div class="faq-a">NIS2 is not a data protection law — it is a network and information security law. It applies to organisations whose services or infrastructure are critical, not to the type of data they process. A B2B managed service provider with no consumer data but with access to clients' critical systems is squarely in scope and is likely an essential or important entity in its own right.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">Our parent company in another EU country is handling NIS2 compliance — does that cover us?</div>
+    <div class="faq-a">Not automatically. If your Irish entity is a separate legal entity meeting the NIS2 thresholds, it may have its own compliance obligations. Where your Irish entity is the principal EU establishment of the group, NCSC Ireland supervises NIS2 compliance for the entire EU operation — so the compliance programme needs to satisfy Irish regulatory standards, not just those of the parent's home country authority.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">We have ISO 27001 certification — does that mean we're compliant with NIS2?</div>
+    <div class="faq-a">ISO 27001 is strong evidence of a mature security posture and will be viewed favourably by NCSC Ireland. However, it does not automatically satisfy all NIS2 requirements. NIS2 has specific obligations around incident reporting timelines, supply chain security, board governance documentation, and sector-specific requirements that go beyond ISO 27001's scope. A gap analysis comparing your certification against the NIS2 Regulations is advisable.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">What if we're genuinely not sure whether we qualify?</div>
+    <div class="faq-a">That uncertainty itself is a risk. The cost of a structured scoping assessment is a fraction of the cost of being found non-compliant after an incident or supervisory review. NCSC Ireland publishes guidance, and specialist advisors can conduct a scoping and gap analysis in a matter of weeks. The question is not whether you can afford to check — it is whether you can afford not to.</div>
+  </div>
+
+  <h2>Your Next Three Actions as a CEO or Board Member</h2>
+
+  <p>
+    Knowing the framework is step one. Acting on it is what separates organisations that are genuinely compliant from those that are exposed and don't yet know it. Here are the three concrete steps to take in the next 30 days:
+  </p>
+
+  <ol>
+    <li>
+      <strong>Determine your scope status formally.</strong> Use the five-question test above as a starting point, then commission a legal or specialist scoping assessment to confirm whether your organisation qualifies as an essential or important entity under S.I. No. 322 of 2024. Document the outcome with a board-level decision.
+    </li>
+    <li>
+      <strong>Conduct a gap analysis against Article 21 requirements.</strong> Map your existing security policies, risk assessments, incident response procedures, and supplier contracts against the ten security domains mandated by NIS2. Identify what exists, what is incomplete, and what is entirely absent. This document becomes your compliance roadmap.
+    </li>
+    <li>
+      <strong>Put NIS2 governance on the board agenda — permanently.</strong> Regulation 32 personal liability is real. The board needs to formally approve the organisation's security measures, receive regular security reports, and record those decisions in board minutes. This is not a one-time action — it is an ongoing governance responsibility that must be embedded in your board cycle.
+    </li>
+  </ol>
+
+  <p>
+    None of these steps require perfect security. They require intentional, documented governance. That is what NCSC Ireland will look for in any supervisory engagement — and it is the only position from which you can defend yourself and your organisation if enforcement action follows.
+  </p>
+
+  <div class="box-info" style="margin: 48px 0 32px;">
+    <div style="font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color: var(--yellow); margin-bottom:10px;">🔧 TOOLS &amp; SOLUTIONS</div>
+    <p style="margin:0; font-size:17px; color: #ddd; line-height:1.7;">For boards that need both a compliance record and a measurable security baseline, <strong>Microsoft Defender Secure Score</strong> provides a 0–100 board-level KPI that maps directly to NIS2 security domains — giving management a defensible, auditable metric. Combined with <strong>Microsoft Compliance Manager</strong>, it supports risk assessments, policy documentation, and regulatory alignment across Article 21 requirements. A certified Microsoft partner can configure both tools and run a free NIS2 gap analysis as a starting point.</p>
+  </div>
+
+  <!-- NEWSLETTER -->
+  <div style="background:#111; border:1px solid rgba(255,255,255,0.1); border-left:3px solid #f5c518; border-radius:4px; padding:32px 36px; margin:40px 0 0; text-align:center; max-width:760px; margin-left:auto; margin-right:auto;">
+    <div style="font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:#f5c518; margin-bottom:12px;">📬 NIS2 UPDATES</div>
+    <h3 style="font-family:'Poppins',sans-serif; font-size:20px; font-weight:800; margin:0 0 8px; color:#f0f0f0;">New NIS2 article every week — straight to your inbox</h3>
+    <p style="color:#888; font-size:15px; margin:0 0 20px;">No sales pitch. Just practical guidance for CEOs and boards.</p>
+    <form id="nlForm-which_companies_must_comply_nis2" onsubmit="submitNewsletter_which_companies_must_comply_nis2(event)" style="display:flex; gap:10px; flex-wrap:wrap; justify-content:center; max-width:460px; margin:0 auto;">
+      <input type="email" id="nlEmail-which_companies_must_comply_nis2" placeholder="your@company.ie" required style="flex:1; min-width:200px; padding:12px 16px; background:#1c1c1f; border:1px solid rgba(255,255,255,0.15); border-radius:4px; color:#f0f0f0; font-size:15px; outline:none;" />
+      <button type="submit" id="nlSubmit-which_companies_must_comply_nis2" style="padding:12px 22px; background:#f5c518; color:#141416; font-weight:700; font-size:15px; border:none; border-radius:4px; cursor:pointer; white-space:nowrap;">Subscribe free →</button>
+    </form>
+    <p style="font-size:12px; color:#555; margin:12px 0 0;">You can unsubscribe at any time. We never share your email.</p>
+    <div id="nlThanks-which_companies_must_comply_nis2" style="display:none; color:#4ade80; font-size:16px; font-weight:600; margin-top:14px;">✅ You're in! Next article coming to your inbox.</div>
+  </div>
+
+  <!-- CTA -->
+  <div class="cta-section">
+    <h2>Do you know where your organisation stands today?</h2>
+    <p>A free gap analysis with a certified Microsoft partner shows exactly what you've already covered — and what's missing.</p>
+    <a href="/nis2.html#boka" class="btn-primary">Book free gap analysis →</a>
+    <p class="cta-fine">Fines are up to <strong>€10 million</strong>. The gap analysis is free.</p>
+  </div>
+
+</article>
+
+<div class="related-articles" style="margin:2.5rem auto 2rem; max-width:760px; padding:0 40px;">
+  <div style="padding:1.5rem;background:#1a1a2e;border-left:4px solid #f0a500;border-radius:4px;">
+    <p style="margin:0 0 1rem;font-size:0.85rem;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:#f0a500;">Read Also</p>
+    <ul style="margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:0.5rem;">
+      <li><a href="/en/articles/nis2-personal-liability-board-ireland.html" style="color:#e0e0e0;text-decoration:none;font-size:0.95rem;">&#x2192; Personal liability for boards under NIS2 in Ireland</a></li>
+      <li><a href="/en/articles/nis2-penalties-ireland.html" style="color:#e0e0e0;text-decoration:none;font-size:0.95rem;">&#x2192; NIS2 fines and sanctions in Ireland — what does non-compliance cost?</a></li>
+      <li><a href="/en/articles/nis2-incident-reporting-ireland.html" style="color:#e0e0e0;text-decoration:none;font-size:0.95rem;">&#x2192; NIS2 incident reporting: the 24h, 72h and 1-month timeline explained</a></li>
+    </ul>
+    <p style="margin:1.25rem 0 0;font-size:0.85rem;color:#aaa;">&#8592; <a href="https://nis2klar.se/" style="color:#f0a500;text-decoration:none;">NIS2Klar home</a> &nbsp;&middot;&nbsp; <a href="https://nis2klar.se/en/articles.html" style="color:#f0a500;text-decoration:none;">All guides</a></p>
+  </div>
+</div>
+
+<footer>
+  © 2026 M&amp;J Trusted Marketing KB ·
+  <a href="mailto:support@trustedmarketing.se">support@trustedmarketing.se</a> · <a href="tel:+46470597003">+46 470 59 70 03</a> ·
+  <a href="https://nis2klar.se/">Back to home</a> ·
+  <a href="/privacy.html">Privacy Policy</a>
+  <p style="margin-top:12px; font-size:11px; color: #555; line-height:1.5;">Microsoft, Microsoft 365, Azure and related product names are trademarks of Microsoft Corporation. nis2klar.se is not affiliated with or endorsed by Microsoft Corporation.</p>
+</footer>
+
+<script>
+  async function submitNewsletter_which_companies_must_comply_nis2(e) {
+    e.preventDefault();
+    const btn = document.getElementById('nlSubmit-which_companies_must_comply_nis2');
+    btn.disabled = true; btn.textContent = '...';
+    const email = document.getElementById('nlEmail-which_companies_must_comply_nis2').value.trim();
+    try {
+      const res = await fetch('/api/newsletter/subscribe', { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({ email, source: 'article-en-which_companies_must_comply_nis2' }) });
+      const data = await res.json();
+      if (data.success) { document.getElementById('nlForm-which_companies_must_comply_nis2').style.display='none'; document.getElementById('nlThanks-which_companies_must_comply_nis2').style.display='block'; }
+      else { btn.disabled=false; btn.textContent='Subscribe free →'; }
+    } catch { btn.disabled=false; btn.textContent='Subscribe free →'; }
+  }
+</script>
+
+</body>
+</html>

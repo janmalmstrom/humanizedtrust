@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-BKF3QH9K01"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag("js", new Date());
+    gtag("config", "G-BKF3QH9K01");
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Microsoft Defender vs. CrowdStrike: Endpoint-sikkerhed til NIS2 | NIS2Klar</title>
+  <meta name="description" content="Sammenligning af Microsoft Defender og CrowdStrike for NIS2-compliance. EDR/XDR, incidentrespons, rapportering og pris.">
+  <meta property="og:title" content="Microsoft Defender vs. CrowdStrike: Endpoint-sikkerhed til NIS2">
+  <meta property="og:description" content="Sammenligning af Microsoft Defender og CrowdStrike for NIS2-compliance. EDR/XDR, incidentrespons, rapportering og pris.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #141416;
+      --card: #1c1c1f;
+      --yellow: #f5c518;
+      --white: #f0f0f0;
+      --muted: #888;
+      --red: #C61212;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: var(--bg); color: var(--white); font-family: 'Barlow', sans-serif; font-size: 19px; line-height: 1.8; }
+
+    /* Nav */
+    nav { display: flex; justify-content: space-between; align-items: center; padding: 20px 40px; border-bottom: 1px solid rgba(255,255,255,0.07); max-width: 900px; margin: 0 auto; gap: 20px; flex-wrap: wrap; }
+    .nav-logo { font-family: 'Poppins', sans-serif; font-weight: 900; font-size: 20px; color: var(--yellow); text-decoration: none; }
+    .nav-logo span { color: var(--white); }
+    .nav-back { color: var(--muted); text-decoration: none; font-size: 15px; }
+    .nav-back:hover { color: var(--white); }
+    .lang-switcher { display: flex; gap: 8px; align-items: center; font-size: 13px; font-family: 'Poppins', sans-serif; }
+    .nav-cta { background: var(--yellow); color: #000; padding: 8px 18px; border-radius: 4px; text-decoration: none; font-weight: 700; font-size: 14px; font-family: 'Poppins', sans-serif; }
+
+    /* Article */
+    .article-wrap { max-width: 760px; margin: 0 auto; padding: 60px 40px; }
+    .article-category { font-size: 13px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 16px; }
+    h1 { font-family: 'Poppins', sans-serif; font-size: clamp(30px, 4vw, 44px); font-weight: 900; line-height: 1.2; margin-bottom: 24px; }
+    .article-meta { font-size: 15px; color: var(--muted); margin-bottom: 48px; padding-bottom: 24px; border-bottom: 1px solid rgba(255,255,255,0.07); }
+    h2 { font-family: 'Poppins', sans-serif; font-size: 26px; font-weight: 700; margin: 48px 0 16px; color: var(--white); }
+    h3 { font-family: 'Poppins', sans-serif; font-size: 20px; font-weight: 600; margin: 32px 0 12px; color: var(--yellow); }
+    p { margin-bottom: 22px; }
+    strong { color: var(--white); font-weight: 700; }
+    .highlight { color: var(--yellow); font-weight: 700; }
+    .danger { color: #ff6b6b; font-weight: 700; }
+    ul, ol { margin: 16px 0 24px 24px; }
+    li { margin-bottom: 12px; font-size: 19px; }
+
+    /* Callout boxes */
+    .box-warning { background: rgba(197,17,17,0.12); border-left: 4px solid var(--red); padding: 20px 24px; margin: 32px 0; border-radius: 0 4px 4px 0; }
+    .box-info { background: rgba(245,197,24,0.08); border-left: 4px solid var(--yellow); padding: 20px 24px; margin: 32px 0; border-radius: 0 4px 4px 0; }
+    .box-case { background: var(--card); border: 1px solid rgba(255,255,255,0.08); padding: 28px; margin: 40px 0; border-radius: 4px; }
+    .box-case .case-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 12px; }
+    blockquote { border-left: 3px solid var(--yellow); padding: 12px 20px; margin: 24px 0; font-style: italic; color: #ccc; }
+
+    /* CTA */
+    .cta-section { background: var(--card); border: 1px solid rgba(245,197,24,0.2); border-radius: 4px; padding: 48px 40px; margin: 64px 0 40px; text-align: center; }
+    .cta-section h2 { margin-top: 0; font-size: 26px; }
+    .cta-section p { color: #aaa; max-width: 500px; margin: 0 auto 28px; }
+    .btn-primary { display: inline-block; background: var(--yellow); color: #000; font-family: 'Poppins', sans-serif; font-weight: 800; font-size: 16px; padding: 16px 36px; border-radius: 4px; text-decoration: none; }
+    .btn-primary:hover { background: #e0b010; }
+    .cta-fine { font-size: 13px; color: var(--muted); margin-top: 16px; }
+
+    /* FAQ */
+    .faq-item { border-bottom: 1px solid rgba(255,255,255,0.07); padding: 20px 0; }
+    .faq-q { font-family: 'Poppins', sans-serif; font-weight: 600; margin-bottom: 10px; }
+    .faq-a { color: #bbb; }
+
+    /* Comparison table */
+    .comparison-table { width: 100%; border-collapse: collapse; margin: 24px 0; font-size: 15px; }
+    .comparison-table th { background: rgba(245,197,24,0.1); color: var(--yellow); font-family: 'Poppins', sans-serif; font-size: 13px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 12px 16px; text-align: left; border-bottom: 1px solid rgba(245,197,24,0.2); }
+    .comparison-table td { padding: 14px 16px; border-bottom: 1px solid rgba(255,255,255,0.05); }
+    .comparison-table tr:last-child td { border-bottom: none; }
+    .comparison-table .check { color: #4ade80; font-weight: 700; }
+    .comparison-table .cross { color: #ff6b6b; font-weight: 700; }
+    .comparison-table .partial { color: var(--yellow); font-weight: 600; }
+
+    /* Summary + Key Takeaway */
+    .box-summary { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; padding: 24px 28px; margin: 0 0 32px; }
+    .summary-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-bottom: 14px; }
+    .box-summary ul { margin: 0; padding-left: 20px; }
+    .box-summary li { margin-bottom: 8px; font-size: 17px; color: #ccc; }
+    .box-takeaway { background: rgba(245,197,24,0.08); border-left: 4px solid var(--yellow); padding: 20px 24px; margin: 0 0 40px; border-radius: 0 4px 4px 0; }
+    .takeaway-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 10px; }
+    .box-takeaway p { margin: 0; font-size: 18px; font-weight: 600; color: var(--white); line-height: 1.6; }
+
+    /* Related articles */
+    .related-articles { margin: 2.5rem 0 2rem; padding: 1.5rem; background: #1a1a2e; border-left: 4px solid #f0a500; border-radius: 4px; }
+    .related-articles p { margin: 0 0 1rem; font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #f0a500; }
+    .related-articles ul { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+    .related-articles li a { color: #e0e0e0; text-decoration: none; font-size: 0.95rem; }
+    .related-articles li a:hover { color: #f0a500; }
+
+    /* Footer */
+    footer { border-top: 1px solid rgba(255,255,255,0.07); padding: 32px 40px; text-align: center; font-size: 13px; color: var(--muted); max-width: 900px; margin: 0 auto; }
+    footer a { color: var(--muted); text-decoration: none; }
+    footer a:hover { color: var(--white); }
+
+    @media (max-width: 600px) {
+      nav, .article-wrap, footer { padding: 20px; }
+      .cta-section { padding: 32px 20px; }
+      .comparison-table { font-size: 14px; }
+      .comparison-table th, .comparison-table td { padding: 10px 10px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="https://nis2klar.se/da/">NIS2<span>Klar</span></a>
+  <a class="nav-back" href="https://nis2klar.se/da/artikler.html">← Alle artikler</a>
+  <div class="lang-switcher">
+    <a href="https://nis2klar.se/artiklar.html" style="color:#888;text-decoration:none;font-weight:600;padding:4px 8px;border-radius:3px;" title="Svenska">SV</a>
+    <a href="https://nis2klar.se/en/articles.html" style="color:#888;text-decoration:none;font-weight:600;padding:4px 8px;border-radius:3px;" title="English">EN</a>
+    <a href="https://nis2klar.se/da/artikler.html" style="color:#f5c518;text-decoration:none;font-weight:600;padding:4px 8px;border-radius:3px;background:rgba(245,197,24,0.1);" title="Dansk">DA</a>
+    <a href="https://nis2klar.se/no/artikler.html" style="color:#888;text-decoration:none;font-weight:600;padding:4px 8px;border-radius:3px;" title="Norsk">NO</a>
+    <a href="https://nis2klar.se/it/articoli.html" style="color:#888;text-decoration:none;font-weight:600;padding:4px 8px;border-radius:3px;" title="Italiano">IT</a>
+  </div>
+  <a class="nav-cta" href="https://nis2klar.se/da/#boka">Book møde →</a>
+</nav>
+
+<article class="article-wrap">
+  <div class="article-category">Tekniske foranstaltninger</div>
+  <h1>Microsoft Defender vs. CrowdStrike: Endpoint-sikkerhed til NIS2</h1>
+  <div class="article-meta">19. april 2026 · Læsetid: ca 9 minuter · Målgruppe: Direktører og bestyrelser</div>
+
+  <!-- SUMMARY -->
+  <div class="box-summary">
+    <div class="summary-label">Opsummering</div>
+    <ul>
+      <li>Du har modtaget tilbud fra to leverandører og skal vælge mellem dem.</li>
+      <li>Begge løsninger opfylder NIS2-kravene — spørgsmålet er hvilket der passer bedst til din størrelse og sektor.</li>
+      <li>Microsoft Defender koster mindre og integreres med dine eksisterende Microsoft-værktøjer.</li>
+      <li>CrowdStrike giver mere avanceret trueldetektion, men til højere pris.</li>
+      <li>For de fleste danske virksomheder under 1.000 ansatte er Microsoft Defender tilstrækkelig til at opfylde NIS2.</li>
+    </ul>
+  </div>
+
+  <!-- KEY TAKEAWAY -->
+  <div class="box-takeaway">
+    <div class="takeaway-label">Vigtigste konklusion</div>
+    <p>Endpoint Detection & Response (EDR) er ikke valgfrit under NIS2 — det er påkrævet. Det vigtigste spørgsmål er ikke "hvem er bedst", men "hvem passer til vores budget og infrastruktur uden at skuffe ved audit".
+</p>
+  </div>
+
+  <h2>Baggrund: Hvorfor endpoint-sikkerhed er ikke-forhandlingsbar</h2>
+
+  <p>
+    NIS2-loven (Lov nr. 1120 af 2023) kræver, at danske virksomheder i 18 samhällskritiske sektorer implementerer konkrete sikkerhedsforanstaltninger. En af dem er <strong>evnen til at opdage og reagere på trusler på slutpunkter</strong> — det vil sige på servere og computere.
+  </p>
+
+  <p>
+    I praksis betyder det, at du skal have et værktøj, der:
+  </p>
+
+  <ul>
+    <li>Kan påvise, at du har installeret sikkerhedsagenter på alle maskiner</li>
+    <li>Logger og rapporterer mistænkelig aktivitet automatisk</li>
+    <li>Kan assistere dig ved at dokumentere hændelsesrespons inden for 24 timer (tidig advarsel) og 72 timer (fuld rapport) til CFCS</li>
+    <li>Integreres med din incident management-proces</li>
+  </ul>
+
+  <p>
+    Både Microsoft Defender og CrowdStrike kan opfylde disse krav. Spørgsmålet er derfor ikke om den ene er "bedre", men hvilken der passer til <strong>din</strong> virksomhed, budget og eksisterende IT-stack.
+  </p>
+
+  <h2>Hvad siger NIS2 egentlig om endpoint-sikkerhed?</h2>
+
+  <p>
+    Artikel 21 i NIS2 præciserer ti obligatoriske sikkerhedsdomæner. En af dem er <strong>detektering af anomalier og reaktion på hændelser</strong>. Det betyder, at du skal have en løsning, der kan:
+  </p>
+
+  <ul>
+    <li>Overvåge slutpunkter (computere, servere) kontinuerligt</li>
+    <li>Identificere mistænkelig adfærd baseret på kendte og ukendte trusler</li>
+    <li>Generere advarsler, som dine sikkerhedsfolk (eller konsulenter) kan undersøge</li>
+    <li>Assistere med svar og indsamling af bevis ved en incident</li>
+  </ul>
+
+  <p>
+    Når CFCS gransker din organisation, vil de spørge:
+  </p>
+
+  <ol>
+    <li>Hvilken løsning bruger I til endpoint-overvågning?</li>
+    <li>Kan I vise mig logge fra denne løsning?</li>
+    <li>Hvordan integreres den med jeres incidenthanteringsproces?</li>
+    <li>Hvem overvåger advarsler fra denne løsning — dagligt, eller kun når der opstår problemer?</li>
+  </ol>
+
+  <p>
+    Du skal kunne svare præcist og med dokumentation. Både Microsoft Defender og CrowdStrike kan levere disse beviser.
+  </p>
+
+  <div class="box-warning">
+    <strong>Vigtig detalje:</strong> Hvis du vælger en endpoint-løsning uden at have en incidenthanteringplan, der beskriver hvordan du bruger den, er du ikke NIS2-kompatibel. Værktøjet alene løser ikke problemet. Du skal også have en proces.
+  </div>
+
+  <h2>Microsoft Defender: Den integrerede løsning</h2>
+
+  <h3>Hvad du får</h3>
+
+  <p>
+    Microsoft Defender for Endpoints (ofte kaldet "Defender for Endpoint" eller EDR-delen af Microsoft Defender XDR) kommer som standard på de fleste Windows-maskiner, hvis du abonnerer på Microsoft 365 Business Premium eller har en separat Defender-licens.
+  </p>
+
+  <p>
+    I praksis betyder det:
+  </p>
+
+  <ul>
+    <li>Agent installeres uden ekstra software-kompleksitet</li>
+    <li>Trueldetektion er indbygget i Windows-kernen</li>
+    <li>Logging sendes til Microsoft Cloud (Azure)</li>
+    <li>Du kan kigge på advarsler via et dashboard i Microsoft-portalen</li>
+    <li>Integration med Microsoft Sentinel (SIEM) for avanceret truelsøgning</li>
+    <li>Tæt integration med Microsoft Office 365 (e-mail, OneDrive, Teams)</li>
+  </ul>
+
+  <h3>Pris</h3>
+
+  <p>
+    Hvis du allerede har Microsoft 365 Business Premium (ca. 200–300 DKK per bruger per måned), er Defender for Endpoint praktisk talt "inkluderet" — agenten er allerede der, og trueldetektion er aktiveret.
+  </p>
+
+  <p>
+    Hvis du har Office 365 uden Defender, kommer Defender for Endpoint som add-on for ca. 50–150 DKK per enhed per måned, afhængig af hvor mange licensering du køber.
+  </p>
+
+  <h3>Registrering af trusler</h3>
+
+  <p>
+    Microsoft Defender bruger adfærdsbaseret analyse, machine learning og signaler fra miliarder af Windows-enheder verden over. Det betyder:
+  </p>
+
+  <ul>
+    <li><strong>Høj dækningsgrad for kendt malware:</strong> Hvis virus er set før, registreres det øjeblikkeligt.</li>
+    <li><strong>Adfærdsbaseret detektion:</strong> Selv hvis malwaren er ny, kan mistænkelig adfærd (f.eks. usikker PowerShell-brug, filer skrevet til systemmappe) flagges.</li>
+    <li><strong>Færre falske positive:</strong> Tegner fra legitim Windows-aktivitet er integreret i motorens DNA.</li>
+  </ul>
+
+  <p>
+    For de fleste danske virksomheder (ikke finansielle institutioner eller kritisk infrastruktur) er Defender's registreringsniveau tilstrækkeligt til NIS2-kompatibilitet.
+  </p>
+
+  <h3>Incidentrespons-integration</h3>
+
+  <p>
+    Når en trusel detekteres, kan Defender automatisk:
+  </p>
+
+  <ul>
+    <li>Isolere maskinen fra netværket</li>
+    <li>Blokere filen eller processen</li>
+    <li>Sende advarsler til dit security team eller til en SIEM (f.eks. Microsoft Sentinel)</li>
+  </ul>
+
+  <p>
+    Du kan også manuelt undersøge enheder, hente forensiske data, og køre scripts for at isolere eller sanere.
+  </p>
+
+  <h3>Rapportering til CFCS ved incident</h3>
+
+  <p>
+    Microsoft Defender gemmer alle logs i Azure. Du kan eksportere eller søge i disse logs for at:
+  </p>
+
+  <ul>
+    <li>Dokumentere tidspunkt for første detektering</li>
+    <li>Vise hvilke maskiner der blev påvirket</li>
+    <li>Demonstrere dine svar-handlinger (isolation, blokering)</li>
+  </ul>
+
+  <p>
+    Når du skal rapportere til CFCS inden for 24 timer (tidig advarsel) og 72 timer (fuld rapport), kan du hente denne dokumentation direkte fra Defender-portalen.
+  </p>
+
+  <h2>CrowdStrike Falcon: Den specialiserede løsning</h2>
+
+  <h3>Hvad du får</h3>
+
+  <p>
+    CrowdStrike Falcon er en dedicated endpoint-løsning fra en cybersikkerhed-virksomhed. Den konkurrerer ikke med Microsoft på kontorproduktivitet — den fokuserer udelukkende på truseldetektion og respons.
+  </p>
+
+  <ul>
+    <li>Agent installeres på Windows, Mac, Linux og mobile enheder</li>
+    <li>Cloud-baseret threat intelligence fra CrowdStrike's eget analysecenter</li>
+    <li>Dashboard ("Falcon Console") dedikeret til endpoint-sikkerhed</li>
+    <li>Integration med SIEM-værktøjer via API</li>
+    <li>Advanced threat hunting og forensik som standard</li>
+  </ul>
+
+  <h3>Pris</h3>
+
+  <p>
+    CrowdStrike Falcon koster typisk <strong>300–800 DKK per enhed per år</strong>, afhængig af pakke (Standard, Premium, etc.). For en virksomhed med 100 computere betyder det 30.000–80.000 DKK årligt — ud over dine øvrige licenser.
+  </p>
+
+  <p>
+    Det er ikke negligérbart, men heller ikke enormt for en større organisation.
+  </p>
+
+  <h3>Registrering af trusler</h3>
+
+  <p>
+    CrowdStrike har sin egen threat intelligence-operationscenter. Det betyder:
+  </p>
+
+  <ul>
+    <li><strong>Proprietær truseldetektion:</strong> CrowdStrike analyserer malware og angrebstaktikker uafhængigt — ikke baseret på Microsoft's data.</li>
+    <li><strong>Zero-day fokus:</strong> CrowdStrike's team søger aktivt efter nye og ukendte angrebsmønstre.</li>
+    <li><strong>Flere signaler:</strong> CrowdStrike modtager telemetri ikke kun fra Windows, men fra hele ekosystemet — netværk, cloud, identitet.</li>
+  </ul>
+
+  <p>
+    For meget store virksomheder, banker eller kritisk infrastruktur, hvor målet er at opdage de mest raffinerede angreb, er CrowdStrike's specialisering værdifuld. For de fleste SMV'er i Danmark er forskellen mindre signifikant.
+  </p>
+
+  <h3>Incidentrespons-integration</h3>
+
+  <p>
+    CrowdStrike Falcon tilbyder lignende funktioner som Defender:
+  </p>
+
+  <ul>
+    <li>Automatisk isolation af maskiner</li>
+    <li>Real-time processovervågning</li>
+    <li>Forensisk data indsamling</li>
+    <li>API til integration med din SIEM eller ticketing-system</li>
+  </ul>
+
+  <p>
+    Det er faktisk her, hvor CrowdStrike skinner — den dedikerede respons-kapacitet uden at skulle jonglere med Microsoft-universets kompleksitet.
+  </p>
+
+  <h3>Rapportering til CFCS ved incident</h3>
+
+  <p>
+    CrowdStrike logger alle aktiviteter i sin cloud-baserede database. Du kan:
+  </p>
+
+  <ul>
+    <li>Eksportere incident-rapporter fra Falcon Console</li>
+    <li>Få detaljerede timeline-rapporter om hvad der skete hvor og hvornår</li>
+    <li>Vise alle dine svar-handlinger med præcis tidsangivelse</li>
+  </ul>
+
+  <p>
+    For CFCS-rapportering er CrowdStrike lige så brugbar som Defender — måske endda lidt mere elegant, fordi alt er designet omkring netop endpoint-fokus.
+  </p>
+
+  <h2>Direkte sammenligning</h2>
+
+  <table class="comparison-table">
+    <thead>
+      <tr>
+        <th>Kriterium</th>
+        <th>Microsoft Defender</th>
+        <th>CrowdStrike Falcon</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Pris (per enhed/år)</strong></td>
+        <td class="partial">Inkluderet i M365 eller 600–1.800 DKK/år</td>
+        <td>3.600–9.600 DKK/år</td>
+      </tr>
+      <tr>
+        <td><strong>Installation</strong></td>
+        <td class="check">Præinstalleret på Windows</td>
+        <td class="partial">Ekstra agent kræves</td>
+      </tr>
+      <tr>
+        <td><strong>Truseldetektion (kendt malware)</strong></td>
+        <td class="check">Høj — globale signaler</td>
+        <td class="check">Høj — proprietær analyse</td>
+      </tr>
+      <tr>
+        <td><strong>Truseldetektion (zero-day)</strong></td>
+        <td class="partial">Adfærdsbaseret, moderat</td>
+        <td class="check">Specialiseret, avanceret</td>
+      </tr>
+      <tr>
+        <td><strong>SIEM-integration</strong></td>
+        <td class="check">Velegnet (Azure/Sentinel)</td>
+        <td class="check">Velegnet (API-baseret)</td>
+      </tr>
+      <tr>
+        <td><strong>Incidentrespons</strong></td>
+        <td class="check">Solid, men blandet med øvrige Defender-funktioner</td>
+        <td class="check">Dedikeret og intuitiv</td>
+      </tr>
+      <tr>
+        <td><strong>Forensik/threat hunting</strong></td>
+        <td class="partial">Muligt, men med kompleksitet</td>
+        <td class="check">Simpelt og kraftfuldt</td>
+      </tr>
+      <tr>
+        <td><strong>NIS2-rapportering til CFCS</strong></td>
+        <td class="check">Fuldt dækkende</td>
+        <td class="check">Fuldt dækkende</td>
+      </tr>
+      <tr>
+        <td><strong>Support og serviceniveau</strong></td>
+        <td class="partial">Microsoft standard support</td>
+        <td class="check">Dedicated account team</td>
+      </tr>
+      <tr>
+        <td><strong>Lært-kurve for IT-team</strong></td>
+        <td class="check">Moderat (hvis du kender Microsoft)</td>
+        <td class="partial">Stejler (nyt værktøj)</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>Scenario 1: Du er en mindre IT-virksomhed (50–200 ansatte)</h2>
+
+  <p>
+    <strong>Anbefaling:</strong> Microsoft Defender
+  </p>
+
+  <p>
+    <strong>Begrundelse:</strong>
+    Du bruger sandsynligvis allerede Microsoft 365 Business Premium. Defender for Endpoint er allerede der. At starte med Defender betyder at minimere kompleksitet og omkostninger. Du kan altid opgradere til CrowdStrike senere, hvis du opdager, at Defender ikke er tilstrækkelig.
+  </p>
+
+  <p>
+    Når CFCS gransker dig, kan du vise Defender-logs, du kan dokumentere din incidenthantering, og du kan vise at du har en proces for endpoint-sikkerhed. Det holder.
+  </p>
+
+  <p>
+    <strong>

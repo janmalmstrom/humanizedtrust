@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-BKF3QH9K01"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag("js", new Date());
+    gtag("config", "G-BKF3QH9K01");
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Microsoft Teams vs Slack: Communication Security Under NIS2 | NIS2Klar</title>
+  <meta name="description" content="NIS2 compliance for Teams vs Slack: encryption, data residency, guest access, audit logging. Which platform meets Ireland's cybersecurity requirements?">
+  <meta property="og:title" content="Microsoft Teams vs Slack: Communication Security Under NIS2">
+  <meta property="og:description" content="NIS2 compliance for Teams vs Slack: encryption, data residency, guest access, audit logging. Which platform meets Ireland's cybersecurity requirements?">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #141416;
+      --card: #1c1c1f;
+      --yellow: #f5c518;
+      --white: #f0f0f0;
+      --muted: #888;
+      --red: #C61212;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: var(--bg); color: var(--white); font-family: 'Barlow', sans-serif; font-size: 19px; line-height: 1.8; }
+
+    /* Nav */
+    nav { display: flex; justify-content: space-between; align-items: center; padding: 20px 40px; border-bottom: 1px solid rgba(255,255,255,0.07); max-width: 1200px; margin: 0 auto; flex-wrap: wrap; gap: 20px; }
+    .nav-logo { font-family: 'Poppins', sans-serif; font-weight: 900; font-size: 20px; color: var(--yellow); text-decoration: none; }
+    .nav-logo span { color: var(--white); }
+    .nav-back { color: var(--muted); text-decoration: none; font-size: 15px; }
+    .nav-back:hover { color: var(--white); }
+    .lang-switcher { display: flex; gap: 8px; align-items: center; font-size: 13px; font-family: 'Poppins', sans-serif; }
+    .lang-switcher a { color: #888; text-decoration: none; font-weight: 600; padding: 4px 8px; border-radius: 3px; }
+    .lang-switcher a.active { color: var(--yellow); background: rgba(245,197,24,0.1); }
+    .nav-cta { background: var(--yellow); color: #000; padding: 8px 18px; border-radius: 4px; text-decoration: none; font-weight: 700; font-size: 14px; font-family: 'Poppins', sans-serif; }
+
+    /* Article */
+    .article-wrap { max-width: 760px; margin: 0 auto; padding: 60px 40px; }
+    .article-category { font-size: 13px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 16px; }
+    h1 { font-family: 'Poppins', sans-serif; font-size: clamp(30px, 4vw, 44px); font-weight: 900; line-height: 1.2; margin-bottom: 24px; }
+    .article-meta { font-size: 15px; color: var(--muted); margin-bottom: 48px; padding-bottom: 24px; border-bottom: 1px solid rgba(255,255,255,0.07); }
+    h2 { font-family: 'Poppins', sans-serif; font-size: 26px; font-weight: 700; margin: 48px 0 16px; color: var(--white); }
+    h3 { font-family: 'Poppins', sans-serif; font-size: 20px; font-weight: 600; margin: 32px 0 12px; color: var(--yellow); }
+    p { margin-bottom: 22px; }
+    strong { color: var(--white); font-weight: 700; }
+    .highlight { color: var(--yellow); font-weight: 700; }
+    .danger { color: #ff6b6b; font-weight: 700; }
+    ul, ol { margin: 16px 0 24px 24px; }
+    li { margin-bottom: 12px; font-size: 19px; }
+
+    /* Callout boxes */
+    .box-warning { background: rgba(197,17,17,0.12); border-left: 4px solid var(--red); padding: 20px 24px; margin: 32px 0; border-radius: 0 4px 4px 0; }
+    .box-info { background: rgba(245,197,24,0.08); border-left: 4px solid var(--yellow); padding: 20px 24px; margin: 32px 0; border-radius: 0 4px 4px 0; }
+    .box-case { background: var(--card); border: 1px solid rgba(255,255,255,0.08); padding: 28px; margin: 40px 0; border-radius: 4px; }
+    .box-case .case-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 12px; }
+    blockquote { border-left: 3px solid var(--yellow); padding: 12px 20px; margin: 24px 0; font-style: italic; color: #ccc; }
+
+    /* CTA */
+    .cta-section { background: var(--card); border: 1px solid rgba(245,197,24,0.2); border-radius: 4px; padding: 48px 40px; margin: 64px 0 40px; text-align: center; }
+    .cta-section h2 { margin-top: 0; font-size: 26px; }
+    .cta-section p { color: #aaa; max-width: 500px; margin: 0 auto 28px; }
+    .btn-primary { display: inline-block; background: var(--yellow); color: #000; font-family: 'Poppins', sans-serif; font-weight: 800; font-size: 16px; padding: 16px 36px; border-radius: 4px; text-decoration: none; }
+    .btn-primary:hover { background: #e0b010; }
+    .cta-fine { font-size: 13px; color: var(--muted); margin-top: 16px; }
+
+    /* Comparison table */
+    .comparison-table { width: 100%; border-collapse: collapse; margin: 24px 0; font-size: 15px; }
+    .comparison-table th { background: rgba(245,197,24,0.1); color: var(--yellow); font-family: 'Poppins', sans-serif; font-size: 13px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 12px 16px; text-align: left; border-bottom: 1px solid rgba(245,197,24,0.2); }
+    .comparison-table td { padding: 14px 16px; border-bottom: 1px solid rgba(255,255,255,0.05); }
+    .comparison-table tr:last-child td { border-bottom: none; }
+    .comparison-table .check { color: #4ade80; font-weight: 700; }
+    .comparison-table .partial { color: #facc15; font-weight: 700; }
+    .comparison-table .cross { color: #ff6b6b; font-weight: 700; }
+
+    /* Summary + Key Takeaway */
+    .box-summary { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; padding: 24px 28px; margin: 0 0 32px; }
+    .summary-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-bottom: 14px; }
+    .box-summary ul { margin: 0; padding-left: 20px; }
+    .box-summary li { margin-bottom: 8px; font-size: 17px; color: #ccc; }
+    .box-takeaway { background: rgba(245,197,24,0.08); border-left: 4px solid var(--yellow); padding: 20px 24px; margin: 0 0 40px; border-radius: 0 4px 4px 0; }
+    .takeaway-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 10px; }
+    .box-takeaway p { margin: 0; font-size: 18px; font-weight: 600; color: var(--white); line-height: 1.6; }
+
+    /* Related articles */
+    .related-articles { margin: 2.5rem 0 2rem; padding: 1.5rem; background: #1a1a2e; border-left: 4px solid #f0a500; border-radius: 4px; }
+    .related-articles p:first-child { margin: 0 0 1rem; font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #f0a500; }
+    .related-articles ul { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+    .related-articles ul li { margin: 0; font-size: 0.95rem; }
+    .related-articles ul li a { color: #e0e0e0; text-decoration: none; }
+    .related-articles ul li a:hover { color: #f0a500; }
+    .related-articles-footer { margin: 1.25rem 0 0; font-size: 0.85rem; color: #aaa; }
+    .related-articles-footer a { color: #f0a500; text-decoration: none; }
+
+    /* Footer */
+    footer { border-top: 1px solid rgba(255,255,255,0.07); padding: 32px 40px; text-align: center; font-size: 13px; color: var(--muted); max-width: 1200px; margin: 0 auto; }
+    footer a { color: var(--muted); text-decoration: none; }
+    footer a:hover { color: var(--white); }
+
+    @media (max-width: 600px) {
+      nav, .article-wrap, footer { padding: 20px; }
+      .cta-section { padding: 32px 20px; }
+      .comparison-table { font-size: 13px; }
+      .comparison-table th, .comparison-table td { padding: 10px 10px; }
+      h1 { font-size: 28px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="https://nis2klar.se/en/">NIS2<span>Klar</span></a>
+  <a class="nav-back" href="https://nis2klar.se/en/articles.html">← All Articles</a>
+  <div class="lang-switcher">
+    <a href="https://nis2klar.se/artiklar.html" title="Svenska">SV</a>
+    <a href="https://nis2klar.se/en/articles.html" class="active" title="English">EN</a>
+    <a href="https://nis2klar.se/da/artikler.html" title="Dansk">DA</a>
+    <a href="https://nis2klar.se/no/artikler.html" title="Norsk">NO</a>
+    <a href="https://nis2klar.se/it/articoli.html" title="Italiano">IT</a>
+  </div>
+  <a class="nav-cta" href="https://nis2klar.se/en#book">Book consultation →</a>
+</nav>
+
+<article class="article-wrap">
+  <div class="article-category">Platform Security &amp; NIS2 Compliance</div>
+  <h1>Microsoft Teams vs Slack: Communication Security Under NIS2</h1>
+  <div class="article-meta">Updated 19 April 2026 · Read time: ca 9 minutes · For: Leadership &amp; Board Members</div>
+
+  <!-- SUMMARY -->
+  <div class="box-summary">
+    <div class="summary-label">Summary</div>
+    <ul>
+      <li>For CEOs and boards choosing or migrating a collaboration platform under NIS2 compliance pressure.</li>
+      <li>Both Teams and Slack offer encryption, but NIS2 requires more than technology — it requires <strong>documented control</strong>.</li>
+      <li>Data residency, guest access controls, audit logging, and integration with your security stack all determine compliance risk.</li>
+      <li>The wrong choice now costs millions in remediation later — and puts your company in the NCSC Ireland's crosshairs during incident response.</li>
+    </ul>
+  </div>
+
+  <!-- KEY TAKEAWAY -->
+  <div class="box-takeaway">
+    <div class="takeaway-label">Bottom line</div>
+    <p>Choosing a collaboration platform is not a technology decision under NIS2 — it's a compliance and governance decision. Your platform must support audit logging, encryption key control, data residency, and guest access governance. Choose poorly, and the first incident will expose critical gaps.</p>
+  </div>
+
+  <h2>Why This Matters Right Now</h2>
+
+  <p>
+    If your organisation is classified as an essential or important entity under <strong>S.I. No. 322 of 2024</strong> (Ireland's NIS2 Regulations), your choice of communication platform has direct compliance implications.
+  </p>
+
+  <p>
+    We're not talking about whether Teams or Slack is "nicer to use." We're talking about whether your platform allows you to:
+  </p>
+
+  <ul>
+    <li>Encrypt data in transit and at rest under <em>your</em> key control</li>
+    <li>Keep conversation data within Irish or EU borders</li>
+    <li>Control who gets access — and revoke it instantly</li>
+    <li>Produce audit logs that satisfy NCSC Ireland's auditors</li>
+    <li>Integrate with your security tools (SIEM, EDR, DLP)</li>
+  </ul>
+
+  <p>
+    When the NCSC Ireland starts asking questions after an incident, your platform's security architecture will be one of the first things they inspect. If you can't answer these questions with documentation, you're exposed.
+  </p>
+
+  <div class="box-warning">
+    <strong>The real risk:</strong> Most organisations switch platforms for user experience reasons, not compliance reasons. When an incident happens and your team realises the platform logs data in the United States or offers no key control, it's too late. Penalties are up to €10 million or 2% of global turnover for essential entities — and management can be held personally liable.
+  </div>
+
+  <h2>The NIS2 Security Requirements Your Platform Must Meet</h2>
+
+  <p>
+    NIS2 (Article 21 of the Directive, implemented in Ireland as Regulation 21 of S.I. 322/2024) mandates ten core security measures. Not all of them affect your collaboration platform directly, but several do:
+  </p>
+
+  <h3>1. Encryption (Governance Domain 6)</h3>
+  <p>
+    <strong>The requirement:</strong> Data must be encrypted in transit and at rest. Encryption keys must be under your organisation's control — not the vendor's.
+  </p>
+  <p>
+    <strong>What this means:</strong> If your platform uses encryption but holds the keys, you cannot prove to an auditor that <em>you</em> control the data. Key control is non-negotiable.
+  </p>
+
+  <h3>2. Data Residency and Border Control</h3>
+  <p>
+    <strong>The requirement:</strong> Although not explicitly stated in Article 21, NIS2 compliance in Ireland means understanding where your data lives. If conversations are processed or stored outside the EU, you face additional GDPR and cross-border risk.
+  </p>
+  <p>
+    <strong>What this means:</strong> You need a platform that either guarantees EU/Irish data residency or allows you to configure storage location.
+  </p>
+
+  <h3>3. Access Control (Governance Domain 5)</h3>
+  <p>
+    <strong>The requirement:</strong> Only authorised personnel should access sensitive conversations. Guest access must be tightly controlled and logged.
+  </p>
+  <p>
+    <strong>What this means:</strong> Your platform must support multi-factor authentication (MFA), role-based access control (RBAC), and the ability to instantly revoke external user access without manual intervention.
+  </p>
+
+  <h3>4. Incident Logging &amp; Audit Trail (Governance Domain 7)</h3>
+  <p>
+    <strong>The requirement:</strong> You must be able to produce logs of who accessed what, when, from where, and what changes were made. NIS2 incident reporting timelines are tight: 24 hours for early warning, 72 hours for full notification to NCSC Ireland.
+  </p>
+  <p>
+    <strong>What this means:</strong> Your platform's audit logs must be machine-readable, exportable, and complete enough to support a forensic investigation within hours.
+  </p>
+
+  <h2>Teams vs Slack: The NIS2 Comparison</h2>
+
+  <p>
+    Both Microsoft Teams and Slack are mature collaboration platforms used by regulated organisations worldwide. Neither is inherently "non-compliant" with NIS2. But their architectures, configuration options, and integration ecosystems differ — and those differences matter under scrutiny.
+  </p>
+
+  <table class="comparison-table">
+    <thead>
+      <tr>
+        <th>Capability</th>
+        <th>Microsoft Teams</th>
+        <th>Slack</th>
+        <th>NIS2 Importance</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Encryption at Rest</strong></td>
+        <td><span class="check">✓ AES-256</span> (Microsoft-managed keys by default)</td>
+        <td><span class="check">✓ AES-256</span> (Slack-managed keys by default)</td>
+        <td>Both encrypt; key control is the issue.</td>
+      </tr>
+      <tr>
+        <td><strong>Customer-Managed Keys (CMK)</strong></td>
+        <td><span class="check">✓ Available</span> (via Azure Key Vault)</td>
+        <td><span class="partial">~ Limited</span> (Data residency options only)</td>
+        <td><span class="danger">Critical.</span> CMK is NIS2 expectation.</td>
+      </tr>
+      <tr>
+        <td><strong>EU/Irish Data Residency</strong></td>
+        <td><span class="check">✓ Available</span> (EU data centres)</td>
+        <td><span class="partial">~ Partial</span> (Stored in EU, processing in US)</td>
+        <td>Data must stay within EU borders where possible.</td>
+      </tr>
+      <tr>
+        <td><strong>Multi-Factor Authentication (MFA)</strong></td>
+        <td><span class="check">✓ Built-in</span> (via Entra ID / Azure AD)</td>
+        <td><span class="check">✓ Built-in</span> (SAML, SCIM)</td>
+        <td>Both adequate; Teams has deeper SSO integration.</td>
+      </tr>
+      <tr>
+        <td><strong>Guest Access Controls</strong></td>
+        <td><span class="check">✓ Granular</span> (Domain control, meeting restrictions)</td>
+        <td><span class="partial">~ Basic</span> (Limited domain restrictions)</td>
+        <td>Essential for controlling external user risk.</td>
+      </tr>
+      <tr>
+        <td><strong>Audit Logging</strong></td>
+        <td><span class="check">✓ Comprehensive</span> (Purview, eDiscovery, retention)</td>
+        <td><span class="check">✓ Good</span> (Message export, basic audit)</td>
+        <td>Teams offers more granular forensic capability.</td>
+      </tr>
+      <tr>
+        <td><strong>DLP Integration</strong></td>
+        <td><span class="check">✓ Built-in</span> (Purview Sensitivity Labels)</td>
+        <td><span class="cross">✗ Third-party only</span></td>
+        <td>DLP prevents accidental data leakage during messaging.</td>
+      </tr>
+      <tr>
+        <td><strong>SIEM/EDR Integration</strong></td>
+        <td><span class="check">✓ Native</span> (Microsoft Sentinel logs)</td>
+        <td><span class="partial">~ API-based</span> (Third-party connectors)</td>
+        <td>Tight integration with security stack critical for incident response.</td>
+      </tr>
+      <tr>
+        <td><strong>Compliance Certifications</strong></td>
+        <td><span class="check">✓ ISO 27001, SOC 2, GDPR</span></td>
+        <td><span class="check">✓ ISO 27001, SOC 2, GDPR</span></td>
+        <td>Both are certified; certifications alone don't equal NIS2 readiness.</td>
+      </tr>
+      <tr>
+        <td><strong>Cost of Compliance Implementation</strong></td>
+        <td><span class="check">✓ Lower</span> (Built-in governance; certified partners available)</td>
+        <td><span class="partial">~ Higher</span> (Requires third-party tools and custom integration)</td>
+        <td>Hidden cost of non-native security features adds up.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>The Decision Tree: Which Platform for Your Situation</h2>
+
+  <h3>Choose Teams if:</h3>
+  <ul>
+    <li>Your organisation is already invested in Microsoft 365 (Outlook, SharePoint, OneDrive)</li>
+    <li>You need customer-managed encryption keys and EU data residency as non-negotiables</li>
+    <li>You want native Data Loss Prevention (DLP) without third-party integration</li>
+    <li>You need tight integration with your security information and event management (SIEM) tool</li>
+    <li>You want a single vendor responsible for compliance — reducing finger-pointing during audits</li>
+    <li>Your supply chain includes Microsoft integrations (many enterprise systems do)</li>
+  </ul>
+
+  <h3>Choose Slack if:</h3>
+  <ul>
+    <li>Your team strongly prefers its user experience and you can justify the compliance cost</li>
+    <li>You already have a mature third-party security stack (DLP, SIEM) that can integrate via API</li>
+    <li>Your organisation is in a lower-risk sector or classified as an "important" (not "essential") entity</li>
+    <li>You're willing to spend on additional compliance tooling to close the feature gap</li>
+  </ul>
+
+  <div class="box-info">
+    <strong>Reality check:</strong> Slack is not "non-compliant" with NIS2. But it requires more configuration, third-party integration, and careful documentation to reach the same assurance level as Teams. That extra work costs money and creates complexity during audits.
+  </div>
+
+  <h2>The Hidden Compliance Cost of Getting It Wrong</h2>
+
+  <div class="box-case">
+    <div class="case-label">Case Study: A Fintech Under Pressure</div>
+    <p>
+      <strong>Scenario:</strong> A 180-person fintech company (essential entity under NIS2) chose Slack two years ago for its "modern UX." No one asked whether it met NIS2 requirements — the law hadn't been finalised yet.
+    </p>
+    <p>
+      In March 2026, a disgruntled contractor exfiltrates customer payment data from a Slack channel used for operations. The breach affects 5,000 customers' banking details.
+    </p>
+    <p>
+      <strong>Immediate obligations:</strong> The company must notify NCSC Ireland within 24 hours (early warning) and submit a full incident report within 72 hours.
+      During the incident investigation, NCSC discovers:
+    </p>
+    <ul>
+      <li>Slack audit logs are basic and don't show full context of who accessed what when</li>
+      <li>The company has no Data Loss Prevention controls — Slack integration with their DLP tool failed months ago and was never fixed</li>
+      <li>Slack conversations are processed in US data centres; the company has no contractual guarantee of EU residency</li>
+      <li>Guest/contractor access wasn't centrally managed — each team lead added contractors manually</li>
+    </ul>
+    <p>
+      <strong>Regulatory findings:</strong>
+    </p>
+    <ul>
+      <li>Fine for incident (non-execution of security measures): €5–7 million</li>
+      <li>Fine for inadequate audit capabilities: €1–2 million</li>
+      <li>Fine for failure to control guest access: €1 million</li>
+      <li>Costs of forensic investigation, notification, credit monitoring: €500,000</li>
+      <li>Lost customer trust and reputational damage: immeasurable</li>
+    </ul>
+    <p>
+      <strong>Personal liability:</strong> The CEO and board members are named in the NCSC investigation for failing to ensure adequate security controls under Article 20 of the Directive. One board member receives a five-year ban from holding a director role in regulated organisations.
+    </p>
+    <p>
+      <strong>Total cost:</strong> €7.5–10.5 million in fines alone, plus legal fees, remediation, and reputational repair. All of it could have been prevented by choosing a platform with native compliance features during initial selection.
+    </p>
+  </div>
+
+  <h2>Practical Steps to NIS2-Ready Collaboration</h2>
+
+  <h3>Step 1: Classify Your Organisation</h3>
+  <p>
+    First, confirm whether you're an essential entity (250+ employees or €50M+ turnover in a critical sector) or an important entity (50–249 employees or €10–50M turnover). The penalties differ (up to €10M vs €7M), but the governance requirements are similar.
+  </p>
+
+  <h3>Step 2: Map Your Data Flows</h3>
+  <p>
+    Document where sensitive information flows through your collaboration platform:
+  </p>
+  <ul>
+    <li>Customer data, payment information, health records?</li>
+    <li>Strategic plans, M&A discussions, board communications?</li>
+    <li>Contractor or external partner access required?</li>
+  </ul>
+  <p>
+    If you're handling customer financial data or health information, your platform choice is non-negotiable — it must support encryption key control and EU residency.
+  </p>
+
+  <h3>Step 3: Audit the Compliance Gaps</h3>
+  <p>
+    If you're already using a platform, conduct a gap analysis against these NIS2 requirements:
+  </p>
+  <ul>
+    <li><strong>Can you produce an audit log of every access and change within 1 hour?</strong> (You may need it for incident reporting.)</li>
+    <li><strong>Do you control the encryption keys, or does the vendor?</strong></li>
+    <li><strong>Can you guarantee data stays in the EU?</strong></li>
+    <li><strong>Can you instantly revoke access to all external users?</strong></li>
+    <li><strong>Does your security team have API access to feed logs into your SIEM?</strong></li>
+  </ul>
+  <p>
+    If you answer "no" to three or more, you have a compliance risk that needs remediation.
+  </p>
+
+  <h3>Step 4: Document Your Decision</h3>
+  <p>
+    This is critical under Article 20 of NIS2. Your board must document:
+  </p>
+  <ul>
+    <li>Why you chose the platform (security assessment, not just UX)</li>
+    <li>What security features it provides against NIS2 requirements</li>
+    <li>What gaps exist and how you mitigate them (third-party tools, policy controls, etc.)</li>
+    <li>How you'll monitor compliance on an ongoing basis</li>
+  </ul>
+  <p>
+    This documentation is your first line of defense during an audit. Without it, you're admitting the decision was made without compliance consideration.
+  </p>
+
+  <h3>Step 5: Integrate with Your Security Stack</h3>
+  <p>
+    Whether you choose Teams or Slack, ensure it plugs into your broader security architecture:
+  </p>
+  <ul>
+    <li>SIEM/SOC can ingest platform logs for threat detection</li>
+    <li>DLP scans outgoing messages for sensitive data patterns</li>
+    <li>Identity provider (Entra ID, Okta, etc.) enforces MFA and conditional access</li>
+    <li>Backup solution captures conversation data for recovery</li>
+  </ul>
+  <p>
+    A platform that exists in isolation from your security tools is a compliance liability.
+  </p>
+
+  <h2>The Bottom Line for Your Board</h2>
+
+  <p>
+    Choosing a collaboration platform is a compliance decision, not a technology preference decision. Both Microsoft Teams and Slack can be made NIS2-compliant, but Teams requires fewer workarounds because it was designed with governance in mind.
+  </p>
+
+  <p>
+    If you're an essential entity handling sensitive data, the compliance cost of choosing Slack (third-party DLP, custom SIEM integration, key management workarounds) often exceeds the cost difference in platform pricing. If you're already in Microsoft 365, the decision is simpler.
+  </p>
+
+  <p>

@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-BKF3QH9K01"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag("js", new Date());
+    gtag("config", "G-BKF3QH9K01");
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ISO 27001 vs NIS2: Täcker ISO-certifieringen NIS2-kraven? | NIS2Klar</title>
+  <meta name="description" content="ISO 27001 täcker delar av NIS2, men inte allt. Se vad som saknas, jämförelsematris och vad du behöver göra för att uppfylla både standarder.">
+  <meta property="og:title" content="ISO 27001 vs NIS2: Täcker ISO-certifieringen NIS2-kraven?">
+  <meta property="og:description" content="ISO 27001 täcker delar av NIS2, men inte allt. Se vad som saknas, jämförelsematris och vad du behöver göra för att uppfylla både standarder.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #141416;
+      --card: #1c1c1f;
+      --yellow: #f5c518;
+      --white: #f0f0f0;
+      --muted: #888;
+      --red: #C61212;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: var(--bg); color: var(--white); font-family: 'Barlow', sans-serif; font-size: 19px; line-height: 1.8; }
+
+    /* Nav */
+    nav { display: flex; justify-content: space-between; align-items: center; padding: 20px 40px; border-bottom: 1px solid rgba(255,255,255,0.07); max-width: 900px; margin: 0 auto; }
+    .nav-logo { font-family: 'Poppins', sans-serif; font-weight: 900; font-size: 20px; color: var(--yellow); text-decoration: none; }
+    .nav-logo span { color: var(--white); }
+    .nav-back { color: var(--muted); text-decoration: none; font-size: 15px; }
+    .nav-back:hover { color: var(--white); }
+    .nav-cta { background: var(--yellow); color: #000; padding: 8px 18px; border-radius: 4px; text-decoration: none; font-weight: 700; font-size: 14px; font-family: 'Poppins', sans-serif; }
+
+    /* Article */
+    .article-wrap { max-width: 760px; margin: 0 auto; padding: 60px 40px; }
+    .article-category { font-size: 13px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 16px; }
+    h1 { font-family: 'Poppins', sans-serif; font-size: clamp(30px, 4vw, 44px); font-weight: 900; line-height: 1.2; margin-bottom: 24px; }
+    .article-meta { font-size: 15px; color: var(--muted); margin-bottom: 48px; padding-bottom: 24px; border-bottom: 1px solid rgba(255,255,255,0.07); }
+    h2 { font-family: 'Poppins', sans-serif; font-size: 26px; font-weight: 700; margin: 48px 0 16px; color: var(--white); }
+    h3 { font-family: 'Poppins', sans-serif; font-size: 20px; font-weight: 600; margin: 32px 0 12px; color: var(--yellow); }
+    p { margin-bottom: 22px; }
+    strong { color: var(--white); font-weight: 700; }
+    .highlight { color: var(--yellow); font-weight: 700; }
+    .danger { color: #ff6b6b; font-weight: 700; }
+    ul, ol { margin: 16px 0 24px 24px; }
+    li { margin-bottom: 12px; font-size: 19px; }
+
+    /* Callout boxes */
+    .box-warning { background: rgba(197,17,17,0.12); border-left: 4px solid var(--red); padding: 20px 24px; margin: 32px 0; border-radius: 0 4px 4px 0; }
+    .box-info { background: rgba(245,197,24,0.08); border-left: 4px solid var(--yellow); padding: 20px 24px; margin: 32px 0; border-radius: 0 4px 4px 0; }
+    .box-case { background: var(--card); border: 1px solid rgba(255,255,255,0.08); padding: 28px; margin: 40px 0; border-radius: 4px; }
+    .box-case .case-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 12px; }
+    blockquote { border-left: 3px solid var(--yellow); padding: 12px 20px; margin: 24px 0; font-style: italic; color: #ccc; }
+
+    /* CTA */
+    .cta-section { background: var(--card); border: 1px solid rgba(245,197,24,0.2); border-radius: 4px; padding: 48px 40px; margin: 64px 0 40px; text-align: center; }
+    .cta-section h2 { margin-top: 0; font-size: 26px; }
+    .cta-section p { color: #aaa; max-width: 500px; margin: 0 auto 28px; }
+    .btn-primary { display: inline-block; background: var(--yellow); color: #000; font-family: 'Poppins', sans-serif; font-weight: 800; font-size: 16px; padding: 16px 36px; border-radius: 4px; text-decoration: none; }
+    .btn-primary:hover { background: #e0b010; }
+    .cta-fine { font-size: 13px; color: var(--muted); margin-top: 16px; }
+
+    /* FAQ */
+    .faq-item { border-bottom: 1px solid rgba(255,255,255,0.07); padding: 20px 0; }
+    .faq-q { font-family: 'Poppins', sans-serif; font-weight: 600; margin-bottom: 10px; }
+    .faq-a { color: #bbb; }
+
+    /* Comparison table */
+    .comparison-table { width: 100%; border-collapse: collapse; margin: 24px 0; }
+    .comparison-table th { background: rgba(245,197,24,0.1); color: var(--yellow); font-family: 'Poppins', sans-serif; font-size: 13px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 12px 16px; text-align: left; border-bottom: 1px solid rgba(245,197,24,0.2); }
+    .comparison-table td { padding: 14px 16px; border-bottom: 1px solid rgba(255,255,255,0.05); font-size: 15px; }
+    .comparison-table tr:last-child td { border-bottom: none; }
+    .comparison-table .check { color: #4ade80; font-weight: 700; }
+    .comparison-table .cross { color: #ff6b6b; font-weight: 700; }
+    .comparison-table .partial { color: var(--yellow); font-weight: 700; }
+
+    /* Summary + Key Takeaway */
+    .box-summary { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; padding: 24px 28px; margin: 0 0 32px; }
+    .summary-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-bottom: 14px; }
+    .box-summary ul { margin: 0; padding-left: 20px; }
+    .box-summary li { margin-bottom: 8px; font-size: 17px; color: #ccc; }
+    .box-takeaway { background: rgba(245,197,24,0.08); border-left: 4px solid var(--yellow); padding: 20px 24px; margin: 0 0 40px; border-radius: 0 4px 4px 0; }
+    .takeaway-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 10px; }
+    .box-takeaway p { margin: 0; font-size: 18px; font-weight: 600; color: var(--white); line-height: 1.6; }
+
+    /* Footer */
+    footer { border-top: 1px solid rgba(255,255,255,0.07); padding: 32px 40px; text-align: center; font-size: 13px; color: var(--muted); max-width: 900px; margin: 0 auto; }
+    footer a { color: var(--muted); }
+
+    .related-articles { margin: 2.5rem 0 2rem; padding: 1.5rem; background: #1a1a2e; border-left: 4px solid #f0a500; border-radius: 4px; }
+
+    @media (max-width: 600px) {
+      nav, .article-wrap, footer { padding: 20px; }
+      .cta-section { padding: 32px 20px; }
+      .comparison-table { font-size: 14px; }
+      .comparison-table th, .comparison-table td { padding: 10px 10px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="https://nis2klar.se/">NIS2<span>Klar</span></a>
+  <a class="nav-back" href="https://nis2klar.se/artiklar.html">← Alla artiklar</a>
+  <a class="nav-cta" href="https://nis2klar.se/#boka">Boka samtal →</a>
+</nav>
+
+<article class="article-wrap">
+  <div class="article-category">Standarder &amp; Efterlevnad</div>
+  <h1>ISO 27001 vs NIS2: Täcker ISO-certifieringen NIS2-kraven?</h1>
+  <div class="article-meta">19 april 2026 · Lästid: ca 8 minuter · Målgrupp: VD, styrelse</div>
+
+  <!-- SUMMARY -->
+  <div class="box-summary">
+    <div class="summary-label">Sammanfattning</div>
+    <ul>
+      <li>ISO 27001 täcker <strong>ungefär 70 % av NIS2</strong> — men exakt vilka 70 % varierar.</li>
+      <li>NIS2 kräver dokumenterad incidentrapportering (24 timmar), styrelsegodkännande och leverantörsinventering som ISO 27001 inte explicit kräver.</li>
+      <li>ISO 27001 täcker många tekniska åtgärder som NIS2 inte namnger — men NIS2 kräver "lämpliga" åtgärder ändå.</li>
+      <li>Båda behövs för att säkerställa juridisk efterlevnad och operativ resiliens.</li>
+      <li>Gap-analys är obligatorisk — du kan inte anta att ISO 27001-certifiering räcker för NIS2.</li>
+    </ul>
+  </div>
+
+  <!-- KEY TAKEAWAY -->
+  <div class="box-takeaway">
+    <div class="takeaway-label">Viktigaste slutsatsen</div>
+    <p>ISO 27001 är en god grund, men NIS2 kräver saker som ISO 27001 inte namnger eller prioriterar: personligt styrelseansvär, rapporteringsplikt, och dokumenterad koppling mellan risk och åtgärd. Utan gap-analys och tilläggsarbete räcker certifieringen inte.</p>
+  </div>
+
+  <!-- HOOK -->
+  <p>
+    Det är en vanlig fråga från ledningar som redan är ISO 27001-certifierade: <strong>"Vi är redan certifierade. Täcker det inte NIS2?"</strong>
+  </p>
+
+  <p>
+    Svaret är tekniskt enkelt: delvis. Men låt oss göra det praktiskt användbart.
+  </p>
+
+  <p>
+    ISO 27001 är en världsstandard för informationssäkerhet. NIS2 är EU:s lag för cybersäkerhet i samhällskritiska sektorer. De överlappar kraftigt — men de är inte identiska. Och skillnaderna kan bli dyra.
+  </p>
+
+  <p>
+    Vi visar här exakt vad som täcks, vad som saknas, och vad du måste göra för att gå från ISO 27001 till NIS2-efterlevnad.
+  </p>
+
+  <h2>Vad är ISO 27001 egentligen?</h2>
+
+  <p>
+    ISO 27001 är en internationell certifieringsstandard för hantering av informationssäkerhet. Den syftar till att identifiera risker, implementera åtgärder och demonstrera att åtgärderna fungerar. Det är frivilligt — ingen lag tvingar dig att certifiera dig.
+  </p>
+
+  <p>
+    ISO 27001 bygger på <strong>114 kontroller</strong> indelade i 14 domäner:
+  </p>
+
+  <ul>
+    <li>Organisatoriska kontroller (policy, ledning)</li>
+    <li>Personkontroller (åtkomst, utbildning)</li>
+    <li>Fysiska kontroller (lokalskydd)</li>
+    <li>Tekniska kontroller (kryptering, autentisering, loggning)</li>
+  </ul>
+
+  <p>
+    En certifierare granskar implementeringen, och om allt är på plats utfärdas ett certifikat — normalt giltigt i tre år.
+  </p>
+
+  <h2>Vad kräver NIS2 konkret?</h2>
+
+  <p>
+    NIS2 är en <strong>lagstadgad skyldighet</strong> för organisationer i 18 samhällskritiska sektorer. I Sverige implementerades den genom cybersäkerhetslagen (2024:1056).
+  </p>
+
+  <p>
+    NIS2 kräver tio obligatoriska säkerhetsdomäner (Artikel 21):
+  </p>
+
+  <ol>
+    <li>Riskanalys</li>
+    <li>Incidenthantering</li>
+    <li>Kontinuitetsplanering</li>
+    <li>Leverantörssäkerhet</li>
+    <li>Tillgångskontroll (autentisering och åtkomst)</li>
+    <li>Kryptering</li>
+    <li>Loggning och övervakning</li>
+    <li>Säker systemutveckling</li>
+    <li>Personalsäkerhet (utbildning)</li>
+    <li>Fysisk säkerhet</li>
+  </ol>
+
+  <p>
+    Men det är inte bara ett checklistekrav. Artikel 20 slår fast att <strong>ledningen personligen ansvarar</strong> för att dessa åtgärder är på plats och fungerar. Vidare kräver Artikel 23 att allvarliga incidenter rapporteras inom <strong>24 timmar</strong> — något ISO 27001 inte kräver.
+  </p>
+
+  <div class="box-warning">
+    <strong>Nyckelpunkt:</strong> NIS2 är lagstadgat, tvångsövervaket och straffbelagt med böter upp till 10 miljoner euro. ISO 27001 är frivilligt och helt avhängigt den certifierare som granskar det.
+  </div>
+
+  <h2>Jämförelsematris: ISO 27001 vs NIS2</h2>
+
+  <p>
+    Här är en detaljerad matris över de tio NIS2-domänerna och hur ISO 27001 tacklar dem:
+  </p>
+
+  <table class="comparison-table">
+    <thead>
+      <tr>
+        <th>NIS2-domän (Artikel 21)</th>
+        <th>ISO 27001 täcker?</th>
+        <th>Anmärkningar</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Riskanalys</strong></td>
+        <td class="check">✓ Ja</td>
+        <td>ISO 27001 kräver formell riskbedömning. Båda standarderna använder ISMS-modellen (Identify → Analyze → Treat).</td>
+      </tr>
+      <tr>
+        <td><strong>Incidenthantering</strong></td>
+        <td class="partial">~ Partiellt</td>
+        <td>ISO 27001 kräver incidenthanteringsplan, men inte 24-timmars rapportering till myndighet. NIS2 kräver det explicit.</td>
+      </tr>
+      <tr>
+        <td><strong>Kontinuitetsplanering</strong></td>
+        <td class="check">✓ Ja</td>
+        <td>ISO 27001 kräver business continuity och disaster recovery planning. Nästan identiska krav.</td>
+      </tr>
+      <tr>
+        <td><strong>Leverantörssäkerhet</strong></td>
+        <td class="partial">~ Partiellt</td>
+        <td>ISO 27001 adresserar supplier relationship management, men inte med samma tydlighet som NIS2:s Artikel 28 (förbud mot outsourcing av kritiska funktioner).</td>
+      </tr>
+      <tr>
+        <td><strong>Tillgångskontroll</strong></td>
+        <td class="check">✓ Ja</td>
+        <td>ISO 27001 har detaljerade krav på MFA, åtkomsträttigheter och säker autentisering. Fullt täckt.</td>
+      </tr>
+      <tr>
+        <td><strong>Kryptering</strong></td>
+        <td class="check">✓ Ja</td>
+        <td>ISO 27001 Annex A innehåller krypteringskontroller för data i vila och transit. Båda kräver det.</td>
+      </tr>
+      <tr>
+        <td><strong>Loggning &amp; övervakning</strong></td>
+        <td class="check">✓ Ja</td>
+        <td>ISO 27001 kräver loggning, övervakning och SIEM-tänk. Praktiskt identiska.</td>
+      </tr>
+      <tr>
+        <td><strong>Säker systemutveckling</strong></td>
+        <td class="check">✓ Ja</td>
+        <td>ISO 27001 kräver säker SDLC, code review, testing. Täckt väl.</td>
+      </tr>
+      <tr>
+        <td><strong>Personalsäkerhet</strong></td>
+        <td class="check">✓ Ja</td>
+        <td>ISO 27001 kräver säkerhet awareness training. Båda adresserar det.</td>
+      </tr>
+      <tr>
+        <td><strong>Fysisk säkerhet</strong></td>
+        <td class="check">✓ Ja</td>
+        <td>ISO 27001 har många kontroller för fysisk åtkomst, övervakningskameror, secure disposal. Väl täckt.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>
+    <strong>Slut:</strong> 7 domäner är väl täckta, 3 är partiella. Att säga "vi är ISO 27001-certifierade, så vi uppfyller NIS2" är tekniskt felaktigt. Men du är på rätt väg.
+  </p>
+
+  <h2>Vad ISO 27001 täcker som NIS2 inte namnger</h2>
+
+  <p>
+    ISO 27001 har några 114 kontroller. NIS2 Artikel 21 är mer strategisk — den säger "tio domäner" utan att dika ned i detaljer.
+  </p>
+
+  <p>
+    Det betyder att ISO 27001 ofta är <strong>mer granulär</strong> än NIS2:
+  </p>
+
+  <ul>
+    <li><strong>Kryptografiska nyckelhantering:</strong> ISO 27001 har A.10.1.1 som specificerar nyckelgenerering, lagring och återställning. NIS2 säger bara "använd kryptering".</li>
+    <li><strong>Fysisk tillgångsinventering:</strong> ISO 27001 kräver spårning av all IT-utrustning. NIS2 nämnde det inte explicit.</li>
+    <li><strong>Säker bortskaffning av data:</strong> ISO 27001 kräver säker radering och destruktion av media. NIS2 täcker det via övergripande säkerhet men inte i samma detalj.</li>
+    <li><strong>Åtkomsträttigheter per roll:</strong> ISO 27001 implementerar ofta rollbaserad åtkomstkontroll (RBAC) strikt. NIS2 förväntar det men föreskriver inte mekaniken.</li>
+  </ul>
+
+  <p>
+    Med andra ord: <strong>ISO 27001 är ofta mer tekniskt djup, NIS2 är mer lagstadgat och högre nivå</strong>.
+  </p>
+
+  <h2>Vad NIS2 kräver som ISO 27001 inte adresserar</h2>
+
+  <p>
+    Det här är de kritiska gapen. Dessa krav saknas helt i ISO 27001:
+  </p>
+
+  <h3>1. Personligt styrelseansvär (Artikel 20)</h3>
+
+  <p>
+    NIS2 Artikel 20 säger explicit att ledningen (VD, styrelseledamöter) är <strong>personligt ansvarig</strong> för att säkerhetsåtgärderna är på plats och fungerar. Det räcker inte att delegera till IT-chefen.
+  </p>
+
+  <p>
+    ISO 27001 förväntar att ledningen är involverad, men den specificerar inte ett personligt juridiskt ansvar på samma sätt.
+  </p>
+
+  <p>
+    <strong>Vad som krävas:</strong> Styrelseprotokoll som visar att ni har diskuterat, godkänt och övervakat säkerhetsåtgärder. Utan dessa protokoll kan en ledningsgrupp inte försvaras vid en myndighetsransakan.
+  </p>
+
+  <h3>2. 24-timmarskrav för incidentrapportering (Artikel 23)</h3>
+
+  <p>
+    NIS2 kräver att allvarliga incidenter rapporteras till MSB (eller sektorsspecifik myndighet) inom <strong>24 timmar</strong> från detektering. En fullständig rapport ska följas inom 72 timmar.
+  </p>
+
+  <p>
+    ISO 27001 säger att incidenter ska hanteras enligt en plan. Den säger inte något om att rapportera till en offentlig myndighet.
+  </p>
+
+  <p>
+    <strong>Vad som krävas:</strong> En eskalerings- och rapporteringsprocess som är kodifierad, tränad och testad. Beslut om rapportering måste kunna fattas snabbt.
+  </p>
+
+  <h3>3. Leverantörscertifiering och kravhantering (Artikel 28)</h3>
+
+  <p>
+    NIS2 Artikel 28 kräver att ni kartlägger leverantörer, verifiera deras säkerhet och förbjuder outsourcing av vissa kritiska funktioner (som incident response).
+  </p>
+
+  <p>
+    ISO 27001 har supplier relationship management men är inte så explicit omkring förbuden.
+  </p>
+
+  <p>
+    <strong>Vad som krävas:</strong> En leverantörsinventering (excel-kalkyl räcker inte), skriftliga säkerhetskrav på varje leverantör, granskning av deras certifieringar (om de är relevanta), och dokumentering av vilka funktioner som är outsourcade vs. kritiska.
+  </p>
+
+  <h3>4. Riskanalys enligt NIS2-logik, inte generisk riskhantering</h3>
+
+  <p>
+    NIS2 kräver en riskanalys som specifikt adresserar <strong>cybersäkerhetsrisker</strong> för organisationen och dess leverantörer. Analysen måste dokumentera vilka åtgärder som är implementerade för att hantera varje identifierad risk.
+  </p>
+
+  <p>
+    ISO 27001 använder ofta en mer generisk IT-riskkarta. Kopplingen mellan "risk X" och "åtgärd Y" måste ofta sökas aktivt i dokumentationen.
+  </p>
+
+  <p>
+    <strong>Vad som krävas:</strong> En risk-to-control-matris som tydligt visar vilken cybersäkerhetRISK som motsvaras av vilken implementerad ÅTGÄRD.
+  </p>
+
+  <div class="box-info">
+    <strong>Insikt:</strong> ISO 27001 är en <strong>process</strong> för säkerhet. NIS2 är en <strong>lagstadgad kravlista</strong> med personligt ansvar. Du kan vara ISO 27001-certifierad och ändå bryta mot NIS2 om du inte har rätt lagstiftningsspecifika dokumentation.
+  </div>
+
+  <h2>Gap-analys: Vad måste du göra?</h2>
+
+  <p>
+    Om du är ISO 27001-certifierad och omfattas av NIS2, är nästa steg en gap-analys. Här är en grundläggande checklista:
+  </p>
+
+  <h3>Steg 1: Kontrollera att du omfattas av NIS2</h3>
+
+  <ul>
+    <li>Är du i en av de 18 samhällskritiska sektorerna?</li>
+    <li>Är du en väsentlig entitet (250+ anställda eller 50+ M€ omsättning)?</li>
+    <li>Eller en viktig entitet (50-249 anställda eller 10-50 M€ omsättning)?</li>
+  </ul>
+
+  <p>
+    Är svaret nej på alla tre punkter omfattas du inte. Slippa detta avsnitt.
+  </p>
+
+  <h3>Steg 2: Granska din ISO 27001-dokumentation</h3>
+
+  <ul>
+    <li>Har du en formell Information Security Management System (ISMS) dokumenterad?</li>
+    <li>Finns det en säkerhetspolicy antagen av ledningen?</li>
+    <li>Är det en riskanalys genomförd och daterad?</li>
+    <li>Är det en incidenthanteringsplan med eskaleringsvägar?</li>
+  </ul>
+
+  <h3>Steg 3: Kontrollera specifika NIS2-krav</h3>
+
+  <ul>
+    <li><strong>Styrelseansvär:</strong> Finns det styrelseprotokoll från de senaste 12 månaderna som dokumenterar diskussion och godkännande av säkerhetsåtgärder?</li>
+    <li><strong>Incidentrapportering:</strong> Är det dokumenterat vilka händelser som klassas som "allvarliga" enligt NIS2-definitionen?</li>
+    <li><strong>Leverantörshantering:</strong> Finns det en inventering av leverantörer med säkerhetskrav dokumenterade?</li>
+    <li><strong>Risk-to-control-matris:</strong> Kan du snabbt visa vilka åtgärder som motsvarar vilka risker?</li>
+  </ul>
+
+  <h3>Steg 4: Slutför gapen</h3>
+
+  <p>
+    Om något saknas är det tiden att åtgärda det. Vanligtvis tar det 2–6 veckor för ett redan ISO 27001-certifierat företag att bli NIS2-kompatibelt.
+  </p>
+
+  <div class="box-case">
+    <div class="case-label">Fallstudie</div>
+    <p>
+      <strong>Fintech-startup, 180 anställda, ISO 27001-certifierad sedan 2023.</strong>
+    </p>
+    <p>
+      Klassas som viktig entitet under NIS2 (finanssektor, över 50 anställda). Gap-analys avslöjar:
+    </p>
+    <ul style="margin: 16px 0 16px 24px;">
+      <li>✓ Riskanalys: finns och är uppdaterad</li>
+      <li>✓

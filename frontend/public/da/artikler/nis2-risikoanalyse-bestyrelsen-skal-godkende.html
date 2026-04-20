@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-BKF3QH9K01"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag("js", new Date());
+    gtag("config", "G-BKF3QH9K01");
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NIS2-risikoanalyse: Hvad bestyrelsen skal godkende formelt | NIS2Klar</title>
+  <meta name="description" content="NIS2 Artikel 21 kræver, at bestyrelsen formelt godkender sikkerhedsforanstaltninger. Hvad betyder det i praksis? Hvilke dokumenter skal underskives? Her er template til bestyrelsesmøde.">
+  <meta property="og:title" content="NIS2-risikoanalyse: Hvad bestyrelsen skal godkende formelt">
+  <meta property="og:description" content="Artikel 21 kræver bestyrelsesgodkendelse af sikkerhedsforanstaltninger. Læs hvad der skal være på mødeprotokollen, hvilke dokumenter der skal underskives, og hvordan du undgår personligt ansvar.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #141416;
+      --card: #1c1c1f;
+      --yellow: #f5c518;
+      --white: #f0f0f0;
+      --muted: #888;
+      --red: #C61212;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: var(--bg); color: var(--white); font-family: 'Barlow', sans-serif; font-size: 19px; line-height: 1.8; }
+
+    /* Nav */
+    nav { display: flex; justify-content: space-between; align-items: center; padding: 20px 40px; border-bottom: 1px solid rgba(255,255,255,0.07); max-width: 900px; margin: 0 auto; }
+    .nav-logo { font-family: 'Poppins', sans-serif; font-weight: 900; font-size: 20px; color: var(--yellow); text-decoration: none; }
+    .nav-logo span { color: var(--white); }
+    .nav-links { display: flex; align-items: center; gap: 20px; }
+    .nav-back { color: var(--muted); text-decoration: none; font-size: 15px; }
+    .nav-back:hover { color: var(--white); }
+    .lang-switcher { display: flex; gap: 8px; align-items: center; font-size: 13px; font-family: 'Poppins', sans-serif; }
+    .nav-cta { background: var(--yellow); color: #000; padding: 8px 18px; border-radius: 4px; text-decoration: none; font-weight: 700; font-size: 14px; font-family: 'Poppins', sans-serif; }
+
+    /* Article */
+    .article-wrap { max-width: 760px; margin: 0 auto; padding: 60px 40px; }
+    .article-category { font-size: 13px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 16px; }
+    h1 { font-family: 'Poppins', sans-serif; font-size: clamp(30px, 4vw, 44px); font-weight: 900; line-height: 1.2; margin-bottom: 24px; }
+    .article-meta { font-size: 15px; color: var(--muted); margin-bottom: 48px; padding-bottom: 24px; border-bottom: 1px solid rgba(255,255,255,0.07); }
+    h2 { font-family: 'Poppins', sans-serif; font-size: 26px; font-weight: 700; margin: 48px 0 16px; color: var(--white); }
+    h3 { font-family: 'Poppins', sans-serif; font-size: 20px; font-weight: 600; margin: 32px 0 12px; color: var(--yellow); }
+    p { margin-bottom: 22px; }
+    strong { color: var(--white); font-weight: 700; }
+    .highlight { color: var(--yellow); font-weight: 700; }
+    .danger { color: #ff6b6b; font-weight: 700; }
+    ul, ol { margin: 16px 0 24px 24px; }
+    li { margin-bottom: 12px; font-size: 19px; }
+
+    /* Callout boxes */
+    .box-warning { background: rgba(197,17,17,0.12); border-left: 4px solid var(--red); padding: 20px 24px; margin: 32px 0; border-radius: 0 4px 4px 0; }
+    .box-info { background: rgba(245,197,24,0.08); border-left: 4px solid var(--yellow); padding: 20px 24px; margin: 32px 0; border-radius: 0 4px 4px 0; }
+    .box-case { background: var(--card); border: 1px solid rgba(255,255,255,0.08); padding: 28px; margin: 40px 0; border-radius: 4px; }
+    .box-case .case-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 12px; }
+    blockquote { border-left: 3px solid var(--yellow); padding: 12px 20px; margin: 24px 0; font-style: italic; color: #ccc; }
+
+    /* CTA */
+    .cta-section { background: var(--card); border: 1px solid rgba(245,197,24,0.2); border-radius: 4px; padding: 48px 40px; margin: 64px 0 40px; text-align: center; }
+    .cta-section h2 { margin-top: 0; font-size: 26px; }
+    .cta-section p { color: #aaa; max-width: 500px; margin: 0 auto 28px; }
+    .btn-primary { display: inline-block; background: var(--yellow); color: #000; font-family: 'Poppins', sans-serif; font-weight: 800; font-size: 16px; padding: 16px 36px; border-radius: 4px; text-decoration: none; }
+    .btn-primary:hover { background: #e0b010; }
+    .cta-fine { font-size: 13px; color: var(--muted); margin-top: 16px; }
+
+    /* FAQ */
+    .faq-item { border-bottom: 1px solid rgba(255,255,255,0.07); padding: 20px 0; }
+    .faq-q { font-family: 'Poppins', sans-serif; font-weight: 600; margin-bottom: 10px; }
+    .faq-a { color: #bbb; }
+
+    /* Summary */
+    .box-summary { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; padding: 24px 28px; margin: 0 0 32px; }
+    .summary-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-bottom: 14px; }
+    .box-summary ul { margin: 0; padding-left: 20px; }
+    .box-summary li { margin-bottom: 8px; font-size: 17px; color: #ccc; }
+    .box-takeaway { background: rgba(245,197,24,0.08); border-left: 4px solid var(--yellow); padding: 20px 24px; margin: 0 0 40px; border-radius: 0 4px 4px 0; }
+    .takeaway-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 10px; }
+    .box-takeaway p { margin: 0; font-size: 18px; font-weight: 600; color: var(--white); line-height: 1.6; }
+
+    /* Template box */
+    .template-box { background: var(--card); border: 1px solid rgba(245,197,24,0.3); padding: 28px; margin: 40px 0; border-radius: 4px; }
+    .template-box .template-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 12px; }
+    .template-box h4 { font-size: 16px; font-weight: 700; margin: 16px 0 8px; color: var(--white); font-family: 'Poppins', sans-serif; }
+    .template-box code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; font-size: 14px; font-family: 'Courier New', monospace; color: #f5c518; }
+
+    /* Footer */
+    footer { border-top: 1px solid rgba(255,255,255,0.07); padding: 32px 40px; text-align: center; font-size: 13px; color: var(--muted); max-width: 900px; margin: 0 auto; }
+    footer a { color: var(--muted); }
+
+    /* Related articles */
+    .related-articles { margin: 2.5rem 0 2rem; padding: 1.5rem; background: #1a1a2e; border-left: 4px solid #f0a500; border-radius: 4px; }
+    .related-articles p { margin: 0 0 1rem; }
+    .related-articles ul { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+    .related-articles li { margin: 0; }
+    .related-articles a { color: #e0e0e0; text-decoration: none; }
+
+    @media (max-width: 600px) {
+      nav { padding: 20px; flex-wrap: wrap; gap: 10px; }
+      .nav-links { width: 100%; flex-direction: column; gap: 10px; }
+      .article-wrap, footer { padding: 20px; }
+      .cta-section { padding: 32px 20px; }
+      .lang-switcher { width: 100%; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="https://nis2klar.se/da/">NIS2<span>Klar</span></a>
+  <div class="nav-links">
+    <a class="nav-back" href="https://nis2klar.se/da/artikler.html">← Alle artikler</a>
+    <div class="lang-switcher">
+      <a href="https://nis2klar.se/artiklar.html" style="color:#888;text-decoration:none;font-weight:600;padding:4px 8px;border-radius:3px;" title="Svenska">SV</a>
+      <a href="https://nis2klar.se/en/articles.html" style="color:#888;text-decoration:none;font-weight:600;padding:4px 8px;border-radius:3px;" title="English">EN</a>
+      <a href="https://nis2klar.se/da/artikler.html" style="color:#f5c518;text-decoration:none;font-weight:600;padding:4px 8px;border-radius:3px;background:rgba(245,197,24,0.1);" title="Dansk">DA</a>
+      <a href="https://nis2klar.se/no/artikler.html" style="color:#888;text-decoration:none;font-weight:600;padding:4px 8px;border-radius:3px;" title="Norsk">NO</a>
+      <a href="https://nis2klar.se/it/articoli.html" style="color:#888;text-decoration:none;font-weight:600;padding:4px 8px;border-radius:3px;" title="Italiano">IT</a>
+    </div>
+    <a class="nav-cta" href="https://nis2klar.se/da/#boka">Book samtal →</a>
+  </div>
+</nav>
+
+<article class="article-wrap">
+  <div class="article-category">Risikoanalyse &amp; Styrelsesansvar</div>
+  <h1>NIS2-risikoanalyse: Hvad bestyrelsen skal godkende formelt</h1>
+  <div class="article-meta">19. april 2026 · Læsetid: ca 9 minutter · Target: Direktører &amp; bestyrelsesmedlemmer</div>
+
+  <!-- SUMMARY -->
+  <div class="box-summary">
+    <div class="summary-label">Sammenfattning</div>
+    <ul>
+      <li><strong>Artikel 21</strong> i NIS2-loven kræver, at ledelsen formelt godkender ti sikkerhedsdomæner — ikke delegerer til IT.</li>
+      <li><strong>Artikel 20</strong> gør VD og styrelsesledamöter personligt ansvarlige for denne godkendelse.</li>
+      <li>CFCS (Center for Cybersikkerhed) kan udstede øjeblikkelige påbud og forbud mod ledelsespersoner ved overtrædelser.</li>
+      <li>Uden dokumenteret godkendelse på mødeprotokollen er bestyrelsen ikke blot ansvarlig juridisk — du kan også få personligt forbud mod at varetage ledelseshverv.</li>
+      <li>Denne artikel præsenterer en konkret checklist og mødeprotokol-template, som du kan vedtage i dag.</li>
+    </ul>
+  </div>
+
+  <!-- KEY TAKEAWAY -->
+  <div class="box-takeaway">
+    <div class="takeaway-label">Kernepunktet</div>
+    <p>At godkende sikkerhedsforanstaltninger betyder ikke at underskrive IT-afdelingens tekniske rapport. Det betyder at bestyrelsen selv skal forstå, vurdere og formelt vedtage de ti sikkerhedsdomæner — og dokumentere det på papir.</p>
+  </div>
+
+  <!-- OPENING -->
+  <p>
+    Da NIS2-loven trådte i kraft i oktober 2024, blev det ikke længere IT-afdelingens problem alene. 
+    <strong>Artikel 20 og 21</strong> handler direkte til dig som direktør eller styrelsemedlem.
+  </p>
+
+  <p>
+    Artikel 21 er på dansk blot 1.500 tegn. Men den handler om det vigtigste: at <strong>ledelsen skal godkende sikkerhedsforanstaltninger</strong> — ikke bare vide, at de eksisterer.
+    Og hvis noget gaar galt, kan CFCS holde dig personligt ansvarlig. Ikke blot virksomheden.
+  </p>
+
+  <p>
+    Vi hjælper dig med at forstå præcist, hvad det betyder i praksis — og vi giver dig en mødeprotokol-template, som du kan tage med til næste bestyrelsesmøde.
+  </p>
+
+  <div class="box-warning">
+    <strong>Vigtigt:</strong> Hvis CFCS gransker din organisation og finder, at bestyrelsen ikke har formelt godkendt sikkerhedsforanstaltninger, er det ikke blot en bøde til virksomheden. CFCS kan udstede et <strong>midlertidigt forbud for dig personligt til at varetage ledelseshverv</strong>. Det gælder ikke kun i din nuværende virksomhed — det kan påvirke dine framtidige ledelsesposter.
+  </div>
+
+  <h2>Hvad betyder "formelt godkendelse"?</h2>
+
+  <p>
+    Det er en meget konkret handling. Godkendelse betyder:
+  </p>
+
+  <ol>
+    <li>Bestyrelsen har læst og forstået, hvad sikkerhedsforanstaltningerne er</li>
+    <li>Bestyrelsen har diskuteret dem — på mødet eller forud for mødet</li>
+    <li>Bestyrelsen har taget stilling: ja eller nej (eller betinget ja med vilkår)</li>
+    <li>Beslutningen er dokumenteret på mødeprotokollen</li>
+    <li>Der er underskrifter på protokollen fra bestyrelsesmedlemmer</li>
+  </ol>
+
+  <p>
+    Det er ikke tilstrækkeligt, at IT-lederen på bestyrelsesmødet siger: "Vi har en firewall og MFA." Det betyder ikke, at bestyrelsen har <em>godkendt</em> det.
+    Du skal kunne fremvise et mødeprotokol med ordlyden: "Bestyrelsen godkender følgende sikkerhedsforanstaltninger..." — og så en konkret liste.
+  </p>
+
+  <h2>De ti sikkerhedsdomæner efter Artikel 21</h2>
+
+  <p>
+    Loven kræver, at organisationer implementerer sikkerhedsforanstaltninger inden for ti områder. Bestyrelsen skal formelt godkende hver enkelt.
+    Her er de med dansk tolkning:
+  </p>
+
+  <ol>
+    <li><strong>Risikovurdering og -styring</strong> — hvor ofte og hvordan gransker vi IT-sikkerheden?</li>
+    <li><strong>Hændelseshåndtering</strong> — hvad gør vi, når vi opdager et cyberangreb?</li>
+    <li><strong>Kontinuitets- og genoprettelsesplanlægning</strong> — kan vi arbejde hvis IT går ned?</li>
+    <li><strong>Leverandørsikkerhed</strong> — hvordan sikrer vi os, at vores leverandører er sikre?</li>
+    <li><strong>Fysisk og miljømæssig sikkerhed</strong> — hvem har adgang til vores serverrum?</li>
+    <li><strong>Personalesikkerhed</strong> — uddanner vi vores medarbejdere i sikkerhed?</li>
+    <li><strong>Kryptering og kodificering</strong> — beskytter vi følsomme data?</li>
+    <li><strong>Adgang og godkendelse</strong> — kan kun behørigt personale bruge systemerne?</li>
+    <li><strong>Aktiver- og tilgængelighedsstyring</strong> — ved vi, hvor alle IT-systemer er?</li>
+    <li><strong>Logging, overvågning og detektering</strong> — hvordan opdager vi angreb?</li>
+  </ol>
+
+  <p>
+    For hver domæne skal bestyrelsen kunne stille spørgsmål som:
+  </p>
+
+  <ul>
+    <li>Hvad er vores nuværende tilstand her?</li>
+    <li>Hvad mangler?</li>
+    <li>Hvad er planen for at få det på plads?</li>
+    <li>Hvem er ansvarlig?</li>
+    <li>Hvornår skal det være færdigt?</li>
+    <li>Hvad koster det?</li>
+  </ul>
+
+  <p>
+    Hvis du ikke kan besvare disse spørgsmål for hvert domæne, er risikoanalysen ikke klar til godkendelse endnu.
+  </p>
+
+  <h2>Hvorfor er bestyrelsesgodkendelsen så vigtig?</h2>
+
+  <p>
+    Det korte svar er Artikel 20. Den siger, at ledelsespersoner — direktører og styrelseledamöter — 
+    kan holdes personligt ansvarlige for manglende sikkerhedsforanstaltninger.
+  </p>
+
+  <p>
+    Det betyder ikke, at du skal være sikkerhedsingeniør. Men det betyder, at hvis CFCS gransker og finder:
+  </p>
+
+  <ul>
+    <li>"Der var ingen incidentplan" → kan du ikke sige "IT-folk skulle have gjort det"</li>
+    <li>"Kritiske systembackups manglede" → kan du ikke kalde det en operationel detalje</li>
+    <li>"Der var ingen risikovurdering" → kan du ikke påberåbe dig, at du ikke vidste</li>
+  </ul>
+
+  <p>
+    Du kan holdes ansvarlig. Og CFCS kan forbyde dig at varetage ledelseshverv — hos denne eller anden virksomhed.
+  </p>
+
+  <div class="box-info">
+    <strong>Personligt ansvar betyder:</strong> CFCS kan udstede et påbud direkte til dig som person. 
+    De kan forbyde dig at være direktør, bestyrelsesmedlem eller revisor i en anden virksomhed i et stykke tid. 
+    Dit navn kan blive dokumenteret som "led i overtrædelse af cybersikkerhedskrav."
+  </div>
+
+  <h2>Tre praktiske trin til godkendelse på dit næste bestyrelsesmøde</h2>
+
+  <h3>Trin 1: Få en risikoanalyse fra IT-ledelsen (FØR mødet)</h3>
+
+  <p>
+    Du skal have et skriftligt dokument — ikke en mundtlig briefing. Det skal indeholde:
+  </p>
+
+  <ul>
+    <li>Status for hvert af de ti sikkerhedsdomæner (hvor er vi nu?)</li>
+    <li>Hvad der mangler (gap-analyse)</li>
+    <li>Tidsplan for implementering</li>
+    <li>Budgetanslåg</li>
+    <li>Ansvarlig person for hvert område</li>
+  </ul>
+
+  <p>
+    Hvis IT-ledelsen siger "det tager for lang tid at dokumentere," det er præcis det tegn, du skal høre klokkeringning for. 
+    CFCS gransker uden at acceptere "vi arbejder på det."
+  </p>
+
+  <h3>Trin 2: Stil de svære spørgsmål (UNDER mødet)</h3>
+
+  <p>
+    Før du godkender, spørg:
+  </p>
+
+  <ul>
+    <li>"Hvad er vores største sikkerhedsrisiko i dag?" (ikke en teknisk hvid papir — et konkret svar)</li>
+    <li>"Hvad kan vi kontrollere selv, og hvad delegerer vi til leverandører?" (og hvordan overvåger vi dem?)</li>
+    <li>"Hvis vi bliver ramt af ransomware i morgen, hvor lang er nedetiden før vi er op igen?" (bevis: backup-test?)</li>
+    <li>"Hvor mange medarbejdere arbejder hjemmefra uden VPN?" (hvis svaret er "det ved vi ikke", så kender I ikke jeres egen sikkerhed)</li>
+  </ul>
+
+  <p>
+    Dit job som bestyrelsesmedlem er ikke at være sikkerhedsingeniør. Det er at sikre, at systemerne er på plads, 
+    og at du har bevis for det.
+  </p>
+
+  <h3>Trin 3: Vedtag mødeprotokollen med konkret godkendelsesformulering</h3>
+
+  <p>
+    Mødeprotokollen skal indeholde en klart stavning af, hvad bestyrelsen godkender. Se template nedenfor.
+  </p>
+
+  <div class="template-box">
+    <div class="template-label">📋 Mødeprotokol-template for NIS2-godkendelse</div>
+
+    <h4>Bestyrelsesmøde [dato]</h4>
+    <p style="margin-top: 16px; font-weight: 600; color: #f5c518;">Dagsorden punkt: Cybersikkerhed og NIS2-compliance</p>
+
+    <p style="margin: 16px 0;"><strong>Til stede:</strong> [navne og roller]</p>
+
+    <p style="margin: 16px 0;"><strong>Dokumenter til mødet:</strong></p>
+    <ul>
+      <li>NIS2-risikoanalyse (vedlagt som Bilag A)</li>
+      <li>Gap-analyse over manglende sikkerhedsforanstaltninger (Bilag B)</li>
+      <li>IT-sikkerheds-roadmap 2026–2027 (Bilag C)</li>
+    </ul>
+
+    <p style="margin: 16px 0;"><strong>Diskussion:</strong></p>
+    <p style="color: #ddd;">[Referat af diskussionen — hvad blev stillet af spørgsmål, hvad svarede IT?]</p>
+
+    <p style="margin: 16px 0;"><strong>VEDTÆGT:</strong></p>
+    <p style="background: rgba(245,197,24,0.1); padding: 12px; border-radius: 3px; margin: 12px 0;">
+      Bestyrelsen godkender hermed <strong>de ti sikkerhedsforanstaltninger</strong> som beskrevet i NIS2-risikoanalysen 
+      og giver dermed ledelsen (CEO) og IT-chefen mandat til at implementere disse foranstaltninger ifølge vedlagte tidsplan 
+      og budget.
+    </p>
+
+    <p style="margin: 16px 0;"><strong>Godkendete områder (alle ti skal være listet med status):</strong></p>
+    <ul style="font-size: 16px;">
+      <li>☐ Risikovurdering og -styring — <code>Status: [Implementeret / Delvis / Planlagt]</code></li>
+      <li>☐ Hændelseshåndtering — <code>Status: [Implementeret / Delvis / Planlagt]</code></li>
+      <li>☐ Kontinuitets- og genoprettelsesplanlægning — <code>Status: [Implementeret / Delvis / Planlagt]</code></li>
+      <li>☐ Leverandørsikkerhed — <code>Status: [Implementeret / Delvis / Planlagt]</code></li>
+      <li>☐ Fysisk og miljømæssig sikkerhed — <code>Status: [Implementeret / Delvis / Planlagt]</code></li>
+      <li>☐ Personalesikkerhed og uddannelse — <code>Status: [Implementeret / Delvis / Planlagt]</code></li>
+      <li>☐ Kryptering — <code>Status: [Implementeret / Delvis / Planlagt]</code></li>
+      <li>☐ Adgang og godkendelse — <code>Status: [Implementeret / Delvis / Planlagt]</code></li>
+      <li>☐ Aktiver- og tilgængelighedsstyring — <code>Status: [Implementeret / Delvis / Planlagt]</code></li>
+      <li>☐ Logging, overvågning og detektering — <code>Status: [Implementeret / Delvis / Planlagt]</code></li>
+    </ul>
+
+    <p style="margin: 20px 0;"><strong>Vilkår:</strong></p>
+    <p style="color: #ddd;">
+      Godkendelsen er betinget af, at ledelsen inden [dato — typisk 30-90 dage] fremlegger implementeringsrapport. 
+      Hvis der opdages væsentlige afvigelser fra planen, skal sagen forelægges bestyrelsen igen.
+    </p>
+
+    <p style="margin: 20px 0;"><strong>Underskrifter:</strong></p>
+    <p style="color: #ddd; font-size: 16px;">
+      Formand: _________________ Dato: _______<br/>
+      Næstformand: _________________ Dato: _______<br/>
+      Medlem 1: _________________ Dato: _______<br/>
+      [osv.]
+    </p>
+
+    <p style="margin: 20px 0; font-style: italic; color: #bbb; font-size: 16px;">
+      Denne protokol er en del af virksomhedens NIS2-compliance-dokumentation 
+      og kan forelægges CFCS eller anden tilsynsmyndighed.
+    </p>
+  </div>
+
+  <h2>Hvad hvis vi ikke er klar til at godkende endnu?</h2>
+
+  <p>
+    Det er en fair situation. Hvis bestyrelsen ikke er sikker på, om sikkerhedsforanstaltningerne er tilstrækkelige, 
+    kan I vedtage en betinget godkendelse:
+  </p>
+
+  <blockquote>
+    "Bestyrelsen godkender principperne i sikkerhedsforanstaltningerne og giver ledelsen mandat til at 
+    gennemføre risikovurderingen og afrapportere status på næste møde. Fuldstændig godkendelse forventes på 
+    mødet [dato]."
+  </blockquote>
+
+  <p>
+    Det er langt bedre end at undlade at godkende det hele eller at sige "ja, vi har læst IT-rapporten, det virker fint." 
+    CFCS vil kunne se, at I har taget det alvorligt.
+  </p>

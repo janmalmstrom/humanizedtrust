@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-BKF3QH9K01"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag("js", new Date());
+    gtag("config", "G-BKF3QH9K01");
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hvilke virksomheter må overholde NIS2? Sjekk om din er omfattet | NIS2Klar</title>
+  <meta name="description" content="Er virksomheten din omfattet av NIS2? Sjekk hvilke sektorer og størrelsesterskler som gjelder i Norge. Gratis veiledning for direktører og styrer.">
+  <meta property="og:title" content="Hvilke virksomheter må overholde NIS2? Sjekk om din er omfattet">
+  <meta property="og:description" content="Er virksomheten din omfattet av NIS2? Sjekk hvilke sektorer og størrelsesterskler som gjelder i Norge. Gratis veiledning for direktører og styrer.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #141416;
+      --card: #1c1c1f;
+      --yellow: #f5c518;
+      --white: #f0f0f0;
+      --muted: #888;
+      --red: #C61212;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: var(--bg); color: var(--white); font-family: 'Barlow', sans-serif; font-size: 19px; line-height: 1.8; }
+
+    /* Nav */
+    nav { display: flex; justify-content: space-between; align-items: center; padding: 20px 40px; border-bottom: 1px solid rgba(255,255,255,0.07); max-width: 900px; margin: 0 auto; }
+    .nav-logo { font-family: 'Poppins', sans-serif; font-weight: 900; font-size: 20px; color: var(--yellow); text-decoration: none; }
+    .nav-logo span { color: var(--white); }
+    .nav-back { color: var(--muted); text-decoration: none; font-size: 15px; }
+    .nav-back:hover { color: var(--white); }
+    .lang-switcher { display: flex; gap: 8px; align-items: center; font-size: 13px; font-family: 'Poppins', sans-serif; }
+    .lang-switcher a { color: #888; text-decoration: none; font-weight: 600; padding: 4px 8px; border-radius: 3px; }
+    .lang-switcher a:hover { color: var(--white); }
+    .nav-cta { background: var(--yellow); color: #000; padding: 8px 18px; border-radius: 4px; text-decoration: none; font-weight: 700; font-size: 14px; font-family: 'Poppins', sans-serif; }
+
+    /* Article */
+    .article-wrap { max-width: 760px; margin: 0 auto; padding: 60px 40px; }
+    .article-category { font-size: 13px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 16px; }
+    h1 { font-family: 'Poppins', sans-serif; font-size: clamp(30px, 4vw, 44px); font-weight: 900; line-height: 1.2; margin-bottom: 24px; }
+    .article-meta { font-size: 15px; color: var(--muted); margin-bottom: 48px; padding-bottom: 24px; border-bottom: 1px solid rgba(255,255,255,0.07); }
+    h2 { font-family: 'Poppins', sans-serif; font-size: 26px; font-weight: 700; margin: 48px 0 16px; color: var(--white); }
+    h3 { font-family: 'Poppins', sans-serif; font-size: 20px; font-weight: 600; margin: 32px 0 12px; color: var(--yellow); }
+    p { margin-bottom: 22px; }
+    strong { color: var(--white); font-weight: 700; }
+    .highlight { color: var(--yellow); font-weight: 700; }
+    .danger { color: #ff6b6b; font-weight: 700; }
+    ul, ol { margin: 16px 0 24px 24px; }
+    li { margin-bottom: 12px; font-size: 19px; }
+
+    /* Callout boxes */
+    .box-warning { background: rgba(197,17,17,0.12); border-left: 4px solid var(--red); padding: 20px 24px; margin: 32px 0; border-radius: 0 4px 4px 0; }
+    .box-info { background: rgba(245,197,24,0.08); border-left: 4px solid var(--yellow); padding: 20px 24px; margin: 32px 0; border-radius: 0 4px 4px 0; }
+    .box-case { background: var(--card); border: 1px solid rgba(255,255,255,0.08); padding: 28px; margin: 40px 0; border-radius: 4px; }
+    .box-case .case-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 12px; }
+    blockquote { border-left: 3px solid var(--yellow); padding: 12px 20px; margin: 24px 0; font-style: italic; color: #ccc; }
+
+    /* CTA */
+    .cta-section { background: var(--card); border: 1px solid rgba(245,197,24,0.2); border-radius: 4px; padding: 48px 40px; margin: 64px 0 40px; text-align: center; }
+    .cta-section h2 { margin-top: 0; font-size: 26px; }
+    .cta-section p { color: #aaa; max-width: 500px; margin: 0 auto 28px; }
+    .btn-primary { display: inline-block; background: var(--yellow); color: #000; font-family: 'Poppins', sans-serif; font-weight: 800; font-size: 16px; padding: 16px 36px; border-radius: 4px; text-decoration: none; }
+    .btn-primary:hover { background: #e0b010; }
+    .cta-fine { font-size: 13px; color: var(--muted); margin-top: 16px; }
+
+    /* FAQ */
+    .faq-item { border-bottom: 1px solid rgba(255,255,255,0.07); padding: 20px 0; }
+    .faq-q { font-family: 'Poppins', sans-serif; font-weight: 600; margin-bottom: 10px; }
+    .faq-a { color: #bbb; }
+
+    /* Fine table */
+    .fine-table { width: 100%; border-collapse: collapse; margin: 24px 0; }
+    .fine-table th { background: rgba(245,197,24,0.1); color: var(--yellow); font-family: 'Poppins', sans-serif; font-size: 13px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 12px 16px; text-align: left; border-bottom: 1px solid rgba(245,197,24,0.2); }
+    .fine-table td { padding: 14px 16px; border-bottom: 1px solid rgba(255,255,255,0.05); font-size: 15px; }
+    .fine-table tr:last-child td { border-bottom: none; }
+    .fine-table .amount { color: #ff6b6b; font-weight: 700; }
+
+    /* Summary + Key Takeaway */
+    .box-summary { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; padding: 24px 28px; margin: 0 0 32px; }
+    .summary-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-bottom: 14px; }
+    .box-summary ul { margin: 0; padding-left: 20px; }
+    .box-summary li { margin-bottom: 8px; font-size: 17px; color: #ccc; }
+    .box-takeaway { background: rgba(245,197,24,0.08); border-left: 4px solid var(--yellow); padding: 20px 24px; margin: 0 0 40px; border-radius: 0 4px 4px 0; }
+    .takeaway-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 10px; }
+    .box-takeaway p { margin: 0; font-size: 18px; font-weight: 600; color: var(--white); line-height: 1.6; }
+
+    /* Related articles */
+    .related-articles { margin: 2.5rem 0 2rem; padding: 1.5rem; background: #1a1a2e; border-left: 4px solid #f0a500; border-radius: 4px; }
+    .related-articles p { margin: 0 0 1rem; font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #f0a500; }
+    .related-articles ul { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+    .related-articles li { margin: 0; }
+    .related-articles a { color: #e0e0e0; text-decoration: none; font-size: 0.95rem; }
+    .related-articles a:hover { color: #f0a500; }
+    .related-articles .nav-footer { margin: 1.25rem 0 0; font-size: 0.85rem; color: #aaa; }
+    .related-articles .nav-footer a { color: #f0a500; }
+
+    /* Footer */
+    footer { border-top: 1px solid rgba(255,255,255,0.07); padding: 32px 40px; text-align: center; font-size: 13px; color: var(--muted); max-width: 900px; margin: 0 auto; }
+    footer a { color: var(--muted); text-decoration: none; }
+    footer a:hover { color: var(--white); }
+
+    @media (max-width: 600px) {
+      nav, .article-wrap, footer { padding: 20px; }
+      .cta-section { padding: 32px 20px; }
+      .fine-table { font-size: 14px; }
+      .fine-table th, .fine-table td { padding: 10px 10px; }
+      .lang-switcher { flex-wrap: wrap; gap: 4px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="https://nis2klar.se/no/">NIS2<span>Klar</span></a>
+  <div style="display: flex; align-items: center; gap: 24px;">
+    <a class="nav-back" href="https://nis2klar.se/no/artikler.html">← Alle artikler</a>
+    <div class="lang-switcher">
+      <a href="https://nis2klar.se/artiklar.html" style="color:#888;font-weight:600;padding:4px 8px;border-radius:3px;" title="Svenska">SV</a>
+      <a href="https://nis2klar.se/en/articles.html" style="color:#888;font-weight:600;padding:4px 8px;border-radius:3px;" title="English">EN</a>
+      <a href="https://nis2klar.se/da/artikler.html" style="color:#888;font-weight:600;padding:4px 8px;border-radius:3px;" title="Dansk">DA</a>
+      <a href="https://nis2klar.se/no/artikler.html" style="color:#f5c518;font-weight:600;padding:4px 8px;border-radius:3px;background:rgba(245,197,24,0.1);" title="Norsk">NO</a>
+      <a href="https://nis2klar.se/it/articoli.html" style="color:#888;font-weight:600;padding:4px 8px;border-radius:3px;" title="Italiano">IT</a>
+    </div>
+  </div>
+  <a class="nav-cta" href="https://nis2klar.se/no/#boka">Book samtale →</a>
+</nav>
+
+<article class="article-wrap">
+  <div class="article-category">Omfang &amp; Klassifisering</div>
+  <h1>Hvilke virksomheter må overholde NIS2? Sjekk om din er omfattet</h1>
+  <div class="article-meta">Oppdatert 19. april 2026 · Lesetid: ca 8 minutter · Målgruppe: Direktører og styremedlemmer</div>
+
+  <!-- SUMMARY -->
+  <div class="box-summary">
+    <div class="summary-label">Sammanfattning</div>
+    <ul>
+      <li>NIS2 gjelder for virksomheter i 18 spesifikke sektorer — ikke bare IKT og finans.</li>
+      <li>To kategorier: <strong>vesentlige enheter</strong> (over 250 ansatte eller 50 M€ omsetning) og <strong>viktige enheter</strong> (50–249 ansatte eller 10–50 M€).</li>
+      <li>Norge implementerer NIS2 gjennom EØS-avtalen — implementering forventes fullført i 2025–2026.</li>
+      <li>Flere sektorer enn du tror — inkludert mat, kjemikalier, romfart, avfallshåndtering og digital infrastruktur.</li>
+      <li>Uklar klassifisering? Verifisering er billigere enn bøter på opp til 10 millioner euro.</li>
+    </ul>
+  </div>
+
+  <!-- KEY TAKEAWAY -->
+  <div class="box-takeaway">
+    <div class="takeaway-label">Viktigste konklusjon</div>
+    <p>Hvis virksomheten din har over 50 ansatte eller 10 millioner euro i årlig omsetning OG opererer i en regulert sektor, må du anta at du er omfattet av NIS2 inntil det motsatte er dokumentert.</p>
+  </div>
+
+  <!-- HOOK -->
+  <p>
+    De fleste direktører tror NIS2 gjelder bare banker, energiselskaper og telekommunikasjonsfirmaer. Det er feil.
+  </p>
+
+  <p>
+    NIS2-direktivet fra EU — som Norge implementerer gjennom EØS-avtalen og forventes å gjøre fullstendig gjeldende i løpet av 2025–2026 — dekker <strong>18 ulike sektorer</strong>. Din virksomhet trenger ikke produsere strøm eller håndtere fintransaksjoner for å være omfattet. Du kan drive med mat, kjemikalier, renovasjon, transport eller digital formidling og likevel være underlagt lovens krav.
+  </p>
+
+  <p>
+    Det som avgjør det, er to ting: <strong>hvilken sektor du opererer i</strong> og <strong>hvor stor du er</strong>.
+  </p>
+
+  <div class="box-warning">
+    <strong>Beware: Usikkerhet er ikke fritak.</strong> Hvis du ikke vet om virksomheten din er omfattet, og NSM (Nasjonal sikkerhetsmyndighet) senere konstaterer det, kan du havne under sanksjonsprosessen uten å ha dokumentert noen etterfølging. Sjekk nå.
+  </div>
+
+  <h2>De 18 sektorer som er omfattet av NIS2</h2>
+
+  <p>
+    EU-direktivet (og norsk implementering) lister opp disse sektorene som "samfunnskritiske":
+  </p>
+
+  <ol>
+    <li><strong>Energi</strong> — produksjon, transport, distribusjon av elektrisitet og naturgass</li>
+    <li><strong>Transport</strong> — luftfart, jernbane, veg, sjøtransport, driftsoperasjoner for og havn</li>
+    <li><strong>Bank</strong> — kredittinstitusjoner og deres aktiviteter</li>
+    <li><strong>Finansmarkedsinfrastruktur</strong> — børser, clearingtjenester, oppgjørssystemer</li>
+    <li><strong>Helse</strong> — sykehus, legesentre, helsetjenestetilbydere</li>
+    <li><strong>Drikkevann og avløp</strong> — vannforsyning og avløpsbehandling</li>
+    <li><strong>Digital infrastruktur</strong> — internettleverandører, DNS-operatører, toppnivå-domeneregistrasjoner</li>
+    <li><strong>IKT-tjenesteforvaltning</strong> — leverandører av skytjenester, data center, leverandører av støttetjenester</li>
+    <li><strong>Offentlig forvaltning</strong> — sentrale og lokale myndigheter</li>
+    <li><strong>Romfart</strong> — operasjoner og tjenester innen romvirksomhet</li>
+    <li><strong>Post og pakkelevering</strong> — postale og pakkeleverings operatører</li>
+    <li><strong>Avfallshåndtering</strong> — innsamling, transport, behandling og gjenvinning av avfall</li>
+    <li><strong>Kjemikalier</strong> — produksjon, lagring og bruk av farlige kjemikalier</li>
+    <li><strong>Mat</strong> — produksjon, behandling, distribusjon av matvarer</li>
+    <li><strong>Produksjon</strong> — industri som produserer varer (omfatter mange subsektorer)</li>
+    <li><strong>Digitale markedsplasser og søkemotorer</strong> — plattformer som formidler tjenester eller varer</li>
+    <li><strong>Cloud- og vertskap-tjenesteleverandører</strong> — hosting og relaterte tjenester</li>
+    <li><strong>Forskning</strong> — forskningstilbydere med kritisk betydning</li>
+  </ol>
+
+  <p>
+    Merker du at listen er bred? En kjemikaliefabrikk, et matvarenes grossistselskap, et avfallsselskap og en digital markedsplass som Finn.no eller Norskesiden er alle potensielt omfattet.
+  </p>
+
+  <h2>Størrelses-terskler: Vesentlige vs. viktige enheter</h2>
+
+  <p>
+    Ikke alle virksomheter i disse sektorene er omfattet. NIS2 definerer to kategorier basert på størrelse:
+  </p>
+
+  <table class="fine-table">
+    <thead>
+      <tr>
+        <th>Kategori</th>
+        <th>Definisjons-kriterium</th>
+        <th>Straffenivå</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Vesentlig enhet</strong></td>
+        <td>Mer enn 250 ansatte OG/ELLER årlig omsetning > 50 M€ i relevant sektor</td>
+        <td class="amount">Opp til 10 M€ eller 2% av global omsetning</td>
+      </tr>
+      <tr>
+        <td><strong>Viktig enitet</strong></td>
+        <td>50–249 ansatte OG/ELLER årlig omsetning 10–50 M€ i relevant sektor</td>
+        <td class="amount">Opp til 7 M€ eller 1,4% av global omsetning</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>
+    Merk at det er <strong>og/eller</strong> — du kan ha færre ansatte men høyere omsetning, eller omvendt. Hvis enten kriteriet passeres, er du omfattet.
+  </p>
+
+  <p>
+    Omsetningen måles i <strong>norske kroner tilsvarende</strong> — ikke bare euro. En virksomhet med 400 millioner kroner årlig omsetning (cirka 37 millioner euro) vil bli klassifisert som viktig enhet.
+  </p>
+
+  <div class="box-info">
+    <strong>Avgjørende:</strong> Omsetningen måles på basis av gjeldende regulering i din sektor, ikke som en generell grenseverdi. Kontrolles du av samme proprietær eller hold-co, kan konsolidert omsetning gjelde — ikke bare din enheters omsetning.
+  </div>
+
+  <h2>Enkel test: Er virksomheten din omfattet?</h2>
+
+  <p>
+    Svar på disse spørsmålene i rekkefølge:
+  </p>
+
+  <ol style="background:rgba(255,255,255,0.03); padding:24px 28px; border-radius:4px; border-left:3px solid var(--yellow);">
+    <li style="font-weight:600;">
+      <strong>Opererer virksomheten din i en av de 18 sektorene over?</strong>
+      <div style="font-weight:400; color:#bbb; margin-top:6px;">JA → Gå til spørsmål 2. NEI → Du er <strong>sannsynligvis ikke omfattet</strong>. (Verifiser at du ikke driver dobbeltkompetanse i en regulert sektor — for eksempel sikkerhetstjenester for banker.)</div>
+    </li>
+    <li style="font-weight:600; margin-top:16px;">
+      <strong>Har virksomheten over 50 ansatte eller årlig omsetning over 10 millioner euro?</strong>
+      <div style="font-weight:400; color:#bbb; margin-top:6px;">JA → Du er <strong>omfattet av NIS2</strong>. Du er minimum viktig enhet. NEI → Du er <strong>sannsynligvis ikke omfattet</strong>.</div>
+    </li>
+    <li style="font-weight:600; margin-top:16px;">
+      <strong>Hvis du har over 250 ansatte eller over 50 millioner euro omsetning:</strong>
+      <div style="font-weight:400; color:#bbb; margin-top:6px;">Du er klassifisert som <strong>vesentlig enhet</strong> — det strengeste regelverket gjelder.</div>
+    </li>
+  </ol>
+
+  <p style="margin-top:28px;">
+    Tvil? Da må du få det bekreftet av NSM eller relevant sektormyndighet. Det finnes ingen "små nok" unntak hvis du er i en regulert sektor og over størrelses-terskelen.
+  </p>
+
+  <h2>Norges implementering av NIS2</h2>
+
+  <p>
+    Norge er <strong>ikke EU-medlem</strong>, men er bundet av EØS-avtalen (Europeisk økonomisk samarbeid). Det betyr at NIS2 vil implementeres i norsk lovgivning — forventes fullført i løpet av 2025–2026.
+  </p>
+
+  <p>
+    Fram til full implementering gjelder fortsatt NIS1-direktivet og gjeldende norsk cybersikkerhet-forordning. Men Stortinget har signalisert at NIS2 vil innlemmes som planlagt, og tillsynsmyndighetene — først og fremst <strong>NSM (Nasjonal sikkerhetsmyndighet)</strong> — forbereider allerede sin tilsynspraksis på bakgrunn av NIS2-rammeverket.
+  </p>
+
+  <p>
+    <strong>Konklusjon:</strong> Du bør ikke vente til «formell implementering» før du begynner. Sektortilsynsmyndighetene — som Direktoratet for e-helse (helse), NVE (energi) og Finanstilsynet (finans) — arbeider allerede etter NIS2-standarder.
+  </p>
+
+  <h2>Sektortilsyn i Norge</h2>
+
+  <p>
+    Ansvaret for NIS2-tilsyn vil fordeles mellom NSM og sektor-spesifikke myndigheter:
+  </p>
+
+  <ul>
+    <li><strong>NSM</strong> — koordinerer og fører tilsyn med digital infrastruktur, IKT-tjenesteutbydere og sky</li>
+    <li><strong>Finanstilsynet</strong> — bank, finansmarkedsinfrastruktur</li>
+    <li><strong>Direktoratet for e-helse</strong> — helsesektoren</li>
+    <li><strong>NVE</strong> — energisektoren</li>
+    <li><strong>Direktoratet for infrastruktur og vannbruk</strong> — drikkevann, avløp</li>
+    <li><strong>Kollektivtransportmyndighetene</strong> — transport (luftfart, tog, veg, sjø)</li>
+    <li><strong>Mattilsynet</strong> — matsektoren</li>
+    <li><strong>Avfallstilsynet</strong> — avfallshåndtering (gjennomføres via fylkeskommuner og kommune)</li>
+  </ul>
+
+  <div class="box-case">
+    <div class="case-label">Praktisk eksempel</div>
+    <p>
+      <strong>Scenario: Et matvarelager i Bergen med 120 ansatte.</strong>
+    </p>
+    <p>
+      Grosisten lagrer og distribuerer matvarer regionalt. Omsetningen er omtrent 35 millioner euro årlig. 
+    </p>
+    <p>
+      <strong>Klassifisering:</strong> Over 50 ansatte OG omsetning mellom 10–50 M€ = Viktig enhet under NIS2.
+    </p>
+    <p>
+      <strong>Konsekvens:</strong> Må implementere alle ti obligatoriske sikkerhetstiltak (Artikkel 21 i NIS2). Må ha incidenthåndetering med 24-timers varsling. Må rapportere til NSM innen 72 timer ved alvorlig hendelse. 
+    </p>
+    <p>
+      <strong>Tilsyn:</strong> Mattilsynet kan intiiere gransking. Hvis sikkerhetstiltakene mangler, risikerer direktør og styreleder bøter opp til 7 millioner euro — og personlig ansvar for manglende overvåking av sikkerhet.
+    </p>
+  </div>
+
+  <h2>Hva hvis du drifter i flere sektorer?</h2>
+
+  <p>
+    En holding-selskap eller stort konsern kan operere i flere sektorer. Spørsmålet blir da: klassifiseres hele konsernet, eller hver enhet separat?
+  </p>
+
+  <p>
+    <strong>Regel:</strong> NIS2 vurderer hver juridisk enhet og hver operasjonell sektor. Hvis du har ett datterselskap som driver energi og ett som driver mat, blir begge vurdert for NIS2-omfang basert på deres respektive størrelse og sektor. Omsetningen konsolideres derimot hvis det er snakk om økonomisk kontroll gjennom samme proprietær.
+  </p>
+
+  <p>
+    Praktisk: Sjekk hvilke av dine enheter som opererer i de 18 regulerte sektorene, og klassifiser hver for seg. Konsolider omsetning hvis det er relevant.
+  </p>
+
+  <h2>Grenseland: Er du sikker på at du IKKE er omfattet?</h2>
+
+  <p>
+    Noen virksomheter befinner seg i gråsoner. For eksempel:
+  </p>
+
+  <ul>
+    <li><strong>En IT-sikkerhetsrådgiver</strong> som jobber bare for banker — klassifiseres som IKT-tjenesteforvaltning av kritisk betydning. Omfattet.</li>
+    <li><strong>En distribusjons-platform</strong> for digitale tjenester (SaaS-leverandør) — kan klassifiseres som digitale markedsplasser. Omfattet om den har over 50 ansatte.</li>
+    <li><strong>En forskergruppe</strong> ved et universitet som driver infrastruktur for såkalte "kritiske" anvendelser — kan være klassifisert som forskning. Omfattet.</li>
+    <li><strong>En leverandør av sikkerhetskameraer til detaljhandelen</strong> — sannsynligvis ikke

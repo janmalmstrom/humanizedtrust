@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-BKF3QH9K01"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag("js", new Date());
+    gtag("config", "G-BKF3QH9K01");
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NIS2 Compliance-tjekliste: Er din virksomhed klar? | NIS2Klar</title>
+  <meta name="description" content="Komplet NIS2 compliance-tjekliste for direktører og bestyrelser. Artikel 21-krav, selvvurdering og handlingsplan til færdiggørelse inden 31. oktober 2024.">
+  <meta property="og:title" content="NIS2 Compliance-tjekliste: Er din virksomhed klar?">
+  <meta property="og:description" content="Komplet NIS2 compliance-tjekliste for direktører og bestyrelser. Artikel 21-krav, selvvurdering og handlingsplan til færdiggørelse inden 31. oktober 2024.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #141416;
+      --card: #1c1c1f;
+      --yellow: #f5c518;
+      --white: #f0f0f0;
+      --muted: #888;
+      --red: #C61212;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: var(--bg); color: var(--white); font-family: 'Barlow', sans-serif; font-size: 19px; line-height: 1.8; }
+
+    /* Nav */
+    nav { display: flex; justify-content: space-between; align-items: center; padding: 20px 40px; border-bottom: 1px solid rgba(255,255,255,0.07); max-width: 900px; margin: 0 auto; }
+    .nav-logo { font-family: 'Poppins', sans-serif; font-weight: 900; font-size: 20px; color: var(--yellow); text-decoration: none; }
+    .nav-logo span { color: var(--white); }
+    .nav-back { color: var(--muted); text-decoration: none; font-size: 15px; }
+    .nav-back:hover { color: var(--white); }
+    .lang-switcher { display: flex; gap: 8px; align-items: center; font-size: 13px; font-family: 'Poppins', sans-serif; }
+    .lang-switcher a { color: #888; text-decoration: none; font-weight: 600; padding: 4px 8px; border-radius: 3px; }
+    .lang-switcher a:hover { color: var(--yellow); }
+    .nav-cta { background: var(--yellow); color: #000; padding: 8px 18px; border-radius: 4px; text-decoration: none; font-weight: 700; font-size: 14px; font-family: 'Poppins', sans-serif; }
+
+    /* Article */
+    .article-wrap { max-width: 760px; margin: 0 auto; padding: 60px 40px; }
+    .article-category { font-size: 13px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 16px; }
+    h1 { font-family: 'Poppins', sans-serif; font-size: clamp(30px, 4vw, 44px); font-weight: 900; line-height: 1.2; margin-bottom: 24px; }
+    .article-meta { font-size: 15px; color: var(--muted); margin-bottom: 48px; padding-bottom: 24px; border-bottom: 1px solid rgba(255,255,255,0.07); }
+    h2 { font-family: 'Poppins', sans-serif; font-size: 26px; font-weight: 700; margin: 48px 0 16px; color: var(--white); }
+    h3 { font-family: 'Poppins', sans-serif; font-size: 20px; font-weight: 600; margin: 32px 0 12px; color: var(--yellow); }
+    p { margin-bottom: 22px; }
+    strong { color: var(--white); font-weight: 700; }
+    .highlight { color: var(--yellow); font-weight: 700; }
+    .danger { color: #ff6b6b; font-weight: 700; }
+    ul, ol { margin: 16px 0 24px 24px; }
+    li { margin-bottom: 12px; font-size: 19px; }
+
+    /* Callout boxes */
+    .box-warning { background: rgba(197,17,17,0.12); border-left: 4px solid var(--red); padding: 20px 24px; margin: 32px 0; border-radius: 0 4px 4px 0; }
+    .box-info { background: rgba(245,197,24,0.08); border-left: 4px solid var(--yellow); padding: 20px 24px; margin: 32px 0; border-radius: 0 4px 4px 0; }
+    .box-case { background: var(--card); border: 1px solid rgba(255,255,255,0.08); padding: 28px; margin: 40px 0; border-radius: 4px; }
+    .box-case .case-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 12px; }
+    blockquote { border-left: 3px solid var(--yellow); padding: 12px 20px; margin: 24px 0; font-style: italic; color: #ccc; }
+
+    /* CTA */
+    .cta-section { background: var(--card); border: 1px solid rgba(245,197,24,0.2); border-radius: 4px; padding: 48px 40px; margin: 64px 0 40px; text-align: center; }
+    .cta-section h2 { margin-top: 0; font-size: 26px; }
+    .cta-section p { color: #aaa; max-width: 500px; margin: 0 auto 28px; }
+    .btn-primary { display: inline-block; background: var(--yellow); color: #000; font-family: 'Poppins', sans-serif; font-weight: 800; font-size: 16px; padding: 16px 36px; border-radius: 4px; text-decoration: none; }
+    .btn-primary:hover { background: #e0b010; }
+    .cta-fine { font-size: 13px; color: var(--muted); margin-top: 16px; }
+
+    /* Checklist */
+    .checklist-item { background: var(--card); border: 1px solid rgba(255,255,255,0.06); padding: 18px 20px; margin: 12px 0; border-radius: 3px; display: flex; align-items: flex-start; gap: 14px; }
+    .checklist-item input { margin-top: 2px; cursor: pointer; }
+    .checklist-item label { flex: 1; cursor: pointer; font-size: 16px; }
+    .checklist-item input:checked + label { color: var(--yellow); font-weight: 600; }
+    .checklist-status { font-size: 13px; color: var(--muted); text-align: right; }
+
+    /* Score meter */
+    .score-meter { background: var(--card); border: 1px solid rgba(255,255,255,0.08); border-radius: 4px; padding: 20px 24px; margin: 28px 0; }
+    .score-meter .meter-label { font-size: 12px; font-weight: 700; text-transform: uppercase; color: var(--muted); margin-bottom: 8px; }
+    .score-meter .meter-bar { background: rgba(255,255,255,0.08); height: 6px; border-radius: 3px; overflow: hidden; }
+    .score-meter .meter-fill { height: 100%; background: linear-gradient(90deg, var(--yellow), #f5a500); transition: width 0.3s ease; }
+    .score-meter .meter-value { font-size: 14px; color: #ccc; margin-top: 8px; text-align: right; }
+
+    /* FAQ */
+    .faq-item { border-bottom: 1px solid rgba(255,255,255,0.07); padding: 20px 0; }
+    .faq-q { font-family: 'Poppins', sans-serif; font-weight: 600; margin-bottom: 10px; }
+    .faq-a { color: #bbb; }
+
+    /* Fine table */
+    .fine-table { width: 100%; border-collapse: collapse; margin: 24px 0; }
+    .fine-table th { background: rgba(245,197,24,0.1); color: var(--yellow); font-family: 'Poppins', sans-serif; font-size: 13px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 12px 16px; text-align: left; border-bottom: 1px solid rgba(245,197,24,0.2); }
+    .fine-table td { padding: 14px 16px; border-bottom: 1px solid rgba(255,255,255,0.05); font-size: 15px; }
+    .fine-table tr:last-child td { border-bottom: none; }
+    .fine-table .status-done { color: #4ade80; font-weight: 700; }
+    .fine-table .status-pending { color: #fbbf24; font-weight: 700; }
+    .fine-table .status-missing { color: #ff6b6b; font-weight: 700; }
+
+    /* Summary + Key Takeaway */
+    .box-summary { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; padding: 24px 28px; margin: 0 0 32px; }
+    .summary-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-bottom: 14px; }
+    .box-summary ul { margin: 0; padding-left: 20px; }
+    .box-summary li { margin-bottom: 8px; font-size: 17px; color: #ccc; }
+    .box-takeaway { background: rgba(245,197,24,0.08); border-left: 4px solid var(--yellow); padding: 20px 24px; margin: 0 0 40px; border-radius: 0 4px 4px 0; }
+    .takeaway-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 10px; }
+    .box-takeaway p { margin: 0; font-size: 18px; font-weight: 600; color: var(--white); line-height: 1.6; }
+
+    /* Related articles */
+    .related-articles { margin: 2.5rem 0 2rem; padding: 1.5rem; background: #1a1a2e; border-left: 4px solid #f0a500; border-radius: 4px; }
+    .related-articles p { margin: 0 0 1rem; font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #f0a500; }
+    .related-articles ul { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+    .related-articles li { margin: 0; }
+    .related-articles a { color: #e0e0e0; text-decoration: none; font-size: 0.95rem; }
+    .related-articles a:hover { color: var(--yellow); }
+
+    /* Footer */
+    footer { border-top: 1px solid rgba(255,255,255,0.07); padding: 32px 40px; text-align: center; font-size: 13px; color: var(--muted); max-width: 900px; margin: 0 auto; }
+    footer a { color: var(--muted); }
+    footer a:hover { color: var(--white); }
+
+    @media (max-width: 600px) {
+      nav, .article-wrap, footer { padding: 20px; }
+      nav { flex-wrap: wrap; gap: 10px; }
+      .lang-switcher { order: 3; width: 100%; justify-content: flex-start; }
+      .cta-section { padding: 32px 20px; }
+      .fine-table { font-size: 14px; }
+      .fine-table th, .fine-table td { padding: 10px 10px; }
+      .checklist-item { padding: 14px 12px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="https://nis2klar.se/da/">NIS2<span>Klar</span></a>
+  <a class="nav-back" href="https://nis2klar.se/da/artikler.html">← Alle artikler</a>
+  <div class="lang-switcher">
+    <a href="https://nis2klar.se/artiklar.html" style="color:#888;text-decoration:none;font-weight:600;padding:4px 8px;border-radius:3px;" title="Svenska">SV</a>
+    <a href="https://nis2klar.se/en/articles.html" style="color:#888;text-decoration:none;font-weight:600;padding:4px 8px;border-radius:3px;" title="English">EN</a>
+    <a href="https://nis2klar.se/da/artikler.html" style="color:#f5c518;text-decoration:none;font-weight:600;padding:4px 8px;border-radius:3px;background:rgba(245,197,24,0.1);" title="Dansk">DA</a>
+    <a href="https://nis2klar.se/no/artikler.html" style="color:#888;text-decoration:none;font-weight:600;padding:4px 8px;border-radius:3px;" title="Norsk">NO</a>
+    <a href="https://nis2klar.se/it/articoli.html" style="color:#888;text-decoration:none;font-weight:600;padding:4px 8px;border-radius:3px;" title="Italiano">IT</a>
+  </div>
+  <a class="nav-cta" href="https://nis2klar.se/da/#boka">Book møde →</a>
+</nav>
+
+<article class="article-wrap">
+  <div class="article-category">Compliance &amp; Checkliste</div>
+  <h1>NIS2 compliance-tjekliste: Er din virksomhed klar?</h1>
+  <div class="article-meta">Opdateret 19. april 2026 · Læsetid: ca 9 minutter · Målgruppe: Direktører og bestyrelser</div>
+
+  <!-- SUMMARY -->
+  <div class="box-summary">
+    <div class="summary-label">Sammenfattning</div>
+    <ul>
+      <li>NIS2-loven er gældende i Danmark siden oktober 2024 — der er ingen mere "later".</li>
+      <li>Artikel 21 definerer 10 obligatoriske sikkerhedsdiscipliner, som CFCS vil tjekke.</li>
+      <li>Direktørers personlige ansvar betyder, at fravær af disse processer kan koste dig muligheden for at være leder.</li>
+      <li>En klar tjekliste og selvvurdering tager omkring 20 arbejdstimer og giver dig det, du skal rapportere til bestyrelsen.</li>
+    </ul>
+  </div>
+
+  <!-- KEY TAKEAWAY -->
+  <div class="box-takeaway">
+    <div class="takeaway-label">Vigtigste indsigt</div>
+    <p>Du behøver ikke være cybersikkerhedsekspert for at være compliance-klar. Du behøver blot dokumentation på, at du har gjort det, du ved du skulle gøre. Denne tjekliste viser præcist hvad.</p>
+  </div>
+
+  <!-- HOOK -->
+  <p>
+    NIS2-loven trådte i kraft i Danmark den 1. oktober 2024. Det betyder, at tilsynet — Center for Cybersikkerhed (CFCS) — nu kan granskevirksomheder i 18 samfundskritiske sektorer og udstede bøder op til <strong>10 millioner EUR eller 2% af global omsætning</strong>.
+  </p>
+
+  <p>
+    Det værste er ikke bøderne. Det værste er, at du som direktør eller styrelsemedlem kan blive <strong>personligt ansvarlig</strong> og får et forbud mod at varetage ledelseshverv. Det forbud gælder ikke kun på dit nuværende job — det gælder alle jobs.
+  </p>
+
+  <p>
+    Denne artikel er en komplet handlingsplan baseret på Artikel 21 i NIS2-loven — de 10 områder, som CFCS og sektortilsynene konkret vil granske. Hvis du kan markere disse 10 felter som "udført," kan du sove mere roligt.
+  </p>
+
+  <h2>Hvad kontrollerer CFCS og sektortilsynene rent konkret?</h2>
+
+  <p>
+    Tilsynet opererer med en simpel målestok: <strong>Kan I dokumentere, at I har gjort det lovlige?</strong>
+  </p>
+
+  <p>
+    Der findes ingen "points for attempt" i cybersikkerhed. Enten har du en incidenthanteringsplan, eller du har den ikke. Enten har du en risikoanalyse, eller du har den ikke. Det er binært.
+  </p>
+
+  <p>
+    Artikel 21 i NIS2-loven lister 10 sikkerhedsdiscipliner som obligatoriske. Det er præcis det, CFCS og sektortilsynene (som Finanstilsynet, Energistyrelsen og andre) vil tjekke, når de gransker jer.
+  </p>
+
+  <div class="box-info">
+    <strong>Kontekst:</strong> Danmark har sat CFCS som primær koordinator, men hver sektor har sit eget tilsyn. Hvis I er i finans, gransker Finanstilsynet jer. Hvis I er i energi, gransker Energistyrelsen jer. Alle bruger samme Artikel 21-tjekliste internt.
+  </div>
+
+  <h2>De 10 Artikel 21-områder: Din komplette tjekliste</h2>
+
+  <p>
+    Nedenfor finder du alle 10 områder med konkret vejledning på, hvad du skal have på plads.
+    Markér hver, når den er dokumenteret og godkendt af bestyrelsen.
+  </p>
+
+  <!-- CHECKLIST 1 -->
+  <h3>1. Risikohåndtering og -analyse</h3>
+
+  <p>
+    <strong>Krav:</strong> Organisationen skal gennemføre en dokumenteret risikoanalyse af sine vigtigste IT-systemer og dataleveringer. Analysen skal opdateres årligt eller når systemerne ændres.
+  </p>
+
+  <p>
+    <strong>Hvad betyder det i praksis?</strong>
+  </p>
+
+  <ul>
+    <li>En liste over dine kritiske systemer (hvilke systemer ville få forretningen til at stoppe, hvis de gik ned?)</li>
+    <li>En liste over dine kritiske data (kundedata, driftskritisk information, intellektuel ejendom)</li>
+    <li>Identifikation af trusler mod disse systemer (ekstern hacker, intern udbyder, naturkatastrofe)</li>
+    <li>Vurdering af sandsynlighed og påvirkning for hver trussel</li>
+    <li>Dokumentation af, hvem der har ansvar for analysen, og hvornår den blev senest gennemgået</li>
+  </ul>
+
+  <div class="checklist-item">
+    <input type="checkbox" id="c1">
+    <label for="c1"><strong>1.1:</strong> Risikoanalyse gennemført og dateret (seneste version fra de seneste 12 måneder)</label>
+  </div>
+
+  <div class="checklist-item">
+    <input type="checkbox" id="c2">
+    <label for="c2"><strong>1.2:</strong> Risikoanalysen identificerer kritiske systemer og data</label>
+  </div>
+
+  <div class="checklist-item">
+    <input type="checkbox" id="c3">
+    <label for="c3"><strong>1.3:</strong> Risikoanalysen er godkendt af ledelsen eller bestyrelsen</label>
+  </div>
+
+  <!-- CHECKLIST 2 -->
+  <h3>2. Sikkerhedspolitik og governance</h3>
+
+  <p>
+    <strong>Krav:</strong> Der skal være en dokumenteret sikkerhedspolitik, der er kendt af og godkendt af topledelsen.
+  </p>
+
+  <p>
+    <strong>Hvad betyder det i praksis?</strong>
+  </p>
+
+  <ul>
+    <li>Et dokument (sikkerhedspolitik eller "Information Security Policy") som sætter målene for sikkerhed i organisationen</li>
+    <li>Klare ansvarsfordeling (hvem er CISO'en, eller hvem står for sikkerhed?)</li>
+    <li>Politikken skal behandle mindst: adgangskontrol, kryptering, backup, incident-håndtering, leverandørsikkerhed</li>
+    <li>Politikken skal være skriftlig, distribueret til ledelsen, og mindst årligt gennemgået</li>
+  </ul>
+
+  <div class="checklist-item">
+    <input type="checkbox" id="c4">
+    <label for="c4"><strong>2.1:</strong> Sikkerhedspolitik dokumenteret og skriftlig</label>
+  </div>
+
+  <div class="checklist-item">
+    <input type="checkbox" id="c5">
+    <label for="c5"><strong>2.2:</strong> Sikkerhedspolitik godkendt af ledelse eller bestyrelse</label>
+  </div>
+
+  <div class="checklist-item">
+    <input type="checkbox" id="c6">
+    <label for="c6"><strong>2.3:</strong> Sikkerhedsansvar klart defineret (navn eller rolle, ikke bare "IT-afdelingen")</label>
+  </div>
+
+  <!-- CHECKLIST 3 -->
+  <h3>3. Personalet og bevidsthed</h3>
+
+  <p>
+    <strong>Krav:</strong> Ledelse og ansatte skal have grundlæggende cybersikkerhedsopdrag.
+  </p>
+
+  <p>
+    <strong>Hvad betyder det i praksis?</strong>
+  </p>
+
+  <ul>
+    <li>Et årligt obligatorisk cybersikkerhedskursus for alle ansatte (kan være 30 minutter online)</li>
+    <li>Dokumentation på deltagelse (liste med navne og datoer)</li>
+    <li>Særlig opmærksomhed på phishing-awareness (hvordan genkender man falske e-mails?)</li>
+    <li>Ledelse skal have uddannelse i sit specifikke ansvar under Artikel 20 (personligt ansvar)</li>
+  </ul>
+
+  <div class="checklist-item">
+    <input type="checkbox" id="c7">
+    <label for="c7"><strong>3.1:</strong> Obligatorisk cybersikkerhedstræning gennemført for ledelse</label>
+  </div>
+
+  <div class="checklist-item">
+    <input type="checkbox" id="c8">
+    <label for="c8"><strong>3.2:</strong> Obligatorisk cybersikkerhedstræning gennemført for ansatte (mindst årligt)</label>
+  </div>
+
+  <div class="checklist-item">
+    <input type="checkbox" id="c9">
+    <label for="c9"><strong>3.3:</strong> Deltagelsesregister dokumenteret</label>
+  </div>
+
+  <!-- CHECKLIST 4 -->
+  <h3>4. Incidenthåndtering</h3>
+
+  <p>
+    <strong>Krav:</strong> En procedure for hvordan sikkerhedshændelser rapporteres, analyseres og håndteres.
+  </p>
+
+  <p>
+    <strong>Hvad betyder det i praksis?</strong>
+  </p>
+
+  <ul>
+    <li>En skriftlig incidenthanteringsplan med trin-for-trin procedure</li>
+    <li>Tydelig eskalering (hvornår kontaktes ledelse, hvornår CFCS?)</li>
+    <li>Kontaktinformationer for alle nøglepersoner (IT-leder, juridisk, ledelse)</li>
+    <li>Definition af "incident" (hvilke problemer skal rapporteres?)</li>
+    <li>Registrering af alle incidents (selv mindre) i et logfør</li>
+    <li>En post-mortem process (hvad lærte vi, hvad ændrer vi?)</li>
+  </ul>
+
+  <div class="checklist-item">
+    <input type="checkbox" id="c10">
+    <label for="c10"><strong>4.1:</strong> Incidenthanteringsplan dokumenteret og skriftlig</label>
+  </div>
+
+  <div class="checklist-item">
+    <input type="checkbox" id="c11">
+    <label for="c11"><strong>4.2:</strong> Incidenthanteringsplan indeholder eskalering til CFCS (24-timers regel)</label>
+  </div>
+
+  <div class="checklist-item">
+    <input type="checkbox" id="c12">
+    <label for="c12"><strong>4.3:</strong> Kontaktinformationer opdateret (telefonliste, mail-grupper)</label>
+  </div>
+
+  <div class="checklist-item">
+    <input type="checkbox" id="c13">
+    <label for="c13"><strong>4.4:</strong> Incidents bliver registreret i logfør eller ticketsystem</label>
+  </div>
+
+  <div class="box-warning">
+    <strong>Kritisk:</strong> NIS2 kræver rapportering til CFCS inden for 24 timer (tidig varsel) og derefter en fuldstændig rapport inden 72 timer. En incidenthanteringsplan uden denne timing er utilstrækkelig. Hvis du ikke rapporterer inden for tiden, risikerer du selv sanktion — uafhængig af incidentens alvor.
+  </div>
+
+  <!-- CHECKLIST 5 -->
+  <h3>5. Continuity og backup</h3>
+
+  <p>
+    <strong>Krav:</strong> Organisationen skal kunne genvinde kritiske systemer og data efter et tab eller angreb.
+  </p>
+
+  <p>
+    <strong>Hvad betyder det i praksis?</strong>
+  </p>
+
+  <ul>
+    <li>En business continuity plan (BCP) som beskriver, hvordan I fortsætter hvis kritiske systemer falder ud</li>
+    <li>Backup af alle kritiske data (ikke kun ad hoc, men regelmæssig og testbar)</li>
+    <li>Backup skal være isoleret fra primære systemer (så hvis ransomware angriber hovedsystemet, går backuppet ikke tabt)</li>
+    <li>Recovery Time Objective (RTO) — hvor hurtigt skal systemet være kørende igen?</li>
+    <li>Recovery Point Objective (RPO) — hvor meget data må I risikere at miste?</li>
+    <li>Regelmæssig test af genvinding (mindst årligt) — dokumenter at I kan faktisk gendanne fra backup</li>
+  </ul>
+
+  <div class="checklist-item">
+    <input type="checkbox" id="c14">
+    <label for="c14"><strong>5.1:</strong> Business continuity plan dokumenteret</label>
+  </div>
+
+  <div class="checklist-item">
+    <input type="checkbox" id="c15">
+    <label for="c15"><strong>5.2:</strong> Backup-strategi dokumenteret (hvilke data, hvor ofte, hvor lagret?)</label>
+  </div>
+
+  <div class="checklist-item">
+    <input type="checkbox" id="c16">
+    <label for="c16"><strong>5.3:</strong> Backup test gennemført mindst årligt — med dokumentation</label>
+  </div>
+
+  <div class="checklist-item">
+    <input type="checkbox" id="c17">
+    <label for="c17"><strong>5.4:</strong> RTO og RPO defineret for kritiske systemer</label>
+  </div>
+
+  <!-- CHECKLIST 6 -->
+  <h3>6. Adgangskontrol og autentificering</h3>
+
+  <p>
+    <strong>Krav:</strong> Kun berettigede personer skal have adgang til kritiske systemer og data.
+  </p>
+
+  <p>
+    <strong>Hvad betyder det i praksis?</strong>
+  </p>

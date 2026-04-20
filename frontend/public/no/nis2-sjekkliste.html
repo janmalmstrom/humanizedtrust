@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-BKF3QH9K01"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-BKF3QH9K01");</script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NIS2 Sjekkliste — Er Din Organisasjon Klar?</title>
+  <meta name="description" content="10-spørsmåls NIS2-sjekkliste. Sjekk statusen din på tvers av 4 nøkkelområder: styring, risikostyring, hendelseshåndtering og tekniske tiltak." />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800;900&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --black:#141416; --dark:#1c1c1f; --card:#222226; --border:#2e2e33;
+      --yellow:#f5e642; --yellow2:#e8d800; --white:#fff; --gray:#888; --lg:#ccc;
+      --green:#22c55e; --amber:#f59e0b; --red:#ef4444;
+    }
+    body { font-family:'Barlow',sans-serif; background:var(--black); color:var(--white); font-size:16px; line-height:1.6; min-height:100vh; }
+    h1,h2,h3,h4 { font-family:'Poppins',sans-serif; }
+    nav { background:rgba(20,20,22,0.96); border-bottom:1px solid var(--border); padding:16px 40px; display:flex; justify-content:space-between; align-items:center; position:sticky; top:0; z-index:10; }
+    .nav-logo { font-family:'Poppins',sans-serif; font-weight:900; font-size:18px; color:var(--white); text-decoration:none; }
+    .nav-logo span { color:var(--yellow); }
+    .nav-back { font-size:14px; color:var(--gray); text-decoration:none; }
+    .nav-back:hover { color:var(--white); }
+    .nav-cta { background:var(--yellow); color:var(--black); font-family:'Poppins',sans-serif; font-weight:700; font-size:13px; padding:9px 20px; border-radius:4px; text-decoration:none; }
+    .hero { text-align:center; padding:72px 24px 56px; background:var(--dark); border-bottom:1px solid var(--border); }
+    .tag { display:inline-block; background:rgba(245,230,66,0.12); border:1px solid rgba(245,230,66,0.25); color:var(--yellow); font-size:12px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; padding:5px 14px; border-radius:3px; margin-bottom:20px; }
+    .hero h1 { font-size:clamp(26px,4vw,44px); font-weight:800; line-height:1.2; margin-bottom:14px; }
+    .hero h1 em { font-style:normal; color:var(--yellow); }
+    .hero p { color:var(--lg); font-size:16px; max-width:520px; margin:0 auto; }
+    .checklist-wrap { max-width:760px; margin:0 auto; padding:48px 24px 80px; }
+    .progress-bar { background:var(--card); border:1px solid var(--border); border-radius:4px; padding:16px 20px; margin-bottom:32px; }
+    .progress-label { font-size:13px; color:var(--gray); margin-bottom:8px; }
+    .progress-track { height:4px; background:var(--border); border-radius:2px; overflow:hidden; }
+    .progress-fill { height:100%; background:var(--yellow); border-radius:2px; transition:width 0.4s ease; }
+    .section-header { font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--yellow); margin:32px 0 16px; padding-bottom:8px; border-bottom:1px solid var(--border); }
+    .question-card { background:var(--card); border:1px solid var(--border); border-radius:6px; padding:20px 24px; margin-bottom:12px; transition:border-color 0.2s; }
+    .question-card.answered { border-color:rgba(245,230,66,0.25); }
+    .question-text { font-size:15px; font-weight:600; color:var(--white); margin-bottom:14px; line-height:1.4; }
+    .ms-tip { font-size:13px; color:#7db8e8; background:rgba(0,120,212,0.08); border:1px solid rgba(0,120,212,0.2); border-radius:4px; padding:10px 12px; margin-bottom:14px; line-height:1.5; }
+    .ms-tip strong { color:#90c8f0; }
+    .answer-row { display:flex; gap:10px; flex-wrap:wrap; }
+    .answer-btn { flex:1; min-width:80px; padding:10px 8px; border-radius:6px; border:1px solid var(--border); background:transparent; color:#aaa; font-family:'Barlow',sans-serif; font-size:14px; font-weight:600; cursor:pointer; transition:all .15s; text-align:center; }
+    .answer-btn:hover { border-color:#aaa; color:var(--white); }
+    .answer-btn.sel-ja { background:rgba(34,197,94,.12); border-color:var(--green); color:var(--green); }
+    .answer-btn.sel-delvis { background:rgba(245,158,11,.12); border-color:var(--amber); color:var(--amber); }
+    .answer-btn.sel-nei { background:rgba(239,68,68,.1); border-color:var(--red); color:var(--red); }
+    .result-section { display:none; background:var(--card); border:1px solid var(--border); border-radius:8px; padding:32px; margin-top:32px; text-align:center; }
+    .result-section.show { display:block; }
+    .result-badge { display:inline-block; font-family:'Poppins',sans-serif; font-size:14px; font-weight:700; letter-spacing:1px; padding:6px 18px; border-radius:4px; text-transform:uppercase; margin-bottom:12px; }
+    .result-badge.kritisk { background:rgba(239,68,68,.15); color:#f87171; border:1px solid rgba(239,68,68,.3); }
+    .result-badge.handling { background:rgba(245,158,11,.15); color:#fbbf24; border:1px solid rgba(245,158,11,.3); }
+    .result-badge.god { background:rgba(34,197,94,.15); color:#4ade80; border:1px solid rgba(34,197,94,.3); }
+    .result-score { font-family:'Poppins',sans-serif; font-size:48px; font-weight:900; margin:8px 0; }
+    .result-desc { font-size:15px; color:var(--lg); max-width:500px; margin:0 auto 24px; line-height:1.6; }
+    .cta-form { background:rgba(245,230,66,0.06); border:1px solid rgba(245,230,66,0.2); border-radius:6px; padding:24px; max-width:420px; margin:0 auto; text-align:left; }
+    .cta-form h3 { font-size:16px; font-weight:700; margin-bottom:6px; }
+    .cta-form p { font-size:13px; color:var(--lg); margin-bottom:16px; }
+    .cta-form input { width:100%; background:var(--dark); border:1px solid var(--border); border-radius:4px; padding:11px 14px; font-family:'Barlow',sans-serif; font-size:15px; color:var(--white); outline:none; margin-bottom:10px; }
+    .cta-form input:focus { border-color:rgba(245,230,66,.5); }
+    .cta-form button { width:100%; background:var(--yellow); color:var(--black); border:none; border-radius:4px; padding:13px; font-family:'Poppins',sans-serif; font-size:15px; font-weight:700; cursor:pointer; transition:background .15s; }
+    .cta-form button:hover { background:var(--yellow2); }
+    .cta-form button:disabled { opacity:.6; pointer-events:none; }
+    .thanks-box { padding:16px; background:rgba(34,197,94,.1); border:1px solid rgba(34,197,94,.3); border-radius:4px; color:#86efac; font-size:15px; margin-top:12px; display:none; }
+    .quiz-nav { display:flex; justify-content:space-between; align-items:center; margin-top:32px; padding-top:24px; border-top:1px solid var(--border); }
+    .btn-primary { background:var(--yellow); color:var(--black); font-family:'Poppins',sans-serif; font-weight:700; font-size:14px; padding:12px 28px; border-radius:6px; border:none; cursor:pointer; transition:all .15s; }
+    .btn-primary:hover { background:var(--yellow2); }
+    .btn-ghost { background:transparent; border:1px solid var(--border); color:var(--gray); font-family:'Barlow',sans-serif; font-size:14px; font-weight:600; padding:10px 20px; border-radius:6px; cursor:pointer; }
+    footer { background:var(--dark); border-top:1px solid var(--border); padding:32px 40px; text-align:center; font-size:13px; color:var(--gray); }
+    footer a { color:var(--yellow); text-decoration:none; }
+  </style>
+</head>
+<body>
+  <nav>
+    <a class="nav-logo" href="/no/nis2.html">NIS2<span>Klar</span></a>
+    <a class="nav-back" href="/no/nis2.html">← Tilbake til NIS2-siden</a>
+    <a class="nav-cta" href="/no/nis2.html#book">Book gratis gap-analyse →</a>
+  </nav>
+
+  <div class="hero">
+    <div class="tag">NIS2 Compliance-verktøy</div>
+    <h1>Er din organisasjon <em>NIS2-klar</em>?</h1>
+    <p>10 spørsmål. 4 områder. Øyeblikkelig resultat. Identifiser de største manglene dine før NSM-tilsynet.</p>
+  </div>
+
+  <div class="checklist-wrap">
+    <div class="progress-bar">
+      <div class="progress-label" id="progressLabel">Spørsmål 0 av 10 — Seksjon: Styring &amp; Ansvar</div>
+      <div class="progress-track"><div class="progress-fill" id="progressFill" style="width:0%"></div></div>
+    </div>
+
+    <div id="quizContainer"></div>
+
+    <div class="quiz-nav">
+      <button class="btn-ghost" id="btnReset" onclick="resetQuiz()" style="display:none">Start på nytt</button>
+      <button class="btn-primary" id="btnSubmit" onclick="showResult()" style="display:none">Se resultat →</button>
+    </div>
+
+    <div class="result-section" id="resultSection">
+      <div class="result-badge" id="resultBadge"></div>
+      <div class="result-score" id="resultScore"></div>
+      <div class="result-desc" id="resultDesc"></div>
+      <div class="cta-form">
+        <h3>Vil dere ha en detaljert NIS2-analyse?</h3>
+        <p>Book et gratis 30-minutters møte — vi gjennomgår de spesifikke manglene dine og viser hvordan du oppnår full etterlevelse.</p>
+        <form id="captureForm" onsubmit="submitCapture(event)">
+          <input type="text" id="capName" placeholder="Ditt navn" autocomplete="name" />
+          <input type="email" id="capEmail" placeholder="E-postadresse *" autocomplete="email" required />
+          <input type="text" id="capCompany" placeholder="Organisasjonens navn *" required />
+          <button type="submit" id="captureSubmit">Book gratis konsultasjon →</button>
+        </form>
+        <div class="thanks-box" id="captureThanks">✅ Takk! Vi tar kontakt innen 24 timer.</div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <p>© 2026 M &amp; J Trusted Marketing KB — NIS2-rådgivning for norske virksomheter</p>
+    <p style="margin-top:8px;"><a href="mailto:jan@nis2klar.se">jan@nis2klar.se</a> · <a href="https://nis2klar.se">nis2klar.se</a></p>
+  </footer>
+
+  <script>
+    const SECTIONS = [
+      {
+        title: 'Seksjon 1 — Styring & Ansvar',
+        questions: [
+          {
+            q: 'Har styret formelt godkjent en policy for cybersikkerhet?',
+            tip: '💡 <strong>Microsoft:</strong> Microsoft Secure Score gir styret ett enkelt tall (0–100) som beviser compliance-status. Spør din IT-ansvarlige.'
+          },
+          {
+            q: 'Er det utpekt en NIS2-ansvarlig med mandat til å handle?',
+            tip: '💡 <strong>Microsoft:</strong> Den NIS2-ansvarlige kan overvåke status via Microsoft Defender-portalen — ingen teknisk bakgrunn kreves.'
+          }
+        ]
+      },
+      {
+        title: 'Seksjon 2 — Risikostyring',
+        questions: [
+          {
+            q: 'Har dere et oppdatert IT-risikoregister (maks. 12 måneder gammelt)?',
+            tip: '💡 <strong>Microsoft:</strong> Microsoft Purview Compliance Manager gir et ferdig NIS2-risikoregister — koblet til din faktiske M365-konfigurasjon.'
+          },
+          {
+            q: 'Har dere implementert MFA for alle brukere?',
+            tip: '💡 <strong>Microsoft:</strong> Aktiver Security Defaults i Entra ID — gratis, tar 10 minutter og forhindrer 99,9% av kontorelaterte angrep.'
+          },
+          {
+            q: 'Har dere systematisk patch-håndtering for kritiske sårbarheter?',
+            tip: '💡 <strong>Microsoft:</strong> Microsoft Intune automatiserer patching for alle Windows-enheter — kritiske patcher innen 48 timer uten manuelt arbeid.'
+          }
+        ]
+      },
+      {
+        title: 'Seksjon 3 — Hendelseshåndtering',
+        questions: [
+          {
+            q: 'Har dere en dokumentert beredskapsplan for sikkerhetshendelser?',
+            tip: '💡 <strong>Microsoft:</strong> Microsoft Sentinel (SIEM) automatiserer hendelsesdeteksjon og gir ferdige maler for hendelsesdokumentasjon.'
+          },
+          {
+            q: 'Kan dere rapportere en sikkerhetshendelse til NSM innen 24 timer?',
+            tip: '💡 <strong>Microsoft:</strong> Defender XDR gir deg en komplett hendelsestidslinje på minutter — nøyaktig det NSM krever i den innledende rapporten.'
+          },
+          {
+            q: 'Har dere løpende logging av de kritiske systemene deres?',
+            tip: '💡 <strong>Microsoft:</strong> Unified Audit Log i Microsoft 365 — aktiver nå gratis. Logger all aktivitet i 90–365 dager.'
+          }
+        ]
+      },
+      {
+        title: 'Seksjon 4 — Tekniske tiltak',
+        questions: [
+          {
+            q: 'Er sensitive data kryptert både i hvile og under overføring?',
+            tip: '💡 <strong>Microsoft:</strong> BitLocker (bærbare) + SharePoint-kryptering + TLS for e-post — alt inkludert i M365 Business Premium.'
+          },
+          {
+            q: 'Har dere testede sikkerhetskopier med verifiserte gjenopprettingsprosedyrer?',
+            tip: '💡 <strong>Microsoft:</strong> Azure Backup automatiserer backup og lar deg teste gjenoppretting uten å påvirke produksjonen — dokumentert bevis til NSM.'
+          }
+        ]
+      }
+    ];
+
+    const answers = {};
+    let totalQ = 0;
+    SECTIONS.forEach(s => { totalQ += s.questions.length; });
+
+    function renderQuiz() {
+      const container = document.getElementById('quizContainer');
+      container.innerHTML = '';
+      let qIndex = 0;
+      SECTIONS.forEach((sec, si) => {
+        const secDiv = document.createElement('div');
+        secDiv.innerHTML = `<div class="section-header">${sec.title}</div>`;
+        sec.questions.forEach((item, qi) => {
+          const key = `${si}_${qi}`;
+          const ans = answers[key];
+          secDiv.innerHTML += `
+            <div class="question-card ${ans !== undefined ? 'answered' : ''}" id="qcard_${key}">
+              <div class="question-text">${item.q}</div>
+              <div class="ms-tip">${item.tip}</div>
+              <div class="answer-row">
+                <button class="answer-btn ${ans===2?'sel-ja':''}" onclick="setAnswer('${key}',2)">✓ Ja</button>
+                <button class="answer-btn ${ans===1?'sel-delvis':''}" onclick="setAnswer('${key}',1)">~ Delvis</button>
+                <button class="answer-btn ${ans===0?'sel-nei':''}" onclick="setAnswer('${key}',0)">✗ Nei</button>
+              </div>
+            </div>`;
+          qIndex++;
+        });
+        container.appendChild(secDiv);
+      });
+      updateProgress();
+    }
+
+    function setAnswer(key, val) {
+      answers[key] = val;
+      renderQuiz();
+      checkAllAnswered();
+    }
+
+    function updateProgress() {
+      const answered = Object.keys(answers).length;
+      const pct = Math.round(answered / totalQ * 100);
+      document.getElementById('progressFill').style.width = pct + '%';
+      let secTitle = SECTIONS[0].title;
+      outer: for (let si = 0; si < SECTIONS.length; si++) {
+        for (let qi = 0; qi < SECTIONS[si].questions.length; qi++) {
+          if (answers[`${si}_${qi}`] === undefined) { secTitle = SECTIONS[si].title; break outer; }
+        }
+      }
+      document.getElementById('progressLabel').textContent = `Spørsmål ${Math.min(answered+1,totalQ)} av ${totalQ} — ${secTitle}`;
+    }
+
+    function checkAllAnswered() {
+      const answered = Object.keys(answers).length;
+      const submitBtn = document.getElementById('btnSubmit');
+      const resetBtn = document.getElementById('btnReset');
+      if (answered >= totalQ) {
+        submitBtn.style.display = 'inline-block';
+        resetBtn.style.display = 'inline-block';
+      }
+    }
+
+    function showResult() {
+      const score = Object.values(answers).reduce((s,v) => s + (v===2?1:0), 0);
+      const resultSection = document.getElementById('resultSection');
+      const badge = document.getElementById('resultBadge');
+      const scoreEl = document.getElementById('resultScore');
+      const desc = document.getElementById('resultDesc');
+
+      scoreEl.textContent = score + '/10';
+
+      if (score <= 3) {
+        badge.className = 'result-badge kritisk';
+        badge.textContent = 'Kritisk risiko';
+        scoreEl.style.color = '#f87171';
+        desc.textContent = 'Organisasjonen din har alvorlige NIS2-mangler. Risikoen for bøter og personlig ansvar for ledelsen er høy. Book en gratis gap-analyse nå.';
+      } else if (score <= 7) {
+        badge.className = 'result-badge handling';
+        badge.textContent = 'Handling nødvendig';
+        scoreEl.style.color = '#fbbf24';
+        desc.textContent = 'Dere har noen kontroller på plass, men det er viktige mangler. Planlegg utbedring før NSM-tilsynet.';
+      } else {
+        badge.className = 'result-badge god';
+        badge.textContent = 'Godt grunnlag';
+        scoreEl.style.color = '#4ade80';
+        desc.textContent = 'Organisasjonen din har et godt NIS2-grunnlag. Gå gjennom gjenværende mangler og dokumenter arbeidet ditt.';
+      }
+
+      resultSection.classList.add('show');
+      resultSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    function resetQuiz() {
+      Object.keys(answers).forEach(k => delete answers[k]);
+      document.getElementById('resultSection').classList.remove('show');
+      document.getElementById('btnSubmit').style.display = 'none';
+      document.getElementById('btnReset').style.display = 'none';
+      renderQuiz();
+      window.scrollTo(0, 0);
+    }
+
+    async function submitCapture(e) {
+      e.preventDefault();
+      const btn = document.getElementById('captureSubmit');
+      btn.disabled = true;
+      btn.textContent = 'Sender…';
+      const payload = {
+        name: document.getElementById('capName').value.trim(),
+        email: document.getElementById('capEmail').value.trim(),
+        company: document.getElementById('capCompany').value.trim(),
+        source: 'nis2-sjekkliste-no',
+        score_data: { score: Object.values(answers).reduce((s,v)=>s+(v===2?1:0),0), total: totalQ }
+      };
+      try {
+        const res = await fetch('/api/inbound', { method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify(payload) });
+        const data = await res.json();
+        if (data.success) {
+          document.getElementById('captureForm').style.display = 'none';
+          document.getElementById('captureThanks').style.display = 'block';
+        } else { btn.disabled=false; btn.textContent='Book gratis konsultasjon →'; }
+      } catch(err) { btn.disabled=false; btn.textContent='Book gratis konsultasjon →'; }
+    }
+
+    renderQuiz();
+  </script>
+  <script>
+    (function(){
+      var PAGE='nis2-sjekkliste-no';
+      new Image().src='/api/track/pixel?page='+PAGE;
+      var token=new URLSearchParams(window.location.search).get('t');
+      if(token){fetch('/api/track?t='+encodeURIComponent(token)+'&page='+PAGE,{method:'GET',redirect:'manual'}).catch(function(){});}
+    })();
+  </script>
+  <script src="/cookie-banner.js"></script>
+</body>
+</html>

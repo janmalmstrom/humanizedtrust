@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-BKF3QH9K01"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag("js", new Date());
+    gtag("config", "G-BKF3QH9K01");
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Microsoft Teams vs Slack: Sicurezza delle Comunicazioni sotto NIS2 | NIS2Klar</title>
+  <meta name="description" content="Quale piattaforma di collaborazione rispetta NIS2? Confronto tra Teams e Slack: crittografia, residenza dati, accesso ospiti, audit logging — per CEO e consigli di amministrazione italiani.">
+  <meta property="og:title" content="Microsoft Teams vs Slack: Sicurezza delle Comunicazioni sotto NIS2">
+  <meta property="og:description" content="Quale piattaforma di collaborazione rispetta NIS2? Confronto tra Teams e Slack: crittografia, residenza dati, accesso ospiti, audit logging.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #141416;
+      --card: #1c1c1f;
+      --yellow: #f5c518;
+      --white: #f0f0f0;
+      --muted: #888;
+      --red: #C61212;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: var(--bg); color: var(--white); font-family: 'Barlow', sans-serif; font-size: 19px; line-height: 1.8; }
+
+    /* Nav */
+    nav { display: flex; justify-content: space-between; align-items: center; padding: 20px 40px; border-bottom: 1px solid rgba(255,255,255,0.07); max-width: 1200px; margin: 0 auto; flex-wrap: wrap; gap: 20px; }
+    .nav-logo { font-family: 'Poppins', sans-serif; font-weight: 900; font-size: 20px; color: var(--yellow); text-decoration: none; }
+    .nav-logo span { color: var(--white); }
+    .nav-back { color: var(--muted); text-decoration: none; font-size: 15px; }
+    .nav-back:hover { color: var(--white); }
+    .lang-switcher { display: flex; gap: 8px; align-items: center; font-size: 13px; font-family: 'Poppins', sans-serif; }
+    .lang-switcher a { color: #888; text-decoration: none; font-weight: 600; padding: 4px 8px; border-radius: 3px; transition: all 0.2s; }
+    .lang-switcher a:hover { color: var(--yellow); }
+    .nav-cta { background: var(--yellow); color: #000; padding: 8px 18px; border-radius: 4px; text-decoration: none; font-weight: 700; font-size: 14px; font-family: 'Poppins', sans-serif; }
+
+    /* Article */
+    .article-wrap { max-width: 760px; margin: 0 auto; padding: 60px 40px; }
+    .article-category { font-size: 13px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 16px; }
+    h1 { font-family: 'Poppins', sans-serif; font-size: clamp(30px, 4vw, 44px); font-weight: 900; line-height: 1.2; margin-bottom: 24px; }
+    .article-meta { font-size: 15px; color: var(--muted); margin-bottom: 48px; padding-bottom: 24px; border-bottom: 1px solid rgba(255,255,255,0.07); }
+    h2 { font-family: 'Poppins', sans-serif; font-size: 26px; font-weight: 700; margin: 48px 0 16px; color: var(--white); }
+    h3 { font-family: 'Poppins', sans-serif; font-size: 20px; font-weight: 600; margin: 32px 0 12px; color: var(--yellow); }
+    p { margin-bottom: 22px; }
+    strong { color: var(--white); font-weight: 700; }
+    .highlight { color: var(--yellow); font-weight: 700; }
+    .danger { color: #ff6b6b; font-weight: 700; }
+    ul, ol { margin: 16px 0 24px 24px; }
+    li { margin-bottom: 12px; font-size: 19px; }
+
+    /* Callout boxes */
+    .box-warning { background: rgba(197,17,17,0.12); border-left: 4px solid var(--red); padding: 20px 24px; margin: 32px 0; border-radius: 0 4px 4px 0; }
+    .box-info { background: rgba(245,197,24,0.08); border-left: 4px solid var(--yellow); padding: 20px 24px; margin: 32px 0; border-radius: 0 4px 4px 0; }
+    .box-case { background: var(--card); border: 1px solid rgba(255,255,255,0.08); padding: 28px; margin: 40px 0; border-radius: 4px; }
+    .box-case .case-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 12px; }
+    blockquote { border-left: 3px solid var(--yellow); padding: 12px 20px; margin: 24px 0; font-style: italic; color: #ccc; }
+
+    /* CTA */
+    .cta-section { background: var(--card); border: 1px solid rgba(245,197,24,0.2); border-radius: 4px; padding: 48px 40px; margin: 64px 0 40px; text-align: center; }
+    .cta-section h2 { margin-top: 0; font-size: 26px; }
+    .cta-section p { color: #aaa; max-width: 500px; margin: 0 auto 28px; }
+    .btn-primary { display: inline-block; background: var(--yellow); color: #000; font-family: 'Poppins', sans-serif; font-weight: 800; font-size: 16px; padding: 16px 36px; border-radius: 4px; text-decoration: none; }
+    .btn-primary:hover { background: #e0b010; }
+    .cta-fine { font-size: 13px; color: var(--muted); margin-top: 16px; }
+
+    /* FAQ */
+    .faq-item { border-bottom: 1px solid rgba(255,255,255,0.07); padding: 20px 0; }
+    .faq-q { font-family: 'Poppins', sans-serif; font-weight: 600; margin-bottom: 10px; }
+    .faq-a { color: #bbb; }
+
+    /* Comparison table */
+    .comp-table { width: 100%; border-collapse: collapse; margin: 24px 0; font-size: 15px; }
+    .comp-table th { background: rgba(245,197,24,0.1); color: var(--yellow); font-family: 'Poppins', sans-serif; font-size: 12px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 14px 16px; text-align: left; border-bottom: 1px solid rgba(245,197,24,0.2); }
+    .comp-table td { padding: 14px 16px; border-bottom: 1px solid rgba(255,255,255,0.05); }
+    .comp-table tr:last-child td { border-bottom: none; }
+    .comp-table .strong-yes { color: #4ade80; font-weight: 700; }
+    .comp-table .weak-no { color: #ff6b6b; font-weight: 700; }
+    .comp-table .partial { color: #fbbf24; font-weight: 600; }
+
+    /* Summary + Key Takeaway */
+    .box-summary { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; padding: 24px 28px; margin: 0 0 32px; }
+    .summary-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-bottom: 14px; }
+    .box-summary ul { margin: 0; padding-left: 20px; }
+    .box-summary li { margin-bottom: 8px; font-size: 17px; color: #ccc; }
+    .box-takeaway { background: rgba(245,197,24,0.08); border-left: 4px solid var(--yellow); padding: 20px 24px; margin: 0 0 40px; border-radius: 0 4px 4px 0; }
+    .takeaway-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 10px; }
+    .box-takeaway p { margin: 0; font-size: 18px; font-weight: 600; color: var(--white); line-height: 1.6; }
+
+    /* Related articles */
+    .related-articles { margin: 2.5rem 0 2rem; padding: 1.5rem; background: #1a1a2e; border-left: 4px solid #f0a500; border-radius: 4px; }
+    .related-articles p:first-child { margin: 0 0 1rem; font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #f0a500; }
+    .related-articles ul { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+    .related-articles li { margin: 0; font-size: 0.95rem; }
+    .related-articles li a { color: #e0e0e0; text-decoration: none; }
+    .related-articles li a:hover { color: #f0a500; }
+    .related-articles-footer { margin: 1.25rem 0 0; font-size: 0.85rem; color: #aaa; }
+    .related-articles-footer a { color: #f0a500; text-decoration: none; }
+
+    /* Footer */
+    footer { border-top: 1px solid rgba(255,255,255,0.07); padding: 32px 40px; text-align: center; font-size: 13px; color: var(--muted); max-width: 900px; margin: 0 auto; }
+    footer a { color: var(--muted); }
+
+    @media (max-width: 600px) {
+      nav, .article-wrap, footer { padding: 20px; }
+      nav { flex-direction: column; align-items: flex-start; }
+      .cta-section { padding: 32px 20px; }
+      .comp-table { font-size: 14px; }
+      .comp-table th, .comp-table td { padding: 10px 10px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="https://nis2klar.se/it/">NIS2<span>Klar</span></a>
+  <a class="nav-back" href="https://nis2klar.se/it/articoli.html">← Tutti gli articoli</a>
+  <div class="lang-switcher">
+    <a href="https://nis2klar.se/artiklar.html" style="color:#888;text-decoration:none;font-weight:600;padding:4px 8px;border-radius:3px;" title="Svenska">SV</a>
+    <a href="https://nis2klar.se/en/articles.html" style="color:#888;text-decoration:none;font-weight:600;padding:4px 8px;border-radius:3px;" title="English">EN</a>
+    <a href="https://nis2klar.se/da/artikler.html" style="color:#888;text-decoration:none;font-weight:600;padding:4px 8px;border-radius:3px;" title="Dansk">DA</a>
+    <a href="https://nis2klar.se/no/artikler.html" style="color:#888;text-decoration:none;font-weight:600;padding:4px 8px;border-radius:3px;" title="Norsk">NO</a>
+    <a href="https://nis2klar.se/it/articoli.html" style="color:#f5c518;text-decoration:none;font-weight:600;padding:4px 8px;border-radius:3px;background:rgba(245,197,24,0.1);" title="Italiano">IT</a>
+  </div>
+  <a class="nav-cta" href="https://nis2klar.se/it/#boka">Prenota colloquio →</a>
+</nav>
+
+<article class="article-wrap">
+  <div class="article-category">Piattaforme &amp; Conformità</div>
+  <h1>Microsoft Teams vs Slack: Sicurezza delle Comunicazioni sotto NIS2</h1>
+  <div class="article-meta">Aggiornato 19 aprile 2026 · Tempo di lettura: ca 9 minuti · Destinato a: CEO e Consigli di Amministrazione</div>
+
+  <!-- SUMMARY -->
+  <div class="box-summary">
+    <div class="summary-label">Sintesi</div>
+    <ul>
+      <li>Scegliere la giusta piattaforma di collaborazione è una decisione di conformità NIS2, non solo una decisione tecnologica.</li>
+      <li>La residenza dei dati, la crittografia end-to-end, i controlli di accesso degli ospiti e l'audit logging sono criteri NIS2 non negoziabili.</li>
+      <li>Teams e Slack offrono garanzie diverse — e le differenze contano legalmente.</li>
+      <li>La responsabilità personale (Art. 23 D.Lgs. 138/2024) ricade su di te come leader, non sul fornitore.</li>
+    </ul>
+  </div>
+
+  <!-- KEY TAKEAWAY -->
+  <div class="box-takeaway">
+    <div class="takeaway-label">Conclusione principale</div>
+    <p>Sotto NIS2, la scelta della piattaforma di comunicazione non è una preferenza di marketing — è una decisione di controllo della sicurezza documentabile. Devi poter provare all'ACN (Agenzia per la Cybersicurezza Nazionale) che la piattaforma che usi rispetta i requisiti dell'Articolo 21. Scegliere in base al prezzo o alle preferenze è rischioso.</p>
+  </div>
+
+  <!-- HOOK -->
+  <p>
+    Migliaia di organizzazioni italiane stanno affrontando questa domanda proprio ora: <strong>quale piattaforma di comunicazione useremo sotto NIS2?</strong>
+  </p>
+
+  <p>
+    Probabilmente hai già un abbonamento a una piattaforma. Forse è Slack, forse è Teams, forse tutti e due. Ma la domanda non è più "quale ci piace di più?" — è "quale documentiamo come conforme a NIS2?"
+  </p>
+
+  <p>
+    Perché la differenza è legale, non tecnica. L'Articolo 21 del D.Lgs. 138/2024 richiede dieci specifiche misure di sicurezza. Una piattaforma che non le copre è una vulnerabilità nel tuo registro di conformità. E se l'ACN scopre un'esposizione documentata durante una verifica, la tua organizzazione rischia una sanzione fino a <strong>10 milioni di euro</strong> (per i soggetti essenziali) e tu personalmente rischi un divieto di esercitare incarichi di direzione.
+  </p>
+
+  <div class="box-warning">
+    <strong>Il rischio reale:</strong> Non è un cyberattacco alla piattaforma che ti mette nei guai. È la tua incapacità di documentare che hai controllato e selezionato consapevolmente quella piattaforma in conformità a NIS2. L'ACN non chiede "vi siete stati attaccati?" — chiede "potete provare che avete un controllo?".
+  </div>
+
+  <h2>La struttura legale: cosa richiede NIS2 per una piattaforma di comunicazione?</h2>
+
+  <p>
+    L'Articolo 21 del D.Lgs. 138/2024 elenca dieci domini di sicurezza che un soggetto essenziale o importante deve controllare:
+  </p>
+
+  <ol>
+    <li>Gestione del rischio</li>
+    <li>Governance della sicurezza IT</li>
+    <li>Gestione degli asset</li>
+    <li>Gestione degli accessi e autenticazione</li>
+    <li>Protezione e recupero dei dati</li>
+    <li>Responsabilità e capacità di risposta agli incidenti</li>
+    <li>Continuità operativa</li>
+    <li>Gestione della supply chain e dei fornitori</li>
+    <li>Sicurezza nei servizi di sviluppo e manutenzione del software</li>
+    <li>Gestione delle vulnerabilità</li>
+  </ol>
+
+  <p>
+    Una piattaforma di comunicazione deve coprire almeno cinque di questi (tipicamente: 4, 5, 6, 8, 10). Se la piattaforma non offre controlli documentabili in questi domini, tu — come leader — sei responsabile di implementare controlli aggiuntivi intorno ad essa. Se non lo fai, è una lacuna di conformità.
+  </p>
+
+  <p>
+    Ecco cosa significa nella pratica quando si sceglie una piattaforma:
+  </p>
+
+  <h2>I criteri di valutazione sotto NIS2</h2>
+
+  <h3>1. Crittografia — in transito e a riposo</h3>
+
+  <p>
+    <strong>Requisito NIS2:</strong> Articolo 21.5 — Protezione dei dati tramite crittografia.
+  </p>
+
+  <p>
+    Questo non significa "la piattaforma usa HTTPS" (tutte lo fanno). Significa:
+  </p>
+
+  <ul>
+    <li>I messaggi sono crittografati sia in transito che quando archiviati sui server della piattaforma</li>
+    <li>I dati sono inaccessibili al fornitore stesso (la cosiddetta crittografia "end-to-end")</li>
+    <li>Gli algoritmi di crittografia sono documentati e auditable</li>
+  </ul>
+
+  <p>
+    <strong>Teams:</strong> Offre crittografia in transito; la crittografia end-to-end è disponibile per le conversazioni dirette (non di gruppo). I messaggi di team (canali) sono crittografati a riposo ma non end-to-end — Microsoft ha accesso alle chiavi.
+  </p>
+
+  <p>
+    <strong>Slack:</strong> Offre crittografia in transito; i dati a riposo sono crittografati ma anche Slack detiene le chiavi. Non esiste un vero end-to-end per i messaggi di canale.
+  </p>
+
+  <p>
+    <strong>Implicazione NIS2:</strong> Se trasmetti dati altamente sensibili (PII, dati finanziari, segreti commerciali), nessuna delle due piattaforme offre una garanzia crittografica completa. Dovrai implementare un controllo di livello superiore — ad esempio una layer di crittografia client-side aggiuntiva — oppure escludere questi dati dalle piattaforme pubbliche.
+  </p>
+
+  <h3>2. Residenza dei dati — dove vivono i tuoi messaggi?</h3>
+
+  <p>
+    <strong>Requisito NIS2:</strong> Articolo 21.3 — Gestione degli asset e localizzazione geografica.
+  </p>
+
+  <p>
+    NIS2 non impone esplicitamente una residenza europea, ma richiede che tu conosca e controlli dove i dati sono archiviati. Se sono negli USA, devono essere soggetti a GDPR tramite la protezione di livello adeguato (Schrems II è ancora controverso). Se sono nell'UE, sei in una posizione più forte.
+  </p>
+
+  <p>
+    <strong>Teams:</strong> I dati possono essere archiviati a livello globale. È possibile impostare una preferenza geografica (ad es. EU Data Boundary), ma i dati della riunione e di alcuni servizi connessi possono transitare negli USA.
+  </p>
+
+  <p>
+    <strong>Slack:</strong> Archivia i dati nei data center globali. Esiste un'opzione "Enterprise Grid" con garanzie geografiche più strette, ma il livello standard non garantisce la residenza in Europa.
+  </p>
+
+  <p>
+    <strong>Implicazione NIS2:</strong> Se sei in un settore restrittivo (finanza, sanità, energia), la residenza dei dati può essere un elemento di controllo obbligatorio. Devi poter provare all'ACN che sai dove vivono i tuoi dati. Se non riesci a garantire la residenza in Europa tramite la piattaforma, dovrai documentare un controllo compensativo.
+  </p>
+
+  <h3>3. Controllo degli accessi ospiti</h3>
+
+  <p>
+    <strong>Requisito NIS2:</strong> Articolo 21.4 — Gestione degli accessi e autenticazione multi-fattore.
+  </p>
+
+  <p>
+    Se consenti agli ospiti (partner esterni, fornitori, consulenti) di accedere ai tuoi canali di comunicazione, devi controllare:
+  </p>
+
+  <ul>
+    <li>Chi può invitare gli ospiti (deve essere approvato centralmente, non delegato)</li>
+    <li>Quali canali gli ospiti possono vedere (separazione dei dati sensibili)</li>
+    <li>Durata dell'accesso (scadenza automatica)</li>
+    <li>Autenticazione (MFA è obbligatorio?)</li>
+  </ul>
+
+  <p>
+    <strong>Teams:</strong> Supporta MFA per gli ospiti; la gestione degli accessi è granulare (per canale, per team). L'amministratore ha controllo centralizzato su chi può invitare ospiti.
+  </p>
+
+  <p>
+    <strong>Slack:</strong> La gestione degli ospiti è meno granulare. Gli ospiti vedono le conversazioni del canale a cui sono stati aggiunti; il controllo su chi può invitare è meno centralizzato. Le impostazioni di scadenza sono limitate.
+  </p>
+
+  <p>
+    <strong>Implicazione NIS2:</strong> Se la tua organizzazione gestisce dati riservati e deve integrare molti ospiti esterni, Teams offre un controllo di accesso più granulare. Slack richiede controlli compensativi più forti (ad es. revisioni regolari dell'accesso degli ospiti, data classification manuale).
+  </p>
+
+  <h3>4. Audit logging — la capacità di provare cosa è successo</h3>
+
+  <p>
+    <strong>Requisito NIS2:</strong> Articolo 21.6 — Capacità di risposta agli incidenti e tracciamento.
+  </p>
+
+  <p>
+    Non basta che la piattaforma registri gli evento. Devi poter esportare e analizzare gli audit log per conformarsi all'obbligo di "relazione di incidente" entro 30 giorni dalla scoperta. Se la piattaforma non fornisce log dettagliati, non puoi provare che hai risposto all'incidente in conformità a NIS2.
+  </p>
+
+  <p>
+    <strong>Teams:</strong> Integrato con Microsoft 365 Audit Logs. È possibile accedere a un registro dettagliato di accessi, inviti, eliminazioni di canali, modifiche alle autorizzazioni. I log possono essere esportati e integrati in uno strumento SIEM per l'analisi.
+  </p>
+
+  <p>
+    <strong>Slack:</strong> Fornisce audit log tramite la Admin Console; è disponibile l'accesso alle API di log. Tuttavia, la granularità è inferiore rispetto a Teams — non puoi vedere tutti i dettagli delle azioni all'interno dei messaggi (ad es. chi ha modificato un messaggio, quali allegati sono stati scaricati).
+  </p>
+
+  <p>
+    <strong>Implicazione NIS2:</strong> Se subisci un incidente, devi essere in grado di dire all'ACN "ecco il log che prova che l'abbiamo scoperto il giorno X, notificato il giorno Y, e contenuto il giorno Z". Teams fornisce questa prova più facilmente. Con Slack, devi avere un sistema di logging aggiuntivo.
+  </p>
+
+  <h3>5. Integrazione con lo stack di sicurezza</h3>
+
+  <p>
+    <strong>Requisito NIS2:</strong> Articolo 21.2 — Governance della sicurezza IT.
+  </p>
+
+  <p>
+    La piattaforma di comunicazione non vive in isolamento. Devi integrarla con i tuoi strumenti di:
+  </p>
+
+  <ul>
+    <li><strong>SIEM (monitoraggio degli incidenti)</strong> — per rilevare comportamenti anomali</li>
+    <li><strong>DLP (Data Loss Prevention)</strong> — per impedire l'esfiltrazione di dati sensibili</li>
+    <li><strong>MDM (Mobile Device Management)</strong> — per controllare i dispositivi che accedono</li>
+    <li><strong>Directory centrale</strong> — per sincronizzare utenti e controllare i privilegi</li>
+  </ul>
+
+  <p>
+    <strong>Teams:</strong> Integrazione nativa con Azure Active Directory e Microsoft Defender. Se la tua organizzazione usa l'ecosistema Microsoft 365, la connettività è fluida. DLP, SIEM e MFA si integrano senza saldature.
+  </p>
+
+  <p>
+    <strong>Slack:</strong> Integrazione con Okta, Azure AD e altre directory, ma non nativa. DLP e SIEM richiedono integrazioni API di terze parti. Il monitoraggio della sicurezza è meno integrato.
+  </p>
+
+  <p>
+    <strong>Implicazione NIS2:</strong> Un'integrazione di sicurezza debole significa che hai "punti ciechi" nella tua visibilità della sicurezza. Se non sai cosa sta succedendo nella piattaforma di comunicazione in tempo reale, non puoi rispondere a un incidente in modo tempestivo. Teams offre una visibilità migliore se usi l'ecosistema Microsoft; Slack richiede costruire il tuo stack manualmente.
+  </p>
+
+  <div class="box-info">
+    <strong>Nota importante:</strong> Nessuna delle due piattaforme è "vietata" da NIS2. Entrambe possono essere usate in conformità se implementi i controlli supplementari appropriati. La domanda non è "quale scegliere?" ma "quale scegliere e quali controlli aggiuntivi devo implementare intorno ad essa?".
+  </div>
+
+  <h2>Confronto diretto: tabella dei criteri NIS2</h2>
+
+  <table class="comp-table">
+    <thead>
+      <tr>
+        <th>Criterio NIS2</th>
+        <th>Teams</th>
+        <th>Slack</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Crittografia end-to-end</strong></td>
+        <td>Solo chat dirette</td>
+        <td>Nessuna</td>
+      </tr>
+      <tr>
+        <td><strong>Crittografia a riposo</strong></td>
+        <td class="strong-yes">Sì</td>
+        <td class="strong-yes">Sì</td>
+      </tr>
+      <tr>
+        <td><strong>Residenza dati EU</strong></td>
+        <td class="partial">Opzionale (EU Data Boundary)</td>
+        <td class="weak-no">No (globale)</td>
+      </tr>
+      <tr>
+        <td><strong>MFA per ospiti</strong></td>
+        <td class="strong-yes">Sì</td>
+        <td class="weak-no">No</td>
+      </tr>
+      <tr>
+        <td><strong>Controllo granulare accesso ospiti</strong></td>
+        <td class="strong-yes">Sì (per canale, per team)</td>
+        <td class="partial">Limitato (per canale)</td>
+      </tr>
+      <tr>
+        <td><strong>Audit logging dettagliato</strong></td>
+        <td class="strong-yes">Sì (integrato)</td>
+        <td class="partial">Sì (API, meno granulare)</td>
+      </tr>

@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-BKF3QH9K01"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag("js", new Date());
+    gtag("config", "G-BKF3QH9K01");
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Microsoft Power BI vs Tableau: Säkerhetsrapportering och NIS2-styrelserapporter | NIS2Klar</title>
+  <meta name="description" content="Jämför Power BI och Tableau för NIS2-säkerhetsrapportering till styrelse. Integrationer med SIEM, GRC och löpande KPI-övervakning av cybersäkerhetsstatus.">
+  <meta property="og:title" content="Microsoft Power BI vs Tableau: Säkerhetsrapportering och NIS2-styrelserapporter">
+  <meta property="og:description" content="Jämför Power BI och Tableau för NIS2-säkerhetsrapportering till styrelse. Integrationer med SIEM, GRC och löpande KPI-övervakning av cybersäkerhetsstatus.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #141416;
+      --card: #1c1c1f;
+      --yellow: #f5c518;
+      --white: #f0f0f0;
+      --muted: #888;
+      --red: #C61212;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: var(--bg); color: var(--white); font-family: 'Barlow', sans-serif; font-size: 19px; line-height: 1.8; }
+
+    /* Nav */
+    nav { display: flex; justify-content: space-between; align-items: center; padding: 20px 40px; border-bottom: 1px solid rgba(255,255,255,0.07); max-width: 900px; margin: 0 auto; }
+    .nav-logo { font-family: 'Poppins', sans-serif; font-weight: 900; font-size: 20px; color: var(--yellow); text-decoration: none; }
+    .nav-logo span { color: var(--white); }
+    .nav-back { color: var(--muted); text-decoration: none; font-size: 15px; }
+    .nav-back:hover { color: var(--white); }
+    .nav-cta { background: var(--yellow); color: #000; padding: 8px 18px; border-radius: 4px; text-decoration: none; font-weight: 700; font-size: 14px; font-family: 'Poppins', sans-serif; }
+
+    /* Article */
+    .article-wrap { max-width: 760px; margin: 0 auto; padding: 60px 40px; }
+    .article-category { font-size: 13px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 16px; }
+    h1 { font-family: 'Poppins', sans-serif; font-size: clamp(30px, 4vw, 44px); font-weight: 900; line-height: 1.2; margin-bottom: 24px; }
+    .article-meta { font-size: 15px; color: var(--muted); margin-bottom: 48px; padding-bottom: 24px; border-bottom: 1px solid rgba(255,255,255,0.07); }
+    h2 { font-family: 'Poppins', sans-serif; font-size: 26px; font-weight: 700; margin: 48px 0 16px; color: var(--white); }
+    h3 { font-family: 'Poppins', sans-serif; font-size: 20px; font-weight: 600; margin: 32px 0 12px; color: var(--yellow); }
+    p { margin-bottom: 22px; }
+    strong { color: var(--white); font-weight: 700; }
+    .highlight { color: var(--yellow); font-weight: 700; }
+    .danger { color: #ff6b6b; font-weight: 700; }
+    ul, ol { margin: 16px 0 24px 24px; }
+    li { margin-bottom: 12px; font-size: 19px; }
+
+    /* Callout boxes */
+    .box-warning { background: rgba(197,17,17,0.12); border-left: 4px solid var(--red); padding: 20px 24px; margin: 32px 0; border-radius: 0 4px 4px 0; }
+    .box-info { background: rgba(245,197,24,0.08); border-left: 4px solid var(--yellow); padding: 20px 24px; margin: 32px 0; border-radius: 0 4px 4px 0; }
+    .box-case { background: var(--card); border: 1px solid rgba(255,255,255,0.08); padding: 28px; margin: 40px 0; border-radius: 4px; }
+    .box-case .case-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 12px; }
+    blockquote { border-left: 3px solid var(--yellow); padding: 12px 20px; margin: 24px 0; font-style: italic; color: #ccc; }
+
+    /* CTA */
+    .cta-section { background: var(--card); border: 1px solid rgba(245,197,24,0.2); border-radius: 4px; padding: 48px 40px; margin: 64px 0 40px; text-align: center; }
+    .cta-section h2 { margin-top: 0; font-size: 26px; }
+    .cta-section p { color: #aaa; max-width: 500px; margin: 0 auto 28px; }
+    .btn-primary { display: inline-block; background: var(--yellow); color: #000; font-family: 'Poppins', sans-serif; font-weight: 800; font-size: 16px; padding: 16px 36px; border-radius: 4px; text-decoration: none; }
+    .btn-primary:hover { background: #e0b010; }
+    .cta-fine { font-size: 13px; color: var(--muted); margin-top: 16px; }
+
+    /* FAQ */
+    .faq-item { border-bottom: 1px solid rgba(255,255,255,0.07); padding: 20px 0; }
+    .faq-q { font-family: 'Poppins', sans-serif; font-weight: 600; margin-bottom: 10px; }
+    .faq-a { color: #bbb; }
+
+    /* Comparison table */
+    .comparison-table { width: 100%; border-collapse: collapse; margin: 24px 0; }
+    .comparison-table th { background: rgba(245,197,24,0.1); color: var(--yellow); font-family: 'Poppins', sans-serif; font-size: 13px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 12px 16px; text-align: left; border-bottom: 1px solid rgba(245,197,24,0.2); }
+    .comparison-table td { padding: 14px 16px; border-bottom: 1px solid rgba(255,255,255,0.05); font-size: 15px; }
+    .comparison-table tr:last-child td { border-bottom: none; }
+    .comparison-table .feature { color: #ddd; font-weight: 600; }
+    .comparison-table .yes { color: #4ade80; }
+    .comparison-table .partial { color: var(--yellow); }
+    .comparison-table .no { color: #ff6b6b; }
+
+    /* Summary + Key Takeaway */
+    .box-summary { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; padding: 24px 28px; margin: 0 0 32px; }
+    .summary-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-bottom: 14px; }
+    .box-summary ul { margin: 0; padding-left: 20px; }
+    .box-summary li { margin-bottom: 8px; font-size: 17px; color: #ccc; }
+    .box-takeaway { background: rgba(245,197,24,0.08); border-left: 4px solid var(--yellow); padding: 20px 24px; margin: 0 0 40px; border-radius: 0 4px 4px 0; }
+    .takeaway-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 10px; }
+    .box-takeaway p { margin: 0; font-size: 18px; font-weight: 600; color: var(--white); line-height: 1.6; }
+
+    /* Footer */
+    footer { border-top: 1px solid rgba(255,255,255,0.07); padding: 32px 40px; text-align: center; font-size: 13px; color: var(--muted); max-width: 900px; margin: 0 auto; }
+    footer a { color: var(--muted); }
+
+    @media (max-width: 600px) {
+      nav, .article-wrap, footer { padding: 20px; }
+      .cta-section { padding: 32px 20px; }
+      .comparison-table { font-size: 14px; }
+      .comparison-table th, .comparison-table td { padding: 10px 10px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="https://nis2klar.se/">NIS2<span>Klar</span></a>
+  <a class="nav-back" href="https://nis2klar.se/artiklar.html">← Alla artiklar</a>
+  <a class="nav-cta" href="https://nis2klar.se/#boka">Boka samtal →</a>
+</nav>
+
+<article class="article-wrap">
+  <div class="article-category">Rapportering &amp; Teknik</div>
+  <h1>Microsoft Power BI vs Tableau: Säkerhetsrapportering och NIS2-styrelserapporter</h1>
+  <div class="article-meta">Uppdaterad 19 april 2026 · Lästid: ca 9 minuter · Målgrupp: VD, styrelse, CFO</div>
+
+  <!-- SUMMARY -->
+  <div class="box-summary">
+    <div class="summary-label">Sammanfattning</div>
+    <ul>
+      <li>Styrelsen behöver löpande, begriplig säkerhetsrapportering för att uppfylla sitt ansvar enligt NIS2 Artikel 20.</li>
+      <li>Power BI integreras native med Microsofts säkerhetsekosystem (Sentinel, Defender, Secure Score), Tableau kräver mer arbete men är branschagnostisk.</li>
+      <li>Rätt val beror på din befintliga IT-stack, budget för dataintegration och behovet avSpeed to insight.</li>
+      <li>Båda verktyg kan leverera de KPI:er och dashboards styrelsen behöver för att dokumentera sitt ansvar enligt Artikel 20.</li>
+    </ul>
+  </div>
+
+  <!-- KEY TAKEAWAY -->
+  <div class="box-takeaway">
+    <div class="takeaway-label">Viktigaste slutsatsen</div>
+    <p>En styrelse som inte kan läsa en säkerhetsdashboard varje vecka kan inte dokumentera sitt ansvar enligt NIS2. Valet mellan Power BI och Tableau är ett val om hur snabbt du vill komma dit.</p>
+  </div>
+
+  <!-- HOOK -->
+  <p>
+    NIS2 Artikel 20 är tydlig: <strong>ledningen måste aktivt godkänna säkerhetsåtgärder och övervaka deras genomförande</strong>.
+    Det räcker inte att IT-avdelningen hanterar säkerheten. Styrelsen måste kunna läsa aktuell data om organisationens säkerhetsstatus — vecka för vecka, månad för månad.
+  </p>
+
+  <p>
+    Det är där visualisering kommer in. Ett Excel-ark med gamla siffror är inte tillräckligt. En interaktiv dashboard med realtidsdata från säkerhetsverktyg, incidenhanteringssystem och GRC-plattformar är det som krävs.
+  </p>
+
+  <p>
+    Två verktyg dominerar denna marknaden: <strong>Microsoft Power BI</strong> och <strong>Tableau</strong>. Båda kan leverera det styrelsen behöver, men de är väsensskilda på ett kritiskt sätt.
+  </p>
+
+  <div class="box-warning">
+    <strong>Om ni inte har en säkerhetsdashboard idag:</strong> Denna fråga är inte nice-to-have. Den är en del av att dokumentera styrelseansvar enligt Artikel 20. Tidsfritt att börja — kostnadlig att börja för sent.
+  </div>
+
+  <h2>Vad behöver styrelsen se på en säkerhetsdashboard?</h2>
+
+  <p>
+    Innan vi jämför verktygen måste vi förstå vad som faktiskt är relevant för styrelseledamöter. IT-tekniker och säkerhetschefer kan läsa 50 grafer på en gång. Styrelseledamöter kan inte och ska inte göra det.
+  </p>
+
+  <p>
+    En styrelseadekvatdashboard för NIS2 fokuserar på tre saker:
+  </p>
+
+  <h3>1. Säkerhetsstatus per domän (Artikel 21)</h3>
+  <p>
+    NIS2 Artikel 21 listar tio obligatoriska säkerhetsdomäner:
+    riskhantering, incidenthantering, kontinuitetsplanering, leverantörssäkerhet, tillgångskontroll, kryptering, autentisering, loggning och övervakning, personalhantering och fysisk säkerhet.
+  </p>
+
+  <p>
+    En dashboard visar:
+  </p>
+
+  <ul>
+    <li><strong>Status per domän</strong> (på en skala 0–100, motsvarar ofta ett "Maturity Level")</li>
+    <li><strong>Trend</strong> — förbättring eller försämring sedan förra rapportcykeln</li>
+    <li><strong>Öppna brister</strong> — vilka kontroller saknas eller är svaga</li>
+  </ul>
+
+  <h3>2. Incidenter och allvarlighetsgrad</h3>
+  <p>
+    Styrelsens fokus är inte tekniska detaljer om vart intrånget kom in. Det är:
+  </p>
+
+  <ul>
+    <li>Hur många allvarliga incidenter denna månad?</li>
+    <li>Vilka system påverkades?</li>
+    <li>Hur snabbt har vi (eller kan vi) rapporterat till MSB enligt 72-timmarregeln?</li>
+    <li>Är incidenttrenden uppåt eller nedåt?</li>
+  </ul>
+
+  <h3>3. Åtgärdsstatus</h3>
+  <p>
+    Styrelsen behöver se vilka åtgärder som är planerade för att hantera brister — och var de ligger i implementeringen.
+    Utan detta kan tillsynsmyndigheten inte se att styrelsen faktiskt övervakar säkerhetens utveckling.
+  </p>
+
+  <p>
+    En bra säkerhetsdashboard är också utformad så att <strong>samma rapport kan låsas ned och arkiveras för dokumentation av styrelsens ansvar</strong>.
+    Det är inte en teknisk logg — det är ett bevisdokument.
+  </p>
+
+  <h2>Power BI: den inbyggda vägen</h2>
+
+  <p>
+    Microsoft Power BI är en business intelligence-plattform som är utformad för att integrera djupt med Microsofts ekosystem.
+    För organisationer som redan använder Microsoft 365 och säkerhetsverktyg från Microsofts stack är Power BI ofta snabbaste vägen till en styrelseadekvatdashboard.
+  </p>
+
+  <h3>Fördelar med Power BI för NIS2-rapportering</h3>
+
+  <ul>
+    <li><strong>Native integrationer:</strong> Power BI kopplas direkt till Microsoft Sentinel (SIEM), Microsoft Defender Secure Score, Compliance Manager och Microsoft Purview utan extrakonfiguration eller API-jobb</li>
+    <li><strong>Real-time-data:</strong> Dashboards uppdateras automatiskt från källsystemen — ingen manuell export eller datajobb</li>
+    <li><strong>Enkel för icke-tekniker:</strong> Styrelseledamöter kan filtrera och klicka in på detaljer utan IT-stöd</li>
+    <li><strong>Kostnadseffektiv:</strong> Ingår ofta i Microsoft 365 Business Premium för små till medelstora organisationer</li>
+    <li><strong>Samma datasäkerhet som övriga Microsoft-miljö:</strong> Ingen annan infrastruktur att säkra</li>
+    <li><strong>Revisionsspår:</strong> Power BI loggar all åtkomst för att visa vem som läste rapporten och när — relevant för dokumentation av styrelseansvaret</li>
+  </ul>
+
+  <h3>Begränsningar med Power BI</h3>
+
+  <ul>
+    <li><strong>Microsofts ekosystem krävs:</strong> Om ni använder Splunk, Okta, CrowdStrike eller andra icke-Microsoft-verktyg kräver integrationen API-anslutningar och utvecklingsarbete</li>
+    <li><strong>GRC-integrationer är svagare:</strong> Koppling till plattformar som ServiceNow, Archer eller AuditBoard kräver custom connectors</li>
+    <li><strong>Design kan bli komplex:</strong> Utan rätt mallar och bästa praxis kan Power BI-rapporter bli röriga och oprofessionella</li>
+  </ul>
+
+  <h2>Tableau: den flexibla vägen</h2>
+
+  <p>
+    Tableau är en ren visualiseringsplattform utan preferens för någon säkerhersstack. Det betyder att Tableau kan integreras med nästan vilken källa som helst — men också att du är ansvarig för att bygga integrationerna.
+  </p>
+
+  <h3>Fördelar med Tableau för NIS2-rapportering</h3>
+
+  <ul>
+    <li><strong>Branschagnostisk:</strong> Fungerar lika bra med Microsoft Sentinel, Splunk, Sumo Logic eller vilken SIEM som helst via REST API eller databasdrivers</li>
+    <li><strong>Kraftfull design:</strong> Tableau är känt för att skapa visuellt imponerande, interaktiva dashboards — professionellt utseende för stakeholder-rapportering</li>
+    <li><strong>Ingen lock-in:</strong> Din data är din — Tableau hämtar bara från källsystemen, den lagrar inte något</li>
+    <li><strong>Stor community:</strong> Det finns Tableau-templates och best practices för säkerhetsrapportering redan på marknaden</li>
+    <li><strong>Mobilfriendly:</strong> Styrelseledamöter kan läsa rapporter på iPad eller iPhone utan anpassning</li>
+  </ul>
+
+  <h3>Begränsningar med Tableau</h3>
+
+  <ul>
+    <li><strong>Implementering kräver specialister:</strong> Du behöver en Tableau-expert för att bygga datakonnektörer och rapporter — eller en konsult</li>
+    <li><strong>Kostnad för integrationer:</strong> Varje källsystem du vill ansluta kräver möjligen custom API-kod eller en datapipeline (Talend, Informatica, osv.)</li>
+    <li><strong>Driftkostnad:</strong> Tableau Server kräver egen servering (eller Tableau Cloud som SaaS). Båda kräver licensering per användare</li>
+    <li><strong>Inlärningskurva:</strong> Tableau är kraftfullt men inte intuitivt — rapportörer behöver utbildning</li>
+  </ul>
+
+  <h2>Direkt jämförelse: Power BI vs Tableau för NIS2</h2>
+
+  <table class="comparison-table">
+    <thead>
+      <tr>
+        <th>Funktion</th>
+        <th>Power BI</th>
+        <th>Tableau</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="feature">Integration med Microsoft Sentinel</td>
+        <td class="yes">Native ✓</td>
+        <td class="partial">API-baserad</td>
+      </tr>
+      <tr>
+        <td class="feature">Integration med Secure Score</td>
+        <td class="yes">Native ✓</td>
+        <td class="partial">API-baserad</td>
+      </tr>
+      <tr>
+        <td class="feature">Integration med Splunk/Sumo/andra SIEM</td>
+        <td class="partial">Kräver custom connector</td>
+        <td class="yes">Native REST API</td>
+      </tr>
+      <tr>
+        <td class="feature">Integration med ServiceNow/Archer/GRC</td>
+        <td class="partial">Möjligt, krävs arbete</td>
+        <td class="yes">Ofta enklare</td>
+      </tr>
+      <tr>
+        <td class="feature">Kostnad (små org, < 50 användare)</td>
+        <td class="yes">Låg (10–30 EUR/månad)</td>
+        <td class="partial">Medel (100–300 EUR/månad)</td>
+      </tr>
+      <tr>
+        <td class="feature">Tid till första rapport</td>
+        <td class="yes">2–4 veckor</td>
+        <td class="partial">4–8 veckor</td>
+      </tr>
+      <tr>
+        <td class="feature">Utseende/professionalism</td>
+        <td class="partial">Bra med templates</td>
+        <td class="yes">Utmärkt</td>
+      </tr>
+      <tr>
+        <td class="feature">Real-time-uppdateringar</td>
+        <td class="yes">Ja (minuter)</td>
+        <td class="yes">Ja (minutar till timmar)</td>
+      </tr>
+      <tr>
+        <td class="feature">Revisionsspår för styrelseanvändning</td>
+        <td class="yes">Inbyggt</td>
+        <td class="partial">Möjligt via konfiguration</td>
+      </tr>
+      <tr>
+        <td class="feature">Mjölk-och-mjöl deployment</td>
+        <td class="yes">Cloud (Microsoft)</td>
+        <td class="no">Server eller Cloud (Tableau Cloud)</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>Käll-integration: hur säkerhetsdata flödar in i dashboarden</h2>
+
+  <p>
+    En styrelseadekvatdashboard för NIS2 behöver data från flera system. Här är den typiska "stacken":
+  </p>
+
+  <ul>
+    <li><strong>SIEM</strong> (Microsoft Sentinel, Splunk, Sumo Logic) — loggdata, hotdetektering, incidentövervakning</li>
+    <li><strong>GRC-plattform</strong> (ServiceNow, Archer, AuditBoard) — riskbedömningar, kontrollstatus, åtgärdsspårning</li>
+    <li><strong>Säkerhetsscoringsystem</strong> (Microsoft Secure Score, Tenable io) — övergripande säkerhetsposition</li>
+    <li><strong>Incidenthanteringssystem</strong> (ofta samma som SIEM eller separat Jira, Azure DevOps)</li>
+    <li><strong>Tillgångsinventering</strong> (Lansweeper, Qualys, eller Microsoft Intune för endpoints)</li>
+  </ul>
+
+  <p>
+    <strong>Med Power BI:</strong> Om du använder Microsoft Sentinel + Secure Score + Compliance Manager kan du ha en fungerande dashboard på två veckor utan extra integrationsjobb.
+  </p>
+
+  <p>
+    <strong>Med Tableau:</strong> Du behöver bygga datakonnektörer för varje källa. Det kan ta 4–8 veckor, men resultatet är ofta mer flexibelt och skalbart.
+  </p>
+
+  <div class="box-case">
+    <div class="case-label">Fallstudie</div>
+    <p>
+      <strong>Scenario: Energibolag, 300 anställda, väsentlig entitet under NIS2.</strong>
+    </p>
+    <p>
+      Befintlig stack: Microsoft 365 + Microsoft Sentinel för SIEM. GRC-hantering ligger i Excel och Sharepoint (kaotisk). 
+      Styrelsen ber CFO att sätta upp en löpande säkerhetsdashboard för styrelsemöten varannan vecka.
+    </p>
+    <p>
+      <strong>Val: Power BI.</strong>
+    </p>
+    <p>
+      Varför? Redan på Microsoft-stack. Sentinel-datan kan ansluts native. GRC-datan (som ligger i Excel idag) kan importeras i Power BI och länkas till Sentinel. 
+      Implementeringen tar två veckor med intern IT-support + en extern Power BI-konsult.
+      Kostnad: ~30 000 SEK i konsultarvoden. Årlig licenskostnad: ~5 000 SEK (ingår i Microsoft 365).
+    </p>
+    <p>
+      <strong>Resultat:</strong> Dashboard på skärmen vid styrelsemöte tre veckor senare. 
+      Styrelsen kan nu dokumentera sitt ansvar enligt Artikel 20 med ett bevisdokument från varje möte.
+      MSB finner vid granskning ett strukturerat och löpande rapporteringssystem — detta stärker organisationens försvar och minskar risken för höga böter.
+    </p>
+  </div>
+
+  <h2>Implementeringsfaser: från idé till styrelsedobt</h2>
+
+  <p>
+    Oavsett Power BI eller Tableau bör implementeringen följa denna väg:
+  </p>
+
+  <h3>Fas 1: Datakällidentifikation (vecka 1–2)</h3>
+  <p>
+    <strong>Vad:</strong> Vilka system ska rapporteras från? SIEM, GRC, incidenthantering, säkerhetsscoring?
+    <br/>
+    <strong>Vem:</strong> CISO eller säkerhetschef identifierar källorna. IT-avdelningen verifierar åtkomsttillståndet.
+  </p>
+
+  <h3>Fas 2: KPI-definition (vecka 2–3)</h3>
+  <p>
+    <strong>Vad:</strong> Vilka mätvärden är relevanta för styrelsen? 
+    Exempel: Procentuell täckning av säkerhetskontroller per Artikel 21-domän, antal öppna incidenter per allvarlighetsgrad, tid till rapportering enligt Artikel 23, åtgärdsgenomförandeprocent.
+    <br/>
+    <strong>Vem:</strong> CISO, CFO och styrelseanvändare tillsammans. Snabbt och smalt — färre än 10 KPI:er.
+  </p>
+
+  <h3>Fas 3: Teknik och design (vecka 3–6)</h3>
+  <p>
+    <strong>Vad:</strong> Datakonnektörer byggs, dashboard utformas, revisionsspår konfigureras.
+    <br/>
+    <strong>Vem:</strong> IT-avdelning + Power BI/Tableau-konsult.
+  </p>
+
+  <h3>Fas 4: Test och pilotrapport (vecka 6–8)</h3>
+  <p>
+    <strong>Vad:</strong> Första rapporten produceras och granskas av CISO och CFO. Finns all data? Är det läsbart för styrelseledamöter?
+    <br/>
+    <strong>Vem:</strong> CISO, CFO, IT, konsult.
+  </p>
+
+  <h3>Fas 5: Styrelsepresentation och arkivering (vecka 8+)</h3>
+  <p>
+    <strong>Vad:</strong> Rapport presenteras vid styrelsemöte. Granskas, godkänns och arkiveras som bevis på styrelsens övervakning enligt Artikel 20.
+    <br/>
+    <strong>Vem:</strong> Styrelsen. CFO ansvarar för arkivering.
+  </p>
+
+  <div class="box-info">
+    <strong>Viktigt:</strong> Arkiveringen är inte frivillig.

@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-BKF3QH9K01"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag("js", new Date());
+    gtag("config", "G-BKF3QH9K01");
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Microsoft Defender vs CrowdStrike: Endpoint Security for NIS2 | NIS2Klar</title>
+  <meta name="description" content="Compare Microsoft Defender and CrowdStrike for NIS2 compliance. EDR/XDR detection, incident response integration, audit reporting, and cost — for CEOs choosing endpoint security.">
+  <meta property="og:title" content="Microsoft Defender vs CrowdStrike: Endpoint Security for NIS2">
+  <meta property="og:description" content="EDR/XDR comparison for NIS2 compliance: detection, incident response, audit reporting, costs. Which tool protects your organisation under Irish law?">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #141416;
+      --card: #1c1c1f;
+      --yellow: #f5c518;
+      --white: #f0f0f0;
+      --muted: #888;
+      --red: #C61212;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: var(--bg); color: var(--white); font-family: 'Barlow', sans-serif; font-size: 19px; line-height: 1.8; }
+
+    /* Nav */
+    nav { display: flex; justify-content: space-between; align-items: center; padding: 20px 40px; border-bottom: 1px solid rgba(255,255,255,0.07); max-width: 1200px; margin: 0 auto; }
+    .nav-logo { font-family: 'Poppins', sans-serif; font-weight: 900; font-size: 20px; color: var(--yellow); text-decoration: none; }
+    .nav-logo span { color: var(--white); }
+    .nav-back { color: var(--muted); text-decoration: none; font-size: 15px; }
+    .nav-back:hover { color: var(--white); }
+    .lang-switcher { display: flex; gap: 8px; align-items: center; font-size: 13px; font-family: 'Poppins', sans-serif; }
+    .lang-switcher a { color: #888; text-decoration: none; font-weight: 600; padding: 4px 8px; border-radius: 3px; }
+    .lang-switcher a:hover { background: rgba(245,197,24,0.1); color: var(--yellow); }
+    .nav-cta { background: var(--yellow); color: #000; padding: 8px 18px; border-radius: 4px; text-decoration: none; font-weight: 700; font-size: 14px; font-family: 'Poppins', sans-serif; }
+
+    /* Article */
+    .article-wrap { max-width: 760px; margin: 0 auto; padding: 60px 40px; }
+    .article-category { font-size: 13px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 16px; }
+    h1 { font-family: 'Poppins', sans-serif; font-size: clamp(30px, 4vw, 44px); font-weight: 900; line-height: 1.2; margin-bottom: 24px; }
+    .article-meta { font-size: 15px; color: var(--muted); margin-bottom: 48px; padding-bottom: 24px; border-bottom: 1px solid rgba(255,255,255,0.07); }
+    h2 { font-family: 'Poppins', sans-serif; font-size: 26px; font-weight: 700; margin: 48px 0 16px; color: var(--white); }
+    h3 { font-family: 'Poppins', sans-serif; font-size: 20px; font-weight: 600; margin: 32px 0 12px; color: var(--yellow); }
+    p { margin-bottom: 22px; }
+    strong { color: var(--white); font-weight: 700; }
+    .highlight { color: var(--yellow); font-weight: 700; }
+    .danger { color: #ff6b6b; font-weight: 700; }
+    ul, ol { margin: 16px 0 24px 24px; }
+    li { margin-bottom: 12px; font-size: 19px; }
+
+    /* Callout boxes */
+    .box-warning { background: rgba(197,17,17,0.12); border-left: 4px solid var(--red); padding: 20px 24px; margin: 32px 0; border-radius: 0 4px 4px 0; }
+    .box-info { background: rgba(245,197,24,0.08); border-left: 4px solid var(--yellow); padding: 20px 24px; margin: 32px 0; border-radius: 0 4px 4px 0; }
+    .box-case { background: var(--card); border: 1px solid rgba(255,255,255,0.08); padding: 28px; margin: 40px 0; border-radius: 4px; }
+    .box-case .case-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 12px; }
+    blockquote { border-left: 3px solid var(--yellow); padding: 12px 20px; margin: 24px 0; font-style: italic; color: #ccc; }
+
+    /* CTA */
+    .cta-section { background: var(--card); border: 1px solid rgba(245,197,24,0.2); border-radius: 4px; padding: 48px 40px; margin: 64px 0 40px; text-align: center; }
+    .cta-section h2 { margin-top: 0; font-size: 26px; }
+    .cta-section p { color: #aaa; max-width: 500px; margin: 0 auto 28px; }
+    .btn-primary { display: inline-block; background: var(--yellow); color: #000; font-family: 'Poppins', sans-serif; font-weight: 800; font-size: 16px; padding: 16px 36px; border-radius: 4px; text-decoration: none; }
+    .btn-primary:hover { background: #e0b010; }
+    .cta-fine { font-size: 13px; color: var(--muted); margin-top: 16px; }
+
+    /* FAQ */
+    .faq-item { border-bottom: 1px solid rgba(255,255,255,0.07); padding: 20px 0; }
+    .faq-q { font-family: 'Poppins', sans-serif; font-weight: 600; margin-bottom: 10px; }
+    .faq-a { color: #bbb; }
+
+    /* Comparison table */
+    .comparison-table { width: 100%; border-collapse: collapse; margin: 24px 0; }
+    .comparison-table th { background: rgba(245,197,24,0.1); color: var(--yellow); font-family: 'Poppins', sans-serif; font-size: 13px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 12px 16px; text-align: left; border-bottom: 1px solid rgba(245,197,24,0.2); }
+    .comparison-table td { padding: 14px 16px; border-bottom: 1px solid rgba(255,255,255,0.05); font-size: 15px; }
+    .comparison-table tr:last-child td { border-bottom: none; }
+    .comparison-table .badge { display: inline-block; padding: 4px 10px; border-radius: 3px; font-size: 12px; font-weight: 600; background: rgba(245,197,24,0.15); color: var(--yellow); }
+    .comparison-table .badge.strong { background: rgba(74,222,128,0.15); color: #4ade80; }
+
+    /* Summary + Key Takeaway */
+    .box-summary { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; padding: 24px 28px; margin: 0 0 32px; }
+    .summary-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-bottom: 14px; }
+    .box-summary ul { margin: 0; padding-left: 20px; }
+    .box-summary li { margin-bottom: 8px; font-size: 17px; color: #ccc; }
+    .box-takeaway { background: rgba(245,197,24,0.08); border-left: 4px solid var(--yellow); padding: 20px 24px; margin: 0 0 40px; border-radius: 0 4px 4px 0; }
+    .takeaway-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 10px; }
+    .box-takeaway p { margin: 0; font-size: 18px; font-weight: 600; color: var(--white); line-height: 1.6; }
+
+    /* Related articles */
+    .related-articles { margin: 2.5rem 0 2rem; padding: 1.5rem; background: #1a1a2e; border-left: 4px solid #f0a500; border-radius: 4px; }
+    .related-articles p { margin: 0 0 1rem; font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #f0a500; }
+    .related-articles ul { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+    .related-articles li { margin: 0; }
+    .related-articles a { color: #e0e0e0; text-decoration: none; font-size: 0.95rem; }
+    .related-articles a:hover { color: var(--yellow); }
+    .related-articles .footer-note { margin: 1.25rem 0 0; font-size: 0.85rem; color: #aaa; }
+    .related-articles .footer-note a { color: #f0a500; }
+
+    /* Footer */
+    footer { border-top: 1px solid rgba(255,255,255,0.07); padding: 32px 40px; text-align: center; font-size: 13px; color: var(--muted); max-width: 900px; margin: 0 auto; }
+    footer a { color: var(--muted); text-decoration: none; }
+    footer a:hover { color: var(--white); }
+    footer p { margin: 0; }
+
+    @media (max-width: 600px) {
+      nav, .article-wrap, footer { padding: 20px; }
+      .cta-section { padding: 32px 20px; }
+      .comparison-table { font-size: 14px; }
+      .comparison-table th, .comparison-table td { padding: 10px 10px; }
+      .lang-switcher { flex-wrap: wrap; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="https://nis2klar.se/en/">NIS2<span>Klar</span></a>
+  <a class="nav-back" href="https://nis2klar.se/en/articles.html">← All Articles</a>
+  <div class="lang-switcher">
+    <a href="https://nis2klar.se/artiklar.html" title="Svenska">SV</a>
+    <a href="https://nis2klar.se/en/articles.html" style="color:#f5c518;background:rgba(245,197,24,0.1);" title="English">EN</a>
+    <a href="https://nis2klar.se/da/artikler.html" title="Dansk">DA</a>
+    <a href="https://nis2klar.se/no/artikler.html" title="Norsk">NO</a>
+    <a href="https://nis2klar.se/it/articoli.html" title="Italiano">IT</a>
+  </div>
+  <a class="nav-cta" href="https://nis2klar.se/en/#book">Book call →</a>
+</nav>
+
+<article class="article-wrap">
+  <div class="article-category">Endpoint Security &amp; Compliance</div>
+  <h1>Microsoft Defender vs CrowdStrike: Endpoint Security for NIS2</h1>
+  <div class="article-meta">Updated 19 April 2026 · Read time: ~8 minutes · For: CEOs and boards</div>
+
+  <!-- SUMMARY -->
+  <div class="box-summary">
+    <div class="summary-label">Summary</div>
+    <ul>
+      <li>Two endpoint detection and response (EDR) tools dominate the Irish market: Microsoft Defender and CrowdStrike.</li>
+      <li>Under NIS2 and the Irish Regulations (S.I. No. 322 of 2024), detection capabilities and audit reporting are non-negotiable.</li>
+      <li>The choice between them depends on your organisation's size, existing infrastructure, budget, and incident response maturity.</li>
+      <li>Personal liability under Regulation 32 means your choice of EDR tool must be demonstrably fit for purpose — and documented by the board.</li>
+      <li>Both tools satisfy NIS2 Article 21 (technical measures), but they differ in cost, integration ease, and audit trail strength.</li>
+    </ul>
+  </div>
+
+  <!-- KEY TAKEAWAY -->
+  <div class="box-takeaway">
+    <div class="takeaway-label">The Bottom Line</div>
+    <p>Choosing the right EDR tool is not a technical decision — it is a board-level risk decision. Your choice must align with your organisation's incident response capability, your budget ceiling, and your ability to defend that choice to NCSC Ireland. Getting this wrong can cost up to €10 million in fines, plus personal liability for board members.</p>
+  </div>
+
+  <!-- HOOK -->
+  <p>
+    You have two quotes on your desk. One says "Microsoft Defender." The other says "CrowdStrike."
+    Your IT director seems confident either could work. The prices are very different.
+    But what you really need to know is this: <strong>under NIS2, the wrong choice here could cost your organisation up to €10 million in fines</strong>, and you as a board member could face personal liability under Regulation 32 of the Irish NIS2 Regulations.
+  </p>
+
+  <p>
+    This is not a technical comparison. This is a board-level risk decision. Let us walk you through what matters.
+  </p>
+
+  <h2>Why EDR matters under NIS2</h2>
+
+  <p>
+    The NIS2 Directive (transposed into Irish law as S.I. No. 322 of 2024) requires that essential and important entities implement <strong>technical and organisational measures</strong> to manage cybersecurity risks. Article 21 lists ten mandatory security domains, including:
+  </p>
+
+  <ul>
+    <li><strong>Risk analysis and management</strong></li>
+    <li><strong>Incident handling and response</strong></li>
+    <li><strong>Asset management and configuration management</strong></li>
+    <li><strong>Access control and identity management</strong></li>
+    <li><strong>Cryptography</strong></li>
+    <li><strong>Supply chain risk management</strong></li>
+  </ul>
+
+  <p>
+    An EDR tool (Endpoint Detection and Response) sits at the intersection of <strong>incident handling</strong> and <strong>asset management</strong>. It is the technology that must detect intrusions, log suspicious activity, and provide the audit trail that NCSC Ireland will demand if you are ever investigated.
+  </p>
+
+  <p>
+    There is no NIS2 requirement that says "use this specific tool." But there is a requirement that your detection capability must be:
+  </p>
+
+  <ul>
+    <li><strong>Demonstrably in place</strong> — not planned</li>
+    <li><strong>Actively monitored</strong> — logs cannot sit unseen</li>
+    <li><strong>Integrated with your incident response process</strong> — alerts must lead to action</li>
+    <li><strong>Documented and approved by the board</strong> — so you can prove Regulation 32 compliance (personal liability)</li>
+  </ul>
+
+  <div class="box-warning">
+    <strong>Personal liability reminder:</strong> Under Regulation 32 of S.I. No. 322/2024, board members are personally liable for ensuring that NIS2 obligations are met. If an incident occurs and NCSC Ireland discovers that your organisation lacks adequate detection capability, and the board never approved the choice of EDR tool or monitored its performance, personal liability proceedings can be initiated against you.
+  </div>
+
+  <h2>Microsoft Defender: the integrated ecosystem play</h2>
+
+  <h3>What it is</h3>
+  <p>
+    Microsoft Defender for Endpoint (now part of the broader "Microsoft Defender XDR" suite) is an endpoint protection and detection tool built into Windows environments. It integrates with Active Directory, Microsoft 365, Azure, and other Microsoft services.
+  </p>
+
+  <h3>Strengths for NIS2</h3>
+
+  <ul>
+    <li><strong>Integrated logging:</strong> If your organisation uses Microsoft 365, Azure, or Windows domain-joined endpoints, logs are already flowing into a single pane. Less "stitching together" of data from different vendors.</li>
+    <li><strong>Compliance reporting:</strong> Microsoft's Compliance Manager and Secure Score tools are built to generate NIS2 audit evidence. You can show NCSC Ireland, in one dashboard, which security measures are deployed and monitored.</li>
+    <li><strong>Lower cost for Microsoft-heavy environments:</strong> If you already own Microsoft 365 enterprise licenses, Defender for Endpoint licensing is often bundled or significantly discounted. Total cost of ownership drops.</li>
+    <li><strong>Incident response integration:</strong> Microsoft Sentinel (the SIEM platform) is built to ingest Defender alerts. Your detection-to-response pipeline is architecturally simpler.</li>
+  </ul>
+
+  <h3>Weaknesses for NIS2</h3>
+
+  <ul>
+    <li><strong>Weaker on non-Microsoft platforms:</strong> If your organisation runs Linux servers, Macs, or IoT devices, Defender's reach is limited. You will need to add another tool anyway, fragmenting your detection landscape.</li>
+    <li><strong>Less mature on third-party application monitoring:</strong> Defender excels at OS-level threats (malware, lateral movement, privilege escalation). It is less sophisticated at detecting insider threats or anomalies in custom applications.</li>
+    <li><strong>Requires active management:</strong> Defender does not automatically tune itself. If your SOC is small or immature, false positives can overwhelm the team, leading to alert fatigue and missed real threats.</li>
+    <li><strong>Vendor lock-in:</strong> Choosing Defender commits you to the Microsoft ecosystem for the long term. Migration to another platform later is costly.</li>
+  </ul>
+
+  <h2>CrowdStrike Falcon: the platform-agnostic specialist</h2>
+
+  <h3>What it is</h3>
+  <p>
+    CrowdStrike Falcon is a standalone EDR platform (now also offering XDR capabilities). It is platform-agnostic: it runs on Windows, macOS, Linux, and cloud platforms. It is not bundled with anything else; you buy it as a standalone product.
+  </p>
+
+  <h3>Strengths for NIS2</h3>
+
+  <ul>
+    <li><strong>Broad coverage:</strong> If your environment is mixed (Windows + Linux + macOS + cloud), Falcon provides consistent detection across all of them. One tool, one dashboard, one log stream.</li>
+    <li><strong>Threat intelligence:</strong> CrowdStrike invests heavily in threat research. Its Falcon OverWatch service (optional add-on) includes 24/7 human-driven threat hunting and incident response support — which directly reduces your incident response burden.</li>
+    <li><strong>Behavioral detection:</strong> Falcon is known for sophisticated behavioral analysis, catching advanced threats that signature-based tools miss. For organisations facing targeted attacks, this is valuable.</li>
+    <li><strong>Rapid response:</strong> CrowdStrike's response times are quick. If an alert fires, remediation can be triggered within seconds — critical for NIS2's 24-hour early warning requirement (Article 23).</li>
+    <li><strong>Industry trust:</strong> CrowdStrike is used by many government agencies and critical infrastructure operators. If you are in energy, health, or financial services, your regulator may already expect Falcon (or equivalent).</li>
+  </ul>
+
+  <h3>Weaknesses for NIS2</h3>
+
+  <ul>
+    <li><strong>Higher cost:</strong> Standalone licensing is more expensive per endpoint than bundled Microsoft solutions. For large organisations, this can mean six figures annually.</li>
+    <li><strong>Integration overhead:</strong> If you use Microsoft 365 and Azure, you must manually integrate Falcon alerts into your SIEM and compliance reporting. The "single pane" benefit is lost.</li>
+    <li><strong>Requires SOC maturity:</strong> Falcon generates many signals. A small or immature incident response team will struggle to act on all of them. You need people, not just technology.</li>
+    <li><strong>Licensing model complexity:</strong> CrowdStrike offers many add-ons (threat hunting, response, intelligence). The base Falcon product is EDR only. Bundling add-ons can quickly inflate cost.</li>
+  </ul>
+
+  <h2>Head-to-head: NIS2 compliance readiness</h2>
+
+  <table class="comparison-table">
+    <thead>
+      <tr>
+        <th>Capability</th>
+        <th>Microsoft Defender</th>
+        <th>CrowdStrike Falcon</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Windows endpoint detection</strong></td>
+        <td><span class="badge strong">Native</span></td>
+        <td><span class="badge strong">Native</span></td>
+      </tr>
+      <tr>
+        <td><strong>Linux / macOS coverage</strong></td>
+        <td><span class="badge">Limited</span></td>
+        <td><span class="badge strong">Full</span></td>
+      </tr>
+      <tr>
+        <td><strong>Cloud workload monitoring (AWS, Azure, GCP)</strong></td>
+        <td><span class="badge">Azure-only</span></td>
+        <td><span class="badge strong">All clouds</span></td>
+      </tr>
+      <tr>
+        <td><strong>24/7 SOC monitoring (included)</strong></td>
+        <td><span class="badge">No (optional)</span></td>
+        <td><span class="badge">No (add-on)</span></td>
+      </tr>
+      <tr>
+        <td><strong>Compliance reporting (NIS2-ready)</strong></td>
+        <td><span class="badge strong">Native (Compliance Mgr)</span></td>
+        <td><span class="badge">Manual integration</span></td>
+      </tr>
+      <tr>
+        <td><strong>SIEM integration</strong></td>
+        <td><span class="badge strong">Sentinel (native)</span></td>
+        <td><span class="badge">API-based</span></td>
+      </tr>
+      <tr>
+        <td><strong>Incident response integration</strong></td>
+        <td><span class="badge">Defender XDR (additional cost)</span></td>
+        <td><span class="badge strong">Falcon Complete (add-on)</span></td>
+      </tr>
+      <tr>
+        <td><strong>Base licensing cost (100 endpoints)</strong></td>
+        <td><span class="badge strong">€15K–25K/year</span></td>
+        <td><span class="badge">€40K–60K/year</span></td>
+      </tr>
+      <tr>
+        <td><strong>Time to full deployment</strong></td>
+        <td><span class="badge">4–8 weeks (if Microsoft-native)</span></td>
+        <td><span class="badge">8–12 weeks (requires SOC prep)</span></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>The decision framework for your board</h2>
+
+  <p>
+    Your choice depends on three factors: <strong>environment, budget, and maturity</strong>.
+  </p>
+
+  <h3>Choose Microsoft Defender if:</h3>
+
+  <ul>
+    <li>Your organisation is <strong>majority Windows</strong>, with Microsoft 365 and Azure as core platforms</li>
+    <li>You have <strong>limited IT budget</strong> and need cost efficiency (Defender is often bundled)</li>
+    <li>Your <strong>incident response team is small or new</strong> (Defender requires less manual tuning than Falcon)</li>
+    <li>You need <strong>audit evidence quickly</strong> (Compliance Manager generates NIS2 reports automatically)</li>
+    <li>You are <strong>not yet regulated</strong> by a sector authority that mandates third-party EDR (check with NCSC Ireland or your sector regulator first)</li>
+  </ul>
+
+  <h3>Choose CrowdStrike Falcon if:</h3>
+
+  <ul>
+    <li>Your organisation runs a <strong>mixed environment</strong> (Windows, Linux, macOS, multiple clouds)</li>
+    <li>You have a <strong>dedicated, mature SOC</strong> that can handle sophisticated threat hunting</li>
+    <li>You are in a <strong>high-risk sector</strong> (financial services, energy, health) where advanced threats are common</li>
+    <li>Your <strong>board or sector regulator expects third-party vendor confirmation</strong> of detection capability (Falcon's reputation carries weight)</li>
+    <li><strong>Budget is not the primary constraint</strong> — you prioritize detection capability over cost</li>
+  </ul>
+
+  <div class="box-case">
+    <div class="case-label">Case Study: Decision Under NIS2</div>
+    <p>
+      <strong>Scenario: Irish financial services company, 250 employees, classified as essential entity.</strong>
+    </p>
+    <p>
+      The organisation is 95% Microsoft (Office 365, Azure AD, Windows 10/11). It has a small IT security team (2 people) and no dedicated SOC. The board received two quotes: Microsoft Defender (bundled, €18K/year) and CrowdStrike Falcon (€55K/year).
+    </p>
+    <p>
+      The CTO argued for Falcon ("better detection"). The CFO argued for Defender ("we already pay for Microsoft").
+    </p>
+    <p>
+      <strong>Decision framework applied:</strong>
+    </p>
+    <ul>
+      <li>Environment: 95% Microsoft → advantage Defender</li>
+      <li>Budget: €18K vs €55K → advantage Defender (€37K annual saving)</li>
+      <li>Maturity: 2-person security team → advantage Defender (lower operational burden)</li>
+      <li>Regulatory expectation: CBI does not mandate a specific EDR tool, only that detection is in place and monitored → Defender sufficient</li>
+    </ul>
+    <p>
+      <strong>Outcome:</strong> The board chose Microsoft Defender, documented the decision in a board resolution (Regulation 32 compliance), and committed to reviewing Falcon in Year 3 if the team grew.
+    </p>
+    <p>
+      The annual €37K saving was reinvested in threat training for the security team, improving human capability. Detection coverage was equivalent to Falcon for this organisation's risk profile.
+    </p>
+  </div>
+
+  <h2>The audit trail: what NCSC Ireland will ask</h2>
+
+  <p>
+    When (not if) NCSC Ireland conducts a supervision visit, they will ask:
+  </p>
+
+  <ol>
+    <li><strong>"Show us the board decision to deploy EDR."</strong> Do you have a dated resolution approving the tool? Regulation 32 requires this.</li>
+    <li><strong>"Demonstrate detection capability."</strong> Show them the dashboard. How many endpoints are monitored? What alerts have fired in the past 90 days?</li>
+    <li><strong>"Show us your incident response process."</strong> When an alert fires, what happens? Do you have a playbook? Who is notified? What is the average response time?</li>
+    <li><strong>"Prove you reviewed the tool's effectiveness."</strong> Do you have quarterly security reviews documented? Does the board receive a dashboard (Secure Score, Falcon dashboard) monthly?</li>
+    <li><strong>"Show us your 24-hour and 72-hour incident reporting process."</strong> When an incident is confirmed, do you have a process to notify NCSC Ireland within 24 hours? Your EDR tool must feed into this process.</li>
+  </ol>
+
+  <p>
+    If your choice of EDR tool is documented, actively monitored, and integrated with your incident response process, NCSC Ireland will rate your compliance as "above standard." If it is undocumented or dormant (alerts are not reviewed), your organisation is at risk of enforcement action.
+  </p>
+
+  <div class="box-info">
+    <strong>Key point:</strong> The tool itself matters less than your ability to prove you chose it deliberately, understand why, monitor it regularly, and act on its alerts. An organisation using Microsoft Defender competently will score higher on NIS2 compliance than one using CrowdStrike carelessly.
+  </div>
+
+  <h2>Cost comparison: the real numbers</h2>
+
+  <p>
+    Let us break down total cost of ownership for a typical Irish essential entity (250 employees, mixed environment but 80% Windows):
+  </p>

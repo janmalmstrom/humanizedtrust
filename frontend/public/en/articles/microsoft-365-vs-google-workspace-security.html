@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-BKF3QH9K01"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag("js", new Date());
+    gtag("config", "G-BKF3QH9K01");
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Microsoft 365 vs Google Workspace: Security Comparison for NIS2 — NIS2Klar</title>
+  <meta name="description" content="Compare Microsoft 365 and Google Workspace for NIS2 compliance. Which platform covers more Article 21 security requirements? Guide for Irish CEOs and boards.">
+  <meta property="og:title" content="Microsoft 365 vs Google Workspace: Security Comparison for NIS2">
+  <meta property="og:description" content="Compare Microsoft 365 and Google Workspace for NIS2 compliance. Which platform covers more Article 21 security requirements? Guide for Irish CEOs and boards.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #141416;
+      --card: #1c1c1f;
+      --yellow: #f5c518;
+      --white: #f0f0f0;
+      --muted: #888;
+      --red: #C61212;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: var(--bg); color: var(--white); font-family: 'Barlow', sans-serif; font-size: 19px; line-height: 1.8; }
+
+    /* Nav */
+    nav { display: flex; justify-content: space-between; align-items: center; padding: 20px 40px; border-bottom: 1px solid rgba(255,255,255,0.07); max-width: 900px; margin: 0 auto; }
+    .nav-logo { font-family: 'Poppins', sans-serif; font-weight: 900; font-size: 20px; color: var(--yellow); text-decoration: none; }
+    .nav-logo span { color: var(--white); }
+    .nav-back { color: var(--muted); text-decoration: none; font-size: 15px; }
+    .nav-back:hover { color: var(--white); }
+    .nav-cta { background: var(--yellow); color: #000; padding: 8px 18px; border-radius: 4px; text-decoration: none; font-weight: 700; font-size: 14px; font-family: 'Poppins', sans-serif; }
+    .lang-switcher { display: flex; gap: 8px; align-items: center; font-size: 13px; font-family: 'Poppins', sans-serif; }
+
+    /* Article */
+    .article-wrap { max-width: 760px; margin: 0 auto; padding: 60px 40px; }
+    .article-category { font-size: 13px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 16px; }
+    h1 { font-family: 'Poppins', sans-serif; font-size: clamp(30px, 4vw, 44px); font-weight: 900; line-height: 1.2; margin-bottom: 24px; }
+    .article-meta { font-size: 15px; color: var(--muted); margin-bottom: 48px; padding-bottom: 24px; border-bottom: 1px solid rgba(255,255,255,0.07); }
+    h2 { font-family: 'Poppins', sans-serif; font-size: 26px; font-weight: 700; margin: 48px 0 16px; color: var(--white); }
+    h3 { font-family: 'Poppins', sans-serif; font-size: 20px; font-weight: 600; margin: 32px 0 12px; color: var(--yellow); }
+    p { margin-bottom: 22px; }
+    strong { color: var(--white); font-weight: 700; }
+    .highlight { color: var(--yellow); font-weight: 700; }
+    .danger { color: #ff6b6b; font-weight: 700; }
+    ul, ol { margin: 16px 0 24px 24px; }
+    li { margin-bottom: 12px; font-size: 19px; }
+
+    /* Callout boxes */
+    .box-warning { background: rgba(197,17,17,0.12); border-left: 4px solid var(--red); padding: 20px 24px; margin: 32px 0; border-radius: 0 4px 4px 0; }
+    .box-info { background: rgba(245,197,24,0.08); border-left: 4px solid var(--yellow); padding: 20px 24px; margin: 32px 0; border-radius: 0 4px 4px 0; }
+    .box-case { background: var(--card); border: 1px solid rgba(255,255,255,0.08); padding: 28px; margin: 40px 0; border-radius: 4px; }
+    .box-case .case-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 12px; }
+    blockquote { border-left: 3px solid var(--yellow); padding: 12px 20px; margin: 24px 0; font-style: italic; color: #ccc; }
+
+    /* CTA */
+    .cta-section { background: var(--card); border: 1px solid rgba(245,197,24,0.2); border-radius: 4px; padding: 48px 40px; margin: 64px 0 40px; text-align: center; }
+    .cta-section h2 { margin-top: 0; font-size: 26px; }
+    .cta-section p { color: #aaa; max-width: 500px; margin: 0 auto 28px; }
+    .btn-primary { display: inline-block; background: var(--yellow); color: #000; font-family: 'Poppins', sans-serif; font-weight: 800; font-size: 16px; padding: 16px 36px; border-radius: 4px; text-decoration: none; }
+    .btn-primary:hover { background: #e0b010; }
+    .cta-fine { font-size: 13px; color: var(--muted); margin-top: 16px; }
+
+    /* FAQ */
+    .faq-item { border-bottom: 1px solid rgba(255,255,255,0.07); padding: 20px 0; }
+    .faq-q { font-family: 'Poppins', sans-serif; font-weight: 600; margin-bottom: 10px; }
+    .faq-a { color: #bbb; }
+
+    /* Comparison table */
+    .comparison-table { width: 100%; border-collapse: collapse; margin: 32px 0; }
+    .comparison-table th { background: rgba(245,197,24,0.1); color: var(--yellow); font-family: 'Poppins', sans-serif; font-size: 13px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 14px 16px; text-align: left; border-bottom: 1px solid rgba(245,197,24,0.2); }
+    .comparison-table td { padding: 14px 16px; border-bottom: 1px solid rgba(255,255,255,0.05); font-size: 15px; }
+    .comparison-table tr:last-child td { border-bottom: none; }
+    .comparison-table .yes { color: #4ade80; font-weight: 700; }
+    .comparison-table .no { color: #ff6b6b; font-weight: 700; }
+    .comparison-table .partial { color: var(--yellow); font-weight: 700; }
+
+    /* Summary + Key Takeaway */
+    .box-summary { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; padding: 24px 28px; margin: 0 0 32px; }
+    .summary-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-bottom: 14px; }
+    .box-summary ul { margin: 0; padding-left: 20px; }
+    .box-summary li { margin-bottom: 8px; font-size: 17px; color: #ccc; }
+    .box-takeaway { background: rgba(245,197,24,0.08); border-left: 4px solid var(--yellow); padding: 20px 24px; margin: 0 0 40px; border-radius: 0 4px 4px 0; }
+    .takeaway-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 10px; }
+    .box-takeaway p { margin: 0; font-size: 18px; font-weight: 600; color: var(--white); line-height: 1.6; }
+
+    /* Related articles */
+    .related-articles { margin: 2.5rem 0 2rem; padding: 1.5rem; background: #1a1a2e; border-left: 4px solid #f0a500; border-radius: 4px; }
+    .related-articles p { margin: 0 0 1rem; font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #f0a500; }
+    .related-articles ul { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+    .related-articles a { color: #e0e0e0; text-decoration: none; font-size: 0.95rem; }
+    .related-articles .nav-back { font-size: 0.85rem; color: #aaa; }
+
+    /* Footer */
+    footer { border-top: 1px solid rgba(255,255,255,0.07); padding: 32px 40px; text-align: center; font-size: 13px; color: var(--muted); max-width: 900px; margin: 0 auto; }
+    footer a { color: var(--muted); }
+
+    @media (max-width: 600px) {
+      nav, .article-wrap, footer { padding: 20px; }
+      nav { flex-wrap: wrap; gap: 16px; }
+      .cta-section { padding: 32px 20px; }
+      .comparison-table { font-size: 13px; }
+      .comparison-table th, .comparison-table td { padding: 10px 10px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="https://nis2klar.se/en/">NIS2<span>Klar</span></a>
+  <a class="nav-back" href="https://nis2klar.se/en/articles.html">← All Articles</a>
+  <div class="lang-switcher">
+    <a href="https://nis2klar.se/artiklar.html" style="color:#888;text-decoration:none;font-weight:600;padding:4px 8px;border-radius:3px;" title="Svenska">SV</a>
+    <a href="https://nis2klar.se/en/articles.html" style="color:#f5c518;text-decoration:none;font-weight:600;padding:4px 8px;border-radius:3px;background:rgba(245,197,24,0.1);" title="English">EN</a>
+    <a href="https://nis2klar.se/da/artikler.html" style="color:#888;text-decoration:none;font-weight:600;padding:4px 8px;border-radius:3px;" title="Dansk">DA</a>
+    <a href="https://nis2klar.se/no/artikler.html" style="color:#888;text-decoration:none;font-weight:600;padding:4px 8px;border-radius:3px;" title="Norsk">NO</a>
+    <a href="https://nis2klar.se/it/articoli.html" style="color:#888;text-decoration:none;font-weight:600;padding:4px 8px;border-radius:3px;" title="Italiano">IT</a>
+  </div>
+  <a class="nav-cta" href="https://nis2klar.se/en/#boka">Book demo →</a>
+</nav>
+
+<article class="article-wrap">
+  <div class="article-category">Platform Security &amp; Compliance</div>
+  <h1>Microsoft 365 vs Google Workspace: Security Comparison for NIS2</h1>
+  <div class="article-meta">Updated 19 April 2026 · Reading time: 8 minutes · Audience: Board, CEO</div>
+
+  <!-- SUMMARY -->
+  <div class="box-summary">
+    <div class="summary-label">Summary</div>
+    <ul>
+      <li>For boards deciding which cloud productivity platform to standardise on under NIS2.</li>
+      <li><strong>Microsoft 365</strong> covers more Article 21 security requirements out of the box.</li>
+      <li>Google Workspace requires additional third-party integrations and configuration to meet the same baseline.</li>
+      <li>The gap matters for audit readiness, incident response, and personal board liability under NIS2 Regulation 32.</li>
+    </ul>
+  </div>
+
+  <!-- KEY TAKEAWAY -->
+  <div class="box-takeaway">
+    <div class="takeaway-label">Bottom Line</div>
+    <p>Your choice of platform is not about feature preference — it is a compliance and liability decision. Microsoft 365 provides better native coverage of NIS2 Article 21 mandatory security measures. Choosing otherwise means explaining to NCSC Ireland why your platform gaps exist.</p>
+  </div>
+
+  <h2>Why This Matters Now</h2>
+
+  <p>
+    Ireland's NIS2 Regulations (S.I. No. 322 of 2024) require essential and important entities to implement ten mandatory security measures defined in Article 21.
+    Your choice of cloud platform — Microsoft 365 or Google Workspace — directly affects your ability to demonstrate compliance with those measures.
+  </p>
+
+  <p>
+    For an Irish essential entity, penalties reach <strong>€10 million or 2% of global annual turnover</strong>. For important entities, <strong>€7 million or 1.4%</strong>.
+    But the financial penalty is not the deepest consequence. Under Regulation 32, <span class="highlight">management body members can be held personally liable</span> for gaps in security controls.
+    That means you — as CEO or board chair — may face personal consequences if the platform you chose cannot demonstrate compliance.
+  </p>
+
+  <p>
+    This is not a technical decision. It is a governance and risk decision. And it needs board approval.
+  </p>
+
+  <div class="box-warning">
+    <strong>Critical context:</strong> NCSC Ireland (National Cyber Security Centre) has already begun structured examinations of essential entities. They will audit your platforms and security controls. A platform choice that leaves gaps will be visible immediately.
+  </div>
+
+  <h2>Article 21: The Ten Mandatory Security Measures</h2>
+
+  <p>
+    Before comparing the two platforms, it is essential to understand what NIS2 actually requires.
+    Article 21 of the Irish Regulations lists these non-negotiable security measures:
+  </p>
+
+  <ol>
+    <li><strong>Risk management:</strong> Documented process to identify and mitigate cybersecurity risks</li>
+    <li><strong>Incident management:</strong> Ability to detect, report, and respond to incidents within defined timelines</li>
+    <li><strong>Business continuity and disaster recovery:</strong> Backup, recovery, and resumption plans with tested procedures</li>
+    <li><strong>Supplier cybersecurity:</strong> Security requirements contractually imposed on third parties and monitored</li>
+    <li><strong>Personnel security:</strong> Background checks, security training, and role-based access controls</li>
+    <li><strong>Asset management:</strong> Inventory and lifecycle management of hardware, software, and data</li>
+    <li><strong>Access control and authentication:</strong> Multi-factor authentication, privileged access management, and least-privilege enforcement</li>
+    <li><strong>Cryptography:</strong> Encryption at rest and in transit, key management</li>
+    <li><strong>Security monitoring:</strong> Continuous logging, monitoring, and detection capability</li>
+    <li><strong>Secure supply chain:</strong> Security by design in procurement and development processes</li>
+  </ol>
+
+  <p>
+    Your platform must either provide these natively or you must be able to document compensating controls. 
+    If your choice leaves you explaining why a major measure is <em>not</em> available in your platform, you are already in a defensive position before audit even begins.
+  </p>
+
+  <h2>Feature-by-Feature Comparison: Microsoft 365 vs Google Workspace</h2>
+
+  <table class="comparison-table">
+    <thead>
+      <tr>
+        <th>Article 21 Requirement</th>
+        <th>Microsoft 365</th>
+        <th>Google Workspace</th>
+        <th>Gap Analysis</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Multi-factor authentication (MFA)</strong></td>
+        <td class="yes">✓ Native &amp; enforced</td>
+        <td class="yes">✓ Native &amp; enforced</td>
+        <td>Tie — both meet requirement</td>
+      </tr>
+      <tr>
+        <td><strong>Encryption (data at rest)</strong></td>
+        <td class="yes">✓ Default encrypted</td>
+        <td class="yes">✓ Default encrypted</td>
+        <td>Tie — both meet requirement</td>
+      </tr>
+      <tr>
+        <td><strong>Encryption (data in transit)</strong></td>
+        <td class="yes">✓ TLS enforced</td>
+        <td class="yes">✓ TLS enforced</td>
+        <td>Tie — both meet requirement</td>
+      </tr>
+      <tr>
+        <td><strong>Audit logging &amp; transparency</strong></td>
+        <td class="yes">✓ Comprehensive native logs</td>
+        <td class="partial">⚠ Limited scope without third-party tools</td>
+        <td><span class="highlight">M365 advantage:</span> Built-in compliance dashboard; Google requires external SIEM or log aggregator</td>
+      </tr>
+      <tr>
+        <td><strong>Data loss prevention (DLP)</strong></td>
+        <td class="yes">✓ Native &amp; granular</td>
+        <td class="partial">⚠ Basic content filters; advanced DLP requires third-party</td>
+        <td><span class="highlight">M365 advantage:</span> Sensitivity labels, endpoint DLP, Teams DLP all built in</td>
+      </tr>
+      <tr>
+        <td><strong>Privileged access management</strong></td>
+        <td class="yes">✓ Conditional Access + PIM</td>
+        <td class="partial">⚠ Basic role controls; PAM requires third-party</td>
+        <td><span class="highlight">M365 advantage:</span> Identity and Access Governance integrated</td>
+      </tr>
+      <tr>
+        <td><strong>Incident detection &amp; response</strong></td>
+        <td class="yes">✓ Defender XDR + native alerts</td>
+        <td class="partial">⚠ Limited native detection; requires Chronicle (Google Cloud) integration</td>
+        <td><span class="highlight">M365 advantage:</span> Integrated threat detection and response; Google requires external tooling</td>
+      </tr>
+      <tr>
+        <td><strong>Backup &amp; disaster recovery</strong></td>
+        <td class="yes">✓ Built-in with immutable retention</td>
+        <td class="partial">⚠ Limited retention options; third-party backup tools recommended</td>
+        <td><span class="highlight">M365 advantage:</span> Compliance Manager integrates backup status</td>
+      </tr>
+      <tr>
+        <td><strong>Compliance reporting &amp; audit trails</strong></td>
+        <td class="yes">✓ Compliance Manager dashboard</td>
+        <td class="partial">⚠ Audit logs available but manual compilation required</td>
+        <td><span class="highlight">M365 advantage:</span> Pre-built NIS2 and EU regulatory templates in Compliance Manager</td>
+      </tr>
+      <tr>
+        <td><strong>Supplier security &amp; third-party access</strong></td>
+        <td class="yes">✓ Delegated Admin Privileges (DAP) &amp; GDAP</td>
+        <td class="no">✗ Limited native controls for third-party governance</td>
+        <td><span class="highlight">M365 advantage:</span> Granular delegation with audit; Google workspace lacks built-in supplier access controls</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>The Critical Gaps: What Google Workspace Lacks</h2>
+
+  <p>
+    Google Workspace is a solid collaboration platform. But in the context of NIS2, it has four significant capability gaps that you cannot ignore:
+  </p>
+
+  <h3>1. Data Loss Prevention (DLP)</h3>
+  <p>
+    Microsoft 365 includes Purview Sensitivity Labels, which automatically classify and protect data. 
+    Google Workspace offers basic content filters but <strong>no native, granular DLP engine</strong>.
+    If you need to demonstrate that sensitive customer data or intellectual property cannot leave your organisation without detection, Microsoft 365 provides this out of the box.
+    Google Workspace requires a third-party DLP tool, which adds cost and operational complexity.
+  </p>
+
+  <h3>2. Audit Logging &amp; Compliance Reporting</h3>
+  <p>
+    NIS2 Article 23 requires incident reporting within 72 hours to NCSC Ireland.
+    Microsoft 365 Compliance Manager provides a unified dashboard where you can see your compliance posture against NIS2 requirements in real time.
+    Google Workspace audit logs exist, but there is no equivalent dashboard. You must manually extract, aggregate, and interpret logs to demonstrate compliance.
+    When NCSC Ireland audits you, Microsoft 365 lets you show compliance; Google Workspace requires you to build the evidence yourself.
+  </p>
+
+  <h3>3. Privileged Access Management (PAM) &amp; Conditional Access</h3>
+  <p>
+    Article 21 requires access controls based on risk and context. Microsoft 365 offers Conditional Access policies (block access from unusual locations, require device compliance, enforce step-up authentication) natively.
+    Google Workspace has basic role-based access control, but not risk-based, context-aware conditional access.
+    If you need to enforce "no access to sensitive data from non-managed devices," Microsoft 365 does this automatically. Google Workspace does not.
+  </p>
+
+  <h3>4. Supplier Security &amp; Third-Party Access Governance</h3>
+  <p>
+    Many Irish essential entities use IT service providers, managed security service providers (MSSPs), or managed service providers (MSPs).
+    NIS2 Regulation 32 requires that your board can demonstrate it has oversight of third-party access to your systems.
+    Microsoft 365 offers Granular Delegated Admin Privileges (GDAP), which lets you grant time-limited, role-specific access to suppliers with full audit trails.
+    Google Workspace lacks this capability entirely. If you use a supplier, your access control audit trail will be incomplete.
+  </p>
+
+  <div class="box-info">
+    <strong>Translation:</strong> Google Workspace gaps do not mean "you cannot comply with NIS2 using Google Workspace."
+    It means you must buy and integrate third-party tools (a SIEM, DLP, PAM platform, etc.) to fill the gaps.
+    This costs more, takes longer to implement, and creates operational risk during the transition.
+  </div>
+
+  <h2>The Real Cost of the Gap</h2>
+
+  <p>
+    Choosing Google Workspace does not automatically violate NIS2. But it does mean you must compensate for missing features.
+    Here is what the real-world cost of closing these gaps looks like:
+  </p>
+
+  <ul>
+    <li><strong>Third-party DLP tool:</strong> €3,000–10,000 per year, plus configuration and training</li>
+    <li><strong>Security Information and Event Management (SIEM) for audit logging:</strong> €10,000–50,000 per year depending on scale</li>
+    <li><strong>Privileged Access Management platform:</strong> €5,000–20,000 per year</li>
+    <li><strong>Third-party supplier access governance tool:</strong> €2,000–8,000 per year</li>
+    <li><strong>Implementation and integration time:</strong> 2–6 months of IT staff effort</li>
+    <li><strong>Ongoing operational complexity:</strong> Multiple dashboards, multiple vendors, more points of failure</li>
+  </ul>
+
+  <p>
+    The cumulative cost of closing Google Workspace gaps can easily reach <strong>€20,000–88,000 per year</strong>, plus integration effort.
+    Microsoft 365 Business Premium or Enterprise plans include all of these capabilities natively, often at lower total cost of ownership.
+  </p>
+
+  <div class="box-case">
+    <div class="case-label">Case Study</div>
+    <p>
+      <strong>Scenario: Irish fintech company, 85 employees, classified as essential entity under NIS2.</strong>
+    </p>
+    <p>
+      Board decided to standardise on Google Workspace in 2024 to reduce costs. 
+      No one flagged the NIS2 compliance implications during procurement.
+    </p>
+    <p>
+      In late 2025, an employee accidentally shares customer API credentials in a Google Drive folder.
+      The security team detects it within hours, but discovers that there is no native way to see "who viewed this file and when" across Google Workspace.
+      Audit logging is incomplete.
+    </p>
+    <p>
+      NCSC Ireland begins a routine examination in early 2026. 
+      They ask: "Show us your data loss prevention controls."
+      The company must admit: "We do not have native DLP. We are in process of procuring a third-party tool."
+      They ask: "Who has admin access, what have they accessed, and when?"
+      Again, incomplete audit trail.
+    </p>
+    <p>
+      <strong>Outcome:</strong> No financial penalty yet (they did not have an incident), but NCSC Ireland issues a formal finding requiring remediation within 90 days.
+      The company now must rush to implement multiple third-party tools, costing €15,000 in tooling and €40,000 in consulting and staff time.
+      Board faces liability questions about whether it adequately reviewed platform security when making the procurement decision.
+    </p>
+  </div>
+
+  <h2>The Board's Accountability Question</h2>
+
+  <p>
+    Under Regulation 32 of the Irish NIS2 Regulations, management body members are responsible for ensuring that security measures are approved and monitored.
+    That includes the choice of core business platform.
+  </p>
+
+  <p>
+    When NCSC Ireland asks "Who approved the platform choice and on what basis?", you need to be able to say:
+  </p>
+
+  <blockquote>
+    "The board reviewed the NIS2 Article 21 requirements, compared Microsoft 365 and Google Workspace against those requirements, and selected the platform that provided the strongest native compliance posture. The decision was documented in a board resolution."
+  </blockquote>
+
+  <p>
+    If you cannot say that, you are exposed. The regulator will see a platform choice that left gaps unfilled and ask: "Why did the board not consider this?"
+  </p>
+
+  <p>
+    Personal liability is not a theoretical risk. It is a direct consequence of not conducting this analysis before the platform choice is locked in.
+  </p>
+
+  <h2>When Might Google Workspace Be Acceptable?</h2>
+
+  <p>
+    We are not saying "never use Google Workspace." There are legitimate scenarios where it can work:
+  </p>
+
+  <ul>
+    <li><strong>Your organisation is not classified as an essential or important entity under NIS2.</strong> If you fall outside the 18 regulated sectors, or are below the size thresholds, NIS2 may not apply to you. Verify this first with your legal advisor.</li>
+    <li><strong>You have already budgeted for and implemented comprehensive third-party security tooling.</strong> If you have a mature SIEM, DLP, and PAM capability in place, Google Workspace gaps are less critical. But this requires advance planning.</li>
+    <li><strong>You operate in a jurisdiction with lighter NIS2 requirements.</strong> (This does not apply to Ireland — NIS2 is EU law and applies equally here.)</li>
+  </ul>
+
+  <p>
+    If none of these apply, Microsoft 365 is the lower-risk choice from a compliance perspective.
+  </p>
+
+  <h2>Migration Path: If You Are Already on Google Workspace</h2>
+
+  <p>
+    If your organisation has already standardised on Google Workspace, you have options:
+  </p>
+
+  <ol>
+    <li><strong>Immediate:</strong> Document which Article 21 requirements are not natively met and identify the third-party tools you will use to compensate. Get this documented and approved by the board. NCSC Ireland will look for evidence of intentional mitigation, not denial that the gap exists.</li>
+    <li><strong>Short term (0–6 months):</strong> Procure and implement a SIEM tool (like Datadog, Splunk, or similar) to aggregate audit logs across Google Workspace and other systems.</li>
+    <li><strong>Medium term (6–12 months):</strong> Implement a DLP solution and (optionally) a PAM tool to close the most critical gaps.</li>
+    <li><strong>Strategic review (12+ months):</strong> Evaluate whether a full migration to Microsoft 365 would reduce overall complexity and cost compared to maintaining multiple point solutions.</li>
+  </ol>
+
+  <p>
+    Do not wait for an audit to trigger this.

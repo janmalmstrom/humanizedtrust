@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-BKF3QH9K01"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag("js", new Date());
+    gtag("config", "G-BKF3QH9K01");
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Microsoft Intune vs VMware Workspace ONE: MDM per la Conformità NIS2 | NIS2Klar</title>
+  <meta name="description" content="Intune o VMware per NIS2? Confronto di Mobile Device Management per controllo dei dispositivi, Conditional Access e audit secondo l'Articolo 21 NIS2. Quale scegliere per aziende 50–500 persone.">
+  <meta property="og:title" content="Microsoft Intune vs VMware Workspace ONE: MDM per la Conformità NIS2">
+  <meta property="og:description" content="Intune o VMware per NIS2? Confronto di Mobile Device Management per controllo dei dispositivi, Conditional Access e audit secondo l'Articolo 21 NIS2.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #141416;
+      --card: #1c1c1f;
+      --yellow: #f5c518;
+      --white: #f0f0f0;
+      --muted: #888;
+      --red: #C61212;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: var(--bg); color: var(--white); font-family: 'Barlow', sans-serif; font-size: 19px; line-height: 1.8; }
+
+    /* Nav */
+    nav { display: flex; justify-content: space-between; align-items: center; padding: 20px 40px; border-bottom: 1px solid rgba(255,255,255,0.07); max-width: 900px; margin: 0 auto; }
+    .nav-logo { font-family: 'Poppins', sans-serif; font-weight: 900; font-size: 20px; color: var(--yellow); text-decoration: none; }
+    .nav-logo span { color: var(--white); }
+    .nav-back { color: var(--muted); text-decoration: none; font-size: 15px; }
+    .nav-back:hover { color: var(--white); }
+    .lang-switcher { display: flex; gap: 8px; align-items: center; font-size: 13px; font-family: 'Poppins', sans-serif; }
+    .lang-switcher a { color: #888; text-decoration: none; font-weight: 600; padding: 4px 8px; border-radius: 3px; }
+    .nav-cta { background: var(--yellow); color: #000; padding: 8px 18px; border-radius: 4px; text-decoration: none; font-weight: 700; font-size: 14px; font-family: 'Poppins', sans-serif; }
+
+    /* Article */
+    .article-wrap { max-width: 760px; margin: 0 auto; padding: 60px 40px; }
+    .article-category { font-size: 13px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 16px; }
+    h1 { font-family: 'Poppins', sans-serif; font-size: clamp(30px, 4vw, 44px); font-weight: 900; line-height: 1.2; margin-bottom: 24px; }
+    .article-meta { font-size: 15px; color: var(--muted); margin-bottom: 48px; padding-bottom: 24px; border-bottom: 1px solid rgba(255,255,255,0.07); }
+    h2 { font-family: 'Poppins', sans-serif; font-size: 26px; font-weight: 700; margin: 48px 0 16px; color: var(--white); }
+    h3 { font-family: 'Poppins', sans-serif; font-size: 20px; font-weight: 600; margin: 32px 0 12px; color: var(--yellow); }
+    p { margin-bottom: 22px; }
+    strong { color: var(--white); font-weight: 700; }
+    .highlight { color: var(--yellow); font-weight: 700; }
+    .danger { color: #ff6b6b; font-weight: 700; }
+    ul, ol { margin: 16px 0 24px 24px; }
+    li { margin-bottom: 12px; font-size: 19px; }
+
+    /* Callout boxes */
+    .box-warning { background: rgba(197,17,17,0.12); border-left: 4px solid var(--red); padding: 20px 24px; margin: 32px 0; border-radius: 0 4px 4px 0; }
+    .box-info { background: rgba(245,197,24,0.08); border-left: 4px solid var(--yellow); padding: 20px 24px; margin: 32px 0; border-radius: 0 4px 4px 0; }
+    .box-case { background: var(--card); border: 1px solid rgba(255,255,255,0.08); padding: 28px; margin: 40px 0; border-radius: 4px; }
+    .box-case .case-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 12px; }
+    blockquote { border-left: 3px solid var(--yellow); padding: 12px 20px; margin: 24px 0; font-style: italic; color: #ccc; }
+
+    /* CTA */
+    .cta-section { background: var(--card); border: 1px solid rgba(245,197,24,0.2); border-radius: 4px; padding: 48px 40px; margin: 64px 0 40px; text-align: center; }
+    .cta-section h2 { margin-top: 0; font-size: 26px; }
+    .cta-section p { color: #aaa; max-width: 500px; margin: 0 auto 28px; }
+    .btn-primary { display: inline-block; background: var(--yellow); color: #000; font-family: 'Poppins', sans-serif; font-weight: 800; font-size: 16px; padding: 16px 36px; border-radius: 4px; text-decoration: none; }
+    .btn-primary:hover { background: #e0b010; }
+    .cta-fine { font-size: 13px; color: var(--muted); margin-top: 16px; }
+
+    /* FAQ */
+    .faq-item { border-bottom: 1px solid rgba(255,255,255,0.07); padding: 20px 0; }
+    .faq-q { font-family: 'Poppins', sans-serif; font-weight: 600; margin-bottom: 10px; }
+    .faq-a { color: #bbb; }
+
+    /* Comparison table */
+    .comparison-table { width: 100%; border-collapse: collapse; margin: 24px 0; }
+    .comparison-table th { background: rgba(245,197,24,0.1); color: var(--yellow); font-family: 'Poppins', sans-serif; font-size: 13px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 12px 16px; text-align: left; border-bottom: 1px solid rgba(245,197,24,0.2); }
+    .comparison-table td { padding: 14px 16px; border-bottom: 1px solid rgba(255,255,255,0.05); font-size: 15px; }
+    .comparison-table tr:last-child td { border-bottom: none; }
+    .check { color: #4ade80; font-weight: 700; }
+    .cross { color: #ff6b6b; font-weight: 700; }
+
+    /* Summary + Key Takeaway */
+    .box-summary { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; padding: 24px 28px; margin: 0 0 32px; }
+    .summary-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-bottom: 14px; }
+    .box-summary ul { margin: 0; padding-left: 20px; }
+    .box-summary li { margin-bottom: 8px; font-size: 17px; color: #ccc; }
+    .box-takeaway { background: rgba(245,197,24,0.08); border-left: 4px solid var(--yellow); padding: 20px 24px; margin: 0 0 40px; border-radius: 0 4px 4px 0; }
+    .takeaway-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 10px; }
+    .box-takeaway p { margin: 0; font-size: 18px; font-weight: 600; color: var(--white); line-height: 1.6; }
+
+    /* Footer */
+    footer { border-top: 1px solid rgba(255,255,255,0.07); padding: 32px 40px; text-align: center; font-size: 13px; color: var(--muted); max-width: 900px; margin: 0 auto; }
+    footer a { color: var(--muted); }
+
+    @media (max-width: 600px) {
+      nav, .article-wrap, footer { padding: 20px; }
+      .cta-section { padding: 32px 20px; }
+      .comparison-table { font-size: 14px; }
+      .comparison-table th, .comparison-table td { padding: 10px 10px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="https://nis2klar.se/it/">NIS2<span>Klar</span></a>
+  <a class="nav-back" href="https://nis2klar.se/it/articoli.html">← Tutti gli articoli</a>
+  <div class="lang-switcher">
+    <a href="https://nis2klar.se/artiklar.html" style="color:#888;text-decoration:none;font-weight:600;padding:4px 8px;border-radius:3px;" title="Svenska">SV</a>
+    <a href="https://nis2klar.se/en/articles.html" style="color:#888;text-decoration:none;font-weight:600;padding:4px 8px;border-radius:3px;" title="English">EN</a>
+    <a href="https://nis2klar.se/da/artikler.html" style="color:#888;text-decoration:none;font-weight:600;padding:4px 8px;border-radius:3px;" title="Dansk">DA</a>
+    <a href="https://nis2klar.se/no/artikler.html" style="color:#888;text-decoration:none;font-weight:600;padding:4px 8px;border-radius:3px;" title="Norsk">NO</a>
+    <a href="https://nis2klar.se/it/articoli.html" style="color:#f5c518;text-decoration:none;font-weight:600;padding:4px 8px;border-radius:3px;background:rgba(245,197,24,0.1);" title="Italiano">IT</a>
+  </div>
+  <a class="nav-cta" href="https://nis2klar.se/it/#prenota">Prenota consulenza →</a>
+</nav>
+
+<article class="article-wrap">
+  <div class="article-category">Conformità & Tecnologia</div>
+  <h1>Microsoft Intune vs VMware Workspace ONE: MDM per la Conformità NIS2</h1>
+  <div class="article-meta">Aggiornato 19 aprile 2026 · Tempo di lettura: circa 8 minuti · Destinato a: Leadership IT, VD</div>
+
+  <!-- SUMMARY -->
+  <div class="box-summary">
+    <div class="summary-label">Sommario</div>
+    <ul>
+      <li>L'Articolo 21 del D.Lgs. 138/2024 richiede controllo dei dispositivi, autenticazione forte e crittografia.</li>
+      <li>Per aziende 50–500 persone: Intune costa meno e integra meglio con gli ecosistemi Microsoft; VMware offre flessibilità multi-piattaforma.</li>
+      <li>La scelta dipende dall'infrastruttura esistente, non dal "migliore".</li>
+      <li>Entrambi gli strumenti coprano i requisiti NIS2 — ma solo se configurati e documentati correttamente.</li>
+      <li>L'audit trail e la rendicontazione al CdA sono più semplici con Intune.</li>
+    </ul>
+  </div>
+
+  <!-- KEY TAKEAWAY -->
+  <div class="box-takeaway">
+    <div class="takeaway-label">Punto Chiave</div>
+    <p>Nessun MDM vi protegge dalle sanzioni NIS2 se non documentate le politiche al consiglio di amministrazione. La piattaforma è secondaria rispetto al processo decisionale e alla tracciabilità.</p>
+  </div>
+
+  <!-- HOOK -->
+  <p>
+    L'Articolo 21 del D.Lgs. 138/2024 (recepimento NIS2 in Italia) richiede che le aziende essenziali e importanti dispongano di <strong>controllo dei dispositivi, accesso condizionale, crittografia e autenticazione multifattore</strong>.
+    La domanda non è "quale MDM è il migliore in assoluto", ma "quale si integra meglio con l'infrastruttura che avete già — e quale vi consente di dimostrare conformità all'ACN?"
+  </p>
+
+  <p>
+    Se siete un'azienda di 50–500 persone e dovete scegliere tra <strong>Microsoft Intune</strong> e <strong>VMware Workspace ONE</strong>, questa guida vi aiuta a decidere senza analisi confuse.
+  </p>
+
+  <h2>Che cosa Richiede NIS2 per il Controllo dei Dispositivi</h2>
+
+  <p>
+    Prima di confrontare i prodotti, dobbiamo essere chiari su cosa chiede NIS2.
+    L'Articolo 21 del decreto italiano non prescrive uno strumento specifico, ma una serie di <strong>capacità tecnico-organizzative</strong>:
+  </p>
+
+  <ul>
+    <li>Inventario dei dispositivi e loro proprietà tecniche (SO, versione, certificati)</li>
+    <li>Policy di sicurezza applicata a tutti i dispositivi (password, timeout, VPN)</li>
+    <li>Accesso condizionale basato su rischio, identità e luogo geografico</li>
+    <li>Crittografia di dati a riposo e in transito</li>
+    <li>Autenticazione forte (MFA) per accedere a risorse critiche</li>
+    <li>Blocco remoto e wipe del dispositivo in caso di furto</li>
+    <li>Registrazione degli accessi e audit trail conservato per almeno 1 anno</li>
+    <li>Policy BYOD (Bring Your Own Device) documentata e controllata</li>
+  </ul>
+
+  <p>
+    <strong>Entrambi Intune e VMware raggiungono questi obiettivi.</strong>
+    La differenza sta nella facilità di configurazione, nel costo totale di proprietà (TCO) e nella capacità di generare report per l'ACN.
+  </p>
+
+  <div class="box-warning">
+    <strong>Attenzione:</strong> La scelta del tool non esonera il CdA dal suo obbligo secondo l'Articolo 23 del D.Lgs. 138/2024. Dovete documentare che il consiglio ha deliberato le politiche MDM, le ha approvate e monitora la loro attuazione. Il tool è solo il mezzo per implementarle.
+  </div>
+
+  <h2>Confronto Tecnico: Intune vs Workspace ONE</h2>
+
+  <table class="comparison-table">
+    <thead>
+      <tr>
+        <th>Aspetto</th>
+        <th>Microsoft Intune</th>
+        <th>VMware Workspace ONE</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Costo per dipendente (annuale)</strong></td>
+        <td>€ 6–12 incluso in M365</td>
+        <td>€ 8–15 standalone</td>
+      </tr>
+      <tr>
+        <td><strong>Piattaforme supportate</strong></td>
+        <td>Windows, macOS, iOS, Android</td>
+        <td>Windows, macOS, iOS, Android</td>
+      </tr>
+      <tr>
+        <td><strong>Conditional Access</strong></td>
+        <td><span class="check">✓ Nativo</span> in Entra ID</td>
+        <td><span class="check">✓ Tramite UEM</span> ma richiede config</td>
+      </tr>
+      <tr>
+        <td><strong>Integrazione con AD/Identity</strong></td>
+        <td><span class="check">✓ Seamless</span> con Entra ID</td>
+        <td>Richiede connettore esterno</td>
+      </tr>
+      <tr>
+        <td><strong>BYOD Support</strong></td>
+        <td><span class="check">✓ Buono</span> tramite app portal</td>
+        <td><span class="check">✓ Eccellente</span> separazione lavoro/personale</td>
+      </tr>
+      <tr>
+        <td><strong>Report Compliance/Audit</strong></td>
+        <td><span class="check">✓ Dashboard nativo</span> + Compliance Manager</td>
+        <td>Report manuali o tramite API</td>
+      </tr>
+      <tr>
+        <td><strong>Crittografia disco</strong></td>
+        <td><span class="check">✓ BitLocker</span> (Windows), FileVault (Mac)</td>
+        <td><span class="check">✓ Supportato</span> ma dipende dal device</td>
+      </tr>
+      <tr>
+        <td><strong>Configurazione iniziale</strong></td>
+        <td>Più rapida per ambienti Microsoft</td>
+        <td>Più flessibile ma più complessa</td>
+      </tr>
+      <tr>
+        <td><strong>Supporto italiano (lingua e localizzazione)</strong></td>
+        <td><span class="check">✓ Completo</span></td>
+        <td><span class="cross">Limitato</span> in alcuni moduli</td>
+      </tr>
+      <tr>
+        <td><strong>Curva di apprendimento per amministratori</strong></td>
+        <td>Bassa se già esperti Microsoft</td>
+        <td>Media-alta, richiede formazione</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>Chi Dovrebbe Scegliere Intune</h2>
+
+  <p>
+    <strong>Sceglierete Intune se:</strong>
+  </p>
+
+  <ul>
+    <li>Già usate Microsoft 365 o Windows 10/11 in prevalenza</li>
+    <li>Volete ridurre il numero di piattaforme di controllo (un'unica console per identità + dispositivi + email)</li>
+    <li>Avete budget limitato — Intune è incluso in molti piani M365</li>
+    <li>Dovete generare report di compliance velocemente per il CdA</li>
+    <li>La vostra azienda ha una struttura IT snella (1–2 amministratori)</li>
+    <li>Avete bisogno di integrazione nativa con Conditional Access per il controllo d'accesso basato su rischio</li>
+  </ul>
+
+  <p>
+    <strong>Caso di uso ideale:</strong> Azienda italiana di 100–250 persone, settore finanziario o sanità, già su Microsoft cloud.
+    Implementazione: 4–8 settimane. Costo primo anno: € 8.000–15.000 (compreso in M365). ROI: conforme NIS2 senza raddoppi di infrastruttura.
+  </p>
+
+  <h2>Chi Dovrebbe Scegliere VMware Workspace ONE</h2>
+
+  <p>
+    <strong>Sceglierete VMware se:</strong>
+  </p>
+
+  <ul>
+    <li>Già usate VMware per virtualizzazione e desiderate un'ecosistema coerente</li>
+    <li>Avete ambienti multi-cloud (AWS, Azure, on-premise) e volete un controllo unificato</li>
+    <li>Supportate molti device BYOD e necessitate di una separazione profonda lavoro/personale</li>
+    <li>Avete una maggiore complessità infrastrutturale che richiede flessibilità</li>
+    <li>La vostra azienda ha team IT dedicato che può gestire una piattaforma più sofisticata</li>
+    <li>Non siete bloccati su piattaforme Microsoft e volete mantenere neutralità tecnologica</li>
+  </ul>
+
+  <p>
+    <strong>Caso di uso ideale:</strong> Azienda con 300–500 persone, infrastruttura ibrida (on-premise + cloud), necessità di supportare laptop di vari costruttori e dispositivi BYOD gestiti.
+    Implementazione: 8–12 settimane. Costo primo anno: € 18.000–28.000. ROI: maggiore flessibilità ma richiedente più governance interna.
+  </p>
+
+  <div class="box-info">
+    <strong>Nota pratica:</strong> Nessuno dei due tool è "sbagliato" per NIS2. Il problema non è la piattaforma, ma se l'implementate secondo una policy documentata e la monitorate. Un Intune mal configurato è più pericoloso di un VMware ben gestito.
+  </div>
+
+  <h2>Accesso Condizionale e Controllo del Rischio</h2>
+
+  <p>
+    L'Articolo 21 NIS2 richiede che l'accesso alle risorse sia controllato in base al <strong>rischio dell'identità, del dispositivo e della posizione geografica</strong>.
+    Questo è il punto in cui i due strumenti divergono di più.
+  </p>
+
+  <h3>Intune + Entra ID Conditional Access</h3>
+
+  <p>
+    Se usate Intune, avrete accesso diretto a <strong>Microsoft Entra ID Conditional Access</strong>, che vi consente di creare regole del tipo:
+  </p>
+
+  <blockquote>
+    "Se un utente accede da una posizione geografica non conosciuta OPPURE da un dispositivo senza aggiornamenti di sicurezza, richiedere MFA + approvazione del manager."
+  </blockquote>
+
+  <p>
+    Questa è una capacità nativa e molto potente. Non richiede integrazioni esterne e il report è automatico.
+  </p>
+
+  <h3>VMware Workspace ONE + Identity Manager</h3>
+
+  <p>
+    VMware offre capacità simili, ma richiede di integrare <strong>VMware Identity Manager</strong> (ora parte di VMware Cloud) per ottenere Conditional Access equivalente.
+    È possibile, ma richiede più configurazione e rappresenta un costo aggiuntivo.
+  </p>
+
+  <p>
+    Se già avete VMware Identity, il valore aggiunto è marginale. Se partite da zero, Intune è il percorso più dritto per NIS2.
+  </p>
+
+  <h2>Gestione BYOD: Come Entrambi Affrontano la Sfida</h2>
+
+  <p>
+    L'Articolo 21 non vieta il BYOD, ma lo sottomette a controllo rigoroso.
+    Un dispositivo personale che accede ai dati aziendali deve essere sottoposto alla stessa politica di sicurezza di un device aziendale.
+  </p>
+
+  <h3>Intune: Profili di lavoro e Separazione Gestita</h3>
+
+  <p>
+    Intune supporta <strong>Work Profiles</strong> (su Android) che isolano i dati di lavoro nei dispositivi personali.
+    Su iOS, il supporto è più limitato — siete costretti a gestire il dispositivo intero se volete accesso ai dati sensibili.
+  </p>
+
+  <p>
+    Per Windows e macOS in BYOD, Intune consente di applicare policy solo ai dati di lavoro, non al dispositivo personale nel complesso.
+  </p>
+
+  <h3>VMware: Separazione Approfondita con "Workspace"</h3>
+
+  <p>
+    VMware Workspace ONE è costruito nativamente per BYOD. La partizione lavoro è più profonda e consente agli utenti di mantenere i dati personali completamente separati e non monitorati.
+    Se la vostra politica aziendale è "il BYOD deve esistere, ma il dispositivo personale rimane personale", VMware è superiore.
+  </p>
+
+  <p>
+    Per NIS2, questo non è un vantaggio decisivo — la legge non vi dice come gestire il BYOD, solo che dovete controllare i dati di lavoro.
+    Ma dal punto di vista della fiducia dei dipendenti e della sostenibilità della policy, VMware è più elegante.
+  </p>
+
+  <h2>Audit Trail e Rendicontazione al Consiglio di Amministrazione</h2>
+
+  <p>
+    Qui arriviamo al punto critico: <strong>come dimostrate all'ACN che il controllo funziona?</strong>
+  </p>
+
+  <p>
+    L'Articolo 23 del D.Lgs. 138/2024 richiede che il CdA sia informato regolarmente sulla postura di cybersicurezza.
+    Avere un report pulito e comprensibile è decisivo per evitare sanzioni.
+  </p>
+
+  <h3>Intune: Dashboard e KPI Pronti</h3>
+
+  <p>
+    Intune offre un dashboard nativo che mostra:
+  </p>
+
+  <ul>
+    <li>Dispositivi conformi vs non conformi alle policy</li>
+    <li>Patch applicate vs in sospeso</li>
+    <li>Accessi MFA e incidenti rilevati</li>
+    <li>Device compliance per categoria (Windows, macOS, iOS, Android)</li>
+  </ul>
+
+  <p>
+    Potete esportare un rapporto in pochi minuti, firmarlo e presentarlo al CdA. È quello che i regolatori si aspettano.
+  </p>
+
+  <h3>VMware: Report Manuali o Tramite API</h3>
+
+  <p>
+    VMware non ha un dashboard "pronto per il consiglio".
+    Dovete estrarre i dati via API, laborarli in Power BI o altro strumento, e costruire il rapporto manualmente.
+    Non è impossibile, ma richiede più sforzo — e se la vostra azienda ha una sola persona IT, è un problema.
+  </p>
+
+  <p>
+    Per una banca italiana o un ospedale che deve giustificare il controllo dei dispositivi all'autorità di vigilanza, questo conta.
+  </p>
+
+  <div class="box-case">
+    <div class="case-label">Caso Studio</div>
+    <p>
+      <strong>Scenario: Azienda di distribuzione alimentare, 180 dipendenti, Sicilia.</strong>
+    </p>
+    <p>
+      È un'entità importante secondo NIS2 (fatturato 15 M€). Ha circa 80 laptop e 40 tablet per gli operatori logistici. Attualmente usa una soluzione MDM generico (SOTI). Il consiglio chiede al VD di adottare una piattaforma "moderna" entro il Q3 2026 e di documentare la conformità NIS2.
+    </p>
+    <p>
+      <strong>Analisi:</strong> L'azienda ha 2 persone in IT. Usa principalmente Windows e qualche iPad.
+      Non ha investimenti VMware. Ha iniziato a migrare a Microsoft 365.
+    </p>
+    <p>
+      <strong>Decisione: Intune.</strong> Motivi:
+      <ul style="margin: 12px 0 12px 20px;">
+        <li>Incluso in M365 (budget = € 0 aggiuntivo)</li>
+        <li>Supporto italiano completo</li>
+        <li>Dashboard automatico per il CdA ogni mese</li>
+        <li>Integrazione con Entra ID Conditional Access (accesso a dati sensibili solo da dispositivi conformi)</li>
+        <li>Implementazione in 5 settimane con partner locale</li>
+      </ul>
+    </p>
+    <p>
+      <strong>Risultato:</strong

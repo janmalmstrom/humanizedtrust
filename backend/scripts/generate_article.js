@@ -716,8 +716,8 @@ VIKTIGT: Returnera ENBART giltig HTML från <!DOCTYPE html> till </html>. Inget 
   for (let attempt = 1; attempt <= 5; attempt++) {
     try {
       message = await client.messages.create({
-        model: 'claude-sonnet-4-6',
-        max_tokens: 16000,
+        model: 'claude-haiku-4-5-20251001',
+        max_tokens: 8000,
         messages: [{ role: 'user', content: prompt }]
       });
       break;
@@ -798,8 +798,16 @@ function generateIndex() {
 </head>
 <body>
   <nav>
-    <a class="nav-logo" href="https://nis2klar.se/">NIS2<span>Klar</span></a>
-    <a class="nav-cta" href="https://nis2klar.se/#kontakt">Boka genomgång</a>
+    <a class="nav-logo" href="https://nis2klar.se/nis2.html">NIS2<span>Klar</span></a>
+    <div style="display:flex;align-items:center;gap:16px;">
+      <div style="display:flex;gap:6px;align-items:center;">
+        <a href="https://nis2klar.se/artiklar.html" style="color:#f5c518;text-decoration:none;font-weight:700;font-size:13px;padding:4px 8px;border-radius:3px;background:rgba(245,197,24,0.1);" title="Svenska">SV</a>
+        <a href="https://nis2klar.se/en/articles.html" style="color:#888;text-decoration:none;font-weight:700;font-size:13px;padding:4px 8px;border-radius:3px;" title="English">EN</a>
+        <a href="https://nis2klar.se/da/artikler.html" style="color:#888;text-decoration:none;font-weight:700;font-size:13px;padding:4px 8px;border-radius:3px;" title="Dansk">DA</a>
+        <a href="https://nis2klar.se/no/artikler.html" style="color:#888;text-decoration:none;font-weight:700;font-size:13px;padding:4px 8px;border-radius:3px;" title="Norsk">NO</a>
+      </div>
+      <a class="nav-cta" href="https://nis2klar.se/#kontakt">Boka genomgång</a>
+    </div>
   </nav>
   <div class="hero">
     <h1>NIS2 Artiklar</h1>

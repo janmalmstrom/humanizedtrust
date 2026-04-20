@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-BKF3QH9K01"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag("js", new Date());
+    gtag("config", "G-BKF3QH9K01");
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NIS2 Compliance Checklist: Is Your Organisation Ready? | NIS2Klar</title>
+  <meta name="description" content="A practical NIS2 compliance checklist for Irish CEOs and boards. Covers all Article 21 requirements — governance, risk, incident handling, supply chain, access control, encryption, backups, training. Includes self-assessment scoring.">
+  <meta property="og:title" content="NIS2 Compliance Checklist: Is Your Organisation Ready?">
+  <meta property="og:description" content="A practical NIS2 compliance checklist for Irish CEOs and boards. Covers all Article 21 requirements — governance, risk, incident handling, supply chain, access control, encryption, backups, training.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #141416;
+      --card: #1c1c1f;
+      --yellow: #f5c518;
+      --white: #f0f0f0;
+      --muted: #888;
+      --red: #C61212;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: var(--bg); color: var(--white); font-family: 'Barlow', sans-serif; font-size: 19px; line-height: 1.8; }
+
+    /* Nav */
+    nav { display: flex; justify-content: space-between; align-items: center; padding: 20px 40px; border-bottom: 1px solid rgba(255,255,255,0.07); max-width: 900px; margin: 0 auto; }
+    .nav-logo { font-family: 'Poppins', sans-serif; font-weight: 900; font-size: 20px; color: var(--yellow); text-decoration: none; }
+    .nav-logo span { color: var(--white); }
+    .nav-back { color: var(--muted); text-decoration: none; font-size: 15px; }
+    .nav-back:hover { color: var(--white); }
+    .nav-cta { background: var(--yellow); color: #000; padding: 8px 18px; border-radius: 4px; text-decoration: none; font-weight: 700; font-size: 14px; font-family: 'Poppins', sans-serif; }
+
+    /* Article */
+    .article-wrap { max-width: 760px; margin: 0 auto; padding: 60px 40px; }
+    .article-category { font-size: 13px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 16px; }
+    h1 { font-family: 'Poppins', sans-serif; font-size: clamp(30px, 4vw, 44px); font-weight: 900; line-height: 1.2; margin-bottom: 24px; }
+    .article-meta { font-size: 15px; color: var(--muted); margin-bottom: 48px; padding-bottom: 24px; border-bottom: 1px solid rgba(255,255,255,0.07); }
+    h2 { font-family: 'Poppins', sans-serif; font-size: 26px; font-weight: 700; margin: 48px 0 16px; color: var(--white); }
+    h3 { font-family: 'Poppins', sans-serif; font-size: 20px; font-weight: 600; margin: 32px 0 12px; color: var(--yellow); }
+    p { margin-bottom: 22px; }
+    strong { color: var(--white); font-weight: 700; }
+    .highlight { color: var(--yellow); font-weight: 700; }
+    .danger { color: #ff6b6b; font-weight: 700; }
+    ul, ol { margin: 16px 0 24px 24px; }
+    li { margin-bottom: 12px; font-size: 19px; }
+
+    /* Callout boxes */
+    .box-warning { background: rgba(197,17,17,0.12); border-left: 4px solid var(--red); padding: 20px 24px; margin: 32px 0; border-radius: 0 4px 4px 0; }
+    .box-info { background: rgba(245,197,24,0.08); border-left: 4px solid var(--yellow); padding: 20px 24px; margin: 32px 0; border-radius: 0 4px 4px 0; }
+    .box-case { background: var(--card); border: 1px solid rgba(255,255,255,0.08); padding: 28px; margin: 40px 0; border-radius: 4px; }
+    .box-case .case-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 12px; }
+    blockquote { border-left: 3px solid var(--yellow); padding: 12px 20px; margin: 24px 0; font-style: italic; color: #ccc; }
+
+    /* CTA */
+    .cta-section { background: var(--card); border: 1px solid rgba(245,197,24,0.2); border-radius: 4px; padding: 48px 40px; margin: 64px 0 40px; text-align: center; }
+    .cta-section h2 { margin-top: 0; font-size: 26px; }
+    .cta-section p { color: #aaa; max-width: 500px; margin: 0 auto 28px; }
+    .btn-primary { display: inline-block; background: var(--yellow); color: #000; font-family: 'Poppins', sans-serif; font-weight: 800; font-size: 16px; padding: 16px 36px; border-radius: 4px; text-decoration: none; }
+    .btn-primary:hover { background: #e0b010; }
+    .cta-fine { font-size: 13px; color: var(--muted); margin-top: 16px; }
+
+    /* FAQ */
+    .faq-item { border-bottom: 1px solid rgba(255,255,255,0.07); padding: 20px 0; }
+    .faq-q { font-family: 'Poppins', sans-serif; font-weight: 600; margin-bottom: 10px; }
+    .faq-a { color: #bbb; }
+
+    /* Fine table */
+    .fine-table { width: 100%; border-collapse: collapse; margin: 24px 0; }
+    .fine-table th { background: rgba(245,197,24,0.1); color: var(--yellow); font-family: 'Poppins', sans-serif; font-size: 13px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 12px 16px; text-align: left; border-bottom: 1px solid rgba(245,197,24,0.2); }
+    .fine-table td { padding: 14px 16px; border-bottom: 1px solid rgba(255,255,255,0.05); font-size: 15px; }
+    .fine-table tr:last-child td { border-bottom: none; }
+    .fine-table .amount { color: #ff6b6b; font-weight: 700; }
+
+    /* Summary + Key Takeaway */
+    .box-summary { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; padding: 24px 28px; margin: 0 0 32px; }
+    .summary-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-bottom: 14px; }
+    .box-summary ul { margin: 0; padding-left: 20px; }
+    .box-summary li { margin-bottom: 8px; font-size: 17px; color: #ccc; }
+    .box-takeaway { background: rgba(245,197,24,0.08); border-left: 4px solid var(--yellow); padding: 20px 24px; margin: 0 0 40px; border-radius: 0 4px 4px 0; }
+    .takeaway-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 10px; }
+    .box-takeaway p { margin: 0; font-size: 18px; font-weight: 600; color: var(--white); line-height: 1.6; }
+
+    /* Checklist */
+    .checklist-section { background: var(--card); border: 1px solid rgba(255,255,255,0.08); border-radius: 4px; padding: 28px 32px; margin: 32px 0; }
+    .checklist-section h3 { margin-top: 0; margin-bottom: 16px; }
+    .checklist-item { display: flex; align-items: flex-start; gap: 14px; padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
+    .checklist-item:last-child { border-bottom: none; }
+    .check-box { flex-shrink: 0; width: 22px; height: 22px; border: 2px solid rgba(245,197,24,0.4); border-radius: 3px; margin-top: 3px; }
+    .check-text { font-size: 16px; color: #ccc; line-height: 1.6; }
+    .check-text strong { color: var(--white); }
+
+    /* Score table */
+    .score-table { width: 100%; border-collapse: collapse; margin: 24px 0; }
+    .score-table th { background: rgba(245,197,24,0.1); color: var(--yellow); font-family: 'Poppins', sans-serif; font-size: 13px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 12px 16px; text-align: left; border-bottom: 1px solid rgba(245,197,24,0.2); }
+    .score-table td { padding: 14px 16px; border-bottom: 1px solid rgba(255,255,255,0.05); font-size: 15px; }
+    .score-table tr:last-child td { border-bottom: none; }
+    .score-green { color: #4ade80; font-weight: 700; }
+    .score-yellow { color: var(--yellow); font-weight: 700; }
+    .score-red { color: #ff6b6b; font-weight: 700; }
+
+    /* Footer */
+    footer { border-top: 1px solid rgba(255,255,255,0.07); padding: 32px 40px; text-align: center; font-size: 13px; color: var(--muted); max-width: 900px; margin: 0 auto; }
+    footer a { color: var(--muted); }
+
+    @media (max-width: 600px) {
+      nav, .article-wrap, footer { padding: 20px; }
+      .cta-section { padding: 32px 20px; }
+      .fine-table { font-size: 14px; }
+      .fine-table th, .fine-table td { padding: 10px 10px; }
+      .score-table { font-size: 14px; }
+      .score-table th, .score-table td { padding: 10px 10px; }
+      .checklist-section { padding: 20px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="https://nis2klar.se/">NIS2<span>Klar</span></a>
+  <a class="nav-back" href="https://nis2klar.se/en/articles.html">← All Articles</a>
+  <div class="lang-switcher" style="display:flex;gap:8px;align-items:center;font-size:13px;font-family:'Poppins',sans-serif;">
+    <a href="https://nis2klar.se/artiklar.html" style="color:#888;text-decoration:none;font-weight:600;padding:4px 8px;border-radius:3px;" title="Svenska">SV</a>
+    <a href="https://nis2klar.se/en/articles.html" style="color:#f5c518;text-decoration:none;font-weight:600;padding:4px 8px;border-radius:3px;background:rgba(245,197,24,0.1);" title="English">EN</a>
+    <a href="https://nis2klar.se/da/artikler.html" style="color:#888;text-decoration:none;font-weight:600;padding:4px 8px;border-radius:3px;" title="Dansk">DA</a>
+    <a href="https://nis2klar.se/no/artikler.html" style="color:#888;text-decoration:none;font-weight:600;padding:4px 8px;border-radius:3px;" title="Norsk">NO</a>
+  </div>
+  <a class="nav-cta" href="/nis2.html#boka">Book free call →</a>
+</nav>
+
+<article class="article-wrap">
+  <div class="article-category">Compliance &amp; Governance</div>
+  <h1>NIS2 Compliance Checklist: Is Your Organisation Ready?</h1>
+  <div class="article-meta">Updated 17 April 2026 · Reading time: approx. 9 minutes · Audience: CEO, Board Chair, Board Members</div>
+
+  <!-- SUMMARY -->
+  <div class="box-summary">
+    <div class="summary-label">Summary</div>
+    <ul>
+      <li>For CEOs and board members in NIS2-regulated sectors who want to know, concretely, whether their organisation is compliant today.</li>
+      <li>NIS2 is transposed into Irish law via <strong>S.I. No. 322 of 2024</strong> — it is enforceable now, not pending.</li>
+      <li>This checklist maps all eight key requirement areas under <strong>Article 21</strong> of the NIS2 Directive.</li>
+      <li>A self-assessment scoring guide at the end tells you where you stand — and what to prioritise first.</li>
+      <li>Personal liability under <strong>Regulation 32 of S.I. 322/2024</strong> means your name, not just the company's, is on the line.</li>
+    </ul>
+  </div>
+
+  <!-- KEY TAKEAWAY -->
+  <div class="box-takeaway">
+    <div class="takeaway-label">Key Takeaway</div>
+    <p>NIS2 compliance is not a project you hand to your IT team and revisit at year-end. It is a board-level obligation with personal consequences for every member of your management body. This checklist is your starting point.</p>
+  </div>
+
+  <!-- HOOK -->
+  <p>
+    Here is the uncomfortable truth: most Irish boards believe their organisation is "probably fine" when it comes to NIS2. A significant proportion are not. The gap between assumption and documented reality is exactly where the NCSC Ireland's enforcement authority is pointed.
+  </p>
+
+  <p>
+    <strong>S.I. No. 322 of 2024</strong> — Ireland's transposition of the NIS2 Directive — came into force in October 2024. It applies to organisations across 18 critical sectors, from energy and banking to digital infrastructure, health, transport, and food. If your organisation falls within scope, the legal obligation to have specific cybersecurity measures documented and operational is not a future aspiration. It is a current legal requirement.
+  </p>
+
+  <p>
+    This checklist works through every requirement area set out under Article 21 of the NIS2 Directive. Use it as a board-level self-assessment. Score your organisation honestly. Then decide what to do about the gaps — before someone else decides for you.
+  </p>
+
+  <div class="box-warning">
+    <strong>Do not delegate this checklist entirely to your IT team.</strong> Article 21 requirements must be approved and overseen by the management body — that means you. Regulation 32 of S.I. 322/2024 makes board members personally liable for infringements. Reading this document and acting on it is part of your legal duty.
+  </div>
+
+  <h2>How to Use This Checklist</h2>
+
+  <p>
+    Work through each of the eight sections below. For each item, score your organisation honestly:
+  </p>
+
+  <ul>
+    <li><strong>2 points</strong> — Fully in place and documented</li>
+    <li><strong>1 point</strong> — Partially in place or undocumented</li>
+    <li><strong>0 points</strong> — Not in place</li>
+  </ul>
+
+  <p>
+    Total your score at the end and use the scoring guide to assess your current compliance posture. There are 40 checklist items in total, giving a maximum score of 80.
+  </p>
+
+  <h2>Section 1: Governance and Management Body Responsibility</h2>
+
+  <p>
+    NIS2 is the first EU cybersecurity directive to place explicit legal responsibility on the management body — not just the CISO or IT function. Under Regulation 32 of S.I. 322/2024, individual board members can be held personally liable for cybersecurity infringements. That is not a detail buried in the recitals. It is a live enforcement mechanism.
+  </p>
+
+  <p>
+    Governance is therefore the foundation of everything else. Without documented board-level ownership, every other measure is weakened from the top.
+  </p>
+
+  <div class="checklist-section">
+    <h3>Governance Checklist</h3>
+    <div class="checklist-item">
+      <div class="check-box"></div>
+      <div class="check-text"><strong>The board has formally approved a cybersecurity policy</strong> — not just received a presentation about one. There is a signed board resolution or minute on file.</div>
+    </div>
+    <div class="checklist-item">
+      <div class="check-box"></div>
+      <div class="check-text"><strong>A named member of the management body holds accountability</strong> for NIS2 compliance — with a documented mandate, not an informal understanding.</div>
+    </div>
+    <div class="checklist-item">
+      <div class="check-box"></div>
+      <div class="check-text"><strong>The board receives regular cybersecurity updates</strong> — at minimum quarterly — with a standing agenda item and documented outcomes.</div>
+    </div>
+    <div class="checklist-item">
+      <div class="check-box"></div>
+      <div class="check-text"><strong>Board members have completed NIS2-specific awareness training</strong> — with an attendance log that can be produced on request by NCSC Ireland.</div>
+    </div>
+    <div class="checklist-item">
+      <div class="check-box"></div>
+      <div class="check-text"><strong>Your organisation has determined its NIS2 classification</strong> — essential entity or important entity — and documented the rationale, including sector, headcount, and turnover thresholds.</div>
+    </div>
+  </div>
+
+  <h2>Section 2: Risk Management</h2>
+
+  <p>
+    Article 21(2)(a) requires that organisations implement measures based on an all-hazards approach to risk. This is not a one-time exercise. It is an ongoing, documented process that must be reviewable by your competent authority — which, for most Irish organisations, means <strong>NCSC Ireland</strong>, or a sectoral regulator such as the Central Bank of Ireland (CBI) for financial entities or the Commission for Regulation of Utilities (CRU) for energy organisations.
+  </p>
+
+  <p>
+    Risk management without documentation is indistinguishable from no risk management at all when an inspector arrives.
+  </p>
+
+  <div class="checklist-section">
+    <h3>Risk Management Checklist</h3>
+    <div class="checklist-item">
+      <div class="check-box"></div>
+      <div class="check-text"><strong>A formal risk assessment has been completed and dated within the last 12 months</strong> — covering network and information systems, physical security, and human factors.</div>
+    </div>
+    <div class="checklist-item">
+      <div class="check-box"></div>
+      <div class="check-text"><strong>Identified risks are mapped to specific mitigating controls</strong> — with owners assigned and review dates recorded.</div>
+    </div>
+    <div class="checklist-item">
+      <div class="check-box"></div>
+      <div class="check-text"><strong>A risk register exists and is actively maintained</strong> — not a spreadsheet last touched two years ago.</div>
+    </div>
+    <div class="checklist-item">
+      <div class="check-box"></div>
+      <div class="check-text"><strong>Physical security risks are included</strong> — access to server rooms, hardware disposal, and physical infrastructure resilience.</div>
+    </div>
+    <div class="checklist-item">
+      <div class="check-box"></div>
+      <div class="check-text"><strong>The risk management process has been presented to and approved by the board</strong> — not just the CISO or IT manager.</div>
+    </div>
+  </div>
+
+  <h2>Section 3: Incident Handling</h2>
+
+  <p>
+    Article 21(2)(b) and Article 23 together create one of the most operationally demanding requirements in NIS2: not just having an incident response plan, but having the ability to act on it at speed. In Ireland, the timeline is <strong>24 hours for an early warning, 72 hours for a full incident notification, and one month for a final report</strong> — all submitted to NCSC Ireland.
+  </p>
+
+  <p>
+    Many organisations discover their incident response plan exists only as a document. When a real incident occurs, nobody knows where it is, who is in charge, or how to contact the NCSC. That is the gap that gets organisations sanctioned twice — once for the incident, and once for failing to report it properly.
+  </p>
+
+  <div class="checklist-section">
+    <h3>Incident Handling Checklist</h3>
+    <div class="checklist-item">
+      <div class="check-box"></div>
+      <div class="check-text"><strong>A written incident response plan exists</strong> — with named roles, escalation paths, and contact details for NCSC Ireland (ncsc.gov.ie).</div>
+    </div>
+    <div class="checklist-item">
+      <div class="check-box"></div>
+      <div class="check-text"><strong>The plan has been tested in a tabletop exercise within the last 12 months</strong> — with results documented and lessons incorporated.</div>
+    </div>
+    <div class="checklist-item">
+      <div class="check-box"></div>
+      <div class="check-text"><strong>Your team understands the 24-hour early warning requirement</strong> — and there is a clear internal trigger that activates the reporting process immediately, not after internal deliberation.</div>
+    </div>
+    <div class="checklist-item">
+      <div class="check-box"></div>
+      <div class="check-text"><strong>Detection capabilities are in place</strong> — a security information and event management (SIEM) tool or equivalent that provides real-time visibility into your environment.</div>
+    </div>
+    <div class="checklist-item">
+      <div class="check-box"></div>
+      <div class="check-text"><strong>Incident classification criteria are defined</strong> — your team knows what qualifies as a "significant incident" under S.I. 322/2024 and will not waste critical hours debating whether to report.</div>
+    </div>
+  </div>
+
+  <h2>Section 4: Business Continuity and Backup</h2>
+
+  <p>
+    Article 21(2)(c) requires organisations to have plans for business continuity and crisis management, including backup procedures and disaster recovery. In practice, this means your organisation must be able to demonstrate not only that backups exist, but that they are tested, isolated from your primary environment, and recoverable within a defined timeframe.
+  </p>
+
+  <p>
+    Ransomware attacks routinely target backup systems first. An organisation that loses both its live environment and its backups simultaneously — because they were on the same network — has no compliance defence and no operational recovery path.
+  </p>
+
+  <div class="checklist-section">
+    <h3>Backup and Continuity Checklist</h3>
+    <div class="checklist-item">
+      <div class="check-box"></div>
+      <div class="check-text"><strong>Critical data is backed up using a 3-2-1 rule or equivalent</strong> — three copies, two different media types, one offsite or cloud-isolated.</div>
+    </div>
+    <div class="checklist-item">
+      <div class="check-box"></div>
+      <div class="check-text"><strong>Backups are immutable or air-gapped</strong> — ransomware cannot reach and encrypt your recovery copies.</div>
+    </div>
+    <div class="checklist-item">
+      <div class="check-box"></div>
+      <div class="check-text"><strong>Recovery has been tested within the last six months</strong> — not assumed. A documented restoration test with recovery time recorded.</div>
+    </div>
+    <div class="checklist-item">
+      <div class="check-box"></div>
+      <div class="check-text"><strong>A Business Continuity Plan (BCP) exists and has board sign-off</strong> — covering critical functions, recovery time objectives, and communication protocols.</div>
+    </div>
+    <div class="checklist-item">
+      <div class="check-box"></div>
+      <div class="check-text"><strong>The BCP has been tested in a scenario exercise</strong> — results documented, weaknesses remediated.</div>
+    </div>
+  </div>
+
+  <h2>Section 5: Supply Chain Security</h2>
+
+  <p>
+    Article 21(2)(d) addresses one of the most commonly overlooked NIS2 requirements: the security of your supply chain. Your obligation extends beyond your own network. You are responsible for assessing the cybersecurity posture of your significant suppliers and vendors — particularly those with access to your systems, data, or operational processes.
+  </p>
+
+  <p>
+    For Irish-registered entities that are part of multinational groups — a significant cohort given Ireland's role as the EU headquarters for many large technology and pharmaceutical companies — this creates cross-border complexity. The Irish-registered entity is accountable to NCSC Ireland regardless of where the parent company or shared services function is located.
+  </p>
+
+  <div class="checklist-section">
+    <h3>Supply Chain Checklist</h3>
+    <div class="checklist-item">
+      <div class="check-box"></div>
+      <div class="check-text"><strong>A supplier inventory exists</strong> — identifying all third parties with access to your systems, networks, or data.</div>
+    </div>
+    <div class="checklist-item">
+      <div class="check-box"></div>
+      <div class="check-text"><strong>Key suppliers are assessed for cybersecurity risk</strong> — with documented results, not just a questionnaire sent and forgotten.</div>
+    </div>
+    <div class="checklist-item">
+      <div class="check-box"></div>
+      <div class="check-text"><strong>Contracts with significant suppliers include security requirements</strong> — right to audit, incident notification obligations, and minimum security standards.</div>
+    </div>
+    <div class="checklist-item">
+      <div class="check-box"></div>
+      <div class="check-text"><strong>Supplier access is reviewed and revoked promptly</strong> — leavers and contract ends are tracked, not left open indefinitely.</div>
+    </div>
+    <div class="checklist-item">
+      <div class="check-box"></div>
+      <div class="check-text"><strong>Your highest-risk suppliers are reviewed annually</strong> — with re-assessment triggered by any significant change in their service or your dependency on them.</div>
+    </div>
+  </div>
+
+  <div class="box-case">
+    <div class="case-label">Illustrative Scenario</div>
+    <p>
+      <strong>Scenario: Mid-size Irish healthcare technology company, 130 employees. Classified as an important entity under S.I. 322/2024.</strong>
+    </p>
+    <p>
+      A third-party IT managed service provider (MSP) with remote access to the company's infrastructure is compromised in a supply chain attack. The attacker uses the MSP's privileged credentials to access patient data systems. The Irish company is notified by the MSP on a Friday afternoon.
+    </p>
+    <p>
+      The company has no documented incident response plan. There is no named person responsible for contacting NCSC Ireland. Senior leadership spends the weekend trying to establish the scope of the breach before deciding whether to report. The 24-hour early warning window expires without notification. The 72-hour full notification window also expires.
+    </p>
+    <p>
+      NCSC Ireland is alerted through a separate notification from a public hospital affected by the same MSP. An investigation is opened. It emerges that the company had no supplier security assessment for the MSP, no contractual security obligations, and no board-approved cybersecurity policy.
+    </p>
+    <p>
+      <strong>Outcome:</strong> Enforcement proceedings under S.I. 322/2024. Sanctions for failure to report within the required timeline, failure to maintain adequate incident handling procedures, and failure to manage supply chain risk. The CEO receives formal notice of personal liability under Regulation 32. <span class="danger">Estimated total cost including legal representation, remediation, and regulatory penalties: €2–4 million.</span>
+    </p>
+  </div>
+
+  <h2>Section 6: Access Control and Authentication</h2>
+
+  <p>
+    Article 21(2)(i) requires organisations to implement policies and procedures relating to the use of cryptography and access control measures, including multi-factor authentication (MFA). In the context of NIS2, "access control" is not just a technical setting — it is a governance policy that must be documented, enforced, and regularly reviewed.
+  </p>
+
+  <p>
+    The single most impactful security control most organisations can implement immediately is enforced multi-factor authentication across all administrative accounts and remote access. The absence of MFA on privileged accounts is one of the most common root causes of significant incidents — and one of the first things NCSC Ireland will look for during a review.
+  </p>
+
+  <div class="checklist-section">
+    <h3>Access Control Checklist</h3>
+    <div class="checklist-item">
+      <div class="check-box"></div>
+      <div class="check-text"><strong>Multi-factor authentication (MFA) is enforced</strong> on all administrative accounts, remote access connections, and email systems — not optional, not user-selected.</div>
+    </div>
+    <div class="checklist-item">
+      <div class="check-box"></div>
+      <div class="check-text"><strong>Privileged access is managed under a least-privilege principle</strong> — users have only the access they need for their role, and this is reviewed at least annually.</div>
+    </div>
+    <div class="checklist-item">
+      <div class="check-box"></div>
+      <div class="check-text"><strong>An access control policy exists and is documented</strong> — covering onboarding, offboarding, role changes, and periodic access reviews.</div>
+    </div>
+    <div class="checklist-item">
+      <div class="check-box"></div>
+      <div class="check-text"><strong>Privileged accounts are separated from standard user accounts</strong> — administrators do not use privileged credentials for everyday tasks such as email and web browsing.</div>
+    </div>
+    <div class="checklist-item">
+      <div class="check-box"></div>
+      <div class="check-text"><strong>Remote access logs are retained and monitored</strong> — anomalous login patterns generate alerts, not just log entries that nobody reads.</div>
+    </div>
+  </div>
+
+  <h2>Section 7: Encryption</h2>
+
+  <p>
+    Article 21(2)(h) explicitly requires the use of encryption and cryptography where appropriate. For most organisations, this means data in transit must be encrypted, data at rest containing sensitive information must be encrypted, and the management of encryption keys must be documented and controlled.
+  </p>
+
+  <p>
+    "We use HTTPS" is not a sufficient answer. NCSC Ireland and sectoral regulators such as the CBI expect a documented encryption policy that covers data classification, encryption standards in use, and the governance of cryptographic keys — including who holds them and what happens if they are compromised.
+  </p>
+
+  <div class="checklist-section">
+    <h3>Encryption Checklist</h3>
+    <div class="checklist-item">
+      <div class="check-box"></div>
+      <div class="check-text"><strong>An encryption policy is documented and in force</strong> — covering what data must be encrypted, what standards are used, and who is responsible.</div>
+    </div>
+    <div class="checklist-item">
+      <div class="check-box"></div>
+      <div class="check-text"><strong>Data in transit is encrypted using current standards</strong> — TLS 1.2 or higher across all external-facing and internal sensitive communications.</div>
+    </div>
+    <div class="checklist-item">
+      <div class="check-box"></div>
+      <div class="check-text"><strong>Sensitive data at rest is encrypted</strong> — including endpoint devices (laptops, mobile phones) and cloud storage containing regulated or confidential data.</div>
+    </div>
+    <div class="checklist-item">
+      <div class="check-box"></div>
+      <div class="check-text"><strong>Encryption key management is documented</strong> — who controls keys, how they are rotated, and what happens in the event of a key compromise.</div>
+    </div>
+    <div class="checklist-item">
+      <div class="check-box"></div>
+      <div class="check-text"><strong>Email containing sensitive information is encrypted or handled through a secure channel</strong> — particularly relevant for organisations in financial services regulated by the CBI or health entities regulated under the HSE framework.</div>
+    </div>
+  </div>
+
+  <h2>Section 8: Staff Awareness and Training</h2>
+
+  <p>
+    Article 21(2)(g) requires organisations to implement basic cyber hygiene practices and cybersecurity training. This is one of the few areas where non-compliance is immediately visible — and immediately fixable. The question is not whether your staff have heard of phishing. It is whether there is documented, regular training with attendance records that demonstrate an ongoing, structured programme.
+  </p>
+
+  <p>
+    For the board specifically, training is a governance requirement, not just an HR matter. Regulation 32 of S.I. 322/2024 ties personal liability to whether management body members have properly overseen the organisation's security posture. That oversight requires a basic level of informed understanding. "I left it to the IT department" is not a defence.
+  </p>
+
+  <div class="checklist-section">
+    <h3>Training and Awareness Checklist</h3>
+    <div class="checklist-item">
+      <div class="check-box"></div>
+      <div class="check-text"><strong>All staff complete cybersecurity awareness training at least annually</strong> — with a completion log that can be produced on request.</div>
+    </div>
+    <div class="checklist-item">
+      <div class="check-box"></div>
+      <div class="check-text"><strong>Phishing simulation exercises are conducted regularly</strong> — results are tracked, and staff who fail receive additional targeted training.</div>
+    </div>
+    <div class="checklist-item">
+      <div class="check-box"></div>
+      <div class="check-text"><strong>Board members and senior leaders have completed NIS2-specific training</strong> — covering their personal obligations, not just general cybersecurity awareness.</div>
+    </div>
+    <div class="checklist-item">
+      <div class="check-box"></div>
+      <div class="check-text"><strong>New employees receive security onboarding training</strong> — before they are given access to systems, not three months after joining.</div>
+    </div>
+    <div class="checklist-item">
+      <div class="check-box"></div>
+      <div class="check-text"><strong>A training policy exists and is reviewed annually</strong> — covering frequency, scope, roles with elevated training requirements, and documentation standards.</div>
+    </div>
+  </div>
+
+  <div class="box-info">
+    <strong>A note on documentation:</strong> Throughout this checklist, "documented" appears repeatedly. This is not bureaucratic fastidiousness. It is the difference between being able to demonstrate compliance and having nothing to show a regulator. NCSC Ireland can require your organisation to produce evidence of compliance with short notice. If the evidence does not exist in writing, the compliance does not exist in law.
+  </div>
+
+  <h2>Self-Assessment Scoring Guide</h2>
+
+  <p>
+    Score each of the 40 checklist items: 2 points for fully in place and documented, 1 point for partially in place or undocumented, 0 points for not in place. Maximum total score: 80.
+  </p>
+
+  <table class="score-table">
+    <thead>
+      <tr>
+        <th>Score Range</th>
+        <th>Assessment</th>
+        <th>Recommended Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>65 – 80</strong></td>
+        <td class="score-green">Strong posture</td>
+        <td>Conduct a formal gap analysis to confirm findings, address remaining gaps, and prepare board-level documentation for NCSC Ireland review readiness.</td>
+      </tr>
+      <tr>
+        <td><strong>45 – 64</strong></td>
+        <td class="score-yellow">Partial compliance</td>
+        <td>Significant gaps exist. Prioritise incident handling, governance documentation, and access controls. Begin a structured remediation programme within 30 days.</td>
+      </tr>
+      <tr>
+        <td><strong>25 – 44</strong></td>
+        <td class="score-red">Material exposure</td>
+        <td>Your organisation has material compliance gaps and is exposed to enforcement action. Engage an NIS2-qualified adviser immediately. Do not wait for an incident to force the issue.</td>
+      </tr>
+      <tr>
+        <td><strong>0 – 24</strong></td>
+        <td class="score-red">Critical non-compliance</td>
+        <td>Your organisation is in a position of critical non-compliance. The risk of significant fines and personal liability for board members is immediate. Seek specialist support this week.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>What Happens If You Are Not Compliant</h2>
+
+  <p>
+    Under S.I. No. 322 of 2024, the penalties for non-compliance are significant and tiered:
+  </p>
+
+  <table class="fine-table">
+    <thead>
+      <tr>
+        <th>Entity Type</th>
+        <th>Maximum Fine</th>
+        <th>Alternative Cap</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Essential Entity</td>
+        <td class="amount">€10 million</td>
+        <td>2% of global annual turnover</td>
+      </tr>
+      <tr>
+        <td>Important Entity</td>
+        <td class="amount">€7 million</td>
+        <td>1.4% of global annual turnover</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>
+    The higher of the two amounts applies. For a large Irish-registered entity — and Ireland hosts the European headquarters of many multinational technology, pharmaceutical, and financial services companies — the percentage of global turnover will frequently exceed the fixed cap. A company with €1 billion in global turnover that is classified as an essential entity faces potential fines of up to €20 million based on the 2% calculation.
+  </p>
+
+  <p>
+    Beyond organisational fines, Regulation 32 of S.I. 322/2024 enables NCSC Ireland to hold individual members of the management body personally liable. This can include a temporary prohibition on exercising management functions — not limited to the affected organisation, but potentially sector-wide. It is not a fine payable by the company. It is a professional consequence for the individual.
+  </p>
+
+  <h2>Your Next Steps</h2>
+
+  <p>
+    This checklist is a starting point, not a finishing line. What it should give you is an honest picture of where your organisation stands today — and a clear set of priorities for the next 60 to 90 days.
+  </p>
+
+  <p>
+    If your score indicates partial or material exposure, the most effective first step is a structured gap analysis conducted with qualified support. This maps your current state against every Article 21 requirement, produces the documentation NCSC Ireland would expect to see, and gives your board a defensible record of having taken the obligation seriously.
+  </p>
+
+  <p>
+    The cost of a gap analysis is a fraction of the minimum fine for a single Article 21 infringement. The question is not whether you can afford to do it. It is whether you can afford not to.
+  </p>
+
+  <div class="box-info" style="margin: 48px 0 32px;">
+    <div style="font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color: var(--yellow); margin-bottom:10px;">🔧 TOOLS &amp; SOLUTIONS</div>
+    <p style="margin:0; font-size:17px; color: #ddd; line-height:1.7;">Microsoft 365 Business Premium bundles MFA enforcement, endpoint detection and response (EDR), backup, and compliance tooling in a single licence — covering multiple Article 21 requirement areas simultaneously. Microsoft Defender Secure Score gives your board a real-time 0–100 compliance KPI. Microsoft Defender Compliance Manager maps your current controls directly against NIS2 requirements. Microsoft Entra ID Conditional Access enforces access policies at scale. A certified Microsoft partner can set this up and run your NIS2 gap analysis — at no charge for the initial assessment.</p>
+  </div>
+
+  <!-- NEWSLETTER -->
+  <div style="background:#111; border:1px solid rgba(255,255,255,0.1); border-left:3px solid #f5c518; border-radius:4px; padding:32px 36px; margin:40px 0 0; text-align:center; max-width:760px; margin-left:auto; margin-right:auto;">
+    <div style="font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:#f5c518; margin-bottom:12px;">📬 NIS2 UPDATES</div>
+    <h3 style="font-family:'Poppins',sans-serif; font-size:20px; font-weight:800; margin:0 0 8px; color:#f0f0f0;">New NIS2 article every week — straight to your inbox</h3>
+    <p style="color:#888; font-size:15px; margin:0 0 20px;">No sales pitch. Just practical guidance for CEOs and boards.</p>
+    <form id="nlForm-nis2_compliance_checklist" onsubmit="submitNewsletter_nis2_compliance_checklist(event)" style="display:flex; gap:10px; flex-wrap:wrap; justify-content:center; max-width:460px; margin:0 auto;">
+      <input type="email" id="nlEmail-nis2_compliance_checklist" placeholder="your@company.ie" required style="flex:1; min-width:200px; padding:12px 16px; background:#1c1c1f; border:1px solid rgba(255,255,255,0.15); border-radius:4px; color:#f0f0f0; font-size:15px; outline:none;" />
+      <button type="submit" id="nlSubmit-nis2_compliance_checklist" style="padding:12px 22px; background:#f5c518; color:#141416; font-weight:700; font-size:15px; border:none; border-radius:4px; cursor:pointer; white-space:nowrap;">Subscribe free →</button>
+    </form>
+    <p style="font-size:12px; color:#555; margin:12px 0 0;">You can unsubscribe at any time. We never share your email.</p>
+    <div id="nlThanks-nis2_compliance_checklist" style="display:none; color:#4ade80; font-size:16px; font-weight:600; margin-top:14px;">✅ You're in! Next article coming to your inbox.</div>
+  </div>
+
+  <!-- CTA -->
+  <div class="cta-section">
+    <h2>Do you know where your organisation stands today?</h2>
+    <p>A free gap analysis with a certified Microsoft partner shows exactly what you've already covered — and what's missing.</p>
+    <a href="/nis2.html#boka" class="btn-primary">Book free gap analysis →</a>
+    <p class="cta-fine">Fines are up to <strong>€10 million</strong>. The gap analysis is free.</p>
+  </div>
+
+</article>
+
+<div class="related-articles" style="margin:2.5rem 0 2rem;padding:1.5rem;background:#1a1a2e;border-left:4px solid #f0a500;border-radius:4px;max-width:760px;margin-left:auto;margin-right:auto;">
+  <p style="margin:0 0 1rem;font-size:0.85rem;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:#f0a500;">Read Also</p>
+  <ul style="margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:0.5rem;">
+    <li><a href="/en/articles/nis2-personal-liability-board-ireland.html" style="color:#e0e0e0;text-decoration:none;font-size:0.95rem;">&#x2192; Board personal liability under NIS2 in Ireland</a></li>
+    <li><a href="/en/articles/nis2-incident-reporting-ireland.html" style="color:#e0e0e0;text-decoration:none;font-size:0.95rem;">&#x2192; NIS2 incident reporting: 24h, 72h, and the NCSC Ireland process</a></li>
+    <li><a href="/en/articles/nis2-which-organisations-are-in-scope-ireland.html" style="color:#e0e0e0;text-decoration:none;font-size:0.95rem;">&#x2192; Which Irish organisations are in scope for NIS2?</a></li>
+  </ul>
+  <p style="margin:1.25rem 0 0;font-size:0.85rem;color:#aaa;">&#8592; <a href="https://nis2klar.se/" style="color:#f0a500;text-decoration:none;">NIS2Klar home</a> &nbsp;&middot;&nbsp; <a href="https://nis2klar.se/en/articles.html" style="color:#f0a500;text-decoration:none;">All articles</a></p>
+</div>
+
+<footer>
+  © 2026 M&amp;J Trusted Marketing KB ·
+  <a href="mailto:support@trustedmarketing.se">support@trustedmarketing.se</a> · <a href="tel:+46470597003">+46 470 59 70 03</a> ·
+  <a href="https://nis2klar.se/">Back to home</a> ·
+  <a href="/privacy.html">Privacy Policy</a>
+  <p style="margin-top:12px; font-size:11px; color: #555; line-height:1.5;">Microsoft, Microsoft 365, Azure and related product names are trademarks of Microsoft Corporation. nis2klar.se is not affiliated with or endorsed by Microsoft Corporation.</p>
+</footer>
+
+<script>
+  async function submitNewsletter_nis2_compliance_checklist(e) {
+    e.preventDefault();
+    const btn = document.getElementById('nlSubmit-nis2_compliance_checklist');
+    btn.disabled = true; btn.textContent = '...';
+    const email = document.getElementById('nlEmail-nis2_compliance_checklist').value.trim();
+    try {
+      const res = await fetch('/api/newsletter/subscribe', { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({ email, source: 'article-en-nis2_compliance_checklist' }) });
+      const data = await res.json();
+      if (data.success) { document.getElementById('nlForm-nis2_compliance_checklist').style.display='none'; document.getElementById('nlThanks-nis2_compliance_checklist').style.display='block'; }
+      else { btn.disabled=false; btn.textContent='Subscribe free →'; }
+    } catch { btn.disabled=false; btn.textContent='Subscribe free →'; }
+  }
+</script>
+
+</body>
+</html>

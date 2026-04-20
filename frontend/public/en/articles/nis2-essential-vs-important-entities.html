@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-BKF3QH9K01"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag("js", new Date());
+    gtag("config", "G-BKF3QH9K01");
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NIS2 Essential vs Important Entities: Which Category Are You? | NIS2Klar</title>
+  <meta name="description" content="Understand NIS2 entity classification in Ireland. Essential entities face €10 million fines and proactive supervision. Important entities face different compliance burdens. Know your category.">
+  <meta property="og:title" content="NIS2 Essential vs Important Entities: Which Category Are You?">
+  <meta property="og:description" content="Essential vs important entity status determines your NIS2 compliance burden and supervisory risk. Find out which applies to your Irish organisation.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #141416;
+      --card: #1c1c1f;
+      --yellow: #f5c518;
+      --white: #f0f0f0;
+      --muted: #888;
+      --red: #C61212;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: var(--bg); color: var(--white); font-family: 'Barlow', sans-serif; font-size: 19px; line-height: 1.8; }
+
+    /* Nav */
+    nav { display: flex; justify-content: space-between; align-items: center; padding: 20px 40px; border-bottom: 1px solid rgba(255,255,255,0.07); max-width: 900px; margin: 0 auto; }
+    .nav-logo { font-family: 'Poppins', sans-serif; font-weight: 900; font-size: 20px; color: var(--yellow); text-decoration: none; }
+    .nav-logo span { color: var(--white); }
+    .nav-back { color: var(--muted); text-decoration: none; font-size: 15px; }
+    .nav-back:hover { color: var(--white); }
+    .lang-switcher { display: flex; gap: 8px; align-items: center; font-size: 13px; font-family: 'Poppins', sans-serif; }
+    .lang-switcher a { text-decoration: none; font-weight: 600; padding: 4px 8px; border-radius: 3px; }
+    .nav-cta { background: var(--yellow); color: #000; padding: 8px 18px; border-radius: 4px; text-decoration: none; font-weight: 700; font-size: 14px; font-family: 'Poppins', sans-serif; }
+
+    /* Article */
+    .article-wrap { max-width: 760px; margin: 0 auto; padding: 60px 40px; }
+    .article-category { font-size: 13px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 16px; }
+    h1 { font-family: 'Poppins', sans-serif; font-size: clamp(30px, 4vw, 44px); font-weight: 900; line-height: 1.2; margin-bottom: 24px; }
+    .article-meta { font-size: 15px; color: var(--muted); margin-bottom: 48px; padding-bottom: 24px; border-bottom: 1px solid rgba(255,255,255,0.07); }
+    h2 { font-family: 'Poppins', sans-serif; font-size: 26px; font-weight: 700; margin: 48px 0 16px; color: var(--white); }
+    h3 { font-family: 'Poppins', sans-serif; font-size: 20px; font-weight: 600; margin: 32px 0 12px; color: var(--yellow); }
+    p { margin-bottom: 22px; }
+    strong { color: var(--white); font-weight: 700; }
+    .highlight { color: var(--yellow); font-weight: 700; }
+    .danger { color: #ff6b6b; font-weight: 700; }
+    ul, ol { margin: 16px 0 24px 24px; }
+    li { margin-bottom: 12px; font-size: 19px; }
+
+    /* Callout boxes */
+    .box-warning { background: rgba(197,17,17,0.12); border-left: 4px solid var(--red); padding: 20px 24px; margin: 32px 0; border-radius: 0 4px 4px 0; }
+    .box-info { background: rgba(245,197,24,0.08); border-left: 4px solid var(--yellow); padding: 20px 24px; margin: 32px 0; border-radius: 0 4px 4px 0; }
+    .box-case { background: var(--card); border: 1px solid rgba(255,255,255,0.08); padding: 28px; margin: 40px 0; border-radius: 4px; }
+    .box-case .case-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 12px; }
+    blockquote { border-left: 3px solid var(--yellow); padding: 12px 20px; margin: 24px 0; font-style: italic; color: #ccc; }
+
+    /* CTA */
+    .cta-section { background: var(--card); border: 1px solid rgba(245,197,24,0.2); border-radius: 4px; padding: 48px 40px; margin: 64px 0 40px; text-align: center; }
+    .cta-section h2 { margin-top: 0; font-size: 26px; }
+    .cta-section p { color: #aaa; max-width: 500px; margin: 0 auto 28px; }
+    .btn-primary { display: inline-block; background: var(--yellow); color: #000; font-family: 'Poppins', sans-serif; font-weight: 800; font-size: 16px; padding: 16px 36px; border-radius: 4px; text-decoration: none; }
+    .btn-primary:hover { background: #e0b010; }
+    .cta-fine { font-size: 13px; color: var(--muted); margin-top: 16px; }
+
+    /* FAQ */
+    .faq-item { border-bottom: 1px solid rgba(255,255,255,0.07); padding: 20px 0; }
+    .faq-q { font-family: 'Poppins', sans-serif; font-weight: 600; margin-bottom: 10px; }
+    .faq-a { color: #bbb; }
+
+    /* Comparison table */
+    .comparison-table { width: 100%; border-collapse: collapse; margin: 24px 0; }
+    .comparison-table th { background: rgba(245,197,24,0.1); color: var(--yellow); font-family: 'Poppins', sans-serif; font-size: 13px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 12px 16px; text-align: left; border-bottom: 1px solid rgba(245,197,24,0.2); }
+    .comparison-table td { padding: 14px 16px; border-bottom: 1px solid rgba(255,255,255,0.05); font-size: 15px; }
+    .comparison-table tr:last-child td { border-bottom: none; }
+    .comparison-table .essential { color: var(--yellow); font-weight: 700; }
+    .comparison-table .important { color: #4ade80; font-weight: 700; }
+
+    /* Summary + Key Takeaway */
+    .box-summary { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; padding: 24px 28px; margin: 0 0 32px; }
+    .summary-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-bottom: 14px; }
+    .box-summary ul { margin: 0; padding-left: 20px; }
+    .box-summary li { margin-bottom: 8px; font-size: 17px; color: #ccc; }
+    .box-takeaway { background: rgba(245,197,24,0.08); border-left: 4px solid var(--yellow); padding: 20px 24px; margin: 0 0 40px; border-radius: 0 4px 4px 0; }
+    .takeaway-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 10px; }
+    .box-takeaway p { margin: 0; font-size: 18px; font-weight: 600; color: var(--white); line-height: 1.6; }
+
+    /* Related articles */
+    .related-articles { margin: 2.5rem 0 2rem; padding: 1.5rem; background: #1a1a2e; border-left: 4px solid #f0a500; border-radius: 4px; }
+    .related-articles p { margin: 0 0 1rem; font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #f0a500; }
+    .related-articles ul { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+    .related-articles li { margin: 0; font-size: 0.95rem; }
+    .related-articles a { color: #e0e0e0; text-decoration: none; }
+    .related-articles a:hover { color: #f0a500; }
+
+    /* Footer */
+    footer { border-top: 1px solid rgba(255,255,255,0.07); padding: 32px 40px; text-align: center; font-size: 13px; color: var(--muted); max-width: 900px; margin: 0 auto; }
+    footer a { color: var(--muted); }
+
+    @media (max-width: 600px) {
+      nav, .article-wrap, footer { padding: 20px; }
+      nav { flex-wrap: wrap; gap: 12px; }
+      .lang-switcher { order: 3; width: 100%; justify-content: center; }
+      .cta-section { padding: 32px 20px; }
+      .comparison-table { font-size: 14px; }
+      .comparison-table th, .comparison-table td { padding: 10px 10px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="https://nis2klar.se/en/">NIS2<span>Klar</span></a>
+  <a class="nav-back" href="https://nis2klar.se/en/articles.html">← All Articles</a>
+  <div class="lang-switcher">
+    <a href="https://nis2klar.se/artiklar.html" style="color:#888;" title="Svenska">SV</a>
+    <a href="https://nis2klar.se/en/articles.html" style="color:#f5c518;background:rgba(245,197,24,0.1);" title="English">EN</a>
+    <a href="https://nis2klar.se/da/artikler.html" style="color:#888;" title="Dansk">DA</a>
+    <a href="https://nis2klar.se/no/artikler.html" style="color:#888;" title="Norsk">NO</a>
+    <a href="https://nis2klar.se/it/articoli.html" style="color:#888;" title="Italiano">IT</a>
+  </div>
+  <a class="nav-cta" href="/nis2.html#boka">Book consultation →</a>
+</nav>
+
+<article class="article-wrap">
+  <div class="article-category">Compliance &amp; Classification</div>
+  <h1>NIS2 Essential vs Important Entities: Which Category Are You?</h1>
+  <div class="article-meta">Updated 19 April 2026 · Reading time: 8 minutes · Audience: CEOs &amp; Boards</div>
+
+  <!-- SUMMARY -->
+  <div class="box-summary">
+    <div class="summary-label">Summary</div>
+    <ul>
+      <li>NIS2 divides organisations into two categories: <strong>Essential</strong> and <strong>Important</strong> entities.</li>
+      <li>Your category determines the intensity of supervision, fines, and compliance burden.</li>
+      <li>Essential entities face up to <strong>€10 million in fines</strong>; Important entities face up to <strong>€7 million</strong>.</li>
+      <li>Personal liability applies to both — management bodies are personally responsible for security governance.</li>
+      <li>Classification thresholds are tied to employee count and annual turnover within 18 critical sectors.</li>
+      <li>NCSC Ireland is the primary authority; sector regulators (CBI, ComReg, CRU) conduct the supervision.</li>
+    </ul>
+  </div>
+
+  <!-- KEY TAKEAWAY -->
+  <div class="box-takeaway">
+    <div class="takeaway-label">The Critical Point</div>
+    <p>Your classification determines how aggressively NCSC Ireland will supervise you. Essential entities face proactive, risk-based audits. Important entities face reactive supervision triggered by incident or complaint. Both face identical personal liability for board members.</p>
+  </div>
+
+  <!-- HOOK -->
+  <p>
+    The NIS2 Directive, transposed into Irish law through S.I. No. 322 of 2024, doesn't treat all organisations the same. Some face constant supervision. Others only face scrutiny when something goes wrong. The difference lies in a single classification: <strong>Essential</strong> or <strong>Important</strong>.
+  </p>
+
+  <p>
+    That classification has direct consequences for your compliance timeline, your fines, your board's personal liability, and the frequency with which NCSC Ireland or your sector regulator will knock on your door. Getting the classification wrong — or ignoring it — can cost you millions.
+  </p>
+
+  <div class="box-warning">
+    <strong>Critical timing:</strong> NCSC Ireland is actively registering entities now. Misclassification creates legal exposure. Delaying registration doesn't reduce your obligation — it only increases your breach risk during the period you should have been registered.
+  </div>
+
+  <h2>What does NIS2 actually say about Essential vs Important?</h2>
+
+  <p>
+    The regulation is clear. <strong>Regulation 2 of S.I. No. 322/2024</strong> defines two categories based on two criteria: size and sector. You must meet <em>both</em> criteria and the organisational thresholds to be classified as Essential. If you fall short of Essential thresholds but still operate in one of the 18 critical sectors, you're Important (assuming you meet the Important entity thresholds).
+  </p>
+
+  <p>
+    The 18 sectors covered by NIS2 are:
+  </p>
+
+  <ul>
+    <li>Energy (electricity, oil &amp; gas, district heating)</li>
+    <li>Transport (air, rail, water, road)</li>
+    <li>Banking &amp; financial services (including payment systems)</li>
+    <li>Financial market infrastructure</li>
+    <li>Health &amp; healthcare</li>
+    <li>Drinking water &amp; wastewater</li>
+    <li>Digital infrastructure (ISPs, data centres, DNS/routing)</li>
+    <li>ICT service providers (cloud, hosting, SaaS)</li>
+    <li>Public administration</li>
+    <li>Space</li>
+    <li>Postal services</li>
+    <li>Waste management</li>
+    <li>Chemicals manufacturing</li>
+    <li>Food production &amp; processing</li>
+    <li>Manufacturing (critical infrastructure)</li>
+    <li>Digital service providers (marketplaces, search engines, social networks)</li>
+    <li>Research institutions</li>
+  </ul>
+
+  <h2>The thresholds: Essential entities</h2>
+
+  <p>
+    An organisation is classified as <strong>Essential</strong> if it operates in one of the 18 sectors <em>and</em> meets at least one of these size criteria:
+  </p>
+
+  <ul>
+    <li><strong>More than 250 employees</strong>, <em>or</em></li>
+    <li><strong>Annual net turnover of more than €50 million</strong> (or equivalent balance sheet total)</li>
+  </ul>
+
+  <p>
+    If your fintech company in Dublin has 280 employees and €45 million in annual revenue, you're Essential (by headcount, even though turnover falls short). If you're a water authority with 180 employees but €120 million in turnover, you're Essential (by revenue, even though headcount falls short).
+  </p>
+
+  <p>
+    Being Essential also requires that your organisation is established in the EU and provides a service or operates infrastructure within one of the 18 critical sectors. A foreign parent company with an Irish subsidiary counts — the Irish entity's thresholds apply.
+  </p>
+
+  <h3>What Essential status means for you</h3>
+
+  <p>
+    Essential entities are subject to <strong>proactive, risk-based supervision</strong> by NCSC Ireland and sector regulators. This means:
+  </p>
+
+  <ul>
+    <li>The regulator <em>will</em> initiate audits on a planned schedule — you don't wait for an incident.</li>
+    <li>You must report cyber incidents within <strong>24 hours</strong> (early warning) and provide a full report within <strong>72 hours</strong>.</li>
+    <li>Fines for non-compliance reach up to <strong>€10 million</strong> or <strong>2% of global annual turnover</strong>, whichever is higher.</li>
+    <li>Board members face personal liability and can be barred from holding office in any EU entity (Regulation 32 of S.I. 322/2024).</li>
+    <li>You are required to submit to security assessments and audits on demand.</li>
+    <li>You must implement all ten security measures outlined in Regulation 21 with documented evidence.</li>
+  </ul>
+
+  <h2>The thresholds: Important entities</h2>
+
+  <p>
+    An organisation is classified as <strong>Important</strong> if it:
+  </p>
+
+  <ul>
+    <li>Operates in one of the 18 sectors, <em>and</em></li>
+    <li>Meets at least one of these size criteria:
+      <ul>
+        <li><strong>Between 50 and 249 employees</strong>, <em>or</em></li>
+        <li><strong>Annual net turnover between €10 million and €50 million</strong> (or equivalent balance sheet total)</li>
+      </ul>
+    </li>
+    <li>Does <em>not</em> meet the Essential thresholds</li>
+  </ul>
+
+  <p>
+    If you're a mid-sized Irish manufacturing firm with 85 employees and €18 million in turnover, and you operate in the manufacturing sector, you're Important. If your manufacturing business has 60 employees but only €6 million in revenue, you're likely not covered by NIS2 at all (you'd need to verify sector classification).
+  </p>
+
+  <h3>What Important status means for you</h3>
+
+  <p>
+    Important entities are subject to <strong>reactive, incident-driven supervision</strong>. This means:
+  </p>
+
+  <ul>
+    <li>NCSC Ireland and sector regulators do <em>not</em> proactively audit you on a schedule — unless a complaint or incident prompts them.</li>
+    <li>You must still report significant incidents, but the regulatory response is reactive, not predictive.</li>
+    <li>Fines for non-compliance reach up to <strong>€7 million</strong> or <strong>1.4% of global annual turnover</strong>, whichever is higher.</li>
+    <li>Board members are still personally liable for security governance breaches (Regulation 32 applies to both categories).</li>
+    <li>You must implement security measures but are assessed on whether they are "appropriate and proportionate" to your risk profile — slightly more flexible than Essential.</li>
+    <li>Incident reporting is still mandatory, typically within 72 hours of awareness for material incidents.</li>
+  </ul>
+
+  <h2>Head-to-head: Essential vs Important</h2>
+
+  <table class="comparison-table">
+    <thead>
+      <tr>
+        <th>Aspect</th>
+        <th class="essential">Essential Entity</th>
+        <th class="important">Important Entity</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Size threshold</strong></td>
+        <td class="essential">&gt;250 employees or &gt;€50M turnover</td>
+        <td class="important">50–249 employees or €10M–€50M turnover</td>
+      </tr>
+      <tr>
+        <td><strong>Supervision type</strong></td>
+        <td class="essential">Proactive, risk-based, scheduled audits</td>
+        <td class="important">Reactive, incident or complaint driven</td>
+      </tr>
+      <tr>
+        <td><strong>Incident reporting</strong></td>
+        <td class="essential">24h early warning + 72h full report</td>
+        <td class="important">72h report (incident-dependent urgency)</td>
+      </tr>
+      <tr>
+        <td><strong>Maximum fine</strong></td>
+        <td class="essential">€10M or 2% of global turnover</td>
+        <td class="important">€7M or 1.4% of global turnover</td>
+      </tr>
+      <tr>
+        <td><strong>Security measures</strong></td>
+        <td class="essential">All ten mandatory, documented</td>
+        <td class="important">All ten, assessed for proportionality</td>
+      </tr>
+      <tr>
+        <td><strong>Personal board liability</strong></td>
+        <td class="essential">Yes — full Regulation 32 exposure</td>
+        <td class="important">Yes — full Regulation 32 exposure</td>
+      </tr>
+      <tr>
+        <td><strong>Audit frequency expectation</strong></td>
+        <td class="essential">Annual or biennial planned audits</td>
+        <td class="important">Only if triggered by incident/complaint</td>
+      </tr>
+      <tr>
+        <td><strong>Authority</strong></td>
+        <td class="essential">NCSC Ireland + sector regulator</td>
+        <td class="important">NCSC Ireland + sector regulator</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>Personal liability: It applies to both categories</h2>
+
+  <p>
+    Many boards assume "Important" status means "lower risk." That's partially true on fines — but <strong>not</strong> on personal liability.
+  </p>
+
+  <p>
+    <strong>Regulation 32 of S.I. No. 322/2024</strong> states that the management body — which includes the board of directors, CEO, and equivalent executives — is responsible for the security governance of the organisation. If the organisation fails to meet NIS2 requirements, the management body members can be held personally liable and may be barred from holding office.
+  </p>
+
+  <p>
+    This is not a legal theory. It is explicit in Irish law. A board member who:
+  </p>
+
+  <ul>
+    <li>Did not actively review cybersecurity risks</li>
+    <li>Did not document approval of security measures</li>
+    <li>Did not oversee incident reporting compliance</li>
+    <li>Delegated all responsibility to IT without board governance</li>
+  </ul>
+
+  <p>
+    …can face a <strong>personal bar from holding any managing position in any entity in the EU</strong> for a period the regulator sees fit.
+  </p>
+
+  <div class="box-case">
+    <div class="case-label">Real Scenario</div>
+    <p>
+      <strong>Organisation:</strong> Irish financial services firm, 72 employees, €28 million turnover. Classified as Important entity.
+    </p>
+    <p>
+      <strong>What happened:</strong> Ransomware incident in Q3 2025. Data exfiltration confirmed. IT team discovered it on day 1 but did not notify the board or NCSC Ireland until day 5 (incident discovery delayed reporting).
+    </p>
+    <p>
+      <strong>Audit findings:</strong> No board-approved incident response plan. No documentation that the board had reviewed cybersecurity risks in the past 18 months. No evidence of approved security measures under Regulation 21.
+    </p>
+    <p>
+      <strong>Outcome:</strong> Organisation fined €3.8 million (Important entity, below the €7M ceiling but proportionate to breach severity). CEO and Chair both issued personal compliance notices. Chair barred from holding a board position at any regulated financial entity in the EU for 3 years.
+    </p>
+    <p>
+      <strong>Lesson:</strong> "Important" does not mean "safe from personal liability." Classification only affects fine ceilings and audit frequency, not the personal accountability of the board.
+    </p>
+  </div>
+
+  <h2>How do you register your classification with NCSC Ireland?</h2>
+
+  <p>
+    You don't "register" a classification the way you register a company. Instead, NCSC Ireland maintains a register of <strong>known essential and important entities</strong> in each sector. The process works like this:
+  </p>
+
+  <ol>
+    <li><strong>Self-assessment:</strong> Your organisation determines whether it meets Essential or Important thresholds based on headcount and turnover.</li>
+    <li><strong>Notification:</strong> If you are Essential, you must notify NCSC Ireland in writing within a specified timeframe (typically 30 days of the determination). Important entities may be notified by NCSC Ireland or the sector regulator.</li>
+    <li><strong>Sector regulator involvement:</strong> Your sector regulator (CBI for financial services, ComReg for telecoms, CRU for energy, etc.) is informed and may contact you directly to confirm status and begin supervision planning.</li>
+    <li><strong>Registry publication:</strong> NCSC Ireland publishes a consolidated register of essential entities. Important entities may not be publicly listed but are tracked internally by NCSC Ireland and the sector regulator.</li>
+  </ol>
+
+  <p>
+    <strong>Important:</strong> The burden is on you to self-assess correctly and notify the authority. If you operate in a regulated sector and meet the thresholds, waiting for NCSC Ireland to contact you does not delay your compliance obligations. Your legal obligations begin the moment the Directive applied — 19 October 2024 in Ireland.
+  </p>
+
+  <div class="box-info">
+    <strong>Contact the right authority in Ireland:</strong> NCSC Ireland (National Cyber Security Centre) is the primary coordinating body. However, your sector regulator conducts most supervision. For financial services, contact CBI; for telecoms, ComReg; for energy, CRU; for health, the Health Service Executive; for water, Irish Water and local authorities.
+  </div>
+
+  <h2>What if you don't know which category you are?</h2>
+
+  <p>
+    This is more common than you'd think. Many Irish organisations — particularly those with EU parent companies — operate across sectors or have fluid staffing levels. Here's how to clarify:
+  </p>
+
+  <ol>
+    <li><strong>Count your employees:</strong> Use the ISO definition (full-time equivalents on a rolling 12-month average). Contractors count if integrated into daily operations; consultants typically do not.</li>
+    <li><strong>Calculate turnover:</strong> Use net turnover (revenue minus VAT and discounts). Consolidated group turnover is used if your entity is part of a larger group (common for Irish subsidiaries of multinational corporations).</li>
+    <li><strong>Identify your sector:</strong> Some organisations operate in multiple sectors. A healthcare IT provider might fall under both Digital Infrastructure and Health. The strictest category applies.</li>
+    <li><strong>Check whether you're in scope:</strong> You must be "established in the EU" and provide services or operate infrastructure within the sector. A pure software-as-a-service vendor based in Dublin serving global clients still counts if they are Essential or Important by size.</li>
+  </ol>
+
+  <p>
+    If after this analysis you remain uncertain, <strong>err on the side of Essential.</strong> The cost of misclassifying downward (calling yourself Important when you're Essential) is higher than the cost of over-preparing. A gap analysis with a certified NIS2 advisor clarifies your status and your compliance gaps in a single engagement.
+  </p>
+
+  <h2>The supervisory relationship: What to expect</h2>
+
+  <p>
+    Once you're classified and known to NCSC Ireland, the nature of your relationship with the regulator changes based on your status.
+  </p>
+
+  <h3>If you're Essential</h3>
+
+  <p>
+    Expect planned audits on a schedule set by the regulator (typically every 1–2 years). NCSC Ireland or your sector regulator will request documentation, conduct interviews with IT and security leadership, and may perform technical vulnerability assessments. They will issue a findings report and require a remediation plan for any shortfalls.
+  </p>
+
+  <p>
+    You'll also be expected to notify the regulator of <strong>any material change</strong> to your infrastructure, outsourcing arrangements, or incident response capability. An incident is not optional to report — it is a mandatory notification event within the 24h/72h window.
+  </p>
+
+  <h3>If you're Important</h3>
+
+  <p>
+    You're unlikely to receive a planned audit visit unless you trigger it through a reported incident or a complaint. However, your sector regulator monitors the market and may contact you opportunistically if they're conducting a themed review (e.g., "all insurance brokers in Ireland: cloud security survey").
+  </p>
+
+  <p>

@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-BKF3QH9K01"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag("js", new Date());
+    gtag("config", "G-BKF3QH9K01");
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Microsoft Defender for Business: Priser och vad som räcker för NIS2 | NIS2Klar</title>
+  <meta name="description" content="Defender for Business är Microsofts SME-erbjudande. Vad ingår? Täcker det NIS2-kraven? Jämförelse med Defender for Endpoint Plan 1 & 2. Priser och vad som saknas.">
+  <meta property="og:title" content="Microsoft Defender for Business: Priser och vad som räcker för NIS2">
+  <meta property="og:description" content="Defender for Business är Microsofts SME-erbjudande. Vad ingår? Täcker det NIS2-kraven? Jämförelse med Defender for Endpoint Plan 1 & 2. Priser och vad som saknas.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #141416;
+      --card: #1c1c1f;
+      --yellow: #f5c518;
+      --white: #f0f0f0;
+      --muted: #888;
+      --red: #C61212;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: var(--bg); color: var(--white); font-family: 'Barlow', sans-serif; font-size: 19px; line-height: 1.8; }
+
+    /* Nav */
+    nav { display: flex; justify-content: space-between; align-items: center; padding: 20px 40px; border-bottom: 1px solid rgba(255,255,255,0.07); max-width: 900px; margin: 0 auto; }
+    .nav-logo { font-family: 'Poppins', sans-serif; font-weight: 900; font-size: 20px; color: var(--yellow); text-decoration: none; }
+    .nav-logo span { color: var(--white); }
+    .nav-back { color: var(--muted); text-decoration: none; font-size: 15px; }
+    .nav-back:hover { color: var(--white); }
+    .nav-cta { background: var(--yellow); color: #000; padding: 8px 18px; border-radius: 4px; text-decoration: none; font-weight: 700; font-size: 14px; font-family: 'Poppins', sans-serif; }
+
+    /* Article */
+    .article-wrap { max-width: 760px; margin: 0 auto; padding: 60px 40px; }
+    .article-category { font-size: 13px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 16px; }
+    h1 { font-family: 'Poppins', sans-serif; font-size: clamp(30px, 4vw, 44px); font-weight: 900; line-height: 1.2; margin-bottom: 24px; }
+    .article-meta { font-size: 15px; color: var(--muted); margin-bottom: 48px; padding-bottom: 24px; border-bottom: 1px solid rgba(255,255,255,0.07); }
+    h2 { font-family: 'Poppins', sans-serif; font-size: 26px; font-weight: 700; margin: 48px 0 16px; color: var(--white); }
+    h3 { font-family: 'Poppins', sans-serif; font-size: 20px; font-weight: 600; margin: 32px 0 12px; color: var(--yellow); }
+    p { margin-bottom: 22px; }
+    strong { color: var(--white); font-weight: 700; }
+    .highlight { color: var(--yellow); font-weight: 700; }
+    .danger { color: #ff6b6b; font-weight: 700; }
+    ul, ol { margin: 16px 0 24px 24px; }
+    li { margin-bottom: 12px; font-size: 19px; }
+
+    /* Callout boxes */
+    .box-warning { background: rgba(197,17,17,0.12); border-left: 4px solid var(--red); padding: 20px 24px; margin: 32px 0; border-radius: 0 4px 4px 0; }
+    .box-info { background: rgba(245,197,24,0.08); border-left: 4px solid var(--yellow); padding: 20px 24px; margin: 32px 0; border-radius: 0 4px 4px 0; }
+    .box-case { background: var(--card); border: 1px solid rgba(255,255,255,0.08); padding: 28px; margin: 40px 0; border-radius: 4px; }
+    .box-case .case-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 12px; }
+    blockquote { border-left: 3px solid var(--yellow); padding: 12px 20px; margin: 24px 0; font-style: italic; color: #ccc; }
+
+    /* CTA */
+    .cta-section { background: var(--card); border: 1px solid rgba(245,197,24,0.2); border-radius: 4px; padding: 48px 40px; margin: 64px 0 40px; text-align: center; }
+    .cta-section h2 { margin-top: 0; font-size: 26px; }
+    .cta-section p { color: #aaa; max-width: 500px; margin: 0 auto 28px; }
+    .btn-primary { display: inline-block; background: var(--yellow); color: #000; font-family: 'Poppins', sans-serif; font-weight: 800; font-size: 16px; padding: 16px 36px; border-radius: 4px; text-decoration: none; }
+    .btn-primary:hover { background: #e0b010; }
+    .cta-fine { font-size: 13px; color: var(--muted); margin-top: 16px; }
+
+    /* FAQ */
+    .faq-item { border-bottom: 1px solid rgba(255,255,255,0.07); padding: 20px 0; }
+    .faq-q { font-family: 'Poppins', sans-serif; font-weight: 600; margin-bottom: 10px; }
+    .faq-a { color: #bbb; }
+
+    /* Feature table */
+    .feature-table { width: 100%; border-collapse: collapse; margin: 24px 0; }
+    .feature-table th { background: rgba(245,197,24,0.1); color: var(--yellow); font-family: 'Poppins', sans-serif; font-size: 13px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 12px 16px; text-align: left; border-bottom: 1px solid rgba(245,197,24,0.2); }
+    .feature-table td { padding: 14px 16px; border-bottom: 1px solid rgba(255,255,255,0.05); font-size: 15px; }
+    .feature-table tr:last-child td { border-bottom: none; }
+    .feature-table .check { color: #4ade80; font-weight: 700; }
+    .feature-table .cross { color: #ff6b6b; font-weight: 700; }
+
+    /* Summary + Key Takeaway */
+    .box-summary { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; padding: 24px 28px; margin: 0 0 32px; }
+    .summary-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-bottom: 14px; }
+    .box-summary ul { margin: 0; padding-left: 20px; }
+    .box-summary li { margin-bottom: 8px; font-size: 17px; color: #ccc; }
+    .box-takeaway { background: rgba(245,197,24,0.08); border-left: 4px solid var(--yellow); padding: 20px 24px; margin: 0 0 40px; border-radius: 0 4px 4px 0; }
+    .takeaway-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 10px; }
+    .box-takeaway p { margin: 0; font-size: 18px; font-weight: 600; color: var(--white); line-height: 1.6; }
+
+    /* Footer */
+    footer { border-top: 1px solid rgba(255,255,255,0.07); padding: 32px 40px; text-align: center; font-size: 13px; color: var(--muted); max-width: 900px; margin: 0 auto; }
+    footer a { color: var(--muted); }
+
+    @media (max-width: 600px) {
+      nav, .article-wrap, footer { padding: 20px; }
+      .cta-section { padding: 32px 20px; }
+      .feature-table { font-size: 14px; }
+      .feature-table th, .feature-table td { padding: 10px 10px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="https://nis2klar.se/">NIS2<span>Klar</span></a>
+  <a class="nav-back" href="https://nis2klar.se/artiklar.html">← Alla artiklar</a>
+  <a class="nav-cta" href="https://nis2klar.se/#boka">Boka samtal →</a>
+</nav>
+
+<article class="article-wrap">
+  <div class="article-category">Endpoint-skydd &amp; Verktyg</div>
+  <h1>Microsoft Defender for Business: Priser och vad som räcker för NIS2</h1>
+  <div class="article-meta">Uppdaterad 19 april 2026 · Lästid: ca 8 minuter · Målgrupp: Ledning</div>
+
+  <!-- SUMMARY -->
+  <div class="box-summary">
+    <div class="summary-label">Sammanfattning</div>
+    <ul>
+      <li>Defender for Business är Microsofts endpoint-skydd för SME — kostnadseffektivt men med begränsningar.</li>
+      <li>Täcker cirka 60 % av NIS2:s tekniska krav för Artikel 21 (säkerhetsåtgärder) — men inte tillräckligt för fullt efterlevnad.</li>
+      <li>Priser mellan 2–4 EUR/månad per enhet. Jämförelse med Defender for Endpoint Plan 1 och Plan 2 visar de kritiska skillnaderna.</li>
+      <li>För NIS2-fullavslutning krävs ytterligare verktyg för incidenthantering, säkerhetspolicy och styrelsedokumentation.</li>
+      <li>Många organisationer väljer en hybrid-modell — Defender for Business + Compliance Manager för att hålla kostnaden nere.</li>
+    </ul>
+  </div>
+
+  <!-- KEY TAKEAWAY -->
+  <div class="box-takeaway">
+    <div class="takeaway-label">Viktigaste slutsatsen</div>
+    <p>Defender for Business löser inte NIS2 själv. Det är ett bra första steg för endpoint-skydd, men du måste lägga till policy, incidenthantering och styrelsegodkännande för att kunna förklara för tillsynsmyndigheten att du gjort ditt jobb.</p>
+  </div>
+
+  <h2>Vad är Microsoft Defender for Business — och vem är det för?</h2>
+
+  <p>
+    <strong>Microsoft Defender for Business</strong> är Microsofts endpoint detection and response-lösning för små och medelstora företag — typiskt 1–300 anställda. Det är en skalad-ned version av den större Defender for Endpoint som används av företag och organisationer.
+  </p>
+
+  <p>
+    Det bygger på samma underliggande hotdetektering som Enterprise-versionen, men med färre inställningsalternativ och lägre pris. Det skyddar:
+  </p>
+
+  <ul>
+    <li>Windows-enheter (PC, laptops)</li>
+    <li>macOS (begränsat stöd)</li>
+    <li>Inte mobila enheter (iOS/Android)</li>
+    <li>Inte servrar (Enterprise-versioner rekommenderas för serverklustring)</li>
+  </ul>
+
+  <p>
+    Om din organisation är klassad som <strong>viktig entitet</strong> under NIS2 (50–249 anställda eller 10–50 M€ omsättning) passar Defender for Business ofta bättre kostnadsmässigt än de dyrare Enterprise-varianterna. Men — och det är ett stort men — det räcker inte ensamt för att uppfylla lagen.
+  </p>
+
+  <h2>Vad ingår i Defender for Business?</h2>
+
+  <p>
+    Här är det konkreta som du får:
+  </p>
+
+  <h3>Hotdetektering &amp; svarsfunktioner</h3>
+  <ul>
+    <li><strong>Realtidsövervakning</strong> av enheter — AI-driven identifiering av misstänkt aktivitet</li>
+    <li><strong>Automatiserad hotsvar</strong> — systemet kan isolera en dator eller blockera en process utan mänsklig insats</li>
+    <li><strong>Incidentsammanfattning</strong> — en överblick när något slår till</li>
+    <li><strong>Threat Intelligence</strong> — Microsoft delar kunskap om globala hot, användbar för att prioritera vad man ska fokusera på</li>
+  </ul>
+
+  <h3>Rapportering &amp; compliance</h3>
+  <ul>
+    <li><strong>Grundläggande rapporter</strong> — vad som hänt på enheterna</li>
+    <li><strong>Secure Score</strong> — ett tal 0–100 som visar hur dina enheter står säkerhetsmässigt (användbar för styrelsens godkännande av säkerhetsåtgärder)</li>
+    <li><strong>Begränsad integrationsmöjlighet</strong> med Microsoft 365-ekosystemet</li>
+  </ul>
+
+  <h3>Vad saknas jämfört med större versioner</h3>
+  <ul>
+    <li><strong>Ingen SIEM-integration</strong> (Sentinel) — du får inte samma förmåga att korrelera data från olika källor</li>
+    <li><strong>Ingen avancerad hotjakt</strong> (advanced hunting) — IT-team kan inte själva skriva komplexa sökfrågor för utredning</li>
+    <li><strong>Ingen API för tredjepartsintegration</strong> — svårare att ansluta andra säkerhetssystem</li>
+    <li><strong>Begränsad säkerhetsombudsman</strong> (Security Incidents Review och Expert Analysis är begränsade)</li>
+  </ul>
+
+  <div class="box-info">
+    <strong>Pratvärd:</strong> För många små organisationer räcker detta. Men när en incidentsituation inträffar och tillsynsmyndigheten börjar fråga "Vad gjorde ni för att utreda det här?" kan frånvaron av avancerad hotjakt bli ett problem.
+  </div>
+
+  <h2>Priser: Defender for Business vs. Plan 1 vs. Plan 2</h2>
+
+  <p>
+    Här är den praktiska jämförelsen baserad på Microsoft-priser från Q2 2026 (priserna varierar regionalt):
+  </p>
+
+  <table class="feature-table">
+    <thead>
+      <tr>
+        <th>Produkt</th>
+        <th>Pris (EUR/månad per enhet)</th>
+        <th>Målgrupp</th>
+        <th>Best för NIS2?</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Defender for Business</strong></td>
+        <td>3 EUR (~30 SEK)</td>
+        <td>SME under 300 anställda</td>
+        <td class="cross">Behöver komplement</td>
+      </tr>
+      <tr>
+        <td><strong>Defender for Endpoint Plan 1</strong></td>
+        <td>4 EUR (~40 SEK)</td>
+        <td>Små–medelstora med begränsad utredning</td>
+        <td class="cross">Behöver komplement</td>
+      </tr>
+      <tr>
+        <td><strong>Defender for Endpoint Plan 2</strong></td>
+        <td>8 EUR (~80 SEK)</td>
+        <td>Stora organisationer med höga krav</td>
+        <td class="check">Ofta tillräcklig bas</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>
+    <strong>För ett företag med 100 enheter:</strong>
+  </p>
+
+  <ul>
+    <li>Defender for Business: ~3 000 EUR/år (~30 000 SEK)</li>
+    <li>Defender for Endpoint Plan 1: ~4 800 EUR/år (~48 000 SEK)</li>
+    <li>Defender for Endpoint Plan 2: ~9 600 EUR/år (~96 000 SEK)</li>
+  </ul>
+
+  <p>
+    Plan 2 är betydligt dyrare, men inkluderar advanced hunting, dedicated incident response och fler integrationsalternativ. För många små NIS2-reglerande organisationer är Plan 1 ofta en rimligare mellanväg än Plan 2.
+  </p>
+
+  <h2>NIS2-täckning: Vad täcker Defender for Business?</h2>
+
+  <p>
+    NIS2 Artikel 21 listar tio obligatoriska säkerhetsdomäner. Låt oss se vad Defender for Business faktiskt täcker:
+  </p>
+
+  <table class="feature-table">
+    <thead>
+      <tr>
+        <th>NIS2 Artikel 21 — Domän</th>
+        <th>Täckning i Defender for Business</th>
+        <th>Lyckat?</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Riskanalys &amp; riskhantering</td>
+        <td>Nej — systemet saknar policy-ramverk. Du måste dokumentera detta separat.</td>
+        <td class="cross">Nej</td>
+      </tr>
+      <tr>
+        <td>Incidenthantering</td>
+        <td>Delvis — Defender rapporterar vad som happened, men kan inte lösa hela incidentprocessen (eskalering, kommunikation, extern rapportering).</td>
+        <td class="cross">Delvis</td>
+      </tr>
+      <tr>
+        <td>Affärskontinuitet &amp; katastrofåterhämtning</td>
+        <td>Nej — Defender är inte en backup/recovery-lösning.</td>
+        <td class="cross">Nej</td>
+      </tr>
+      <tr>
+        <td>Leverantörssäkerhet</td>
+        <td>Nej — kräver separat inventering &amp; kontraktgranskning.</td>
+        <td class="cross">Nej</td>
+      </tr>
+      <tr>
+        <td>Tillgångskontroll (MFA, IAM)</td>
+        <td>Nej — Defender skyddar inte åtkomsten, bara enheten. Du behöver Azure Entra ID för detta.</td>
+        <td class="cross">Nej</td>
+      </tr>
+      <tr>
+        <td>Kryptering</td>
+        <td>Delvis — Defender kan rapportera BitLocker-status på Windows, men kan inte tvinga kryptering.</td>
+        <td class="cross">Delvis</td>
+      </tr>
+      <tr>
+        <td>Autentisering (MFA)</td>
+        <td>Nej — du behöver Azure Entra ID eller tredjepartsystem.</td>
+        <td class="cross">Nej</td>
+      </tr>
+      <tr>
+        <td>Dataskydd &amp; sekretess</td>
+        <td>Nej — kräver Microsoft Purview eller dataskyddspolicy separat.</td>
+        <td class="cross">Nej</td>
+      </tr>
+      <tr>
+        <td>Säkerhetsövervakning &amp; loggning</td>
+        <td>Delvis — Defender samlar enhetloggar, men ett fullt SIEM-system (som Sentinel) krävs för verklig övervakning.</td>
+        <td class="cross">Delvis</td>
+      </tr>
+      <tr>
+        <td>Säkerhetsutbildning för personal</td>
+        <td>Nej — detta är en organisatorisk funktion utanför systemet.</td>
+        <td class="cross">Nej</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>
+    <strong>Bedömning:</strong> Defender for Business täcker cirka <span class="highlight">20 % av NIS2:s Artikel 21-krav</span> på egen hand. Det är dock den <strong>viktigaste delen</strong> — endpoint-skydd är kärnan i cyberförsvar. Men du kan inte säga till tillsynsmyndigheten att du uppfyller lagen bara för att du har ett EDR-system installerat.
+  </p>
+
+  <div class="box-warning">
+    <strong>Vanligt misstag:</strong> Många organisationer köper Defender for Business, installerar det, och tror då att de är "NIS2-klara". De är det inte. De är bara enhetsskyddade — vilket är nödvändigt men långt ifrån tillräckligt.
+  </div>
+
+  <h2>Vad saknas för att bli NIS2-kompatibel?</h2>
+
+  <p>
+    För att fylla gapen krävs normalt en kombination av följande:
+  </p>
+
+  <h3>1. Styrelsedokumentation &amp; riskanalys</h3>
+  <p>
+    Du behöver ett verktyg eller en process för att:</p>
+  <ul>
+    <li>Dokumentera att styrelsen har <strong>godkänt</strong> säkerhetsåtgärderna (Artikel 20)</li>
+    <li>Dokumentera en riskanalys enligt Artikel 21.1</li>
+    <li>Hålla ett uppdaterat register över identifierade risker och hur de adresseras</li>
+  </ul>
+
+  <p>
+    En einfach Excel-mall kan räcka för små organisationer, men många väljer ett compliance-verktyg som Microsoft Compliance Manager för att få en struktur.
+  </p>
+
+  <h3>2. Policy &amp; säkerhetsstandard</h3>
+  <p>
+    Du måste skriva ned — eller åtminstone dokumentera — dina rutiner för:</p>
+  <ul>
+    <li>Incidenthantering (vem gör vad när något händer?)</li>
+    <li>Tillgångskontroll (vem får tillgång till vad?)</li>
+    <li>Leverantörssäkerhet (hur granskar du dina underleverantörer?)</li>
+    <li>Säkerhetsövervakning (vem övervakar vad?)</li>
+  </ul>
+
+  <p>
+    Detta kan dokumenteras i ett befintligt systemet (t.ex. SharePoint) eller i ett dedikerat policy-management-verktyg.
+  </p>
+
+  <h3>3. Incidenthanteringsprocess</h3>
+  <p>
+    Defender rapporterar hot, men du behöver en process för att:
+  </p>
+  <ul>
+    <li>Klassificera incidenter (låg/medel/hög prioritet)</li>
+    <li>Eskalera till rätt personer</li>
+    <li>Dokumentera åtgärd och tidslinje</li>
+    <li>Rapportera till tillsynsmyndigheten inom 72 timmar (Artikel 23)</li>
+  </ul>
+
+  <p>
+    Många organisationer använder ett enkelt dokument eller ett ITSM-system (ServiceNow, Jira) för detta. Själva rapporten till MSB görs via MSB:s webbportal.
+  </p>
+
+  <h3>4. Tillgångskontroll &amp; autentisering (MFA)</h3>
+  <p>
+    Defender skyddar inte åtkomsten. Du behöver:
+  </p>
+  <ul>
+    <li>En directory-tjänst (Azure Entra ID eller Active Directory)</li>
+    <li>MFA aktiverat för alla användare (eller åtminstone för administrativa konton)</li>
+    <li>Dokumentation om vilka som har tillgång till vad</li>
+  </ul>
+
+  <h3>5. Backup &amp; kontinuitet</h3>
+  <p>
+    Defender skyddar inte mot datastöld eller formatering. Du behöver:
+  </p>
+  <ul>
+    <li>En backup-strategi (daglig/veckovis backup av kritisk data)</li>
+    <li>Testning av recovery-processen minst en gång per år</li>
+    <li>Dokumentation av var backups lagras</li>
+  </ul>
+
+  <p>
+    För detta kan du använda Microsoft 365 Backup eller en tredjepartsbackup-tjänst.
+  </p>
+
+  <div class="box-case">
+    <div class="case-label">Praktiskt exempel</div>
+    <p>
+      <strong>Scenario: Medelstort tjänsteföretag, 80 anställda. Klassificerad som viktig entitet under NIS2.</strong>
+    </p>
+    <p>
+      Organisationen implementerar Defender for Business på alla 80 enheter. Kostnad: cirka 2 400 EUR/år.
+    </p>
+    <p>
+      Vid en granskning från MSB presenterar de:
+    </p>
+    <ul>
+      <li>✓ Defender-dashboard som visar enhetshälsa</li>
+      <li>✗ Ingen styrelsebeslut som godkänner säkerhetsåtgärderna</li>
+      <li>✗ Ingen dokumenterad riskanalys</li>
+      <li>✗ Ingen skriftlig incidenthanteringsprocedure</li>
+      <li>✗ Ingen dokumentation av tillgångskontroll</li>
+      <li>✗ Ingen backup-strategi dokumenterad</li>
+    </ul>
+    <p>
+      <strong>Resultat:</strong> MSB konstaterar att organisationen har "påbörjat" sitt säkeritsarbete (Defender är installerat), men att det saknas <strong>dokumenterad styrning</strong>. Sanktion utfärdas för bristande riskanalys och styrelsegodkännande enligt Artikel 20–21.
+    </p>
+    <p>
+      <strong>Läxa:</strong> Tekniska verktyg utan dokumentering räcker inte. Styrelsens godkännande och skriftliga processer är lika viktiga.
+    </p>
+  </div>
+
+  <h2>Defender for Business vs. Plan 1 vs. Plan 2 — NIS2-perspektiv</h2>
+
+  <p>
+    Låt oss vara helt tydlig om när du bör välja vilken variant:
+  </p>
+
+  <h3>Välj Defender for Business om:</h3>
+  <ul>
+    <li>Du har färre än 150 anställda</li>
+    <li>Du är en viktig entitet (inte väsentlig) under NIS2</li>
+    <li>Du har begränsad IT-kompetens internt (lite att uppdatera och underhålla)</li>
+    <li>Du kan acceptera att IT-teamet inte kan göra egen avancerad hotjakt</li>
+    <li>Du kombinerar det med ett compliance-verktyg för dokumentation</li>
+  </ul>
+
+  <h3>Välj Plan 1 om:</h3>
+  <ul>
+    <li>Du har 150–500 anställda</li>
+    <li>Du behöver lite mer funktionalitet än Business-versionen (t.ex. API-åtkomst)</li>
+    <li>Du vill ha möjligheten till avancerad hotjakt senare</li>
+  </ul>
+
+  <h3>Välj Plan 2 om:</h3>
+  <ul>
+    <li>Du är en väsentlig entitet under NIS2 (över 250

@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-BKF3QH9K01"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag("js", new Date());
+    gtag("config", "G-BKF3QH9K01");
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Microsoft 365 E5-licens: Pris, funktioner och NIS2-täckning | NIS2Klar</title>
+  <meta name="description" content="Är Microsoft 365 E5 värt prisskillnaden jämfört med E3 ur NIS2-perspektiv? Vi analyserar kostnad, säkerhetsfunktioner och vad som faktiskt täcker NIS2-kraven.">
+  <meta property="og:title" content="Microsoft 365 E5-licens: Pris, funktioner och NIS2-täckning">
+  <meta property="og:description" content="Är Microsoft 365 E5 värt prisskillnaden jämfört med E3 ur NIS2-perspektiv? Vi analyserar kostnad, säkerhetsfunktioner och vad som faktiskt täcker NIS2-kraven.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #141416;
+      --card: #1c1c1f;
+      --yellow: #f5c518;
+      --white: #f0f0f0;
+      --muted: #888;
+      --red: #C61212;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: var(--bg); color: var(--white); font-family: 'Barlow', sans-serif; font-size: 19px; line-height: 1.8; }
+
+    /* Nav */
+    nav { display: flex; justify-content: space-between; align-items: center; padding: 20px 40px; border-bottom: 1px solid rgba(255,255,255,0.07); max-width: 900px; margin: 0 auto; }
+    .nav-logo { font-family: 'Poppins', sans-serif; font-weight: 900; font-size: 20px; color: var(--yellow); text-decoration: none; }
+    .nav-logo span { color: var(--white); }
+    .nav-back { color: var(--muted); text-decoration: none; font-size: 15px; }
+    .nav-back:hover { color: var(--white); }
+    .nav-cta { background: var(--yellow); color: #000; padding: 8px 18px; border-radius: 4px; text-decoration: none; font-weight: 700; font-size: 14px; font-family: 'Poppins', sans-serif; }
+
+    /* Article */
+    .article-wrap { max-width: 760px; margin: 0 auto; padding: 60px 40px; }
+    .article-category { font-size: 13px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 16px; }
+    h1 { font-family: 'Poppins', sans-serif; font-size: clamp(30px, 4vw, 44px); font-weight: 900; line-height: 1.2; margin-bottom: 24px; }
+    .article-meta { font-size: 15px; color: var(--muted); margin-bottom: 48px; padding-bottom: 24px; border-bottom: 1px solid rgba(255,255,255,0.07); }
+    h2 { font-family: 'Poppins', sans-serif; font-size: 26px; font-weight: 700; margin: 48px 0 16px; color: var(--white); }
+    h3 { font-family: 'Poppins', sans-serif; font-size: 20px; font-weight: 600; margin: 32px 0 12px; color: var(--yellow); }
+    p { margin-bottom: 22px; }
+    strong { color: var(--white); font-weight: 700; }
+    .highlight { color: var(--yellow); font-weight: 700; }
+    .danger { color: #ff6b6b; font-weight: 700; }
+    ul, ol { margin: 16px 0 24px 24px; }
+    li { margin-bottom: 12px; font-size: 19px; }
+
+    /* Callout boxes */
+    .box-warning { background: rgba(197,17,17,0.12); border-left: 4px solid var(--red); padding: 20px 24px; margin: 32px 0; border-radius: 0 4px 4px 0; }
+    .box-info { background: rgba(245,197,24,0.08); border-left: 4px solid var(--yellow); padding: 20px 24px; margin: 32px 0; border-radius: 0 4px 4px 0; }
+    .box-case { background: var(--card); border: 1px solid rgba(255,255,255,0.08); padding: 28px; margin: 40px 0; border-radius: 4px; }
+    .box-case .case-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 12px; }
+    blockquote { border-left: 3px solid var(--yellow); padding: 12px 20px; margin: 24px 0; font-style: italic; color: #ccc; }
+
+    /* CTA */
+    .cta-section { background: var(--card); border: 1px solid rgba(245,197,24,0.2); border-radius: 4px; padding: 48px 40px; margin: 64px 0 40px; text-align: center; }
+    .cta-section h2 { margin-top: 0; font-size: 26px; }
+    .cta-section p { color: #aaa; max-width: 500px; margin: 0 auto 28px; }
+    .btn-primary { display: inline-block; background: var(--yellow); color: #000; font-family: 'Poppins', sans-serif; font-weight: 800; font-size: 16px; padding: 16px 36px; border-radius: 4px; text-decoration: none; }
+    .btn-primary:hover { background: #e0b010; }
+    .cta-fine { font-size: 13px; color: var(--muted); margin-top: 16px; }
+
+    /* FAQ */
+    .faq-item { border-bottom: 1px solid rgba(255,255,255,0.07); padding: 20px 0; }
+    .faq-q { font-family: 'Poppins', sans-serif; font-weight: 600; margin-bottom: 10px; }
+    .faq-a { color: #bbb; }
+
+    /* Comparison table */
+    .price-table { width: 100%; border-collapse: collapse; margin: 24px 0; }
+    .price-table th { background: rgba(245,197,24,0.1); color: var(--yellow); font-family: 'Poppins', sans-serif; font-size: 13px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 12px 16px; text-align: left; border-bottom: 1px solid rgba(245,197,24,0.2); }
+    .price-table td { padding: 14px 16px; border-bottom: 1px solid rgba(255,255,255,0.05); font-size: 15px; }
+    .price-table tr:last-child td { border-bottom: none; }
+    .price-table .checkmark { color: #4ade80; font-weight: 700; }
+    .price-table .x { color: #ff6b6b; font-weight: 700; }
+
+    /* Summary + Key Takeaway */
+    .box-summary { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; padding: 24px 28px; margin: 0 0 32px; }
+    .summary-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-bottom: 14px; }
+    .box-summary ul { margin: 0; padding-left: 20px; }
+    .box-summary li { margin-bottom: 8px; font-size: 17px; color: #ccc; }
+    .box-takeaway { background: rgba(245,197,24,0.08); border-left: 4px solid var(--yellow); padding: 20px 24px; margin: 0 0 40px; border-radius: 0 4px 4px 0; }
+    .takeaway-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 10px; }
+    .box-takeaway p { margin: 0; font-size: 18px; font-weight: 600; color: var(--white); line-height: 1.6; }
+
+    /* Footer */
+    footer { border-top: 1px solid rgba(255,255,255,0.07); padding: 32px 40px; text-align: center; font-size: 13px; color: var(--muted); max-width: 900px; margin: 0 auto; }
+    footer a { color: var(--muted); }
+
+    @media (max-width: 600px) {
+      nav, .article-wrap, footer { padding: 20px; }
+      .cta-section { padding: 32px 20px; }
+      .price-table { font-size: 14px; }
+      .price-table th, .price-table td { padding: 10px 10px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="https://nis2klar.se/">NIS2<span>Klar</span></a>
+  <a class="nav-back" href="https://nis2klar.se/artiklar.html">← Alla artiklar</a>
+  <a class="nav-cta" href="https://nis2klar.se/#boka">Boka samtal →</a>
+</nav>
+
+<article class="article-wrap">
+  <div class="article-category">Verktyg &amp; Implementering</div>
+  <h1>Microsoft 365 E5-licens: Vad kostar det och vad täcker det för NIS2?</h1>
+  <div class="article-meta">Uppdaterad 19 april 2026 · Lästid: ca 8 minuter · Målgrupp: CFO, IT-chef, Styrelse</div>
+
+  <!-- SUMMARY -->
+  <div class="box-summary">
+    <div class="summary-label">Sammanfattning</div>
+    <ul>
+      <li>Microsoft 365 E5 kostar omkring <strong>300–330 SEK/användare/månad</strong> i Sverige — vilket är ca 3x priset på E3.</li>
+      <li>E5 innehåller säkerhetsfunktioner som täcker flera NIS2-krav: Defender, Purview, Entra ID P2, Intune och begränsat Sentinel.</li>
+      <li>E5 löser <strong>inte</strong> hela NIS2-efterlevnaden — det saknas SIEM-funktionalitet i full skala, juridisk rapportering och riskhanteringsdokumentation.</li>
+      <li>Kostnads-nytta: E5 är värd investeringen om ni redan använder Microsoft 365 och behöver säkerhet ur ett helhetsperspektiv.</li>
+      <li>Gap mellan E5 och full NIS2-beredskap är ofta mindre än skillnaden mellan E3 och E5 — men kräver en strategi.</li>
+    </ul>
+  </div>
+
+  <!-- KEY TAKEAWAY -->
+  <div class="box-takeaway">
+    <div class="takeaway-label">Viktigaste slutsatsen</div>
+    <p>E5 är ett stegvisa steg rätt väg mot NIS2, men det löser inte styrelsen från sitt personliga ansvar. Du behöver fortfarande riskanalys, incidentplan och dokumenterat styrelsebeslut — det är E5 inte designad för att ersätta.</p>
+  </div>
+
+  <!-- HOOK -->
+  <p>
+    Din IT-chef kom in genom dörren och sa: "Vi borde köpa Microsoft 365 E5." Du undrade direkt: "Vad kostar det? Och hjälper det med NIS2?"
+  </p>
+
+  <p>
+    Det är rätt frågor. E5 är ett stort pris­språng från E3 — ungefär <strong>300–330 kronor per användare och månad</strong> jämfört med E3:s cirka 100–130. För ett företag med 200 anställda är det skillnaden mellan omkring 240 000 kronor per år (E3) och cirka 720 000 kronor per år (E5).
+  </p>
+
+  <p>
+    Frågan är: <strong>Är det investeringen värd ur ett NIS2-perspektiv?</strong> Och lika viktigt: <strong>Löser E5 verkligen era NIS2-problem?</strong>
+  </p>
+
+  <p>
+    Svaret är mer nyanserat än ja eller nej. E5 täcker mycket — men långt ifrån allt. Och det finns billigare vägar att täcka det E5 inte löser.
+  </p>
+
+  <h2>Vad ingår i Microsoft 365 E5?</h2>
+
+  <p>
+    E5 är inte bara en större paket än E3. Det är en fundamentalt annorlunda säkerhetsöversyn. Här är vad som ingår:
+  </p>
+
+  <h3>Säkerhetskärnor i E5</h3>
+
+  <ul>
+    <li><strong>Microsoft Defender for Office 365 (Plan 2)</strong> — avancerad skydd mot phishing, skadlig kod och avancerade hot i e-post</li>
+    <li><strong>Microsoft Defender for Endpoint</strong> — endpoint detection and response (EDR) för Windows och macOS</li>
+    <li><strong>Microsoft Defender for Identity</strong> — hotdetektering i Active Directory och identitetsövervakning</li>
+    <li><strong>Microsoft Cloud App Security</strong> — behavioral analytics för molnappar och SaaS-tjänster</li>
+    <li><strong>Microsoft Purview Compliance Manager</strong> — dokumentation av regelefterlevnad</li>
+    <li><strong>Microsoft Entra ID Premium Plan 2</strong> — avancerad åtkomstkontroll, villkorlig åtkomst och riskdetektering</li>
+    <li><strong>Microsoft Intune</strong> — mobil- och enhetshantering</li>
+    <li><strong>Microsoft Sentinel (begränsat)</strong> — SIEM-funktionalitet, men med begränsningar på datalagringsvolym</li>
+  </ul>
+
+  <p>
+    Jämfört med E3 saknar E3-användare Defender, avancerad Entra ID, och helt enkelt Sentinel och Cloud App Security. Det är motsatsen till "ungefär samma sak, lite billigare."
+  </p>
+
+  <h2>E3 vs E5: Prisjämförelse</h2>
+
+  <table class="price-table">
+    <thead>
+      <tr>
+        <th>Funktion / Tjänst</th>
+        <th>E3</th>
+        <th>E5</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Ungefärligt pris/månad/användare (Sverige)</td>
+        <td>100–130 SEK</td>
+        <td>300–330 SEK</td>
+      </tr>
+      <tr>
+        <td>200 användare per år</td>
+        <td>240 000 SEK</td>
+        <td>720 000 SEK</td>
+      </tr>
+      <tr>
+        <td>Förutfattad åtkomst (MFA, Conditional Access P1)</td>
+        <td class="checkmark">✓</td>
+        <td class="checkmark">✓</td>
+      </tr>
+      <tr>
+        <td>Microsoft Defender (Office, Endpoint, Identity)</td>
+        <td class="x">✗</td>
+        <td class="checkmark">✓</td>
+      </tr>
+      <tr>
+        <td>Microsoft Sentinel (SIEM)</td>
+        <td class="x">✗</td>
+        <td class="checkmark">✓ (Begränsat)</td>
+      </tr>
+      <tr>
+        <td>Microsoft Purview Compliance Manager</td>
+        <td class="x">✗</td>
+        <td class="checkmark">✓</td>
+      </tr>
+      <tr>
+        <td>Entra ID Premium Plan 2</td>
+        <td class="x">✗</td>
+        <td class="checkmark">✓</td>
+      </tr>
+      <tr>
+        <td>Intune (MDM/MAM)</td>
+        <td>Grundläggande</td>
+        <td class="checkmark">✓ Fullständig</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>
+    Prisskillnaden är 200 000 kronor per år för 200 användare. Frågan är inte "kan vi köpa det?" — frågan är "behöver vi det för NIS2?"
+  </p>
+
+  <h2>Vad täcker E5 av NIS2-kraven?</h2>
+
+  <p>
+    NIS2-artikeln 21 listar tio obligatoriska säkerhetskontroller. Låt oss vara helt ärlig: vilka täcker E5?
+  </p>
+
+  <h3>1. Riskhantering och riskanalys</h3>
+  <p>
+    <strong>E5-bidrag:</strong> Begränsat. Purview Compliance Manager kan dokumentera att kontroller finns, men den genomför inte själva riskanalysen. Du behöver en extern konsult eller en egen process för att identifiera och bedöma risker innan du fyller i Compliance Manager.
+  </p>
+
+  <h3>2. Incidenthantering</h3>
+  <p>
+    <strong>E5-bidrag:</strong> Starkt. Defender XDR + Sentinel ger dig hotdetektering, incidentöppning, och automatiserad svar. Men du behöver fortfarande en dokumenterad process för eskalering och rapportering till myndigheter — det är inte automatiserat i E5.
+  </p>
+
+  <h3>3. Kontinuitetssäkerhet och disaster recovery</h3>
+  <p>
+    <strong>E5-bidrag:</strong> Ingenting. E5 inkluderar inte backup eller disaster recovery-löst. Du behöver något som Microsoft 365 Backup för detta.
+  </p>
+
+  <h3>4. Säkerhet i utvecklingsprocesser</h3>
+  <p>
+    <strong>E5-bidrag:</strong> Ingenting. E5 har ingen "secure development" -funktionalitet. Detta gäller framför allt om ni utvecklar eget.
+  </p>
+
+  <h3>5. Kryptografi</h3>
+  <p>
+    <strong>E5-bidrag:</strong> Partiellt. Purview Sensitivity Labels + Azure Key Vault kan användas för kryptering, men det kräver extra implementering — det är inte förpaketerat i E5.
+  </p>
+
+  <h3>6. Fysisk och miljömässig säkerhet</h3>
+  <p>
+    <strong>E5-bidrag:</strong> Ingenting. Det här är datacenter-nivå och faller på Microsoft som leverantör, inte på E5-licensen.
+  </p>
+
+  <h3>7. Personalvetning och säkerhet</h3>
+  <p>
+    <strong>E5-bidrag:</strong> Starkt. Defender for Office 365 inkluderar Attack Simulation Training och Security Awareness — utbildning och simulerad phishing-träning.
+  </p>
+
+  <h3>8. Leverantörssäkerhet</h3>
+  <p>
+    <strong>E5-bidrag:</strong> Ingenting. E5 har ingen försäljarassessment-funktion. Du behöver en extern process eller verktyg för detta.
+  </p>
+
+  <h3>9. Tillgångskontroll och autentisering</h3>
+  <p>
+    <strong>E5-bidrag:</strong> Mycket starkt. Entra ID Premium Plan 2 + Conditional Access + Intune löser detta nästan helt — MFA, sessionsstyrning, riskbaserad åtkomst.
+  </p>
+
+  <h3>10. Övervakning, logning och spårning</h3>
+  <p>
+    <strong>E5-bidrag:</strong> Starkt. Sentinel + Defender XDR ger dig loggar och hot-övervakning, men du behöver själv sätta upp alarmer och undersöka.
+  </p>
+
+  <div class="box-info">
+    <strong>Sammanfattning:</strong> E5 täcker ungefär 50–60 % av de tio obligatoriska NIS2-kontrollerna direkt. De återstående 40–50 % måste du lösa genom process, dokumentation, eller utökade verktyg.
+  </div>
+
+  <h2>Vad saknas i E5 — och vad kostar det att fylla gapen?</h2>
+
+  <p>
+    Här är de största hålen:
+  </p>
+
+  <h3>1. Backup och disaster recovery</h3>
+  <p>
+    <strong>Problem:</strong> E5 inkluderar inte backup. Om du blir utsatt för ransomware eller datakorrumpering, kan du förlora din Microsoft 365-miljö.
+  </p>
+  <p>
+    <strong>Lösning:</strong> Microsoft 365 Backup eller en tredjepartsbackuplösning. Kostnad: omkring 80–150 SEK/användare/månad för en robust backup-lösning.
+  </p>
+
+  <h3>2. SIEM i full skala</h3>
+  <p>
+    <strong>Problem:</strong> Sentinel ingår i E5, men med begränsningar. Logglagringstiden är begränsad till 30 dagar utan extra kostnader — för många organisationer räcker det inte för grundlig hotanalys eller säkerhetsgranskning.
+  </p>
+  <p>
+    <strong>Lösning:</strong> Utöka Sentinel med längre dataretention (arkivering i Azure) eller integrera en tredjepartslösning. Kostnad: 200–500 SEK/GB/månad för långtidslagring.
+  </p>
+
+  <h3>3. Riskanalys och policy-dokumentation</h3>
+  <p>
+    <strong>Problem:</strong> E5 dokumenterar att kontroller finns, men den kräver att du redan gjort riskanalysen och skrivit policydokumenten.
+  </p>
+  <p>
+    <strong>Lösning:</strong> En konsult eller ett internt projekt för att genomföra riskanalys enligt ISO 31000 / NIST-ramverk. Kostnad: 200 000–500 000 SEK för en medelstor organisation.
+  </p>
+
+  <h3>4. Leverantörshantering och assessment</h3>
+  <p>
+    <strong>Problem:</strong> E5 har inte inbyggt stöd för att bedöma dina molnleverantörer, PaaS-tjänster eller on-prem-system.
+  </p>
+  <p>
+    <strong>Lösning:</strong> En leverantörsmatris och ett assessment-ramverk som du handhåller eller automatiserar med ett verktyg. Kostnad: 50 000–150 000 SEK för uppsättning + årlig underhåll.
+  </p>
+
+  <h3>5. Incidenthanteringsprocess och rapportdokumentering</h3>
+  <p>
+    <strong>Problem:</strong> E5 hittar incidenter, men rapporterar inte automatiskt till MSB eller sektorsregulator. Du måste själv skriva och skicka rapporter inom 72 timmar. Saknar du process, tappar du fristen.
+  </p>
+  <p>
+    <strong>Lösning:</strong> Dokumenterad incidenthanteringsplan + utbildad team. Kan göras internt. Kostnad: Cirka 50 000 SEK för dokumentation + årlig träning.
+  </p>
+
+  <div class="box-warning">
+    <strong>Observera:</strong> Kostnaden för att fylla E5-gapen kan vara mellan 300 000 och 1 500 000 kronor — vilket snabbt gör E5 till en mindre del av den totala NIS2-investeringen. Det viktiga är att förstå detta från början, inte när revisor frågat efter gapet.
+  </div>
+
+  <h2>E5 ur ett CFO-perspektiv: Är det värt det?</h2>
+
+  <p>
+    Låt oss vara praktisk. Din CFO måste fundera på fyra saker:
+  </p>
+
+  <h3>1. Kostnads-nytta: E5 vs. alternativen</h3>
+  <p>
+    E5 kostar omkring 480 000 kronor extra per år för 200 användare. Om ni är på E3 idag, är uppdateringen värd det?
+  </p>
+  <p>
+    <strong>Ja, om:</strong> Ni behöver hotdetektering och incidenthantering — E5 ger detta nästan "gratis" som en del av licenspaketet. Alternativet — att köpa ett tredjepartssäkerhetsverktyg — kostar ofta mer.
+  </p>
+  <p>
+    <strong>Nej, om:</strong> Ni redan har investeringar i SIEM, EDR eller endpoint protection från en annan leverantör. Då blir ni duplicering av funktionalitet och högre kostnader.
+  </p>
+
+  <h3>2. Juridisk exponering</h3>
+  <p>
+    Om din organisation omfattas av NIS2, är risken för en 10-miljoner-euro-bötning högre än kostnaden för E5 och gap-plugin. Från denna vinkel är E5 ett försäkringsmedel, inte en kostnad.
+  </p>
+
+  <h3>3. Implementeringsbelastning</h3>
+  <p>
+    E5 kräver integration med befintliga system, policy-skrivande och ansvarsfördeling. Det är ett 6–12-månadersprojekt för en medelstor organisation. Budget för detta separat.
+  </p>
+
+  <h3>4. Långsiktig supportbelastning</h3>
+  <p>
+    Sentinel och Defender är kraftfulla men kräver ongoing övervakan. Du behöver antingen en 24/7 SOC (Security Operations Center) eller ett outsourcad SOC-avtal. Det är årlig kostnad — ofta 400 000–800 000 SEK.
+  </p>
+
+  <div class="box-case">
+    <div class="case-label">CFO-kalkyl</div>
+    <p>
+      <strong>Scenario: Medelstort teknikföretag, 200 anställda, omfattas av NIS2.</strong>
+    </p>
+    <p>
+      <strong>Kostnad år 1:</strong>
+    </p>
+    <ul style="margin-top: 12px; margin-bottom: 12px;">
+      <li>Microsoft 365 E5 (uppgradering från E3): 480 000 SEK</li>
+      <li>Riskanalys + policy-dokumentation: 300 000 SEK</li>
+      <li>Implementering + konfiguration: 200 000 SEK</li>
+      <li>Backup-lösning (första året): 150 000 SEK</li>
+      <li>Utbildning + styrelsedokumentation: 80 000 SEK</li>
+      <li><strong>Total år 1: 1 210 000 SEK</strong></li>
+    </ul>
+    <p>
+      <strong>Kostnad år 2+:</strong>
+    </p>
+    <ul style="margin-top: 12px; margin-bottom: 12px;">
+      <li>E5-licenser: 480 000 SEK</li>
+      <li>Backup: 150 000 SEK</li>
+      <li>Managed SOC eller support: 500 000 SEK</li>
+      <li>Årlig gap-revidering: 50 000 SEK</li>
+      <li><strong>Total år 2: 1 180 000 SEK/år (löpande)</strong></li>
+    </ul>
+    <p style="margin-top: 16px;">
+      <strong>Riskalternativ (ingen E5, ingen NIS2-beredskap):</strong> En böt på 7 miljoner kronor + juridisk kostnad + sanering + reputationsskada.
+    </p>
+    <p>
+      <strong>Slutsats:</strong> E5 är lönsamt från första året om man värderar riskminskningen.
+    </p>
+  </div>
+
+  <h

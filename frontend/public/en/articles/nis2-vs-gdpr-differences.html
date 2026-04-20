@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-BKF3QH9K01"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag("js", new Date());
+    gtag("config", "G-BKF3QH9K01");
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NIS2 vs GDPR: The Key Differences Every Board Must Know | NIS2Klar</title>
+  <meta name="description" content="NIS2 and GDPR are different laws with different fines. You can be GDPR-compliant and still fail NIS2. Understand the distinctions now—before the NCSC Ireland comes knocking.">
+  <meta property="og:title" content="NIS2 vs GDPR: The Key Differences Every Board Must Know">
+  <meta property="og:description" content="NIS2 and GDPR are different laws with different fines. You can be GDPR-compliant and still fail NIS2. Understand the distinctions now.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #141416;
+      --card: #1c1c1f;
+      --yellow: #f5c518;
+      --white: #f0f0f0;
+      --muted: #888;
+      --red: #C61212;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: var(--bg); color: var(--white); font-family: 'Barlow', sans-serif; font-size: 19px; line-height: 1.8; }
+
+    /* Nav */
+    nav { display: flex; justify-content: space-between; align-items: center; padding: 20px 40px; border-bottom: 1px solid rgba(255,255,255,0.07); max-width: 900px; margin: 0 auto; }
+    .nav-logo { font-family: 'Poppins', sans-serif; font-weight: 900; font-size: 20px; color: var(--yellow); text-decoration: none; }
+    .nav-logo span { color: var(--white); }
+    .nav-back { color: var(--muted); text-decoration: none; font-size: 15px; }
+    .nav-back:hover { color: var(--white); }
+    .lang-switcher { display: flex; gap: 8px; align-items: center; font-size: 13px; font-family: 'Poppins', sans-serif; }
+    .lang-switcher a { color: #888; text-decoration: none; font-weight: 600; padding: 4px 8px; border-radius: 3px; }
+    .lang-switcher a.active { color: var(--yellow); background: rgba(245, 197, 24, 0.1); }
+    .nav-cta { background: var(--yellow); color: #000; padding: 8px 18px; border-radius: 4px; text-decoration: none; font-weight: 700; font-size: 14px; font-family: 'Poppins', sans-serif; }
+
+    /* Article */
+    .article-wrap { max-width: 760px; margin: 0 auto; padding: 60px 40px; }
+    .article-category { font-size: 13px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 16px; }
+    h1 { font-family: 'Poppins', sans-serif; font-size: clamp(30px, 4vw, 44px); font-weight: 900; line-height: 1.2; margin-bottom: 24px; }
+    .article-meta { font-size: 15px; color: var(--muted); margin-bottom: 48px; padding-bottom: 24px; border-bottom: 1px solid rgba(255,255,255,0.07); }
+    h2 { font-family: 'Poppins', sans-serif; font-size: 26px; font-weight: 700; margin: 48px 0 16px; color: var(--white); }
+    h3 { font-family: 'Poppins', sans-serif; font-size: 20px; font-weight: 600; margin: 32px 0 12px; color: var(--yellow); }
+    p { margin-bottom: 22px; }
+    strong { color: var(--white); font-weight: 700; }
+    .highlight { color: var(--yellow); font-weight: 700; }
+    .danger { color: #ff6b6b; font-weight: 700; }
+    ul, ol { margin: 16px 0 24px 24px; }
+    li { margin-bottom: 12px; font-size: 19px; }
+
+    /* Callout boxes */
+    .box-warning { background: rgba(197,17,17,0.12); border-left: 4px solid var(--red); padding: 20px 24px; margin: 32px 0; border-radius: 0 4px 4px 0; }
+    .box-info { background: rgba(245,197,24,0.08); border-left: 4px solid var(--yellow); padding: 20px 24px; margin: 32px 0; border-radius: 0 4px 4px 0; }
+    .box-case { background: var(--card); border: 1px solid rgba(255,255,255,0.08); padding: 28px; margin: 40px 0; border-radius: 4px; }
+    .box-case .case-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 12px; }
+    blockquote { border-left: 3px solid var(--yellow); padding: 12px 20px; margin: 24px 0; font-style: italic; color: #ccc; }
+
+    /* Comparison table */
+    .comparison-table { width: 100%; border-collapse: collapse; margin: 32px 0; }
+    .comparison-table th { background: rgba(245,197,24,0.1); color: var(--yellow); font-family: 'Poppins', sans-serif; font-size: 13px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 14px 16px; text-align: left; border-bottom: 1px solid rgba(245,197,24,0.2); }
+    .comparison-table td { padding: 16px; border-bottom: 1px solid rgba(255,255,255,0.05); font-size: 15px; }
+    .comparison-table tr:last-child td { border-bottom: none; }
+    .comparison-table .label-left { font-weight: 700; color: var(--yellow); width: 25%; }
+    .comparison-table .nis2-col { color: #fff; }
+    .comparison-table .gdpr-col { color: #fff; }
+
+    /* CTA */
+    .cta-section { background: var(--card); border: 1px solid rgba(245,197,24,0.2); border-radius: 4px; padding: 48px 40px; margin: 64px 0 40px; text-align: center; }
+    .cta-section h2 { margin-top: 0; font-size: 26px; }
+    .cta-section p { color: #aaa; max-width: 500px; margin: 0 auto 28px; }
+    .btn-primary { display: inline-block; background: var(--yellow); color: #000; font-family: 'Poppins', sans-serif; font-weight: 800; font-size: 16px; padding: 16px 36px; border-radius: 4px; text-decoration: none; }
+    .btn-primary:hover { background: #e0b010; }
+    .cta-fine { font-size: 13px; color: var(--muted); margin-top: 16px; }
+
+    /* FAQ */
+    .faq-item { border-bottom: 1px solid rgba(255,255,255,0.07); padding: 20px 0; }
+    .faq-q { font-family: 'Poppins', sans-serif; font-weight: 600; margin-bottom: 10px; }
+    .faq-a { color: #bbb; }
+
+    /* Summary + Key Takeaway */
+    .box-summary { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; padding: 24px 28px; margin: 0 0 32px; }
+    .summary-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-bottom: 14px; }
+    .box-summary ul { margin: 0; padding-left: 20px; }
+    .box-summary li { margin-bottom: 8px; font-size: 17px; color: #ccc; }
+    .box-takeaway { background: rgba(245,197,24,0.08); border-left: 4px solid var(--yellow); padding: 20px 24px; margin: 0 0 40px; border-radius: 0 4px 4px 0; }
+    .takeaway-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 10px; }
+    .box-takeaway p { margin: 0; font-size: 18px; font-weight: 600; color: var(--white); line-height: 1.6; }
+
+    /* Related articles */
+    .related-articles { margin: 2.5rem 0 2rem; padding: 1.5rem; background: #1a1a2e; border-left: 4px solid #f0a500; border-radius: 4px; }
+    .related-articles p { margin: 0 0 1rem; font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #f0a500; }
+    .related-articles ul { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+    .related-articles li { margin: 0; }
+    .related-articles a { color: #e0e0e0; text-decoration: none; font-size: 0.95rem; }
+    .related-articles a:hover { color: #f0a500; }
+    .related-articles .footer-nav { margin: 1.25rem 0 0; font-size: 0.85rem; color: #aaa; }
+    .related-articles .footer-nav a { color: #f0a500; }
+
+    /* Footer */
+    footer { border-top: 1px solid rgba(255,255,255,0.07); padding: 32px 40px; text-align: center; font-size: 13px; color: var(--muted); max-width: 900px; margin: 0 auto; }
+    footer a { color: var(--muted); }
+    footer a:hover { color: var(--white); }
+
+    @media (max-width: 600px) {
+      nav, .article-wrap, footer { padding: 20px; }
+      .cta-section { padding: 32px 20px; }
+      .comparison-table { font-size: 14px; }
+      .comparison-table th, .comparison-table td { padding: 10px; }
+      .lang-switcher { gap: 4px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="https://nis2klar.se/en/">NIS2<span>Klar</span></a>
+  <a class="nav-back" href="https://nis2klar.se/en/articles.html">← All Articles</a>
+  <div class="lang-switcher">
+    <a href="https://nis2klar.se/artiklar.html" title="Svenska">SV</a>
+    <a href="https://nis2klar.se/en/articles.html" class="active" title="English">EN</a>
+    <a href="https://nis2klar.se/da/artikler.html" title="Dansk">DA</a>
+    <a href="https://nis2klar.se/no/artikler.html" title="Norsk">NO</a>
+    <a href="https://nis2klar.se/it/articoli.html" title="Italiano">IT</a>
+  </div>
+  <a class="nav-cta" href="https://nis2klar.se/en/#book">Book a call →</a>
+</nav>
+
+<article class="article-wrap">
+  <div class="article-category">Compliance & Board Liability</div>
+  <h1>NIS2 vs GDPR: The Key Differences Every Board Must Know</h1>
+  <div class="article-meta">Updated April 19, 2026 · Reading time: ca 8 minutes · Audience: Board Members, CEOs</div>
+
+  <!-- SUMMARY -->
+  <div class="box-summary">
+    <div class="summary-label">Summary</div>
+    <ul>
+      <li>NIS2 and GDPR are separate laws with separate fines, scopes, and enforcement bodies.</li>
+      <li>You can be fully GDPR-compliant and still fail NIS2 audits — they test different things.</li>
+      <li>GDPR focuses on data protection; NIS2 focuses on operational resilience and incident management.</li>
+      <li>Personal liability under NIS2 (Regulation 32 of S.I. 322/2024) is direct and concrete for board members.</li>
+      <li>NCSC Ireland is the primary authority for NIS2. Your Data Protection Officer handles GDPR.</li>
+    </ul>
+  </div>
+
+  <!-- KEY TAKEAWAY -->
+  <div class="box-takeaway">
+    <div class="takeaway-label">Key Insight</div>
+    <p>Many Irish organisations think: "We have a DPO and pass GDPR audits, so we're safe." That is not how NIS2 works. Operational resilience and cyber incident management are separate disciplines. You need both frameworks in place.</p>
+  </div>
+
+  <!-- OPENING -->
+  <p>
+    It is a common misunderstanding in Irish boardrooms: "We're GDPR-compliant, so we're covered under NIS2."
+  </p>
+
+  <p>
+    You are not.
+  </p>
+
+  <p>
+    GDPR and NIS2 are two different laws, enforced by two different authorities, with two different scopes and two different penalty structures. They overlap on one point — data security — but diverge sharply on everything else. The cost of confusing them is substantial: fines up to <strong>€10 million or 2% of global annual turnover</strong> for NIS2 breaches, <strong>plus personal liability for board members</strong> under Regulation 32 of Ireland's S.I. No. 322 of 2024.
+  </p>
+
+  <p>
+    This article breaks down the distinctions for the board members and CEOs who need to understand what they're actually responsible for.
+  </p>
+
+  <div class="box-warning">
+    <strong>Reality check:</strong> NCSC Ireland is now auditing essential and important entities. If your organisation falls into NIS2 scope and you've been relying on GDPR compliance as your cyber posture, you will fail the audit. It is not a question of if, but when.
+  </div>
+
+  <h2>The Core Distinction: What Each Law Actually Tests</h2>
+
+  <p>
+    Both laws mention data and security. That is where the similarity ends.
+  </p>
+
+  <p>
+    <strong>GDPR</strong> is a data privacy law. It asks: How do you protect the personal data of individuals? Who has access? How long do you keep it? Did you get consent? Can someone ask for a copy or deletion?
+  </p>
+
+  <p>
+    <strong>NIS2</strong> is an operational resilience law. It asks: If you suffer a cyberattack or outage, can you continue operating? Do you have incident detection and response? Can you recover? Do you train your people? Can you prove it?
+  </p>
+
+  <p>
+    A financial services company might have impeccable GDPR controls — encryption, access logs, a Data Protection Officer, annual audits — but zero NIS2 readiness if it lacks incident response playbooks, supply chain security reviews, or board-level oversight of cyber risk.
+  </p>
+
+  <h2>Side-by-Side Comparison: GDPR vs NIS2</h2>
+
+  <table class="comparison-table">
+    <thead>
+      <tr>
+        <th>Aspect</th>
+        <th class="nis2-col">NIS2</th>
+        <th class="gdpr-col">GDPR</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="label-left">Primary Focus</td>
+        <td class="nis2-col">Operational resilience, incident management, continuity</td>
+        <td class="gdpr-col">Personal data protection and privacy</td>
+      </tr>
+      <tr>
+        <td class="label-left">Scope</td>
+        <td class="nis2-col">18 critical sectors (energy, finance, health, transport, digital infrastructure, etc.)</td>
+        <td class="gdpr-col">Any organisation processing personal data of EU residents</td>
+      </tr>
+      <tr>
+        <td class="label-left">Entity Types</td>
+        <td class="nis2-col">Essential entities (large) &amp; Important entities (medium)</td>
+        <td class="gdpr-col">All data controllers and processors</td>
+      </tr>
+      <tr>
+        <td class="label-left">Primary Authority (Ireland)</td>
+        <td class="nis2-col">NCSC Ireland (National Cyber Security Centre)</td>
+        <td class="gdpr-col">DPC (Data Protection Commission)</td>
+      </tr>
+      <tr>
+        <td class="label-left">Incident Reporting</td>
+        <td class="nis2-col">24h early warning, 72h full report to NCSC Ireland</td>
+        <td class="gdpr-col">72h breach notification to DPC (no early warning requirement)</td>
+      </tr>
+      <tr>
+        <td class="label-left">Max Fine</td>
+        <td class="nis2-col">€10M or 2% of turnover (essential); €7M or 1.4% (important)</td>
+        <td class="gdpr-col">€20M or 4% of turnover</td>
+      </tr>
+      <tr>
+        <td class="label-left">Board Member Liability</td>
+        <td class="nis2-col">Direct personal liability; can ban individual from holding board positions</td>
+        <td class="gdpr-col">Indirect (through organisation); DPC rarely pursues individuals</td>
+      </tr>
+      <tr>
+        <td class="label-left">Key Obligations</td>
+        <td class="nis2-col">Risk assessment, incident response, supply chain security, training, continuity planning, board oversight</td>
+        <td class="gdpr-col">Consent, data inventory, privacy impact assessments, data subject rights, DPO</td>
+      </tr>
+      <tr>
+        <td class="label-left">Audit Focus</td>
+        <td class="nis2-col">Do you have documented processes? Do they work? Board approval?</td>
+        <td class="gdpr-col">Are personal data flows correct? Consents in place? Contracts signed?</td>
+      </tr>
+      <tr>
+        <td class="label-left">Overlapping Risk</td>
+        <td class="nis2-col">Data breach as incident trigger (NIS2 incident = GDPR breach notification)</td>
+        <td class="gdpr-col">Same; a cyber incident that leaks personal data triggers both frameworks</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>
+    Notice the last row: there is one overlap. <strong>If a cyberattack results in personal data loss, you must report it under both frameworks.</strong> But the clock is different (24h vs 72h), the authority is different (NCSC Ireland vs DPC), and what triggers the fine is different.
+  </p>
+
+  <h2>The Personal Liability Difference</h2>
+
+  <p>
+    This is the sharp point where boards should pay closest attention.
+  </p>
+
+  <p>
+    Under <strong>GDPR</strong>, the Data Protection Commission can fine the organisation. Fines are large (up to €20 million or 4% of turnover), but they are levied against the company. Individuals — including board members — can be held liable for specific violations, but the DPC rarely pursues this path. The assumption is that the organisation is responsible, and the board's indirect liability is through governance.
+  </p>
+
+  <p>
+    Under <strong>NIS2 (Regulation 32 of S.I. 322/2024)</strong>, management body members — that is, you as a board member or CEO — can be held <strong>directly and personally liable</strong>. The regulation states:
+  </p>
+
+  <blockquote>
+    "Natural persons who are members of the management body or are otherwise responsible for the management of the undertaking shall be liable for the penalties imposed if the infringement is committed by the undertaking with their knowledge or as a result of their negligence."
+  </blockquote>
+
+  <p>
+    This means:
+  </p>
+
+  <ul>
+    <li>If the NCSC Ireland finds that your organisation failed to implement required security measures and you, as a board member, knew (or should have known), you are personally liable.</li>
+    <li>The fine is against you personally, not just the company.</li>
+    <li>You can be barred from holding a management position for a defined period — an industry-level ban, not just at your current company.</li>
+  </ul>
+
+  <div class="box-info">
+    <strong>What this means in practice:</strong> A board member of a financial services company in Ireland cannot delegate cyber risk to the Chief Information Security Officer and then claim ignorance. The NCSC Ireland will ask: "Did the board review and approve the incident response plan?" and "What evidence shows the board was aware of the security posture?" If the answer is no documentation, personal liability follows.
+  </div>
+
+  <h2>How the Authorities Operate Differently</h2>
+
+  <p>
+    In Ireland, NIS2 compliance is overseen by <strong>NCSC Ireland</strong>, the National Cyber Security Centre. NCSC Ireland works alongside sector-specific regulators:
+  </p>
+
+  <ul>
+    <li><strong>Central Bank of Ireland (CBI)</strong> — financial services</li>
+    <li><strong>ComReg</strong> — electronic communications and digital infrastructure</li>
+    <li><strong>Commission for Regulation of Utilities (CRU)</strong> — energy</li>
+    <li><strong>Other sector regulators</strong> as defined in S.I. No. 322 of 2024</li>
+  </ul>
+
+  <p>
+    GDPR compliance, by contrast, is the domain of the <strong>Data Protection Commission (DPC)</strong>, an independent body focused on data rights.
+  </p>
+
+  <p>
+    The enforcement approaches differ:
+  </p>
+
+  <ul>
+    <li><strong>NCSC Ireland</strong> conducts on-site audits of essential and important entities. They ask for documentation of security measures, incident response capabilities, and board-level oversight. Non-compliance leads to corrective action notices and fines if not remedied.</li>
+    <li><strong>DPC</strong> investigates complaints and conducts audits based on data protection concerns. The process is often reactive and can take months.</li>
+  </ul>
+
+  <p>
+    Critically, NCSC Ireland can act faster and more directly. NIS2 incident reporting is mandatory within 72 hours; the NCSC has a clear view of your vulnerabilities and how you respond.
+  </p>
+
+  <h2>A Realistic Scenario: Dual Compliance</h2>
+
+  <div class="box-case">
+    <div class="case-label">Case Study: Irish Fintech Company</div>
+    <p>
+      <strong>Setup:</strong> A Dublin-based payment processor with 180 employees handles transaction data for SMEs across the EU. It is classified as an essential entity under NIS2 (financial services sector) and processes personal data under GDPR (cardholder PII, merchant contact information).
+    </p>
+    <p>
+      <strong>GDPR posture:</strong> The company has a Data Protection Officer, annual third-party privacy audits, and a documented data inventory. Consent mechanisms are in place. Data access is logged. The company has not had a GDPR fine in five years.
+    </p>
+    <p>
+      <strong>NIS2 posture:</strong> The company has not been audited under NIS2 yet. It has basic firewalls and antivirus but no formal incident response plan. Board minutes do not document approval of security measures. There is no business continuity plan. Supplier security questionnaires are informal.
+    </p>
+    <p>
+      <strong>What happens:</strong> NCSC Ireland initiates a regulatory audit in Q2 2026. Within two weeks, the company is asked to provide evidence of incident response procedures, board-level cyber governance, and supply chain security assessments. The company struggles to produce documentation. The NCSC issues a corrective action notice with a 90-day deadline.
+    </p>
+    <p>
+      <strong>The cost:</strong> Expedited legal fees (€15,000–€25,000), security consultancy to build missing controls (€40,000–€80,000), and management time. If the deadline is missed or controls are inadequate, fines of €1–€5 million are issued, plus personal liability notices to the board. A GDPR audit by contrast would have found no material issues.
+    </p>
+  </div>
+
+  <h2>What Boards Must Do Differently</h2>
+
+  <p>
+    If your organisation falls under NIS2 (check the 18 critical sectors and the size thresholds), your board needs separate discipline for NIS2 beyond what GDPR requires.
+  </p>
+
+  <p>
+    <strong>GDPR requires:</strong>
+  </p>
+
+  <ul>
+    <li>A Data Protection Officer (or DPO function)</li>
+    <li>Privacy by design in data processing</li>
+    <li>Data subject rights procedures (access, deletion, portability)</li>
+    <li>Breach notification within 72 hours to DPC</li>
+  </ul>
+
+  <p>
+    <strong>NIS2 requires:</strong>
+  </p>
+
+  <ul>
+    <li>Board-level approval of security measures (documented in board minutes)</li>
+    <li>Risk assessment and management process</li>
+    <li>Incident response plan with roles, escalation, and testing</li>
+    <li>Business continuity and disaster recovery planning</li>
+    <li>Supply chain security due diligence</li>
+    <li>Incident reporting: 24-hour early warning, 72-hour full report to NCSC Ireland</li>
+    <li>Cybersecurity training for staff</li>
+    <li>Third-party security assessments</li>
+  </ul>
+
+  <p>
+    These are operational, not privacy, controls. A GDPR audit will not test them. An NCSC Ireland audit will.
+  </p>
+
+  <h2>The Incident Reporting Timeline Trap</h2>
+
+  <p>
+    This is another place where organisations fail to distinguish the two frameworks.
+  </p>
+
+  <p>
+    <strong>Under GDPR:</strong> If a data breach occurs, you notify the DPC within 72 hours (and affected individuals shortly after, if required). The clock starts when you discover the breach.
+  </p>
+
+  <p>
+    <strong>Under NIS2:</strong> If you suffer a significant cyberattack or outage, you send an <strong>early warning to NCSC Ireland within 24 hours</strong> (just notification that something happened), then a full incident report within 72 hours. Regulation 23 of S.I. 322/2024 is explicit.
+  </p>
+
+  <p>
+    Many organisations treat this the same: "We'll report both to both authorities within 72 hours." This is incorrect. The NIS2 24-hour early warning is a separate obligation. Missing it is a sanction-triggering violation on its own.
+  </p>
+
+  <div class="box-warning">
+    <strong>Practical implication:</strong> Your incident response playbook must have a NIS2 reporting stream (24h + 72h to NCSC Ireland) separate from your GDPR breach notification stream (72h to DPC). The timelines conflict. You cannot do one and assume the other is satisfied.
+  </div>
+
+  <h2>Fines: The Same Incident, Different Penalties</h2>
+
+  <p>
+    Suppose your organisation suffers a ransomware attack that leaks customer payment data. Both NIS2 and GDPR penalties apply — but they are calculated differently.
+  </p>
+
+  <p>
+    <strong>NIS2 fine:</strong> Up to €10 million or 2% of annual global turnover (whichever is higher) for failure to implement security measures or for delayed incident reporting.
+  </p>
+
+  <p>
+    <strong>GDPR fine:</strong> Up to €20 million or 4% of annual global turnover for the data breach itself.
+  </p>
+
+  <p>
+    An organisation with €100 million in turnover could theoretically face:
+  </p>
+
+  <ul>
+    <li>NIS2: €2 million (2% of turnover)</li>
+    <li>GDPR: €4 million (4% of turnover)</li>
+    <li><strong>Total: €6 million</strong></li>
+  </ul>
+
+  <p>
+    Both are levied. They do not offset each other. And these are separate from the costs of remediation, credit monitoring, reputational damage, and insurance claims.
+  </p>
+
+  <h2>Frequently Asked Questions</h2>
+
+  <div class="faq-item">
+    <div class="faq-q">Does our Data Protection Officer handle NIS2?</div>
+    <div class="faq-a">No. Your DPO is responsible for GDPR compliance and data privacy. NIS

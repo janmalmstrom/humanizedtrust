@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-BKF3QH9K01"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag("js", new Date());
+    gtag("config", "G-BKF3QH9K01");
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NIS2-leverandørsikkerhed: Hvad du skal kræve af dine leverandører | NIS2Klar</title>
+  <meta name="description" content="Konkrete krav til leverandørsikkerhed under NIS2-loven. Kontraktklausuler, sikkerhedsspørgeskemaer, revisionsrettigheder og hændelsesrapportering — med skabelontekst.">
+  <meta property="og:title" content="NIS2-leverandørsikkerhed: Hvad du skal kræve af dine leverandører">
+  <meta property="og:description" content="Konkrete krav til leverandørsikkerhed under NIS2-loven. Kontraktklausuler, sikkerhedsspørgeskemaer, revisionsrettigheder og hændelsesrapportering.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #141416;
+      --card: #1c1c1f;
+      --yellow: #f5c518;
+      --white: #f0f0f0;
+      --muted: #888;
+      --red: #C61212;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: var(--bg); color: var(--white); font-family: 'Barlow', sans-serif; font-size: 19px; line-height: 1.8; }
+
+    /* Nav */
+    nav { display: flex; justify-content: space-between; align-items: center; padding: 20px 40px; border-bottom: 1px solid rgba(255,255,255,0.07); max-width: 900px; margin: 0 auto; gap: 20px; flex-wrap: wrap; }
+    .nav-logo { font-family: 'Poppins', sans-serif; font-weight: 900; font-size: 20px; color: var(--yellow); text-decoration: none; }
+    .nav-logo span { color: var(--white); }
+    .nav-back { color: var(--muted); text-decoration: none; font-size: 15px; }
+    .nav-back:hover { color: var(--white); }
+    .lang-switcher { display: flex; gap: 8px; align-items: center; font-size: 13px; font-family: 'Poppins', sans-serif; }
+    .lang-switcher a { color: var(--muted); text-decoration: none; font-weight: 600; padding: 4px 8px; border-radius: 3px; }
+    .lang-switcher a:hover { background: rgba(255,255,255,0.05); }
+    .lang-switcher a.active { color: var(--yellow); background: rgba(245,197,24,0.1); }
+    .nav-cta { background: var(--yellow); color: #000; padding: 8px 18px; border-radius: 4px; text-decoration: none; font-weight: 700; font-size: 14px; font-family: 'Poppins', sans-serif; }
+
+    /* Article */
+    .article-wrap { max-width: 760px; margin: 0 auto; padding: 60px 40px; }
+    .article-category { font-size: 13px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 16px; }
+    h1 { font-family: 'Poppins', sans-serif; font-size: clamp(30px, 4vw, 44px); font-weight: 900; line-height: 1.2; margin-bottom: 24px; }
+    .article-meta { font-size: 15px; color: var(--muted); margin-bottom: 48px; padding-bottom: 24px; border-bottom: 1px solid rgba(255,255,255,0.07); }
+    h2 { font-family: 'Poppins', sans-serif; font-size: 26px; font-weight: 700; margin: 48px 0 16px; color: var(--white); }
+    h3 { font-family: 'Poppins', sans-serif; font-size: 20px; font-weight: 600; margin: 32px 0 12px; color: var(--yellow); }
+    p { margin-bottom: 22px; }
+    strong { color: var(--white); font-weight: 700; }
+    .highlight { color: var(--yellow); font-weight: 700; }
+    .danger { color: #ff6b6b; font-weight: 700; }
+    ul, ol { margin: 16px 0 24px 24px; }
+    li { margin-bottom: 12px; font-size: 19px; }
+
+    /* Callout boxes */
+    .box-warning { background: rgba(197,17,17,0.12); border-left: 4px solid var(--red); padding: 20px 24px; margin: 32px 0; border-radius: 0 4px 4px 0; }
+    .box-info { background: rgba(245,197,24,0.08); border-left: 4px solid var(--yellow); padding: 20px 24px; margin: 32px 0; border-radius: 0 4px 4px 0; }
+    .box-case { background: var(--card); border: 1px solid rgba(255,255,255,0.08); padding: 28px; margin: 40px 0; border-radius: 4px; }
+    .box-case .case-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 12px; }
+    blockquote { border-left: 3px solid var(--yellow); padding: 12px 20px; margin: 24px 0; font-style: italic; color: #ccc; }
+
+    /* CTA */
+    .cta-section { background: var(--card); border: 1px solid rgba(245,197,24,0.2); border-radius: 4px; padding: 48px 40px; margin: 64px 0 40px; text-align: center; }
+    .cta-section h2 { margin-top: 0; font-size: 26px; }
+    .cta-section p { color: #aaa; max-width: 500px; margin: 0 auto 28px; }
+    .btn-primary { display: inline-block; background: var(--yellow); color: #000; font-family: 'Poppins', sans-serif; font-weight: 800; font-size: 16px; padding: 16px 36px; border-radius: 4px; text-decoration: none; }
+    .btn-primary:hover { background: #e0b010; }
+    .cta-fine { font-size: 13px; color: var(--muted); margin-top: 16px; }
+
+    /* FAQ */
+    .faq-item { border-bottom: 1px solid rgba(255,255,255,0.07); padding: 20px 0; }
+    .faq-q { font-family: 'Poppins', sans-serif; font-weight: 600; margin-bottom: 10px; }
+    .faq-a { color: #bbb; }
+
+    /* Summary + Key Takeaway */
+    .box-summary { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; padding: 24px 28px; margin: 0 0 32px; }
+    .summary-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-bottom: 14px; }
+    .box-summary ul { margin: 0; padding-left: 20px; }
+    .box-summary li { margin-bottom: 8px; font-size: 17px; color: #ccc; }
+    .box-takeaway { background: rgba(245,197,24,0.08); border-left: 4px solid var(--yellow); padding: 20px 24px; margin: 0 0 40px; border-radius: 0 4px 4px 0; }
+    .takeaway-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 10px; }
+    .box-takeaway p { margin: 0; font-size: 18px; font-weight: 600; color: var(--white); line-height: 1.6; }
+
+    /* Code block */
+    .code-block { background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.08); border-radius: 4px; padding: 16px; margin: 24px 0; font-family: 'Courier New', monospace; font-size: 14px; color: #ddd; overflow-x: auto; line-height: 1.5; }
+
+    /* Footer */
+    footer { border-top: 1px solid rgba(255,255,255,0.07); padding: 32px 40px; text-align: center; font-size: 13px; color: var(--muted); max-width: 900px; margin: 0 auto; }
+    footer a { color: var(--muted); }
+
+    /* Related */
+    .related-articles { margin: 2.5rem 0 2rem; padding: 1.5rem; background: #1a1a2e; border-left: 4px solid #f0a500; border-radius: 4px; max-width: 760px; margin-left: auto; margin-right: auto; }
+
+    @media (max-width: 600px) {
+      nav { padding: 16px 20px; }
+      .article-wrap, footer { padding: 20px; }
+      .cta-section { padding: 32px 20px; }
+      nav { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="https://nis2klar.se/da/">NIS2<span>Klar</span></a>
+  <a class="nav-back" href="https://nis2klar.se/da/artikler.html">← Alle artikler</a>
+  <div class="lang-switcher">
+    <a href="https://nis2klar.se/artiklar.html" style="color:#888;" title="Svenska">SV</a>
+    <a href="https://nis2klar.se/en/articles.html" style="color:#888;" title="English">EN</a>
+    <a href="https://nis2klar.se/da/artikler.html" class="active" title="Dansk">DA</a>
+    <a href="https://nis2klar.se/no/artikler.html" style="color:#888;" title="Norsk">NO</a>
+    <a href="https://nis2klar.se/it/articoli.html" style="color:#888;" title="Italiano">IT</a>
+  </div>
+  <a class="nav-cta" href="https://nis2klar.se/da/">Book demo →</a>
+</nav>
+
+<article class="article-wrap">
+  <div class="article-category">Praktisk vejledning</div>
+  <h1>NIS2-leverandørsikkerhed: Hvad du skal kræve af dine leverandører</h1>
+  <div class="article-meta">Opdateret 19. april 2026 · Læsetid: ca 8 minutter · Målgruppe: Direktører og styrelser</div>
+
+  <!-- SUMMARY -->
+  <div class="box-summary">
+    <div class="summary-label">Opsummering</div>
+    <ul>
+      <li>NIS2 gør din organisation ansvarlig for dine leverandørers sikkerhed — ikke blot for egen.</li>
+      <li>CFCS forventer dokumenterede leverandørkrav i alle kontakter, der håndterer kritiske funktioner eller data.</li>
+      <li>Fire konkrete værktøjer: kontraktklausuler, sikkerhedsspørgeskemaer, revisionsrettigheder og hændelsesrapportoring.</li>
+      <li>Manglende leverandørkontrol tæller som en strukturel sikkerhedsbrist hos dig — og medfører samme bøder.</li>
+    </ul>
+  </div>
+
+  <!-- KEY TAKEAWAY -->
+  <div class="box-takeaway">
+    <div class="takeaway-label">Vigtigste pointe</div>
+    <p>Din organisation kan få bøder på op til 10 millioner EUR for leverandørers manglende sikkerhed — selv om fejlen ikke ligger hos dig. Der er ingen "leverandøren var ansvarlig" undskyldning under NIS2.</p>
+  </div>
+
+  <!-- HOOK -->
+  <p>
+    Under NIS2-loven (Lov nr. 1120 af 2023) er du ansvarlig ikke kun for din egen cybersikkerhed, men også for dine kritiske leverandørers. 
+    CFCS (Center for Cybersikkerhed) har gjort det klart: hvis en leverandør fejler, og du ikke har dokumenteret sikkerhedskrav i aftalen, rammer bøderne dig.
+  </p>
+
+  <p>
+    Det betyder ikke, at du skal blive IT-ekspert eller revidere hver leverandør månedligt. 
+    Det betyder, at du skal have et system — og kunne dokumentere det over for tilsynsmyndighederne.
+  </p>
+
+  <div class="box-warning">
+    <strong>CFCS fokuserer på leverandørkontrol.</strong> I deres første vejledninger efter oktober 2024 er leverandørsikkerhed (artikel 18, stk. 1) fremhævet som en af de områder, hvor mange danske organisationer halter efter. Hvis du ikke kan vise et dokumenteret leverandørprogram, er det første sted tilsynsmyndigheden søger.
+  </div>
+
+  <h2>Hvad siger NIS2-loven om leverandører?</h2>
+
+  <p>
+    <strong>Artikel 18, stk. 1</strong> af NIS2-direktivet kræver, at væsentlige og vigtige entiteter implementerer og vedligeholder "passende sikkerhedsstandarder og forpligtelser vedr. informations- og netværkssikkerhed for leverandører."
+  </p>
+
+  <p>
+    Det danske lovtekst udmønter det som et krav om, at du skal:
+  </p>
+
+  <ol>
+    <li>Identificere dine kritiske leverandører</li>
+    <li>Dokumentere sikkerhedskrav i kontrakterne</li>
+    <li>Gennemgå deres sikkerhed før du går i aftale</li>
+    <li>Overvåge deres sikkerhed løbende</li>
+    <li>Have en proces for når leverandøren fejler</li>
+  </ol>
+
+  <p>
+    CFCS forventer ikke, at du bliver sikkerhedsprofessor. De forventer, at du kan demonstrere et professionelt, dokumenteret system. Det er nemlig det, der beskytter både dig og organisationen juridisk.
+  </p>
+
+  <h2>Hvem regnes som en kritisk leverandør?</h2>
+
+  <p>
+    Du skal ikke have sikkerhedskrav på alle leverandører — kun dem, der er kritiske for dine væsentlige funktioner.
+  </p>
+
+  <p>
+    En kritisk leverandør er typisk nogen, der:
+  </p>
+
+  <ul>
+    <li>Håndterer eller gemmer dine vigtigste data (kundeoplyninger, forretningshemmeligheder, persondata)</li>
+    <li>Betjener vigtig IT-infrastruktur (e-mail, netværk, backup, cloud-tjenester)</li>
+    <li>Har direkte adgang til dine systemer (via VPN, API'er eller fysisk adgang til serverrum)</li>
+    <li>Påvirker leveringen af dine kritiske tjenester (hvis de falder ned, falder du ned)</li>
+  </ul>
+
+  <p>
+    En kantineoperatør er typisk ikke kritisk. En cloud-udbyder er det. En mailbox-leverandør er det. Din revisor, der har en gang om året adgang til økonomisystemet via kodeord, skal også på listen.
+  </p>
+
+  <div class="box-info">
+    <strong>Praktisk tip:</strong> Lav en simple matrix over dine leverandører med tre kolonner: navn, type service, kritisk ja/nej. Start med 10–15 kritiske. Hvis listen bliver større end 50, skalerer du sandsynligvis forkert — nogle burde være på listen som "vigtige, ikke kritiske".
+  </div>
+
+  <h2>Fire konkrete værktøjer til leverandørkontrol</h2>
+
+  <h3>1. Sikkerhedsspørgeskema (Security Questionnaire)</h3>
+
+  <p>
+    Før du underskriver en aftale med en kritisk leverandør, skal du stille spørgsmål til deres sikkerhed. 
+    Det kan være skriftligt eller mundtligt, men det skal dokumenteres.
+  </p>
+
+  <p>
+    <strong>Minimale spørgsmål du skal stille:</strong>
+  </p>
+
+  <ul>
+    <li>Hvor er data lagret geografisk, og hvilke lande handler de gennem?</li>
+    <li>Hvem hos leverandøren har adgang til vores data?</li>
+    <li>Er data krypteret (både i transit og at rest)?</li>
+    <li>Har leverandøren stiftet en databehandleraftale efter GDPR?</li>
+    <li>Hvad gør de hvis de bliver ramt af cyberangrebet?</li>
+    <li>Hvordan rapporteres sikkerhedshændelser til os?</li>
+    <li>Kan vi få en sikkerhedsrapport eller certificering (ISO 27001, SOC 2 eller lignende)?</li>
+  </ul>
+
+  <p>
+    Du behøver ikke være IT-ekspert for at stille disse spørgsmål. En leverandør, der ikke kan svare på dem, er rødt flag.
+    Svar som "vi tager sikkerhed alvorligt" uden detaljer betyder ikke noget. Du skal have faktiske svar: "Data ligger i EU på Amazons Dublin-datacentre og er AES-256 krypteret."
+  </p>
+
+  <h3>2. Kontraktklausuler</h3>
+
+  <p>
+    Når du har fået svar, skal sikkerhedskravene ind i kontrakten. 
+    Ellers er de ikke juridisk bindende, og det giver ikke dig dækning over for CFCS.
+  </p>
+
+  <p>
+    <strong>Minimum-kontraktklausul for kritiske leverandører:</strong>
+  </p>
+
+  <div class="code-block">
+"Leverandøren forpligter sig til at:
+(a) Implementere og vedligeholde sikkerhed på niveau mindst svarende til ISO 27001 eller tilsvarende standard.
+(b) Meddele Kunden om enhver sikkerhedshændelse eller indikation på uautoriseret adgang inden for 24 timer.
+(c) Tillader Kunden at gennemgå sikkerhedsforanstaltninger via revision eller revisionsrapport årligt.
+(d) Ikke deler Kundens data med tredje part uden skriftligt samtykke.
+(e) Sikrer, at data er krypteret under transmission og lagring.
+(f) Respekterer GDPR's bestemmelser for databehandling.
+
+Hvis Leverandøren ikke overholder disse forpligtelser, har Kunden ret til øjeblikkelig opsigelse."
+  </div>
+
+  <p>
+    Du kan også præsentere en skabelon til leverandøren på forhånd. Mange større leverandører har allerede dette på deres own vilkår — så spørg om deres "sikkerhedsbeslutningspapir" eller "dataadd-on".
+  </p>
+
+  <div class="box-info">
+    <strong>Juridisk note:</strong> Kontraktklaususlerne skal være skriftlige for at have værdi overfor tilsynsmyndigheden. En mundtlig aftale om sikkerhed holder ikke juridisk trit under en granskning. Brug e-mail, PDF eller fax — men det skal være dokumenteret.
+  </div>
+
+  <h3>3. Revisionsrettigheder</h3>
+
+  <p>
+    Du skal have ret til at gennemgå leverandørens sikkerhed. 
+    Det betyder typisk ikke, at du selv skal sit ned og gennemse deres netværk — men du skal have ret til at få dokumentation.
+  </p>
+
+  <p>
+    <strong>Revisionsrettigheder kan være:</strong>
+  </p>
+
+  <ul>
+    <li><strong>Dokumentbaseret:</strong> Leverandøren sender årligt en sikkerhedsrapport eller revisorsamtaler (SOC 2-attest eller ISO 27001-certificering).</li>
+    <li><strong>Fysisk:</strong> Du eller en tredjepart får mulighed for at besøge og gennemse deres sikkerhed på plads (typisk kun for meget kritiske leverandører som cloud-udbydere).</li>
+    <li><strong>Spørgeskema-baseret:</strong> Du sender årligt et opdateret sikkerhedsspørgeskema, som leverandøren skal besvare.</li>
+  </ul>
+
+  <p>
+    For de fleste leverandører er dokumentbaseret eller spørgeskema-baseret revision tilstrækkelig. 
+    Hav det skriftligt i kontrakten, at leverandøren skal respondere inden 30 dage på revisionsanmodninger.
+  </p>
+
+  <h3>4. Hændelsesrapportering</h3>
+
+  <p>
+    Når (ikke hvis) leverandøren rammes af en sikkerhedshændelse, skal du vide det hurtigt — og inden for rammerne for din egen rapportering til CFCS.
+  </p>
+
+  <p>
+    <strong>Kontraktbestemmelse om hændelsesrapportering:</strong>
+  </p>
+
+  <div class="code-block">
+"Leverandøren skal meddele alle sikkerhedshændelser, der kunne påvirke Kundens data eller tjenester, inden for 24 timer fra opdagelse. 
+Meddelsen skal indeholde: (1) Hvad der skete, (2) Hvornår det blev opdaget, (3) Hvilke data/systemer der var påvirket, (4) Hvad Leverandøren nu gør for at løse det."
+  </div>
+
+  <p>
+    Dette er <strong>kritisk</strong> fordi NIS2 giver dig selv kun 72 timer til at rapportere en incident til CFCS. 
+    Hvis din leverandør først fortæller dig om problemet efter 3 dage, er du allerede på det halve og skal rapportere samme dag.
+  </p>
+
+  <div class="box-warning">
+    <strong>Reel risiko:</strong> En leverandør, som ikke rapporterer incident korrekt, lader dig overtræde NIS2-rapporteringspligten. Du bliver så udsat som Kunden selv. Sørg for at have kontakt til Leverandørens sikkerhedskontakt liggende (ikke deres salgskontakt).
+  </div>
+
+  <h2>Praktisk eksempel: Gennemgang af en dybdegripende case</h2>
+
+  <div class="box-case">
+    <div class="case-label">Case Study — Dansk E-Handler</div>
+    <p>
+      <strong>Situation:</strong> En dansk e-handelsvirksom med 80 ansatte sælger tøj online. De bruger en cloud-leverandør til e-handelssoftware, en emailoperatør til kundemail, en kortbetalingsprocessor og en logistikpartner.
+    </p>
+    <p>
+      <strong>Hvad gjorde de forkert:</strong> De havde underskrevet aftaler med alle leverandørerne, men ingen sikkerhedskrav var skriftligt dokumenteret. Cloud-leverandøren havde en PDF med sikkerhedsinfo på deres website, men det stod ikke i kontrakten. Mailoperatøren havde en standardaftale uden nogen sikkerhedsparagraf. Kortprocessoren var udbyder af tredje part (outsourcet), og de vidste ikke rigtig hvem.
+    </p>
+    <p>
+      <strong>Hvad der skete:</strong> I juli 2025 ramtes cloud-leverandøren af ransomware. 200 organisationer blev påvirket. E-handelsvirksomheden mistet adgang til deres e-handelssoftware i 6 timer. Leverandøren opdagede problemet efter 4 timer, men ventede 48 timer med at fortælle kunderne (de ville selv løse det først).
+    </p>
+    <p>
+      <strong>E-handelsvirksomhedens problem:</strong> Da de fik besked efter 48 timer, havde de mindre end 24 timer til at rapportere til CFCS (som Kunden skal selv gøre, uanset hvad leverandøren gør). De kaldte ind til konsulenter på weekend for at kunne rapportere korrekt. Parallelt undersøgte CFCS cloud-leverandøren og sendte samtidig CFCS også forespørgsler til kunderne om deres leverandørkontrol.
+    </p>
+    <p>
+      <strong>Konsekvenserne:</strong> E-handelsvirksomheden kunne vise at de havde kontakt med leverandøren, men ikke at de havde stillet sikkerhedskrav i den skriftlige aftale (fordi det ikke stod der). CFCS klassificerede det som manglende leverandørkontrol hos e-handelsvirksomheden selv. De modtog en tilrettevisning + påbud om at indføre dokumenteret leverandørprogram inden 3 måneder. Det kostede dem 200 timer af egen tid + eksterne konsulenter.
+    </p>
+    <p>
+      <strong>Hvad kunne være gjort anderledes:</strong> En A4-side sikkerhedskrav dokumenteret i kontrakten (eller som bilag). Et årligt spørgeskema til leverandøren. En kontaktperson ved leverandøren med mobil til sikkerhedshændelser. Alt sammen ville have taget 4 arbejdstimer at opsætte og ikke mere end 2 timer årligt at vedligeholde.
+    </p>
+  </div>
+
+  <h2>Sådan skalerer du det uden at blive sindssyg</h2>
+
+  <p>
+    "Men jeg har 100+ leverandører!" er den naturlige reaktion. Det er okay.
+  </p>
+
+  <p>
+    <strong>Et praktisk system ser sådan ud:</strong>
+  </p>
+
+  <ol>
+    <li><strong>Segment dine leverandører (uge 1):</strong> 
+      Lav en liste med 3 kategorier: 
+      <br/>A-leverandører (kritiske, håndterer vigtige data eller IT-infrastruktur, under 20 stk.)
+      <br/>B-leverandører (vigtige, men mindre kritiske, måske 30–50 stk.)
+      <br/>C-leverandører (ikke kritiske — kantinen, IT-udstyr, møbler, rengøring — behøver ingen sikkerhedskrav).
+    </li>
+    <li><strong>A-leverandører — fuld kontrol (uge 2–4):</strong> 
+      Send sikkerhedsspørgeskema. Få svar. Få kontraktklausul på plads. Sæt årlige revisioner i kalender.
+    </li>
+    <li><strong>B-leverandører — middels kontrol (uge 5–8):</strong> 
+      Et enkelt e-mail til hver: "Vi implementerer cybersikkerhed efter NIS2. Kan I bekræfte jeres sikkerhed på disse 5 punkter?" De fleste vil give et kort svar. Det er det samme værdt som et formelt spørgeskema.
+    </li>
+    <li><strong>C-leverandører — minimal kontrol:</strong> 
+      Intet kræves. Dokumenter blot at I har klassificeret dem som ikke-kritiske.
+    </li>
+  </ol>
+
+  <p>
+    Derefter skal du blot vedligeholde det årligt — måske 2–3 timer per år for hele programmet.
+  </p>
+
+  <h2>Hvad forventer CFCS at se?</h2>
+
+  <p>
+    Når CFCS gransker jer, ser de efter dokumentation for at I har:
+  </p>
+
+  <ul>
+    <li>En liste over kritiske leverandører</li>
+    <li>Skriftlige sikkerhedskrav i hver relevante kontrakt (eller som vedlagt bilag)</li>
+    <li>Beviser på at I har modtaget sikkerhedsinformation fra leverandøren (mail, revisorrapport, certificering, spørgeskemasvare)</li>
+    <li>En eskaleringsprocedure når leverandøren rapporterer incident</li>
+    <li>Dokumentation af, at I årligt har tjekket Status (selvom det bare er at få svar på et spørgeskema)</li>
+  </ul>
+
+  <p

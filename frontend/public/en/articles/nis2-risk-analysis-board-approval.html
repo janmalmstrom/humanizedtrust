@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-BKF3QH9K01"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag("js", new Date());
+    gtag("config", "G-BKF3QH9K01");
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NIS2 Risk Analysis: What the Board Must Formally Approve | NIS2Klar</title>
+  <meta name="description" content="Article 21 of NIS2 requires your board to formally approve security measures — not just delegate to IT. Learn what documents need sign-off and what personal liability means in Ireland.">
+  <meta property="og:title" content="NIS2 Risk Analysis: What the Board Must Formally Approve">
+  <meta property="og:description" content="Article 21 of NIS2 requires your board to formally approve security measures — not just delegate to IT. Learn what documents need sign-off and what personal liability means in Ireland.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #141416;
+      --card: #1c1c1f;
+      --yellow: #f5c518;
+      --white: #f0f0f0;
+      --muted: #888;
+      --red: #C61212;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: var(--bg); color: var(--white); font-family: 'Barlow', sans-serif; font-size: 19px; line-height: 1.8; }
+
+    /* Nav */
+    nav { display: flex; justify-content: space-between; align-items: center; padding: 20px 40px; border-bottom: 1px solid rgba(255,255,255,0.07); max-width: 900px; margin: 0 auto; }
+    .nav-logo { font-family: 'Poppins', sans-serif; font-weight: 900; font-size: 20px; color: var(--yellow); text-decoration: none; }
+    .nav-logo span { color: var(--white); }
+    .nav-back { color: var(--muted); text-decoration: none; font-size: 15px; }
+    .nav-back:hover { color: var(--white); }
+    .nav-cta { background: var(--yellow); color: #000; padding: 8px 18px; border-radius: 4px; text-decoration: none; font-weight: 700; font-size: 14px; font-family: 'Poppins', sans-serif; }
+
+    /* Article */
+    .article-wrap { max-width: 760px; margin: 0 auto; padding: 60px 40px; }
+    .article-category { font-size: 13px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 16px; }
+    h1 { font-family: 'Poppins', sans-serif; font-size: clamp(30px, 4vw, 44px); font-weight: 900; line-height: 1.2; margin-bottom: 24px; }
+    .article-meta { font-size: 15px; color: var(--muted); margin-bottom: 48px; padding-bottom: 24px; border-bottom: 1px solid rgba(255,255,255,0.07); }
+    h2 { font-family: 'Poppins', sans-serif; font-size: 26px; font-weight: 700; margin: 48px 0 16px; color: var(--white); }
+    h3 { font-family: 'Poppins', sans-serif; font-size: 20px; font-weight: 600; margin: 32px 0 12px; color: var(--yellow); }
+    p { margin-bottom: 22px; }
+    strong { color: var(--white); font-weight: 700; }
+    .highlight { color: var(--yellow); font-weight: 700; }
+    .danger { color: #ff6b6b; font-weight: 700; }
+    ul, ol { margin: 16px 0 24px 24px; }
+    li { margin-bottom: 12px; font-size: 19px; }
+
+    /* Callout boxes */
+    .box-warning { background: rgba(197,17,17,0.12); border-left: 4px solid var(--red); padding: 20px 24px; margin: 32px 0; border-radius: 0 4px 4px 0; }
+    .box-info { background: rgba(245,197,24,0.08); border-left: 4px solid var(--yellow); padding: 20px 24px; margin: 32px 0; border-radius: 0 4px 4px 0; }
+    .box-case { background: var(--card); border: 1px solid rgba(255,255,255,0.08); padding: 28px; margin: 40px 0; border-radius: 4px; }
+    .box-case .case-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 12px; }
+    blockquote { border-left: 3px solid var(--yellow); padding: 12px 20px; margin: 24px 0; font-style: italic; color: #ccc; }
+
+    /* CTA */
+    .cta-section { background: var(--card); border: 1px solid rgba(245,197,24,0.2); border-radius: 4px; padding: 48px 40px; margin: 64px 0 40px; text-align: center; }
+    .cta-section h2 { margin-top: 0; font-size: 26px; }
+    .cta-section p { color: #aaa; max-width: 500px; margin: 0 auto 28px; }
+    .btn-primary { display: inline-block; background: var(--yellow); color: #000; font-family: 'Poppins', sans-serif; font-weight: 800; font-size: 16px; padding: 16px 36px; border-radius: 4px; text-decoration: none; }
+    .btn-primary:hover { background: #e0b010; }
+    .cta-fine { font-size: 13px; color: var(--muted); margin-top: 16px; }
+
+    /* FAQ */
+    .faq-item { border-bottom: 1px solid rgba(255,255,255,0.07); padding: 20px 0; }
+    .faq-q { font-family: 'Poppins', sans-serif; font-weight: 600; margin-bottom: 10px; }
+    .faq-a { color: #bbb; }
+
+    /* Fine table */
+    .fine-table { width: 100%; border-collapse: collapse; margin: 24px 0; }
+    .fine-table th { background: rgba(245,197,24,0.1); color: var(--yellow); font-family: 'Poppins', sans-serif; font-size: 13px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 12px 16px; text-align: left; border-bottom: 1px solid rgba(245,197,24,0.2); }
+    .fine-table td { padding: 14px 16px; border-bottom: 1px solid rgba(255,255,255,0.05); font-size: 15px; }
+    .fine-table tr:last-child td { border-bottom: none; }
+    .fine-table .amount { color: #ff6b6b; font-weight: 700; }
+
+    /* Summary + Key Takeaway */
+    .box-summary { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; padding: 24px 28px; margin: 0 0 32px; }
+    .summary-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-bottom: 14px; }
+    .box-summary ul { margin: 0; padding-left: 20px; }
+    .box-summary li { margin-bottom: 8px; font-size: 17px; color: #ccc; }
+    .box-takeaway { background: rgba(245,197,24,0.08); border-left: 4px solid var(--yellow); padding: 20px 24px; margin: 0 0 40px; border-radius: 0 4px 4px 0; }
+    .takeaway-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 10px; }
+    .box-takeaway p { margin: 0; font-size: 18px; font-weight: 600; color: var(--white); line-height: 1.6; }
+
+    /* Board agenda table */
+    .agenda-table { width: 100%; border-collapse: collapse; margin: 24px 0; }
+    .agenda-table th { background: rgba(245,197,24,0.1); color: var(--yellow); font-family: 'Poppins', sans-serif; font-size: 13px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 12px 16px; text-align: left; border-bottom: 1px solid rgba(245,197,24,0.2); }
+    .agenda-table td { padding: 14px 16px; border-bottom: 1px solid rgba(255,255,255,0.05); font-size: 15px; vertical-align: top; }
+    .agenda-table tr:last-child td { border-bottom: none; }
+    .agenda-table .item-num { color: var(--yellow); font-weight: 700; white-space: nowrap; }
+    .agenda-table .owner { color: var(--muted); font-size: 13px; }
+
+    /* Footer */
+    footer { border-top: 1px solid rgba(255,255,255,0.07); padding: 32px 40px; text-align: center; font-size: 13px; color: var(--muted); max-width: 900px; margin: 0 auto; }
+    footer a { color: var(--muted); }
+
+    @media (max-width: 600px) {
+      nav, .article-wrap, footer { padding: 20px; }
+      .cta-section { padding: 32px 20px; }
+      .fine-table { font-size: 14px; }
+      .fine-table th, .fine-table td { padding: 10px 10px; }
+      .agenda-table { font-size: 14px; }
+      .agenda-table th, .agenda-table td { padding: 10px 10px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="https://nis2klar.se/">NIS2<span>Klar</span></a>
+  <a class="nav-back" href="https://nis2klar.se/en/articles.html">← All Articles</a>
+  <div class="lang-switcher" style="display:flex;gap:8px;align-items:center;font-size:13px;font-family:'Poppins',sans-serif;">
+    <a href="https://nis2klar.se/artiklar.html" style="color:#888;text-decoration:none;font-weight:600;padding:4px 8px;border-radius:3px;" title="Svenska">SV</a>
+    <a href="https://nis2klar.se/en/articles.html" style="color:#f5c518;text-decoration:none;font-weight:600;padding:4px 8px;border-radius:3px;background:rgba(245,197,24,0.1);" title="English">EN</a>
+    <a href="https://nis2klar.se/da/artikler.html" style="color:#888;text-decoration:none;font-weight:600;padding:4px 8px;border-radius:3px;" title="Dansk">DA</a>
+    <a href="https://nis2klar.se/no/artikler.html" style="color:#888;text-decoration:none;font-weight:600;padding:4px 8px;border-radius:3px;" title="Norsk">NO</a>
+  </div>
+  <a class="nav-cta" href="/nis2.html#boka">Book a call →</a>
+</nav>
+
+<article class="article-wrap">
+  <div class="article-category">Governance &amp; Board Accountability</div>
+  <h1>NIS2 Risk Analysis: What the Board Must Formally Approve</h1>
+  <div class="article-meta">Updated 17 April 2026 · Reading time: approx. 8 minutes · Audience: CEO, Board Chair, Board Members</div>
+
+  <!-- SUMMARY -->
+  <div class="box-summary">
+    <div class="summary-label">Summary</div>
+    <ul>
+      <li>For CEOs and board members of NIS2-regulated organisations in Ireland who want to understand what "board approval" actually requires in practice.</li>
+      <li>Under <strong>S.I. No. 322 of 2024</strong>, the management body must formally approve — not merely be briefed on — the organisation's cybersecurity risk management measures.</li>
+      <li>Delegating this to IT or the CISO is not a defence. Personal liability under <strong>Regulation 32</strong> means individual board members can face sanctions.</li>
+      <li>The NCSC Ireland is already active. Not having the right documents in place is a compliance failure — even if your organisation has never had a cyber incident.</li>
+    </ul>
+  </div>
+
+  <!-- KEY TAKEAWAY -->
+  <div class="box-takeaway">
+    <div class="takeaway-label">Key Takeaway</div>
+    <p>NIS2 does not ask your board to understand cybersecurity in technical depth. It asks your board to govern it — formally, documentably, and personally. If you cannot produce board minutes showing approval of your security measures, you are already non-compliant.</p>
+  </div>
+
+  <!-- HOOK -->
+  <p>
+    There is a version of NIS2 compliance that lives entirely in the IT department. The risk register sits in a SharePoint folder nobody reads. The incident response plan was written by a consultant two years ago and has not been touched since. The board gets a one-slide summary at the AGM and considers the matter closed.
+  </p>
+
+  <p>
+    That version of compliance will not protect you when the NCSC Ireland comes knocking. And under <strong>S.I. No. 322 of 2024</strong> — Ireland's transposition of the NIS2 Directive, in force since October 2024 — the consequences fall not just on the organisation, but on you personally as a member of the management body.
+  </p>
+
+  <p>
+    This article is about what the law actually requires your board to do: not at a high level of aspiration, but in terms of specific documents, formal decisions, and provable oversight. It is also about what happens to boards that mistake awareness for accountability.
+  </p>
+
+  <div class="box-warning">
+    <strong>Personal liability is not a footnote.</strong> Regulation 32 of S.I. No. 322 of 2024 enables the NCSC Ireland to hold individual members of the management body personally liable for infringements. This is not a fine against the company. It is a sanction against you.
+  </div>
+
+  <h2>What Article 21 Actually Requires</h2>
+
+  <p>
+    Article 21 of the NIS2 Directive — implemented through S.I. No. 322 of 2024 — sets out ten mandatory domains of cybersecurity risk management that every essential and important entity must address. But the provision that most boards have not internalised comes just before the list: the requirement that the <strong>management body approves</strong> these measures, <strong>oversees their implementation</strong>, and can be held accountable for failures.
+  </p>
+
+  <p>
+    The ten domains your board must approve measures for are:
+  </p>
+
+  <ol>
+    <li><strong>Risk analysis and information system security policies</strong> — a documented, up-to-date assessment of your threat landscape and a governing policy framework</li>
+    <li><strong>Incident handling</strong> — defined procedures for detecting, responding to, and reporting security incidents</li>
+    <li><strong>Business continuity</strong> — backup management, disaster recovery, and crisis management plans</li>
+    <li><strong>Supply chain security</strong> — security requirements for relationships with direct suppliers and service providers</li>
+    <li><strong>Security in network and information systems acquisition, development and maintenance</strong> — including vulnerability handling and disclosure</li>
+    <li><strong>Policies and procedures to assess the effectiveness of cybersecurity risk management measures</strong> — how you test and verify that your controls actually work</li>
+    <li><strong>Basic cyber hygiene practices and cybersecurity training</strong> — covering both staff and management</li>
+    <li><strong>Policies and procedures regarding the use of cryptography and encryption</strong></li>
+    <li><strong>Human resources security, access control policies and asset management</strong></li>
+    <li><strong>The use of multi-factor authentication</strong> and other authentication solutions</li>
+  </ol>
+
+  <p>
+    Each of these areas requires a documented measure. Each of those documents requires board approval. The board does not need to write the documents — that is rightly delegated to technical and operational staff. But the board must review, formally approve, and periodically re-approve them. That approval must be recorded in board minutes.
+  </p>
+
+  <h2>The Difference Between Delegating and Governing</h2>
+
+  <p>
+    This is the distinction that catches most boards off-guard. There is nothing wrong with delegating the <em>execution</em> of cybersecurity to your CTO, CISO, or IT function. What you cannot delegate is the <em>governance</em> of it.
+  </p>
+
+  <p>
+    Think of it this way. Your board approves the annual financial statements. You do not personally prepare the accounts — your finance team does. But you review the accounts, you ask questions, you satisfy yourself that the figures are accurate, and you sign off. Your signature creates accountability. That is governance.
+  </p>
+
+  <p>
+    NIS2 requires exactly the same model for cybersecurity. Your IT team prepares the risk analysis, the incident response plan, and the supplier security framework. Your board reads them — at a sufficient level of detail to ask informed questions — approves them, and records that approval. That record is your evidence of governance.
+  </p>
+
+  <p>
+    What the law explicitly prohibits is what many boards currently do: receive a verbal update from the CTO, nod, and move on. That is not approval. It is not documented. It creates no accountability. And if the NCSC Ireland reviews your board minutes, it will find nothing to demonstrate that the management body discharged its legal obligations.
+  </p>
+
+  <div class="box-info">
+    <strong>What "approval" means in practice:</strong> A board resolution — whether passed at a formal board meeting or by written procedure — that names the specific documents approved, references the date of those documents, and is recorded in board minutes with the names of approving members. A verbal briefing does not meet this standard.
+  </div>
+
+  <h2>Which Documents Require Board Sign-Off?</h2>
+
+  <p>
+    Not every cybersecurity document needs to pass through the board. What the board must formally approve is the <em>framework</em> — the governing documents that define how the organisation manages cyber risk. The technical implementation beneath that framework can be managed by your operational teams.
+  </p>
+
+  <p>
+    The documents that require board-level approval under NIS2 are:
+  </p>
+
+  <ul>
+    <li><strong>The NIS2 Risk Analysis</strong> — a formal assessment of the risks to your network and information systems, updated at least annually and after significant changes to your environment</li>
+    <li><strong>The Information Security Policy</strong> — the governing document that sets out your organisation's approach to cybersecurity, including roles, responsibilities, and escalation paths</li>
+    <li><strong>The Incident Response Plan</strong> — including the 24-hour early warning and 72-hour notification procedures required by S.I. No. 322 of 2024 for reporting to the NCSC Ireland</li>
+    <li><strong>The Business Continuity and Disaster Recovery Plan</strong> — specifying recovery time objectives and backup procedures</li>
+    <li><strong>The Supply Chain Security Policy</strong> — setting minimum security requirements for third-party suppliers and service providers</li>
+    <li><strong>The Access Control and Asset Management Policy</strong> — covering who has access to what, under what conditions, and how access is reviewed</li>
+    <li><strong>The Cryptography and Encryption Policy</strong> — specifying where and how encryption is applied across systems and data in transit and at rest</li>
+    <li><strong>The Cybersecurity Training Framework</strong> — confirming that both staff and management receive regular, documented security awareness training</li>
+  </ul>
+
+  <p>
+    It is worth noting that the board does not approve these documents once and consider the matter closed. NIS2 requires ongoing oversight. Each document should be reviewed at least annually — or following a significant incident, a material change in the business, or a relevant change in the threat environment — and re-approved by the board at that point.
+  </p>
+
+  <h2>Personal Liability: What Regulation 32 Actually Says</h2>
+
+  <p>
+    Regulation 32 of S.I. No. 322 of 2024 is the provision that should concentrate every board member's attention. It implements the NIS2 requirement that member states ensure management bodies of essential and important entities can be held personally liable for infringements.
+  </p>
+
+  <p>
+    In practical terms, this means the NCSC Ireland — or the relevant sectoral regulator, whether that is the Central Bank of Ireland for financial services, ComReg for telecoms and digital infrastructure, or the CRU for energy — can direct sanctions not just at your organisation, but at named individuals on the board.
+  </p>
+
+  <p>
+    The sanctions available include:
+  </p>
+
+  <ul>
+    <li>A formal public statement identifying the responsible natural person and the nature of the infringement</li>
+    <li>An administrative fine against the individual</li>
+    <li>A temporary prohibition on exercising managerial functions — effectively a ban on holding a directorship or senior executive role for a defined period</li>
+  </ul>
+
+  <p>
+    That last point deserves emphasis. If the NCSC Ireland determines that the management body failed to approve or oversee cybersecurity risk management measures — and that failure contributed to a significant incident or a material compliance gap — individual board members can be prohibited from holding equivalent positions. This is not a fine that the company can absorb on your behalf. It follows you personally.
+  </p>
+
+  <p>
+    The defence against this outcome is not technical. It is documentary. If your board minutes show that you reviewed the risk analysis, asked substantive questions, approved the policies, and confirmed their implementation was being monitored, that is a credible record of governance. If your board minutes show nothing on cybersecurity — or show only a brief verbal update — you have no defence.
+  </p>
+
+  <h2>The Irish Context: Why This Matters More Here</h2>
+
+  <p>
+    Ireland occupies a distinctive position in the NIS2 landscape. A significant proportion of large technology companies, pharmaceutical groups, and financial services firms operating across the EU are legally registered in Ireland. This means that Irish-registered entities are often the entity of jurisdiction for NIS2 purposes — even if the operational footprint spans multiple countries.
+  </p>
+
+  <p>
+    If your organisation is the EU headquarters for a group with operations across Europe, your NIS2 obligations under S.I. No. 322 of 2024 are not limited to Irish operations. The NCSC Ireland is your competent authority, and the fines — up to <strong>€10 million or 2% of global annual turnover</strong> for essential entities — are calculated on global revenue.
+  </p>
+
+  <p>
+    For an Irish-registered tech company with €5 billion in global turnover, the 2% turnover calculation produces a maximum fine of €100 million. The €10 million cap applies only where it is higher than the turnover calculation — which for smaller entities it usually is. For large multinationals headquartered in Ireland, the turnover-based figure frequently exceeds the fixed cap.
+  </p>
+
+  <p>
+    This is not a theoretical risk. It is a structural feature of Ireland's role as the jurisdiction of choice for EU-registered multinationals — and it places a disproportionately large compliance obligation on Irish boards relative to their counterparts in other EU member states.
+  </p>
+
+  <h2>Board Meeting Agenda Template: NIS2 Governance Item</h2>
+
+  <p>
+    The following agenda template is designed to be inserted as a standing item in quarterly board meetings. It reflects the minimum level of engagement required to demonstrate active board oversight under S.I. No. 322 of 2024. Each item should result in a recorded resolution or noted action in the board minutes.
+  </p>
+
+  <table class="agenda-table">
+    <thead>
+      <tr>
+        <th style="width:5%">#</th>
+        <th style="width:40%">Agenda Item</th>
+        <th style="width:30%">Purpose / Board Action Required</th>
+        <th style="width:25%">Owner / Presenter</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="item-num">1</td>
+        <td><strong>NIS2 Risk Analysis — Review and Approval</strong><br><span style="color:#999;font-size:14px;">Present updated risk register; board to approve or request revision</span></td>
+        <td>Formal resolution: risk analysis approved as presented / approved subject to amendments / returned for revision</td>
+        <td class="owner">CISO / CTO<br>Board resolution required</td>
+      </tr>
+      <tr>
+        <td class="item-num">2</td>
+        <td><strong>Security Policy Framework — Status Update</strong><br><span style="color:#999;font-size:14px;">Confirm all eight governing documents are current and board-approved</span></td>
+        <td>Board to note any policies due for review; approve updated versions where presented</td>
+        <td class="owner">CISO / Legal<br>Board resolution required</td>
+      </tr>
+      <tr>
+        <td class="item-num">3</td>
+        <td><strong>Incident Log Review</strong><br><span style="color:#999;font-size:14px;">Summary of any incidents in the period; confirm reporting obligations met</span></td>
+        <td>Board to confirm that NCSC Ireland reporting obligations were met for any significant incidents; note any near-misses</td>
+        <td class="owner">CISO / COO<br>Board to note and confirm</td>
+      </tr>
+      <tr>
+        <td class="item-num">4</td>
+        <td><strong>Supply Chain Security — Supplier Review</strong><br><span style="color:#999;font-size:14px;">Update on third-party security assessments; any new or high-risk suppliers</span></td>
+        <td>Board to approve changes to the supplier risk framework; note material supplier risk exposure</td>
+        <td class="owner">Procurement / CISO<br>Board resolution if policy change</td>
+      </tr>
+      <tr>
+        <td class="item-num">5</td>
+        <td><strong>Training Completion — Management and Staff</strong><br><span style="color:#999;font-size:14px;">Confirm cybersecurity training has been completed by all required personnel including board members</span></td>
+        <td>Board to confirm completion of required NIS2 training; note any gaps and remediation timeline</td>
+        <td class="owner">HR / CISO<br>Board to confirm</td>
+      </tr>
+      <tr>
+        <td class="item-num">6</td>
+        <td><strong>NIS2 Compliance Status — Overall Assessment</strong><br><span style="color:#999;font-size:14px;">RAG status across all ten Article 21 domains; open actions and remediation timelines</span></td>
+        <td>Board to formally note compliance status; approve remediation budget or resources where required</td>
+        <td class="owner">CISO / CFO<br>Board resolution if resource required</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>
+    This agenda item should take between 30 and 45 minutes at each quarterly board meeting. The minutes should record not only the resolutions passed but the substantive questions asked by board members — this demonstrates active engagement rather than passive receipt of information.
+  </p>
+
+  <h2>What Happens When the NCSC Ireland Investigates</h2>
+
+  <p>
+    The NCSC Ireland's supervisory powers under S.I. No. 322 of 2024 are extensive. For essential entities, the NCSC can conduct on-site inspections, off-site supervision, targeted security audits, and ad hoc compliance checks — without needing to wait for a reported incident.
+  </p>
+
+  <p>
+    When a supervisory review is initiated, the NCSC will typically request documentation with a response deadline of between 14 and 30 days. The documentation requested will include your risk analysis, your security policies, your incident response plan, evidence of supply chain security assessments, training logs — and critically, your board minutes showing that these documents have been approved by the management body.
+  </p>
+
+  <p>
+    Organisations that cannot produce board-approved versions of these documents — or whose board minutes contain no substantive NIS2 governance record — will find themselves unable to demonstrate compliance regardless of how robust their technical controls may be. The law does not assess your actual security posture in isolation. It assesses whether your governance of security meets the statutory standard.
+  </p>
+
+  <div class="box-case">
+    <div class="case-label">Illustrative Scenario</div>
+    <p>
+      <strong>Irish-registered SaaS provider, 200 employees, annual turnover €45 million. Classified as an important entity under S.I. No. 322 of 2024.</strong>
+    </p>
+    <p>
+      In January 2026, the company experiences a credential-based intrusion affecting a subset of customer data. The security team identifies the breach on day one. However, senior management decides to conduct an internal investigation before notifying anyone externally, believing the impact may be limited. The 24-hour early warning deadline passes. The 72-hour incident notification deadline passes. No report is filed with the NCSC Ireland.
+    </p>
+    <p>
+      Six weeks later, a customer in another EU member state reports a data anomaly to their national authority, triggering a cross-border NIS2 notification to the NCSC Ireland. The NCSC initiates a supervisory review.
+    </p>
+    <p>
+      During the review, the NCSC requests board minutes for the preceding 12 months. The minutes contain no reference to NIS2 risk analysis approval, no security policy resolutions, and no documented cybersecurity governance. The company's incident response plan exists but has never been formally approved by the board. There is no evidence that the management body was aware of or had approved the organisation's cybersecurity risk management framework.
+    </p>
+    <p>
+      <strong>Outcome:</strong> Administrative sanction for failure to notify the NCSC Ireland within the required timeframes. Separate sanction for failure to implement and document NIS2-compliant security governance. The CEO receives a formal notice of personal liability under Regulation 32. Total financial exposure including legal and remediation costs: <span class="danger">estimated €2.5–4 million</span>. Reputational impact with enterprise customers: significant.
+    </p>
+  </div>
+
+  <h2>The Training Obligation Your Board Cannot Outsource</h2>
+
+  <p>
+    One requirement that catches boards by surprise is the NIS2 obligation that members of the management body themselves undergo cybersecurity training. This is not a requirement that board members become security experts. It is a requirement that they develop sufficient understanding of cyber risk to exercise meaningful governance over it.
+  </p>
+
+  <p>
+    What does this mean practically? Your board members need to understand: what the ten Article 21 domains require, what a material cyber incident looks like in your sector, what the reporting obligations to the NCSC Ireland are, and how to read a risk analysis at a governance level. This is a half-day programme, not a technical certification. But it needs to happen, and it needs to be logged.
+  </p>
+
+  <p>
+    If the NCSC Ireland asks whether your management body has received cybersecurity training, "we were planning to schedule something" is not an acceptable answer. A training log with dates, attendees, and programme content is.
+  </p>
+
+  <h2>Frequently Asked Questions</h2>
+
+  <div class="faq-item">
+    <div class="faq-q">Can we simply have the CISO present at board meetings and treat that as board oversight?</div>
+    <div class="faq-a">A CISO presentation is a good start, but it is not sufficient on its own. The board must formally approve the documents being presented — not merely receive a briefing on them. The minutes need to record a resolution, not just an agenda item. If the CISO presents the risk analysis and the board asks questions but takes no formal decision, that is not approval under NIS2. You need a documented resolution.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">We have an audit committee that handles risk. Does that satisfy the NIS2 board approval requirement?</div>
+    <div class="faq-a">Delegating to a committee is permissible for the work of reviewing and recommending. But the approval itself — the formal resolution — needs to come from the full board, or at minimum be ratified by the full board. NIS2 places the obligation on the "management body," which in Irish company law is generally the board of directors as a whole. An audit committee recommendation that is never formally adopted by the full board does not meet the standard.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">Our organisation is an Irish subsidiary of a US parent that handles cybersecurity centrally. Are we still obligated?</div>
+    <div class="faq-a">Yes. If the Irish entity is classified as an essential or important entity under S.I. No. 322 of 2024, that entity's management body carries the NIS2 governance obligation — regardless of where group-level security is managed. The Irish board needs to be able to demonstrate that it has reviewed, approved, and oversees the application of those group-level measures to the Irish entity specifically. "The parent handles it" is not a defence in an NCSC Ireland supervisory review.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">How often do we need to revisit board approval of our security documents?</div>
+    <div class="faq-a">At minimum, annually. In practice, any significant change — a major acquisition, a new cloud migration, a change in your threat environment, or a significant incident — should trigger a review of the relevant documents and a fresh board approval. The NCSC Ireland will assess whether your documentation reflects your current environment. A risk analysis approved three years ago, covering a business that has materially changed, does not demonstrate current compliance.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">What is the practical first step for a board that has not started this process?</div>
+    <div class="faq-a">Start with a gap analysis — a structured review of which of the ten Article 21 domains you have documented measures for, which are partially covered, and which are absent. This gives your board a clear picture of what needs to be approved and what needs to be created first. Once the gap analysis is complete, the board can formally approve a remediation roadmap — which is itself a documentable governance action. From there, each domain can be addressed in priority order, with board approval at each stage.</div>
+  </div>
+
+  <div class="box-info" style="margin: 48px 0 32px;">
+    <div style="font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color: var(--yellow); margin-bottom:10px;">🔧 TOOLS &amp; SOLUTIONS</div>
+    <p style="margin:0; font-size:17px; color: #ddd; line-height:1.7;">For boards needing a measurable, board-reportable view of their NIS2 governance posture, <strong>Microsoft Defender Secure Score</strong> provides a 0–100 KPI that can be reviewed at every board meeting — turning abstract cyber risk into a trackable metric. Combined with <strong>Microsoft Compliance Manager</strong>, you can map your controls directly against Article 21 requirements and generate the audit-ready documentation your board approvals need to reference. A certified Microsoft partner can set this up as part of a free gap analysis — at a fraction of the cost of the smallest possible NIS2 fine.</p>
+  </div>
+
+  <!-- NEWSLETTER -->
+  <div style="background:#111; border:1px solid rgba(255,255,255,0.1); border-left:3px solid #f5c518; border-radius:4px; padding:32px 36px; margin:40px 0 0; text-align:center; max-width:760px; margin-left:auto; margin-right:auto;">
+    <div style="font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:#f5c518; margin-bottom:12px;">📬 NIS2 UPDATES</div>
+    <h3 style="font-family:'Poppins',sans-serif; font-size:20px; font-weight:800; margin:0 0 8px; color:#f0f0f0;">New NIS2 article every week — straight to your inbox</h3>
+    <p style="color:#888; font-size:15px; margin:0 0 20px;">No sales pitch. Just practical guidance for CEOs and boards.</p>
+    <form id="nlForm-nis2_risk_analysis_board_approval" onsubmit="submitNewsletter_nis2_risk_analysis_board_approval(event)" style="display:flex; gap:10px; flex-wrap:wrap; justify-content:center; max-width:460px; margin:0 auto;">
+      <input type="email" id="nlEmail-nis2_risk_analysis_board_approval" placeholder="your@company.ie" required style="flex:1; min-width:200px; padding:12px 16px; background:#1c1c1f; border:1px solid rgba(255,255,255,0.15); border-radius:4px; color:#f0f0f0; font-size:15px; outline:none;" />
+      <button type="submit" id="nlSubmit-nis2_risk_analysis_board_approval" style="padding:12px 22px; background:#f5c518; color:#141416; font-weight:700; font-size:15px; border:none; border-radius:4px; cursor:pointer; white-space:nowrap;">Subscribe free →</button>
+    </form>
+    <p style="font-size:12px; color:#555; margin:12px 0 0;">You can unsubscribe at any time. We never share your email.</p>
+    <div id="nlThanks-nis2_risk_analysis_board_approval" style="display:none; color:#4ade80; font-size:16px; font-weight:600; margin-top:14px;">✅ You're in! Next article coming to your inbox.</div>
+  </div>
+
+  <!-- CTA -->
+  <div class="cta-section">
+    <h2>Do you know where your organisation stands today?</h2>
+    <p>A free gap analysis with a certified Microsoft partner shows exactly what you've already covered — and what's missing.</p>
+    <a href="/nis2.html#boka" class="btn-primary">Book free gap analysis →</a>
+    <p class="cta-fine">Fines are up to <strong>€10 million</strong>. The gap analysis is free.</p>
+  </div>
+
+</article>
+
+<div class="related-articles" style="margin:2.5rem auto 2rem; max-width:760px; padding:0 40px;">
+  <div style="margin:0 0 0; padding:1.5rem; background:#1a1a2e; border-left:4px solid #f0a500; border-radius:4px;">
+    <p style="margin:0 0 1rem; font-size:0.85rem; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; color:#f0a500;">Read also</p>
+    <ul style="margin:0; padding:0; list-style:none; display:flex; flex-direction:column; gap:0.5rem;">
+      <li><a href="/en/articles/nis2-personal-liability-board-ireland.html" style="color:#e0e0e0; text-decoration:none; font-size:0.95rem;">→ Personal liability for boards under NIS2 in Ireland</a></li>
+      <li><a href="/en/articles/nis2-ncsc-ireland-supervision.html" style="color:#e0e0e0; text-decoration:none; font-size:0.95rem;">→ NIS2 supervision: How the NCSC Ireland enforces compliance</a></li>
+      <li><a href="/en/articles/nis2-which-companies-in-ireland.html" style="color:#e0e0e0; text-decoration:none; font-size:0.95rem;">→ Which Irish companies are covered by NIS2?</a></li>
+    </ul>
+    <p style="margin:1.25rem 0 0; font-size:0.85rem; color:#aaa;">← <a href="https://nis2klar.se/" style="color:#f0a500; text-decoration:none;">NIS2Klar homepage</a> &nbsp;·&nbsp; <a href="https://nis2klar.se/en/articles.html" style="color:#f0a500; text-decoration:none;">All guides</a></p>
+  </div>
+</div>
+
+<footer>
+  © 2026 M&amp;J Trusted Marketing KB ·
+  <a href="mailto:support@trustedmarketing.se">support@trustedmarketing.se</a> · <a href="tel:+46470597003">+46 470 59 70 03</a> ·
+  <a href="https://nis2klar.se/">Back to homepage</a> ·
+  <a href="/privacy.html">Privacy Policy</a>
+  <p style="margin-top:12px; font-size:11px; color: #555; line-height:1.5;">Microsoft, Microsoft 365, Azure and related product names are trademarks of Microsoft Corporation. nis2klar.se is not affiliated with or endorsed by Microsoft Corporation.</p>
+</footer>
+
+<script>
+  async function submitNewsletter_nis2_risk_analysis_board_approval(e) {
+    e.preventDefault();
+    const btn = document.getElementById('nlSubmit-nis2_risk_analysis_board_approval');
+    btn.disabled = true; btn.textContent = '...';
+    const email = document.getElementById('nlEmail-nis2_risk_analysis_board_approval').value.trim();
+    try {
+      const res = await fetch('/api/newsletter/subscribe', { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({ email, source: 'article-en-nis2_risk_analysis_board_approval' }) });
+      const data = await res.json();
+      if (data.success) { document.getElementById('nlForm-nis2_risk_analysis_board_approval').style.display='none'; document.getElementById('nlThanks-nis2_risk_analysis_board_approval').style.display='block'; }
+      else { btn.disabled=false; btn.textContent='Subscribe free →'; }
+    } catch { btn.disabled=false; btn.textContent='Subscribe free →'; }
+  }
+</script>
+
+</body>
+</html>

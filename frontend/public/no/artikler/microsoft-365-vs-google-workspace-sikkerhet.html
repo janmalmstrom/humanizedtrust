@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-BKF3QH9K01"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag("js", new Date());
+    gtag("config", "G-BKF3QH9K01");
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Microsoft 365 vs. Google Workspace: Sikkerhetssammenligning for NIS2 | NIS2Klar</title>
+  <meta name="description" content="Objektiv sammenligning av Microsoft 365 og Google Workspace for NIS2-samsvar. Hvilken plattform dekker Artikkel 21-kravene best? MFA, kryptering, revisjonslogging og hendelseshåndtering.">
+  <meta property="og:title" content="Microsoft 365 vs. Google Workspace: Sikkerhetssammenligning for NIS2">
+  <meta property="og:description" content="Objektiv sammenligning av Microsoft 365 og Google Workspace for NIS2-samsvar. Hvilken plattform dekker Artikkel 21-kravene best?">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #141416;
+      --card: #1c1c1f;
+      --yellow: #f5c518;
+      --white: #f0f0f0;
+      --muted: #888;
+      --red: #C61212;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: var(--bg); color: var(--white); font-family: 'Barlow', sans-serif; font-size: 19px; line-height: 1.8; }
+
+    /* Nav */
+    nav { display: flex; justify-content: space-between; align-items: center; padding: 20px 40px; border-bottom: 1px solid rgba(255,255,255,0.07); max-width: 900px; margin: 0 auto; }
+    .nav-logo { font-family: 'Poppins', sans-serif; font-weight: 900; font-size: 20px; color: var(--yellow); text-decoration: none; }
+    .nav-logo span { color: var(--white); }
+    .nav-back { color: var(--muted); text-decoration: none; font-size: 15px; }
+    .nav-back:hover { color: var(--white); }
+    .lang-switcher { display: flex; gap: 8px; align-items: center; font-size: 13px; font-family: 'Poppins', sans-serif; }
+    .lang-switcher a { color: #888; text-decoration: none; font-weight: 600; padding: 4px 8px; border-radius: 3px; }
+    .lang-switcher a:hover { color: var(--white); }
+    .lang-switcher a.active { color: var(--yellow); background: rgba(245,197,24,0.1); }
+    .nav-cta { background: var(--yellow); color: #000; padding: 8px 18px; border-radius: 4px; text-decoration: none; font-weight: 700; font-size: 14px; font-family: 'Poppins', sans-serif; }
+
+    /* Article */
+    .article-wrap { max-width: 760px; margin: 0 auto; padding: 60px 40px; }
+    .article-category { font-size: 13px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 16px; }
+    h1 { font-family: 'Poppins', sans-serif; font-size: clamp(30px, 4vw, 44px); font-weight: 900; line-height: 1.2; margin-bottom: 24px; }
+    .article-meta { font-size: 15px; color: var(--muted); margin-bottom: 48px; padding-bottom: 24px; border-bottom: 1px solid rgba(255,255,255,0.07); }
+    h2 { font-family: 'Poppins', sans-serif; font-size: 26px; font-weight: 700; margin: 48px 0 16px; color: var(--white); }
+    h3 { font-family: 'Poppins', sans-serif; font-size: 20px; font-weight: 600; margin: 32px 0 12px; color: var(--yellow); }
+    p { margin-bottom: 22px; }
+    strong { color: var(--white); font-weight: 700; }
+    .highlight { color: var(--yellow); font-weight: 700; }
+    .danger { color: #ff6b6b; font-weight: 700; }
+    ul, ol { margin: 16px 0 24px 24px; }
+    li { margin-bottom: 12px; font-size: 19px; }
+
+    /* Callout boxes */
+    .box-warning { background: rgba(197,17,17,0.12); border-left: 4px solid var(--red); padding: 20px 24px; margin: 32px 0; border-radius: 0 4px 4px 0; }
+    .box-info { background: rgba(245,197,24,0.08); border-left: 4px solid var(--yellow); padding: 20px 24px; margin: 32px 0; border-radius: 0 4px 4px 0; }
+    .box-case { background: var(--card); border: 1px solid rgba(255,255,255,0.08); padding: 28px; margin: 40px 0; border-radius: 4px; }
+    .box-case .case-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 12px; }
+    blockquote { border-left: 3px solid var(--yellow); padding: 12px 20px; margin: 24px 0; font-style: italic; color: #ccc; }
+
+    /* Comparison table */
+    .comparison-table { width: 100%; border-collapse: collapse; margin: 32px 0; background: var(--card); border: 1px solid rgba(255,255,255,0.08); }
+    .comparison-table th { background: rgba(245,197,24,0.1); color: var(--yellow); font-family: 'Poppins', sans-serif; font-size: 13px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 14px 16px; text-align: left; border-bottom: 1px solid rgba(245,197,24,0.2); }
+    .comparison-table td { padding: 14px 16px; border-bottom: 1px solid rgba(255,255,255,0.05); font-size: 15px; }
+    .comparison-table tr:last-child td { border-bottom: none; }
+    .comparison-table .checkmark { color: #4ade80; font-weight: 700; }
+    .comparison-table .cross { color: #ff6b6b; font-weight: 700; }
+    .comparison-table .partial { color: var(--yellow); font-weight: 700; }
+
+    /* CTA */
+    .cta-section { background: var(--card); border: 1px solid rgba(245,197,24,0.2); border-radius: 4px; padding: 48px 40px; margin: 64px 0 40px; text-align: center; }
+    .cta-section h2 { margin-top: 0; font-size: 26px; }
+    .cta-section p { color: #aaa; max-width: 500px; margin: 0 auto 28px; }
+    .btn-primary { display: inline-block; background: var(--yellow); color: #000; font-family: 'Poppins', sans-serif; font-weight: 800; font-size: 16px; padding: 16px 36px; border-radius: 4px; text-decoration: none; }
+    .btn-primary:hover { background: #e0b010; }
+    .cta-fine { font-size: 13px; color: var(--muted); margin-top: 16px; }
+
+    /* FAQ */
+    .faq-item { border-bottom: 1px solid rgba(255,255,255,0.07); padding: 20px 0; }
+    .faq-q { font-family: 'Poppins', sans-serif; font-weight: 600; margin-bottom: 10px; }
+    .faq-a { color: #bbb; }
+
+    /* Summary + Key Takeaway */
+    .box-summary { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; padding: 24px 28px; margin: 0 0 32px; }
+    .summary-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-bottom: 14px; }
+    .box-summary ul { margin: 0; padding-left: 20px; }
+    .box-summary li { margin-bottom: 8px; font-size: 17px; color: #ccc; }
+    .box-takeaway { background: rgba(245,197,24,0.08); border-left: 4px solid var(--yellow); padding: 20px 24px; margin: 0 0 40px; border-radius: 0 4px 4px 0; }
+    .takeaway-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 10px; }
+    .box-takeaway p { margin: 0; font-size: 18px; font-weight: 600; color: var(--white); line-height: 1.6; }
+
+    /* Related articles */
+    .related-articles { margin: 2.5rem 0 2rem; padding: 1.5rem; background: #1a1a2e; border-left: 4px solid #f0a500; border-radius: 4px; }
+    .related-articles p { margin: 0 0 1rem; font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #f0a500; }
+    .related-articles ul { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+    .related-articles li { margin: 0; }
+    .related-articles a { color: #e0e0e0; text-decoration: none; font-size: 0.95rem; }
+    .related-articles a:hover { color: #f0a500; }
+
+    /* Footer */
+    footer { border-top: 1px solid rgba(255,255,255,0.07); padding: 32px 40px; text-align: center; font-size: 13px; color: var(--muted); max-width: 900px; margin: 0 auto; }
+    footer a { color: var(--muted); }
+
+    @media (max-width: 600px) {
+      nav, .article-wrap, footer { padding: 20px; }
+      nav { flex-direction: column; gap: 12px; }
+      .lang-switcher { justify-content: center; }
+      .cta-section { padding: 32px 20px; }
+      .comparison-table { font-size: 14px; }
+      .comparison-table th, .comparison-table td { padding: 10px 10px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="https://nis2klar.se/no/">NIS2<span>Klar</span></a>
+  <div style="display: flex; gap: 20px; align-items: center;">
+    <a class="nav-back" href="https://nis2klar.se/no/artikler.html">← Alle artikler</a>
+    <div class="lang-switcher">
+      <a href="https://nis2klar.se/artiklar.html" title="Svenska">SV</a>
+      <a href="https://nis2klar.se/en/articles.html" title="English">EN</a>
+      <a href="https://nis2klar.se/da/artikler.html" title="Dansk">DA</a>
+      <a href="https://nis2klar.se/no/artikler.html" class="active" title="Norsk">NO</a>
+      <a href="https://nis2klar.se/it/articoli.html" title="Italiano">IT</a>
+    </div>
+  </div>
+  <a class="nav-cta" href="/no/nis2.html#boka">Book samtal →</a>
+</nav>
+
+<article class="article-wrap">
+  <div class="article-category">Plattformvalg & Samsvar</div>
+  <h1>Microsoft 365 vs. Google Workspace: Sikkerhetssammenligning for NIS2</h1>
+  <div class="article-meta">Oppdatert 19. april 2026 · Lesetid: ca 9 minutter · Målgruppe: Direktør, styreleder, IT-ansvarlig</div>
+
+  <!-- SUMMARY -->
+  <div class="box-summary">
+    <div class="summary-label">Sammendrag</div>
+    <ul>
+      <li>Både Microsoft 365 og Google Workspace kan støtte NIS2-samsvar — men ut av boksen dekker de ikke alle Artikkel 21-krav alene.</li>
+      <li>Microsoft 365 har flere innebygde sikkerhetsfunksjoner for MFA, kryptering, revisjonslogging og hendelseshåndtering.</li>
+      <li>Google Workspace krever mer integrasjon av tredjeparts-verktøy for å nå samme sikkerhetsnivå.</li>
+      <li>Valget er mindre viktig enn å dokumentere at dere har implementert og testet sikkerhetsåtgerdene — NSM vil spørre.</li>
+    </ul>
+  </div>
+
+  <!-- KEY TAKEAWAY -->
+  <div class="box-takeaway">
+    <div class="takeaway-label">Viktigste konklusjon</div>
+    <p>Verken Microsoft 365 eller Google Workspace løser NIS2-sjekken alene. Begge krever en gjennomtenkt sikkerhetsarkitektur rundt seg — og dokumentasjon på at det er implementert. Plattformvalget bør baseres på ditt økosystem, ikke på lofte om automatisk NIS2-samsvar.</p>
+  </div>
+
+  <!-- INTRO -->
+  <p>
+    Når direktøren og styret skal velge en produktivitetsplattform — Microsoft 365, Google Workspace eller noe tredje — dukker spørsmålet opp: <em>Hvilken er sikrere for NIS2?</em>
+  </p>
+
+  <p>
+    Det er det riktige spørsmålet, men svaret er ikke så enkelt som "denne vinner".
+    Både plattformene tilbyr sterke sikkerhetsfunksjoner. Begge kan brukes i et NIS2-samsvars-oppsett.
+    Men ingen av dem løser samsvarskravet alene — og NSM (Nasjonal sikkerhetsmyndighet) vil forvente at dere kan dokumentere at dere har gjort det bevisst valget.
+  </p>
+
+  <p>
+    I denne artikkelen sammenlikner vi Microsoft 365 og Google Workspace mot <strong>Artikkel 21 i NIS2-direktivet</strong>, som lister ti obligatoriske sikkerhetsdomener.
+    Vi viser hvilke innebygde funksjoner hver plattform har — og hvor dere må legge til egne verktøy eller prosesser.
+  </p>
+
+  <h2>Hva krever Artikkel 21 egentlig?</h2>
+
+  <p>
+    Artikkel 21 i NIS2-direktivet (som Norge implementerer gjennom EØS-avtalen) setter opp ti sikkerhetsdomener som alle organisasjoner i omfattet sektor må håndtere:
+  </p>
+
+  <ol>
+    <li><strong>Risikohåndtering</strong> — identifisering og vurdering av cybersikkerhetsrisikoer</li>
+    <li><strong>Hendelseshåndtering</strong> — prosess for å oppdage, rapportere og håndtere cybersikkerhetsinsidenter</li>
+    <li><strong>Kontinuitetsplanlegging</strong> — sikring av at kritiske tjenester kan gjenopprettes raskt ved angrepp</li>
+    <li><strong>Leverandørsikkerhet</strong> — sikring av at tredjepartsleverandører oppfyller sikkerhetskrav</li>
+    <li><strong>Tilgangskontroll</strong> — autentisering, autorisasjon og multifaktor-autentisering (MFA)</li>
+    <li><strong>Kryptering</strong> — beskyttelse av sensitive data under overføring og lagring</li>
+    <li><strong>Kryptografi</strong> — sikker håndtering av krypteringsnøkler</li>
+    <li><strong>Sikkerhetshygiene</strong> — utbildning, patching, håndtering av sårbarheter</li>
+    <li><strong>Fysisk og miljømessig sikkerhet</strong> — beskyttelse av IT-ressurser</li>
+    <li><strong>Konfigurasjonsadministrasjon</strong> — sikring av at IT-systemer er riktig konfigurert og dokumentert</li>
+  </ol>
+
+  <p>
+    En produktivitetsplattform som Microsoft 365 eller Google Workspace dekker <strong>deler av</strong> disse domenene.
+    Den dekker ikke alle. En fullstendig NIS2-løsning må bygges rundt plattformen.
+  </p>
+
+  <div class="box-warning">
+    <strong>Viktig:</strong> NSM forventer at dere kan vise dokumentasjon på at hver av disse ti domenene er håndtert.
+    Hvis dere sier "vi bruker Microsoft 365 og det har MFA innebygd", dekker det domene nr. 5 — men fortsatt ikke domenene 2, 3, 4, 8 og 10.
+    Dere må ha en plan for dem alle.
+  </div>
+
+  <h2>Microsoft 365: Innebygde sikkerhetsfunksjoner</h2>
+
+  <p>
+    Microsoft 365 er bygget med sikkerhet som et kjernekonsept. Det betyr at mange av Artikkel 21-kravene allerede finnes i produktet — men ofte må konfigureres og aktiveres.
+  </p>
+
+  <h3>Tilgangskontroll (Artikkel 21.5)</h3>
+  <p>
+    Microsoft 365 tilbyr en rekke autentiserings- og autorisasjonsmekanismer:
+  </p>
+  <ul>
+    <li>Multifaktor-autentisering (MFA) innebygd og kan påtvinges for alle brukere</li>
+    <li>Betinget tilgang basert på risikonivå, enhetsstatus og lokasjon</li>
+    <li>Granulær rollbasert tilgangskontroll (RBAC) på alle tjenestene</li>
+    <li>Passordløs autentisering via Windows Hello for Business</li>
+  </ul>
+  <p>
+    <strong>Konklusjon:</strong> Dekker domene 5 godt. Krever konfigurering.
+  </p>
+
+  <h3>Kryptering (Artikkel 21.6)</h3>
+  <p>
+    Microsoft 365 tilbyr kryptering på flere nivåer:
+  </p>
+  <ul>
+    <li>Kryptering av e-post under transport (TLS) og i hvil (AES-256)</li>
+    <li>Kryptering av dokumenter i SharePoint og OneDrive via Bitlocker</li>
+    <li>Klasifiseringsetiketter som automatiserer kryptering basert på datafølsomhet</li>
+    <li>Data Loss Prevention (DLP) for å unngå utilsiktet deling av sensitive data</li>
+  </ul>
+  <p>
+    <strong>Konklusjon:</strong> Dekker domene 6 godt. Klasifiseringsetiketter kan kreve ekstra prosessdesign.
+  </p>
+
+  <h3>Hendelseshåndtering (Artikkel 21.2)</h3>
+  <p>
+    Microsoft 365 tilbyr omfattende logginger og SIEM-integrasjon:
+  </p>
+  <ul>
+    <li>Unified Audit Log som registrerer aktivitet på alle tjenestene</li>
+    <li>Advanced Threat Protection (ATP) som detekterer anomalier i e-post og fildelings-aktivitet</li>
+    <li>Automatisert varsling for potensielle sikkerhetshendelser</li>
+    <li>Integrasjon med SIEM-løsninger for sentralisert hendelseshåndtering</li>
+  </ul>
+  <p>
+    <strong>Konklusjon:</strong> Dekker deler av domene 2. Du trenger en egen hendelseshåndteringsprosess og personell som kan reagere — verktøyet er der, prosessen må du bygge.
+  </p>
+
+  <h3>Risikohåndtering og Sikkerhetsscore</h3>
+  <p>
+    Microsoft tilbyr en egen innebygd "Secure Score" som automatisk vurderer sikkerhetsposisjonen basert på konfigurering og best practices.
+    Det gir et tall fra 0–100 som kan brukes som et styrings-KPI.
+  </p>
+  <p>
+    <strong>Konklusjon:</strong> Gir oversikt over teknisk sikkerhetsstatus, men dekker ikke en full risikohåndteringsprosess (domene 1). Du må fortsatt gjøre en formel riskanalys.
+  </p>
+
+  <h3>Hva Microsoft 365 <em>ikke</em> dekker</h3>
+  <ul>
+    <li><strong>Domenene 3 (kontinuitet), 4 (leverandør), 8 (hygiene), 9 (fysisk sikkerhet), 10 (konfigurering)</strong> er ikke innebygd i produktet.</li>
+    <li>Disse krever egne prosesser, verktøy og dokumentasjon utenfor Microsoft 365.</li>
+  </ul>
+
+  <h2>Google Workspace: Innebygde sikkerhetsfunksjoner</h2>
+
+  <p>
+    Google Workspace tilbyr også robuste sikkerhetsfunksjoner, men de er ofte mindre integrert enn i Microsoft 365.
+    Det betyr at du må stykke sammen en løsning fra flere kilder.
+  </p>
+
+  <h3>Tilgangskontroll (Artikkel 21.5)</h3>
+  <p>
+    Google Workspace har innebygd MFA og tilgangskontroll, men det er mindre granulært enn Microsoft:
+  </p>
+  <ul>
+    <li>Multifaktor-autentisering (MFA) via Google Authenticator eller sikkerhetsnøkler</li>
+    <li>Admin-konsoller for brukeradministrasjon, men færre granulære rollen</li>
+    <li>Betinget tilgang mulig gjennom integrasjon med tredjepartsidentitetsleverandører</li>
+  </ul>
+  <p>
+    <strong>Konklusjon:</strong> Dekker domene 5, men krever integrasjon for avansert betinget tilgang.
+  </p>
+
+  <h3>Kryptering (Artikkel 21.6)</h3>
+  <p>
+    Google Workspace krypterer data, men tilbyr færre alternativer for kontroll:
+  </p>
+  <ul>
+    <li>Kryptering av e-post under transport (TLS) og data i hvil</li>
+    <li>Begrenset innebygd DLP-funksjonalitet</li>
+    <li>Informasjonsbeskyttelse krever integrasjon med Google Cloud DLP eller tredjepartsløsninger</li>
+    <li>Klasifiseringsetiketter må implementeres gjennom integrasjon eller manuell prosess</li>
+  </ul>
+  <p>
+    <strong>Konklusjon:</strong> Dekker grunnleggende domene 6, men ikke avanserte bruk som klassifisering og automatisk kryptering.
+  </p>
+
+  <h3>Hendelseshåndtering (Artikkel 21.2)</h3>
+  <p>
+    Google Workspace har en enklere hendelsesloggingsfunksjonalitet sammenlignet med Microsoft:
+  </p>
+  <ul>
+    <li>Gmail, Drive og Calendar logging via Admin Console</li>
+    <li>Google Cloud Audit Logs for mer detaljert loggering, men krever Google Cloud</li>
+    <li>Begrenset innebygd SIEM-integrasjon</li>
+    <li>Liten innebygd deteksjon av anomalier</li>
+  </ul>
+  <p>
+    <strong>Konklusjon:</strong> Dekker deler av domene 2, men krever separat SIEM-løsning og hendelseshåndteringsprosess.
+  </p>
+
+  <h3>Risikohåndtering</h3>
+  <p>
+    Google tilbyr Google Cloud Security Command Center for visibilitet, men det er ikke en del av standard Google Workspace og krever Google Cloud-infrastruktur.
+  </p>
+  <p>
+    <strong>Konklusjon:</strong> Gir ikke samme innebygde risikovurdering som Microsoft.
+  </p>
+
+  <h3>Hva Google Workspace <em>ikke</em> dekker</h3>
+  <ul>
+    <li>Same som Microsoft 365: domenene 3, 4, 8, 9, 10 er ikke innebygd.</li>
+    <li>Derav kommer: hendelseshåndtering (2), kryptering (6) og tilgangskontroll (5) krever mer ekstra arbeid enn i Microsoft.</li>
+  </ul>
+
+  <h2>Direkte sammenligning: Tabell</h2>
+
+  <table class="comparison-table">
+    <thead>
+      <tr>
+        <th>Artikkel 21-domene</th>
+        <th>Microsoft 365</th>
+        <th>Google Workspace</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>1. Risikohåndtering</strong></td>
+        <td><span class="partial">Delvis</span> (Secure Score gir inngang)</td>
+        <td><span class="cross">✗</span> (Krever eget verktøy)</td>
+      </tr>
+      <tr>
+        <td><strong>2. Hendelseshåndtering</strong></td>
+        <td><span class="partial">Delvis</span> (Logging + SIEM-integrasjon)</td>
+        <td><span class="cross">✗</span> (Krever separat SIEM)</td>
+      </tr>
+      <tr>
+        <td><strong>3. Kontinuitetsplanlegging</strong></td>
+        <td><span class="cross">✗</span></td>
+        <td><span class="cross">✗</span></td>
+      </tr>
+      <tr>
+        <td><strong>4. Leverandørsikkerhet</strong></td>
+        <td><span class="cross">✗</span></td>
+        <td><span class="cross">✗</span></td>
+      </tr>
+      <tr>
+        <td><strong>5. Tilgangskontroll &amp; MFA</strong></td>
+        <td><span class="checkmark">✓</span> (Innebygd og granulær)</td>
+        <td><span class="partial">Delvis</span> (Innebygd, mindre granulær)</td>
+      </tr>
+      <tr>
+        <td><strong>6. Kryptering</strong></td>
+        <td><span class="checkmark">✓</span> (Innebygd med klasifisering)</td>
+        <td><span class="partial">Delvis</span> (Innebygd, enklere)</td>
+      </tr>
+      <tr>
+        <td><strong>7. Kryptografi/nøkkelhåndtering</strong></td>
+        <td><span class="checkmark">✓</span> (Azure Key Vault)</td>
+        <td><span class="partial">Delvis</span> (Google Cloud KMS)</td>
+      </tr>
+      <tr>
+        <td><strong>8. Sikkerhetshygiene</strong></td>
+        <td><span class="cross">✗</span></td>
+        <td><span class="cross">✗</span></td>
+      </tr>
+      <tr>
+        <td><strong>9. Fysisk/miljø-sikkerhet</strong></td>
+        <td><span class="cross">✗</span></td>
+        <td><span class="cross">✗</span></td>
+      </tr>
+      <tr>
+        <td><strong>10. Konfigurasjonsadministrasjon</strong></td>
+        <td><span class="partial">Delvis</span> (Admin console)

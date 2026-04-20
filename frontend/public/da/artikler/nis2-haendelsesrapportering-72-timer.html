@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-BKF3QH9K01"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag("js", new Date());
+    gtag("config", "G-BKF3QH9K01");
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NIS2 72-timers hændelsesrapportering: Komplet overholdelsesvejledning | NIS2Klar</title>
+  <meta name="description" content="Hvad skal du rapportere inden 72 timer? Hvad er en væsentlig hændelse? Hvilke konsekvenser får du, hvis du mister fristen? Komplet guide til NIS2-rapportering i Danmark.">
+  <meta property="og:title" content="NIS2 72-timers hændelsesrapportering: Komplet overholdelsesvejledning">
+  <meta property="og:description" content="Hvad skal du rapportere inden 72 timer? Hvad er en væsentlig hændelse? Hvilke konsekvenser får du, hvis du mister fristen? Komplet guide til NIS2-rapportering i Danmark.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #141416;
+      --card: #1c1c1f;
+      --yellow: #f5c518;
+      --white: #f0f0f0;
+      --muted: #888;
+      --red: #C61212;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: var(--bg); color: var(--white); font-family: 'Barlow', sans-serif; font-size: 19px; line-height: 1.8; }
+
+    /* Nav */
+    nav { display: flex; justify-content: space-between; align-items: center; padding: 20px 40px; border-bottom: 1px solid rgba(255,255,255,0.07); max-width: 1200px; margin: 0 auto; }
+    .nav-logo { font-family: 'Poppins', sans-serif; font-weight: 900; font-size: 20px; color: var(--yellow); text-decoration: none; }
+    .nav-logo span { color: var(--white); }
+    .nav-left { display: flex; align-items: center; gap: 24px; }
+    .nav-back { color: var(--muted); text-decoration: none; font-size: 15px; }
+    .nav-back:hover { color: var(--white); }
+    .lang-switcher { display: flex; gap: 8px; align-items: center; font-size: 13px; font-family: 'Poppins', sans-serif; }
+    .lang-switcher a { color: #888; text-decoration: none; font-weight: 600; padding: 4px 8px; border-radius: 3px; }
+    .lang-switcher a:hover { color: var(--white); }
+    .lang-switcher a.active { color: var(--yellow); background: rgba(245,197,24,0.1); }
+    .nav-cta { background: var(--yellow); color: #000; padding: 8px 18px; border-radius: 4px; text-decoration: none; font-weight: 700; font-size: 14px; font-family: 'Poppins', sans-serif; }
+
+    /* Article */
+    .article-wrap { max-width: 760px; margin: 0 auto; padding: 60px 40px; }
+    .article-category { font-size: 13px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 16px; }
+    h1 { font-family: 'Poppins', sans-serif; font-size: clamp(30px, 4vw, 44px); font-weight: 900; line-height: 1.2; margin-bottom: 24px; }
+    .article-meta { font-size: 15px; color: var(--muted); margin-bottom: 48px; padding-bottom: 24px; border-bottom: 1px solid rgba(255,255,255,0.07); }
+    h2 { font-family: 'Poppins', sans-serif; font-size: 26px; font-weight: 700; margin: 48px 0 16px; color: var(--white); }
+    h3 { font-family: 'Poppins', sans-serif; font-size: 20px; font-weight: 600; margin: 32px 0 12px; color: var(--yellow); }
+    p { margin-bottom: 22px; }
+    strong { color: var(--white); font-weight: 700; }
+    .highlight { color: var(--yellow); font-weight: 700; }
+    .danger { color: #ff6b6b; font-weight: 700; }
+    ul, ol { margin: 16px 0 24px 24px; }
+    li { margin-bottom: 12px; font-size: 19px; }
+
+    /* Callout boxes */
+    .box-warning { background: rgba(197,17,17,0.12); border-left: 4px solid var(--red); padding: 20px 24px; margin: 32px 0; border-radius: 0 4px 4px 0; }
+    .box-info { background: rgba(245,197,24,0.08); border-left: 4px solid var(--yellow); padding: 20px 24px; margin: 32px 0; border-radius: 0 4px 4px 0; }
+    .box-case { background: var(--card); border: 1px solid rgba(255,255,255,0.08); padding: 28px; margin: 40px 0; border-radius: 4px; }
+    .box-case .case-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 12px; }
+    blockquote { border-left: 3px solid var(--yellow); padding: 12px 20px; margin: 24px 0; font-style: italic; color: #ccc; }
+
+    /* CTA */
+    .cta-section { background: var(--card); border: 1px solid rgba(245,197,24,0.2); border-radius: 4px; padding: 48px 40px; margin: 64px 0 40px; text-align: center; }
+    .cta-section h2 { margin-top: 0; font-size: 26px; }
+    .cta-section p { color: #aaa; max-width: 500px; margin: 0 auto 28px; }
+    .btn-primary { display: inline-block; background: var(--yellow); color: #000; font-family: 'Poppins', sans-serif; font-weight: 800; font-size: 16px; padding: 16px 36px; border-radius: 4px; text-decoration: none; }
+    .btn-primary:hover { background: #e0b010; }
+    .cta-fine { font-size: 13px; color: var(--muted); margin-top: 16px; }
+
+    /* FAQ */
+    .faq-item { border-bottom: 1px solid rgba(255,255,255,0.07); padding: 20px 0; }
+    .faq-q { font-family: 'Poppins', sans-serif; font-weight: 600; margin-bottom: 10px; }
+    .faq-a { color: #bbb; }
+
+    /* Timeline */
+    .timeline { margin: 32px 0; padding: 24px; background: rgba(245,197,24,0.05); border-left: 4px solid var(--yellow); border-radius: 0 4px 4px 0; }
+    .timeline-item { margin-bottom: 20px; padding-bottom: 20px; border-bottom: 1px solid rgba(255,255,255,0.1); }
+    .timeline-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+    .timeline-time { font-family: 'Poppins', sans-serif; font-weight: 700; color: var(--yellow); font-size: 15px; }
+    .timeline-desc { color: #ccc; margin-top: 6px; font-size: 17px; }
+
+    /* Summary + Key Takeaway */
+    .box-summary { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; padding: 24px 28px; margin: 0 0 32px; }
+    .summary-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-bottom: 14px; }
+    .box-summary ul { margin: 0; padding-left: 20px; }
+    .box-summary li { margin-bottom: 8px; font-size: 17px; color: #ccc; }
+    .box-takeaway { background: rgba(245,197,24,0.08); border-left: 4px solid var(--yellow); padding: 20px 24px; margin: 0 0 40px; border-radius: 0 4px 4px 0; }
+    .takeaway-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 10px; }
+    .box-takeaway p { margin: 0; font-size: 18px; font-weight: 600; color: var(--white); line-height: 1.6; }
+
+    /* Template box */
+    .template-box { background: var(--card); border: 1px solid rgba(245,197,24,0.3); padding: 28px; margin: 32px 0; border-radius: 4px; font-family: 'Courier New', monospace; font-size: 14px; line-height: 1.6; color: #ddd; overflow-x: auto; }
+    .template-box .template-label { font-family: 'Poppins', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 16px; }
+
+    /* Footer */
+    footer { border-top: 1px solid rgba(255,255,255,0.07); padding: 32px 40px; text-align: center; font-size: 13px; color: var(--muted); max-width: 900px; margin: 0 auto; }
+    footer a { color: var(--muted); }
+
+    @media (max-width: 600px) {
+      nav { padding: 20px; flex-direction: column; gap: 12px; }
+      .nav-left { flex-direction: column; width: 100%; gap: 12px; }
+      .nav-back, .nav-cta { width: 100%; text-align: center; }
+      .article-wrap { padding: 20px; }
+      .cta-section { padding: 32px 20px; }
+      h1 { font-size: 28px; }
+      h2 { font-size: 22px; }
+      .timeline { padding: 16px; }
+      .template-box { font-size: 12px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-left">
+    <a class="nav-logo" href="https://nis2klar.se/da/">NIS2<span>Klar</span></a>
+    <a class="nav-back" href="https://nis2klar.se/da/artikler.html">← Alle artikler</a>
+  </div>
+  <div style="display:flex; gap:24px; align-items:center;">
+    <div class="lang-switcher">
+      <a href="https://nis2klar.se/artiklar.html" style="color:#888;" title="Svenska">SV</a>
+      <a href="https://nis2klar.se/en/articles.html" style="color:#888;" title="English">EN</a>
+      <a href="https://nis2klar.se/da/artikler.html" class="active" title="Dansk">DA</a>
+      <a href="https://nis2klar.se/no/artikler.html" style="color:#888;" title="Norsk">NO</a>
+      <a href="https://nis2klar.se/it/articoli.html" style="color:#888;" title="Italiano">IT</a>
+    </div>
+    <a class="nav-cta" href="https://nis2klar.se/da/#boka">Book møde →</a>
+  </div>
+</nav>
+
+<article class="article-wrap">
+  <div class="article-category">Hændelseshåndtering &amp; Rapportering</div>
+  <h1>NIS2 72-timers hændelsesrapportering: Komplet overholdelsesvejledning</h1>
+  <div class="article-meta">19. april 2026 · Læsetid: ca 9 minutter · målgruppe: Direktører &amp; Bestyrelsesmedlemmer</div>
+
+  <!-- SUMMARY -->
+  <div class="box-summary">
+    <div class="summary-label">Sammenfattning</div>
+    <ul>
+      <li>Danmark implementerede NIS2-loven i oktober 2024. Hændelsesrapportering er en af de vigtigste pligter.</li>
+      <li>Du har 24 timer til tidlig advarsel, derefter 72 timer til fuldstændig hændelsesrapport til CFCS.</li>
+      <li>En "væsentlig hændelse" betyder ethvert cyberangreb, systemnedbrud eller datatab, der påvirker kritisk drift.</li>
+      <li>Hvis du mister fristen, risikerer du bøder op til 10 mio. EUR og personligt ansvar som direktør eller bestyrelsesmedlem.</li>
+      <li>Mange virksomheder opdager for sent, at de hverken har en hændelsesplan eller dokumentation på plads.</li>
+    </ul>
+  </div>
+
+  <!-- KEY TAKEAWAY -->
+  <div class="box-takeaway">
+    <div class="takeaway-label">Vigtigste budskab</div>
+    <p>72 timer virker som rigeligt tid. Det er det ikke. Fra du opdager et cyberangreb til din rapport skal være hos CFCS er der ikke plads til møder, juridisk rådgivning eller "vi ringer tilbage mandag". Du skal have en skriftlig plan, nu.</p>
+  </div>
+
+  <h2>Hvorfor er dette vigtigere end du tror</h2>
+
+  <p>
+    Du har sandsynligvis hørt om NIS2. Du har måske delegeret det til IT-chefen. Og måske har du tænkt: "Vi handler på det næste år."
+  </p>
+
+  <p>
+    Stoppunkt.
+  </p>
+
+  <p>
+    Hændelsesrapportering er ikke noget, der kan vente. Det sker <strong>i dag</strong>, når en hacker får adgang til dine servere, eller en eksansat sletter dine produktionsdatabaser. Og så er der ikke tid til at blive klog på reglerne.
+  </p>
+
+  <p>
+    Ifølge NIS2-loven (Lov nr. 1120 af 2023) skal væsentlige enheder og vigtige enheder rapportere cyberangreb til <strong>CFCS (Center for Cybersikkerhed)</strong> efter stive tidsfrister. Hvis du mister en af disse frister, er der ikke "næste gang" — der er en bøde på op til <span class="danger">10 millioner euro</span> eller 2 % af din globale årsomsætning.
+  </p>
+
+  <p>
+    Og det er <strong>dit personlige ansvar</strong> som direktør eller bestyrelsesmedlem at sikre, at rapporten bliver sendt. Ikke IT-afdelingens. Din.
+  </p>
+
+  <div class="box-warning">
+    <strong>Realitet:</strong> CFCS har ikke råd til at vente på, at du finder IT-chefens emailadresse. Hvis din virksomhed indberettes efter 72 timer, tolkes det som en bevidst oversættelse af loven, ikke som en administrativ fejl.
+  </div>
+
+  <h2>Rapporteringstidslinjen — du skal forstå hver deadline</h2>
+
+  <p>
+    NIS2-loven opererer med en treleddet rapporteringsplan. Du skal håndtere den som en kriseplan, ikke som en IT-procedure.
+  </p>
+
+  <div class="timeline">
+    <div class="timeline-item">
+      <div class="timeline-time">Timer 0–24: Tidlig advarsel (initial notification)</div>
+      <div class="timeline-desc">Du skal sende en <strong>første besked</strong> til CFCS så snart du opdager (eller burde have opdaget) at en væsentlig hændelse er sket. Dette er en simpel notifikation — ofte blot et opkald eller en email med præmisser: hvad er sket, hvor alvorligt ser det ud, hvornår opdagede du det.</div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-time">Timer 24–72: Fuldstændig hændelsesrapport</div>
+      <div class="timeline-desc">Du skal sende en <strong>detaljeret rapport</strong> med al information som CFCS har brug for til at vurdere alvorsgraden. Dette inkluderer påvirkning, årsag, tiltag du har igangsat, og estimat over skader. Dette er ikke et udkast — det er det officielle dokument.</div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-time">Timer 72–730 (ca. 1 måned): Endelig rapport</div>
+      <div class="timeline-desc">Du har cirka 1 måned til at sende en <strong>afsluttende rapport</strong> med resultat af din undersøgelse, hvad der skete, hvordan det skete, og hvilke tiltag du har igangsat for at forhindre det samme igen. Dette er dine "lessons learned".</div>
+    </div>
+  </div>
+
+  <p>
+    Væsentligt: de første to deadlines overlapper ikke. Du har <strong>24 timer</strong> til en tidig advarsel, og derefter skal du have den fuldstændige rapport klar inden <strong>72 timer</strong> fra du opdagede hændelsen. Det betyder, at du skal gøre meget af dit arbej­de inden den første 24-timers-frist udløber — ellers kan du ikke levere dokumentationen til tiden.
+  </p>
+
+  <h2>Hvad er en "væsentlig hændelse"?</h2>
+
+  <p>
+    Det første spørgsmål du stiller efter et cyberangreb er: "Er vi forpligtet til at rapportere det?" 
+    Svaret er næsten altid ja, hvis du er omfattet af NIS2.
+  </p>
+
+  <p>
+    En væsentlig hændelse (på engelsk: "security incident") er defineret som enhver begivenhed, der påvirker eller kan påvirke sikkerheden på dine netværk eller informationssystemer. Det inkluderer:
+  </p>
+
+  <ul>
+    <li>Cyberangreb (ransomware, phishing, infilktion af malware)</li>
+    <li>Uautoriseret adgang til systemer eller data</li>
+    <li>Datatab eller uventet sletning af vigtige data</li>
+    <li>Systemnedbrud eller svigt i kritiske services som følge af cyberincidenter</li>
+    <li>Svigt i vigtige tredjepartsydelser (leverandører, cloud-udbydere)</li>
+    <li>Fysiske angreb på kritisk infrastruktur (selvom mindre sandsynligt)</li>
+  </ul>
+
+  <p>
+    Men det vigtige er: <strong>du skal rapportere, hvis hændelsen påvirker vigtige operationelle eller serviceydelsesfunktioner</strong>. Hvis en hacker får adgang til en testsystem uden påvirkning på produktion? Måske ikke. Hvis ransomware låser dine producerende maskiner? Absolut ja.
+  </p>
+
+  <p>
+    Problemet er, at grænserne er grå. Og hvis du gætter forkert, risikerer du både at have misset rapporteringsfristen (hvis hændelsen var væsentlig) og at have spilder tid på rapportering (hvis den ikke var væsentlig). 
+  </p>
+
+  <div class="box-info">
+    <strong>Praktisk tip:</strong> Hvis du er usikker, skal du rapportere. CFCS vil hellere modtage en rapport og konstatere, at det ikke var væsentligt, end at finde ud af, at du tav stille om noget, der var.
+  </div>
+
+  <h2>Hvad skal din rapport indeholde?</h2>
+
+  <p>
+    CFCS har udgivet retningslinjer for, hvad en rapport skal indeholde. Du kan ikke blot sende "vi blev hacket". Du skal præsentere en struktureret opsamling:
+  </p>
+
+  <h3>Den tidlige advarsel (0–24 timer)</h3>
+
+  <p>
+    Denne kan være kort. Du skal give:
+  </p>
+
+  <ul>
+    <li>Din virksomheds navn og kontaktoplysninger</li>
+    <li>En kort beskrivelse af hændelsen</li>
+    <li>Hvornår du opdagede den</li>
+    <li>Estimat over påvirkning (antal berørte systemer/brugere)</li>
+    <li>Kontakt til den person, der håndterer sagen for dig</li>
+  </ul>
+
+  <h3>Den fuldstændige rapport (24–72 timer)</h3>
+
+  <p>
+    Denne skal være omfattende:
+  </p>
+
+  <ul>
+    <li><strong>Beskrivelse af hændelsen:</strong> Hvad skete der, hvornår, hvor længe varede det</li>
+    <li><strong>Påvirkning:</strong> Hvilke systemer blev påvirket, hvilke data blev kompromitteret, hvor mange brugere blev ramt</li>
+    <li><strong>Årsag (hvis kendt):</strong> Hvordan kom angriberen ind, hvilken vulnerability blev brugt, hvem var det (hvis kendt)</li>
+    <li><strong>Detektionsmetode:</strong> Hvordan opdagede du det, hvem opdagede det først</li>
+    <li><strong>Tiltag:</strong> Hvad har du gjort siden opdagelsen (isolerede du systemer, stoppede du angriberen, notificerede du berørte parter)</li>
+    <li><strong>Eksterne resources:</strong> Har du hyret en forensik-virksomhed, advokatfirma, eller IT-sikkerhedsfirma</li>
+    <li><strong>Status og timeline for gendannelse:</strong> Hvornår er du tilbage til fuld drift</li>
+  </ul>
+
+  <p>
+    Denne rapport skal være så konkret som muligt. CFCS er ikke interesseret i "det var meget slemt". CFCS er interesseret i: Hvilke IP-adresser blev brugt, hvilke accounts blev kompromitteret, hvad var det tekniske angrebsvektor.
+  </p>
+
+  <div class="template-box">
+    <div class="template-label">📋 Skabelon for 72-timers-rapport</div>
+    <pre>HÆNDELSESRAPPORT TIL CFCS
+=========================
+
+VIRKSOMHED: [Navn]
+Org.nr.: [CVR-nummer]
+Kontaktperson: [Navn, telefon, email]
+Rapporteret af: [Dit navn, titel]
+Rapporteringsdato: [Dato og klokkeslæt]
+
+1. BESKRIVELSE
+   Hvornår begyndte hændelsen?
+   Hvad var det præcis, der skete?
+   Hvor længe varede den?
+
+2. PÅVIRKNING
+   Hvilke systemer blev påvirket?
+   Hvor mange brugere/kunder var berørte?
+   Hvilke data blev eksponeret (hvis kendt)?
+   Hvad var virksomhedskonsekvensen (driftstop, datatab, etc.)?
+
+3. ÅRSAG
+   Angrebsvektor (phishing, vulnerability, svag password, etc.)?
+   Angriberes identitet (hvis kendt)?
+   Hvordan fik angriberen adgang?
+
+4. AKTIONER EFTER OPDAGELSE
+   Hvad gjorde du for at stoppe angrebbet?
+   Isolerede du systemer?
+   Har du genstartet systemer?
+   Har du hyret ekstern hjælp?
+
+5. GENDANNELSE
+   Estimeret dato for fuld operationel status?
+   Har du informeret brugere/kunder?
+
+6. KONTAKTINFORMATION TIL TEKNISK PERSON
+   [Navn, telefon, email på den person, CFCS kan tale med direkte]
+    </pre>
+  </div>
+
+  <p>
+    Læg mærke til: Der er ingen "undskyld"-sektion. Der er ingen "vi håber på det bedste"-sektion. Det er fakta, tidlinjer og tal. Hvis du ikke ved svaret på noget spørgsmål, skal du skrive "under undersøgelse" — men du skal være parat til at levere det indenfor få dage.
+  </p>
+
+  <h2>Hvad sker der, hvis du ikke når fristen?</h2>
+
+  <p>
+    Hvis du rapporterer efter 72 timer, tolkes det ikke som "vi var bare sent på den". Det tolkes som overtrædelse af NIS2-loven.
+  </p>
+
+  <p>
+    Konsekvenserne er:
+  </p>
+
+  <ul>
+    <li><strong>Administrativ bøde:</strong> Op til 10 millioner euro for væsentlige enheder, 7 millioner euro for vigtige enheder</li>
+    <li><strong>Reputationsskade:</strong> CFCS registrerer alle rapporteringer, og nogle bliver offentligt kendt gennem omtale eller granskinger</li>
+    <li><strong>Personligt ansvar:</strong> Du som direktør eller bestyrelsesmedlem kan blive stillet til regnskab for, hvorfor proceduren ikke blev fulgt</li>
+    <li><strong>Efterfølgende tilsyn:</strong> CFCS eller relevant sektortilsynsmyndighed kan initialisere tilsyn og kræve dokumentation på alle dine sikkerhedsforanstaltninger</li>
+  </ul>
+
+  <p>
+    Og det vigtige: bøden beregnes på situationen på det tidspunkt, hvor du burde have rapporteret, ikke på tidspunktet for rapporteringen. Du kan ikke "fikse det senere" ved at betale en bøde. Hvis du har begået en overtrædelse, er det registreret.
+  </p>
+
+  <div class="box-case">
+    <div class="case-label">Case: Dansk softwarevirksomhed, 120 ansatte</div>
+    <p>
+      En dansk SaaS-virksomhed klassificeres som vigtig entitet under NIS2 (digital infrastructure-sektoren).
+      Den 15. marts 2026 angriber en hacker deres kundedatabase via en upatched web-applikation.
+      Angriberen stjæler kundedata svarende til 8.000 brugere.
+    </p>
+    <p>
+      IT-chefen opdager intrånget på det selv samme tidspunkt, men afventer, at sikkerhedsfirmaet kan foretage en fuld analyse, før der rapporteres.
+      Direktøren er i udlandet til konference. En advokat bliver først kontaktet på dag 2.
+      Rapportering til CFCS sker først på dag 5.
+    </p>
+    <p>
+      <strong>Resultat:</strong> CFCS initierer sanktionssag for:
+    </p>
+    <ol>
+      <li>Utebleven rapportering inden 24 timer</li>
+      <li>Utebleven fuldstændig rapport inden 72 timer</li>
+      <li>Manglende dokumentation af incidenthåndteringsplan (en anden NIS2-pligt)</li>
+    </ol>
+    <p>
+      <span class="danger">Bøde: 3 millioner euro</span> (under maksimum, men stadig katastrofalt for en 120-personers virksomhed).
+      Direktør får påbud om at gennemgå NIS2-kompliancetræning. Virksomhed placeres under særligt tilsyn i 2 år.
+    </p>
+  </div>
+
+  <h2>Hvad du skal gøre — fra i dag</h2>
+
+  <h3>1. Etabler en incidenthåndteringsteam — nu</h3>
+
+  <p>
+    Du skal have et dedikeret team, der kender proceduren. Ikke "vi håber på IT-chefen svarer telefonen". Et officielt team med:
+  </p>
+
+  <ul>
+    <li>En incident commander (ofte IT-chefen, men kunne også være en sikkerhedsjef eller digital risk manager)</li>
+    <li>En juridisk kontakt (advokat, der ved hvad NIS2 kræver)</li>
+    <li>En kommunikationsperson (der kan tale med CFCS og

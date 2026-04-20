@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-BKF3QH9K01"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag("js", new Date());
+    gtag("config", "G-BKF3QH9K01");
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NIS2 och Nätverksövervakning: Behöver ni ett SOC? | NIS2Klar</title>
+  <meta name="description" content="Behöver er organisation ett SOC för att uppfylla NIS2? Läs om miniminivån för övervakning, managed SOC kontra in-house, och kostnader för SME:ar.">
+  <meta property="og:title" content="NIS2 och Nätverksövervakning: Behöver ni ett SOC?">
+  <meta property="og:description" content="Behöver er organisation ett SOC för att uppfylla NIS2? Läs om miniminivån för övervakning, managed SOC kontra in-house, och kostnader för SME:ar.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #141416;
+      --card: #1c1c1f;
+      --yellow: #f5c518;
+      --white: #f0f0f0;
+      --muted: #888;
+      --red: #C61212;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: var(--bg); color: var(--white); font-family: 'Barlow', sans-serif; font-size: 19px; line-height: 1.8; }
+
+    /* Nav */
+    nav { display: flex; justify-content: space-between; align-items: center; padding: 20px 40px; border-bottom: 1px solid rgba(255,255,255,0.07); max-width: 900px; margin: 0 auto; }
+    .nav-logo { font-family: 'Poppins', sans-serif; font-weight: 900; font-size: 20px; color: var(--yellow); text-decoration: none; }
+    .nav-logo span { color: var(--white); }
+    .nav-back { color: var(--muted); text-decoration: none; font-size: 15px; }
+    .nav-back:hover { color: var(--white); }
+    .nav-cta { background: var(--yellow); color: #000; padding: 8px 18px; border-radius: 4px; text-decoration: none; font-weight: 700; font-size: 14px; font-family: 'Poppins', sans-serif; }
+
+    /* Article */
+    .article-wrap { max-width: 760px; margin: 0 auto; padding: 60px 40px; }
+    .article-category { font-size: 13px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 16px; }
+    h1 { font-family: 'Poppins', sans-serif; font-size: clamp(30px, 4vw, 44px); font-weight: 900; line-height: 1.2; margin-bottom: 24px; }
+    .article-meta { font-size: 15px; color: var(--muted); margin-bottom: 48px; padding-bottom: 24px; border-bottom: 1px solid rgba(255,255,255,0.07); }
+    h2 { font-family: 'Poppins', sans-serif; font-size: 26px; font-weight: 700; margin: 48px 0 16px; color: var(--white); }
+    h3 { font-family: 'Poppins', sans-serif; font-size: 20px; font-weight: 600; margin: 32px 0 12px; color: var(--yellow); }
+    p { margin-bottom: 22px; }
+    strong { color: var(--white); font-weight: 700; }
+    .highlight { color: var(--yellow); font-weight: 700; }
+    .danger { color: #ff6b6b; font-weight: 700; }
+    ul, ol { margin: 16px 0 24px 24px; }
+    li { margin-bottom: 12px; font-size: 19px; }
+
+    /* Callout boxes */
+    .box-warning { background: rgba(197,17,17,0.12); border-left: 4px solid var(--red); padding: 20px 24px; margin: 32px 0; border-radius: 0 4px 4px 0; }
+    .box-info { background: rgba(245,197,24,0.08); border-left: 4px solid var(--yellow); padding: 20px 24px; margin: 32px 0; border-radius: 0 4px 4px 0; }
+    .box-case { background: var(--card); border: 1px solid rgba(255,255,255,0.08); padding: 28px; margin: 40px 0; border-radius: 4px; }
+    .box-case .case-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 12px; }
+    blockquote { border-left: 3px solid var(--yellow); padding: 12px 20px; margin: 24px 0; font-style: italic; color: #ccc; }
+
+    /* CTA */
+    .cta-section { background: var(--card); border: 1px solid rgba(245,197,24,0.2); border-radius: 4px; padding: 48px 40px; margin: 64px 0 40px; text-align: center; }
+    .cta-section h2 { margin-top: 0; font-size: 26px; }
+    .cta-section p { color: #aaa; max-width: 500px; margin: 0 auto 28px; }
+    .btn-primary { display: inline-block; background: var(--yellow); color: #000; font-family: 'Poppins', sans-serif; font-weight: 800; font-size: 16px; padding: 16px 36px; border-radius: 4px; text-decoration: none; }
+    .btn-primary:hover { background: #e0b010; }
+    .cta-fine { font-size: 13px; color: var(--muted); margin-top: 16px; }
+
+    /* FAQ */
+    .faq-item { border-bottom: 1px solid rgba(255,255,255,0.07); padding: 20px 0; }
+    .faq-q { font-family: 'Poppins', sans-serif; font-weight: 600; margin-bottom: 10px; }
+    .faq-a { color: #bbb; }
+
+    /* Fine table */
+    .fine-table { width: 100%; border-collapse: collapse; margin: 24px 0; }
+    .fine-table th { background: rgba(245,197,24,0.1); color: var(--yellow); font-family: 'Poppins', sans-serif; font-size: 13px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 12px 16px; text-align: left; border-bottom: 1px solid rgba(245,197,24,0.2); }
+    .fine-table td { padding: 14px 16px; border-bottom: 1px solid rgba(255,255,255,0.05); font-size: 15px; }
+    .fine-table tr:last-child td { border-bottom: none; }
+    .fine-table .amount { color: #4ade80; font-weight: 700; }
+
+    /* Summary + Key Takeaway */
+    .box-summary { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; padding: 24px 28px; margin: 0 0 32px; }
+    .summary-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-bottom: 14px; }
+    .box-summary ul { margin: 0; padding-left: 20px; }
+    .box-summary li { margin-bottom: 8px; font-size: 17px; color: #ccc; }
+    .box-takeaway { background: rgba(245,197,24,0.08); border-left: 4px solid var(--yellow); padding: 20px 24px; margin: 0 0 40px; border-radius: 0 4px 4px 0; }
+    .takeaway-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 10px; }
+    .box-takeaway p { margin: 0; font-size: 18px; font-weight: 600; color: var(--white); line-height: 1.6; }
+
+    /* Footer */
+    footer { border-top: 1px solid rgba(255,255,255,0.07); padding: 32px 40px; text-align: center; font-size: 13px; color: var(--muted); max-width: 900px; margin: 0 auto; }
+    footer a { color: var(--muted); }
+
+    @media (max-width: 600px) {
+      nav, .article-wrap, footer { padding: 20px; }
+      .cta-section { padding: 32px 20px; }
+      .fine-table { font-size: 14px; }
+      .fine-table th, .fine-table td { padding: 10px 10px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="https://nis2klar.se/">NIS2<span>Klar</span></a>
+  <a class="nav-back" href="https://nis2klar.se/artiklar.html">← Alla artiklar</a>
+  <a class="nav-cta" href="https://nis2klar.se/#boka">Boka samtal →</a>
+</nav>
+
+<article class="article-wrap">
+  <div class="article-category">Övervakning &amp; Incidenthantering</div>
+  <h1>NIS2 och nätverksövervakning: Behöver ni ett SOC?</h1>
+  <div class="article-meta">Uppdaterad 19 april 2026 · Lästid: ca 8 minuter · Målgrupp: VD, Styrelse, Ledning</div>
+
+  <!-- SUMMARY -->
+  <div class="box-summary">
+    <div class="summary-label">Sammanfattning</div>
+    <ul>
+      <li>NIS2 kräver <strong>realtidsövervakning</strong> av nätverk och säkerhetshändelser — men inte nödvändigtvis ett eget SOC.</li>
+      <li>Miniminivån är dokumenterad logghantering + automatiserad hotdetektering — kostnad från 50 000 SEK/år för SME.</li>
+      <li>Managed SOC är ofta billigare än in-house för organisationer under 500 anställda.</li>
+      <li>Styrelsens ansvar (Artikel 20) kräver skriftlig bekräftelse på att övervakningssystem är aktiverade och granskade.</li>
+      <li>Fem av tio NIS2-krav hänger direkt på övervakning och incidentdetektering.</li>
+    </ul>
+  </div>
+
+  <!-- KEY TAKEAWAY -->
+  <div class="box-takeaway">
+    <div class="takeaway-label">Viktigaste slutsatsen</div>
+    <p>Du behöver inte ett SOC för att uppfylla NIS2. Du behöver bevis på att någon övervakar, detekterar och rapporterar incidenter 24/7. Hur du löser det — in-house, managed eller hybrid — beror på budget och kompetens.</p>
+  </div>
+
+  <!-- HOOK -->
+  <p>
+    "Vi har inte ett SOC" är en sats som ofta hörs på styrelserummen. Och ofta följd av: "Vi behöver väl inte heller för NIS2?"
+  </p>
+
+  <p>
+    Det beror på. NIS2 förbjuder dig inte från att sakna ett eget Security Operations Center. Men den förbjuder dig från att <strong>sakna övervakning</strong>. Det är en avgörande skillnad.
+  </p>
+
+  <p>
+    Artikel 21 i NIS2 kräver <strong>incidenthantering</strong>. Artikel 16 kräver <strong>hotdetektering och -analys</strong>. Utan någon form av övervakning — antingen ett SOC, ett managed tjänsteföretag eller åtminstone automatiserad logganalys — kan du inte uppfylla dessa krav.
+  </p>
+
+  <p>
+    Den här guiden visar vad som är miniminivån för övervakning, vilka alternativ som finns, och vad det faktiskt kostar för en medelstort svenskt företag.
+  </p>
+
+  <h2>Vad säger NIS2 om övervakning?</h2>
+
+  <p>
+    NIS2-direktivet (implementerat i Sverige via cybersäkerhetslagen) listar <strong>tio obligatoriska säkerhetskontroller</strong>. Minst fem av dem handlar direkt om övervakning och hotdetektering:
+  </p>
+
+  <ul>
+    <li><strong>Artikel 16: Hotdetektering och -analys</strong> — organisationen ska kunna identifiera cyberuppsökningar i realtid</li>
+    <li><strong>Artikel 17: Handling vid incidenter</strong> — ett system för att reagera på och eskalera säkerhetshändelser</li>
+    <li><strong>Artikel 19: Affärskontinuitet</strong> — dokumenterad plan för att detektera serviceavbrott</li>
+    <li><strong>Artikel 21.2 e: Loggning och övervakning</strong> — loggning av åtkomst och särskilt privilegierad aktivitet</li>
+    <li><strong>Artikel 23: Incidentrapportering</strong> — direkt kopplad till övervakning (kan inte rapportera vad du inte detekterar)</li>
+  </ul>
+
+  <p>
+    Tillsammans utgör dessa en <strong>tvingande kravserie</strong>. Du kan inte uppfylla artikel 23 (incidentrapportering inom 72 timmar) utan artikel 16 (hotdetektering). Och det senare förutsätter någon form av organiserad övervakning.
+  </p>
+
+  <div class="box-info">
+    <strong>Regelverkets logik:</strong> Du måste veta när något går fel. Du kan bara veta det om du övervakar. Du måste kunna bevisa att övervakningen är på plats. Det är styrelsens ansvar att säkerställa detta (Artikel 20).
+  </div>
+
+  <h2>Vad är miniminivån för övervakning?</h2>
+
+  <p>
+    Tillsynsmyndigheterna i Sverige bedömer inte efter namn (SOC, SIEM, mätare). De bedömer efter <strong>funktion</strong>:
+  </p>
+
+  <p>
+    <strong>Miniminivå för att uppfylla NIS2 är:</strong>
+  </p>
+
+  <ol>
+    <li><strong>Loggsamling från alla kritiska IT-system</strong> — servrar, nätverk, åtkomststyrkort, domänkontrollanter</li>
+    <li><strong>Automatiserad analysering av loggarna</strong> — inte manuell granskning av enskilda poster (det skalas aldrig)</li>
+    <li><strong>Hotdetektering med förutbestämda regler</strong> — t.ex. flera misslyckade inloggningar, ovanlig administratörsaktivitet, datautflöde</li>
+    <li><strong>Dokumenterad incidenthanteringsprocess</strong> — vem som kontaktas, i vilken ordning, när man rapporterar till myndigheten</li>
+    <li><strong>Årlig validering av att systemet fungerar</strong> — ett test att det faktiskt detekterar intrång (penetration test eller simulerad incident)</li>
+  </ol>
+
+  <p>
+    Inget av detta kräver ett in-house SOC med 24/7 säkerhetsanalytiker som sitter och stirrar på skärmar. Det kan löses med en managed tjänst, ett SIEM-system från Microsoft eller annat leverantör, plus en dokumenterad process.
+  </p>
+
+  <h2>De tre övervakningsmogligheterna</h2>
+
+  <h3>1. Grundläggande logghantering (minimikostnad)</h3>
+
+  <p>
+    <strong>Vad det är:</strong> Du samlar loggar från dina IT-system på en central plats, använder automatiska regler för att flagga avvikelser, och har en dokumenterad process för vem som granskar loggarna varje dag.
+  </p>
+
+  <p>
+    <strong>Verktyg:</strong> En logglagringslösning (ibland redan inkluderad i din IT-miljö), plus ett analysverktyg. För många svenska SME:ar är detta redan delvis på plats via Microsoft 365 eller Azure.
+  </p>
+
+  <p>
+    <strong>Bemanning:</strong> 1–2 personer i ditt IT-team granskar och reagerar på aviseringar dagligen. Inte en dedikerad säkerhetsfunktion — någon IT-person får det som en del av sitt jobb.
+  </p>
+
+  <p>
+    <strong>Kostnad:</strong> 50 000–150 000 SEK per år (ofta redan täckt i befintliga licensar). Kunskap: låg till medel.
+  </p>
+
+  <p>
+    <strong>Risker:</strong> Om din IT-personal är överbelastad kan aviseringar missas. Det finns ingen natt- eller helgövervakning. Om ett angrepp inträffar utanför kontorstid kan du missa de första kritiska timmarna.
+  </p>
+
+  <div class="box-case">
+    <div class="case-label">Exempel: Småföretag på miniminivå</div>
+    <p>
+      <strong>Företag: Lokalt sjukhusvårdföretag, 80 anställda, klassas som viktig entitet under NIS2.</strong>
+    </p>
+    <p>
+      De använder Microsoft 365 för e-post och Teams. De aktiverar Microsoft Sentinel (SIEM) och konfigurerar grundläggande regler för: misslyckade inloggningar, administratörsåtkomst, datautflöde.
+    </p>
+    <p>
+      IT-chefen spenderar 30 minuter varje morgon på att granska aviseringar. De dokumenterar processen i ett enkelt OneNote-ark som styrelsen godkänner årligen.
+    </p>
+    <p>
+      <strong>Kostnad:</strong> Cirka 80 000 SEK/år för Microsoft Sentinel-licens (redan täckt genom befintligt Microsoft 365-avtal för de flesta).
+    </p>
+    <p>
+      <strong>Resultat:</strong> De uppfyller artikel 16 och 21.2 e. De kan rapportera incidenter inom 72 timmar. Om tillsynsmyndigheten granskar kan de visa dokumentation.
+    </p>
+    <p>
+      <strong>Nackdel:</strong> Ingen övervakning på nätter eller helger. Om ett angrepp startar klockan 22 på fredagkväll detekteras det inte förrän måndag morgon.
+    </p>
+  </div>
+
+  <h3>2. In-house SOC (fullständig kontroll)</h3>
+
+  <p>
+    <strong>Vad det är:</strong> Du bygger en egen säkerhetsfunktion med en eller flera dedikerade säkerhetsanalytiker, ett professionellt SIEM-system, och ofta 24/7-övervakning.
+  </p>
+
+  <p>
+    <strong>Verktyg:</strong> Ett avancerat SIEM (Security Information and Event Management), ofta kombinerat med en XDR-plattform (Extended Detection and Response) för att ge en helhetsbild av hot.
+  </p>
+
+  <p>
+    <strong>Bemanning:</strong> Minst 1 heltidssäkerhetsanalytiker (lön 600 000–850 000 SEK/år). För större organisationer ofta 2–5 personer. Om du vill ha 24/7-täckning behöver du minst 3 personer (för att täcka tre skift).
+  </p>
+
+  <p>
+    <strong>Kostnad:</strong> 1,5–3 miljoner SEK per år (löner + verktyg).
+  </p>
+
+  <p>
+    <strong>Fördelar:</strong> Fullständig kontroll. Dina säkerhetsanalytiker känner din miljö bättre än någon extern. Du kan snabbt anpassa regler och processer. Ingen väntetid på support från tredje part.
+  </p>
+
+  <p>
+    <strong>Nackdelar:</strong> Dyrt. Svårt att rekrytera och behålla säkerhetstalang i Sverige. Du måste själv hålla dig uppdaterad om nya attackmetoder — och det är en fulltidsjobb. Risken för "attityd-tröghet" när samma personer ser samma varningar dag efter dag.
+  </p>
+
+  <h3>3. Managed SOC (allt-i-ett, låsta kostnader)</h3>
+
+  <p>
+    <strong>Vad det är:</strong> Du betalar en tredje part — ofta en MSSP (Managed Security Service Provider) — för att övervaka dina system 24/7. De levererar hotdetektering, incidenthantering och ofta även rådgivning.
+  </p>
+
+  <p>
+    <strong>Verktyg:</strong> Leverantören använder sitt eget SIEM och sin egen expertis. Du behöver inte köpa något särskilt verktyg — bara ansluta dina loggar.
+  </p>
+
+  <p>
+    <strong>Bemanning:</strong> Du har ingen dedikerad säkerhetsfunktion internt. Allt delegeras till leverantören.
+  </p>
+
+  <p>
+    <strong>Kostnad:</strong> 150 000–600 000 SEK per år, beroende på:
+    </p>
+
+  <ul>
+    <li>Antalet servrar och datakällor som övervakas</li>
+    <li>Responstid (garanterad svar inom 1 timme vs. 4 timmar)</li>
+    <li>Om incidenthantering ingår eller är extra</li>
+  </ul>
+
+  <p>
+    <strong>Fördelar:</strong> Mycket billigare än in-house för små och mellanstora organisationer. 24/7-övervakning utan att du måste bemanna det själv. Leverantören är uppdaterad på de senaste hoten. Förutsägbara kostnader (abonnemang).
+  </p>
+
+  <p>
+    <strong>Nackdelar:</strong> Mindre lokal kontroll. Kan finnas väntetider när din organisation inte är deras högsta prioritet. Du måste välja leverantör noggrant — deras kompetens blir din kompetens. Ibland höga avtalsstraff om du vill byta.
+  </p>
+
+  <h2>Kostnadsanalys: SME-perspektiv</h2>
+
+  <p>
+    Vi fokuserar på ett typiskt medelstort svenska företag: 150–250 anställda, klassas som viktig entitet under NIS2, redan använder Microsoft 365.
+  </p>
+
+  <table class="fine-table">
+    <thead>
+      <tr>
+        <th>Lösning</th>
+        <th>Årlig kostnad</th>
+        <th>Täckning</th>
+        <th>Komplexitet</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Grundläggande logghantering</strong></td>
+        <td class="amount">80–150 KSEK</td>
+        <td>Dagtid (kontorstid)</td>
+        <td>Låg</td>
+      </tr>
+      <tr>
+        <td><strong>Managed SOC (liten leverantör)</strong></td>
+        <td class="amount">200–400 KSEK</td>
+        <td>24/7 + incidenthantering</td>
+        <td>Medel</td>
+      </tr>
+      <tr>
+        <td><strong>Managed SOC (större MSSP)</strong></td>
+        <td class="amount">400–700 KSEK</td>
+        <td>24/7 + dedikerad analyst</td>
+        <td>Låg (externa sköter allt)</td>
+      </tr>
+      <tr>
+        <td><strong>In-house SOC (1 säkerhetsanalytiker)</strong></td>
+        <td class="amount">1,2–1,8 MSEK</td>
+        <td>Dagtid endast</td>
+        <td>Hög (kräver rekrytering och ledning)</td>
+      </tr>
+      <tr>
+        <td><strong>In-house SOC (24/7, 3 analytiker)</strong></td>
+        <td class="amount">3–4 MSEK</td>
+        <td>24/7</td>
+        <td>Mycket hög</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>
+    <strong>För en SME:</strong> Om du har mindre än 300 anställda är en managed SOC ofta det mest ekonomiska valet. Du får 24/7-övervakning utan att behöva rekrytera och behålla säkerhetspersonal — vilket är närmare omöjligt på små orter i Sverige idag.
+  </p>
+
+  <div class="box-warning">
+    <strong>Varning för dolda kostnader:</strong> Många managed SOC-leverantörer har låga baspriser men höga extraavgifter för incidenthantering, rapportering och eskalering. Läs avtalet noga — och säkerställ att "24/7-övervakning" betyder att någon faktiskt tittar på dina loggar, inte bara att systemet är tändt.
+  </div>
+
+  <h2>Vad styrelsen måste godkänna och dokumentera</h2>
+
+  <p>
+    Artikel 20 i NIS2 ställer ett särskilt krav på ledningen. Du kan inte bara delegera övervakningen till en MSSP och sedan glömma det.
+  </p>
+
+  <p>
+    <strong>Du måste dokumentera:</strong>
+  </p>
+
+  <ul>
+    <li><strong>Ett styrelseprotokoll</strong> från något möte där övervakningen godkänns — om den är basläggande logghantering eller ett managed SOC spelar ingen roll. Det måste vara ett medvetet beslut.</li>
+    <li><strong>Vilka system som övervakas</strong> — en inventering av servrar, nätverk, databaser, åtkomststyrkort som ingår i övervakningen.</li>
+    <li><strong>Vilka hot som söks efter</strong> — dokumenterat i form av aviseringsregler eller ett avtal med en MSSP som listar sitt scope.</li>
+    <li><strong>Vem som är ansvarig för övervakningen</strong> — antingen en intern roll eller ett namn på en extern leverantör med kontaktuppgifter.</li>
+    <li><strong>En årlig rapport till styrelsen</strong> om vilka incidenter som upptäcktes och hur de hanterades.</li>
+  </ul>
+
+  <p>
+    Om tillsynsmyndigheten granskar och finner att ni saknar dessa dokument — men tekniskt sett har övervakning på plats — kan det resultera i böter för bristande dokumentation, även om själva övervakningen var tillräcklig.
+  </p>
+
+  <h2>Hur väljer du mellan alternativen?</h2>
+
+  <p>
+    Börja med tre frågor:
+  </p>
+
+  <h3>1. Vad är din risknivå?</h3>
+
+  <p>
+    <strong>Högrisk-sektorer</strong> (finans, sjukvård, försäljning av privatperson-data) bör sträva mot 24/7-övervakning. En managed SOC är ofta det intelligentaste. Att bygga in-house är bara försvarbart om du har budget för 3+ analytiker och infrastruktur.
+  </p>
+
+  <p>
+    <strong>Lägre-risk-sektorer</strong> (handelsbranschen, vissa industriföretag utan datasäkerhet-komponenten) kan ofta nöja sig med grundläggande logghantering + årlig penetrationtest. Du detekterar inte ett angrepp i realtid, men du minskar sannolikheten för att ett långvarigt intrång går obemärkt förbi.
+  </p>
+
+  <h3>2. Vad kan du rekrytera?</h3>
+
+  <p>
+    Om du kan hitta och behålla en duktig säkerhetsanalytiker i ditt område — gratulerar, du är i minoritet. I Stockholm och Göteborg är det möjligt. I mindre städer är det nästan omö

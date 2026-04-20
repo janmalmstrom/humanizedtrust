@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-BKF3QH9K01"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag("js", new Date());
+    gtag("config", "G-BKF3QH9K01");
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>24 Hours to Report: How to Handle a NIS2 Incident Correctly | NIS2Klar</title>
+  <meta name="description" content="Ransomware hits at 3am. What must your organisation do in the next 24 hours, 72 hours and 30 days under Ireland's NIS2 Regulations? A practical incident reporting guide for CEOs and boards.">
+  <meta property="og:title" content="24 Hours to Report: How to Handle a NIS2 Incident Correctly">
+  <meta property="og:description" content="Ransomware hits at 3am. What must your organisation do in the next 24 hours, 72 hours and 30 days under Ireland's NIS2 Regulations? A practical incident reporting guide for CEOs and boards.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #141416;
+      --card: #1c1c1f;
+      --yellow: #f5c518;
+      --white: #f0f0f0;
+      --muted: #888;
+      --red: #C61212;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: var(--bg); color: var(--white); font-family: 'Barlow', sans-serif; font-size: 19px; line-height: 1.8; }
+
+    /* Nav */
+    nav { display: flex; justify-content: space-between; align-items: center; padding: 20px 40px; border-bottom: 1px solid rgba(255,255,255,0.07); max-width: 900px; margin: 0 auto; }
+    .nav-logo { font-family: 'Poppins', sans-serif; font-weight: 900; font-size: 20px; color: var(--yellow); text-decoration: none; }
+    .nav-logo span { color: var(--white); }
+    .nav-back { color: var(--muted); text-decoration: none; font-size: 15px; }
+    .nav-back:hover { color: var(--white); }
+    .nav-cta { background: var(--yellow); color: #000; padding: 8px 18px; border-radius: 4px; text-decoration: none; font-weight: 700; font-size: 14px; font-family: 'Poppins', sans-serif; }
+
+    /* Article */
+    .article-wrap { max-width: 760px; margin: 0 auto; padding: 60px 40px; }
+    .article-category { font-size: 13px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 16px; }
+    h1 { font-family: 'Poppins', sans-serif; font-size: clamp(30px, 4vw, 44px); font-weight: 900; line-height: 1.2; margin-bottom: 24px; }
+    .article-meta { font-size: 15px; color: var(--muted); margin-bottom: 48px; padding-bottom: 24px; border-bottom: 1px solid rgba(255,255,255,0.07); }
+    h2 { font-family: 'Poppins', sans-serif; font-size: 26px; font-weight: 700; margin: 48px 0 16px; color: var(--white); }
+    h3 { font-family: 'Poppins', sans-serif; font-size: 20px; font-weight: 600; margin: 32px 0 12px; color: var(--yellow); }
+    p { margin-bottom: 22px; }
+    strong { color: var(--white); font-weight: 700; }
+    .highlight { color: var(--yellow); font-weight: 700; }
+    .danger { color: #ff6b6b; font-weight: 700; }
+    ul, ol { margin: 16px 0 24px 24px; }
+    li { margin-bottom: 12px; font-size: 19px; }
+
+    /* Callout boxes */
+    .box-warning { background: rgba(197,17,17,0.12); border-left: 4px solid var(--red); padding: 20px 24px; margin: 32px 0; border-radius: 0 4px 4px 0; }
+    .box-info { background: rgba(245,197,24,0.08); border-left: 4px solid var(--yellow); padding: 20px 24px; margin: 32px 0; border-radius: 0 4px 4px 0; }
+    .box-case { background: var(--card); border: 1px solid rgba(255,255,255,0.08); padding: 28px; margin: 40px 0; border-radius: 4px; }
+    .box-case .case-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 12px; }
+    blockquote { border-left: 3px solid var(--yellow); padding: 12px 20px; margin: 24px 0; font-style: italic; color: #ccc; }
+
+    /* CTA */
+    .cta-section { background: var(--card); border: 1px solid rgba(245,197,24,0.2); border-radius: 4px; padding: 48px 40px; margin: 64px 0 40px; text-align: center; }
+    .cta-section h2 { margin-top: 0; font-size: 26px; }
+    .cta-section p { color: #aaa; max-width: 500px; margin: 0 auto 28px; }
+    .btn-primary { display: inline-block; background: var(--yellow); color: #000; font-family: 'Poppins', sans-serif; font-weight: 800; font-size: 16px; padding: 16px 36px; border-radius: 4px; text-decoration: none; }
+    .btn-primary:hover { background: #e0b010; }
+    .cta-fine { font-size: 13px; color: var(--muted); margin-top: 16px; }
+
+    /* FAQ */
+    .faq-item { border-bottom: 1px solid rgba(255,255,255,0.07); padding: 20px 0; }
+    .faq-q { font-family: 'Poppins', sans-serif; font-weight: 600; margin-bottom: 10px; }
+    .faq-a { color: #bbb; }
+
+    /* Fine table */
+    .fine-table { width: 100%; border-collapse: collapse; margin: 24px 0; }
+    .fine-table th { background: rgba(245,197,24,0.1); color: var(--yellow); font-family: 'Poppins', sans-serif; font-size: 13px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 12px 16px; text-align: left; border-bottom: 1px solid rgba(245,197,24,0.2); }
+    .fine-table td { padding: 14px 16px; border-bottom: 1px solid rgba(255,255,255,0.05); font-size: 15px; }
+    .fine-table tr:last-child td { border-bottom: none; }
+    .fine-table .amount { color: #ff6b6b; font-weight: 700; }
+
+    /* Summary + Key Takeaway */
+    .box-summary { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; padding: 24px 28px; margin: 0 0 32px; }
+    .summary-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-bottom: 14px; }
+    .box-summary ul { margin: 0; padding-left: 20px; }
+    .box-summary li { margin-bottom: 8px; font-size: 17px; color: #ccc; }
+    .box-takeaway { background: rgba(245,197,24,0.08); border-left: 4px solid var(--yellow); padding: 20px 24px; margin: 0 0 40px; border-radius: 0 4px 4px 0; }
+    .takeaway-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 10px; }
+    .box-takeaway p { margin: 0; font-size: 18px; font-weight: 600; color: var(--white); line-height: 1.6; }
+
+    /* Checklist */
+    .checklist { list-style: none; margin: 16px 0 24px 0; padding: 0; }
+    .checklist li { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 14px; font-size: 18px; padding: 12px 16px; background: rgba(255,255,255,0.03); border-radius: 4px; border: 1px solid rgba(255,255,255,0.06); }
+    .checklist li .check-box { flex-shrink: 0; width: 20px; height: 20px; border: 2px solid var(--yellow); border-radius: 3px; margin-top: 3px; }
+    .checklist li .check-text { flex: 1; line-height: 1.6; }
+    .checklist li .check-label { font-size: 11px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--yellow); display: block; margin-bottom: 2px; }
+
+    /* Timeline */
+    .timeline-block { border-left: 3px solid var(--yellow); padding: 0 0 32px 28px; margin: 0 0 0 12px; position: relative; }
+    .timeline-block:last-child { padding-bottom: 0; }
+    .timeline-dot { width: 14px; height: 14px; background: var(--yellow); border-radius: 50%; position: absolute; left: -8px; top: 6px; }
+    .timeline-heading { font-family: 'Poppins', sans-serif; font-size: 18px; font-weight: 700; color: var(--yellow); margin-bottom: 12px; }
+
+    /* Footer */
+    footer { border-top: 1px solid rgba(255,255,255,0.07); padding: 32px 40px; text-align: center; font-size: 13px; color: var(--muted); max-width: 900px; margin: 0 auto; }
+    footer a { color: var(--muted); }
+
+    @media (max-width: 600px) {
+      nav, .article-wrap, footer { padding: 20px; }
+      .cta-section { padding: 32px 20px; }
+      .fine-table { font-size: 14px; }
+      .fine-table th, .fine-table td { padding: 10px 10px; }
+      .checklist li { font-size: 16px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="https://nis2klar.se/">NIS2<span>Klar</span></a>
+  <a class="nav-back" href="https://nis2klar.se/en/articles.html">← All Articles</a>
+  <div class="lang-switcher" style="display:flex;gap:8px;align-items:center;font-size:13px;font-family:'Poppins',sans-serif;">
+    <a href="https://nis2klar.se/artiklar.html" style="color:#888;text-decoration:none;font-weight:600;padding:4px 8px;border-radius:3px;" title="Svenska">SV</a>
+    <a href="https://nis2klar.se/en/articles.html" style="color:#f5c518;text-decoration:none;font-weight:600;padding:4px 8px;border-radius:3px;background:rgba(245,197,24,0.1);" title="English">EN</a>
+    <a href="https://nis2klar.se/da/artikler.html" style="color:#888;text-decoration:none;font-weight:600;padding:4px 8px;border-radius:3px;" title="Dansk">DA</a>
+    <a href="https://nis2klar.se/no/artikler.html" style="color:#888;text-decoration:none;font-weight:600;padding:4px 8px;border-radius:3px;" title="Norsk">NO</a>
+  </div>
+  <a class="nav-cta" href="/nis2.html#boka">Book a call →</a>
+</nav>
+
+<article class="article-wrap">
+  <div class="article-category">Incident Reporting &amp; Compliance</div>
+  <h1>24 Hours to Report: How to Handle a NIS2 Incident Correctly</h1>
+  <div class="article-meta">Updated 17 April 2026 · Reading time: approx. 9 minutes · Audience: CEO, Board Chair, Board Members</div>
+
+  <!-- SUMMARY -->
+  <div class="box-summary">
+    <div class="summary-label">Summary</div>
+    <ul>
+      <li>For CEOs and board members of NIS2-regulated organisations who want to understand exactly what must happen — and when — after a serious cyber incident.</li>
+      <li>Under <strong>S.I. No. 322 of 2024</strong>, you have <strong>24 hours</strong> to send an early warning to the NCSC Ireland, <strong>72 hours</strong> for a full incident notification, and <strong>30 days</strong> for a final report.</li>
+      <li>Missing these deadlines is itself a sanctionable offence — separate from the incident that triggered them.</li>
+      <li>Under <strong>Regulation 32</strong> of S.I. 322/2024, management body members can be held <strong>personally liable</strong>. The clock starts the moment your team becomes aware of the incident — not when you are briefed.</li>
+    </ul>
+  </div>
+
+  <!-- KEY TAKEAWAY -->
+  <div class="box-takeaway">
+    <div class="takeaway-label">Key Takeaway</div>
+    <p>The incident reporting timeline under Ireland's NIS2 Regulations is not a suggestion. It is a legal obligation with personal consequences for you as CEO or board member if your organisation fails to meet it.</p>
+  </div>
+
+  <!-- HOOK -->
+  <p>
+    It is 3:04 in the morning. Somewhere in your organisation's infrastructure, a ransomware payload has just detonated. Within minutes, file shares begin encrypting. Within the hour, a monitoring alert fires — but the on-call engineer is already asleep and doesn't see it until 6:47am. By the time your CISO calls you at 8:15am, the attackers have had over five hours of uninterrupted access.
+  </p>
+
+  <p>
+    The question is not whether your IT team can handle the technical response. The question — the one that determines whether you personally face sanctions under <strong>S.I. No. 322 of 2024</strong> — is whether your organisation has a legally compliant incident reporting process in place, and whether it was followed from the moment the incident was detected.
+  </p>
+
+  <p>
+    Under Ireland's transposition of the NIS2 Directive, the clock started at 6:47am. Not when you were briefed. Not when a formal incident declaration was made. The moment your team became aware of a significant incident, your legal obligations began.
+  </p>
+
+  <div class="box-warning">
+    <strong>This is not just an IT problem.</strong> Under Regulation 32 of S.I. No. 322 of 2024, members of the management body — including the CEO and board — can be held personally liable for infringements of the NIS2 obligations. Failing to report on time is an infringement. Fines for essential entities reach up to <strong>€10 million or 2% of global annual turnover</strong>.
+  </div>
+
+  <h2>The Scenario: Acorn Analytics Is Hit at 3am</h2>
+
+  <p>
+    Let's follow a fictional Irish company — <strong>Acorn Analytics Ltd</strong> — through the first 30 days after a ransomware attack. Acorn Analytics is a mid-sized data analytics firm headquartered in Dublin, providing services to financial institutions across the EU. It is registered in Ireland and classified as an <strong>essential entity</strong> under S.I. No. 322 of 2024.
+  </p>
+
+  <p>
+    The attack begins at 03:04 on a Tuesday morning. What follows is a minute-by-minute test of whether Acorn's leadership understood its legal obligations before the incident happened — because by the time the attack is discovered, the deadlines are already counting down.
+  </p>
+
+  <h2>What Counts as a "Significant Incident" Under Irish NIS2 Law?</h2>
+
+  <p>
+    Before walking through the timeline, it is worth being precise about what triggers reporting obligations. Not every minor IT disruption requires a call to the NCSC Ireland. Under S.I. No. 322 of 2024, a <strong>significant incident</strong> is one that:
+  </p>
+
+  <ul>
+    <li>Has caused or is capable of causing <strong>severe operational disruption</strong> to your services or to other organisations that depend on them;</li>
+    <li>Has caused or is capable of causing <strong>significant financial loss</strong> to your organisation;</li>
+    <li>Has caused or is capable of causing <strong>significant material or non-material damage</strong> to other natural or legal persons.</li>
+  </ul>
+
+  <p>
+    A ransomware attack that encrypts production systems and prevents service delivery almost certainly qualifies. So does any breach that exposes sensitive data held on behalf of third parties, or any attack that disrupts critical services to downstream customers. When in doubt, your legal obligation is to report — not to deliberate. The regulator will not penalise you for reporting something that turns out to be less serious than initially feared. They will penalise you for silence.
+  </p>
+
+  <div class="box-info">
+    <strong>Who do you report to in Ireland?</strong> The primary competent authority under S.I. No. 322 of 2024 is the <strong>NCSC Ireland</strong> (National Cyber Security Centre), reachable at <a href="https://www.ncsc.gov.ie" style="color: var(--yellow);">ncsc.gov.ie</a>. If your organisation operates in a regulated sector, your sector regulator — the <strong>Central Bank of Ireland (CBI)</strong> for financial services, <strong>ComReg</strong> for telecoms and digital infrastructure, or the <strong>Commission for Regulation of Utilities (CRU)</strong> for energy — may also require parallel notification. Check your sector obligations in advance, not at 3am.
+  </div>
+
+  <h2>The Three-Phase Reporting Timeline — With Checklists</h2>
+
+  <p>
+    Ireland's NIS2 incident reporting process follows the same three-phase structure as the EU directive. Here is what each phase requires, mapped onto the Acorn Analytics scenario.
+  </p>
+
+  <div style="margin: 40px 0;">
+
+    <div class="timeline-block" style="position:relative;">
+      <div class="timeline-dot"></div>
+      <div class="timeline-heading">⏱ Phase 1 — Within 24 Hours: Early Warning</div>
+      <p>
+        <strong>Acorn Analytics timeline:</strong> The on-call engineer detects the attack at 06:47. The CISO is briefed at 08:15. The CEO is informed at 08:40. The 24-hour deadline for an early warning to NCSC Ireland expires at <strong>06:47 on Wednesday morning</strong>.
+      </p>
+      <p>
+        The early warning does not need to be a comprehensive technical report. It is a brief notification that a significant incident has occurred or is suspected. Its purpose is to allow NCSC Ireland to prepare any coordinated response, and to alert your sector regulator if appropriate.
+      </p>
+      <p>
+        At this stage, the early warning should include:
+      </p>
+      <ul class="checklist">
+        <li>
+          <span class="check-box"></span>
+          <span class="check-text"><span class="check-label">Required</span>Confirmation that a significant incident has occurred or is strongly suspected</span>
+        </li>
+        <li>
+          <span class="check-box"></span>
+          <span class="check-text"><span class="check-label">Required</span>The nature of the incident — e.g. ransomware, data exfiltration, service disruption</span>
+        </li>
+        <li>
+          <span class="check-box"></span>
+          <span class="check-text"><span class="check-label">Required</span>Whether the incident is suspected to be the result of unlawful or malicious action</span>
+        </li>
+        <li>
+          <span class="check-box"></span>
+          <span class="check-text"><span class="check-label">Required</span>Whether the incident has a potential cross-border impact — critical for Irish-registered EU headquarters</span>
+        </li>
+        <li>
+          <span class="check-box"></span>
+          <span class="check-text"><span class="check-label">Best Practice</span>Name and contact details of the person responsible for the incident response</span>
+        </li>
+      </ul>
+      <p>
+        At Acorn Analytics, the CEO delegates the early warning submission to the CISO at 09:10. It is filed with NCSC Ireland at 10:22 — well within the 24-hour window. This is the correct decision. Do not wait for a complete picture. File early, file factually, and update as you learn more.
+      </p>
+    </div>
+
+    <div class="timeline-block" style="position:relative;">
+      <div class="timeline-dot"></div>
+      <div class="timeline-heading">⏱ Phase 2 — Within 72 Hours: Incident Notification</div>
+      <p>
+        <strong>Acorn Analytics timeline:</strong> The full incident notification must be submitted to NCSC Ireland by <strong>06:47 on Friday morning</strong> — 72 hours after detection.
+      </p>
+      <p>
+        This is the substantive report. By this point, your incident response team should have a clearer picture of what happened, what systems were affected, and what remediation steps are underway. The 72-hour notification must include:
+      </p>
+      <ul class="checklist">
+        <li>
+          <span class="check-box"></span>
+          <span class="check-text"><span class="check-label">Required</span>An updated and detailed description of the incident, including its likely cause if known</span>
+        </li>
+        <li>
+          <span class="check-box"></span>
+          <span class="check-text"><span class="check-label">Required</span>The severity of the incident and its actual or potential impact on service delivery</span>
+        </li>
+        <li>
+          <span class="check-box"></span>
+          <span class="check-text"><span class="check-label">Required</span>The indicators of compromise (IoCs) if available — these help NCSC Ireland protect other organisations</span>
+        </li>
+        <li>
+          <span class="check-box"></span>
+          <span class="check-text"><span class="check-label">Required</span>The mitigation measures applied or currently being applied</span>
+        </li>
+        <li>
+          <span class="check-box"></span>
+          <span class="check-text"><span class="check-label">Required</span>Whether the incident may affect other EU member states — particularly relevant for Irish-registered multinationals</span>
+        </li>
+        <li>
+          <span class="check-box"></span>
+          <span class="check-text"><span class="check-label">Best Practice</span>A named senior point of contact for NCSC Ireland follow-up queries</span>
+        </li>
+      </ul>
+      <p>
+        At Acorn Analytics, the board is convened for an emergency session at 11:00 on Wednesday. The CEO presents the incident timeline. The board formally approves the 72-hour notification draft prepared by the CISO and legal counsel. It is submitted at 14:30 on Thursday — within the window. The board chair notes this approval in the board minutes. This documentation will matter.
+      </p>
+    </div>
+
+    <div class="timeline-block" style="position:relative; padding-bottom: 0;">
+      <div class="timeline-dot"></div>
+      <div class="timeline-heading">⏱ Phase 3 — Within 30 Days: Final Report</div>
+      <p>
+        <strong>Acorn Analytics timeline:</strong> A comprehensive final report must be submitted to NCSC Ireland within <strong>one month</strong> of the initial detection — by approximately 6 November in this scenario.
+      </p>
+      <p>
+        The final report is the most detailed of the three submissions. It is also the document most likely to be scrutinised if NCSC Ireland or another authority later investigates your handling of the incident. It must include:
+      </p>
+      <ul class="checklist">
+        <li>
+          <span class="check-box"></span>
+          <span class="check-text"><span class="check-label">Required</span>A full description of the incident, including its timeline from first detection to resolution</span>
+        </li>
+        <li>
+          <span class="check-box"></span>
+          <span class="check-text"><span class="check-label">Required</span>The type and root cause of the incident — what vulnerability was exploited and how</span>
+        </li>
+        <li>
+          <span class="check-box"></span>
+          <span class="check-text"><span class="check-label">Required</span>The impact of the incident — systems affected, data categories involved, services disrupted, downstream effects</span>
+        </li>
+        <li>
+          <span class="check-box"></span>
+          <span class="check-text"><span class="check-label">Required</span>The remediation measures taken and currently ongoing</span>
+        </li>
+        <li>
+          <span class="check-box"></span>
+          <span class="check-text"><span class="check-label">Required</span>Any cross-border impact and whether other EU member state authorities were notified</span>
+        </li>
+        <li>
+          <span class="check-box"></span>
+          <span class="check-text"><span class="check-label">Best Practice</span>The lessons learned and the specific security improvements committed to as a result</span>
+        </li>
+        <li>
+          <span class="check-box"></span>
+          <span class="check-text"><span class="check-label">Best Practice</span>Board sign-off documentation demonstrating management body oversight per Regulation 32</span>
+        </li>
+      </ul>
+      <p>
+        For Acorn Analytics, the final report becomes a board-level document. The CEO signs it. The board chair co-signs. This is not bureaucratic box-ticking — it is the documented evidence that the management body took its NIS2 obligations seriously. In any subsequent supervisory review, this document is your primary defence.
+      </p>
+    </div>
+
+  </div>
+
+  <h2>The Parallel Obligation: GDPR and Data Protection</h2>
+
+  <p>
+    If the ransomware attack involved access to or exfiltration of personal data — employee records, customer data, financial data — a <strong>separate 72-hour notification obligation</strong> also applies under the GDPR to the <strong>Data Protection Commission (DPC)</strong>. These are two distinct legal obligations running in parallel. The NIS2 report goes to NCSC Ireland. The GDPR report goes to the DPC. Both apply. Both have consequences for non-compliance.
+  </p>
+
+  <p>
+    Many Irish CEOs are aware of GDPR reporting obligations from prior experience. Fewer have built NIS2 incident reporting into their crisis response plans. The organisations that get this right are the ones that practised it before the attack happened — not the ones improvising at 3am with two separate regulatory clocks running.
+  </p>
+
+  <h2>The Personal Liability That Changes Everything</h2>
+
+  <p>
+    It bears dwelling on Regulation 32 of S.I. No. 322 of 2024 — because it is the provision that most CEOs and board members do not fully appreciate until it is too late.
+  </p>
+
+  <p>
+    Regulation 32 provides that members of the <strong>management body</strong> of an essential or important entity can be held personally liable for infringements of the NIS2 obligations. This is not corporate liability that sits at arm's length from the individual. This is personal liability — your liability.
+  </p>
+
+  <p>
+    In practice, this means:
+  </p>
+
+  <ol>
+    <li>If your organisation fails to notify NCSC Ireland within 24 hours and 72 hours as required, <strong>you</strong> — as a board member or CEO — can be held personally accountable for that failure.</li>
+    <li>If NCSC Ireland determines that the management body failed to approve, oversee or adequately resource the organisation's cybersecurity measures, <strong>you</strong> can be held responsible for the resulting harm.</li>
+    <li>In serious cases, the competent authority can impose a <strong>temporary ban on an individual exercising managerial responsibilities</strong> at any organisation. This is not a fine against the company. This is a professional disqualification against you personally.</li>
+  </ol>
+
+  <p>
+    The way to protect yourself is not to delegate the problem. Delegation of execution is appropriate — the CISO handles the technical response, legal counsel drafts the notifications. But the management body must <strong>approve the approach</strong>, <strong>be briefed in real time</strong>, and <strong>document its oversight</strong> throughout. A board minute that shows the board was engaged, asked the right questions, and approved key decisions is your strongest protection under Regulation 32.
+  </p>
+
+  <div class="box-warning">
+    <strong>The personal disqualification risk is real.</strong> NCSC Ireland has the power under S.I. No. 322 of 2024 to recommend temporary bans on individuals from exercising management responsibilities where serious infringements are found. This is not a theoretical provision. Build your incident response plan around the assumption that NCSC Ireland will scrutinise the board's role — because they can.
+  </div>
+
+  <h2>A Realistic Scenario: What Happens When the Process Fails</h2>
+
+  <div class="box-case">
+    <div class="case-label">Illustrative Case Study</div>
+    <p>
+      <strong>Scenario: Irish-registered technology services company, approximately 400 employees, classified as an essential entity under S.I. No. 322 of 2024.</strong>
+    </p>
+    <p>
+      The company is hit by a ransomware attack on a Friday evening in late 2025. The IT team detects it at 22:15. The CTO is called at 22:40 and makes a judgment call — they will contain the incident over the weekend and assess on Monday before deciding whether to notify. The rationale: they want to understand the full scope before "alarming" the regulator.
+    </p>
+    <p>
+      Monday morning arrives. The scope is worse than expected. A decision is finally made to notify NCSC Ireland at 10:30 on Monday — <strong>over 60 hours after detection</strong>, well beyond the 24-hour early warning deadline and rapidly approaching the 72-hour notification deadline.
+    </p>
+    <p>
+      The 72-hour notification is ultimately filed at 17:15 on Monday — <strong>approximately 67 hours after detection</strong>. The early warning was never filed separately. There is no documented board involvement before Monday morning. The board chair learns of the incident in a brief phone call at 09:00 Monday.
+    </p>
+    <p>
+      NCSC Ireland initiates a supervisory review. In the review, it becomes clear that the organisation had no documented incident response plan that included the NIS2 notification obligations. There was no defined escalation path to the board. The board had never formally approved the company's security measures as required.
+    </p>
+    <p>
+      <strong>Outcome:</strong> Administrative sanctions for failure to file the early warning within 24 hours. Additional sanctions for absence of documented security governance. The CTO faces personal liability review under Regulation 32. Total estimated cost including legal response, remediation, and regulatory sanctions: <span class="danger">€1.8 million to €3.2 million</span>. Reputational damage with key financial sector clients: ongoing.
+    </p>
+    <p style="margin-bottom:0;">
+      The failure was not technical. The company had reasonable security tools in place. The failure was governance — no plan, no escalation path, no board involvement, and a misguided instinct to manage the incident quietly before engaging the regulator. Under NIS2, that instinct is precisely what the legislation is designed to correct.
+    </p>
+  </div>
+
+  <h2>The Special Position of Irish-Registered EU Headquarters</h2>
+
+  <p>
+    Ireland hosts the European headquarters of many of the world's largest technology, pharmaceutical and financial services companies. For these organisations, the NIS2 incident reporting obligations carry an additional layer of complexity.
+  </p>
+
+  <p>
+    Under the NIS2 Directive's jurisdiction rules, an entity's primary competent authority is determined by where it is established. If you are an essential entity registered and headquartered in Ireland — even if your operations span 20 EU member states — <strong>NCSC Ireland is your lead competent authority</strong> for incident reporting purposes.
+  </p>
+
+  <p>
+    This matters for two reasons. First, your 24-hour and 72-hour notifications go to NCSC Ireland, not to the national authorities in Germany, France, the Netherlands or wherever your operations are concentrated. Second, if your incident has cross-border implications — which, for a large EU-headquartered company, it almost certainly will — NCSC Ireland has an obligation to share information with the relevant authorities in other affected member states. Your report to NCSC Ireland may be seen by regulators across the EU.
+  </p>
+
+  <p>
+    The practical implication: incident reports filed with NCSC Ireland should be prepared with the awareness that they may be reviewed by a broad audience of EU competent authorities. Accuracy and completeness matter enormously. So does having a legal team that understands both Irish law under S.I. No. 322 of 2024 and the cross-border coordination mechanisms under the NIS2 Directive.
+  </p>
+
+  <h2>What You Must Have in Place Before the Next Incident</h2>
+
+  <p>
+    The organisations that handle NIS2 incidents well are not the ones with the best security technology. They are the ones that spent time before the incident building a response process that matches the legal requirements. Here is what that means concretely:
+  </p>
+
+  <ul>
+    <li><strong>A written incident response plan</strong> that explicitly includes NIS2 notification obligations, timelines and responsible persons — signed off by the board.</li>
+    <li><strong>A defined escalation path to the board and CEO</strong> that triggers within the first hour of a confirmed significant incident — not after a weekend of internal assessment.</li>
+    <li><strong>A pre-agreed notification template</strong> for the NCSC Ireland early warning, so the first submission can be made quickly and accurately even under pressure.</li>
+    <li><strong>A contact on file with NCSC Ireland</strong> before an incident occurs. NCSC Ireland publishes guidance for entities to register and establish a reporting relationship proactively.</li>
+    <li><strong>Board minutes that demonstrate ongoing oversight</strong> of cybersecurity — approvals of the security framework, risk assessments reviewed, training completed. This is your Regulation 32 protection.</li>
+    <li><strong>A tested process</strong> — tabletop exercises that simulate a 3am ransomware attack and walk the team through the first 24 hours, including drafting and filing the early warning notification.</li>
+  </ul>
+
+  <p>
+    None of this requires you to become a cybersecurity expert. It requires you to govern your organisation's cybersecurity with the same seriousness you bring to financial risk, regulatory compliance and strategic planning. NIS2 demands board-level engagement, not board-level technical expertise.
+  </p>
+
+  <h2>Frequently Asked Questions</h2>
+
+  <div class="faq-item">
+    <div class="faq-q">Does the 24-hour clock start when the incident occurs, or when we detect it?</div>
+    <div class="faq-a">It starts when your organisation becomes aware of the incident — in practice, when any employee or system detects it. Not when the board is briefed. Not when a formal internal declaration is made. This is why your on-call procedures and escalation paths matter so much. If your IT team detects an attack at 6:47am but doesn't escalate until 11:00am, you have already spent 4 hours of your 24-hour window on internal process delays.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">What if we don't know yet whether it qualifies as a "significant incident"?</div>
+    <div class="faq-a">Report it anyway. The NIS2 Regulations do not penalise you for filing an early warning that turns out to be unnecessary. They do penalise you for failing to report an incident that should have been reported. When in doubt, the conservative decision — file early and withdraw or update if needed — is the legally safer position. NCSC Ireland has stated publicly that they want organisations to err on the side of early notification.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">Can we handle the NCSC Ireland reporting in-house, or do we need external legal support?</div>
+    <div class="faq-a">For the initial 24-hour early warning, internal handling is realistic if you have prepared a template in advance. For the 72-hour notification and especially the 30-day final report, legal counsel with NIS2 expertise is strongly advisable — particularly if there are cross-border implications, GDPR obligations running in parallel, or any prospect of supervisory scrutiny. The reports you file become part of the permanent regulatory record. Invest accordingly.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">What if the incident started before we were aware of it — for example, attackers were in our systems for weeks before we detected them?</div>
+    <div class="faq-a">The clock starts at detection, not at the time of the initial intrusion. However, the final report must cover the full timeline of the incident including the period of undetected access. A long dwell time — attackers present in your systems for weeks — will be examined carefully in any supervisory review and may raise questions about the adequacy of your monitoring capabilities under Article 21 of the NIS2 Directive.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">We are classified as an important entity, not an essential entity. Do the same timelines apply?</div>
+    <div class="faq-a">Yes. The 24-hour, 72-hour and 30-day reporting obligations apply equally to important entities under S.I. No. 322 of 2024. The difference is in the maximum penalty level — up to €7 million or 1.4% of global annual turnover for important entities, versus €10 million or 2% for essential entities. The personal liability provisions under Regulation 32 also apply to both categories.</div>
+  </div>
+
+  <div class="box-info" style="margin: 48px 0 32px;">
+    <div style="font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color: var(--yellow); margin-bottom:10px;">🔧 TOOLS &amp; SOLUTIONS</div>
+    <p style="margin:0; font-size:17px; color: #ddd; line-height:1.7;"><strong>Microsoft Sentinel</strong> (SIEM) and <strong>Microsoft Defender XDR</strong> give your security team the real-time detection, alert correlation and incident timeline documentation needed to meet the NIS2 reporting deadlines with accuracy and confidence. Automated alerting reduces the risk of detection delays that eat into your 24-hour window. A certified Microsoft partner can assess your current incident detection and response capabilities for free as part of a gap analysis — contact us to arrange yours.</p>
+  </div>
+
+  <!-- NEWSLETTER -->
+  <div style="background:#111; border:1px solid rgba(255,255,255,0.1); border-left:3px solid #f5c518; border-radius:4px; padding:32px 36px; margin:40px 0 0; text-align:center; max-width:760px; margin-left:auto; margin-right:auto;">
+    <div style="font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:#f5c518; margin-bottom:12px;">📬 NIS2 UPDATES</div>
+    <h3 style="font-family:'Poppins',sans-serif; font-size:20px; font-weight:800; margin:0 0 8px; color:#f0f0f0;">New NIS2 article every week — straight to your inbox</h3>
+    <p style="color:#888; font-size:15px; margin:0 0 20px;">No sales pitch. Just practical guidance for CEOs and boards.</p>
+    <form id="nlForm-nis2_incident_reporting_24_hours" onsubmit="submitNewsletter_nis2_incident_reporting_24_hours(event)" style="display:flex; gap:10px; flex-wrap:wrap; justify-content:center; max-width:460px; margin:0 auto;">
+      <input type="email" id="nlEmail-nis2_incident_reporting_24_hours" placeholder="your@company.ie" required style="flex:1; min-width:200px; padding:12px 16px; background:#1c1c1f; border:1px solid rgba(255,255,255,0.15); border-radius:4px; color:#f0f0f0; font-size:15px; outline:none;" />
+      <button type="submit" id="nlSubmit-nis2_incident_reporting_24_hours" style="padding:12px 22px; background:#f5c518; color:#141416; font-weight:700; font-size:15px; border:none; border-radius:4px; cursor:pointer; white-space:nowrap;">Subscribe free →</button>
+    </form>
+    <p style="font-size:12px; color:#555; margin:12px 0 0;">You can unsubscribe at any time. We never share your email.</p>
+    <div id="nlThanks-nis2_incident_reporting_24_hours" style="display:none; color:#4ade80; font-size:16px; font-weight:600; margin-top:14px;">✅ You're in! Next article coming to your inbox.</div>
+  </div>
+
+  <!-- CTA -->
+  <div class="cta-section">
+    <h2>Do you know where your organisation stands today?</h2>
+    <p>A free gap analysis with a certified Microsoft partner shows exactly what you've already covered — and what's missing.</p>
+    <a href="/nis2.html#boka" class="btn-primary">Book free gap analysis →</a>
+    <p class="cta-fine">Fines are up to <strong>€10 million</strong>. The gap analysis is free.</p>
+  </div>
+
+</article>
+
+<div class="related-articles" style="margin:2.5rem 0 2rem;padding:1.5rem;background:#1a1a2e;border-left:4px solid #f0a500;border-radius:4px;max-width:760px;margin-left:auto;margin-right:auto;">
+  <p style="margin:0 0 1rem;font-size:0.85rem;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:#f0a500;">Read also</p>
+  <ul style="margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:0.5rem;">
+    <li><a href="/en/articles/nis2-personal-liability-board-ireland.html" style="color:#e0e0e0;text-decoration:none;font-size:0.95rem;">&#x2192; Personal liability for boards under Irish NIS2 law</a></li>
+    <li><a href="/en/articles/nis2-ncsc-ireland-supervision.html" style="color:#e0e0e0;text-decoration:none;font-size:0.95rem;">&#x2192; NIS2 supervision: NCSC Ireland's role and powers</a></li>
+    <li><a href="/en/articles/nis2-which-companies-are-covered-ireland.html" style="color:#e0e0e0;text-decoration:none;font-size:0.95rem;">&#x2192; Which companies are covered by NIS2 in Ireland?</a></li>
+  </ul>
+  <p style="margin:1.25rem 0 0;font-size:0.85rem;color:#aaa;">&#8592; <a href="https://nis2klar.se/" style="color:#f0a500;text-decoration:none;">NIS2Klar home</a> &nbsp;&middot;&nbsp; <a href="https://nis2klar.se/en/articles.html" style="color:#f0a500;text-decoration:none;">All guides</a></p>
+</div>
+
+<footer>
+  © 2026 M&amp;J Trusted Marketing KB ·
+  <a href="mailto:support@trustedmarketing.se">support@trustedmarketing.se</a> · <a href="tel:+46470597003">+46 470 59 70 03</a> ·
+  <a href="https://nis2klar.se/">Back to home</a> ·
+  <a href="/privacy.html">Privacy Policy</a>
+  <p style="margin-top:12px; font-size:11px; color: #555; line-height:1.5;">Microsoft, Microsoft 365, Azure and related product names are trademarks of Microsoft Corporation. nis2klar.se is not affiliated with or endorsed by Microsoft Corporation.</p>
+</footer>
+
+<script>
+  async function submitNewsletter_nis2_incident_reporting_24_hours(e) {
+    e.preventDefault();
+    const btn = document.getElementById('nlSubmit-nis2_incident_reporting_24_hours');
+    btn.disabled = true; btn.textContent = '...';
+    const email = document.getElementById('nlEmail-nis2_incident_reporting_24_hours').value.trim();
+    try {
+      const res = await fetch('/api/newsletter/subscribe', { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({ email, source: 'article-en-nis2_incident_reporting_24_hours' }) });
+      const data = await res.json();
+      if (data.success) { document.getElementById('nlForm-nis2_incident_reporting_24_hours').style.display='none'; document.getElementById('nlThanks-nis2_incident_reporting_24_hours').style.display='block'; }
+      else { btn.disabled=false; btn.textContent='Subscribe free →'; }
+    } catch { btn.disabled=false; btn.textContent='Subscribe free →'; }
+  }
+</script>
+
+</body>
+</html>

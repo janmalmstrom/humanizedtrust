@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-BKF3QH9K01"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag("js", new Date());
+    gtag("config", "G-BKF3QH9K01");
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NIS2-revisionsforberedelse: Sådan forbereder du dig til tilsynsgennemgang | NIS2Klar</title>
+  <meta name="description" content="NIS2-revision kan udløses uden varsel. Læs hvad CFCS efterspørger, hvilken dokumentation der kræves, og hvordan du præsenterer sikkerhedsstatus troværdigt overfor myndighederne.">
+  <meta property="og:title" content="NIS2-revisionsforberedelse: Sådan forbereder du dig til tilsynsgennemgang">
+  <meta property="og:description" content="NIS2-revision kan udløses uden varsel. Læs hvad CFCS efterspørger, hvilken dokumentation der kræves, og hvordan du præsenterer sikkerhedsstatus troværdigt overfor myndighederne.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #141416;
+      --card: #1c1c1f;
+      --yellow: #f5c518;
+      --white: #f0f0f0;
+      --muted: #888;
+      --red: #C61212;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: var(--bg); color: var(--white); font-family: 'Barlow', sans-serif; font-size: 19px; line-height: 1.8; }
+
+    /* Nav */
+    nav { display: flex; justify-content: space-between; align-items: center; padding: 20px 40px; border-bottom: 1px solid rgba(255,255,255,0.07); max-width: 900px; margin: 0 auto; }
+    .nav-logo { font-family: 'Poppins', sans-serif; font-weight: 900; font-size: 20px; color: var(--yellow); text-decoration: none; }
+    .nav-logo span { color: var(--white); }
+    .nav-back { color: var(--muted); text-decoration: none; font-size: 15px; }
+    .nav-back:hover { color: var(--white); }
+    .lang-switcher { display: flex; gap: 8px; align-items: center; font-size: 13px; font-family: 'Poppins', sans-serif; }
+    .lang-switcher a { color: var(--muted); text-decoration: none; font-weight: 600; padding: 4px 8px; border-radius: 3px; transition: all 0.2s; }
+    .lang-switcher a:hover { color: var(--white); }
+    .lang-switcher a.active { color: var(--yellow); background: rgba(245,197,24,0.1); }
+    .nav-cta { background: var(--yellow); color: #000; padding: 8px 18px; border-radius: 4px; text-decoration: none; font-weight: 700; font-size: 14px; font-family: 'Poppins', sans-serif; }
+
+    /* Article */
+    .article-wrap { max-width: 760px; margin: 0 auto; padding: 60px 40px; }
+    .article-category { font-size: 13px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 16px; }
+    h1 { font-family: 'Poppins', sans-serif; font-size: clamp(30px, 4vw, 44px); font-weight: 900; line-height: 1.2; margin-bottom: 24px; }
+    .article-meta { font-size: 15px; color: var(--muted); margin-bottom: 48px; padding-bottom: 24px; border-bottom: 1px solid rgba(255,255,255,0.07); }
+    h2 { font-family: 'Poppins', sans-serif; font-size: 26px; font-weight: 700; margin: 48px 0 16px; color: var(--white); }
+    h3 { font-family: 'Poppins', sans-serif; font-size: 20px; font-weight: 600; margin: 32px 0 12px; color: var(--yellow); }
+    p { margin-bottom: 22px; }
+    strong { color: var(--white); font-weight: 700; }
+    .highlight { color: var(--yellow); font-weight: 700; }
+    .danger { color: #ff6b6b; font-weight: 700; }
+    ul, ol { margin: 16px 0 24px 24px; }
+    li { margin-bottom: 12px; font-size: 19px; }
+
+    /* Callout boxes */
+    .box-warning { background: rgba(197,17,17,0.12); border-left: 4px solid var(--red); padding: 20px 24px; margin: 32px 0; border-radius: 0 4px 4px 0; }
+    .box-info { background: rgba(245,197,24,0.08); border-left: 4px solid var(--yellow); padding: 20px 24px; margin: 32px 0; border-radius: 0 4px 4px 0; }
+    .box-case { background: var(--card); border: 1px solid rgba(255,255,255,0.08); padding: 28px; margin: 40px 0; border-radius: 4px; }
+    .box-case .case-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 12px; }
+    blockquote { border-left: 3px solid var(--yellow); padding: 12px 20px; margin: 24px 0; font-style: italic; color: #ccc; }
+
+    /* CTA */
+    .cta-section { background: var(--card); border: 1px solid rgba(245,197,24,0.2); border-radius: 4px; padding: 48px 40px; margin: 64px 0 40px; text-align: center; }
+    .cta-section h2 { margin-top: 0; font-size: 26px; }
+    .cta-section p { color: #aaa; max-width: 500px; margin: 0 auto 28px; }
+    .btn-primary { display: inline-block; background: var(--yellow); color: #000; font-family: 'Poppins', sans-serif; font-weight: 800; font-size: 16px; padding: 16px 36px; border-radius: 4px; text-decoration: none; }
+    .btn-primary:hover { background: #e0b010; }
+    .cta-fine { font-size: 13px; color: var(--muted); margin-top: 16px; }
+
+    /* FAQ */
+    .faq-item { border-bottom: 1px solid rgba(255,255,255,0.07); padding: 20px 0; }
+    .faq-q { font-family: 'Poppins', sans-serif; font-weight: 600; margin-bottom: 10px; }
+    .faq-a { color: #bbb; }
+
+    /* Checklist table */
+    .checklist-table { width: 100%; border-collapse: collapse; margin: 24px 0; }
+    .checklist-table th { background: rgba(245,197,24,0.1); color: var(--yellow); font-family: 'Poppins', sans-serif; font-size: 13px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 12px 16px; text-align: left; border-bottom: 1px solid rgba(245,197,24,0.2); }
+    .checklist-table td { padding: 14px 16px; border-bottom: 1px solid rgba(255,255,255,0.05); font-size: 15px; }
+    .checklist-table tr:last-child td { border-bottom: none; }
+
+    /* Summary + Key Takeaway */
+    .box-summary { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; padding: 24px 28px; margin: 0 0 32px; }
+    .summary-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-bottom: 14px; }
+    .box-summary ul { margin: 0; padding-left: 20px; }
+    .box-summary li { margin-bottom: 8px; font-size: 17px; color: #ccc; }
+    .box-takeaway { background: rgba(245,197,24,0.08); border-left: 4px solid var(--yellow); padding: 20px 24px; margin: 0 0 40px; border-radius: 0 4px 4px 0; }
+    .takeaway-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 10px; }
+    .box-takeaway p { margin: 0; font-size: 18px; font-weight: 600; color: var(--white); line-height: 1.6; }
+
+    /* Related Articles */
+    .related-articles { margin: 2.5rem 0 2rem; padding: 1.5rem; background: #1a1a2e; border-left: 4px solid #f0a500; border-radius: 4px; }
+    .related-articles p { margin: 0 0 1rem; font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #f0a500; }
+    .related-articles ul { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+    .related-articles li a { color: #e0e0e0; text-decoration: none; font-size: 0.95rem; }
+    .related-articles li a:hover { color: var(--yellow); }
+
+    /* Footer */
+    footer { border-top: 1px solid rgba(255,255,255,0.07); padding: 32px 40px; text-align: center; font-size: 13px; color: var(--muted); max-width: 900px; margin: 0 auto; }
+    footer a { color: var(--muted); text-decoration: none; }
+    footer a:hover { color: var(--white); }
+
+    @media (max-width: 600px) {
+      nav, .article-wrap, footer { padding: 20px; }
+      nav { flex-direction: column; gap: 16px; }
+      .nav-back { order: 2; }
+      .nav-logo { order: 1; }
+      .lang-switcher { order: 3; }
+      .nav-cta { order: 4; width: 100%; text-align: center; }
+      .cta-section { padding: 32px 20px; }
+      .checklist-table { font-size: 14px; }
+      .checklist-table th, .checklist-table td { padding: 10px 10px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="https://nis2klar.se/da/">NIS2<span>Klar</span></a>
+  <a class="nav-back" href="https://nis2klar.se/da/artikler.html">← Alle artikler</a>
+  <div class="lang-switcher">
+    <a href="https://nis2klar.se/artiklar.html" title="Svenska">SV</a>
+    <a href="https://nis2klar.se/en/articles.html" title="English">EN</a>
+    <a href="https://nis2klar.se/da/artikler.html" class="active" title="Dansk">DA</a>
+    <a href="https://nis2klar.se/no/artikler.html" title="Norsk">NO</a>
+    <a href="https://nis2klar.se/it/articoli.html" title="Italiano">IT</a>
+  </div>
+  <a class="nav-cta" href="https://nis2klar.se/da/#boka">Book samtal →</a>
+</nav>
+
+<article class="article-wrap">
+  <div class="article-category">Tilsyn &amp; Compliance</div>
+  <h1>NIS2-revisionsforberedelse: Sådan forbereder du dig til tilsynsgennemgang</h1>
+  <div class="article-meta">Opdateret 19. april 2026 · Læsetid: ca 8 minutter · Målgruppe: Ledelse</div>
+
+  <!-- SUMMARY -->
+  <div class="box-summary">
+    <div class="summary-label">Sammenfatning</div>
+    <ul>
+      <li>NIS2-tilsyn kan udløses uden varsel — enten proaktivt fra CFCS eller efter en sikkerhedsincident.</li>
+      <li>CFCS efterspørger konkret dokumentation: risikovurdering, sikkerhedspolitik, incidentplan, styrelsesbeslutninger og leverandørkontrol.</li>
+      <li>Dit ledelsesteam skal være til stede under granskningen — ikke kun IT-folk.</li>
+      <li>Manglende eller uklart dokumentation er det vigtigste fejltrin; tilsynsmyndigheder bedømmer efter skriftlige bevis, ikke intentioner.</li>
+      <li>En mock-auditliste hjælper dig med at identificere åbenlyse huller før CFCS banker på døren.</li>
+    </ul>
+  </div>
+
+  <!-- KEY TAKEAWAY -->
+  <div class="box-takeaway">
+    <div class="takeaway-label">Vigtigste pointe</div>
+    <p>En NIS2-revision starter ikke med spørgsmål om teknologi — den starter med et krav om at se dine dokumenter. Hvis du ikke kan præsentere ord for ord, hvad din styrelse har vedtaget, risikerer du at se en "væsentlig mangel" nedtegnet i revisionsrapporten, selv hvis du teknisk set gør det rigtigt.</p>
+  </div>
+
+  <!-- HOOK -->
+  <p>
+    Du sidder på direktørkontoret. Telefonen ringer. Det er CFCS — Center for Cybersikkerhed. De vil gerne på besøg. Næste uge.
+  </p>
+  <p>
+    Dit hjerte hamrer. Du var ikke klar på dette. IT-chefen siger, at systemerne er fine, men dokumentationen er rotete.
+  </p>
+  <p>
+    Det scenarie er ikke teoretisk. Siden NIS2-loven trådte i kraft i oktober 2024, har CFCS og sektortilsynene igangsat titusinder af revisions-samtaler med danske væsentlige og vigtige enheder. Nogle er planlagte. Nogle er reaktive — efter en incident. Og når de kommer, har du typisk 14-30 dage til at præsentere bevis.
+  </p>
+  <p>
+    Denne guide forklarer, hvad der sker under en NIS2-revision, hvilken dokumentation du skal have klar, hvem fra organisationen der skal være til stede — og vigtigst: hvordan du forbereder dig nu, så du ikke søger i mapperne den dag, dørklokken ringer.
+  </p>
+
+  <div class="box-warning">
+    <strong>Tilsynet er allerede i gang.</strong> CFCS har modtaget tusindvis af spørgeskemaer fra væsentlige enheder. Hvis du ikke svarer, skærpes scrutiny'en. Hvis du svarede usoigneret eller uden dokumentation, kan en fysisk granskning være næste skridt — og det bliver dyrere.
+  </div>
+
+  <h2>Hvad betyder en NIS2-revision i praksis?</h2>
+
+  <p>
+    En NIS2-revision (eller tilsynsgennemgang) er en struktureret vurdering af din organisations sikkerhedsstatus mod lovens krav. Det er ikke en teknisk penetrationtest. Det er en dokumentationsgranskning.
+  </p>
+
+  <p>
+    CFCS eller dit sektortilsyn (Finanstilsynet, Energistyrelsen, Erhvervsstyrelsen osv.) vil:
+  </p>
+
+  <ol>
+    <li>Udsende en skriftlig anmodning om dokumentation inden for typisk 14-30 dage</li>
+    <li>Gennemgå dine svar skriftligt</li>
+    <li>Eventuelt indbyde til et møde på stedet eller virtuelt</li>
+    <li>Interview med ledelse og sikkerhedsansvarlige</li>
+    <li>Udstede en rapport med fund, anbefalinger og eventuelle påbud</li>
+  </ol>
+
+  <p>
+    Hele processen kan tage 2-6 måneder fra første anmodning til afslutning.
+  </p>
+
+  <p>
+    Hvis tilsynet finder <span class="highlight">væsentlige mangler</span>, kan CFCS udstede:
+  </p>
+
+  <ul>
+    <li><strong>Påbud</strong> — krav om at løse problemet inden for en bestemt periode (ofte 3-6 måneder)</li>
+    <li><strong>Bøder</strong> — op til 10 mio. EUR eller 2% af global omsætning for væsentlige enheder</li>
+    <li><strong>Funktionærforbud</strong> — tilsige ledelsespersoner, at de midlertidigt ikke må være i ledelse</li>
+  </ul>
+
+  <h2>Hvad kommer tilsynsmyndigheden til at spørge om?</h2>
+
+  <p>
+    CFCS og sektortilsynene har en standard-tjekliste baseret på NIS2-lovens 10 obligatoriske sikkerhedsdomæner (Artikel 21). Når de sender deres anmodning, vil spørgsmålene typisk handle om:
+  </p>
+
+  <h3>1. Risikovurdering og styring</h3>
+  <ul>
+    <li>Hvornår blev der senest foretaget en formel risikovurdering?</li>
+    <li>Hvem har godkendt resultaterne?</li>
+    <li>Hvordan opdateres den årligt?</li>
+    <li>Har du defineret en risikotolerance og -appetit?</li>
+  </ul>
+
+  <h3>2. Sikkerhedspolitik</h3>
+  <ul>
+    <li>Har styrelsen formelt vedtaget en sikkerhedspolitik?</li>
+    <li>Hvornår blev den senest revideret?</li>
+    <li>Dækker den alle 10 obligatoriske domæner?</li>
+    <li>Hvem er ansvarlig for implementering?</li>
+  </ul>
+
+  <h3>3. Incidenthåndtering</h3>
+  <ul>
+    <li>Har du en skriftlig incidenthanteringsplan?</li>
+    <li>Hvem skal meddeles (internt og eksternt)?</li>
+    <li>Hvad er dine eskaleringstrin og tidsfrister?</li>
+    <li>Hvem ved, hvad? (roller og ansvar)</li>
+  </ul>
+
+  <h3>4. Kontinuitets- og genopretningsplanlægning</h3>
+  <ul>
+    <li>Eksisterer en business continuity plan (BCP) og disaster recovery plan (DRP)?</li>
+    <li>Hvornår blev de senest testet?</li>
+    <li>Hvad er dine Recovery Time Objective (RTO) og Recovery Point Objective (RPO)?</li>
+    <li>Er der backup-løsninger på plads?</li>
+  </ul>
+
+  <h3>5. Kryptografi</h3>
+  <ul>
+    <li>Hvilke data klassificeres som følsomme?</li>
+    <li>Hvordan beskyttes data i transit og i hvile?</li>
+    <li>Hvem administrerer nøgler?</li>
+    <li>Har du en krypteringsstrategi dokumenteret?</li>
+  </ul>
+
+  <h3>6. Personaleudvælgelse og adgangskontrol</h3>
+  <ul>
+    <li>Udføres baggrundstjek for nye medarbejdere?</li>
+    <li>Hvordan implementeres "mindst-privilegium-princippet"?</li>
+    <li>Hvilket MFA-krav haves?</li>
+    <li>Fjernes adgang umiddelbart ved fratræden?</li>
+  </ul>
+
+  <h3>7. Fysisk sikkerhed</h3>
+  <ul>
+    <li>Hvordan kontrolleres adgang til servere- og datacentre?</li>
+    <li>Registreres besøgende?</li>
+    <li>Findes der backup-strøm?</li>
+  </ul>
+
+  <h3>8. Netværks- og IT-sikkerhed</h3>
+  <ul>
+    <li>Hvilke overvågningsværktøjer er implementeret?</li>
+    <li>Eksisterer der et patch-management-program?</li>
+    <li>Har I en IT-aktivinventar?</li>
+    <li>Hvordan håndteres fjernacces?</li>
+  </ul>
+
+  <h3>9. Kryptografisk protokoller og certifikater</h3>
+  <ul>
+    <li>Hvilken version af TLS bruges?</li>
+    <li>Er der en strategi for certifikat-livscyklus?</li>
+  </ul>
+
+  <h3>10. Uddannelse og bevidsthed</h3>
+  <ul>
+    <li>Gennemgår alle medarbejdere sikkerhedstræning årligt?</li>
+    <li>Hvor ofte køres phishing-simuleringer?</li>
+    <li>Hvor høj er gennemsnitlig clickrate blandt medarbejdere?</li>
+  </ul>
+
+  <div class="box-info">
+    <strong>Søt info:</strong> Mange organisationer tror, at de kan "søge efter" denne dokumentation under granskningen. Det går ikke. Tilsynsmyndigheder forventer, at det <em>allerede eksisterer</em> og kan præsenteres på stedet. Manglende dokumentation tolkes som manglende kontrol.
+  </div>
+
+  <h2>Revisjonstjekliste — hvad skal du have klar?</h2>
+
+  <p>
+    Her er en konkret tjekliste. Gå gennem den punkt for punkt. Hvis du ikke kan flueke noget af, handler det næste skridt om at få det dokumenteret.
+  </p>
+
+  <table class="checklist-table">
+    <thead>
+      <tr>
+        <th style="width: 50%;">Dokumenttype</th>
+        <th style="width: 50%;">Revisor forventer at se</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Risikovurdering</strong></td>
+        <td>Dateret dokument underskrevet af ledelses-repræsentant. Seneste version ikke ældre end 12 måneder.</td>
+      </tr>
+      <tr>
+        <td><strong>Sikkerhedspolitik</strong></td>
+        <td>Formelt vedtaget af styrelse (boardminutter). Dækker alle 10 obligatoriske domæner. Tydelig ejerskab.</td>
+      </tr>
+      <tr>
+        <td><strong>Incidenthanteringsplan</strong></td>
+        <td>Skriftlig plan med eskaleringsmatrix. Navn på ansvarlig (CISO eller sikkerhedschef). Kontaktliste. 24/7-on-call setup.</td>
+      </tr>
+      <tr>
+        <td><strong>Business Continuity Plan</strong></td>
+        <td>Dokument definerer RTO/RPO. Identificerer kritiske processer. Vedtaget af ledelse. Testet årligt med rapport.</td>
+      </tr>
+      <tr>
+        <td><strong>Disaster Recovery Plan</strong></td>
+        <td>Detaljer om backup-placering, genopretningsskridt. Testet årligt med dokumentation af resultat.</td>
+      </tr>
+      <tr>
+        <td><strong>Leverandør-oversigt</strong></td>
+        <td>Liste over kritiske tredjeparter (cloud, ISP, sikkerhedsleverandører). For hver: kontrakt med sikkerhedskrav.</td>
+      </tr>
+      <tr>
+        <td><strong>Leverandør-SLA'er</strong></td>
+        <td>Skriftlige serviceaftaler med sikkerhedskrav. Attestationer på efterlevelse (SOC 2, ISO 27001 o.l.).</td>
+      </tr>
+      <tr>
+        <td><strong>Adgangskontrol-política</strong></td>
+        <td>Dokument definerer MFA-krav, aktivering/deaktivering af konti. Log af personer med admin-rettigheder. Mindst-priviligium-attestation.</td>
+      </tr>
+      <tr>
+        <td><strong>Krypteringsstrategi</strong></td>
+        <td>Klassifikation af data. Hvilken kryptering bruges hvor. Hvem administrerer nøgler. Nøgle-opbevaringssted.</td>
+      </tr>
+      <tr>
+        <td><strong>Medarbejderudvælgelsesguideline</strong></td>
+        <td>Proces for baggrundstjek, NemID-verifikation, riferencecheck. Dokumentation af gennemførte tjek.</td>
+      </tr>
+      <tr>
+        <td><strong>Sikkerhedstræningslog</strong></td>
+        <td>Register over navn, dato, kursus for alle medarbejdere. År-til-år dækning (%) samt gennemsnit timer.</td>
+      </tr>
+      <tr>
+        <td><strong>Phishing-simulerings-rapporter</strong></td>
+        <td>Tabel: dato, antal mål, clickrate (%), årsag til ændringer. Trendanalyse år-til-år.</td>
+      </tr>
+      <tr>
+        <td><strong>Patch-management-oversigt</strong></td>
+        <td>Politikdokument, gennemsnit tid fra patch-tilgængelighed til implementering. Eksempler på nylige patches.</td>
+      </tr>
+      <tr>
+        <td><strong>IT-aktivinventar</strong></td>
+        <td>Database eller regneark: hardware, software, licenser, vejledende OS-versioner. Opdateret seneste 3 måneder.</td>
+      </tr>
+      <tr>
+        <td><strong>Styrelses-godkendelser</strong></td>
+        <td>Boardminutter og beslutningsnotater documentering læsning af sikkerhedsrapporter. Bekræftelse af at styrelsen har diskuteret og vedtaget rammen.</td>
+      </tr>
+      <tr>
+        <td><strong>Incident-logbog</strong></td>
+        <td>Historik over rapporterede sikkerhedshændelser, alvorligheder, løsningstid. Mindst tre års records.</td>
+      </tr>
+      <tr>
+        <td><strong>Testrapporter (BCP/DRP)</strong></td>
+        <td>År for år. Dato udført, hvad blev testet, resultater, mangler identificeret, afbødning gennemført.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>Hvem skal være til stede under revisionen?</h2>
+
+  <p>
+    En hyppig fejl er at sende kun IT-folk. Revisorer vil tale med:
+  </p>
+
+  <ul>
+    <li><strong>Direktør eller præsidium-repræsentant</strong> — for at bekræfte styrelsens ansvar og godkendelse</li>
+    <li><strong>CISO eller sikkerhedsansvarlig</strong> — for tekniske spørgsmål og implementation</li>
+    <li><strong>IT-chef eller systemadministrator</strong> — for operationelle detaljer</li>
+    <li><strong>Compliance- eller juridisk manager</strong> — for reglementsmæssige aspekter</li>
+    <li><strong>Risk manager eller controller</strong> — for risikovurdering og styring</li>
+  </ul>
+
+  <p>
+    Hvis din organisation er lille, kan én person bære flere af disse hats. Men <strong>direktøren eller en styrelsemedlem skal være tilstede eller telefonisk til rådighed</strong>. Det signalerer, at sikkerhed er en ledelsesprioritering — ikke blot et IT-problem.
+  </p>
+
+  <div class="box-warning">
+    <strong>Vigtig:</strong> Hvis revisor stiller spørg

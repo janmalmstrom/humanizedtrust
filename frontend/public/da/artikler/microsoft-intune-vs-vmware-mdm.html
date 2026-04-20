@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-BKF3QH9K01"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag("js", new Date());
+    gtag("config", "G-BKF3QH9K01");
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Microsoft Intune vs. VMware Workspace ONE: MDM til NIS2-overholdelse | NIS2Klar</title>
+  <meta name="description" content="Sammenligning af mobilenhedsstyring (MDM) for NIS2-krav. Intune eller Workspace ONE? Find den rette løsning til din organisation — 50–500 personer.">
+  <meta property="og:title" content="Microsoft Intune vs. VMware Workspace ONE: MDM til NIS2-overholdelse">
+  <meta property="og:description" content="Sammenligning af mobilenhedsstyring (MDM) for NIS2-krav. Intune eller Workspace ONE? Find den rette løsning til din organisation — 50–500 personer.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #141416;
+      --card: #1c1c1f;
+      --yellow: #f5c518;
+      --white: #f0f0f0;
+      --muted: #888;
+      --red: #C61212;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: var(--bg); color: var(--white); font-family: 'Barlow', sans-serif; font-size: 19px; line-height: 1.8; }
+
+    /* Nav */
+    nav { display: flex; justify-content: space-between; align-items: center; padding: 20px 40px; border-bottom: 1px solid rgba(255,255,255,0.07); max-width: 900px; margin: 0 auto; }
+    .nav-logo { font-family: 'Poppins', sans-serif; font-weight: 900; font-size: 20px; color: var(--yellow); text-decoration: none; }
+    .nav-logo span { color: var(--white); }
+    .nav-back { color: var(--muted); text-decoration: none; font-size: 15px; }
+    .nav-back:hover { color: var(--white); }
+    .nav-cta { background: var(--yellow); color: #000; padding: 8px 18px; border-radius: 4px; text-decoration: none; font-weight: 700; font-size: 14px; font-family: 'Poppins', sans-serif; }
+
+    /* Lang switcher */
+    .lang-switcher { display: flex; gap: 8px; align-items: center; font-size: 13px; font-family: 'Poppins', sans-serif; }
+    .lang-switcher a { color: #888; text-decoration: none; font-weight: 600; padding: 4px 8px; border-radius: 3px; }
+    .lang-switcher a:hover { color: #fff; }
+
+    /* Article */
+    .article-wrap { max-width: 760px; margin: 0 auto; padding: 60px 40px; }
+    .article-category { font-size: 13px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 16px; }
+    h1 { font-family: 'Poppins', sans-serif; font-size: clamp(30px, 4vw, 44px); font-weight: 900; line-height: 1.2; margin-bottom: 24px; }
+    .article-meta { font-size: 15px; color: var(--muted); margin-bottom: 48px; padding-bottom: 24px; border-bottom: 1px solid rgba(255,255,255,0.07); }
+    h2 { font-family: 'Poppins', sans-serif; font-size: 26px; font-weight: 700; margin: 48px 0 16px; color: var(--white); }
+    h3 { font-family: 'Poppins', sans-serif; font-size: 20px; font-weight: 600; margin: 32px 0 12px; color: var(--yellow); }
+    p { margin-bottom: 22px; }
+    strong { color: var(--white); font-weight: 700; }
+    .highlight { color: var(--yellow); font-weight: 700; }
+    .danger { color: #ff6b6b; font-weight: 700; }
+    ul, ol { margin: 16px 0 24px 24px; }
+    li { margin-bottom: 12px; font-size: 19px; }
+
+    /* Callout boxes */
+    .box-warning { background: rgba(197,17,17,0.12); border-left: 4px solid var(--red); padding: 20px 24px; margin: 32px 0; border-radius: 0 4px 4px 0; }
+    .box-info { background: rgba(245,197,24,0.08); border-left: 4px solid var(--yellow); padding: 20px 24px; margin: 32px 0; border-radius: 0 4px 4px 0; }
+    .box-case { background: var(--card); border: 1px solid rgba(255,255,255,0.08); padding: 28px; margin: 40px 0; border-radius: 4px; }
+    .box-case .case-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 12px; }
+    blockquote { border-left: 3px solid var(--yellow); padding: 12px 20px; margin: 24px 0; font-style: italic; color: #ccc; }
+
+    /* CTA */
+    .cta-section { background: var(--card); border: 1px solid rgba(245,197,24,0.2); border-radius: 4px; padding: 48px 40px; margin: 64px 0 40px; text-align: center; }
+    .cta-section h2 { margin-top: 0; font-size: 26px; }
+    .cta-section p { color: #aaa; max-width: 500px; margin: 0 auto 28px; }
+    .btn-primary { display: inline-block; background: var(--yellow); color: #000; font-family: 'Poppins', sans-serif; font-weight: 800; font-size: 16px; padding: 16px 36px; border-radius: 4px; text-decoration: none; }
+    .btn-primary:hover { background: #e0b010; }
+    .cta-fine { font-size: 13px; color: var(--muted); margin-top: 16px; }
+
+    /* FAQ */
+    .faq-item { border-bottom: 1px solid rgba(255,255,255,0.07); padding: 20px 0; }
+    .faq-q { font-family: 'Poppins', sans-serif; font-weight: 600; margin-bottom: 10px; }
+    .faq-a { color: #bbb; }
+
+    /* Comparison table */
+    .comparison-table { width: 100%; border-collapse: collapse; margin: 24px 0; }
+    .comparison-table th { background: rgba(245,197,24,0.1); color: var(--yellow); font-family: 'Poppins', sans-serif; font-size: 13px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 12px 16px; text-align: left; border-bottom: 1px solid rgba(245,197,24,0.2); }
+    .comparison-table td { padding: 14px 16px; border-bottom: 1px solid rgba(255,255,255,0.05); font-size: 15px; }
+    .comparison-table tr:last-child td { border-bottom: none; }
+    .comparison-table .check { color: #4ade80; font-weight: 700; }
+    .comparison-table .cross { color: #ff6b6b; font-weight: 700; }
+
+    /* Summary + Key Takeaway */
+    .box-summary { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; padding: 24px 28px; margin: 0 0 32px; }
+    .summary-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-bottom: 14px; }
+    .box-summary ul { margin: 0; padding-left: 20px; }
+    .box-summary li { margin-bottom: 8px; font-size: 17px; color: #ccc; }
+    .box-takeaway { background: rgba(245,197,24,0.08); border-left: 4px solid var(--yellow); padding: 20px 24px; margin: 0 0 40px; border-radius: 0 4px 4px 0; }
+    .takeaway-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 10px; }
+    .box-takeaway p { margin: 0; font-size: 18px; font-weight: 600; color: var(--white); line-height: 1.6; }
+
+    /* Footer */
+    footer { border-top: 1px solid rgba(255,255,255,0.07); padding: 32px 40px; text-align: center; font-size: 13px; color: var(--muted); max-width: 900px; margin: 0 auto; }
+    footer a { color: var(--muted); }
+
+    /* Related articles */
+    .related-articles { margin: 2.5rem 0 2rem; padding: 1.5rem; background: #1a1a2e; border-left: 4px solid #f0a500; border-radius: 4px; }
+    .related-articles ul { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+    .related-articles li { margin: 0; }
+    .related-articles a { color: #e0e0e0; text-decoration: none; font-size: 0.95rem; }
+    .related-articles a:hover { color: #f0a500; }
+    .related-articles-label { margin: 0 0 1rem; font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #f0a500; }
+    .related-articles-footer { margin: 1.25rem 0 0; font-size: 0.85rem; color: #aaa; }
+    .related-articles-footer a { color: #f0a500; }
+
+    @media (max-width: 600px) {
+      nav, .article-wrap, footer { padding: 20px; }
+      .cta-section { padding: 32px 20px; }
+      .comparison-table { font-size: 14px; }
+      .comparison-table th, .comparison-table td { padding: 10px 10px; }
+      .lang-switcher { font-size: 12px; gap: 4px; }
+      .lang-switcher a { padding: 2px 6px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="https://nis2klar.se/da/">NIS2<span>Klar</span></a>
+  <a class="nav-back" href="https://nis2klar.se/da/artikler.html">← Alle artikler</a>
+  <div class="lang-switcher">
+    <a href="https://nis2klar.se/artiklar.html" style="color:#888;" title="Svenska">SV</a>
+    <a href="https://nis2klar.se/en/articles.html" style="color:#888;" title="English">EN</a>
+    <a href="https://nis2klar.se/da/artikler.html" style="color:#f5c518;background:rgba(245,197,24,0.1);" title="Dansk">DA</a>
+    <a href="https://nis2klar.se/no/artikler.html" style="color:#888;" title="Norsk">NO</a>
+    <a href="https://nis2klar.se/it/articoli.html" style="color:#888;" title="Italiano">IT</a>
+  </div>
+  <a class="nav-cta" href="https://nis2klar.se/da/#boka">Book →</a>
+</nav>
+
+<article class="article-wrap">
+  <div class="article-category">NIS2 Artikel 21 - Enhedskontrol</div>
+  <h1>Microsoft Intune vs. VMware Workspace ONE: MDM til NIS2-overholdelse</h1>
+  <div class="article-meta">19. april 2026 · Læsetid: ca 8 minutter · Målgruppe: Direktører og bestyrelser</div>
+
+  <!-- SUMMARY -->
+  <div class="box-summary">
+    <div class="summary-label">Resumé</div>
+    <ul>
+      <li>NIS2 Artikel 21 kræver, at du kontrollerer og sikrer alle enheder (computere, tablets, telefoner) på dit netværk.</li>
+      <li>To hovedløsninger konkurrerer: cloud-baserede Intune og vekslet hybrid-model Workspace ONE.</li>
+      <li>For en dansk organisation på 50–500 personer er valget afgørende for compliance-omkostninger, revision og personligt ansvar.</li>
+      <li>Denne analyse hjælper dig med at vælge den løsning, der passer til din virksomhed — og til revisiorkravene fra CFCS.</li>
+    </ul>
+  </div>
+
+  <!-- KEY TAKEAWAY -->
+  <div class="box-takeaway">
+    <div class="takeaway-label">Vigtigste konklusion</div>
+    <p>Den rette MDM-løsning reducerer ikke blot compliance-risikoen — den dokumenterer også til CFCS, at du opfylder Artikel 21. Forkert valg betyder manuel revision, dyrere support og større revisor-udfordringer under tilsyn.</p>
+  </div>
+
+  <h2>Hvad kræver NIS2 Artikel 21 helt præcist?</h2>
+
+  <p>
+    Når CFCS gransker din organisation for NIS2-overholdelse, fokuserer de på <strong>Artikel 21</strong>, som omhandler tekniske og organisatoriske sikringsforanstaltninger.
+    Et kritisk krav er <strong>enhedskontrol</strong> — du skal kunne dokumentere, at:
+  </p>
+
+  <ul>
+    <li>Alle enheder (computere, tablets, smartphones) på dit netværk er registreret og inventariseret</li>
+    <li>Enheder kræver godkendelse før forbindelse (enrollment)</li>
+    <li>Du kan implementere sikkerhedspolicyer fjernstyrret (Mobile Device Management)</li>
+    <li>Uoverstemmende enheder kan isoleres eller slettes</li>
+    <li>Du har tilgang til revisionslogs over alle enhedshandlinger</li>
+    <li>BYOD-enheder (Bring Your Own Device) håndteres med samme sikkerhed som firmaejet hardware</li>
+  </ul>
+
+  <p>
+    Uden en dedikeret MDM-løsning er du i praksis <span class="danger">ikke i stand til at dokumentere dette for CFCS</span>.
+    "Vi håber, folk ikke tager deres computere med hjem" er ikke en compliance-strategi.
+  </p>
+
+  <div class="box-warning">
+    <strong>Revisor-virkelighed:</strong> En CFCS-tilsyn starter med at kræve din "enhedsinventar" og dine "fjern-administrations-policies". 
+    Hvis du ikke har en MDM-løsning, får du ikke svar på dagene — du får en nyhedelse om manglende dokumentation og en komplianceafdelingtidsfrist.
+  </div>
+
+  <h2>Microsoft Intune — cloud-først tilgang</h2>
+
+  <p>
+    <strong>Intune</strong> er Microsofts cloud-native MDM-løsning. Den er tæt integreret med Microsoft 365 og Azure Active Directory.
+    For danske virksomheder betyder det hurtig deployment og minimal on-premise kompleksitet.
+  </p>
+
+  <h3>Fordele ved Intune</h3>
+
+  <ul>
+    <li><strong>Cloudbaseret forvaltning:</strong> Ingen lokale servere at vedligeholde. Intune kører på Microsoft-infrastruktur i EU (datacentre i Tyskland og Holland).</li>
+    <li><strong>Stærk integration:</strong> Hvis du allerede bruger Microsoft 365 (Outlook, Teams, SharePoint), er Intune allerede delvis sat op. Single sign-on er naturlig.</li>
+    <li><strong>Conditional Access nemt:</strong> Du kan skabe regler som "tillad kun arbejde fra Danmark", "kræv MFA", "blok hvis enhed er uopdateret" — alt fra en dashboard.</li>
+    <li><strong>BYOD-håndtering nemt:</strong> En medarbejder kan tilmelde sin personlige iPhone på under 5 minutter. Intune adskiller arbejdsdata fra privatdata (arbejdsmappe isoleres).</li>
+    <li><strong>Audit-rapporter automatisk:</strong> Hver tilmelding, hver policy-ændring, hver enhed der frameldes — er logget og tilgængelig til CFCS.</li>
+    <li><strong>Omkostning til virksomheder under 250 personer:</strong> Microsoft 365 Business Premium (ca. 240 kr./bruger/måned) eller Microsoft 365 Enterprise E3 (ca. 660 kr./bruger/måned) inkluderer Intune.</li>
+  </ul>
+
+  <h3>Udfordringer med Intune</h3>
+
+  <ul>
+    <li><strong>Apple-kompleksitet:</strong> iOS/macOS-management kræver en Apple MDM-certificate og Apple Business Manager-adgang. Ikke vanskelig, men en ekstra linje at administrere.</li>
+    <li><strong>Legacy-hardware:</strong> Gamle Windows 7-maskiner eller specialiseret industrielle enheder kan være vanskelige at integrere.</li>
+    <li><strong>On-premise ressourcer:</strong> Hvis du har kritisk software, der kun køres lokalt (ikke i cloud), kræver Intune at du also implementer en "hybrid" gateway (Azure AD Application Proxy), hvilket tilføjer kompleksitet.</li>
+  </ul>
+
+  <h2>VMware Workspace ONE — hybrid model</h2>
+
+  <p>
+    <strong>Workspace ONE</strong> (tidligere Air Watch) er VMwares MDM-platform. Det er mere "traditionelt" end Intune — den kan køre både cloud og on-premise og bruges ofte til at administrere Windows, Mac, iOS, Android <em>og</em> specialized IoT-devices.
+  </p>
+
+  <h3>Fordele ved Workspace ONE</h3>
+
+  <ul>
+    <li><strong>Hybrid fleksibilitet:</strong> Du kan køre komponenter lokalt (på dine egne servere) eller i cloud. Godt hvis du har specifikke datasovereignty-krav eller legacy on-premise app'er.</li>
+    <li><strong>Bred device-support:</strong> Workspace ONE administrerer alt fra Windows til IoT-devices, industrielle scannere og specialiseret hardware — bedre end Intune hvis du har blandede miljøer.</li>
+    <li><strong>Erwerbung af ikke-Microsoft-virksomheder:</strong> Hvis du ikke har Microsoft 365, er Workspace ONE ofte billigere end at købe hele Microsoft-stacken.</li>
+    <li><strong>Avanceret endpointbehandling:</strong> Workspace ONE kan handle meget kompleks virtualisering, dekstop-streaming og specialized security-scenarioer (godt for finans eller forsvarsindustri).</li>
+  </ul>
+
+  <h3>Udfordringer med Workspace ONE</h3>
+
+  <ul>
+    <li><strong>Mere kompliceret:</strong> Workspace ONE har mere "dypere" arkitektur end Intune. Det betyder du skal have mere IT-viden internt eller betale consultants.</li>
+    <li><strong>On-premise komponenter:</strong> Hvis du vælger hybrid, skal du vedligeholde servere, sikkerhedsopdateringer og backup lokalt — det tilføjer IT-omkostninger.</li>
+    <li><strong>Høj vejledningsintensitet:</strong> Workspace ONE er ikke "ud af boksen" — du skal konfigurere policies, integrationer og workflows på en måde, som kræver ekspertise.</li>
+    <li><strong>Omkostning:</strong> VMware Workspace ONE koster typisk 5–12 USD per enhed per måned, afhængig af version. For 300 enheder = ca. 18.000–43.000 DKK årligt, plus administration.</li>
+    <li><strong>Microsoft-integration mindre slid:</strong> Hvis du bruger Microsoft 365, integrerer Workspace ONE ikke helt så naturligt. Du skal bygge "bridges" med Azure AD.</li>
+  </ul>
+
+  <h2>Direkte sammenligning for danske virksomheder 50–500 personer</h2>
+
+  <table class="comparison-table">
+    <thead>
+      <tr>
+        <th>Kriterium</th>
+        <th>Intune</th>
+        <th>Workspace ONE</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Cloud-først arkitektur</strong></td>
+        <td class="check">✓ Ja — primært cloud</td>
+        <td>Hybrid — kan være både cloud og on-premise</td>
+      </tr>
+      <tr>
+        <td><strong>Integration med Microsoft 365</strong></td>
+        <td class="check">✓ Naturlig og dyb</td>
+        <td>Mulig, men kræver ekstra config</td>
+      </tr>
+      <tr>
+        <td><strong>Conditional Access / Risk-baseret adgang</strong></td>
+        <td class="check">✓ Indbygget i Entra ID</td>
+        <td>Mulig via UEM Console, mere manuelt</td>
+      </tr>
+      <tr>
+        <td><strong>BYOD-håndtering</strong></td>
+        <td class="check">✓ Let og brugervenlig</td>
+        <td>Mulig, men tungere workflow</td>
+      </tr>
+      <tr>
+        <td><strong>Audit-rapporter (til CFCS)</strong></td>
+        <td class="check">✓ Automatic og granulær</td>
+        <td>Manuel eksport, mindre granulær</td>
+      </tr>
+      <tr>
+        <td><strong>Support til specialiseret hardware</strong></td>
+        <td>God for MS-devices, begrænset for andet</td>
+        <td class="check">✓ Bred — IoT, scannere, legacy</td>
+      </tr>
+      <tr>
+        <td><strong>Implementation-tid (3 mdr.)</strong></td>
+        <td class="check">✓ 6–8 uger typisk</td>
+        <td>10–14 uger (uden hybrid-kompleksitet)</td>
+      </tr>
+      <tr>
+        <td><strong>Årlig omkostning (300 medarbejdere)</strong></td>
+        <td class="check">✓ 200–350 KDKK (inkluderet i M365)</td>
+        <td>270–430 KDKK (separat licens)</td>
+      </tr>
+      <tr>
+        <td><strong>CFCS audit-venlighed</strong></td>
+        <td class="check">✓ Meget høj — færdige rapporter</td>
+        <td>Høj, men du skal præparere mere selv</td>
+      </tr>
+      <tr>
+        <td><strong>Dansk datahåndtering (GDPR/suverænitet)</strong></td>
+        <td class="check">✓ EU-datacentre tilgængelig</td>
+        <td class="check">✓ EU-datacentre tilgængelig</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>BYOD-scenarioer: hvor løsningerne adskilles</h2>
+
+  <p>
+    En af de mest praktiske NIS2-udfordringer er håndtering af bring-your-own-device (BYOD) — altså når dine medarbejdere arbejder fra deres personlige smartphones og tablets.
+    Her ser Intune og Workspace ONE helt forskelligt ud.
+  </p>
+
+  <h3>Intune BYOD-flow</h3>
+
+  <ol>
+    <li>Medarbejder henter Intune Company Portal app'en (fra App Store / Google Play)</li>
+    <li>Logger ind med sit arbejds-Microsoft-konto</li>
+    <li>Enheden tilmeldes automatisk — arbejdsmappe skabes isoleret på telefonen</li>
+    <li>Work-data er krypteret og kan slettes fjernstyrret uden at påvirke personlige data</li>
+    <li>CFCS kan se: enhed registreret, dato tilmeldt, sidste sync, policy-version, sikkerhedsstatus</li>
+    <li>Hvis medarbejder slutter: en fjern-klik og arbejds-mappen er væk, personlige data uberørte</li>
+  </ol>
+
+  <p>
+    <strong>Resultat:</strong> BYOD er dokumenteret, revisor-klart og bruger-venligt.
+  </p>
+
+  <h3>Workspace ONE BYOD-flow</h3>
+
+  <ol>
+    <li>Medarbejder registrerer sig via Workspace ONE portal — mere manuel proces</li>
+    <li>Enheden enkrypteres (hele telefonen eller kun arbejds-data, afhængig af policy)</li>
+    <li>Workspace ONE agent installeres</li>
+    <li>CFCS kan se device-data, men rapporter skal trækkes ud fra consollen — ikke automatisk</li>
+  </ol>
+
+  <p>
+    <strong>Forskel:</strong> Workspace ONE virker, men det er ikke lige så "seamless" som Intune, og audit-spor er mere manuelt.
+  </p>
+
+  <div class="box-info">
+    <strong>NIS2-perspektiv:</strong> CFCS vil se, at du har enhedskontrol. De bedømmer ikke elegant UX — de bedømmer dokumentation.
+    Intune dokumenterer automatisk. Workspace ONE kræver, at du eksporterer rapporter. Valget er mellem "åben dokumentation" og "manuel dokumentation".
+  </div>
+
+  <h2>Compliance-rapportering til CFCS</h2>
+
+  <p>
+    Når CFCS gransker dig, kræver de som regel:
+  </p>
+
+  <ol>
+    <li>Enhedsinventar (hvor mange enheder, hvad kører de for OS, hvornår blev de sidste gang opdateret)</li>
+    <li>Compliance-status (procent af enheder i overensstemmelse med policies)</li>
+    <li>Incidenter (hvis en enhed blev kompromitteret, kan du vise tidslinjen)</li>
+    <li>Audit-log (hvem konfigurerede policies, hvornår blev de ændret)</li>
+  </ol>
+
+  <p>
+    <strong>Intune:</strong> Dette leveres som færdige rapporter fra Compliance Manager. Du eksporterer en PDF og sender til CFCS. Meget ligetil.
+  </p>
+
+  <p>
+    <strong>Workspace ONE:</strong> Du skal manuelt køre rapporter fra UEM-consollen, samle data fra forskellige moduler og præsentere det. Det er ikke automatiseret på samme måde.
+  </p>
+
+  <div class="box-case">
+    <div class="case-label">Praktisk eksempel</div>
+    <p>
+      <strong>Et dansk telekommunikationsfirma med 200 ansatte skal under NIS2-tilsyn.</strong>
+    </p>
+    <p>
+      De bruger Windows-computere, some iPhones for forretningsfolk og blandede Android-telefoner hos feltteknikere.
+      De havde tidligere ingen MDM — alt blev håndteret manuelt.
+    </p>
+    <p>
+      De valgte Intune, fordi:
+    </p>
+    <ul>
+      <li>De bruger allerede Microsoft 365</li>
+      <li>BYOD-håndtering på iPhone var vigtig (mange iOS-devices i felten)</li>
+      <li>De ville have automatiske compliance-rapporter</li>
+    </ul>
+    <p>
+      Efter 8 ugers implementation havde de:
+    </p>
+    <ul>
+      <li>180 Windows-enheder registreret og compliant</li>
+      <li>140 iPhones og Android-telefoner under kontrol</li>
+      <li>Automatisk daglig compliance-rapportering</li>
+      <li>Policy: "Kræv minimum OS-version, kæm MFA, blok rooted enheder"</li>
+    </ul>
+    <p>
+      Da

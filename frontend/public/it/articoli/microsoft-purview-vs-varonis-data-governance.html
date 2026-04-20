@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-BKF3QH9K01"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag("js", new Date());
+    gtag("config", "G-BKF3QH9K01");
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Microsoft Purview vs Varonis: Data Governance per la Conformità NIS2 | NIS2Klar</title>
+  <meta name="description" content="Confronto tra Microsoft Purview e Varonis per la governance dei dati secondo NIS2. Sensibility Labels, classificazione dati, rilevamento delle minacce interne e conformità normativa.">
+  <meta property="og:title" content="Microsoft Purview vs Varonis: Data Governance per la Conformità NIS2">
+  <meta property="og:description" content="Confronto tra Microsoft Purview e Varonis per la governance dei dati secondo NIS2. Sensibility Labels, classificazione dati, rilevamento delle minacce interne.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #141416;
+      --card: #1c1c1f;
+      --yellow: #f5c518;
+      --white: #f0f0f0;
+      --muted: #888;
+      --red: #C61212;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: var(--bg); color: var(--white); font-family: 'Barlow', sans-serif; font-size: 19px; line-height: 1.8; }
+
+    /* Nav */
+    nav { display: flex; justify-content: space-between; align-items: center; padding: 20px 40px; border-bottom: 1px solid rgba(255,255,255,0.07); max-width: 900px; margin: 0 auto; }
+    .nav-logo { font-family: 'Poppins', sans-serif; font-weight: 900; font-size: 20px; color: var(--yellow); text-decoration: none; }
+    .nav-logo span { color: var(--white); }
+    .nav-back { color: var(--muted); text-decoration: none; font-size: 15px; }
+    .nav-back:hover { color: var(--white); }
+    .lang-switcher { display: flex; gap: 8px; align-items: center; font-size: 13px; font-family: 'Poppins', sans-serif; }
+    .lang-switcher a { color: #888; text-decoration: none; font-weight: 600; padding: 4px 8px; border-radius: 3px; }
+    .lang-switcher a:hover { color: var(--white); }
+    .nav-cta { background: var(--yellow); color: #000; padding: 8px 18px; border-radius: 4px; text-decoration: none; font-weight: 700; font-size: 14px; font-family: 'Poppins', sans-serif; }
+
+    /* Article */
+    .article-wrap { max-width: 760px; margin: 0 auto; padding: 60px 40px; }
+    .article-category { font-size: 13px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 16px; }
+    h1 { font-family: 'Poppins', sans-serif; font-size: clamp(30px, 4vw, 44px); font-weight: 900; line-height: 1.2; margin-bottom: 24px; }
+    .article-meta { font-size: 15px; color: var(--muted); margin-bottom: 48px; padding-bottom: 24px; border-bottom: 1px solid rgba(255,255,255,0.07); }
+    h2 { font-family: 'Poppins', sans-serif; font-size: 26px; font-weight: 700; margin: 48px 0 16px; color: var(--white); }
+    h3 { font-family: 'Poppins', sans-serif; font-size: 20px; font-weight: 600; margin: 32px 0 12px; color: var(--yellow); }
+    p { margin-bottom: 22px; }
+    strong { color: var(--white); font-weight: 700; }
+    .highlight { color: var(--yellow); font-weight: 700; }
+    .danger { color: #ff6b6b; font-weight: 700; }
+    ul, ol { margin: 16px 0 24px 24px; }
+    li { margin-bottom: 12px; font-size: 19px; }
+
+    /* Callout boxes */
+    .box-warning { background: rgba(197,17,17,0.12); border-left: 4px solid var(--red); padding: 20px 24px; margin: 32px 0; border-radius: 0 4px 4px 0; }
+    .box-info { background: rgba(245,197,24,0.08); border-left: 4px solid var(--yellow); padding: 20px 24px; margin: 32px 0; border-radius: 0 4px 4px 0; }
+    .box-case { background: var(--card); border: 1px solid rgba(255,255,255,0.08); padding: 28px; margin: 40px 0; border-radius: 4px; }
+    .box-case .case-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 12px; }
+    blockquote { border-left: 3px solid var(--yellow); padding: 12px 20px; margin: 24px 0; font-style: italic; color: #ccc; }
+
+    /* CTA */
+    .cta-section { background: var(--card); border: 1px solid rgba(245,197,24,0.2); border-radius: 4px; padding: 48px 40px; margin: 64px 0 40px; text-align: center; }
+    .cta-section h2 { margin-top: 0; font-size: 26px; }
+    .cta-section p { color: #aaa; max-width: 500px; margin: 0 auto 28px; }
+    .btn-primary { display: inline-block; background: var(--yellow); color: #000; font-family: 'Poppins', sans-serif; font-weight: 800; font-size: 16px; padding: 16px 36px; border-radius: 4px; text-decoration: none; }
+    .btn-primary:hover { background: #e0b010; }
+    .cta-fine { font-size: 13px; color: var(--muted); margin-top: 16px; }
+
+    /* FAQ */
+    .faq-item { border-bottom: 1px solid rgba(255,255,255,0.07); padding: 20px 0; }
+    .faq-q { font-family: 'Poppins', sans-serif; font-weight: 600; margin-bottom: 10px; }
+    .faq-a { color: #bbb; }
+
+    /* Fine table */
+    .fine-table { width: 100%; border-collapse: collapse; margin: 24px 0; }
+    .fine-table th { background: rgba(245,197,24,0.1); color: var(--yellow); font-family: 'Poppins', sans-serif; font-size: 13px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 12px 16px; text-align: left; border-bottom: 1px solid rgba(245,197,24,0.2); }
+    .fine-table td { padding: 14px 16px; border-bottom: 1px solid rgba(255,255,255,0.05); font-size: 15px; }
+    .fine-table tr:last-child td { border-bottom: none; }
+    .fine-table .amount { color: #ff6b6b; font-weight: 700; }
+
+    /* Summary + Key Takeaway */
+    .box-summary { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; padding: 24px 28px; margin: 0 0 32px; }
+    .summary-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-bottom: 14px; }
+    .box-summary ul { margin: 0; padding-left: 20px; }
+    .box-summary li { margin-bottom: 8px; font-size: 17px; color: #ccc; }
+    .box-takeaway { background: rgba(245,197,24,0.08); border-left: 4px solid var(--yellow); padding: 20px 24px; margin: 0 0 40px; border-radius: 0 4px 4px 0; }
+    .takeaway-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 10px; }
+    .box-takeaway p { margin: 0; font-size: 18px; font-weight: 600; color: var(--white); line-height: 1.6; }
+
+    /* Related articles */
+    .related-articles { margin: 2.5rem 0 2rem; padding: 1.5rem; background: #1a1a2e; border-left: 4px solid #f0a500; border-radius: 4px; }
+    .related-articles p { margin: 0 0 1rem; font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #f0a500; }
+    .related-articles ul { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+    .related-articles li a { color: #e0e0e0; text-decoration: none; font-size: 0.95rem; }
+    .related-articles li a:hover { color: #f0a500; }
+    .related-articles-footer { margin: 1.25rem 0 0; font-size: 0.85rem; color: #aaa; }
+    .related-articles-footer a { color: #f0a500; text-decoration: none; }
+
+    /* Footer */
+    footer { border-top: 1px solid rgba(255,255,255,0.07); padding: 32px 40px; text-align: center; font-size: 13px; color: var(--muted); max-width: 900px; margin: 0 auto; }
+    footer a { color: var(--muted); }
+    footer a:hover { color: var(--white); }
+
+    @media (max-width: 600px) {
+      nav, .article-wrap, footer { padding: 20px; }
+      .cta-section { padding: 32px 20px; }
+      .fine-table { font-size: 14px; }
+      .fine-table th, .fine-table td { padding: 10px 10px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="https://nis2klar.se/it/">NIS2<span>Klar</span></a>
+  <a class="nav-back" href="https://nis2klar.se/it/articoli.html">← Tutti gli articoli</a>
+  <div class="lang-switcher">
+    <a href="https://nis2klar.se/artiklar.html" style="color:#888;text-decoration:none;font-weight:600;padding:4px 8px;border-radius:3px;" title="Svenska">SV</a>
+    <a href="https://nis2klar.se/en/articles.html" style="color:#888;text-decoration:none;font-weight:600;padding:4px 8px;border-radius:3px;" title="English">EN</a>
+    <a href="https://nis2klar.se/da/artikler.html" style="color:#888;text-decoration:none;font-weight:600;padding:4px 8px;border-radius:3px;" title="Dansk">DA</a>
+    <a href="https://nis2klar.se/no/artikler.html" style="color:#888;text-decoration:none;font-weight:600;padding:4px 8px;border-radius:3px;" title="Norsk">NO</a>
+    <a href="https://nis2klar.se/it/articoli.html" style="color:#f5c518;text-decoration:none;font-weight:600;padding:4px 8px;border-radius:3px;background:rgba(245,197,24,0.1);" title="Italiano">IT</a>
+  </div>
+  <a class="nav-cta" href="https://nis2klar.se/it/#prenota">Prenota colloquio →</a>
+</nav>
+
+<article class="article-wrap">
+  <div class="article-category">Strumenti &amp; Soluzioni</div>
+  <h1>Microsoft Purview vs Varonis: Data Governance per la Conformità NIS2</h1>
+  <div class="article-meta">Aggiornato 19 aprile 2026 · Tempo di lettura: ca 8 minuti · Destinatari: CEO, Consigli di amministrazione</div>
+
+  <!-- SUMMARY -->
+  <div class="box-summary">
+    <div class="summary-label">Sintesi</div>
+    <ul>
+      <li>Per i CEO e i consiglieri che devono scegliere tra una soluzione integrata negli strumenti Microsoft existenti o una piattaforma specializzata di sicurezza dei dati.</li>
+      <li>NIS2 richiede classificazione dei dati, controllo dell'accesso e rilevamento delle minacce interne: due approcci molto diversi.</li>
+      <li>Microsoft Purview si integra nativamente con Microsoft 365 e Azure; Varonis offre visibilità più profonda su sistemi legacy e multicloud.</li>
+      <li>La scelta dipende dall'architettura IT, dal budget e da quante evidenze di conformità hai già costruito.</li>
+    </ul>
+  </div>
+
+  <!-- KEY TAKEAWAY -->
+  <div class="box-takeaway">
+    <div class="takeaway-label">Conclusione chiave</div>
+    <p>Purview ti aiuta a documentare la conformità NIS2 con quello che hai già; Varonis ti aiuta a scoprire cosa ti sta mancando. La maggior parte delle aziende italiane trae vantaggio da iniziare con Purview e poi aggiungere Varonis se serve maggiore visibilità.</p>
+  </div>
+
+  <!-- CONTEXT -->
+  <p>
+    L'<strong>Articolo 21 del D.Lgs. 138/2024</strong> (recepimento italiano di NIS2) elenca dieci misure tecniche e organizzative obbligatorie.
+    Tra queste, il controllo dell'accesso ai dati, la crittografia, il rilevamento e la risposta agli incidenti non sono negoziabili.
+    La domanda che emerge dalle aziende italiane è: con quale strumento documentiamo e implementiamo queste misure in modo che l'ACN (Agenzia per la Cybersicurezza Nazionale) possa verificarle durante una ispezione?
+  </p>
+
+  <p>
+    Due nomi ricorrono: <strong>Microsoft Purview</strong> (soluzione interna a Microsoft 365) e <strong>Varonis</strong> (piattaforma specializzata di data governance e protezione da insider threat).
+    Questo articolo ti aiuta a capire quale scegliere — e soprattutto, perché.
+  </p>
+
+  <h2>Cosa richiede veramente NIS2 sulla gestione dei dati?</h2>
+
+  <p>
+    Prima di scegliere uno strumento, devi sapere cosa devi provare all'ACN.
+  </p>
+
+  <p>
+    L'Articolo 21 del D.Lgs. 138/2024 chiede tre cose fondamentali:
+  </p>
+
+  <ol>
+    <li><strong>Classificazione dei dati</strong> — sai quali dati sono sensibili e dove si trovano</li>
+    <li><strong>Controllo dell'accesso</strong> — solo le persone autorizzate accedono ai dati classificati come sensibili</li>
+    <li><strong>Rilevamento delle anomalie</strong> — identifichi comportamenti anormali (es. download massivi, accessi da posizioni insolite, escalation di privilegi)</li>
+  </ol>
+
+  <p>
+    Inoltre, l'Articolo 23 richiede di <strong>notificare gli incidenti entro 72 ore all'ACN</strong>.
+    Per fare questo, devi sapere <em>che hai subito un incidente</em>.
+    Uno strumento che non vede i tuoi dati non può alertarti di una violazione.
+  </p>
+
+  <div class="box-info">
+    <strong>Osservazione chiave:</strong> NIS2 non specifica uno strumento. Chiede capacità: visibilità sui dati, controllo, log e alerting. Qualsiasi piattaforma che fornisce queste capacità è accettabile per l'ACN — purché tu possa documentarla nel tuo fascicolo di conformità.
+  </div>
+
+  <h2>Microsoft Purview: la soluzione integrata</h2>
+
+  <h3>Cosa fa</h3>
+
+  <p>
+    Microsoft Purview è un insieme di strumenti nativi di Microsoft 365 e Azure che permettono di:
+  </p>
+
+  <ul>
+    <li><strong>Creare Sensitivity Labels</strong> — etichette automatiche che marcano i documenti come "interno", "confidenziale", "pubblico" ecc.</li>
+    <li><strong>Scoprire dati sensibili</strong> — scanner automatici che trovano numeri di carta di credito, codici fiscali, numeri di telefono nei tuoi documenti (SharePoint, Teams, OneDrive, Exchange)</li>
+    <li><strong>Applicare Data Loss Prevention (DLP)</strong> — blocchi automatici se qualcuno tenta di condividere un documento etichettato come riservato con un esterno</li>
+    <li><strong>Audit e log</strong> — tracciamento completo di chi accede cosa, quando e da dove</li>
+  </ul>
+
+  <h3>Pro di Purview per NIS2</h3>
+
+  <table class="fine-table">
+    <thead>
+      <tr>
+        <th>Vantaggio</th>
+        <th>Impatto su NIS2</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Integrazione nativa</strong></td>
+        <td>Se usi Microsoft 365, Purview è già nel tuo ambiente. Zero configurazione extra su infrastrutture diverse.</td>
+      </tr>
+      <tr>
+        <td><strong>Costo per utente</strong></td>
+        <td>Incluso (o a basso costo aggiuntivo) se hai licenze Microsoft 365 Business Premium o Enterprise.</td>
+      </tr>
+      <tr>
+        <td><strong>Dashboard di conformità</strong></td>
+        <td>Puoi mostrare al CdA e all'ACN un score di conformità e una visione centralizzata delle policy attive.</td>
+      </tr>
+      <tr>
+        <td><strong>Etichette sensibili</strong></td>
+        <td>Le Sensitivity Labels sono il linguaggio standard di conformità per il perimetro Microsoft. Ben riconosciute dalle revisioni.</td>
+      </tr>
+      <tr>
+        <td><strong>Automazione</strong></td>
+        <td>Quando applichi un'etichetta, puoi triggerare automaticamente crittografia, limitazione di accesso, audit potenziato.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>Contro di Purview per NIS2</h3>
+
+  <p>
+    Purview eccelle con i dati dentro Microsoft 365. Ma cosa succede se hai:
+  </p>
+
+  <ul>
+    <li>File server on-premises (vecchi NetApp, Dell EMC, server Windows in data center locale)</li>
+    <li>Dati in piattaforme non-Microsoft (Salesforce, ServiceNow, database Oracle, Sharepoint on-premises)</li>
+    <li>Sistemi legacy ancora in uso (mainframe, sistemi bancari proprietari)</li>
+    <li>Necessità di rilevare comportamenti anomali di utenti (chi sta scaricando dati anormalmente, chi si collega da IP sospetti)</li>
+  </ul>
+
+  <p>
+    In questi scenari, Purview "vede" meno di quello che credi.
+  </p>
+
+  <p>
+    Inoltre, <strong>Purview non è uno strumento per il rilevamento delle minacce interne</strong>.
+    Puoi vedere i log di chi accede cosa, ma Purview non ha algoritmi per identificare comportamenti anomali (pattern recognition su accessi anormali, escalation di privilegi, download massivi in breve tempo).
+    Devi aggiungere altri strumenti per l'insider threat detection.
+  </p>
+
+  <h2>Varonis: la piattaforma specializzata</h2>
+
+  <h3>Cosa fa</h3>
+
+  <p>
+    Varonis è una piattaforma agnostica dal produttore che si "connette" ai tuoi file server, directory attiva (Active Directory), database, soluzioni cloud e legge i log per capire:
+  </p>
+
+  <ul>
+    <li><strong>Chi accede cosa</strong> — indipendentemente da dove i dati risiedono (on-premises, cloud, ibrido)</li>
+    <li><strong>Comportamenti anomali</strong> — algoritmi di machine learning che identificano quando un utente si comporta in modo diverso dal suo profilo normale</li>
+    <li><strong>Rischi di privilegio</strong> — chi ha accesso a quanti dati, chi ha privilegi in eccesso, dove sono concentrati i dati sensibili</li>
+    <li><strong>Classificazione automatica</strong> — scoperta e etichettatura di dati sensibili senza intervento manuale</li>
+    <li><strong>Incident response</strong> — quando identifichi un comportamento sospetto, puoi automaticamente revocare privilegi, bloccare l'utente, attivare alert</li>
+  </ul>
+
+  <h3>Pro di Varonis per NIS2</h3>
+
+  <table class="fine-table">
+    <thead>
+      <tr>
+        <th>Vantaggio</th>
+        <th>Impatto su NIS2</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Visibilità multistack</strong></td>
+        <td>Vedi dati ovunque risiedono. Non dipendi da una sola piattaforma. Essenziale se hai ambienti ibridi o legacy.</td>
+      </tr>
+      <tr>
+        <td><strong>Rilevamento insider threat</strong></td>
+        <td>Identifica comportamenti anomali automaticamente. L'Articolo 21 chiede di rilevare "accessi non autorizzati" — Varonis lo fa in tempo reale.</td>
+      </tr>
+      <tr>
+        <td><strong>Documentazione di rischio</strong></td>
+        <td>Puoi mostrare all'ACN: "Abbiamo 47 utenti con accesso a dati sensibili oltre la necessità. Li abbiamo identificati con Varonis e mitigato il rischio."</td>
+      </tr>
+      <tr>
+        <td><strong>Classificazione intelligente</strong></td>
+        <td>Varonis scopre dati sensibili anche in cartelle dimenticate, non solo in repository gestiti.</td>
+      </tr>
+      <tr>
+        <td><strong>Response automation</strong></td>
+        <td>Quando rilevi un comportamento anomalo, puoi triggerare azioni automatiche (quarantena, notifica, blocco) senza intervento umano.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>Contro di Varonis per NIS2</h3>
+
+  <ul>
+    <li><strong>Costo</strong> — Varonis è una piattaforma con licenza perpetua o SaaS; non è inclusa in Microsoft 365. Budget aggiuntivo significativo.</li>
+    <li><strong>Onboarding lento</strong> — connessione a ogni sistema, tuning dei modelli di machine learning, definizione di policy. 3–6 mesi prima di utilità piena.</li>
+    <li><strong>Meno integrazione nativa con Microsoft</strong> — Varonis "guarda" i tuoi dati Microsoft da fuori; non ha accesso alle proprietà native di Purview come le Sensitivity Labels.</li>
+    <li><strong>Complessità operativa</strong> — richiede un team o un partner che capisce sia Varonis sia il tuo ambiente IT.</li>
+  </ul>
+
+  <div class="box-warning">
+    <strong>Attenzione ai costi nascosti:</strong> Varonis ha spesso oneri di implementazione (consulenza, tuning, integrazione) che raddoppiano il costo anno uno. Purview, essendo nativo, non ha questi costi, ma ti dà meno visibilità fuori da Microsoft 365.
+  </div>
+
+  <h2>Confronto diretto: una matrice di decisione</h2>
+
+  <table class="fine-table">
+    <thead>
+      <tr>
+        <th>Criterio</th>
+        <th>Microsoft Purview</th>
+        <th>Varonis</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Visibilità su Microsoft 365</strong></td>
+        <td class="amount">Eccellente</td>
+        <td>Buona (da fuori)</td>
+      </tr>
+      <tr>
+        <td><strong>Visibilità su file server on-premises</strong></td>
+        <td>Limitata</td>
+        <td class="amount">Eccellente</td>
+      </tr>
+      <tr>
+        <td><strong>Rilevamento insider threat</strong></td>
+        <td>Manuale (log review)</td>
+        <td class="amount">Automatico (ML)</td>
+      </tr>
+      <tr>
+        <td><strong>Classificazione automatica dati</strong></td>
+        <td class="amount">Sì (scanner integrato)</td>
+        <td>Sì (più aggressivo)</td>
+      </tr>
+      <tr>
+        <td><strong>Costo anno 1</strong></td>
+        <td class="amount">500–2.000 € (incluso)</td>
+        <td>50.000–200.000 € +</td>
+      </tr>
+      <tr>
+        <td><strong>Tempo a utilità NIS2</strong></td>
+        <td class="amount">1–2 mesi</td>
+        <td>3–6 mesi</td>
+      </tr>
+      <tr>
+        <td><strong>Complessità operativa</strong></td>
+        <td class="amount">Bassa</td>
+        <td>Alta</td>
+      </tr>
+      <tr>
+        <td><strong>Riconoscimento dell'ACN</strong></td>
+        <td class="amount">Buono (standard industria)</td>
+        <td>Eccellente (specializzato)</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>Tre scenari reali: quale scegli?</h2>
+
+  <div class="box-case">
+    <div class="case-label">Scenario 1: Azienda puramente Microsoft 365</div>
+    <p>
+      <strong>Profilo:</strong> PMI di 100 persone, tutto su Teams, SharePoint, Exchange e OneDrive. Nessun file server on-premises. Piani entro NIS2 (es. settore ICT).
+    </p>
+    <p>
+      <strong>Raccomandazione:</strong> <span style="color: var(--yellow); font-weight: 700;">Microsoft Purview</span>
+    </p>
+    <p>
+      Purview basta. Costi: incluso o minimo aggiuntivo. Tempo di setup: 4–6 settimane. Puoi mostrare all'ACN classificazione, policy DLP, log di accesso centralizzati e score di conformità. Nessun bisogno di Varonis.
+    </p>
+  </div>
+
+  <div class="box-case">
+    <div class="case-label">Scenario 2: Azienda con file server legacy + Microsoft 365</div>
+    <p>
+      <strong>Profilo:</strong> Banca, assicurazione, grande industria. Dati storici in file server on-premises e NAS (netApp, EMC). Più recentemente, migrazione a SharePoint. Mix ibrido inevitabile.
+    </p>
+    <p>
+      <strong>Raccomandazione:</strong> <span style="color: var(--yellow); font-weight: 700;">Purview + Varonis (o partner per consulenza)</span>
+    </p>
+    <p>
+      Purview per la visibilità e la governance di Microsoft 365. Varonis (o uno strumento SIEM con analitiche di comportamento

@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-BKF3QH9K01"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag("js", new Date());
+    gtag("config", "G-BKF3QH9K01");
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hvad er NIS2-direktivet? En guide for danske virksomheder | NIS2Klar</title>
+  <meta name="description" content="Hvad er NIS2, og hvad betyder det for din virksomhed? Forstå kravene, bøderne og det personlige ansvar som direktør eller bestyrelsesmedlem i Danmark.">
+  <meta property="og:title" content="Hvad er NIS2-direktivet? En guide for danske virksomheder">
+  <meta property="og:description" content="Hvad er NIS2, og hvad betyder det for din virksomhed? Forstå kravene, bøderne og det personlige ansvar som direktør eller bestyrelsesmedlem i Danmark.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #141416;
+      --card: #1c1c1f;
+      --yellow: #f5c518;
+      --white: #f0f0f0;
+      --muted: #888;
+      --red: #C61212;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: var(--bg); color: var(--white); font-family: 'Barlow', sans-serif; font-size: 19px; line-height: 1.8; }
+
+    /* Nav */
+    nav { display: flex; justify-content: space-between; align-items: center; padding: 20px 40px; border-bottom: 1px solid rgba(255,255,255,0.07); max-width: 900px; margin: 0 auto; }
+    .nav-logo { font-family: 'Poppins', sans-serif; font-weight: 900; font-size: 20px; color: var(--yellow); text-decoration: none; }
+    .nav-logo span { color: var(--white); }
+    .nav-back { color: var(--muted); text-decoration: none; font-size: 15px; }
+    .nav-back:hover { color: var(--white); }
+    .nav-cta { background: var(--yellow); color: #000; padding: 8px 18px; border-radius: 4px; text-decoration: none; font-weight: 700; font-size: 14px; font-family: 'Poppins', sans-serif; }
+
+    /* Article */
+    .article-wrap { max-width: 760px; margin: 0 auto; padding: 60px 40px; }
+    .article-category { font-size: 13px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 16px; }
+    h1 { font-family: 'Poppins', sans-serif; font-size: clamp(30px, 4vw, 44px); font-weight: 900; line-height: 1.2; margin-bottom: 24px; }
+    .article-meta { font-size: 15px; color: var(--muted); margin-bottom: 48px; padding-bottom: 24px; border-bottom: 1px solid rgba(255,255,255,0.07); }
+    h2 { font-family: 'Poppins', sans-serif; font-size: 26px; font-weight: 700; margin: 48px 0 16px; color: var(--white); }
+    h3 { font-family: 'Poppins', sans-serif; font-size: 20px; font-weight: 600; margin: 32px 0 12px; color: var(--yellow); }
+    p { margin-bottom: 22px; }
+    strong { color: var(--white); font-weight: 700; }
+    .highlight { color: var(--yellow); font-weight: 700; }
+    .danger { color: #ff6b6b; font-weight: 700; }
+    ul, ol { margin: 16px 0 24px 24px; }
+    li { margin-bottom: 12px; font-size: 19px; }
+
+    /* Callout boxes */
+    .box-warning { background: rgba(197,17,17,0.12); border-left: 4px solid var(--red); padding: 20px 24px; margin: 32px 0; border-radius: 0 4px 4px 0; }
+    .box-info { background: rgba(245,197,24,0.08); border-left: 4px solid var(--yellow); padding: 20px 24px; margin: 32px 0; border-radius: 0 4px 4px 0; }
+    .box-case { background: var(--card); border: 1px solid rgba(255,255,255,0.08); padding: 28px; margin: 40px 0; border-radius: 4px; }
+    .box-case .case-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 12px; }
+    blockquote { border-left: 3px solid var(--yellow); padding: 12px 20px; margin: 24px 0; font-style: italic; color: #ccc; }
+
+    /* CTA */
+    .cta-section { background: var(--card); border: 1px solid rgba(245,197,24,0.2); border-radius: 4px; padding: 48px 40px; margin: 64px 0 40px; text-align: center; }
+    .cta-section h2 { margin-top: 0; font-size: 26px; }
+    .cta-section p { color: #aaa; max-width: 500px; margin: 0 auto 28px; }
+    .btn-primary { display: inline-block; background: var(--yellow); color: #000; font-family: 'Poppins', sans-serif; font-weight: 800; font-size: 16px; padding: 16px 36px; border-radius: 4px; text-decoration: none; }
+    .btn-primary:hover { background: #e0b010; }
+    .cta-fine { font-size: 13px; color: var(--muted); margin-top: 16px; }
+
+    /* FAQ */
+    .faq-item { border-bottom: 1px solid rgba(255,255,255,0.07); padding: 20px 0; }
+    .faq-q { font-family: 'Poppins', sans-serif; font-weight: 600; margin-bottom: 10px; }
+    .faq-a { color: #bbb; }
+
+    /* Fine table */
+    .fine-table { width: 100%; border-collapse: collapse; margin: 24px 0; }
+    .fine-table th { background: rgba(245,197,24,0.1); color: var(--yellow); font-family: 'Poppins', sans-serif; font-size: 13px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 12px 16px; text-align: left; border-bottom: 1px solid rgba(245,197,24,0.2); }
+    .fine-table td { padding: 14px 16px; border-bottom: 1px solid rgba(255,255,255,0.05); font-size: 15px; }
+    .fine-table tr:last-child td { border-bottom: none; }
+    .fine-table .amount { color: #ff6b6b; font-weight: 700; }
+
+    /* Summary + Key Takeaway */
+    .box-summary { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; padding: 24px 28px; margin: 0 0 32px; }
+    .summary-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-bottom: 14px; }
+    .box-summary ul { margin: 0; padding-left: 20px; }
+    .box-summary li { margin-bottom: 8px; font-size: 17px; color: #ccc; }
+    .box-takeaway { background: rgba(245,197,24,0.08); border-left: 4px solid var(--yellow); padding: 20px 24px; margin: 0 0 40px; border-radius: 0 4px 4px 0; }
+    .takeaway-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 10px; }
+    .box-takeaway p { margin: 0; font-size: 18px; font-weight: 600; color: var(--white); line-height: 1.6; }
+
+    /* Footer */
+    footer { border-top: 1px solid rgba(255,255,255,0.07); padding: 32px 40px; text-align: center; font-size: 13px; color: var(--muted); max-width: 900px; margin: 0 auto; }
+    footer a { color: var(--muted); }
+
+    @media (max-width: 600px) {
+      nav, .article-wrap, footer { padding: 20px; }
+      .cta-section { padding: 32px 20px; }
+      .fine-table { font-size: 14px; }
+      .fine-table th, .fine-table td { padding: 10px 10px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="https://nis2klar.se/">NIS2<span>Klar</span></a>
+  <a class="nav-back" href="https://nis2klar.se/da/artikler.html">← Alle artikler</a>
+  <div class="lang-switcher" style="display:flex;gap:8px;align-items:center;font-size:13px;font-family:'Poppins',sans-serif;">
+    <a href="https://nis2klar.se/artiklar.html" style="color:#888;text-decoration:none;font-weight:600;padding:4px 8px;border-radius:3px;" title="Svenska">SV</a>
+    <a href="https://nis2klar.se/en/articles.html" style="color:#888;text-decoration:none;font-weight:600;padding:4px 8px;border-radius:3px;" title="English">EN</a>
+    <a href="https://nis2klar.se/da/artikler.html" style="color:#f5c518;text-decoration:none;font-weight:600;padding:4px 8px;border-radius:3px;background:rgba(245,197,24,0.1);" title="Dansk">DA</a>
+    <a href="https://nis2klar.se/no/artikler.html" style="color:#888;text-decoration:none;font-weight:600;padding:4px 8px;border-radius:3px;" title="Norsk">NO</a>
+  </div>
+  <a class="nav-cta" href="/nis2.html#boka">Book samtale →</a>
+</nav>
+
+<article class="article-wrap">
+  <div class="article-category">Grundlæggende forståelse</div>
+  <h1>Hvad er NIS2-direktivet? En guide for danske virksomheder</h1>
+  <div class="article-meta">Opdateret 17. april 2026 · Læsetid: ca. 8 minutter · Målgruppe: Direktører og bestyrelser</div>
+
+  <!-- SUMMARY -->
+  <div class="box-summary">
+    <div class="summary-label">Sammenfatning</div>
+    <ul>
+      <li>NIS2 er EU's nye cybersikkerhedslov — i Danmark trådt i kraft oktober 2024 som <strong>NIS2-loven (Lov nr. 1120 af 2023)</strong>.</li>
+      <li>Loven gælder for virksomheder i <strong>18 samfundskritiske sektorer</strong> og stiller konkrete krav til ledelsen — ikke kun IT-afdelingen.</li>
+      <li>Bøder kan nå op til <strong>10 millioner euro</strong> eller 2 % af den globale omsætning for væsentlige enheder.</li>
+      <li>Som direktør eller bestyrelsesmedlem kan du holdes <strong>personligt ansvarlig</strong> — og midlertidigt forbydes at varetage ledelseshverv.</li>
+      <li>Tilsynsmyndigheden i Danmark er <strong>CFCS (Center for Cybersikkerhed)</strong>, som allerede er aktiv med tilsyn.</li>
+    </ul>
+  </div>
+
+  <!-- KEY TAKEAWAY -->
+  <div class="box-takeaway">
+    <div class="takeaway-label">Vigtigste konklusion</div>
+    <p>NIS2 er ikke et IT-projekt — det er et ledelseansvar. Som direktør eller bestyrelsesmedlem i en reguleret virksomhed er du personligt ansvarlig for, at din organisation overholder loven. Ignorerer du det, risikerer du bøder på op til 10 millioner euro og et personligt forbud mod at sidde i ledelse.</p>
+  </div>
+
+  <!-- HOOK -->
+  <p>
+    Forestil dig, at din virksomhed bliver ramt af et cyberangreb en tirsdag morgen. Produktionen stopper. Kundedata er kompromitteret. Og så opdager du, at du ifølge dansk lovgivning skulle have rapporteret hændelsen til myndighederne inden for <strong>24 timer</strong> — men der er gået tre dage, og ingen har gjort noget.
+  </p>
+
+  <p>
+    Det er ikke et hypotetisk scenarie. Det er præcis den situation, NIS2-loven er designet til at forhindre — og præcis den situation, der kan koste dig og din virksomhed langt mere end et cyberangreb i sig selv.
+  </p>
+
+  <p>
+    NIS2-direktivet er EU's opdaterede cybersikkerhedslovgivning. I Danmark trådte den i kraft i oktober 2024 som <strong>NIS2-loven (Lov nr. 1120 af 2023 om net- og informationssikkerhed)</strong>. Og det, der gør denne lov anderledes end de fleste andre regler, du har navigeret som direktør eller bestyrelsesmedlem, er enkelt: <strong>den gælder dig personligt</strong>.
+  </p>
+
+  <div class="box-warning">
+    <strong>CFCS er allerede i gang.</strong> Center for Cybersikkerhed — Danmarks primære tilsynsmyndighed under NIS2 — har igangsat tilsyn. At vente på, at "andre virksomheder bliver ramt først", er ikke en strategi. Det er et valg om at stå uforberedt.
+  </div>
+
+  <h2>Hvorfor eksisterer NIS2 overhovedet?</h2>
+
+  <p>
+    Cyberangreb er ikke længere et problem, der kun rammer store internationale koncerner. Ransomware, supply chain-angreb og kritisk infrastruktur som mål for statslige aktører er daglig virkelighed i Europa. EU-Kommissionen anslår, at cyberangreb koster den europæiske økonomi over 5.500 milliarder euro om året — og at mange af disse angreb kunne have været begrænset eller forhindret med grundlæggende sikkerhedsforanstaltninger.
+  </p>
+
+  <p>
+    Det første NIS-direktiv fra 2016 var et skridt i den rigtige retning, men det var for snævert, for uensartet implementeret på tværs af EU-landene og dækkede for få sektorer. NIS2 er svaret på det. Det er bredere, skarpere og langt mere konkret i sine krav til, hvad virksomheder faktisk skal gøre — og hvad konsekvenserne er, hvis de ikke gør det.
+  </p>
+
+  <p>
+    Pointen med NIS2 er ikke at straffe virksomheder. Pointen er at løfte det generelle cybersikkerhedsniveau i EU, så samfundskritisk infrastruktur og vigtige tjenester er robuste nok til at modstå de trusler, vi ved eksisterer. Som direktør eller bestyrelsesmedlem er du den person, der har ansvaret for, at din organisation bidrager til det mål.
+  </p>
+
+  <h2>Hvem er omfattet — og er det din virksomhed?</h2>
+
+  <p>
+    NIS2 skelner mellem to kategorier af virksomheder: <strong>væsentlige enheder</strong> og <strong>vigtige enheder</strong>. Begge er underlagt loven, men tilsynsintensiteten og bødeniveauerne adskiller sig.
+  </p>
+
+  <p>
+    Udgangspunktet er størrelse og sektor. Loven gælder for virksomheder med mere end 50 ansatte eller en omsætning eller balance over 10 millioner euro, som opererer inden for én af de <strong>18 udpegede sektorer</strong>:
+  </p>
+
+  <ul>
+    <li>Energi, transport, bank og finansielle markedsinfrastrukturer</li>
+    <li>Sundhed, drikkevand og spildevand</li>
+    <li>Digital infrastruktur og IKT-serviceforvaltning</li>
+    <li>Offentlig forvaltning og rumfart</li>
+    <li>Post- og kurértjenester, affaldshåndtering</li>
+    <li>Kemikalier, fødevarer og fremstilling</li>
+    <li>Digitale udbydere og forskning</li>
+  </ul>
+
+  <p>
+    <strong>Væsentlige enheder</strong> er typisk store virksomheder med systemkritisk rolle — mere end 250 ansatte eller omsætning over 50 millioner euro. <strong>Vigtige enheder</strong> er mellemstore virksomheder i regulerede sektorer med 50–249 ansatte eller en omsætning mellem 10 og 50 millioner euro.
+  </p>
+
+  <div class="box-info">
+    <strong>Usikker på, om din virksomhed er omfattet?</strong> Det er en meget almindelig situation. Mange virksomheder opdager, at de er regulerede, fordi de leverer til en sektor — ikke fordi de selv er i sektoren. En underleverandør til energisektoren kan godt være omfattet. En softwareleverandør til sygehuse kan godt være omfattet. Tjek din branche og dine kundeforhold — og brug om nødvendigt 30 minutter på en afklaring med en rådgiver.
+  </div>
+
+  <h2>Hvad kræver NIS2 helt konkret?</h2>
+
+  <p>
+    NIS2 stiller krav inden for tre overordnede områder: <strong>risikostyring og sikkerhedsforanstaltninger</strong>, <strong>hændelsesrapportering</strong> og <strong>ledelsesansvar</strong>. Lad os gennemgå dem i et sprog, der giver mening uden for IT-afdelingen.
+  </p>
+
+  <h3>1. Risikostyring og tekniske sikkerhedsforanstaltninger</h3>
+
+  <p>
+    Artikel 21 i NIS2-direktivet — implementeret i den danske NIS2-lov — kræver, at virksomheder har konkrete og dokumenterede sikkerhedsforanstaltninger på plads. Det drejer sig om ti overordnede domæner:
+  </p>
+
+  <ul>
+    <li>Risikoanalyse og sikkerhedspolitikker</li>
+    <li>Håndtering af sikkerhedshændelser</li>
+    <li>Driftskontinuitet og krisestyring</li>
+    <li>Forsyningskædesikkerhed og leverandørstyring</li>
+    <li>Sikkerhed i netværk og informationssystemer</li>
+    <li>Politikker for kryptering og adgangskontrol</li>
+    <li>Brug af multifaktorgodkendelse</li>
+    <li>Sikkerhed i forbindelse med anskaffelse og udvikling af systemer</li>
+    <li>Cyber-hygiejne og medarbejderuddannelse</li>
+    <li>Sårbarhedshåndtering og patch-management</li>
+  </ul>
+
+  <p>
+    Det afgørende her er ordet <strong>dokumenterede</strong>. Tilsynsmyndigheden vurderer ikke, om I har "gjort jeres bedste" eller har "gode intentioner". De vurderer, om I kan fremvise politikker, procedurer og beslutningsprotokoller, der beviser, at sikkerhedsforanstaltningerne er på plads og fungerer.
+  </p>
+
+  <h3>2. Hændelsesrapportering med stramme tidsfrister</h3>
+
+  <p>
+    Hvis din virksomhed rammes af en alvorlig sikkerhedshændelse — et ransomware-angreb, et databrud, et DDoS-angreb der forstyrrer driften — er der lovbestemte frister for, hvornår du skal melde det til myndighederne:
+  </p>
+
+  <ul>
+    <li><strong>24 timer:</strong> Tidlig advarsel til CFCS (Center for Cybersikkerhed)</li>
+    <li><strong>72 timer:</strong> Fuld hændelsesrapport med foreløbig vurdering af omfang og årsag</li>
+    <li><strong>1 måned:</strong> Endelig rapport med komplet analyse og iværksatte foranstaltninger</li>
+  </ul>
+
+  <p>
+    Disse frister er ikke vejledende. De er lovkrav. En virksomhed, der forsøger at håndtere et angreb internt uden at rapportere, risikerer dobbelte sanktioner — én for selve sikkerhedsbristen og én for den manglende rapportering.
+  </p>
+
+  <h3>3. Ledelsesansvar — det punkt, der adskiller NIS2 fra alt andet</h3>
+
+  <p>
+    Her er det, der gør NIS2 fundamentalt anderledes end tidligere regulering. Direktivets Artikel 20 fastsætter udtrykkeligt, at <strong>ledelsesorganerne</strong> — det vil sige bestyrelsen og direktionen — er ansvarlige for at godkende og overvåge implementeringen af sikkerhedsforanstaltningerne.
+  </p>
+
+  <p>
+    Det er ikke nok at delegere til IT-direktøren og sige "tag dig af det". Artikel 20 kræver, at du som VD eller bestyrelsesmedlem:
+  </p>
+
+  <ol>
+    <li>Aktivt godkender organisationens sikkerhedsforanstaltninger</li>
+    <li>Fører tilsyn med, at de implementeres og virker</li>
+    <li>Har modtaget tilstrækkelig uddannelse til at forstå de væsentligste cybersikkerhedsrisici</li>
+    <li>Kan dokumentere alt ovenstående over for tilsynsmyndigheden</li>
+  </ol>
+
+  <p>
+    Konsekvensen af at undlade dette er ikke kun bøder til virksomheden. I Danmark har CFCS beføjelse til at <strong>midlertidigt forbyde et ledelsesmedlem at varetage ledelseshverv</strong>. Det er et personligt erhvervsforbud — ikke en advarsel, ikke en bøde til selskabet. Det er dig, der mister retten til at sidde i en bestyrelse eller direktørsstol.
+  </p>
+
+  <h2>Bødeniveauerne — hvad koster det konkret?</h2>
+
+  <p>
+    Sanktionssystemet under NIS2-loven opererer med to niveauer afhængigt af virksomhedens klassifikation:
+  </p>
+
+  <table class="fine-table">
+    <thead>
+      <tr>
+        <th>Kategori</th>
+        <th>Maksimalbøde</th>
+        <th>Alternativt loft</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Væsentlig enhed</td>
+        <td class="amount">10 millioner euro</td>
+        <td>2 % af global årsomsætning</td>
+      </tr>
+      <tr>
+        <td>Vigtig enhed</td>
+        <td class="amount">7 millioner euro</td>
+        <td>1,4 % af global årsomsætning</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>
+    Det højeste beløb er det gældende loft. En dansk produktionsvirksomhed med en global omsætning på 600 millioner kroner, der klassificeres som væsentlig enhed, kan altså stå over for bøder på op til <strong>10 millioner euro</strong> — ikke 2 % af omsætningen, fordi det faste loft er højere.
+  </p>
+
+  <p>
+    Og det er ikke et enkelt maksimum for hele virksomheden. Bøder kan udstedes per overtrædelse — manglende rapportering er én overtrædelse, manglende sikkerhedsdokumentation er en anden, og fraværet af en godkendt risikovurdering er en tredje. En enkelt hændelse kan resultere i <strong>flere samtidige sanktioner</strong>.
+  </p>
+
+  <h2>Hvem fører tilsyn — og hvordan foregår det?</h2>
+
+  <p>
+    I Danmark er <strong>CFCS (Center for Cybersikkerhed)</strong> den primære tilsynsmyndighed under NIS2-loven. Men tilsynet er også fordelt på sektorniveau:
+  </p>
+
+  <ul>
+    <li><strong>Finanstilsynet</strong> — finans og forsikring</li>
+    <li><strong>Energistyrelsen</strong> — energisektoren</li>
+    <li><strong>Erhvervsstyrelsen</strong> — telekommunikation og digitale tjenester</li>
+  </ul>
+
+  <p>
+    CFCS har vidtgående beføjelser. De kan gennemføre uanmeldte inspektioner, kræve dokumentation fremlagt med kort varsel — typisk 14 til 30 dage — og de kan udstede <strong>øjeblikkelige påbud</strong> uden forudgående advarsel, hvis de vurderer, at der er en umiddelbar risiko. De kan også midlertidigt forbyde et ledelsesmedlem at varetage sit hverv.
+  </p>
+
+  <p>
+    Tilsyn kan igangsættes på tre måder: som en planlagt, proaktiv gennemgang; som reaktion på en hændelsesrapport; eller på baggrund af et klagomål fra en medarbejder, kunde, samarbejdspartner eller en myndighed i et andet EU-land. Du behøver altså ikke selv at have oplevet et angreb, for at tilsynet banker på.
+  </p>
+
+  <div class="box-case">
+    <div class="case-label">Scenarie</div>
+    <p>
+      <strong>Dansk medicinalvirksomhed, 210 ansatte, klassificeret som væsentlig enhed inden for sundhedssektoren.</strong>
+    </p>
+    <p>
+      Virksomheden rammes i marts 2026 af et ransomware-angreb. IT-afdelingen opdager angrebet på dag ét og orienterer direktøren. Direktøren beslutter at afvente intern vurdering, inden der rapporteres til myndighederne — for at undgå medieopmærksomhed og panik hos kunder.
+    </p>
+    <p>
+      72-timers fristen passerer uden rapportering til CFCS. En uge senere opdager en samarbejdende sygehuspartner uregelmæssigheder i dataudvekslingen og indgiver en anmeldelse til CFCS.
+    </p>
+    <p>
+      CFCS indleder tilsyn. Det fremkommer, at virksomheden ikke har en godkendt hændelseshåndteringsplan, at bestyrelsen aldrig formelt har godkendt sikkerhedsforanstaltningerne i henhold til Artikel 20, og at der ikke foreligger en leverandørsikkerhedspolitik.
+    </p>
+    <p>
+      <strong>Konsekvens:</strong> Sanktionsafgift for manglende rettidig rapportering. Yderligere afgift for tre dokumenterede sikkerhedsbrister. Direktøren modtager personlig tilsynsnotits med angivelse af personligt ansvar. Advokatomkostninger, krisekommunikation og midlertidig driftsstandsning.
+      Samlet estimeret omkostning: <span class="danger">15–25 millioner kroner</span> — ud over den direkte skade fra ransomware-angrebet.
+    </p>
+  </div>
+
+  <h2>Hvad er det faktiske minimum, du skal have på plads?</h2>
+
+  <p>
+    Som direktør eller bestyrelsesmedlem behøver du ikke forstå teknisk konfiguration af firewalls eller endpoint-beskyttelse. Men du skal forstå, hvad din organisation skal <em>have</em>, og du skal kunne bevise, at du har taget stilling til det.
+  </p>
+
+  <p>
+    Det absolutte minimum er dokumentation inden for disse områder:
+  </p>
+
+  <ul>
+    <li>En gennemført og dateret risikovurdering</li>
+    <li>En sikkerhedspolitik godkendt af bestyrelsen</li>
+    <li>En hændelseshåndteringsplan med klare roller, eskaleringsruter og de lovpligtige rapporteringsfrister</li>
+    <li>En leverandøroversigt med dokumenterede sikkerhedskrav til underleverandører</li>
+    <li>En backup- og kontinuitetsplan</li>
+    <li>Dokumentation for, at ledelsen har modtaget relevant cybersikkerhedstræning</li>
+    <li>Bestyrelsesprotokol med godkendelse af sikkerhedsforanstaltningerne (Artikel 20)</li>
+  </ul>
+
+  <p>
+    Har du ikke disse dokumenter den dag, tilsynet indledes, er det ligegyldigt, hvad I faktisk gør i praksis. <strong>Bevisbyrden ligger hos jer.</strong> Myndighederne antager ikke, at I er compliant — de kræver bevis for det.
+  </p>
+
+  <h2>De spørgsmål vi oftest hører</h2>
+
+  <div class="faq-item">
+    <div class="faq-q">Vi er ikke en teknologivirksomhed — gælder NIS2 virkelig os?</div>
+    <div class="faq-a">Det er et meget almindeligt udgangspunkt. NIS2 handler ikke om, om I er en it-virksomhed, men om I opererer i eller leverer til en af de 18 regulerede sektorer. En fødevareproducent, et transportfirma, en kemikaliedistrubutør eller en kommunal vandforsyning kan alle være omfattet. Tærsklen er sektor og størrelse — ikke forretningsmodel. Tjek jeres branchekode og jeres primære kundegrupper mod sektorlisten i NIS2-loven.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">Kan vi ikke bare overlade det til vores IT-chef?</div>
+    <div class="faq-a">IT-chefen kan implementere de tekniske foranstaltninger — men ikke bære jeres juridiske ansvar. Artikel 20 i NIS2-direktivet er eksplicit: ledelsesorganerne skal godkende og overvåge sikkerhedsforanstaltningerne. Det er ikke et teknisk krav, det er et ledelseskrav. Hvis CFCS finder mangler, er det dig som direktør eller bestyrelsesmedlem, der kan holdes personligt ansvarlig — uanset om du har delegeret opgaven.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">Vi har ikke haft nogen hændelser — hvorfor skulle tilsynet interessere sig for os?</div>
+    <div class="faq-a">NIS2 kræver ikke, at der er sket et angreb, før tilsyn kan igangsættes. CFCS kan gennemføre proaktive tilsyn baseret på sektorrisikovurderinger, og tilsyn kan igangsættes af klagomål fra samarbejdspartnere eller kunder i andre EU-lande. Manglende dokumentation er en overtrædelse i sig selv — uanset om et angreb er sket eller ej.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">Hvad er det mest akutte, vi skal gøre nu?</div>
+    <div class="faq-a">Start med at afklare, om I er omfattet — og hvilken kategori I tilhører. Dernæst: lav en gap-analyse, der kortlægger, hvad I allerede har dokumenteret, og hvad der mangler. Det behøver ikke tage måneder. En struktureret gennemgang med en erfaren rådgiver kan give jer et klart billede inden for få uger — og give jer det overblik, der gør, at bestyrelsen kan tage informerede beslutninger.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">Hvad sker der, hvis vi ignorerer loven?</div>
+    <div class="faq-a">Ud over bøder på op til 10 millioner euro kan CFCS udstede øjeblikkelige påbud — herunder påbud om at standse bestemte aktiviteter. De kan midlertidigt forbyde ledelsesmedlemmer at varetage ledelseshverv. Det er et personligt erhvervsforbud. Og en tilsynssag er offentlig — den reputationsmæssige skade hos kunder, investorer og samarbejdspartnere kan overskygge selve bøden.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">Er NIS2 det samme som GDPR?</div>
+    <div class="faq-a">Nej, men de overlapper. GDPR handler om beskyttelse af persondata og administreres i Danmark af Datatilsynet. NIS2 handler om cybersikkerhed og driftsrobusthed i kritiske sektorer og administreres primært af CFCS. En sikkerhedshændelse kan aktivere begge regelsæt — og begge myndigheder kan sanktionere den samme hændelse, dog for forskellige overtrædelser.</div>
+  </div>
+
+  <div class="box-info" style="margin: 48px 0 32px;">
+    <div style="font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color: var(--yellow); margin-bottom:10px;">🔧 VÆRKTØJER &amp; LØSNINGER</div>
+    <p style="margin:0; font-size:17px; color: #ddd; line-height:1.7;">Dokumentation er nøglen til NIS2-compliance — og det billigste forsvar mod en sanktionssag. Microsoft Defender Secure Score giver bestyrelsen et målbart 0–100 KPI på sikkerhedsniveauet, mens Microsoft Compliance Manager kortlægger jeres status op mod NIS2-kravene og genererer den dokumentation, CFCS kan kræve at se. En certificeret Microsoft-partner sætter det hele op — og inkluderer en gratis gap-analyse som første skridt.</p>
+  </div>
+
+  <!-- NEWSLETTER -->
+  <div style="background:#111; border:1px solid rgba(255,255,255,0.1); border-left:3px solid #f5c518; border-radius:4px; padding:32px 36px; margin:40px 0 0; text-align:center; max-width:760px; margin-left:auto; margin-right:auto;">
+    <div style="font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:#f5c518; margin-bottom:12px;">📬 NIS2-OPDATERINGER</div>
+    <h3 style="font-family:'Poppins',sans-serif; font-size:20px; font-weight:800; margin:0 0 8px; color:#f0f0f0;">Ny NIS2-artikel hver uge — direkte i indbakken</h3>
+    <p style="color:#888; font-size:15px; margin:0 0 20px;">Ingen salgspitch. Kun konkret vejledning for direktører og bestyrelser.</p>
+    <form id="nlForm-hvad_er_nis2_direktivet" onsubmit="submitNewsletter_hvad_er_nis2_direktivet(event)" style="display:flex; gap:10px; flex-wrap:wrap; justify-content:center; max-width:460px; margin:0 auto;">
+      <input type="email" id="nlEmail-hvad_er_nis2_direktivet" placeholder="din@virksomhed.dk" required style="flex:1; min-width:200px; padding:12px 16px; background:#1c1c1f; border:1px solid rgba(255,255,255,0.15); border-radius:4px; color:#f0f0f0; font-size:15px; outline:none;" />
+      <button type="submit" id="nlSubmit-hvad_er_nis2_direktivet" style="padding:12px 22px; background:#f5c518; color:#141416; font-weight:700; font-size:15px; border:none; border-radius:4px; cursor:pointer; white-space:nowrap;">Tilmeld gratis →</button>
+    </form>
+    <p style="font-size:12px; color:#555; margin:12px 0 0;">Du kan afmelde dig når som helst. Vi deler aldrig din e-mail.</p>
+    <div id="nlThanks-hvad_er_nis2_direktivet" style="display:none; color:#4ade80; font-size:16px; font-weight:600; margin-top:14px;">✅ Du er med! Næste artikel kommer direkte til din indbakke.</div>
+  </div>
+
+  <!-- CTA -->
+  <div class="cta-section">
+    <h2>Ved du, hvor din organisation står i dag?</h2>
+    <p>En gratis gap-analyse med en certificeret Microsoft-partner viser præcist, hvad du allerede har dækket — og hvad der mangler.</p>
+    <a href="/nis2.html#boka" class="btn-primary">Book gratis gap-analyse →</a>
+    <p class="cta-fine">Bøderne er op til <strong>10 millioner euro</strong>. Gap-analysen er gratis.</p>
+  </div>
+
+</article>
+
+<div class="related-articles" style="margin:2.5rem 0 2rem;padding:1.5rem;background:#1a1a2e;border-left:4px solid #f0a500;border-radius:4px;max-width:760px;margin-left:auto;margin-right:auto;">
+  <p style="margin:0 0 1rem;font-size:0.85rem;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:#f0a500;">Læs også</p>
+  <ul style="margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:0.5rem;">
+    <li><a href="/da/artikler/nis2-personligt-ansvar-bestyrelse.html" style="color:#e0e0e0;text-decoration:none;font-size:0.95rem;">→ Bestyrelsens personlige ansvar under NIS2</a></li>
+    <li><a href="/da/artikler/nis2-tilsyn-cfcs-danmark.html" style="color:#e0e0e0;text-decoration:none;font-size:0.95rem;">→ NIS2-tilsyn: Sådan arbejder CFCS</a></li>
+    <li><a href="/da/artikler/nis2-hvilke-virksomheder-er-omfattet.html" style="color:#e0e0e0;text-decoration:none;font-size:0.95rem;">→ Hvilke virksomheder er omfattet af NIS2?</a></li>
+  </ul>
+  <p style="margin:1.25rem 0 0;font-size:0.85rem;color:#aaa;">← <a href="https://nis2klar.se/da/" style="color:#f0a500;text-decoration:none;">NIS2Klar forside</a> &nbsp;·&nbsp; <a href="https://nis2klar.se/da/artikler.html" style="color:#f0a500;text-decoration:none;">Alle guider</a></p>
+</div>
+
+<footer>
+  © 2026 M&amp;J Trusted Marketing KB ·
+  <a href="mailto:support@trustedmarketing.se">support@trustedmarketing.se</a> · <a href="tel:+46470597003">+46 470 59 70 03</a> ·
+  <a href="https://nis2klar.se/da/">Tilbage til forsiden</a> ·
+  <a href="/privacy.html">Privatlivspolitik</a>
+  <p style="margin-top:12px; font-size:11px; color: #555; line-height:1.5;">Microsoft, Microsoft 365, Azure og tilhørende produktnavne er varemærker tilhørende Microsoft Corporation. nis2klar.se er ikke tilknyttet eller godkendt af Microsoft Corporation.</p>
+</footer>
+
+<script>
+  async function submitNewsletter_hvad_er_nis2_direktivet(e) {
+    e.preventDefault();
+    const btn = document.getElementById('nlSubmit-hvad_er_nis2_direktivet');
+    btn.disabled = true; btn.textContent = '...';
+    const email = document.getElementById('nlEmail-hvad_er_nis2_direktivet').value.trim();
+    try {
+      const res = await fetch('/api/newsletter/subscribe', { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({ email, source: 'artikel-da-hvad_er_nis2_direktivet' }) });
+      const data = await res.json();
+      if (data.success) { document.getElementById('nlForm-hvad_er_nis2_direktivet').style.display='none'; document.getElementById('nlThanks-hvad_er_nis2_direktivet').style.display='block'; }
+      else { btn.disabled=false; btn.textContent='Tilmeld gratis →'; }
+    } catch { btn.disabled=false; btn.textContent='Tilmeld gratis →'; }
+  }
+</script>
+
+</body>
+</html>

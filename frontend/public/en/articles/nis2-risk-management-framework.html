@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-BKF3QH9K01"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag("js", new Date());
+    gtag("config", "G-BKF3QH9K01");
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NIS2 Risk Management Framework: A Board-Level Guide | NIS2Klar</title>
+  <meta name="description" content="Learn how to build a NIS2-compliant risk management framework aligned with ISO 27001. This board-level guide covers risk registers, residual risk acceptance, and ENISA guidelines for Irish essential entities.">
+  <meta property="og:title" content="NIS2 Risk Management Framework: A Board-Level Guide">
+  <meta property="og:description" content="Learn how to build a NIS2-compliant risk management framework aligned with ISO 27001. This board-level guide covers risk registers, residual risk acceptance, and ENISA guidelines for Irish essential entities.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #141416;
+      --card: #1c1c1f;
+      --yellow: #f5c518;
+      --white: #f0f0f0;
+      --muted: #888;
+      --red: #C61212;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: var(--bg); color: var(--white); font-family: 'Barlow', sans-serif; font-size: 19px; line-height: 1.8; }
+
+    /* Nav */
+    nav { display: flex; justify-content: space-between; align-items: center; padding: 20px 40px; border-bottom: 1px solid rgba(255,255,255,0.07); max-width: 900px; margin: 0 auto; }
+    .nav-logo { font-family: 'Poppins', sans-serif; font-weight: 900; font-size: 20px; color: var(--yellow); text-decoration: none; }
+    .nav-logo span { color: var(--white); }
+    .nav-back { color: var(--muted); text-decoration: none; font-size: 15px; }
+    .nav-back:hover { color: var(--white); }
+    .lang-switcher { display: flex; gap: 8px; align-items: center; font-size: 13px; font-family: 'Poppins', sans-serif; }
+    .nav-cta { background: var(--yellow); color: #000; padding: 8px 18px; border-radius: 4px; text-decoration: none; font-weight: 700; font-size: 14px; font-family: 'Poppins', sans-serif; }
+
+    /* Article */
+    .article-wrap { max-width: 760px; margin: 0 auto; padding: 60px 40px; }
+    .article-category { font-size: 13px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 16px; }
+    h1 { font-family: 'Poppins', sans-serif; font-size: clamp(30px, 4vw, 44px); font-weight: 900; line-height: 1.2; margin-bottom: 24px; }
+    .article-meta { font-size: 15px; color: var(--muted); margin-bottom: 48px; padding-bottom: 24px; border-bottom: 1px solid rgba(255,255,255,0.07); }
+    h2 { font-family: 'Poppins', sans-serif; font-size: 26px; font-weight: 700; margin: 48px 0 16px; color: var(--white); }
+    h3 { font-family: 'Poppins', sans-serif; font-size: 20px; font-weight: 600; margin: 32px 0 12px; color: var(--yellow); }
+    p { margin-bottom: 22px; }
+    strong { color: var(--white); font-weight: 700; }
+    .highlight { color: var(--yellow); font-weight: 700; }
+    .danger { color: #ff6b6b; font-weight: 700; }
+    ul, ol { margin: 16px 0 24px 24px; }
+    li { margin-bottom: 12px; font-size: 19px; }
+
+    /* Callout boxes */
+    .box-warning { background: rgba(197,17,17,0.12); border-left: 4px solid var(--red); padding: 20px 24px; margin: 32px 0; border-radius: 0 4px 4px 0; }
+    .box-info { background: rgba(245,197,24,0.08); border-left: 4px solid var(--yellow); padding: 20px 24px; margin: 32px 0; border-radius: 0 4px 4px 0; }
+    .box-case { background: var(--card); border: 1px solid rgba(255,255,255,0.08); padding: 28px; margin: 40px 0; border-radius: 4px; }
+    .box-case .case-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 12px; }
+    blockquote { border-left: 3px solid var(--yellow); padding: 12px 20px; margin: 24px 0; font-style: italic; color: #ccc; }
+
+    /* CTA */
+    .cta-section { background: var(--card); border: 1px solid rgba(245,197,24,0.2); border-radius: 4px; padding: 48px 40px; margin: 64px 0 40px; text-align: center; }
+    .cta-section h2 { margin-top: 0; font-size: 26px; }
+    .cta-section p { color: #aaa; max-width: 500px; margin: 0 auto 28px; }
+    .btn-primary { display: inline-block; background: var(--yellow); color: #000; font-family: 'Poppins', sans-serif; font-weight: 800; font-size: 16px; padding: 16px 36px; border-radius: 4px; text-decoration: none; }
+    .btn-primary:hover { background: #e0b010; }
+    .cta-fine { font-size: 13px; color: var(--muted); margin-top: 16px; }
+
+    /* FAQ */
+    .faq-item { border-bottom: 1px solid rgba(255,255,255,0.07); padding: 20px 0; }
+    .faq-q { font-family: 'Poppins', sans-serif; font-weight: 600; margin-bottom: 10px; }
+    .faq-a { color: #bbb; }
+
+    /* Summary + Key Takeaway */
+    .box-summary { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; padding: 24px 28px; margin: 0 0 32px; }
+    .summary-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-bottom: 14px; }
+    .box-summary ul { margin: 0; padding-left: 20px; }
+    .box-summary li { margin-bottom: 8px; font-size: 17px; color: #ccc; }
+    .box-takeaway { background: rgba(245,197,24,0.08); border-left: 4px solid var(--yellow); padding: 20px 24px; margin: 0 0 40px; border-radius: 0 4px 4px 0; }
+    .takeaway-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 10px; }
+    .box-takeaway p { margin: 0; font-size: 18px; font-weight: 600; color: var(--white); line-height: 1.6; }
+
+    /* Footer */
+    footer { border-top: 1px solid rgba(255,255,255,0.07); padding: 32px 40px; text-align: center; font-size: 13px; color: var(--muted); max-width: 900px; margin: 0 auto; }
+    footer a { color: var(--muted); }
+
+    /* Related articles */
+    .related-articles { margin: 2.5rem 0 2rem; padding: 1.5rem; background: #1a1a2e; border-left: 4px solid #f0a500; border-radius: 4px; max-width: 760px; margin-left: auto; margin-right: auto; }
+    .related-articles p { margin: 0 0 1rem; font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #f0a500; }
+    .related-articles ul { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+    .related-articles li { margin: 0; font-size: 0.95rem; }
+    .related-articles a { color: #e0e0e0; text-decoration: none; }
+    .related-articles a:hover { color: #f0a500; }
+
+    @media (max-width: 600px) {
+      nav, .article-wrap, footer { padding: 20px; }
+      .cta-section { padding: 32px 20px; }
+      .lang-switcher { gap: 6px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="https://nis2klar.se/en/">NIS2<span>Klar</span></a>
+  <div style="display: flex; gap: 20px; align-items: center;">
+    <a class="nav-back" href="https://nis2klar.se/en/articles.html">← All Articles</a>
+    <div class="lang-switcher">
+      <a href="https://nis2klar.se/artiklar.html" style="color:#888;text-decoration:none;font-weight:600;padding:4px 8px;border-radius:3px;" title="Svenska">SV</a>
+      <a href="https://nis2klar.se/en/articles.html" style="color:#f5c518;text-decoration:none;font-weight:600;padding:4px 8px;border-radius:3px;background:rgba(245,197,24,0.1);" title="English">EN</a>
+      <a href="https://nis2klar.se/da/artikler.html" style="color:#888;text-decoration:none;font-weight:600;padding:4px 8px;border-radius:3px;" title="Dansk">DA</a>
+      <a href="https://nis2klar.se/no/artikler.html" style="color:#888;text-decoration:none;font-weight:600;padding:4px 8px;border-radius:3px;" title="Norsk">NO</a>
+      <a href="https://nis2klar.se/it/articoli.html" style="color:#888;text-decoration:none;font-weight:600;padding:4px 8px;border-radius:3px;" title="Italiano">IT</a>
+    </div>
+  </div>
+  <a class="nav-cta" href="https://nis2klar.se/en/#book">Book call →</a>
+</nav>
+
+<article class="article-wrap">
+  <div class="article-category">Risk Management &amp; Governance</div>
+  <h1>NIS2 Risk Management Framework: A Board-Level Guide</h1>
+  <div class="article-meta">Updated 19 April 2026 · Read time: 9 minutes · For: CEOs, Board Chairs, Board Members</div>
+
+  <!-- SUMMARY -->
+  <div class="box-summary">
+    <div class="summary-label">Summary</div>
+    <ul>
+      <li>The NIS2 Directive requires a documented risk management framework — not a one-off assessment.</li>
+      <li>Your board must approve and oversee the framework. Personal liability under Regulation 32 of S.I. 322/2024 applies to you, not just the CISO.</li>
+      <li>A compliant framework aligns with ISO 27001 and ENISA guidelines, with a clear risk register and documented residual risk acceptance.</li>
+      <li>NCSC Ireland expects this documentation when they call. Most Irish organisations are not ready.</li>
+    </ul>
+  </div>
+
+  <!-- KEY TAKEAWAY -->
+  <div class="box-takeaway">
+    <div class="takeaway-label">The Core Issue</div>
+    <p>A risk management framework is not something IT builds in secret. It is a board governance instrument that you must understand, approve in writing, and regularly review. If you cannot articulate it in 10 minutes, your organisation is not compliant.</p>
+  </div>
+
+  <h2>Why Your Board Needs to Own This</h2>
+
+  <p>
+    When the NIS2 Directive was transposed into Irish law via S.I. No. 322 of 2024 in October 2024, it did something previous cybersecurity frameworks did not: it made senior management <strong>personally liable</strong> for the adequacy of risk management.
+  </p>
+
+  <p>
+    Regulation 32 of S.I. 322/2024 is explicit. The management body — that means you as CEO, board chair, or board member — must:
+  </p>
+
+  <ol>
+    <li>Approve the risk management framework in writing</li>
+    <li>Monitor its implementation</li>
+    <li>Be able to demonstrate ongoing oversight through board records</li>
+  </ol>
+
+  <p>
+    This is not a delegation. You cannot hand it to the CISO and assume compliance. NCSC Ireland and the sectoral competent authorities (CBI for finance, ComReg for telecoms, CRU for energy, etc.) expect to see board meeting minutes showing active governance of cybersecurity risk.
+  </p>
+
+  <div class="box-warning">
+    <strong>Personal Liability in Plain Language:</strong> If your organisation suffers a breach and the competent authority finds that your board did not actively approve and monitor the risk management framework, you can be held personally liable. Fines up to €10 million or 2% of global annual turnover apply to the entity. You, as a board member, face potential reputational damage and professional disqualification from leadership roles. The fine against the company does not protect you personally.
+  </div>
+
+  <h2>What Is a Risk Management Framework Under NIS2?</h2>
+
+  <p>
+    A risk management framework under NIS2 is a documented, board-approved approach to identifying, assessing, treating, and accepting cybersecurity risks in your essential entity. It is not a compliance checklist. It is a living strategic process that guides how your organisation makes trade-off decisions about security investment.
+  </p>
+
+  <p>
+    The framework typically consists of:
+  </p>
+
+  <ul>
+    <li><strong>Risk strategy:</strong> A board-level statement of risk appetite — what level of residual risk the organisation will accept</li>
+    <li><strong>Risk identification process:</strong> A systematic method for surfacing threats and vulnerabilities</li>
+    <li><strong>Risk register:</strong> A documented inventory of identified risks, their likelihood, impact, and current mitigation status</li>
+    <li><strong>Treatment decisions:</strong> For each risk, a documented choice to mitigate, accept, or transfer the risk</li>
+    <li><strong>Residual risk acceptance:</strong> Board sign-off on risks that remain after mitigation efforts</li>
+    <li><strong>Monitoring and reporting:</strong> Regular updates to the board on risk status and emerging threats</li>
+  </ul>
+
+  <p>
+    ENISA (the European Union Agency for Cybersecurity) publishes guidelines on this process. ISO 27001 provides the international standard framework. NIS2 does not mandate either one, but it expects the outcome: a clear, documented, board-approved approach to managing cybersecurity risk.
+  </p>
+
+  <h2>The Four Pillars of a NIS2-Compliant Framework</h2>
+
+  <h3>1. Risk Identification and Assessment</h3>
+
+  <p>
+    Your organisation must conduct a systematic risk assessment that covers all material assets, processes, and dependencies. This is not a theoretical exercise. The competent authority expects to see evidence that you have:
+  </p>
+
+  <ul>
+    <li>Mapped critical IT systems and data stores</li>
+    <li>Identified external dependencies (cloud providers, supply chain, third-party integrations)</li>
+    <li>Assessed threats specific to your sector and organisation (not generic checklists)</li>
+    <li>Evaluated the impact of a breach on customers, operations, and reputation</li>
+  </ul>
+
+  <p>
+    The assessment must be documented, dated, and reviewed annually at minimum. Board minutes should note that the assessment has been received and reviewed.
+  </p>
+
+  <h3>2. Risk Register and Treatment Planning</h3>
+
+  <p>
+    The risk register is the centrepiece of your framework. It must list every material identified risk, ranked by likelihood and impact. For each risk, it must show:
+  </p>
+
+  <ul>
+    <li>Current control(s) in place</li>
+    <li>Residual risk rating (before additional mitigation)</li>
+    <li>Planned mitigation action (if any)</li>
+    <li>Owner of the mitigation</li>
+    <li>Target completion date</li>
+    <li>Budget allocation</li>
+  </ul>
+
+  <p>
+    The register should be presented to the board quarterly. If a risk sits in the register for 12 months with no progress, the board needs to make an active decision: mitigate it, accept it, or transfer it. Passive acceptance (inaction) is not a defensible position in the eyes of the competent authority.
+  </p>
+
+  <h3>3. Residual Risk Acceptance</h3>
+
+  <p>
+    Not every risk can or should be eliminated. The competent authority understands this. What it does not accept is <strong>undocumented residual risk</strong>.
+  </p>
+
+  <p>
+    For each risk that remains after mitigation efforts, your board must:
+  </p>
+
+  <ol>
+    <li>Understand the residual risk level</li>
+    <li>Understand the business reason for accepting it (cost-benefit trade-off)</li>
+    <li>Formally approve its acceptance in a board resolution</li>
+    <li>Document the decision in meeting minutes</li>
+  </ol>
+
+  <p>
+    Example: Your risk register identifies that office laptop encryption would cost €120,000 and take four months to implement. The risk of data loss from a stolen laptop is assessed as medium-likelihood, high-impact. The board may decide to accept this residual risk because the cost outweighs the current threat profile. That decision, documented, is defensible. An undocumented absence of encryption is not.
+  </p>
+
+  <div class="box-info">
+    <strong>Key Principle:</strong> Risk acceptance is not the same as risk ignorance. The board must be aware of the risk, understand its magnitude, and consciously approve it in writing. This is the "documented oversight" that Regulation 32 requires.
+  </div>
+
+  <h3>4. Monitoring, Reporting, and Iteration</h3>
+
+  <p>
+    The framework must include a cycle for ongoing review. At minimum:
+  </p>
+
+  <ul>
+    <li>Monthly: Operational risk reviews by the security team</li>
+    <li>Quarterly: Risk status dashboard presented to the audit committee or full board</li>
+    <li>Annually: Full risk assessment refresh and framework effectiveness review</li>
+    <li>Continuously: Incident and threat intelligence incorporated into risk assessment</li>
+  </ul>
+
+  <p>
+    Incident response findings should feed back into the risk register. If you suffer a breach exploiting a vulnerability you had not identified in your risk assessment, that is a sign the assessment process itself is broken. Document the finding, update the assessment, and report it to the board.
+  </p>
+
+  <h2>Building an ISO 27001–Aligned Framework</h2>
+
+  <p>
+    Many essential entities ask: can we base our NIS2 framework on ISO 27001?
+  </p>
+
+  <p>
+    The answer is yes — but with a critical difference. ISO 27001 is a certification standard focused on information security controls across the entire organisation. NIS2 is a regulatory mandate focused on cybersecurity risk management for a specific essential entity and its critical functions.
+  </p>
+
+  <p>
+    A practical approach:
+  </p>
+
+  <ul>
+    <li>Use ISO 27001's risk assessment methodology (Annex A) as your foundation</li>
+    <li>Focus the assessment on assets and processes that fall under the NIS2 definition of "essential entity"</li>
+    <li>Apply the 10 security measures mandated by NIS2 Article 21 as a minimum control baseline</li>
+    <li>Layer on sector-specific requirements (e.g., PCI DSS for payment systems, NIST Cybersecurity Framework for critical infrastructure)</li>
+    <li>Present the result as an integrated "NIS2 Risk Management Framework" rather than a generic ISO 27001 statement of applicability</li>
+  </ul>
+
+  <p>
+    If your organisation is ISO 27001 certified, you are ahead of the game. But certification alone does not satisfy NIS2. The certification must be paired with evidence of board governance and risk acceptance decisions specific to your essential entity status.
+  </p>
+
+  <h2>ENISA Guidelines: What the Competent Authority Expects</h2>
+
+  <p>
+    ENISA publishes detailed guidelines on NIS2 implementation. While they are recommendations, not law, the competent authorities in Ireland and across the EU use them as the reference standard for what "adequate" risk management looks like.
+  </p>
+
+  <p>
+    Key ENISA expectations:
+  </p>
+
+  <ul>
+    <li><strong>Risk appetite statement:</strong> The board must publish (internally, at minimum) a document that states what level of cybersecurity risk the organisation is willing to tolerate. It should reference business objectives and explain trade-offs.</li>
+    <li><strong>Threat-informed risk assessment:</strong> Use external threat intelligence — reports from NCSC Ireland, sector regulators, and industry peers — to calibrate your risk assessment. A generic risk assessment that ignores known threats to your sector is not credible.</li>
+    <li><strong>Third-party risk management:</strong> Your risk register must include risks arising from supply chain dependencies, cloud providers, and outsourced functions. A breach by a supplier is your breach.</li>
+    <li><strong>Scenario-based testing:</strong> Annual tabletop exercises or simulations in which the board and senior management discuss their response to a realistic breach scenario. Document the findings and update your risk management plan.</li>
+  </ul>
+
+  <div class="box-case">
+    <div class="case-label">Example: An Irish Financial Services Firm</div>
+    <p>
+      <strong>Scenario:</strong> A mid-sized mortgage broker classified as an essential entity under CBI supervision conducts its first formal NIS2 risk assessment in Q1 2025.
+    </p>
+    <p>
+      The assessment identifies 43 distinct risks. The top five, ranked by residual impact after current controls, are: (1) ransomware on core lending systems, (2) credential compromise at third-party cloud provider, (3) data exfiltration by insider with system access, (4) supply chain compromise in payment processing, and (5) loss of backup system due to disaster.
+    </p>
+    <p>
+      The board reviews the findings in April 2025. It approves mitigation spending of €450,000 over 18 months to address the top three risks (endpoint detection and response, cloud access governance, privileged account management). It accepts the bottom two risks as "normal operational risk" given sector norms and cost-benefit analysis.
+    </p>
+    <p>
+      In June 2025, a phishing attack compromises a contractor's credentials, granting access to customer mortgage data. The breach triggers NIS2 incident reporting (24-hour early warning to CBI, 72-hour full notification). The board updates its risk assessment: the insider/credential risk is now re-ranked as higher likelihood. The mitigation timeline is accelerated.
+    </p>
+    <p>
+      <strong>Outcome (if NCSC Ireland audits):</strong> The firm can demonstrate: (1) a documented risk assessment, (2) board approval of the framework and treatment plan, (3) active board oversight of emerging risks, and (4) incident response that fed back into risk management. Compliance posture is strong. The fact that a breach occurred does not undermine the framework — the framework's ability to learn and adapt does.
+    </p>
+  </div>
+
+  <h2>Board Governance Checklist: What You Must Do</h2>
+
+  <p>
+    By the end of Q2 2025, your board should have completed the following:
+  </p>
+
+  <ul>
+    <li>☐ Received a formal risk assessment covering all critical systems and assets within the essential entity scope</li>
+    <li>☐ Reviewed and approved a documented risk management framework (in writing — a board resolution or formal approval memo)</li>
+    <li>☐ Established a risk appetite statement (even if brief) that articulates the organisation's willingness to accept certain levels of cybersecurity risk</li>
+    <li>☐ Created or updated a risk register with at least the top 10–20 risks ranked and with documented treatment decisions</li>
+    <li>☐ Assigned clear ownership and accountability for monitoring risk status (usually to the audit committee or a dedicated cyber risk oversight function)</li>
+    <li>☐ Scheduled quarterly risk status reviews on the board agenda</li>
+    <li>☐ Documented board approval of residual risks (i.e., risks that are accepted but not eliminated)</li>
+    <li>☐ Established an incident response plan and tabletop testing schedule</li>
+  </ul>
+
+  <p>
+    If your board has not completed these steps, you are not NIS2-compliant. Compliance is not a CISO problem — it is a board problem.
+  </p>
+
+  <h2>What NCSC Ireland Will Ask During an Audit</h2>
+
+  <p>
+    When the competent authority (NCSC Ireland or a sector regulator) begins a compliance audit of an essential entity, the first questions are always:
+  </p>
+
+  <blockquote>
+    Show us your risk assessment. Show us the board's approval of your risk management framework. Show us the minutes where the board reviewed and accepted residual risk. Show us the current risk register and evidence of quarterly reviews.
+  </blockquote>
+
+  <p>
+    If you cannot produce these documents within 48 hours, the audit is already a failure. The competent authority does not need to wait for an incident. Lack of documented governance is itself a violation of Regulation 32.
+  </p>
+
+  <p>
+    The technical security posture (firewalls, encryption, multi-factor authentication) is secondary. Governance comes first. You must prove the board knows what risks exist and has made conscious decisions about them.
+  </p>
+
+  <h2>Common Mistakes Irish Organisations Make</h2>
+
+  <h3>Mistake 1: Delegation Without Oversight</h3>
+  <p>
+    The board assigns risk management to IT and assumes it is handled. Board minutes contain no mention of cybersecurity risk for 12 months. This fails the "active oversight" requirement. Even if the CISO is excellent, the board must demonstrate active monitoring.
+  </p>
+
+  <h3>Mistake 2: A Risk Assessment That Never Leaves the Safe</h3>
+  <p>
+    The organisation commissions an external risk assessment. It sits in a folder. The board is never formally presented with findings, and no board resolution approves the framework. Governance requirement: not met.
+  </p>
+
+  <h3>Mistake 3: Accepting All Residual Risk Implicitly</h3>
+  <p>
+    The risk register lists 30 risks. Mitigation is planned for only five. The other 25 are implicitly accepted — no action, no timeline, no decision. A competent authority will view this as failure to actively manage risk. Residual risk acceptance must be explicit and documented, ideally with a board signature.
+  </p>
+
+  <h3>Mistake 4: No Integration of Incident Learnings</h3>
+  <p>
+    The organisation suffers a ransomware attack. It responds, recovers, and moves on. The risk assessment is never updated to reflect this actual threat materialisation. The next risk assessment cycle is 12 months away. This breaks the feedback loop that the competent authority expects. Incidents must trigger risk assessment updates within 30 days.
+  </p>
+
+  <h3>Mistake 5: Third-Party Risk Ignored</h3>
+  <p>
+    The risk register focuses on internal systems. It does not mention the cloud provider holding customer data, the payment processor, or the managed security service provider. A breach at any of these suppliers is your breach. If your risk assessment ignores them, the framework is incomplete.
+  </p>
+
+  <div class="box-warning">
+    <strong>Timeline to Act:</strong> NCSC Ireland expects to complete an initial round of compliance audits of essential entities by end of 2025. If your board has not approved a documented risk management framework by June 2025, you are running a compliance audit in the worst possible position: without a board record of due diligence.
+  </div>
+
+  <h2>Key Takeaways for Your Board</h2>
+
+  <p>
+    <strong>1. This is a governance issue, not a technical issue.</strong> Your board's job is to ensure the framework exists, is understood by senior management, and is reviewed regularly. The CISO's job is to implement it.
+  </p>
+
+  <p>
+    <strong>2. A risk management framework is not a one-time deliverable.</strong> It is a living document that must be updated quarterly at minimum and revised annually. Board agenda time must be allocated for this.
+  </p>
+
+  <p>
+    <strong>3. Residual risk acceptance is not a failure.</strong> It is a board decision. Not every risk can be eliminated. What must be documented is that the board understands the residual risk and has consciously chosen to accept it, usually for cost-benefit reasons.
+  </p>
+
+  <p>
+    <strong>4. Personal liability is real.</strong> If your organisation is found non-compliant, the €10 million fine goes to the entity. But you, as a board member, face reputational damage and potential disqualification from leadership roles

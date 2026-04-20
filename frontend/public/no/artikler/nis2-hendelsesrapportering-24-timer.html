@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-BKF3QH9K01"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag("js", new Date());
+    gtag("config", "G-BKF3QH9K01");
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>24 timer: Slik rapporterer du en NIS2-hendelse riktig | NIS2Klar</title>
+  <meta name="description" content="Ransomware klokken 03.00. Hva gjør du på 24, 72 timer og 30 dager? Komplett tidslinje for NIS2-hendelsesrapportering til NSM og sektortilsynet.">
+  <meta property="og:title" content="24 timer: Slik rapporterer du en NIS2-hendelse riktig">
+  <meta property="og:description" content="Ransomware klokken 03.00. Hva gjør du på 24, 72 timer og 30 dager? Komplett tidslinje for NIS2-hendelsesrapportering til NSM og sektortilsynet.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #141416;
+      --card: #1c1c1f;
+      --yellow: #f5c518;
+      --white: #f0f0f0;
+      --muted: #888;
+      --red: #C61212;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: var(--bg); color: var(--white); font-family: 'Barlow', sans-serif; font-size: 19px; line-height: 1.8; }
+
+    /* Nav */
+    nav { display: flex; justify-content: space-between; align-items: center; padding: 20px 40px; border-bottom: 1px solid rgba(255,255,255,0.07); max-width: 900px; margin: 0 auto; }
+    .nav-logo { font-family: 'Poppins', sans-serif; font-weight: 900; font-size: 20px; color: var(--yellow); text-decoration: none; }
+    .nav-logo span { color: var(--white); }
+    .nav-back { color: var(--muted); text-decoration: none; font-size: 15px; }
+    .nav-back:hover { color: var(--white); }
+    .lang-switcher { display: flex; gap: 8px; align-items: center; font-size: 13px; font-family: 'Poppins', sans-serif; }
+    .lang-switcher a { color: var(--muted); text-decoration: none; font-weight: 600; padding: 4px 8px; border-radius: 3px; transition: all 0.2s; }
+    .lang-switcher a:hover { color: var(--white); }
+    .lang-switcher a.active { color: var(--yellow); background: rgba(245,197,24,0.1); }
+    .nav-cta { background: var(--yellow); color: #000; padding: 8px 18px; border-radius: 4px; text-decoration: none; font-weight: 700; font-size: 14px; font-family: 'Poppins', sans-serif; }
+
+    /* Article */
+    .article-wrap { max-width: 760px; margin: 0 auto; padding: 60px 40px; }
+    .article-category { font-size: 13px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 16px; }
+    h1 { font-family: 'Poppins', sans-serif; font-size: clamp(30px, 4vw, 44px); font-weight: 900; line-height: 1.2; margin-bottom: 24px; }
+    .article-meta { font-size: 15px; color: var(--muted); margin-bottom: 48px; padding-bottom: 24px; border-bottom: 1px solid rgba(255,255,255,0.07); }
+    h2 { font-family: 'Poppins', sans-serif; font-size: 26px; font-weight: 700; margin: 48px 0 16px; color: var(--white); }
+    h3 { font-family: 'Poppins', sans-serif; font-size: 20px; font-weight: 600; margin: 32px 0 12px; color: var(--yellow); }
+    p { margin-bottom: 22px; }
+    strong { color: var(--white); font-weight: 700; }
+    .highlight { color: var(--yellow); font-weight: 700; }
+    .danger { color: #ff6b6b; font-weight: 700; }
+    ul, ol { margin: 16px 0 24px 24px; }
+    li { margin-bottom: 12px; font-size: 19px; }
+
+    /* Callout boxes */
+    .box-warning { background: rgba(197,17,17,0.12); border-left: 4px solid var(--red); padding: 20px 24px; margin: 32px 0; border-radius: 0 4px 4px 0; }
+    .box-info { background: rgba(245,197,24,0.08); border-left: 4px solid var(--yellow); padding: 20px 24px; margin: 32px 0; border-radius: 0 4px 4px 0; }
+    .box-case { background: var(--card); border: 1px solid rgba(255,255,255,0.08); padding: 28px; margin: 40px 0; border-radius: 4px; }
+    .box-case .case-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 12px; }
+    blockquote { border-left: 3px solid var(--yellow); padding: 12px 20px; margin: 24px 0; font-style: italic; color: #ccc; }
+
+    /* CTA */
+    .cta-section { background: var(--card); border: 1px solid rgba(245,197,24,0.2); border-radius: 4px; padding: 48px 40px; margin: 64px 0 40px; text-align: center; }
+    .cta-section h2 { margin-top: 0; font-size: 26px; }
+    .cta-section p { color: #aaa; max-width: 500px; margin: 0 auto 28px; }
+    .btn-primary { display: inline-block; background: var(--yellow); color: #000; font-family: 'Poppins', sans-serif; font-weight: 800; font-size: 16px; padding: 16px 36px; border-radius: 4px; text-decoration: none; }
+    .btn-primary:hover { background: #e0b010; }
+    .cta-fine { font-size: 13px; color: var(--muted); margin-top: 16px; }
+
+    /* Timeline */
+    .timeline { margin: 32px 0; position: relative; }
+    .timeline-item { background: rgba(245,197,24,0.05); border-left: 3px solid var(--yellow); padding: 24px; margin-bottom: 20px; border-radius: 0 4px 4px 0; }
+    .timeline-item h4 { font-family: 'Poppins', sans-serif; font-size: 16px; font-weight: 700; margin-bottom: 12px; color: var(--yellow); }
+    .timeline-item .time-label { font-size: 13px; font-weight: 600; color: var(--muted); margin-bottom: 8px; }
+    .timeline-item ul { margin: 12px 0 0 20px; padding: 0; }
+    .timeline-item li { font-size: 16px; margin-bottom: 8px; }
+    .checkbox-item { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 12px; }
+    .checkbox-item input[type="checkbox"] { flex-shrink: 0; margin-top: 3px; width: 18px; height: 18px; cursor: pointer; }
+    .checkbox-item label { flex: 1; cursor: pointer; font-size: 16px; }
+
+    /* FAQ */
+    .faq-item { border-bottom: 1px solid rgba(255,255,255,0.07); padding: 20px 0; }
+    .faq-q { font-family: 'Poppins', sans-serif; font-weight: 600; margin-bottom: 10px; }
+    .faq-a { color: #bbb; }
+
+    /* Summary */
+    .box-summary { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; padding: 24px 28px; margin: 0 0 32px; }
+    .summary-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-bottom: 14px; }
+    .box-summary ul { margin: 0; padding-left: 20px; }
+    .box-summary li { margin-bottom: 8px; font-size: 17px; color: #ccc; }
+    .box-takeaway { background: rgba(245,197,24,0.08); border-left: 4px solid var(--yellow); padding: 20px 24px; margin: 0 0 40px; border-radius: 0 4px 4px 0; }
+    .takeaway-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 10px; }
+    .box-takeaway p { margin: 0; font-size: 18px; font-weight: 600; color: var(--white); line-height: 1.6; }
+
+    /* Footer */
+    footer { border-top: 1px solid rgba(255,255,255,0.07); padding: 32px 40px; text-align: center; font-size: 13px; color: var(--muted); max-width: 900px; margin: 0 auto; }
+    footer a { color: var(--muted); }
+
+    /* Related articles */
+    .related-articles { margin: 2.5rem 0 2rem; padding: 1.5rem; background: #1a1a2e; border-left: 4px solid #f0a500; border-radius: 4px; }
+    .related-articles p:first-child { margin: 0 0 1rem; font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #f0a500; }
+    .related-articles ul { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+    .related-articles li a { color: #e0e0e0; text-decoration: none; font-size: 0.95rem; }
+    .related-articles li a:hover { color: #f0a500; }
+    .related-articles > p:last-of-type { margin: 1.25rem 0 0; font-size: 0.85rem; color: #aaa; }
+
+    @media (max-width: 600px) {
+      nav, .article-wrap, footer { padding: 20px; }
+      nav { flex-direction: column; gap: 16px; align-items: flex-start; }
+      .cta-section { padding: 32px 20px; }
+      .timeline-item { padding: 20px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="https://nis2klar.se/no/">NIS2<span>Klar</span></a>
+  <div style="display:flex; gap:20px; align-items:center; flex-wrap:wrap;">
+    <a class="nav-back" href="https://nis2klar.se/no/artikler.html">← Alle artikler</a>
+    <div class="lang-switcher">
+      <a href="https://nis2klar.se/artiklar.html" style="color:#888;" title="Svenska">SV</a>
+      <a href="https://nis2klar.se/en/articles.html" style="color:#888;" title="English">EN</a>
+      <a href="https://nis2klar.se/da/artikler.html" style="color:#888;" title="Dansk">DA</a>
+      <a href="https://nis2klar.se/no/artikler.html" class="active" style="color:#f5c518;" title="Norsk">NO</a>
+      <a href="https://nis2klar.se/it/articoli.html" style="color:#888;" title="Italiano">IT</a>
+    </div>
+    <a class="nav-cta" href="https://nis2klar.se/no/#boka">Book time →</a>
+  </div>
+</nav>
+
+<article class="article-wrap">
+  <div class="article-category">Hendelseshåndtering &amp; Rapportering</div>
+  <h1>24 timer: Slik rapporterer du en NIS2-hendelse riktig</h1>
+  <div class="article-meta">Publisert 19. april 2026 · Lesing: ca 8 minutter · Målgruppe: Direktører og styremedlemmer</div>
+
+  <!-- SUMMARY -->
+  <div class="box-summary">
+    <div class="summary-label">Sammendrag</div>
+    <ul>
+      <li>En cybersikkerhetshendelse kan skje når som helst. NIS2 krever strenge frister for rapportering.</li>
+      <li><strong>24 timer:</strong> Tidlig varsel til NSM og sektormyndighet.</li>
+      <li><strong>72 timer:</strong> Fullstendig hendelsesrapport med detaljer om angrepet.</li>
+      <li><strong>30 dager:</strong> Sluttrapport med analyser og tiltaksplaner.</li>
+      <li>Manglende rapportering fører til bøter opp til 10 millioner euro — uavhengig av angrepets omfang.</li>
+    </ul>
+  </div>
+
+  <!-- KEY TAKEAWAY -->
+  <div class="box-takeaway">
+    <div class="takeaway-label">Viktigste konklusjon</div>
+    <p>NIS2-rapportering handler ikke om å skjule eller forsinke informasjon. Det handler om å vite nøyaktig når og hvem du skal varsle. En minutt forsinket rapport kan koste millioner.</p>
+  </div>
+
+  <!-- INTRO -->
+  <p>
+    Klokken 03.15 på en tirsdag morgen får du en SMS fra IT-sjefen: <strong>"Vi har ransomware."</strong>
+  </p>
+  <p>
+    Resten av dagen blir kaotisk. Men innen 24 timer må du — ikke IT-avdelingen, men du som direktør — ha varslet Nasjonal sikkerhetsmyndighet (NSM). Få det feil, og bøtene starter på 7 millioner euro. Få det riktig, og du dokumenterer at ledelsen reagerte profesjonelt.
+  </p>
+  <p>
+    Dette er ikke teori. Dette er lov i Norge når NIS2-regelverket trer i kraft — forventet i løpet av 2025–2026. Og fristene er absolutte.
+  </p>
+
+  <div class="box-warning">
+    <strong>Norge er EØS-land, ikke EU-medlem.</strong> NIS2-direktivet implementeres via EØS-avtalen. NSM blir tilsynsmyndighet, sammen med sektortilsyn for kraft (NVE), finans (Finanstilsynet) og helse (Direktoratet for e-helse). Regelverket følger samme strenge standarder som i EU.
+  </div>
+
+  <h2>Scenario: Ransomware kl. 03.00</h2>
+
+  <p>
+    La oss bygge et konkret eksempel. Din organisasjon er klassifisert som vesentlig enhet (over 250 ansatte, eller systemkritisk rolle). Natt til tirsdag 4. februar 2026 blir filservere utilgjengelige. Øya av IT-avdelingen bekrefter krypteringsmeldinger på skjermen: <strong>ransomware</strong>.
+  </p>
+
+  <p>
+    Hva skjer de neste 24 timene?
+  </p>
+
+  <h2>Timer 0–4: Varsling og første dokumentasjon</h2>
+
+  <div class="timeline">
+    <div class="timeline-item">
+      <h4>03.00 – Hendelsen oppdages</h4>
+      <div class="time-label">Intern eskaleringsmøte starter umiddelbar</div>
+      <ul>
+        <li>IT-sjef bekrefter at hendelsen er reell (ikke falsk alarm)</li>
+        <li>Første vurdering: Er det en "alvorlig hendelse"?</li>
+        <li>Dokumentasjon starter: hva, når, hvem er påvirket</li>
+      </ul>
+    </div>
+
+    <div class="timeline-item">
+      <h4>04.30 – Ledelsen varsles</h4>
+      <div class="time-label">Du blir oppringt som direktør</div>
+      <ul>
+        <li>Korte fakta: hvilke systemer er påvirket, hvor mange brukere, kritikalitet</li>
+        <li>Første estimat på omfang (ennå usikker)</li>
+        <li>Kriseteam oppnevnes med klare roller</li>
+      </ul>
+    </div>
+
+    <div class="timeline-item">
+      <h4>05.00–07.00 – Intern gransking</h4>
+      <div class="time-label">Parallell med driftsstans</div>
+      <ul>
+        <li>IT isolerer påvirkede nettsegmenter</li>
+        <li>Sikkerhetsteam søker etter tegnene på angrepet (entry point, tidslinjer)</li>
+        <li>Jurist og leder for hendelsesberedskap koordinerer</li>
+      </ul>
+    </div>
+  </div>
+
+  <h2>Den kritiske avgjørelsen: Skal vi rapportere?</h2>
+
+  <p>
+    <strong>Svaret er JA.</strong> Og du må ta denne avgjørelsen innen 24 timer.
+  </p>
+
+  <p>
+    NIS2 definerer "alvorlig hendelse" (serious incident) som:
+  </p>
+
+  <ul>
+    <li>Hendelser med faktisk eller potensielt bredt omfang som påvirker tjenesteyting</li>
+    <li>Tap av integritet, tilgjengelighet eller konfidensialitet av data</li>
+    <li>Angrepp som har resultert i inntrengning eller tilgangsbegrensning</li>
+  </ul>
+
+  <p>
+    Ransomware faller kort og godt inn under denne definisjonen. Du kan <span class="danger">ikke</span> velge å håndtere det internt først, vurdere later, og rapportere når "du har grep på det."
+  </p>
+
+  <p>
+    <strong>Fristen løper fra det øyeblikket du oppstiller at hendelsen er alvorlig</strong> — ikke fra når IT-avdelingen finner hovedårsaken.
+  </p>
+
+  <div class="box-info">
+    <strong>Praktisk veiledning:</strong> Hvis du er usikker på om noe "teller" som alvorlig, rapporter det. NSM vil heller motta for mange rapporter enn for få. Å rapportere noe som viser seg å være mindre alvorlig koster deg null poeng. Å ikke rapportere når du burde, koster deg millioner.
+  </div>
+
+  <h2>Timer 4–24: Den tidlige varslingen</h2>
+
+  <div class="timeline">
+    <div class="timeline-item">
+      <h4>08.00 – Tidlig varsel sendes til NSM</h4>
+      <div class="time-label">Denne fristen er absolutt (Artikel 23 i NIS2)</div>
+      <ul>
+        <li><strong>Hvem varsler:</strong> Organisasjonen selv (eller gjennom en delegert representant — ofte juridisk rådgiver eller sikkerhetssjef)</li>
+        <li><strong>Hva varsles:</strong> Organisasjonsnavn, type hendelse (ransomware), påvirkede tjenester, ca. tidspunkt for oppdagelse</li>
+        <li><strong>Hvor:</strong> NSM portal (https://melding.nsm.no eller tilsvarende endepunkt når regelverket er fullt implementert)</li>
+        <li><strong>Format:</strong> En kort varselsform — ikke fullstendig rapport ennå</li>
+      </ul>
+    </div>
+
+    <div class="timeline-item">
+      <h4>08.30 – Sektortilsyn varsles parallelt</h4>
+      <div class="time-label">Avhenger av hvilken sektor du er i</div>
+      <ul>
+        <li>Er du i finans? → Finanstilsynet varsles</li>
+        <li>Er du kraft? → NVE varsles</li>
+        <li>Er du helse? → Direktoratet for e-helse varsles</li>
+        <li>Varslingen kan skje gjennom NSM eller direkte — det avklares når regelverket er på plass</li>
+      </ul>
+    </div>
+
+    <div class="timeline-item">
+      <h4>09.00–24.00 – Intern faktainnsamling</h4>
+      <div class="time-label">Du har nå varslingsplikt, men ikke full rapporteringsplikt ennå</div>
+      <ul>
+        <li>IT gjør grundig gransking: når startet angrepet, hvor kom det fra, hva er infisert</li>
+        <li>Juridisk gjør GDPR-vurdering (er personopplysninger berørt?)</li>
+        <li>Kommunikasjon: Hvilke interessenter må varsles (kunder, myndigheter, media)?</li>
+        <li><strong>Viktig:</strong> Ingenting er hemmelig fra NSM. Det de vil vite senere, fortell du nå</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="box-warning">
+    <strong>Klassisk feil:</strong> Ledelsen venter på "hele bildet" før de varsler. Men fristen på 24 timer løper fra du oppdaget en alvorlig hendelse, ikke fra du har analysert den fullstendig. Varsle med det du vet, ikke med det du håper å finne ut.
+  </div>
+
+  <h2>Timer 24–72: Den fullstendige hendelsesrapporten</h2>
+
+  <p>
+    Nå begynner den tunge delen. Innen 72 timer må du levere en komplett rapport til NSM. Dette er ikke lenger en "varsel" — det er dokumentasjon som muligvis blir grunnlag for tilsyn.
+  </p>
+
+  <p>
+    Rapporten skal inneholde:
+  </p>
+
+  <ul>
+    <li><strong>Hendelsebeskrivelse:</strong> Tidslinjer, hva som skjedde, hva som er påvirket</li>
+    <li><strong>Omfang:</strong> Hvor mange brukere, tjenester, data-kategorier er berørt</li>
+    <li><strong>Påvirkninger:</strong> Tap av tilgjengelighet (hvor lenge?), integritet (endringer til data?), konfidensialitet (var data eksfiltrert?)</li>
+    <li><strong>Årsak (foreløpig):</strong> Hvordan kom angriperen inn? Phishing? Svakt passord? Ukjent sårbarhet?</li>
+    <li><strong>Tiltak som iverksettes:</strong> Hva gjøres nå? Isolering, gjenoppretting, etterforskningsprosess?</li>
+    <li><strong>Eksterne aktører:</strong> Er dere i dialog med cyberforsikringselskap, politiet, ekstern IT-sikkerhetsfirma?</li>
+  </ul>
+
+  <p>
+    <strong>Hver detalj importerer.</strong> NSM bruker disse rapportene til å forstå true-bildet i Norge. Jo mer detaljer, jo flere vurderinger NSM kan gjøre senere.
+  </p>
+
+  <div class="box-case">
+    <div class="case-label">Eksempel: Den forsinket rapporten</div>
+    <p>
+      <strong>Scenario:</strong> Stor norsk telekombedrift (vesentlig enhet) oppdager ransomware på backup-systemer torsdag morgen. Tjenestene er ikke påvirket ennå. Ledelsen venter i 36 timer for å "se om angriperen skal få kontakt."
+    </p>
+    <p>
+      Fredag ettermiddag, når de endelig varsler NSM, er fristen på 24 timer brutt. NSM initierer granskingsportal og krever dokumentasjon.
+    </p>
+    <p>
+      <strong>Konsekvenser:</strong> Selskapet får en formel varsel for brutt rapporteringsplikt. Selv uten økonomisk tap blir det en prosessbrudd som øker sannsynligheten for administrasjonsgebyr. Totalt: <span class="danger">3–5 millioner NOK</span> i juridisk og prosesskostandnad.
+    </p>
+    <p>
+      Om de hadde varslet på dag 1, ville NSM ha fått det samme billdet — bare en dag tidligere.
+    </p>
+  </div>
+
+  <h2>Dag 30: Sluttrapport og læring</h2>
+
+  <p>
+    Tretti dager etter hendelsen må du levere en sluttrapport som inneholder:
+  </p>
+
+  <ul>
+    <li>Fullstendig rotårsaksanalyse</li>
+    <li>Oversikt over alle data som var berørt</li>
+    <li>Detaljert tidslinje med timepunkter</li>
+    <li>Tiltak som er gjennomført og planlagt for å forhindre gjentakelse</li>
+    <li>Dokumentasjon på at ledelsen har godkjent tiltaksplanen</li>
+  </ul>
+
+  <p>
+    I vårt eksempel med ransomware betyr det:
+  </p>
+
+  <ul>
+    <li>Hvordan kom angriperen inn? (Phishing-e-post til konkrekt ansatt, eller automatisert skanning?)</li>
+    <li>Hva skal gjøres med det sikkerhetshullet? (Oppdater, policy-endring, monitoring?)</li>
+    <li>Når er det ferdig?</li>
+    <li>Hvem følger opp?</li>
+  </ul>
+
+  <p>
+    <strong>Ledelsen må godkjenne denne planen.</strong> Det skal finnes et styrelsebeslutning eller direktørsamtale som viser at dere forstår problemet og har en plan.
+  </p>
+
+  <div class="box-info">
+    <strong>Praktisk tips:</strong> Sluttraporten skal ikke være en 50-siders IT-rapport. Den skal være en ledelsesdokument på 3–5 sider som et styre kan lese på fem minutter og si "ja, vi godkjenner denne risikovurderingen og tiltaksplanen." Bruk det som format.
+  </div>
+
+  <h2>Sjekkelist for hendelseshåndtering (utskrivbar)</h2>
+
+  <div style="background:rgba(255,255,255,0.02); padding:24px; border-radius:4px; margin:32px 0;">
+    <h3 style="margin-top:0;">Før hendelsen inntreffer (nå!)</h3>
+    <div class="checkbox-item">
+      <input type="checkbox" id="c1" />
+      <label for="c1">Lag en incidenthanteringsplan med klare roller (hvem ringer hvem?)</label>
+    </div>
+    <div class="checkbox-item">
+      <input type="checkbox" id="c2" />
+      <label for="c2">Identifiser NSM kontaktperson og sektortilsynets kontaktperson på forhånd</label>
+    </div>
+    <div class="checkbox-item">
+      <input type="checkbox" id="c3" />
+      <label for="c3">Lag en varselmall for 24-timersvarsel (fyll inn navn, roller, kontaktinformasjon)</label>
+    </div>
+    <div class="checkbox-item">
+      <input type="checkbox" id="c4" />
+      <label for="c4">Definer hva som teller som "alvorlig hendelse" for deres organisasjon</label>
+    </div>
+    <div class="checkbox-item">
+      <input type="checkbox" id="c5" />
+      <label for="c5">Tenk ut intern kommunikasjon (direktør, styre, PR, ledelse)</label>
+    </div>

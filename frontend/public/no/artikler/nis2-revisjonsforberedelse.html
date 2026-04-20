@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-BKF3QH9K01"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag("js", new Date());
+    gtag("config", "G-BKF3QH9K01");
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NIS2-revisjonsforberedelse: Slik forbereder du deg til tilsynsgjennomgang | NIS2Klar</title>
+  <meta name="description" content="NIS2-revisjon: Hva skjer under tilsynet? Hvilken dokumentasjon skal du ha klar? Hvem fra ledelsen må stille? Ferdig sjekkliste for tilsynsgjennomgang.">
+  <meta property="og:title" content="NIS2-revisjonsforberedelse: Slik forbereder du deg til tilsynsgjennomgang">
+  <meta property="og:description" content="Praktisk guide for direktører: Hva NSM og sektormyndighetene vil sjekke, hvilke dokumenter du trenger, og hvordan du presenterer sikkerhetstilstanden din troverdig.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #141416;
+      --card: #1c1c1f;
+      --yellow: #f5c518;
+      --white: #f0f0f0;
+      --muted: #888;
+      --red: #C61212;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: var(--bg); color: var(--white); font-family: 'Barlow', sans-serif; font-size: 19px; line-height: 1.8; }
+
+    /* Nav */
+    nav { display: flex; justify-content: space-between; align-items: center; padding: 20px 40px; border-bottom: 1px solid rgba(255,255,255,0.07); max-width: 1200px; margin: 0 auto; }
+    .nav-logo { font-family: 'Poppins', sans-serif; font-weight: 900; font-size: 20px; color: var(--yellow); text-decoration: none; }
+    .nav-logo span { color: var(--white); }
+    .nav-back { color: var(--muted); text-decoration: none; font-size: 15px; }
+    .nav-back:hover { color: var(--white); }
+    .lang-switcher { display: flex; gap: 8px; align-items: center; font-size: 13px; font-family: 'Poppins', sans-serif; }
+    .lang-switcher a { color: #888; text-decoration: none; font-weight: 600; padding: 4px 8px; border-radius: 3px; }
+    .lang-switcher a:hover { color: var(--white); }
+    .nav-cta { background: var(--yellow); color: #000; padding: 8px 18px; border-radius: 4px; text-decoration: none; font-weight: 700; font-size: 14px; font-family: 'Poppins', sans-serif; }
+
+    /* Article */
+    .article-wrap { max-width: 760px; margin: 0 auto; padding: 60px 40px; }
+    .article-category { font-size: 13px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 16px; }
+    h1 { font-family: 'Poppins', sans-serif; font-size: clamp(30px, 4vw, 44px); font-weight: 900; line-height: 1.2; margin-bottom: 24px; }
+    .article-meta { font-size: 15px; color: var(--muted); margin-bottom: 48px; padding-bottom: 24px; border-bottom: 1px solid rgba(255,255,255,0.07); }
+    h2 { font-family: 'Poppins', sans-serif; font-size: 26px; font-weight: 700; margin: 48px 0 16px; color: var(--white); }
+    h3 { font-family: 'Poppins', sans-serif; font-size: 20px; font-weight: 600; margin: 32px 0 12px; color: var(--yellow); }
+    p { margin-bottom: 22px; }
+    strong { color: var(--white); font-weight: 700; }
+    .highlight { color: var(--yellow); font-weight: 700; }
+    .danger { color: #ff6b6b; font-weight: 700; }
+    ul, ol { margin: 16px 0 24px 24px; }
+    li { margin-bottom: 12px; font-size: 19px; }
+
+    /* Callout boxes */
+    .box-warning { background: rgba(197,17,17,0.12); border-left: 4px solid var(--red); padding: 20px 24px; margin: 32px 0; border-radius: 0 4px 4px 0; }
+    .box-info { background: rgba(245,197,24,0.08); border-left: 4px solid var(--yellow); padding: 20px 24px; margin: 32px 0; border-radius: 0 4px 4px 0; }
+    .box-case { background: var(--card); border: 1px solid rgba(255,255,255,0.08); padding: 28px; margin: 40px 0; border-radius: 4px; }
+    .box-case .case-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 12px; }
+    blockquote { border-left: 3px solid var(--yellow); padding: 12px 20px; margin: 24px 0; font-style: italic; color: #ccc; }
+
+    /* CTA */
+    .cta-section { background: var(--card); border: 1px solid rgba(245,197,24,0.2); border-radius: 4px; padding: 48px 40px; margin: 64px 0 40px; text-align: center; }
+    .cta-section h2 { margin-top: 0; font-size: 26px; }
+    .cta-section p { color: #aaa; max-width: 500px; margin: 0 auto 28px; }
+    .btn-primary { display: inline-block; background: var(--yellow); color: #000; font-family: 'Poppins', sans-serif; font-weight: 800; font-size: 16px; padding: 16px 36px; border-radius: 4px; text-decoration: none; }
+    .btn-primary:hover { background: #e0b010; }
+    .cta-fine { font-size: 13px; color: var(--muted); margin-top: 16px; }
+
+    /* FAQ */
+    .faq-item { border-bottom: 1px solid rgba(255,255,255,0.07); padding: 20px 0; }
+    .faq-q { font-family: 'Poppins', sans-serif; font-weight: 600; margin-bottom: 10px; }
+    .faq-a { color: #bbb; }
+
+    /* Checklist */
+    .checklist { background: var(--card); border: 1px solid rgba(245,197,24,0.15); border-radius: 4px; padding: 28px; margin: 32px 0; }
+    .checklist-title { font-family: 'Poppins', sans-serif; font-weight: 700; color: var(--yellow); margin-bottom: 20px; font-size: 16px; }
+    .checklist ul { margin: 0; padding: 0; list-style: none; }
+    .checklist li { margin-bottom: 14px; padding-left: 28px; position: relative; font-size: 16px; color: #ddd; }
+    .checklist li:before { content: '☐'; position: absolute; left: 0; color: var(--yellow); font-weight: 700; }
+
+    /* Summary */
+    .box-summary { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; padding: 24px 28px; margin: 0 0 32px; }
+    .summary-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-bottom: 14px; }
+    .box-summary ul { margin: 0; padding-left: 20px; }
+    .box-summary li { margin-bottom: 8px; font-size: 17px; color: #ccc; }
+    .box-takeaway { background: rgba(245,197,24,0.08); border-left: 4px solid var(--yellow); padding: 20px 24px; margin: 0 0 40px; border-radius: 0 4px 4px 0; }
+    .takeaway-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 10px; }
+    .box-takeaway p { margin: 0; font-size: 18px; font-weight: 600; color: var(--white); line-height: 1.6; }
+
+    /* Related articles */
+    .related-articles { margin: 2.5rem 0 2rem; padding: 1.5rem; background: #1a1a2e; border-left: 4px solid #f0a500; border-radius: 4px; }
+    .related-articles p { margin: 0 0 1rem; font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #f0a500; }
+    .related-articles ul { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+    .related-articles li { margin: 0; }
+    .related-articles a { color: #e0e0e0; text-decoration: none; font-size: 0.95rem; }
+    .related-articles a:hover { color: #f0a500; }
+    .related-articles .footer-nav { margin: 1.25rem 0 0; font-size: 0.85rem; color: #aaa; }
+    .related-articles .footer-nav a { color: #f0a500; }
+
+    /* Footer */
+    footer { border-top: 1px solid rgba(255,255,255,0.07); padding: 32px 40px; text-align: center; font-size: 13px; color: var(--muted); max-width: 900px; margin: 0 auto; }
+    footer a { color: var(--muted); }
+    footer a:hover { color: var(--white); }
+
+    @media (max-width: 600px) {
+      nav, .article-wrap, footer { padding: 20px; }
+      nav { flex-direction: column; gap: 16px; align-items: flex-start; }
+      .cta-section { padding: 32px 20px; }
+      .checklist { padding: 20px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="https://nis2klar.se/no/">NIS2<span>Klar</span></a>
+  <a class="nav-back" href="https://nis2klar.se/no/artikler.html">← Alle artikler</a>
+  <div class="lang-switcher">
+    <a href="https://nis2klar.se/artiklar.html" style="color:#888;" title="Svenska">SV</a>
+    <a href="https://nis2klar.se/en/articles.html" style="color:#888;" title="English">EN</a>
+    <a href="https://nis2klar.se/da/artikler.html" style="color:#888;" title="Dansk">DA</a>
+    <a href="https://nis2klar.se/no/artikler.html" style="color:#f5c518;background:rgba(245,197,24,0.1);" title="Norsk">NO</a>
+    <a href="https://nis2klar.se/it/articoli.html" style="color:#888;" title="Italiano">IT</a>
+  </div>
+  <a class="nav-cta" href="https://nis2klar.se/no/#boka">Book møte →</a>
+</nav>
+
+<article class="article-wrap">
+  <div class="article-category">Tilsyn &amp; Revisjon</div>
+  <h1>NIS2-revisjonsforberedelse: Slik forbereder du deg til tilsynsgjennomgang</h1>
+  <div class="article-meta">Oppdatert 19. april 2026 · Lesetid: ca 8 minutter · For: Direktører og styremedlemmer</div>
+
+  <!-- SUMMARY -->
+  <div class="box-summary">
+    <div class="summary-label">Oppsummering</div>
+    <ul>
+      <li>NSM (og relevante sektormyndigheter) kan initialisere tilsyn uten varsel — for å kontrollere NIS2-etterlevning.</li>
+      <li>En typisk tilsynsprosess varer 2–4 uker og inkluderer dokumentasjonsspørsmål, intervjuer med ledelse og teknisk gjennomgang.</li>
+      <li>Du må kunne fremvise styringsbevis: protokoller, godkjenninger, risikovurderinger, hendelsesprosedyrer.</li>
+      <li>Personlig ansvar betyr at VD og styremedlemmer kan bli holdt ansvarlige — ikke bare organisasjonen.</li>
+      <li>Forberedelse reduserer både sanksjonsfaren og gjennomgangstiden betydelig.</li>
+    </ul>
+  </div>
+
+  <!-- KEY TAKEAWAY -->
+  <div class="box-takeaway">
+    <div class="takeaway-label">Viktigste konklusjon</div>
+    <p>En NIS2-revisjon er ikke noe du kan løse på dagen den starter. Den handler om å ha dokumentation på plass som beviser at ledelsen har kontrollert, godkjent og overvåket sikkerhetstiltakene — i henhold til artikkel 20 i NIS2. Det må være på plass i dag.</p>
+  </div>
+
+  <!-- HOOK -->
+  <p>
+    NSM og sektormyndighetene i Norge vil forvente å kunne initialisere tilsyn på enhver organisasjon som omfattes av NIS2 — uten å gi dir forvarsel.
+    Når de ankommer med ett brev som sier «vi vil gjennomgå deres cybersikkerhetsarbeid», har du ikke tid til å begynne forberedelsene da.
+    Du må være klar.
+  </p>
+
+  <p>
+    Denne guiden viser deg nøyaktig hva som skjer når NSM eller en sektormyndighet initierer tilsyn, hvilken dokumentasjon du må ha klar, hvem fra organisasjonen som må stille, og hvordan du presenterer sikkerhetstilstanden din på en måte som står opp for gransking.
+  </p>
+
+  <div class="box-warning">
+    <strong>Tilsynet kan starte når som helst.</strong> Norge har EØS-forpliktelser til å implementere NIS2, og myndighetene har allerede begynt planleggingen. Organisasjoner som venter til de blir granskede, forberedes aldri — og møter bøtene uten dirkiv forsvar.
+  </div>
+
+  <h2>Hva er en NIS2-tilsyn? Og hvem initialiserer det?</h2>
+
+  <p>
+    En NIS2-tilsyn er en myndighetskontroll som skal verifisere at organisasjonen oppfyller lovens krav til cybersikkerhet. Tilsynet kan være:
+  </p>
+
+  <ul>
+    <li><strong>Forebyggende</strong> — myndighetene velger deg tilfeldig eller basert på sektor/størrelse</li>
+    <li><strong>Hendelsesbetinget</strong> — en cyberincident eller sikkerhetskrenkelse utløser kontroll</li>
+    <li><strong>Risikobasert</strong> — myndighetene har identifisert dine sektor eller område som høyrisiko</li>
+    <li><strong>Klagbetinget</strong> — en anemployee, leverandør eller kunde har innlevert anmeldelse</li>
+  </ul>
+
+  <p>
+    <strong>I Norge vil ansvaret være fordelt:</strong>
+  </p>
+
+  <ul>
+    <li><strong>NSM (Nasjonal sikkerhetsmyndighet)</strong> — overordnet koordinator og tilsyn for kritisk infrastruktur</li>
+    <li><strong>Finanstilsynet</strong> — finanssektoren</li>
+    <li><strong>NVE (Norges vassdrags- og energidirektorat)</strong> — energisektoren</li>
+    <li><strong>Direktoratet for e-helse</strong> — helsesektoren</li>
+    <li><strong>Transportøvrighet</strong> — transportsektoren</li>
+  </ul>
+
+  <p>
+    Hvilken myndighet som kommer avhenger av hvilken sektor din organisasjon opererer i.
+  </p>
+
+  <h2>Typisk tilsynsprosess — fase for fase</h2>
+
+  <p>
+    En NIS2-gjennomgang følger vanligvis dette mønsteret:
+  </p>
+
+  <h3>Fase 1: Innledende henvendelse (dag 1–3)</h3>
+  <p>
+    Myndighetene sender et brev til organisasjonen — gjerne direkte til VD eller styreleder.
+    Brevet inneholder:
+  </p>
+
+  <ul>
+    <li>Navn på revisor/inspektør</li>
+    <li>Årsak til tilsynet (forebyggende, risikobasert, hendelsesbasert, etc.)</li>
+    <li>Tidsramme for respons (typisk 10–14 dager)</li>
+    <li>Første liste med dokumentasjonsspørsmål</li>
+  </ul>
+
+  <p>
+    <strong>Hva du må gjøre:</strong> Bekreft mottak og sett sammen en tilsynsgruppe internt. Denne skal inkludere VD, IT-sjef, compliance-ansvarlig, og eventuelt juridisk ansvarlig. Svar på første spørsmål innen fristen — ikke be om utsettelse med mindre det er gyldig grunn.
+  </p>
+
+  <h3>Fase 2: Dokumentasjonsspørsmål (dag 4–20)</h3>
+  <p>
+    Myndighetene sender en detaljert liste over dokumentasjon de vil se. Dette inkluderer typisk:
+  </p>
+
+  <ul>
+    <li>Styrevedtak om godkjenning av sikkerhetspolicy</li>
+    <li>Risikovurderinger og resultat av risikoanalyser</li>
+    <li>Incidenthanteringsplan og eksempler på hendelsesrapportering</li>
+    <li>Leverandørsikkerhetskrav og kontraktkontroller</li>
+    <li>Opplærings- og bevisstgjøringsprogrammer</li>
+    <li>Sikkerhetskopieringsplan og testarkeologi</li>
+    <li>Tilgangskontrollprosedyrer og oversikt over privilegerte brukere</li>
+    <li>Oversikt over nøkkelsystemer og kritisk infrastruktur</li>
+  </ul>
+
+  <p>
+    <strong>Hva du må gjøre:</strong> Samle alle dokumenter. Hvis noe mangler, be om hjelp fra de ansvarlige og få det på plass omgående. Ikke fals eller endre datoer — det blir avslørt og er straffbart.
+  </p>
+
+  <h3>Fase 3: Skriftlig gjennomgang (dag 21–35)</h3>
+  <p>
+    Inspektøren gjennomgår dokumentasjonen og sender oppfølgingsspørsmål eller ber om avklaringer. Denne fasen kan avsløre hull — for eksempel «Vi ser at sikkerhetspolicyen ble godkjent i 2023, men det finnes ingen bevis for at styret har gjennomgått implementeringen siden dess».
+  </p>
+
+  <p>
+    <strong>Hva du må gjøre:</strong> Svar nøyaktig og ærlig. Hvis noe mangler, beskriv hvordan det blir rettet. «Vi vil implementere dette innen [dato]» er ikke akseptabelt — myndighetene vil ha bevis for at det allerede er gjort.
+  </p>
+
+  <h3>Fase 4: Muntlig gjennomgang og intervjuer (dag 30–50)</h3>
+  <p>
+    Inspektøren kan ønske å møte dere fysisk eller på videokonferanse. Dette møtet vil typisk inkludere:
+  </p>
+
+  <ul>
+    <li><strong>Ledelsesnivå:</strong> VD, styreleder, eller dirkiv sikkerhetansvarlig. Spørsmål om styringsansvar, godkjennelse av sikkerhetstiltak, oppfølging av risiki.</li>
+    <li><strong>IT-ledelse:</strong> IT-sjef, security-ansvarlig. Tekniske spørsmål om implementering, testing, overvåking.</li>
+    <li><strong>Compliance/juridisk:</strong> Compliance-ansvarlig eller jurist. Spørsmål om prosedyrer, dokumentering, hendelseshåndtering.</li>
+  </ul>
+
+  <p>
+    Intervjuene tar typisk 2–6 timer per person, fordelt på flere møter.
+  </p>
+
+  <p>
+    <strong>Hva du må gjøre:</strong> Forbered svarene dine på forhånd. VD må kunne forklare hva styret har godkjent og hvordan det blir overvåket. IT-sjefen må kunne demonstrere at systemer er testet og at logger blir oppbevart. Ikke la folk improvisere svar.
+  </p>
+
+  <h3>Fase 5: Avsluttende rapport (dag 50–60)</h3>
+  <p>
+    Inspektøren sender en foreløpig rapport der alle funn blir oppsummert. Denne kan inneholde:
+  </p>
+
+  <ul>
+    <li><strong>Samsvar:</strong> Område der dere oppfyller kravene</li>
+    <li><strong>Avvik:</strong> Område der dere ikke oppfyller kravene</li>
+    <li><strong>Anbefalinger:</strong> Forbedringer som ikke er juridisk bindende, men som myndighetene anbefaler</li>
+  </ul>
+
+  <p>
+    Du får typisk 4–6 uker til å kommentere rapporten før den blir endelig.
+  </p>
+
+  <p>
+    <strong>Hva du må gjøre:</strong> Hvis det er avvik, vil myndighetene kreve handlingsplan. Du må oppgi når avviket blir rettet, med bevis — ikke bare løfter.
+  </p>
+
+  <div class="box-warning">
+    <strong>Avvik = potensiell sanksjon.</strong> Hvis inspektøren finner avvik (mangel på obligatoriske sikkerhetstiltak etter artikkel 21), sender myndighetene gjerne et pålegg om korrigering med frist. Hvis fristen blir oversittet, initialiseres sanksjonsprosess.
+  </div>
+
+  <h2>Revisjonssjekkliste — hva må være på plass før tilsynet starter?</h2>
+
+  <p>
+    Her er en konkret sjekkliste som viser hva myndighetene vil lete etter. Gjennomgå den sammen med ledelsen nå.
+  </p>
+
+  <div class="checklist">
+    <div class="checklist-title">📋 Revisjonssjekkliste for NIS2-tilsyn</div>
+    <ul>
+      <li><strong>Styrevedtak:</strong> Dokumentert godkjenning av cybersikkerhetspolicy, vedtatt dato tydelig synlig</li>
+      <li><strong>Risikovurdering:</strong> Gjennomført, datert, vedlegget til styreprotokoll eller direktørsmøte</li>
+      <li><strong>Sikkerhetspolicy:</strong> Skriftlig, godkjent av styre, revidert minst årlig, resultat av revisjon dokumentert</li>
+      <li><strong>Incidenthanteringsplan:</strong> Prosedyre for varsling, eskalering, og rapportering til myndigheter (24t–72t)</li>
+      <li><strong>Incidentlogg:</strong> Eksempler på registrerte hendelser (selv mindre) som viser at prosedyren fungerer</li>
+      <li><strong>Leverandørforvalting:</strong> Oversikt over kritiske leverandører, kontrakter med sikkerhetskrav, attestasjoner eller sertifikater</li>
+      <li><strong>Opplæring:</strong> Dokumentert sikkerhetskursing for ansatte, inkl. ledelse, med deltakerliste og resultat</li>
+      <li><strong>Tilgangskontroll:</strong> Policy for brukeradministrasjon, multifaktor-autentisering (MFA), passordkrav</li>
+      <li><strong>Privilegert tilgang:</strong> Oversikt over hvem som har administratortilgang, hvordan det blir overvåket, loggering</li>
+      <li><strong>Sikkerhetskopiering:</strong> Plan for sikkerhetskopier, test av gjenoppretting, resultat av test dokumentert</li>
+      <li><strong>Kryptering:</strong> Policy for kryptering av data i transit og rest, implementering på kritiske systemer dokumentert</li>
+      <li><strong>Nettverkssikkerhet:</strong> Brannmur, intrusion detection/prevention, dokumentert konfigurering og testing</li>
+      <li><strong>Logging og overvåking:</strong> Sentral loggsamling, oppbevaringstid, rutiner for analyse av anomalier</li>
+      <li><strong>Patching og vedlikehold:</strong> Policy for sikkerhetspatch, prosess for testing og rulling ut, dokumentert</li>
+      <li><strong>Backup og kontinuitet:</strong> Disaster recovery-plan, resultat av tester, dato for neste test planlagt</li>
+      <li><strong>Personell-sikkerhet:</strong> Bakgrunnssjekk for kritisk personell, NDA-signering, dokumentert</li>
+      <li><strong>Fysisk sikkerhet:</strong> Tilgangskontroll til datasenter/serverrom, loggering av adgang</li>
+      <li><strong>Tredjeparts-revisjoner:</strong> Kopi av seneste revisjon, sertifikat, eller revisorrapport (hvis gjeldende)</li>
+    </ul>
+  </div>
+
+  <p>
+    <strong>Ikke ha disse på plass?</strong> Ikke panikk — men start nå. De fleste av disse kan opprettholdes med vanlig dokumentasjonspraksis. Det koster ikke mye, men det sparer deg for millioner i bøter hvis tilsynet kommer.
+  </p>
+
+  <h2>Hvem må være tilgjengelig under tilsynet?</h2>
+
+  <p>
+    Myndighetene vil insistere på å snakke direkte med ledelsen. Du kan ikke delegere dette til IT-avdelingen alene.
+  </p>
+
+  <ul>
+    <li><strong>VD eller styreleder:</strong> Må kunne snakke om styrets rolle, godkjenning av sikkerhetstiltak, og oppfølging av risiker. Må ha grunnleggende forståelse av NIS2-kravene — ikke detaljert teknisk, men tilstrekkelig til å vise at det er en prioritert sak.</li>
+    <li><strong>IT-sjef eller Chief Information Security Officer (CISO):</strong> Må kunne forklare teknisk implementering, testing, og resultater. Må kunne fremvise loggfiler og demonstrere at systemer er konfigurert som dokumentert.</li>
+    <li><strong>Compliance- eller juridisk ansvarlig:</strong> Må kunne forklare prosedyrer for hendelsesrapportering, leverandørkontroll, og dokumentering av styrets godkjenning.</li>
+    <li><strong>Driftsleder eller infrastruktur-ansvarlig:</strong> Kan bli spurt om fysisk sikkerhet, sikkerhetskopier, nettverkskonfigurering.</li>
+  </ul>
+
+  <p>
+    <strong>Tips:</strong> Gjennomfør mock-intervjuer (falske revisjoner) internt to til tre uker før du forventer et riktig tilsyn. La en ekstern konsulent eller revisor spille rollen som inspektør. Dette avslører hvor manglene er før det teller.
+  </p>
+
+  <h2>Slik presenterer du sikkerhetstilstanden din troverdig</h2>
+
+  <p>
+    Inspektøren vil være skeptisk. Han eller hun har sett hundrevis

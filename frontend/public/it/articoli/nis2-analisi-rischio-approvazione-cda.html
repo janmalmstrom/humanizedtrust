@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-BKF3QH9K01"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag("js", new Date());
+    gtag("config", "G-BKF3QH9K01");
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Analisi del Rischio NIS2: Cosa Deve Approvare Formalmente il CdA | NIS2Klar</title>
+  <meta name="description" content="L'Art. 21 del D.Lgs. 138/2024 impone al CdA di approvare formalmente le misure di sicurezza NIS2. Scopri quali documenti richiedono l'approvazione del consiglio e come strutturare l'ordine del giorno.">
+  <meta property="og:title" content="Analisi del Rischio NIS2: Cosa Deve Approvare Formalmente il CdA">
+  <meta property="og:description" content="L'Art. 21 del D.Lgs. 138/2024 impone al CdA di approvare formalmente le misure di sicurezza NIS2. Scopri quali documenti richiedono l'approvazione del consiglio e come strutturare l'ordine del giorno.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #141416;
+      --card: #1c1c1f;
+      --yellow: #f5c518;
+      --white: #f0f0f0;
+      --muted: #888;
+      --red: #C61212;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: var(--bg); color: var(--white); font-family: 'Barlow', sans-serif; font-size: 19px; line-height: 1.8; }
+
+    /* Nav */
+    nav { display: flex; justify-content: space-between; align-items: center; padding: 20px 40px; border-bottom: 1px solid rgba(255,255,255,0.07); max-width: 900px; margin: 0 auto; }
+    .nav-logo { font-family: 'Poppins', sans-serif; font-weight: 900; font-size: 20px; color: var(--yellow); text-decoration: none; }
+    .nav-logo span { color: var(--white); }
+    .nav-back { color: var(--muted); text-decoration: none; font-size: 15px; }
+    .nav-back:hover { color: var(--white); }
+    .nav-cta { background: var(--yellow); color: #000; padding: 8px 18px; border-radius: 4px; text-decoration: none; font-weight: 700; font-size: 14px; font-family: 'Poppins', sans-serif; }
+
+    /* Article */
+    .article-wrap { max-width: 760px; margin: 0 auto; padding: 60px 40px; }
+    .article-category { font-size: 13px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 16px; }
+    h1 { font-family: 'Poppins', sans-serif; font-size: clamp(30px, 4vw, 44px); font-weight: 900; line-height: 1.2; margin-bottom: 24px; }
+    .article-meta { font-size: 15px; color: var(--muted); margin-bottom: 48px; padding-bottom: 24px; border-bottom: 1px solid rgba(255,255,255,0.07); }
+    h2 { font-family: 'Poppins', sans-serif; font-size: 26px; font-weight: 700; margin: 48px 0 16px; color: var(--white); }
+    h3 { font-family: 'Poppins', sans-serif; font-size: 20px; font-weight: 600; margin: 32px 0 12px; color: var(--yellow); }
+    p { margin-bottom: 22px; }
+    strong { color: var(--white); font-weight: 700; }
+    .highlight { color: var(--yellow); font-weight: 700; }
+    .danger { color: #ff6b6b; font-weight: 700; }
+    ul, ol { margin: 16px 0 24px 24px; }
+    li { margin-bottom: 12px; font-size: 19px; }
+
+    /* Callout boxes */
+    .box-warning { background: rgba(197,17,17,0.12); border-left: 4px solid var(--red); padding: 20px 24px; margin: 32px 0; border-radius: 0 4px 4px 0; }
+    .box-info { background: rgba(245,197,24,0.08); border-left: 4px solid var(--yellow); padding: 20px 24px; margin: 32px 0; border-radius: 0 4px 4px 0; }
+    .box-case { background: var(--card); border: 1px solid rgba(255,255,255,0.08); padding: 28px; margin: 40px 0; border-radius: 4px; }
+    .box-case .case-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 12px; }
+    blockquote { border-left: 3px solid var(--yellow); padding: 12px 20px; margin: 24px 0; font-style: italic; color: #ccc; }
+
+    /* CTA */
+    .cta-section { background: var(--card); border: 1px solid rgba(245,197,24,0.2); border-radius: 4px; padding: 48px 40px; margin: 64px 0 40px; text-align: center; }
+    .cta-section h2 { margin-top: 0; font-size: 26px; }
+    .cta-section p { color: #aaa; max-width: 500px; margin: 0 auto 28px; }
+    .btn-primary { display: inline-block; background: var(--yellow); color: #000; font-family: 'Poppins', sans-serif; font-weight: 800; font-size: 16px; padding: 16px 36px; border-radius: 4px; text-decoration: none; }
+    .btn-primary:hover { background: #e0b010; }
+    .cta-fine { font-size: 13px; color: var(--muted); margin-top: 16px; }
+
+    /* FAQ */
+    .faq-item { border-bottom: 1px solid rgba(255,255,255,0.07); padding: 20px 0; }
+    .faq-q { font-family: 'Poppins', sans-serif; font-weight: 600; margin-bottom: 10px; }
+    .faq-a { color: #bbb; }
+
+    /* Fine table */
+    .fine-table { width: 100%; border-collapse: collapse; margin: 24px 0; }
+    .fine-table th { background: rgba(245,197,24,0.1); color: var(--yellow); font-family: 'Poppins', sans-serif; font-size: 13px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 12px 16px; text-align: left; border-bottom: 1px solid rgba(245,197,24,0.2); }
+    .fine-table td { padding: 14px 16px; border-bottom: 1px solid rgba(255,255,255,0.05); font-size: 15px; }
+    .fine-table tr:last-child td { border-bottom: none; }
+    .fine-table .amount { color: #ff6b6b; font-weight: 700; }
+
+    /* Summary + Key Takeaway */
+    .box-summary { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; padding: 24px 28px; margin: 0 0 32px; }
+    .summary-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-bottom: 14px; }
+    .box-summary ul { margin: 0; padding-left: 20px; }
+    .box-summary li { margin-bottom: 8px; font-size: 17px; color: #ccc; }
+    .box-takeaway { background: rgba(245,197,24,0.08); border-left: 4px solid var(--yellow); padding: 20px 24px; margin: 0 0 40px; border-radius: 0 4px 4px 0; }
+    .takeaway-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 10px; }
+    .box-takeaway p { margin: 0; font-size: 18px; font-weight: 600; color: var(--white); line-height: 1.6; }
+
+    /* Footer */
+    footer { border-top: 1px solid rgba(255,255,255,0.07); padding: 32px 40px; text-align: center; font-size: 13px; color: var(--muted); max-width: 900px; margin: 0 auto; }
+    footer a { color: var(--muted); }
+
+    @media (max-width: 600px) {
+      nav, .article-wrap, footer { padding: 20px; }
+      .cta-section { padding: 32px 20px; }
+      .fine-table { font-size: 14px; }
+      .fine-table th, .fine-table td { padding: 10px 10px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="https://nis2klar.se/it/">NIS2<span>Klar</span></a>
+  <a class="nav-back" href="https://nis2klar.se/it/articoli.html">← Tutti gli articoli</a>
+  <div class="lang-switcher" style="display:flex;gap:8px;align-items:center;font-size:13px;font-family:'Poppins',sans-serif;">
+    <a href="https://nis2klar.se/artiklar.html" style="color:#888;text-decoration:none;font-weight:600;padding:4px 8px;border-radius:3px;" title="Svenska">SV</a>
+    <a href="https://nis2klar.se/en/articles.html" style="color:#888;text-decoration:none;font-weight:600;padding:4px 8px;border-radius:3px;" title="English">EN</a>
+    <a href="https://nis2klar.se/da/artikler.html" style="color:#888;text-decoration:none;font-weight:600;padding:4px 8px;border-radius:3px;" title="Dansk">DA</a>
+    <a href="https://nis2klar.se/no/artikler.html" style="color:#888;text-decoration:none;font-weight:600;padding:4px 8px;border-radius:3px;" title="Norsk">NO</a>
+    <a href="https://nis2klar.se/it/articoli.html" style="color:#f5c518;text-decoration:none;font-weight:600;padding:4px 8px;border-radius:3px;background:rgba(245,197,24,0.1);" title="Italiano">IT</a>
+  </div>
+  <a class="nav-cta" href="/nis2.html#boka">Prenota una chiamata →</a>
+</nav>
+
+<article class="article-wrap">
+  <div class="article-category">Governance &amp; Conformità</div>
+  <h1>Analisi del Rischio NIS2: Cosa Deve Approvare Formalmente il CdA</h1>
+  <div class="article-meta">Aggiornato il 17 aprile 2026 · Tempo di lettura: circa 8 minuti · Destinatari: CEO, Presidente e Membri del CdA</div>
+
+  <!-- SUMMARY -->
+  <div class="box-summary">
+    <div class="summary-label">Sintesi</div>
+    <ul>
+      <li>Per CEO e membri del consiglio di amministrazione di aziende italiane nei settori regolati NIS2 che vogliono capire cosa devono approvare — e cosa non possono semplicemente delegare all'IT.</li>
+      <li>L'Art. 21 del D.Lgs. 138/2024 impone al <strong>consiglio di approvare formalmente</strong> le misure di gestione del rischio di cybersicurezza.</li>
+      <li>L'Art. 23 stabilisce la <strong>responsabilità personale</strong> dei membri dell'organo di amministrazione in caso di violazione.</li>
+      <li>I documenti senza firma del CdA non costituiscono prova di conformità — e l'ACN può chiederli con breve preavviso.</li>
+    </ul>
+  </div>
+
+  <!-- KEY TAKEAWAY -->
+  <div class="box-takeaway">
+    <div class="takeaway-label">Conclusione principale</div>
+    <p>NIS2 non è una questione IT — è una responsabilità del consiglio di amministrazione. L'Art. 21 richiede che il CdA approvi esplicitamente le misure di sicurezza. Delegare tutto al responsabile IT non è sufficiente: in caso di violazione, sono i membri del consiglio a rispondere personalmente.</p>
+  </div>
+
+  <!-- HOOK -->
+  <p>
+    C'è un equivoco molto comune nelle sale riunioni delle aziende italiane oggi: quello che la sicurezza informatica sia una questione tecnica, da lasciare in mano al reparto IT o al CISO. Il D.Lgs. 138/2024 — il decreto legislativo che recepisce la Direttiva NIS2 in Italia, in vigore dal 16 ottobre 2024 — chiarisce il contrario in modo inequivocabile.
+  </p>
+
+  <p>
+    L'<strong>Articolo 21</strong> del decreto impone che le misure di gestione del rischio di cybersicurezza siano <strong>approvate dall'organo di amministrazione</strong>. Non suggerite dall'IT. Non comunicate al CdA. Approvate formalmente dal consiglio. E l'<strong>Articolo 23</strong> precisa che i membri dell'organo di amministrazione possono essere ritenuti <strong>personalmente responsabili</strong> in caso di violazione di tali obblighi.
+  </p>
+
+  <p>
+    Questo articolo risponde a tre domande concrete che ogni CEO e ogni consigliere dovrebbe saper rispondere oggi: quali documenti richiedono la firma del CdA, in cosa differisce questo dall'ordinaria delega all'IT, e come strutturare un ordine del giorno del consiglio che metta l'organizzazione in una posizione difendibile.
+  </p>
+
+  <div class="box-warning">
+    <strong>Attenzione:</strong> L'ACN (Agenzia per la Cybersicurezza Nazionale) è l'autorità di vigilanza primaria in Italia. Può avviare ispezioni e richiedere documentazione con preavviso di giorni, non di mesi. Se i documenti rilevanti non portano la firma del CdA, l'organizzazione è già in una posizione di non conformità — anche se tecnicamente ha fatto tutto il resto.
+  </div>
+
+  <h2>Cosa dice esattamente l'Art. 21 del D.Lgs. 138/2024</h2>
+
+  <p>
+    L'Art. 21 elenca le misure di gestione del rischio che i soggetti essenziali e importanti devono adottare. Ma la norma non si limita a elencare le misure tecniche. Stabilisce che <strong>l'organo di amministrazione adotta e approva</strong> tali misure e vigila sulla loro attuazione.
+  </p>
+
+  <p>
+    Le misure obbligatorie comprendono dieci aree distinte:
+  </p>
+
+  <ol>
+    <li>Politiche di analisi dei rischi e di sicurezza dei sistemi informativi</li>
+    <li>Gestione degli incidenti (rilevamento, risposta, notifica)</li>
+    <li>Continuità operativa e gestione delle crisi (backup, disaster recovery, piani di crisi)</li>
+    <li>Sicurezza della catena di approvvigionamento e dei fornitori</li>
+    <li>Sicurezza nell'acquisizione, nello sviluppo e nella manutenzione di sistemi informativi e di rete</li>
+    <li>Politiche e procedure per valutare l'efficacia delle misure adottate</li>
+    <li>Pratiche di igiene informatica di base e formazione</li>
+    <li>Politiche sull'uso della crittografia e, se del caso, della cifratura</li>
+    <li>Sicurezza delle risorse umane, politiche di controllo degli accessi e gestione degli asset</li>
+    <li>Uso di soluzioni di autenticazione a più fattori e di comunicazioni protette</li>
+  </ol>
+
+  <p>
+    Ognuna di queste aree deve essere oggetto di una politica formale, documentata e — nella misura in cui incide sull'assetto complessivo della sicurezza organizzativa — <strong>approvata dal consiglio</strong>. Non è sufficiente che esista un documento tecnico nell'archivio dell'IT. Deve esistere una delibera del CdA.
+  </p>
+
+  <h2>La differenza fondamentale: approvazione vs. delega</h2>
+
+  <p>
+    Molti consigli di amministrazione italiani hanno gestito la cybersicurezza nel modo seguente: il CEO o il CdA delega al responsabile IT o al CISO, che a sua volta produce policy, procedure e reportistica. Il CdA ne prende atto — a volte nemmeno quello — e va avanti.
+  </p>
+
+  <p>
+    Sotto NIS2, questo modello non è più sufficiente. E la differenza non è solo formale: è sostanziale.
+  </p>
+
+  <p>
+    <strong>Delegare</strong> significa trasferire la responsabilità operativa a qualcun altro. Il CdA affida il compito, ma non si espone direttamente. <strong>Approvare formalmente</strong> significa che il CdA comprende il contenuto, valuta che sia adeguato e se ne assume la responsabilità come organo. Se il documento è carente, o se le misure non vengono poi effettivamente attuate, la responsabilità non ricade sull'IT: ricade sul consiglio che le ha approvate — e che avrebbe dovuto vigilare sulla loro attuazione.
+  </p>
+
+  <p>
+    Questo cambia radicalmente la natura del coinvolgimento del CdA nella cybersicurezza. Non si tratta più di ricevere una relazione annuale dal CISO. Si tratta di capire, deliberare e documentare.
+  </p>
+
+  <div class="box-info">
+    <strong>Nota pratica:</strong> "Approvare" ai fini NIS2 non significa che ogni consigliere debba diventare un esperto tecnico. Significa che il CdA deve essere in grado di valutare che le misure proposte siano proporzionate al rischio dell'organizzazione, che siano effettivamente implementate e che siano aggiornate nel tempo. Per farlo servono briefing strutturati e documentazione comprensibile — non slide tecniche da cento pagine.
+  </div>
+
+  <h2>La responsabilità personale: Art. 23 D.Lgs. 138/2024</h2>
+
+  <p>
+    L'Art. 23 del decreto è la norma che cambia le conversazioni nelle sale riunioni. Stabilisce che i <strong>membri dell'organo di amministrazione possono essere ritenuti personalmente responsabili</strong> delle violazioni degli obblighi NIS2 da parte dell'organizzazione.
+  </p>
+
+  <p>
+    In termini concreti, questo significa che in caso di violazione grave — un attacco ransomware non notificato all'ACN entro 72 ore, una carenza sistematica nelle misure di sicurezza, un incidente che rivela l'assenza di qualsiasi politica approvata — l'autorità di vigilanza non si limita a sanzionare l'azienda. Può avviare procedimenti nei confronti dei singoli consiglieri.
+  </p>
+
+  <p>
+    Le sanzioni per i soggetti essenziali possono arrivare fino a <strong>10 milioni di euro o il 2% del fatturato mondiale annuo</strong> (si applica il valore più elevato). Per i soggetti importanti, il limite è di <strong>7 milioni di euro o l'1,4% del fatturato mondiale</strong>. Ma al di là delle sanzioni pecuniarie, l'esposizione personale dei consiglieri — in termini di reputazione, di responsabilità civile verso l'azienda e verso i terzi danneggiati, e di possibili misure interdittive — è il vero cambio di paradigma introdotto da NIS2.
+  </p>
+
+  <table class="fine-table">
+    <thead>
+      <tr>
+        <th>Categoria</th>
+        <th>Sanzione massima</th>
+        <th>Alternativa</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Soggetto essenziale</td>
+        <td class="amount">10 milioni di euro</td>
+        <td>2% del fatturato mondiale annuo</td>
+      </tr>
+      <tr>
+        <td>Soggetto importante</td>
+        <td class="amount">7 milioni di euro</td>
+        <td>1,4% del fatturato mondiale annuo</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>
+    Si applica il valore più elevato tra i due. Per un'azienda con 300 milioni di euro di fatturato annuo classificata come soggetto essenziale, il 2% equivale a 6 milioni di euro — ma il tetto di 10 milioni rimane il limite superiore. Per un'azienda con fatturato superiore a 500 milioni, il 2% supera i 10 milioni, quindi è il fatturato a determinare la sanzione massima.
+  </p>
+
+  <h2>Quali documenti richiedono l'approvazione formale del CdA</h2>
+
+  <p>
+    Non tutta la documentazione tecnica deve passare per il CdA. Ma esiste una categoria di documenti che — ai sensi dell'Art. 21 — richiede una delibera formale dell'organo di amministrazione. Ecco i principali:
+  </p>
+
+  <h3>1. La politica di gestione del rischio di cybersicurezza</h3>
+  <p>
+    È il documento madre. Definisce il framework con cui l'organizzazione identifica, valuta e tratta i rischi informatici. Deve essere approvata dal CdA e aggiornata periodicamente — o ogni volta che cambiano in modo significativo il contesto operativo, la struttura IT o il profilo di rischio.
+  </p>
+
+  <h3>2. Il piano di gestione degli incidenti</h3>
+  <p>
+    Definisce ruoli, responsabilità, procedure di escalation e — crucialmente — le modalità di notifica all'ACN entro le scadenze di legge: allerta precoce entro 24 ore, notifica dell'incidente entro 72 ore, relazione finale entro un mese. Il CdA deve approvare questo piano, non solo prenderne atto.
+  </p>
+
+  <h3>3. Il piano di continuità operativa e disaster recovery</h3>
+  <p>
+    Include i piani di backup, le procedure di ripristino e i target di ripristino (RTO e RPO). Dato che una crisi grave può bloccare l'operatività dell'intera organizzazione, questo documento ha un impatto direttamente strategico e richiede l'approvazione del vertice.
+  </p>
+
+  <h3>4. La politica di sicurezza della supply chain</h3>
+  <p>
+    NIS2 si estende ai fornitori. Il CdA deve approvare i criteri con cui l'organizzazione valuta e gestisce il rischio dei propri fornitori critici — in particolare quelli che hanno accesso ai sistemi informativi. Non è una questione da lasciare solo agli acquisti o all'IT.
+  </p>
+
+  <h3>5. La politica di accesso e autenticazione</h3>
+  <p>
+    Definisce chi ha accesso a cosa, con quali credenziali e con quali misure di controllo — inclusa l'autenticazione a più fattori. Anche questa è una politica di livello organizzativo che il CdA deve approvare.
+  </p>
+
+  <h3>6. Il programma di formazione e consapevolezza</h3>
+  <p>
+    L'Art. 21 richiede esplicitamente che i membri dell'organo di amministrazione ricevano formazione in materia di cybersicurezza. Questa non è una nota a piè di pagina: è un obbligo. Il programma di formazione — incluso quello dedicato al CdA stesso — deve essere approvato formalmente e i log di partecipazione devono essere conservati.
+  </p>
+
+  <h2>Come è diverso da quello che fate oggi</h2>
+
+  <p>
+    Nella maggior parte delle aziende italiane, la situazione attuale è questa: il CISO o il responsabile IT produce documentazione, la carica su una cartella condivisa o la inserisce in un report, e il CdA la riceve — forse — una volta all'anno come allegato a un'informativa generica sulla cybersicurezza. Nessuna delibera. Nessuna votazione. Nessun verbale che attesti l'approvazione.
+  </p>
+
+  <p>
+    Questo approccio espone il consiglio a un rischio diretto in caso di ispezione da parte dell'ACN. Se l'autorità di vigilanza chiede la prova che il CdA ha approvato le misure di gestione del rischio ai sensi dell'Art. 21, e l'unica risposta è "abbiamo un documento nell'archivio IT", la posizione dell'organizzazione è indifendibile.
+  </p>
+
+  <p>
+    La differenza operativa è questa: i documenti chiave devono essere presentati al CdA in un formato comprensibile per non tecnici, discussi in seduta, e approvati con delibera formale inserita nel verbale del consiglio. Non è un onere burocratico aggiuntivo — è la prova che il consiglio ha esercitato la propria funzione di supervisione.
+  </p>
+
+  <div class="box-case">
+    <div class="case-label">Scenario esemplificativo</div>
+    <p>
+      <strong>Azienda manifatturiera italiana, 320 dipendenti, fatturato 85 milioni di euro.</strong>
+    </p>
+    <p>
+      Classificata come soggetto importante ai sensi del D.Lgs. 138/2024. A marzo 2026 subisce un attacco ransomware che blocca la produzione per quattro giorni. L'IT gestisce la risposta internamente. Il CEO viene informato al giorno 2. La notifica all'ACN non viene effettuata entro le 72 ore previste dall'Art. 23 — viene inviata al giorno 5, quando un fornitore terzo segnala anomalie di sistema.
+    </p>
+    <p>
+      L'ACN avvia un'ispezione. Richiede la documentazione delle misure di gestione del rischio approvate dall'organo di amministrazione. L'azienda produce quattro documenti tecnici, tutti privi di delibera del CdA. Il piano di gestione degli incidenti non è mai stato formalmente approvato. Il verbale del consiglio dell'anno precedente menziona la "cybersicurezza" in un unico punto all'ordine del giorno, senza alcuna delibera specifica.
+    </p>
+    <p>
+      <strong>Esito:</strong> Sanzione per notifica tardiva dell'incidente. Sanzione aggiuntiva per assenza di misure approvate ai sensi dell'Art. 21. Procedimento individuale avviato nei confronti del Presidente del CdA ai sensi dell'Art. 23. Costo complessivo stimato — tra sanzioni, gestione legale e perdita operativa — <span class="danger">superiore a 4 milioni di euro</span>.
+    </p>
+  </div>
+
+  <h2>Template: ordine del giorno del CdA per la conformità NIS2</h2>
+
+  <p>
+    Di seguito un modello pratico di ordine del giorno per una seduta del consiglio dedicata all'approvazione delle misure NIS2. Può essere adattato alle dimensioni e al settore dell'organizzazione. L'importante è che ogni punto si concluda con una delibera formale e che questa sia riportata nel verbale.
+  </p>
+
+  <div class="box-info">
+    <strong>Ordine del giorno — Seduta del CdA: Conformità NIS2 ai sensi del D.Lgs. 138/2024</strong>
+    <br><br>
+    <strong>1. Apertura e approvazione dell'ordine del giorno</strong><br>
+    Delibera: il CdA approva l'ordine del giorno.<br><br>
+    <strong>2. Briefing sul quadro normativo NIS2</strong><br>
+    Presentazione sintetica (max 15 minuti) da parte del CISO o di un consulente esterno: chi siamo come soggetto (essenziale o importante), quali obblighi ci incombono, quali scadenze sono già decororse e quali sono imminenti. Nessuna delibera — solo comprensione condivisa.<br><br>
+    <strong>3. Approvazione della politica di gestione del rischio di cybersicurezza</strong><br>
+    Il documento viene presentato in versione sintetica esecutiva (max 3 pagine). Il CdA discute e delibera formalmente l'approvazione. Verbale: "Il CdA approva la Politica di Gestione del Rischio di Cybersicurezza versione X, allegata al presente verbale."<br><br>
+    <strong>4. Approvazione del piano di gestione degli incidenti</strong><br>
+    Delibera analoga. Il piano deve includere esplicitamente le scadenze di notifica all'ACN (24h / 72h / 1 mese) e i ruoli responsabili.<br><br>
+    <strong>5. Approvazione del piano di continuità operativa e disaster recovery</strong><br>
+    Delibera formale. Il CdA deve essere informato degli obiettivi di ripristino (RTO/RPO) in linguaggio non tecnico: "in caso di incidente grave, siamo in grado di riprendere le operazioni critiche entro X ore."<br><br>
+    <strong>6. Approvazione della politica di sicurezza della supply chain</strong><br>
+    Delibera formale. Includere l'elenco dei fornitori critici e i criteri di valutazione del rischio adottati.<br><br>
+    <strong>7. Conferma del programma di formazione per il CdA e il management</strong><br>
+    Delibera: il CdA approva il programma formativo annuale in materia di cybersicurezza, incluse le sessioni dedicate all'organo di amministrazione stesso.<br><br>
+    <strong>8. Delega operativa e supervisione</strong><br>
+    Il CdA nomina o conferma il responsabile interno (CISO o equivalente) e definisce la cadenza dei report al consiglio (trimestrale raccomandata). Delibera formale sulla struttura di governance.<br><br>
+    <strong>9. Prossimi passi e calendario delle revisioni</strong><br>
+    Data della prossima revisione delle politiche (almeno annuale o in caso di incidente significativo). Nessuna delibera — solo pianificazione.<br><br>
+    <strong>10. Chiusura della seduta</strong>
+  </div>
+
+  <p>
+    Questo schema non richiede una giornata intera. Una seduta ben preparata di tre ore, con documentazione inviata almeno 5 giorni prima, è sufficiente per coprire tutti i punti. Ciò che conta è che ogni approvazione sia esplicitamente riportata nel verbale con la formulazione corretta.
+  </p>
+
+  <h2>La vigilanza continua: non basta approvare una volta</h2>
+
+  <p>
+    L'approvazione iniziale è il punto di partenza, non il punto di arrivo. L'Art. 21 richiede che le misure siano proporzionate e aggiornate rispetto all'evoluzione del rischio. Questo significa che il CdA deve rivedere e, se necessario, riapprovare i documenti chiave con cadenza regolare — almeno annuale — e ogni volta che si verificano cambiamenti significativi: acquisizioni, nuovi sistemi, incidenti rilevanti, modifiche normative.
+  </p>
+
+  <p>
+    La vigilanza continua si traduce in pratica in un punto fisso all'ordine del giorno del CdA dedicato alla cybersicurezza — non come allegato informativo, ma come punto deliberativo. La frequenza raccomandata è trimestrale per il monitoraggio dello stato di conformità, annuale per la revisione completa delle politiche.
+  </p>
+
+  <p>
+    Un indicatore utile per il consiglio è un punteggio sintetico di sicurezza — un numero da 0 a 100 — che consente al CdA di monitorare il livello di conformità nel tempo senza dover leggere rapporti tecnici di decine di pagine. Strumenti di questo tipo sono disponibili su piattaforme di sicurezza consolidate e possono essere presentati dal CISO in formato executive in pochi minuti.
+  </p>
+
+  <h2>Cosa succede in caso di ispezione ACN</h2>
+
+  <p>
+    L'ACN può avviare un'ispezione in due modi: su base programmatica (parte del piano di vigilanza annuale) o su segnalazione — di un'altra autorità competente, di un partner commerciale, di un dipendente, o a seguito di un incidente che diventa di dominio pubblico. In entrambi i casi, l'organizzazione riceve una richiesta formale di documentazione con un termine che può essere di appena 15-30 giorni.
+  </p>
+
+  <p>
+    In quei 15-30 giorni, l'organizzazione deve essere in grado di produrre:
+  </p>
+
+  <ul>
+    <li>Le delibere del CdA che approvano le misure di gestione del rischio</li>
+    <li>I verbali delle sedute in cui tali approvazioni sono avvenute</li>
+    <li>I documenti approvati (politiche, piani, procedure) con data e versione</li>
+    <li>I log di formazione del CdA e del management</li>
+    <li>La documentazione dei test e delle verifiche periodiche effettuate</li>
+    <li>Per i soggetti essenziali: la registrazione sulla piattaforma ACN nei termini stabiliti</li>
+  </ul>
+
+  <p>
+    Un'organizzazione che non dispone di questi documenti nel momento in cui riceve la richiesta ACN è già in una posizione sanzionabile — indipendentemente da quanto stia effettivamente facendo sul piano tecnico. La forma è sostanza, in questo contesto.
+  </p>
+
+  <h2>Le domande che i consiglieri si pongono</h2>
+
+  <div class="faq-item">
+    <div class="faq-q">Siamo già registrati sulla piattaforma ACN — questo non basta?</div>
+    <div class="faq-a">La registrazione è il primo passo obbligatorio, non l'ultimo. L'ACN utilizza la piattaforma per identificare i soggetti rientranti nell'ambito di applicazione del D.Lgs. 138/2024. Ma la conformità vera — quella che protegge il CdA da sanzioni — richiede anche l'implementazione e l'approvazione formale delle misure di gestione del rischio ai sensi dell'Art. 21. Registrarsi senza adottare le misure è come ottenere la targa dell'auto senza la revisione: sei nel sistema, ma non sei in regola.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">Il nostro CISO gestisce tutto — come consiglio siamo comunque responsabili?</div>
+    <div class="faq-a">Sì. L'Art. 23 del D.Lgs. 138/2024 è esplicito: la responsabilità personale dei membri dell'organo di amministrazione non viene meno per il fatto che le funzioni operative siano delegate. La delega funziona per l'esecuzione, non per la governance. Il CdA deve approvare, vigilare e documentare. Se l'ACN avvia un procedimento e il CdA non riesce a dimostrare di aver esercitato le proprie funzioni di supervisione, la responsabilità personale dei consiglieri rimane integra.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">Come facciamo a capire cosa approvare se non siamo tecnici?</div>
+    <div class="faq-a">È esattamente per questo che il formato dei documenti presentati al CdA deve essere adattato. I consiglieri non devono valutare configurazioni di firewall — devono valutare che esista una politica proporzionata al rischio, che sia aggiornata, che qualcuno sia responsabile della sua attuazione e che ci siano meccanismi di verifica. Un briefing strutturato da parte del CISO o di un consulente esterno, con un documento executive di 2-3 pagine per ogni politica da approvare, è sufficiente per consentire una delibera informata e difendibile.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">La nostra azienda è nel settore manifatturiero — siamo davvero soggetti a NIS2?</div>
+    <div class="faq-a">Il settore manifatturiero è esplicitamente incluso tra i 18 settori NIS2. Se la vostra azienda supera le soglie dimensionali (250 dipendenti o 50 milioni di euro di fatturato per i soggetti essenziali; 50 dipendenti o 10 milioni di fatturato per i soggetti importanti) e opera in uno dei comparti rilevanti, rientrate nell'ambito di applicazione. Oltre al manifatturiero, sono inclusi energia, trasporti, banche, infrastrutture finanziarie, sanità, acqua, infrastrutture digitali, pubblica amministrazione, spazio, servizi postali, rifiuti, sostanze chimiche, alimentare, fornitori digitali e ricerca. Verificate la vostra posizione sulla piattaforma ACN o con un consulente specializzato.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">Quanto tempo ci vuole per mettere in ordine la documentazione del CdA?</div>
+    <div class="faq-a">Un'organizzazione che parte da zero — nessuna policy formale, nessuna delibera del CdA — può raggiungere un livello di conformità documentale difendibile in 60-90 giorni con un approccio strutturato. La prima tappa è una gap analysis che identifichi cosa esiste già (anche informalmente) e cosa manca completamente. Sulla base di quella, si costruisce un piano di lavoro con priorità chiare. Il tempo più lungo non è la redazione dei documenti: è il ciclo di approvazione del CdA, che richiede di calendarizzare la seduta con sufficiente anticipo.</div>
+  </div>
+
+  <div class="box-info" style="margin: 48px 0 32px;">
+    <div style="font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color: var(--yellow); margin-bottom:10px;">🔧 STRUMENTI &amp; SOLUZIONI</div>
+    <p style="margin:0; font-size:17px; color: #ddd; line-height:1.7;">Per la documentazione e il monitoraggio della conformità NIS2 a livello di CdA, <strong>Microsoft Defender Secure Score</strong> fornisce un indicatore sintetico da 0 a 100 che il consiglio può monitorare ad ogni seduta — senza necessità di interpretare report tecnici. Abbinato a <strong>Microsoft Compliance Manager</strong>, consente di mappare le misure adottate rispetto ai requisiti dell'Art. 21 e di produrre documentazione pronta per l'ispezione. Un partner Microsoft certificato può configurare questi strumenti gratuitamente nell'ambito di una gap analysis iniziale.</p>
+  </div>
+
+  <!-- NEWSLETTER -->
+  <div style="background:#111; border:1px solid rgba(255,255,255,0.1); border-left:3px solid #f5c518; border-radius:4px; padding:32px 36px; margin:40px 0 0; text-align:center; max-width:760px; margin-left:auto; margin-right:auto;">
+    <div style="font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:#f5c518; margin-bottom:12px;">📬 AGGIORNAMENTI NIS2</div>
+    <h3 style="font-family:'Poppins',sans-serif; font-size:20px; font-weight:800; margin:0 0 8px; color:#f0f0f0;">Un nuovo articolo NIS2 ogni settimana — direttamente nella tua casella</h3>
+    <p style="color:#888; font-size:15px; margin:0 0 20px;">Nessun pitch di vendita. Solo guida pratica per CEO e consigli di amministrazione.</p>
+    <form id="nlForm-nis2_analisi_rischio_approvazione_cda" onsubmit="submitNewsletter_nis2_analisi_rischio_approvazione_cda(event)" style="display:flex; gap:10px; flex-wrap:wrap; justify-content:center; max-width:460px; margin:0 auto;">
+      <input type="email" id="nlEmail-nis2_analisi_rischio_approvazione_cda" placeholder="tuo@azienda.it" required style="flex:1; min-width:200px; padding:12px 16px; background:#1c1c1f; border:1px solid rgba(255,255,255,0.15); border-radius:4px; color:#f0f0f0; font-size:15px; outline:none;" />
+      <button type="submit" id="nlSubmit-nis2_analisi_rischio_approvazione_cda" style="padding:12px 22px; background:#f5c518; color:#141416; font-weight:700; font-size:15px; border:none; border-radius:4px; cursor:pointer; white-space:nowrap;">Iscriviti gratis →</button>
+    </form>
+    <p style="font-size:12px; color:#555; margin:12px 0 0;">Puoi cancellarti in qualsiasi momento. Non condividiamo mai la tua email.</p>
+    <div id="nlThanks-nis2_analisi_rischio_approvazione_cda" style="display:none; color:#4ade80; font-size:16px; font-weight:600; margin-top:14px;">✅ Sei iscritto! Il prossimo articolo arriverà nella tua casella.</div>
+  </div>
+
+  <!-- CTA -->
+  <div class="cta-section">
+    <h2>Sai dove si trova la tua organizzazione oggi?</h2>
+    <p>Un'analisi del gap gratuita con un partner Microsoft certificato mostra esattamente cosa hai già coperto — e cosa manca.</p>
+    <a href="/nis2.html#boka" class="btn-primary">Prenota analisi gap gratuita →</a>
+    <p class="cta-fine">Le sanzioni arrivano fino a <strong>10 milioni di euro</strong>. L'analisi del gap è gratuita.</p>
+  </div>
+
+</article>
+
+<div class="related-articles" style="margin:2.5rem 0 2rem;padding:1.5rem;background:#1a1a2e;border-left:4px solid #f0a500;border-radius:4px;max-width:760px;margin-left:auto;margin-right:auto;">
+  <p style="margin:0 0 1rem;font-size:0.85rem;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:#f0a500;">Leggi anche</p>
+  <ul style="margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:0.5rem;">
+    <li><a href="/it/articoli/nis2-responsabilita-personale-cda.html" style="color:#e0e0e0;text-decoration:none;font-size:0.95rem;">→ Responsabilità personale del CdA sotto NIS2</a></li>
+    <li><a href="/it/articoli/nis2-notifica-incidenti-acn.html" style="color:#e0e0e0;text-decoration:none;font-size:0.95rem;">→ Notifica degli incidenti all'ACN: le scadenze che non puoi perdere</a></li>
+    <li><a href="/it/articoli/nis2-quali-aziende-sono-soggette.html" style="color:#e0e0e0;text-decoration:none;font-size:0.95rem;">→ Quali aziende italiane sono soggette a NIS2?</a></li>
+  </ul>
+  <p style="margin:1.25rem 0 0;font-size:0.85rem;color:#aaa;">← <a href="https://nis2klar.se/it/" style="color:#f0a500;text-decoration:none;">NIS2Klar home</a> &nbsp;·&nbsp; <a href="https://nis2klar.se/it/articoli.html" style="color:#f0a500;text-decoration:none;">Tutte le guide</a></p>
+</div>
+
+<footer>
+  © 2026 M&amp;J Trusted Marketing KB ·
+  <a href="mailto:support@trustedmarketing.se">support@trustedmarketing.se</a> · <a href="tel:+46470597003">+46 470 59 70 03</a> ·
+  <a href="https://nis2klar.se/it/">Torna alla home</a> ·
+  <a href="/privacy.html">Informativa sulla privacy</a>
+  <p style="margin-top:12px; font-size:11px; color: #555; line-height:1.5;">Microsoft, Microsoft 365, Azure e i relativi nomi di prodotto sono marchi di Microsoft Corporation. nis2klar.se non è affiliata né approvata da Microsoft Corporation.</p>
+</footer>
+
+<script>
+  async function submitNewsletter_nis2_analisi_rischio_approvazione_cda(e) {
+    e.preventDefault();
+    const btn = document.getElementById('nlSubmit-nis2_analisi_rischio_approvazione_cda');
+    btn.disabled = true; btn.textContent = '...';
+    const email = document.getElementById('nlEmail-nis2_analisi_rischio_approvazione_cda').value.trim();
+    try {
+      const res = await fetch('/api/newsletter/subscribe', { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({ email, source: 'articolo-it-nis2_analisi_rischio_approvazione_cda' }) });
+      const data = await res.json();
+      if (data.success) { document.getElementById('nlForm-nis2_analisi_rischio_approvazione_cda').style.display='none'; document.getElementById('nlThanks-nis2_analisi_rischio_approvazione_cda').style.display='block'; }
+      else { btn.disabled=false; btn.textContent='Iscriviti gratis →'; }
+    } catch { btn.disabled=false; btn.textContent='Iscriviti gratis →'; }
+  }
+</script>
+
+</body>
+</html>

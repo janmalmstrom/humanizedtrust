@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-BKF3QH9K01"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag("js", new Date());
+    gtag("config", "G-BKF3QH9K01");
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Requisiti di Sicurezza Tecnica NIS2 — Cosa Richiede Davvero la Legge | NIS2Klar</title>
+  <meta name="description" content="L'Articolo 21 del D.Lgs. 138/2024 impone MFA, crittografia, backup, patch management, controllo degli accessi e logging. Ecco cosa chiedere al tuo team IT.">
+  <meta property="og:title" content="Requisiti di Sicurezza Tecnica NIS2 — Cosa Richiede Davvero la Legge">
+  <meta property="og:description" content="L'Articolo 21 del D.Lgs. 138/2024 impone MFA, crittografia, backup, patch management, controllo degli accessi e logging. Ecco cosa chiedere al tuo team IT.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #141416;
+      --card: #1c1c1f;
+      --yellow: #f5c518;
+      --white: #f0f0f0;
+      --muted: #888;
+      --red: #C61212;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: var(--bg); color: var(--white); font-family: 'Barlow', sans-serif; font-size: 19px; line-height: 1.8; }
+
+    /* Nav */
+    nav { display: flex; justify-content: space-between; align-items: center; padding: 20px 40px; border-bottom: 1px solid rgba(255,255,255,0.07); max-width: 900px; margin: 0 auto; }
+    .nav-logo { font-family: 'Poppins', sans-serif; font-weight: 900; font-size: 20px; color: var(--yellow); text-decoration: none; }
+    .nav-logo span { color: var(--white); }
+    .nav-back { color: var(--muted); text-decoration: none; font-size: 15px; }
+    .nav-back:hover { color: var(--white); }
+    .nav-cta { background: var(--yellow); color: #000; padding: 8px 18px; border-radius: 4px; text-decoration: none; font-weight: 700; font-size: 14px; font-family: 'Poppins', sans-serif; }
+
+    /* Article */
+    .article-wrap { max-width: 760px; margin: 0 auto; padding: 60px 40px; }
+    .article-category { font-size: 13px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 16px; }
+    h1 { font-family: 'Poppins', sans-serif; font-size: clamp(30px, 4vw, 44px); font-weight: 900; line-height: 1.2; margin-bottom: 24px; }
+    .article-meta { font-size: 15px; color: var(--muted); margin-bottom: 48px; padding-bottom: 24px; border-bottom: 1px solid rgba(255,255,255,0.07); }
+    h2 { font-family: 'Poppins', sans-serif; font-size: 26px; font-weight: 700; margin: 48px 0 16px; color: var(--white); }
+    h3 { font-family: 'Poppins', sans-serif; font-size: 20px; font-weight: 600; margin: 32px 0 12px; color: var(--yellow); }
+    p { margin-bottom: 22px; }
+    strong { color: var(--white); font-weight: 700; }
+    .highlight { color: var(--yellow); font-weight: 700; }
+    .danger { color: #ff6b6b; font-weight: 700; }
+    ul, ol { margin: 16px 0 24px 24px; }
+    li { margin-bottom: 12px; font-size: 19px; }
+
+    /* Callout boxes */
+    .box-warning { background: rgba(197,17,17,0.12); border-left: 4px solid var(--red); padding: 20px 24px; margin: 32px 0; border-radius: 0 4px 4px 0; }
+    .box-info { background: rgba(245,197,24,0.08); border-left: 4px solid var(--yellow); padding: 20px 24px; margin: 32px 0; border-radius: 0 4px 4px 0; }
+    .box-case { background: var(--card); border: 1px solid rgba(255,255,255,0.08); padding: 28px; margin: 40px 0; border-radius: 4px; }
+    .box-case .case-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 12px; }
+    blockquote { border-left: 3px solid var(--yellow); padding: 12px 20px; margin: 24px 0; font-style: italic; color: #ccc; }
+
+    /* CTA */
+    .cta-section { background: var(--card); border: 1px solid rgba(245,197,24,0.2); border-radius: 4px; padding: 48px 40px; margin: 64px 0 40px; text-align: center; }
+    .cta-section h2 { margin-top: 0; font-size: 26px; }
+    .cta-section p { color: #aaa; max-width: 500px; margin: 0 auto 28px; }
+    .btn-primary { display: inline-block; background: var(--yellow); color: #000; font-family: 'Poppins', sans-serif; font-weight: 800; font-size: 16px; padding: 16px 36px; border-radius: 4px; text-decoration: none; }
+    .btn-primary:hover { background: #e0b010; }
+    .cta-fine { font-size: 13px; color: var(--muted); margin-top: 16px; }
+
+    /* FAQ */
+    .faq-item { border-bottom: 1px solid rgba(255,255,255,0.07); padding: 20px 0; }
+    .faq-q { font-family: 'Poppins', sans-serif; font-weight: 600; margin-bottom: 10px; }
+    .faq-a { color: #bbb; }
+
+    /* Fine table */
+    .fine-table { width: 100%; border-collapse: collapse; margin: 24px 0; }
+    .fine-table th { background: rgba(245,197,24,0.1); color: var(--yellow); font-family: 'Poppins', sans-serif; font-size: 13px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 12px 16px; text-align: left; border-bottom: 1px solid rgba(245,197,24,0.2); }
+    .fine-table td { padding: 14px 16px; border-bottom: 1px solid rgba(255,255,255,0.05); font-size: 15px; }
+    .fine-table tr:last-child td { border-bottom: none; }
+    .fine-table .amount { color: #ff6b6b; font-weight: 700; }
+
+    /* Summary + Key Takeaway */
+    .box-summary { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; padding: 24px 28px; margin: 0 0 32px; }
+    .summary-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-bottom: 14px; }
+    .box-summary ul { margin: 0; padding-left: 20px; }
+    .box-summary li { margin-bottom: 8px; font-size: 17px; color: #ccc; }
+    .box-takeaway { background: rgba(245,197,24,0.08); border-left: 4px solid var(--yellow); padding: 20px 24px; margin: 0 0 40px; border-radius: 0 4px 4px 0; }
+    .takeaway-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 10px; }
+    .box-takeaway p { margin: 0; font-size: 18px; font-weight: 600; color: var(--white); line-height: 1.6; }
+
+    /* Footer */
+    footer { border-top: 1px solid rgba(255,255,255,0.07); padding: 32px 40px; text-align: center; font-size: 13px; color: var(--muted); max-width: 900px; margin: 0 auto; }
+    footer a { color: var(--muted); }
+
+    @media (max-width: 600px) {
+      nav, .article-wrap, footer { padding: 20px; }
+      .cta-section { padding: 32px 20px; }
+      .fine-table { font-size: 14px; }
+      .fine-table th, .fine-table td { padding: 10px 10px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="https://nis2klar.se/it/">NIS2<span>Klar</span></a>
+  <a class="nav-back" href="https://nis2klar.se/it/articoli.html">← Tutti gli articoli</a>
+  <div class="lang-switcher" style="display:flex;gap:8px;align-items:center;font-size:13px;font-family:'Poppins',sans-serif;">
+    <a href="https://nis2klar.se/artiklar.html" style="color:#888;text-decoration:none;font-weight:600;padding:4px 8px;border-radius:3px;" title="Svenska">SV</a>
+    <a href="https://nis2klar.se/en/articles.html" style="color:#888;text-decoration:none;font-weight:600;padding:4px 8px;border-radius:3px;" title="English">EN</a>
+    <a href="https://nis2klar.se/da/artikler.html" style="color:#888;text-decoration:none;font-weight:600;padding:4px 8px;border-radius:3px;" title="Dansk">DA</a>
+    <a href="https://nis2klar.se/no/artikler.html" style="color:#888;text-decoration:none;font-weight:600;padding:4px 8px;border-radius:3px;" title="Norsk">NO</a>
+    <a href="https://nis2klar.se/it/articoli.html" style="color:#f5c518;text-decoration:none;font-weight:600;padding:4px 8px;border-radius:3px;background:rgba(245,197,24,0.1);" title="Italiano">IT</a>
+  </div>
+  <a class="nav-cta" href="/nis2.html#boka">Prenota chiamata →</a>
+</nav>
+
+<article class="article-wrap">
+  <div class="article-category">Misure Tecniche &amp; Conformità</div>
+  <h1>Requisiti di Sicurezza Tecnica NIS2 — Cosa Richiede Davvero la Legge</h1>
+  <div class="article-meta">Aggiornato 17 aprile 2026 · Tempo di lettura: ca. 8 minuti · Destinatari: CEO, Presidente del CdA, Consiglieri</div>
+
+  <!-- SUMMARY -->
+  <div class="box-summary">
+    <div class="summary-label">Riepilogo</div>
+    <ul>
+      <li>L'Articolo 21 del D.Lgs. 138/2024 elenca misure tecniche obbligatorie: MFA, crittografia, backup, patch management, controllo degli accessi e logging.</li>
+      <li>Non è sufficiente che l'IT "ci pensi": i membri dell'organo di amministrazione sono <strong>personalmente responsabili</strong> dell'adozione di queste misure.</li>
+      <li>L'ACN (Agenzia per la Cybersicurezza Nazionale) può avviare ispezioni senza preavviso e richiedere documentazione in tempi brevi.</li>
+      <li>Le sanzioni raggiungono i <strong>10 milioni di euro</strong> o il 2% del fatturato mondiale annuo per i soggetti essenziali.</li>
+    </ul>
+  </div>
+
+  <!-- KEY TAKEAWAY -->
+  <div class="box-takeaway">
+    <div class="takeaway-label">Conclusione chiave</div>
+    <p>L'Articolo 21 non è una lista di controllo per il reparto IT. È un elenco di obblighi legali che tu, come CEO o membro del consiglio di amministrazione, sei tenuto ad approvare, monitorare e documentare personalmente.</p>
+  </div>
+
+  <!-- HOOK -->
+  <p>
+    Il D.Lgs. 138/2024 — in vigore dal 16 ottobre 2024 — ha recepito la Direttiva NIS2 nell'ordinamento italiano. Da quel giorno, migliaia di organizzazioni in 18 settori critici sono soggette a obblighi tecnici precisi in materia di cybersicurezza. Non raccomandazioni. Non linee guida. <strong>Obblighi di legge.</strong>
+  </p>
+
+  <p>
+    La domanda che molti CEO si pongono è semplice: "Cosa richiede davvero la legge dal punto di vista tecnico?" La risposta si trova nell'Articolo 21, che definisce le misure minime di sicurezza che ogni soggetto essenziale e importante deve adottare. Questo articolo le traduce in linguaggio comprensibile per chi guida un'azienda — non per chi scrive codice.
+  </p>
+
+  <div class="box-warning">
+    <strong>Attenzione:</strong> L'Art. 23 del D.Lgs. 138/2024 stabilisce che i membri dell'organo di amministrazione possono essere ritenuti <strong>personalmente responsabili</strong> delle violazioni. Delegare al responsabile IT non è sufficiente a esonerare la leadership dalla responsabilità giuridica.
+  </div>
+
+  <h2>Perché l'Articolo 21 riguarda te, non solo il tuo IT</h2>
+
+  <p>
+    Prima di entrare nelle misure specifiche, è utile capire la logica della legge. Il legislatore europeo — e quello italiano con il D.Lgs. 138/2024 — ha scelto un approccio preciso: la responsabilità della sicurezza informatica non si delega verso il basso. Parte dalla cima.
+  </p>
+
+  <p>
+    L'organo di amministrazione — che si tratti di un consiglio di amministrazione, di un amministratore unico o di un CEO con poteri esecutivi — deve <strong>approvare le misure di gestione del rischio</strong>, <strong>supervisionarne l'attuazione</strong> e garantire che la documentazione di supporto esista e sia aggiornata. Questo significa che la prossima volta che l'ACN bussa alla porta della tua organizzazione, la prima domanda non sarà rivolta al CISO. Sarà rivolta a te.
+  </p>
+
+  <p>
+    Le misure tecniche dell'Articolo 21 sono il contenuto di ciò che devi approvare. Ecco cosa prevede la legge, punto per punto.
+  </p>
+
+  <h2>Le misure tecniche obbligatorie — Articolo 21 in dettaglio</h2>
+
+  <h3>1. Autenticazione a più fattori (MFA)</h3>
+
+  <p>
+    L'autenticazione a più fattori è uno dei requisiti più concreti e verificabili dell'Articolo 21. La legge richiede che l'accesso ai sistemi informatici — in particolare quelli critici per l'erogazione del servizio — sia protetto da almeno due fattori di autenticazione indipendenti: qualcosa che l'utente conosce (una password), qualcosa che possiede (un token, uno smartphone) o qualcosa che è (biometria).
+  </p>
+
+  <p>
+    In pratica, questo significa che un dipendente non può accedere al sistema gestionale, alla posta elettronica aziendale o ai sistemi di produzione con la sola password. È necessario un secondo livello di verifica. Le domande da porre al tuo team IT sono dirette: <em>Su quali sistemi è già attivo l'MFA? Su quali non lo è ancora? Chi ha ancora accesso con sola password?</em>
+  </p>
+
+  <p>
+    Se non ottieni risposta documentata in pochi giorni, hai già un problema di conformità — indipendentemente da quanto sia tecnicamente valida la vostra infrastruttura.
+  </p>
+
+  <h3>2. Crittografia dei dati</h3>
+
+  <p>
+    L'Articolo 21 impone l'uso della crittografia per proteggere i dati sia in transito — quando vengono trasmessi attraverso reti — sia a riposo, quando sono archiviati su server, dispositivi o nel cloud. Non è sufficiente affidarsi al fatto che i dati siano "al sicuro perché si trovano all'interno della rete aziendale."
+  </p>
+
+  <p>
+    La crittografia in transito significa che tutte le comunicazioni tra sistemi interni e con l'esterno devono utilizzare protocolli sicuri aggiornati. La crittografia a riposo significa che, se un disco rigido venisse rubato o un backup venisse esfiltrato, i dati non sarebbero leggibili senza la chiave. La domanda per il tuo team IT: <em>Quali dati non sono attualmente cifrati? Quali classi di dati trattate e con quale livello di protezione?</em>
+  </p>
+
+  <h3>3. Backup e continuità operativa</h3>
+
+  <p>
+    La legge richiede che le organizzazioni adottino politiche formali di backup e ripristino. Non basta fare backup: bisogna sapere con quale frequenza vengono eseguiti, dove vengono conservati, se sono isolati dalla rete principale (per resistere a un attacco ransomware) e, soprattutto, con quale tempi il servizio può essere ripristinato in caso di incidente.
+  </p>
+
+  <p>
+    Il concetto chiave qui è il <strong>RTO (Recovery Time Objective)</strong> — quanto tempo ci vuole per tornare operativi — e l'<strong>RPO (Recovery Point Objective)</strong> — quanti dati siete disposti a perdere in caso di guasto. Questi non sono parametri tecnici astratti: sono decisioni di business che la leadership deve conoscere e approvare. Se il tuo team IT non riesce a spiegarti questi numeri in meno di cinque minuti, la vostra politica di backup non è conforme.
+  </p>
+
+  <div class="box-info">
+    <strong>Requisito pratico:</strong> I backup devono essere testati regolarmente. Avere un backup che non è mai stato ripristinato in un ambiente di test equivale, dal punto di vista della conformità, a non avere un backup. L'ACN può chiedere evidenza dei test di ripristino effettuati.
+  </div>
+
+  <h3>4. Gestione delle patch e aggiornamenti software</h3>
+
+  <p>
+    Uno dei vettori di attacco più comuni nelle violazioni informatiche è lo sfruttamento di vulnerabilità note in software non aggiornato. L'Articolo 21 richiede che le organizzazioni adottino un processo documentato di patch management: identificazione delle vulnerabilità, valutazione della criticità, pianificazione degli aggiornamenti e verifica dell'applicazione.
+  </p>
+
+  <p>
+    In termini pratici, questo significa che la tua organizzazione deve avere un inventario aggiornato di tutti i software e i sistemi operativi in uso, sapere quali hanno vulnerabilità note e dimostrare che le patch critiche vengono applicate entro tempi definiti. Per i sistemi critici, molte linee guida settoriali parlano di 72 ore per le patch di sicurezza di massima priorità.
+  </p>
+
+  <p>
+    La domanda da porre: <em>Qual è il nostro sistema attuale per tracciare e applicare gli aggiornamenti di sicurezza? Chi è responsabile? Quando è stato aggiornato l'ultimo sistema critico?</em>
+  </p>
+
+  <h3>5. Controllo degli accessi e principio del minimo privilegio</h3>
+
+  <p>
+    Il controllo degli accessi è uno dei pilastri della sicurezza informatica moderna, e l'Articolo 21 lo richiede esplicitamente. Il principio fondamentale è quello del <strong>minimo privilegio</strong>: ogni utente, ogni sistema, ogni applicazione deve avere accesso esclusivamente alle risorse strettamente necessarie per svolgere la propria funzione.
+  </p>
+
+  <p>
+    In molte organizzazioni di medie dimensioni, la realtà è l'opposto: gli accessi vengono concessi all'inizio del rapporto lavorativo e non vengono mai rimossi o ridotti. Un dipendente che ha cambiato ruolo tre anni fa ha ancora i permessi del ruolo precedente. Un collaboratore esterno terminato sei mesi fa ha ancora le credenziali attive. Questi non sono problemi di igiene informatica — sono violazioni dell'Articolo 21.
+  </p>
+
+  <p>
+    Le domande chiave: <em>Abbiamo un processo per revocare gli accessi quando un dipendente lascia l'azienda o cambia ruolo? Chi ha accesso ai nostri sistemi più critici in questo momento? Quando è stata eseguita l'ultima revisione degli account privilegiati?</em>
+  </p>
+
+  <h3>6. Logging e monitoraggio degli eventi</h3>
+
+  <p>
+    La legge richiede che le organizzazioni mantengano registri (log) degli eventi di sicurezza sui sistemi critici. Questi log devono essere sufficientemente dettagliati da consentire la ricostruzione di un incidente e devono essere conservati per un periodo adeguato — tipicamente almeno 12 mesi, con disponibilità immediata degli ultimi tre mesi per le indagini.
+  </p>
+
+  <p>
+    I log servono a due scopi fondamentali. In primo luogo, permettono di rilevare attività anomale in tempo reale attraverso strumenti di analisi degli eventi. In secondo luogo, in caso di incidente, costituiscono la prova forense necessaria per capire cosa è successo, quando, e attraverso quale percorso l'attaccante si è mosso nel sistema. Senza log adeguati, la notifica di incidente all'ACN — obbligatoria entro 72 ore — rischia di essere incompleta o impossibile.
+  </p>
+
+  <p>
+    La domanda per il team IT: <em>Quali sistemi producono log? Dove vengono conservati? Per quanto tempo? Chi li monitora e con quale frequenza?</em>
+  </p>
+
+  <h2>Le altre misure dell'Articolo 21 che non puoi ignorare</h2>
+
+  <p>
+    Oltre alle sei misure tecniche appena descritte, l'Articolo 21 include altri obblighi che si intersecano con la dimensione tecnica e organizzativa:
+  </p>
+
+  <ul>
+    <li><strong>Gestione del rischio nella catena di fornitura:</strong> Devi valutare il livello di sicurezza dei tuoi fornitori di servizi IT e tecnologici critici. Se un fornitore viene compromesso e usa quel canale per attaccare la tua organizzazione, sei responsabile per non aver effettuato la due diligence.</li>
+    <li><strong>Formazione del personale:</strong> La legge richiede che i dipendenti ricevano formazione periodica sulle minacce informatiche e sulle buone pratiche di sicurezza. L'ingegneria sociale — phishing, pretexting, vishing — rimane il vettore d'attacco numero uno. La formazione non è optional.</li>
+    <li><strong>Sicurezza nello sviluppo e nell'acquisizione di sistemi:</strong> Se la tua organizzazione sviluppa o acquista software, i requisiti di sicurezza devono essere integrati fin dalle fasi iniziali del processo, non aggiunti in seguito.</li>
+    <li><strong>Politiche di sicurezza documentate:</strong> Ogni misura tecnica deve essere accompagnata da una policy scritta, approvata dall'organo di amministrazione e revisionata almeno annualmente.</li>
+  </ul>
+
+  <h2>Il nodo della responsabilità personale — Articolo 23</h2>
+
+  <p>
+    Uno degli aspetti più significativi del D.Lgs. 138/2024 rispetto alla normativa precedente è la chiarezza con cui attribuisce la responsabilità alla leadership. L'Articolo 23 del decreto stabilisce che i membri dell'organo di amministrazione possono essere ritenuti <strong>personalmente responsabili</strong> in caso di violazioni degli obblighi previsti dalla legge.
+  </p>
+
+  <p>
+    Questo non è un linguaggio vago. Significa che, se la tua organizzazione viene sanzionata dall'ACN per carenze nelle misure di sicurezza dell'Articolo 21, l'autorità può ritenere responsabile non solo l'azienda, ma te personalmente come CEO o consigliere. Le sanzioni personali possono includere restrizioni all'esercizio di funzioni dirigenziali.
+  </p>
+
+  <p>
+    La protezione contro questa responsabilità non è l'ignoranza — "non sapevo cosa stesse facendo il team IT" non è una difesa riconosciuta dalla legge. La protezione è la <strong>documentazione attiva</strong>: delibere del consiglio di amministrazione che approvano le misure di sicurezza, verbali che attestano la supervisione periodica, report sull'andamento della conformità presentati all'organo di amministrazione con cadenza almeno semestrale.
+  </p>
+
+  <div class="box-warning">
+    <strong>Responsabilità personale concreta:</strong> L'ACN può emettere nei confronti del CEO o dei consiglieri un provvedimento di divieto temporaneo all'esercizio di funzioni dirigenziali. Non si tratta di una multa pagabile dall'azienda. È un provvedimento personale, che incide sulla carriera professionale dell'individuo — non sul bilancio aziendale.
+  </div>
+
+  <h2>Come si svolge un'ispezione ACN</h2>
+
+  <p>
+    L'ACN, in quanto autorità primaria per la cybersicurezza nazionale, coordina la vigilanza sui soggetti essenziali e importanti con le autorità di settore competenti: Banca d'Italia per il settore finanziario, ARERA per l'energia, AGCOM per le telecomunicazioni, Ministero della Salute per la sanità.
+  </p>
+
+  <p>
+    Un'ispezione può essere avviata in tre modi: su base periodica programmata, a seguito di un incidente notificato, oppure su segnalazione di terzi — un dipendente, un cliente, un fornitore, o un'altra autorità competente di un paese EU. Non è necessario che si sia verificato un attacco perché scatti la vigilanza.
+  </p>
+
+  <p>
+    In caso di ispezione, l'autorità può richiedere documentazione entro 15-30 giorni. Le organizzazioni che non dispongono di documentazione delle proprie misure di sicurezza si trovano immediatamente in una posizione di svantaggio — perché la legge pone la <strong>prova della conformità a carico dell'organizzazione</strong>, non dell'autorità.
+  </p>
+
+  <h2>La scala delle sanzioni — in cifre chiare</h2>
+
+  <table class="fine-table">
+    <thead>
+      <tr>
+        <th>Categoria</th>
+        <th>Sanzione massima</th>
+        <th>Alternativa</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Soggetto essenziale</td>
+        <td class="amount">10 milioni di EUR</td>
+        <td>2% del fatturato mondiale annuo</td>
+      </tr>
+      <tr>
+        <td>Soggetto importante</td>
+        <td class="amount">7 milioni di EUR</td>
+        <td>1,4% del fatturato mondiale annuo</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>
+    Si applica il valore più alto tra i due. Un'organizzazione con 200 milioni di euro di fatturato classificata come soggetto essenziale può trovarsi di fronte a sanzioni fino a 4 milioni di euro (2% di 200 milioni) — o fino a 10 milioni, se il calcolo percentuale risultasse inferiore alla soglia fissa. Le sanzioni possono cumularsi: una per la mancanza di misure tecniche adeguate, un'altra per la mancata notifica di un incidente, un'altra ancora per la documentazione insufficiente.
+  </p>
+
+  <div class="box-case">
+    <div class="case-label">Scenario esemplificativo</div>
+    <p>
+      <strong>Azienda manifatturiera italiana di medie dimensioni, 160 dipendenti, classificata come soggetto importante.</strong>
+    </p>
+    <p>
+      A marzo 2026 subisce un attacco ransomware. Il team IT individua l'intrusione entro 12 ore, ma il CEO — su consiglio del responsabile IT — decide di attendere l'esito della bonifica interna prima di notificare l'ACN. La finestra di 24 ore per l'allerta precoce e quella di 72 ore per la notifica completa passano entrambe senza che l'autorità venga informata.
+    </p>
+    <p>
+      L'ACN viene a conoscenza dell'incidente tramite una segnalazione di un cliente istituzionale colpito da interruzione di servizio. Avvia un'ispezione che rivela: assenza di una policy di backup documentata e approvata dal CdA, nessun log degli eventi di accesso sui sistemi produttivi negli ultimi sei mesi, account privilegiati attivi di tre ex dipendenti, e nessuna delibera del consiglio di amministrazione relativa all'approvazione delle misure di sicurezza ex Articolo 21.
+    </p>
+    <p>
+      <strong>Risultato:</strong> Sanzione per mancata notifica nei termini. Sanzione aggiuntiva per carenze nelle misure tecniche dell'Articolo 21. Avvio di procedimento di responsabilità personale nei confronti dell'amministratore delegato ai sensi dell'Art. 23. Costo totale stimato tra costi legali, sanzioni e ripristino dei sistemi: <span class="danger">oltre 3 milioni di euro</span>.
+    </p>
+  </div>
+
+  <h2>Le domande che devi portare al prossimo consiglio di amministrazione</h2>
+
+  <p>
+    Non devi diventare un esperto tecnico. Devi diventare un interlocutore informato. Queste sono le domande che, come CEO o consigliere, sei tenuto a porre — e a cui devi ottenere risposta documentata:
+  </p>
+
+  <ol>
+    <li>Siamo ufficialmente registrati sulla piattaforma ACN come soggetto essenziale o importante? Abbiamo rispettato i termini di registrazione?</li>
+    <li>L'MFA è attivo su tutti i sistemi critici, inclusi email aziendale, VPN e accessi remoti?</li>
+    <li>Quando è stata eseguita l'ultima prova di ripristino dal backup? Quali sono i nostri RTO e RPO approvati?</li>
+    <li>Esiste un processo documentato per l'applicazione delle patch? Chi ne è responsabile e con quali tempistiche?</li>
+    <li>Abbiamo una lista aggiornata di chi ha accesso privilegiato ai sistemi critici? Quando è stata revisionata l'ultima volta?</li>
+    <li>I log degli eventi di sicurezza vengono conservati? Chi li monitora? Per quanto tempo?</li>
+    <li>Il CdA ha formalmente approvato le misure di sicurezza adottate? Esiste verbale che lo attesti?</li>
+    <li>Esiste un piano di risposta agli incidenti scritto, con ruoli definiti e procedure di notifica all'ACN entro 24 e 72 ore?</li>
+  </ol>
+
+  <p>
+    Se anche solo tre di queste domande ricevono una risposta vaga o non documentata, la tua organizzazione ha lacune di conformità concrete — e tu hai una responsabilità personale che non è coperta da nessuna polizza assicurativa.
+  </p>
+
+  <h2>Domande frequenti</h2>
+
+  <div class="faq-item">
+    <div class="faq-q">Siamo già certificati ISO 27001 — siamo conformi a NIS2?</div>
+    <div class="faq-a">La certificazione ISO 27001 è un ottimo punto di partenza e copre molti dei requisiti dell'Articolo 21. Tuttavia, non garantisce automaticamente la conformità a NIS2. Il D.Lgs. 138/2024 aggiunge obblighi specifici come la notifica degli incidenti all'ACN entro 24/72 ore, la responsabilità personale dell'organo di amministrazione e i requisiti di registrazione sulla piattaforma ACN. È necessaria una gap analysis specifica per NIS2.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">Il nostro fornitore di servizi cloud gestisce la sicurezza — siamo a posto?</div>
+    <div class="faq-a">No, non automaticamente. Il modello di responsabilità condivisa nel cloud significa che il fornitore è responsabile della sicurezza dell'infrastruttura, ma l'organizzazione cliente rimane responsabile della sicurezza dei propri dati, degli accessi, delle configurazioni e dei processi. L'Articolo 21 richiede che tu valuti e documenti i rischi nella catena di fornitura — inclusi i fornitori cloud.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">Siamo una PMI con 80 dipendenti — le sanzioni massime si applicano davvero a noi?</div>
+    <div class="faq-a">Le soglie di classificazione NIS2 partono da 50 dipendenti o 10 milioni di euro di fatturato nei settori rilevanti. Se superate queste soglie in uno degli 18 settori previsti dalla legge, siete soggetti importanti e le sanzioni arrivano fino a 7 milioni di euro o l'1,4% del fatturato mondiale. L'ACN calibra le sanzioni effettive alla gravità della violazione e alle dimensioni dell'organizzazione, ma il rischio è reale e documentato.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">Cosa succede se notifichiamo un incidente ma non abbiamo ancora tutte le misure tecniche in ordine?</div>
+    <div class="faq-a">La notifica tempestiva è sempre preferibile alla non notifica. Il mancato rispetto dei termini di notifica è una violazione separata e aggiuntiva rispetto alle carenze nelle misure tecniche. Notificare l'incidente dimostra cooperazione con l'autorità. Le lacune tecniche verranno comunque esaminate, ma la trasparenza nella notifica è un elemento che l'ACN valuta positivamente nel determinare l'entità delle sanzioni.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">Ci siamo già registrati sulla piattaforma ACN — questo è sufficiente per essere conformi?</div>
+    <div class="faq-a">La registrazione è il primo passo obbligatorio, ma è solo l'inizio. La conformità a NIS2 richiede l'adozione effettiva di tutte le misure tecniche e organizzative dell'Articolo 21, la predisposizione dei processi di notifica degli incidenti, la formazione del personale, la valutazione dei fornitori e la documentazione approvata dall'organo di amministrazione. La registrazione senza conformità sostanziale espone comunque a sanzioni.</div>
+  </div>
+
+  <div class="box-info" style="margin: 48px 0 32px;">
+    <div style="font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color: var(--yellow); margin-bottom:10px;">🔧 STRUMENTI &amp; SOLUZIONI</div>
+    <p style="margin:0; font-size:17px; color: #ddd; line-height:1.7;">Per coprire in un'unica soluzione tutti i requisiti tecnici dell'Articolo 21 — MFA, backup, rilevamento delle minacce e compliance — <strong>Microsoft 365 Business Premium</strong> integra autenticazione avanzata tramite Microsoft Entra ID Conditional Access, backup immutabile con Azure Backup, protezione degli endpoint e strumenti di compliance. Un partner Microsoft certificato può eseguire gratuitamente una gap analysis NIS2 e configurare l'ambiente in modo che i KPI di sicurezza siano immediatamente visibili al CdA.</p>
+  </div>
+
+  <!-- NEWSLETTER -->
+  <div style="background:#111; border:1px solid rgba(255,255,255,0.1); border-left:3px solid #f5c518; border-radius:4px; padding:32px 36px; margin:40px 0 0; text-align:center; max-width:760px; margin-left:auto; margin-right:auto;">
+    <div style="font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:#f5c518; margin-bottom:12px;">📬 AGGIORNAMENTI NIS2</div>
+    <h3 style="font-family:'Poppins',sans-serif; font-size:20px; font-weight:800; margin:0 0 8px; color:#f0f0f0;">Un nuovo articolo NIS2 ogni settimana — direttamente nella tua casella</h3>
+    <p style="color:#888; font-size:15px; margin:0 0 20px;">Nessun pitch di vendita. Solo guida pratica per CEO e consigli di amministrazione.</p>
+    <form id="nlForm-nis2_misure_sicurezza_tecniche" onsubmit="submitNewsletter_nis2_misure_sicurezza_tecniche(event)" style="display:flex; gap:10px; flex-wrap:wrap; justify-content:center; max-width:460px; margin:0 auto;">
+      <input type="email" id="nlEmail-nis2_misure_sicurezza_tecniche" placeholder="tuo@azienda.it" required style="flex:1; min-width:200px; padding:12px 16px; background:#1c1c1f; border:1px solid rgba(255,255,255,0.15); border-radius:4px; color:#f0f0f0; font-size:15px; outline:none;" />
+      <button type="submit" id="nlSubmit-nis2_misure_sicurezza_tecniche" style="padding:12px 22px; background:#f5c518; color:#141416; font-weight:700; font-size:15px; border:none; border-radius:4px; cursor:pointer; white-space:nowrap;">Iscriviti gratis →</button>
+    </form>
+    <p style="font-size:12px; color:#555; margin:12px 0 0;">Puoi cancellarti in qualsiasi momento. Non condividiamo mai la tua email.</p>
+    <div id="nlThanks-nis2_misure_sicurezza_tecniche" style="display:none; color:#4ade80; font-size:16px; font-weight:600; margin-top:14px;">✅ Sei iscritto! Il prossimo articolo arriverà nella tua casella.</div>
+  </div>
+
+  <!-- CTA -->
+  <div class="cta-section">
+    <h2>Sai dove si trova la tua organizzazione oggi?</h2>
+    <p>Un'analisi del gap gratuita con un partner Microsoft certificato mostra esattamente cosa hai già coperto — e cosa manca.</p>
+    <a href="/nis2.html#boka" class="btn-primary">Prenota analisi gap gratuita →</a>
+    <p class="cta-fine">Le sanzioni arrivano fino a <strong>10 milioni di euro</strong>. L'analisi del gap è gratuita.</p>
+  </div>
+
+</article>
+
+<div class="related-articles" style="margin:2.5rem 0 2rem;padding:1.5rem;background:#1a1a2e;border-left:4px solid #f0a500;border-radius:4px;max-width:760px;margin-left:auto;margin-right:auto;">
+  <p style="margin:0 0 1rem;font-size:0.85rem;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:#f0a500;">Leggi anche</p>
+  <ul style="margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:0.5rem;">
+    <li><a href="/it/articoli/nis2-responsabilita-personale-cda.html" style="color:#e0e0e0;text-decoration:none;font-size:0.95rem;">→ Responsabilità personale del CdA sotto NIS2</a></li>
+    <li><a href="/it/articoli/nis2-notifica-incidenti-acn.html" style="color:#e0e0e0;text-decoration:none;font-size:0.95rem;">→ Come notificare un incidente all'ACN entro 72 ore</a></li>
+    <li><a href="/it/articoli/nis2-quali-aziende-sono-soggette.html" style="color:#e0e0e0;text-decoration:none;font-size:0.95rem;">→ Quali aziende italiane sono soggette a NIS2?</a></li>
+  </ul>
+  <p style="margin:1.25rem 0 0;font-size:0.85rem;color:#aaa;">← <a href="https://nis2klar.se/it/" style="color:#f0a500;text-decoration:none;">NIS2Klar Italia</a> &nbsp;·&nbsp; <a href="https://nis2klar.se/it/articoli.html" style="color:#f0a500;text-decoration:none;">Tutti gli articoli</a></p>
+</div>
+
+<footer>
+  © 2026 M&amp;J Trusted Marketing KB ·
+  <a href="mailto:support@trustedmarketing.se">support@trustedmarketing.se</a> · <a href="tel:+46470597003">+46 470 59 70 03</a> ·
+  <a href="https://nis2klar.se/it/">Torna alla home</a> ·
+  <a href="/privacy.html">Informativa sulla privacy</a>
+  <p style="margin-top:12px; font-size:11px; color: #555; line-height:1.5;">Microsoft, Microsoft 365, Azure e i relativi nomi di prodotto sono marchi di Microsoft Corporation. nis2klar.se non è affiliata né approvata da Microsoft Corporation.</p>
+</footer>
+
+<script>
+  async function submitNewsletter_nis2_misure_sicurezza_tecniche(e) {
+    e.preventDefault();
+    const btn = document.getElementById('nlSubmit-nis2_misure_sicurezza_tecniche');
+    btn.disabled = true; btn.textContent = '...';
+    const email = document.getElementById('nlEmail-nis2_misure_sicurezza_tecniche').value.trim();
+    try {
+      const res = await fetch('/api/newsletter/subscribe', { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({ email, source: 'articolo-it-nis2_misure_sicurezza_tecniche' }) });
+      const data = await res.json();
+      if (data.success) { document.getElementById('nlForm-nis2_misure_sicurezza_tecniche').style.display='none'; document.getElementById('nlThanks-nis2_misure_sicurezza_tecniche').style.display='block'; }
+      else { btn.disabled=false; btn.textContent='Iscriviti gratis →'; }
+    } catch { btn.disabled=false; btn.textContent='Iscriviti gratis →'; }
+  }
+</script>
+
+</body>
+</html>

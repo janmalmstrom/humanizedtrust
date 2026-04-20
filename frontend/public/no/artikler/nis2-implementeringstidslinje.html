@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-BKF3QH9K01"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag("js", new Date());
+    gtag("config", "G-BKF3QH9K01");
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NIS2-implementeringstidslinje: Din steg-for-steg-plan | NIS2Klar Norge</title>
+  <meta name="description" content="12-måneders implementeringsplan for NIS2-regelverket. Måned for måned: gap-analyse, styring, tekniske tiltak, leverandørkontroll, opplæring og revisjoner. Realistisk for 50–500 ansatte.">
+  <meta property="og:title" content="NIS2-implementeringstidslinje: Din steg-for-steg-plan">
+  <meta property="og:description" content="12-måneders implementeringsplan for NIS2 i Norge. Fra gap-analyse til mock audit — konkret og realistisk.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #141416;
+      --card: #1c1c1f;
+      --yellow: #f5c518;
+      --white: #f0f0f0;
+      --muted: #888;
+      --red: #C61212;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: var(--bg); color: var(--white); font-family: 'Barlow', sans-serif; font-size: 19px; line-height: 1.8; }
+
+    /* Nav */
+    nav { display: flex; justify-content: space-between; align-items: center; padding: 20px 40px; border-bottom: 1px solid rgba(255,255,255,0.07); max-width: 1000px; margin: 0 auto; gap: 16px; flex-wrap: wrap; }
+    .nav-logo { font-family: 'Poppins', sans-serif; font-weight: 900; font-size: 20px; color: var(--yellow); text-decoration: none; }
+    .nav-logo span { color: var(--white); }
+    .nav-back { color: var(--muted); text-decoration: none; font-size: 15px; }
+    .nav-back:hover { color: var(--white); }
+    .nav-cta { background: var(--yellow); color: #000; padding: 8px 18px; border-radius: 4px; text-decoration: none; font-weight: 700; font-size: 14px; font-family: 'Poppins', sans-serif; }
+    .lang-switcher a { color: var(--muted); text-decoration: none; font-weight: 600; padding: 4px 8px; border-radius: 3px; transition: all 0.2s; }
+    .lang-switcher a:hover { color: var(--white); }
+
+    /* Article */
+    .article-wrap { max-width: 760px; margin: 0 auto; padding: 60px 40px; }
+    .article-category { font-size: 13px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 16px; }
+    h1 { font-family: 'Poppins', sans-serif; font-size: clamp(30px, 4vw, 44px); font-weight: 900; line-height: 1.2; margin-bottom: 24px; }
+    .article-meta { font-size: 15px; color: var(--muted); margin-bottom: 48px; padding-bottom: 24px; border-bottom: 1px solid rgba(255,255,255,0.07); }
+    h2 { font-family: 'Poppins', sans-serif; font-size: 26px; font-weight: 700; margin: 48px 0 16px; color: var(--white); }
+    h3 { font-family: 'Poppins', sans-serif; font-size: 20px; font-weight: 600; margin: 32px 0 12px; color: var(--yellow); }
+    p { margin-bottom: 22px; }
+    strong { color: var(--white); font-weight: 700; }
+    .highlight { color: var(--yellow); font-weight: 700; }
+    .danger { color: #ff6b6b; font-weight: 700; }
+    ul, ol { margin: 16px 0 24px 24px; }
+    li { margin-bottom: 12px; font-size: 19px; }
+
+    /* Callout boxes */
+    .box-warning { background: rgba(197,17,17,0.12); border-left: 4px solid var(--red); padding: 20px 24px; margin: 32px 0; border-radius: 0 4px 4px 0; }
+    .box-info { background: rgba(245,197,24,0.08); border-left: 4px solid var(--yellow); padding: 20px 24px; margin: 32px 0; border-radius: 0 4px 4px 0; }
+    .box-case { background: var(--card); border: 1px solid rgba(255,255,255,0.08); padding: 28px; margin: 40px 0; border-radius: 4px; }
+    .box-case .case-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 12px; }
+    blockquote { border-left: 3px solid var(--yellow); padding: 12px 20px; margin: 24px 0; font-style: italic; color: #ccc; }
+
+    /* Timeline */
+    .timeline { list-style: none; margin: 40px 0; padding: 0; }
+    .timeline-item { background: var(--card); border: 1px solid rgba(255,255,255,0.08); border-left: 4px solid var(--yellow); padding: 28px; margin-bottom: 20px; border-radius: 0 4px 4px 0; }
+    .timeline-month { font-family: 'Poppins', sans-serif; font-weight: 700; font-size: 16px; color: var(--yellow); margin-bottom: 8px; }
+    .timeline-title { font-family: 'Poppins', sans-serif; font-weight: 600; font-size: 18px; color: var(--white); margin-bottom: 12px; }
+    .timeline-desc { font-size: 17px; color: #bbb; line-height: 1.7; }
+    .timeline-item ul { margin: 12px 0 0 20px; padding: 0; }
+    .timeline-item li { font-size: 16px; margin-bottom: 8px; }
+
+    /* CTA */
+    .cta-section { background: var(--card); border: 1px solid rgba(245,197,24,0.2); border-radius: 4px; padding: 48px 40px; margin: 64px 0 40px; text-align: center; }
+    .cta-section h2 { margin-top: 0; font-size: 26px; }
+    .cta-section p { color: #aaa; max-width: 500px; margin: 0 auto 28px; }
+    .btn-primary { display: inline-block; background: var(--yellow); color: #000; font-family: 'Poppins', sans-serif; font-weight: 800; font-size: 16px; padding: 16px 36px; border-radius: 4px; text-decoration: none; }
+    .btn-primary:hover { background: #e0b010; }
+    .cta-fine { font-size: 13px; color: var(--muted); margin-top: 16px; }
+
+    /* Related articles */
+    .related-articles { margin: 2.5rem 0 2rem; padding: 1.5rem; background: #1a1a2e; border-left: 4px solid #f0a500; border-radius: 4px; }
+    .related-articles p { margin: 0 0 1rem; font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #f0a500; }
+    .related-articles ul { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+    .related-articles li { margin: 0; }
+    .related-articles a { color: #e0e0e0; text-decoration: none; font-size: 0.95rem; }
+    .related-articles a:hover { color: #f0a500; }
+    .related-footer { margin: 1.25rem 0 0; font-size: 0.85rem; color: #aaa; }
+    .related-footer a { color: #f0a500; }
+
+    /* Footer */
+    footer { border-top: 1px solid rgba(255,255,255,0.07); padding: 32px 40px; text-align: center; font-size: 13px; color: var(--muted); max-width: 900px; margin: 0 auto; }
+    footer a { color: var(--muted); }
+    footer p { margin-bottom: 8px; }
+
+    /* FAQ */
+    .faq-item { border-bottom: 1px solid rgba(255,255,255,0.07); padding: 20px 0; }
+    .faq-q { font-family: 'Poppins', sans-serif; font-weight: 600; margin-bottom: 10px; }
+    .faq-a { color: #bbb; }
+
+    /* Summary + Key Takeaway */
+    .box-summary { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; padding: 24px 28px; margin: 0 0 32px; }
+    .summary-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-bottom: 14px; }
+    .box-summary ul { margin: 0; padding-left: 20px; }
+    .box-summary li { margin-bottom: 8px; font-size: 17px; color: #ccc; }
+    .box-takeaway { background: rgba(245,197,24,0.08); border-left: 4px solid var(--yellow); padding: 20px 24px; margin: 0 0 40px; border-radius: 0 4px 4px 0; }
+    .takeaway-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 10px; }
+    .box-takeaway p { margin: 0; font-size: 18px; font-weight: 600; color: var(--white); line-height: 1.6; }
+
+    @media (max-width: 600px) {
+      nav, .article-wrap, footer { padding: 20px; }
+      nav { flex-direction: column; align-items: flex-start; gap: 12px; }
+      .cta-section { padding: 32px 20px; }
+      .timeline-item { padding: 20px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="https://nis2klar.se/no/">NIS2<span>Klar</span></a>
+  <a class="nav-back" href="https://nis2klar.se/no/artikler.html">← Alle artikler</a>
+  <div class="lang-switcher" style="display:flex;gap:8px;align-items:center;font-size:13px;font-family:'Poppins',sans-serif;">
+    <a href="https://nis2klar.se/artiklar.html" style="color:#888;text-decoration:none;font-weight:600;padding:4px 8px;border-radius:3px;" title="Svenska">SV</a>
+    <a href="https://nis2klar.se/en/articles.html" style="color:#888;text-decoration:none;font-weight:600;padding:4px 8px;border-radius:3px;" title="English">EN</a>
+    <a href="https://nis2klar.se/da/artikler.html" style="color:#888;text-decoration:none;font-weight:600;padding:4px 8px;border-radius:3px;" title="Dansk">DA</a>
+    <a href="https://nis2klar.se/no/artikler.html" style="color:#f5c518;text-decoration:none;font-weight:600;padding:4px 8px;border-radius:3px;background:rgba(245,197,24,0.1);" title="Norsk">NO</a>
+    <a href="https://nis2klar.se/it/articoli.html" style="color:#888;text-decoration:none;font-weight:600;padding:4px 8px;border-radius:3px;" title="Italiano">IT</a>
+  </div>
+  <a class="nav-cta" href="https://nis2klar.se/no/#book">Book møte →</a>
+</nav>
+
+<article class="article-wrap">
+  <div class="article-category">Implementering &amp; Planlegging</div>
+  <h1>NIS2-implementeringstidslinje: Din steg-for-steg-plan</h1>
+  <div class="article-meta">Publisert 19. april 2026 · Lestid: ca 9 minutter · Målgruppe: Direktør, styreformann, styremedlem</div>
+
+  <!-- SUMMARY -->
+  <div class="box-summary">
+    <div class="summary-label">Oppsummering</div>
+    <ul>
+      <li>NIS2-regelverket forventes å tre i kraft i Norge i løpet av 2025–2026 via EØS-avtalen.</li>
+      <li>En realistisk 12-måneders plan for bedrifter med 50–500 ansatte, fra gap-analyse til revisjoner.</li>
+      <li>Uten en dokumentert implementeringsplan risikerer du bøter opp til 10 millioner euro hvis NSM eller sektortilsynet gjennomfører kontroll.</li>
+      <li>Personlig ansvar for ledelse betyr at dokumentasjon av gjennomført arbeid er like viktig som selve tiltakene.</li>
+    </ul>
+  </div>
+
+  <!-- KEY TAKEAWAY -->
+  <div class="box-takeaway">
+    <div class="takeaway-label">Viktigste konklusjon</div>
+    <p>NIS2 implementeres ikke på 3 uker — det krever en strukturert 12-måneders plan. Uten en tydelig tidslinje og dokumentert progresjon står organisasjonen din uten forsvar når tilsynet kommer, uavhengig av hvor mye sikkerhet du faktisk har på plass.</p>
+  </div>
+
+  <!-- INTRO -->
+  <p>
+    NIS2-direktivet er allerede vedtatt i EU. Norge, som EØS-land, forventes å implementere regelverket fullstendig i løpet av <strong>2025–2026</strong> gjennom en norsk cybersikkerhetsloven. NSM (Nasjonal sikkerhetsmyndighet) vil være primærmyndighet for tilsyn — sammen med sektortilsyn for kraft (NVE), finans (Finanstilsynet), helse (Direktoratet for e-helse) og andre.
+  </p>
+
+  <p>
+    Det betyr at tiden for å "planlegge senere" er forbi. En organisasjon som venter til regelverket formelt trer i kraft har allerede tapt tolv måneder den kunne brukt på å dokumentere sin innfasing. Denne artikkelen gir deg en konkret måned-for-måned plan — ikke som et idealbilde, men som en realistisk veiledning for en gjennomsnittsbedrift.
+  </p>
+
+  <div class="box-warning">
+    <strong>Husk:</strong> NSM og sektortilsynene kan initiere tilsyn selv før regelverket formelt trer i kraft — basert på risikovurderinger og henvisninger. En dokumentert implementeringsplan viser god vilje og organisering. Mangel på plan viser uaktsomhet.
+  </div>
+
+  <h2>Er din organisasjon omfattet?</h2>
+
+  <p>
+    Før du starter implementeringen, må du avklare om organisasjonen din faller inn under NIS2. Regelverket gjelder for såkalte "vesentlige enheter" og "viktige enheter" i 18 samhällskritiska sektorer:
+  </p>
+
+  <p>
+    <strong>De 18 sektorer som omfattes:</strong>
+    Energi, transport, banksektor, finansmarkedsinfrastruktur, helse, drikkevann, avløp, digital infrastruktur, IKT-tjenesteforvaltning, offentlig forvaltning, romfart, post, avfallshåndtering, kjemikalier, mat, produksjon, digitale leverandører og forskning.
+  </p>
+
+  <p>
+    <strong>Størrelseskriterier:</strong>
+  </p>
+
+  <ul>
+    <li><strong>Vesentlige enheter:</strong> Over 250 ansatte ELLER årlig omsetning over 50 millioner euro</li>
+    <li><strong>Viktige enheter:</strong> 50–249 ansatte ELLER årlig omsetning på 10–50 millioner euro</li>
+  </ul>
+
+  <p>
+    Befinner organisasjonen din seg under disse terskelverdiene, eller er du ikke i en av de 18 sektorene, er NIS2 ikke formelt relevant for deg — men gjennomgangen av sikkerhetsprosesser kan fortsatt være god praksis.
+  </p>
+
+  <h2>12-måneders implementeringsplan</h2>
+
+  <p>
+    Planen nedenfor er strukturert rundt fire overordnede faser: <strong>analysering</strong>, <strong>styring og kultur</strong>, <strong>tekniske tiltak</strong>, og <strong>validering</strong>. For en typisk bedrift med 50–500 ansatte vil denne tidsplanen være realistisk.
+  </p>
+
+  <h3>Fase 1: Grunnlag og analyse (Måned 1–2)</h3>
+
+  <ul class="timeline">
+    <li class="timeline-item">
+      <div class="timeline-month">Måned 1: GAP-ANALYSE OG BASISLINJE</div>
+      <div class="timeline-title">Definér hvor dere står</div>
+      <div class="timeline-desc">
+        Det første som må gjøres er en rask gap-analyse mellom dine nåværende sikkerhetsprosesser og NIS2-kravene. En sertifisert Microsoft-partner kan gjennomføre dette på 2–4 uker.
+      </div>
+      <ul>
+        <li>Kartlegg hvilken kategori organisasjonen tilhører (vesentlig eller viktig enhet)</li>
+        <li>Identifiser hvilket sektortilsyn som er relevant</li>
+        <li>Gjennomgå eksisterende sikkerhetsdokumentasjon (policyer, risikovurderinger, prosessbeskrivelser)</li>
+        <li>Dokumenter IT-miljø, skyleverandører og kritiske systemer</li>
+        <li>Lag oversikt over manglende områder (som regel: hendelseshåndtering, kontinuitetsplan, leverandøroverensstemmelse)</li>
+        <li>Sikre styreledelse for initiativet gjennom styreinformasjon</li>
+      </ul>
+    </li>
+
+    <li class="timeline-item">
+      <div class="timeline-month">Måned 2: RISIKOVURDERING OG PRIORITERING</div>
+      <div class="timeline-title">Lag handlingsplan basert på risiko</div>
+      <div class="timeline-desc">
+        Nå som du kjenner gapet, prioriteres tiltakene. Ikke alt kan gjøres samtidig — fokuser på områdene med høyest risiko og regulatorisk betydning.
+      </div>
+      <ul>
+        <li>Gjennomfør formell risikovurdering etter NIS2-kriterier</li>
+        <li>Lag prioritert liste over manglende sikkerhetstiltak (High, Medium, Low)</li>
+        <li>Bestem budsjett for implementering</li>
+        <li>Identifiser ressursbehov (intern eller ekstern kompetanse)</li>
+        <li>Innhent styreattest for implementeringsplanen</li>
+        <li>Kommuniser tidsplanen til IT-avdelingen, ledelse og relevante stakeholders</li>
+      </ul>
+    </li>
+  </ul>
+
+  <h3>Fase 2: Styring og organisering (Måned 3–4)</h3>
+
+  <ul class="timeline">
+    <li class="timeline-item">
+      <div class="timeline-month">Måned 3: POLICY OG STYRING</div>
+      <div class="timeline-title">Lag rammeverk for sikkerhet</div>
+      <div class="timeline-desc">
+        NIS2 krever formelle sikkerhetspolicyer som er godkjent av ledelsen. Disse danner grunnlaget for alle senere tiltak.
+      </div>
+      <ul>
+        <li>Utarbeid eller oppdater informasjonssikkerhetspolicy</li>
+        <li>Lag incidentresponspolicy med eskalering og melderutiner</li>
+        <li>Definer roller og ansvar for sikkerhet (CISO, sikkerhetsstyringskomité)</li>
+        <li>Lag hendelsesklassifiseringskriteria (Hva teller som en "alvorlig hendelse" som skal meldes innen 24 timer?)</li>
+        <li>Etabler sikkerhetsstyringskomité med representasjon fra IT, drift, ledelse og eventuelt juridisk</li>
+        <li>Sikre styregodkjennelse av policyer gjennom formell vedtak</li>
+      </ul>
+    </li>
+
+    <li class="timeline-item">
+      <div class="timeline-month">Måned 4: HENDELSESHÅNDTERING OG DOKUMENTASJON</div>
+      <div class="timeline-title">Etabler håndteringsmakiner</div>
+      <div class="timeline-desc">
+        Hendelseshåndtering er ett av NIS2s 10 hovedkrav. Du må ha dokumenterte rutiner for hvordan du reagerer på og rapporterer sikkerhetshendelser.
+      </div>
+      <ul>
+        <li>Lag detaljert incidentresponsprosess (hvem gjør hva, når og hvordan)</li>
+        <li>Definer 24-timers meldeprosess til NSM for alvorlige hendelser</li>
+        <li>Lag hendelseslogg/database (kan være enkel, som regneark, eller avansert SIEM-løsning)</li>
+        <li>Opprett møtepunkter for såkalt "post-incident review" (lærdom etter hendelser)</li>
+        <li>Test incidentprosessen gjennom minst ett tabletop-øvelse med relevante avdelinger</li>
+        <li>Dokumenter alle rutiner og legg dem i et godt tilgjengelig arkiv (f.eks. intranett eller dokumentsystem)</li>
+      </ul>
+    </li>
+  </ul>
+
+  <h3>Fase 3: Tekniske tiltak (Måned 5–7)</h3>
+
+  <ul class="timeline">
+    <li class="timeline-item">
+      <div class="timeline-month">Måned 5: TILGANGSKONTROLL OG AUTENTISERING</div>
+      <div class="timeline-title">Sikre inngangsportaler</div>
+      <div class="timeline-desc">
+        Sterke autentiserings- og tilgangskontroller er fundamentale. Dette er ett av NIS2s 10 pålagte tekniske områder.
+      </div>
+      <ul>
+        <li>Implementer multifaktor-autentisering (MFA) for alle administrative kontoer og sensitive systemer</li>
+        <li>Gennemgang av brukerrettigheter — fjern unødvendig tilgang ("least privilege")</li>
+        <li>Implementer betinget tilgang basert på risiko (geografilokasjon, enhet osv.)</li>
+        <li>Etabler rutiner for tilgangskontroll og regelmessige revisjoner (minst årlig)</li>
+        <li>Dokumenter "hvem har tilgang til hva" — denne listen må kunne produseres til tilsynet</li>
+        <li>Implementer løsninger for identitetsstyring som integrerer med relevante systemer</li>
+      </ul>
+    </li>
+
+    <li class="timeline-item">
+      <div class="timeline-month">Måned 6: KRYPTERING OG DATAVERN</div>
+      <div class="timeline-title">Beskyt sensitive data i transit og hvile</div>
+      <div class="timeline-desc">
+        Kryptering av sensitive data er både et NIS2-krav og en best practice. Fokuser først på høyt prioritert data.
+      </div>
+      <ul>
+        <li>Kartlegg hvor sensitive data lagres (on-prem, sky, arkiver)</li>
+        <li>Implementer kryptering for sensitive data i hvile (database-nivå, filkryptering)</li>
+        <li>Sikre TLS 1.2+ for all datakommunikasjon</li>
+        <li>Etabler nøkkelstyring (hvor lagres krypteringsnøkler, hvem har tilgang)</li>
+        <li>Implementer datasensitivitetsmerkinger for å klassifisere data</li>
+        <li>Lag datavern- og personvernimpaktanalyser hvor relevant</li>
+      </ul>
+    </li>
+
+    <li class="timeline-item">
+      <div class="timeline-month">Måned 7: SIKKERHETSKOPIER OG KONTINUITET</div>
+      <div class="timeline-title">Sikre gjenoppretting etter katastrofe</div>
+      <div class="timeline-desc">
+        En av NIS2s ti områder er kontinuitetsplanlegging. Du må kunne gjenopprette kritiske tjenester innen et definert tidsrom.
+      </div>
+      <ul>
+        <li>Identifiser kritiske forretningsprosesser og systemer</li>
+        <li>Definer maksimal akseptabel nedetid (RTO) og maksimal akseptabel datakontap (RPO)</li>
+        <li>Etabler/oppgrader sikkerhetskopieringsregime (hyppighet, oppbevaring, test)</li>
+        <li>Sikre at sikkerhetskopier er immutable (kan ikke endres eller slettes av angripere)</li>
+        <li>Lag kontinuitetsplan med konkrete gjenopprettingstrinn</li>
+        <li>Gjennomfør minst ett gjenopprettingstest (ikke bare sikkerhetskopi-test, men faktisk gjenoppretting til alternativt miljø)</li>
+        <li>Dokumenter alt og arkiver planen tilgjengelig for beredskapsteamet</li>
+      </ul>
+    </li>
+  </ul>
+
+  <h3>Fase 4: Leverandørkontroll og opplæring (Måned 8–9)</h3>
+
+  <ul class="timeline">
+    <li class="timeline-item">
+      <div class="timeline-month">Måned 8: LEVERANDØRSIKKERHET</div>
+      <div class="timeline-title">Styr risiko i leverandørkjeden</div>
+      <div class="timeline-desc">
+        NIS2 pålegger deg å sikre sikkerhet gjennom hele leverandørkjeden. En bug hos en sky-leverandør eller integrasjon er fortsatt din risiko.
+      </div>
+      <ul>
+        <li>Kartlegg alle kritiske leverandører (sky-tjenester, integrasjonspartnere, utviklere, ISP osv.)</li>
+        <li>Vurder deres sikkerhetskontroller — spør om sertifikasjoner (ISO 27001, SOC 2, osv.)</li>
+        <li>Oppdater leverandøravtaler (eller lag nye) med krav om sikkerhet, hendelsesrapportering og revisjonsrettigheter</li>
+        <li>Etabler rutiner for leverandørrevisjoner (minst årlig for kritiske leverandører)</li>
+        <li>Definer prosess for håndtering av leverandørsikkerhetshendelser (hvem varsler, hvor rask respons forventes)</li>
+        <li>Dokumenter leverandørrisikoprofiloversikt og godkjen kritiske endringer gjennom sikkerhetskomiteen</li>
+      </ul>
+    </li>
+
+    <li class="timeline-item">
+      <div class="timeline-month">Måned 9: OPPLÆRING OG BEVISSTGJØRING</div>
+      <div class="timeline-title">Gjør alle til del av forsvaret</div>
+      <div class="timeline-desc">
+        Teknologi alene løser ikke sikkerhet. Mennesker må

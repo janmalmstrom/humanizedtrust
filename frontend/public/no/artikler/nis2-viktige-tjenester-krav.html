@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-BKF3QH9K01"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag("js", new Date());
+    gtag("config", "G-BKF3QH9K01");
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NIS2-krav til viktige tjenester: Hva operatører må gjøre | NIS2Klar</title>
+  <meta name="description" content="NIS2-krav for viktige tjenester i Norge: registrering, sikkerhetskrav, hendelsesrapportering og tilsynssamarbeid. Les hva operatører må gjøre for å unngå bøter.">
+  <meta property="og:title" content="NIS2-krav til viktige tjenester: Hva operatører må gjøre">
+  <meta property="og:description" content="Operatører av viktige tjenester må oppfylle spesifikke NIS2-krav. Lær om registrering, sikkerhet, hendelsesrapportering og tilsynssamarbeid.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #141416;
+      --card: #1c1c1f;
+      --yellow: #f5c518;
+      --white: #f0f0f0;
+      --muted: #888;
+      --red: #C61212;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: var(--bg); color: var(--white); font-family: 'Barlow', sans-serif; font-size: 19px; line-height: 1.8; }
+
+    /* Nav */
+    nav { display: flex; justify-content: space-between; align-items: center; padding: 20px 40px; border-bottom: 1px solid rgba(255,255,255,0.07); max-width: 900px; margin: 0 auto; gap: 16px; }
+    nav > div:nth-child(2) { display: flex; gap: 16px; align-items: center; }
+    .nav-logo { font-family: 'Poppins', sans-serif; font-weight: 900; font-size: 20px; color: var(--yellow); text-decoration: none; }
+    .nav-logo span { color: var(--white); }
+    .nav-back { color: var(--muted); text-decoration: none; font-size: 15px; }
+    .nav-back:hover { color: var(--white); }
+    .lang-switcher { display: flex; gap: 8px; align-items: center; font-size: 13px; font-family: 'Poppins', sans-serif; }
+    .lang-switcher a { color: #888; text-decoration: none; font-weight: 600; padding: 4px 8px; border-radius: 3px; }
+    .lang-switcher a:hover { background: rgba(255,255,255,0.05); }
+    .lang-switcher a[title="Norsk"] { color: var(--yellow); background: rgba(245,197,24,0.1); }
+    .nav-cta { background: var(--yellow); color: #000; padding: 8px 18px; border-radius: 4px; text-decoration: none; font-weight: 700; font-size: 14px; font-family: 'Poppins', sans-serif; }
+
+    /* Article */
+    .article-wrap { max-width: 760px; margin: 0 auto; padding: 60px 40px; }
+    .article-category { font-size: 13px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 16px; }
+    h1 { font-family: 'Poppins', sans-serif; font-size: clamp(30px, 4vw, 44px); font-weight: 900; line-height: 1.2; margin-bottom: 24px; }
+    .article-meta { font-size: 15px; color: var(--muted); margin-bottom: 48px; padding-bottom: 24px; border-bottom: 1px solid rgba(255,255,255,0.07); }
+    h2 { font-family: 'Poppins', sans-serif; font-size: 26px; font-weight: 700; margin: 48px 0 16px; color: var(--white); }
+    h3 { font-family: 'Poppins', sans-serif; font-size: 20px; font-weight: 600; margin: 32px 0 12px; color: var(--yellow); }
+    p { margin-bottom: 22px; }
+    strong { color: var(--white); font-weight: 700; }
+    .highlight { color: var(--yellow); font-weight: 700; }
+    .danger { color: #ff6b6b; font-weight: 700; }
+    ul, ol { margin: 16px 0 24px 24px; }
+    li { margin-bottom: 12px; font-size: 19px; }
+
+    /* Callout boxes */
+    .box-warning { background: rgba(197,17,17,0.12); border-left: 4px solid var(--red); padding: 20px 24px; margin: 32px 0; border-radius: 0 4px 4px 0; }
+    .box-info { background: rgba(245,197,24,0.08); border-left: 4px solid var(--yellow); padding: 20px 24px; margin: 32px 0; border-radius: 0 4px 4px 0; }
+    .box-case { background: var(--card); border: 1px solid rgba(255,255,255,0.08); padding: 28px; margin: 40px 0; border-radius: 4px; }
+    .box-case .case-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 12px; }
+    blockquote { border-left: 3px solid var(--yellow); padding: 12px 20px; margin: 24px 0; font-style: italic; color: #ccc; }
+
+    /* CTA */
+    .cta-section { background: var(--card); border: 1px solid rgba(245,197,24,0.2); border-radius: 4px; padding: 48px 40px; margin: 64px 0 40px; text-align: center; }
+    .cta-section h2 { margin-top: 0; font-size: 26px; }
+    .cta-section p { color: #aaa; max-width: 500px; margin: 0 auto 28px; }
+    .btn-primary { display: inline-block; background: var(--yellow); color: #000; font-family: 'Poppins', sans-serif; font-weight: 800; font-size: 16px; padding: 16px 36px; border-radius: 4px; text-decoration: none; }
+    .btn-primary:hover { background: #e0b010; }
+    .cta-fine { font-size: 13px; color: var(--muted); margin-top: 16px; }
+
+    /* FAQ */
+    .faq-item { border-bottom: 1px solid rgba(255,255,255,0.07); padding: 20px 0; }
+    .faq-q { font-family: 'Poppins', sans-serif; font-weight: 600; margin-bottom: 10px; }
+    .faq-a { color: #bbb; }
+
+    /* Fine table */
+    .fine-table { width: 100%; border-collapse: collapse; margin: 24px 0; }
+    .fine-table th { background: rgba(245,197,24,0.1); color: var(--yellow); font-family: 'Poppins', sans-serif; font-size: 13px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 12px 16px; text-align: left; border-bottom: 1px solid rgba(245,197,24,0.2); }
+    .fine-table td { padding: 14px 16px; border-bottom: 1px solid rgba(255,255,255,0.05); font-size: 15px; }
+    .fine-table tr:last-child td { border-bottom: none; }
+    .fine-table .amount { color: #ff6b6b; font-weight: 700; }
+
+    /* Summary + Key Takeaway */
+    .box-summary { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; padding: 24px 28px; margin: 0 0 32px; }
+    .summary-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-bottom: 14px; }
+    .box-summary ul { margin: 0; padding-left: 20px; }
+    .box-summary li { margin-bottom: 8px; font-size: 17px; color: #ccc; }
+    .box-takeaway { background: rgba(245,197,24,0.08); border-left: 4px solid var(--yellow); padding: 20px 24px; margin: 0 0 40px; border-radius: 0 4px 4px 0; }
+    .takeaway-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 10px; }
+    .box-takeaway p { margin: 0; font-size: 18px; font-weight: 600; color: var(--white); line-height: 1.6; }
+
+    /* Related articles */
+    .related-articles { margin:2.5rem 0 2rem; padding:1.5rem; background:#1a1a2e; border-left:4px solid #f0a500; border-radius:4px; }
+    .related-articles p { margin:0 0 1rem; font-size:0.85rem; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; color:#f0a500; }
+    .related-articles ul { margin:0; padding:0; list-style:none; display:flex; flex-direction:column; gap:0.5rem; }
+    .related-articles li { margin:0; }
+    .related-articles a { color:#e0e0e0; text-decoration:none; font-size:0.95rem; }
+    .related-articles .footer-nav { margin:1.25rem 0 0; font-size:0.85rem; color:#aaa; }
+    .related-articles .footer-nav a { color:#f0a500; }
+
+    /* Footer */
+    footer { border-top: 1px solid rgba(255,255,255,0.07); padding: 32px 40px; text-align: center; font-size: 13px; color: var(--muted); max-width: 900px; margin: 0 auto; }
+    footer a { color: var(--muted); }
+    footer p { margin-top: 12px; font-size: 11px; color: #555; line-height: 1.5; }
+
+    @media (max-width: 600px) {
+      nav { padding: 20px; flex-direction: column; }
+      nav > div:nth-child(2) { width: 100%; justify-content: space-between; }
+      .article-wrap, footer { padding: 20px; }
+      .cta-section { padding: 32px 20px; }
+      .fine-table { font-size: 14px; }
+      .fine-table th, .fine-table td { padding: 10px 10px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="https://nis2klar.se/no/">NIS2<span>Klar</span></a>
+  <div>
+    <a class="nav-back" href="https://nis2klar.se/no/artikler.html">← Alle artikler</a>
+    <div class="lang-switcher">
+      <a href="https://nis2klar.se/artiklar.html" style="color:#888;" title="Svenska">SV</a>
+      <a href="https://nis2klar.se/en/articles.html" style="color:#888;" title="English">EN</a>
+      <a href="https://nis2klar.se/da/artikler.html" style="color:#888;" title="Dansk">DA</a>
+      <a href="https://nis2klar.se/no/artikler.html" style="color:#f5c518;background:rgba(245,197,24,0.1);" title="Norsk">NO</a>
+      <a href="https://nis2klar.se/it/articoli.html" style="color:#888;" title="Italiano">IT</a>
+    </div>
+  </div>
+  <a class="nav-cta" href="https://nis2klar.se/no/#boka">Book samtal →</a>
+</nav>
+
+<article class="article-wrap">
+  <div class="article-category">Krav til operatører</div>
+  <h1>NIS2-krav til viktige tjenester: Hva operatører må gjøre</h1>
+  <div class="article-meta">Oppdatert 19. april 2026 · Lesetid: ca 9 minutter · Målgruppe: Direktører og styrer</div>
+
+  <!-- SUMMARY -->
+  <div class="box-summary">
+    <div class="summary-label">Oppsummering</div>
+    <ul>
+      <li>NIS2-direktivet vil bli implementert i Norge via EØS-avtalen — trolig i løpet av 2025–2026.</li>
+      <li>Operatører av viktige tjenester har <strong>spesifikke registrerings-, sikkerhet- og rapporteringskrav</strong> som går utover det som gjelder for andre virksomheter.</li>
+      <li>Viktige tjenester omfatter 18 sektorer: energi, transport, bank, helse, digital infrastruktur og flere.</li>
+      <li>Bøter for manglende oppfyllelse forventes opp til 7 millioner euro eller 1,4% av global omsetning for viktige enheter.</li>
+      <li>NSM og relevante sektormyndigheter vil ha tilsynsansvar og kan ilegge sanksjoner.</li>
+    </ul>
+  </div>
+
+  <!-- KEY TAKEAWAY -->
+  <div class="box-takeaway">
+    <div class="takeaway-label">Viktigste konklusjon</div>
+    <p>Operatører av viktige tjenester står ikke på lik linje med andre virksomheter under NIS2. Dere må registrere dere, implementere elleve spesifikke sikkerhetstiltak og rapportere hendelser innen 24–72 timer — eller møte vesentlige bøter og personlig ansvar for ledelsen.</p>
+  </div>
+
+  <!-- HOOK -->
+  <p>
+    Hvis organisasjonen din driver eller har betydning for kritisk infrastruktur i Norge — energi, transport, helsevesen, finans, digital infrastruktur eller andre av de 18 definerte sektorene — er du ikke bare pålagt å ha sikkerhet. Du er pålagt å <strong>registrere deg</strong>, å implementere elleve konkrete sikkerhetstiltak, og å rapportere alvorlige hendelser til NSM innen svært korte frister.
+  </p>
+
+  <p>
+    Det skiller seg fundamentalt fra generelle NIS2-krav. Operatører av viktige tjenester står under intensivt tilsyn og møter høyere sanksjoner. Det gjelder deg som direktør eller styreleder — ikke bare IT-avdelingen.
+  </p>
+
+  <div class="box-warning">
+    <strong>NIS2 blir ikke valgfritt i Norge.</strong> Regelverket vil trolig tå i kraft i 2025–2026 via EØS-implementering. Myndigheter er allerede i forberedelse. Hvis du venter på at noe skal skje første, har du allerede mistet tiden du trengte.
+  </div>
+
+  <h2>Hva er en «viktig tjeneste» — og gjelder det deg?</h2>
+
+  <p>
+    NIS2-direktivet definerer 18 sektorer der operatører klassifiseres som leverandører av «vesentlige» eller «viktige» tjenester. I Norge vil NSM og sektormyndigheter (som Direktøratet for e-helse, NVE for energi, Finanstilsynet) være ansvarlige for klassifisering.
+  </p>
+
+  <p>
+    De 18 sektorene er:
+  </p>
+
+  <ol>
+    <li>Energi (elektrisitet, gass, varme)</li>
+    <li>Transport (veg, jernbane, luft, sjøfart)</li>
+    <li>Banksektor</li>
+    <li>Finansmarkedsinfrastruktur</li>
+    <li>Helsevesen</li>
+    <li>Drikkevannforsyning og avløpshåndtering</li>
+    <li>Digital infrastruktur</li>
+    <li>IKT-tjenesteforvaltning (cloud, hosting)</li>
+    <li>Offentlig forvaltning</li>
+    <li>Romfart</li>
+    <li>Post og kuritjenester</li>
+    <li>Avfallshåndtering</li>
+    <li>Kjemikalier</li>
+    <li>Matproduksjon og distribusjon</li>
+    <li>Industriell produksjon</li>
+    <li>Digitale tilbydere (store søkemotorer, sosiale medier)</li>
+    <li>Forsking og eksperimentering</li>
+    <li>Drikkevannsforetaket (separat kategori i noen tilfeller)</li>
+  </ol>
+
+  <p>
+    Hvis virksomheten din faller innenfor en av disse sektorene og oppfyller størrelseskriteria (typisk 50+ ansatte eller omsetning over 10 millioner euro), vil du bli klassifisert som operatør av en viktig tjeneste — og pålagt gjennomføring av spesifikke tiltak.
+  </p>
+
+  <div class="box-info">
+    <strong>Observasjon:</strong> Du trenger ikke å vente på at NSM skal kontakte deg. Mange virksomheter risikerer å bli «overrasket» av tilsyn fordi de ikke selv har kartlagt hvilken kategori de tilhører. Gjør sjekken nå.
+  </div>
+
+  <h2>Registrering: Det første og mest kritiske kravet</h2>
+
+  <p>
+    Operatører av viktige tjenester må <strong>registrere seg</strong> hos NSM eller relevant sektormyndighet. Dette er ikke valgfritt — det er et pålegg som vil bli gjennomtvunget når regelverket trer i kraft.
+  </p>
+
+  <p>
+    Registreringen vil trolig omfatte:
+  </p>
+
+  <ul>
+    <li>Organisasjonsnavn og kontaktinformasjon</li>
+    <li>Hvilken sektor dere opererer i</li>
+    <li>Beskrivelse av hvilke kritiske tjenester dere leverer</li>
+    <li>Navn på CISOs eller ansvarlig sikkerhetsperson</li>
+    <li>Bekrefting på at dere har implementert sikkerhetstiltakene (eller plan for det)</li>
+  </ul>
+
+  <p>
+    Manglende registrering vil selv være grunn til sanksjon — selv om all annen sikkerhet var på plass.
+  </p>
+
+  <p>
+    Erfaringen fra EU-land som allerede har implementert NIS2 viser at registrering tar 2–4 måneder når man først starter. Gjør det tidlig.
+  </p>
+
+  <h2>De elleve sikkerhetstiltakene: Hva må implementeres</h2>
+
+  <p>
+    NIS2-direktivets artikkel 21 pålegger operatører av viktige tjenester å implementere elleve spesifikke sikkerhetstiltak. Dette er ikke anbefalinger — det er obligatorisk.
+  </p>
+
+  <table class="fine-table">
+    <thead>
+      <tr>
+        <th>Tiltak</th>
+        <th>Kort beskrivelse</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>1. Risikostyring</strong></td>
+        <td>Dokumentert risikoanalyse og -vurdering</td>
+      </tr>
+      <tr>
+        <td><strong>2. Inkidenthåndtering</strong></td>
+        <td>Plan og prosess for å håndtere sikkerhetsbrudd</td>
+      </tr>
+      <tr>
+        <td><strong>3. Kontinuitetsplanlegging</strong></td>
+        <td>Plan for drift under og etter angrepp eller systemfeil</td>
+      </tr>
+      <tr>
+        <td><strong>4. Leverantørstyring</strong></td>
+        <td>Sikkerhetskrav til underleverandører og forsyningskjede</td>
+      </tr>
+      <tr>
+        <td><strong>5. Tilgangskontroll</strong></td>
+        <td>MFA, rollebasert tilgang, minste-rettighet-prinsipp</td>
+      </tr>
+      <tr>
+        <td><strong>6. Kryptering og datahåndtering</strong></td>
+        <td>Kryptering av data i transit og lagring</td>
+      </tr>
+      <tr>
+        <td><strong>7. Nettverkssikkerhet</strong></td>
+        <td>Brannmurer, segmentering, IDS/IPS</td>
+      </tr>
+      <tr>
+        <td><strong>8. Kryptografisk autentisering</strong></td>
+        <td>Sterke krypteringsstandardar for kommunikasjon</td>
+      </tr>
+      <tr>
+        <td><strong>9. Loggføring og overvåking</strong></td>
+        <td>Sentralisert logging, SIEM-lignende evner</td>
+      </tr>
+      <tr>
+        <td><strong>10. Opplæring og bevissthet</strong></td>
+        <td>Sikkerhetskurs for alle ansatte</td>
+      </tr>
+      <tr>
+        <td><strong>11. Sårbarhetsstyring</strong></td>
+        <td>Patching, testing, penetrasjonstesting</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>
+    Disse er ikke tekniske idealer — de er lovpålagte minimumskrav. NSM og sektormyndighetene vil ved tilsyn sjekke at hver enkelt er dokumentert og fungerer.
+  </p>
+
+  <p>
+    En sikkerhetspolicy som sier «vi har sikkerhet» holder ikke. Du må kunne fremvise:
+  </p>
+
+  <ul>
+    <li>Risikovurdering datert og signert av styret</li>
+    <li>Inkidenthanteringsplan med roller, eskalering og tidsfrister</li>
+    <li>Skriftlig leverantørkontraktklausul med sikkerhetskrav</li>
+    <li>Mfa-implementering med dokumenterte unntak (hvis noen)</li>
+    <li>Krypteringsstandarder dokumentert for hver systemkategori</li>
+    <li>Loggkonfigurasjoner som oppbevares minst 1 år</li>
+    <li>Opplæringslogger for alle ansatte</li>
+  </ul>
+
+  <div class="box-warning">
+    <strong>Dokumentasjon er bevis.</strong> Hvis du ikke kan vise NSM en skriftlig prosess, anses tiltaket som ikke implementert — uavhengig av om det faktisk gjøres. Mange organisasjoner gjør sikkerhet, men gir tilsynet inntrykk av at de ikke gjør det fordi dokumentasjonen mangler.
+  </div>
+
+  <h2>Hendelsesrapportering: Tidsfrister som ingen kan misse</h2>
+
+  <p>
+    En av de mest kritiske og konkrete forpliktelsene for operatører av viktige tjenester er hendelsesrapportering. Når en alvorlig sikkerhetshendelse inntreffer, starter klokken — og det er svært lite tid.
+  </p>
+
+  <p>
+    Tidsfrister i Norge forventes å bli:
+  </p>
+
+  <ul>
+    <li><strong>24 timer:</strong> Tidlig varsel til NSM (eller relevant sektormyndighet) om at en alvorlig hendelse har oppstått</li>
+    <li><strong>72 timer:</strong> Fullstendig hendelsesrapport med fakta, påvirkningsvurdering og innledende tiltak</li>
+    <li><strong>1 måned:</strong> Sluttrapport med årsaksanalyse og planlagte forebyggende tiltak</li>
+  </ul>
+
+  <p>
+    «Alvorlig» defineres ikke presist — men omfatter typisk hendelser som påvirker tilgjengelighet, integritet eller konfidensialitet av kritiske tjenester, eller som påvirker mer enn et visst antall brukere.
+  </p>
+
+  <p>
+    Manglende rapportering — eller rapportering etter fristen — er en <strong>separat sanksjon</strong> fra hendelsen selv. Du kan bli straffet både for at angrepet skjedde og for at du ikke rapporterte det.
+  </p>
+
+  <div class="box-case">
+    <div class="case-label">Eksempel: Praktisk håndtering</div>
+    <p>
+      <strong>Scenario: Energiselskap med 120 ansatte blir rammet av ransomware.</strong>
+    </p>
+    <p>
+      Klokken 14:30 på mandag blir nettverksdriften merkbar treg. IT-sjef oppdager ransomware. Hendelsen er alvorlig og påvirker flere kundeanlegg som ikke kan overvåkes.
+    </p>
+    <p>
+      <strong>Mandag kl. 18:00 (4,5 timer senere):</strong> CISO sender «early warning»-melding til NSM (og potensielt NVE som sektormyndighet) med: navn på organisasjon, kort beskrivelse av hva som skjedde, hvilke systemer som er påvirket, foreløpig vurdering av alvor.
+    </p>
+    <p>
+      <strong>Tirsdag kl. 14:30 (36 timer etter oppdaging):</strong> Fullstendig rapport innleveres med: tidsplan for angrepet, antall påvirkede kunder, tekniske detaljer om angrepet, hvilke data som kan være eksponert, iverksatte tiltak.
+    </p>
+    <p>
+      <strong>Tre uker senere:</strong> Sluttrapport med analyse av hvordan angrepet oppsto, hva som kunne ha vært gjort annerledes, hvilke sårbarheter som ble utnyttet, og konkrete tiltak som nå implementeres.
+    </p>
+    <p>
+      <strong>Hvis rapporteringen forsinkes eller utelates:</strong> Egen sanksjon, uavhengig av ransomwaren selv.
+    </p>
+  </div>
+
+  <h2>Tilsyns- og samarbeidsplikt</h2>
+
+  <p>
+    Operatører av viktige tjenester må også være aktive i samarbeid med NSM og sektormyndighetene. Det omfatter:
+  </p>
+
+  <ul>
+    <li><strong>Tilgjengelighetskrav:</strong> Oppnevne en CISO eller sikkerhetskontakt som er tilgjengelig for myndigheten 24/7 for kritiske spørsmål</li>
+    <li><strong>Revisjons- og inspeksjonsrett:</strong> Godta at NSM og sektormyndighetene har rett til å gjennomgå sikkerhetsprosesser, gjennomføre øvelser og teste systemer</li>
+    <li><strong>Informa­sjonsdeling:</strong> Dele trusselinformasjon og hendelser med myndighetene og potensielt andre operatører i samme sektor</li>
+    <li><strong>Oppfølging av pålegg:</strong> Implementere sikkerhetstiltak som myndigheten pålegger</li>
+  </ul>
+
+  <p>
+    Dette er ikke frivillig samarbeid. Manglende respons på tilsynspørsmål eller veivilling til å samarbeide er selv grunn til sanksjon.
+  </p>
+
+  <h2>Sanksjoner for manglende oppfyllelse</h2>
+
+  <p>
+    For operatører av viktige tjenester forventes følgende sanksjonsregime når NIS2 implementeres i Norge:
+  </p>
+
+  <ul>
+    <li><strong>Viktige tjenester (små til mellomstor):</strong> Bøter opp til 7 millioner euro eller 1,4% av global årlig omsetning — hvilket som er høyest</li>
+    <li>

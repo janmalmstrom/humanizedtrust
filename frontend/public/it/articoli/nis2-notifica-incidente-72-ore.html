@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-BKF3QH9K01"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag("js", new Date());
+    gtag("config", "G-BKF3QH9K01");
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NIS2 Notifica Incidente 72 Ore: Guida Completa alla Conformità | NIS2Klar</title>
+  <meta name="description" content="Guida completa all'obbligo di notifica degli incidenti NIS2 entro 72 ore. Cosa includere, cos'è un incidente significativo, sanzioni per ritardi. Template per l'ACN.">
+  <meta property="og:title" content="NIS2 Notifica Incidente 72 Ore: Guida Completa alla Conformità">
+  <meta property="og:description" content="Guida completa all'obbligo di notifica degli incidenti NIS2 entro 72 ore. Cosa includere, cos'è un incidente significativo, sanzioni per ritardi. Template per l'ACN.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #141416;
+      --card: #1c1c1f;
+      --yellow: #f5c518;
+      --white: #f0f0f0;
+      --muted: #888;
+      --red: #C61212;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: var(--bg); color: var(--white); font-family: 'Barlow', sans-serif; font-size: 19px; line-height: 1.8; }
+
+    /* Nav */
+    nav { display: flex; justify-content: space-between; align-items: center; padding: 20px 40px; border-bottom: 1px solid rgba(255,255,255,0.07); max-width: 900px; margin: 0 auto; }
+    .nav-logo { font-family: 'Poppins', sans-serif; font-weight: 900; font-size: 20px; color: var(--yellow); text-decoration: none; }
+    .nav-logo span { color: var(--white); }
+    .nav-back { color: var(--muted); text-decoration: none; font-size: 15px; }
+    .nav-back:hover { color: var(--white); }
+    .nav-cta { background: var(--yellow); color: #000; padding: 8px 18px; border-radius: 4px; text-decoration: none; font-weight: 700; font-size: 14px; font-family: 'Poppins', sans-serif; }
+
+    /* Article */
+    .article-wrap { max-width: 760px; margin: 0 auto; padding: 60px 40px; }
+    .article-category { font-size: 13px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 16px; }
+    h1 { font-family: 'Poppins', sans-serif; font-size: clamp(30px, 4vw, 44px); font-weight: 900; line-height: 1.2; margin-bottom: 24px; }
+    .article-meta { font-size: 15px; color: var(--muted); margin-bottom: 48px; padding-bottom: 24px; border-bottom: 1px solid rgba(255,255,255,0.07); }
+    h2 { font-family: 'Poppins', sans-serif; font-size: 26px; font-weight: 700; margin: 48px 0 16px; color: var(--white); }
+    h3 { font-family: 'Poppins', sans-serif; font-size: 20px; font-weight: 600; margin: 32px 0 12px; color: var(--yellow); }
+    p { margin-bottom: 22px; }
+    strong { color: var(--white); font-weight: 700; }
+    .highlight { color: var(--yellow); font-weight: 700; }
+    .danger { color: #ff6b6b; font-weight: 700; }
+    ul, ol { margin: 16px 0 24px 24px; }
+    li { margin-bottom: 12px; font-size: 19px; }
+
+    /* Callout boxes */
+    .box-warning { background: rgba(197,17,17,0.12); border-left: 4px solid var(--red); padding: 20px 24px; margin: 32px 0; border-radius: 0 4px 4px 0; }
+    .box-info { background: rgba(245,197,24,0.08); border-left: 4px solid var(--yellow); padding: 20px 24px; margin: 32px 0; border-radius: 0 4px 4px 0; }
+    .box-case { background: var(--card); border: 1px solid rgba(255,255,255,0.08); padding: 28px; margin: 40px 0; border-radius: 4px; }
+    .box-case .case-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 12px; }
+    blockquote { border-left: 3px solid var(--yellow); padding: 12px 20px; margin: 24px 0; font-style: italic; color: #ccc; }
+
+    /* CTA */
+    .cta-section { background: var(--card); border: 1px solid rgba(245,197,24,0.2); border-radius: 4px; padding: 48px 40px; margin: 64px 0 40px; text-align: center; }
+    .cta-section h2 { margin-top: 0; font-size: 26px; }
+    .cta-section p { color: #aaa; max-width: 500px; margin: 0 auto 28px; }
+    .btn-primary { display: inline-block; background: var(--yellow); color: #000; font-family: 'Poppins', sans-serif; font-weight: 800; font-size: 16px; padding: 16px 36px; border-radius: 4px; text-decoration: none; }
+    .btn-primary:hover { background: #e0b010; }
+    .cta-fine { font-size: 13px; color: var(--muted); margin-top: 16px; }
+
+    /* FAQ */
+    .faq-item { border-bottom: 1px solid rgba(255,255,255,0.07); padding: 20px 0; }
+    .faq-q { font-family: 'Poppins', sans-serif; font-weight: 600; margin-bottom: 10px; }
+    .faq-a { color: #bbb; }
+
+    /* Fine table */
+    .fine-table { width: 100%; border-collapse: collapse; margin: 24px 0; }
+    .fine-table th { background: rgba(245,197,24,0.1); color: var(--yellow); font-family: 'Poppins', sans-serif; font-size: 13px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 12px 16px; text-align: left; border-bottom: 1px solid rgba(245,197,24,0.2); }
+    .fine-table td { padding: 14px 16px; border-bottom: 1px solid rgba(255,255,255,0.05); font-size: 15px; }
+    .fine-table tr:last-child td { border-bottom: none; }
+    .fine-table .amount { color: #ff6b6b; font-weight: 700; }
+
+    /* Summary + Key Takeaway */
+    .box-summary { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; padding: 24px 28px; margin: 0 0 32px; }
+    .summary-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-bottom: 14px; }
+    .box-summary ul { margin: 0; padding-left: 20px; }
+    .box-summary li { margin-bottom: 8px; font-size: 17px; color: #ccc; }
+    .box-takeaway { background: rgba(245,197,24,0.08); border-left: 4px solid var(--yellow); padding: 20px 24px; margin: 0 0 40px; border-radius: 0 4px 4px 0; }
+    .takeaway-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 10px; }
+    .box-takeaway p { margin: 0; font-size: 18px; font-weight: 600; color: var(--white); line-height: 1.6; }
+
+    /* Footer */
+    footer { border-top: 1px solid rgba(255,255,255,0.07); padding: 32px 40px; text-align: center; font-size: 13px; color: var(--muted); max-width: 900px; margin: 0 auto; }
+    footer a { color: var(--muted); }
+
+    @media (max-width: 600px) {
+      nav, .article-wrap, footer { padding: 20px; }
+      .cta-section { padding: 32px 20px; }
+      .fine-table { font-size: 14px; }
+      .fine-table th, .fine-table td { padding: 10px 10px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="https://nis2klar.se/it/">NIS2<span>Klar</span></a>
+  <a class="nav-back" href="https://nis2klar.se/it/articoli.html">← Tutti gli articoli</a>
+  <div class="lang-switcher" style="display:flex;gap:8px;align-items:center;font-size:13px;font-family:'Poppins',sans-serif;">
+    <a href="https://nis2klar.se/artiklar.html" style="color:#888;text-decoration:none;font-weight:600;padding:4px 8px;border-radius:3px;" title="Svenska">SV</a>
+    <a href="https://nis2klar.se/en/articles.html" style="color:#888;text-decoration:none;font-weight:600;padding:4px 8px;border-radius:3px;" title="English">EN</a>
+    <a href="https://nis2klar.se/da/artikler.html" style="color:#888;text-decoration:none;font-weight:600;padding:4px 8px;border-radius:3px;" title="Dansk">DA</a>
+    <a href="https://nis2klar.se/no/artikler.html" style="color:#888;text-decoration:none;font-weight:600;padding:4px 8px;border-radius:3px;" title="Norsk">NO</a>
+    <a href="https://nis2klar.se/it/articoli.html" style="color:#f5c518;text-decoration:none;font-weight:600;padding:4px 8px;border-radius:3px;background:rgba(245,197,24,0.1);" title="Italiano">IT</a>
+  </div>
+  <a class="nav-cta" href="/nis2.html#boka">Prenota consulenza →</a>
+</nav>
+
+<article class="article-wrap">
+  <div class="article-category">Gestione degli Incidenti &amp; Conformità</div>
+  <h1>NIS2 Notifica Incidente 72 Ore: Guida Completa alla Conformità</h1>
+  <div class="article-meta">Aggiornato 17 aprile 2026 · Tempo di lettura: circa 8 minuti · Destinatari: CEO, Presidente e Membri del CdA</div>
+
+  <!-- SUMMARY -->
+  <div class="box-summary">
+    <div class="summary-label">Sintesi</div>
+    <ul>
+      <li>Per CEO e membri del consiglio di amministrazione che devono capire esattamente cosa fare quando si verifica un incidente di sicurezza informatica.</li>
+      <li>Il D.Lgs. 138/2024 impone una <strong>allerta precoce entro 24 ore</strong> e una <strong>notifica completa entro 72 ore</strong> all'ACN.</li>
+      <li>Mancata notifica significa sanzioni fino a <strong>10 milioni di euro</strong> o il 2% del fatturato mondiale — indipendentemente dall'entità del danno subito.</li>
+      <li>L'Art. 23 del D.Lgs. 138/2024 stabilisce la responsabilità personale dei membri dell'organo di amministrazione: non è un problema che si può delegare al solo reparto IT.</li>
+    </ul>
+  </div>
+
+  <!-- KEY TAKEAWAY -->
+  <div class="box-takeaway">
+    <div class="takeaway-label">Conclusione chiave</div>
+    <p>Le 72 ore non sono una raccomandazione. Sono un obbligo di legge con sanzioni personali. Ogni ora di ritardo nella notifica all'ACN è un'ora in più di esposizione legale per te come amministratore.</p>
+  </div>
+
+  <!-- HOOK -->
+  <p>
+    È sabato mattina. Il tuo responsabile IT ti chiama: un attacco ransomware ha bloccato i sistemi aziendali. La prima reazione istintiva è gestire la crisi internamente, capire cosa è successo, recuperare i dati, e poi — forse — comunicarlo all'esterno quando tutto è sotto controllo. Questa reazione, comprensibile dal punto di vista umano, può costarti molto più del danno informatico stesso.
+  </p>
+
+  <p>
+    Il <strong>D.Lgs. 138/2024</strong>, con cui l'Italia ha recepito la Direttiva NIS2, non lascia spazio all'interpretazione: dalla prima consapevolezza di un incidente significativo, hai <strong>24 ore</strong> per inviare un'allerta precoce all'ACN e <strong>72 ore</strong> per la notifica completa. Non dopo aver risolto il problema. Non dopo aver consultato i legali. Entro 72 ore dall'identificazione dell'incidente.
+  </p>
+
+  <div class="box-warning">
+    <strong>Attenzione immediata:</strong> La mancata notifica nei termini previsti è una violazione autonoma, separata dall'incidente stesso. Puoi quindi trovarti con due distinte sanzioni: una per le carenze di sicurezza che hanno permesso l'incidente, e una per non averlo notificato in tempo all'ACN.
+  </div>
+
+  <h2>Che cos'è un "incidente significativo"?</h2>
+
+  <p>
+    Prima di parlare di tempistiche e contenuti della notifica, devi rispondere alla domanda più importante: il tuo evento rientra nella definizione di <strong>incidente significativo</strong> che fa scattare l'obbligo di notifica?
+  </p>
+
+  <p>
+    Secondo il D.Lgs. 138/2024, un incidente è considerato significativo quando soddisfa almeno uno dei seguenti criteri:
+  </p>
+
+  <ul>
+    <li>Ha causato o può causare una <strong>grave perturbazione operativa</strong> dei servizi forniti</li>
+    <li>Ha causato o può causare <strong>perdite finanziarie significative</strong> per il soggetto interessato</li>
+    <li>Ha causato o può causare <strong>danni considerevoli</strong> ad altre persone fisiche o giuridiche, materiali o immateriali</li>
+    <li>Ha avuto un impatto su un <strong>numero elevato di utenti</strong> o su utenti dipendenti dal servizio per attività critiche</li>
+    <li>Ha comportato una <strong>violazione di dati personali</strong> ai sensi del GDPR che supera le soglie di rilevanza</li>
+  </ul>
+
+  <p>
+    La soglia è deliberatamente ampia. Se ti trovi a dubitare se un evento rientri o meno in questa definizione, la risposta prudente — e legalmente corretta — è notificare. L'ACN non sanziona chi notifica un incidente che si rivela meno grave del previsto. Sanziona chi non notifica un incidente che avrebbe dovuto farlo.
+  </p>
+
+  <div class="box-info">
+    <strong>Principio guida:</strong> In caso di dubbio, notifica. Il costo di una notifica non necessaria è zero. Il costo di una mancata notifica può essere fino a 10 milioni di euro — più la responsabilità personale degli amministratori ai sensi dell'Art. 23 D.Lgs. 138/2024.
+  </div>
+
+  <h2>Le tre fasi della notifica: tempistiche esatte</h2>
+
+  <p>
+    Il sistema italiano di notifica degli incidenti, basato sul D.Lgs. 138/2024, prevede un processo in tre fasi progressive. Ogni fase ha una scadenza diversa e un contenuto diverso. Non si tratta di fasi opzionali: sono tutte obbligatorie.
+  </p>
+
+  <table class="fine-table">
+    <thead>
+      <tr>
+        <th>Fase</th>
+        <th>Termine</th>
+        <th>Contenuto richiesto</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>1. Allerta precoce</strong></td>
+        <td class="amount">Entro 24 ore</td>
+        <td>Segnalazione iniziale: l'incidente è in corso o sospettato. Natura dell'incidente, se di origine dolosa.</td>
+      </tr>
+      <tr>
+        <td><strong>2. Notifica dell'incidente</strong></td>
+        <td class="amount">Entro 72 ore</td>
+        <td>Valutazione iniziale: gravità, impatto, indicatori di compromissione, misure adottate.</td>
+      </tr>
+      <tr>
+        <td><strong>3. Relazione finale</strong></td>
+        <td>Entro 1 mese</td>
+        <td>Descrizione completa: causa principale, impatto totale, misure correttive permanenti adottate.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>
+    Il punto critico che molti CEO non colgono è questo: le <strong>72 ore decorrono dal momento in cui l'organizzazione è venuta a conoscenza dell'incidente</strong> — non dal momento in cui lo considera risolto, né dal momento in cui l'ha comunicato internamente al consiglio. Il contatore parte dalla prima consapevolezza.
+  </p>
+
+  <h2>Cosa deve contenere la notifica di 72 ore all'ACN</h2>
+
+  <p>
+    La notifica entro 72 ore non deve essere un'opera letteraria, ma deve essere completa nei dati essenziali. L'ACN ha predisposto una piattaforma dedicata per la ricezione delle notifiche. Ecco la struttura delle informazioni che devi essere pronto a fornire:
+  </p>
+
+  <h3>Sezione 1 — Identificazione del soggetto notificante</h3>
+  <ul>
+    <li>Denominazione e codice fiscale dell'organizzazione</li>
+    <li>Settore di appartenenza ai sensi del D.Lgs. 138/2024 (es. energia, sanità, infrastrutture digitali)</li>
+    <li>Categoria: soggetto essenziale o soggetto importante</li>
+    <li>Referente per la notifica: nome, ruolo, recapiti diretti</li>
+  </ul>
+
+  <h3>Sezione 2 — Descrizione dell'incidente</h3>
+  <ul>
+    <li>Data e ora di rilevamento dell'incidente</li>
+    <li>Natura dell'incidente (ransomware, accesso non autorizzato, DDoS, data breach, guasto tecnico con impatti sulla sicurezza, ecc.)</li>
+    <li>Sistemi e servizi coinvolti</li>
+    <li>Indicatori di compromissione disponibili (hash di file, indirizzi IP malevoli, domini sospetti)</li>
+    <li>Se l'incidente ha origine dolosa o accidentale — o se non è ancora determinabile</li>
+  </ul>
+
+  <h3>Sezione 3 — Impatto preliminare</h3>
+  <ul>
+    <li>Stima dei sistemi interessati (numero di server, endpoint, utenti)</li>
+    <li>Servizi interrotti o degradati e durata stimata dell'interruzione</li>
+    <li>Numero approssimativo di utenti o clienti potenzialmente impattati</li>
+    <li>Eventuale impatto transfrontaliero (altri Stati Membri UE coinvolti)</li>
+  </ul>
+
+  <h3>Sezione 4 — Misure adottate</h3>
+  <ul>
+    <li>Azioni di contenimento già messe in atto (isolamento dei sistemi, cambio credenziali, ecc.)</li>
+    <li>Coinvolgimento di fornitori di sicurezza esterni o di incident response team</li>
+    <li>Stato attuale dell'incidente: in corso, contenuto, risolto parzialmente</li>
+    <li>Piano di continuità operativa attivato: sì/no</li>
+  </ul>
+
+  <p>
+    Non devi avere tutte le risposte in modo definitivo entro le 72 ore. L'ACN sa che nelle prime ore di un incidente molte informazioni sono ancora parziali. Quello che non perdona è il silenzio totale.
+  </p>
+
+  <h2>Chi deve firmare e chi è responsabile della notifica</h2>
+
+  <p>
+    Qui entra in gioco la dimensione che più interessa CEO e consigli di amministrazione: <strong>chi è responsabile della notifica?</strong>
+  </p>
+
+  <p>
+    L'<strong>Art. 23 del D.Lgs. 138/2024</strong> è inequivocabile. I membri dell'organo di amministrazione possono essere ritenuti <strong>personalmente responsabili</strong> in caso di violazioni degli obblighi previsti dalla norma — incluse le violazioni degli obblighi di notifica. Non si tratta di una responsabilità vicaria o teorica: è una responsabilità diretta, che può tradursi in sanzioni personali e — nei casi più gravi — in misure interdittive dall'esercizio di funzioni dirigenziali.
+  </p>
+
+  <p>
+    In pratica, questo significa che:
+  </p>
+
+  <ol>
+    <li>L'organizzazione deve designare in anticipo un <strong>responsabile operativo per la notifica degli incidenti</strong> (tipicamente il CISO o il responsabile della sicurezza IT)</li>
+    <li>Il CEO o un membro del CdA deve essere <strong>informato immediatamente</strong> quando scatta l'obbligo di notifica e deve <strong>autorizzarne l'invio</strong></li>
+    <li>Deve esistere <strong>documentazione tracciabile</strong> di chi ha preso la decisione di notificare, quando, e con quale contenuto</li>
+  </ol>
+
+  <p>
+    Delegare completamente la gestione delle notifiche al reparto IT senza un coinvolgimento formale del vertice aziendale non elimina la responsabilità degli amministratori. La elimina solo una procedura scritta, approvata dall'organo di amministrazione, che dimostri che il processo era governato correttamente.
+  </p>
+
+  <div class="box-warning">
+    <strong>Responsabilità personale concreta:</strong> L'ACN può richiedere all'autorità giudiziaria competente misure che impediscano temporaneamente a un amministratore di esercitare funzioni dirigenziali. Non è una sanzione che ricade sull'azienda: ricade su di te come persona fisica. Non è rimborsabile da nessuna polizza assicurativa aziendale.
+  </div>
+
+  <h2>Cosa succede se si supera il termine delle 72 ore</h2>
+
+  <p>
+    Supponiamo che — per qualsiasi ragione — la notifica all'ACN arrivi in ritardo. Cosa succede concretamente?
+  </p>
+
+  <p>
+    L'ACN, in qualità di autorità competente primaria ai sensi del D.Lgs. 138/2024, ha il potere di avviare un procedimento sanzionatorio autonomo per la mancata o tardiva notifica. Le sanzioni applicabili sono le seguenti:
+  </p>
+
+  <table class="fine-table">
+    <thead>
+      <tr>
+        <th>Categoria soggetto</th>
+        <th>Sanzione massima</th>
+        <th>Alternativa percentuale</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Soggetto essenziale</td>
+        <td class="amount">10 milioni di euro</td>
+        <td>2% del fatturato mondiale annuo</td>
+      </tr>
+      <tr>
+        <td>Soggetto importante</td>
+        <td class="amount">7 milioni di euro</td>
+        <td>1,4% del fatturato mondiale annuo</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>
+    Si applica il valore più alto. Un'organizzazione con un fatturato di 200 milioni di euro classificata come soggetto essenziale potrebbe affrontare una sanzione fino a 4 milioni di euro (2% del fatturato) — non il massimo assoluto di 10 milioni, che si applicherebbe se il 2% del fatturato fosse inferiore a tale cifra.
+  </p>
+
+  <p>
+    Ma le sanzioni pecuniarie non sono l'unico rischio. L'ACN può anche:
+  </p>
+
+  <ul>
+    <li>Emettere <strong>avvertimenti formali</strong> pubblici che diventano parte del registro ufficiale dei soggetti non conformi</li>
+    <li>Imporre <strong>audit obbligatori</strong> a spese dell'organizzazione</li>
+    <li>Richiedere la <strong>sospensione temporanea delle certificazioni</strong> o delle autorizzazioni operative</li>
+    <li>Trasmettere gli atti all'<strong>autorità giudiziaria</strong> per l'eventuale applicazione di responsabilità personali agli amministratori</li>
+  </ul>
+
+  <h2>Template operativo: struttura della notifica in 72 ore</h2>
+
+  <p>
+    Non aspettare che un incidente accada per costruire il processo di notifica. Il momento peggiore per progettare una procedura di crisis communication è quando sei nel mezzo di una crisi. Ecco uno schema operativo che il tuo team può adattare e tenere pronto:
+  </p>
+
+  <h3>Fase 1 — Allerta precoce (entro 24 ore)</h3>
+  <p>
+    Oggetto della comunicazione all'ACN: <em>"Allerta precoce ai sensi dell'Art. 23 D.Lgs. 138/2024 — Incidente in corso"</em>
+  </p>
+  <ul>
+    <li>Denominazione del soggetto notificante e codice fiscale</li>
+    <li>Settore e categoria (essenziale/importante)</li>
+    <li>Data e ora di prima rilevazione</li>
+    <li>Descrizione sommaria: cosa è successo, quali sistemi sono coinvolti</li>
+    <li>Natura presunta: dolosa, accidentale, o non ancora determinabile</li>
+    <li>Contatto diretto del referente per le comunicazioni successive</li>
+  </ul>
+
+  <h3>Fase 2 — Notifica dell'incidente (entro 72 ore)</h3>
+  <p>
+    Oggetto: <em>"Notifica dell'incidente ai sensi dell'Art. 23 D.Lgs. 138/2024 — [numero di riferimento allerta precoce]"</em>
+  </p>
+  <ul>
+    <li>Conferma o aggiornamento delle informazioni dell'allerta precoce</li>
+    <li>Stima aggiornata dell'impatto: sistemi, utenti, servizi, durata dell'interruzione</li>
+    <li>Indicatori tecnici di compromissione disponibili</li>
+    <li>Misure di contenimento adottate fino al momento della notifica</li>
+    <li>Stato attuale: incidente in corso / contenuto / in fase di ripristino</li>
+    <li>Eventuale impatto su altri soggetti o infrastrutture critiche interconnesse</li>
+    <li>Data e ora stimata della relazione finale</li>
+  </ul>
+
+  <h3>Fase 3 — Relazione finale (entro 1 mese)</h3>
+  <p>
+    Oggetto: <em>"Relazione finale ai sensi dell'Art. 23 D.Lgs. 138/2024 — [numero di riferimento]"</em>
+  </p>
+  <ul>
+    <li>Causa principale dell'incidente (root cause analysis)</li>
+    <li>Cronologia dettagliata degli eventi</li>
+    <li>Impatto totale quantificato: dati, sistemi, servizi, utenti, perdite economiche</li>
+    <li>Misure correttive permanenti implementate</li>
+    <li>Modifiche alle policy e alle procedure di sicurezza adottate</li>
+    <li>Eventuali lezioni apprese e miglioramenti pianificati</li>
+  </ul>
+
+  <div class="box-info">
+    <strong>Dove si notifica:</strong> Le notifiche devono essere inviate all'ACN attraverso la <strong>piattaforma digitale dedicata</strong> messa a disposizione dall'Agenzia per la Cybersicurezza Nazionale. Le organizzazioni soggette al D.Lgs. 138/2024 devono registrarsi sulla piattaforma ACN prima che si verifichi qualsiasi incidente — non nel momento in cui avrebbero bisogno di usarla.
+  </div>
+
+  <h2>Gli errori più comuni che costano caro</h2>
+
+  <p>
+    Nei primi mesi di applicazione del D.Lgs. 138/2024, i profili di rischio che emergono più frequentemente nelle organizzazioni italiane sono riconducibili a quattro categorie di errore:
+  </p>
+
+  <h3>Errore 1 — "Aspettiamo di capire meglio cosa è successo"</h3>
+  <p>
+    La pressione a capire prima e comunicare dopo è comprensibile. Ma le 72 ore decorrono dalla prima consapevolezza, non dalla certezza. Aspettare la root cause analysis completa prima di notificare significa quasi certamente violare il termine. La notifica può essere parziale nelle informazioni tecniche: l'importante è che sia tempestiva.
+  </p>
+
+  <h3>Errore 2 — "Lo gestiamo internamente, è una questione IT"</h3>
+  <p>
+    Un incidente significativo ai sensi del D.Lgs. 138/2024 non è una questione IT: è una questione legale e di governance. Ogni ora in cui il CEO o il CdA non è informato è un'ora di esposizione personale non gestita. La notifica all'ACN deve essere autorizzata e tracciata a livello di vertice aziendale.
+  </p>
+
+  <h3>Errore 3 — Mancanza di una procedura scritta pre-incidente</h3>
+  <p>
+    Senza una procedura di incident notification approvata dall'organo di amministrazione prima che accada qualcosa, ogni incidente diventa un'improvvisazione ad alto rischio. Chi ha l'autorità di notificare? Chi contatta l'ACN? Chi informa il CdA? Chi coordina con i fornitori? Queste decisioni non si prendono bene sotto pressione, alle due di notte, con i sistemi bloccati.
+  </p>
+
+  <h3>Errore 4 — Non aver completato la registrazione sulla piattaforma ACN</h3>
+  <p>
+    L'ACN ha fissato termini per la registrazione delle organizzazioni soggette al D.Lgs. 138/2024. Un'organizzazione che non è ancora registrata sulla piattaforma non può notificare correttamente un incidente — e si trova quindi in una posizione di doppia inadempienza: non registrata e non notificante.
+  </p>
+
+  <div class="box-case">
+    <div class="case-label">Scenario illustrativo</div>
+    <p>
+      <strong>Azienda italiana di medie dimensioni, settore manifatturiero, 230 dipendenti. Classificata come soggetto importante.</strong>
+    </p>
+    <p>
+      Venerdì pomeriggio, il responsabile IT rileva un accesso anomalo ai sistemi di controllo della produzione. Decide di non coinvolgere il CEO nel fine settimana per non creare allarme. Lunedì mattina, l'accesso si rivela essere un attacco ransomware che ha esfiltrato dati di produzione per tre giorni. Il CEO viene informato lunedì alle 9:00.
+    </p>
+    <p>
+      A questo punto, le 72 ore dall'identificazione dell'incidente (venerdì pomeriggio) sono già scadute da oltre 48 ore senza che nessuna notifica sia stata inviata all'ACN. L'organizzazione non aveva una procedura formale di notifica approvata dal CdA, e il responsabile IT non aveva l'autorizzazione esplicita ad agire autonomamente.
+    </p>
+    <p>
+      L'ACN viene a conoscenza dell'incidente attraverso una segnalazione di un partner commerciale. Avvia un procedimento di supervisione che rileva: mancata notifica entro 72 ore, assenza di procedura di incident management documentata e approvata dall'organo di amministrazione, e mancata attivazione del piano di continuità operativa.
+    </p>
+    <p>
+      <strong>Esito:</strong> Procedimento sanzionatorio per tre distinte violazioni del D.Lgs. 138/2024. Il CEO riceve una notifica formale di potenziale responsabilità personale ai sensi dell'Art. 23. Costo stimato della gestione legale e delle sanzioni: <span class="danger">tra 800.000 e 2,5 milioni di euro</span>, oltre ai costi diretti dell'incidente.
+    </p>
+  </div>
+
+  <h2>Domande frequenti di CEO e consigli di amministrazione</h2>
+
+  <div class="faq-item">
+    <div class="faq-q">Dobbiamo notificare ogni incidente informatico all'ACN?</div>
+    <div class="faq-a">No. Solo gli incidenti "significativi" ai sensi del D.Lgs. 138/2024 devono essere notificati. La soglia è però più bassa di quanto molti pensino: qualsiasi incidente che causa perturbazione operativa rilevante, perdite finanziarie o impatto su un numero elevato di utenti rientra nella definizione. In caso di dubbio, la scelta prudente è notificare. L'ACN non penalizza le notifiche cautelative.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">Le 72 ore valgono anche nei weekend e nei giorni festivi?</div>
+    <div class="faq-a">Sì. Il termine di 72 ore è un termine assoluto che non si sospende per weekend, festività o ferie aziendali. Questo è uno dei motivi per cui la procedura di notifica deve essere operativa 24 ore su 24, 7 giorni su 7. Il responsabile della notifica deve essere raggiungibile anche fuori dall'orario di ufficio, e il processo deve essere documentato in modo che chiunque possa eseguirlo.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">Siamo tenuti a notificare anche se l'incidente è stato risolto in poche ore?</div>
+    <div class="faq-a">Dipende dalla gravità dell'incidente, non dalla sua durata. Un incidente che ha coinvolto dati personali di clienti, o che ha interrotto un servizio critico anche brevemente, può essere significativo anche se risolto rapidamente. La durata dell'incidente è uno dei fattori di valutazione, non l'unico. Se i criteri di significatività sono soddisfatti, l'obbligo di notifica si applica indipendentemente dalla velocità di risoluzione.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">Cosa succede se notifichiamo e poi risulta che l'incidente non era così grave?</div>
+    <div class="faq-a">Nulla di negativo. L'ACN valuta positivamente la propensione alla trasparenza e alla notifica cautelativa. Una notifica per un incidente che si rivela meno grave del previsto non genera sanzioni né conseguenze negative. Al contrario, dimostra all'autorità che l'organizzazione ha processi di rilevamento e notifica funzionanti, il che è esattamente ciò che il D.Lgs. 138/2024 richiede.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">Dobbiamo informare anche i clienti o solo l'ACN?</div>
+    <div class="faq-a">L'obbligo primario di notifica ai sensi del D.Lgs. 138/2024 è verso l'ACN. Se l'incidente ha comportato una violazione di dati personali ai sensi del GDPR, si aggiunge l'obbligo di notifica al Garante per la Protezione dei Dati Personali entro 72 ore (termine che decorre autonomamente). L'informazione agli utenti o ai clienti può essere richiesta dall'ACN stessa se l'incidente ha impatti rilevanti sul pubblico. In alcuni settori, come la sanità o la finanza, esistono obblighi aggiuntivi verso le rispettive autorità di vigilanza (Ministero della Salute, Banca d'Italia).</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">Il nostro settore ha un'autorità di vigilanza settoriale. A chi notifichiamo?</div>
+    <div class="faq-a">L'ACN è l'autorità competente primaria per le notifiche NIS2 in Italia. Tuttavia, in settori specifici — come la finanza (Banca d'Italia), l'energia (ARERA), le telecomunicazioni (AGCOM) e la sanità (Ministero della Salute) — possono esistere obblighi di notifica paralleli verso le autorità di settore. È essenziale verificare, con il supporto di un consulente legale specializzato, quali obblighi di notifica si cumulano nel tuo settore specifico.</div>
+  </div>
+
+  <div class="box-info" style="margin: 48px 0 32px;">
+    <div style="font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color: var(--yellow); margin-bottom:10px;">🔧 STRUMENTI &amp; SOLUZIONI</div>
+    <p style="margin:0; font-size:17px; color: #ddd; line-height:1.7;">Per la gestione e il rilevamento degli incidenti in conformità NIS2, <strong>Microsoft Sentinel</strong> (SIEM cloud-native) combinato con <strong>Microsoft Defender XDR</strong> offre visibilità centralizzata su tutti i sistemi, allerte in tempo reale e la documentazione automatica degli eventi necessaria per compilare una notifica ACN accurata entro le 72 ore. Un partner Microsoft certificato può configurare questi strumenti e condurre un'analisi del gap gratuita per valutare la tua situazione attuale rispetto ai requisiti del D.Lgs. 138/2024.</p>
+  </div>
+
+  <!-- NEWSLETTER -->
+  <div style="background:#111; border:1px solid rgba(255,255,255,0.1); border-left:3px solid #f5c518; border-radius:4px; padding:32px 36px; margin:40px 0 0; text-align:center; max-width:760px; margin-left:auto; margin-right:auto;">
+    <div style="font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:#f5c518; margin-bottom:12px;">📬 AGGIORNAMENTI NIS2</div>
+    <h3 style="font-family:'Poppins',sans-serif; font-size:20px; font-weight:800; margin:0 0 8px; color:#f0f0f0;">Un nuovo articolo NIS2 ogni settimana — direttamente nella tua casella</h3>
+    <p style="color:#888; font-size:15px; margin:0 0 20px;">Nessun pitch di vendita. Solo guida pratica per CEO e consigli di amministrazione.</p>
+    <form id="nlForm-nis2_notifica_incidente_72_ore" onsubmit="submitNewsletter_nis2_notifica_incidente_72_ore(event)" style="display:flex; gap:10px; flex-wrap:wrap; justify-content:center; max-width:460px; margin:0 auto;">
+      <input type="email" id="nlEmail-nis2_notifica_incidente_72_ore" placeholder="tuo@azienda.it" required style="flex:1; min-width:200px; padding:12px 16px; background:#1c1c1f; border:1px solid rgba(255,255,255,0.15); border-radius:4px; color:#f0f0f0; font-size:15px; outline:none;" />
+      <button type="submit" id="nlSubmit-nis2_notifica_incidente_72_ore" style="padding:12px 22px; background:#f5c518; color:#141416; font-weight:700; font-size:15px; border:none; border-radius:4px; cursor:pointer; white-space:nowrap;">Iscriviti gratis →</button>
+    </form>
+    <p style="font-size:12px; color:#555; margin:12px 0 0;">Puoi cancellarti in qualsiasi momento. Non condividiamo mai la tua email.</p>
+    <div id="nlThanks-nis2_notifica_incidente_72_ore" style="display:none; color:#4ade80; font-size:16px; font-weight:600; margin-top:14px;">✅ Sei iscritto! Il prossimo articolo arriverà nella tua casella.</div>
+  </div>
+
+  <!-- CTA -->
+  <div class="cta-section">
+    <h2>Sai dove si trova la tua organizzazione oggi?</h2>
+    <p>Un'analisi del gap gratuita con un partner Microsoft certificato mostra esattamente cosa hai già coperto — e cosa manca.</p>
+    <a href="/nis2.html#boka" class="btn-primary">Prenota analisi gap gratuita →</a>
+    <p class="cta-fine">Le sanzioni arrivano fino a <strong>10 milioni di euro</strong>. L'analisi del gap è gratuita.</p>
+  </div>
+
+</article>
+
+<div class="related-articles" style="margin:2.5rem 0 2rem;padding:1.5rem;background:#1a1a2e;border-left:4px solid #f0a500;border-radius:4px;max-width:760px;margin-left:auto;margin-right:auto;">
+  <p style="margin:0 0 1rem;font-size:0.85rem;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:#f0a500;">Leggi anche</p>
+  <ul style="margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:0.5rem;">
+    <li><a href="/it/articoli/nis2-responsabilita-personale-cda.html" style="color:#e0e0e0;text-decoration:none;font-size:0.95rem;">→ Responsabilità personale del CdA sotto NIS2</a></li>
+    <li><a href="/it/articoli/nis2-quali-aziende-sono-soggette.html" style="color:#e0e0e0;text-decoration:none;font-size:0.95rem;">→ Quali aziende sono soggette a NIS2 in Italia?</a></li>
+    <li><a href="/it/articoli/nis2-sanzioni-e-multe-italia.html" style="color:#e0e0e0;text-decoration:none;font-size:0.95rem;">→ NIS2: sanzioni e multe in Italia — cosa rischi davvero</a></li>
+  </ul>
+  <p style="margin:1.25rem 0 0;font-size:0.85rem;color:#aaa;">← <a href="https://nis2klar.se/it/" style="color:#f0a500;text-decoration:none;">NIS2Klar homepage</a> &nbsp;·&nbsp; <a href="https://nis2klar.se/it/articoli.html" style="color:#f0a500;text-decoration:none;">Tutti gli articoli</a></p>
+</div>
+
+<footer>
+  © 2026 M&amp;J Trusted Marketing KB ·
+  <a href="mailto:support@trustedmarketing.se">support@trustedmarketing.se</a> · <a href="tel:+46470597003">+46 470 59 70 03</a> ·
+  <a href="https://nis2klar.se/it/">Torna alla homepage</a> ·
+  <a href="/privacy.html">Privacy Policy</a>
+  <p style="margin-top:12px; font-size:11px; color: #555; line-height:1.5;">Microsoft, Microsoft 365, Azure e i relativi nomi di prodotto sono marchi di Microsoft Corporation. nis2klar.se non è affiliata né approvata da Microsoft Corporation.</p>
+</footer>
+
+<script>
+  async function submitNewsletter_nis2_notifica_incidente_72_ore(e) {
+    e.preventDefault();
+    const btn = document.getElementById('nlSubmit-nis2_notifica_incidente_72_ore');
+    btn.disabled = true; btn.textContent = '...';
+    const email = document.getElementById('nlEmail-nis2_notifica_incidente_72_ore').value.trim();
+    try {
+      const res = await fetch('/api/newsletter/subscribe', { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({ email, source: 'articolo-it-nis2_notifica_incidente_72_ore' }) });
+      const data = await res.json();
+      if (data.success) { document.getElementById('nlForm-nis2_notifica_incidente_72_ore').style.display='none'; document.getElementById('nlThanks-nis2_notifica_incidente_72_ore').style.display='block'; }
+      else { btn.disabled=false; btn.textContent='Iscriviti gratis →'; }
+    } catch { btn.disabled=false; btn.textContent='Iscriviti gratis →'; }
+  }
+</script>
+
+</body>
+</html>

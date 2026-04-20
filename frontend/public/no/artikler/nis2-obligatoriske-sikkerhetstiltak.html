@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-BKF3QH9K01"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag("js", new Date());
+    gtag("config", "G-BKF3QH9K01");
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NIS2 Obligatoriske sikkerhetstiltak: Den komplette kravlisten | NIS2Klar Norge</title>
+  <meta name="description" content="Artikkel 21 i NIS2-direktivet kravekk 10 obligatoriske sikkerhetstiltak. Les hva som kreves, hva revisor ser etter, og minimumskrav for implementering.">
+  <meta property="og:title" content="NIS2 Obligatoriske sikkerhetstiltak: Den komplette kravlisten">
+  <meta property="og:description" content="Artikkel 21 i NIS2-direktivet kravekk 10 obligatoriske sikkerhetstiltak. Les hva som kreves, hva revisor ser etter, og minimumskrav for implementering.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #141416;
+      --card: #1c1c1f;
+      --yellow: #f5c518;
+      --white: #f0f0f0;
+      --muted: #888;
+      --red: #C61212;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: var(--bg); color: var(--white); font-family: 'Barlow', sans-serif; font-size: 19px; line-height: 1.8; }
+
+    /* Nav */
+    nav { display: flex; justify-content: space-between; align-items: center; padding: 20px 40px; border-bottom: 1px solid rgba(255,255,255,0.07); max-width: 1200px; margin: 0 auto; }
+    .nav-logo { font-family: 'Poppins', sans-serif; font-weight: 900; font-size: 20px; color: var(--yellow); text-decoration: none; }
+    .nav-logo span { color: var(--white); }
+    .nav-controls { display: flex; align-items: center; gap: 24px; }
+    .nav-back { color: var(--muted); text-decoration: none; font-size: 15px; }
+    .nav-back:hover { color: var(--white); }
+    .lang-switcher { display: flex; gap: 8px; align-items: center; font-size: 13px; font-family: 'Poppins', sans-serif; }
+    .lang-switcher a { color: #888; text-decoration: none; font-weight: 600; padding: 4px 8px; border-radius: 3px; transition: all 0.2s; }
+    .lang-switcher a:hover { color: var(--white); }
+    .lang-switcher a.active { color: var(--yellow); background: rgba(245,197,24,0.1); }
+    .nav-cta { background: var(--yellow); color: #000; padding: 8px 18px; border-radius: 4px; text-decoration: none; font-weight: 700; font-size: 14px; font-family: 'Poppins', sans-serif; }
+
+    /* Article */
+    .article-wrap { max-width: 760px; margin: 0 auto; padding: 60px 40px; }
+    .article-category { font-size: 13px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 16px; }
+    h1 { font-family: 'Poppins', sans-serif; font-size: clamp(30px, 4vw, 44px); font-weight: 900; line-height: 1.2; margin-bottom: 24px; }
+    .article-meta { font-size: 15px; color: var(--muted); margin-bottom: 48px; padding-bottom: 24px; border-bottom: 1px solid rgba(255,255,255,0.07); }
+    h2 { font-family: 'Poppins', sans-serif; font-size: 26px; font-weight: 700; margin: 48px 0 16px; color: var(--white); }
+    h3 { font-family: 'Poppins', sans-serif; font-size: 20px; font-weight: 600; margin: 32px 0 12px; color: var(--yellow); }
+    p { margin-bottom: 22px; }
+    strong { color: var(--white); font-weight: 700; }
+    .highlight { color: var(--yellow); font-weight: 700; }
+    .danger { color: #ff6b6b; font-weight: 700; }
+    ul, ol { margin: 16px 0 24px 24px; }
+    li { margin-bottom: 12px; font-size: 19px; }
+
+    /* Callout boxes */
+    .box-warning { background: rgba(197,17,17,0.12); border-left: 4px solid var(--red); padding: 20px 24px; margin: 32px 0; border-radius: 0 4px 4px 0; }
+    .box-info { background: rgba(245,197,24,0.08); border-left: 4px solid var(--yellow); padding: 20px 24px; margin: 32px 0; border-radius: 0 4px 4px 0; }
+    .box-case { background: var(--card); border: 1px solid rgba(255,255,255,0.08); padding: 28px; margin: 40px 0; border-radius: 4px; }
+    .box-case .case-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 12px; }
+    blockquote { border-left: 3px solid var(--yellow); padding: 12px 20px; margin: 24px 0; font-style: italic; color: #ccc; }
+
+    /* CTA */
+    .cta-section { background: var(--card); border: 1px solid rgba(245,197,24,0.2); border-radius: 4px; padding: 48px 40px; margin: 64px 0 40px; text-align: center; }
+    .cta-section h2 { margin-top: 0; font-size: 26px; }
+    .cta-section p { color: #aaa; max-width: 500px; margin: 0 auto 28px; }
+    .btn-primary { display: inline-block; background: var(--yellow); color: #000; font-family: 'Poppins', sans-serif; font-weight: 800; font-size: 16px; padding: 16px 36px; border-radius: 4px; text-decoration: none; }
+    .btn-primary:hover { background: #e0b010; }
+    .cta-fine { font-size: 13px; color: var(--muted); margin-top: 16px; }
+
+    /* FAQ */
+    .faq-item { border-bottom: 1px solid rgba(255,255,255,0.07); padding: 20px 0; }
+    .faq-q { font-family: 'Poppins', sans-serif; font-weight: 600; margin-bottom: 10px; }
+    .faq-a { color: #bbb; }
+
+    /* Summary */
+    .box-summary { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; padding: 24px 28px; margin: 0 0 32px; }
+    .summary-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-bottom: 14px; }
+    .box-summary ul { margin: 0; padding-left: 20px; }
+    .box-summary li { margin-bottom: 8px; font-size: 17px; color: #ccc; }
+
+    /* Takeaway */
+    .box-takeaway { background: rgba(245,197,24,0.08); border-left: 4px solid var(--yellow); padding: 20px 24px; margin: 0 0 40px; border-radius: 0 4px 4px 0; }
+    .takeaway-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 10px; }
+    .box-takeaway p { margin: 0; font-size: 18px; font-weight: 600; color: var(--white); line-height: 1.6; }
+
+    /* Related articles */
+    .related-articles { margin: 2.5rem 0 2rem; padding: 1.5rem; background: #1a1a2e; border-left: 4px solid #f0a500; border-radius: 4px; }
+    .related-articles > p { margin: 0 0 1rem; font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #f0a500; }
+    .related-articles ul { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+    .related-articles li { margin: 0; font-size: 0.95rem; }
+    .related-articles a { color: #e0e0e0; text-decoration: none; }
+    .related-articles a:hover { color: #f0a500; }
+    .related-articles .footer-links { margin: 1.25rem 0 0; font-size: 0.85rem; color: #aaa; }
+    .related-articles .footer-links a { color: #f0a500; }
+
+    /* Footer */
+    footer { border-top: 1px solid rgba(255,255,255,0.07); padding: 32px 40px; text-align: center; font-size: 13px; color: var(--muted); max-width: 1200px; margin: 0 auto; }
+    footer a { color: var(--muted); text-decoration: none; }
+    footer a:hover { color: var(--white); }
+    footer .disclaimer { margin-top: 12px; font-size: 11px; color: #555; line-height: 1.5; }
+
+    @media (max-width: 768px) {
+      nav { flex-wrap: wrap; padding: 16px 20px; }
+      nav .nav-logo { flex: 1; }
+      .nav-controls { flex-basis: 100%; margin-top: 12px; justify-content: space-between; gap: 12px; }
+      .nav-back { font-size: 13px; }
+      .lang-switcher { font-size: 12px; }
+      .lang-switcher a { padding: 3px 6px; }
+    }
+
+    @media (max-width: 600px) {
+      nav, .article-wrap, footer { padding: 16px 20px; }
+      .cta-section { padding: 32px 20px; }
+      h1 { font-size: 28px; }
+      h2 { font-size: 22px; }
+      h3 { font-size: 18px; }
+      .lang-switcher { flex-wrap: wrap; gap: 4px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="https://nis2klar.se/no/">NIS2<span>Klar</span></a>
+  <div class="nav-controls">
+    <a class="nav-back" href="https://nis2klar.se/no/artikler.html">← Alle artikler</a>
+    <div class="lang-switcher">
+      <a href="https://nis2klar.se/artiklar.html" title="Svenska">SV</a>
+      <a href="https://nis2klar.se/en/articles.html" title="English">EN</a>
+      <a href="https://nis2klar.se/da/artikler.html" title="Dansk">DA</a>
+      <a href="https://nis2klar.se/no/artikler.html" class="active" title="Norsk">NO</a>
+      <a href="https://nis2klar.se/it/articoli.html" title="Italiano">IT</a>
+    </div>
+    <a class="nav-cta" href="https://nis2klar.se/no/#boka">Book samtale →</a>
+  </div>
+</nav>
+
+<article class="article-wrap">
+  <div class="article-category">Sikkerhetstiltak &amp; Krav</div>
+  <h1>NIS2 obligatoriske sikkerhetstiltak: Den komplette kravlisten</h1>
+  <div class="article-meta">Publisert 19. april 2026 · Lest på ca 8 minutter · Målgruppe: Direktør, styreleder, styremedlem</div>
+
+  <!-- SUMMARY -->
+  <div class="box-summary">
+    <div class="summary-label">Sammendrag</div>
+    <ul>
+      <li>Artikkel 21 i NIS2-direktivet slår fast 10 obligatoriske sikkerhetstiltak som Norge forventes å implementere via EØS-avtalen i 2025–2026.</li>
+      <li>Hver av disse skal være dokumentert og demonstrert til NSM eller relevante sektormyndigheter.</li>
+      <li>Mangel på ett eller flere tiltak er sanktionsgrunnlag — selv uten at et angrepp har funnet sted.</li>
+      <li>Direktør og styremedlemmer er personlig ansvarlige for at disse tiltakene godkjennes og er på plass.</li>
+    </ul>
+  </div>
+
+  <!-- KEY TAKEAWAY -->
+  <div class="box-takeaway">
+    <div class="takeaway-label">Viktigste slutning</div>
+    <p>NIS2 er ikke tolking — det er ti konkrete sikkerhetstiltak som må dokumenteres, godkjennes av styret, og kunne vises til NSM eller sektormyndighetene. Har du ikke disse på plass når revisor eller tilsynsmyndighet ringer, er du i boten.</p>
+  </div>
+
+  <!-- HOOK -->
+  <p>
+    I løpet av 2025–2026 vil Norge implementere NIS2-direktivet via EØS-avtalen. Det betyr at organisasjoner i Norge som regnes som vesentlige eller viktige enheter innenfor 18 kritiske sektorer må oppfylle strengere sikkerhetskrav enn noen gang før.
+  </p>
+
+  <p>
+    Artikkel 21 i NIS2-direktivet er essensen av hele lovverket. Den kravekk <strong>ti konkrete, obligatoriske sikkerhetstiltak</strong>. Ikke anbefalinger. Ikke best practices. Obligatoriske.
+  </p>
+
+  <p>
+    Har du ingen av dem på plass når NSM eller en sektormyndighet gjennomfører en gransking, er det sanktionsgrunnlag — uavhengig av om en cyberangreiper har gjort noen skade eller ikke.
+  </p>
+
+  <div class="box-warning">
+    <strong>NSM og sektormyndighetene har allerede startet sin tilsyn.</strong> NIS2 er ikke kommende lovverk — det blir gjeldende lovverk. Hver dag uten dokumentert arbeid på disse ti tiltakene er en dag med risiko.
+  </div>
+
+  <h2>Hvorfor må du forstå disse ti tiltakene selv?</h2>
+
+  <p>
+    Du er direktør eller styremedlem, ikke IT-sjef. Likevel er du personlig ansvarlig.
+  </p>
+
+  <p>
+    Artikkel 20 i NIS2-direktivet slår fast at ledelsen skal:
+  </p>
+
+  <ol>
+    <li>Godkjenne sikkerhetstiltakene (ja, rent faktisk godta dem, ikke bare vite at de finnes)</li>
+    <li>Overvåke at de fungerer</li>
+    <li>Kunne vise dokumentasjon på at du har gjort dette</li>
+  </ol>
+
+  <p>
+    Det betyr at du ikke kan delegere ansvaret bort. Du kan dele arbeidet med IT-avdelingen, men du kan ikke fjerne deg selv fra ansvaret. En revisor eller NSM vil spørre deg direkte: Har styret vurdert og godkjent disse sikkerhetstiltakene? Hva var resultatet av den vurderingen? Hvor er dokumentasjonen?
+  </p>
+
+  <p>
+    Hvis du ikke kan svare, eller ikke kjenner til tiltakene, har du bare bekreftet at du ikke har gjort jobben din.
+  </p>
+
+  <h2>De ti obligatoriske sikkerhetstiltakene — punkt for punkt</h2>
+
+  <h3>1. Risikoanalyse og styring av informasjonssikkerhet</h3>
+
+  <p>
+    <strong>Hva det betyr:</strong> Du må ha gjennomført en systematisk gransking av hva som kan gå galt, og prioritert beskyttelses­tiltakene etter hvor stor skaden kan bli.
+  </p>
+
+  <p>
+    <strong>Hva revisor ser etter:</strong> Dokumentert risikoanalyse fra siste år (eller toårsperiode), med identifisering av kritiske eiendeler (systemer, data, personer), trusler mot dem, og en prioritert liste over hva som må fikses først.
+  </p>
+
+  <p>
+    <strong>Minimumskrav for implementering:</strong> En enkelt Excel-matrise eller et dedikert risikoverktøy som viser: eiendel – trussel – sannsynlighet – konsekvens – akseptabel risiko – ja/nei. Styret har vurdert og godkjent listen. Minst ett møte per år om risikoendringer.
+  </p>
+
+  <div class="box-info">
+    En risikoanalyse trenger ikke å være omfattende. Den trenger å være dokumentert, gjennomtenkt og godkjent av styret. Et 10-siders dokument som viser at noen har tenkt gjennom hva som kan gå galt, er bedre enn null dokumentasjon og et håp om at ingenting skjer.
+  </div>
+
+  <h3>2. Hendelseshåndtering</h3>
+
+  <p>
+    <strong>Hva det betyr:</strong> Du må ha en plan for hva som skal skje når det oppstår en cyberinsident — hvem ringer hvem, hva gjør man først, hvem rapporterer til NSM.
+  </p>
+
+  <p>
+    <strong>Hva revisor ser etter:</strong> En skriftlig incidentplan som tydelig angir: eskalerings­vei, roller (hvem er incident commander?), kontaktperson for NSM og sektormyndigheter, dokumentasjons­prosess, og tidsfrister. Planen må være testet minimum årlig, enten gjennom tabletop-øvelse eller simulering.
+  </p>
+
+  <p>
+    <strong>Minimumskrav for implementering:</strong> Et 3–5 siders dokument som viser «når vi oppdager et angrep skal X kontakte Y og Z, og vi rapporterer til NSM innen 24 timer». Dokumenter en årlig gjennomgang eller øvelse. Navn og telefonnumre på nøkkelpersoner må være gjeldende.
+  </p>
+
+  <p>
+    For alle hendelser gjelder dette: Du må rapportere til NSM innen <strong>24 timer</strong> (tidlig varsel), deretter en full rapport innen <strong>72 timer</strong>, og sluttrapport innen <strong>én måned</strong>. Manglende rapportering er en egen sanktionsgrunn — selv om hendelsen selv ikke var alvorlig.
+  </p>
+
+  <h3>3. Kontinuitetsplanlegging og gjenoppretting etter uhell</h3>
+
+  <p>
+    <strong>Hva det betyr:</strong> Du må vite hvordan du gjenoppretter driften hvis en kritisk system eller datasenter blir ødelagt eller utilgjengelig.
+  </p>
+
+  <p>
+    <strong>Hva revisor ser etter:</strong> En skriftlig plan som viser: hvilke systemer som er kritiske, hvor lang «nedetid» som er akseptabel (RTO — Recovery Time Objective), hvor mye data du tåler å miste (RPO — Recovery Point Objective), hvor sikkerhetskopiene ligger, og hvem som skal gjøre gjenopprettingen. Planen skal testes minst årlig med faktisk gjenoppretting fra sikkerhetskopi.
+  </p>
+
+  <p>
+    <strong>Minimumskrav for implementering:</strong> En oversikt som viser kritiske systemer, deres RTO/RPO (f.eks. «denne databasen må være tilbake på 4 timer med maksimalt 1 times datatap»), og dokumentert gjennomføring av minst en gjenopprettingstest per år. Testresultatet skal være registrert.
+  </p>
+
+  <h3>4. Sikkerhetskopier av data</h3>
+
+  <p>
+    <strong>Hva det betyr:</strong> Du må sikre at kritisk data lagres separat fra produksjonsmiljøet, og at sikkerhetskopiene kan gjenopprettes.
+  </p>
+
+  <p>
+    <strong>Hva revisor ser etter:</strong> Dokumentasjon av at sikkerhetskopier tas automatisk (ikke manuelt), at de lagres på fysisk annen lokasjon eller logisk separert, at de er immutable (ikke kan slettes eller endres av ransomware), og at de testes minst årlig.
+  </p>
+
+  <p>
+    <strong>Minimumskrav for implementering:</strong> En dokumentert sikkerhetskopistrategi som viser: hvilke data som sikkerhetskopies, hvor ofte, hvor de lagres, og når de sist ble testet. Minst en test per år med faktisk gjenoppretting fra kopi.
+  </p>
+
+  <h3>5. Multifaktor autentisering (MFA)</h3>
+
+  <p>
+    <strong>Hva det betyr:</strong> Ansatte og ledere skal logge seg på med mer enn bare passord — for eksempel passord + engangskode på telefonen, eller passord + biometrisk gjenkjenning.
+  </p>
+
+  <p>
+    <strong>Hva revisor ser etter:</strong> Aktivert MFA på alle kritiske systemer (e-post, administratorkontoer, VPN, skyplattformer). Dokumentasjon av at det er konfigurert, og statistikk over bruksfrekvens. Anbefalingen er at minst alle ledelseskontoer og IT-personell bruker MFA på alle systemer.
+  </p>
+
+  <p>
+    <strong>Minimumskrav for implementering:</strong> MFA aktivert på minst e-post og administratorkontoer. Bruksstatistikk som viser at det faktisk brukes. Dokumentasjon av at det er en organisasjonsmandatet løsning (ikke valgfritt).
+  </p>
+
+  <div class="box-info">
+    MFA er det billigste og mest effektive tiltaket mot de fleste cyberangreip. Et enkelt SMS-basert kode (eller bedre: en authenticator-app) dekker kravet. Du behøver ikke å investere i dyrt utstyr.
+  </div>
+
+  <h3>6. Kryptering av data</h3>
+
+  <p>
+    <strong>Hva det betyr:</strong> Sensitiv data skal være kryptert både når den ligger lagret (in rest) og når den sendes over nett (in transit).
+  </p>
+
+  <p>
+    <strong>Hva revisor ser etter:</strong> Dokumentasjon av hvilken data som klassifiseres som sensitiv, hvilke krypteringsmetoder som brukes (f.eks. AES-256 for lagring, TLS 1.2+ for oversending), og hvordan krypteringsnøkler forvaltes.
+  </p>
+
+  <p>
+    <strong>Minimumskrav for implementering:</strong> En datakassifikasjonspolicy som identifiserer sensitiv data. Alle kritiske systemer skal bruke kryptering når data sendes over nett (HTTPS, SMTPS, SFTP — ikke usikker HTTP eller FTP). Kundedata, personopplysninger, og forretningshemmeligheter skal være kryptert når de lagres.
+  </p>
+
+  <h3>7. Fysisk og miljømessig sikkerhet</h3>
+
+  <p>
+    <strong>Hva det betyr:</strong> Sted hvor datamaskiner og servere står skal være fysisk sikret — lås på dør, tilgangskort, overvåking.
+  </p>
+
+  <p>
+    <strong>Hva revisor ser etter:</strong> Fysisk tilgangskontroll til serverrom og datasenter, besøkerregistrering, kameraovervåking, og at sensitive arealer er adskilt fra allment område.
+  </p>
+
+  <p>
+    <strong>Minimumskrav for implementering:</strong> Hvis du har et fysisk serverrom: lås på døren, registrering av hvem som har nøkkel, logg over besøk. Hvis du bare bruker skyplattformer: dokumentasjon av at skytilbyderen er sertifisert (ISO 27001 eller tilsvarende) for fysisk sikkerhet på deres datasentre.
+  </p>
+
+  <h3>8. Kontroll av tilgang og rettigheter</h3>
+
+  <p>
+    <strong>Hva det betyr:</strong> Hver ansatt skal bare ha tilgang til det hun eller han trenger for jobben sin — ikke alt for alle.
+  </p>
+
+  <p>
+    <strong>Hva revisor ser etter:</strong> Dokumentert roller- og rettighetsmatrise som viser hvilke jobbrollen skal få tilgang til hvilke systemer. En årlig gjennomgang av hvem som faktisk har tilgang og at det stemmer med deres jobbfunksjon.
+  </p>
+
+  <p>
+    <strong>Minimumskrav for implementering:</strong> En enkel matrise (Excel eller dedikert verktøy) som viser: rolle – system – lesetilgang/skrivetilgang. Gjennomgang årlig eller når noen skifter jobb. Dokumentasjon av at ansatte som slutter får tilgang fjernet innen én dag.
+  </p>
+
+  <h3>9. Kryptering av leverandør- og tredjepartssamarbeid</h3>
+
+  <p>
+    <strong>Hva det betyr:</strong> Når du bruker tjenester fra andre bedrifter (skytilbyder, programvareleverandør, databehandler), må du sikre at de også oppfyller sikkerkhetskrav — og at det er formalisert i en kontrakt.
+  </p>
+
+  <p>
+    <strong>Hva revisor ser etter:</strong> En inventar over alle leverandører som har tilgang til dine systemer eller data. For hver leverandør: dataprosesseringavtale, sikkerhetskrav i kontrakten (revisjonspunkter, sertifiseringer som er påkrevd), og at du vet hvor dine data lagres geografisk.
+  </p>
+
+  <p>
+    <strong>Minimumskrav for implementering:</strong> Leverandøroversikt (navn, kontakt, hva de gjør). Samtale med hver leverandør: Hvor lagres dataene? Er du ISO 27001-sertifisert eller tilsvarende? Hvordan håndteres sikkerhetsincidenter? Dokumenter svarene. Standard dataprosesseringavtale (DPA) skal foreligge.
+  </p>
+
+  <h3>10. Sikkerhetskompetanse og opplæring</h3>
+
+  <p>
+    <strong>Hva det betyr:</strong> Ledelse og ansatte skal ha nok kunnskaper til å handle sikkert — både teknisk personell og vanlig ansatte.
+  </p>
+
+  <p>
+    <strong>Hva revisor ser etter:</strong> Dokumentasjon av gjennomført opplæring eller bevisstgjøring minst årlig for alle ansatte. Spesialisert opplæring for IT-personell og ledelse. Deltakelsesliste og tema som ble dekket.
+  </p>
+
+  <p>
+    <strong>Minimumskrav for implementering:</strong> En årlig sikkerhetskompetansepåminnelse for alle (kan være en 30-minutters online kurs eller presentasjon). For IT-personell: opplæring i relevante verktøy og sikkerhetsstandarder. Dokumenter hvor mange som tok det og når. Ledelsen skal få en grundigere innføring i sine ansvar under NIS2.
+  </p>
+
+  <div class="box-case">
+    <div class="case-label">Praksisscenario</div>
+    <p>
+      <strong>Situasjon: Du er direktør i et kritisk infrastrukturselskap i Norge med 200 ansatte.</strong>
+    </p>
+    <p>
+      I november 2025 kontakter NSM deg med beskj

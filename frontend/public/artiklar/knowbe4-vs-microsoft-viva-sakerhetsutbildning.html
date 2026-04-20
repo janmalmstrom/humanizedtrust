@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-BKF3QH9K01"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag("js", new Date());
+    gtag("config", "G-BKF3QH9K01");
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KnowBe4 vs Microsoft Viva: Säkerhetsutbildning och NIS2 Artikel 20 | NIS2Klar</title>
+  <meta name="description" content="Vilken plattform för säkerhetsutbildning uppfyller NIS2 Artikel 20? Jämför KnowBe4 phishing-simulering med Microsoft Viva Learning — och vad tillsynsmyndigheten faktiskt kräver för dokumentation.">
+  <meta property="og:title" content="KnowBe4 vs Microsoft Viva: Säkerhetsutbildning och NIS2 Artikel 20">
+  <meta property="og:description" content="Vilken plattform för säkerhetsutbildning uppfyller NIS2 Artikel 20? Jämför KnowBe4 phishing-simulering med Microsoft Viva Learning — och vad tillsynsmyndigheten faktiskt kräver för dokumentation.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #141416;
+      --card: #1c1c1f;
+      --yellow: #f5c518;
+      --white: #f0f0f0;
+      --muted: #888;
+      --red: #C61212;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: var(--bg); color: var(--white); font-family: 'Barlow', sans-serif; font-size: 19px; line-height: 1.8; }
+
+    /* Nav */
+    nav { display: flex; justify-content: space-between; align-items: center; padding: 20px 40px; border-bottom: 1px solid rgba(255,255,255,0.07); max-width: 900px; margin: 0 auto; }
+    .nav-logo { font-family: 'Poppins', sans-serif; font-weight: 900; font-size: 20px; color: var(--yellow); text-decoration: none; }
+    .nav-logo span { color: var(--white); }
+    .nav-back { color: var(--muted); text-decoration: none; font-size: 15px; }
+    .nav-back:hover { color: var(--white); }
+    .nav-cta { background: var(--yellow); color: #000; padding: 8px 18px; border-radius: 4px; text-decoration: none; font-weight: 700; font-size: 14px; font-family: 'Poppins', sans-serif; }
+
+    /* Article */
+    .article-wrap { max-width: 760px; margin: 0 auto; padding: 60px 40px; }
+    .article-category { font-size: 13px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 16px; }
+    h1 { font-family: 'Poppins', sans-serif; font-size: clamp(30px, 4vw, 44px); font-weight: 900; line-height: 1.2; margin-bottom: 24px; }
+    .article-meta { font-size: 15px; color: var(--muted); margin-bottom: 48px; padding-bottom: 24px; border-bottom: 1px solid rgba(255,255,255,0.07); }
+    h2 { font-family: 'Poppins', sans-serif; font-size: 26px; font-weight: 700; margin: 48px 0 16px; color: var(--white); }
+    h3 { font-family: 'Poppins', sans-serif; font-size: 20px; font-weight: 600; margin: 32px 0 12px; color: var(--yellow); }
+    p { margin-bottom: 22px; }
+    strong { color: var(--white); font-weight: 700; }
+    .highlight { color: var(--yellow); font-weight: 700; }
+    .danger { color: #ff6b6b; font-weight: 700; }
+    ul, ol { margin: 16px 0 24px 24px; }
+    li { margin-bottom: 12px; font-size: 19px; }
+
+    /* Callout boxes */
+    .box-warning { background: rgba(197,17,17,0.12); border-left: 4px solid var(--red); padding: 20px 24px; margin: 32px 0; border-radius: 0 4px 4px 0; }
+    .box-info { background: rgba(245,197,24,0.08); border-left: 4px solid var(--yellow); padding: 20px 24px; margin: 32px 0; border-radius: 0 4px 4px 0; }
+    .box-case { background: var(--card); border: 1px solid rgba(255,255,255,0.08); padding: 28px; margin: 40px 0; border-radius: 4px; }
+    .box-case .case-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 12px; }
+    blockquote { border-left: 3px solid var(--yellow); padding: 12px 20px; margin: 24px 0; font-style: italic; color: #ccc; }
+
+    /* CTA */
+    .cta-section { background: var(--card); border: 1px solid rgba(245,197,24,0.2); border-radius: 4px; padding: 48px 40px; margin: 64px 0 40px; text-align: center; }
+    .cta-section h2 { margin-top: 0; font-size: 26px; }
+    .cta-section p { color: #aaa; max-width: 500px; margin: 0 auto 28px; }
+    .btn-primary { display: inline-block; background: var(--yellow); color: #000; font-family: 'Poppins', sans-serif; font-weight: 800; font-size: 16px; padding: 16px 36px; border-radius: 4px; text-decoration: none; }
+    .btn-primary:hover { background: #e0b010; }
+    .cta-fine { font-size: 13px; color: var(--muted); margin-top: 16px; }
+
+    /* FAQ */
+    .faq-item { border-bottom: 1px solid rgba(255,255,255,0.07); padding: 20px 0; }
+    .faq-q { font-family: 'Poppins', sans-serif; font-weight: 600; margin-bottom: 10px; }
+    .faq-a { color: #bbb; }
+
+    /* Comparison table */
+    .comp-table { width: 100%; border-collapse: collapse; margin: 24px 0; }
+    .comp-table th { background: rgba(245,197,24,0.1); color: var(--yellow); font-family: 'Poppins', sans-serif; font-size: 13px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 12px 16px; text-align: left; border-bottom: 1px solid rgba(245,197,24,0.2); }
+    .comp-table td { padding: 14px 16px; border-bottom: 1px solid rgba(255,255,255,0.05); font-size: 15px; }
+    .comp-table tr:last-child td { border-bottom: none; }
+    .comp-table .check { color: #4ade80; font-weight: 700; }
+    .comp-table .cross { color: #ff6b6b; font-weight: 700; }
+
+    /* Summary + Key Takeaway */
+    .box-summary { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; padding: 24px 28px; margin: 0 0 32px; }
+    .summary-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-bottom: 14px; }
+    .box-summary ul { margin: 0; padding-left: 20px; }
+    .box-summary li { margin-bottom: 8px; font-size: 17px; color: #ccc; }
+    .box-takeaway { background: rgba(245,197,24,0.08); border-left: 4px solid var(--yellow); padding: 20px 24px; margin: 0 0 40px; border-radius: 0 4px 4px 0; }
+    .takeaway-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 10px; }
+    .box-takeaway p { margin: 0; font-size: 18px; font-weight: 600; color: var(--white); line-height: 1.6; }
+
+    /* Footer */
+    footer { border-top: 1px solid rgba(255,255,255,0.07); padding: 32px 40px; text-align: center; font-size: 13px; color: var(--muted); max-width: 900px; margin: 0 auto; }
+    footer a { color: var(--muted); }
+
+    @media (max-width: 600px) {
+      nav, .article-wrap, footer { padding: 20px; }
+      .cta-section { padding: 32px 20px; }
+      .comp-table { font-size: 14px; }
+      .comp-table th, .comp-table td { padding: 10px 10px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="https://nis2klar.se/">NIS2<span>Klar</span></a>
+  <a class="nav-back" href="https://nis2klar.se/artiklar.html">← Alla artiklar</a>
+  <a class="nav-cta" href="https://nis2klar.se/#boka">Boka samtal →</a>
+</nav>
+
+<article class="article-wrap">
+  <div class="article-category">Utbildning &amp; Säkerhetshygien</div>
+  <h1>KnowBe4 vs Microsoft Viva: Säkerhetsutbildning och NIS2 Artikel 20</h1>
+  <div class="article-meta">Uppdaterad 19 april 2026 · Lästid: ca 9 minuter · Målgrupp: VD, Styrelse, Säkerhetschef</div>
+
+  <!-- SUMMARY -->
+  <div class="box-summary">
+    <div class="summary-label">Sammanfattning</div>
+    <ul>
+      <li><strong>NIS2 Artikel 20</strong> kräver dokumenterad säkerhetsutbildning för ledning och personal — den är ingen optional "bra att ha".</li>
+      <li>KnowBe4 fokuserar på <strong>phishing-simulering och mätbar beteendeförändring</strong> — ett verktyg som synliggör risk.</li>
+      <li>Microsoft Viva Learning är en <strong>LMS-plattform</strong> för kurser — lämplig för skalbar utbildning men inte automatisk incidentrapportering.</li>
+      <li>Frågan för din styrelsebeslut: Räcker det med ett verktyg eller behöver du båda för att bevisa Artikel 20-efterlevnad?</li>
+      <li>Tillsynsmyndigheten granskar utbildningsloggar, inte bara upplägg — du måste kunna visa vem som genomförde vad och när.</li>
+    </ul>
+  </div>
+
+  <!-- KEY TAKEAWAY -->
+  <div class="box-takeaway">
+    <div class="takeaway-label">Viktigaste slutsatsen</div>
+    <p>NIS2 Artikel 20 kräver inte ett specifikt verktyg. Det kräver dokumenterad träning i säkerhet och incidentrapportering för alla anställda — och styrelsegodkännande av det programmet. KnowBe4 och Microsoft Viva fyller olika funktioner; vilken du väljer beror på vad du redan har och vad du kan bevisa vid granskning.</p>
+  </div>
+
+  <!-- HOOK -->
+  <p>
+    Artikel 20 i NIS2 är kort och direkt: organisationen ska säkerställa att ledningen och personalen får <strong>adekvat säkerhetsutbildning</strong>. Det låter enkelt — tills du möter tillsynsmyndigheten och måste uppvisa bevis på att detta har skett, eller när en anställd faller för en phishing-attack trots att utbildning "gjorts".
+  </p>
+
+  <p>
+    Många organisationer tror att de uppfyller kravet genom att köpa en LMS-kurs och låta folk klicka igenom den en gång per år. Det räcker inte — och det blir mycket dyrt när tillsynen börjar fråga foljdfrågor.
+  </p>
+
+  <p>
+    Du står inför ett val: KnowBe4 (phishing-simulering, beteendebyte, enkelt rapporterbar) eller Microsoft Viva Learning (LMS-plattform, skalbar utbildning, integrerad i Microsoft 365). Eller båda?
+  </p>
+
+  <h2>Vad säger NIS2 Artikel 20 exakt?</h2>
+
+  <p>
+    Här är ordet för ordet från direktivet:
+  </p>
+
+  <blockquote>
+    "Väsentliga och viktiga entiteter ska genomföra ett säkerhetsmedvetandebeteende- och träningsprogram för att säkerställa att ledningen och personalen är medvetna om sina skyldigheter och ansvar när det gäller cybersäkerhet och incidentrapportering."
+  </blockquote>
+
+  <p>
+    Det finns fyra konkreta krav gömt i denna formulering:
+  </p>
+
+  <ol>
+    <li><strong>Ledningen måste få utbildning</strong> — inte bara IT-avdelningen</li>
+    <li><strong>All personal måste få utbildning</strong> — det är inte frivilligt</li>
+    <li><strong>Fokus på säkerhetsmedvetenhet och beteendeförändring</strong> — du mäter på aktion, inte bara genomläsningstid</li>
+    <li><strong>Incidentrapportering måste vara del av utbildningen</strong> — folk måste veta vad de ska göra när något inträffar</li>
+  </ol>
+
+  <p>
+    När tillsynsmyndigheten granskar dig frågar de:
+  </p>
+
+  <ul>
+    <li>Hur många timmar utbildning har varje anställd genomgått?</li>
+    <li>Var är utbildningsloggarna?</li>
+    <li>Hur mäter ni beteendeförändring?</li>
+    <li>Vilka kriterier användes för att välja utbildningsinnehål?</li>
+    <li>Hur ofta uppdateras utbildningen?</li>
+    <li>Dokumenterade styrelsen sitt godkännande av programmet?</li>
+  </ul>
+
+  <div class="box-warning">
+    <strong>Vanligt misstag:</strong> Att en gång skicka ut ett länk till en e-learning-kurs och tro att därmed är kravet uppfyllt. Tillsynen förväntar sig återkommande, dokumenterad träning — och bevis på att beteenden faktiskt förändrats, inte bara att folk klickat på en knapp.
+  </div>
+
+  <h2>KnowBe4 — phishing-simulering och beteendeförändring</h2>
+
+  <p>
+    KnowBe4 är ett verktyg byggt specifikt för <strong>målstyrd säkerhetsbeteendeförändring</strong>. Huvudfunktionen är phishing-simulering — du skickar förfalskade phishing-e-postmeddelanden till anställda och ser vem som klickar på länken, öppnar filen eller rapporterar den.
+  </p>
+
+  <h3>Hur fungerar det?</h3>
+
+  <p>
+    Du definierar en phishing-kampanj. KnowBe4 skickar den till målgrupper. Systemet registrerar automatiskt:
+  </p>
+
+  <ul>
+    <li>Vem som klickade på länken</li>
+    <li>Vem som öppnade bifogade fil</li>
+    <li>Vem som skickade personal data</li>
+    <li>Vem som rapporterade det som misstänkt (önskat beteende)</li>
+    <li>Tid för svar</li>
+    <li>Geografisk lokation (om aktiverat)</li>
+  </ul>
+
+  <p>
+    Dessa användare får då automatiskt en korrigerande mikroutbildning — oftast en 3–5 minuters video om varför denna typ av attack är farlig och hur man identifierar den nästa gång.
+  </p>
+
+  <h3>Rapportering och dokumentation</h3>
+
+  <p>
+    KnowBe4 genererar detaljerade rapporter:
+  </p>
+
+  <ul>
+    <li><strong>Department-nivå</strong> — vilken avdelning har störst sårbarhet?</li>
+    <li><strong>Individual-nivå</strong> — vem behöver mer träning?</li>
+    <li><strong>Trendanalys</strong> — förbättras säkerhetsbeteendet över tid?</li>
+    <li><strong>Risk-scoring</strong> — en övergripande "hygiennivå" för organisationen</li>
+  </ul>
+
+  <p>
+    Det viktiga för NIS2-efterlevnad: <strong>allt detta är redan dokumenterat och daterat</strong>. Du behöver inte manuellt spåra vem som fick vilken utbildning när — systemet gör det åt dig.
+  </p>
+
+  <h3>Vad KnowBe4 är bra på för Artikel 20</h3>
+
+  <ul>
+    <li><strong>Mätbar beteendeförändring</strong> — phishing-klickfrekvensen faller ofta från 30–40 % till under 5 % på 3–6 månader</li>
+    <li><strong>Enkel rapportering till styrelse</strong> — "vår risk-score var 7,2 förra året, nu är den 2,8"</li>
+    <li><strong>Automatisk dokumentation</strong> — ingen manuell utbildningslogg som kan kritiseras</li>
+    <li><strong>Löpande träning</strong> — simuleringar kan köras varje månad, inte bara årligt</li>
+    <li><strong>Incidentrapportering-fokus</strong> — systemet odlar kultur där folk rapporterar misstänkta e-postmeddelanden (nyckelkrav för NIS2 Artikel 23)</li>
+  </ul>
+
+  <h3>Begränsningar av KnowBe4</h3>
+
+  <ul>
+    <li><strong>Phishing är en försmak av den delen av risken</strong> — det täcker inte ransomware-medvetenhet, dataskydd, lösenordshantering, GDPR, etcetera</li>
+    <li><strong>Behöver ett komplement</strong> — för att täcka alla aspekter av "säkerhetsmedvetenhet" enligt Artikel 20 kan du behöva låta KnowBe4 + en LMS arbeta tillsammans</li>
+    <li><strong>Fokus på end-users</strong> — utbildning för ledning kan behövas via ett annat format (policy-genomgångar, styrelsesamtal)</li>
+  </ul>
+
+  <h2>Microsoft Viva Learning — LMS-plattform för skalbar utbildning</h2>
+
+  <p>
+    Microsoft Viva Learning är en <strong>Learning Management System (LMS)</strong> som är inbyggd i Microsoft Teams. Det är en plattform för att dela, spåra och slutföra utbildningskurser.
+  </p>
+
+  <h3>Hur fungerar det?</h3>
+
+  <p>
+    Som organisations-admin kan du:
+  </p>
+
+  <ul>
+    <li>Skapa eller importera utbildningskurser</li>
+    <li>Tilldela kurser till anställda eller grupper</li>
+    <li>Ställa tidsfrister för slutförande</li>
+    <li>Spåra vilka som har slutfört kursen och vilka som inte har</li>
+    <li>Integrera innehål från externa leverantörer (LinkedIn Learning, Coursera, tredjepartsverktyg)</li>
+  </ul>
+
+  <p>
+    Systemet lagrar automatiskt loggar över:
+  </p>
+
+  <ul>
+    <li>Vem som tilldelades kursen</li>
+    <li>Vem som startade kursen</li>
+    <li>Tidpunkt för slutförande</li>
+    <li>Quiz-resultat (om kursen innehåller test)</li>
+  </ul>
+
+  <h3>Rapportering och dokumentation</h3>
+
+  <p>
+    Viva Learning genererar rapporter om:
+  </p>
+
+  <ul>
+    <li>Utbildningsöversikt per anställd</li>
+    <li>Kurskompletteringsgrad per department</li>
+    <li>Efterfrågade kurser och populära ämnen</li>
+  </ul>
+
+  <h3>Vad Microsoft Viva är bra på för Artikel 20</h3>
+
+  <ul>
+    <li><strong>Skalbarhet</strong> — du kan träna 100 eller 10 000 anställda via samma plattform</li>
+    <li><strong>Integration med Microsoft 365</strong> — ingen ny login för slut-users, allt är i Teams</li>
+    <li><strong>Bredare innehål</strong> — phishing är bara en del; du kan träna på dataskydd, incidentrapportering, GDPR, regelefterlevnad — allt på en plattform</li>
+    <li><strong>Officiell dokumentation</strong> — varje kurs, tilldelning och slutförande sparas i Microsoft-systemet med Full spårning</li>
+    <li><strong>Varierande format</strong> — text, video, interaktiv innehål — anpassat till olika lärstilar</li>
+  </ul>
+
+  <h3>Begränsningar av Microsoft Viva</h3>
+
+  <ul>
+    <li><strong>Passiv inlärning</strong> — folk klickar igenom kursen, men det säger inget om de faktiskt förändrar sitt beteende</li>
+    <li><strong>Ingen automatisk feedback-loop</strong> — Viva spårar slutförande, men inte om någon faktiskt tillämpade det de lärt sig</li>
+    <li><strong>Kräver manuell kursdesign</strong> — du måste själv eller anlita en konsult för att designa kurser som är relevanta för din organisation</li>
+    <li><strong>Svårare att argumentera för värde utan beteendeindikatorer</strong> — "100 % av folk avslutade kursen" är svagare än "phishing-klickfrekvensen sjönk från 35 % till 2 %"</li>
+  </ul>
+
+  <h2>Direktjämförelse — vad som räknas för NIS2</h2>
+
+  <table class="comp-table">
+    <thead>
+      <tr>
+        <th>Kriterium</th>
+        <th>KnowBe4</th>
+        <th>Microsoft Viva Learning</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Dokumenterar individuell träning</strong></td>
+        <td class="check">✓ Ja, automatisk</td>
+        <td class="check">✓ Ja, automatisk</td>
+      </tr>
+      <tr>
+        <td><strong>Mäter beteendeförändring</strong></td>
+        <td class="check">✓ Ja (phishing-klick)</td>
+        <td class="cross">✗ Nej, bara slutförande</td>
+      </tr>
+      <tr>
+        <td><strong>Täcker all säkerhet</strong></td>
+        <td class="cross">✗ Fokus på phishing</td>
+        <td class="check">✓ Alla ämnen möjliga</td>
+      </tr>
+      <tr>
+        <td><strong>Enkelt för styrelse att rapportera</strong></td>
+        <td class="check">✓ Risk-score, trender</td>
+        <td class="cross">~ OK, men låg-impact data</td>
+      </tr>
+      <tr>
+        <td><strong>Tränar inkl. ledning</strong></td>
+        <td class="cross">~ Phishing-fokus</td>
+        <td class="check">✓ Alla nivåer</td>
+      </tr>
+      <tr>
+        <td><strong>Integrerat med din teknikstack</strong></td>
+        <td class="cross">~ Separat verktyg</td>
+        <td class="check">✓ Teams + Microsoft 365</td>
+      </tr>
+      <tr>
+        <td><strong>Automatisk incidentrapportering-kultur</strong></td>
+        <td class="check">✓ Järn-inkluderad</td>
+        <td class="cross">✗ Behöver manuell setup</td>
+      </tr>
+      <tr>
+        <td><strong>Kostnad för små orgs (&lt;250 anställda)</strong></td>
+        <td class="cross">~ Högre per capita</td>
+        <td class="check">✓ Redan i M365</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="box-info">
+    <strong>Tolkning för din styrelse:</strong> KnowBe4 är ett "proof-of-concept"-verktyg som är bra på en sak — att visa mätbar förändring i säkerhetsbeteende. Microsoft Viva är ett "allround"-verktyg som är bra på att dokumentera att utbildning skedde, men mindre bra på att bevisa att folk faktiskt ändrat sitt beteende. För NIS2 Artikel 20 behöver du troligen båda eller ett tredje verktyg som kombinerar deras styrkor.
+  </div>
+
+  <h2>Vad tillsynsmyndigheten faktiskt granskar</h2>
+
+  <p>
+    MSB och sektorsspecifika tillsynsorgan fokuserar på tre frågor när de granskar Artikel 20-efterlevnad:
+  </p>
+
+  <h3>1. Finns det ett dokumenterat utbildningsprogram?</h3>
+
+  <p>
+    Du måste kunna uppvisa:
+  </p>
+
+  <ul>
+    <li>En säkerhetspolicy som är godkänd av styrelsen</li>
+    <li>En utbildningsplan som definierar vad som ska tränas, hur ofta, och för vilka grupper</li>
+    <li>Styrelsebeslut om att detta godkänts (Artikel 20 kräver detta explicit)</li>
+  </ul>
+
+  <p>
+    <strong>KnowBe4 + Viva:</strong> Du kan använda Viva för att dokumentera programmet och KnowBe4 för att köra det löpande.
+  </p>
+
+  <h3>2. Finns det loggar som visar att träningen genomfördes?</h3>
+
+  <p>
+    Du måste kunna uppvisa:
+  </p>
+
+  <ul>
+    <li>Utbildningsloggar med namn, datum, kurs, resultat</li>
+    <li>Bevis på att ledningen fick träning (separat från personal)</li>
+    <li>Uppgifter om vilka som missade träning och varför (eller att de inte tilldelades)</li>
+  </ul>
+
+  <p>
+    <strong>KnowBe4 + Viva:</strong> Båda verktyg lagrar dessa data automatiskt. Om du bara använder ett, riskar du att inte kunna demonstrera helhet.
+  </p>
+
+  <h3>3. Finns det indikatorer på att beteendet faktiskt förändrades?</h3>
+
+  <p>
+    Här är punkten där många organisationer misslyckas. Tillsynen frågade:
+  </p>
+
+  <ul>
+    <li>Hur mäter ni säkerhetsbeteende före och efter utbildning?</li>
+    <li>Vad är er baslinjerisknivå för phishing?</li>
+    <li>Hur ofta rapporteras misstänkta e-postmeddelanden till säkerhet?</li>
+    <li>Hur många incidents hade orsakats av felaktiga användarbeslut innan utbildningen?</li>
+  </ul>
+
+  <p>
+    <strong>KnowBe4 + Viva:</strong> Know

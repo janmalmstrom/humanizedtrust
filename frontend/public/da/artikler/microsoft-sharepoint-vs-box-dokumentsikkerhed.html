@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-BKF3QH9K01"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag("js", new Date());
+    gtag("config", "G-BKF3QH9K01");
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Microsoft SharePoint vs. Box: Dokumentsikkerhed til NIS2 | NIS2Klar</title>
+  <meta name="description" content="Sammenligning af SharePoint og Box til sikkerhed af følsomt dokumenter under NIS2. Adgangskontrol, kryptering, revidering og dataplacering — hvad kræver loven?">
+  <meta property="og:title" content="Microsoft SharePoint vs. Box: Dokumentsikkerhed til NIS2">
+  <meta property="og:description" content="Sammenligning af SharePoint og Box til sikkerhed af følsomt dokumenter under NIS2. Adgangskontrol, kryptering, revidering og dataplacering — hvad kræver loven?">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #141416;
+      --card: #1c1c1f;
+      --yellow: #f5c518;
+      --white: #f0f0f0;
+      --muted: #888;
+      --red: #C61212;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: var(--bg); color: var(--white); font-family: 'Barlow', sans-serif; font-size: 19px; line-height: 1.8; }
+
+    /* Nav */
+    nav { display: flex; justify-content: space-between; align-items: center; padding: 20px 40px; border-bottom: 1px solid rgba(255,255,255,0.07); max-width: 900px; margin: 0 auto; gap: 16px; flex-wrap: wrap; }
+    .nav-logo { font-family: 'Poppins', sans-serif; font-weight: 900; font-size: 20px; color: var(--yellow); text-decoration: none; }
+    .nav-logo span { color: var(--white); }
+    .nav-back { color: var(--muted); text-decoration: none; font-size: 15px; }
+    .nav-back:hover { color: var(--white); }
+    .lang-switcher { display: flex; gap: 8px; align-items: center; font-size: 13px; font-family: 'Poppins', sans-serif; margin-left: auto; }
+    .nav-cta { background: var(--yellow); color: #000; padding: 8px 18px; border-radius: 4px; text-decoration: none; font-weight: 700; font-size: 14px; font-family: 'Poppins', sans-serif; }
+
+    /* Article */
+    .article-wrap { max-width: 760px; margin: 0 auto; padding: 60px 40px; }
+    .article-category { font-size: 13px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 16px; }
+    h1 { font-family: 'Poppins', sans-serif; font-size: clamp(30px, 4vw, 44px); font-weight: 900; line-height: 1.2; margin-bottom: 24px; }
+    .article-meta { font-size: 15px; color: var(--muted); margin-bottom: 48px; padding-bottom: 24px; border-bottom: 1px solid rgba(255,255,255,0.07); }
+    h2 { font-family: 'Poppins', sans-serif; font-size: 26px; font-weight: 700; margin: 48px 0 16px; color: var(--white); }
+    h3 { font-family: 'Poppins', sans-serif; font-size: 20px; font-weight: 600; margin: 32px 0 12px; color: var(--yellow); }
+    p { margin-bottom: 22px; }
+    strong { color: var(--white); font-weight: 700; }
+    .highlight { color: var(--yellow); font-weight: 700; }
+    .danger { color: #ff6b6b; font-weight: 700; }
+    ul, ol { margin: 16px 0 24px 24px; }
+    li { margin-bottom: 12px; font-size: 19px; }
+
+    /* Callout boxes */
+    .box-warning { background: rgba(197,17,17,0.12); border-left: 4px solid var(--red); padding: 20px 24px; margin: 32px 0; border-radius: 0 4px 4px 0; }
+    .box-info { background: rgba(245,197,24,0.08); border-left: 4px solid var(--yellow); padding: 20px 24px; margin: 32px 0; border-radius: 0 4px 4px 0; }
+    .box-case { background: var(--card); border: 1px solid rgba(255,255,255,0.08); padding: 28px; margin: 40px 0; border-radius: 4px; }
+    .box-case .case-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 12px; }
+    blockquote { border-left: 3px solid var(--yellow); padding: 12px 20px; margin: 24px 0; font-style: italic; color: #ccc; }
+
+    /* CTA */
+    .cta-section { background: var(--card); border: 1px solid rgba(245,197,24,0.2); border-radius: 4px; padding: 48px 40px; margin: 64px 0 40px; text-align: center; }
+    .cta-section h2 { margin-top: 0; font-size: 26px; }
+    .cta-section p { color: #aaa; max-width: 500px; margin: 0 auto 28px; }
+    .btn-primary { display: inline-block; background: var(--yellow); color: #000; font-family: 'Poppins', sans-serif; font-weight: 800; font-size: 16px; padding: 16px 36px; border-radius: 4px; text-decoration: none; }
+    .btn-primary:hover { background: #e0b010; }
+    .cta-fine { font-size: 13px; color: var(--muted); margin-top: 16px; }
+
+    /* FAQ */
+    .faq-item { border-bottom: 1px solid rgba(255,255,255,0.07); padding: 20px 0; }
+    .faq-q { font-family: 'Poppins', sans-serif; font-weight: 600; margin-bottom: 10px; }
+    .faq-a { color: #bbb; }
+
+    /* Comparison table */
+    .comparison-table { width: 100%; border-collapse: collapse; margin: 24px 0; }
+    .comparison-table th { background: rgba(245,197,24,0.1); color: var(--yellow); font-family: 'Poppins', sans-serif; font-size: 13px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 12px 16px; text-align: left; border-bottom: 1px solid rgba(245,197,24,0.2); }
+    .comparison-table td { padding: 14px 16px; border-bottom: 1px solid rgba(255,255,255,0.05); font-size: 15px; }
+    .comparison-table tr:last-child td { border-bottom: none; }
+    .comparison-table .checkmark { color: #4ade80; font-weight: 700; }
+    .comparison-table .x { color: #ff6b6b; font-weight: 700; }
+    .comparison-table .partial { color: var(--yellow); font-weight: 700; }
+
+    /* Summary + Key Takeaway */
+    .box-summary { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; padding: 24px 28px; margin: 0 0 32px; }
+    .summary-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-bottom: 14px; }
+    .box-summary ul { margin: 0; padding-left: 20px; }
+    .box-summary li { margin-bottom: 8px; font-size: 17px; color: #ccc; }
+    .box-takeaway { background: rgba(245,197,24,0.08); border-left: 4px solid var(--yellow); padding: 20px 24px; margin: 0 0 40px; border-radius: 0 4px 4px 0; }
+    .takeaway-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 10px; }
+    .box-takeaway p { margin: 0; font-size: 18px; font-weight: 600; color: var(--white); line-height: 1.6; }
+
+    /* Footer */
+    footer { border-top: 1px solid rgba(255,255,255,0.07); padding: 32px 40px; text-align: center; font-size: 13px; color: var(--muted); max-width: 900px; margin: 0 auto; }
+    footer a { color: var(--muted); }
+
+    /* Related articles */
+    .related-articles { margin: 2.5rem 0 2rem; padding: 1.5rem; background: #1a1a2e; border-left: 4px solid #f0a500; border-radius: 4px; max-width: 760px; margin-left: auto; margin-right: auto; }
+    .related-articles p { margin-bottom: 0; }
+    .related-articles ul { list-style: none; padding: 0; margin: 1rem 0; }
+    .related-articles li { margin-bottom: 0.5rem; }
+    .related-articles a { color: #e0e0e0; text-decoration: none; font-size: 0.95rem; }
+    .related-articles a:hover { color: var(--yellow); }
+
+    @media (max-width: 600px) {
+      nav, .article-wrap, footer { padding: 20px; }
+      nav { flex-direction: column; align-items: flex-start; }
+      .lang-switcher { margin-left: 0; margin-top: 8px; }
+      .cta-section { padding: 32px 20px; }
+      .comparison-table { font-size: 14px; }
+      .comparison-table th, .comparison-table td { padding: 10px 10px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="https://nis2klar.se/da/">NIS2<span>Klar</span></a>
+  <a class="nav-back" href="https://nis2klar.se/da/artikler.html">← Alle artikler</a>
+  <div class="lang-switcher">
+    <a href="https://nis2klar.se/artiklar.html" style="color:#888;text-decoration:none;font-weight:600;padding:4px 8px;border-radius:3px;" title="Svenska">SV</a>
+    <a href="https://nis2klar.se/en/articles.html" style="color:#888;text-decoration:none;font-weight:600;padding:4px 8px;border-radius:3px;" title="English">EN</a>
+    <a href="https://nis2klar.se/da/artikler.html" style="color:#f5c518;text-decoration:none;font-weight:600;padding:4px 8px;border-radius:3px;background:rgba(245,197,24,0.1);" title="Dansk">DA</a>
+    <a href="https://nis2klar.se/no/artikler.html" style="color:#888;text-decoration:none;font-weight:600;padding:4px 8px;border-radius:3px;" title="Norsk">NO</a>
+    <a href="https://nis2klar.se/it/articoli.html" style="color:#888;text-decoration:none;font-weight:600;padding:4px 8px;border-radius:3px;" title="Italiano">IT</a>
+  </div>
+  <a class="nav-cta" href="https://nis2klar.se/da/#boka">Book samtale →</a>
+</nav>
+
+<article class="article-wrap">
+  <div class="article-category">Tekniske Løsninger &amp; Compliance</div>
+  <h1>Microsoft SharePoint vs. Box: Dokumentsikkerhed til NIS2</h1>
+  <div class="article-meta">19. april 2026 · Lästid: ca 8 minutter · Målgruppe: Direktører &amp; bestyrelser</div>
+
+  <!-- SUMMARY -->
+  <div class="box-summary">
+    <div class="summary-label">Kort opsummering</div>
+    <ul>
+      <li>NIS2 kræver, at følsomt operativt dokumenter er beskyttet med adgangskontrol, kryptering og revidering.</li>
+      <li>SharePoint og Box dækker begge grundlæggende krav, men på forskellige måder — og til forskellige omkostninger.</li>
+      <li>Valget handler ikke kun om features — det handler om, hvad du kan dokumentere over for CFCS ved tilsyn.</li>
+      <li>En forkert platformvalg kan lede til kostbar migrering senere eller til sanktioner, hvis data bliver kompromitteret.</li>
+    </ul>
+  </div>
+
+  <!-- KEY TAKEAWAY -->
+  <div class="box-takeaway">
+    <div class="takeaway-label">Vigtigste slutsats</div>
+    <p>SharePoint giver dig dybere integration med Microsoft-økosystemet og bedre revidering til compliance; Box giver dig enkelhed og sikre ekstern deling. For NIS2-covered organisationer er det afgørende at vide, hvilke dokumenter der er in-scope — derefter følger platformvalget.</p>
+  </div>
+
+  <!-- OPENING -->
+  <p>
+    Du har sensible operativt dokumenter — risikovurderinger, incidentrapporter, leverandørkontrakter, sikkerhedsplaner.
+    Under NIS2 skal disse dokumenter være beskyttet med adgangskontrol, kryptering og fuld revidering af, hvem der har set og redigeret dem.
+  </p>
+
+  <p>
+    Dit valg af dokumentplatform handler ikke kun om, hvad virker godt — det handler om, hvad du kan <strong>bevise</strong> virker, når CFCS eller en anden tilsynsmyndighed banker på døren.
+  </p>
+
+  <p>
+    I denne guide sammenligner vi Microsoft SharePoint og Box på fem afgørende NIS2-dimensioner. Du får svar på, hvilken der passer til dit setup — og hvad du skal se efter før du vælger.
+  </p>
+
+  <h2>Hvad kræver NIS2 af dokumentsikkerhed?</h2>
+
+  <p>
+    NIS2-loven (Lov nr. 1120 af 2023) henviser ikke direkte til "SharePoint" eller "Box". Den kræver, at væsentlige og vigtige enheder implementerer <strong>Artikel 21</strong>-tiltag. Tre af disse er centrale for dokumenthåndtering:
+  </p>
+
+  <ul>
+    <li><strong>Tilgangskontrol:</strong> Hvem må se, redigere og slette dokumenter? Dette skal være begrænset til dem, der skal det.</li>
+    <li><strong>Kryptering:</strong> Data skal være krypteret både i hvile og under transmission.</li>
+    <li><strong>Revidering og logning:</strong> Alle adganger, ændringer og sletninger skal være registreret og gennemtracerbare.</li>
+  </ul>
+
+  <p>
+    Herudover kræves <strong>dataremanens</strong> — du skal vide, hvor dine dokumenter er gemt fysisk, og at de ikke spreader sig til uautoriserede geografiske områder.
+  </p>
+
+  <div class="box-info">
+    <strong>NIS2-rammen er neutral:</strong> Loven foreskriver ikke en bestemt softwareløsning. Den kræver, at du kan dokumentere, at tekniske og organisatoriske foranstaltninger er på plads. Det betyder, at både SharePoint og Box kan være compliant — hvis de bruges rigtigt.
+  </div>
+
+  <h2>SharePoint vs. Box: Sammenligning på fem nøgledimensioner</h2>
+
+  <p>
+    Her er en direkte sammenligning. Vi fokuserer på, hvad der betyder noget for NIS2-compliance.
+  </p>
+
+  <table class="comparison-table">
+    <thead>
+      <tr>
+        <th>Dimension</th>
+        <th>SharePoint</th>
+        <th>Box</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Adgangskontrol</strong></td>
+        <td><span class="checkmark">✓</span> Høj granularitet via Azure AD. Betinget adgang baseret på enhedstype, placering, risiko.</td>
+        <td><span class="checkmark">✓</span> Godt fungerede roller, men mindre dyb betinget logik uden ekstra integrationer.</td>
+      </tr>
+      <tr>
+        <td><strong>Kryptering i hvile &amp; transit</strong></td>
+        <td><span class="checkmark">✓</span> AES-256 by default. Integreret med Azure Key Vault for nøglehåndtering.</td>
+        <td><span class="checkmark">✓</span> AES-256 by default. Transportkryptering over TLS 1.2+.</td>
+      </tr>
+      <tr>
+        <td><strong>Revidering &amp; logning</strong></td>
+        <td><span class="checkmark">✓</span> Omfattende. Kan tracere hver handling til bruger, tidspunkt, enhed. Integreres med SIEM-værktøjer.</td>
+        <td><span class="partial">△</span> God, men mindre detaljeret uden premium log API'er. Mindre egnet til dybde compliance-analyser.</td>
+      </tr>
+      <tr>
+        <td><strong>Ekstern deling &amp; kontrol</strong></td>
+        <td><span class="partial">△</span> Kan dele, men kræver omhu. Lettes med Teams-integration, men åbner for risiko, hvis ikke kontrolleret.</td>
+        <td><span class="checkmark">✓</span> Designet til sikker ekstern deling. Granular adgangskontrol over eksterne brugere, udløbsdatoer, betingelser.</td>
+      </tr>
+      <tr>
+        <td><strong>Dataplacering &amp; suverænitet</strong></td>
+        <td><span class="checkmark">✓</span> Data kan placeres i EU-datacentre (Microsoft EU Data Boundary). Kontrollér regionen ved opsætning.</td>
+        <td><span class="partial">△</span> Præsenterer sig som EU-centrebaseret, men har nogle backupoperationer uden for EU. Kræver skriftlig aftale for garanterede EU-placering.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>Dimension 1: Adgangskontrol — Hvem må se hvad?</h2>
+
+  <p>
+    Under NIS2 skal du kunne dokumentere, at adgangen til følsomme dokumenter er begrænset til personer, der har et arbejdsbehov.
+  </p>
+
+  <h3>SharePoint-tilgangen</h3>
+  <p>
+    SharePoint integreres dybt med Azure AD (nu kaldet Entra ID). Det betyder, at du kan:
+  </p>
+
+  <ul>
+    <li>Sætte betingede adgangspolitikker baseret på enhedstype (kun virksomhedscomputere), placering (kun fra Danmark) og risikoprofil.</li>
+    <li>Bruge rollebaseret adgangskontrol (RBAC) med granulare tilladelser.</li>
+    <li>Implementere multi-faktor godkendelse (MFA) obligatorisk for adgang til sensitive samlinger.</li>
+  </ul>
+
+  <p>
+    Det betyder også, at der er færre "løse ender" — du styrer det hele gennem en enkelt katalog.
+  </p>
+
+  <h3>Box-tilgangen</h3>
+  <p>
+    Box tilbyder også rollebaseret adgangskontrol, men uden samme tæthed af betingede politikker. Du kan sige "denne gruppe af brugere har edit-rettigheder til denne mappe" — men det er vanskeligere at sige "kun hvis de logger ind fra en virksomhedsenhed i Danmark".
+  </p>
+
+  <p>
+    Box kompenserer ved at være simpelt at konfigurere og ved at have eksplicit support til at fjerne adgang på tværs af alle delte dokumenter samtidigt.
+  </p>
+
+  <div class="box-warning">
+    <strong>Ad-hoc deling uden overvågning:</strong> Både SharePoint og Box lider af samme problem — brugere kan deles mere adgang, end de skal. SharePoint's Entra ID-integration gør det lettere at opsætte <em>systemiske</em> begrænsninger; Box afhænger mere af, at administratorer manuelt vedligeholder adgangen.
+  </div>
+
+  <h2>Dimension 2: Kryptering — I hvile og under transmission</h2>
+
+  <p>
+    NIS2 kræver kryptering af følsomt data. Både SharePoint og Box dækker det:
+  </p>
+
+  <ul>
+    <li><strong>Kryptering i hvile:</strong> Begge bruger AES-256 standardmæssigt.</li>
+    <li><strong>Kryptering under transmission:</strong> Begge tvinger TLS 1.2+ over netværket.</li>
+  </ul>
+
+  <p>
+    Forskellen ligger i nøglehåndtering. SharePoint integreres med Azure Key Vault, som betyder, at du kan administrere krypteringsnøgler centralt og rotere dem efter sikkerhedsplanen. Box tillader det også, men det kræver dyrere betalingsplaner og manuel integration.
+  </p>
+
+  <h3>Praktisk konsekvens for compliance</h3>
+  <p>
+    Hvis du skal dokumentere, at en bestemt dokument var krypteret på en bestemt dato, eller hvis du skal rotere alle krypteringsnøgler efter en sikkerhedshændelse, er SharePoint nemmere.
+  </p>
+
+  <p>
+    Hvis du bare skal sikre dig, at dokumenterne er krypteret, og du stiller ikke dybe spørgsmål til nøglehåndtering, er Box tilstrækkelig.
+  </p>
+
+  <h2>Dimension 3: Revidering og logning — Kunnen du bevise, hvad der skete?</h2>
+
+  <p>
+    Dette er måske den vigtigste dimension for NIS2-compliance.
+  </p>
+
+  <p>
+    Når der sker en sikkerhedshændelse — eller når CFCS gransker dig — vil de spørge: "Hvem havde adgang? Hvad ændrede de? Hvornår?" Du skal kunne svare præcist.
+  </p>
+
+  <h3>SharePoint's revideringsevne</h3>
+  <p>
+    SharePoint logfører alt:
+  </p>
+
+  <ul>
+    <li>Hvem der åbnede dokumentet, hvornår og fra hvilken IP-adresse.</li>
+    <li>Hvem der ændrede det, hvilke dele der blev ændret.</li>
+    <li>Hvem der sletted det, og hvornår.</li>
+  </ul>
+
+  <p>
+    Disse logs kan eksporteres til en SIEM-løsning (Security Information and Event Management) for dybere analyse. For væsentlige enheder er det næsten en forudsætning — du har for mange dokumenter til at granske manuelt.
+  </p>
+
+  <h3>Box's revideringsevne</h3>
+  <p>
+    Box tilbyder også revideringslogger, men de er mindre detaljerede som standard. Du kan se "bruger X åbnede dokument Y" — men uden integration til en SIEM-løsning er det svært at søge på tværs af tusindvis af dokumenter.
+  </p>
+
+  <p>
+    Box har en API til avanceret logging, men det kræver udvikling og ekstra vedligeholdelse.
+  </p>
+
+  <div class="box-case">
+    <div class="case-label">Praksisgennembrud</div>
+    <p>
+      <strong>Scenarie: En direktør i en dansk bankvirksomhed klassificeret som væsentlig entitet opdager uautoriseret adgang til et højtklassificeret risikovurderingsdokument.</strong>
+    </p>
+    <p>
+      Med SharePoint kan compliance-teamet inden for minutter eksportere en log, der viser:
+    </p>
+    <ul style="font-size: 17px;">
+      <li>Bruger "Lars.Jensen@bank.dk" åbnede dokumentet 3. april kl. 14:23 fra IP 203.0.113.45 (Starbucks, København, ikke-virksomhedsenhed)</li>
+      <li>Dokumentet blev downloadet og kopieret til USB-drev</li>
+      <li>Tre minutter senere blev adgangen tilbagekaldt af administrator</li>
+    </ul>
+    <p>
+      Det bevis kan straks gives til tilsynsmyndighed og indgå i incidentrapport. Uden SharePoints dybde revidering ville man kun vide "nogen åbnede dokumentet" — og kunne ikke påvise hvor eller under hvilke omstændigheder.
+    </p>
+    <p>
+      Med Box ville processen være længere og kræve manuel log-parsing — eller omkostningsmæssig udvikling.
+    </p>
+  </div>
+
+  <h2>Dimension 4: Ekstern deling — Hvordan deles dokumenter sikkert?</h2>
+
+  <p>
+    I en NIS2-kontekst deles operativt dokumenter ofte med:
+  </p>
+
+  <ul>
+    <li>Revisorer og ekstern konsulentfirmaer</li>
+    <li>Leverandører (sikkerhedsauditter, IT-underbygning)</li>
+    <li>Offentlige myndigheder</li>
+  </ul>
+
+  <p>
+    Problemet: Når du deler, mister du kontrol. En revisor der downloader dokumentet og mailer det til en assistent uden din vidende eksponerer dig for databrud.
+  </p>
+
+  <h3>SharePoint's deling</h3>
+  <p>
+    SharePoint kan dele, men det sker ofte via Teams eller direkte link-deling. Hvis du ikke er opmærksom, kan dokumentet blive delt bredere end beregnet.
+  </p>
+
+  <p>
+    Kontrollen ligger hos organisationen, ikke platformen.
+  </p>
+
+  <h3>Box's deling — den stærke side</h3>
+  <p>
+    Box er designet fra grunden af til sikker ekstern deling. Du kan:
+  </p>
+
+  <ul>
+    <li>Sætte særlige deling med udløbsdato (linket gælder kun til 15. maj).</li>
+    <li>Kræve adgangskode (yderligere sikkerhed).</li>
+    <li>Tracere alle eksterne dele — hvem fik hvad, hvornår.</li>
+    <li>Tilbagekalde deling med øjeblikkelig virkning.</li>
+  </ul>
+
+  <p>
+    For organisationer, der deler mange dokumenter eksternt med kontrollerede parter, er Box stærkere.
+  </p>
+
+  <h2>Dimension 5: Dataplacering og geografisk suverænitet</h2>
+
+  <p>
+    NIS2 stiller ikke eksplicit krav om, at danske data skal blive i Danmark. Men mange danske direktører og bestyrelser ønsker — af politiske eller aftalemæssige grunde — at vide præcis hvor data opbevares.
+  </p>
+
+  <h3>SharePoint og EU Data Boundary</h3>
+  <p>
+    Microsoft tilbyder EU Data Boundary, som er en garanti om, at data opbevares i EU-datacentre (typisk Tyskland, Frankrig, eller Italien — ikke nødvendigvis Danmark).
+  </p>
+
+  <p>
+    Dette kan aktiveres ved opsætning og er dokumenteret.
+  </p>
+
+  <h3>Box og dataplacering</h3>
+  <p>
+    Box markedsfører sig som EU-baseret, men opholder sig ikke til absolutt kun EU-datacentre til alle operationer. Der kan være backups eller processeringsoperationer uden for EU.
+  </p>
+
+  <p>

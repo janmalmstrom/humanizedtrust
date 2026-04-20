@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-BKF3QH9K01"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag("js", new Date());
+    gtag("config", "G-BKF3QH9K01");
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Strategia Cyber NIS2: Migliori Pratiche per CdA e CEO | NIS2Klar</title>
+  <meta name="description" content="Come costruire una strategia di cybersicurezza a livello di consiglio di amministrazione che soddisfi NIS2. Risk appetite, KPI, cadenza trimestrale e trigger di escalation.">
+  <meta property="og:title" content="Strategia Cyber NIS2: Migliori Pratiche per CdA e CEO">
+  <meta property="og:description" content="Come costruire una strategia di cybersicurezza a livello di consiglio di amministrazione che soddisfi NIS2. Risk appetite, KPI, cadenza trimestrale e trigger di escalation.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #141416;
+      --card: #1c1c1f;
+      --yellow: #f5c518;
+      --white: #f0f0f0;
+      --muted: #888;
+      --red: #C61212;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: var(--bg); color: var(--white); font-family: 'Barlow', sans-serif; font-size: 19px; line-height: 1.8; }
+
+    /* Nav */
+    nav { display: flex; justify-content: space-between; align-items: center; padding: 20px 40px; border-bottom: 1px solid rgba(255,255,255,0.07); max-width: 900px; margin: 0 auto; }
+    .nav-logo { font-family: 'Poppins', sans-serif; font-weight: 900; font-size: 20px; color: var(--yellow); text-decoration: none; }
+    .nav-logo span { color: var(--white); }
+    .nav-back { color: var(--muted); text-decoration: none; font-size: 15px; }
+    .nav-back:hover { color: var(--white); }
+    .nav-cta { background: var(--yellow); color: #000; padding: 8px 18px; border-radius: 4px; text-decoration: none; font-weight: 700; font-size: 14px; font-family: 'Poppins', sans-serif; }
+
+    /* Article */
+    .article-wrap { max-width: 760px; margin: 0 auto; padding: 60px 40px; }
+    .article-category { font-size: 13px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 16px; }
+    h1 { font-family: 'Poppins', sans-serif; font-size: clamp(30px, 4vw, 44px); font-weight: 900; line-height: 1.2; margin-bottom: 24px; }
+    .article-meta { font-size: 15px; color: var(--muted); margin-bottom: 48px; padding-bottom: 24px; border-bottom: 1px solid rgba(255,255,255,0.07); }
+    h2 { font-family: 'Poppins', sans-serif; font-size: 26px; font-weight: 700; margin: 48px 0 16px; color: var(--white); }
+    h3 { font-family: 'Poppins', sans-serif; font-size: 20px; font-weight: 600; margin: 32px 0 12px; color: var(--yellow); }
+    p { margin-bottom: 22px; }
+    strong { color: var(--white); font-weight: 700; }
+    .highlight { color: var(--yellow); font-weight: 700; }
+    .danger { color: #ff6b6b; font-weight: 700; }
+    ul, ol { margin: 16px 0 24px 24px; }
+    li { margin-bottom: 12px; font-size: 19px; }
+
+    /* Callout boxes */
+    .box-warning { background: rgba(197,17,17,0.12); border-left: 4px solid var(--red); padding: 20px 24px; margin: 32px 0; border-radius: 0 4px 4px 0; }
+    .box-info { background: rgba(245,197,24,0.08); border-left: 4px solid var(--yellow); padding: 20px 24px; margin: 32px 0; border-radius: 0 4px 4px 0; }
+    .box-case { background: var(--card); border: 1px solid rgba(255,255,255,0.08); padding: 28px; margin: 40px 0; border-radius: 4px; }
+    .box-case .case-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 12px; }
+    blockquote { border-left: 3px solid var(--yellow); padding: 12px 20px; margin: 24px 0; font-style: italic; color: #ccc; }
+
+    /* CTA */
+    .cta-section { background: var(--card); border: 1px solid rgba(245,197,24,0.2); border-radius: 4px; padding: 48px 40px; margin: 64px 0 40px; text-align: center; }
+    .cta-section h2 { margin-top: 0; font-size: 26px; }
+    .cta-section p { color: #aaa; max-width: 500px; margin: 0 auto 28px; }
+    .btn-primary { display: inline-block; background: var(--yellow); color: #000; font-family: 'Poppins', sans-serif; font-weight: 800; font-size: 16px; padding: 16px 36px; border-radius: 4px; text-decoration: none; }
+    .btn-primary:hover { background: #e0b010; }
+    .cta-fine { font-size: 13px; color: var(--muted); margin-top: 16px; }
+
+    /* FAQ */
+    .faq-item { border-bottom: 1px solid rgba(255,255,255,0.07); padding: 20px 0; }
+    .faq-q { font-family: 'Poppins', sans-serif; font-weight: 600; margin-bottom: 10px; }
+    .faq-a { color: #bbb; }
+
+    /* Fine table */
+    .fine-table { width: 100%; border-collapse: collapse; margin: 24px 0; }
+    .fine-table th { background: rgba(245,197,24,0.1); color: var(--yellow); font-family: 'Poppins', sans-serif; font-size: 13px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 12px 16px; text-align: left; border-bottom: 1px solid rgba(245,197,24,0.2); }
+    .fine-table td { padding: 14px 16px; border-bottom: 1px solid rgba(255,255,255,0.05); font-size: 15px; }
+    .fine-table tr:last-child td { border-bottom: none; }
+    .fine-table .amount { color: #ff6b6b; font-weight: 700; }
+
+    /* Summary + Key Takeaway */
+    .box-summary { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; padding: 24px 28px; margin: 0 0 32px; }
+    .summary-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-bottom: 14px; }
+    .box-summary ul { margin: 0; padding-left: 20px; }
+    .box-summary li { margin-bottom: 8px; font-size: 17px; color: #ccc; }
+    .box-takeaway { background: rgba(245,197,24,0.08); border-left: 4px solid var(--yellow); padding: 20px 24px; margin: 0 0 40px; border-radius: 0 4px 4px 0; }
+    .takeaway-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 10px; }
+    .box-takeaway p { margin: 0; font-size: 18px; font-weight: 600; color: var(--white); line-height: 1.6; }
+
+    /* Footer */
+    footer { border-top: 1px solid rgba(255,255,255,0.07); padding: 32px 40px; text-align: center; font-size: 13px; color: var(--muted); max-width: 900px; margin: 0 auto; }
+    footer a { color: var(--muted); }
+
+    @media (max-width: 600px) {
+      nav, .article-wrap, footer { padding: 20px; }
+      .cta-section { padding: 32px 20px; }
+      .fine-table { font-size: 14px; }
+      .fine-table th, .fine-table td { padding: 10px 10px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="https://nis2klar.se/it/">NIS2<span>Klar</span></a>
+  <a class="nav-back" href="https://nis2klar.se/it/articoli.html">← Tutti gli articoli</a>
+  <div class="lang-switcher" style="display:flex;gap:8px;align-items:center;font-size:13px;font-family:'Poppins',sans-serif;">
+    <a href="https://nis2klar.se/artiklar.html" style="color:#888;text-decoration:none;font-weight:600;padding:4px 8px;border-radius:3px;" title="Svenska">SV</a>
+    <a href="https://nis2klar.se/en/articles.html" style="color:#888;text-decoration:none;font-weight:600;padding:4px 8px;border-radius:3px;" title="English">EN</a>
+    <a href="https://nis2klar.se/da/artikler.html" style="color:#888;text-decoration:none;font-weight:600;padding:4px 8px;border-radius:3px;" title="Dansk">DA</a>
+    <a href="https://nis2klar.se/no/artikler.html" style="color:#888;text-decoration:none;font-weight:600;padding:4px 8px;border-radius:3px;" title="Norsk">NO</a>
+    <a href="https://nis2klar.se/it/articoli.html" style="color:#f5c518;text-decoration:none;font-weight:600;padding:4px 8px;border-radius:3px;background:rgba(245,197,24,0.1);" title="Italiano">IT</a>
+  </div>
+  <a class="nav-cta" href="/nis2.html#boka">Prenota una chiamata →</a>
+</nav>
+
+<article class="article-wrap">
+  <div class="article-category">Governance &amp; Strategia</div>
+  <h1>Strategia Cyber NIS2: Migliori Pratiche per CdA e CEO</h1>
+  <div class="article-meta">Aggiornato il 17 aprile 2026 · Tempo di lettura: circa 9 minuti · Destinatari: CEO, Presidenti e Consiglieri di Amministrazione</div>
+
+  <!-- SUMMARY -->
+  <div class="box-summary">
+    <div class="summary-label">Sintesi</div>
+    <ul>
+      <li>Per CEO e membri del CdA di organizzazioni soggette al D.Lgs. 138/2024 che vogliono costruire una strategia cyber concreta a livello di vertice aziendale.</li>
+      <li>NIS2 non è un progetto IT: è un obbligo di governance che spetta all'organo di amministrazione approvare, monitorare e documentare.</li>
+      <li>I quattro pilastri di una strategia cyber conforme: risk appetite statement, KPI per il CdA, cadenza trimestrale di revisione e trigger di escalation definiti.</li>
+      <li>La responsabilità personale prevista dall'Art. 23 del D.Lgs. 138/2024 rende questo tema urgente per ogni singolo membro del consiglio.</li>
+    </ul>
+  </div>
+
+  <!-- KEY TAKEAWAY -->
+  <div class="box-takeaway">
+    <div class="takeaway-label">Conclusione chiave</div>
+    <p>Una strategia cyber NIS2 non si costruisce nel datacenter — si costruisce nella sala del consiglio. Il CdA deve approvare, misurare e riesaminare la postura di sicurezza dell'organizzazione. Chi non lo fa rischia sanzioni fino a 10 milioni di euro e la responsabilità personale prevista dalla legge italiana.</p>
+  </div>
+
+  <!-- HOOK -->
+  <p>
+    Il D.Lgs. 138/2024 è in vigore dal 16 ottobre 2024. Con esso, la cybersicurezza ha smesso di essere una questione tecnica riservata all'IT e si è trasformata in un obbligo di governance che grava direttamente sull'organo di amministrazione. Non è una sfumatura giuridica: è scritto nero su bianco nella norma italiana di recepimento della Direttiva NIS2.
+  </p>
+
+  <p>
+    Eppure, in molti consigli di amministrazione italiani, la cybersicurezza figura ancora come voce residuale nell'agenda — qualcosa che viene discusso solo dopo che un incidente è già accaduto. Questo approccio reattivo non è più sostenibile, né legalmente né strategicamente. Il problema non è che manchino le tecnologie: mancano la struttura di governance e i processi decisionali che NIS2 richiede esplicitamente al vertice aziendale.
+  </p>
+
+  <p>
+    Questa guida non è un manuale tecnico. È una mappa per CEO e consiglieri che vogliono costruire — o rafforzare — una strategia cyber che soddisfi NIS2 e che possa essere difesa davanti all'ACN (Agenzia per la Cybersicurezza Nazionale) il giorno in cui arriva una richiesta di supervisione.
+  </p>
+
+  <div class="box-warning">
+    <strong>Responsabilità personale — non del solo ente.</strong> L'Art. 23 del D.Lgs. 138/2024 prevede che i membri dell'organo di amministrazione possano essere ritenuti personalmente responsabili delle violazioni NIS2. Questo significa che la tua esposizione non termina con il bilancio aziendale. Termina con la tua capacità di ricoprire cariche direttive.
+  </div>
+
+  <h2>Perché il CdA deve possedere la strategia cyber</h2>
+
+  <p>
+    La NIS2 ribalta una convinzione radicata: che la sicurezza informatica sia una questione operativa da delegare al CISO o al responsabile IT. L'Art. 20 della Direttiva — recepito nel D.Lgs. 138/2024 — stabilisce che gli organi di gestione devono approvare le misure di gestione del rischio informatico e supervisionarne l'attuazione. Non è sufficiente ricevere un report annuale e firmarlo. Serve un coinvolgimento strutturato, documentato e ricorrente.
+  </p>
+
+  <p>
+    In pratica, ciò significa che il CdA deve essere in grado di rispondere a domande concrete: qual è il nostro livello di rischio accettabile? Quali sono i nostri indicatori di sicurezza e come si sono mossi nell'ultimo trimestre? Cosa succederebbe se un fornitore critico subisse un attacco? Chi ha l'autorità di dichiarare un incidente rilevante e attivare la notifica all'ACN entro 24 ore?
+  </p>
+
+  <p>
+    Se nessuno nel consiglio sa rispondere a queste domande, l'organizzazione è già in una posizione di non conformità — indipendentemente dalla qualità delle soluzioni tecnologiche adottate dall'IT.
+  </p>
+
+  <h2>Primo pilastro: il Risk Appetite Statement</h2>
+
+  <p>
+    Il punto di partenza di qualsiasi strategia cyber matura è la definizione esplicita del rischio che l'organizzazione è disposta ad accettare. Questo documento — il <strong>Risk Appetite Statement</strong> — non è un esercizio accademico. È la base su cui ogni decisione di investimento in sicurezza, ogni scelta di architettura e ogni piano di risposta agli incidenti deve essere giustificata.
+  </p>
+
+  <p>
+    Per un soggetto essenziale o importante ai sensi del D.Lgs. 138/2024, il Risk Appetite Statement deve essere approvato formalmente dal CdA e deve rispondere ad almeno tre domande fondamentali:
+  </p>
+
+  <ol>
+    <li><strong>Quali sistemi o dati, se compromessi, potrebbero causare un danno irreversibile all'organizzazione o ai suoi utenti?</strong> Questi sono gli asset critici che richiedono il livello di protezione più elevato.</li>
+    <li><strong>Qual è la tolleranza massima di interruzione operativa?</strong> Quante ore — o giorni — di downtime l'organizzazione può sostenere prima che l'impatto diventi inaccettabile?</li>
+    <li><strong>Quali rischi siamo disposti a trasferire (assicurazione, outsourcing) e quali dobbiamo gestire internamente?</strong> Non tutti i rischi devono essere eliminati: alcuni vanno accettati consapevolmente, con la documentazione che lo attesta.</li>
+  </ol>
+
+  <p>
+    Il Risk Appetite Statement non deve essere un documento di cento pagine. Deve essere chiaro, aggiornato almeno annualmente, e deliberato dal consiglio con verbale. È uno dei primi documenti che l'ACN può richiedere in caso di supervisione.
+  </p>
+
+  <div class="box-info">
+    <strong>Nota pratica:</strong> Il Risk Appetite Statement deve essere coerente con la classificazione dell'organizzazione. Un soggetto essenziale (grande impresa con ruolo sistemico) avrà soglie di tolleranza al rischio significativamente più basse rispetto a un soggetto importante. L'ACN valuta la proporzionalità delle misure adottate rispetto alla categoria di appartenenza.
+  </div>
+
+  <h2>Secondo pilastro: i KPI di sicurezza per il CdA</h2>
+
+  <p>
+    Un consiglio di amministrazione non può governare ciò che non misura. Eppure, in molte organizzazioni italiane, la sicurezza informatica viene presentata al CdA attraverso relazioni narrative dense di terminologia tecnica e prive di metriche azionabili. Il risultato è che il consiglio non riesce a valutare se la situazione stia migliorando, peggiorando o sia semplicemente stazionaria.
+  </p>
+
+  <p>
+    Una strategia cyber NIS2 richiede un set di <strong>KPI di sicurezza comprensibili al CdA</strong> — non agli ingegneri. Ecco un set minimo consigliato, espresso in termini che un amministratore non tecnico può interpretare:
+  </p>
+
+  <table class="fine-table">
+    <thead>
+      <tr>
+        <th>KPI</th>
+        <th>Cosa misura</th>
+        <th>Soglia di allerta</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Punteggio di postura di sicurezza (0–100)</td>
+        <td>Percentuale di misure di sicurezza attive sui sistemi critici</td>
+        <td>Sotto 65: azione immediata</td>
+      </tr>
+      <tr>
+        <td>Tempo medio di rilevamento degli incidenti (MTTD)</td>
+        <td>Quanto tempo passa dall'attacco alla scoperta</td>
+        <td>Sopra 48 ore: revisione urgente</td>
+      </tr>
+      <tr>
+        <td>Percentuale di sistemi critici con backup verificato</td>
+        <td>Copertura dei backup testati nell'ultimo mese</td>
+        <td>Sotto 95%: gap critico</td>
+      </tr>
+      <tr>
+        <td>Copertura MFA sui sistemi critici</td>
+        <td>Percentuale di account con autenticazione a più fattori attiva</td>
+        <td>Sotto 90%: non conformità NIS2</td>
+      </tr>
+      <tr>
+        <td>Fornitori critici con valutazione di sicurezza aggiornata</td>
+        <td>Percentuale della supply chain valutata nell'ultimo anno</td>
+        <td>Sotto 80%: rischio supply chain</td>
+      </tr>
+      <tr>
+        <td>Esercitazioni di risposta agli incidenti svolte</td>
+        <td>Numero di simulazioni nell'anno in corso</td>
+        <td>Zero nell'anno: non conformità</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>
+    Questi indicatori devono essere presentati al CdA in un formato visivo sintetico — una dashboard di una pagina, non un report di cinquanta. L'obiettivo non è l'esaustività tecnica: è permettere al consiglio di esercitare la supervisione che la legge richiede.
+  </p>
+
+  <h2>Terzo pilastro: la cadenza trimestrale di revisione</h2>
+
+  <p>
+    NIS2 non richiede che il CdA discuta di cybersicurezza una volta all'anno. Richiede una supervisione continua e documentata. La pratica emergente nei board più avanzati è quella di adottare una <strong>cadenza trimestrale</strong> strutturata, con contenuti diversi per ciascuna sessione:
+  </p>
+
+  <h3>Q1 — Revisione del Risk Appetite e aggiornamento del perimetro</h3>
+  <p>
+    Ogni inizio d'anno, il CdA rivede il Risk Appetite Statement alla luce dei cambiamenti nel panorama delle minacce e nell'assetto organizzativo. È anche il momento per verificare se l'organizzazione ha acquisito nuove attività, integrato nuovi fornitori o modificato i propri sistemi critici — elementi che possono cambiare la classificazione NIS2 o l'esposizione al rischio.
+  </p>
+
+  <h3>Q2 — Revisione della supply chain e dei fornitori critici</h3>
+  <p>
+    Il secondo trimestre è dedicato alla sicurezza della catena di fornitura, un'area esplicitamente richiesta dall'Art. 21 del D.Lgs. 138/2024. Il CdA rivede lo stato delle valutazioni di sicurezza dei fornitori critici, approva eventuali clausole contrattuali di sicurezza da inserire nei rinnovi e valuta i rischi di concentrazione (dipendenza da un singolo fornitore tecnologico o cloud).
+  </p>
+
+  <h3>Q3 — Revisione degli incidenti e delle esercitazioni</h3>
+  <p>
+    Il terzo trimestre include la revisione di tutti gli incidenti significativi occorsi nei sei mesi precedenti — inclusi quelli che non hanno raggiunto la soglia di notifica all'ACN — e i risultati delle esercitazioni di risposta. Il CdA deve approvare le misure correttive emerse e verificare che siano state effettivamente implementate.
+  </p>
+
+  <h3>Q4 — Revisione del piano di conformità e approvazione del budget</h3>
+  <p>
+    Il quarto trimestre è il momento in cui il CdA approva le risorse per la cybersicurezza nell'anno successivo. Questo è anche il momento per documentare formalmente — attraverso il verbale del consiglio — il coinvolgimento del vertice aziendale nella supervisione delle misure di sicurezza. Questa documentazione è esattamente ciò che l'ACN cercherà in caso di supervisione.
+  </p>
+
+  <div class="box-case">
+    <div class="case-label">Scenario illustrativo</div>
+    <p>
+      <strong>Azienda italiana di medie dimensioni nel settore energia, 320 dipendenti. Classificata come soggetto essenziale ai sensi del D.Lgs. 138/2024.</strong>
+    </p>
+    <p>
+      Nel marzo 2026, l'azienda subisce un attacco ransomware che compromette i sistemi di controllo degli impianti. Il team IT rileva l'incidente entro sei ore e avvia il contenimento. Tuttavia, la procedura di notifica all'ACN non viene attivata tempestivamente: l'allerta precoce che avrebbe dovuto essere trasmessa entro 24 ore arriva all'autorità con 38 ore di ritardo. La notifica completa entro le 72 ore previste non viene rispettata.
+    </p>
+    <p>
+      Quando l'ACN avvia la supervisione, emerge che il CdA non aveva mai approvato formalmente il piano di risposta agli incidenti, non erano stati definiti trigger di escalation chiari e nessun membro del consiglio era stato designato come punto di riferimento per la gestione delle crisi. La dashboard dei KPI di sicurezza non era mai stata presentata al consiglio.
+    </p>
+    <p>
+      <strong>Esito:</strong> Sanzione per mancata notifica nei termini. Ulteriore sanzione per assenza di misure di gestione del rischio documentate e approvate dal CdA. Il CEO riceve una diffida formale con annotazione della responsabilità personale ai sensi dell'Art. 23 D.Lgs. 138/2024. Costo stimato complessivo, inclusa la gestione legale e reputazionale: <span class="danger">oltre 4 milioni di euro</span>.
+    </p>
+    <p>
+      Il punto critico non era la tecnologia — l'azienda aveva strumenti di rilevamento adeguati. Il punto critico era la governance: nessuna struttura decisionale era stata predisposta per trasformare la rilevazione tecnica in una risposta istituzionale tempestiva.
+    </p>
+  </div>
+
+  <h2>Quarto pilastro: i trigger di escalation</h2>
+
+  <p>
+    Uno degli errori più comuni nelle organizzazioni che si avvicinano a NIS2 è lasciare la decisione di notificare un incidente all'ACN alla discrezionalità del team tecnico, senza aver definito in anticipo i criteri che attivano l'escalation al vertice aziendale. Il risultato — come nello scenario illustrato sopra — è che le ore passano, i 24 termini per l'allerta precoce scorrono e la finestra si chiude prima che il CEO o il CdA abbiano anche solo sentito parlare dell'incidente.
+  </p>
+
+  <p>
+    Un sistema di trigger di escalation ben progettato risponde a una domanda semplice: <strong>quali eventi devono raggiungere il CEO o il CdA entro quanto tempo, e chi ha l'autorità di dichiarare un incidente rilevante ai fini NIS2?</strong>
+  </p>
+
+  <p>
+    I trigger minimi che devono generare escalation immediata al vertice aziendale includono:
+  </p>
+
+  <ul>
+    <li><strong>Qualsiasi interruzione operativa superiore a 2 ore</strong> su sistemi classificati come critici nel Risk Appetite Statement</li>
+    <li><strong>Accesso non autorizzato confermato</strong> a sistemi che trattano dati personali di categorie particolari o dati operativi rilevanti</li>
+    <li><strong>Qualsiasi compromissione della supply chain</strong> che coinvolga un fornitore classificato come critico</li>
+    <li><strong>Richieste di riscatto o comunicazioni da attori ostili</strong>, indipendentemente dalla portata tecnica dell'attacco</li>
+    <li><strong>Qualsiasi evento che il team di sicurezza classifichi come "grave"</strong> secondo la definizione del piano di risposta agli incidenti approvato dal CdA</li>
+  </ul>
+
+  <p>
+    Per ciascuno di questi trigger, il piano deve definire: chi notifica chi, attraverso quale canale, entro quanto tempo e chi ha la decisione finale sulla trasmissione dell'allerta precoce all'ACN entro le 24 ore. Questi ruoli devono essere assegnati nominativamente — non per funzione generica — e devono includere un sostituto per i periodi di assenza.
+  </p>
+
+  <h2>Il tema della supply chain: un rischio che il CdA non può ignorare</h2>
+
+  <p>
+    NIS2 introduce un obbligo esplicito di gestione della sicurezza della catena di fornitura. Non è sufficiente che l'organizzazione sia sicura al proprio interno: deve anche assicurarsi che i propri fornitori critici non rappresentino un vettore di attacco. Questo è particolarmente rilevante per le organizzazioni italiane che fanno ampio ricorso a fornitori di servizi cloud, consulenti IT esterni e integratori di sistema.
+  </p>
+
+  <p>
+    Il CdA deve approvare i criteri con cui i fornitori vengono classificati come critici, i requisiti minimi di sicurezza che questi devono soddisfare e la frequenza con cui vengono rivalutati. Non è necessario che il consiglio valuti ogni singolo fornitore: deve però approvare il framework con cui questa valutazione avviene e ricevere un report periodico sullo stato della supply chain.
+  </p>
+
+  <h2>Documentazione: il vero differenziale in caso di supervisione</h2>
+
+  <p>
+    In caso di supervisione da parte dell'ACN — o delle autorità di settore competenti come Banca d'Italia, ARERA, AGCOM o il Ministero della Salute, a seconda del settore — la domanda non sarà "cosa fate?". La domanda sarà "potete dimostrare cosa avete fatto e quando?".
+  </p>
+
+  <p>
+    La documentazione minima che ogni soggetto NIS2 deve essere in grado di produrre include:
+  </p>
+
+  <ul>
+    <li>Verbali del CdA che attestano la revisione e l'approvazione delle misure di sicurezza (con date)</li>
+    <li>Risk Appetite Statement approvato e datato</li>
+    <li>Piano di risposta agli incidenti con trigger di escalation e ruoli nominativi</li>
+    <li>Registro delle valutazioni dei fornitori critici</li>
+    <li>Report periodici dei KPI di sicurezza presentati al CdA</li>
+    <li>Log delle esercitazioni di risposta agli incidenti svolte</li>
+    <li>Registrazione sulla piattaforma ACN nei termini stabiliti</li>
+  </ul>
+
+  <p>
+    L'assenza di questa documentazione — anche in presenza di buone pratiche tecniche — è trattata dall'ACN come una carenza strutturale. E le carenze strutturali sono sanzioni strutturali.
+  </p>
+
+  <h2>Le domande più frequenti dal CdA</h2>
+
+  <div class="faq-item">
+    <div class="faq-q">Non basta che il CISO o il responsabile IT si occupi di tutto questo?</div>
+    <div class="faq-a">No — e questo è esattamente il punto di svolta di NIS2 rispetto al passato. L'Art. 23 del D.Lgs. 138/2024 stabilisce che i membri dell'organo di amministrazione possono essere ritenuti personalmente responsabili. Il CISO può gestire l'operatività, ma la responsabilità di governance rimane sul CdA. Delegare senza supervisione documentata non trasferisce la responsabilità: la aggrava, perché dimostra assenza di controllo.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">Quanto tempo deve dedicare il CdA alla cybersicurezza?</div>
+    <div class="faq-a">La cadenza trimestrale strutturata descritta in questa guida richiede tipicamente 60–90 minuti per sessione, più una sessione annuale di revisione strategica di 2–3 ore. Non è un impegno straordinario: è la struttura minima per dimostrare la supervisione che la legge richiede. Il costo di non farlo è incomparabilmente più alto.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">La nostra organizzazione è già registrata sulla piattaforma ACN?</div>
+    <div class="faq-a">Se non ne siete certi, la risposta è probabilmente no. La registrazione sulla piattaforma ACN è un obbligo — non una scelta — per i soggetti che rientrano nel perimetro NIS2. L'ACN pubblica le liste dei soggetti essenziali e importanti. Verificare la propria posizione e completare la registrazione è uno dei primi atti concreti che un CEO o un CdA deve compiere.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">Cosa rischiamo concretamente se non siamo conformi?</div>
+    <div class="faq-a">Le sanzioni previste dal D.Lgs. 138/2024 arrivano fino a 10 milioni di euro o il 2% del fatturato mondiale annuo per i soggetti essenziali, e fino a 7 milioni di euro o l'1,4% del fatturato per i soggetti importanti. Si applica il valore più alto. A questo si aggiunge la responsabilità personale dei membri del CdA, che può includere misure limitative della capacità di ricoprire cariche direttive. Non è una multa amministrativa che si "chiude" con un pagamento: è un'esposizione strutturale.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">Da dove cominciamo concretamente?</div>
+    <div class="faq-a">Il primo passo pratico è una gap analysis: un'analisi strutturata che confronta la situazione attuale dell'organizzazione con i requisiti del D.Lgs. 138/2024. Questa analisi produce una mappa delle lacune prioritarie — dalla documentazione di governance ai controlli tecnici — e permette al CdA di approvare un piano d'azione con priorità e scadenze chiare. È il fondamento su cui costruire tutto il resto.</div>
+  </div>
+
+  <div class="box-info" style="margin: 48px 0 32px;">
+    <div style="font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color: var(--yellow); margin-bottom:10px;">🔧 STRUMENTI &amp; SOLUZIONI</div>
+    <p style="margin:0; font-size:17px; color: #ddd; line-height:1.7;">Per la supervisione e l'audit della postura di sicurezza a livello di CdA, <strong>Microsoft Defender Secure Score</strong> fornisce un KPI numerico da 0 a 100 che il consiglio può monitorare trimestrale senza richiedere competenze tecniche. <strong>Microsoft Compliance Manager</strong> consente di tracciare lo stato di conformità rispetto ai controlli NIS2 e di produrre la documentazione necessaria in caso di supervisione da parte dell'ACN. Un partner Microsoft certificato può configurare questi strumenti gratuitamente nell'ambito di una gap analysis iniziale.</p>
+  </div>
+
+  <!-- NEWSLETTER -->
+  <div style="background:#111; border:1px solid rgba(255,255,255,0.1); border-left:3px solid #f5c518; border-radius:4px; padding:32px 36px; margin:40px 0 0; text-align:center; max-width:760px; margin-left:auto; margin-right:auto;">
+    <div style="font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:#f5c518; margin-bottom:12px;">📬 AGGIORNAMENTI NIS2</div>
+    <h3 style="font-family:'Poppins',sans-serif; font-size:20px; font-weight:800; margin:0 0 8px; color:#f0f0f0;">Un nuovo articolo NIS2 ogni settimana — direttamente nella tua casella</h3>
+    <p style="color:#888; font-size:15px; margin:0 0 20px;">Nessun pitch di vendita. Solo guida pratica per CEO e consigli di amministrazione.</p>
+    <form id="nlForm-nis2_strategia_cyber_migliori_pratiche" onsubmit="submitNewsletter_nis2_strategia_cyber_migliori_pratiche(event)" style="display:flex; gap:10px; flex-wrap:wrap; justify-content:center; max-width:460px; margin:0 auto;">
+      <input type="email" id="nlEmail-nis2_strategia_cyber_migliori_pratiche" placeholder="tuo@azienda.it" required style="flex:1; min-width:200px; padding:12px 16px; background:#1c1c1f; border:1px solid rgba(255,255,255,0.15); border-radius:4px; color:#f0f0f0; font-size:15px; outline:none;" />
+      <button type="submit" id="nlSubmit-nis2_strategia_cyber_migliori_pratiche" style="padding:12px 22px; background:#f5c518; color:#141416; font-weight:700; font-size:15px; border:none; border-radius:4px; cursor:pointer; white-space:nowrap;">Iscriviti gratis →</button>
+    </form>
+    <p style="font-size:12px; color:#555; margin:12px 0 0;">Puoi cancellarti in qualsiasi momento. Non condividiamo mai la tua email.</p>
+    <div id="nlThanks-nis2_strategia_cyber_migliori_pratiche" style="display:none; color:#4ade80; font-size:16px; font-weight:600; margin-top:14px;">✅ Sei iscritto! Il prossimo articolo arriverà nella tua casella.</div>
+  </div>
+
+  <!-- CTA -->
+  <div class="cta-section">
+    <h2>Sai dove si trova la tua organizzazione oggi?</h2>
+    <p>Un'analisi del gap gratuita con un partner Microsoft certificato mostra esattamente cosa hai già coperto — e cosa manca.</p>
+    <a href="/nis2.html#boka" class="btn-primary">Prenota analisi gap gratuita →</a>
+    <p class="cta-fine">Le sanzioni arrivano fino a <strong>10 milioni di euro</strong>. L'analisi del gap è gratuita.</p>
+  </div>
+
+</article>
+
+<div class="related-articles" style="margin:2.5rem auto 2rem; max-width:760px; padding:0 40px;">
+  <div style="padding:1.5rem;background:#1a1a2e;border-left:4px solid #f0a500;border-radius:4px;">
+    <p style="margin:0 0 1rem;font-size:0.85rem;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:#f0a500;">Leggi anche</p>
+    <ul style="margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:0.5rem;">
+      <li><a href="/it/articoli/nis2-responsabilita-personale-cda.html" style="color:#e0e0e0;text-decoration:none;font-size:0.95rem;">→ Responsabilità personale del CdA sotto NIS2</a></li>
+      <li><a href="/it/articoli/nis2-notifica-incidenti-acn.html" style="color:#e0e0e0;text-decoration:none;font-size:0.95rem;">→ Come notificare un incidente all'ACN entro i termini</a></li>
+      <li><a href="/it/articoli/nis2-quali-aziende-sono-soggette.html" style="color:#e0e0e0;text-decoration:none;font-size:0.95rem;">→ Quali aziende rientrano nel perimetro NIS2 in Italia?</a></li>
+    </ul>
+    <p style="margin:1.25rem 0 0;font-size:0.85rem;color:#aaa;">← <a href="https://nis2klar.se/it/" style="color:#f0a500;text-decoration:none;">Home NIS2Klar Italia</a> &nbsp;·&nbsp; <a href="https://nis2klar.se/it/articoli.html" style="color:#f0a500;text-decoration:none;">Tutti gli articoli</a></p>
+  </div>
+</div>
+
+<footer>
+  © 2026 M&amp;J Trusted Marketing KB ·
+  <a href="mailto:support@trustedmarketing.se">support@trustedmarketing.se</a> · <a href="tel:+46470597003">+46 470 59 70 03</a> ·
+  <a href="https://nis2klar.se/it/">Torna alla home</a> ·
+  <a href="/privacy.html">Privacy Policy</a>
+  <p style="margin-top:12px; font-size:11px; color: #555; line-height:1.5;">Microsoft, Microsoft 365, Azure e i relativi nomi di prodotto sono marchi di Microsoft Corporation. nis2klar.se non è affiliata né approvata da Microsoft Corporation.</p>
+</footer>
+
+<script>
+  async function submitNewsletter_nis2_strategia_cyber_migliori_pratiche(e) {
+    e.preventDefault();
+    const btn = document.getElementById('nlSubmit-nis2_strategia_cyber_migliori_pratiche');
+    btn.disabled = true; btn.textContent = '...';
+    const email = document.getElementById('nlEmail-nis2_strategia_cyber_migliori_pratiche').value.trim();
+    try {
+      const res = await fetch('/api/newsletter/subscribe', { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({ email, source: 'articolo-it-nis2_strategia_cyber_migliori_pratiche' }) });
+      const data = await res.json();
+      if (data.success) { document.getElementById('nlForm-nis2_strategia_cyber_migliori_pratiche').style.display='none'; document.getElementById('nlThanks-nis2_strategia_cyber_migliori_pratiche').style.display='block'; }
+      else { btn.disabled=false; btn.textContent='Iscriviti gratis →'; }
+    } catch { btn.disabled=false; btn.textContent='Iscriviti gratis →'; }
+  }
+</script>
+
+</body>
+</html>

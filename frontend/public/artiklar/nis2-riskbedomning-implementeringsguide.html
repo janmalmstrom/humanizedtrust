@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-BKF3QH9K01"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag("js", new Date());
+    gtag("config", "G-BKF3QH9K01");
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NIS2 Riskbedömning: Ramverk och Implementeringsguide för Styrelsen | NIS2Klar</title>
+  <meta name="description" content="Fem steg för NIS2-kompatibel riskbedömning. Vad ska styrelsen godkänna? Hur ofta uppdateras riskbedömningen? Implementeringsguide för ledning.">
+  <meta property="og:title" content="NIS2 Riskbedömning: Ramverk och Implementeringsguide för Styrelsen">
+  <meta property="og:description" content="Fem steg för NIS2-kompatibel riskbedömning. Vad ska styrelsen formellt godkänna och hur ofta? Guide för VD och styrelser.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #141416;
+      --card: #1c1c1f;
+      --yellow: #f5c518;
+      --white: #f0f0f0;
+      --muted: #888;
+      --red: #C61212;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: var(--bg); color: var(--white); font-family: 'Barlow', sans-serif; font-size: 19px; line-height: 1.8; }
+
+    /* Nav */
+    nav { display: flex; justify-content: space-between; align-items: center; padding: 20px 40px; border-bottom: 1px solid rgba(255,255,255,0.07); max-width: 900px; margin: 0 auto; }
+    .nav-logo { font-family: 'Poppins', sans-serif; font-weight: 900; font-size: 20px; color: var(--yellow); text-decoration: none; }
+    .nav-logo span { color: var(--white); }
+    .nav-back { color: var(--muted); text-decoration: none; font-size: 15px; }
+    .nav-back:hover { color: var(--white); }
+    .nav-cta { background: var(--yellow); color: #000; padding: 8px 18px; border-radius: 4px; text-decoration: none; font-weight: 700; font-size: 14px; font-family: 'Poppins', sans-serif; }
+
+    /* Article */
+    .article-wrap { max-width: 760px; margin: 0 auto; padding: 60px 40px; }
+    .article-category { font-size: 13px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 16px; }
+    h1 { font-family: 'Poppins', sans-serif; font-size: clamp(30px, 4vw, 44px); font-weight: 900; line-height: 1.2; margin-bottom: 24px; }
+    .article-meta { font-size: 15px; color: var(--muted); margin-bottom: 48px; padding-bottom: 24px; border-bottom: 1px solid rgba(255,255,255,0.07); }
+    h2 { font-family: 'Poppins', sans-serif; font-size: 26px; font-weight: 700; margin: 48px 0 16px; color: var(--white); }
+    h3 { font-family: 'Poppins', sans-serif; font-size: 20px; font-weight: 600; margin: 32px 0 12px; color: var(--yellow); }
+    p { margin-bottom: 22px; }
+    strong { color: var(--white); font-weight: 700; }
+    .highlight { color: var(--yellow); font-weight: 700; }
+    .danger { color: #ff6b6b; font-weight: 700; }
+    ul, ol { margin: 16px 0 24px 24px; }
+    li { margin-bottom: 12px; font-size: 19px; }
+
+    /* Callout boxes */
+    .box-warning { background: rgba(197,17,17,0.12); border-left: 4px solid var(--red); padding: 20px 24px; margin: 32px 0; border-radius: 0 4px 4px 0; }
+    .box-info { background: rgba(245,197,24,0.08); border-left: 4px solid var(--yellow); padding: 20px 24px; margin: 32px 0; border-radius: 0 4px 4px 0; }
+    .box-case { background: var(--card); border: 1px solid rgba(255,255,255,0.08); padding: 28px; margin: 40px 0; border-radius: 4px; }
+    .box-case .case-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 12px; }
+    blockquote { border-left: 3px solid var(--yellow); padding: 12px 20px; margin: 24px 0; font-style: italic; color: #ccc; }
+
+    /* CTA */
+    .cta-section { background: var(--card); border: 1px solid rgba(245,197,24,0.2); border-radius: 4px; padding: 48px 40px; margin: 64px 0 40px; text-align: center; }
+    .cta-section h2 { margin-top: 0; font-size: 26px; }
+    .cta-section p { color: #aaa; max-width: 500px; margin: 0 auto 28px; }
+    .btn-primary { display: inline-block; background: var(--yellow); color: #000; font-family: 'Poppins', sans-serif; font-weight: 800; font-size: 16px; padding: 16px 36px; border-radius: 4px; text-decoration: none; }
+    .btn-primary:hover { background: #e0b010; }
+    .cta-fine { font-size: 13px; color: var(--muted); margin-top: 16px; }
+
+    /* FAQ */
+    .faq-item { border-bottom: 1px solid rgba(255,255,255,0.07); padding: 20px 0; }
+    .faq-q { font-family: 'Poppins', sans-serif; font-weight: 600; margin-bottom: 10px; }
+    .faq-a { color: #bbb; }
+
+    /* Summary + Key Takeaway */
+    .box-summary { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; padding: 24px 28px; margin: 0 0 32px; }
+    .summary-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-bottom: 14px; }
+    .box-summary ul { margin: 0; padding-left: 20px; }
+    .box-summary li { margin-bottom: 8px; font-size: 17px; color: #ccc; }
+    .box-takeaway { background: rgba(245,197,24,0.08); border-left: 4px solid var(--yellow); padding: 20px 24px; margin: 0 0 40px; border-radius: 0 4px 4px 0; }
+    .takeaway-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 10px; }
+    .box-takeaway p { margin: 0; font-size: 18px; font-weight: 600; color: var(--white); line-height: 1.6; }
+
+    /* Footer */
+    footer { border-top: 1px solid rgba(255,255,255,0.07); padding: 32px 40px; text-align: center; font-size: 13px; color: var(--muted); max-width: 900px; margin: 0 auto; }
+    footer a { color: var(--muted); }
+
+    /* Related articles */
+    .related-articles { max-width: 760px; margin: 2.5rem auto 2rem; padding: 1.5rem; background: #1a1a2e; border-left: 4px solid #f0a500; border-radius: 4px; }
+    .related-articles p { margin: 0 0 1rem; font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #f0a500; }
+    .related-articles ul { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+    .related-articles li { margin: 0; }
+    .related-articles a { color: #e0e0e0; text-decoration: none; font-size: 0.95rem; }
+    .related-articles a:hover { color: #f0a500; }
+    .related-articles .footer-links { margin: 1.25rem 0 0; font-size: 0.85rem; color: #aaa; }
+
+    @media (max-width: 600px) {
+      nav, .article-wrap, footer { padding: 20px; }
+      .cta-section { padding: 32px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="https://nis2klar.se/">NIS2<span>Klar</span></a>
+  <a class="nav-back" href="https://nis2klar.se/artiklar.html">← Alla artiklar</a>
+  <a class="nav-cta" href="https://nis2klar.se/#boka">Boka samtal →</a>
+</nav>
+
+<article class="article-wrap">
+  <div class="article-category">Implementering &amp; Styrning</div>
+  <h1>NIS2 Riskbedömning: Ramverk och Implementeringsguide för Styrelsen</h1>
+  <div class="article-meta">Uppdaterad 19 april 2026 · Lästid: ca 9 minuter · Målgrupp: VD, styrelsepresidium</div>
+
+  <!-- SUMMARY -->
+  <div class="box-summary">
+    <div class="summary-label">Sammanfattning</div>
+    <ul>
+      <li>Riskbedömningen är grunden för allt NIS2-arbete — och styrelsen måste formellt godkänna den.</li>
+      <li>Fem konkreta steg: kartläggning, klassificering, hotanalys, riskmatriser, åtgärdsplan.</li>
+      <li>Styrelsen måste årligen uppdatera riskbedömningen samt efter större incidenter eller förändringar.</li>
+      <li>Om styrelsen godkänner utan att förstå är det ett personligt ansvar enligt Artikel 20 — dokumentera alltid det faktiska beslutsunderlag som låg bakom godkännandet.</li>
+    </ul>
+  </div>
+
+  <!-- KEY TAKEAWAY -->
+  <div class="box-takeaway">
+    <div class="takeaway-label">Viktigaste slutsatsen</div>
+    <p>En NIS2-riskbedömning är inte en IT-rapport som du skriver under utan att läsa. Det är ett styrelsebeslut baserat på fakta om vilka värden som kan försvinna, hur sannolikt det är, och vad det kostar att inte skydda dem. Du måste kunna förklara varför ni godkänner just dessa risker.</p>
+  </div>
+
+  <!-- HOOK -->
+  <p>
+    Artikel 21 i NIS2-direktivet är crystal clear: <strong>Organisationen ska genomföra en riskbedömning baserad på en kartläggning av väsentliga och kritiska IT-system, användaråtkomst och tredjeparts-beroenden.</strong>
+  </p>
+
+  <p>
+    Men det räcker inte att göra det. Styrelsen måste <strong>godkänna</strong> det — och kunna förklara varför. Det är inte en delegering till IT-chefen. Det är ett styrelsebeslut om risktolerans.
+  </p>
+
+  <p>
+    Vi möter ofta VD:ar som säger: "Vi har gjort en riskanalys, IT-chefen hanterar det." Det är exakt fel svar när tillsynsmyndigheten knackar på dörren. Du kommer att få frågan: <span class="highlight">Vad var din roll när denna riskbedömning godkändes, och vad förstod du av den?</span>
+  </p>
+
+  <p>
+    Denna guide visar de fem steg en styrelsegodkänd riskbedömning måste innehålla — och vad som händer om du godkänner utan att förstå.
+  </p>
+
+  <h2>Vad är en NIS2-kompatibel riskbedömning?</h2>
+
+  <p>
+    En riskbedömning enligt NIS2 är en systematisk analys av tre frågor:
+  </p>
+
+  <ol>
+    <li><strong>Vad kan gå fel?</strong> (Kartläggning av värden och hot)</li>
+    <li><strong>Hur sannolikt är det?</strong> (Sannolikhet och påverkan)</li>
+    <li><strong>Vad gör vi åt det?</strong> (Åtgärdsplan och ansvar)</li>
+  </ol>
+
+  <p>
+    Det är inte samma sak som en IT-säkerhetsgranskning eller ett penetrationtest. En riskbedömning fokuserar på <strong>värden</strong> — inte teknik. Det kan vara kunddata, patientjournaler, industrihemligheter, produktionsanläggningar, eller systemets tillgänglighet.
+  </p>
+
+  <p>
+    Och det är inte en engångsaktivitet. Riskbedömningen måste uppdateras regelbundet — minst årligen, och omedelbar efter en allvarlig incident eller organisatorisk förändring.
+  </p>
+
+  <h2>Fem steg för en styrelsegodkänd riskbedömning</h2>
+
+  <h3>Steg 1: Kartläggning av väsentliga och kritiska system</h3>
+
+  <p>
+    Innan du kan bedöma risk måste du veta vad du har. Det betyder att inventera:
+  </p>
+
+  <ul>
+    <li><strong>Väsentliga IT-system:</strong> Vilka system kör organisationen? (ERP, CRM, kundportal, patientjournal, produktionskontroll osv.)</li>
+    <li><strong>Kritiska värden:</strong> Vilka data eller funktioner är systemkritiska? (Kunddatabaser, betalningssystem, medicinska instrument, industriell kontroll)</li>
+    <li><strong>Användaråtkomst:</strong> Vem får åtkomst till vad? (Medarbetare, leverantörer, kunder, partners)</li>
+    <li><strong>Tredjepartsberoenden:</strong> Vilka molntjänster, SaaS-lösningar och leverantörer är vi beroende av? (Microsoft 365, Salesforce, AWS, CloudFlare osv.)</li>
+  </ul>
+
+  <p>
+    Det här steget är ofta överraskande för styrelser. Många organisationer märker att de aldrig gjort en fullständig inventering av vad de faktiskt äger och är beroende av. En stor serviceföretag kunde inte svara på: "Vilka system skulle göra att vi inte kan leverera till kunden?"
+  </p>
+
+  <p>
+    <strong>Styrelsens roll:</strong> Ställa frågan: "Är denna lista komplett? Har vi glömt något värde som skulle skada organisationen om det försvann?"
+  </p>
+
+  <h3>Steg 2: Klassificering av värden</h3>
+
+  <p>
+    Inte all data är lika kritisk. En riskbedömning klassificerar värden efter påverkan om de skulle kompromisseras eller försvinna.
+  </p>
+
+  <p>
+    En standard-klassificering ser ut så här:
+  </p>
+
+  <ul>
+    <li><strong>Kritisk:</strong> Systemet eller data måste fungera utan avbrott. Avbrott på 1 timme orsakar allvarliga förluster (ekonomiska, juridiska, patientsäkerhet, säkerhetsberedskap).</li>
+    <li><strong>Viktig:</strong> Systemet är viktigt för verksamheten. Avbrott på någon timme är acceptabelt men kostsamt.</li>
+    <li><strong>Standard:</strong> Systemet är användbar men inte verksamhetsavgörande. Avbrott på flera timmar är tolerabelt.</li>
+  </ul>
+
+  <p>
+    Klassificering måste göras för <strong>tre dimensioner</strong>: Confidentiality (hemlighetshållning), Integrity (riktighet) och Availability (tillgänglighet). En kunddatabas är t.ex. kritisk för confidentiality och integrity, men availability är också viktig — två av tre dimensioner är högsta nivå.
+  </p>
+
+  <p>
+    <strong>Styrelsens roll:</strong> Godkänna klassificeringen och ställa frågan: "Stämmer denna bedömning av vad som är kritiskt för vår verksamhet?"
+  </p>
+
+  <h3>Steg 3: Hotanalys</h3>
+
+  <p>
+    En hotanalys identifierar vilka hot som kan påverka de klassificerade värdena. Hot kan vara:
+  </p>
+
+  <ul>
+    <li><strong>Yttre:</strong> Cyberangrepp (ransomware, phishing, DDoS), naturkatastrof, strömavbrott, terrorattack</li>
+    <li><strong>Interna:</strong> Felaktig konfiguration, felaktig åtkomst, sabotage, human error</li>
+    <li><strong>Lagring och media:</strong> Data loss, backup-fel, arkiveringsfel</li>
+    <li><strong>Tredjepartsrisker:</strong> Leverantör går i konkurs, leverantör hackas, API-fel, avtalsbrott</li>
+  </ul>
+
+  <p>
+    En läkarklinik med patientjournal behöver analysera risken för ransomware (extern), men också en läkare som av misstag skickar journal via mail (intern). En industriföretag behöver analysera cyberangrepp på produktionssystem, men också fysisk åtkomst till kritiska instrumenter.
+  </p>
+
+  <p>
+    <strong>Styrelsens roll:</strong> Säkerställa att hotbilden stämmer för er bransch och geografi. Fråga: "Vilka typer av incidenter har hänt hos våra konkurrenter eller i vår sektor?"
+  </p>
+
+  <div class="box-info">
+    <strong>Praktisk observation:</strong> Hot-nivån är ofta högre än ledningen tror. 63 % av svenska arbetstagare använder redan generativ AI — många utan att säga till ledningen. Det är en ny riskvektor som måste analyseras. En riskbedömning från 2024 som inte nämner BYOAI (Bring Your Own AI) är redan föråldrad.
+  </div>
+
+  <h3>Steg 4: Riskmatriser och sannolikhetsbedömning</h3>
+
+  <p>
+    Nu kombineras värde + hot = risk. En riskmatris berättar: "Om detta hot realiseras mot detta värde, vad blir konsekvensen?"
+  </p>
+
+  <p>
+    En standard-riskmatris har två axlar:
+  </p>
+
+  <ul>
+    <li><strong>Sannolikhet:</strong> Låg, medel, hög — baserat på data från tidigare incidenter, hotintelligens, och branschrapporter</li>
+    <li><strong>Påverkan:</strong> Låg, medel, högt — baserat på klassificeringen från steg 2</li>
+  </ul>
+
+  <p>
+    Exempel:
+  </p>
+
+  <ul>
+    <li><strong>Högt hot + låg påverkan:</strong> Phishing-mail (mycket vanligt, men de flesta blockeras, låg påverkan)</li>
+    <li><strong>Lågt hot + högt påverkan:</strong> Ransomware på medicinsk databas (ovanligt, men katastrofal om det händer)</li>
+    <li><strong>Högt hot + högt påverkan:</strong> Credential-stöld för administratör (vanligt, väldigt svårt att detektera)</li>
+  </ul>
+
+  <p>
+    De rödaste rutorna — högt hot + högt påverkan — är de som styrelsen måste godkänna åtgärder för.
+  </p>
+
+  <p>
+    <strong>Styrelsens roll:</strong> Granska riskmatrisen och ställ frågor på de högrödaste områdena: "Vad är sannolikheten verkligen baserat på? Vem har bedömt det? Stämmer det med vad tillsynsmyndigheten säger om vår sektor?"
+  </p>
+
+  <h3>Steg 5: Åtgärdsplan och ansvar</h3>
+
+  <p>
+    För varje högt risk måste det finnas en åtgärd. Åtgärden kan vara:
+  </p>
+
+  <ul>
+    <li><strong>Minska sannolikheten:</strong> Implementera skydd (MFA, kryptering, begränsad åtkomst, utbildning)</li>
+    <li><strong>Minska påverkan:</strong> Implementera återhämtning (backup, disaster recovery, redundans, insurance)</li>
+    <li><strong>Acceptera risken:</strong> Dokumentera varför vi accepterar denna risk trots högt värde</li>
+    <li><strong>Undvika risken:</strong> Avveckla systemet eller funktionen</li>
+  </ul>
+
+  <p>
+    Varje åtgärd måste ha:
+  </p>
+
+  <ul>
+    <li>En <strong>ansvarig person</strong> (vanligen IT-chef eller säkerhetschef)</li>
+    <li>Ett <strong>tidsfryst</strong> (när är det färdigt?)</li>
+    <li>En <strong>budget</strong> (vad kostar det?)</li>
+    <li>En <strong>verifiering</strong> (hur kontrollerar vi att det fungerar?)</li>
+  </ul>
+
+  <p>
+    Det är här många organisationer brister. Riskbedömningen säger: "Vi behöver MFA." Åtgärdsplanen säger: "Implementera MFA för alla användargrupper senast Q3 2026, ansvarig: IT-chef, budget: 200 000 SEK."
+  </p>
+
+  <p>
+    <strong>Styrelsens roll:</strong> Godkänna åtgärdsplanen och ställa frågor på implementering: "Vem säkerställer detta? Vad händer om tidsfristen glider? Hur kontrollerar vi att det är gjort?"
+  </p>
+
+  <div class="box-warning">
+    <strong>Varning:</strong> En åtgärdsplan som inte följs upp är värre än ingen åtgärdsplan. Tillsynsmyndigheten kommer att kontrollera. Om planen säger "MFA implementeras Q3 2026" men vi är i oktober och det inte är gjort, är det en sanktionsgrundande brist. Dokumentera alltid anledningen till förseningar.
+  </div>
+
+  <h2>Vad måste styrelsen formellt godkänna?</h2>
+
+  <p>
+    Artikel 20 i NIS2-direktivet kräver att ledningen <strong>godkänner</strong> säkerhetsåtgärderna. Det räcker inte att IT-chefen gör ett bra arbete. Styrelsen måste dokumentera sitt godkännande.
+  </p>
+
+  <p>
+    Det betyder ett styrelsebeslut som inkluderar:
+  </p>
+
+  <ol>
+    <li><strong>Riskbedömningen själv</strong> — hela dokumentet eller en styrelsesummering med referenser</li>
+    <li><strong>Klassificering av värden</strong> — vilka system är kritiska enligt styrelsen</li>
+    <li><strong>Godkännande av höga risker</strong> — styrelsen förstår vilka risker som accepteras</li>
+    <li><strong>Åtgärdsplanen</strong> — konkreta åtgärder med ansvar, budget och tidsfryst</li>
+    <li><strong>Uppdateringsfrekvensen</strong> — minst årligen eller efter större ändringar</li>
+  </ol>
+
+  <p>
+    Detta måste dokumenteras i styrelsemöte — helst med en anmärkning om vilka personer som var närvarande och vad som ställdes för frågor. "Styrelsen godkänner bifogad riskbedömning" räcker inte. Det måste framgå att styrelsen faktiskt läst den.
+  </p>
+
+  <p>
+    <strong>Praktisk tips:</strong> I styrelsemötet, presentera inte 150 sidor risk-rapporter. Presentera en två-sidig sammanfattning med:
+    - Värdeöversikt (vilka system är kritiska)
+    - Huvudrisker (tre till fem nämnda högt risk)
+    - Åtgärder (vad gör vi nu, vad kostar det, när är det klart)
+    - Frågan till styrelsen: "Är detta försvarbara risker?"
+  </p>
+
+  <h2>Hur ofta uppdateras riskbedömningen?</h2>
+
+  <p>
+    En riskbedömning är inte en engångsaktivitet. Artikel 21 säger att organisationen ska <strong>regelbundet</strong> uppdatera den.
+  </p>
+
+  <p>
+    Sverige förväntar sig att riskbedömningen uppdateras:
+  </p>
+
+  <ul>
+    <li><strong>Årligen:</strong> Helst före årsslutet, så att nya risker för nästa år är kartlagda</li>
+    <li><strong>Efter allvarlig incident:</strong> Omedelbar analys av vad som missades och vad som behöver ändras</li>
+    <li><strong>Efter större organisatorisk förändring:</strong> Nytt system, ny leverantör, fusion, avveckling av sektor</li>
+    <li><strong>Automatisk:</strong> Hotbilden förändras — nya sårbarhet, nya angreppsmetoder — detta måste återspeglas varje kvartal</li>
+  </ul>
+
+  <p>
+    Det bästa sättet att hantera detta är att tilldela en <strong>Risk Owner</strong> — oftast IT-chef eller Chief Information Security Officer — som ansvarar för att hålla riskbedömningen uppdaterad.
+  </p>
+
+  <p>
+    Risk Owner rapporterar kvartalsvis till VD och årligen till styrelsen. Rapportationen inkluderar:
+  </p>
+
+  <ul>
+    <li>Nya risker identifierade sedan senaste uppdatering</li>
+    <li>Risker som minskat (på grund av genomförda åtgärder)</li>
+    <li>Status på åtgärdsplanen (vad är färdigt, vad är försenat)</li>
+    <li>Incidenter som inträffat och vad vi lärt från dem</li>
+  </ul>
+
+  <p>
+    <strong>Styrelsens roll:</strong> Kontrollera att denna rapportering faktiskt sker. En riskbedömning från 2024 som inte uppdaterades 2025 är redan en dokumenterad brist när tillsynsmyndigheten granskar.
+  </p>
+
+  <h2>Vad händer om styrelsen godkänner utan att förstå?</h2>
+
+  <p>
+    Det här är allvarligt, och vi möter denna situation ofta. VD presenterar en 60-sidig IT-säkerhetsgranskning, styrelseordföranden säger "Vi godkänner detta", mötet går vidare.
+  </p>
+
+  <p>
+    Sex månader senare initierar tillsynsmyndigheten en granskning. En av de första frågorna är:
+  </p>
+
+  <blockquote>
+    "Beskriv styrelsens roll i godkännandet av säkerhetsåtgärderna. Vad förstod styrelsen av riskbedömningen? Vilka frågor ställde styrelsen?"
+  </blockquote>
+
+  <p>
+    Om du inte kan svara på detta — eller svaret är "Vi godkände det men läste det inte" — är det ett allvarligt problem. Artikel 20 gör det klart att ledningen är <strong>personligt ansvarig</strong>. Du kan inte säga "J

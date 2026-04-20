@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-BKF3QH9K01"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag("js", new Date());
+    gtag("config", "G-BKF3QH9K01");
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Microsoft SharePoint vs Box: Sicurezza dei Documenti per NIS2 | NIS2Klar</title>
+  <meta name="description" content="Confronto tra SharePoint e Box per la conformità NIS2: controllo degli accessi, crittografia, audit logging, data residency. Quale piattaforma protegge i tuoi documenti critici?">
+  <meta property="og:title" content="Microsoft SharePoint vs Box: Sicurezza dei Documenti per NIS2">
+  <meta property="og:description" content="Confronto tra SharePoint e Box per la conformità NIS2: controllo degli accessi, crittografia, audit logging, data residency. Quale piattaforma protegge i tuoi documenti critici?">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #141416;
+      --card: #1c1c1f;
+      --yellow: #f5c518;
+      --white: #f0f0f0;
+      --muted: #888;
+      --red: #C61212;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: var(--bg); color: var(--white); font-family: 'Barlow', sans-serif; font-size: 19px; line-height: 1.8; }
+
+    /* Nav */
+    nav { display: flex; justify-content: space-between; align-items: center; padding: 20px 40px; border-bottom: 1px solid rgba(255,255,255,0.07); max-width: 900px; margin: 0 auto; }
+    .nav-logo { font-family: 'Poppins', sans-serif; font-weight: 900; font-size: 20px; color: var(--yellow); text-decoration: none; }
+    .nav-logo span { color: var(--white); }
+    .nav-back { color: var(--muted); text-decoration: none; font-size: 15px; }
+    .nav-back:hover { color: var(--white); }
+    .lang-switcher { display: flex; gap: 8px; align-items: center; font-size: 13px; font-family: 'Poppins', sans-serif; }
+    .lang-switcher a { color: #888; text-decoration: none; font-weight: 600; padding: 4px 8px; border-radius: 3px; }
+    .nav-cta { background: var(--yellow); color: #000; padding: 8px 18px; border-radius: 4px; text-decoration: none; font-weight: 700; font-size: 14px; font-family: 'Poppins', sans-serif; }
+
+    /* Article */
+    .article-wrap { max-width: 760px; margin: 0 auto; padding: 60px 40px; }
+    .article-category { font-size: 13px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 16px; }
+    h1 { font-family: 'Poppins', sans-serif; font-size: clamp(30px, 4vw, 44px); font-weight: 900; line-height: 1.2; margin-bottom: 24px; }
+    .article-meta { font-size: 15px; color: var(--muted); margin-bottom: 48px; padding-bottom: 24px; border-bottom: 1px solid rgba(255,255,255,0.07); }
+    h2 { font-family: 'Poppins', sans-serif; font-size: 26px; font-weight: 700; margin: 48px 0 16px; color: var(--white); }
+    h3 { font-family: 'Poppins', sans-serif; font-size: 20px; font-weight: 600; margin: 32px 0 12px; color: var(--yellow); }
+    p { margin-bottom: 22px; }
+    strong { color: var(--white); font-weight: 700; }
+    .highlight { color: var(--yellow); font-weight: 700; }
+    .danger { color: #ff6b6b; font-weight: 700; }
+    ul, ol { margin: 16px 0 24px 24px; }
+    li { margin-bottom: 12px; font-size: 19px; }
+
+    /* Callout boxes */
+    .box-warning { background: rgba(197,17,17,0.12); border-left: 4px solid var(--red); padding: 20px 24px; margin: 32px 0; border-radius: 0 4px 4px 0; }
+    .box-info { background: rgba(245,197,24,0.08); border-left: 4px solid var(--yellow); padding: 20px 24px; margin: 32px 0; border-radius: 0 4px 4px 0; }
+    .box-case { background: var(--card); border: 1px solid rgba(255,255,255,0.08); padding: 28px; margin: 40px 0; border-radius: 4px; }
+    .box-case .case-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 12px; }
+    blockquote { border-left: 3px solid var(--yellow); padding: 12px 20px; margin: 24px 0; font-style: italic; color: #ccc; }
+
+    /* Comparison table */
+    .comparison-table { width: 100%; border-collapse: collapse; margin: 32px 0; background: var(--card); border: 1px solid rgba(255,255,255,0.08); border-radius: 4px; overflow: hidden; }
+    .comparison-table th { background: rgba(245,197,24,0.1); color: var(--yellow); font-family: 'Poppins', sans-serif; font-size: 12px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 14px 16px; text-align: left; border-bottom: 1px solid rgba(245,197,24,0.2); }
+    .comparison-table td { padding: 14px 16px; border-bottom: 1px solid rgba(255,255,255,0.05); font-size: 15px; }
+    .comparison-table tr:last-child td { border-bottom: none; }
+    .comparison-table .yes { color: #4ade80; font-weight: 700; }
+    .comparison-table .partial { color: #fbbf24; font-weight: 700; }
+    .comparison-table .no { color: #ff6b6b; font-weight: 700; }
+
+    /* CTA */
+    .cta-section { background: var(--card); border: 1px solid rgba(245,197,24,0.2); border-radius: 4px; padding: 48px 40px; margin: 64px 0 40px; text-align: center; }
+    .cta-section h2 { margin-top: 0; font-size: 26px; }
+    .cta-section p { color: #aaa; max-width: 500px; margin: 0 auto 28px; }
+    .btn-primary { display: inline-block; background: var(--yellow); color: #000; font-family: 'Poppins', sans-serif; font-weight: 800; font-size: 16px; padding: 16px 36px; border-radius: 4px; text-decoration: none; }
+    .btn-primary:hover { background: #e0b010; }
+    .cta-fine { font-size: 13px; color: var(--muted); margin-top: 16px; }
+
+    /* FAQ */
+    .faq-item { border-bottom: 1px solid rgba(255,255,255,0.07); padding: 20px 0; }
+    .faq-q { font-family: 'Poppins', sans-serif; font-weight: 600; margin-bottom: 10px; }
+    .faq-a { color: #bbb; }
+
+    /* Summary + Key Takeaway */
+    .box-summary { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; padding: 24px 28px; margin: 0 0 32px; }
+    .summary-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-bottom: 14px; }
+    .box-summary ul { margin: 0; padding-left: 20px; }
+    .box-summary li { margin-bottom: 8px; font-size: 17px; color: #ccc; }
+    .box-takeaway { background: rgba(245,197,24,0.08); border-left: 4px solid var(--yellow); padding: 20px 24px; margin: 0 0 40px; border-radius: 0 4px 4px 0; }
+    .takeaway-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 10px; }
+    .box-takeaway p { margin: 0; font-size: 18px; font-weight: 600; color: var(--white); line-height: 1.6; }
+
+    /* Related articles */
+    .related-articles { margin: 2.5rem 0 2rem; padding: 1.5rem; background: #1a1a2e; border-left: 4px solid #f0a500; border-radius: 4px; }
+    .related-articles p { margin: 0 0 1rem; font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #f0a500; }
+    .related-articles ul { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+    .related-articles li { margin: 0; }
+    .related-articles a { color: #e0e0e0; text-decoration: none; font-size: 0.95rem; }
+    .related-articles a:hover { color: #f0a500; }
+    .related-articles .footer-nav { margin: 1.25rem 0 0; font-size: 0.85rem; color: #aaa; }
+    .related-articles .footer-nav a { color: #f0a500; }
+
+    /* Footer */
+    footer { border-top: 1px solid rgba(255,255,255,0.07); padding: 32px 40px; text-align: center; font-size: 13px; color: var(--muted); max-width: 900px; margin: 0 auto; }
+    footer a { color: var(--muted); }
+
+    @media (max-width: 600px) {
+      nav, .article-wrap, footer { padding: 20px; }
+      .cta-section { padding: 32px 20px; }
+      .comparison-table { font-size: 14px; }
+      .comparison-table th, .comparison-table td { padding: 10px 10px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="https://nis2klar.se/it/">NIS2<span>Klar</span></a>
+  <div style="display: flex; align-items: center; gap: 24px;">
+    <a class="nav-back" href="https://nis2klar.se/it/articoli.html">← Tutti gli articoli</a>
+    <div class="lang-switcher">
+      <a href="https://nis2klar.se/artiklar.html" style="color:#888;text-decoration:none;font-weight:600;padding:4px 8px;border-radius:3px;" title="Svenska">SV</a>
+      <a href="https://nis2klar.se/en/articles.html" style="color:#888;text-decoration:none;font-weight:600;padding:4px 8px;border-radius:3px;" title="English">EN</a>
+      <a href="https://nis2klar.se/da/artikler.html" style="color:#888;text-decoration:none;font-weight:600;padding:4px 8px;border-radius:3px;" title="Dansk">DA</a>
+      <a href="https://nis2klar.se/no/artikler.html" style="color:#888;text-decoration:none;font-weight:600;padding:4px 8px;border-radius:3px;" title="Norsk">NO</a>
+      <a href="https://nis2klar.se/it/articoli.html" style="color:#f5c518;text-decoration:none;font-weight:600;padding:4px 8px;border-radius:3px;background:rgba(245,197,24,0.1);" title="Italiano">IT</a>
+    </div>
+  </div>
+  <a class="nav-cta" href="https://nis2klar.se/it/#prenota">Prenota colloquio →</a>
+</nav>
+
+<article class="article-wrap">
+  <div class="article-category">Piattaforme & Conformità</div>
+  <h1>Microsoft SharePoint vs Box: Sicurezza dei Documenti per NIS2</h1>
+  <div class="article-meta">Aggiornato 19 aprile 2026 · Tempo di lettura: ~8 minuti · Target: CEO, Consigli di Amministrazione</div>
+
+  <!-- SUMMARY -->
+  <div class="box-summary">
+    <div class="summary-label">Riepilogo</div>
+    <ul>
+      <li>La NIS2 (D.Lgs. 138/2024 in Italia) richiede controlli di accesso granulari, crittografia, audit logging e residenza dei dati.</li>
+      <li>SharePoint e Box affrontano questi requisiti in modo diverso — uno integrato in un ecosistema, l'altro specializzato.</li>
+      <li>La scelta influisce direttamente sui costi di conformità, sulla segnalazione agli organi di amministrazione e sul rischio personale di VD e consiglieri.</li>
+      <li>La documentazione della sicurezza della piattaforma deve essere parte della prova di conformità presentata all'ACN (Agenzia per la Cybersicurezza Nazionale).</li>
+    </ul>
+  </div>
+
+  <!-- KEY TAKEAWAY -->
+  <div class="box-takeaway">
+    <div class="takeaway-label">Conclusione principale</div>
+    <p>Non esiste una risposta "migliore" in assoluto. La scelta tra SharePoint e Box dipende dalla tua architettura IT, dalla posizione dati, dalle capacità di audit e dalla possibilità di dimostrare il controllo all'ACN. Un'analisi del gap deve valutare entrambi rispetto ai tuoi requisiti NIS2 specifici.</p>
+  </div>
+
+  <!-- HOOK -->
+  <p>
+    L'articolo 21 del D.Lgs. 138/2024 richiede che le organizzazioni NIS2 implementino misure tecniche e organizzative per proteggere i dati critici.
+    Tra queste: <strong>controllo degli accessi, crittografia, audit logging, e continuità operativa</strong>.
+  </p>
+
+  <p>
+    Se la tua organizzazione gestisce documentazione operazionale sensibile — piani di continuità, configurazioni critiche, dati di pazienti o finanziari — la piattaforma di archiviazione documentale non è una scelta di comodità.
+    <span class="highlight">È una decisione di conformità.</span>
+  </p>
+
+  <p>
+    I due candidati più comuni per le aziende italiane medie e grandi sono <strong>Microsoft SharePoint</strong> e <strong>Box</strong>.
+    Entrambi promettono crittografia, controllo degli accessi e audit. Ma il come, e il dove, varia significativamente.
+  </p>
+
+  <div class="box-warning">
+    <strong>Attenzione legale:</strong> L'articolo 23 del D.Lgs. 138/2024 richiede che gli incidenti relativi a documenti critici siano segnalati all'ACN entro 24 ore. Se la perdita di dati è dovuta a una configurazione errata della piattaforma, la responsabilità ricade su VD e consiglieri — non sulla piattaforma fornitore. Documentare la scelta e la configurazione è protezione legale, non opzionale.
+  </div>
+
+  <h2>Il panorama normativo italiano</h2>
+
+  <p>
+    Prima di confrontare le piattaforme, è utile ricordare i requisiti specifici italiani:
+  </p>
+
+  <ul>
+    <li><strong>D.Lgs. 138/2024</strong> — il decreto che recepisce NIS2 in Italia, entrato in vigore il 16 ottobre 2024.</li>
+    <li><strong>ACN (Agenzia per la Cybersicurezza Nazionale)</strong> — è l'autorità principale di supervisione e notifica per gli incidenti.</li>
+    <li><strong>Sanzioni:</strong> fino a 10 milioni di euro per soggetti essenziali; fino a 7 milioni per soggetti importanti. Oppure il 2% e l'1,4% del fatturato globale, se superiore.</li>
+    <li><strong>Responsabilità personale (Articolo 23):</strong> VD e consiglieri possono essere ritenuti personalmente responsabili — incluso divieto temporaneo di ricoprire ruoli di leadership.</li>
+  </ul>
+
+  <p>
+    La scelta della piattaforma documentale incide direttamente sulla capacità di dimostrare conformità all'ACN e di proteggere la responsabilità personale del consiglio.
+  </p>
+
+  <h2>SharePoint: Integrazione con l'ecosistema Microsoft</h2>
+
+  <h3>Punti forti per NIS2</h3>
+
+  <p>
+    <strong>Controllo degli accessi e identità:</strong>
+    SharePoint si integra nativamente con Microsoft Entra ID (ex Azure AD), consentendo Single Sign-On (SSO), autenticazione multi-fattore (MFA) e accesso condizionale basato su policy.
+    Questo significa che puoi controllare chi accede a quali documenti non solo a livello di SharePoint, ma tramite l'intera identità aziendale.
+  </p>
+
+  <p>
+    <strong>Crittografia:</strong>
+    SharePoint supporta crittografia a riposo (tramite Azure) e in transito (TLS 1.2+). I documenti sensibili possono essere etichettati con etichette di riservatezza, attivando automaticamente crittografia end-to-end tramite Azure Key Vault.
+  </p>
+
+  <p>
+    <strong>Audit logging completo:</strong>
+    Ogni azione su un documento — visualizzazione, scaricamento, modifica, condivisione — viene registrata in Microsoft Purview Audit Log.
+    Questi log sono esportabili e conservabili per soddisfare i requisiti di tracciamento NIS2.
+  </p>
+
+  <p>
+    <strong>Data residency:</strong>
+    Microsoft offre data center in Italia. I dati possono restare geograficamente entro i confini UE/Italia, soddisfacendo i requisiti di data residency per settori come sanità e finanza.
+  </p>
+
+  <h3>Sfide per NIS2</h3>
+
+  <p>
+    <strong>Complessità di configurazione:</strong>
+    SharePoint è potente ma richiede competenza tecnica per configurare correttamente. Una policy di accesso configurata male non è conformità — è un rischio mascherato da conformità.
+    Molte organizzazioni utilizzano SharePoint senza aver mai veramente implementato i controlli di accesso granulari richiesti da NIS2.
+  </p>
+
+  <p>
+    <strong>Ereditarietà di permessi:</strong>
+    Per impostazione predefinita, SharePoint eredita permessi da siti padre e librerie. Questo può generare accessi imprevisti che non risultano nei report di audit fino a quando non li cerchi esplicitamente.
+  </p>
+
+  <p>
+    <strong>Condivisione esterna per impostazione predefinita:</strong>
+    SharePoint consente la condivisione esterna di documenti per impostazione predefinita. Richiede una policy esplicita di disabilitazione. Se l'organo di amministrazione non ha approvato una policy di condivisione esterna, sei esposto a perdite di dati.
+  </p>
+
+  <h2>Box: Specializzazione nella sicurezza documentale</h2>
+
+  <h3>Punti forti per NIS2</h3>
+
+  <p>
+    <strong>Accesso basato su ruoli (RBAC) granulare:</strong>
+    Box è stato costruito intorno al concetto di controllo granulare degli accessi ai documenti.
+    I ruoli possono essere assegnati a livello di cartella, documento e campo metadati. Questo granularismo è utile per organizzazioni con esigenze complesse di segregazione dei dati.
+  </p>
+
+  <p>
+    <strong>Crittografia e gestione delle chiavi:</strong>
+    Box supporta crittografia a riposo e in transito, con opzioni per la gestione delle chiavi esterne tramite BYOK (Bring Your Own Key).
+    Questo è particolarmente utile se devi rispettare policy interne che richiedono il controllo delle chiavi di crittografia.
+  </p>
+
+  <p>
+    <strong>Audit logging specializzato:</strong>
+    Box mantiene log dettagliati di accesso, condivisione e modifica dei documenti. I log sono facilmente esportabili e strutturati per conformità.
+  </p>
+
+  <p>
+    <strong>Condivisione esterna controllata:</strong>
+    Box consente di disabilitare completamente la condivisione esterna, oppure di limitarla a domini specifici. Non è attiva per impostazione predefinita nel modo in cui lo è spesso in SharePoint.
+  </p>
+
+  <h3>Sfide per NIS2</h3>
+
+  <p>
+    <strong>Integrazione dell'identità:</strong>
+    Mentre Box supporta SAML 2.0 e SSO, l'integrazione con Entra ID non è così profonda come in SharePoint.
+    Questo significa che l'autenticazione multi-fattore deve essere gestita separatamente, e gli accessi condizionali enterprise-wide sono più difficili da implementare.
+  </p>
+
+  <p>
+    <strong>Data residency limitato:</strong>
+    Box ha data center limitati in Europa. Se hai esigenze rigorose di data residency (ad es., dati sanitari che devono restare in Italia), Box può non offrirti la flessibilità di SharePoint.
+  </p>
+
+  <p>
+    <strong>Costo di specializzazione:</strong>
+    Box è un prodotto enterprise specializzato. Il costo per utente è più alto di SharePoint, soprattutto se acquistato come prodotto standalone (non parte di Microsoft 365).
+  </p>
+
+  <h2>Confronto diretto: quali requisiti NIS2 soddisfa ciascuno?</h2>
+
+  <table class="comparison-table">
+    <thead>
+      <tr>
+        <th style="width: 35%;">Requisito NIS2 (Art. 21)</th>
+        <th style="width: 32.5%;">SharePoint</th>
+        <th style="width: 32.5%;">Box</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Controllo degli accessi (RBAC)</strong></td>
+        <td><span class="yes">Sì (con config corretta)</span></td>
+        <td><span class="yes">Sì (granulare)</span></td>
+      </tr>
+      <tr>
+        <td><strong>Autenticazione multi-fattore (MFA)</strong></td>
+        <td><span class="yes">Sì (integrato Entra ID)</span></td>
+        <td><span class="partial">Parziale (SAML SSO)</span></td>
+      </tr>
+      <tr>
+        <td><strong>Crittografia a riposo</strong></td>
+        <td><span class="yes">Sì</span></td>
+        <td><span class="yes">Sì</span></td>
+      </tr>
+      <tr>
+        <td><strong>Crittografia in transito (TLS)</strong></td>
+        <td><span class="yes">Sì (TLS 1.2+)</span></td>
+        <td><span class="yes">Sì (TLS 1.2+)</span></td>
+      </tr>
+      <tr>
+        <td><strong>Audit logging completo</strong></td>
+        <td><span class="yes">Sì (Purview Audit Log)</span></td>
+        <td><span class="yes">Sì (log dettagliati)</span></td>
+      </tr>
+      <tr>
+        <td><strong>Controllo della condivisione esterna</strong></td>
+        <td><span class="partial">Parziale (attivo per default)</span></td>
+        <td><span class="yes">Sì (controllato)</span></td>
+      </tr>
+      <tr>
+        <td><strong>Data residency (Italia/UE)</strong></td>
+        <td><span class="yes">Sì (data center ITA)</span></td>
+        <td><span class="partial">Limitato (pochi DC EU)</span></td>
+      </tr>
+      <tr>
+        <td><strong>Integrazione identità enterprise</strong></td>
+        <td><span class="yes">Sì (Entra ID nativa)</span></td>
+        <td><span class="partial">Tramite SAML</span></td>
+      </tr>
+      <tr>
+        <td><strong>Backup e continuità (RTO/RPO)</strong></td>
+        <td><span class="yes">Sì (versioning, recycle bin)</span></td>
+        <td><span class="yes">Sì (versioning)</span></td>
+      </tr>
+      <tr>
+        <td><strong>Supporto al regime di conformità italiano</strong></td>
+        <td><span class="yes">Sì (BAA GDPR + NIS2 ready)</span></td>
+        <td><span class="yes">Sì (BAA GDPR)</span></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>Uno scenario reale: documenti critici in una azienda sanitaria</h2>
+
+  <div class="box-case">
+    <div class="case-label">Caso di studio</div>
+    <p>
+      <strong>Situazione:</strong> Ospedale italiano con 300 dipendenti (classificato come entità importante under NIS2).
+      Gestisce cartelle cliniche in documenti Word, dati di prescrizioni in Excel, e comunicazioni critiche via email.
+      Attualmente tutto in un disordinato mix di archiviazione cloud e locale.
+    </p>
+    <p>
+      <strong>Requisito NIS2:</strong> Controllare chi accede alle cartelle cliniche, mantenerle crittografate, generare audit log per dimostrare conformità all'ACN.
+    </p>
+    <p>
+      <strong>Opzione SharePoint:</strong> Migrare i documenti in SharePoint Online, abilitare Entra ID MFA, configurare etichette di riservatezza (Sensitivity Labels) per la crittografia automatica dei documenti clinici, esportare audit log mensili per l'ACN.
+      Costo stimato: licenze Microsoft 365 Business Premium + consulenza tecnica per configurazione ~€8.000–15.000 (una tantum).
+    </p>
+    <p>
+      <strong>Opzione Box:</strong> Migrare i documenti in Box, configurare RBAC per team clinico, abilitare MFA via SAML, esportare log di accesso per audit.
+      Costo stimato: licenze Box Enterprise + implementazione ~€12.000–20.000 (una tantum).
+    </p>
+    <p>
+      <strong>Decisione:</strong> L'ospedale sceglie SharePoint perché:
+      (a) Hanno già licenze Microsoft 365 per la posta (Exchange);
+      (b) L'integrazione con Entra ID consente MFA enterprise-wide, già configurato per accesso VPN e Citrix;
+      (c) La data residency su data center italiani rassicura il consiglio.
+    </p>
+    <p>
+      <strong>Risultato:</strong> 6 mesi dopo, l'ACN notifica di una verifica. L'ospedale produce i log di audit, le policy approvate dal consiglio, e la prova di crittografia. La verifica è completata senza sanzioni perché la documentazione è presente e ben strutturata.
+    </p>
+  </div>
+
+  <h2>Fattori decisionali per il consiglio</h2>
+
+  <p>
+    Qui di seguito i criteri che il vostro consiglio dovrebbe valutare:
+  </p>
+
+  <h3>1. Architettura IT esistente

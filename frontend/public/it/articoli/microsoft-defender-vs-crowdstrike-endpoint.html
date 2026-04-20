@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-BKF3QH9K01"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag("js", new Date());
+    gtag("config", "G-BKF3QH9K01");
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Microsoft Defender vs CrowdStrike: Sicurezza Endpoint per NIS2 | NIS2Klar Italia</title>
+  <meta name="description" content="Confronto EDR/XDR per NIS2: detection, incident response, compliance e costi. Quale soluzione scegliere per la tua organizzazione italiana.">
+  <meta property="og:title" content="Microsoft Defender vs CrowdStrike: Sicurezza Endpoint per NIS2">
+  <meta property="og:description" content="Guida al confronto tra Microsoft Defender e CrowdStrike per la conformità NIS2 in Italia.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #141416;
+      --card: #1c1c1f;
+      --yellow: #f5c518;
+      --white: #f0f0f0;
+      --muted: #888;
+      --red: #C61212;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: var(--bg); color: var(--white); font-family: 'Barlow', sans-serif; font-size: 19px; line-height: 1.8; }
+
+    /* Nav */
+    nav { display: flex; justify-content: space-between; align-items: center; padding: 20px 40px; border-bottom: 1px solid rgba(255,255,255,0.07); max-width: 900px; margin: 0 auto; }
+    .nav-logo { font-family: 'Poppins', sans-serif; font-weight: 900; font-size: 20px; color: var(--yellow); text-decoration: none; }
+    .nav-logo span { color: var(--white); }
+    .nav-back { color: var(--muted); text-decoration: none; font-size: 15px; }
+    .nav-back:hover { color: var(--white); }
+    .lang-switcher { display: flex; gap: 8px; align-items: center; font-size: 13px; font-family: 'Poppins', sans-serif; }
+    .lang-switcher a { color: var(--muted); text-decoration: none; font-weight: 600; padding: 4px 8px; border-radius: 3px; transition: all 0.2s; }
+    .lang-switcher a:hover { color: var(--white); }
+    .lang-switcher a.active { color: var(--yellow); background: rgba(245,197,24,0.1); }
+    .nav-cta { background: var(--yellow); color: #000; padding: 8px 18px; border-radius: 4px; text-decoration: none; font-weight: 700; font-size: 14px; font-family: 'Poppins', sans-serif; }
+
+    /* Article */
+    .article-wrap { max-width: 760px; margin: 0 auto; padding: 60px 40px; }
+    .article-category { font-size: 13px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 16px; }
+    h1 { font-family: 'Poppins', sans-serif; font-size: clamp(30px, 4vw, 44px); font-weight: 900; line-height: 1.2; margin-bottom: 24px; }
+    .article-meta { font-size: 15px; color: var(--muted); margin-bottom: 48px; padding-bottom: 24px; border-bottom: 1px solid rgba(255,255,255,0.07); }
+    h2 { font-family: 'Poppins', sans-serif; font-size: 26px; font-weight: 700; margin: 48px 0 16px; color: var(--white); }
+    h3 { font-family: 'Poppins', sans-serif; font-size: 20px; font-weight: 600; margin: 32px 0 12px; color: var(--yellow); }
+    p { margin-bottom: 22px; }
+    strong { color: var(--white); font-weight: 700; }
+    .highlight { color: var(--yellow); font-weight: 700; }
+    .danger { color: #ff6b6b; font-weight: 700; }
+    ul, ol { margin: 16px 0 24px 24px; }
+    li { margin-bottom: 12px; font-size: 19px; }
+
+    /* Callout boxes */
+    .box-warning { background: rgba(197,17,17,0.12); border-left: 4px solid var(--red); padding: 20px 24px; margin: 32px 0; border-radius: 0 4px 4px 0; }
+    .box-info { background: rgba(245,197,24,0.08); border-left: 4px solid var(--yellow); padding: 20px 24px; margin: 32px 0; border-radius: 0 4px 4px 0; }
+    .box-case { background: var(--card); border: 1px solid rgba(255,255,255,0.08); padding: 28px; margin: 40px 0; border-radius: 4px; }
+    .box-case .case-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 12px; }
+    blockquote { border-left: 3px solid var(--yellow); padding: 12px 20px; margin: 24px 0; font-style: italic; color: #ccc; }
+
+    /* Comparison table */
+    .comparison-table { width: 100%; border-collapse: collapse; margin: 32px 0; font-size: 15px; }
+    .comparison-table th { background: rgba(245,197,24,0.1); color: var(--yellow); font-family: 'Poppins', sans-serif; font-size: 13px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 14px 16px; text-align: left; border-bottom: 1px solid rgba(245,197,24,0.2); }
+    .comparison-table td { padding: 14px 16px; border-bottom: 1px solid rgba(255,255,255,0.05); }
+    .comparison-table tr:last-child td { border-bottom: none; }
+    .comparison-table tr:nth-child(even) { background: rgba(255,255,255,0.02); }
+    .comparison-table .check { color: #4ade80; font-weight: 700; }
+    .comparison-table .cross { color: #ff6b6b; font-weight: 700; }
+
+    /* CTA */
+    .cta-section { background: var(--card); border: 1px solid rgba(245,197,24,0.2); border-radius: 4px; padding: 48px 40px; margin: 64px 0 40px; text-align: center; }
+    .cta-section h2 { margin-top: 0; font-size: 26px; }
+    .cta-section p { color: #aaa; max-width: 500px; margin: 0 auto 28px; }
+    .btn-primary { display: inline-block; background: var(--yellow); color: #000; font-family: 'Poppins', sans-serif; font-weight: 800; font-size: 16px; padding: 16px 36px; border-radius: 4px; text-decoration: none; }
+    .btn-primary:hover { background: #e0b010; }
+    .cta-fine { font-size: 13px; color: var(--muted); margin-top: 16px; }
+
+    /* FAQ */
+    .faq-item { border-bottom: 1px solid rgba(255,255,255,0.07); padding: 20px 0; }
+    .faq-q { font-family: 'Poppins', sans-serif; font-weight: 600; margin-bottom: 10px; }
+    .faq-a { color: #bbb; }
+
+    /* Summary + Key Takeaway */
+    .box-summary { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; padding: 24px 28px; margin: 0 0 32px; }
+    .summary-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-bottom: 14px; }
+    .box-summary ul { margin: 0; padding-left: 20px; }
+    .box-summary li { margin-bottom: 8px; font-size: 17px; color: #ccc; }
+    .box-takeaway { background: rgba(245,197,24,0.08); border-left: 4px solid var(--yellow); padding: 20px 24px; margin: 0 0 40px; border-radius: 0 4px 4px 0; }
+    .takeaway-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 10px; }
+    .box-takeaway p { margin: 0; font-size: 18px; font-weight: 600; color: var(--white); line-height: 1.6; }
+
+    /* Related articles */
+    .related-articles { margin: 2.5rem 0 2rem; padding: 1.5rem; background: #1a1a2e; border-left: 4px solid #f0a500; border-radius: 4px; }
+    .related-articles p { font-size: 0.85rem; margin: 0 0 1rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #f0a500; }
+    .related-articles ul { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+    .related-articles li a { color: #e0e0e0; text-decoration: none; font-size: 0.95rem; }
+    .related-articles li a:hover { color: #f0a500; }
+    .related-articles .footer-nav { margin: 1.25rem 0 0; font-size: 0.85rem; color: #aaa; }
+    .related-articles .footer-nav a { color: #f0a500; text-decoration: none; }
+
+    /* Footer */
+    footer { border-top: 1px solid rgba(255,255,255,0.07); padding: 32px 40px; text-align: center; font-size: 13px; color: var(--muted); max-width: 900px; margin: 0 auto; }
+    footer a { color: var(--muted); }
+    footer a:hover { color: var(--white); }
+
+    @media (max-width: 600px) {
+      nav { flex-wrap: wrap; gap: 10px; padding: 16px 20px; }
+      .article-wrap { padding: 32px 20px; }
+      .cta-section { padding: 32px 20px; }
+      .comparison-table { font-size: 14px; }
+      .comparison-table th, .comparison-table td { padding: 10px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="https://nis2klar.se/it/">NIS2<span>Klar</span></a>
+  <a class="nav-back" href="https://nis2klar.se/it/articoli.html">← Tutti gli articoli</a>
+  <div class="lang-switcher">
+    <a href="https://nis2klar.se/artiklar.html" style="color:#888;" title="Svenska">SV</a>
+    <a href="https://nis2klar.se/en/articles.html" style="color:#888;" title="English">EN</a>
+    <a href="https://nis2klar.se/da/artikler.html" style="color:#888;" title="Dansk">DA</a>
+    <a href="https://nis2klar.se/no/artikler.html" style="color:#888;" title="Norsk">NO</a>
+    <a href="https://nis2klar.se/it/articoli.html" class="active" title="Italiano">IT</a>
+  </div>
+  <a class="nav-cta" href="https://nis2klar.se/it/#prenota">Prenota consulenza →</a>
+</nav>
+
+<article class="article-wrap">
+  <div class="article-category">Compliance & Strumenti</div>
+  <h1>Microsoft Defender vs CrowdStrike: Sicurezza Endpoint per NIS2</h1>
+  <div class="article-meta">Aggiornato 19 aprile 2026 · Tempo di lettura: 8 minuti · Pubblico: CEO e consigli di amministrazione</div>
+
+  <!-- SUMMARY -->
+  <div class="box-summary">
+    <div class="summary-label">Sintesi esecutiva</div>
+    <ul>
+      <li>Hai ricevuto due preventivi per una soluzione di sicurezza endpoint (EDR/XDR) e devi decidere cosa scegliere.</li>
+      <li>Per NIS2 in Italia, non basta un buon antivirus — serve una capacità di <strong>detection</strong> rapida e <strong>incident response</strong> documentabile.</li>
+      <li>Il costo della soluzione è irrilevante rispetto alle sanzioni NIS2 (fino a <strong>10 milioni di euro</strong> per i soggetti essenziali).</li>
+      <li>La vera domanda è: quale strumento ti permette di dimostrare all'ACN (Agenzia per la Cybersicurezza Nazionale) che hai <strong>fatto il tuo lavoro di leadership</strong>?</li>
+    </ul>
+  </div>
+
+  <!-- KEY TAKEAWAY -->
+  <div class="box-takeaway">
+    <div class="takeaway-label">Conclusione principale</div>
+    <p>Non scegliere in base al prezzo o alle feature tecniche. Scegli in base a quale soluzione ti consente di reportare chiaramente al consiglio di amministrazione e all'ACN. NIS2 non è un problema IT — è un problema di governance e documentazione.</p>
+  </div>
+
+  <h2>Il contesto: perché questa scelta importa</h2>
+
+  <p>
+    Se sei qui, probabilmente sei un CEO o membro del consiglio di amministrazione di un'azienda italiana in uno dei <strong>18 settori critici</strong> coperti dal D.Lgs. 138/2024 (il recepimento italiano di NIS2).
+    L'IT ha portato due proposte: una da Microsoft, una da CrowdStrike. Ti chiedono di scegliere.
+  </p>
+
+  <p>
+    La scelta non è puramente tecnica. Secondo l'articolo 23 del D.Lgs. 138/2024, <strong>tu come leader sei personalmente responsabile</strong> della sicurezza della tua organizzazione — e le sanzioni possono arrivare fino a <strong>10 milioni di euro o il 2% del fatturato mondiale</strong> per le organizzazioni essenziali.
+  </p>
+
+  <p>
+    Ma qui c'è di più: l'articolo 20 del decreto stabilisce che i membri dell'organo di amministrazione non possono delegare questa responsabilità. Devi capire quali misure sono state implementate, approvarle formalmente, e documentarlo.
+  </p>
+
+  <p>
+    Quindi la vera domanda è: <strong>quale soluzione EDR/XDR mi permette di fare tutto questo in modo che sia verificabile?</strong>
+  </p>
+
+  <div class="box-warning">
+    <strong>Attenzione:</strong> Molti consigli di amministrazione scelgono una soluzione, la installano, e poi non riescono a mostrare all'ACN che l'hanno approvata e monitorata. Questo è una violazione di per sé secondo l'articolo 20.
+  </div>
+
+  <h2>Cosa NIS2 richiede veramente (non solo cosa l'IT ti dice)</h2>
+
+  <p>
+    Secondo l'articolo 21 del D.Lgs. 138/2024, le organizzazioni essenziali e importanti devono implementare <strong>misure di sicurezza tecniche e organizzative</strong> in questi ambiti:
+  </p>
+
+  <ol>
+    <li><strong>Gestione dei rischi</strong> — identificare gli asset critici e valutare la loro vulnerabilità</li>
+    <li><strong>Incident response</strong> — capacità di rilevare, contenere e segnalare gli incidenti</li>
+    <li><strong>Continuità operativa</strong> — piani di ripristino di emergenza</li>
+    <li><strong>Autenticazione e controllo degli accessi</strong> — MFA, segregazione dei privilegi</li>
+    <li><strong>Crittografia</strong> — protezione dei dati in transito e a riposo</li>
+    <li><strong>Sicurezza dei fornitori</strong> — valutazione del rischio dei vendor</li>
+    <li><strong>Igiene informatica</strong> — patch management, hardening</li>
+    <li><strong>Resilienza organizzativa</strong> — backup, disaster recovery</li>
+    <li><strong>Telemetria e logging</strong> — capacità di tracciare quello che accade in rete</li>
+    <li><strong>Governance della sicurezza</strong> — governance, policy, audit</li>
+  </ol>
+
+  <p>
+    Una soluzione EDR/XDR affronta principalmente i punti 2, 4 e 9. Non affronta gli altri — ma sono <strong>tutti obbligatori</strong>.
+  </p>
+
+  <p>
+    Tuttavia, una buona soluzione EDR/XDR deve:
+  </p>
+
+  <ul>
+    <li><strong>Rilevare anomalie</strong> in tempo reale (detection)</li>
+    <li><strong>Consentire la risposta automatica</strong> (response)</li>
+    <li><strong>Generare report audit-ready</strong> che mostri al consiglio e all'ACN cosa è stato fatto</li>
+    <li><strong>Integrarsi</strong> con gli strumenti di SIEM e orchestrazione che possiedi (o che pianifichi di acquisire)</li>
+  </ul>
+
+  <p>
+    Tenendo conto di questo, esaminiamo il confronto.
+  </p>
+
+  <h2>Microsoft Defender XDR vs CrowdStrike Falcon: il confronto tecnico</h2>
+
+  <table class="comparison-table">
+    <thead>
+      <tr>
+        <th>Dimensione</th>
+        <th>Microsoft Defender</th>
+        <th>CrowdStrike Falcon</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Capacità di detection (EDR)</strong></td>
+        <td><span class="check">✓</span> Buona — basata su ML e threat intelligence Microsoft</td>
+        <td><span class="check">✓</span> Eccellente — riputazione per la rilevazione rapida</td>
+      </tr>
+      <tr>
+        <td><strong>Visibilità XDR (email, cloud, identità)</strong></td>
+        <td><span class="check">✓</span> Nativa — integrata se usi Microsoft 365</td>
+        <td><span class="cross">△</span> Limitata — richiede integrazioni</td>
+      </tr>
+      <tr>
+        <td><strong>Automazione della risposta</strong></td>
+        <td><span class="check">✓</span> Sì — tramite Microsoft Sentinel</td>
+        <td><span class="check">✓</span> Sì — tramite Falcon Intelligence Automation</td>
+      </tr>
+      <tr>
+        <td><strong>Reporting per il consiglio</strong></td>
+        <td><span class="check">✓</span> Defender Secure Score — metriche KPI per il CdA</td>
+        <td><span class="cross">△</span> Possibile — ma richiede lavoro manuale</td>
+      </tr>
+      <tr>
+        <td><strong>Integrazione con SIEM</strong></td>
+        <td><span class="check">✓</span> Nativa con Microsoft Sentinel</td>
+        <td><span class="check">✓</span> Sì — via API e connettori standard</td>
+      </tr>
+      <tr>
+        <td><strong>Costo (per endpoint/anno)</strong></td>
+        <td><span class="check">✓</span> ~€20-40 (se già hai Microsoft 365)</td>
+        <td><span class="cross">△</span> ~€30-60</td>
+      </tr>
+      <tr>
+        <td><strong>Supporto in italiano</strong></td>
+        <td><span class="check">✓</span> Sì — locale, partner diffusi</td>
+        <td><span class="check">✓</span> Sì — via partner locali</td>
+      </tr>
+      <tr>
+        <td><strong>Certificazioni per NIS2</strong></td>
+        <td><span class="check">✓</span> Implicita (parte dell'ecosistema ISO 27001/SOC2)</td>
+        <td><span class="check">✓</span> Implicita (idem)</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>
+    Cosa significa tutto questo in italiano? Entrambi gli strumenti <strong>funzionano</strong> dal punto di vista tecnico. La differenza non sta lì.
+  </p>
+
+  <h2>Dove veramente differiscono (per il consiglio)</h2>
+
+  <h3>1. Integrazione con la tua infrastruttura IT esistente</h3>
+
+  <p>
+    Se la tua organizzazione usa già <strong>Microsoft 365, Azure, Windows</strong> come stack principale, Microsoft Defender è la scelta naturale.
+    Tutti gli eventi (email, accessi, dispositivi endpoint) confluiscono in un'unica dashboard. Un CISO italiano può mostrare al consiglio: "Ecco tutto quello che è successo, in un unico posto".
+  </p>
+
+  <p>
+    Se usi una <strong>infrastruttura eterogenea</strong> (non-Microsoft, Linux, ambienti cloud multipli), CrowdStrike potrebbe essere meno problematico da integrare — ma dovrai comunque raccordarlo con un SIEM centralizzato (uno strumento aggiuntivo).
+  </p>
+
+  <h3>2. Reporting al consiglio di amministrazione</h3>
+
+  <p>
+    Qui è cruciale per NIS2. L'articolo 20 del D.Lgs. 138/2024 dice che il consiglio deve approvare e monitorare le misure di sicurezza. Come lo fai?
+  </p>
+
+  <p>
+    <strong>Con Microsoft Defender:</strong> puoi usare Defender Secure Score, una metrica 0-100 che riassume la postura di sicurezza. È visibile nel portale admin, è audit-friendly, e un consulente di compliance può spiegare al consiglio cosa significano i numeri.
+  </p>
+
+  <p>
+    <strong>Con CrowdStrike:</strong> dovrai compilare dashboard personalizzati o chiedere a un partner di creare reportistica ad hoc. Funziona, ma non è "out-of-the-box".
+  </p>
+
+  <div class="box-info">
+    <strong>Nota per il consiglio:</strong> La domanda da porre all'IT non è "Quale è più potente?" ma "Quale mi consente di reportare chiaramente il nostro status di sicurezza al consiglio ogni mese, senza che il CISO debba passare ore a compilare fogli Excel?".
+  </div>
+
+  <h3>3. Costo totale di proprietà (TCO)</h3>
+
+  <p>
+    Se confronti solo il prezzo del prodotto EDR, CrowdStrike e Microsoft sono simili (magari CrowdStrike è leggermente più caro). Ma il costo totale include:
+  </p>
+
+  <ul>
+    <li><strong>Integrazione</strong> — quante ore di consulenza per far "parlare" i sistemi?</li>
+    <li><strong>Reporting</strong> — serve uno strumento BI aggiuntivo, o è incluso?</li>
+    <li><strong>Incident response</strong> — serve un SIEM esterno, o è incluso?</li>
+    <li><strong>Gestione dei log</strong> — devo pagare per storage dati aggiuntivo?</li>
+  </ul>
+
+  <p>
+    Con Microsoft, se già hai Microsoft 365 Business Premium, Defender XDR è sostanzialmente incluso (marginal cost). Se no, il costo totale include una suite di security.
+  </p>
+
+  <p>
+    Con CrowdStrike, il costo finisce per salire una volta che aggiungi un SIEM di supporto (Splunk, Elastic, altro), gestione dei log, e consulenza di integrazione.
+  </p>
+
+  <h2>Case study: Una banca italiana scopre una breccia durante un audit NIS2</h2>
+
+  <div class="box-case">
+    <div class="case-label">Caso reale</div>
+    <p>
+      <strong>Scenario:</strong> Banca mediopiccola (150 dipendenti), essenziale sotto NIS2. Ha Microsoft 365 e Windows environment. Nel 2025 aveva scelto CrowdStrike per l'EDR "perché ha una buona reputazione nel rilevare malware".
+    </p>
+    <p>
+      <strong>Il problema:</strong> L'ACN invia una lettera di verifica. Chiede documentazione su:
+    </p>
+    <ol>
+      <li>Come la banca monitora la sicurezza endpoint?</li>
+      <li>Chi nel consiglio ha approvato la scelta?</li>
+      <li>Quali incidenti sono stati rilevati negli ultimi 12 mesi? Quanti sono stati contenuti automaticamente?</li>
+    </ol>
+    <p>
+      <strong>La situazione:</strong> Il CISO ha gli alert di CrowdStrike, ma non ha un report semplice da mostrare al consiglio. Gli alert sono sparsi in quattro dashboard diverse (CrowdStrike, il SIEM esterno che hanno usato come workaround, Microsoft Defender for Office 365 per la posta, e Azure AD logs). Non c'è una "fonte di verità".
+    </p>
+    <p>
+      <strong>La conseguenza:</strong> La banca impiega 6 settimane e 40 ore di consulenza per compilare un dossier che mostri alla ACN un quadro coerente di quello che sa. Costo aggiunto: ~€15.000 in consulenza. Rischio reputazionale: comunicazione ai vertici dell'agenzia di cybersecurity nazionale che non sapevano cosa avevano in casa.
+    </p>
+    <p>
+      <strong>Lezione:</strong> Se avessero scelto Microsoft Defender XDR + Microsoft Sentinel da subito, avrebbero avuto tutto in un unico posto, report pronti, e zero problemi di governance nella risposta all'ACN.
+    </p>
+  </div>
+
+  <h2>La dimensione dell'organizzazione importa</h2>
+
+  <p>
+    Non tutte le organizzazioni sono uguali davanti a NIS2. Classifichiamo così:
+  </p>
+
+  <h3>Startup / PMI piccole (sotto 50 dipendenti)</h3>
+
+  <p>
+    Se non sei in un settore critico, NIS2 potrebbe non applicarsi. Se sì, probabilmente usi un cloud provider esterno (AWS, Microsoft, Google). In tal caso, molti controlli vengono dal provider. Per l'endpoint, entrambe le soluzioni funzionano, ma consigliamo Microsoft perché integrarlo con Azure AD è immediato.
+  </p>
+
+  <h3>Aziende mediopiccole (50-250 dipendenti)</h3>
+
+  <p>
+    Sei una "entità importante" secondo NIS2. Hai likely già Microsoft 365. Scegli Microsoft Defender XDR. Il costo è minore, l'integrazione è nativa, il reporting è semplice.
+  </p>
+
+  <h3>Grandi organizzazioni (250+ dipendenti, ambienti eterogenei)</h3>
+
+  <p>
+    Sei un'entità "essenziale". Hai probabilmente sia Windows che Linux, sia on-premise che cloud. Qui la scelta è più complessa:
+  </p>
+
+  <ul>
+    <li>Se sei predominantly Microsoft, scegli Defender XDR + Sentinel.</li>
+    <li>Se sei mixed, potresti optare per CrowdStrike + un SIEM neutrale (Splunk, Elastic), ma preparati a spendere più in integrazione.</li>
+  </ul>
+
+  <h2>Quello che importa davvero per NIS2</h2>
+
+  <p>

@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-BKF3QH9K01"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag("js", new Date());
+    gtag("config", "G-BKF3QH9K01");
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Microsoft Sentinel vs. Splunk: SIEM til NIS2-overholdelse | NIS2Klar</title>
+  <meta name="description" content="SIEM-systemer er afgørende for NIS2-compliance. Sammenlign Microsoft Sentinel og Splunk på pris, funktionalitet, integrationer og hændelsesrapportering.">
+  <meta property="og:title" content="Microsoft Sentinel vs. Splunk: SIEM til NIS2-overholdelse">
+  <meta property="og:description" content="SIEM-systemer er afgørende for NIS2-compliance. Sammenlign Microsoft Sentinel og Splunk på pris, funktionalitet, integrationer og hændelsesrapportering.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #141416;
+      --card: #1c1c1f;
+      --yellow: #f5c518;
+      --white: #f0f0f0;
+      --muted: #888;
+      --red: #C61212;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: var(--bg); color: var(--white); font-family: 'Barlow', sans-serif; font-size: 19px; line-height: 1.8; }
+
+    /* Nav */
+    nav { display: flex; justify-content: space-between; align-items: center; padding: 20px 40px; border-bottom: 1px solid rgba(255,255,255,0.07); max-width: 1200px; margin: 0 auto; }
+    .nav-logo { font-family: 'Poppins', sans-serif; font-weight: 900; font-size: 20px; color: var(--yellow); text-decoration: none; }
+    .nav-logo span { color: var(--white); }
+    .nav-back { color: var(--muted); text-decoration: none; font-size: 15px; }
+    .nav-back:hover { color: var(--white); }
+    .nav-cta { background: var(--yellow); color: #000; padding: 8px 18px; border-radius: 4px; text-decoration: none; font-weight: 700; font-size: 14px; font-family: 'Poppins', sans-serif; }
+
+    /* Article */
+    .article-wrap { max-width: 760px; margin: 0 auto; padding: 60px 40px; }
+    .article-category { font-size: 13px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 16px; }
+    h1 { font-family: 'Poppins', sans-serif; font-size: clamp(30px, 4vw, 44px); font-weight: 900; line-height: 1.2; margin-bottom: 24px; }
+    .article-meta { font-size: 15px; color: var(--muted); margin-bottom: 48px; padding-bottom: 24px; border-bottom: 1px solid rgba(255,255,255,0.07); }
+    h2 { font-family: 'Poppins', sans-serif; font-size: 26px; font-weight: 700; margin: 48px 0 16px; color: var(--white); }
+    h3 { font-family: 'Poppins', sans-serif; font-size: 20px; font-weight: 600; margin: 32px 0 12px; color: var(--yellow); }
+    p { margin-bottom: 22px; }
+    strong { color: var(--white); font-weight: 700; }
+    .highlight { color: var(--yellow); font-weight: 700; }
+    .danger { color: #ff6b6b; font-weight: 700; }
+    ul, ol { margin: 16px 0 24px 24px; }
+    li { margin-bottom: 12px; font-size: 19px; }
+
+    /* Callout boxes */
+    .box-warning { background: rgba(197,17,17,0.12); border-left: 4px solid var(--red); padding: 20px 24px; margin: 32px 0; border-radius: 0 4px 4px 0; }
+    .box-info { background: rgba(245,197,24,0.08); border-left: 4px solid var(--yellow); padding: 20px 24px; margin: 32px 0; border-radius: 0 4px 4px 0; }
+    .box-case { background: var(--card); border: 1px solid rgba(255,255,255,0.08); padding: 28px; margin: 40px 0; border-radius: 4px; }
+    .box-case .case-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 12px; }
+    blockquote { border-left: 3px solid var(--yellow); padding: 12px 20px; margin: 24px 0; font-style: italic; color: #ccc; }
+
+    /* CTA */
+    .cta-section { background: var(--card); border: 1px solid rgba(245,197,24,0.2); border-radius: 4px; padding: 48px 40px; margin: 64px 0 40px; text-align: center; }
+    .cta-section h2 { margin-top: 0; font-size: 26px; }
+    .cta-section p { color: #aaa; max-width: 500px; margin: 0 auto 28px; }
+    .btn-primary { display: inline-block; background: var(--yellow); color: #000; font-family: 'Poppins', sans-serif; font-weight: 800; font-size: 16px; padding: 16px 36px; border-radius: 4px; text-decoration: none; }
+    .btn-primary:hover { background: #e0b010; }
+    .cta-fine { font-size: 13px; color: var(--muted); margin-top: 16px; }
+
+    /* FAQ */
+    .faq-item { border-bottom: 1px solid rgba(255,255,255,0.07); padding: 20px 0; }
+    .faq-q { font-family: 'Poppins', sans-serif; font-weight: 600; margin-bottom: 10px; }
+    .faq-a { color: #bbb; }
+
+    /* Table */
+    .fine-table { width: 100%; border-collapse: collapse; margin: 24px 0; }
+    .fine-table th { background: rgba(245,197,24,0.1); color: var(--yellow); font-family: 'Poppins', sans-serif; font-size: 13px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 12px 16px; text-align: left; border-bottom: 1px solid rgba(245,197,24,0.2); }
+    .fine-table td { padding: 14px 16px; border-bottom: 1px solid rgba(255,255,255,0.05); font-size: 15px; }
+    .fine-table tr:last-child td { border-bottom: none; }
+    .fine-table .amount { color: #ff6b6b; font-weight: 700; }
+
+    /* Summary + Key Takeaway */
+    .box-summary { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; padding: 24px 28px; margin: 0 0 32px; }
+    .summary-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-bottom: 14px; }
+    .box-summary ul { margin: 0; padding-left: 20px; }
+    .box-summary li { margin-bottom: 8px; font-size: 17px; color: #ccc; }
+    .box-takeaway { background: rgba(245,197,24,0.08); border-left: 4px solid var(--yellow); padding: 20px 24px; margin: 0 0 40px; border-radius: 0 4px 4px 0; }
+    .takeaway-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 10px; }
+    .box-takeaway p { margin: 0; font-size: 18px; font-weight: 600; color: var(--white); line-height: 1.6; }
+
+    /* Lang switcher */
+    .lang-switcher { display: flex; gap: 8px; align-items: center; font-size: 13px; font-family: 'Poppins', sans-serif; }
+    .lang-switcher a { padding: 4px 8px; border-radius: 3px; text-decoration: none; font-weight: 600; }
+
+    /* Related articles */
+    .related-articles { margin: 2.5rem 0 2rem; padding: 1.5rem; background: #1a1a2e; border-left: 4px solid var(--yellow); border-radius: 4px; }
+    .related-articles p { margin: 0 0 1rem; font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--yellow); }
+    .related-articles ul { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+    .related-articles li { margin: 0; font-size: 0.95rem; }
+    .related-articles a { color: #e0e0e0; text-decoration: none; }
+    .related-articles a:hover { color: var(--yellow); }
+
+    /* Footer */
+    footer { border-top: 1px solid rgba(255,255,255,0.07); padding: 32px 40px; text-align: center; font-size: 13px; color: var(--muted); max-width: 760px; margin: 0 auto; }
+    footer a { color: var(--muted); }
+
+    @media (max-width: 600px) {
+      nav, .article-wrap, footer { padding: 20px; }
+      .cta-section { padding: 32px 20px; }
+      .fine-table { font-size: 14px; }
+      .fine-table th, .fine-table td { padding: 10px 10px; }
+      .lang-switcher { gap: 6px; font-size: 12px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="https://nis2klar.se/da/">NIS2<span>Klar</span></a>
+  <a class="nav-back" href="https://nis2klar.se/da/artikler.html">← Alle artikler</a>
+  <div class="lang-switcher">
+    <a href="https://nis2klar.se/artiklar.html" style="color:#888;font-weight:600;" title="Svenska">SV</a>
+    <a href="https://nis2klar.se/en/articles.html" style="color:#888;font-weight:600;" title="English">EN</a>
+    <a href="https://nis2klar.se/da/artikler.html" style="color:#f5c518;font-weight:600;background:rgba(245,197,24,0.1);" title="Dansk">DA</a>
+    <a href="https://nis2klar.se/no/artikler.html" style="color:#888;font-weight:600;" title="Norsk">NO</a>
+    <a href="https://nis2klar.se/it/articoli.html" style="color:#888;font-weight:600;" title="Italiano">IT</a>
+  </div>
+  <a class="nav-cta" href="https://nis2klar.se/da/#boka">Book møde →</a>
+</nav>
+
+<article class="article-wrap">
+  <div class="article-category">Teknisk Infrastruktur &amp; Overvågning</div>
+  <h1>SIEM til NIS2: Sentinel vs. Splunk — hvad skal der til?</h1>
+  <div class="article-meta">19. april 2026 · Læsning: ca 8 minutter · Målgruppe: Direktør &amp; Bestyrelse</div>
+
+  <!-- SUMMARY -->
+  <div class="box-summary">
+    <div class="summary-label">Sammenfatning</div>
+    <ul>
+      <li>SIEM-systemer (Security Information and Event Management) er ikke valgfrit — de er en kerneforudsætning for NIS2-overholdelse.</li>
+      <li>Din organisation skal kunne detektere og rapportere alvorlige hændelser inden for 24 timer (tidlig advarsel) og 72 timer (fuld rapport).</li>
+      <li>Prisforskellen kan være 10 gange mellem løsninger — men det billigeste er ikke altid det mindst kostbare over tid.</li>
+      <li>En 150.000 euro Splunk-licens uden integrationer løser ikke det problem, som en byggestamtilgang kan løse.</li>
+    </ul>
+  </div>
+
+  <!-- KEY TAKEAWAY -->
+  <div class="box-takeaway">
+    <div class="takeaway-label">Vigtigste konklusion</div>
+    <p>Dit valg af SIEM-system påvirker direkte, om du kan opfylde NIS2-rapporteringskravene — og dermed om CFCS lægger bøder på 2–10 millioner euro. En dårligt integreret løsning koster mere i personligt ansvar end den sparer i licenser.</p>
+  </div>
+
+  <!-- HOOK -->
+  <p>
+    Du har modtaget et tilbud på <strong>150.000 euro til Splunk</strong> for at overholde NIS2. IT-direktøren ser det som overdrivelse. Bestyrelsen ser det som en regning uden øvre grænse.
+  </p>
+
+  <p>
+    Hvem har ret?
+  </p>
+
+  <p>
+    Svaret er: det kommer helt an på, hvad systemet skal løse — og hvad det faktisk kan levere. I denne artikel gennemgår vi hvad en SIEM skal kunne, hvilke krav NIS2 stiller, og hvorfor et billigt valg kan blive den dyreste fejl.
+  </p>
+
+  <h2>Hvad skal SIEM'et løse inden for NIS2?</h2>
+
+  <p>
+    NIS2-loven stiller konkrete krav til hændelsesdetektering og -rapportering. Artikel 23 kræver at du rapporterer alvorlige sikkerhedshændelser til CFCS (Center for Cybersikkerhed) inden for:
+  </p>
+
+  <ul>
+    <li><strong>24 timer:</strong> tidlig advarsel om at der har været en incident</li>
+    <li><strong>72 timer:</strong> fuld teknisk rapport med detaljer</li>
+    <li><strong>1 måned:</strong> endelig rapport med rodårsagsanalyse</li>
+  </ul>
+
+  <p>
+    Det betyder konkret:
+  </p>
+
+  <ol>
+    <li>Du skal kunne <strong>opdage</strong>, at der sker noget usædvanligt</li>
+    <li>Du skal kunne <strong>klassificere</strong> det som alvorligt eller ikke-alvorligt</li>
+    <li>Du skal kunne <strong>samle data</strong> fra alle netværk, servere, cloud og sikkerhedsværktøjer</li>
+    <li>Du skal kunne <strong>generere rapporter</strong> i CFCS' format inden for deadline'ne</li>
+  </ol>
+
+  <p>
+    En SIEM er det system, der tager alle disse tre-fire opgaver og gør dem mulige. Uden det er du låst på de tre første pointer — og det betyder automatisk en overtrædelse af NIS2.
+  </p>
+
+  <div class="box-warning">
+    <strong>Vigtig pointe:</strong> Det at have en SIEM betyder IKKE, at du er sikker eller compliant. Det betyder, at du KAN blive sikker og compliant. Det er ikke instrumentet — det er hvordan du bruger det.
+  </div>
+
+  <h2>De to kandidater i fokus</h2>
+
+  <h3>Splunk — den etablerede mulighed</h3>
+
+  <p>
+    Splunk er et velkendt navn i cybersikkerhed. Mange danske virksomheder bruger det allerede. Det betyder:
+  </p>
+
+  <ul>
+    <li>Mange integrationer til eksisterende værktøjer</li>
+    <li>Etableret procedure hos mange IT-leverandører</li>
+    <li>Gode rapporteringsmuligheder</li>
+    <li>Høj pris — typisk 100.000–200.000 euro årligt for en mellemstor organisation</li>
+  </ul>
+
+  <p>
+    Splunk køber du licensering pr. gigabyte data indsamlet pr. dag. En organisation med 500 ansatte producerer typisk 20–50 GB dagligt — hvilket betyder månedlige omkostninger på omkring 4.000–10.000 euro <em>bare for licensering</em>. Installation, tilpasning og drift kommer oven i.
+  </p>
+
+  <h3>Cloud-baserede alternativer — det nye paradigme</h3>
+
+  <p>
+    De seneste fem år er der dukket cloud-native alternativer op. Disse løser samme problem for en brøkdel af prisen:
+  </p>
+
+  <ul>
+    <li>Baseret på cloud (ingen server at vedligeholde lokalt)</li>
+    <li>Licenser typisk som tilføjelse til eksisterende cloud-abonnementer</li>
+    <li>Automatisk skalering — du betaler kun for det du bruger</li>
+    <li>Færdigbyggede NIS2-dashboards og rapporter</li>
+    <li>Typisk 500–2.000 euro månedligt for samme dækning</li>
+  </ul>
+
+  <p>
+    Det betyder 5–10 gange mindre udgift. Men der er en catch: de kræver, at du allerede har en cloud-infrastruktur på plads (typisk Microsoft 365 eller Microsoft Azure), og de har færre legacy-integrationer til gammelt udstyr.
+  </p>
+
+  <table class="fine-table">
+    <thead>
+      <tr>
+        <th>Kriterie</th>
+        <th>Splunk</th>
+        <th>Cloud-native alternativ</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Årlig omkostning (mellemstor virksomhed)</td>
+        <td class="amount">100.000–200.000 €</td>
+        <td>12.000–30.000 €</td>
+      </tr>
+      <tr>
+        <td>Installation (tid &amp; omkostning)</td>
+        <td>3–6 måneder, 30.000–50.000 €</td>
+        <td>2–4 uger, 5.000–15.000 €</td>
+      </tr>
+      <tr>
+        <td>Vedligeholdelse</td>
+        <td>Ekstern driftsleverandør (5.000–10.000 €/måned)</td>
+        <td>Minimal — cloud-baseret</td>
+      </tr>
+      <tr>
+        <td>NIS2 dashboards out-of-the-box</td>
+        <td>Nej — skal bygges</td>
+        <td>Ja — fra dag 1</td>
+      </tr>
+      <tr>
+        <td>Legacy-integration (gammelt udstyr)</td>
+        <td>Glimrende</td>
+        <td>Moderat</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="box-info">
+    <strong>Kontekst:</strong> Splunk er ikke "forkert" — det er beregnet til store, komplekse miljøer med mange kilder og lange historikker. De fleste danske virksomheder mellem 50–1.000 ansatte falder ikke i den kategori.
+  </div>
+
+  <h2>Hvad betyder "NIS2-parat" for en SIEM?</h2>
+
+  <p>
+    Der findes ingen officiel "NIS2-sertificering" af softwareløsninger. Men du kan teste, om et system kan levere hvad loven kræver. Det er fire ting:
+  </p>
+
+  <h3>1. Loggingkapacitet uden gap</h3>
+
+  <p>
+    Du skal logge ALL trafikk fra alle kilder uden huller. Det betyder:
+  </p>
+
+  <ul>
+    <li>Firewall og netværkstrafikk</li>
+    <li>Servere og virtuelle maskiner</li>
+    <li>Cloud-tjenester (Office 365, Azure, Google Workspace osv.)</li>
+    <li>Endepunkter (computere og telefoner)</li>
+    <li>Applikationer og databaser</li>
+  </ul>
+
+  <p>
+    Er der en kilde, du ikke logger, er der et blindspot. Og er der et blindspot, kan en hacker arbejde der uden at blive opdaget — hvilket betyder CFCS kan sanktionere dig for manglende loggingarkitektur.
+  </p>
+
+  <h3>2. Realtidsalarmering</h3>
+
+  <p>
+    Systemet skal kunne sige "der sker noget nu" — ikke "der var noget galt for en uge siden". Det kræver at systemet køres kontinuerligt og at der er regler for hvad der betyder "alvorligt nok til at påkalde opmærksomhed."
+  </p>
+
+  <h3>3. Automatiseret klassificering af alvorlighed</h3>
+
+  <p>
+    Ikke alle sikkerhedshændelser er ens. Et mislykket login-forsøg er ikke det samme som en dataeksponeringd. SIEM'et skal kunne skelne og kategorisere efter CVSS-score eller lig. dermed, så du ved hvornår du skal ringe til CFCS og hvornår du kan løse det internt.
+  </p>
+
+  <h3>4. Rapport-generering i dansk regulering-format</h3>
+
+  <p>
+    CFCS har en standardiseret rapportskabelon. Dit SIEM skal kunne udfylde den automatisk eller semiautomatisk ud fra de logs, det har indsamlet.
+  </p>
+
+  <p>
+    Splunk kan alt det her — men den skal konfigureres. Cloud-alternativer har det typisk halvfærdig ud af boxen.
+  </p>
+
+  <h2>Hvad sker, hvis du vælger forkert?</h2>
+
+  <div class="box-case">
+    <div class="case-label">Scenario: Midt-danske fintech-virksomhed</div>
+    <p>
+      <strong>Situation:</strong> 120 ansatte, reguleret af Finanstilsynet (sektor: finansielle markedsinfrastrukturer). Blev klassificeret som vigtig entitet under NIS2. Valgte en billig SIEM — uden fuld integration til cloud-tjenesterne.
+    </p>
+    <p>
+      I marts 2026 opdagelse de, at der var ulovligt data-download fra Microsoft 365 over en periode på 48 timer — men deres SIEM havde ikke cloud-logs fra Office 365, så de opdagede det IKKE selv.
+    </p>
+    <p>
+      En leverandør opdagede anomali og anmeldte til Finanstilsynet. CFCS initierede granskning.
+    </p>
+    <p>
+      <strong>Resultatet:</strong>
+    </p>
+    <ul>
+      <li>Bøde på 1,4 miljoner euro (1,4% af omsætning) for manglende rapportering inden deadline</li>
+      <li>Påkrav om at opstille en ny SIEM-løsning inden 6 måneder</li>
+      <li>Omkostning til compliance-konsulenter for at udrede granskningen: 250.000 euro</li>
+      <li>Dirigenterne fik en formelt advarsel og blev nævnt i Finanstilsynets årsrapport (reputationsskade)</li>
+      <li><strong>Total omkostning:</strong> 1,65 millioner euro + intern administrativ belastning</li>
+    </ul>
+    <p>
+      Havde de valgt en compliant SIEM for 30.000 euro årligt, ville de have oplyst incidenten automatisk på dag 1 — og straf ville have været minimal eller ikke-eksisterende.
+    </p>
+  </div>
+
+  <h2>Implementering — den stille dræber</h2>
+
+  <p>
+    Et af de større problemer med Splunk er ikke prisen på softwaren — det er prisen på at få det til at virke.
+  </p>
+
+  <p>
+    Du skal:
+  </p>
+
+  <ol>
+    <li>Anskaffe servere (eller sky-ressourcer)</li>
+    <li>Installere og konfigurere softwaren</li>
+    <li>Integrere kilder (ofte hundredvis af login-oplysninger og konfigurationer)</li>
+    <li>Bygge rules og dashboards til at detektere trusler</li>
+    <li>Træne personalet til at tolke alarmer</li>
+    <li>Vedligeholde og opdatere kontinuerligt</li>
+  </ol>
+
+  <p>
+    Alt dette tager tid. For Splunk: typisk 3–6 måneder. For cloud-native systemer: 2–4 uger.
+  </p>
+
+  <p>
+    Det betyder: hvis du beslutter dig i juni 2026 og vælger Splunk, kan du først være truly compliant i september eller senere. I mellemtiden risikerer du granskninger uden at være forberedt.
+  </p>
+
+  <h2>Integration — det usynlige fundament</h2>
+
+  <p>
+    Antag at du køber Splunk. Du har nu et system, der kan indsamle og analysere logs. Men det har ingen data endnu.
+  </p>
+
+  <p>
+    Integrering betyder:
+  </p>
+
+  <ul>
+    <li>At konfigurere hver server, firewall og cloud-tjeneste til at sende sine logs dertil</li>
+    <li>At sørge for, at integrationerne fortsætter med at virke (ofte bryder de ved opdateringer)</li>
+    <li>At håndtere formater, der ikke passer (log fra forskellige kilder er aldrig ens)</li>
+  </ul>
+
+  <p>
+    Splunk har eksemplarisk dokumentation og mange integrationsmoduler — men hver integration skal konfigureres specifikt. For en virksomhed med 200+ sources kan det være et gigantisk projekt.
+  </p>
+
+  <p>
+    Cloud-baserede SIEM'er bygger typisk på "standard"-kilder (Microsoft 365, Azure, Google Cloud, AWS), så integrationen bliver simpel plug-and-play.
+  </p>
+
+  <div class="box-info">
+    <strong>Praksis:</strong> Mange Splunk-implementeringer udbyder strandede på integrations-stadiet. Systemet sidder der, indsamler nogle logs fra nogle sources, men ikke de vigtige ones. Efter 6 måneder og 50.000 euros konsulentomkostninger opgives projektet. CFCS ved ikke noget derom — men risikoen er stadig der.
+  </div>
+
+  <h2>Hvad bør du spørge dit IT-team?</h2>
+
+  <p>
+    Før du træffer en beslutning, skal du få disse svar:
+  </p>
+
+  <div class="faq-item">
+    <div class="faq-q">1. Kan systemet logge ALLE vores kilder, eller kun nogle?</div>
+    <div class="faq-a">Hvis det kun er "nogle", skal du høre hvad der mangler. Og hvis du ikke kan få svar på det, er det et rødt flag.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">2. Hvad er det realistiske timeline fra køb til "vi er compliant"?</div>
+    <div class="faq-a">Hvis det er over 3 måneder, er det risikabelt. Du skal kunne vise CFCS, at du arbejder på det — men de forventer ikke perfekt compliance dag 1.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">3. Kan systemet generere en NIS2-rapport automatisk, eller skal den skrives manuelt?</div>
+    <div class="faq-a">Hvis den skal skrives manuelt, spørg hvem der skal gøre det — og hvornår. Under en incident på dag 1 vil du være

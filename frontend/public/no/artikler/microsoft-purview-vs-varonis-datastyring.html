@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-BKF3QH9K01"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag("js", new Date());
+    gtag("config", "G-BKF3QH9K01");
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Microsoft Purview vs. Varonis: Datastyring for NIS2-etterlevelse | NIS2Klar</title>
+  <meta name="description" content="Sammenligning av Microsoft Purview og Varonis for NIS2-datakontroll. Sensitivitetsmerkinger, DLP, insidertrusseler og personlig ansvar for ledelse.">
+  <meta property="og:title" content="Microsoft Purview vs. Varonis: Datastyring for NIS2-etterlevelse">
+  <meta property="og:description" content="Sammenligning av Microsoft Purview og Varonis for NIS2-datakontroll. Sensitivitetsmerkinger, DLP, insidertrusseler og personlig ansvar for ledelse.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #141416;
+      --card: #1c1c1f;
+      --yellow: #f5c518;
+      --white: #f0f0f0;
+      --muted: #888;
+      --red: #C61212;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: var(--bg); color: var(--white); font-family: 'Barlow', sans-serif; font-size: 19px; line-height: 1.8; }
+
+    /* Nav */
+    nav { display: flex; justify-content: space-between; align-items: center; padding: 20px 40px; border-bottom: 1px solid rgba(255,255,255,0.07); max-width: 900px; margin: 0 auto; }
+    .nav-logo { font-family: 'Poppins', sans-serif; font-weight: 900; font-size: 20px; color: var(--yellow); text-decoration: none; }
+    .nav-logo span { color: var(--white); }
+    .nav-back { color: var(--muted); text-decoration: none; font-size: 15px; }
+    .nav-back:hover { color: var(--white); }
+    .lang-switcher { display: flex; gap: 8px; align-items: center; font-size: 13px; font-family: 'Poppins', sans-serif; }
+    .lang-switcher a { color: #888; text-decoration: none; font-weight: 600; padding: 4px 8px; border-radius: 3px; }
+    .lang-switcher a:hover { color: var(--white); }
+    .nav-cta { background: var(--yellow); color: #000; padding: 8px 18px; border-radius: 4px; text-decoration: none; font-weight: 700; font-size: 14px; font-family: 'Poppins', sans-serif; }
+
+    /* Article */
+    .article-wrap { max-width: 760px; margin: 0 auto; padding: 60px 40px; }
+    .article-category { font-size: 13px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 16px; }
+    h1 { font-family: 'Poppins', sans-serif; font-size: clamp(30px, 4vw, 44px); font-weight: 900; line-height: 1.2; margin-bottom: 24px; }
+    .article-meta { font-size: 15px; color: var(--muted); margin-bottom: 48px; padding-bottom: 24px; border-bottom: 1px solid rgba(255,255,255,0.07); }
+    h2 { font-family: 'Poppins', sans-serif; font-size: 26px; font-weight: 700; margin: 48px 0 16px; color: var(--white); }
+    h3 { font-family: 'Poppins', sans-serif; font-size: 20px; font-weight: 600; margin: 32px 0 12px; color: var(--yellow); }
+    p { margin-bottom: 22px; }
+    strong { color: var(--white); font-weight: 700; }
+    .highlight { color: var(--yellow); font-weight: 700; }
+    .danger { color: #ff6b6b; font-weight: 700; }
+    ul, ol { margin: 16px 0 24px 24px; }
+    li { margin-bottom: 12px; font-size: 19px; }
+
+    /* Callout boxes */
+    .box-warning { background: rgba(197,17,17,0.12); border-left: 4px solid var(--red); padding: 20px 24px; margin: 32px 0; border-radius: 0 4px 4px 0; }
+    .box-info { background: rgba(245,197,24,0.08); border-left: 4px solid var(--yellow); padding: 20px 24px; margin: 32px 0; border-radius: 0 4px 4px 0; }
+    .box-case { background: var(--card); border: 1px solid rgba(255,255,255,0.08); padding: 28px; margin: 40px 0; border-radius: 4px; }
+    .box-case .case-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 12px; }
+    blockquote { border-left: 3px solid var(--yellow); padding: 12px 20px; margin: 24px 0; font-style: italic; color: #ccc; }
+
+    /* CTA */
+    .cta-section { background: var(--card); border: 1px solid rgba(245,197,24,0.2); border-radius: 4px; padding: 48px 40px; margin: 64px 0 40px; text-align: center; }
+    .cta-section h2 { margin-top: 0; font-size: 26px; }
+    .cta-section p { color: #aaa; max-width: 500px; margin: 0 auto 28px; }
+    .btn-primary { display: inline-block; background: var(--yellow); color: #000; font-family: 'Poppins', sans-serif; font-weight: 800; font-size: 16px; padding: 16px 36px; border-radius: 4px; text-decoration: none; }
+    .btn-primary:hover { background: #e0b010; }
+    .cta-fine { font-size: 13px; color: var(--muted); margin-top: 16px; }
+
+    /* FAQ */
+    .faq-item { border-bottom: 1px solid rgba(255,255,255,0.07); padding: 20px 0; }
+    .faq-q { font-family: 'Poppins', sans-serif; font-weight: 600; margin-bottom: 10px; }
+    .faq-a { color: #bbb; }
+
+    /* Comparison table */
+    .comparison-table { width: 100%; border-collapse: collapse; margin: 24px 0; }
+    .comparison-table th { background: rgba(245,197,24,0.1); color: var(--yellow); font-family: 'Poppins', sans-serif; font-size: 13px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 12px 16px; text-align: left; border-bottom: 1px solid rgba(245,197,24,0.2); }
+    .comparison-table td { padding: 14px 16px; border-bottom: 1px solid rgba(255,255,255,0.05); font-size: 15px; }
+    .comparison-table tr:last-child td { border-bottom: none; }
+    .comparison-table .feature-pro { color: #4ade80; }
+    .comparison-table .feature-con { color: #ff6b6b; }
+
+    /* Summary + Key Takeaway */
+    .box-summary { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; padding: 24px 28px; margin: 0 0 32px; }
+    .summary-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-bottom: 14px; }
+    .box-summary ul { margin: 0; padding-left: 20px; }
+    .box-summary li { margin-bottom: 8px; font-size: 17px; color: #ccc; }
+    .box-takeaway { background: rgba(245,197,24,0.08); border-left: 4px solid var(--yellow); padding: 20px 24px; margin: 0 0 40px; border-radius: 0 4px 4px 0; }
+    .takeaway-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 10px; }
+    .box-takeaway p { margin: 0; font-size: 18px; font-weight: 600; color: var(--white); line-height: 1.6; }
+
+    /* Footer */
+    footer { border-top: 1px solid rgba(255,255,255,0.07); padding: 32px 40px; text-align: center; font-size: 13px; color: var(--muted); max-width: 900px; margin: 0 auto; }
+    footer a { color: var(--muted); }
+
+    @media (max-width: 600px) {
+      nav, .article-wrap, footer { padding: 20px; }
+      nav { flex-wrap: wrap; }
+      .nav-logo { flex: 1; }
+      .nav-back { width: 100%; margin: 10px 0; order: 3; }
+      .lang-switcher { order: 2; }
+      .nav-cta { order: 4; width: 100%; margin-top: 10px; text-align: center; }
+      .cta-section { padding: 32px 20px; }
+      .comparison-table { font-size: 14px; }
+      .comparison-table th, .comparison-table td { padding: 10px 10px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="https://nis2klar.se/no/">NIS2<span>Klar</span></a>
+  <a class="nav-back" href="https://nis2klar.se/no/artikler.html">← Alle artikler</a>
+  <div class="lang-switcher">
+    <a href="https://nis2klar.se/artiklar.html" style="color:#888;text-decoration:none;font-weight:600;padding:4px 8px;border-radius:3px;" title="Svenska">SV</a>
+    <a href="https://nis2klar.se/en/articles.html" style="color:#888;text-decoration:none;font-weight:600;padding:4px 8px;border-radius:3px;" title="English">EN</a>
+    <a href="https://nis2klar.se/da/artikler.html" style="color:#888;text-decoration:none;font-weight:600;padding:4px 8px;border-radius:3px;" title="Dansk">DA</a>
+    <a href="https://nis2klar.se/no/artikler.html" style="color:#f5c518;text-decoration:none;font-weight:600;padding:4px 8px;border-radius:3px;background:rgba(245,197,24,0.1);" title="Norsk">NO</a>
+    <a href="https://nis2klar.se/it/articoli.html" style="color:#888;text-decoration:none;font-weight:600;padding:4px 8px;border-radius:3px;" title="Italiano">IT</a>
+  </div>
+  <a class="nav-cta" href="https://nis2klar.se/no/#boka">Book samtale →</a>
+</nav>
+
+<article class="article-wrap">
+  <div class="article-category">Datasikkerhet &amp; Etterlevelse</div>
+  <h1>Microsoft Purview vs. Varonis: Datastyring for NIS2-etterlevelse</h1>
+  <div class="article-meta">19. april 2026 · Lesetid: ca 9 minutter · Målgruppe: Direktører og styremedlemmer</div>
+
+  <!-- SUMMARY -->
+  <div class="box-summary">
+    <div class="summary-label">Sammendrag</div>
+    <ul>
+      <li>NIS2 krever dokumentert datakontroll og insidertrusselvern — ikke bare teknisk deling.</li>
+      <li>Microsoft Purview er kraftig hvis du allerede bruker Microsoft 365; Varonis er spesialisert på datadeteksjon uavhengig av plattform.</li>
+      <li>Begge verktøy kan levere bevis for etterlevelse — men på ulik måte.</li>
+      <li>Som styremedlem må du forstå hva som blir dokumentert og hvorfor det beskytter deg personlig mot ansvar.</li>
+      <li>Den rette valget avhenger av dine eksisterende systemer, ikke av hvilket navn som lyder best.</li>
+    </ul>
+  </div>
+
+  <!-- KEY TAKEAWAY -->
+  <div class="box-takeaway">
+    <div class="takeaway-label">Viktigste innsikt</div>
+    <p>Du trenger ikke det dyreste verktøyet — du trenger det verktøyet som dokumenterer dine datasikkerhetstiltak til NSM og dine revisor. Valget mellom Purview og Varonis er et spørsmål om integrering, ikke om hvem som "vinner" teknisk.</p>
+  </div>
+
+  <p>
+    Når NSM (Nasjonal sikkerhetsmyndighet) eller en sektormyndighet gransker organisasjonen din for NIS2-etterlevelse, er de ikke ute etter den nyeste teknologien.
+    De er ute etter <strong>dokumentasjon som beviser at du vet hvor dine sensitive data er, hvem som får tilgang til dem, og hva som skjer når noen prøver å gjøre noe de ikke skal</strong>.
+  </p>
+
+  <p>
+    To verktøy dominerer denne arenaen: Microsoft Purview og Varonis. Begge kan levere det beviset — men på vesentlig forskjellig måte.
+    Når du som styremedlem skal velge, handler det ikke om teknologi. Det handler om hvilket verktøy som gir deg og organisasjonen din det sterkeste forsvaret når tilsynet kommer.
+  </p>
+
+  <div class="box-warning">
+    <strong>Personlig ansvar i praksis:</strong> Som styremedlem er du personlig ansvarlig (jf. NIS2 artikkel 20) for å godkjenne og dokumentere datakontrolltiltakene. Hvis NSM finner at du ikke kan vise denne dokumentasjonen, kan du holdes personlig ansvarlig uavhengig av om angrepp har funnet sted. Verktøyet du velger, må derfor generere bevis som beskytter deg.
+  </div>
+
+  <h2>Hva krever NIS2 av datakontroll?</h2>
+
+  <p>
+    NIS2 artikkel 21 lister ti obligatoriske sikkerhetstiltak. Tre av disse handler direkte om datahåndtering:
+  </p>
+
+  <ul>
+    <li><strong>Risikovurdering og -håndtering</strong> — du må vite hvor sensitiv data befinner seg</li>
+    <li><strong>Tilgangskontroll og identitetshåndtering</strong> — du må kontrollere hvem som får tilgang</li>
+    <li><strong>Kryptering</strong> — sensitive data må være beskyttet både i ro og under transport</li>
+  </ul>
+
+  <p>
+    I tillegg kommer insidertrusselvern — det som handler om ansatte eller eksterne som kan misbruke deres tilgang.
+    NIS2 forventer ikke at du implementerer militær-grad sikkerhet, men du <span class="highlight">må kunne dokumentere at du har vurdert risikoen og gjort proporsjonal innsats</span>.
+  </p>
+
+  <p>
+    Det er her Purview og Varonis kommer inn. Begge verktøy hjelper deg med å:
+  </p>
+
+  <ol>
+    <li>Klassifisere data (hva er sensitive?)</li>
+    <li>Merke og beskytte data (kryptering, tilgangsbegrensning)</li>
+    <li>Detektere uvanlig adferd (hvem prøver å få tilgang eller laste ned data?)</li>
+    <li>Rapportere og dokumentere funnet (for NSM og revisor)</li>
+  </ol>
+
+  <p>
+    Spørsmålet er: hvilken plattform gjør dette på en måte som beskytter <strong>deg</strong> best?
+  </p>
+
+  <h2>Microsoft Purview — integrasjon over spesialisering</h2>
+
+  <p>
+    Microsoft Purview er Microsofts svar på «full datakontroll». Det er egentlig tre ting i ett:
+  </p>
+
+  <ul>
+    <li><strong>Purview Data Map</strong> — katalogiserer hvor data befinner seg (SharePoint, Teams, SQL, cloud storage)</li>
+    <li><strong>Sensitivity Labels</strong> — merker data som «Internt», «Konfidensiell», «Begrenset» osv.</li>
+    <li><strong>Data Loss Prevention (DLP)</strong> — blokkerer eller advarer når noen forsøker å dele eller laste ned merket data</li>
+  </ul>
+
+  <p>
+    <strong>Styrken:</strong> Hvis organisasjonen din allerede bruker Microsoft 365, SharePoint, Teams og OneDrive, er Purview allerede «der». Det er en del av lisensen. Implementering betyr å slå på funksjoner, ikke å bygge parallelle systemer. Sensitivitetsmerkinger fungerer på tvers av hele Microsoft-stakken — når du merker et dokument som «Konfidensiell», blir det automatisk begrenset i Teams, på disk og i alle skyer der det deles.
+  </p>
+
+  <p>
+    <strong>Svakheten:</strong> Purview ser ikke ut av Microsoft-økosystemet. Hvis data lever i Salesforce, SAP, propriet database eller on-prem servere, må du integrere manuelt eller godta at delen av dataene dine er usynlig for Purview. For organisasjoner som jobber med legacy-systemer eller mixed-environment, kan det bli et problem.
+  </p>
+
+  <p>
+    <strong>For NIS2-dokumentasjon:</strong> Purview genererer rapporter som viser hvilke data du har klassifisert, hvilke merking som er brukt, og hvilke DLP-varsel som er utløst. Dette er solid dokumentasjon for NSM. Rapporten kan vise at du har gjort en systematisk innsats. Men hvis NSM spør «hva med data i systemene dere ikke har sikra?», må du forklare hvorfor — og det blir vanskeligere hvis Purview ikke dekker hele miljøet ditt.
+  </p>
+
+  <h2>Varonis — spesialisering over integrering</h2>
+
+  <p>
+    Varonis er en dedikert plattform for datadeteksjon og -beskyttelse. Den arbeider uavhengig av hvilket system data befinner seg i — Windows-delt, SQL-database, Salesforce, Google Drive, SharePoint — Varonis «ser» det samme.
+  </p>
+
+  <ul>
+    <li><strong>Data Classification Engine</strong> — scanner automatisk for sensitive data uavhengig av lagringsplass</li>
+    <li><strong>Threat Analytics</strong> — bruker maskinlæring til å detektere uvanlig tilgangsmønster og insidertrusler</li>
+    <li><strong>Remediation Automation</strong> — kan automatisk fjerne upassende tilganger eller varsle administrator</li>
+  </ul>
+
+  <p>
+    <strong>Styrken:</strong> Varonis er plattformagnostisk. Det spiller ingen rolle om data er i Microsoft, Google, Salesforce, eller on-prem systemer — Varonis skanner alt med samme standard. Hvis du har et komplekst miljø med mange kilder, er det den eneste måten å få full oversikt. Insidertrusseldeteringen er også mer sofistikert — Varonis bruker atferdsanalyse til å identifisere mistenkelig aktivitet som vanlige DLP-regler ville misset.
+  </p>
+
+  <p>
+    <strong>Svakheten:</strong> Varonis er dyrt. Implementering er kompleks fordi den må snakke med hvert enkelt system. Det tar tid, det krever integrasjoner, og det må kalibreres. Du betaler per miljø, per datasource, og for hver integrering. Hvis du bare bruker Microsoft 365 og ingenting annet, er Varonis overkill.
+  </p>
+
+  <p>
+    <strong>For NIS2-dokumentasjon:</strong> Varonis gir detaljerte rapporter om hvilken data som klassifiseres som sensitiv, hvilke brukere som har tilgang, og hvilke anormaliteter som er detektert. Det er veldig sterkt bevis på at du har gjort en bredspektral innsats. Problemet er at rapporten kan bli så detaljert at den blir vanskelig å forklare — NSM vil kanskje spørre hvorfor du har 10 000 uvanlige tilgangsparametre mens du kun har 200 ansatte. Du må kunne forklare hva som er «normalt anomali» i ditt miljø versus faktiske trusler.
+  </p>
+
+  <h2>Sammenligning — hvilket verktøy velger du?</h2>
+
+  <table class="comparison-table">
+    <thead>
+      <tr>
+        <th>Kriterium</th>
+        <th>Microsoft Purview</th>
+        <th>Varonis</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Kostnad (startpakke)</strong></td>
+        <td class="feature-pro">Inkludert i M365; lave kostnader</td>
+        <td class="feature-con">Høy; prismodell per datasource</td>
+      </tr>
+      <tr>
+        <td><strong>Implementering</strong></td>
+        <td class="feature-pro">Rask (dager–uker hvis M365-miljø)</td>
+        <td class="feature-con">Komplex; flere integrasjoner (uker–måneder)</td>
+      </tr>
+      <tr>
+        <td><strong>Miljøtyper dekket</strong></td>
+        <td class="feature-con">Primært Microsoft-produkter</td>
+        <td class="feature-pro">Alle skyplattformer, on-prem, hybrid</td>
+      </tr>
+      <tr>
+        <td><strong>Klassifikasjon av data</strong></td>
+        <td class="feature-pro">Basert på metatagger og regler</td>
+        <td class="feature-pro">Basert på innholdsanalyse + maskinlæring</td>
+      </tr>
+      <tr>
+        <td><strong>Insidertrusselvern</strong></td>
+        <td class="feature-con">Begrenset (DLP-regler)</td>
+        <td class="feature-pro">Avansert (atferdsanalyse)</td>
+      </tr>
+      <tr>
+        <td><strong>NIS2-rapportering</strong></td>
+        <td class="feature-pro">Klar og enkel</td>
+        <td class="feature-pro">Veldig detaljert (mulig kompleks)</td>
+      </tr>
+      <tr>
+        <td><strong>Vedlikehold</strong></td>
+        <td class="feature-pro">Lav; Micro bygger oppdateringer</td>
+        <td class="feature-con">Høy; kalibrering per miljø nødvendig</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>Praktisk veiledning: hvordan velger du?</h2>
+
+  <p>
+    Som styremedlem trenger du ikke å bli ekspert på teknologien. Men du bør stille disse spørsmålene:
+  </p>
+
+  <h3>Spørsmål 1: Hvor bor dataene våre?</h3>
+
+  <p>
+    Hvis svaret er «hovedsakelig Microsoft 365, SharePoint og Teams» — velg Purview. Det gjør jobben godt og kostet er allerede betalt.
+  </p>
+
+  <p>
+    Hvis svaret er «vi bruker Microsoft, Google, Salesforce, SAP og gamle on-prem databaser» — velg Varonis eller en hybrid-løsning. Du trenger oversikt over alt.
+  </p>
+
+  <h3>Spørsmål 2: Hvor stort er sikkerhetsbudsjettene våre?</h3>
+
+  <p>
+    Purview: 0–100.000 kr ekstra per år (som del av M365-lisensen).
+  </p>
+
+  <p>
+    Varonis: 300.000–2 millioner kr per år, avhengig av miljøkompleksitet.
+  </p>
+
+  <p>
+    Hvis budsjettene er stramme, starter du med Purview og tier opp når behovet tvinger deg. Hvis du har midler og komplekst miljø, er Varonis investeringen verdt.
+  </p>
+
+  <h3>Spørsmål 3: Hva spørr NSM oss egentlig om?</h3>
+
+  <p>
+    NSM (og dine sektortilsynsmyndigheter) vil spørre:
+  </p>
+
+  <ul>
+    <li>«Kan dere vise at dere har klassifisert sensitive data?»</li>
+    <li>«Kan dere vise hvem som har tilgang?»</li>
+    <li>«Kan dere vise at dere detekterer uvanlig aktivitet?»</li>
+    <li>«Kan dere rapportere hendelser når det skjer?»</li>
+  </ul>
+
+  <p>
+    Både Purview og Varonis kan svare på disse spørsmålene. Purview gjør det enklere for Microsoft-miljøer. Varonis gjør det mer komplett for komplekse miljøer.
+  </p>
+
+  <div class="box-case">
+    <div class="case-label">Fallstudie: Valg i praksis</div>
+    <p>
+      <strong>Organisasjon A: 80 ansatte, energisektor, klassifisert som viktig entitet under NIS2.</strong>
+    </p>
+    <p>
+      Miljø: Microsoft 365 for kontor, propriet SCADA-system for kraftovervåking, og delt lagring på file-server fra 2015.
+    </p>
+    <p>
+      Valg: Starter med Purview for Microsoft-delen (får klassifisering og DLP på dokumenter og Teams). Implementerer parallel Varonis-instans for SCADA og legacy-serveren. Total kostnad år 1: ca 800.000 kr. Hybrid-løsningen gir NSM et fullstendig datakontrollbilde og beskytter styremedlemmene personlig.
+    </p>
+    <hr style="border:none; border-top:1px solid rgba(255,255,255,0.1); margin:16px 0;">
+    <p>
+      <strong>Organisasjon B: 1200 ansatte, finanssektor, klassifisert som vesentlig entitet.</strong>
+    </p>
+    <p>
+      Miljø: Kun Microsoft 365 + Azure.
+    </p>
+    <p>
+      Valg: Purview er tilstrekkelig. Oppgrader til Purview Premium (inkludert sensitivity labels, DLP, og automated remediation). Kostnad: del av lisensen. Implementering: 3 uker. NSM får velstrukturert rapport om klassifisering og tilgangskontroll. Gevinst: Enkel oppgradering som kostnad-effektiv.
+    </p>
+  </div>
+
+  <h2>Sensitivitetsmerkinger — det som gjør datakontroll reell</h2>
+
+  <p>
+    Uavhengig av om du velger Purview eller Varonis, handler datakontroll ikke om verktøyet. Det handler om at du faktisk bruker det til å <strong>merke data</strong>.
+  </p>
+
+  <p>
+    En sensitivitetmekling er simpel: du ordner at data merkes som «Konfidensiell» eller «Intern», og systemet blokkerer eller advarer når noen prøver å dele det på måter som ikke passer.
+  </p>
+
+  <p>
+    Problemet er at dette krever disiplin og endring av arbeidsflyt. Ansatte må lære å merke dokumenter. Policyer må implementeres konsekvent. Ledelsen må godta at noen deling blir blokkert.
+  </p>

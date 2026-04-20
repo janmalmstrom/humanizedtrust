@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-BKF3QH9K01"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag("js", new Date());
+    gtag("config", "G-BKF3QH9K01");
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NIS2-utbildning i Sverige: Vad krävs av anställda och ledning — och vad räknas? | NIS2Klar</title>
+  <meta name="description" content="Artikel 20 kräver att styrelsen genomgår NIS2-utbildning. Vi förklarar exakt vad som räknas — och vilket vanliga misstag organisationer gör.">
+  <meta property="og:title" content="NIS2-utbildning i Sverige: Vad krävs av anställda och ledning — och vad räknas?">
+  <meta property="og:description" content="Artikel 20 kräver att styrelsen genomgår NIS2-utbildning. Vi förklarar exakt vad som räknas — och vilket vanliga misstag organisationer gör.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #141416;
+      --card: #1c1c1f;
+      --yellow: #f5c518;
+      --white: #f0f0f0;
+      --muted: #888;
+      --red: #C61212;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: var(--bg); color: var(--white); font-family: 'Barlow', sans-serif; font-size: 19px; line-height: 1.8; }
+
+    /* Nav */
+    nav { display: flex; justify-content: space-between; align-items: center; padding: 20px 40px; border-bottom: 1px solid rgba(255,255,255,0.07); max-width: 900px; margin: 0 auto; }
+    .nav-logo { font-family: 'Poppins', sans-serif; font-weight: 900; font-size: 20px; color: var(--yellow); text-decoration: none; }
+    .nav-logo span { color: var(--white); }
+    .nav-back { color: var(--muted); text-decoration: none; font-size: 15px; }
+    .nav-back:hover { color: var(--white); }
+    .nav-cta { background: var(--yellow); color: #000; padding: 8px 18px; border-radius: 4px; text-decoration: none; font-weight: 700; font-size: 14px; font-family: 'Poppins', sans-serif; }
+
+    /* Article */
+    .article-wrap { max-width: 760px; margin: 0 auto; padding: 60px 40px; }
+    .article-category { font-size: 13px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 16px; }
+    h1 { font-family: 'Poppins', sans-serif; font-size: clamp(30px, 4vw, 44px); font-weight: 900; line-height: 1.2; margin-bottom: 24px; }
+    .article-meta { font-size: 15px; color: var(--muted); margin-bottom: 48px; padding-bottom: 24px; border-bottom: 1px solid rgba(255,255,255,0.07); }
+    h2 { font-family: 'Poppins', sans-serif; font-size: 26px; font-weight: 700; margin: 48px 0 16px; color: var(--white); }
+    h3 { font-family: 'Poppins', sans-serif; font-size: 20px; font-weight: 600; margin: 32px 0 12px; color: var(--yellow); }
+    p { margin-bottom: 22px; }
+    strong { color: var(--white); font-weight: 700; }
+    .highlight { color: var(--yellow); font-weight: 700; }
+    .danger { color: #ff6b6b; font-weight: 700; }
+    ul, ol { margin: 16px 0 24px 24px; }
+    li { margin-bottom: 12px; font-size: 19px; }
+
+    /* Callout boxes */
+    .box-warning { background: rgba(197,17,17,0.12); border-left: 4px solid var(--red); padding: 20px 24px; margin: 32px 0; border-radius: 0 4px 4px 0; }
+    .box-info { background: rgba(245,197,24,0.08); border-left: 4px solid var(--yellow); padding: 20px 24px; margin: 32px 0; border-radius: 0 4px 4px 0; }
+    .box-case { background: var(--card); border: 1px solid rgba(255,255,255,0.08); padding: 28px; margin: 40px 0; border-radius: 4px; }
+    .box-case .case-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 12px; }
+    blockquote { border-left: 3px solid var(--yellow); padding: 12px 20px; margin: 24px 0; font-style: italic; color: #ccc; }
+
+    /* CTA */
+    .cta-section { background: var(--card); border: 1px solid rgba(245,197,24,0.2); border-radius: 4px; padding: 48px 40px; margin: 64px 0 40px; text-align: center; }
+    .cta-section h2 { margin-top: 0; font-size: 26px; }
+    .cta-section p { color: #aaa; max-width: 500px; margin: 0 auto 28px; }
+    .btn-primary { display: inline-block; background: var(--yellow); color: #000; font-family: 'Poppins', sans-serif; font-weight: 800; font-size: 16px; padding: 16px 36px; border-radius: 4px; text-decoration: none; }
+    .btn-primary:hover { background: #e0b010; }
+    .cta-fine { font-size: 13px; color: var(--muted); margin-top: 16px; }
+
+    /* FAQ */
+    .faq-item { border-bottom: 1px solid rgba(255,255,255,0.07); padding: 20px 0; }
+    .faq-q { font-family: 'Poppins', sans-serif; font-weight: 600; margin-bottom: 10px; }
+    .faq-a { color: #bbb; }
+
+    /* Summary + Key Takeaway */
+    .box-summary { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; padding: 24px 28px; margin: 0 0 32px; }
+    .summary-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-bottom: 14px; }
+    .box-summary ul { margin: 0; padding-left: 20px; }
+    .box-summary li { margin-bottom: 8px; font-size: 17px; color: #ccc; }
+    .box-takeaway { background: rgba(245,197,24,0.08); border-left: 4px solid var(--yellow); padding: 20px 24px; margin: 0 0 40px; border-radius: 0 4px 4px 0; }
+    .takeaway-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 10px; }
+    .box-takeaway p { margin: 0; font-size: 18px; font-weight: 600; color: var(--white); line-height: 1.6; }
+
+    /* Footer */
+    footer { border-top: 1px solid rgba(255,255,255,0.07); padding: 32px 40px; text-align: center; font-size: 13px; color: var(--muted); max-width: 900px; margin: 0 auto; }
+    footer a { color: var(--muted); }
+
+    .related-articles { margin: 2.5rem 0 2rem; padding: 1.5rem; background: #1a1a2e; border-left: 4px solid #f0a500; border-radius: 4px; }
+    .related-articles p { margin: 0 0 1rem; font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #f0a500; }
+    .related-articles ul { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+    .related-articles li { margin: 0; font-size: 0.95rem; }
+    .related-articles a { color: #e0e0e0; text-decoration: none; }
+    .related-articles a:hover { color: #f0a500; }
+
+    @media (max-width: 600px) {
+      nav, .article-wrap, footer { padding: 20px; }
+      .cta-section { padding: 32px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="https://nis2klar.se/">NIS2<span>Klar</span></a>
+  <a class="nav-back" href="https://nis2klar.se/artiklar.html">← Alla artiklar</a>
+  <a class="nav-cta" href="https://nis2klar.se/#boka">Boka samtal →</a>
+</nav>
+
+<article class="article-wrap">
+  <div class="article-category">Ledningsansvar &amp; Efterlevnad</div>
+  <h1>NIS2-utbildning i Sverige: Vad krävs av anställda och ledning — och vad räknas?</h1>
+  <div class="article-meta">Uppdaterad 19 april 2026 · Lästid: ca 8 minuter · Målgrupp: VD, styrelse, HR-ledning</div>
+
+  <!-- SUMMARY -->
+  <div class="box-summary">
+    <div class="summary-label">Sammanfattning</div>
+    <ul>
+      <li>Artikel 20 i NIS2 kräver att ledningsorganen — inte bara IT — genomgår utbildning i cybersäkerhet.</li>
+      <li>Det räcker inte med en generisk IT-säkerhetswebinar. Utbildningen måste vara <strong>säkerhetsproblembewust och relevantspecifik för din organisation.</strong></li>
+      <li>Utbildningen måste dokumenteras: när, vad, vilka deltagare, och vem som genomförde den.</li>
+      <li>Vanligt misstag: tro att IT-avdelningens utbildning täcker styrelsens ansvar. Det gör den inte.</li>
+      <li>En hålfdag räcker inte. Effektiv ledningsutbildning tar minst 4–6 timmar och måste upprepas minst årligen.</li>
+    </ul>
+  </div>
+
+  <!-- KEY TAKEAWAY -->
+  <div class="box-takeaway">
+    <div class="takeaway-label">Viktigaste slutsatsen</div>
+    <p>Artikel 20 gör utbildning till ett dokumenterat personligt ansvar för dig som styrelseledamot eller VD. Utan utbildningsbevis kan du inte försvara dig själv vid en granskning — oavsett hur säker organisationen faktiskt är.</p>
+  </div>
+
+  <h2>Vad säger Artikel 20 egentligen?</h2>
+
+  <p>
+    <strong>Artikel 20 i NIS2-direktivet är korta tre meningar, men de säger mycket:</strong>
+  </p>
+
+  <blockquote>
+    "Ledningsorganen […] ska genomgå utbildning i cybersäkerhet och riskhantering. Denna utbildning […] ska anpassas till rollen och […] omfatta de praktiska aspekterna av […] och övervakningen av verksamheten."
+  </blockquote>
+
+  <p>
+    Det är inte frivilligt. Det är inte en "bra idé". Det är ett explicit krav — och det är ett krav på ledningen, inte på IT-avdelningen.
+  </p>
+
+  <p>
+    I Sverige implementerades detta i cybersäkerhetslagen (2024:1056), kapitel 2, avsnitt 2:
+  </p>
+
+  <ul>
+    <li>Ledningsorganen ska genomgå utbildning</li>
+    <li>Utbildningen ska dokumenteras</li>
+    <li>Utbildningen ska anpassas till rollen och organisationen</li>
+    <li>Det är ett löpande ansvar — inte en engångsgrej</li>
+  </ul>
+
+  <p>
+    Det är inte ett tekniskt krav. Det är ett styrelsekrav.
+  </p>
+
+  <h2>Vem är "ledningsorganen"?</h2>
+
+  <p>
+    Det finns ofta förvirring här. NIS2 använder termen "ledningsorganen" — och det betyder inte bara VD:n.
+  </p>
+
+  <p>
+    Det omfattar:
+  </p>
+
+  <ul>
+    <li><strong>Styrelseordföranden</strong></li>
+    <li><strong>Alla styrelseledamöter</strong></li>
+    <li><strong>VD:n</strong></li>
+    <li><strong>Ledande befattningshavare med ansvar för säkerhet</strong> (CISO, informationssäkerhetschef med mera)</li>
+  </ul>
+
+  <p>
+    I vissa organisationer är det också relevant för andra medlemmar av den operativa ledningen — såsom CFO, COO eller funktionschefer med roll i incidenthantering eller riskhantering.
+  </p>
+
+  <div class="box-info">
+    <strong>Kontroll:</strong> Fråga er HR-chef eller sekreterare: har vi en lista över vilka som klassas som "ledningsorganen" enligt NIS2? Om inte — det är steg ett.
+  </div>
+
+  <h2>Vad räknas som "utbildning"?</h2>
+
+  <p>
+    Det här är kärnfrågan — och där gör många organisationer misstaget.
+  </p>
+
+  <p>
+    <span class="highlight">En halvdag om IT-säkerhet räcker inte.</span> En generisk webinar från en säkerhetsleverantör räcker inte heller.
+  </p>
+
+  <p>
+    Utbildningen måste:
+  </p>
+
+  <ol>
+    <li><strong>Vara NIS2-specifik</strong> — inte bara "cybersäkerhet" i allmänhet</li>
+    <li><strong>Adressera dina organisationens säkerhetskrav</strong> — anpassad till din sektor och storlek</li>
+    <li><strong>Belysa styrelsens konkreta ansvar</strong> — vad styrelsen ska övervaka, vilka beslut ni måste fatta</li>
+    <li><strong>Innehålla incidenthantering och riskhantering</strong> — inte bara tekniska hot</li>
+    <li><strong>Dokumenteras</strong> — datum, tid, innehål, deltagare, instruktör</li>
+  </ol>
+
+  <p>
+    En effektiv ledningsutbildning i NIS2 tar typiskt <strong>4–6 timmar</strong>. Det kan genomföras som:
+  </p>
+
+  <ul>
+    <li>En heldagskurs (6–8 timmar inkl. paus)</li>
+    <li>Två halvdagar på två veckor</li>
+    <li>Tre timmer sparade sessionér</li>
+  </ul>
+
+  <p>
+    Det viktiga är inte formatet — det är innehållet och dokumentationen.
+  </p>
+
+  <div class="box-warning">
+    <strong>Vanligt misstag:</strong> "Vi skickade en länk till en 20-minuters IT-säkerhetsfilm till styrelsen. Det räcker väl?" Nej. Det är dokumentation av att ett material delades ut — inte dokumentation av att utbildning genomfördes. Dokumentation måste innehålla: vad som undervisades, hur det kopplades till Artikel 20, vem som genomförde det, och vad deltagarna fick ta med sig.
+  </div>
+
+  <h2>Vad ska utbildningen innehålla?</h2>
+
+  <p>
+    Här är en konkret checklista för vad en godkänd NIS2-utbildning för ledningen bör täcka:
+  </p>
+
+  <h3>1. NIS2-lagstiftningen och vad den betyder för din organisation</h3>
+
+  <ul>
+    <li>Vilka verksamheter omfattas av NIS2 i Sverige?</li>
+    <li>Är er organisation klassificerad som väsentlig eller viktig entitet?</li>
+    <li>Vad är konsekvenserna av bristande efterlevnad? (böter, personligt ansvar)</li>
+    <li>Vad säger artikel 20 specifikt — och vad betyder det för styrelsen?</li>
+  </ul>
+
+  <h3>2. Säkerhetsriskhantering</h3>
+
+  <ul>
+    <li>Vad är en riskbedömning och hur länkas den till styrelsebeslut?</li>
+    <li>Vilka är de överordnade säkerhetsriskerna för er verksamhet?</li>
+    <li>Hur övervakar styrelsen riskhanteringen löpande?</li>
+    <li>Vad gör styrelsen om en risk inte hanteras?</li>
+  </ul>
+
+  <h3>3. De tio obligatoriska säkerhetsåtgärderna</h3>
+
+  <p>
+    Artikel 21 listar tio domäner. Styrelsen behöver inte förstå varje teknik — men måste förstå vad var och en är till för:
+  </p>
+
+  <ul>
+    <li>Riskhantering och motsåtgärder</li>
+    <li>Incidenthantering och affärskontinuitet</li>
+    <li>Leverantörssäkerhet och tredjepartshantering</li>
+    <li>Tillgångskontroll och autentisering</li>
+    <li>Kryptering av data</li>
+    <li>Säkerhet vid forskning och utveckling</li>
+    <li>Fysisk säkerhet och miljökontroll</li>
+    <li>Personalsäkerhet</li>
+    <li>Incidentresponskompetens</li>
+  </ul>
+
+  <h3>4. Incidenthantering</h3>
+
+  <ul>
+    <li>Vad klassas som en "incidentrapportering" enligt Artikel 23?</li>
+    <li>Vilka är tidskraven? (24 timmar tidig varning, 72 timmar fullständig rapport)</li>
+    <li>Vad är styrelsens roll när en incident inträffar?</li>
+    <li>Vem kontaktar vi? (MSB, sektorsspecifik tillsynsmyndighet)</li>
+  </ul>
+
+  <h3>5. Styrelsens konkreta ansvar — praktiska exempel</h3>
+
+  <p>
+    Det här är den delen där många utbildningar misslyckas. Du behöver exempel från din sektor:
+  </p>
+
+  <ul>
+    <li>"Om vår viktigaste leverantör blir hackad — vad gör styrelsen?"</li>
+    <li>"Om vi inte kan komma åt våra system i två timmar — vad gör vi?"</li>
+    <li>"Om en anställd råkar ut för ett phishing-försök — hur rapporterar det in till styrelsen?"</li>
+    <li>"Vilka beslut måste styrelsen ta årligen kring cybersäkerhet — och vilka beslutsunderlag behövs?"</li>
+  </ul>
+
+  <h3>6. Dokumentation och granskning</h3>
+
+  <ul>
+    <li>Vilka dokument måste styrelsen ha godkänt? (policy, risker, incidentplan)</li>
+    <li>Hur övervakar vi att åtgärderna faktiskt genomförts?</li>
+    <li>Vad gör vi vid en tillsyn från MSB eller sektorsspecifik myndighet?</li>
+    <li>Vilka beviskrav finns? (hur dokumenterar vi att vi gjort jobbet?)</li>
+  </ul>
+
+  <div class="box-case">
+    <div class="case-label">Exempel — Vad som räknas vs. vad som inte räknas</div>
+    
+    <p><strong>RÄKNAS INTE:</strong></p>
+    <ul style="margin: 12px 0 20px 20px;">
+      <li>"Vi skickade en artikel om cybersäkerhet till styrelsen." (Delande av information, inte utbildning)</li>
+      <li>"Vi genomförde IT-säkerhetsutbildning för alla anställda — styrelsen deltog." (Generisk utbildning, inte NIS2-specifik)</li>
+      <li>"Vi hade ett styrelsmöte där vi diskuterade säkerhet." (Diskussion, inte strukturerad utbildning)</li>
+      <li>"Vi antog en IT-säkerhetspolicy." (Policy är inte samma som utbildning)</li>
+      <li>"Vi köpte en säkerhetstjänst och instruerade IT-avdelningen." (Det är IT-utbildning, inte styrelseutbildning)</li>
+    </ul>
+
+    <p><strong>RÄKNAS:</strong></p>
+    <ul style="margin: 12px 0 24px 20px;">
+      <li>En extern konsult genomför en 6-timmars workshop för styrelsen specifikt på Artikel 20, er sektor och organisationens risker. Deltagare loggas, innehål dokumenteras, slides sparas.</li>
+      <li>En CISO eller säkerhetschef genomför en 4-timmars internutbildning för ledningen med fokus på incidenthantering, riskbedömning och styrelsens övervakning. Finns anteckningar från sessionen.</li>
+      <li>En certifierad NIS2-revisor genomför en eftermiddags-workshop med Q&A fokuserad på er bransch. Deltagarlista och innehålls-outline arkiveras.</li>
+      <li>En online-kurs specifikt på "Ledningsansvar i NIS2" genomförs av styrelsemedlemmarna individuellt — med certifikat som sparas och presenteras för styrelsen samlet.</li>
+    </ul>
+  </div>
+
+  <h2>Dokumentationen — vad måste sparas?</h2>
+
+  <p>
+    Det här är det del som ofta glöms bort — och som kan kosta dyrast vid en granskning.
+  </p>
+
+  <p>
+    När en tillsynsmyndighet granskar er organisation kommer de att fråga: <span class="highlight">"Var är dokumentationen för styrelsens utbildning?"</span>
+  </p>
+
+  <p>
+    Du måste kunna presentera:
+  </p>
+
+  <ul>
+    <li><strong>En lista över deltagare</strong> — namn, titel, datum</li>
+    <li><strong>Datum och varaktighet</strong> — start och sluttid för utbildningen</li>
+    <li><strong>Beskrivning av innehållet</strong> — vilka ämnen behandlades</li>
+    <li><strong>Utbildingsmaterial</strong> — slides, dokumentation, video-länk eller handlingar från sessionen</li>
+    <li><strong>Instruktörens namn och credentials</strong> — vem genomförde utbildningen och var är deras expertise beskriven?</li>
+    <li><strong>Attestering</strong> — helst ett styrelseprotokoll som bekräftar att utbildningen genomfördes och godkändes</li>
+  </ul>
+
+  <div class="box-info">
+    <strong>Praktisk tips:</strong> Spara detta i en mapp på er filserver med namnet "NIS2 - Styrelseutbildning" och gör det tillgängligt för VD och styrelsens sekreterare. Inte på någons privata dator eller e-post.
+  </div>
+
+  <h2>Hur ofta måste utbildningen upprepas?</h2>
+
+  <p>
+    NIS2 säger inte explicit "en gång per år" — men praxis och riktlinjer från MSB och andra EU-länder pekar på:
+  </p>
+
+  <ul>
+    <li><strong>Minst en gång per år</strong> för befintliga ledningsmedlemmar</li>
+    <li><strong>Nya styrelseledamöter måste utbildas inom tre månader</strong> efter anträde</li>
+    <li><strong>Vid större organisatoriska förändringar</strong> (ny CISO, ny säkerhetsstrategi, fusion, etc.) bör utbildningen uppdateras</li>
+    <li><strong>Vid stora säkerhetshändelser</strong> (incidenter, nya lagkrav, hot) kan upprepning krävas även mellan årets formella sessioner</li>
+  </ul>
+
+  <p>
+    En bra praxis är att planera in styrelseutbildningen som en fast punkt på styrelsens arbetsplan — exempelvis på höstens första styrelsemöte varje år.
+  </p>
+
+  <h2>Vad gäller för övriga anställda?</h2>
+
+  <p>
+    Artikel 20 nämner inte andra anställda än ledningen — men Artikel 21 (säkerhetsåtgärder) inkluderar punkt 21.2g som säger:
+  </p>
+
+  <blockquote>
+    "Utbildning om […] cybersäkerhetsproblembewasthet för relevanta personal"
+  </blockquote>
+
+  <p>
+    Det betyder att alla anställda som hanterar känslig data, har administrativa rättigheter eller jobbar med kritiska system måste ha utbildning i cybersäkerhet.
+  </p>
+
+  <p>
+    För anställda gäller ofta andra standarder än för styrelsen:
+  </p>
+
+  <ul>
+    <li><strong>1–2 timmar per år</strong> är ofta tillräckligt för generell personal</li>
+    <li><strong>Digitala, självstyrd utbildning</strong> räcker ofta här (e-learning-plattformar)</li>
+    <li><strong>Dokumentationen kan vara automatiserad</strong> genom att en LMS-plattform registrerar slutförande</li>
+    <li><strong>Specifika roller</strong> (IT-personal, ledning) behöver mer fördjupad utbildning — men det räcker ofta med 4–6 timmar per år</li>
+  </ul>
+
+  <p>
+    Det viktiga är att kunna bevisa det. En lista över vilka som tog en e-learning och när räcker ofta.
+  </p>
+
+  <h2>Vanliga misstag — och hur du undviker dem</h2>
+
+  <h3>Misstag 1: Tro att IT-utbildning = styrelseutbildning</h3>
+
+  <p>
+    IT-avdelningen och styrelsen behöver helt olika saker. IT-avdelningen behöver veta hur man implementerar MFA. Styrelsen behöver veta varför MFA är en övervakningsbar kontrollfråga.
+  </p>
+
+  <p>
+    <strong>Lösning:</strong> Två skilda utbildningsvägar. En för IT-tekniker, en för ledningen.
+  </p>
+
+  <h3>Misstag 2: Skicka en länk och kalla det utbildning</h3>
+
+  <p>
+    "Vi länkade till en YouTube-video om cybersäkerhet. Styrelsen kan titta när de hinner." Nej, det registreras inte som utbildning enligt Artikel 20. Det är högst en resurspunkt.
+  </p>
+
+  <p>
+    <strong>Lösning:</strong> Schemalägg en gemensam tidpunkt, följ upp med Q&A, dokumentera deltagande.
+  </p>
+
+  <h3>Misstag 3: En gång räcker</h3>
+
+  <p>
+    "Vi gjorde en säkerhetskurs 2024. Vi är klara." Nej, Artikel 20 kräver löpande utbildning — åtminstone årligt.
+  </p>
+
+  <p>
+    <strong>Lösning:</strong> Lägg in styrelseutbildning som en återkommande post i styrelsens kalender. Samma tid varje år.
+  </p>
+
+  <h3>Misstag 4: Glömma att dokumentera nya ledamöter</h3>
+
+  <p>
+    En ny styrelseledamot kommer in i oktober. Ni glömmer att erbjuda utbildning. Sex månader senare är hon fullt integrerad — men aldrig utbildad. Det är en granskningsmiss.
+  </p>
+
+  <p>
+    <strong>Lösning:</strong> Ha en checklist: när en ny ledamot anträder

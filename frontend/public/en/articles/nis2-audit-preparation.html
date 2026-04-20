@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-BKF3QH9K01"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag("js", new Date());
+    gtag("config", "G-BKF3QH9K01");
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NIS2 Audit Preparation: How to Get Ready for Supervisory Review | NIS2Klar</title>
+  <meta name="description" content="What happens during a NIS2 supervisory review in Ireland? Documentation checklist, required personnel, and how to present your security posture credibly to NCSC Ireland.">
+  <meta property="og:title" content="NIS2 Audit Preparation: How to Get Ready for Supervisory Review">
+  <meta property="og:description" content="What happens during a NIS2 supervisory review in Ireland? Documentation checklist, required personnel, and how to present your security posture credibly to NCSC Ireland.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #141416;
+      --card: #1c1c1f;
+      --yellow: #f5c518;
+      --white: #f0f0f0;
+      --muted: #888;
+      --red: #C61212;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: var(--bg); color: var(--white); font-family: 'Barlow', sans-serif; font-size: 19px; line-height: 1.8; }
+
+    /* Nav */
+    nav { display: flex; justify-content: space-between; align-items: center; padding: 20px 40px; border-bottom: 1px solid rgba(255,255,255,0.07); max-width: 1200px; margin: 0 auto; flex-wrap: wrap; gap: 16px; }
+    .nav-logo { font-family: 'Poppins', sans-serif; font-weight: 900; font-size: 20px; color: var(--yellow); text-decoration: none; }
+    .nav-logo span { color: var(--white); }
+    .nav-back { color: var(--muted); text-decoration: none; font-size: 15px; }
+    .nav-back:hover { color: var(--white); }
+    .lang-switcher { display: flex; gap: 8px; align-items: center; font-size: 13px; font-family: 'Poppins', sans-serif; }
+    .lang-switcher a { color: #888; text-decoration: none; font-weight: 600; padding: 4px 8px; border-radius: 3px; }
+    .lang-switcher a:hover { background: rgba(255,255,255,0.05); }
+    .lang-switcher a.active { color: var(--yellow); background: rgba(245,197,24,0.1); }
+    .nav-cta { background: var(--yellow); color: #000; padding: 8px 18px; border-radius: 4px; text-decoration: none; font-weight: 700; font-size: 14px; font-family: 'Poppins', sans-serif; }
+    .nav-cta:hover { background: #e0b010; }
+
+    /* Article */
+    .article-wrap { max-width: 760px; margin: 0 auto; padding: 60px 40px; }
+    .article-category { font-size: 13px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 16px; }
+    h1 { font-family: 'Poppins', sans-serif; font-size: clamp(30px, 4vw, 44px); font-weight: 900; line-height: 1.2; margin-bottom: 24px; }
+    .article-meta { font-size: 15px; color: var(--muted); margin-bottom: 48px; padding-bottom: 24px; border-bottom: 1px solid rgba(255,255,255,0.07); }
+    h2 { font-family: 'Poppins', sans-serif; font-size: 26px; font-weight: 700; margin: 48px 0 16px; color: var(--white); }
+    h3 { font-family: 'Poppins', sans-serif; font-size: 20px; font-weight: 600; margin: 32px 0 12px; color: var(--yellow); }
+    p { margin-bottom: 22px; }
+    strong { color: var(--white); font-weight: 700; }
+    .highlight { color: var(--yellow); font-weight: 700; }
+    .danger { color: #ff6b6b; font-weight: 700; }
+    ul, ol { margin: 16px 0 24px 24px; }
+    li { margin-bottom: 12px; font-size: 19px; }
+
+    /* Callout boxes */
+    .box-warning { background: rgba(197,17,17,0.12); border-left: 4px solid var(--red); padding: 20px 24px; margin: 32px 0; border-radius: 0 4px 4px 0; }
+    .box-info { background: rgba(245,197,24,0.08); border-left: 4px solid var(--yellow); padding: 20px 24px; margin: 32px 0; border-radius: 0 4px 4px 0; }
+    .box-case { background: var(--card); border: 1px solid rgba(255,255,255,0.08); padding: 28px; margin: 40px 0; border-radius: 4px; }
+    .box-case .case-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 12px; }
+    blockquote { border-left: 3px solid var(--yellow); padding: 12px 20px; margin: 24px 0; font-style: italic; color: #ccc; }
+
+    /* CTA */
+    .cta-section { background: var(--card); border: 1px solid rgba(245,197,24,0.2); border-radius: 4px; padding: 48px 40px; margin: 64px 0 40px; text-align: center; }
+    .cta-section h2 { margin-top: 0; font-size: 26px; }
+    .cta-section p { color: #aaa; max-width: 500px; margin: 0 auto 28px; }
+    .btn-primary { display: inline-block; background: var(--yellow); color: #000; font-family: 'Poppins', sans-serif; font-weight: 800; font-size: 16px; padding: 16px 36px; border-radius: 4px; text-decoration: none; }
+    .btn-primary:hover { background: #e0b010; }
+    .cta-fine { font-size: 13px; color: var(--muted); margin-top: 16px; }
+
+    /* FAQ */
+    .faq-item { border-bottom: 1px solid rgba(255,255,255,0.07); padding: 20px 0; }
+    .faq-q { font-family: 'Poppins', sans-serif; font-weight: 600; margin-bottom: 10px; }
+    .faq-a { color: #bbb; }
+
+    /* Tables */
+    .audit-table { width: 100%; border-collapse: collapse; margin: 24px 0; }
+    .audit-table th { background: rgba(245,197,24,0.1); color: var(--yellow); font-family: 'Poppins', sans-serif; font-size: 13px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 12px 16px; text-align: left; border-bottom: 1px solid rgba(245,197,24,0.2); }
+    .audit-table td { padding: 14px 16px; border-bottom: 1px solid rgba(255,255,255,0.05); font-size: 15px; }
+    .audit-table tr:last-child td { border-bottom: none; }
+
+    /* Summary + Key Takeaway */
+    .box-summary { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; padding: 24px 28px; margin: 0 0 32px; }
+    .summary-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-bottom: 14px; }
+    .box-summary ul { margin: 0; padding-left: 20px; }
+    .box-summary li { margin-bottom: 8px; font-size: 17px; color: #ccc; }
+    .box-takeaway { background: rgba(245,197,24,0.08); border-left: 4px solid var(--yellow); padding: 20px 24px; margin: 0 0 40px; border-radius: 0 4px 4px 0; }
+    .takeaway-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 10px; }
+    .box-takeaway p { margin: 0; font-size: 18px; font-weight: 600; color: var(--white); line-height: 1.6; }
+
+    /* Related articles */
+    .related-articles { margin: 2.5rem 0 2rem; padding: 1.5rem; background: #1a1a2e; border-left: 4px solid #f0a500; border-radius: 4px; }
+    .related-articles p { margin: 0 0 1rem; font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #f0a500; }
+    .related-articles ul { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+    .related-articles li a { color: #e0e0e0; text-decoration: none; font-size: 0.95rem; }
+    .related-articles li a:hover { color: #f0a500; }
+    .related-articles-footer { margin: 1.25rem 0 0; font-size: 0.85rem; color: #aaa; }
+    .related-articles-footer a { color: #f0a500; text-decoration: none; }
+    .related-articles-footer a:hover { text-decoration: underline; }
+
+    /* Footer */
+    footer { border-top: 1px solid rgba(255,255,255,0.07); padding: 32px 40px; text-align: center; font-size: 13px; color: var(--muted); max-width: 1200px; margin: 0 auto; }
+    footer a { color: var(--muted); }
+    footer a:hover { color: var(--white); }
+
+    @media (max-width: 600px) {
+      nav, .article-wrap, footer { padding: 20px; }
+      .cta-section { padding: 32px 20px; }
+      .audit-table { font-size: 14px; }
+      .audit-table th, .audit-table td { padding: 10px 10px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="https://nis2klar.se/en/">NIS2<span>Klar</span></a>
+  <div style="flex: 1;"></div>
+  <a class="nav-back" href="https://nis2klar.se/en/articles.html">← All Articles</a>
+  <div class="lang-switcher">
+    <a href="https://nis2klar.se/artiklar.html" title="Svenska">SV</a>
+    <a href="https://nis2klar.se/en/articles.html" class="active" title="English">EN</a>
+    <a href="https://nis2klar.se/da/artikler.html" title="Dansk">DA</a>
+    <a href="https://nis2klar.se/no/artikler.html" title="Norsk">NO</a>
+    <a href="https://nis2klar.se/it/articoli.html" title="Italiano">IT</a>
+  </div>
+  <a class="nav-cta" href="https://nis2klar.se/en/#book">Book review →</a>
+</nav>
+
+<article class="article-wrap">
+  <div class="article-category">Audit &amp; Compliance</div>
+  <h1>NIS2 Audit Preparation: How to Get Ready for Supervisory Review</h1>
+  <div class="article-meta">Updated 19 April 2026 · Reading time: ca 9 minutes · For: CEOs &amp; Board Members</div>
+
+  <!-- SUMMARY -->
+  <div class="box-summary">
+    <div class="summary-label">Summary</div>
+    <ul>
+      <li>A NIS2 supervisory review is not a surprise audit — it is a methodical examination of your documented security posture.</li>
+      <li>NCSC Ireland, the competent authority, will request specific documentation that you must provide within 14–30 days.</li>
+      <li>The review team will want to speak with your management body, CISO (or equivalent), and operational security leads.</li>
+      <li>Personal liability under Regulation 32 of S.I. 322/2024 means board members are accountable for what the authority finds — or doesn't find.</li>
+      <li>Preparation takes 2–4 months; waiting until you are contacted is the most expensive choice you can make.</li>
+    </ul>
+  </div>
+
+  <!-- KEY TAKEAWAY -->
+  <div class="box-takeaway">
+    <div class="takeaway-label">The Bottom Line</div>
+    <p>You cannot present a credible security posture during a review unless you have already documented one. Audits find what exists — not what you promise to do later.</p>
+  </div>
+
+  <!-- HOOK -->
+  <p>
+    A supervisory review under NIS2 is coming. Not a question of whether — a question of when.
+  </p>
+
+  <p>
+    NCSC Ireland and sector regulators (CBI for financial services, ComReg for telecoms, CRU for energy, and others across the 18 covered sectors) are conducting them now. The review is not punitive if you are prepared. It is catastrophic if you are not.
+  </p>
+
+  <p>
+    This article walks you through what happens, what you must provide, who must be available, and how to present your organisation as someone who takes cybersecurity seriously — because if you do this right, that is exactly what you will be.
+  </p>
+
+  <h2>What is a NIS2 Supervisory Review?</h2>
+
+  <p>
+    A supervisory review is a formal examination of your compliance with the NIS2 Regulations (S.I. No. 322 of 2024). It is initiated by NCSC Ireland or a sector-specific competent authority. The review is not triggered by an incident — it is part of routine supervisory activity.
+  </p>
+
+  <p>
+    Unlike a forensic investigation after a breach, a supervisory review examines:
+  </p>
+
+  <ul>
+    <li><strong>Your documented policies and procedures</strong> — do they exist and are they approved by the board?</li>
+    <li><strong>Implementation evidence</strong> — have you actually done what your policies say you will do?</li>
+    <li><strong>Governance</strong> — has the management body taken documented responsibility (Regulation 32)?</li>
+    <li><strong>Risk management and incident response</strong> — can you prove you have evaluated risk and have a plan to detect and respond to incidents?</li>
+    <li><strong>Third-party dependencies</strong> — do you understand your supply chain risk and have contractual safeguards in place?</li>
+  </ul>
+
+  <p>
+    The review is <strong>not</strong> a security penetration test. It does not test your technical controls for effectiveness. It verifies that you have intentional, documented, and board-approved security governance in place.
+  </p>
+
+  <div class="box-info">
+    <strong>Key distinction:</strong> The authority is not asking "Are you perfectly secure?" It is asking "Can you prove you have thought about security, made decisions about it, and documented those decisions?"
+  </div>
+
+  <h2>How a Review Typically Unfolds</h2>
+
+  <p>
+    The timeline looks like this:
+  </p>
+
+  <h3>Phase 1: Initial Contact (Week 1–2)</h3>
+
+  <p>
+    You receive a letter from NCSC Ireland or your sector regulator informing you of an upcoming supervisory review. The letter will cite S.I. No. 322 of 2024 and reference the competent authority's oversight mandate. It will include:
+  </p>
+
+  <ul>
+    <li>A preliminary information request (usually 10–20 specific questions)</li>
+    <li>A deadline for response (typically 14–21 days)</li>
+    <li>A list of documentation required (see section below)</li>
+    <li>Contact details for the assigned review team</li>
+  </ul>
+
+  <p>
+    This is not optional. Failing to respond within the deadline itself is a compliance breach and can result in penalties.
+  </p>
+
+  <h3>Phase 2: Documentation Request (Week 3–6)</h3>
+
+  <p>
+    Based on your initial response, the authority will request detailed documentation. This is the largest phase and the one that catches most organisations unprepared.
+  </p>
+
+  <p>
+    The documentation request is specific and structured. You will be asked to provide everything from your board minutes approving cybersecurity measures (Regulation 32) to your incident response playbook to your third-party risk assessments.
+  </p>
+
+  <p>
+    Typical turnaround: 20–30 days. If you do not have these documents, you have four options, none of them good:
+  </p>
+
+  <ol>
+    <li><strong>Request an extension</strong> — signals disorganisation and uses your credibility.</li>
+    <li><strong>Submit incomplete documentation</strong> — the authority notes gaps and assumes the worst.</li>
+    <li><strong>Prepare documents retroactively</strong> — they will read as post-hoc and lack authentic governance evidence.</li>
+    <li><strong>Miss the deadline</strong> — this escalates to a formal compliance notice and potential penalties.</li>
+  </ol>
+
+  <h3>Phase 3: Interviews and Site Visit (Week 7–10)</h3>
+
+  <p>
+    If your documentation is credible, the authority will conduct interviews with your organisation. This is where personal liability becomes real.
+  </p>
+
+  <p>
+    The review team will want to speak with:
+  </p>
+
+  <ul>
+    <li><strong>The board chair or CEO</strong> — to confirm board-level awareness and governance</li>
+    <li><strong>A board member responsible for risk/audit</strong> — to verify board oversight</li>
+    <li><strong>Your CISO or equivalent security lead</strong> — to discuss technical and operational implementation</li>
+    <li><strong>Your incident response coordinator</strong> — to walk through past incidents and response protocols</li>
+    <li><strong>Your chief risk officer or compliance lead</strong> — to discuss enterprise risk assessment</li>
+  </ul>
+
+  <p>
+    These interviews are recorded (or notes are taken). Contradictions between people, or between what people say and what documents show, will be highlighted in the final report.
+  </p>
+
+  <p>
+    A site visit may also occur to observe operational security controls in practice.
+  </p>
+
+  <h3>Phase 4: Findings and Remediation (Week 11–16)</h3>
+
+  <p>
+    The authority produces a draft report with findings. You are given the opportunity to respond and propose remediation timelines.
+  </p>
+
+  <p>
+    Findings fall into three categories:
+  </p>
+
+  <ul>
+    <li><strong>Critical findings</strong> — breaches of mandatory requirements with immediate remediation required</li>
+    <li><strong>Major findings</strong> — gaps in required controls with 3–6 month remediation windows</li>
+    <li><strong>Minor findings</strong> — recommendations for process improvement</li>
+  </ul>
+
+  <p>
+    The final report is issued and becomes a formal record. If critical or major findings are not remediated within agreed timelines, the authority can issue penalty notices.
+  </p>
+
+  <h2>What Documentation Will Be Requested?</h2>
+
+  <p>
+    Do not wait to be asked. Prepare these now. This is a <strong>mock audit checklist</strong> based on S.I. No. 322 of 2024 and typical NCSC Ireland requests:
+  </p>
+
+  <table class="audit-table">
+    <thead>
+      <tr>
+        <th>Documentation Type</th>
+        <th>Regulation Reference</th>
+        <th>What the Authority Is Checking For</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Board resolutions or minutes</strong> approving cybersecurity measures</td>
+        <td>Reg. 32 (Management body responsibility)</td>
+        <td>Evidence that board has explicitly approved security strategy and accepts risk. Dates must be recent (last 12 months).</td>
+      </tr>
+      <tr>
+        <td><strong>Cybersecurity policy</strong> — formal, signed by CEO/board</td>
+        <td>Reg. 21 (Security measures)</td>
+        <td>Policy covers all 10 mandatory areas: risk management, incident handling, continuity, third-party security, access controls, cryptography, etc. Version control and approval dates visible.</td>
+      </tr>
+      <tr>
+        <td><strong>Risk assessment report</strong> — documented and dated</td>
+        <td>Reg. 21(1)(a) (Risk management)</td>
+        <td>Methodology used, scope, personnel involved, key risks identified, prioritisation, and board sign-off. Must be less than 2 years old.</td>
+      </tr>
+      <tr>
+        <td><strong>Incident response plan</strong> — detailed and tested</td>
+        <td>Reg. 21(1)(d) (Incident handling)</td>
+        <td>Roles, contact numbers, escalation procedures, communication protocol (internal and NCSC), and evidence of testing (tabletop or drill).</td>
+      </tr>
+      <tr>
+        <td><strong>Business continuity &amp; disaster recovery plan</strong></td>
+        <td>Reg. 21(1)(f) (Continuity)</td>
+        <td>RTO/RPO targets, failover procedures, backup recovery tests, and dates of tests.</td>
+      </tr>
+      <tr>
+        <td><strong>Third-party risk register</strong></td>
+        <td>Reg. 21(1)(e) (Supply chain security)</td>
+        <td>List of suppliers with IT/operational access, risk assessment per supplier, contractual security requirements, audit schedule.</td>
+      </tr>
+      <tr>
+        <td><strong>Access control policy</strong></td>
+        <td>Reg. 21(1)(g) (Access control)</td>
+        <td>MFA/2FA enforcement, privileged access management, segregation of duties, review schedule (at least annual).</td>
+      </tr>
+      <tr>
+        <td><strong>Encryption &amp; data protection policy</strong></td>
+        <td>Reg. 21(1)(h) (Encryption)</td>
+        <td>Data classification, encryption standards for data at rest and in transit, key management procedures.</td>
+      </tr>
+      <tr>
+        <td><strong>Personnel security &amp; training records</strong></td>
+        <td>Reg. 21(1)(i) (Human factors)</td>
+        <td>Mandatory security training completion logs, NDA/confidentiality agreements, evidence of phishing simulation or awareness campaigns.</td>
+      </tr>
+      <tr>
+        <td><strong>Incident log (last 2 years)</strong></td>
+        <td>Reg. 21(1)(d) (Incident handling)</td>
+        <td>Record of all security incidents, dates, descriptions, response times, and outcomes. Includes near-misses.</td>
+      </tr>
+      <tr>
+        <td><strong>NCSC incident notifications</strong> (if applicable)</td>
+        <td>Reg. 23 (Reporting)</td>
+        <td>Copies of 24h early warning and 72h incident notifications submitted to NCSC Ireland. Timestamps showing compliance with timeline.</td>
+      </tr>
+      <tr>
+        <td><strong>Asset inventory</strong></td>
+        <td>Reg. 21 (General governance)</td>
+        <td>List of critical IT assets, ownership, custodian, classification, and last review date.</td>
+      </tr>
+      <tr>
+        <td><strong>Vulnerability management process</strong></td>
+        <td>Reg. 21(1)(j) (Monitoring &amp; testing)</td>
+        <td>Patch schedule, vulnerability scan results, remediation SLAs, evidence of implementation.</td>
+      </tr>
+      <tr>
+        <td><strong>Audit &amp; monitoring logs</strong></td>
+        <td>Reg. 21(1)(j) (Monitoring)</td>
+        <td>Evidence of security event logging, retention policy, and access controls to logs.</td>
+      </tr>
+      <tr>
+        <td><strong>Board or audit committee meeting calendar</strong></td>
+        <td>Reg. 32 (Governance)</td>
+        <td>Schedule showing cybersecurity is a standing agenda item, with frequency and attendees.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="box-warning">
+    <strong>Critical detail:</strong> If you are a smaller "important entity" (50–249 staff or €10–50M turnover), the authority may request simplified documentation. Do not assume that means less governance is acceptable — it means proportionate documentation. You still need board approval and evidence of implementation.
+  </div>
+
+  <h2>Who Must Be Available and What They Will Be Asked</h2>
+
+  <p>
+    Ensure these people are prepared and available for interview. Coach them in advance on the types of questions they will face. Consistency across interviews is a credibility indicator.
+  </p>
+
+  <h3>The CEO / Executive Director</h3>
+
+  <p>
+    <strong>What they will be asked:</strong>
+  </p>
+
+  <ul>
+    <li>When was cybersecurity last discussed by the board?</li>
+    <li>What risk appetite has the board approved?</li>
+    <li>How frequently is security reported to the board?</li>
+    <li>What incident has occurred in the last 2 years and how was it handled?</li>
+    <li>Are you aware of the personal liability under Regulation 32?</li>
+  </ul>
+
+  <p>
+    <strong>Why this matters:</strong> The authority is checking whether cybersecurity is a board-level concern or a delegated technical function. If the CEO cannot articulate the organisation's security strategy, that is a governance failure.
+  </p>
+
+  <h3>The CISO or Cybersecurity Lead</h3>
+
+  <p>
+    <strong>What they will be asked:</strong>
+  </p>
+
+  <ul>
+    <li>Walk us through your risk assessment methodology.</li>
+    <li>What are the top three risks you have identified?</li>
+    <li>How are you monitoring for threats?</li>
+    <li>What was your response to [recent incident]?</li>
+    <li>How do you validate that your controls are actually working?</li>
+  </ul>
+
+  <p>
+    <strong>Why this matters:</strong> The authority is checking whether security governance is informed by genuine risk assessment and not by compliance checklist alone. They want to hear specifics, not generalisations.
+  </p>
+
+  <h3>Incident Response Lead</h3>
+
+  <p>
+    <strong>What they will be asked:</strong>
+  </p>
+
+  <ul>
+    <li>Take us through your incident response process step-by-step.</li>
+    <li>Who is notified first, and when?</li>
+    <li>How do you decide whether to notify NCSC Ireland?</li>
+    <li>Walk us through a recent incident from detection to resolution.</li>
+    <li>When did you last test your response plan?</li>
+  </ul>
+
+  <p>
+    <strong>Why this matters:</strong> The authority will cross-check their account of a real incident against the documented plan. Discrepancies signal that either the plan is not followed or the incident was not properly handled.
+  </p>
+
+  <h3>Third-Party / Supplier Risk Manager</h3>
+
+  <p>
+    <strong>What they will be asked:</strong>
+  </p>
+
+  <ul>
+    <li>Show us your supplier inventory. How many have IT/operational access?</li>
+    <li>How do you assess the security risk of each supplier?</li>
+    <li>What security requirements are in their contracts?</li>
+    <li>When did you last audit a critical supplier?</li>
+  </ul>
+
+  <p>
+    <strong>Why this matters:</strong> Supply chain compromise is a leading attack vector. The authority wants to see that you understand your dependencies and have contractual recourse if a supplier is breached.
+  </p>
+
+  <h2>How to Present Your Security Posture Credibly</h2>
+
+  <p>
+    Credibility during a supervisory review rests on three pillars: documentation, consistency, and honesty.
+  </p>
+
+  <h3>1. Documentation Must Precede the Review</h3>
+
+  <p>
+    You cannot document a process you have not implemented. The documentation you present must reflect what you actually do, not what you plan to do.
+  </p>
+
+  <p>
+    A risk assessment written in response to the audit request will fail scrutiny because:
+  </p>
+
+  <ul>
+    <li>It lacks a methodology preamble explaining how it was conducted.</li>
+    <li>It was not approved by the board at the time it was created.</li>
+    <li>It does

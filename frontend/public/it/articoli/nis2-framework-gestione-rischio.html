@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-BKF3QH9K01"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag("js", new Date());
+    gtag("config", "G-BKF3QH9K01");
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Framework di Gestione del Rischio NIS2: Una Guida per il CdA | NIS2Klar</title>
+  <meta name="description" content="Come costruire un framework di gestione del rischio conforme a NIS2 in Italia. Allineamento ISO 27001, linee guida ENISA, registro dei rischi, accettazione del rischio residuo. Per CEO e consigli di amministrazione.">
+  <meta property="og:title" content="Framework di Gestione del Rischio NIS2: Una Guida per il CdA">
+  <meta property="og:description" content="Come costruire un framework di gestione del rischio conforme a NIS2 in Italia. Allineamento ISO 27001, linee guida ENISA, registro dei rischi, accettazione del rischio residuo. Per CEO e consigli di amministrazione.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #141416;
+      --card: #1c1c1f;
+      --yellow: #f5c518;
+      --white: #f0f0f0;
+      --muted: #888;
+      --red: #C61212;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: var(--bg); color: var(--white); font-family: 'Barlow', sans-serif; font-size: 19px; line-height: 1.8; }
+
+    /* Nav */
+    nav { display: flex; justify-content: space-between; align-items: center; padding: 20px 40px; border-bottom: 1px solid rgba(255,255,255,0.07); max-width: 900px; margin: 0 auto; }
+    .nav-logo { font-family: 'Poppins', sans-serif; font-weight: 900; font-size: 20px; color: var(--yellow); text-decoration: none; }
+    .nav-logo span { color: var(--white); }
+    .nav-back { color: var(--muted); text-decoration: none; font-size: 15px; }
+    .nav-back:hover { color: var(--white); }
+    .nav-cta { background: var(--yellow); color: #000; padding: 8px 18px; border-radius: 4px; text-decoration: none; font-weight: 700; font-size: 14px; font-family: 'Poppins', sans-serif; }
+
+    /* Article */
+    .article-wrap { max-width: 760px; margin: 0 auto; padding: 60px 40px; }
+    .article-category { font-size: 13px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 16px; }
+    h1 { font-family: 'Poppins', sans-serif; font-size: clamp(30px, 4vw, 44px); font-weight: 900; line-height: 1.2; margin-bottom: 24px; }
+    .article-meta { font-size: 15px; color: var(--muted); margin-bottom: 48px; padding-bottom: 24px; border-bottom: 1px solid rgba(255,255,255,0.07); }
+    h2 { font-family: 'Poppins', sans-serif; font-size: 26px; font-weight: 700; margin: 48px 0 16px; color: var(--white); }
+    h3 { font-family: 'Poppins', sans-serif; font-size: 20px; font-weight: 600; margin: 32px 0 12px; color: var(--yellow); }
+    p { margin-bottom: 22px; }
+    strong { color: var(--white); font-weight: 700; }
+    .highlight { color: var(--yellow); font-weight: 700; }
+    .danger { color: #ff6b6b; font-weight: 700; }
+    ul, ol { margin: 16px 0 24px 24px; }
+    li { margin-bottom: 12px; font-size: 19px; }
+
+    /* Callout boxes */
+    .box-warning { background: rgba(197,17,17,0.12); border-left: 4px solid var(--red); padding: 20px 24px; margin: 32px 0; border-radius: 0 4px 4px 0; }
+    .box-info { background: rgba(245,197,24,0.08); border-left: 4px solid var(--yellow); padding: 20px 24px; margin: 32px 0; border-radius: 0 4px 4px 0; }
+    .box-case { background: var(--card); border: 1px solid rgba(255,255,255,0.08); padding: 28px; margin: 40px 0; border-radius: 4px; }
+    .box-case .case-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 12px; }
+    blockquote { border-left: 3px solid var(--yellow); padding: 12px 20px; margin: 24px 0; font-style: italic; color: #ccc; }
+
+    /* CTA */
+    .cta-section { background: var(--card); border: 1px solid rgba(245,197,24,0.2); border-radius: 4px; padding: 48px 40px; margin: 64px 0 40px; text-align: center; }
+    .cta-section h2 { margin-top: 0; font-size: 26px; }
+    .cta-section p { color: #aaa; max-width: 500px; margin: 0 auto 28px; }
+    .btn-primary { display: inline-block; background: var(--yellow); color: #000; font-family: 'Poppins', sans-serif; font-weight: 800; font-size: 16px; padding: 16px 36px; border-radius: 4px; text-decoration: none; }
+    .btn-primary:hover { background: #e0b010; }
+    .cta-fine { font-size: 13px; color: var(--muted); margin-top: 16px; }
+
+    /* FAQ */
+    .faq-item { border-bottom: 1px solid rgba(255,255,255,0.07); padding: 20px 0; }
+    .faq-q { font-family: 'Poppins', sans-serif; font-weight: 600; margin-bottom: 10px; }
+    .faq-a { color: #bbb; }
+
+    /* Fine table */
+    .fine-table { width: 100%; border-collapse: collapse; margin: 24px 0; }
+    .fine-table th { background: rgba(245,197,24,0.1); color: var(--yellow); font-family: 'Poppins', sans-serif; font-size: 13px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 12px 16px; text-align: left; border-bottom: 1px solid rgba(245,197,24,0.2); }
+    .fine-table td { padding: 14px 16px; border-bottom: 1px solid rgba(255,255,255,0.05); font-size: 15px; }
+    .fine-table tr:last-child td { border-bottom: none; }
+    .fine-table .amount { color: #ff6b6b; font-weight: 700; }
+
+    /* Summary + Key Takeaway */
+    .box-summary { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; padding: 24px 28px; margin: 0 0 32px; }
+    .summary-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-bottom: 14px; }
+    .box-summary ul { margin: 0; padding-left: 20px; }
+    .box-summary li { margin-bottom: 8px; font-size: 17px; color: #ccc; }
+    .box-takeaway { background: rgba(245,197,24,0.08); border-left: 4px solid var(--yellow); padding: 20px 24px; margin: 0 0 40px; border-radius: 0 4px 4px 0; }
+    .takeaway-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 10px; }
+    .box-takeaway p { margin: 0; font-size: 18px; font-weight: 600; color: var(--white); line-height: 1.6; }
+
+    /* Footer */
+    footer { border-top: 1px solid rgba(255,255,255,0.07); padding: 32px 40px; text-align: center; font-size: 13px; color: var(--muted); max-width: 900px; margin: 0 auto; }
+    footer a { color: var(--muted); }
+
+    @media (max-width: 600px) {
+      nav, .article-wrap, footer { padding: 20px; }
+      .cta-section { padding: 32px 20px; }
+      .fine-table { font-size: 14px; }
+      .fine-table th, .fine-table td { padding: 10px 10px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="https://nis2klar.se/it/">NIS2<span>Klar</span></a>
+  <a class="nav-back" href="https://nis2klar.se/it/articoli.html">← Tutti gli articoli</a>
+  <div class="lang-switcher" style="display:flex;gap:8px;align-items:center;font-size:13px;font-family:'Poppins',sans-serif;">
+    <a href="https://nis2klar.se/artiklar.html" style="color:#888;text-decoration:none;font-weight:600;padding:4px 8px;border-radius:3px;" title="Svenska">SV</a>
+    <a href="https://nis2klar.se/en/articles.html" style="color:#888;text-decoration:none;font-weight:600;padding:4px 8px;border-radius:3px;" title="English">EN</a>
+    <a href="https://nis2klar.se/da/artikler.html" style="color:#888;text-decoration:none;font-weight:600;padding:4px 8px;border-radius:3px;" title="Dansk">DA</a>
+    <a href="https://nis2klar.se/no/artikler.html" style="color:#888;text-decoration:none;font-weight:600;padding:4px 8px;border-radius:3px;" title="Norsk">NO</a>
+    <a href="https://nis2klar.se/it/articoli.html" style="color:#f5c518;text-decoration:none;font-weight:600;padding:4px 8px;border-radius:3px;background:rgba(245,197,24,0.1);" title="Italiano">IT</a>
+  </div>
+  <a class="nav-cta" href="/nis2.html#boka">Prenota consulenza →</a>
+</nav>
+
+<article class="article-wrap">
+  <div class="article-category">Gestione del Rischio &amp; Conformità</div>
+  <h1>Framework di Gestione del Rischio NIS2: Una Guida per il CdA</h1>
+  <div class="article-meta">Aggiornato 17 aprile 2026 · Tempo di lettura: circa 9 minuti · Destinatari: CEO, Presidente CdA, Consiglieri</div>
+
+  <!-- SUMMARY -->
+  <div class="box-summary">
+    <div class="summary-label">Sintesi</div>
+    <ul>
+      <li>Per CEO e consiglieri di amministrazione di aziende italiane nei settori regolamentati da NIS2 che devono approvare — non solo delegare — il framework di gestione del rischio.</li>
+      <li>Il D.Lgs. 138/2024 impone che l'organo di amministrazione approvi le misure di sicurezza e possa essere ritenuto <strong>personalmente responsabile</strong> delle violazioni.</li>
+      <li>Un framework conforme richiede: analisi del rischio documentata, registro dei rischi, misure di trattamento, accettazione formale del rischio residuo e revisione periodica.</li>
+      <li>L'allineamento con ISO 27001 e le linee guida ENISA è la strada più diretta per dimostrare conformità all'ACN in sede di vigilanza.</li>
+    </ul>
+  </div>
+
+  <!-- KEY TAKEAWAY -->
+  <div class="box-takeaway">
+    <div class="takeaway-label">Conclusione Chiave</div>
+    <p>Il CdA non è responsabile di costruire il framework di gestione del rischio — ma è legalmente responsabile di approvarlo, sorvegliarlo e documentare che lo ha fatto. Questo articolo spiega cosa significa in pratica.</p>
+  </div>
+
+  <!-- HOOK -->
+  <p>
+    Molti consigli di amministrazione italiani hanno già delegato il tema NIS2 al responsabile IT o al CISO. È comprensibile. La cybersicurezza è tecnica, il calendario del CdA è già pieno, e la legge sembra scritta per gli specialisti. Ma c'è un problema preciso in questo approccio: <strong>l'Art. 23 del D.Lgs. 138/2024</strong> non delega la responsabilità legale insieme al compito tecnico.
+  </p>
+
+  <p>
+    Quando l'ACN avvia una verifica di conformità — o quando un incidente grave espone la vostra organizzazione alla luce pubblica — la domanda non sarà rivolta al CISO. Sarà rivolta a voi. E la risposta che cercheranno non è "abbiamo un responsabile IT molto capace". La risposta che cercheranno è la documentazione che dimostra che il CdA ha compreso, approvato e vigilato sul framework di gestione del rischio.
+  </p>
+
+  <p>
+    Questo articolo vi spiega cosa dovete sapere, cosa dovete approvare e come riconoscere se il framework che vi viene presentato è effettivamente conforme a NIS2.
+  </p>
+
+  <div class="box-warning">
+    <strong>Attenzione:</strong> L'Art. 23 del D.Lgs. 138/2024 prevede la responsabilità personale dei membri dell'organo di amministrazione per le violazioni NIS2. Non è una responsabilità aziendale che si esaurisce con una sanzione pecuniaria: è una responsabilità individuale che può includere restrizioni allo svolgimento di funzioni dirigenziali.
+  </div>
+
+  <h2>Perché il CdA deve occuparsi del framework di rischio — e non solo approvarlo</h2>
+
+  <p>
+    La NIS2 non si limita a chiedere che esista un framework di gestione del rischio. Chiede che l'organo di amministrazione lo conosca, lo approvi formalmente, ne supervisioni l'attuazione e garantisca che il personale riceva una formazione adeguata. Sono quattro obblighi distinti, non uno solo.
+  </p>
+
+  <p>
+    In Italia, il recepimento tramite D.Lgs. 138/2024 ha trascritto questi obblighi nel diritto nazionale con piena efficacia dal 16 ottobre 2024. L'ACN — Agenzia per la Cybersicurezza Nazionale — è l'autorità primaria di vigilanza, affiancata da autorità di settore come Banca d'Italia per il comparto finanziario, ARERA per l'energia, AGCOM per le telecomunicazioni e il Ministero della Salute per la sanità.
+  </p>
+
+  <p>
+    Il punto cruciale è questo: se il framework di gestione del rischio viene costruito dal CISO senza che il CdA lo comprenda e lo approvi con delibera documentata, l'organizzazione è tecnicamente non conforme — anche se il documento tecnico è eccellente. La conformità NIS2 richiede la firma del vertice, non solo la competenza della funzione tecnica.
+  </p>
+
+  <h2>Cosa si intende per "framework di gestione del rischio" secondo NIS2</h2>
+
+  <p>
+    La direttiva NIS2, recepita in Italia, identifica la gestione del rischio come uno dei pilastri fondamentali delle misure di sicurezza richieste dall'Art. 21. Non si tratta di un documento da redigere una volta e archiviare. Si tratta di un processo continuo composto da elementi specifici che devono essere presenti, aggiornati e verificabili.
+  </p>
+
+  <p>
+    Dal punto di vista del CdA, un framework di gestione del rischio conforme a NIS2 deve includere almeno i seguenti componenti:
+  </p>
+
+  <ol>
+    <li><strong>Una politica di sicurezza delle reti e dei sistemi informativi</strong> — approvata dal CdA, non solo redatta dall'IT.</li>
+    <li><strong>Un'analisi del rischio documentata</strong> — che identifichi gli asset critici, le minacce rilevanti, le vulnerabilità esistenti e la probabilità e l'impatto di ciascun rischio.</li>
+    <li><strong>Un registro dei rischi</strong> — un documento strutturato che mantiene traccia di tutti i rischi identificati, delle misure di trattamento adottate e del rischio residuo accettato.</li>
+    <li><strong>Un piano di trattamento del rischio</strong> — che definisca le contromisure da implementare, i responsabili, le scadenze e le risorse allocate.</li>
+    <li><strong>Un processo di accettazione formale del rischio residuo</strong> — con delibera del CdA o del CEO per i rischi che l'organizzazione decide consapevolmente di accettare senza ulteriori misure.</li>
+    <li><strong>Una revisione periodica</strong> — almeno annuale, o a seguito di cambiamenti significativi nell'ambiente operativo o dopo un incidente.</li>
+  </ol>
+
+  <p>
+    Nessuno di questi elementi è opzionale. L'ACN può richiedere accesso a qualsiasi di questi documenti durante una verifica ispettiva, tipicamente con un preavviso di 15-30 giorni.
+  </p>
+
+  <h2>L'allineamento con ISO 27001: perché semplifica tutto</h2>
+
+  <p>
+    ISO 27001 è lo standard internazionale per i sistemi di gestione della sicurezza delle informazioni. Non è obbligatorio per la conformità NIS2, ma è riconosciuto dall'ENISA — l'Agenzia dell'Unione Europea per la Cybersicurezza — come riferimento metodologico di eccellenza per costruire un framework di gestione del rischio solido e auditabile.
+  </p>
+
+  <p>
+    Per il CdA, il vantaggio pratico di allinearsi a ISO 27001 è semplice: se il framework segue quella struttura, il vostro CISO ha già un linguaggio comune con i revisori dell'ACN, con i potenziali auditor certificatori e con i vostri partner commerciali che potrebbero richiedervi garanzie di sicurezza.
+  </p>
+
+  <p>
+    ISO 27001 articola la gestione del rischio secondo un ciclo preciso: identificazione del contesto → valutazione del rischio → piano di trattamento → implementazione delle misure → monitoraggio → revisione della direzione. Questo ciclo corrisponde quasi esattamente a ciò che NIS2 richiede. Un'organizzazione che ha strutturato il proprio framework su ISO 27001 è in una posizione nettamente più forte in sede di verifica ACN rispetto a una che ha costruito documentazione ad hoc senza un riferimento metodologico riconosciuto.
+  </p>
+
+  <div class="box-info">
+    <strong>Nota pratica per il CdA:</strong> Non è necessario che la vostra organizzazione ottenga la certificazione ISO 27001 per essere conforme a NIS2. È sufficiente che il framework di gestione del rischio sia strutturato in modo coerente con quell'approccio metodologico. La certificazione è un'opzione che rafforza ulteriormente la posizione dell'azienda, ma non è un prerequisito di legge.
+  </div>
+
+  <h2>Le linee guida ENISA: il riferimento tecnico che il CdA dovrebbe conoscere</h2>
+
+  <p>
+    L'ENISA pubblica linee guida specifiche per l'implementazione di NIS2, incluse indicazioni dettagliate sulle misure di gestione del rischio. Come membro del CdA, non dovete conoscere i dettagli tecnici di queste linee guida — ma dovete sapere che esistono e che il vostro team dovrebbe utilizzarle come riferimento.
+  </p>
+
+  <p>
+    In sede di approvazione del framework, è ragionevole chiedere al CISO o al consulente incaricato: "Il nostro framework è coerente con le linee guida ENISA per NIS2?" Se la risposta è sì, chiedete di documentarlo. Se la risposta è incerta, è un segnale che il lavoro non è ancora completo.
+  </p>
+
+  <p>
+    Le linee guida ENISA identificano in particolare dieci domini di sicurezza che devono essere coperti dalle misure adottate: politiche di sicurezza, gestione degli incidenti, continuità operativa, sicurezza della catena di fornitura, sicurezza nello sviluppo e acquisizione di sistemi, gestione delle vulnerabilità, valutazione dell'efficacia delle misure, igiene informatica e formazione, crittografia, e controllo degli accessi. Ognuno di questi domini deve trovare riscontro nel registro dei rischi e nel piano di trattamento.
+  </p>
+
+  <h2>Il registro dei rischi: cosa deve contenere e come leggerlo</h2>
+
+  <p>
+    Il registro dei rischi è il documento operativo centrale del framework. Non è un documento che il CdA deve compilare, ma è un documento che il CdA deve saper leggere e approvare. Capire cosa contiene — e cosa dovrebbe contenere — vi mette in condizione di fare domande pertinenti e di riconoscere un registro incompleto.
+  </p>
+
+  <p>
+    Un registro dei rischi ben strutturato per la conformità NIS2 include, per ciascun rischio identificato:
+  </p>
+
+  <ul>
+    <li><strong>Identificativo e descrizione del rischio</strong> — cosa può accadere, a quale asset o processo, a causa di quale minaccia.</li>
+    <li><strong>Valutazione della probabilità</strong> — su una scala definita (es. 1-5 o bassa/media/alta/critica).</li>
+    <li><strong>Valutazione dell'impatto</strong> — sia in termini operativi che reputazionali e legali.</li>
+    <li><strong>Livello di rischio inerente</strong> — combinazione di probabilità e impatto prima delle misure di controllo.</li>
+    <li><strong>Misure di trattamento adottate</strong> — cosa è stato fatto o è in corso per ridurre il rischio.</li>
+    <li><strong>Livello di rischio residuo</strong> — il rischio che rimane dopo l'applicazione delle misure.</li>
+    <li><strong>Decisione di accettazione</strong> — chi ha formalmente accettato il rischio residuo e quando.</li>
+    <li><strong>Data di revisione</strong> — quando questo rischio sarà rivalutato.</li>
+  </ul>
+
+  <p>
+    Dal punto di vista del CdA, la colonna più importante è quella relativa all'accettazione del rischio residuo. Ogni rischio residuo classificato come "alto" o "critico" che viene accettato senza ulteriori misure deve essere portato all'attenzione del CdA per una delibera formale. Non è una formalità burocratica: è la prova documentale che il vertice aziendale ha fatto una scelta consapevole e informata, non che ha semplicemente ignorato il problema.
+  </p>
+
+  <h2>L'accettazione del rischio residuo: la decisione che appartiene al CdA</h2>
+
+  <p>
+    Nessuna organizzazione può ridurre tutti i rischi cyber a zero. Non esiste tale possibilità, né dal punto di vista economico né da quello tecnico. La gestione del rischio è sempre, in ultima analisi, una serie di scelte su quali rischi trattare, quali trasferire (ad esempio tramite assicurazione) e quali accettare consapevolmente.
+  </p>
+
+  <p>
+    La NIS2 non impone di eliminare ogni rischio. Impone che le decisioni di accettazione del rischio siano documentate, motivate e approvate al livello appropriato. Per i rischi residui significativi, questo livello è il CdA o il CEO.
+  </p>
+
+  <p>
+    Questo significa che nel vostro prossimo consiglio di amministrazione, se il CISO o il responsabile della sicurezza vi presenta il registro dei rischi, dovreste essere in grado di identificare i rischi residui che richiedono una vostra delibera formale — e di verbalizzarla. Una delibera del CdA che recita "Il Consiglio di Amministrazione, dopo aver esaminato il registro dei rischi aggiornato al [data], approva le misure di trattamento proposte e accetta formalmente i seguenti rischi residui: [elenco]" è un documento di valore legale in caso di verifica ACN.
+  </p>
+
+  <div class="box-warning">
+    <strong>Rischio legale concreto:</strong> Se durante una verifica ACN emergono rischi residui significativi che non risultano né trattati né formalmente accettati dal CdA, l'interpretazione dell'autorità di vigilanza sarà che l'organo di amministrazione non ha esercitato la supervisione richiesta dall'Art. 23 del D.Lgs. 138/2024. Questo è uno dei percorsi più diretti verso la responsabilità personale dei consiglieri.
+  </div>
+
+  <h2>Come si svolge una verifica ACN: cosa aspettarsi</h2>
+
+  <p>
+    L'ACN può avviare verifiche ispettive sia in modo proattivo — seguendo un piano di vigilanza settoriale — sia in modo reattivo, a seguito di un incidente, di una segnalazione o di una richiesta di coordinamento con autorità di settore come Banca d'Italia o ARERA. La verifica può riguardare l'intera organizzazione o concentrarsi su aspetti specifici della conformità.
+  </p>
+
+  <p>
+    In fase di verifica, i documenti che vengono richiesti con maggiore frequenza includono: la politica di sicurezza approvata, il registro dei rischi con data di aggiornamento, i verbali del CdA che documentano l'approvazione delle misure di sicurezza, il piano di trattamento del rischio con evidenza dello stato di avanzamento, la documentazione del processo di notifica degli incidenti e gli eventuali log di formazione del personale.
+  </p>
+
+  <p>
+    Non avere questi documenti pronti al momento della richiesta non è una "mancanza minore". È una violazione diretta degli obblighi di conformità, indipendentemente da quanto l'organizzazione abbia investito in tecnologia di sicurezza. La documentazione non è un accessorio del framework: è parte costitutiva della conformità stessa.
+  </p>
+
+  <h2>Le sanzioni in cifre: il costo della non conformità</h2>
+
+  <p>
+    Per completare il quadro, è utile che il CdA abbia chiaro il perimetro delle sanzioni previste dal D.Lgs. 138/2024 in caso di violazione degli obblighi NIS2.
+  </p>
+
+  <table class="fine-table">
+    <thead>
+      <tr>
+        <th>Categoria</th>
+        <th>Sanzione massima</th>
+        <th>Soglia alternativa</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Soggetto essenziale</td>
+        <td class="amount">10 milioni di EUR</td>
+        <td>2% del fatturato mondiale annuo</td>
+      </tr>
+      <tr>
+        <td>Soggetto importante</td>
+        <td class="amount">7 milioni di EUR</td>
+        <td>1,4% del fatturato mondiale annuo</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>
+    Si applica il valore più elevato tra la soglia fissa e quella percentuale. A questi importi si aggiungono le potenziali misure accessorie: obbligo di comunicazione pubblica della violazione, sospensione temporanea di certificazioni o autorizzazioni, e — per i responsabili apicali — restrizioni all'esercizio di funzioni dirigenziali.
+  </p>
+
+  <h2>Scenario reale: cosa succede quando il framework non c'è</h2>
+
+  <div class="box-case">
+    <div class="case-label">Scenario Illustrativo</div>
+    <p>
+      <strong>Azienda manifatturiera italiana di medie dimensioni, circa 220 dipendenti, classificata come soggetto importante ai sensi del D.Lgs. 138/2024.</strong>
+    </p>
+    <p>
+      L'azienda ha investito in buoni strumenti di sicurezza informatica nel corso degli anni. Il responsabile IT è competente e aggiornato. Tuttavia, quando l'ACN avvia una verifica di conformità nel primo semestre 2026 — nell'ambito di un piano ispettivo settoriale sul comparto manifatturiero — si presenta un problema immediato.
+    </p>
+    <p>
+      L'ACN richiede, con 20 giorni di preavviso, la seguente documentazione: politica di sicurezza approvata dal CdA, registro dei rischi aggiornato, verbali del CdA relativi all'approvazione delle misure di sicurezza, e piano di continuità operativa. L'azienda dispone di configurazioni tecniche adeguate, ma non ha mai formalizzato questi documenti. La politica di sicurezza è un documento interno redatto dal responsabile IT, mai portato all'attenzione del consiglio. Il registro dei rischi non esiste in forma strutturata. Nessun verbale del CdA menziona mai la cybersicurezza.
+    </p>
+    <p>
+      L'ACN rileva le carenze documentali come violazione degli obblighi di cui all'Art. 21 e Art. 23 del D.Lgs. 138/2024. Vengono avviate le procedure sanzionatorie. Il CdA viene formalmente notificato della propria responsabilità personale per la mancata supervisione.
+    </p>
+    <p>
+      <strong>Costo stimato dell'esito:</strong> sanzione amministrativa, costi legali di difesa, costi di remediation in emergenza per produrre la documentazione mancante sotto pressione, e danni reputazionali verso clienti che richiedono garanzie di sicurezza. <span class="danger">Stima totale: 800.000 – 1,5 milioni di EUR.</span> Tutto evitabile con un framework documentato e approvato in anticipo.
+    </p>
+  </div>
+
+  <h2>Le domande che il CdA dovrebbe porre al prossimo consiglio</h2>
+
+  <p>
+    Non è necessario che il CdA diventi esperto di cybersicurezza. È necessario che ponga le domande giuste e che le risposte vengano documentate nei verbali. Ecco le domande minime che ogni consigliere dovrebbe essere in grado di porre:
+  </p>
+
+  <ol>
+    <li>Abbiamo un registro dei rischi aggiornato? Quando è stato rivisto l'ultima volta?</li>
+    <li>La nostra politica di sicurezza è stata formalmente approvata da questo consiglio? Esiste un verbale che lo attesti?</li>
+    <li>Ci sono rischi residui classificati come alti o critici che non sono stati formalmente accettati dal CdA?</li>
+    <li>Il nostro framework di gestione del rischio è allineato con le linee guida ENISA per NIS2?</li>
+    <li>Abbiamo testato il nostro piano di risposta agli incidenti? Il processo di notifica all'ACN entro 24 ore è documentato e conosciuto dai responsabili?</li>
+    <li>Siamo registrati sulla piattaforma ACN nei termini previsti?</li>
+    <li>I nostri fornitori critici sono inclusi nel perimetro del framework di rischio?</li>
+  </ol>
+
+  <p>
+    Se il CISO o il responsabile IT non ha risposte pronte e documentate per almeno cinque di queste sette domande, il framework non è ancora completo. Non è una critica alla competenza tecnica: è una diagnosi dello stato di conformità NIS2 visto dal lato della responsabilità del CdA.
+  </p>
+
+  <h2>Domande frequenti del CdA</h2>
+
+  <div class="faq-item">
+    <div class="faq-q">Siamo una media impresa. Queste obbligazioni si applicano davvero anche a noi?</div>
+    <div class="faq-a">Sì, se operate in uno dei 18 settori regolamentati da NIS2 e superate le soglie dimensionali (più di 50 dipendenti o fatturato superiore a 10 milioni di euro). Il D.Lgs. 138/2024 si applica sia ai soggetti essenziali che ai soggetti importanti. La differenza tra le due categorie influenza il livello massimo delle sanzioni, ma non elimina gli obblighi di conformità per i soggetti importanti. Se avete dubbi sulla vostra classificazione, verificate con il supporto di un consulente specializzato prima che lo faccia l'ACN al vostro posto.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">Il CISO dice che siamo già conformi. Come possiamo verificarlo come CdA?</div>
+    <div class="faq-a">Chiedete al CISO di presentare al prossimo consiglio i seguenti tre documenti: il registro dei rischi aggiornato, la politica di sicurezza e il piano di risposta agli incidenti con le procedure di notifica all'ACN. Se questi documenti esistono, sono aggiornati e il CdA li ha mai approvati con delibera formale, la dichiarazione di conformità è credibile. Se uno di questi elementi manca, la conformità è incompleta a prescindere dalle tecnologie implementate.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">Possiamo trasferire il rischio con un'assicurazione cyber?</div>
+    <div class="faq-a">Un'assicurazione cyber può coprire parte dei costi economici di un incidente o di una sanzione, ma non trasferisce la responsabilità legale del CdA. L'Art. 23 del D.Lgs. 138/2024 riguarda la responsabilità personale dei consiglieri, che non è assicurabile nel senso in cui lo sono i danni patrimoniali. Inoltre, molte polizze cyber hanno clausole di esclusione che si attivano in caso di non conformità documentata alle normative applicabili — il che significa che un'azienda non conforme a NIS2 potrebbe scoprire che la polizza non copre il sinistro nel momento del bisogno.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">Con quale frequenza il CdA deve occuparsi attivamente del framework di rischio?</div>
+    <div class="faq-a">Come minimo, una volta all'anno in sede di revisione formale del framework, e ogni volta che si verifica un cambiamento significativo: un incidente, una modifica sostanziale dell'infrastruttura, l'ingresso in nuovi mercati o l'acquisizione di nuovi fornitori critici. La NIS2 non prevede una frequenza specifica, ma la prassi interpretativa dell'ENISA e delle autorità di vigilanza europee indica che una revisione annuale documentata è la soglia minima attesa. Se nel corso di un anno il tema cybersicurezza non compare mai nell'agenda del CdA, è già una vulnerabilità documentale.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">Dobbiamo registrarci sulla piattaforma ACN anche se abbiamo già fatto tutto il resto?</div>
+    <div class="faq-a">Sì. La registrazione sulla piattaforma ACN è un obbligo autonomo, separato dagli obblighi di implementazione delle misure di sicurezza. L'ACN pubblica le liste dei soggetti essenziali e importanti, e la mancata registrazione nei termini previsti è di per sé una violazione sanzionabile. Verificate con il vostro team legale o con un consulente NIS2 che la registrazione sia avvenuta correttamente e che i dati inseriti siano aggiornati.</div>
+  </div>
+
+  <div class="box-info" style="margin: 48px 0 32px;">
+    <div style="font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color: var(--yellow); margin-bottom:10px;">🔧 STRUMENTI &amp; SOLUZIONI</div>
+    <p style="margin:0; font-size:17px; color: #ddd; line-height:1.7;">Per la gestione del rischio e la produzione di documentazione verificabile richiesta da NIS2, <strong>Microsoft Defender Secure Score</strong> offre al CdA un indicatore chiave di performance (KPI da 0 a 100) comprensibile senza competenze tecniche, mentre <strong>Microsoft Compliance Manager</strong> supporta la mappatura delle misure di controllo rispetto ai requisiti normativi e genera la documentazione necessaria per le verifiche ACN. Un partner Microsoft certificato può configurare questi strumenti gratuitamente nell'ambito di un'analisi del gap NIS2.</p>
+  </div>
+
+  <!-- NEWSLETTER -->
+  <div style="background:#111; border:1px solid rgba(255,255,255,0.1); border-left:3px solid #f5c518; border-radius:4px; padding:32px 36px; margin:40px 0 0; text-align:center; max-width:760px; margin-left:auto; margin-right:auto;">
+    <div style="font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:#f5c518; margin-bottom:12px;">📬 AGGIORNAMENTI NIS2</div>
+    <h3 style="font-family:'Poppins',sans-serif; font-size:20px; font-weight:800; margin:0 0 8px; color:#f0f0f0;">Un nuovo articolo NIS2 ogni settimana — direttamente nella tua casella</h3>
+    <p style="color:#888; font-size:15px; margin:0 0 20px;">Nessun pitch di vendita. Solo guida pratica per CEO e consigli di amministrazione.</p>
+    <form id="nlForm-nis2_framework_gestione_rischio" onsubmit="submitNewsletter_nis2_framework_gestione_rischio(event)" style="display:flex; gap:10px; flex-wrap:wrap; justify-content:center; max-width:460px; margin:0 auto;">
+      <input type="email" id="nlEmail-nis2_framework_gestione_rischio" placeholder="tuo@azienda.it" required style="flex:1; min-width:200px; padding:12px 16px; background:#1c1c1f; border:1px solid rgba(255,255,255,0.15); border-radius:4px; color:#f0f0f0; font-size:15px; outline:none;" />
+      <button type="submit" id="nlSubmit-nis2_framework_gestione_rischio" style="padding:12px 22px; background:#f5c518; color:#141416; font-weight:700; font-size:15px; border:none; border-radius:4px; cursor:pointer; white-space:nowrap;">Iscriviti gratis →</button>
+    </form>
+    <p style="font-size:12px; color:#555; margin:12px 0 0;">Puoi cancellarti in qualsiasi momento. Non condividiamo mai la tua email.</p>
+    <div id="nlThanks-nis2_framework_gestione_rischio" style="display:none; color:#4ade80; font-size:16px; font-weight:600; margin-top:14px;">✅ Sei iscritto! Il prossimo articolo arriverà nella tua casella.</div>
+  </div>
+
+  <!-- CTA -->
+  <div class="cta-section">
+    <h2>Sai dove si trova la tua organizzazione oggi?</h2>
+    <p>Un'analisi del gap gratuita con un partner Microsoft certificato mostra esattamente cosa hai già coperto — e cosa manca.</p>
+    <a href="/nis2.html#boka" class="btn-primary">Prenota analisi gap gratuita →</a>
+    <p class="cta-fine">Le sanzioni arrivano fino a <strong>10 milioni di euro</strong>. L'analisi del gap è gratuita.</p>
+  </div>
+
+</article>
+
+<div class="related-articles" style="margin:2.5rem auto 2rem; max-width:760px; padding:0 40px;">
+  <div style="margin:2.5rem 0 2rem;padding:1.5rem;background:#1a1a2e;border-left:4px solid #f0a500;border-radius:4px;">
+    <p style="margin:0 0 1rem;font-size:0.85rem;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:#f0a500;">Leggi anche</p>
+    <ul style="margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:0.5rem;">
+      <li><a href="/it/articoli/nis2-responsabilita-personale-cda.html" style="color:#e0e0e0;text-decoration:none;font-size:0.95rem;">→ Responsabilità personale del CdA secondo NIS2</a></li>
+      <li><a href="/it/articoli/nis2-notifica-incidenti-acn.html" style="color:#e0e0e0;text-decoration:none;font-size:0.95rem;">→ Come notificare un incidente all'ACN entro 24 ore</a></li>
+      <li><a href="/it/articoli/nis2-quali-aziende-sono-coinvolte.html" style="color:#e0e0e0;text-decoration:none;font-size:0.95rem;">→ Quali aziende italiane rientrano nel perimetro NIS2?</a></li>
+    </ul>
+    <p style="margin:1.25rem 0 0;font-size:0.85rem;color:#aaa;">← <a href="https://nis2klar.se/it/" style="color:#f0a500;text-decoration:none;">NIS2Klar Homepage</a> &nbsp;·&nbsp; <a href="https://nis2klar.se/it/articoli.html" style="color:#f0a500;text-decoration:none;">Tutti gli articoli</a></p>
+  </div>
+</div>
+
+<footer>
+  © 2026 M&amp;J Trusted Marketing KB ·
+  <a href="mailto:support@trustedmarketing.se">support@trustedmarketing.se</a> · <a href="tel:+46470597003">+46 470 59 70 03</a> ·
+  <a href="https://nis2klar.se/it/">Torna alla homepage</a> ·
+  <a href="/privacy.html">Privacy Policy</a>
+  <p style="margin-top:12px; font-size:11px; color: #555; line-height:1.5;">Microsoft, Microsoft 365, Azure e i relativi nomi di prodotto sono marchi di Microsoft Corporation. nis2klar.se non è affiliata né approvata da Microsoft Corporation.</p>
+</footer>
+
+<script>
+  async function submitNewsletter_nis2_framework_gestione_rischio(e) {
+    e.preventDefault();
+    const btn = document.getElementById('nlSubmit-nis2_framework_gestione_rischio');
+    btn.disabled = true; btn.textContent = '...';
+    const email = document.getElementById('nlEmail-nis2_framework_gestione_rischio').value.trim();
+    try {
+      const res = await fetch('/api/newsletter/subscribe', { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({ email, source: 'articolo-it-nis2_framework_gestione_rischio' }) });
+      const data = await res.json();
+      if (data.success) { document.getElementById('nlForm-nis2_framework_gestione_rischio').style.display='none'; document.getElementById('nlThanks-nis2_framework_gestione_rischio').style.display='block'; }
+      else { btn.disabled=false; btn.textContent='Iscriviti gratis →'; }
+    } catch { btn.disabled=false; btn.textContent='Iscriviti gratis →'; }
+  }
+</script>
+
+</body>
+</html>

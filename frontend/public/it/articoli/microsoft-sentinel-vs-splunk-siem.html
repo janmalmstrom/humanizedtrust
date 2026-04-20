@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-BKF3QH9K01"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag("js", new Date());
+    gtag("config", "G-BKF3QH9K01");
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Microsoft Sentinel vs Splunk: SIEM per la Conformità NIS2 in Italia | NIS2Klar</title>
+  <meta name="description" content="SIEM per NIS2: confronto tra Sentinel e Splunk. Costi, rilevamento degli incidenti, logging, dashboard NIS2 out-of-the-box. Quale scegliere per la conformità?">
+  <meta property="og:title" content="Microsoft Sentinel vs Splunk: SIEM per la Conformità NIS2 in Italia">
+  <meta property="og:description" content="SIEM per NIS2: confronto tra Sentinel e Splunk. Costi, rilevamento degli incidenti, logging, dashboard NIS2 out-of-the-box. Quale scegliere per la conformità?">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #141416;
+      --card: #1c1c1f;
+      --yellow: #f5c518;
+      --white: #f0f0f0;
+      --muted: #888;
+      --red: #C61212;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: var(--bg); color: var(--white); font-family: 'Barlow', sans-serif; font-size: 19px; line-height: 1.8; }
+
+    /* Nav */
+    nav { display: flex; justify-content: space-between; align-items: center; padding: 20px 40px; border-bottom: 1px solid rgba(255,255,255,0.07); max-width: 900px; margin: 0 auto; gap: 20px; }
+    .nav-left { display: flex; align-items: center; gap: 20px; }
+    .nav-logo { font-family: 'Poppins', sans-serif; font-weight: 900; font-size: 20px; color: var(--yellow); text-decoration: none; }
+    .nav-logo span { color: var(--white); }
+    .nav-back { color: var(--muted); text-decoration: none; font-size: 15px; }
+    .nav-back:hover { color: var(--white); }
+    .lang-switcher { display: flex; gap: 8px; align-items: center; font-size: 13px; font-family: 'Poppins', sans-serif; }
+    .lang-switcher a { color: #888; text-decoration: none; font-weight: 600; padding: 4px 8px; border-radius: 3px; }
+    .lang-switcher a:hover { color: var(--white); }
+    .nav-cta { background: var(--yellow); color: #000; padding: 8px 18px; border-radius: 4px; text-decoration: none; font-weight: 700; font-size: 14px; font-family: 'Poppins', sans-serif; }
+
+    /* Article */
+    .article-wrap { max-width: 760px; margin: 0 auto; padding: 60px 40px; }
+    .article-category { font-size: 13px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 16px; }
+    h1 { font-family: 'Poppins', sans-serif; font-size: clamp(30px, 4vw, 44px); font-weight: 900; line-height: 1.2; margin-bottom: 24px; }
+    .article-meta { font-size: 15px; color: var(--muted); margin-bottom: 48px; padding-bottom: 24px; border-bottom: 1px solid rgba(255,255,255,0.07); }
+    h2 { font-family: 'Poppins', sans-serif; font-size: 26px; font-weight: 700; margin: 48px 0 16px; color: var(--white); }
+    h3 { font-family: 'Poppins', sans-serif; font-size: 20px; font-weight: 600; margin: 32px 0 12px; color: var(--yellow); }
+    p { margin-bottom: 22px; }
+    strong { color: var(--white); font-weight: 700; }
+    .highlight { color: var(--yellow); font-weight: 700; }
+    .danger { color: #ff6b6b; font-weight: 700; }
+    ul, ol { margin: 16px 0 24px 24px; }
+    li { margin-bottom: 12px; font-size: 19px; }
+
+    /* Callout boxes */
+    .box-warning { background: rgba(197,17,17,0.12); border-left: 4px solid var(--red); padding: 20px 24px; margin: 32px 0; border-radius: 0 4px 4px 0; }
+    .box-info { background: rgba(245,197,24,0.08); border-left: 4px solid var(--yellow); padding: 20px 24px; margin: 32px 0; border-radius: 0 4px 4px 0; }
+    .box-case { background: var(--card); border: 1px solid rgba(255,255,255,0.08); padding: 28px; margin: 40px 0; border-radius: 4px; }
+    .box-case .case-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 12px; }
+    blockquote { border-left: 3px solid var(--yellow); padding: 12px 20px; margin: 24px 0; font-style: italic; color: #ccc; }
+
+    /* CTA */
+    .cta-section { background: var(--card); border: 1px solid rgba(245,197,24,0.2); border-radius: 4px; padding: 48px 40px; margin: 64px 0 40px; text-align: center; }
+    .cta-section h2 { margin-top: 0; font-size: 26px; }
+    .cta-section p { color: #aaa; max-width: 500px; margin: 0 auto 28px; }
+    .btn-primary { display: inline-block; background: var(--yellow); color: #000; font-family: 'Poppins', sans-serif; font-weight: 800; font-size: 16px; padding: 16px 36px; border-radius: 4px; text-decoration: none; }
+    .btn-primary:hover { background: #e0b010; }
+    .cta-fine { font-size: 13px; color: var(--muted); margin-top: 16px; }
+
+    /* Comparison table */
+    .comparison-table { width: 100%; border-collapse: collapse; margin: 32px 0; }
+    .comparison-table th { background: rgba(245,197,24,0.1); color: var(--yellow); font-family: 'Poppins', sans-serif; font-size: 13px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 14px 16px; text-align: left; border-bottom: 1px solid rgba(245,197,24,0.2); }
+    .comparison-table td { padding: 14px 16px; border-bottom: 1px solid rgba(255,255,255,0.05); font-size: 16px; }
+    .comparison-table tr:last-child td { border-bottom: none; }
+    .comparison-table .cost-high { color: #ff6b6b; font-weight: 700; }
+    .comparison-table .cost-low { color: #4ade80; font-weight: 700; }
+
+    /* FAQ */
+    .faq-item { border-bottom: 1px solid rgba(255,255,255,0.07); padding: 20px 0; }
+    .faq-q { font-family: 'Poppins', sans-serif; font-weight: 600; margin-bottom: 10px; }
+    .faq-a { color: #bbb; }
+
+    /* Summary + Key Takeaway */
+    .box-summary { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; padding: 24px 28px; margin: 0 0 32px; }
+    .summary-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-bottom: 14px; }
+    .box-summary ul { margin: 0; padding-left: 20px; }
+    .box-summary li { margin-bottom: 8px; font-size: 17px; color: #ccc; }
+    .box-takeaway { background: rgba(245,197,24,0.08); border-left: 4px solid var(--yellow); padding: 20px 24px; margin: 0 0 40px; border-radius: 0 4px 4px 0; }
+    .takeaway-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 10px; }
+    .box-takeaway p { margin: 0; font-size: 18px; font-weight: 600; color: var(--white); line-height: 1.6; }
+
+    /* Related articles */
+    .related-articles { margin: 2.5rem 0 2rem; padding: 1.5rem; background: #1a1a2e; border-left: 4px solid #f0a500; border-radius: 4px; }
+    .related-articles p:first-child { margin: 0 0 1rem; font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #f0a500; }
+    .related-articles ul { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+    .related-articles li { margin: 0; }
+    .related-articles a { color: #e0e0e0; text-decoration: none; font-size: 0.95rem; }
+    .related-articles a:hover { color: #f0a500; }
+    .related-articles p:last-child { margin: 1.25rem 0 0; font-size: 0.85rem; color: #aaa; }
+    .related-articles p:last-child a { color: #f0a500; }
+
+    /* Footer */
+    footer { border-top: 1px solid rgba(255,255,255,0.07); padding: 32px 40px; text-align: center; font-size: 13px; color: var(--muted); max-width: 900px; margin: 0 auto; }
+    footer a { color: var(--muted); text-decoration: none; }
+    footer a:hover { color: var(--white); }
+    footer p { margin: 4px 0; }
+
+    @media (max-width: 600px) {
+      nav { flex-direction: column; padding: 20px; }
+      .nav-left { flex-direction: column; align-items: flex-start; }
+      .article-wrap, footer { padding: 20px; }
+      .cta-section { padding: 32px 20px; }
+      .comparison-table { font-size: 14px; }
+      .comparison-table th, .comparison-table td { padding: 10px 10px; }
+      .lang-switcher { flex-wrap: wrap; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-left">
+    <a class="nav-logo" href="https://nis2klar.se/it/">NIS2<span>Klar</span></a>
+    <a class="nav-back" href="https://nis2klar.se/it/articoli.html">← Tutti gli articoli</a>
+  </div>
+  <div class="lang-switcher">
+    <a href="https://nis2klar.se/artiklar.html" style="color:#888;" title="Svenska">SV</a>
+    <a href="https://nis2klar.se/en/articles.html" style="color:#888;" title="English">EN</a>
+    <a href="https://nis2klar.se/da/artikler.html" style="color:#888;" title="Dansk">DA</a>
+    <a href="https://nis2klar.se/no/artikler.html" style="color:#888;" title="Norsk">NO</a>
+    <a href="https://nis2klar.se/it/articoli.html" style="color:#f5c518;background:rgba(245,197,24,0.1);" title="Italiano">IT</a>
+  </div>
+  <a class="nav-cta" href="https://nis2klar.se/it#boka">Prenota consulenza →</a>
+</nav>
+
+<article class="article-wrap">
+  <div class="article-category">Strumenti &amp; Implementazione</div>
+  <h1>Microsoft Sentinel vs Splunk: SIEM per la Conformità NIS2</h1>
+  <div class="article-meta">Pubblicato 19 aprile 2026 · Tempo di lettura: 9 minuti · Destinato a: CEO e Consigli di Amministrazione</div>
+
+  <!-- SUMMARY -->
+  <div class="box-summary">
+    <div class="summary-label">Sintesi</div>
+    <ul>
+      <li>Il D.Lgs. 138/2024 richiede logging e rilevamento degli incidenti per tutte le entità essenziali e importanti.</li>
+      <li>Un SIEM (Security Information and Event Management) è obbligatorio per la conformità NIS2 in Italia.</li>
+      <li>Le soluzioni SIEM hanno costi molto diversi: da 150.000 € all'anno in su per i tool enterprise tradizionali.</li>
+      <li>Non tutte le SIEM hanno dashboard e reporting nativi per NIS2 — rischi di ulteriori investimenti nascosti.</li>
+      <li>La decisione tra piattaforme non è solo tecnica: è una scelta di controllo dei costi, integrazione e accountability della leadership.</li>
+    </ul>
+  </div>
+
+  <!-- KEY TAKEAWAY -->
+  <div class="box-takeaway">
+    <div class="takeaway-label">Conclusione Chiave</div>
+    <p>Una SIEM inadeguata non vi salva dalle sanzioni NIS2: costa solo di più. La scelta di quale piattaforma usare deve essere basata su capacità di logging nativo, costo totale di proprietà, e supporto per il reporting che il vostro CdA comprende.</p>
+  </div>
+
+  <h2>Perché una SIEM è obbligatoria per NIS2 in Italia</h2>
+
+  <p>
+    L'articolo 21 del D.Lgs. 138/2024 elenca dieci domini di cybersecurity obbligatori. Due di questi non lasciano spazio di interpretazione:
+  </p>
+
+  <ul>
+    <li><strong>Gestione della continuità</strong> — capacità di rilevare e contenere incidenti</li>
+    <li><strong>Analisi e gestione del rischio</strong> — visibilità continua sui log di sicurezza</li>
+  </ul>
+
+  <p>
+    Un SIEM non è un "nice-to-have" opzionale. È la spina dorsale del vostro programma di conformità NIS2. È come il sistema di tracciamento dei farmaci in un ospedale — non potete certificare la conformità normativa senza di esso.
+  </p>
+
+  <p>
+    L'ACN (Agenzia per la Cybersicurezza Nazionale), autorità primaria per il recepimento NIS2 in Italia, si aspetta che le entità essenziali e importanti dispongano di:
+  </p>
+
+  <ul>
+    <li>Raccolta centralizzata di log da tutti i sistemi criteri</li>
+    <li>Capacità di correlazione e rilevamento automatico delle anomalie</li>
+    <li>Reportistica standardizzata per la notifica degli incidenti entro 24 ore (allerta precoce) e 72 ore (notifica completa)</li>
+    <li>Tracciamento di audit trail per i documenti e i dati sensibili</li>
+  </ul>
+
+  <p>
+    Senza una SIEM adeguata, non potete documentare di aver soddisfatto questi requisiti durante una revisione dell'ACN.
+  </p>
+
+  <div class="box-warning">
+    <strong>Rischio diretto:</strong> Sanzioni fino a 10 milioni di euro (o il 2% del fatturato mondiale) per le entità essenziali, proprio per mancanza di logging e rilevamento.
+  </div>
+
+  <h2>Le due opzioni principali: il contesto</h2>
+
+  <p>
+    Nel mercato italiano e europeo, due piattaforme dominano il segmento SIEM: una soluzione cloud-native moderna e una suite enterprise tradizionale.
+  </p>
+
+  <p>
+    La scelta tra loro non è neutra. Ha implicazioni su costo, velocità di implementazione, competenze interne, e — crucialmente — sulla capacità del vostro CdA di comprendere e stare dietro al programma di sicurezza.
+  </p>
+
+  <p>
+    Esaminiamo entrambe dal punto di vista della conformità NIS2.
+  </p>
+
+  <h2>Il confronto: costi reali</h2>
+
+  <table class="comparison-table">
+    <thead>
+      <tr>
+        <th>Criterio</th>
+        <th>Piattaforma Cloud-Native</th>
+        <th>Suite Enterprise Tradizionale</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Costo annuale (entry-level)</strong></td>
+        <td class="cost-low">€ 30k–60k</td>
+        <td class="cost-high">€ 150k–300k+</td>
+      </tr>
+      <tr>
+        <td><strong>Implementazione iniziale</strong></td>
+        <td class="cost-low">2–4 settimane</td>
+        <td class="cost-high">8–16 settimane</td>
+      </tr>
+      <tr>
+        <td><strong>Personale richiesto (FTE)</strong></td>
+        <td class="cost-low">0,5–1 FTE</td>
+        <td class="cost-high">2–3 FTE</td>
+      </tr>
+      <tr>
+        <td><strong>Dashboard NIS2 nativo</strong></td>
+        <td class="cost-low">Sì, out-of-box</td>
+        <td class="cost-high">No, customizzazione richiesta</td>
+      </tr>
+      <tr>
+        <td><strong>Supporto per Notifica incidenti (72h ACN)</strong></td>
+        <td class="cost-low">Automatizzato</td>
+        <td class="cost-high">Manuale / script custom</td>
+      </tr>
+      <tr>
+        <td><strong>Integrazione cloud (Azure, AWS)</strong></td>
+        <td class="cost-low">Nativa, inclusa</td>
+        <td class="cost-high">Plugin aggiuntivi, spesso a pagamento</td>
+      </tr>
+      <tr>
+        <td><strong>Rapporto costo-complessità</strong></td>
+        <td class="cost-low">Ottimo per PMI</td>
+        <td class="cost-high">Giustificato solo per grandi gruppi</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>Opzione 1: Piattaforma Cloud-Native</h2>
+
+  <h3>Cos'è</h3>
+
+  <p>
+    Una piattaforma SIEM costruita per il cloud e in grado di ingerire log da ambienti cloud, on-premises e ibridi. Progettata per scalare automaticamente e per offrir capacità di rilevamento basate su machine learning senza configurazione manuale massiccia.
+  </p>
+
+  <h3>Vantaggi per la Conformità NIS2</h3>
+
+  <ul>
+    <li><strong>Dashboard predefiniti per NIS2:</strong> Le piattaforme cloud-native moderne arrivano con dashboard di reporting specificamente etichettati per i requisiti NIS2 — incidenti per categoria, timeline di rilevamento, compliance status. Non dovete reinventare la ruota in Excel.</li>
+    <li><strong>Onboarding rapido:</strong> Potete iniziare a raccogliere log in 2–4 settimane. Questo è critico: il D.Lgs. 138/2024 è entrato in vigore a ottobre 2024. Se non avete ancora una SIEM, ogni giorno che passa senza visibilità è un giorno in cui siete in violazione.</li>
+    <li><strong>Costo prevedibile:</strong> Modello SaaS con prezzi per GB di log ingerito o per numero di fonti. Niente licenze nascoste, niente "maintenance" da negoziare ogni anno.</li>
+    <li><strong>Machine Learning automatico:</strong> Rileva anomalie senza che voi doviate scrivere regole di correlazione complesse. Un nuovo tipo di attacco viene a volte identificato dal sistema prima che abbiate nemmeno capito che è successo.</li>
+    <li><strong>Integrazione cloud nativa:</strong> Se usate Azure, AWS o Google Cloud (cosa probabile per la maggior parte delle aziende italiane), la connessione è diretta e inclusa. Niente plugin aggiuntivi o sviluppo custom.</li>
+  </ul>
+
+  <h3>Limitazioni</h3>
+
+  <ul>
+    <li><strong>Meno "profondità" tecnica:</strong> Se avete esigenze molto specifiche di correlazione o normalizzazione di log da sistemi legacy proprietari, potrebbe non offrire tutto ciò che una suite enterprise offre. Ma per il 95% delle aziende italiane, è più che sufficiente.</li>
+    <li><strong>Affidamento su cloud dell'autore:</strong> I log vivono nei server del fornitore. Dovete fidarvi della sicurezza fisica e della conformità GDPR del fornitore. (Una buona notizia: i principali fornitori di cloud-native SIEM sono certificati ISO 27001 e SOC 2.)</li>
+  </ul>
+
+  <h2>Opzione 2: Suite Enterprise Tradizionale</h2>
+
+  <h3>Cos'è</h3>
+
+  <p>
+    Piattaforma SIEM storica, spesso on-premises o ibrida, costruita quando i log arrivavano principalmente da server fisici e appliance di rete. Dotata di capacità di normalizzazione estremamente granulare, ma che richiede molta configurazione manuale.
+  </p>
+
+  <h3>Vantaggi</h3>
+
+  <ul>
+    <li><strong>Flessibilità di correlazione:</strong> Se dovete mettere in correlazione eventi da un vecchio sistema legacy con formati di log non standard, una suite enterprise offre spesso i mezzi per farlo.</li>
+    <li><strong>Controllo on-premises (opzionale):</strong> Alcuni clienti con requisiti di data sovereignty estremamente ristretti preferiscono host la SIEM in loco. Una suite enterprise lo supporta; una piattaforma cloud-native potrebbe no.</li>
+    <li><strong>Rapporti di lunga storia:</strong> È la soluzione tradizionale, quindi molti integratori e consulenti la conoscono bene.</li>
+  </ul>
+
+  <h3>Limitazioni per NIS2</h3>
+
+  <ul>
+    <li><strong>Costo d'implementazione:</strong> Un progetto di implementazione tipico per una suite enterprise costa 150.000–300.000 € solo di licenze iniziali. Aggiungete 50.000–100.000 € di servizi professionali di integrazione e implementazione. Non è un costo una tantum — è annuale o quasi.</li>
+    <li><strong>Timeline lunga:</strong> Da 8 a 16 settimane prima di avere una SIEM funzionante. Nel frattempo, l'ACN potrebbe chiamare a verificare la conformità.</li>
+    <li><strong>Dashboard NIS2 inesistenti:</strong> La suite non arriva con un dashboard "pre-fatto" per NIS2. Dovete personalizzarlo. Ciò significa ulteriori servizi professionali, ulteriore tempo, ulteriori costi.</li>
+    <li><strong>Dipendenza da competenze interne (o esterne):</strong> Avete bisogno di un team interno con competenze SIEM profonde, oppure di un integratore esterno che costi centinaia di euro all'ora per manutenzione continua.</li>
+    <li><strong>Rilevamento di incidenti manuale:</strong> Il rilevamento automatico di anomalie è limitato. Spesso dovete scrivere regole di correlazione manuali. Questo significa che molti incidenti vi vengono segnalati manualmente dai vostri team, non dalla SIEM stessa.</li>
+  </ul>
+
+  <div class="box-case">
+    <div class="case-label">Caso Studio</div>
+    <p>
+      <strong>Banca regionale italiana, 200 dipendenti, settore essenziale NIS2.</strong>
+    </p>
+    <p>
+      Nel 2024, ha scelto di implementare una suite enterprise SIEM tradizionale. Costo stimato inizialmente: € 180k. Budget di implementazione: € 70k. Timeline: 12 settimane.
+    </p>
+    <p>
+      Il progetto è slittato a 18 settimane. Il costo di implementazione è salito a € 120k per integrare i sistemi legacy della banca (software bancario proprietario degli anni 2000, terminali ATM con log non standard).
+    </p>
+    <p>
+      Dopo 6 mesi di operatività, la banca ha voluto un dashboard per la notifica mensile degli incidenti all'ACN. Non c'era. È stato necessario sviluppare script custom e pagare un ulteriore € 35k in servizi professionali.
+    </p>
+    <p>
+      <strong>Costo totale effettivo nel primo anno: € 405k.</strong> Non € 180k.
+    </p>
+    <p>
+      Una piattaforma cloud-native avrebbe avuto log centrali e dashboard pre-fatto per NIS2 in settimana 4, per un costo totale stimato di € 60k nel primo anno.
+    </p>
+  </div>
+
+  <h2>Logging e Rilevamento degli Incidenti: Cosa Chiede Davvero NIS2</h2>
+
+  <p>
+    L'articolo 23 del D.Lgs. 138/2024 è il fulcro. Richiede che un incidente di cybersecurity sia:
+  </p>
+
+  <ol>
+    <li><strong>Rilevato</strong> entro un tempo ragionevole (la SIEM lo vede)</li>
+    <li><strong>Trattato</strong> secondo un piano di gestione degli incidenti documentato</li>
+    <li><strong>Notificato all'ACN</strong> entro 24 ore come allerta precoce, e entro 72 ore come notifica completa</li>
+  </ol>
+
+  <p>
+    Una SIEM che non vi aiuta a soddisfare questi tre requisiti non vi soddisfa nemmeno un requisito minimo di NIS2.
+  </p>
+
+  <h3>Cosa cercate in una SIEM per NIS2</h3>
+
+  <ul>
+    <li><strong>Avviso automatico:</strong> Quando viene rilevato un evento sospetto, il sistema vi notifica immediatamente via email, SMS o webhook. Non dovete verificare i log manualmente ogni mattina.</li>
+    <li><strong>Cronologia degli incidenti:</strong> Una volta che un incidente è stato registrato, la SIEM mostra la timeline completa di tutti gli eventi correlati, con timestamp e fonti. Questo è quello che l'ACN vi chiederà di mostrare.</li>
+    <li><strong>Export per la notifica ACN:</strong> La SIEM produce un report strutturato che potete allegare alla vostra notifica entro 72 ore. Idealmente, il report è già etichettato con i campi che l'ACN si aspetta (tipo di incidente, data/ora, sistemi interessati, azioni correttive).</li>
+    <li><strong>Audit trail interno:</strong> Ogni azione intrapresa sulla SIEM stessa (chi ha chiuso un alert, chi ha modificato una regola, chi ha esportato un report) è registrata. L'ACN potrebbe chiedervi di provare che nulla è stato cancellato o manipolato.</li>
+  </ul>
+
+  <p>
+    Una piattaforma cloud-native offre tutti questi elementi out-of-box. Una suite enterprise tradizionale vi chiede di crearli con code e configurazione.
+  </p>
+
+  <h2>Integrazione con gli Strumenti che Avete Già</h2>

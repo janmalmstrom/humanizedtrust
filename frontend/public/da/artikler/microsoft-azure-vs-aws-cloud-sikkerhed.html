@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-BKF3QH9K01"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag("js", new Date());
+    gtag("config", "G-BKF3QH9K01");
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Microsoft Azure vs. AWS: Cloud-sikkerhed til NIS2-overholdelse | NIS2Klar</title>
+  <meta name="description" content="Sammenligna Azure og AWS ud fra NIS2-perspektiv: dataresidency i EU, delt ansvar, compliance-certificeringer, incident response. Vejledning til direktører.">
+  <meta property="og:title" content="Microsoft Azure vs. AWS: Cloud-sikkerhed til NIS2-overholdelse">
+  <meta property="og:description" content="Sammenligna Azure og AWS ud fra NIS2-perspektiv: dataresidency i EU, delt ansvar, compliance-certificeringer, incident response. Vejledning til direktører.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #141416;
+      --card: #1c1c1f;
+      --yellow: #f5c518;
+      --white: #f0f0f0;
+      --muted: #888;
+      --red: #C61212;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: var(--bg); color: var(--white); font-family: 'Barlow', sans-serif; font-size: 19px; line-height: 1.8; }
+
+    /* Nav */
+    nav { display: flex; justify-content: space-between; align-items: center; padding: 20px 40px; border-bottom: 1px solid rgba(255,255,255,0.07); max-width: 900px; margin: 0 auto; flex-wrap: wrap; gap: 16px; }
+    .nav-left { display: flex; gap: 32px; align-items: center; }
+    .nav-logo { font-family: 'Poppins', sans-serif; font-weight: 900; font-size: 20px; color: var(--yellow); text-decoration: none; }
+    .nav-logo span { color: var(--white); }
+    .nav-back { color: var(--muted); text-decoration: none; font-size: 15px; }
+    .nav-back:hover { color: var(--white); }
+    .lang-switcher { display: flex; gap: 8px; align-items: center; font-size: 13px; font-family: 'Poppins', sans-serif; }
+    .lang-switcher a { color: #888; text-decoration: none; font-weight: 600; padding: 4px 8px; border-radius: 3px; transition: all 0.2s; }
+    .lang-switcher a:hover { color: var(--white); }
+    .lang-switcher a[style*="f5c518"] { color: var(--yellow) !important; background: rgba(245,197,24,0.1) !important; }
+    .nav-cta { background: var(--yellow); color: #000; padding: 8px 18px; border-radius: 4px; text-decoration: none; font-weight: 700; font-size: 14px; font-family: 'Poppins', sans-serif; white-space: nowrap; }
+
+    /* Article */
+    .article-wrap { max-width: 760px; margin: 0 auto; padding: 60px 40px; }
+    .article-category { font-size: 13px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 16px; }
+    h1 { font-family: 'Poppins', sans-serif; font-size: clamp(30px, 4vw, 44px); font-weight: 900; line-height: 1.2; margin-bottom: 24px; }
+    .article-meta { font-size: 15px; color: var(--muted); margin-bottom: 48px; padding-bottom: 24px; border-bottom: 1px solid rgba(255,255,255,0.07); }
+    h2 { font-family: 'Poppins', sans-serif; font-size: 26px; font-weight: 700; margin: 48px 0 16px; color: var(--white); }
+    h3 { font-family: 'Poppins', sans-serif; font-size: 20px; font-weight: 600; margin: 32px 0 12px; color: var(--yellow); }
+    p { margin-bottom: 22px; }
+    strong { color: var(--white); font-weight: 700; }
+    .highlight { color: var(--yellow); font-weight: 700; }
+    .danger { color: #ff6b6b; font-weight: 700; }
+    ul, ol { margin: 16px 0 24px 24px; }
+    li { margin-bottom: 12px; font-size: 19px; }
+
+    /* Callout boxes */
+    .box-warning { background: rgba(197,17,17,0.12); border-left: 4px solid var(--red); padding: 20px 24px; margin: 32px 0; border-radius: 0 4px 4px 0; }
+    .box-info { background: rgba(245,197,24,0.08); border-left: 4px solid var(--yellow); padding: 20px 24px; margin: 32px 0; border-radius: 0 4px 4px 0; }
+    .box-case { background: var(--card); border: 1px solid rgba(255,255,255,0.08); padding: 28px; margin: 40px 0; border-radius: 4px; }
+    .box-case .case-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 12px; }
+    blockquote { border-left: 3px solid var(--yellow); padding: 12px 20px; margin: 24px 0; font-style: italic; color: #ccc; }
+
+    /* Comparison table */
+    .comparison-table { width: 100%; border-collapse: collapse; margin: 24px 0; }
+    .comparison-table th { background: rgba(245,197,24,0.1); color: var(--yellow); font-family: 'Poppins', sans-serif; font-size: 13px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 12px 16px; text-align: left; border-bottom: 1px solid rgba(245,197,24,0.2); }
+    .comparison-table td { padding: 14px 16px; border-bottom: 1px solid rgba(255,255,255,0.05); font-size: 15px; }
+    .comparison-table tr:last-child td { border-bottom: none; }
+    .comparison-table .good { color: #4ade80; font-weight: 700; }
+    .comparison-table .caution { color: #fbbf24; font-weight: 700; }
+
+    /* CTA */
+    .cta-section { background: var(--card); border: 1px solid rgba(245,197,24,0.2); border-radius: 4px; padding: 48px 40px; margin: 64px 0 40px; text-align: center; }
+    .cta-section h2 { margin-top: 0; font-size: 26px; }
+    .cta-section p { color: #aaa; max-width: 500px; margin: 0 auto 28px; }
+    .btn-primary { display: inline-block; background: var(--yellow); color: #000; font-family: 'Poppins', sans-serif; font-weight: 800; font-size: 16px; padding: 16px 36px; border-radius: 4px; text-decoration: none; }
+    .btn-primary:hover { background: #e0b010; }
+    .cta-fine { font-size: 13px; color: var(--muted); margin-top: 16px; }
+
+    /* FAQ */
+    .faq-item { border-bottom: 1px solid rgba(255,255,255,0.07); padding: 20px 0; }
+    .faq-q { font-family: 'Poppins', sans-serif; font-weight: 600; margin-bottom: 10px; }
+    .faq-a { color: #bbb; }
+
+    /* Summary + Key Takeaway */
+    .box-summary { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; padding: 24px 28px; margin: 0 0 32px; }
+    .summary-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-bottom: 14px; }
+    .box-summary ul { margin: 0; padding-left: 20px; }
+    .box-summary li { margin-bottom: 8px; font-size: 17px; color: #ccc; }
+    .box-takeaway { background: rgba(245,197,24,0.08); border-left: 4px solid var(--yellow); padding: 20px 24px; margin: 0 0 40px; border-radius: 0 4px 4px 0; }
+    .takeaway-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 10px; }
+    .box-takeaway p { margin: 0; font-size: 18px; font-weight: 600; color: var(--white); line-height: 1.6; }
+
+    /* Related articles */
+    .related-articles { margin: 2.5rem 0 2rem; padding: 1.5rem; background: #1a1a2e; border-left: 4px solid #f0a500; border-radius: 4px; }
+    .related-articles p { margin: 0 0 1rem; font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #f0a500; }
+    .related-articles ul { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+    .related-articles li a { color: #e0e0e0; text-decoration: none; font-size: 0.95rem; }
+    .related-articles li a:hover { color: #f0a500; }
+
+    /* Footer */
+    footer { border-top: 1px solid rgba(255,255,255,0.07); padding: 32px 40px; text-align: center; font-size: 13px; color: var(--muted); max-width: 900px; margin: 0 auto; }
+    footer a { color: var(--muted); }
+    footer a:hover { color: var(--white); }
+
+    @media (max-width: 600px) {
+      nav, .article-wrap, footer { padding: 20px; }
+      nav { flex-direction: column; align-items: flex-start; }
+      .nav-left { flex-direction: column; gap: 8px; width: 100%; }
+      .cta-section { padding: 32px 20px; }
+      .comparison-table { font-size: 14px; }
+      .comparison-table th, .comparison-table td { padding: 10px 10px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-left">
+    <a class="nav-logo" href="https://nis2klar.se/da/">NIS2<span>Klar</span></a>
+    <a class="nav-back" href="https://nis2klar.se/da/artikler.html">← Alle artikler</a>
+    <div class="lang-switcher">
+      <a href="https://nis2klar.se/artiklar.html" style="color:#888;text-decoration:none;font-weight:600;padding:4px 8px;border-radius:3px;" title="Svenska">SV</a>
+      <a href="https://nis2klar.se/en/articles.html" style="color:#888;text-decoration:none;font-weight:600;padding:4px 8px;border-radius:3px;" title="English">EN</a>
+      <a href="https://nis2klar.se/da/artikler.html" style="color:#f5c518;text-decoration:none;font-weight:600;padding:4px 8px;border-radius:3px;background:rgba(245,197,24,0.1);" title="Dansk">DA</a>
+      <a href="https://nis2klar.se/no/artikler.html" style="color:#888;text-decoration:none;font-weight:600;padding:4px 8px;border-radius:3px;" title="Norsk">NO</a>
+      <a href="https://nis2klar.se/it/articoli.html" style="color:#888;text-decoration:none;font-weight:600;padding:4px 8px;border-radius:3px;" title="Italiano">IT</a>
+    </div>
+  </div>
+  <a class="nav-cta" href="https://nis2klar.se/da/#boka">Book møde →</a>
+</nav>
+
+<article class="article-wrap">
+  <div class="article-category">Cloud &amp; Compliance</div>
+  <h1>Microsoft Azure vs. AWS: Cloud-sikkerhed til NIS2-overholdelse</h1>
+  <div class="article-meta">Opdateret 19. april 2026 · Læsetid: ca 9 minutter · Målgruppe: Direktører &amp; Bestyrelser</div>
+
+  <!-- SUMMARY -->
+  <div class="box-summary">
+    <div class="summary-label">Sammenfatning</div>
+    <ul>
+      <li>Du skal vælge en cloud-platform, der overholder NIS2. Beide Azure og AWS kan, men på forskellige betingelser.</li>
+      <li>EU-dataresidency er ikke valgfrit — NIS2 forudsætter at dine data befinder sig i EU/EØS eller har tilstrækkeligt kontrolniveau.</li>
+      <li>Den "delte ansvarmodel" betyder, at leverandøren ikke overtager dit compliance-ansvar. Du er stadig ansvarlig for 10 af de 11 obligatoriske NIS2-områder.</li>
+      <li>Driftshændelser skal rapporteres til CFCS inden 72 timer. Dine cloud-platforme skal kunne understøtte denne timeline.</li>
+      <li>Begge platforme tilbyder compliance-certificeringer (ISO 27001, TISAX), men Azure har mere eksplicit NIS2-dokumentation.</li>
+    </ul>
+  </div>
+
+  <!-- KEY TAKEAWAY -->
+  <div class="box-takeaway">
+    <div class="takeaway-label">Vigtigste slutsats</div>
+    <p>Cloud-platformen er værktøjet, ikke løsningen. NIS2-compliance handler om, hvad du gør med platformen — dokumenteret risikoanalyse, incidenthandling, personaleuddannelse og ledelsesstyring. Vælg den platform, hvor du kan dokumentere disse processer tydeligst.</p>
+  </div>
+
+  <!-- HOOK -->
+  <p>
+    Du er ved at evaluere cloud-leverandører — eller ved du allerede er afhængig af Azure eller AWS — og du spørger dig selv: <strong>Er denne platform egentlig sikker nok til NIS2?</strong>
+  </p>
+
+  <p>
+    Det er det rigtige spørgsmål at stille. Men svaret er ikke bare "ja" eller "nej". Det afhænger af tre ting: hvor dine data ligger, hvordan I deler ansvaret, og om jeres organisation kan dokumentere, at I håndterer sikkerhed på den måde, som CFCS og sektortilsynet forventer.
+  </p>
+
+  <p>
+    I denne artikel sammenligner vi Azure og AWS ud fra et NIS2-perspektiv — ikke ud fra hastighed, pris eller features. Vi ser på det, som betyder noget for din board og for dine revisorer: dataresidency, compliance-certificeringer, incident response og dokumentation af ansvar.
+  </p>
+
+  <h2>Hvad NIS2 kræver af cloud-platforme</h2>
+
+  <p>
+    NIS2-loven (Lov nr. 1120 af 2023 om net- og informationssikkerhed) pålagde danske virksomheder i kritiske sektorer at implementere 11 obligatoriske sikkerhedsmål. Fire af disse handler direkte om cloud og dataplacering:
+  </p>
+
+  <ol>
+    <li><strong>Risikovurdering og aktiver-opmåling</strong> — Du skal vide, hvor dine data ligger, og hvem der har adgang.</li>
+    <li><strong>Kryptering og adgangskontrol</strong> — Data i transit og i hvile skal være krypteret med stærke standarder.</li>
+    <li><strong>Leverandørsikkerhed</strong> — Cloud-leverandøren skal gøre rede for sin sikkerhed, og du skal have kontrakt om SLA'er og incident response.</li>
+    <li><strong>Risikoledelse for tredjeparter</strong> — Du er ansvarlig for at verificere, at din cloud-leverandør lever op til kravene.</li>
+  </ol>
+
+  <p>
+    Det betyder ikke, at Azure eller AWS skal være "perfekt". Men de skal være <strong>dokumenteligt sikre</strong>, og der skal være en klar ansvarsdeling i kontrakten mellem jer og leverandøren.
+  </p>
+
+  <h2>DataResidency: Hvor skal dine data være?</h2>
+
+  <p>
+    Det vigtigste spørgsmål for NIS2 er enkelt: <strong>Hvor befinder dine data sig fysisk?</strong>
+  </p>
+
+  <p>
+    NIS2-direktivet forudsætter, at persondata og kritisk infrastruktur forbliver inden for EU/EØS. Hvis data helt eller delvis behandles uden for EU (eksempelvis i USA), skal der være en eksplicit juridisk aftale, som sikrer, at kontrolniveauet er tilstrækkeligt — hvilket betyder USA CLOUD Act eller anden dataoverførselsmekanisme.
+  </p>
+
+  <h3>Azure: EU-data og sikkerhed</h3>
+
+  <p>
+    Microsoft Azure tilbyder <strong>EU-regionalt datastorage</strong> — primært i Vesteuropa (Amsterdam, Dublin) og Nordeuropa (Frankrig). Hvis du konfigurerer din Azure-løsning til kun at bruge disse regioner, forbliver dine data fysisk inden for EU.
+  </p>
+
+  <p>
+    Tilføj Microsoft-teksten: <em>"Microsoft Cloud til Tyskland"</em> og <em>"Microsoft Cloud til Frankrig"</em> giver yderligere isolering for særligt følsomme data.
+  </p>
+
+  <p>
+    For danske organisationer betyder det, at du <strong>kan</strong> oprette en Azure-løsning, hvor data aldrig krydser USA. Det er en vigtig fordel, fordi det adskiller dig fra juridiske og tekniske afhængigheder af amerikanske datasikkerhedslov.
+  </p>
+
+  <h3>AWS: Mere komplekst, men muligt</h3>
+
+  <p>
+    AWS har også EU-regioner — eu-west-1 (Irland), eu-central-1 (Frankfurt), eu-north-1 (Stockholm). Men AWS's globale servicearchitektur betyder, at nogle tjenester og metadater kan blive behandlet eksternt for EU.
+  </p>
+
+  <p>
+    Hvis du bruger AWS CloudFront (CDN), Lambda-funktioner eller visse analyseservices, kan der ske datakrydsninger uden for EU, selvom din primære datalagring er i en EU-region.
+  </p>
+
+  <p>
+    Det betyder ikke, at AWS er "usikker". Det betyder, at du skal være mere eksplicit i din risikoanalyse og i dine AWS-kontrakter omkring dataplacering og dataoverførsler.
+  </p>
+
+  <div class="box-warning">
+    <strong>Tråde advarsel:</strong> Når du evaluerer cloud-platforme til NIS2-organisationer, skal juridisk afdeling godkende dataplaceringspolicyen <strong>før</strong> du implementerer. Fejl i denne fase kan koste dyrt under tilsyn.
+  </div>
+
+  <h2>Den delte ansvarmodel: Hvem gør hvad?</h2>
+
+  <p>
+    Cloud-leverandørerne promoverer ofte deres "delte ansvarmodel". Det betyder groft: leverandøren sikrer platformen, du sikrer dine data og applikationer.
+  </p>
+
+  <p>
+    I praksis betyder det, at <strong>du er stadig ansvarlig for langt det meste</strong>.
+  </p>
+
+  <table class="comparison-table">
+    <thead>
+      <tr>
+        <th>Sikkerhedsdomæne</th>
+        <th>Azure</th>
+        <th>AWS</th>
+        <th>Din ansvar</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Netværkssikkerhed (firewall, VPN)</td>
+        <td class="good">Azure tilbyder</td>
+        <td class="good">AWS tilbyder</td>
+        <td>Konfiguration og styring</td>
+      </tr>
+      <tr>
+        <td>Identitetsstyring (AD, MFA)</td>
+        <td class="good">Azure tilbyder</td>
+        <td class="good">AWS tilbyder</td>
+        <td>Implementering &amp; policies</td>
+      </tr>
+      <tr>
+        <td>Kryptering af data</td>
+        <td class="good">Azure tilbyder</td>
+        <td class="good">AWS tilbyder</td>
+        <td>Key management</td>
+      </tr>
+      <tr>
+        <td>Backup &amp; gendannelse</td>
+        <td class="caution">Delvis</td>
+        <td class="caution">Delvis</td>
+        <td><strong>Primært din</strong></td>
+      </tr>
+      <tr>
+        <td>Patch management for OS/apps</td>
+        <td>Azure: IaaS selv</td>
+        <td>AWS: IaaS selv</td>
+        <td><strong>Primært din</strong></td>
+      </tr>
+      <tr>
+        <td>Incidentdetection (logging)</td>
+        <td class="good">Azure tilbyder</td>
+        <td class="good">AWS tilbyder</td>
+        <td>Monitorering &amp; respons</td>
+      </tr>
+      <tr>
+        <td>Personaleuddannelse i sikkerhed</td>
+        <td>Nej</td>
+        <td>Nej</td>
+        <td><strong>100% din</strong></td>
+      </tr>
+      <tr>
+        <td>Aftalespecifikationer (SLA)</td>
+        <td>Azure standard</td>
+        <td>AWS standard</td>
+        <td><strong>100% din</strong></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>
+    Budskabet er klart: <strong>Cloud-platformen er en komponent, ikke en løsning.</strong> NIS2 forudsætter, at du har implementeret hele sikkerhedskulturen — og det sker ikke automatisk med Azure eller AWS.
+  </p>
+
+  <div class="box-info">
+    <strong>Konkret eksempel:</strong> AWS kan logge alle forsøg på at få adgang til din database. Men AWS rapporterer det ikke automatisk til CFCS. Det gør du — inden 72 timer, hvis der er en incident. Du skal have processer på plads for at detektere, klassificere og rapportere. Cloud-platformen er værktøjet; incidenthåndteringen er dit ansvar.
+  </div>
+
+  <h2>Compliance-certificeringer: ISO 27001, TISAX og mere</h2>
+
+  <p>
+    Begge Azure og AWS er ISO 27001-certificerede. Det er en grundvæsentlig standard for IT-sikkerhed. Men NIS2 kræver mere end ISO 27001 — den kræver specifikt European-context sikkerhedskontroller.
+  </p>
+
+  <h3>Azure: ISO 27001 + NIS2-eksplicit dokumentation</h3>
+
+  <p>
+    Microsoft udgiver årligt en "NIS2 Compliance Manager" -rapport, som direkte mapper Azure-kontrollen til NIS2-kravene. Det betyder, at du kan få en tabel over "Azure-funktion X + konfiguration Y = opfyldelse af NIS2-område Z".
+  </p>
+
+  <p>
+    Det gør Azure fra en compliance-perspektiv lettere at "bevise" over for CFCS eller sektortilsynet.
+  </p>
+
+  <h3>AWS: ISO 27001, men mindre eksplicit NIS2-mapping</h3>
+
+  <p>
+    AWS har ISO 27001 og TISAX-certificeringer. TISAX (Trusted Information Security Assessment Exchange) er en tysk sikkerhedsstandard, som er anerkendt i hele EU. Men AWS dokumenterer ikke sin NIS2-overensstemmelse på samme måde som Microsoft.
+  </p>
+
+  <p>
+    Det betyder, at hvis du bruger AWS, skal du selv dokumentere, hvordan AWS-funktioner opfylder NIS2-områderne. Det er væsentligt langsommere (og dyrere) at få audit'et.
+  </p>
+
+  <h3>Så hvilken er bedre?</h3>
+
+  <p>
+    Af compliance-årsager har Azure en fordel. Men hvis du allerede er dybt i AWS-økosystemet, kan du stadig overhelde NIS2 — det kræver bare mere arbejde med dokumentationen.
+  </p>
+
+  <h2>Incident response: Hvem håndterer cyberangreb?</h2>
+
+  <p>
+    NIS2 kræver, at du kan rapportere en alvorlig cybersikkerhed-incident til CFCS inden 24 timer (tidig advarsel) og inden 72 timer (fuldstændig rapport).
+  </p>
+
+  <p>
+    Hvis dit systemer ligger på Azure eller AWS, og der sker et angrebet, hvad sker der så?
+  </p>
+
+  <h3>Tidslinjen</h3>
+
+  <ol>
+    <li><strong>Time 0:</strong> Angrebet opdages (af dit monitoring eller af cloud-leverandørens system).</li>
+    <li><strong>Timer 0–4:</strong> Cloud-leverandøren notificerer dig. Azure notificerer typisk inden 1 time; AWS kan også gøre det, men det afhænger af servicen.</li>
+    <li><strong>Timer 0–24:</strong> Du skal sende en "tidig advarsel" til CFCS — en kort besked om, at der er sket noget.</li>
+    <li><strong>Timer 0–72:</strong> Du skal sende en fuldstændig rapport med detaljer om, hvad der skete, hvor, hvorfor og hvad du gør ved det.</li>
+  </ol>
+
+  <p>
+    Problemet er, at Azure og AWS ikke automatisk henter dine data ud og rapporterer til CFCS. <strong>Det gør du.</strong> Du skal have processerne, kontakterne og de juridiske aftaler på plads <em>før</em> et angrebet sker.
+  </p>
+
+  <h3>Azure Sentinel og AWS SecurityHub</h3>
+
+  <p>
+    Begge platforme tilbyder SIEM-lignende værktøjer (Security Information and Event Management). Azure Sentinel logfører alt, der sker i din Azure-miljø. AWS SecurityHub gør det samme for AWS.
+  </p>
+
+  <p>
+    Men disse værktøjer hjælper dig til at <strong>detektere</strong> hændelser — ikke til at <strong>rapportere</strong> dem. Du skal selv fortolke logfilerne, klassificere hændelsen (er det alvorlig eller bagatelmæssig?), og sende den til CFCS.
+  </p>
+
+  <p>
+    En god incident response-proces kunne se sådan ud:
+  </p>
+
+  <ol>
+    <li>Azure/AWS SIEM-værktøj detekterer anomalier og alerter dit incidentresponse-team.</li>
+    <li>Dit team klassificerer hændelsen (alvorlig = skal rapporteres til CFCS).</li>
+    <li>Du kontakter dine juridiske og it-partners, som hjælper med rapporteringen.</li>
+    <li>CFCS modtager en rapport inden 24 timer.</li>
+  </ol>
+
+  <p>
+    Igen: cloud-platformen er værktøjet. Incident response-kultur og processer er dit ansvar.
+  </p>
+
+  <h2>Leverandøransvar og kontrakter</h2>
+
+  <p>
+    NIS2 kræver, at du dokumenterer, at din cloud-leverandør lever op til kravene. Det sker gennem kontrakt.
+  </p>
+
+  <p>
+    Både Azure og AWS tilb

@@ -1,0 +1,1195 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-BKF3QH9K01"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-BKF3QH9K01');</script>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>NIS2 Analisi Gap — Autovalutazione Gratuita | NIS2Klar</title>
+  <meta name="description" content="Completate la vostra analisi gap NIS2 gratuita in 8 minuti. 25 domande in 5 domini. Rapporto personalizzato con le principali lacune e raccomandazioni concrete."/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800;900&family=Barlow:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{
+      --black:#141416;--dark:#1c1c1f;--card:#222226;--border:#2e2e33;
+      --yellow:#f5e642;--white:#fff;--gray:#888;--light:#ccc;
+      --green:#22c55e;--amber:#f59e0b;--red:#ef4444;--orange:#f97316;
+    }
+    html{scroll-behavior:smooth}
+    body{font-family:'Barlow',sans-serif;background:var(--black);color:var(--white);line-height:1.6;font-size:16px;min-height:100vh}
+    h1,h2,h3,h4,h5{font-family:'Poppins',sans-serif}
+    nav{position:sticky;top:0;z-index:100;background:rgba(20,20,22,0.96);backdrop-filter:blur(10px);border-bottom:1px solid var(--border);padding:14px 40px;display:flex;align-items:center;justify-content:space-between}
+    .nav-logo{font-family:'Poppins',sans-serif;font-size:20px;font-weight:800;color:var(--yellow);text-decoration:none}
+    .nav-logo span{color:var(--white)}
+    .nav-back{font-size:14px;color:var(--gray);text-decoration:none;transition:color .2s}
+    .nav-back:hover{color:var(--white)}
+    .nav-cta{background:var(--yellow);color:var(--black);font-weight:700;font-size:13px;padding:9px 20px;border-radius:4px;text-decoration:none;white-space:nowrap}
+    @media(max-width:600px){nav{padding:14px 20px}.nav-cta{display:none}}
+    .screen{display:none;animation:fadeIn .3s ease}
+    .screen.active{display:block}
+    @keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+    .intro-hero{background:var(--dark);border-bottom:1px solid var(--border);padding:72px 20px 64px;text-align:center}
+    .intro-badge{display:inline-block;background:rgba(245,230,66,.12);color:var(--yellow);font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:6px 16px;border-radius:20px;border:1px solid rgba(245,230,66,.2);margin-bottom:24px}
+    .intro-hero h1{font-size:clamp(28px,5vw,52px);font-weight:900;line-height:1.15;margin-bottom:16px;max-width:720px;margin-inline:auto}
+    .intro-hero h1 em{font-style:normal;color:var(--yellow)}
+    .intro-hero p{font-size:18px;color:#aaa;max-width:560px;margin:0 auto 40px}
+    .intro-meta{display:flex;justify-content:center;gap:32px;flex-wrap:wrap;margin-bottom:40px}
+    .intro-meta-item{display:flex;align-items:center;gap:8px;font-size:14px;color:#aaa}
+    .intro-meta-item strong{color:var(--white)}
+    .btn-primary{display:inline-flex;align-items:center;gap:8px;background:var(--yellow);color:var(--black);font-family:'Poppins',sans-serif;font-weight:700;font-size:16px;padding:16px 40px;border-radius:6px;border:none;cursor:pointer;text-decoration:none;transition:transform .15s,box-shadow .15s}
+    .btn-primary:hover{transform:translateY(-1px);box-shadow:0 8px 24px rgba(245,230,66,.25)}
+    .intro-trust{margin-top:16px;font-size:13px;color:#555}
+    .features{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px;max-width:800px;margin:60px auto 0;padding:0 20px}
+    .feature-card{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:24px;text-align:left}
+    .feature-card .icon{font-size:28px;margin-bottom:12px}
+    .feature-card h3{font-size:15px;font-weight:700;margin-bottom:6px;color:var(--white)}
+    .feature-card p{font-size:13px;color:var(--gray);line-height:1.5}
+    .quiz-header{background:var(--dark);border-bottom:1px solid var(--border);padding:16px 20px}
+    .quiz-header-inner{max-width:760px;margin:0 auto}
+    .quiz-meta{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;font-size:13px;color:var(--gray)}
+    .quiz-score-live{font-weight:700;color:var(--yellow)}
+    .progress-track{height:4px;background:#2e2e33;border-radius:2px;overflow:hidden}
+    .progress-fill{height:100%;background:var(--yellow);border-radius:2px;transition:width .4s ease}
+    .domain-dots{display:flex;gap:6px}
+    .domain-dot{width:8px;height:8px;border-radius:50%;background:#2e2e33;transition:background .3s}
+    .domain-dot.done{background:var(--yellow)}
+    .domain-dot.active{background:var(--yellow);box-shadow:0 0 0 2px rgba(245,230,66,.3)}
+    .quiz-body{max-width:760px;margin:0 auto;padding:32px 20px 60px}
+    .domain-header{display:flex;align-items:center;gap:16px;margin-bottom:32px}
+    .domain-icon{font-size:36px;line-height:1}
+    .domain-header h2{font-size:22px;font-weight:800;margin-bottom:2px}
+    .domain-header p{font-size:14px;color:var(--gray)}
+    .question-card{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:24px;margin-bottom:16px;transition:border-color .2s}
+    .question-card.answered{border-color:rgba(245,230,66,.25)}
+    .question-num{font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--gray);margin-bottom:8px}
+    .question-text{font-size:16px;font-weight:600;color:var(--white);margin-bottom:16px;line-height:1.4}
+    .answer-row{display:flex;gap:10px;flex-wrap:wrap}
+    .answer-btn{flex:1;min-width:80px;padding:10px 8px;border-radius:6px;border:1px solid var(--border);background:transparent;color:#aaa;font-family:'Barlow',sans-serif;font-size:14px;font-weight:600;cursor:pointer;transition:all .15s;text-align:center}
+    .answer-btn:hover{border-color:#aaa;color:var(--white)}
+    .answer-btn.selected-ja{background:rgba(34,197,94,.12);border-color:var(--green);color:var(--green)}
+    .answer-btn.selected-delvis{background:rgba(245,158,11,.12);border-color:var(--amber);color:var(--amber)}
+    .answer-btn.selected-nej{background:rgba(239,68,68,.1);border-color:var(--red);color:var(--red)}
+    .quiz-nav{display:flex;justify-content:space-between;align-items:center;margin-top:32px;padding-top:24px;border-top:1px solid var(--border)}
+    .btn-ghost{background:transparent;border:1px solid var(--border);color:var(--gray);font-family:'Barlow',sans-serif;font-size:14px;font-weight:600;padding:10px 24px;border-radius:6px;cursor:pointer;transition:all .2s}
+    .btn-ghost:hover{border-color:#aaa;color:var(--white)}
+    .btn-next{background:var(--yellow);color:var(--black);font-family:'Poppins',sans-serif;font-weight:700;font-size:14px;padding:12px 28px;border-radius:6px;border:none;cursor:pointer;transition:all .15s;opacity:.4;pointer-events:none}
+    .btn-next.ready{opacity:1;pointer-events:auto}
+    .btn-next.ready:hover{transform:translateY(-1px);box-shadow:0 6px 20px rgba(245,230,66,.2)}
+    .gate-wrap{max-width:680px;margin:0 auto;padding:48px 20px}
+    .gate-preview{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:32px;margin-bottom:32px}
+    .gate-preview h2{font-size:22px;font-weight:800;margin-bottom:4px}
+    .gate-preview .sub{font-size:14px;color:var(--gray);margin-bottom:28px}
+    .score-row{display:flex;align-items:center;gap:28px;margin-bottom:28px}
+    .score-circle{position:relative;width:120px;height:120px;flex-shrink:0}
+    .score-circle svg{transform:rotate(-90deg)}
+    .score-circle .pct{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;flex-direction:column}
+    .score-circle .pct-num{font-family:'Poppins',sans-serif;font-size:28px;font-weight:900}
+    .score-circle .pct-label{font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-top:-2px}
+    .risk-badge{display:inline-block;font-family:'Poppins',sans-serif;font-size:12px;font-weight:700;letter-spacing:1px;padding:5px 14px;border-radius:4px;text-transform:uppercase;margin-bottom:8px}
+    .risk-badge.kritisk{background:rgba(239,68,68,.15);color:#f87171;border:1px solid rgba(239,68,68,.3)}
+    .risk-badge.hog{background:rgba(249,115,22,.15);color:#fb923c;border:1px solid rgba(249,115,22,.3)}
+    .risk-badge.medel{background:rgba(245,158,11,.15);color:#fbbf24;border:1px solid rgba(245,158,11,.3)}
+    .risk-badge.god{background:rgba(34,197,94,.15);color:#4ade80;border:1px solid rgba(34,197,94,.3)}
+    .score-desc{flex:1}
+    .score-desc h3{font-size:18px;font-weight:700;margin-bottom:6px}
+    .score-desc p{font-size:14px;color:#aaa;line-height:1.5}
+    .domain-bars{display:grid;gap:10px}
+    .domain-bar-row{display:grid;grid-template-columns:130px 1fr 36px;align-items:center;gap:10px;font-size:13px}
+    .domain-bar-row .lbl{color:#aaa;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+    .bar-track{height:6px;background:#2e2e33;border-radius:3px;overflow:hidden}
+    .bar-fill{height:100%;border-radius:3px;transition:width .6s ease}
+    .domain-bar-row .val{color:var(--gray);font-size:12px;text-align:right}
+    .gate-form{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:32px}
+    .gate-form h3{font-size:18px;font-weight:700;margin-bottom:6px}
+    .gate-form p{font-size:14px;color:#aaa;margin-bottom:24px}
+    .form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px}
+    @media(max-width:520px){.form-row{grid-template-columns:1fr}}
+    .form-group{display:flex;flex-direction:column;gap:5px}
+    .form-group label{font-size:12px;font-weight:700;letter-spacing:.5px;color:var(--gray);text-transform:uppercase}
+    .form-group input{background:#1a1a1d;border:1px solid var(--border);border-radius:6px;padding:11px 14px;font-family:'Barlow',sans-serif;font-size:15px;color:var(--white);outline:none;transition:border-color .2s}
+    .form-group input:focus{border-color:rgba(245,230,66,.5)}
+    .form-group input::placeholder{color:#444}
+    .form-submit{width:100%;background:var(--yellow);color:var(--black);font-family:'Poppins',sans-serif;font-weight:700;font-size:16px;padding:15px;border-radius:6px;border:none;cursor:pointer;margin-top:8px;transition:all .15s}
+    .form-submit:hover{transform:translateY(-1px);box-shadow:0 8px 24px rgba(245,230,66,.25)}
+    .form-submit:disabled{opacity:.6;pointer-events:none}
+    .form-note{font-size:12px;color:#555;text-align:center;margin-top:12px}
+    .ms-divider{display:flex;align-items:center;gap:12px;margin-bottom:20px}
+    .ms-divider span{font-size:12px;color:#555;white-space:nowrap}
+    .ms-divider:before,.ms-divider:after{content:'';flex:1;height:1px;background:#2e2e33}
+    .btn-ms{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;padding:13px 20px;border-radius:6px;border:1px solid #3d3d45;background:#1a1a1d;color:#ccc;font-family:'Barlow',sans-serif;font-size:14px;font-weight:600;cursor:pointer;transition:all .15s;margin-bottom:20px}
+    .btn-ms:hover{border-color:#0078d4;color:#fff;background:#1e2530}
+    .btn-ms-primary{border-color:#0078d4;color:#fff;font-size:15px;padding:15px 20px;background:#0a1520}
+    .btn-ms-primary:hover{background:#0e1e30;box-shadow:0 6px 20px rgba(0,120,212,.2)}
+    .btn-ms-intro{max-width:400px;width:100%;margin:0 auto}
+    .btn-primary-secondary{background:transparent;border:1px solid #3d3d45;color:#aaa;font-size:14px;padding:11px 28px}
+    .btn-primary-secondary:hover{border-color:#666;color:#fff;background:transparent;box-shadow:none}
+    .btn-ms svg{flex-shrink:0}
+    .ms-status{font-size:13px;color:#4ade80;margin-bottom:16px;display:none;padding:10px 14px;background:rgba(34,197,94,.08);border:1px solid rgba(34,197,94,.2);border-radius:6px}
+    .ms-status.error{color:#f87171;background:rgba(239,68,68,.08);border-color:rgba(239,68,68,.2)}
+    .autofill-badge{display:inline-flex;align-items:center;gap:4px;font-size:11px;color:#4ade80;background:rgba(34,197,94,.1);border:1px solid rgba(34,197,94,.2);border-radius:3px;padding:2px 7px;margin-left:8px;vertical-align:middle}
+    .report-wrap{max-width:760px;margin:0 auto;padding:40px 20px 80px}
+    .report-header{text-align:center;margin-bottom:48px}
+    .report-header h2{font-size:clamp(24px,4vw,36px);font-weight:900;margin-bottom:8px}
+    .report-header p{font-size:16px;color:#aaa}
+    .report-score-block{display:flex;align-items:center;gap:32px;background:var(--card);border:1px solid var(--border);border-radius:12px;padding:28px;margin-bottom:28px;flex-wrap:wrap}
+    .report-score-block .score-info{flex:1;min-width:180px}
+    .report-score-block .score-info h3{font-size:22px;font-weight:800;margin-bottom:6px}
+    .report-score-block .score-info p{font-size:14px;color:#aaa;line-height:1.5}
+    .report-domains{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:28px;margin-bottom:28px}
+    .report-domains h3{font-size:16px;font-weight:700;margin-bottom:20px;color:var(--white)}
+    .report-domain-row{margin-bottom:18px}
+    .report-domain-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;font-size:14px}
+    .report-domain-header .dlbl{font-weight:600}
+    .report-domain-header .dscore{font-weight:700}
+    .gaps-section{margin-bottom:28px}
+    .gaps-section h3{font-size:18px;font-weight:800;margin-bottom:6px}
+    .gaps-section .sub{font-size:14px;color:#aaa;margin-bottom:20px}
+    .gap-card{background:var(--card);border:1px solid var(--border);border-left:3px solid var(--red);border-radius:8px;padding:20px;margin-bottom:12px}
+    .gap-card.partial{border-left-color:var(--amber)}
+    .gap-card-header{display:flex;align-items:flex-start;gap:12px;margin-bottom:8px}
+    .gap-tag{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:3px 10px;border-radius:3px;white-space:nowrap;flex-shrink:0;margin-top:1px}
+    .gap-tag.kritisk{background:rgba(239,68,68,.15);color:#f87171}
+    .gap-tag.forbattra{background:rgba(245,158,11,.12);color:#fbbf24}
+    .gap-title{font-size:15px;font-weight:700;color:var(--white);line-height:1.3}
+    .gap-why{font-size:13px;color:#888;margin-bottom:8px;line-height:1.5}
+    .gap-action{font-size:13px;color:var(--light);line-height:1.5;background:rgba(255,255,255,.03);border-radius:6px;padding:10px 12px;border-left:2px solid rgba(245,230,66,.3)}
+    .gap-action strong{color:var(--yellow)}
+    .report-cta{background:var(--dark);border:1px solid rgba(245,230,66,.2);border-radius:12px;padding:36px;text-align:center;margin-top:12px}
+    .report-cta h3{font-size:22px;font-weight:800;margin-bottom:8px}
+    .report-cta p{font-size:15px;color:#aaa;margin-bottom:24px;max-width:480px;margin-inline:auto}
+    .report-cta .fine{font-size:12px;color:#555;margin-top:14px}
+    .license-pill{display:inline-flex;align-items:center;gap:6px;background:#1a1a1d;border:1px solid #3d3d45;border-radius:20px;padding:6px 14px;font-size:13px;color:#ccc;margin:4px}
+    .license-pill.missing{border-color:rgba(239,68,68,.3);color:#fca5a5;background:rgba(239,68,68,.06)}
+    .license-pill.owned{border-color:rgba(34,197,94,.3);color:#86efac;background:rgba(34,197,94,.06)}
+    .print-btn{display:inline-block;margin-top:16px;padding:10px 24px;border:1px solid var(--border);border-radius:6px;font-size:13px;color:#888;text-decoration:none;cursor:pointer;background:transparent;font-family:'Barlow',sans-serif;transition:all .2s}
+    .print-btn:hover{border-color:#aaa;color:var(--white)}
+    .all-good{background:rgba(34,197,94,.08);border:1px solid rgba(34,197,94,.2);border-radius:8px;padding:20px;text-align:center;color:#4ade80;font-weight:600;margin-bottom:12px}
+    @media print{nav,.quiz-header,.quiz-nav,.report-cta{display:none!important}.report-wrap{padding:0}}
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="/it/nis2.html">NIS2<span>Klar</span></a>
+  <a class="nav-back" href="/it/articoli.html">← Torna alle guide</a>
+  <a class="nav-cta" href="/it/nis2.html#prenota">Prenota una revisione</a>
+</nav>
+
+<!-- ═══ INTRO ═══════════════════════════════════════════════════════ -->
+<div id="screen-intro" class="screen active">
+  <div class="intro-hero">
+    <div class="intro-badge">Strumento NIS2 Gratuito</div>
+    <h1>Quanto bene la vostra organizzazione soddisfa i <em>requisiti NIS2</em>?</h1>
+    <p>Completate la nostra analisi delle lacune in 8 minuti e ricevete un rapporto personalizzato con le principali lacune e azioni concrete.</p>
+    <div class="intro-meta">
+      <div class="intro-meta-item">📋 <span><strong>25 domande</strong> in 5 domini</span></div>
+      <div class="intro-meta-item">⏱ <span>Circa <strong>8 minuti</strong></span></div>
+      <div class="intro-meta-item">📊 <span><strong>Rapporto personalizzato</strong> immediato</span></div>
+    </div>
+    <p style="font-size:14px;color:#888;margin-bottom:14px;">
+      Avete Microsoft 365? Recuperiamo i dati della vostra licenza e rispondiamo automaticamente alle domande tecniche sulle licenze, MFA e configurazione di sicurezza.<br>
+      <span style="color:#555;font-size:13px;">Le domande restanti riguardano processi e documenti — registri dei rischi, accordi con i fornitori, piani per gli incidenti. Richiedono circa 5 minuti.</span>
+    </p>
+    <button class="btn-ms btn-ms-primary btn-ms-intro" onclick="loginMicrosoftFast()" id="ms-btn-intro">
+      <svg width="20" height="20" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="1" y="1" width="9" height="9" fill="#f25022"/>
+        <rect x="11" y="1" width="9" height="9" fill="#7fba00"/>
+        <rect x="1" y="11" width="9" height="9" fill="#00a4ef"/>
+        <rect x="11" y="11" width="9" height="9" fill="#ffb900"/>
+      </svg>
+      Analizza con Microsoft 365 – subito
+    </button>
+    <div id="ms-intro-status" class="ms-status" style="max-width:480px;margin:8px auto 0;text-align:left;"></div>
+    <p style="margin:12px 0 4px;font-size:13px;color:#555;">— oppure —</p>
+    <button class="btn-primary btn-primary-secondary" onclick="startQuiz()">Rispondi a 25 domande manualmente →</button>
+    <p class="intro-trust">Nessuna competenza tecnica richiesta · 100% gratuito · Nessuna installazione</p>
+  </div>
+  <div class="features">
+    <div class="feature-card">
+      <div class="icon">🏛️</div>
+      <h3>5 domini NIS2</h3>
+      <p>Governance, Gestione del rischio, Risposta agli incidenti, Catena di fornitura e Controlli tecnici — tutti i requisiti critici coperti.</p>
+    </div>
+    <div class="feature-card">
+      <div class="icon">📈</div>
+      <h3>Punteggio in tempo reale</h3>
+      <p>Vedete la copertura NIS2 crescere mentre rispondete. Punteggio trasparente senza pesi nascosti.</p>
+    </div>
+    <div class="feature-card">
+      <div class="icon">🎯</div>
+      <h3>Azioni concrete</h3>
+      <p>Il rapporto mostra esattamente cosa fare — prioritizzato per rischio con passi pratici successivi.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ QUIZ ═════════════════════════════════════════════════════════ -->
+<div id="screen-quiz" class="screen">
+  <div class="quiz-header">
+    <div class="quiz-header-inner">
+      <div class="quiz-meta">
+        <div class="domain-dots" id="domain-dots"></div>
+        <span class="quiz-score-live" id="quiz-score-live">0 / 50 pt</span>
+      </div>
+      <div class="progress-track"><div class="progress-fill" id="progress-fill" style="width:0%"></div></div>
+      <div class="quiz-meta" style="margin-top:8px;margin-bottom:0">
+        <span id="quiz-domain-label" style="color:var(--white);font-weight:600;font-size:13px"></span>
+        <span id="quiz-q-counter" style="font-size:12px"></span>
+      </div>
+    </div>
+  </div>
+  <div id="ms-quiz-banner" style="display:none;background:rgba(0,120,212,.08);border-bottom:1px solid rgba(0,120,212,.2);padding:10px 20px;text-align:center;font-size:13px;color:#7db8e8;">
+    ✓ Microsoft 365 connesso — le domande tecniche sono precompilate. Le restanti riguardano i processi e documenti.
+  </div>
+  <div class="quiz-body">
+    <div class="domain-header">
+      <div class="domain-icon" id="domain-icon"></div>
+      <div>
+        <h2 id="domain-name"></h2>
+        <p id="domain-desc"></p>
+      </div>
+    </div>
+    <div id="questions-container"></div>
+    <div class="quiz-nav">
+      <button class="btn-ghost" id="btn-back" onclick="prevDomain()">← Precedente</button>
+      <button class="btn-next" id="btn-next" onclick="nextDomain()">Dominio successivo →</button>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ GATE ══════════════════════════════════════════════════════════ -->
+<div id="screen-gate" class="screen">
+  <div class="gate-wrap">
+    <div class="gate-preview">
+      <h2>La tua analisi NIS2 preliminare</h2>
+      <p class="sub" id="gate-sub"></p>
+      <div class="score-row">
+        <div class="score-circle">
+          <svg width="120" height="120" viewBox="0 0 120 120">
+            <circle cx="60" cy="60" r="52" fill="none" stroke="#2e2e33" stroke-width="10"/>
+            <circle cx="60" cy="60" r="52" fill="none" stroke-width="10" stroke-linecap="round"
+              id="score-arc" stroke="var(--yellow)"
+              stroke-dasharray="326.7" stroke-dashoffset="326.7"/>
+          </svg>
+          <div class="pct">
+            <span class="pct-num" id="gate-pct">0%</span>
+            <span class="pct-label" style="color:var(--gray)">copertura</span>
+          </div>
+        </div>
+        <div class="score-desc">
+          <div class="risk-badge" id="gate-badge">–</div>
+          <h3 id="gate-level-title"></h3>
+          <p id="gate-level-desc"></p>
+        </div>
+      </div>
+      <div class="domain-bars" id="gate-domain-bars"></div>
+    </div>
+
+    <div class="gate-form">
+      <h3>Visualizza le tue raccomandazioni dettagliate</h3>
+      <p>Ricevete il rapporto immediatamente — accedete con Microsoft 365 e compileremo automaticamente ciò che possiamo.</p>
+
+      <div id="ms-step">
+        <button class="btn-ms btn-ms-primary" onclick="loginMicrosoft()" id="ms-btn">
+          <svg width="20" height="20" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="1" y="1" width="9" height="9" fill="#f25022"/>
+            <rect x="11" y="1" width="9" height="9" fill="#7fba00"/>
+            <rect x="1" y="11" width="9" height="9" fill="#00a4ef"/>
+            <rect x="11" y="11" width="9" height="9" fill="#ffb900"/>
+          </svg>
+          Continua con Microsoft 365
+        </button>
+        <div class="ms-status" id="ms-status"></div>
+        <p style="text-align:center;margin-top:4px;">
+          <button onclick="showManualForm()" style="background:none;border:none;color:#555;font-size:13px;cursor:pointer;text-decoration:underline;font-family:inherit;">
+            Non ho Microsoft 365 — compila manualmente
+          </button>
+        </p>
+      </div>
+
+      <div id="gate-manual-form" style="display:none;">
+        <div class="ms-status" id="ms-status-form"></div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Il tuo nome</label>
+            <input type="text" id="f-name" placeholder="Mario Rossi"/>
+          </div>
+          <div class="form-group">
+            <label>Email *</label>
+            <input type="email" id="f-email" placeholder="mario@azienda.it" required/>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Azienda *</label>
+            <input type="text" id="f-company" placeholder="Azienda S.p.A." required/>
+          </div>
+          <div class="form-group">
+            <label>Telefono</label>
+            <input type="tel" id="f-phone" placeholder="+39 02 0000000"/>
+          </div>
+        </div>
+        <button class="form-submit" id="gate-submit-btn" onclick="submitGate()">Visualizza il mio rapporto completo →</button>
+        <p class="form-note">Non condividiamo mai le tue informazioni con terze parti.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ REPORT ════════════════════════════════════════════════════════ -->
+<div id="screen-report" class="screen">
+  <div class="report-wrap">
+    <div class="report-header">
+      <h2 id="report-headline"></h2>
+      <p id="report-sub"></p>
+    </div>
+
+    <div class="report-score-block">
+      <div class="score-circle" style="width:130px;height:130px">
+        <svg width="130" height="130" viewBox="0 0 130 130">
+          <circle cx="65" cy="65" r="56" fill="none" stroke="#2e2e33" stroke-width="11"/>
+          <circle cx="65" cy="65" r="56" fill="none" stroke-width="11" stroke-linecap="round"
+            id="report-arc" stroke="var(--yellow)"
+            stroke-dasharray="351.9" stroke-dashoffset="351.9"/>
+        </svg>
+        <div class="pct">
+          <span class="pct-num" id="report-pct" style="font-size:32px">0%</span>
+          <span class="pct-label" style="color:var(--gray)">copertura</span>
+        </div>
+      </div>
+      <div class="score-info">
+        <div class="risk-badge" id="report-badge"></div>
+        <h3 id="report-level-title"></h3>
+        <p id="report-level-desc"></p>
+      </div>
+    </div>
+
+    <div class="report-domains">
+      <h3>Copertura per dominio NIS2</h3>
+      <div id="report-domain-bars"></div>
+    </div>
+
+    <div class="gaps-section">
+      <h3>Le vostre principali lacune da affrontare</h3>
+      <p class="sub" id="gaps-sub"></p>
+      <div id="gaps-container"></div>
+    </div>
+
+    <div class="report-cta">
+      <div id="cta-ms-badge" style="display:none;margin-bottom:20px;">
+        <span style="display:inline-flex;align-items:center;gap:8px;background:rgba(0,120,212,.1);border:1px solid rgba(0,120,212,.25);border-radius:6px;padding:8px 16px;font-size:13px;color:#7db8e8;">
+          <svg width="16" height="16" viewBox="0 0 21 21" fill="none"><rect x="1" y="1" width="9" height="9" fill="#f25022"/><rect x="11" y="1" width="9" height="9" fill="#7fba00"/><rect x="1" y="11" width="9" height="9" fill="#00a4ef"/><rect x="11" y="11" width="9" height="9" fill="#ffb900"/></svg>
+          Partner Microsoft certificato
+        </span>
+      </div>
+      <h3>Volete aiuto per colmare queste lacune?</h3>
+      <p id="cta-desc">Jan Malmström esamina il vostro rapporto gratuitamente e mostra concretamente come raggiungere la conformità NIS2.</p>
+      <div id="cta-license-pills" style="display:none;margin-bottom:20px;"></div>
+      <a class="btn-primary" href="/it/nis2.html#prenota" target="_blank">Prenota una revisione gratuita →</a>
+      <p class="fine">30 minuti · Nessuna presentazione commerciale · Licenziamo, configuriamo e documentiamo tutto</p>
+      <br>
+      <button class="print-btn" onclick="window.print()">🖨️ Stampa / Salva come PDF</button>
+    </div>
+  </div>
+</div>
+
+<script data-cfasync="false">
+// ═══════════════════════════════════════════════════════════════════════
+// DATA
+// ═══════════════════════════════════════════════════════════════════════
+
+const DOMAINS = [
+  {
+    id: 'governance',
+    name: 'Governance e Direzione',
+    icon: '🏛️',
+    desc: 'Responsabilità, politiche e organizzazione',
+    questions: [
+      "L'organizzazione ha un responsabile NIS2 designato (CISO o equivalente)?",
+      "La direzione ha formalmente deciso e approvato una politica di sicurezza delle informazioni?",
+      "La cybersicurezza e la conformità NIS2 sono regolarmente all'ordine del giorno del consiglio?",
+      "Esistono ruoli e responsabilità documentati per la sicurezza delle informazioni?",
+      "Conducete formazione regolare sulla sicurezza per tutto il personale?",
+    ],
+    recs: [
+      {
+        title: 'Nominare un responsabile NIS2 con mandato',
+        why: "L'Art. 20 NIS2 richiede alla direzione di assumersi una responsabilità attiva — senza una persona designata, la responsabilità cade nel vuoto e le sanzioni colpiscono personalmente la direzione.",
+        action: "<strong>Azione:</strong> Nominare un responsabile NIS2 (non necessariamente a tempo pieno). Documentare il ruolo in una delibera del consiglio o direttiva del CEO. Spesso combinato con il ruolo di IT manager o CFO nelle organizzazioni più piccole.",
+      },
+      {
+        title: 'Sviluppare e approvare una politica di sicurezza delle informazioni',
+        why: "Una politica formalmente approvata è il requisito fondamentale NIS2 e un prerequisito per costruire il resto del framework.",
+        action: "<strong>Azione:</strong> Una pagina è sufficiente per iniziare. La politica deve coprire: scopo, ambito, titolarità e principi di base. Far firmare e comunicare a tutta l'organizzazione da parte del consiglio o del CEO.",
+      },
+      {
+        title: "Inserire la cybersicurezza nell'agenda del consiglio",
+        why: "NIS2 stabilisce che la direzione ha responsabilità personale per le carenze — se il consiglio non ne discute formalmente, non può dimostrare la dovuta diligenza in un'ispezione.",
+        action: "<strong>Azione:</strong> Aggiungere 'Cybersicurezza e stato NIS2' come punto fisso alle riunioni trimestrali del consiglio. Documentare la discussione nel verbale. 15 minuti per riunione sono sufficienti.",
+      },
+      {
+        title: 'Documentare ruoli e responsabilità per la sicurezza',
+        why: "In un'ispezione ACN, la prima domanda è 'chi è responsabile di cosa?' Senza documentazione non si può dimostrare la conformità con NIS2.",
+        action: "<strong>Azione:</strong> Creare una semplice matrice RACI (Responsabile, Autorizzante, Consultato, Informato) per i principali processi di sicurezza delle informazioni. Una tabella in Word è un buon punto di partenza.",
+      },
+      {
+        title: 'Implementare formazione regolare sulla sicurezza',
+        why: "Il 90% degli incidenti di sicurezza inizia da un errore umano. NIS2 richiede di affrontare il fattore umano.",
+        action: "<strong>Azione:</strong> Organizzare una formazione obbligatoria di 30 minuti su phishing e sicurezza delle password una volta all'anno per tutto il personale. Microsoft Viva Learning e Defender for Office includono Attack Simulator — ideale per simulazioni di phishing.",
+      },
+    ],
+  },
+  {
+    id: 'risk',
+    name: 'Gestione del Rischio',
+    icon: '🎯',
+    desc: 'Identificazione e gestione dei rischi',
+    questions: [
+      "Disponete di un registro dei rischi IT e di cybersicurezza aggiornato?",
+      "Conducete valutazioni del rischio formali almeno una volta all'anno?",
+      "I sistemi IT critici e gli asset informativi sono inventariati e classificati?",
+      "Avete implementato l'MFA (autenticazione a più fattori) per tutti gli utenti?",
+      "Gestite le vulnerabilità sistematicamente — es. patching entro 30 giorni per le falle critiche?",
+    ],
+    recs: [
+      {
+        title: 'Creare un registro dei rischi IT',
+        why: "NIS2 richiede un framework sistematico di gestione del rischio. Senza un registro dei rischi non si possono prioritizzare le risorse né dimostrare una gestione proattiva del rischio.",
+        action: "<strong>Azione:</strong> Elencare i 10 rischi IT più importanti con probabilità (1–5), impatto (1–5) e proprietario. Aggiornare trimestralmente. Un file Excel funziona bene per iniziare — non serve subito uno strumento GRC costoso.",
+      },
+      {
+        title: 'Implementare valutazioni annuali del rischio',
+        why: "Il panorama delle minacce cambia rapidamente. Una valutazione unica non è sufficiente — NIS2 prevede un lavoro continuo sul rischio.",
+        action: "<strong>Azione:</strong> Collegare la valutazione del rischio al processo di budget (es. ogni ottobre). Coinvolgere IT, legale e almeno una persona della direzione. Documentare i risultati e le azioni concordate.",
+      },
+      {
+        title: 'Inventariare e classificare gli asset informativi',
+        why: "Non si può proteggere ciò che non si sa di avere. L'inventariazione è la base per prioritizzare correttamente le misure di protezione.",
+        action: "<strong>Azione:</strong> Iniziare dai sistemi che gestiscono dati personali, dati finanziari o informazioni operativamente critiche. Microsoft Defender for Endpoint può automatizzare l'inventario hardware. Usare Microsoft Purview Information Protection per classificare i dati.",
+      },
+      {
+        title: 'Abilitare MFA per tutti gli utenti',
+        why: "MFA previene il 99,9% degli attacchi agli account secondo Microsoft. È il singolo controllo tecnico più importante che si può implementare oggi.",
+        action: "<strong>Azione:</strong> Abilitare Microsoft Entra ID Conditional Access (incluso in M365 Business Premium). Richiedere MFA per tutti gli accessi — prioritizzare email, VPN e account amministrativi. Richiede un giorno per l'implementazione.",
+      },
+      {
+        title: 'Introdurre una gestione sistematica delle patch',
+        why: "I sistemi senza patch sono il principale punto di ingresso per i ransomware. NIS2 richiede di affrontare proattivamente le vulnerabilità note.",
+        action: "<strong>Azione:</strong> Abilitare il patching automatico per Windows tramite Windows Update for Business o Microsoft Intune. Stabilire obiettivi: patch critiche entro 48h, alte entro 7 giorni, altre entro 30 giorni. Verificare lo stato delle patch mensilmente.",
+      },
+    ],
+  },
+  {
+    id: 'incident',
+    name: 'Risposta agli Incidenti',
+    icon: '🚨',
+    desc: 'Preparazione, rilevamento e segnalazione',
+    questions: [
+      "Disponete di un piano di risposta agli incidenti documentato e testato?",
+      "Siete in grado di identificare e classificare un incidente di sicurezza entro 4 ore?",
+      "Siete in grado di segnalare un incidente all'ACN entro 24 ore (requisito NIS2)?",
+      "Disponete di logging e monitoraggio continuo dei sistemi critici?",
+      "Disponete di un piano di comunicazione per gestire gli incidenti esternamente?",
+    ],
+    recs: [
+      {
+        title: 'Sviluppare e testare un piano di risposta agli incidenti',
+        why: "NIS2 richiede procedure documentate per la gestione degli incidenti. Un piano non testato è praticamente inesistente — sotto stress le persone commettono errori.",
+        action: "<strong>Azione:</strong> Documentare: chi decide cosa, chi contatta l'ACN, chi comunica con i clienti. Esercitare il piano con una tabletop exercise una volta all'anno. L'ACN offre linee guida ed esercizi gratuiti.",
+      },
+      {
+        title: 'Costruire la capacità di identificare rapidamente gli incidenti',
+        why: "Il requisito NIS2 delle 24 ore per la segnalazione iniziale presuppone un rilevamento rapido dell'incidente. Senza rilevamento attivo, gli incidenti possono passare inosservati per settimane.",
+        action: "<strong>Azione:</strong> Implementare Microsoft Sentinel (SIEM/SOAR) o abilitare Microsoft Defender XDR se si dispone già di M365. Definire quali alert devono attivare la risposta agli incidenti e assicurarsi che la persona giusta venga notificata 24 ore su 24.",
+      },
+      {
+        title: "Preparare il processo di segnalazione all'ACN",
+        why: "NIS2 richiede la notifica iniziale all'ACN entro 24 ore — e un rapporto completo entro 72 ore. Occorre sapere come farlo PRIMA che si verifichi un incidente.",
+        action: "<strong>Azione:</strong> Registrarsi al portale di segnalazione ACN. Designare chi è responsabile dell'invio del rapporto. Creare un modello per la notifica iniziale — bastano 5–6 campi da compilare entro 24 ore.",
+      },
+      {
+        title: 'Abilitare logging e monitoraggio',
+        why: "Senza log non si può rispondere a 'cosa è successo, quando e come?' — necessario per la segnalazione degli incidenti e l'analisi forense.",
+        action: "<strong>Azione:</strong> Abilitare Unified Audit Log in Microsoft 365. Abilitare Defender for Endpoint su tutti i dispositivi. Impostare la conservazione dei log ad almeno 90 giorni (12 mesi raccomandato). Microsoft Sentinel aggrega automaticamente i log da tutti i prodotti Microsoft.",
+      },
+      {
+        title: 'Creare un piano di comunicazione esterna',
+        why: "Come si comunica durante un incidente influenza enormemente la fiducia e il marchio. Senza preparazione, il panico porta a decisioni errate.",
+        action: "<strong>Azione:</strong> Definire chi comunica con: clienti, media, autorità e il consiglio. Preparare modelli di messaggi per gli scenari più comuni. Assicurarsi che il CEO e il responsabile della comunicazione conoscano i propri ruoli.",
+      },
+    ],
+  },
+  {
+    id: 'supply',
+    name: 'Catena di Fornitura',
+    icon: '🔗',
+    desc: 'Rischio di terze parti e contratti',
+    questions: [
+      "Disponete di un inventario completo dei fornitori IT critici?",
+      "Imponete requisiti di sicurezza documentati ai vostri fornitori?",
+      "Esaminate il livello di sicurezza dei fornitori all'acquisizione e regolarmente in seguito?",
+      "I requisiti di cybersicurezza e segnalazione degli incidenti sono inclusi nei contratti con i fornitori?",
+      "Controllate sistematicamente l'accesso di terze parti ai vostri sistemi?",
+    ],
+    recs: [
+      {
+        title: 'Inventariare i fornitori IT critici',
+        why: "NIS2 pone su di voi la responsabilità esplicita per la sicurezza dei vostri fornitori. Non si possono gestire rischi che non si conoscono.",
+        action: "<strong>Azione:</strong> Creare un elenco fornitori con: nome fornitore, quali dati gestisce, a quali sistemi ha accesso, e referente per le questioni di sicurezza. Prioritizzare i 10 fornitori critici principali e gestirli per primi.",
+      },
+      {
+        title: 'Introdurre requisiti di sicurezza documentati per i fornitori',
+        why: "NIS2 richiede di assicurarsi che i fornitori rispettino livelli di sicurezza adeguati. Senza requisiti e documentazione non si può dimostrare di aver assunto la responsabilità.",
+        action: "<strong>Azione:</strong> Creare un 'Allegato sui Requisiti di Sicurezza' di 1 pagina da allegare a tutti i nuovi contratti con i fornitori. Deve richiedere: segnalazione degli incidenti entro 24h, crittografia dei vostri dati, diritto di audit e almeno una valutazione annuale della sicurezza.",
+      },
+      {
+        title: 'Esaminare il livello di sicurezza dei fornitori',
+        why: "Un fornitore che soddisfaceva i requisiti due anni fa potrebbe non farlo oggi. Il panorama delle minacce e l'organizzazione del fornitore cambiano.",
+        action: "<strong>Azione:</strong> Richiedere ai fornitori critici di dimostrare certificazione ISO 27001, SOC 2 Type II o simile. Per fornitori senza certificazione — inviare un questionario di sicurezza con 10 domande e riesaminare le risposte. Farlo all'acquisizione e poi ogni due anni.",
+      },
+      {
+        title: 'Aggiornare i contratti con i fornitori con clausole NIS2',
+        why: "Senza supporto contrattuale non si può richiedere azioni ai fornitori né ritenerli responsabili per gli incidenti.",
+        action: "<strong>Azione:</strong> Rivedere i 5 contratti più importanti con i fornitori e aggiungere clausole su: diritto di audit, obbligo di segnalazione degli incidenti, requisiti di crittografia e diritto di rescissione in caso di gravi carenze di sicurezza.",
+      },
+      {
+        title: "Controllare sistematicamente l'accesso di terze parti",
+        why: "I fornitori con accesso non controllato ai vostri sistemi sono uno dei punti di ingresso più comuni per gli attacchi (supply chain attacks).",
+        action: "<strong>Azione:</strong> Implementare Privileged Identity Management (PIM) in Microsoft Entra ID — fornisce accesso just-in-time invece di accesso permanente. Verificare mensilmente i login attivi dei fornitori e disattivare gli account non utilizzati da 60 giorni.",
+      },
+    ],
+  },
+  {
+    id: 'technical',
+    name: 'Controlli Tecnici',
+    icon: '🛡️',
+    desc: 'Architettura di sicurezza, strumenti e protezione',
+    questions: [
+      "Le reti sono segmentate — es. separazione OT/IT, reti guest e ambienti di produzione?",
+      "Disponete di protezione degli endpoint (EDR/antivirus) installata e attiva su tutti i dispositivi?",
+      "Utilizzate comunicazioni e archiviazione crittografate per tutti i dati sensibili?",
+      "Disponete di procedure di backup e ripristino testate (regola 3-2-1)?",
+      "Disponete di un sistema di gestione delle identità e degli accessi (IAM/PAM) con il principio del minimo privilegio?",
+    ],
+    recs: [
+      {
+        title: 'Segmentare le reti',
+        why: "Senza segmentazione della rete, un attaccante che accede a un sistema può spostarsi liberamente in tutti gli altri — trasformando una violazione limitata in un attacco su larga scala.",
+        action: "<strong>Azione:</strong> Separare almeno: rete guest, rete di produzione e (se applicabile) rete OT. Configurare regole firewall che limitino il traffico tra i segmenti. Azure Network Security Groups e Windows Defender Firewall di Microsoft possono gestire questo.",
+      },
+      {
+        title: 'Distribuire protezione degli endpoint su tutti i dispositivi',
+        why: "I dispositivi senza EDR sono punti ciechi nel monitoraggio della sicurezza. Gli attaccanti prendono di mira specificamente gli endpoint non protetti.",
+        action: "<strong>Azione:</strong> Abilitare Microsoft Defender for Endpoint su tutti i dispositivi Windows (incluso in M365 Business Premium). Configurare la gestione centralizzata degli alert. Non dimenticare i cellulari — Defender per iOS e Android protegge i dispositivi mobili.",
+      },
+      {
+        title: 'Implementare la crittografia per i dati sensibili',
+        why: "Se un attaccante prende i vostri dati non dovrebbe poterli leggere. La crittografia è l'ultima linea di difesa ed un requisito esplicito NIS2.",
+        action: "<strong>Azione:</strong> Abilitare BitLocker su tutti i laptop (incluso in Windows Pro). Abilitare la crittografia in SharePoint e OneDrive (predefinita in M365). Assicurarsi che tutto il traffico email con dati sensibili sia crittografato con S/MIME o Microsoft Purview Message Encryption.",
+      },
+      {
+        title: 'Testare le procedure di backup e ripristino',
+        why: "Un backup che non è mai stato testato non è un backup — è un desiderio. Gli attacchi ransomware prendono di mira specificamente i backup per rendere impossibile il ripristino.",
+        action: "<strong>Azione:</strong> Seguire la regola 3-2-1: 3 copie dei dati, 2 media diversi, 1 fuori sede/offline. Testare il ripristino dei sistemi critici almeno una volta all'anno e documentare il risultato. Azure Backup e Microsoft 365 Backup forniscono protezione automatizzata con conservazione da 1 a 93 giorni.",
+      },
+      {
+        title: 'Introdurre IAM con il principio del minimo privilegio',
+        why: "Le autorizzazioni eccessive sono una delle ragioni più comuni per cui gli attaccanti possono causare danni estesi dopo una violazione iniziale.",
+        action: "<strong>Azione:</strong> Condurre una verifica delle autorizzazioni — rimuovere gli accessi che gli utenti non necessitano più. Implementare Microsoft Entra ID Privileged Identity Management (PIM) per gli account amministrativi: accesso just-in-time invece di ruolo admin permanente. Verificare le autorizzazioni trimestralmente.",
+      },
+    ],
+  },
+];
+
+// ═══════════════════════════════════════════════════════════════════════
+// STATE
+// ═══════════════════════════════════════════════════════════════════════
+
+let currentDomain = 0;
+const answers = {};
+
+function getKey(d, q) { return `d${d}_q${q}`; }
+function getAnswer(d, q) { return answers[getKey(d, q)]; }
+function setAnswer(d, q, v) { answers[getKey(d, q)] = v; }
+
+function totalScore() { return Object.values(answers).reduce((s, v) => s + v, 0); }
+function domainScore(di) {
+  let s = 0;
+  for (let q = 0; q < 5; q++) { s += answers[getKey(di, q)] ?? 0; }
+  return s;
+}
+function domainComplete(di) {
+  for (let q = 0; q < 5; q++) { if (answers[getKey(di, q)] === undefined) return false; }
+  return true;
+}
+function allComplete() {
+  for (let d = 0; d < DOMAINS.length; d++) { if (!domainComplete(d)) return false; }
+  return true;
+}
+function scorePct(score, max) { return Math.round(score / max * 100); }
+
+function riskLevel(pct) {
+  if (pct >= 75) return { key: 'god',    label: 'BUONA COPERTURA', cls: 'god',    color: 'var(--green)' };
+  if (pct >= 50) return { key: 'medel',  label: 'MEDIA',           cls: 'medel',  color: 'var(--amber)' };
+  if (pct >= 25) return { key: 'hog',    label: 'ALTO RISCHIO',    cls: 'hog',    color: 'var(--orange)' };
+  return             { key: 'kritisk', label: 'CRITICO',         cls: 'kritisk',color: 'var(--red)' };
+}
+
+function riskDesc(level) {
+  if (level === 'god')    return "L'organizzazione soddisfa la maggior parte dei requisiti NIS2. Concentratevi sul colmare le lacune rimanenti.";
+  if (level === 'medel')  return "Avete una base discreta ma ci sono lacune chiave da affrontare prima di un'ispezione ACN.";
+  if (level === 'hog')    return "Le lacune NIS2 sono significative. La direzione ha responsabilità personale — avviate i rimedi immediatamente.";
+  return 'Carenze critiche identificate. Mancano i controlli NIS2 fondamentali. Azione immediata richiesta.';
+}
+
+function riskLevelTitle(key) {
+  if (key === 'god')    return 'Buona base NIS2 — concentrarsi sulle lacune rimanenti';
+  if (key === 'medel')  return 'Copertura discreta ma lacune importanti rimangono';
+  if (key === 'hog')    return 'Lacune significative — la direzione ha responsabilità personale';
+  return 'Carenze critiche — azione immediata richiesta';
+}
+
+// ═══════════════════════════════════════════════════════════════════════
+// NAVIGATION
+// ═══════════════════════════════════════════════════════════════════════
+
+function showScreen(id) {
+  document.querySelectorAll('.screen').forEach(s => { s.classList.remove('active'); s.style.display = 'none'; });
+  const el = document.getElementById(id);
+  el.style.display = 'block';
+  setTimeout(() => el.classList.add('active'), 10);
+  window.scrollTo(0, 0);
+}
+
+function startQuiz() {
+  currentDomain = 0;
+  showScreen('screen-quiz');
+  renderDomain();
+}
+
+function renderDomain() {
+  const d = DOMAINS[currentDomain];
+  document.getElementById('domain-icon').textContent = d.icon;
+  document.getElementById('domain-name').textContent = d.name;
+  document.getElementById('domain-desc').textContent = d.desc;
+  document.getElementById('quiz-domain-label').textContent = `Dominio ${currentDomain + 1} di ${DOMAINS.length}: ${d.name}`;
+
+  const answered = Object.keys(answers).length;
+  const total = DOMAINS.length * 5;
+  const pct = Math.round(answered / total * 100);
+  document.getElementById('progress-fill').style.width = pct + '%';
+  document.getElementById('quiz-q-counter').textContent = `${answered} di ${total} domande risposte`;
+  document.getElementById('quiz-score-live').textContent = `${totalScore()} / 50 pt`;
+
+  const dotsEl = document.getElementById('domain-dots');
+  dotsEl.innerHTML = DOMAINS.map((_, i) => {
+    const cls = i < currentDomain ? 'done' : i === currentDomain ? 'active' : '';
+    return `<div class="domain-dot ${cls}" title="${DOMAINS[i].name}"></div>`;
+  }).join('');
+
+  const container = document.getElementById('questions-container');
+  container.innerHTML = d.questions.map((q, qi) => {
+    const ans = getAnswer(currentDomain, qi);
+    const key = getKey(currentDomain, qi);
+    const isAutofilled = window._msAutofills && key in window._msAutofills;
+    const autofillNote = isAutofilled ? `<span class="autofill-badge">✓ Recuperato da Microsoft 365</span>` : '';
+    return `
+      <div class="question-card ${ans !== undefined ? 'answered' : ''}" id="qcard-${qi}">
+        <div class="question-num">Domanda ${currentDomain * 5 + qi + 1} di 25 ${autofillNote}</div>
+        <div class="question-text">${q}</div>
+        <div class="answer-row">
+          <button class="answer-btn ${ans === 2 ? 'selected-ja' : ''}" onclick="answer(${qi}, 2)">✓ Sì</button>
+          <button class="answer-btn ${ans === 1 ? 'selected-delvis' : ''}" onclick="answer(${qi}, 1)">~ Parzialmente</button>
+          <button class="answer-btn ${ans === 0 ? 'selected-nej' : ''}" onclick="answer(${qi}, 0)">✗ No</button>
+        </div>
+      </div>`;
+  }).join('');
+
+  document.getElementById('btn-back').style.visibility = currentDomain === 0 ? 'hidden' : 'visible';
+  updateNextBtn();
+}
+
+function answer(qi, val) {
+  setAnswer(currentDomain, qi, val);
+  renderDomain();
+}
+
+function updateNextBtn() {
+  const btn = document.getElementById('btn-next');
+  const complete = domainComplete(currentDomain);
+  if (complete) {
+    btn.classList.add('ready');
+    btn.textContent = currentDomain < DOMAINS.length - 1 ? 'Dominio successivo →' : 'Visualizza il mio rapporto →';
+  } else {
+    btn.classList.remove('ready');
+    btn.textContent = 'Dominio successivo →';
+  }
+}
+
+function nextDomain() {
+  if (!domainComplete(currentDomain)) return;
+  if (currentDomain < DOMAINS.length - 1) {
+    currentDomain++;
+    renderDomain();
+    window.scrollTo(0, 0);
+  } else {
+    showGate();
+  }
+}
+
+function prevDomain() {
+  if (currentDomain > 0) {
+    currentDomain--;
+    renderDomain();
+    window.scrollTo(0, 0);
+  }
+}
+
+// ═══════════════════════════════════════════════════════════════════════
+// GATE
+// ═══════════════════════════════════════════════════════════════════════
+
+function showGate() {
+  const total = totalScore();
+  const pct = scorePct(total, 50);
+  const risk = riskLevel(pct);
+  const gaps = countGaps();
+
+  document.getElementById('gate-sub').textContent =
+    `${gaps.critical} lacune critiche e ${gaps.partial} aree di miglioramento identificate`;
+
+  const circ = 326.7;
+  const offset = circ - (pct / 100) * circ;
+  const arc = document.getElementById('score-arc');
+  arc.setAttribute('stroke', risk.color);
+  setTimeout(() => { arc.style.strokeDashoffset = offset; }, 50);
+  document.getElementById('gate-pct').textContent = pct + '%';
+
+  const badge = document.getElementById('gate-badge');
+  badge.className = 'risk-badge ' + risk.cls;
+  badge.textContent = risk.label;
+
+  document.getElementById('gate-level-title').textContent = riskLevelTitle(risk.key);
+  document.getElementById('gate-level-desc').textContent = riskDesc(risk.key);
+
+  const barsEl = document.getElementById('gate-domain-bars');
+  barsEl.innerHTML = DOMAINS.map((d, i) => {
+    const ds = domainScore(i);
+    const dp = scorePct(ds, 10);
+    const color = dp >= 75 ? 'var(--green)' : dp >= 50 ? 'var(--amber)' : dp >= 25 ? 'var(--orange)' : 'var(--red)';
+    return `
+      <div class="domain-bar-row">
+        <span class="lbl">${d.icon} ${d.name}</span>
+        <div class="bar-track"><div class="bar-fill" style="width:${dp}%;background:${color}"></div></div>
+        <span class="val">${dp}%</span>
+      </div>`;
+  }).join('');
+
+  showScreen('screen-gate');
+}
+
+function countGaps() {
+  let critical = 0, partial = 0;
+  for (let d = 0; d < DOMAINS.length; d++) {
+    for (let q = 0; q < 5; q++) {
+      const a = answers[getKey(d, q)];
+      if (a === 0) critical++;
+      else if (a === 1) partial++;
+    }
+  }
+  return { critical, partial };
+}
+
+// ═══════════════════════════════════════════════════════════════════════
+// GATE SUBMIT
+// ═══════════════════════════════════════════════════════════════════════
+
+async function submitGate() {
+  const email = document.getElementById('f-email').value.trim();
+  const company = document.getElementById('f-company').value.trim();
+  const name = document.getElementById('f-name').value.trim();
+  const phone = document.getElementById('f-phone').value.trim();
+
+  if (!email || !company) {
+    alert('Email e azienda sono campi obbligatori.');
+    return;
+  }
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    alert('Inserire un indirizzo email valido.');
+    return;
+  }
+
+  const btn = document.getElementById('gate-submit-btn');
+  btn.disabled = true;
+  btn.textContent = 'Invio in corso…';
+
+  const total = totalScore();
+  const pct = scorePct(total, 50);
+  const risk = riskLevel(pct);
+  const gaps = countGaps();
+  const domainData = {};
+  DOMAINS.forEach((d, i) => { domainData[d.name] = scorePct(domainScore(i), 10); });
+
+  try {
+    await fetch('/api/inbound', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        name, email, phone: phone || undefined, company,
+        source: 'nis2-analisi-gap-it',
+        score_data: {
+          risk: risk.key === 'god' ? 'green' : risk.key === 'medel' ? 'amber' : 'red',
+          gapScore: pct,
+          criticalGaps: gaps.critical,
+          partialGaps: gaps.partial,
+          domains: domainData,
+        }
+      })
+    });
+  } catch (e) {
+    console.warn('[gap-analysis-it] inbound API error:', e.message);
+  }
+
+  if (typeof gtag === 'function') {
+    gtag('event', 'gap_analysis_complete', { gap_score: pct, risk_level: risk.key });
+  }
+
+  showReport();
+}
+
+// ═══════════════════════════════════════════════════════════════════════
+// REPORT
+// ═══════════════════════════════════════════════════════════════════════
+
+function showReport() {
+  const total = totalScore();
+  const pct = scorePct(total, 50);
+  const risk = riskLevel(pct);
+  const gaps = countGaps();
+
+  document.getElementById('report-headline').textContent = `Copertura NIS2 della vostra organizzazione: ${pct}%`;
+  document.getElementById('report-sub').textContent =
+    `${gaps.critical} lacune critiche · ${gaps.partial} aree di miglioramento · ${25 - gaps.critical - gaps.partial} controlli in atto`;
+
+  const circ2 = 351.9;
+  const offset2 = circ2 - (pct / 100) * circ2;
+  const arc2 = document.getElementById('report-arc');
+  arc2.setAttribute('stroke', risk.color);
+  setTimeout(() => { arc2.style.strokeDashoffset = offset2; arc2.style.transition = 'stroke-dashoffset .8s ease'; }, 100);
+  document.getElementById('report-pct').textContent = pct + '%';
+  document.getElementById('report-pct').style.color = risk.color;
+
+  renderReportCta();
+
+  const rb = document.getElementById('report-badge');
+  rb.className = 'risk-badge ' + risk.cls;
+  rb.textContent = risk.label;
+  document.getElementById('report-level-title').textContent = riskLevelTitle(risk.key);
+  document.getElementById('report-level-desc').textContent = riskDesc(risk.key);
+
+  const dbEl = document.getElementById('report-domain-bars');
+  dbEl.innerHTML = DOMAINS.map((d, i) => {
+    const dp = scorePct(domainScore(i), 10);
+    const color = dp >= 75 ? 'var(--green)' : dp >= 50 ? 'var(--amber)' : dp >= 25 ? 'var(--orange)' : 'var(--red)';
+    const label = dp >= 75 ? 'Buono' : dp >= 50 ? 'Medio' : dp >= 25 ? 'Alto rischio' : 'Critico';
+    return `
+      <div class="report-domain-row">
+        <div class="report-domain-header">
+          <span class="dlbl">${d.icon} ${d.name}</span>
+          <span class="dscore" style="color:${color}">${dp}% — ${label}</span>
+        </div>
+        <div class="bar-track" style="height:8px">
+          <div class="bar-fill" style="width:0%;background:${color};transition:width .8s ease" data-target="${dp}"></div>
+        </div>
+      </div>`;
+  }).join('');
+  setTimeout(() => {
+    document.querySelectorAll('.bar-fill[data-target]').forEach(el => { el.style.width = el.dataset.target + '%'; });
+  }, 150);
+
+  buildGaps();
+  showScreen('screen-report');
+}
+
+function buildGaps() {
+  const gaps = [];
+  for (let d = 0; d < DOMAINS.length; d++) {
+    for (let q = 0; q < 5; q++) {
+      const a = answers[getKey(d, q)];
+      if (a < 2) {
+        gaps.push({ d, q, a, domain: DOMAINS[d], rec: DOMAINS[d].recs[q] });
+      }
+    }
+  }
+  gaps.sort((a, b) => a.a - b.a);
+
+  const gapsSub = document.getElementById('gaps-sub');
+  const container = document.getElementById('gaps-container');
+
+  if (gaps.length === 0) {
+    gapsSub.textContent = 'Nessuna lacuna identificata — ottimo lavoro!';
+    container.innerHTML = '<div class="all-good">🏆 La vostra organizzazione soddisfa tutti i 25 punti di controllo. Concentratevi sul mantenimento del livello e seguite gli aggiornamenti ACN sull\'implementazione NIS2.</div>';
+    return;
+  }
+
+  gapsSub.textContent = `Di seguito le ${gaps.length} lacune identificate, prioritizzate per gravità.`;
+  const lic = window._msLicenses || null;
+  container.innerHTML = gaps.map(({ a, domain, rec, q }) => `
+    <div class="gap-card ${a === 1 ? 'partial' : ''}">
+      <div class="gap-card-header">
+        <span class="gap-tag ${a === 0 ? 'kritisk' : 'forbattra'}">${a === 0 ? 'Critico' : 'Migliorare'}</span>
+        <span class="gap-title">${rec.title}</span>
+      </div>
+      <p class="gap-why">${rec.why}</p>
+      <div class="gap-action">${getAction(rec, lic)}</div>
+    </div>
+  `).join('');
+}
+
+function renderReportCta() {
+  const lic = window._msLicenses;
+  if (!lic) return;
+  document.getElementById('cta-ms-badge').style.display = 'block';
+  const checks = [
+    { label: 'Microsoft Intune',      owned: lic.hasIntune,   upgrade: 'M365 Business Premium' },
+    { label: 'Defender for Endpoint', owned: lic.hasDefender, upgrade: 'M365 Business Premium / Defender Plan 2' },
+    { label: 'Entra ID P1',           owned: lic.hasEntraP1,  upgrade: 'M365 Business Premium' },
+    { label: 'Entra ID P2 (PIM)',     owned: lic.hasEntraP2,  upgrade: 'Entra ID P2 add-on (circa €8/admin/mese)' },
+    { label: 'Microsoft Purview',     owned: lic.hasPurview,  upgrade: 'M365 E3/E5 o add-on Purview' },
+  ];
+  const missing = checks.filter(c => !c.owned);
+  const owned   = checks.filter(c =>  c.owned);
+  const pillsEl = document.getElementById('cta-license-pills');
+  const descEl  = document.getElementById('cta-desc');
+  if (missing.length === 0) {
+    descEl.textContent = 'Disponete di tutte le licenze Microsoft rilevanti. Vi aiutiamo ad attivare e configurare i controlli correttamente per la conformità NIS2.';
+    pillsEl.style.display = 'none';
+    return;
+  }
+  descEl.textContent = 'Siamo partner Microsoft certificato e possiamo licenziare, configurare e documentare tutto il necessario per la conformità NIS2 — in un unico pacchetto.';
+  pillsEl.style.display = 'block';
+  pillsEl.innerHTML =
+    '<div style="font-size:12px;color:#666;margin-bottom:8px;text-transform:uppercase;letter-spacing:.5px;">Licenze già in possesso</div>' +
+    owned.map(c => `<span class="license-pill owned">✓ ${c.label}</span>`).join('') +
+    '<div style="font-size:12px;color:#666;margin:12px 0 8px;text-transform:uppercase;letter-spacing:.5px;">Mancanti per la piena copertura NIS2</div>' +
+    missing.map(c => `<span class="license-pill missing">✕ ${c.label} <span style="font-size:11px;opacity:.7;">→ ${c.upgrade}</span></span>`).join('');
+}
+
+function getAction(rec, lic) {
+  if (!lic) return rec.action;
+  const { hasIntune, hasDefender, hasEntraP1, hasEntraP2, hasPurview, hasM365Any } = lic;
+  const ACTIONS = {
+    'Implementare formazione regolare sulla sicurezza': () => {
+      if (hasDefender) return '<strong>Azione:</strong> Avete già Microsoft Defender for Office 365 — abilitate <strong>Attack Simulator</strong> (incluso nella licenza) e pianificate una simulazione di phishing questo mese. Integrate con Viva Learning per la formazione obbligatoria annuale di 30 minuti.';
+      if (hasM365Any) return '<strong>Azione:</strong> La vostra licenza Microsoft 365 include formazione base sulla sicurezza tramite <strong>Microsoft Learn</strong>. Passate a M365 Business Premium per ottenere Attack Simulator e test di phishing automatizzati.';
+      return rec.action;
+    },
+    'Inventariare e classificare gli asset informativi': () => {
+      if (hasIntune && hasPurview) return '<strong>Azione:</strong> Avete sia Intune che Microsoft Purview — una combinazione potente. Abilitate <strong>Intune Device Inventory</strong> per l\'hardware e configurate le <strong>Sensitivity Labels di Purview</strong> per la classificazione dei dati. Entrambi già inclusi nella licenza.';
+      if (hasIntune) return '<strong>Azione:</strong> Avete Microsoft Intune — abilitate <strong>Device Inventory</strong> per l\'inventario automatico dell\'hardware (incluso nella licenza). Per la classificazione dei dati aggiungete <strong>Microsoft Purview</strong> (incluso in M365 E3/E5 o come add-on).';
+      if (hasM365Any) return '<strong>Azione:</strong> Passate a <strong>M365 Business Premium</strong> per ottenere Intune (gestione dei dispositivi) e Purview base (classificazione dei dati) — risolve inventario e classificazione in un unico pacchetto.';
+      return rec.action;
+    },
+    'Abilitare MFA per tutti gli utenti': () => {
+      if (hasEntraP2) return '<strong>Azione:</strong> Avete Entra ID P2 — usate <strong>Conditional Access con sign-in basato sul rischio</strong> (incluso). Abilitate anche <strong>Identity Protection</strong> per bloccare automaticamente gli account compromessi.';
+      if (hasEntraP1) return '<strong>Azione:</strong> Avete Entra ID P1 — create una <strong>policy di Conditional Access</strong> che richieda MFA per tutti gli utenti (incluso nella licenza, nessun costo aggiuntivo). Richiede 20 minuti.';
+      if (hasM365Any) return '<strong>Azione:</strong> Abilitate <strong>Security Defaults</strong> in Entra ID — gratuito e incluso in tutti i piani M365. Fornisce MFA per tutti senza Conditional Access. Per maggiori controlli passate a M365 Business Premium (include Entra P1).';
+      return rec.action;
+    },
+    'Introdurre una gestione sistematica delle patch': () => {
+      if (hasIntune) return '<strong>Azione:</strong> Avete Microsoft Intune — configurate direttamente <strong>Windows Update Rings</strong> (incluso nella licenza). Impostate: patch critiche entro 48h, aggiornamenti di qualità entro 7 giorni.';
+      if (hasM365Any) return '<strong>Azione:</strong> Passate a <strong>M365 Business Premium</strong> per ottenere Microsoft Intune e la gestione automatizzata delle patch. In alternativa ora: abilitate gli aggiornamenti automatici tramite Group Policy e verificate lo stato delle patch mensilmente.';
+      return rec.action;
+    },
+    'Costruire la capacità di identificare rapidamente gli incidenti': () => {
+      if (hasDefender) return '<strong>Azione:</strong> Avete Microsoft Defender — configurate gli <strong>alert di Defender XDR</strong> (inclusi) in modo che gli alert critici raggiungano il personale di turno via SMS/email. Aggiungete <strong>Microsoft Sentinel</strong> (servizio a pagamento) per SIEM se volete aggregare i log dell\'intero ambiente.';
+      if (hasM365Any) return '<strong>Azione:</strong> Avete M365 — abilitate <strong>Microsoft Defender for Office 365</strong> Piano 1 (incluso in Business Premium) per il rilevamento delle minacce email. Per XDR completo si raccomanda il passaggio a <strong>Defender for Endpoint Piano 2</strong>.';
+      return rec.action;
+    },
+    'Abilitare logging e monitoraggio': () => {
+      if (hasDefender && hasM365Any) return '<strong>Azione:</strong> Avete M365 — abilitate ora <strong>Unified Audit Log</strong> nel portale di conformità Microsoft Purview (gratuito, incluso). Impostate la conservazione dei log ad almeno 90 giorni. La vostra licenza Defender fornisce automaticamente i log degli endpoint. Passo successivo: aggiungete <strong>Microsoft Sentinel</strong> per SIEM centralizzato.';
+      if (hasM365Any) return '<strong>Azione:</strong> Abilitate <strong>Unified Audit Log</strong> nel vostro tenant M365 ora (gratuito, incluso in tutti i piani): Microsoft Purview → Audit → inizia la registrazione. Imposta conservazione 90 giorni. Per i log degli endpoint aggiungete <strong>Defender for Endpoint</strong>.';
+      return rec.action;
+    },
+    "Controllare sistematicamente l'accesso di terze parti": () => {
+      if (hasEntraP2) return '<strong>Azione:</strong> Avete Entra ID P2 — abilitate ora <strong>Privileged Identity Management (PIM)</strong> (incluso nella licenza). PIM fornisce accesso just-in-time invece di accesso admin permanente. Abilitate anche <strong>Access Reviews</strong> per verificare automaticamente gli account guest trimestralmente.';
+      if (hasEntraP1) return '<strong>Azione:</strong> Avete Entra ID P1 — abilitate <strong>Access Reviews</strong> per account guest e accesso dei fornitori (incluso). Per PIM completo (accesso just-in-time) è richiesto il passaggio a <strong>Entra ID P2</strong>.';
+      if (hasM365Any) return '<strong>Azione:</strong> Abilitate la <strong>verifica degli account guest</strong> in Entra ID (incluso in M365): verificate mensilmente gli account esterni attivi e disattivate quelli non usati da 60 giorni.';
+      return rec.action;
+    },
+    'Segmentare le reti': () => {
+      if (hasM365Any) return '<strong>Azione:</strong> Configurate le regole di <strong>Windows Defender Firewall</strong> (incluse) per separare le reti sui dispositivi Windows. Per una segmentazione di rete completa si raccomanda uno strumento di rete/firewall dedicato (es. Azure Virtual Network per infrastruttura cloud, o un firewall fisico per on-premises).';
+      return rec.action;
+    },
+    'Distribuire protezione degli endpoint su tutti i dispositivi': () => {
+      if (hasDefender) return '<strong>Azione:</strong> Avete Microsoft Defender for Endpoint — verificate che l\'agente EDR sia attivo su <strong>TUTTI</strong> i dispositivi inclusi i server. Andate al portale Defender → Inventario dispositivi → filtrate su \'Stato di onboarding: Non registrato\' e correggete. I dispositivi mancanti possono essere registrati tramite Intune o uno script di installazione.';
+      if (hasM365Any) return '<strong>Azione:</strong> Avete M365 — passate a <strong>M365 Business Premium</strong> per ottenere <strong>Microsoft Defender for Business</strong> (EDR semplificato per PMI). In alternativa: <strong>Defender for Endpoint Piano 1</strong> come add-on. La protezione antivirus base tramite Windows Defender è già attiva su tutti i dispositivi Windows oggi.';
+      return rec.action;
+    },
+    'Implementare la crittografia per i dati sensibili': () => {
+      if (hasPurview && hasIntune) return '<strong>Azione:</strong> Avete Purview + Intune — configurate le <strong>Sensitivity Labels</strong> in Purview per crittografare automaticamente i dati sensibili (incluso), e abilitate <strong>BitLocker tramite Intune</strong> su tutti i laptop (incluso). L\'email viene crittografata automaticamente con M365 se abilitate OME.';
+      if (hasM365Any) return '<strong>Azione:</strong> Il vostro ambiente M365 crittografa automaticamente email e Teams con TLS. Abilitate <strong>BitLocker</strong> su tutti i laptop (incluso in Windows Pro/Enterprise). Per la condivisione sicura di file usate <strong>SharePoint con controllo degli accessi</strong> invece degli allegati email.';
+      return rec.action;
+    },
+    'Introdurre IAM con il principio del minimo privilegio': () => {
+      if (hasEntraP2) return '<strong>Azione:</strong> Avete Entra ID P2 — abilitate ora <strong>Privileged Identity Management (PIM)</strong> (incluso nella licenza). PIM fornisce accesso admin just-in-time con limiti di tempo e workflow di approvazione. Configurate anche le <strong>policy di Conditional Access basate sul rischio</strong> per gli account admin.';
+      if (hasEntraP1) return '<strong>Azione:</strong> Avete Entra ID P1 — implementate il principio del minimo privilegio tramite <strong>Conditional Access</strong> e controllo degli accessi basato sui ruoli in Entra (incluso). Per PAM completo con accesso just-in-time è richiesto il passaggio a <strong>Entra ID P2</strong>.';
+      if (hasM365Any) return '<strong>Azione:</strong> Verificate i ruoli admin in Entra ID e rimuovete le assegnazioni permanenti di Global Admin — assegnate ruoli specifici invece (Exchange Admin, User Admin ecc.). Gratuito e fatto direttamente nell\'admin center Entra. Poi passate a Entra P2 per PIM automatizzato.';
+      return rec.action;
+    },
+  };
+  for (const [key, fn] of Object.entries(ACTIONS)) {
+    if (rec.title.includes(key)) return fn();
+  }
+  return rec.action;
+}
+
+// ═══════════════════════════════════════════════════════════════════════
+// INIT
+// ═══════════════════════════════════════════════════════════════════════
+
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('.screen').forEach(s => { s.style.display = 'none'; });
+  document.getElementById('screen-intro').style.display = 'block';
+  document.getElementById('screen-intro').classList.add('active');
+
+  window.addEventListener('message', (ev) => {
+    if (ev.origin !== location.origin) return;
+    if (ev.data?.type !== 'ms-auth') return;
+    handleMsAuthResult(ev.data);
+  });
+
+  const stored = sessionStorage.getItem('ms_auth_result');
+  if (stored) {
+    try { handleMsAuthResult(JSON.parse(stored)); } catch(e) {}
+    sessionStorage.removeItem('ms_auth_result');
+  }
+});
+
+// ═══════════════════════════════════════════════════════════════════════
+// MICROSOFT OAUTH
+// ═══════════════════════════════════════════════════════════════════════
+
+const MS_CLIENT_ID = 'e3e945d5-1aa3-4f14-9e7d-8e876613de0d';
+const MS_REDIRECT  = 'https://nis2klar.se/auth/callback.html';
+const MS_SCOPES    = 'openid profile email User.Read Organization.Read.All ' +
+                     'Directory.Read.All Policy.Read.All SecurityEvents.Read.All';
+
+function loginMicrosoftFast() {
+  window._msFromIntro = true;
+  const btn = document.getElementById('ms-btn-intro');
+  btn.disabled = true;
+  btn.innerHTML = btn.innerHTML.replace('Analizza con Microsoft 365 – subito', 'Connessione…');
+  const state = Math.random().toString(36).slice(2);
+  sessionStorage.setItem('ms_state', state);
+  const url = 'https://login.microsoftonline.com/common/oauth2/v2.0/authorize?' +
+    new URLSearchParams({ client_id: MS_CLIENT_ID, response_type: 'code', redirect_uri: MS_REDIRECT, scope: MS_SCOPES, state, prompt: 'select_account' }).toString();
+  const popup = window.open(url, 'ms-login', 'width=520,height=620,left=200,top=100');
+  if (!popup) { sessionStorage.setItem('ms_pending', '1'); window.location.href = url; }
+}
+
+function showManualForm() {
+  document.getElementById('ms-step').style.display = 'none';
+  document.getElementById('gate-manual-form').style.display = 'block';
+  document.getElementById('f-name').focus();
+}
+
+function loginMicrosoft() {
+  const state = Math.random().toString(36).slice(2);
+  sessionStorage.setItem('ms_state', state);
+  const url = 'https://login.microsoftonline.com/common/oauth2/v2.0/authorize?' +
+    new URLSearchParams({ client_id: MS_CLIENT_ID, response_type: 'code', redirect_uri: MS_REDIRECT, scope: MS_SCOPES, state, prompt: 'select_account' }).toString();
+  const popup = window.open(url, 'ms-login', 'width=520,height=620,left=200,top=100');
+  if (!popup) { sessionStorage.setItem('ms_pending', '1'); window.location.href = url; }
+}
+
+function handleMsAuthResult(data) {
+  const msBtn = document.getElementById('ms-btn');
+  const fromIntro = window._msFromIntro;
+  window._msFromIntro = false;
+
+  if (!data.success) {
+    if (fromIntro) {
+      const el = document.getElementById('ms-intro-status');
+      el.textContent = 'Accesso non riuscito — avvia il quiz manualmente di seguito.';
+      el.className = 'ms-status error';
+      el.style.display = 'block';
+      const btn = document.getElementById('ms-btn-intro');
+      btn.disabled = false;
+      btn.innerHTML = btn.innerHTML.replace('Connessione…', 'Analizza con Microsoft 365 – subito');
+    } else {
+      const statusEl = document.getElementById('ms-status');
+      statusEl.textContent = 'Accesso non riuscito — compila manualmente di seguito.';
+      statusEl.className = 'ms-status error';
+      statusEl.style.display = 'block';
+      setTimeout(() => {
+        document.getElementById('ms-step').style.display = 'none';
+        document.getElementById('gate-manual-form').style.display = 'block';
+      }, 1500);
+    }
+    return;
+  }
+
+  let statusEl;
+  if (fromIntro) {
+    const filled = Object.keys(data.autofills || {}).length;
+    const remaining = 25 - filled;
+    const introStatus = document.getElementById('ms-intro-status');
+    introStatus.textContent = filled > 0
+      ? `✓ ${filled} domande precompilate da Microsoft 365 — rispondi alle restanti ${remaining}.`
+      : 'Dati Microsoft 365 recuperati — inizia il quiz di seguito.';
+    introStatus.className = 'ms-status';
+    introStatus.style.display = 'block';
+    setTimeout(() => {
+      startQuiz();
+      document.getElementById('ms-quiz-banner').style.display = 'block';
+    }, 1200);
+    statusEl = introStatus;
+  } else {
+    document.getElementById('ms-step').style.display = 'none';
+    document.getElementById('gate-manual-form').style.display = 'block';
+    statusEl = document.getElementById('ms-status-form');
+  }
+
+  if (data.profile?.email) { const el = document.getElementById('f-email'); if (el) el.value = data.profile.email; }
+  if (data.profile?.name) { const el = document.getElementById('f-name'); if (el && !el.value) el.value = data.profile.name; }
+  if (data.profile?.company) { const el = document.getElementById('f-company'); if (el && !el.value) el.value = data.profile.company; }
+
+  const fills = data.autofills || {};
+  window._msAutofills = fills;
+  let count = 0;
+  for (const [key, val] of Object.entries(fills)) {
+    const m = key.match(/^d(\d+)_q(\d+)$/);
+    if (!m) continue;
+    const d = +m[1], q = +m[2];
+    if (answers[key] === undefined) { setAnswer(d, q, val); count++; }
+  }
+
+  let msg = `✓ Microsoft 365 connesso — ${count} domande precompilate`;
+  if (data.secureScore !== null && data.secureScore !== undefined) {
+    msg += ` · Secure Score: ${data.secureScore}%`;
+  }
+  statusEl.textContent = msg;
+  statusEl.className = 'ms-status';
+  statusEl.style.display = 'block';
+
+  window._msEvidence = data.evidence || {};
+  window._msLicenses = data.licenseSummary || null;
+
+  renderDomain();
+}
+</script>
+<script>
+  (function() {
+    var PAGE = 'nis2-analisi-gap-it';
+    new Image().src = '/api/track/pixel?page=' + PAGE;
+    var token = new URLSearchParams(window.location.search).get('t');
+    if (token) {
+      fetch('/api/track?t=' + encodeURIComponent(token) + '&page=' + PAGE, { method: 'GET', redirect: 'manual' }).catch(function(){});
+    }
+  })();
+</script>
+<script src="/cookie-banner.js"></script>
+</body>
+</html>

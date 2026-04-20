@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-BKF3QH9K01"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag("js", new Date());
+    gtag("config", "G-BKF3QH9K01");
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Microsoft Purview: Priser och vad som krävs för NIS2-dataskydd | NIS2Klar</title>
+  <meta name="description" content="Microsoft Purview är en nyckelkomponent för NIS2-dataskydd. Läs vad som ingår i E3, E5 och Purview-tillägg — och vad det kostar för att uppfylla dataskyddskraven.">
+  <meta property="og:title" content="Microsoft Purview: Priser och vad som krävs för NIS2-dataskydd">
+  <meta property="og:description" content="Microsoft Purview är en nyckelkomponent för NIS2-dataskydd. Läs vad som ingår i E3, E5 och Purview-tillägg — och vad det kostar för att uppfylla dataskyddskraven.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #141416;
+      --card: #1c1c1f;
+      --yellow: #f5c518;
+      --white: #f0f0f0;
+      --muted: #888;
+      --red: #C61212;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: var(--bg); color: var(--white); font-family: 'Barlow', sans-serif; font-size: 19px; line-height: 1.8; }
+
+    /* Nav */
+    nav { display: flex; justify-content: space-between; align-items: center; padding: 20px 40px; border-bottom: 1px solid rgba(255,255,255,0.07); max-width: 900px; margin: 0 auto; }
+    .nav-logo { font-family: 'Poppins', sans-serif; font-weight: 900; font-size: 20px; color: var(--yellow); text-decoration: none; }
+    .nav-logo span { color: var(--white); }
+    .nav-back { color: var(--muted); text-decoration: none; font-size: 15px; }
+    .nav-back:hover { color: var(--white); }
+    .nav-cta { background: var(--yellow); color: #000; padding: 8px 18px; border-radius: 4px; text-decoration: none; font-weight: 700; font-size: 14px; font-family: 'Poppins', sans-serif; }
+
+    /* Article */
+    .article-wrap { max-width: 760px; margin: 0 auto; padding: 60px 40px; }
+    .article-category { font-size: 13px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 16px; }
+    h1 { font-family: 'Poppins', sans-serif; font-size: clamp(30px, 4vw, 44px); font-weight: 900; line-height: 1.2; margin-bottom: 24px; }
+    .article-meta { font-size: 15px; color: var(--muted); margin-bottom: 48px; padding-bottom: 24px; border-bottom: 1px solid rgba(255,255,255,0.07); }
+    h2 { font-family: 'Poppins', sans-serif; font-size: 26px; font-weight: 700; margin: 48px 0 16px; color: var(--white); }
+    h3 { font-family: 'Poppins', sans-serif; font-size: 20px; font-weight: 600; margin: 32px 0 12px; color: var(--yellow); }
+    p { margin-bottom: 22px; }
+    strong { color: var(--white); font-weight: 700; }
+    .highlight { color: var(--yellow); font-weight: 700; }
+    .danger { color: #ff6b6b; font-weight: 700; }
+    ul, ol { margin: 16px 0 24px 24px; }
+    li { margin-bottom: 12px; font-size: 19px; }
+
+    /* Callout boxes */
+    .box-warning { background: rgba(197,17,17,0.12); border-left: 4px solid var(--red); padding: 20px 24px; margin: 32px 0; border-radius: 0 4px 4px 0; }
+    .box-info { background: rgba(245,197,24,0.08); border-left: 4px solid var(--yellow); padding: 20px 24px; margin: 32px 0; border-radius: 0 4px 4px 0; }
+    .box-case { background: var(--card); border: 1px solid rgba(255,255,255,0.08); padding: 28px; margin: 40px 0; border-radius: 4px; }
+    .box-case .case-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 12px; }
+    blockquote { border-left: 3px solid var(--yellow); padding: 12px 20px; margin: 24px 0; font-style: italic; color: #ccc; }
+
+    /* CTA */
+    .cta-section { background: var(--card); border: 1px solid rgba(245,197,24,0.2); border-radius: 4px; padding: 48px 40px; margin: 64px 0 40px; text-align: center; }
+    .cta-section h2 { margin-top: 0; font-size: 26px; }
+    .cta-section p { color: #aaa; max-width: 500px; margin: 0 auto 28px; }
+    .btn-primary { display: inline-block; background: var(--yellow); color: #000; font-family: 'Poppins', sans-serif; font-weight: 800; font-size: 16px; padding: 16px 36px; border-radius: 4px; text-decoration: none; }
+    .btn-primary:hover { background: #e0b010; }
+    .cta-fine { font-size: 13px; color: var(--muted); margin-top: 16px; }
+
+    /* FAQ */
+    .faq-item { border-bottom: 1px solid rgba(255,255,255,0.07); padding: 20px 0; }
+    .faq-q { font-family: 'Poppins', sans-serif; font-weight: 600; margin-bottom: 10px; }
+    .faq-a { color: #bbb; }
+
+    /* Price table */
+    .price-table { width: 100%; border-collapse: collapse; margin: 24px 0; font-size: 15px; }
+    .price-table th { background: rgba(245,197,24,0.1); color: var(--yellow); font-family: 'Poppins', sans-serif; font-size: 13px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 12px 16px; text-align: left; border-bottom: 1px solid rgba(245,197,24,0.2); }
+    .price-table td { padding: 14px 16px; border-bottom: 1px solid rgba(255,255,255,0.05); }
+    .price-table tr:last-child td { border-bottom: none; }
+    .price-table .included { color: #4ade80; }
+    .price-table .notincluded { color: #ff6b6b; }
+    .price-table .addon { color: #f5c518; font-weight: 600; }
+
+    /* Summary + Key Takeaway */
+    .box-summary { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; padding: 24px 28px; margin: 0 0 32px; }
+    .summary-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-bottom: 14px; }
+    .box-summary ul { margin: 0; padding-left: 20px; }
+    .box-summary li { margin-bottom: 8px; font-size: 17px; color: #ccc; }
+    .box-takeaway { background: rgba(245,197,24,0.08); border-left: 4px solid var(--yellow); padding: 20px 24px; margin: 0 0 40px; border-radius: 0 4px 4px 0; }
+    .takeaway-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 10px; }
+    .box-takeaway p { margin: 0; font-size: 18px; font-weight: 600; color: var(--white); line-height: 1.6; }
+
+    /* Footer */
+    footer { border-top: 1px solid rgba(255,255,255,0.07); padding: 32px 40px; text-align: center; font-size: 13px; color: var(--muted); max-width: 900px; margin: 0 auto; }
+    footer a { color: var(--muted); }
+
+    @media (max-width: 600px) {
+      nav, .article-wrap, footer { padding: 20px; }
+      .cta-section { padding: 32px 20px; }
+      .price-table { font-size: 14px; }
+      .price-table th, .price-table td { padding: 10px 10px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="https://nis2klar.se/">NIS2<span>Klar</span></a>
+  <a class="nav-back" href="https://nis2klar.se/artiklar.html">← Alla artiklar</a>
+  <a class="nav-cta" href="https://nis2klar.se/#boka">Boka samtal →</a>
+</nav>
+
+<article class="article-wrap">
+  <div class="article-category">Dataskydd &amp; Compliance</div>
+  <h1>Microsoft Purview: Priser och vad som krävs för NIS2-dataskydd</h1>
+  <div class="article-meta">Uppdaterad 19 april 2026 · Lästid: ca 8 minuter · Målgrupp: Ledning</div>
+
+  <!-- SUMMARY -->
+  <div class="box-summary">
+    <div class="summary-label">Sammanfattning</div>
+    <ul>
+      <li>Purview är Microsofts dataskyddssuite — delvis inkluderad i M365 E3/E5, delvis separat addon.</li>
+      <li>För NIS2 behöver du Purview Compliance Manager (rapportering), Sensitivity Labels (klassificering) och Data Loss Prevention (blockering).</li>
+      <li>Kostnad: från cirka 500 kr/månad för små organisationer med E3 till 5 000+ kr/månad för större med fullt tillägg.</li>
+      <li>Det billigaste är att redan ha rätt licenser — det dyraste är att missa NIS2-kraven och få böter på 10 miljoner euro.</li>
+    </ul>
+  </div>
+
+  <!-- KEY TAKEAWAY -->
+  <div class="box-takeaway">
+    <div class="takeaway-label">Viktigaste slutsatsen</div>
+    <p>Du behöver inte köpa Purview separat för att börja. Men utan funktionerna som Purview tillhandahåller — klassificering, kontroll och rapportering av känslig data — kan du inte dokumentera att du uppfyller NIS2:s kryptering och åtkomstkontrollkrav.</p>
+  </div>
+
+  <!-- HOOK -->
+  <p>
+    En av de största missuppfattningarna är att man kan "spara pengar" genom att inte implementera dataskydd före NIS2-granskningen. Fakta är motsatsen: dataskyddstoolkitet kostar en bråkdel av det administrativa arbete som krävs för att bevisa efterlevnad utan det.
+  </p>
+
+  <p>
+    Microsoft Purview är ingen lyx. Det är ett verktygskiffer som låter dig dokumentera och bevisa vad du redan gör — och vad som saknas.
+  </p>
+
+  <div class="box-warning">
+    <strong>Missuppfattning:</strong> "Vi använjar inte klassificerad data, så vi behöver inte Purview." Det falskt. NIS2 Artikel 21 kräver att du kan bevisa att du <strong>vet</strong> vilken data du hanterar och hur den är skyddad. Utan klassificeringsverktyg är det bevis omöjligt — och tillsynsmyndigheten kommer att se det.
+  </div>
+
+  <h2>Vad är Microsoft Purview egentligen?</h2>
+
+  <p>
+    Purview är Microsofts paraply för dataskydd, compliance och informationsstyrning. Det är inte ett enda verktyg — det är en familj av funktioner:
+  </p>
+
+  <ul>
+    <li><strong>Purview Compliance Manager</strong> — administrering av compliance-åtgärder och rapportering</li>
+    <li><strong>Purview Sensitivity Labels</strong> — klassificering av dokument och e-postmeddelanden</li>
+    <li><strong>Purview Data Loss Prevention (DLP)</strong> — blockering av okontrollerad dataspridning</li>
+    <li><strong>Purview Information Barriers</strong> — separering av känsliga datakällor (framför allt inom finanssektorn)</li>
+    <li><strong>Purview eDiscovery</strong> — incidenthantering och rättighetsprocesser</li>
+    <li><strong>Purview Audit</strong> — loggar av vem som har gjort vad, när och var</li>
+  </ul>
+
+  <p>
+    För NIS2 är de tre första — Compliance Manager, Sensitivity Labels och Data Loss Prevention — de kritiska. Det är där du dokumenterar klassificering, åtkomstkontroll och kryptering.
+  </p>
+
+  <h2>Vad ingår i din M365-licens redan?</h2>
+
+  <p>
+    Microsoft har gjort det enkelt att förvirra: vissa Purview-funktioner är inkluderade i varje M365-licens, andra kostar extra. Här är sanningen:
+  </p>
+
+  <table class="price-table">
+    <thead>
+      <tr>
+        <th>Funktion</th>
+        <th>M365 E3</th>
+        <th>M365 E5</th>
+        <th>Purview Compliance Add-on</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Sensitivity Labels</strong></td>
+        <td class="included">✓ Inkluderad</td>
+        <td class="included">✓ Inkluderad</td>
+        <td>–</td>
+      </tr>
+      <tr>
+        <td><strong>Compliance Manager</strong></td>
+        <td class="included">✓ Begränsad</td>
+        <td class="included">✓ Full</td>
+        <td>–</td>
+      </tr>
+      <tr>
+        <td><strong>Data Loss Prevention (DLP)</strong></td>
+        <td class="notincluded">✗ Begränsad (endast Office-appar)</td>
+        <td class="included">✓ Full (alla plattformar)</td>
+        <td>–</td>
+      </tr>
+      <tr>
+        <td><strong>Information Barriers</strong></td>
+        <td class="notincluded">✗</td>
+        <td class="included">✓ Inkluderad</td>
+        <td>–</td>
+      </tr>
+      <tr>
+        <td><strong>eDiscovery &amp; Audit Logs</strong></td>
+        <td class="included">✓ Grundläggande</td>
+        <td class="included">✓ Full</td>
+        <td>–</td>
+      </tr>
+      <tr>
+        <td><strong>Purview Insider Risk Management</strong></td>
+        <td class="notincluded">✗</td>
+        <td class="included">✓ Inkluderad</td>
+        <td class="addon">Kan köpas separat</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>
+    <strong>Tolkning för NIS2:</strong> Om du har M365 E3 får du en del av det du behöver — klassificering, grundläggande Compliance Manager och loggning. Men du saknar full DLP-skydd och Information Barriers. Med E5 får du nästan allt. Med ett Compliance Add-on får du vad du saknar.
+  </p>
+
+  <h2>Vad behöver du för att uppfylla NIS2?</h2>
+
+  <p>
+    NIS2 Artikel 21 listar tio säkerhetskategorier. För dataskydd är dessa de viktigaste:
+  </p>
+
+  <h3>3. Kryptering och pseudonymisering (Artikel 21.2 c)</h3>
+  <p>
+    Du måste kunna bevisa att du krypterar känslig data i vila och under överföring. Utan klassificering (Purview Sensitivity Labels) kan du inte visa vilken data som är känslig och därför krypterad. Det är det första hovet.
+  </p>
+
+  <h3>4. Tillgångskontroll (Artikel 21.2 d)</h3>
+  <p>
+    Du måste kontrollera vem som kan läsa, redigera eller ta bort data. Purview Sensitivity Labels implementerar detta genom skyddsgrupper, medan Data Loss Prevention blockerar spridning till obehöriga.
+  </p>
+
+  <h3>6. Incidenthantering (Artikel 21.2 f)</h3>
+  <p>
+    När en säkerhetsincident inträffar måste du kunna identifiera vad som exponerades. Purview eDiscovery och Audit Logs är basen för detta.
+  </p>
+
+  <div class="box-info">
+    <strong>NIS2 i praktiken:</strong> En läkarmottagning klassificerar patientdata som "Höga kryptering erforderlig". Purview Sensitivity Labels tillämpar automatisk AES-256-kryptering och ställer in att endast överläkare och administratörer kan läsa den. Om någon försöker att dela filen till en privat e-post blockerar DLP det. Om en läkare senare öppnar en fil gör Audit Log detta synligt för SIEM-systemet.
+  </div>
+
+  <h2>Prisöversikt — vad kostar det?</h2>
+
+  <p>
+    Priset beror på vilka licenser du redan har och hur många användare du behöver skydda. Här är realistiska scenarier för en Sverige-baserad organisation:
+  </p>
+
+  <h3>Scenario 1: Liten organisation (50–100 anställda) med E3</h3>
+  <p>
+    <strong>Befintlig kostnad:</strong> ~300 kr/person/månad = ~15 000–30 000 kr/månad för M365 E3.
+  </p>
+  <p>
+    <strong>För NIS2-dataskydd:</strong> Du har redan Sensitivity Labels och grundläggande Compliance Manager. Du behöver uppgradera eller lägga till:
+  </p>
+  <ul>
+    <li>Purview DLP Add-on: ~150 kr/person/månad (~7 500–15 000 kr/månad)</li>
+    <li>Eller: Byt till E5 för ~550 kr/person/månad (~27 500–55 000 kr/månad)</li>
+  </ul>
+  <p>
+    <strong>Rekommendation:</strong> DLP Add-on är billigare initialt. Om du senare behöver Insider Risk Management (för att övervaka insider-hot) eller fullt Information Barriers är E5 kostnadseffektivare långsiktigt.
+  </p>
+
+  <h3>Scenario 2: Medelstor organisation (150–300 anställda) med E5</h3>
+  <p>
+    <strong>Befintlig kostnad:</strong> ~550 kr/person/månad = ~82 500–165 000 kr/månad för M365 E5.
+  </p>
+  <p>
+    <strong>För NIS2-dataskydd:</strong> Du har nästan allt inkluderat. Du behöver bara:
+  </p>
+  <ul>
+    <li>Konfiguration av Sensitivity Labels och DLP-policies (engångsarbete, ca 10–20 timmar konsultation)</li>
+    <li>Eventuellt: Purview Information Barriers om du hanterar konkurrensutsatt data (~50 kr/person/månad)</li>
+  </ul>
+  <p>
+    <strong>Månadskostnad utan tillägg:</strong> ~82 500–165 000 kr (samma som innan, ingen ökning).
+  </p>
+
+  <h3>Scenario 3: Stor organisation (500+ anställda) med varierad licensering</h3>
+  <p>
+    <strong>Befintlig kostnad:</strong> Mix av E3, E5 och speciallicenser. Låt oss säga genomsnitt ~400 kr/person/månad = ~200 000+ kr/månad.
+  </p>
+  <p>
+    <strong>För NIS2-dataskydd:</strong> Du behöver:
+  </p>
+  <ul>
+    <li>E3-användare uppgraderas till E5 eller E3 + Purview Compliance Add-on</li>
+    <li>Purview Information Barriers för kritiska data (~50 kr/person/månad för relevanta användargrupper)</li>
+    <li>Möjligtvis Purview Insider Risk Management (~30 kr/person/månad för ledningsgruppen)</li>
+  </ul>
+  <p>
+    <strong>Estimated tillägg:</strong> ~30 000–80 000 kr/månad beroende på klassificeringens omfattning.
+  </p>
+
+  <h2>Vad är INTE Purview — och vad behöver du istället?</h2>
+
+  <p>
+    Det är viktigt att förstå gränserna. Purview hanterar dataskydd — men NIS2 kräver mycket mer än så.
+  </p>
+
+  <ul>
+    <li><strong>Säkerhetsövervakning:</strong> Purview är inte ett SIEM. Du behöver Microsoft Sentinel eller motsvarande för att övervaka anomalier och attacker i realtid.</li>
+    <li><strong>Endpoint Protection:</strong> Purview klassificerar data — men skyddar inte endpoints. Du behöver Microsoft Defender för Endpoint.</li>
+    <li><strong>Identitetskontroll:</strong> Purview arbetar tillsammans med Microsoft Entra ID (tidigare Azure AD) för åtkomstkontroll, men är inte identitetslösningen i sig.</li>
+    <li><strong>Backup och återhämtning:</strong> Purview kan inte ersätta Microsoft 365 Backup eller Azure Backup för kontinuitetsplanering.</li>
+  </ul>
+
+  <p>
+    Med andra ord: Purview är ett <strong>kritiskt</strong> verktyg för NIS2-dataskydd, men det är en del av ett större pussel. Din totala investering måste inkludera identitet, övervakning, endpoint-skydd och backup.
+  </p>
+
+  <div class="box-case">
+    <div class="case-label">Fallstudie</div>
+    <p>
+      <strong>Scenario: Finanskonsult med 75 anställda, befintlig M365 E3.</strong>
+    </p>
+    <p>
+      Organisationen hanterar klientportföljer som är klassade som högt känslig data. De försöker att minimera kostnader och väljer att inte implementera Purview DLP. I stället sätter de upp manuell policy: "Dela inte filer på privat e-post".
+    </p>
+    <p>
+      Under granskningen av MSB presenteras ingen dokumentation på klassificering eller automatiserad datakontroll. En slumpartad test visar att en konsult kunde ladda ner en komplett klientportfölj och e-meja den till sin privata mailbox utan teknisk blockering.
+    </p>
+    <p>
+      <strong>Resultat:</strong> NIS2-kritik för bristande kryptering (Artikel 21.2 c) och åtkomstkontroll (Artikel 21.2 d). Ansvar för personuppgifter enligt GDPR utredas parallellt. Böte på ~5 miljoner kronor (motsvarande 500 000 euro för viktig entitet). Reparationen — att implementera Purview DLP retroaktivt — kostar ytterligare 100 000+ kronor i konsultation.
+    </p>
+    <p>
+      <strong>Lärdomen:</strong> DLP-addonet hade kostat ca 7 500 kr/månad. Årskostnad: 90 000 kronor. Alternativkostnaden för att inte ha det: 5 miljoner kronor i böter plus omputationsarbete.
+    </p>
+  </div>
+
+  <h2>Implementering — vad gör du nästa vecka?</h2>
+
+  <p>
+    Priset är bara delen av bilden. Implementering är det andra.
+  </p>
+
+  <h3>Vecka 1–2: Klassificeringsschema</h3>
+  <p>
+    Definiera vilka datakategorier som kräver skydd: personuppgifter, affärshemligheter, patientdata, finansiell data osv. Purview Sensitivity Labels måste stämma överens med dessa kategorier.
+  </p>
+
+  <h3>Vecka 3–4: Rollout av Labels</h3>
+  <p>
+    Implementera automatiska klassificeringsregler baserat på filtyper, nyckelord och placering. En finansfil med personnummer klassificeras automatiskt som "Konfidentiell".
+  </p>
+
+  <h3>Vecka 5–6: DLP-policies</h3>
+  <p>
+    Ställ in regler som förhindrar att klassificerad data skickas till privat e-post, delas med externa användare eller kopieras till USB-enheter utan godkännande.
+  </p>
+
+  <h3>Vecka 7–8: Tester och justering</h3>
+  <p>
+    Testa i begränsad omfattning. Justera false positives (åtgärder som blockerar laglig aktivitet) innan full rollout.
+  </p>
+
+  <h3>Vecka 9+: Övervakning och rapportering</h3>
+  <p>
+    Purview Compliance Manager genererar rapporter som visar: hur många filer klassificerades, hur många DLP-händelser som inträffade, vilka åtgärder som vidtogs. Det här är din bevisning för tillsynsmyndigheten.
+  </p>
+
+  <h2>Vanliga frågor</h2>
+
+  <div class="faq-item">
+    <div class="faq-q">Vi är en liten organisation. Räcker inte att vi bara är försiktiga med data?</div>
+    <div class="faq-a">Nej. NIS2 bygger på dokumenterad, automatiserad kontroll — inte på tillit eller beteende. En tillsynsmyndighet som granskar förväntar sig att du kan visa att du automatiskt klassificerar och kontrollerar data. Manuella policies räcker inte för att demostrerat uppfylla Artikel 21. Det är därför Purview eller motsvarande lösning är nödvändig.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">Kostar Purview extra om vi redan har Microsoft 365?</div>
+    <div class="faq-a">Ja och nej. Sensitivity Labels och Compliance Manager är redan inkluderade i E3 och E5. Data Loss Prevention är inkluderad i E5 men inte E3 — då behöver du en add-on. Information Barriers och Insider Risk Management är E5-eksklusiva. Så om du har E5 redan är Purview-grundfunktionerna gratis. Om du har E3 kommer du att behöva antingen uppgradera eller köpa tillägg.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">Kan vi implementera Purview själva eller behöver vi konsult?</div>
+    <div class="faq-a">Det beror på din organization-mognadsgrad. Grundläggande klassificering och labels kan du implementera själv — Microsoft har bra dokumentation. Men för att säkerställa att reglerna matchar NIS2-kraven och att DLP-policies inte blockerar legitim verksamhet rekommenderar vi en initial konsultation (10–20 timmar) för att sätta upp klassificeringsschem

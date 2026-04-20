@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-BKF3QH9K01"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag("js", new Date());
+    gtag("config", "G-BKF3QH9K01");
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NIS2 nærmer seg: Er organisasjonen din klar? | NIS2Klar</title>
+  <meta name="description" content="NIS2-regelverket implementeres i Norge. Bøter kan nå opptil 10 millioner euro. Styremedlemmer risikerer personlig ansvar. Sjekk hvor organisasjonen din står.">
+  <meta property="og:title" content="NIS2 nærmer seg: Er organisasjonen din klar?">
+  <meta property="og:description" content="NIS2-regelverket implementeres i Norge. Bøter kan nå opptil 10 millioner euro. Styremedlemmer risikerer personlig ansvar. Sjekk hvor organisasjonen din står.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #141416;
+      --card: #1c1c1f;
+      --yellow: #f5c518;
+      --white: #f0f0f0;
+      --muted: #888;
+      --red: #C61212;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: var(--bg); color: var(--white); font-family: 'Barlow', sans-serif; font-size: 19px; line-height: 1.8; }
+
+    /* Nav */
+    nav { display: flex; justify-content: space-between; align-items: center; padding: 20px 40px; border-bottom: 1px solid rgba(255,255,255,0.07); max-width: 1200px; margin: 0 auto; }
+    .nav-logo { font-family: 'Poppins', sans-serif; font-weight: 900; font-size: 20px; color: var(--yellow); text-decoration: none; }
+    .nav-logo span { color: var(--white); }
+    .nav-links { display: flex; gap: 20px; align-items: center; }
+    .nav-back { color: var(--muted); text-decoration: none; font-size: 15px; }
+    .nav-back:hover { color: var(--white); }
+    .lang-switcher { display: flex; gap: 8px; align-items: center; font-size: 13px; font-family: 'Poppins', sans-serif; }
+    .lang-switcher a { color: #888; text-decoration: none; font-weight: 600; padding: 4px 8px; border-radius: 3px; }
+    .lang-switcher a:hover { color: var(--white); }
+    .lang-switcher a.active { color: var(--yellow); background: rgba(245,197,24,0.1); }
+    .nav-cta { background: var(--yellow); color: #000; padding: 8px 18px; border-radius: 4px; text-decoration: none; font-weight: 700; font-size: 14px; font-family: 'Poppins', sans-serif; }
+
+    /* Article */
+    .article-wrap { max-width: 760px; margin: 0 auto; padding: 60px 40px; }
+    .article-category { font-size: 13px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 16px; }
+    h1 { font-family: 'Poppins', sans-serif; font-size: clamp(30px, 4vw, 44px); font-weight: 900; line-height: 1.2; margin-bottom: 24px; }
+    .article-meta { font-size: 15px; color: var(--muted); margin-bottom: 48px; padding-bottom: 24px; border-bottom: 1px solid rgba(255,255,255,0.07); }
+    h2 { font-family: 'Poppins', sans-serif; font-size: 26px; font-weight: 700; margin: 48px 0 16px; color: var(--white); }
+    h3 { font-family: 'Poppins', sans-serif; font-size: 20px; font-weight: 600; margin: 32px 0 12px; color: var(--yellow); }
+    p { margin-bottom: 22px; }
+    strong { color: var(--white); font-weight: 700; }
+    .highlight { color: var(--yellow); font-weight: 700; }
+    .danger { color: #ff6b6b; font-weight: 700; }
+    ul, ol { margin: 16px 0 24px 24px; }
+    li { margin-bottom: 12px; font-size: 19px; }
+
+    /* Callout boxes */
+    .box-warning { background: rgba(197,17,17,0.12); border-left: 4px solid var(--red); padding: 20px 24px; margin: 32px 0; border-radius: 0 4px 4px 0; }
+    .box-info { background: rgba(245,197,24,0.08); border-left: 4px solid var(--yellow); padding: 20px 24px; margin: 32px 0; border-radius: 0 4px 4px 0; }
+    .box-case { background: var(--card); border: 1px solid rgba(255,255,255,0.08); padding: 28px; margin: 40px 0; border-radius: 4px; }
+    .box-case .case-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 12px; }
+    blockquote { border-left: 3px solid var(--yellow); padding: 12px 20px; margin: 24px 0; font-style: italic; color: #ccc; }
+
+    /* CTA */
+    .cta-section { background: var(--card); border: 1px solid rgba(245,197,24,0.2); border-radius: 4px; padding: 48px 40px; margin: 64px 0 40px; text-align: center; }
+    .cta-section h2 { margin-top: 0; font-size: 26px; }
+    .cta-section p { color: #aaa; max-width: 500px; margin: 0 auto 28px; }
+    .btn-primary { display: inline-block; background: var(--yellow); color: #000; font-family: 'Poppins', sans-serif; font-weight: 800; font-size: 16px; padding: 16px 36px; border-radius: 4px; text-decoration: none; }
+    .btn-primary:hover { background: #e0b010; }
+    .cta-fine { font-size: 13px; color: var(--muted); margin-top: 16px; }
+
+    /* FAQ */
+    .faq-item { border-bottom: 1px solid rgba(255,255,255,0.07); padding: 20px 0; }
+    .faq-q { font-family: 'Poppins', sans-serif; font-weight: 600; margin-bottom: 10px; }
+    .faq-a { color: #bbb; }
+
+    /* Fine table */
+    .fine-table { width: 100%; border-collapse: collapse; margin: 24px 0; }
+    .fine-table th { background: rgba(245,197,24,0.1); color: var(--yellow); font-family: 'Poppins', sans-serif; font-size: 13px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 12px 16px; text-align: left; border-bottom: 1px solid rgba(245,197,24,0.2); }
+    .fine-table td { padding: 14px 16px; border-bottom: 1px solid rgba(255,255,255,0.05); font-size: 15px; }
+    .fine-table tr:last-child td { border-bottom: none; }
+    .fine-table .amount { color: #ff6b6b; font-weight: 700; }
+
+    /* Summary + Key Takeaway */
+    .box-summary { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; padding: 24px 28px; margin: 0 0 32px; }
+    .summary-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-bottom: 14px; }
+    .box-summary ul { margin: 0; padding-left: 20px; }
+    .box-summary li { margin-bottom: 8px; font-size: 17px; color: #ccc; }
+    .box-takeaway { background: rgba(245,197,24,0.08); border-left: 4px solid var(--yellow); padding: 20px 24px; margin: 0 0 40px; border-radius: 0 4px 4px 0; }
+    .takeaway-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 10px; }
+    .box-takeaway p { margin: 0; font-size: 18px; font-weight: 600; color: var(--white); line-height: 1.6; }
+
+    /* Related articles */
+    .related-articles { margin: 2.5rem 0 2rem; padding: 1.5rem; background: #1a1a2e; border-left: 4px solid #f0a500; border-radius: 4px; }
+    .related-articles p { margin: 0; }
+    .related-articles ul { list-style: none; margin: 0; padding: 0; }
+    .related-articles li { margin: 0.5rem 0; }
+    .related-articles a { color: #e0e0e0; text-decoration: none; }
+    .related-articles a:hover { color: #f0a500; }
+
+    /* Footer */
+    footer { border-top: 1px solid rgba(255,255,255,0.07); padding: 32px 40px; text-align: center; font-size: 13px; color: var(--muted); max-width: 900px; margin: 0 auto; }
+    footer a { color: var(--muted); }
+
+    @media (max-width: 600px) {
+      nav { padding: 16px 20px; flex-direction: column; gap: 12px; }
+      .nav-links { flex-direction: column; gap: 12px; width: 100%; }
+      .article-wrap { padding: 40px 20px; }
+      .cta-section { padding: 32px 20px; }
+      .fine-table { font-size: 14px; }
+      .fine-table th, .fine-table td { padding: 10px 10px; }
+      .lang-switcher { order: 3; width: 100%; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="https://nis2klar.se/no/">NIS2<span>Klar</span></a>
+  <div class="nav-links">
+    <a class="nav-back" href="https://nis2klar.se/no/artikler.html">← Alle artikler</a>
+    <div class="lang-switcher">
+      <a href="https://nis2klar.se/artiklar.html" title="Svenska">SV</a>
+      <a href="https://nis2klar.se/en/articles.html" title="English">EN</a>
+      <a href="https://nis2klar.se/da/artikler.html" title="Dansk">DA</a>
+      <a href="https://nis2klar.se/no/artikler.html" class="active" title="Norsk">NO</a>
+      <a href="https://nis2klar.se/it/articoli.html" title="Italiano">IT</a>
+    </div>
+    <a class="nav-cta" href="https://nis2klar.se/no/#boka">Book konsultasjon →</a>
+  </div>
+</nav>
+
+<article class="article-wrap">
+  <div class="article-category">Gjennomføring &amp; Beredskap</div>
+  <h1>NIS2 nærmer seg: Er organisasjonen din klar?</h1>
+  <div class="article-meta">Oppdatert 19. april 2026 · Lesetid: ca 8 minutter · Målgruppe: Direktører og styremedlemmer</div>
+
+  <!-- SUMMARY -->
+  <div class="box-summary">
+    <div class="summary-label">Sammendrag</div>
+    <ul>
+      <li>NIS2-direktivet implementeres i Norge via EØS-avtalen — forventes fullført i 2025–2026.</li>
+      <li>Bøter kan nå opptil <strong>10 millioner euro</strong> eller 2 % av global omsetning for vesentlige enheter.</li>
+      <li>Direktører og styremedlemmer kan holdes <strong>personlig ansvarlige</strong> — ikke bare bolaget.</li>
+      <li>NSM (Nasjonal sikkerhetsmyndighet) og sektortilsyn er allerede i gang med tilsynsarbeid.</li>
+      <li>Tre szenarioer: helt klar, delvis klar, ikke startet — og kostnadene ved forsinkelse.</li>
+    </ul>
+  </div>
+
+  <!-- KEY TAKEAWAY -->
+  <div class="box-takeaway">
+    <div class="takeaway-label">Viktigste innsikt</div>
+    <p>NIS2 er ikke en IT-funksjon — det er styrelseansvar. Regelverket krever at ledelsesmedlemmer aktivt godkjenner og overvåker sikkerhetstiltak. Mangel på dokumentasjon = personlig ansvar for deg.</p>
+  </div>
+
+  <!-- INTRO -->
+  <p>
+    NIS2-direktivet er på vei til Norge. Implementeringen skjer gjennom EØS-avtalen og forventes ferdig i løpet av 2025–2026.
+  </p>
+
+  <p>
+    Når regelverket trer i kraft, vil organisasjoner i 18 samhällskritiske sektorer måtte oppfylle konkrete sikkerhetskrav — eller risikere bøter opptil <strong>10 millioner euro</strong>.
+  </p>
+
+  <p>
+    Men det som skal få dine oppmerksomhet som direktør eller styremedlem, er ikke først og fremst bøtene til bolaget. Det er <strong>ditt personlige ansvar</strong>.
+  </p>
+
+  <div class="box-warning">
+    <strong>Artikkel 20 i NIS2 slår fast:</strong> Ledelsen skal godkjenne sikkerhetstiltakene og være ansvarlig for at de gjennomføres. Du kan ikke delegere dette bort til IT-avdelingen og håpe det ordner seg.
+  </div>
+
+  <h2>Hva er NIS2, og hvorfor gjelder det Norge?</h2>
+
+  <p>
+    NIS2 er <strong>Network and Information Systems Directive</strong> — et EU-direktiv som skal sikre kritisk infrastruktur mot cyberangrep.
+  </p>
+
+  <p>
+    Norge er ikke EU-medlem, men er tilknyttet gjennom EØS-avtalen (Europeisk økonomisk samarbeidsområde). Det betyr at vi innlemmer NIS2 i norsk lov. Prosessen er i gang, og implementeringen forventes fullført i løpet av 2025–2026.
+  </p>
+
+  <p>
+    <strong>Viktig:</strong> Når regelverket trer i kraft, gjelder det ikke bare de største selskapene. Det gjelder alle organisasjoner klassifisert som:
+  </p>
+
+  <ul>
+    <li><strong>Vesentlige enheter</strong> — stort systemkritisk ansvar (over 250 ansatte eller omsetning over 50 millioner euro)</li>
+    <li><strong>Viktige enheter</strong> — medium størrelse i regulerte sektorer (50–249 ansatte eller 10–50 M€ omsetning)</li>
+  </ul>
+
+  <p>
+    I praksis betyr det organisasjoner innen energi, transport, bank, finansmarkedsinfrastruktur, helse, drikkevann, avløp, digital infrastruktur, IKT-tjenesteforvaltning, offentlig forvaltning, romfart, post, avfallshåndtering, kjemikalier, mat, produksjon, digitale tilbydere og forskning.
+  </p>
+
+  <h2>Bøtenes størrelse — det konkrete tallet</h2>
+
+  <p>
+    Når NSM (Nasjonal sikkerhetsmyndighet) eller relevante sektortilsyn finner brudd på NIS2, kan de ilegge gebyr etter følgende skala:
+  </p>
+
+  <table class="fine-table">
+    <thead>
+      <tr>
+        <th>Kategori</th>
+        <th>Maksimalt gebyr</th>
+        <th>Eller alternativt</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Vesentlig enhet</td>
+        <td class="amount">10 millioner euro</td>
+        <td>2 % av global omsetning</td>
+      </tr>
+      <tr>
+        <td>Viktig enhet</td>
+        <td class="amount">7 millioner euro</td>
+        <td>1,4 % av global omsetning</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>
+    Det høyeste beløpet gjelder. En norsk leverandør av digital infrastruktur med 300 millioner kroner i omsetning klassifisert som vesentlig enhet, kan stå overfor gebyr på <strong>10 millioner euro</strong> — ikke 2 % av omsetningen.
+  </p>
+
+  <p>
+    Gebyrene beregnes per brudd og per manglende sikkerhetstiltak. Det betyr at en organisasjon kan få flere gebyrer parallelt — én for uteblitt hendelsesrapportering, én for manglende risikostyring, og så videre.
+  </p>
+
+  <div class="box-info">
+    <strong>Kostnadsperspektiv:</strong> Selv for en mindre organisasjon klassifisert som "viktig enhet" (7 millioner euro maksimalt gebyr), er terskelen for sanksjoner svært lav. Gebyret kan være betydelig høyere enn kostnaden ved å implementere sikkerhetstiltakene på forhånd.
+  </div>
+
+  <h2>Det personlige ansvaret — dette gjelder deg direkte</h2>
+
+  <p>
+    Her er det viktige punktet som mange direktører og styremedlemmer ikke helt forstår:
+  </p>
+
+  <p>
+    Artikkel 20 i NIS2 sier at <strong>ledelsesorganer</strong> skal godkjenne sikkerhetstiltakene og være ansvarlige for implementering. Det betyr VD, styreleder og styremedlemmer — ikke IT-sjefen alene.
+  </p>
+
+  <p>
+    Tillsynsmyndigheten kan sanksjonere organisasjonen for brudd på sikkerhetskravene. Men tilsynsmyndigheten kan også holde ledelsesmedlemmer <strong>personlig ansvarlige</strong>.
+  </p>
+
+  <p>
+    Hva betyr "personlig ansvarlig"? Det kan bety:
+  </p>
+
+  <ul>
+    <li>Et forbud mot å inneha ledelsesstilling — ikke bare i ditt nåværende selskap, men generelt</li>
+    <li>En notis på at du har brutt sitt tillitshverv</li>
+    <li>I alvorlige tilfeller, straffereaksjoner</li>
+  </ul>
+
+  <p>
+    Du kan ikke betale deg fri fra dette ansvaret ved å gi IT-avdelingen full kontroll over sikkerhet. Du må aktivt godkjenne, overvåke og dokumentere at sikkerhetstiltakene er på plass.
+  </p>
+
+  <div class="box-warning">
+    <strong>Avtale med egen styreledering:</strong> Dokumentasjon av styrebeslutninger om sikkerhetstiltak er dine eneste forsvarsmekanismer. Uten skriftlige styrevedtak som godkjenner sikkerhetspolicy og overvåking, har du ingen forsvar hvis NSM innleder tilsyn.
+  </div>
+
+  <h2>Hendelsesrapportering — 24 timer, ikke "så snart vi kan"</h2>
+
+  <p>
+    NIS2 innfører strenge tidsfrister for rapportering av sikkerhetsbrudd. Mange organisasjoner har allerede glippet disse fristen.
+  </p>
+
+  <p>
+    Her er kravet:
+  </p>
+
+  <ul>
+    <li><strong>24 timer:</strong> Tidlig varsel til NSM om en alvorlig hendelse er oppdaget</li>
+    <li><strong>72 timer:</strong> Fullstendig hendelsesrapport med detaljer om omfang, årsak og tiltak</li>
+    <li><strong>1 måned:</strong> Sluttrapport med læringspunkter og futurobservasjoner</li>
+  </ul>
+
+  <p>
+    Organisasjoner som forsøker å håndtere en hendelse internt uten å rapportere innenfor 24 timers vinduet risikerer både gebyrer for selve bruddet <em>og</em> gebyrer for uteblitt rapportering.
+  </p>
+
+  <p>
+    Dette krever at du har definert:
+  </p>
+
+  <ol>
+    <li>Hvem som skal varsles ved en hendelse</li>
+    <li>Hvem som bestemmer at en hendelse er "alvorlig"</li>
+    <li>Prosedyre for varsling til NSM innenfor 24 timer</li>
+    <li>Hvem som skal skrive rapporten</li>
+  </ol>
+
+  <p>
+    De fleste organisasjoner har ikke dette på plass i dag.
+  </p>
+
+  <h2>Tre organisasjonsprofiler — hvor står du?</h2>
+
+  <p>
+    For å konkretisere, presenterer vi tre profilerer av organisasjoner og deres forberedelser:
+  </p>
+
+  <h3>Profil 1: Fullt forberedt</h3>
+
+  <p>
+    Organisasjonen har:
+  </p>
+
+  <ul>
+    <li>Gjennomført risikovurdering og dokumentert hvilke sektorer og enhetskategorier som gjelder</li>
+    <li>Antatt sikkerhetspolicy og prosedyrer i styret (med vedtak som attestering)</li>
+    <li>Etablert hendelsehåndteringsprosess med klare eskalerings- og rapporteringsveier</li>
+    <li>Gjennomført gapanalyse mot alle NIS2s ti sikkerhetsdomener</li>
+    <li>Dokumentert risikostyring, kryptering, tilgangskontroll, backup og kontinuitetsforberedelse</li>
+    <li>Gjennomført intern opplæring av ledelse og nøkkelpersonell</li>
+    <li>Etablert et årlig gjennomgangsregime for sikkerhetstiltakene</li>
+  </ul>
+
+  <p>
+    <strong>Risiko ved tilsyn:</strong> Lav. En tillsynsmyndighet som besøker vil finne dokumentasjon som støtter organisasjonens påstander.
+  </p>
+
+  <p>
+    <strong>Kostnad for implementering:</strong> 500 000–2 000 000 kroner over 6–12 måneder, avhengig av organisasjonens størrelse og gjeldende sikkerhetsnivå.
+  </p>
+
+  <h3>Profil 2: Delvis forberedt</h3>
+
+  <p>
+    Organisasjonen har:
+  </p>
+
+  <ul>
+    <li>En sikkerhetspolicy, men den er ikke formelt godkjent av styret</li>
+    <li>Noe sikkerhetstiltak på plass (backup, MFA), men ikke alle domener er dekket</li>
+    <li>En IT-sjef som håndterer sikkerhet, men ingen formell hendelsehåndteringsprosess</li>
+    <li>Ingen risikovurdering som slår fast om NIS2 gjelder</li>
+    <li>Ingen dokumentasjon av styrelederens oversikt eller godkjenning av sikkerhetstiltakene</li>
+  </ul>
+
+  <p>
+    <strong>Risiko ved tilsyn:</strong> Høy. Tilsynsmyndigheten vil finne at ledelsen ikke kan dokumentere sitt ansvar. Selv om noen sikkerhetstiltak finnes, vil manglende dokumentasjon klassifiseres som brudd.
+  </p>
+
+  <p>
+    <strong>Kostnad for fullføring:</strong> 1–3 millioner kroner. Det vil kreve hyring av ekstern konsultant, dokumentasjon av allerede implementerte tiltak, og påfølgende implementering av manglende elementer.
+  </p>
+
+  <p>
+    <strong>Tidsramme til risikominimering:</strong> 4–8 måneder.
+  </p>
+
+  <div class="box-case">
+    <div class="case-label">Realistisk scenario: Delvis forberedt organisasjon</div>
+    <p>
+      <strong>Situasjon:</strong> En norsk bank-underleverandør (60 ansatte, 20 M€ omsetning) klassifiseres som viktig enhet under NIS2. De har firewall, MFA på kritiske kontoer, og tar backup. Men det finnes ingen risikovurdering, ingen styreversamlingsnotat som godkjenner sikkerhetstiltakene, og ingen formell hendelsehåndteringsprosess.
+    </p>
+    <p>
+      <strong>Januar 2026:</strong> Et phishing-angrep kompromitterer en konto med tilgang til finansdata. IT-sjef oppdager det etter 36 timer. Ledelsen velger å håndtere det internt, uten å varsle tilsynsmyndigheten innenfor 24-timersfristen.
+    </p>
+    <p>
+      <strong>Mars 2026:</strong> En tidligere medarbeider varsler Finanstilsynet om at sikkerhetsincidenten ble holdt skjult. Tilsynet initierer en gransking.
+    </p>
+    <p>
+      <strong>Granskingsfunn:</strong>
+    </p>
+    <ul>
+      <li>Uteblitt varsling innenfor 24 timer (brudd på Artikkel 23)</li>
+      <li>Ingen styreversamlingsnotat som godkjenner sikkerhetstiltak (brudd på Artikkel 20)</li>
+      <li>Ingen risikovurdering (brudd på Artikkel 21)</li>
+      <li>Ingen formel hendelsehåndteringsprosess (brudd på Artikkel 21)</li>
+    </ul>
+    <p>
+      <strong>Sanksjon:</strong> Gebyr på 3 millioner euro (rundt 30 millioner norske kroner) for organisasjonen. VD og styreleder mottar formelt varsel om personlig ansvar for brudd på Artikkel 20.
+    </p>
+    <p>
+      <strong>Totalkostnad:</strong> 30–40 millioner kroner (gebyr + juridisk gjennomgang + reputasjon + potensial reparasjon).
+    </p>
+  </div>
+
+  <h3>Profil 3: Ikke startet</h3>
+
+  <p>
+    Organisasjonen har:
+  </p>
+
+  <ul>
+    <li>Hørt om NIS2, men ikke foretatt seg noe konkret</li>
+    <li>Heller ingen risikovurdering, ingen sikkerhetspolicy, ingen prosesser</li>
+    <li>Håper at regelverket "kanskje blir forsinket" eller at deres sektor "ikke gjelder"</li>
+  </ul>
+
+  <p>
+    <strong>Risiko ved tilsyn:</strong> Ekstrem. Organisasjonen vil klassifiseres som ikke-samsvarende over hele linjen.
+  </p>
+
+  <p>
+    <strong>Kostnad for full implementering:</strong> 2–5 millioner kroner over 12–18 måneder.
+  </p>
+
+  <p>
+    <strong>Kostnad hvis tilsyn initieres før implementering:</strong> 7–10 millioner kroner (gebyr) + implementeringskostnader + juridiske kostnader + potensial styrelederutskifting.
+  </p>
+
+  <p>
+    <strong>Tidspunktet er kritisk.</strong> Hver måned som går uten forberedelse øker risikoen. NS

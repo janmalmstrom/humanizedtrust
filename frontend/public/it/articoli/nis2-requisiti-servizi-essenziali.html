@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-BKF3QH9K01"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag("js", new Date());
+    gtag("config", "G-BKF3QH9K01");
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Requisiti NIS2 per i Servizi Essenziali: Cosa Devono Fare gli Operatori | NIS2Klar</title>
+  <meta name="description" content="Gli operatori di servizi essenziali in Italia hanno obblighi specifici sotto NIS2: registrazione ACN, misure di sicurezza, notifica incidenti entro 72h. Cosa devono fare CEO e CdA.">
+  <meta property="og:title" content="Requisiti NIS2 per i Servizi Essenziali: Cosa Devono Fare gli Operatori">
+  <meta property="og:description" content="Gli operatori di servizi essenziali in Italia hanno obblighi specifici sotto NIS2: registrazione ACN, misure di sicurezza, notifica incidenti entro 72h. Cosa devono fare CEO e CdA.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #141416;
+      --card: #1c1c1f;
+      --yellow: #f5c518;
+      --white: #f0f0f0;
+      --muted: #888;
+      --red: #C61212;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: var(--bg); color: var(--white); font-family: 'Barlow', sans-serif; font-size: 19px; line-height: 1.8; }
+
+    /* Nav */
+    nav { display: flex; justify-content: space-between; align-items: center; padding: 20px 40px; border-bottom: 1px solid rgba(255,255,255,0.07); max-width: 900px; margin: 0 auto; }
+    .nav-logo { font-family: 'Poppins', sans-serif; font-weight: 900; font-size: 20px; color: var(--yellow); text-decoration: none; }
+    .nav-logo span { color: var(--white); }
+    .nav-back { color: var(--muted); text-decoration: none; font-size: 15px; }
+    .nav-back:hover { color: var(--white); }
+    .nav-cta { background: var(--yellow); color: #000; padding: 8px 18px; border-radius: 4px; text-decoration: none; font-weight: 700; font-size: 14px; font-family: 'Poppins', sans-serif; }
+
+    /* Article */
+    .article-wrap { max-width: 760px; margin: 0 auto; padding: 60px 40px; }
+    .article-category { font-size: 13px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 16px; }
+    h1 { font-family: 'Poppins', sans-serif; font-size: clamp(30px, 4vw, 44px); font-weight: 900; line-height: 1.2; margin-bottom: 24px; }
+    .article-meta { font-size: 15px; color: var(--muted); margin-bottom: 48px; padding-bottom: 24px; border-bottom: 1px solid rgba(255,255,255,0.07); }
+    h2 { font-family: 'Poppins', sans-serif; font-size: 26px; font-weight: 700; margin: 48px 0 16px; color: var(--white); }
+    h3 { font-family: 'Poppins', sans-serif; font-size: 20px; font-weight: 600; margin: 32px 0 12px; color: var(--yellow); }
+    p { margin-bottom: 22px; }
+    strong { color: var(--white); font-weight: 700; }
+    .highlight { color: var(--yellow); font-weight: 700; }
+    .danger { color: #ff6b6b; font-weight: 700; }
+    ul, ol { margin: 16px 0 24px 24px; }
+    li { margin-bottom: 12px; font-size: 19px; }
+
+    /* Callout boxes */
+    .box-warning { background: rgba(197,17,17,0.12); border-left: 4px solid var(--red); padding: 20px 24px; margin: 32px 0; border-radius: 0 4px 4px 0; }
+    .box-info { background: rgba(245,197,24,0.08); border-left: 4px solid var(--yellow); padding: 20px 24px; margin: 32px 0; border-radius: 0 4px 4px 0; }
+    .box-case { background: var(--card); border: 1px solid rgba(255,255,255,0.08); padding: 28px; margin: 40px 0; border-radius: 4px; }
+    .box-case .case-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 12px; }
+    blockquote { border-left: 3px solid var(--yellow); padding: 12px 20px; margin: 24px 0; font-style: italic; color: #ccc; }
+
+    /* CTA */
+    .cta-section { background: var(--card); border: 1px solid rgba(245,197,24,0.2); border-radius: 4px; padding: 48px 40px; margin: 64px 0 40px; text-align: center; }
+    .cta-section h2 { margin-top: 0; font-size: 26px; }
+    .cta-section p { color: #aaa; max-width: 500px; margin: 0 auto 28px; }
+    .btn-primary { display: inline-block; background: var(--yellow); color: #000; font-family: 'Poppins', sans-serif; font-weight: 800; font-size: 16px; padding: 16px 36px; border-radius: 4px; text-decoration: none; }
+    .btn-primary:hover { background: #e0b010; }
+    .cta-fine { font-size: 13px; color: var(--muted); margin-top: 16px; }
+
+    /* FAQ */
+    .faq-item { border-bottom: 1px solid rgba(255,255,255,0.07); padding: 20px 0; }
+    .faq-q { font-family: 'Poppins', sans-serif; font-weight: 600; margin-bottom: 10px; }
+    .faq-a { color: #bbb; }
+
+    /* Fine table */
+    .fine-table { width: 100%; border-collapse: collapse; margin: 24px 0; }
+    .fine-table th { background: rgba(245,197,24,0.1); color: var(--yellow); font-family: 'Poppins', sans-serif; font-size: 13px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 12px 16px; text-align: left; border-bottom: 1px solid rgba(245,197,24,0.2); }
+    .fine-table td { padding: 14px 16px; border-bottom: 1px solid rgba(255,255,255,0.05); font-size: 15px; }
+    .fine-table tr:last-child td { border-bottom: none; }
+    .fine-table .amount { color: #ff6b6b; font-weight: 700; }
+
+    /* Summary + Key Takeaway */
+    .box-summary { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; padding: 24px 28px; margin: 0 0 32px; }
+    .summary-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-bottom: 14px; }
+    .box-summary ul { margin: 0; padding-left: 20px; }
+    .box-summary li { margin-bottom: 8px; font-size: 17px; color: #ccc; }
+    .box-takeaway { background: rgba(245,197,24,0.08); border-left: 4px solid var(--yellow); padding: 20px 24px; margin: 0 0 40px; border-radius: 0 4px 4px 0; }
+    .takeaway-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 10px; }
+    .box-takeaway p { margin: 0; font-size: 18px; font-weight: 600; color: var(--white); line-height: 1.6; }
+
+    /* Footer */
+    footer { border-top: 1px solid rgba(255,255,255,0.07); padding: 32px 40px; text-align: center; font-size: 13px; color: var(--muted); max-width: 900px; margin: 0 auto; }
+    footer a { color: var(--muted); }
+
+    @media (max-width: 600px) {
+      nav, .article-wrap, footer { padding: 20px; }
+      .cta-section { padding: 32px 20px; }
+      .fine-table { font-size: 14px; }
+      .fine-table th, .fine-table td { padding: 10px 10px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="https://nis2klar.se/it/">NIS2<span>Klar</span></a>
+  <a class="nav-back" href="https://nis2klar.se/it/articoli.html">← Tutti gli articoli</a>
+  <div class="lang-switcher" style="display:flex;gap:8px;align-items:center;font-size:13px;font-family:'Poppins',sans-serif;">
+    <a href="https://nis2klar.se/artiklar.html" style="color:#888;text-decoration:none;font-weight:600;padding:4px 8px;border-radius:3px;" title="Svenska">SV</a>
+    <a href="https://nis2klar.se/en/articles.html" style="color:#888;text-decoration:none;font-weight:600;padding:4px 8px;border-radius:3px;" title="English">EN</a>
+    <a href="https://nis2klar.se/da/artikler.html" style="color:#888;text-decoration:none;font-weight:600;padding:4px 8px;border-radius:3px;" title="Dansk">DA</a>
+    <a href="https://nis2klar.se/no/artikler.html" style="color:#888;text-decoration:none;font-weight:600;padding:4px 8px;border-radius:3px;" title="Norsk">NO</a>
+    <a href="https://nis2klar.se/it/articoli.html" style="color:#f5c518;text-decoration:none;font-weight:600;padding:4px 8px;border-radius:3px;background:rgba(245,197,24,0.1);" title="Italiano">IT</a>
+  </div>
+  <a class="nav-cta" href="/nis2.html#boka">Prenota chiamata →</a>
+</nav>
+
+<article class="article-wrap">
+  <div class="article-category">Servizi Essenziali &amp; Conformità</div>
+  <h1>Requisiti NIS2 per i Servizi Essenziali: Cosa Devono Fare gli Operatori</h1>
+  <div class="article-meta">Aggiornato 17 aprile 2026 · Tempo di lettura: ca 8 minuti · Destinatari: CEO, Presidenti e Membri del CdA</div>
+
+  <!-- SUMMARY -->
+  <div class="box-summary">
+    <div class="summary-label">Sintesi</div>
+    <ul>
+      <li>Per CEO e membri del consiglio di amministrazione di organizzazioni classificate come soggetti essenziali sotto il D.Lgs. 138/2024.</li>
+      <li>Gli operatori di servizi essenziali hanno obblighi <strong>più stringenti</strong> rispetto ai soggetti importanti: registrazione obbligatoria, misure di sicurezza certificate, notifica degli incidenti entro 72 ore all'ACN.</li>
+      <li>I membri dell'organo di amministrazione sono <strong>personalmente responsabili</strong> ai sensi dell'Art. 23 del D.Lgs. 138/2024 — non è possibile delegare interamente questa responsabilità all'IT.</li>
+      <li>Le sanzioni per i soggetti essenziali arrivano fino a <strong>10 milioni di euro</strong> o il 2% del fatturato mondiale annuo.</li>
+    </ul>
+  </div>
+
+  <!-- KEY TAKEAWAY -->
+  <div class="box-takeaway">
+    <div class="takeaway-label">Conclusione chiave</div>
+    <p>Essere classificato come operatore di servizio essenziale non è una formalità burocratica: è un regime di obblighi concreti e verificabili, con scadenze precise e responsabilità personali per chi siede al vertice dell'organizzazione.</p>
+  </div>
+
+  <!-- HOOK -->
+  <p>
+    Il D.Lgs. 138/2024 è in vigore dal 16 ottobre 2024. Se la vostra organizzazione opera in uno dei 18 settori critici individuati dalla Direttiva NIS2 — e supera le soglie dimensionali previste — siete soggetti a obblighi che vanno ben oltre l'installazione di un antivirus aggiornato.
+  </p>
+
+  <p>
+    Per gli operatori classificati come <strong>soggetti essenziali</strong>, il legislatore italiano ha previsto il livello più elevato di prescrizioni: registrazione sulla piattaforma ACN, adozione di misure di sicurezza documentate, notifica degli incidenti significativi entro termini precisi, e un regime di vigilanza continua da parte dell'Agenzia per la Cybersicurezza Nazionale. E — fatto che spesso sorprende i vertici aziendali — la responsabilità personale dei membri dell'organo di amministrazione è sancita per legge.
+  </p>
+
+  <p>
+    Questo articolo spiega, in termini concreti e senza tecnicismi, cosa significa essere un operatore di servizio essenziale in Italia, quali sono gli obblighi specifici che vi distinguono dagli altri soggetti NIS2, e cosa dovete fare — adesso — per essere in una posizione difendibile.
+  </p>
+
+  <div class="box-warning">
+    <strong>L'ACN è già operativa.</strong> L'Agenzia per la Cybersicurezza Nazionale ha avviato le procedure di registrazione e identificazione dei soggetti. Aspettare che "arrivino i controlli" significa ritrovarsi impreparati nel momento peggiore possibile.
+  </div>
+
+  <h2>Cosa significa "soggetto essenziale" in Italia</h2>
+
+  <p>
+    Il D.Lgs. 138/2024 distingue due categorie di soggetti obbligati: i <strong>soggetti essenziali</strong> e i <strong>soggetti importanti</strong>. La distinzione non è puramente dimensionale: dipende dalla combinazione tra settore di appartenenza, dimensione dell'organizzazione e criticità del servizio erogato.
+  </p>
+
+  <p>
+    Sono classificati come soggetti essenziali le organizzazioni di grandi dimensioni — tipicamente con più di 250 dipendenti o un fatturato annuo superiore a 50 milioni di euro — che operano nei seguenti settori ad alta criticità:
+  </p>
+
+  <ul>
+    <li>Energia (elettricità, gas, petrolio, idrogeno, teleriscaldamento)</li>
+    <li>Trasporti (aerei, ferroviari, marittimi, stradali)</li>
+    <li>Settore bancario e infrastrutture dei mercati finanziari</li>
+    <li>Sanità (ospedali, laboratori, produttori di dispositivi medici critici)</li>
+    <li>Acqua potabile e acque reflue</li>
+    <li>Infrastrutture digitali (IXP, DNS, TLD, data center, reti CDN, cloud computing)</li>
+    <li>Gestione dei servizi TIC (managed service provider)</li>
+    <li>Pubblica amministrazione (centrale e regionale)</li>
+    <li>Spazio</li>
+  </ul>
+
+  <p>
+    Esistono però <strong>eccezioni verso l'alto</strong>: alcune organizzazioni vengono classificate come soggetti essenziali indipendentemente dalle dimensioni, se il loro ruolo è considerato sistemicamente critico per l'economia o la sicurezza nazionale. L'ACN pubblica e aggiorna le liste ufficiali.
+  </p>
+
+  <div class="box-info">
+    <strong>Attenzione alla soglia dimensionale:</strong> la classificazione non è definitiva e può cambiare. Se la vostra organizzazione è cresciuta negli ultimi anni e avete superato le soglie, è possibile che siate già soggetti essenziali senza saperlo. La mancata registrazione è di per sé una violazione sanzionabile.
+  </div>
+
+  <h2>Come differisce dagli obblighi dei soggetti importanti</h2>
+
+  <p>
+    La distinzione tra soggetti essenziali e soggetti importanti non riguarda solo le sanzioni massime applicabili — sebbene anche quello sia un elemento rilevante. Riguarda soprattutto il <strong>regime di vigilanza</strong> a cui siete sottoposti.
+  </p>
+
+  <table class="fine-table">
+    <thead>
+      <tr>
+        <th>Aspetto</th>
+        <th>Soggetti Essenziali</th>
+        <th>Soggetti Importanti</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Sanzione massima</td>
+        <td class="amount">10 milioni € o 2% fatturato globale</td>
+        <td class="amount">7 milioni € o 1,4% fatturato globale</td>
+      </tr>
+      <tr>
+        <td>Tipo di vigilanza</td>
+        <td>Proattiva e continua (ex ante)</td>
+        <td>Reattiva (ex post, su segnalazione)</td>
+      </tr>
+      <tr>
+        <td>Ispezioni</td>
+        <td>Periodiche, anche senza incidenti</td>
+        <td>Solo a seguito di incidenti o segnalazioni</td>
+      </tr>
+      <tr>
+        <td>Audit obbligatori</td>
+        <td>Sì — incluse verifiche indipendenti</td>
+        <td>Su richiesta dell'autorità</td>
+      </tr>
+      <tr>
+        <td>Responsabilità organo di amministrazione</td>
+        <td>Esplicita e personale (Art. 23)</td>
+        <td>Esplicita e personale (Art. 23)</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>
+    In sintesi: mentre un soggetto importante viene controllato principalmente quando qualcosa va storto, un soggetto essenziale è sotto sorveglianza continua. L'ACN — e le autorità di settore competenti come Banca d'Italia per il fintech, ARERA per l'energia, AGCOM per le telecomunicazioni e il Ministero della Salute per la sanità — possono richiedere documentazione, condurre ispezioni in loco e verificare l'effettiva implementazione delle misure in qualsiasi momento.
+  </p>
+
+  <h2>Il primo obbligo: la registrazione sulla piattaforma ACN</h2>
+
+  <p>
+    Prima ancora di parlare di misure di sicurezza o notifica degli incidenti, c'è un prerequisito che molti vertici aziendali sottovalutano: la <strong>registrazione obbligatoria</strong> sulla piattaforma digitale dell'ACN.
+  </p>
+
+  <p>
+    Ogni soggetto che ritiene di rientrare nell'ambito di applicazione del D.Lgs. 138/2024 — o che viene identificato dall'ACN come tale — deve registrarsi entro i termini stabiliti dal decreto. La registrazione non è automatica: richiede un'azione attiva da parte dell'organizzazione, con la comunicazione di informazioni specifiche su struttura, servizi erogati, punti di contatto per la sicurezza e referenti per la gestione degli incidenti.
+  </p>
+
+  <p>
+    La mancata registrazione entro i termini non è una questione tecnica: è una <strong>violazione diretta della legge</strong>, sanzionabile anche in assenza di qualsiasi incidente di sicurezza. L'ACN pubblica le liste dei soggetti essenziali e importanti identificati — ma l'onere di verificare la propria posizione ricade sull'organizzazione stessa.
+  </p>
+
+  <h2>Le misure di sicurezza obbligatorie: non basta "avere un firewall"</h2>
+
+  <p>
+    L'Art. 24 del D.Lgs. 138/2024 — che recepisce l'Art. 21 della Direttiva NIS2 — elenca le misure di sicurezza che ogni soggetto essenziale deve adottare, documentare e mantenere aggiornate. Non si tratta di raccomandazioni: sono obblighi vincolanti, verificabili dall'ACN in qualsiasi momento.
+  </p>
+
+  <p>
+    Le dieci aree di sicurezza obbligatorie comprendono:
+  </p>
+
+  <ol>
+    <li><strong>Politiche di analisi dei rischi e sicurezza dei sistemi informativi</strong> — con metodologia documentata e revisioni periodiche</li>
+    <li><strong>Gestione degli incidenti</strong> — processi, ruoli, escalation e documentazione delle risposte</li>
+    <li><strong>Continuità operativa e gestione delle crisi</strong> — piani di business continuity, backup testati, disaster recovery</li>
+    <li><strong>Sicurezza della catena di approvvigionamento</strong> — valutazione dei fornitori critici e dei loro requisiti di sicurezza</li>
+    <li><strong>Sicurezza nell'acquisizione, nello sviluppo e nella manutenzione dei sistemi</strong> — inclusa la gestione delle vulnerabilità</li>
+    <li><strong>Politiche e procedure per la valutazione dell'efficacia delle misure</strong> — audit interni, KPI, reportistica al vertice</li>
+    <li><strong>Pratiche di igiene informatica di base e formazione</strong> — obbligatorie per tutto il personale, incluso il management</li>
+    <li><strong>Politiche sull'uso della crittografia</strong> — per i dati in transito e a riposo</li>
+    <li><strong>Sicurezza delle risorse umane, controllo degli accessi e gestione dei beni</strong> — autenticazione a più fattori, principio del privilegio minimo</li>
+    <li><strong>Uso di soluzioni di autenticazione multi-fattore o di autenticazione continua</strong> — obbligatorio per gli accessi ai sistemi critici</li>
+  </ol>
+
+  <p>
+    Ogni singuna di queste aree deve essere coperta da documentazione aggiornata. La documentazione non è un optional: è la prova che le misure esistono e vengono mantenute. In caso di ispezione da parte dell'ACN o delle autorità di settore, l'assenza di documentazione equivale all'assenza delle misure stesse.
+  </p>
+
+  <blockquote>
+    "Non basta fare sicurezza. Bisogna poter dimostrare di averla fatta, con documenti datati, approvati dall'organo di amministrazione e regolarmente revisionati."
+  </blockquote>
+
+  <h2>La notifica degli incidenti: tre scadenze che non si possono perdere</h2>
+
+  <p>
+    Per i soggetti essenziali, la gestione della notifica degli incidenti è uno degli obblighi più delicati — e uno di quelli in cui le organizzazioni commettono errori più frequentemente. Il D.Lgs. 138/2024 prevede un processo a tre fasi, tutte con scadenze tassative:
+  </p>
+
+  <h3>Fase 1 — Allerta precoce: entro 24 ore</h3>
+  <p>
+    Non appena l'organizzazione viene a conoscenza di un incidente significativo, deve inviare all'ACN una <strong>notifica preliminare entro 24 ore</strong>. In questa fase non è richiesta un'analisi completa: è sufficiente una comunicazione che segnali l'esistenza dell'incidente, la sua natura generale e le prime misure adottate. L'obiettivo è consentire all'ACN di attivare eventuale supporto coordinato.
+  </p>
+
+  <h3>Fase 2 — Notifica dell'incidente: entro 72 ore</h3>
+  <p>
+    Entro 72 ore dall'identificazione dell'incidente, deve essere inviata all'ACN una notifica completa, che include: natura dell'incidente, sistemi e dati coinvolti, impatto stimato sulla continuità del servizio, misure di contenimento adottate e contatti per il follow-up. Questo è il termine che le organizzazioni tendono a violare per eccesso di cautela — aspettando di "avere tutte le informazioni" prima di notificare.
+  </p>
+
+  <h3>Fase 3 — Relazione finale: entro 1 mese</h3>
+  <p>
+    Entro un mese dall'incidente, va presentata all'ACN una relazione dettagliata che copre l'analisi delle cause, l'impatto effettivo, le misure correttive adottate e il piano per prevenire il ripetersi dell'evento. Questa relazione è un documento formale che può essere utilizzato dall'autorità come base per valutare eventuali sanzioni.
+  </p>
+
+  <div class="box-warning">
+    <strong>Errore frequente:</strong> molte organizzazioni aspettano di avere "certezza assoluta" prima di notificare, superando così la soglia delle 72 ore. La legge non richiede certezza: richiede tempestività. Notificare un incidente poi rivelatosi minore non espone a sanzioni; non notificarlo nei tempi previsti sì.
+  </div>
+
+  <h2>La responsabilità personale dei vertici: cosa dice l'Art. 23</h2>
+
+  <p>
+    Questo è il punto che sorprende di più CEO e consiglieri di amministrazione quando lo incontrano per la prima volta. L'Art. 23 del D.Lgs. 138/2024 è esplicito: i membri dell'organo di amministrazione dei soggetti essenziali sono <strong>personalmente responsabili</strong> della conformità dell'organizzazione agli obblighi NIS2.
+  </p>
+
+  <p>
+    Cosa significa concretamente? Significa che:
+  </p>
+
+  <ol>
+    <li>L'organo di amministrazione deve <strong>approvare formalmente</strong> le misure di sicurezza adottate dall'organizzazione</li>
+    <li>I suoi membri devono <strong>seguire formazione specifica</strong> in materia di cybersicurezza — non delegabile all'IT</li>
+    <li>L'organo di amministrazione deve <strong>vigilare sull'attuazione effettiva</strong> delle misure, con evidenza documentale di questo controllo</li>
+    <li>In caso di violazione grave, l'autorità competente può applicare <strong>sanzioni personali</strong> ai singoli amministratori, inclusa la <strong>sospensione temporanea dall'incarico</strong></li>
+  </ol>
+
+  <p>
+    Non è sufficiente approvare una policy in una riunione di consiglio e poi dimenticarsene. L'ACN può verificare se il board ha effettivamente esercitato la propria funzione di vigilanza — e la mancanza di verbali, reportistica periodica sulla sicurezza e aggiornamenti formali al CdA è un segnale di allarme immediato per i controllori.
+  </p>
+
+  <p>
+    Il punto più critico è questo: <span class="danger">la responsabilità personale non si estingue con il pagamento di una sanzione aziendale.</span> Se l'ACN accerta che un membro del consiglio di amministrazione non ha esercitato la dovuta vigilanza, può avviare un procedimento personale separato da quello a carico dell'organizzazione.
+  </p>
+
+  <h2>La cooperazione con l'ACN e le autorità di settore</h2>
+
+  <p>
+    Per i soggetti essenziali, il rapporto con le autorità competenti non è unidirezionale. Il D.Lgs. 138/2024 prevede obblighi attivi di cooperazione che vanno ben oltre la semplice notifica degli incidenti.
+  </p>
+
+  <h3>Ispezioni e verifiche documentali</h3>
+  <p>
+    L'ACN — direttamente o tramite le autorità di settore competenti — può disporre ispezioni in loco e richiedere la produzione di documentazione specifica con preavvisi molto brevi. Le organizzazioni che non mantengono la documentazione in modo strutturato e accessibile si trovano in una posizione di debolezza estrema anche quando, in realtà, hanno implementato misure adeguate.
+  </p>
+
+  <h3>Audit indipendenti</h3>
+  <p>
+    Per i soggetti essenziali, le autorità possono richiedere audit condotti da soggetti indipendenti e qualificati. I costi dell'audit sono a carico dell'organizzazione. I risultati dell'audit vengono trasmessi all'autorità competente e possono costituire la base per ulteriori verifiche o misure correttive imposte.
+  </p>
+
+  <h3>Obblighi di informazione proattiva</h3>
+  <p>
+    Oltre alla notifica degli incidenti, i soggetti essenziali devono informare proattivamente l'ACN di cambiamenti significativi nella propria infrastruttura, nei servizi erogati o nei referenti per la sicurezza. Un cambio di CISO, una fusione aziendale, l'adozione di una nuova piattaforma cloud critica: tutti elementi che devono essere comunicati nei tempi previsti.
+  </p>
+
+  <div class="box-case">
+    <div class="case-label">Scenario illustrativo</div>
+    <p>
+      <strong>Contesto: Un'azienda ospedaliera privata italiana, classificata soggetto essenziale nel settore sanitario.</strong>
+    </p>
+    <p>
+      L'organizzazione, con 400 dipendenti e tre strutture operative, ha implementato misure di sicurezza informatica di buon livello sul piano tecnico. Tuttavia, non ha mai formalizzato la governance della cybersicurezza a livello di CdA: le misure esistono, ma non risultano approvate formalmente dall'organo di amministrazione, non ci sono verbali che documentino la vigilanza del board, e i componenti del consiglio non hanno mai seguito formazione specifica.
+    </p>
+    <p>
+      A novembre 2025, un attacco ransomware colpisce i sistemi di prenotazione. Il responsabile IT identifica l'incidente nelle prime ore, ma la direzione decide di gestire internamente prima di notificare l'ACN. La finestra delle 72 ore scade senza notifica.
+    </p>
+    <p>
+      L'ACN, informata da una segnalazione di un partner esterno, avvia un'ispezione. Durante la verifica emerge: assenza di documentazione approvata dal CdA, nessuna evidenza di formazione degli amministratori, mancata notifica nei termini previsti.
+    </p>
+    <p>
+      <strong>Esito:</strong> Sanzione per mancata notifica nei termini. Sanzione aggiuntiva per carenze nelle misure di governance. Avvio di procedimento personale nei confronti del Presidente del CdA per violazione dell'Art. 23. Costo complessivo stimato — tra sanzioni, consulenza legale e misure correttive imposte — <span class="danger">superiore a 2 milioni di euro</span>. Il Presidente riceve una sospensione temporanea dall'incarico.
+    </p>
+  </div>
+
+  <h2>Cosa devono fare concretamente CEO e CdA: la lista di priorità</h2>
+
+  <p>
+    Se siete CEO o membri del consiglio di amministrazione di un soggetto essenziale, queste sono le azioni concrete che non possono essere ulteriormente rinviate:
+  </p>
+
+  <h3>1. Verificare la registrazione sulla piattaforma ACN</h3>
+  <p>
+    Assicuratevi che la vostra organizzazione sia registrata sulla piattaforma ACN con tutte le informazioni richieste aggiornate. Verificate che il referente NIS2 designato sia identificato e che i suoi contatti siano comunicati all'autorità.
+  </p>
+
+  <h3>2. Portare la cybersicurezza all'ordine del giorno del CdA</h3>
+  <p>
+    La sicurezza informatica deve diventare un punto fisso nell'agenda del consiglio di amministrazione — non occasionale. Serve un flusso regolare di reportistica dalla funzione di sicurezza al board, con indicatori comprensibili anche per chi non ha background tecnico.
+  </p>
+
+  <h3>3. Approvare formalmente le misure di sicurezza</h3>
+  <p>
+    Ogni misura di sicurezza rilevante deve risultare approvata dall'organo di amministrazione con delibera formale, datata e documentata. Non è sufficiente che l'IT "la gestisca": ci vuole una traccia scritta dell'approvazione da parte del vertice.
+  </p>
+
+  <h3>4. Seguire formazione specifica</h3>
+  <p>
+    L'Art. 23 prevede l'obbligo di formazione per i membri dell'organo di amministrazione. Non delegatela: partecipate a sessioni strutturate, conservate i certificati di partecipazione, documentate le date e i contenuti.
+  </p>
+
+  <h3>5. Attivare le procedure di notifica degli incidenti</h3>
+  <p>
+    Verificate che esista un piano di incident response documentato, con ruoli chiari e con una procedura esplicita per la notifica all'ACN entro 24 ore (allerta) e 72 ore (notifica completa). Fate un test della procedura prima che sia necessario applicarla sul campo.
+  </p>
+
+  <h2>Domande frequenti dai vertici aziendali</h2>
+
+  <div class="faq-item">
+    <div class="faq-q">Come faccio a sapere con certezza se siamo un soggetto essenziale?</div>
+    <div class="faq-a">La classificazione definitiva è di competenza dell'ACN, che pubblica le liste aggiornate. Tuttavia, l'organizzazione stessa ha l'obbligo di autovalutarsi e registrarsi se ritiene di rientrare nei criteri. Un'analisi del gap condotta da professionisti qualificati può chiarire la vostra posizione in tempi brevi, prima che arrivi una comunicazione ufficiale — che a quel punto potrebbe già includere una scadenza ravvicinata.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">Possiamo delegare tutta la conformità NIS2 al nostro CISO o all'IT?</div>
+    <div class="faq-a">No — o meglio, non completamente. Potete e dovete delegare l'implementazione tecnica e operativa. Ma l'approvazione delle misure, la vigilanza sull'efficacia e la responsabilità finale restano in capo all'organo di amministrazione per esplicita previsione dell'Art. 23. Il CISO esegue; il CdA approva, vigila e risponde. Questa distinzione non è negoziabile.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">Cosa succede se notifichiamo un incidente che poi si rivela poco significativo?</div>
+    <div class="faq-a">Non succede nulla di negativo. La legge premia la tempestività, non la certezza. Una notifica che si rivela sovradimensionata rispetto all'incidente effettivo non espone a sanzioni. Il contrario — non notificare entro i termini un incidente che si rivela significativo — sì. In caso di dubbio, notificate.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">Le autorità di settore come Banca d'Italia o AGCOM hanno poteri aggiuntivi rispetto all'ACN?</div>
+    <div class="faq-a">Sì. L'ACN è l'autorità primaria, ma le autorità di settore mantengono competenze specifiche nei rispettivi ambiti. Banca d'Italia per il settore finanziario, ARERA per l'energia, AGCOM per le telecomunicazioni e il Ministero della Salute per la sanità possono condurre ispezioni e applicare misure nell'ambito delle loro competenze, in coordinamento con l'ACN. Questo significa che in alcuni settori potete ricevere controlli da più autorità.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">Se abbiamo già ottenuto certificazioni come ISO 27001, siamo automaticamente conformi a NIS2?</div>
+    <div class="faq-a">No, anche se la certificazione ISO 27001 è un ottimo punto di partenza e dimostra maturità nella gestione della sicurezza. NIS2 — e il D.Lgs. 138/2024 in particolare — ha requisiti specifici che non sono completamente sovrapponibili a ISO 27001, in particolare sulla governance del CdA, sulla notifica degli incidenti all'ACN nei termini previsti e sulla catena di approvvigionamento. È necessaria una verifica di gap esplicita rispetto ai requisiti del decreto.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">Con quale frequenza l'ACN può condurre ispezioni sui soggetti essenziali?</div>
+    <div class="faq-a">La legge non fissa una frequenza massima per i soggetti essenziali — a differenza dei soggetti importanti, dove la vigilanza è prevalentemente reattiva. In linea di principio, l'ACN può avviare una verifica in qualsiasi momento, sia su base programmatica che a seguito di segnalazioni o eventi. Per questo motivo, la documentazione deve essere sempre aggiornata e accessibile, non preparata "in vista di un'ispezione".</div>
+  </div>
+
+  <div class="box-info" style="margin: 48px 0 32px;">
+    <div style="font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color: var(--yellow); margin-bottom:10px;">🔧 STRUMENTI &amp; SOLUZIONI</div>
+    <p style="margin:0; font-size:17px; color: #ddd; line-height:1.7;">Per gestire l'analisi dei rischi, documentare le misure di sicurezza e fornire al CdA reportistica comprensibile, Microsoft Defender Secure Score e Microsoft Compliance Manager offrono un cruscotto centralizzato con KPI da 0 a 100 — comprensibili anche senza background tecnico — e una mappatura automatica rispetto ai controlli richiesti dalle normative. Un partner Microsoft certificato può configurare questi strumenti gratuitamente nell'ambito di un'analisi del gap, con risultati disponibili in pochi giorni.</p>
+  </div>
+
+  <!-- NEWSLETTER -->
+  <div style="background:#111; border:1px solid rgba(255,255,255,0.1); border-left:3px solid #f5c518; border-radius:4px; padding:32px 36px; margin:40px 0 0; text-align:center; max-width:760px; margin-left:auto; margin-right:auto;">
+    <div style="font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:#f5c518; margin-bottom:12px;">📬 AGGIORNAMENTI NIS2</div>
+    <h3 style="font-family:'Poppins',sans-serif; font-size:20px; font-weight:800; margin:0 0 8px; color:#f0f0f0;">Un nuovo articolo NIS2 ogni settimana — direttamente nella tua casella</h3>
+    <p style="color:#888; font-size:15px; margin:0 0 20px;">Nessun pitch di vendita. Solo guida pratica per CEO e consigli di amministrazione.</p>
+    <form id="nlForm-nis2_requisiti_servizi_essenziali" onsubmit="submitNewsletter_nis2_requisiti_servizi_essenziali(event)" style="display:flex; gap:10px; flex-wrap:wrap; justify-content:center; max-width:460px; margin:0 auto;">
+      <input type="email" id="nlEmail-nis2_requisiti_servizi_essenziali" placeholder="tuo@azienda.it" required style="flex:1; min-width:200px; padding:12px 16px; background:#1c1c1f; border:1px solid rgba(255,255,255,0.15); border-radius:4px; color:#f0f0f0; font-size:15px; outline:none;" />
+      <button type="submit" id="nlSubmit-nis2_requisiti_servizi_essenziali" style="padding:12px 22px; background:#f5c518; color:#141416; font-weight:700; font-size:15px; border:none; border-radius:4px; cursor:pointer; white-space:nowrap;">Iscriviti gratis →</button>
+    </form>
+    <p style="font-size:12px; color:#555; margin:12px 0 0;">Puoi cancellarti in qualsiasi momento. Non condividiamo mai la tua email.</p>
+    <div id="nlThanks-nis2_requisiti_servizi_essenziali" style="display:none; color:#4ade80; font-size:16px; font-weight:600; margin-top:14px;">✅ Sei iscritto! Il prossimo articolo arriverà nella tua casella.</div>
+  </div>
+
+  <!-- CTA -->
+  <div class="cta-section">
+    <h2>Sai dove si trova la tua organizzazione oggi?</h2>
+    <p>Un'analisi del gap gratuita con un partner Microsoft certificato mostra esattamente cosa hai già coperto — e cosa manca.</p>
+    <a href="/nis2.html#boka" class="btn-primary">Prenota analisi gap gratuita →</a>
+    <p class="cta-fine">Le sanzioni arrivano fino a <strong>10 milioni di euro</strong>. L'analisi del gap è gratuita.</p>
+  </div>
+
+</article>
+
+<div class="related-articles" style="margin:2.5rem 0 2rem;padding:1.5rem;background:#1a1a2e;border-left:4px solid #f0a500;border-radius:4px;max-width:760px;margin-left:auto;margin-right:auto;">
+  <p style="margin:0 0 1rem;font-size:0.85rem;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:#f0a500;">Leggi anche</p>
+  <ul style="margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:0.5rem;">
+    <li><a href="/it/articoli/nis2-responsabilita-personale-cda.html" style="color:#e0e0e0;text-decoration:none;font-size:0.95rem;">&#x2192; Responsabilità personale del consiglio di amministrazione sotto NIS2</a></li>
+    <li><a href="/it/articoli/nis2-notifica-incidenti-acn.html" style="color:#e0e0e0;text-decoration:none;font-size:0.95rem;">&#x2192; Notifica degli incidenti all'ACN: guida pratica</a></li>
+    <li><a href="/it/articoli/nis2-quali-aziende-sono-obbligate.html" style="color:#e0e0e0;text-decoration:none;font-size:0.95rem;">&#x2192; Quali aziende sono obbligate dalla NIS2 in Italia?</a></li>
+  </ul>
+  <p style="margin:1.25rem 0 0;font-size:0.85rem;color:#aaa;">&#8592; <a href="https://nis2klar.se/it/" style="color:#f0a500;text-decoration:none;">NIS2Klar Italia</a> &nbsp;&middot;&nbsp; <a href="https://nis2klar.se/it/articoli.html" style="color:#f0a500;text-decoration:none;">Tutti gli articoli</a></p>
+</div>
+
+<footer>
+  © 2026 M&amp;J Trusted Marketing KB ·
+  <a href="mailto:support@trustedmarketing.se">support@trustedmarketing.se</a> · <a href="tel:+46470597003">+46 470 59 70 03</a> ·
+  <a href="https://nis2klar.se/it/">Torna alla homepage</a> ·
+  <a href="/privacy.html">Informativa sulla privacy</a>
+  <p style="margin-top:12px; font-size:11px; color: #555; line-height:1.5;">Microsoft, Microsoft 365, Azure e i relativi nomi di prodotto sono marchi di Microsoft Corporation. nis2klar.se non è affiliata né approvata da Microsoft Corporation.</p>
+</footer>
+
+<script>
+  async function submitNewsletter_nis2_requisiti_servizi_essenziali(e) {
+    e.preventDefault();
+    const btn = document.getElementById('nlSubmit-nis2_requisiti_servizi_essenziali');
+    btn.disabled = true; btn.textContent = '...';
+    const email = document.getElementById('nlEmail-nis2_requisiti_servizi_essenziali').value.trim();
+    try {
+      const res = await fetch('/api/newsletter/subscribe', { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({ email, source: 'articolo-it-nis2_requisiti_servizi_essenziali' }) });
+      const data = await res.json();
+      if (data.success) { document.getElementById('nlForm-nis2_requisiti_servizi_essenziali').style.display='none'; document.getElementById('nlThanks-nis2_requisiti_servizi_essenziali').style.display='block'; }
+      else { btn.disabled=false; btn.textContent='Iscriviti gratis →'; }
+    } catch { btn.disabled=false; btn.textContent='Iscriviti gratis →'; }
+  }
+</script>
+
+</body>
+</html>

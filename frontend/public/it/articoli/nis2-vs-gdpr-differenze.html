@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-BKF3QH9K01"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag("js", new Date());
+    gtag("config", "G-BKF3QH9K01");
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NIS2 vs GDPR: Le Differenze Chiave che Ogni CdA Deve Conoscere | NIS2Klar</title>
+  <meta name="description" content="NIS2 e GDPR non sono la stessa cosa. Puoi essere conforme al GDPR e fallire la NIS2. Scopri le differenze chiave su ambito, obblighi, sanzioni e responsabilità personale.">
+  <meta property="og:title" content="NIS2 vs GDPR: Le Differenze Chiave che Ogni CdA Deve Conoscere">
+  <meta property="og:description" content="NIS2 e GDPR non sono la stessa cosa. Puoi essere conforme al GDPR e fallire la NIS2. Scopri le differenze chiave su ambito, obblighi, sanzioni e responsabilità personale.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #141416;
+      --card: #1c1c1f;
+      --yellow: #f5c518;
+      --white: #f0f0f0;
+      --muted: #888;
+      --red: #C61212;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: var(--bg); color: var(--white); font-family: 'Barlow', sans-serif; font-size: 19px; line-height: 1.8; }
+
+    /* Nav */
+    nav { display: flex; justify-content: space-between; align-items: center; padding: 20px 40px; border-bottom: 1px solid rgba(255,255,255,0.07); max-width: 900px; margin: 0 auto; }
+    .nav-logo { font-family: 'Poppins', sans-serif; font-weight: 900; font-size: 20px; color: var(--yellow); text-decoration: none; }
+    .nav-logo span { color: var(--white); }
+    .nav-back { color: var(--muted); text-decoration: none; font-size: 15px; }
+    .nav-back:hover { color: var(--white); }
+    .nav-cta { background: var(--yellow); color: #000; padding: 8px 18px; border-radius: 4px; text-decoration: none; font-weight: 700; font-size: 14px; font-family: 'Poppins', sans-serif; }
+
+    /* Article */
+    .article-wrap { max-width: 760px; margin: 0 auto; padding: 60px 40px; }
+    .article-category { font-size: 13px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 16px; }
+    h1 { font-family: 'Poppins', sans-serif; font-size: clamp(30px, 4vw, 44px); font-weight: 900; line-height: 1.2; margin-bottom: 24px; }
+    .article-meta { font-size: 15px; color: var(--muted); margin-bottom: 48px; padding-bottom: 24px; border-bottom: 1px solid rgba(255,255,255,0.07); }
+    h2 { font-family: 'Poppins', sans-serif; font-size: 26px; font-weight: 700; margin: 48px 0 16px; color: var(--white); }
+    h3 { font-family: 'Poppins', sans-serif; font-size: 20px; font-weight: 600; margin: 32px 0 12px; color: var(--yellow); }
+    p { margin-bottom: 22px; }
+    strong { color: var(--white); font-weight: 700; }
+    .highlight { color: var(--yellow); font-weight: 700; }
+    .danger { color: #ff6b6b; font-weight: 700; }
+    ul, ol { margin: 16px 0 24px 24px; }
+    li { margin-bottom: 12px; font-size: 19px; }
+
+    /* Callout boxes */
+    .box-warning { background: rgba(197,17,17,0.12); border-left: 4px solid var(--red); padding: 20px 24px; margin: 32px 0; border-radius: 0 4px 4px 0; }
+    .box-info { background: rgba(245,197,24,0.08); border-left: 4px solid var(--yellow); padding: 20px 24px; margin: 32px 0; border-radius: 0 4px 4px 0; }
+    .box-case { background: var(--card); border: 1px solid rgba(255,255,255,0.08); padding: 28px; margin: 40px 0; border-radius: 4px; }
+    .box-case .case-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 12px; }
+    blockquote { border-left: 3px solid var(--yellow); padding: 12px 20px; margin: 24px 0; font-style: italic; color: #ccc; }
+
+    /* CTA */
+    .cta-section { background: var(--card); border: 1px solid rgba(245,197,24,0.2); border-radius: 4px; padding: 48px 40px; margin: 64px 0 40px; text-align: center; }
+    .cta-section h2 { margin-top: 0; font-size: 26px; }
+    .cta-section p { color: #aaa; max-width: 500px; margin: 0 auto 28px; }
+    .btn-primary { display: inline-block; background: var(--yellow); color: #000; font-family: 'Poppins', sans-serif; font-weight: 800; font-size: 16px; padding: 16px 36px; border-radius: 4px; text-decoration: none; }
+    .btn-primary:hover { background: #e0b010; }
+    .cta-fine { font-size: 13px; color: var(--muted); margin-top: 16px; }
+
+    /* FAQ */
+    .faq-item { border-bottom: 1px solid rgba(255,255,255,0.07); padding: 20px 0; }
+    .faq-q { font-family: 'Poppins', sans-serif; font-weight: 600; margin-bottom: 10px; }
+    .faq-a { color: #bbb; }
+
+    /* Fine table */
+    .fine-table { width: 100%; border-collapse: collapse; margin: 24px 0; }
+    .fine-table th { background: rgba(245,197,24,0.1); color: var(--yellow); font-family: 'Poppins', sans-serif; font-size: 13px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 12px 16px; text-align: left; border-bottom: 1px solid rgba(245,197,24,0.2); }
+    .fine-table td { padding: 14px 16px; border-bottom: 1px solid rgba(255,255,255,0.05); font-size: 15px; }
+    .fine-table tr:last-child td { border-bottom: none; }
+    .fine-table .amount { color: #ff6b6b; font-weight: 700; }
+
+    /* Summary + Key Takeaway */
+    .box-summary { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; padding: 24px 28px; margin: 0 0 32px; }
+    .summary-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-bottom: 14px; }
+    .box-summary ul { margin: 0; padding-left: 20px; }
+    .box-summary li { margin-bottom: 8px; font-size: 17px; color: #ccc; }
+    .box-takeaway { background: rgba(245,197,24,0.08); border-left: 4px solid var(--yellow); padding: 20px 24px; margin: 0 0 40px; border-radius: 0 4px 4px 0; }
+    .takeaway-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 10px; }
+    .box-takeaway p { margin: 0; font-size: 18px; font-weight: 600; color: var(--white); line-height: 1.6; }
+
+    /* Footer */
+    footer { border-top: 1px solid rgba(255,255,255,0.07); padding: 32px 40px; text-align: center; font-size: 13px; color: var(--muted); max-width: 900px; margin: 0 auto; }
+    footer a { color: var(--muted); }
+
+    @media (max-width: 600px) {
+      nav, .article-wrap, footer { padding: 20px; }
+      .cta-section { padding: 32px 20px; }
+      .fine-table { font-size: 14px; }
+      .fine-table th, .fine-table td { padding: 10px 10px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="https://nis2klar.se/it/">NIS2<span>Klar</span></a>
+  <a class="nav-back" href="https://nis2klar.se/it/articoli.html">← Tutti gli articoli</a>
+  <div class="lang-switcher" style="display:flex;gap:8px;align-items:center;font-size:13px;font-family:'Poppins',sans-serif;">
+    <a href="https://nis2klar.se/artiklar.html" style="color:#888;text-decoration:none;font-weight:600;padding:4px 8px;border-radius:3px;" title="Svenska">SV</a>
+    <a href="https://nis2klar.se/en/articles.html" style="color:#888;text-decoration:none;font-weight:600;padding:4px 8px;border-radius:3px;" title="English">EN</a>
+    <a href="https://nis2klar.se/da/artikler.html" style="color:#888;text-decoration:none;font-weight:600;padding:4px 8px;border-radius:3px;" title="Dansk">DA</a>
+    <a href="https://nis2klar.se/no/artikler.html" style="color:#888;text-decoration:none;font-weight:600;padding:4px 8px;border-radius:3px;" title="Norsk">NO</a>
+    <a href="https://nis2klar.se/it/articoli.html" style="color:#f5c518;text-decoration:none;font-weight:600;padding:4px 8px;border-radius:3px;background:rgba(245,197,24,0.1);" title="Italiano">IT</a>
+  </div>
+  <a class="nav-cta" href="/nis2.html#boka">Prenota una call →</a>
+</nav>
+
+<article class="article-wrap">
+  <div class="article-category">Conformità &amp; Governance</div>
+  <h1>NIS2 vs GDPR: Le Differenze Chiave che Ogni CdA Deve Conoscere</h1>
+  <div class="article-meta">Aggiornato 17 aprile 2026 · Tempo di lettura: circa 8 minuti · Destinatari: CEO, Presidenti e Membri del CdA</div>
+
+  <!-- SUMMARY -->
+  <div class="box-summary">
+    <div class="summary-label">Sintesi</div>
+    <ul>
+      <li>Per CEO e consigli di amministrazione di aziende nei settori regolamentati che vogliono capire perché la conformità al GDPR non basta più.</li>
+      <li>NIS2 e GDPR hanno obiettivi, ambiti e sanzioni distinti: essere conformi all'uno <strong>non garantisce</strong> la conformità all'altro.</li>
+      <li>La NIS2, recepita in Italia con il <strong>D.Lgs. 138/2024</strong>, introduce la responsabilità personale dei membri del CdA (Art. 23).</li>
+      <li>Le sanzioni NIS2 arrivano fino a <strong>10 milioni di EUR o il 2% del fatturato mondiale</strong> per i soggetti essenziali.</li>
+      <li>L'autorità competente in Italia è l'<strong>ACN (Agenzia per la Cybersicurezza Nazionale)</strong>, affiancata da autorità di settore.</li>
+    </ul>
+  </div>
+
+  <!-- KEY TAKEAWAY -->
+  <div class="box-takeaway">
+    <div class="takeaway-label">Conclusione fondamentale</div>
+    <p>Il GDPR protegge i dati personali. La NIS2 protegge la continuità operativa. Sono due obblighi distinti, con due corpi di vigilanza diversi e due regimi sanzionatori separati. Puoi superare un audit GDPR e fallire un'ispezione NIS2 lo stesso giorno.</p>
+  </div>
+
+  <!-- HOOK -->
+  <p>
+    C'è un malinteso diffuso nelle sale riunioni delle aziende italiane: "Abbiamo già il GDPR sotto controllo — siamo a posto anche con la NIS2." Questo ragionamento è comprensibile. Entrambe le normative parlano di sicurezza, dati, rischi. Ma è un errore che può costare caro.
+  </p>
+
+  <p>
+    Il <strong>D.Lgs. 138/2024</strong>, in vigore dal 16 ottobre 2024, ha recepito la Direttiva NIS2 nell'ordinamento italiano. Da quella data, le organizzazioni nei settori regolamentati hanno obblighi che vanno ben oltre la protezione dei dati personali. Riguardano la resilienza operativa, la gestione degli incidenti informatici, la sicurezza della supply chain e — elemento spesso trascurato — la <strong>responsabilità personale dei vertici aziendali</strong>.
+  </p>
+
+  <p>
+    Questo articolo non è pensato per il responsabile IT. È pensato per voi: CEO, presidenti di consiglio, consiglieri di amministrazione. Persone che firmano delibere, approvano budget e rispondono di fronte agli azionisti. Persone che, con la NIS2, rispondono anche di fronte all'ACN.
+  </p>
+
+  <div class="box-warning">
+    <strong>Attenzione:</strong> L'Art. 23 del D.Lgs. 138/2024 stabilisce che i membri dell'organo di amministrazione possono essere ritenuti <strong>personalmente responsabili</strong> delle violazioni NIS2. Non è una responsabilità dell'azienda che si può delegare all'IT. È una responsabilità che porta il vostro nome.
+  </div>
+
+  <h2>Due normative, due logiche completamente diverse</h2>
+
+  <p>
+    Prima di confrontare le differenze nei dettagli, è utile capire la logica di fondo di ciascuna normativa. È qui che risiede il malinteso più pericoloso.
+  </p>
+
+  <p>
+    Il <strong>GDPR</strong> — Regolamento (UE) 2016/679 — nasce per tutelare i diritti delle persone fisiche in relazione al trattamento dei loro dati personali. La domanda centrale del GDPR è: <em>"Stiamo trattando i dati delle persone nel rispetto dei loro diritti?"</em> La violazione più grave è raccogliere, usare o esporre dati personali senza una base legale adeguata.
+  </p>
+
+  <p>
+    La <strong>NIS2</strong> — e il suo recepimento italiano nel D.Lgs. 138/2024 — nasce per un obiettivo radicalmente diverso: garantire che le infrastrutture e i servizi critici dell'Unione Europea continuino a funzionare anche sotto attacco. La domanda centrale della NIS2 è: <em>"L'organizzazione è in grado di resistere a un incidente informatico e continuare a operare?"</em> La violazione più grave è non avere le misure tecniche e organizzative per farlo — indipendentemente da chi sia coinvolto come persona fisica.
+  </p>
+
+  <p>
+    Questa differenza di fondo determina tutto il resto: chi controlla, cosa si deve fare, come si sanziona e chi risponde personalmente.
+  </p>
+
+  <h2>Il confronto diretto: una tabella per il CdA</h2>
+
+  <table class="fine-table">
+    <thead>
+      <tr>
+        <th>Dimensione</th>
+        <th>GDPR</th>
+        <th>NIS2 (D.Lgs. 138/2024)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Obiettivo principale</strong></td>
+        <td>Protezione dei dati personali</td>
+        <td>Resilienza operativa e sicurezza delle reti e dei sistemi informativi</td>
+      </tr>
+      <tr>
+        <td><strong>Chi si applica</strong></td>
+        <td>Qualsiasi organizzazione che tratta dati di persone fisiche nell'UE</td>
+        <td>Organizzazioni in 18 settori critici con soglie dimensionali (50+ dipendenti o 10M€+ fatturato)</td>
+      </tr>
+      <tr>
+        <td><strong>Autorità competente in Italia</strong></td>
+        <td>Garante per la protezione dei dati personali</td>
+        <td>ACN (primaria); Banca d'Italia, ARERA, AGCOM, Ministero della Salute (per settore)</td>
+      </tr>
+      <tr>
+        <td><strong>Sanzione massima</strong></td>
+        <td class="amount">20 milioni di EUR o 4% del fatturato mondiale</td>
+        <td class="amount">10 milioni di EUR o 2% del fatturato mondiale (soggetti essenziali); 7 milioni o 1,4% (soggetti importanti)</td>
+      </tr>
+      <tr>
+        <td><strong>Responsabilità personale del CdA</strong></td>
+        <td>Limitata — in genere ricade sull'organizzazione</td>
+        <td>Esplicita — Art. 23 D.Lgs. 138/2024 prevede responsabilità personale dei membri dell'organo di amministrazione</td>
+      </tr>
+      <tr>
+        <td><strong>Obblighi principali</strong></td>
+        <td>Base giuridica del trattamento, consenso, diritti degli interessati, DPIA, DPO, notifica data breach</td>
+        <td>Misure di sicurezza tecniche e organizzative, gestione del rischio, notifica degli incidenti, sicurezza della supply chain, formazione del management</td>
+      </tr>
+      <tr>
+        <td><strong>Notifica degli incidenti</strong></td>
+        <td>Entro 72 ore al Garante (solo se coinvolti dati personali)</td>
+        <td>Allerta precoce entro 24h → notifica entro 72h → relazione finale entro 1 mese (all'ACN, per qualsiasi incidente significativo)</td>
+      </tr>
+      <tr>
+        <td><strong>Enforcement principale</strong></td>
+        <td>Reattivo (a seguito di reclami o data breach)</td>
+        <td>Proattivo — l'ACN può avviare ispezioni anche in assenza di incidenti</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>Perché la conformità al GDPR non è sufficiente</h2>
+
+  <p>
+    Molti consigli di amministrazione hanno investito significativamente nel GDPR negli ultimi anni: hanno nominato il DPO, aggiornato le privacy policy, implementato procedure di notifica dei data breach. Questo lavoro ha valore. Ma crea anche una falsa sensazione di sicurezza rispetto alla NIS2.
+  </p>
+
+  <p>
+    Considerate questo scenario concreto: la vostra azienda tratta dati personali con tutte le cautele previste dal GDPR. Il Garante non ha mai contestato nulla. Eppure, se operate nel settore energetico, sanitario, dei trasporti o delle infrastrutture digitali, potreste essere soggetti alla NIS2 con obblighi che il GDPR non copre affatto.
+  </p>
+
+  <p>
+    La NIS2 vi chiede cose che il GDPR non ha mai chiesto:
+  </p>
+
+  <ul>
+    <li>Un piano di <strong>continuità operativa</strong> testato e documentato, che dimostri la capacità di ripristinare i sistemi dopo un attacco informatico</li>
+    <li>Una <strong>valutazione della sicurezza dei fornitori</strong> e dei terzi nella supply chain — non solo dei sub-responsabili del trattamento dati</li>
+    <li>Procedure di <strong>gestione degli incidenti informatici</strong> che prescindono dalla presenza di dati personali coinvolti</li>
+    <li><strong>Formazione specifica</strong> per i membri del CdA sulla cybersicurezza — non delegabile al solo personale tecnico</li>
+    <li>La <strong>registrazione sulla piattaforma ACN</strong> entro le scadenze stabilite dall'autorità</li>
+    <li>Misure di autenticazione forte, crittografia e controllo degli accessi documentate e verificabili</li>
+  </ul>
+
+  <p>
+    Nessuno di questi obblighi è contenuto nel GDPR. Sono requisiti autonomi, con un proprio regime di vigilanza e sanzioni distinte.
+  </p>
+
+  <h2>Le situazioni di doppio obbligo: quando si applica entrambe</h2>
+
+  <p>
+    La situazione più delicata — e la più frequente per le grandi aziende italiane — è quella del <strong>doppio obbligo</strong>: organizzazioni che devono rispettare sia il GDPR sia la NIS2 contemporaneamente, con autorità diverse che vigilano su aspetti diversi della stessa infrastruttura informatica.
+  </p>
+
+  <h3>Scenario 1: Un attacco ransomware in un ospedale</h3>
+  <p>
+    Un'azienda ospedaliera subisce un attacco ransomware. I sistemi di prenotazione e cartelle cliniche vengono cifrati. In questo caso, si attivano <strong>due regimi di notifica distinti</strong>: la NIS2 richiede un'allerta precoce all'ACN entro 24 ore dall'identificazione dell'incidente; il GDPR richiede la notifica al Garante entro 72 ore se sono stati compromessi dati personali dei pazienti. Mancarne uno equivale a una violazione autonoma. Le sanzioni non si sommano automaticamente, ma possono accumularsi in parallelo.
+  </p>
+
+  <h3>Scenario 2: Una banca che subisce una violazione dei sistemi di pagamento</h3>
+  <p>
+    Una banca media italiana, soggetta sia al GDPR sia alla NIS2 (con Banca d'Italia come autorità di settore), deve rispondere a due fronti distinti: il Garante per la protezione dei dati personali dei clienti coinvolti, e l'ACN — tramite Banca d'Italia — per l'impatto sulla continuità del servizio. Due istruttorie, due autorità, due potenziali procedimenti sanzionatori.
+  </p>
+
+  <h3>Scenario 3: Un operatore delle telecomunicazioni</h3>
+  <p>
+    Un operatore TLC di medie dimensioni ha costruito negli anni un sistema di conformità GDPR solido. Ma la NIS2, con AGCOM come autorità di settore, richiede anche misure di sicurezza della rete che vanno oltre la protezione dei dati: resilienza delle infrastrutture, test di penetrazione documentati, piani di ripristino. Se l'operatore non ha queste misure, è a rischio sanzione NIS2 — anche senza aver mai avuto un data breach.
+  </p>
+
+  <div class="box-info">
+    <strong>Punto chiave per il CdA:</strong> Nei settori con doppio obbligo, il consiglio di amministrazione deve supervisionare due programmi di conformità distinti, con due budget, due set di documentazione e due interlocutori istituzionali. Non è sufficiente avere un solo responsabile — tipicamente il DPO — che gestisce tutto.
+  </div>
+
+  <h2>Il nodo della responsabilità personale: cosa dice l'Art. 23</h2>
+
+  <p>
+    Questo è il punto che cambia tutto per i vertici aziendali. Il GDPR prevede sanzioni in capo all'organizzazione come soggetto giuridico. La NIS2 — nell'articolo 23 del D.Lgs. 138/2024 — fa un passo ulteriore e stabilisce che i <strong>membri dell'organo di amministrazione</strong> possono essere ritenuti personalmente responsabili delle violazioni.
+  </p>
+
+  <p>
+    Cosa significa in pratica? Significa che l'ACN, a seguito di una violazione grave degli obblighi NIS2, può avviare un procedimento non solo contro l'azienda ma contro le persone fisiche che la governano. Le conseguenze possono includere:
+  </p>
+
+  <ol>
+    <li>Sanzioni pecuniarie personali</li>
+    <li>Misure pubblicistiche che rendono pubblica la violazione e il nome dei responsabili</li>
+    <li>Potenziali preclusioni temporanee dall'esercizio di funzioni dirigenziali in settori regolamentati</li>
+  </ol>
+
+  <p>
+    Non è una minaccia teorica. È una norma vigente. E a differenza di quanto accade nel diritto societario ordinario, qui non è sufficiente dimostrare di aver delegato la gestione della cybersicurezza all'IT manager o a un consulente esterno. La NIS2 richiede che la supervisione delle misure di sicurezza avvenga a livello di organo di amministrazione — che il CdA approvi le misure, le monitori nel tempo e possa documentare di averlo fatto.
+  </p>
+
+  <blockquote>
+    "Non è sufficiente dire 'non me ne occupo io'. Con la NIS2, l'organo di amministrazione è parte integrante del sistema di sicurezza — non un osservatore esterno."
+  </blockquote>
+
+  <p>
+    Questo impone un cambiamento concreto nel funzionamento dei consigli di amministrazione italiani nei settori regolamentati: la cybersicurezza deve diventare un punto fisso dell'agenda del CdA, con reportistica strutturata, delibere documentate e formazione specifica per i consiglieri.
+  </p>
+
+  <h2>Le sanzioni a confronto: un quadro chiaro</h2>
+
+  <p>
+    Per contestualizzare i rischi finanziari, ecco un confronto diretto tra i due regimi sanzionatori:
+  </p>
+
+  <table class="fine-table">
+    <thead>
+      <tr>
+        <th>Normativa</th>
+        <th>Categoria</th>
+        <th>Sanzione massima</th>
+        <th>Alternativa</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>GDPR</td>
+        <td>Violazioni gravi (Art. 83.5)</td>
+        <td class="amount">20 milioni di EUR</td>
+        <td>4% fatturato mondiale annuo</td>
+      </tr>
+      <tr>
+        <td>GDPR</td>
+        <td>Violazioni minori (Art. 83.4)</td>
+        <td class="amount">10 milioni di EUR</td>
+        <td>2% fatturato mondiale annuo</td>
+      </tr>
+      <tr>
+        <td>NIS2 / D.Lgs. 138/2024</td>
+        <td>Soggetti essenziali</td>
+        <td class="amount">10 milioni di EUR</td>
+        <td>2% fatturato mondiale annuo</td>
+      </tr>
+      <tr>
+        <td>NIS2 / D.Lgs. 138/2024</td>
+        <td>Soggetti importanti</td>
+        <td class="amount">7 milioni di EUR</td>
+        <td>1,4% fatturato mondiale annuo</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>
+    In caso di doppio obbligo — GDPR e NIS2 violati dallo stesso incidente — le sanzioni si applicano <strong>separatamente</strong>, ciascuna dalla propria autorità competente. Un'azienda che subisce un attacco informatico con compromissione di dati personali, senza aver notificato correttamente né il Garante né l'ACN, si espone a procedimenti paralleli.
+  </p>
+
+  <h2>Cosa succede in concreto durante un'ispezione ACN</h2>
+
+  <p>
+    Mentre il Garante per la protezione dei dati interviene tipicamente in risposta a un reclamo o a una violazione segnalata, l'ACN ha poteri di vigilanza proattiva. Può avviare ispezioni anche in assenza di incidenti, semplicemente verificando che le organizzazioni nei settori critici rispettino gli obblighi di legge.
+  </p>
+
+  <p>
+    In sede di ispezione, l'ACN non chiede se avete le buone intenzioni. Chiede la documentazione. Nello specifico:
+  </p>
+
+  <ul>
+    <li>La valutazione del rischio aggiornata, con metodologia documentata</li>
+    <li>Le politiche di sicurezza approvate dall'organo di amministrazione</li>
+    <li>Il piano di gestione degli incidenti con ruoli, responsabilità e procedure di escalation</li>
+    <li>L'inventario dei fornitori critici con i relativi requisiti di sicurezza contrattualizzati</li>
+    <li>La prova delle attività di formazione per il management e il personale</li>
+    <li>La delibera del CdA che approva le misure di sicurezza adottate</li>
+    <li>La registrazione sulla piattaforma ACN, effettuata entro i termini stabiliti</li>
+  </ul>
+
+  <p>
+    Se questi documenti non esistono al momento dell'ispezione, la carenza è immediatamente sanzionabile — indipendentemente da quanto lavoro stia avvenendo nella pratica quotidiana.
+  </p>
+
+  <div class="box-case">
+    <div class="case-label">Scenario illustrativo</div>
+    <p>
+      <strong>Azienda di medie dimensioni nel settore energetico, 120 dipendenti, fatturato 15 milioni di EUR.</strong>
+    </p>
+    <p>
+      Classificata come soggetto importante ai sensi del D.Lgs. 138/2024, con ARERA come autorità di settore. L'azienda ha un DPO nominato, una privacy policy aggiornata e ha superato un audit GDPR senza rilievi. Il management ritiene di essere "in regola".
+    </p>
+    <p>
+      A febbraio 2026, un attacco informatico rende indisponibili i sistemi di monitoraggio della rete per 18 ore. L'IT rileva l'incidente entro poche ore, ma il management decide di gestire internamente la situazione senza notifiche all'esterno. La finestra delle 24 ore per l'allerta precoce all'ACN viene superata senza alcuna comunicazione.
+    </p>
+    <p>
+      Tre settimane dopo, un fornitore partner segnala anomalie alla propria autorità di settore. L'ACN avvia un'ispezione. Emerge che l'azienda non ha un piano di continuità operativa documentato, non ha effettuato la registrazione sulla piattaforma ACN nei termini previsti, e il CdA non ha mai approvato formalmente le misure di sicurezza NIS2.
+    </p>
+    <p>
+      <strong>Esito probabile:</strong> Sanzione per mancata notifica dell'incidente. Sanzione aggiuntiva per assenza delle misure tecniche e organizzative richieste dall'Art. 21. Avvio di un procedimento di responsabilità personale a carico dell'amministratore delegato ai sensi dell'Art. 23. Costi stimati — incluse consulenza legale, misure correttive urgenti e sanzioni — nell'ordine di <span class="danger">3–5 milioni di EUR</span>, a fronte di un'azienda con 15 milioni di fatturato.
+    </p>
+    <p>
+      Il GDPR? Nessuna violazione GDPR in questo scenario. Nessun dato personale compromesso. Eppure l'esposizione NIS2 è massima.
+    </p>
+  </div>
+
+  <h2>Le domande che il CdA dovrebbe porre oggi</h2>
+
+  <p>
+    Non ogni consigliere deve diventare un esperto di cybersicurezza. Ma ogni consigliere deve essere in grado di porre le domande giuste e pretendere risposte documentate. Ecco un punto di partenza pratico:
+  </p>
+
+  <div class="faq-item">
+    <div class="faq-q">La nostra organizzazione rientra nella NIS2? In quale categoria — soggetto essenziale o importante?</div>
+    <div class="faq-a">La risposta dipende dal settore di appartenenza e dalle dimensioni dell'organizzazione. Se operate in uno dei 18 settori critici con più di 50 dipendenti o più di 10 milioni di euro di fatturato, probabilmente sì. L'ACN pubblica le liste dei soggetti inclusi. Se non avete già verificato, è urgente farlo — la registrazione sulla piattaforma ACN è un obbligo autonomo con scadenze specifiche.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">Abbiamo un piano di notifica degli incidenti che rispetta le tempistiche NIS2?</div>
+    <div class="faq-a">Il GDPR vi ha abituati alla finestra delle 72 ore. La NIS2 aggiunge un'allerta precoce entro 24 ore dall'identificazione dell'incidente. Avete procedure chiare che distinguono i due flussi? Chi è responsabile di notificare all'ACN? È scritto da qualche parte e approvato dal CdA?</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">Il nostro programma di sicurezza copre la supply chain?</div>
+    <div class="faq-a">La NIS2 richiede esplicitamente di valutare la sicurezza dei fornitori e dei terzi nella catena di fornitura. Non basta avere clausole contrattuali generiche. Serve un processo di valutazione del rischio dei fornitori documentato e aggiornato.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">Come CdA, abbiamo approvato formalmente le misure di sicurezza NIS2?</div>
+    <div class="faq-a">Questa è la domanda più critica. L'Art. 23 del D.Lgs. 138/2024 richiede che l'organo di amministrazione approvi le misure di sicurezza e ne supervisioni l'attuazione. Se questa approvazione non è documentata in un verbale del CdA, siete esposti personalmente.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">Avere il GDPR a posto significa che siamo coperti anche sulla NIS2?</div>
+    <div class="faq-a">No. Come illustrato in questo articolo, sono due normative con obiettivi, obblighi e autorità di controllo distinti. La conformità GDPR è necessaria ma non sufficiente. Avete bisogno di una gap analysis specifica sulla NIS2 per capire cosa copre già la vostra infrastruttura di compliance e cosa manca.</div>
+  </div>
+
+  <div class="box-info" style="margin: 48px 0 32px;">
+    <div style="font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color: var(--yellow); margin-bottom:10px;">🔧 STRUMENTI &amp; SOLUZIONI</div>
+    <p style="margin:0; font-size:17px; color: #ddd; line-height:1.7;">Per documentare la conformità NIS2 in modo verificabile dall'ACN, Microsoft Defender Secure Score e Microsoft Compliance Manager offrono un cruscotto KPI leggibile anche dal CdA — con evidenza delle misure adottate, delle lacune residue e del livello di rischio corrente. Un partner Microsoft certificato può configurare questi strumenti e condurre un'analisi del gap gratuita come punto di partenza.</p>
+  </div>
+
+  <!-- NEWSLETTER -->
+  <div style="background:#111; border:1px solid rgba(255,255,255,0.1); border-left:3px solid #f5c518; border-radius:4px; padding:32px 36px; margin:40px 0 0; text-align:center; max-width:760px; margin-left:auto; margin-right:auto;">
+    <div style="font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:#f5c518; margin-bottom:12px;">📬 AGGIORNAMENTI NIS2</div>
+    <h3 style="font-family:'Poppins',sans-serif; font-size:20px; font-weight:800; margin:0 0 8px; color:#f0f0f0;">Un nuovo articolo NIS2 ogni settimana — direttamente nella tua casella</h3>
+    <p style="color:#888; font-size:15px; margin:0 0 20px;">Nessun pitch di vendita. Solo guida pratica per CEO e consigli di amministrazione.</p>
+    <form id="nlForm-nis2_vs_gdpr_differenze" onsubmit="submitNewsletter_nis2_vs_gdpr_differenze(event)" style="display:flex; gap:10px; flex-wrap:wrap; justify-content:center; max-width:460px; margin:0 auto;">
+      <input type="email" id="nlEmail-nis2_vs_gdpr_differenze" placeholder="tuo@azienda.it" required style="flex:1; min-width:200px; padding:12px 16px; background:#1c1c1f; border:1px solid rgba(255,255,255,0.15); border-radius:4px; color:#f0f0f0; font-size:15px; outline:none;" />
+      <button type="submit" id="nlSubmit-nis2_vs_gdpr_differenze" style="padding:12px 22px; background:#f5c518; color:#141416; font-weight:700; font-size:15px; border:none; border-radius:4px; cursor:pointer; white-space:nowrap;">Iscriviti gratis →</button>
+    </form>
+    <p style="font-size:12px; color:#555; margin:12px 0 0;">Puoi cancellarti in qualsiasi momento. Non condividiamo mai la tua email.</p>
+    <div id="nlThanks-nis2_vs_gdpr_differenze" style="display:none; color:#4ade80; font-size:16px; font-weight:600; margin-top:14px;">✅ Sei iscritto! Il prossimo articolo arriverà nella tua casella.</div>
+  </div>
+
+  <!-- CTA -->
+  <div class="cta-section">
+    <h2>Sai dove si trova la tua organizzazione oggi?</h2>
+    <p>Un'analisi del gap gratuita con un partner Microsoft certificato mostra esattamente cosa hai già coperto — e cosa manca.</p>
+    <a href="/nis2.html#boka" class="btn-primary">Prenota analisi gap gratuita →</a>
+    <p class="cta-fine">Le sanzioni arrivano fino a <strong>10 milioni di euro</strong>. L'analisi del gap è gratuita.</p>
+  </div>
+
+</article>
+
+<div class="related-articles" style="margin:2.5rem 0 2rem;padding:1.5rem;background:#1a1a2e;border-left:4px solid #f0a500;border-radius:4px; max-width:760px; margin-left:auto; margin-right:auto;">
+  <p style="margin:0 0 1rem;font-size:0.85rem;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:#f0a500;">Leggi anche</p>
+  <ul style="margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:0.5rem;">
+    <li><a href="/it/articoli/nis2-responsabilita-personale-cda.html" style="color:#e0e0e0;text-decoration:none;font-size:0.95rem;">→ Responsabilità personale del CdA nella NIS2</a></li>
+    <li><a href="/it/articoli/nis2-sanzioni-italia.html" style="color:#e0e0e0;text-decoration:none;font-size:0.95rem;">→ Sanzioni NIS2 in Italia: cosa rischia la tua azienda</a></li>
+    <li><a href="/it/articoli/nis2-quali-aziende-si-applicano.html" style="color:#e0e0e0;text-decoration:none;font-size:0.95rem;">→ Quali aziende italiane rientrano nella NIS2?</a></li>
+  </ul>
+  <p style="margin:1.25rem 0 0;font-size:0.85rem;color:#aaa;">← <a href="https://nis2klar.se/it/" style="color:#f0a500;text-decoration:none;">Home NIS2Klar Italia</a> &nbsp;·&nbsp; <a href="https://nis2klar.se/it/articoli.html" style="color:#f0a500;text-decoration:none;">Tutte le guide</a></p>
+</div>
+
+<footer>
+  © 2026 M&amp;J Trusted Marketing KB ·
+  <a href="mailto:support@trustedmarketing.se">support@trustedmarketing.se</a> · <a href="tel:+46470597003">+46 470 59 70 03</a> ·
+  <a href="https://nis2klar.se/it/">Torna alla home</a> ·
+  <a href="/privacy.html">Informativa sulla privacy</a>
+  <p style="margin-top:12px; font-size:11px; color: #555; line-height:1.5;">Microsoft, Microsoft 365, Azure e i relativi nomi di prodotto sono marchi di Microsoft Corporation. nis2klar.se non è affiliata né approvata da Microsoft Corporation.</p>
+</footer>
+
+<script>
+  async function submitNewsletter_nis2_vs_gdpr_differenze(e) {
+    e.preventDefault();
+    const btn = document.getElementById('nlSubmit-nis2_vs_gdpr_differenze');
+    btn.disabled = true; btn.textContent = '...';
+    const email = document.getElementById('nlEmail-nis2_vs_gdpr_differenze').value.trim();
+    try {
+      const res = await fetch('/api/newsletter/subscribe', { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({ email, source: 'articolo-it-nis2_vs_gdpr_differenze' }) });
+      const data = await res.json();
+      if (data.success) { document.getElementById('nlForm-nis2_vs_gdpr_differenze').style.display='none'; document.getElementById('nlThanks-nis2_vs_gdpr_differenze').style.display='block'; }
+      else { btn.disabled=false; btn.textContent='Iscriviti gratis →'; }
+    } catch { btn.disabled=false; btn.textContent='Iscriviti gratis →'; }
+  }
+</script>
+
+</body>
+</html>

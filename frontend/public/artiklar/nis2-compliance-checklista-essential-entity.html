@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-BKF3QH9K01"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag("js", new Date());
+    gtag("config", "G-BKF3QH9K01");
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NIS2 Compliance-checklista med krav för Essential Entities | NIS2Klar</title>
+  <meta name="description" content="Komplett NIS2-checklista för väsentliga entiteter. 20 punkt-av-punkt krav. Fallstudie: Energiföretag som missade kritiska åtgärder. Styrelseansvar dokumenterat.">
+  <meta property="og:title" content="NIS2 Compliance-checklista med krav för Essential Entities">
+  <meta property="og:description" content="Komplett NIS2-checklista för väsentliga entiteter. 20 punkt-av-punkt krav. Fallstudie: Energiföretag som missade kritiska åtgärder.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #141416;
+      --card: #1c1c1f;
+      --yellow: #f5c518;
+      --white: #f0f0f0;
+      --muted: #888;
+      --red: #C61212;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: var(--bg); color: var(--white); font-family: 'Barlow', sans-serif; font-size: 19px; line-height: 1.8; }
+
+    /* Nav */
+    nav { display: flex; justify-content: space-between; align-items: center; padding: 20px 40px; border-bottom: 1px solid rgba(255,255,255,0.07); max-width: 900px; margin: 0 auto; }
+    .nav-logo { font-family: 'Poppins', sans-serif; font-weight: 900; font-size: 20px; color: var(--yellow); text-decoration: none; }
+    .nav-logo span { color: var(--white); }
+    .nav-back { color: var(--muted); text-decoration: none; font-size: 15px; }
+    .nav-back:hover { color: var(--white); }
+    .nav-cta { background: var(--yellow); color: #000; padding: 8px 18px; border-radius: 4px; text-decoration: none; font-weight: 700; font-size: 14px; font-family: 'Poppins', sans-serif; }
+
+    /* Article */
+    .article-wrap { max-width: 760px; margin: 0 auto; padding: 60px 40px; }
+    .article-category { font-size: 13px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 16px; }
+    h1 { font-family: 'Poppins', sans-serif; font-size: clamp(30px, 4vw, 44px); font-weight: 900; line-height: 1.2; margin-bottom: 24px; }
+    .article-meta { font-size: 15px; color: var(--muted); margin-bottom: 48px; padding-bottom: 24px; border-bottom: 1px solid rgba(255,255,255,0.07); }
+    h2 { font-family: 'Poppins', sans-serif; font-size: 26px; font-weight: 700; margin: 48px 0 16px; color: var(--white); }
+    h3 { font-family: 'Poppins', sans-serif; font-size: 20px; font-weight: 600; margin: 32px 0 12px; color: var(--yellow); }
+    p { margin-bottom: 22px; }
+    strong { color: var(--white); font-weight: 700; }
+    .highlight { color: var(--yellow); font-weight: 700; }
+    .danger { color: #ff6b6b; font-weight: 700; }
+    ul, ol { margin: 16px 0 24px 24px; }
+    li { margin-bottom: 12px; font-size: 19px; }
+
+    /* Callout boxes */
+    .box-warning { background: rgba(197,17,17,0.12); border-left: 4px solid var(--red); padding: 20px 24px; margin: 32px 0; border-radius: 0 4px 4px 0; }
+    .box-info { background: rgba(245,197,24,0.08); border-left: 4px solid var(--yellow); padding: 20px 24px; margin: 32px 0; border-radius: 0 4px 4px 0; }
+    .box-case { background: var(--card); border: 1px solid rgba(255,255,255,0.08); padding: 28px; margin: 40px 0; border-radius: 4px; }
+    .box-case .case-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 12px; }
+    blockquote { border-left: 3px solid var(--yellow); padding: 12px 20px; margin: 24px 0; font-style: italic; color: #ccc; }
+
+    /* CTA */
+    .cta-section { background: var(--card); border: 1px solid rgba(245,197,24,0.2); border-radius: 4px; padding: 48px 40px; margin: 64px 0 40px; text-align: center; }
+    .cta-section h2 { margin-top: 0; font-size: 26px; }
+    .cta-section p { color: #aaa; max-width: 500px; margin: 0 auto 28px; }
+    .btn-primary { display: inline-block; background: var(--yellow); color: #000; font-family: 'Poppins', sans-serif; font-weight: 800; font-size: 16px; padding: 16px 36px; border-radius: 4px; text-decoration: none; }
+    .btn-primary:hover { background: #e0b010; }
+    .cta-fine { font-size: 13px; color: var(--muted); margin-top: 16px; }
+
+    /* FAQ */
+    .faq-item { border-bottom: 1px solid rgba(255,255,255,0.07); padding: 20px 0; }
+    .faq-q { font-family: 'Poppins', sans-serif; font-weight: 600; margin-bottom: 10px; }
+    .faq-a { color: #bbb; }
+
+    /* Checklist */
+    .checklist { background: var(--card); border: 1px solid rgba(255,255,255,0.08); border-radius: 4px; padding: 28px; margin: 32px 0; }
+    .checklist-item { display: flex; align-items: flex-start; margin-bottom: 16px; padding-bottom: 16px; border-bottom: 1px solid rgba(255,255,255,0.05); }
+    .checklist-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+    .checklist-num { background: var(--yellow); color: #000; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 13px; flex-shrink: 0; margin-right: 14px; margin-top: 2px; }
+    .checklist-content { flex: 1; }
+    .checklist-content strong { display: block; margin-bottom: 4px; color: var(--white); }
+    .checklist-content p { margin: 0; font-size: 17px; color: #bbb; }
+
+    /* Summary + Key Takeaway */
+    .box-summary { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; padding: 24px 28px; margin: 0 0 32px; }
+    .summary-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-bottom: 14px; }
+    .box-summary ul { margin: 0; padding-left: 20px; }
+    .box-summary li { margin-bottom: 8px; font-size: 17px; color: #ccc; }
+    .box-takeaway { background: rgba(245,197,24,0.08); border-left: 4px solid var(--yellow); padding: 20px 24px; margin: 0 0 40px; border-radius: 0 4px 4px 0; }
+    .takeaway-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 10px; }
+    .box-takeaway p { margin: 0; font-size: 18px; font-weight: 600; color: var(--white); line-height: 1.6; }
+
+    /* Footer */
+    footer { border-top: 1px solid rgba(255,255,255,0.07); padding: 32px 40px; text-align: center; font-size: 13px; color: var(--muted); max-width: 900px; margin: 0 auto; }
+    footer a { color: var(--muted); }
+
+    @media (max-width: 600px) {
+      nav, .article-wrap, footer { padding: 20px; }
+      .cta-section { padding: 32px 20px; }
+      .checklist { padding: 20px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="https://nis2klar.se/">NIS2<span>Klar</span></a>
+  <a class="nav-back" href="https://nis2klar.se/artiklar.html">← Alla artiklar</a>
+  <a class="nav-cta" href="https://nis2klar.se/#boka">Boka samtal →</a>
+</nav>
+
+<article class="article-wrap">
+  <div class="article-category">Compliance &amp; Efterlevnad</div>
+  <h1>NIS2 Compliance-checklista med krav för Essential Entities</h1>
+  <div class="article-meta">Uppdaterad 19 april 2026 · Lästid: ca 9 minuter · Målgrupp: VD &amp; Styrelse</div>
+
+  <!-- SUMMARY -->
+  <div class="box-summary">
+    <div class="summary-label">Sammanfattning</div>
+    <ul>
+      <li>Väsentliga entiteter (Essential Entities) har skärpta krav gentemot viktiga entiteter.</li>
+      <li>20-punkts checklista som direkt motsvarar NIS2-direktivets krav i Artikel 21 och 20.</li>
+      <li>Fallstudie: Energiföretag med 600 anställda missade 7 kritiska punkter — böter utgick.</li>
+      <li>Styrelsedokumentation är lagkrav — inte best practice.</li>
+    </ul>
+  </div>
+
+  <!-- KEY TAKEAWAY -->
+  <div class="box-takeaway">
+    <div class="takeaway-label">Viktigaste slutsatsen</div>
+    <p>Du kan inte delegera bort väg från detta. Artikel 20 slår fast att ledningsorganen godkänner dessa åtgärder. Utan dokumenterat styrelsebeslut är du personligt ansvarig för bristerna — oavsett hur mycket IT-avdelningen jobbar.</p>
+  </div>
+
+  <h2>Vad skiljer väsentliga entiteter från viktiga?</h2>
+
+  <p>
+    NIS2-direktivet delar regelbundna verksamheter i två kategorier utifrån storlek och roll. <strong>Väsentliga entiteter</strong> (Essential Entities) är större, ofta privatägda eller allmänna verksamheter där ett säkerhetsbortfall kan få systemkritiska följder.
+  </p>
+
+  <p>
+    En väsentlig entitet kännetecknas av:
+  </p>
+
+  <ul>
+    <li>Fler än 250 anställda ELLER årsomsättning över 50 miljoner euro</li>
+    <li>Verksamhet i en av 18 samhällskritiska sektorer (energi, finans, hälso- och sjukvård, transport, digitala infrastrukturtjänster, m.m.)</li>
+    <li>Rollen är systemkritisk för EU:s eller medlemsstatens försörjning eller funktionering</li>
+  </ul>
+
+  <p>
+    För väsentliga entiteter är kraven strängare än för viktiga entiteter. Det gäller bland annat:
+  </p>
+
+  <ul>
+    <li>Kontinuitetsplanering är obligatorisk (inte bara rekommenderad)</li>
+    <li>Kryptering av känsliga data är tvingande</li>
+    <li>Incidentrapportering måste ske inom 24 timmar (tidig varning) PLUS fullständig rapport inom 72 timmar</li>
+    <li>Leverantörssäkerhet måste dokumenteras och övervakas aktivt</li>
+    <li>Styrelsens engagemang måste dokumenteras quattriga gånger per år — minst</li>
+  </ul>
+
+  <p>
+    Är du osäker på om din organisation klassas som väsentlig eller viktig entitet är det den första punkten på denna checklista. Det kostar ingenting att kontrollera klassificering — det kostar allt att få det fel.
+  </p>
+
+  <div class="box-warning">
+    <strong>Viktigt:</strong> Klassificering sker inte automatiskt. Du måste själv bedöma om organisationen uppfyller kriterierna. Tillsynsmyndigheten kan senare överklaga din bedömning. Om du klassificerat dig själv som viktig men faktiskt är väsentlig kan böterna vara högre än för själva säkerhetsbristerna.
+  </div>
+
+  <h2>NIS2 Compliance-checklista — 20 obligatoriska punkter för Essential Entities</h2>
+
+  <p>
+    Nedan är en punkt-för-punkt-checklista som motsvarar Artikel 21 i NIS2-direktivet (åtgärder för informationssäkerhet) plus Artikel 20 (styrelseansvaret). Denna checklista är inte vädja eller tips — det är lagkrav. För varje punkt gäller: kan du inte visa dokumentation på genomförande och styrelsegodkännande, brister du.
+  </p>
+
+  <div class="checklist">
+    <div class="checklist-item">
+      <div class="checklist-num">1</div>
+      <div class="checklist-content">
+        <strong>Riskhantering — Formell riskanalys antagen av styrelsen</strong>
+        <p>Du måste identifiera och dokumentera vilka risker som hotar organisationen. En riskanalys är inte en rapport som sitter i en mapp. Den måste presenteras för och godkännas av styrelsen. Uppdatering minst årligt.</p>
+      </div>
+    </div>
+
+    <div class="checklist-item">
+      <div class="checklist-num">2</div>
+      <div class="checklist-content">
+        <strong>Säkerhetspolicy — Antagen och publicerad ledningspolicy</strong>
+        <p>Det räcker inte att ha en IT-säkerhetspolicy i mappen. Du måste ha en överordnad säkerhetspolicy som är antagen av styrelse eller motsvarande ledningsorgan och som tydligt slår fast säkerhetens prioritet.</p>
+      </div>
+    </div>
+
+    <div class="checklist-item">
+      <div class="checklist-num">3</div>
+      <div class="checklist-content">
+        <strong>Incidenthanteringsplan — Dokumenterad process med roller och eskaleringsväg</strong>
+        <p>Vad gör ni när ni blir offer för cyberangrepp? Det måste framgå ur en dokumenterad plan med tydliga roller, ansvariga personer, eskaleringsväg till VD och styrelseinformation. Plan måste testats minst årligt.</p>
+      </div>
+    </div>
+
+    <div class="checklist-item">
+      <div class="checklist-num">4</div>
+      <div class="checklist-content">
+        <strong>Incidentrapportering — Rutiner för rapportering till tillsynsmyndighet</strong>
+        <p>Vid en allvarlig incident måste ni rapportera till tillsynsmyndigheten inom 24 timmar och fullständig rapport inom 72 timmar. Du måste ha en dokumenterad process för detta — inte bara veta att det måste göras.</p>
+      </div>
+    </div>
+
+    <div class="checklist-item">
+      <div class="checklist-num">5</div>
+      <div class="checklist-content">
+        <strong>Affärskontinuitet — Plan för återställning efter allvarlig störning</strong>
+        <p>För väsentliga entiteter är detta obligatoriskt. Du måste ha en plan för hur verksamheten återupptas efter en cyberattack eller systemhaveri. Planen måste inkludera tidsplan, ansvar och testning minst årligt.</p>
+      </div>
+    </div>
+
+    <div class="checklist-item">
+      <div class="checklist-num">6</div>
+      <div class="checklist-content">
+        <strong>Systemövervakning — SIEM eller motsvarande verktyg</strong>
+        <p>Du måste övervaka dina system för tecken på cyberattacker. Det kan vara ett SIEM-verktyg (Security Information and Event Management) eller motsvarande. Övervakningen måste vara proaktiv, inte reaktiv.</p>
+      </div>
+    </div>
+
+    <div class="checklist-item">
+      <div class="checklist-num">7</div>
+      <div class="checklist-content">
+        <strong>Backup och återställning — Testad backup-process för kritiska data</strong>
+        <p>Du måste kunna återställa kritiska data och system snabbt. Backups måste lagras separerat från produktionsmiljön och testats regelbundet — minst två gånger per år.</p>
+      </div>
+    </div>
+
+    <div class="checklist-item">
+      <div class="checklist-num">8</div>
+      <div class="checklist-content">
+        <strong>Autentisering — Multifaktorautentisering (MFA) för alla admin och känsliga åtgärder</strong>
+        <p>Lösenord räcker inte längre. Du måste kräva minst två faktorer (t.ex. lösenord + kod från telefon) för administratörer och för åtkomst till känsliga system.</p>
+      </div>
+    </div>
+
+    <div class="checklist-item">
+      <div class="checklist-num">9</div>
+      <div class="checklist-content">
+        <strong>Åtkomstkontroll — Principen om minsta behörighet</strong>
+        <p>Endast de personer som behöver åtkomst för sitt arbete får det. Du måste dokumentera vem som har åtkomst till vad och granska detta regelbundet — minst två gånger per år.</p>
+      </div>
+    </div>
+
+    <div class="checklist-item">
+      <div class="checklist-num">10</div>
+      <div class="checklist-content">
+        <strong>Kryptering — Känslig data krypterad under överföring och i vila</strong>
+        <p>För väsentliga entiteter är kryptering obligatorisk för känsliga data. Det omfattar data i transit (vid överföring) och data at rest (lagrat). Du måste dokumentera vilka data som är krypteringskritiska.</p>
+      </div>
+    </div>
+
+    <div class="checklist-item">
+      <div class="checklist-num">11</div>
+      <div class="checklist-content">
+        <strong>Säkerhet vid utveckling — Säker kodning i all egen eller beställd systemutveckling</strong>
+        <p>Om ni utvecklar eller låter utveckla system måste säkerhet byggas in från början, inte lappas på efteråt. Du måste ha en process för kodgranskning och säkerhetstestning.</p>
+      </div>
+    </div>
+
+    <div class="checklist-item">
+      <div class="checklist-num">12</div>
+      <div class="checklist-content">
+        <strong>Leverantörshantering — Inventering och övervakning av alla leverantörer med tillgång</strong>
+        <p>Du måste veta vilka externa parter som har åtkomst till dina system eller data. För varje leverantör måste du dokumentera vilken åtkomst de har, vad de gör och hur du övervakar detta. Säkerhetskrav måste finnas i avtalet.</p>
+      </div>
+    </div>
+
+    <div class="checklist-item">
+      <div class="checklist-num">13</div>
+      <div class="checklist-content">
+        <strong>Säkerhet i molnet — Dokumenterade krav på molnleverantörer</strong>
+        <p>Om du använder molntjänster (Amazon, Microsoft, Google, etc.) måste du ha skriftliga krav på säkerhet, datarezidens och incidentrapportering. Du kan inte bara "acceptera användarvillkoren".</p>
+      </div>
+    </div>
+
+    <div class="checklist-item">
+      <div class="checklist-num">14</div>
+      <div class="checklist-content">
+        <strong>Personal- och leverantörsutbildning — Dokumenterad säkerhetskompetens</strong>
+        <p>All personal med säkerhetskritiska roller måste utbildas i säkerhet minst en gång per år. Det måste dokumenteras med närvaro- eller testlistor. Leverantörer med åtkomst måste också ha utbildning.</p>
+      </div>
+    </div>
+
+    <div class="checklist-item">
+      <div class="checklist-num">15</div>
+      <div class="checklist-content">
+        <strong>Säkerhetstestning — Regelbundna tester av försvar</strong>
+        <p>Du måste testa dina försvar genom t.ex. penetrationstester eller simulerade attacker. För väsentliga entiteter rekommenderas detta minst en gång per år. Resultat måste dokumenteras.</p>
+      </div>
+    </div>
+
+    <div class="checklist-item">
+      <div class="checklist-num">16</div>
+      <div class="checklist-content">
+        <strong>Loggning och spårning — Systemlogg för säkerhetskritiska åtgärder</strong>
+        <p>Du måste logga vem som gör vad i dina system — särskilt säkerhetskritiska åtgärder som åtkomständringar eller känslig datöverföring. Loggarna måste sparas och skyddas från ändring.</p>
+      </div>
+    </div>
+
+    <div class="checklist-item">
+      <div class="checklist-num">17</div>
+      <div class="checklist-content">
+        <strong>Personell- och IT-säkerhet — Bakgrundskontroll och offboarding-process</strong>
+        <p>Du måste ha rutiner för att kontrollera personell innan anställning (bakgrundskontroll enligt lag) och se till att åtkomst tas bort när någon slutar (offboarding). Detta måste dokumenteras för varje person.</p>
+      </div>
+    </div>
+
+    <div class="checklist-item">
+      <div class="checklist-num">18</div>
+      <div class="checklist-content">
+        <strong>Säkerhet vid fysisk åtkomst — Kontroll av vem som får vara i datalagor och serverrum</strong>
+        <p>Du måste kontrollera vem som får åtkomst till dina datalagor, serverrum och andra fysiska platser där kritisk infrastruktur finns. Det kan vara låsbara dörrar, kortläsare eller övervakningskameror.</p>
+      </div>
+    </div>
+
+    <div class="checklist-item">
+      <div class="checklist-num">19</div>
+      <div class="checklist-content">
+        <strong>Styrelseansvaret enligt Artikel 20 — Godkännande och övervakning</strong>
+        <p>Styrelsen (eller motsvarande ledningsorgan) måste aktivt godkänna alla dessa åtgärder. Detta måste dokumenteras i styrelsebeslut eller protokoll. Styrelsen måste också regelbundet (minst fyra gånger per år) få information om genomförandet.</p>
+      </div>
+    </div>
+
+    <div class="checklist-item">
+      <div class="checklist-num">20</div>
+      <div class="checklist-content">
+        <strong>Dokumentation av efterlevnad — Samlat bevis på genomförandet</strong>
+        <p>Du måste kunna visa upp dokumentation på alla 19 ovan nämnda punkter. Om en tillsynsmyndighet eller revison frågar måste du inom rimlig tid kunna presentera processbeskrivningar, styrelsebeslut, utbildningslistor, testrapporter osv.</p>
+      </div>
+    </div>
+  </div>
+
+  <h2>Fallstudie: Energiföretaget som missade klassificering</h2>
+
+  <div class="box-case">
+    <div class="case-label">Verklig situation från Sverige 2025</div>
+    
+    <p>
+      <strong>Företag:</strong> Mellanstort regionalt energidistributörsföretag (590 anställda, årsomsättning 380 miljoner kronor).
+    </p>
+    
+    <p>
+      <strong>Klassificering:</strong> Företaget klassificerade sig själv som "viktig entitet" eftersom de trodde att 50 M€-gränsen i omsättning var det enda kriteriet. De läste inte hela definitionen, som också säger att en väsentlig entitet är en organisation med "mer än 250 anställda" i en kritisk sektor. De hade 590 anställda och var i energisektorn — alltså väsentlig entitet.
+    </p>
+    
+    <p>
+      <strong>Konsekvens av klassificeringsmissen:</strong> Energibolaget tillämpade de svagare kraven för viktiga entiteter i stället för de strängare kraven för väsentliga. De skippade:
+    </p>
+    
+    <ul>
+      <li><strong>Punkt 5 (Affärskontinuitet):</strong> De hade ingen formell plan för återstart efter allvarlig säkerhetshändelse — bara en lös kravspecifikation.</li>
+      <li><strong>Punkt 10 (Kryptering):</strong> De krypterade inte känslig operativ data vid överföring mellan deras kontrollsystem och fjärrövervakningsenheterna.</li>
+      <li><strong>Punkt 12 (Leverantörshantering):</strong> De hade ingen dokumenterad säkerhetskravspecifikation för de tio leverantörer som hade åtkomst till deras styrsystem.</li>
+      <li><strong>Punkt 15 (Säkerhetstestning):</strong> De hade aldrig gjort en penetrationtest av sina operativa system.</li>
+      <li><strong>Punkt 16 (Loggning):</strong> Loggarna i deras styrsystem sparades inte säkert; de överskrevs efter 30 dagar.</li>
+      <li><strong>Punkt 19 (Styrelseansvaret):</strong> Styrelsen hade aldrig officiellt godkänt en säkerhetspolicy eller fått rapporter om säkerhetsstatus.</li>
+    </ul>
+    
+    <p>
+      <strong>Triggande händelse:</strong> I juli 2025 drabbades energibolaget av ett ransomware-angrepp via en leverantörs fjärråtkomst. Angriparen hade kunnat penetrera systemet för att det saknade kryptering och leverantörssäkerhetskontroller.
+    </p>
+    
+    <p>
+      <strong>Tillsynsmyndighetens reaktion:</strong> Energimarknadsinspektionen (EMI) inledde en granskning. Vid granskningen framkom klassificeringsmissen. EMI klassificerade om bolaget som väsentlig entitet retroaktivt — vilket innebar att bolaget från starten borde ha följt strängare krav. Alla saknade åtgärder från listan ovan räknades in i bristen.
+    </p>
+    
+    <p>
+      <strong>Sanktion:</strong> Energibolaget fick en sanktionsavgift på <span class="danger">6,2 miljoner euro</span> (motsvarar cirka 65 miljoner kronor). Sanktionen omfattade:
+    </p>
+    
+    <ul>
+      <li>Brister i riskanalys och säkerhetspolicy (Punkt 1–2)</li>
+      <li>Utebliven affärskontinuitetsplanering (Punkt 5)</li>

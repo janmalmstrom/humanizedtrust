@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-BKF3QH9K01"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag("js", new Date());
+    gtag("config", "G-BKF3QH9K01");
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NIS2-krishantering i Sverige: Vem gör vad under en cyberincident? | NIS2Klar</title>
+  <meta name="description" content="NIS2-krishantering: CISO, VD, juridik och kommunikation. 72-timmars tidslinje för incidentrapportering, MSB-anmälan och kundkommunikation. Konkret rollkarta.">
+  <meta property="og:title" content="NIS2-krishantering i Sverige: Vem gör vad under en cyberincident?">
+  <meta property="og:description" content="NIS2-krishantering: CISO, VD, juridik och kommunikation. 72-timmars tidslinje för incidentrapportering, MSB-anmälan och kundkommunikation. Konkret rollkarta.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #141416;
+      --card: #1c1c1f;
+      --yellow: #f5c518;
+      --white: #f0f0f0;
+      --muted: #888;
+      --red: #C61212;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: var(--bg); color: var(--white); font-family: 'Barlow', sans-serif; font-size: 19px; line-height: 1.8; }
+
+    /* Nav */
+    nav { display: flex; justify-content: space-between; align-items: center; padding: 20px 40px; border-bottom: 1px solid rgba(255,255,255,0.07); max-width: 900px; margin: 0 auto; }
+    .nav-logo { font-family: 'Poppins', sans-serif; font-weight: 900; font-size: 20px; color: var(--yellow); text-decoration: none; }
+    .nav-logo span { color: var(--white); }
+    .nav-back { color: var(--muted); text-decoration: none; font-size: 15px; }
+    .nav-back:hover { color: var(--white); }
+    .nav-cta { background: var(--yellow); color: #000; padding: 8px 18px; border-radius: 4px; text-decoration: none; font-weight: 700; font-size: 14px; font-family: 'Poppins', sans-serif; }
+
+    /* Article */
+    .article-wrap { max-width: 760px; margin: 0 auto; padding: 60px 40px; }
+    .article-category { font-size: 13px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 16px; }
+    h1 { font-family: 'Poppins', sans-serif; font-size: clamp(30px, 4vw, 44px); font-weight: 900; line-height: 1.2; margin-bottom: 24px; }
+    .article-meta { font-size: 15px; color: var(--muted); margin-bottom: 48px; padding-bottom: 24px; border-bottom: 1px solid rgba(255,255,255,0.07); }
+    h2 { font-family: 'Poppins', sans-serif; font-size: 26px; font-weight: 700; margin: 48px 0 16px; color: var(--white); }
+    h3 { font-family: 'Poppins', sans-serif; font-size: 20px; font-weight: 600; margin: 32px 0 12px; color: var(--yellow); }
+    p { margin-bottom: 22px; }
+    strong { color: var(--white); font-weight: 700; }
+    .highlight { color: var(--yellow); font-weight: 700; }
+    .danger { color: #ff6b6b; font-weight: 700; }
+    ul, ol { margin: 16px 0 24px 24px; }
+    li { margin-bottom: 12px; font-size: 19px; }
+
+    /* Callout boxes */
+    .box-warning { background: rgba(197,17,17,0.12); border-left: 4px solid var(--red); padding: 20px 24px; margin: 32px 0; border-radius: 0 4px 4px 0; }
+    .box-info { background: rgba(245,197,24,0.08); border-left: 4px solid var(--yellow); padding: 20px 24px; margin: 32px 0; border-radius: 0 4px 4px 0; }
+    .box-case { background: var(--card); border: 1px solid rgba(255,255,255,0.08); padding: 28px; margin: 40px 0; border-radius: 4px; }
+    .box-case .case-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 12px; }
+    blockquote { border-left: 3px solid var(--yellow); padding: 12px 20px; margin: 24px 0; font-style: italic; color: #ccc; }
+
+    /* CTA */
+    .cta-section { background: var(--card); border: 1px solid rgba(245,197,24,0.2); border-radius: 4px; padding: 48px 40px; margin: 64px 0 40px; text-align: center; }
+    .cta-section h2 { margin-top: 0; font-size: 26px; }
+    .cta-section p { color: #aaa; max-width: 500px; margin: 0 auto 28px; }
+    .btn-primary { display: inline-block; background: var(--yellow); color: #000; font-family: 'Poppins', sans-serif; font-weight: 800; font-size: 16px; padding: 16px 36px; border-radius: 4px; text-decoration: none; }
+    .btn-primary:hover { background: #e0b010; }
+    .cta-fine { font-size: 13px; color: var(--muted); margin-top: 16px; }
+
+    /* FAQ */
+    .faq-item { border-bottom: 1px solid rgba(255,255,255,0.07); padding: 20px 0; }
+    .faq-q { font-family: 'Poppins', sans-serif; font-weight: 600; margin-bottom: 10px; }
+    .faq-a { color: #bbb; }
+
+    /* Timeline */
+    .timeline { margin: 32px 0; }
+    .timeline-hour { background: rgba(245,197,24,0.06); border-left: 4px solid var(--yellow); padding: 16px 20px; margin: 12px 0; border-radius: 0 4px 4px 0; }
+    .timeline-hour-title { font-family: 'Poppins', sans-serif; font-weight: 700; color: var(--yellow); font-size: 15px; margin-bottom: 8px; }
+    .timeline-hour-text { color: #ccc; font-size: 17px; margin: 0; }
+
+    /* Role box */
+    .role-card { background: var(--card); border: 1px solid rgba(255,255,255,0.1); padding: 24px; margin: 20px 0; border-radius: 4px; }
+    .role-title { font-family: 'Poppins', sans-serif; font-weight: 700; color: var(--yellow); font-size: 18px; margin-bottom: 12px; }
+    .role-desc { color: #ddd; font-size: 17px; margin: 0; line-height: 1.7; }
+
+    /* Summary + Key Takeaway */
+    .box-summary { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; padding: 24px 28px; margin: 0 0 32px; }
+    .summary-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-bottom: 14px; }
+    .box-summary ul { margin: 0; padding-left: 20px; }
+    .box-summary li { margin-bottom: 8px; font-size: 17px; color: #ccc; }
+    .box-takeaway { background: rgba(245,197,24,0.08); border-left: 4px solid var(--yellow); padding: 20px 24px; margin: 0 0 40px; border-radius: 0 4px 4px 0; }
+    .takeaway-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 10px; }
+    .box-takeaway p { margin: 0; font-size: 18px; font-weight: 600; color: var(--white); line-height: 1.6; }
+
+    /* Footer */
+    footer { border-top: 1px solid rgba(255,255,255,0.07); padding: 32px 40px; text-align: center; font-size: 13px; color: var(--muted); max-width: 900px; margin: 0 auto; }
+    footer a { color: var(--muted); }
+
+    @media (max-width: 600px) {
+      nav, .article-wrap, footer { padding: 20px; }
+      .cta-section { padding: 32px 20px; }
+      .role-card { padding: 16px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="https://nis2klar.se/">NIS2<span>Klar</span></a>
+  <a class="nav-back" href="https://nis2klar.se/artiklar.html">← Alla artiklar</a>
+  <a class="nav-cta" href="https://nis2klar.se/#boka">Boka samtal →</a>
+</nav>
+
+<article class="article-wrap">
+  <div class="article-category">Krishantering &amp; Operativ Beredskap</div>
+  <h1>NIS2-krishantering i Sverige: Vem gör vad under en cyberincident?</h1>
+  <div class="article-meta">19 april 2026 · Lästid: ca 9 minuter · Målgrupp: VD, styrelse, ledning</div>
+
+  <!-- SUMMARY -->
+  <div class="box-summary">
+    <div class="summary-label">Sammanfattning</div>
+    <ul>
+      <li>En cyberincident sätter igång tre parallella spår: teknisk återhämtning, MSB-rapportering och kundkommunikation.</li>
+      <li>De första 24 timmarna är straffade — tidig varning till MSB krävs oavsett incidentens omfattning.</li>
+      <li>72 timmar senare måste fullständig rapport vara inlämnad, eller böterna ökar.</li>
+      <li>VD och juridik är inte IT-ansvariga, men de är ansvariga för att processerna finns och följs när klockan slår.</li>
+      <li>Utan förberedda krishanteringsplaner är dagen innan en incident för sent att börja planera.</li>
+    </ul>
+  </div>
+
+  <!-- KEY TAKEAWAY -->
+  <div class="box-takeaway">
+    <div class="takeaway-label">Viktigaste slutsatsen</div>
+    <p>En cyberincident under NIS2 är inte en IT-kris. Det är en ledningskris. Du som VD har 24 timmar på dig att rapportera till MSB, 72 timmar att ge en fullständig analys — och medan det händer måste kommunikationen till kunder och medarbetare redan vara på väg. Det kräver en färdig plan, inte improvisation.</p>
+  </div>
+
+  <!-- HOOK -->
+  <p>
+    En cyberincident kommer inte när det passar organisationen. Den kommer när motståndaren är redo — ofta på fredagkvällen eller långhelgsbörjan.
+    Och när den kommer har du 24 timmar på dig att rapportera till MSB (Myndigheten för samhällsskydd och beredskap), enligt <strong>Artikel 23 i NIS2</strong>.
+  </p>
+
+  <p>
+    Den tiden räcker inte om ni inte redan har en plan. Det räcker inte om CISO-rollen är odefinierad, eller om VD inte vet vilket beslut som behöver tas när.
+  </p>
+
+  <p>
+    Den här guiden visar dig vem som gör vad — från incident till rapport till kundkommunikation — och vilka beslut som faller på din skrivbord.
+  </p>
+
+  <div class="box-warning">
+    <strong>72 timmar. Det är allt ni får.</strong> En incident som rapporteras senare än 72 timmar från upptäckt är redan en sanktionsgrundande överträdelse. Böterna följer automatiskt, oavsett incidentens allvarlighetsgrad.
+  </div>
+
+  <h2>Tre spår, samma tidslinje</h2>
+
+  <p>
+    En större incident triggar tre processer parallellt:
+  </p>
+
+  <ul>
+    <li><strong>Teknisk återhämtning</strong> — CISO och IT arbetar för att isolera, analysera och reparera</li>
+    <li><strong>Regelefterlevnad</strong> — juridik och compliance rapporterar till MSB inom tidsfristen</li>
+    <li><strong>Kundkommunikation</strong> — PR och produktchef förbereder externa meddelanden</li>
+  </ul>
+
+  <p>
+    De är inte sekvensiella. De överlapper fullständigt. En ledningskris är inte löst när IT sagt "vi har kontroll". Den är löst när rapporterna är skickade och kunderna har fått sitt svar.
+  </p>
+
+  <h2>Rollkarta: Vem är ansvarig för vad?</h2>
+
+  <div class="role-card">
+    <div class="role-title">VD — Eskalering &amp; Ansvar</div>
+    <div class="role-desc">
+      <strong>Dag 0, timme 0–1:</strong> Mottar notifiering om potentiell incident från CISO eller säkerhetsteamet.
+      Beslutar omedelbar escalation till styrelsens ordförande och juridisk chef.
+      <br><br>
+      <strong>Dag 0–1:</strong> Presiderar krishanteringsteamet. Godkänner beslut om rapportering till MSB.
+      Godkänner den preliminära kundkommunikationen.
+      Informerar styrelsen (eller aurealltid styrelsens ordförande) om läget var 4:e timme de första 24 timmarna.
+      <br><br>
+      <strong>Dag 1–3:</strong> Ansvarar för att den slutliga rapporten till MSB är korrekt och skickad innan deadline.
+      Signerar juridiska granskningar. Möter externa intressenter (myndigheter, större kunder, media) vid behov.
+      <br><br>
+      <strong>Efteråt:</strong> Ansvarar för att styrelsen erhåller en post-mortem-analys och handlingsplan för att förhindra upprepning.
+    </div>
+  </div>
+
+  <div class="role-card">
+    <div class="role-title">CISO / IT-Säkerhetschef — Teknisk Ledning</div>
+    <div class="role-desc">
+      <strong>Dag 0, timme 0:</strong> Detekterar eller tar emot notifiering om incident.
+      Initierar omedelbar isolering av påverkade system (containment). Dokumenterar tidsstämpel för incident discovery.
+      <br><br>
+      <strong>Dag 0, timme 0–6:</strong> Leder teknisk forensik. Sätter upp incident timeline: när angreppet började, vad som påverkades, vad som kopierats.
+      Rapporterar status till VD var 2:e timme.
+      Börjar data collection för MSB-rapport (loggdata, incident indicators, påverkad data-klassificering).
+      <br><br>
+      <strong>Dag 1–3:</strong> Fullbordar forensik. Levererar teknisk sammanfattning till juridik för regulatorisk bedömning.
+      Informerar IT-personal på behörighetsbasis. Arbetar med wiping/remediation av komprometterade system.
+      <br><br>
+      <strong>Efteråt:</strong> Ansvarar för att implementera korrigerande åtgärder baserat på root cause-analys.
+    </div>
+  </div>
+
+  <div class="role-card">
+    <div class="role-title">Juridisk Ansvarig / Compliance Officer — Regelefterlevnad</div>
+    <div class="role-desc">
+      <strong>Dag 0, timme 1–6:</strong> Mottar teknisk briefing från CISO.
+      Bedömer incidentens klassificering enligt NIS2: är det en "allvarlig incident" eller bara en säkerhetshändelse?
+      Dokumenterar den juridiska bedömningen skriftligt.
+      <br><br>
+      <strong>Dag 0, timme 6–24:</strong> Förbered tidig varning till MSB (24-timmars deadline).
+      Den behöver inte innehålla fullständig analys — bara bekräftelse att en incident har inträffat och att en fullständig rapport kommer.
+      Dokumentera alla kommunikationer med MSB.
+      <br><br>
+      <strong>Dag 1–3:</strong> Sammanställer fullständig rapport till MSB: vad, när, påverkad data, påverkade individer (om relevant för GDPR-anmälan), åtgärder vidtagna.
+      Samordnar med kommunikationsavdelningen för att säkerställa att externa meddelanden inte motsäger den regulatoriska rapporten.
+      Bedömer behovet av sekretessvarning eller medieoppenhet.
+      <br><br>
+      <strong>Dag 3:</strong> Submittar fullständig rapport till MSB innan deadline (72 timmar).
+    </div>
+  </div>
+
+  <div class="role-card">
+    <div class="role-title">Kommunikationsansvarig / PR — Extern Kommunikation</div>
+    <div class="role-desc">
+      <strong>Dag 0, timme 2–24:</strong> Mottar information från juridik om incidentens omfattning.
+      Förbereder utkast på kundmeddelande, medarbetarmedddelande och eventuellt pressmeddelande.
+      Kontaktar nyckelpersoner hos större kunder (innan de läser det på Twitter).
+      <br><br>
+      <strong>Dag 1:</strong> Skickar bekräftelsemedddelande till alla påverkade kunder/användare.
+      Upprättar FAQ för supportteamet. Aktiverar krisstöd för medarbetare vid behov.
+      <br><br>
+      <strong>Dag 2–3:</strong> Hanterar mediafrågor. Publicerar uppdateringar på webbplats/status-sida.
+      Dokumenterar all extern kommunikation för senare granskning.
+      <br><br>
+      <strong>Efteråt:</strong> Gör narrativ-kontroll — säkerställer att den interna sandningen överensstämmer med vad som sagts externt.
+    </div>
+  </div>
+
+  <div class="role-card">
+    <div class="role-title">Styrelseordförande — Extern Ansvarighet</div>
+    <div class="role-desc">
+      <strong>Dag 0, timme 1:</strong> Får notifiering från VD. Erhåller uppdaterad status var 8:e timme.
+      <br><br>
+      <strong>Dag 2–3:</strong> Kan behöva ställa upp för kommunikation med större aktieägare, banker eller försäkringsgivare.
+      <br><br>
+      <strong>Efteråt:</strong> Säkerställer att styrelsen inte blir överraskad av något som redan var känt under krisen.
+      Ansvarar för att säkerhetsfrågan återkommer på styrelsemötet tills korrigerande åtgärder är genomförda.
+    </div>
+  </div>
+
+  <h2>72-timmars tidslinje — fiktivt scenario</h2>
+
+  <p>
+    Här är ett konkret exempel. En datasäkerhetsingenjör märker på fredagen kl. 14:00 att stora mängder data överförs från servern till en okänd IP-adress. Det är ett ransomware-angrepp.
+  </p>
+
+  <div class="timeline">
+    <div class="timeline-hour">
+      <div class="timeline-hour-title">Fredag 14:00 — Dag 0, Timme 0</div>
+      <div class="timeline-hour-text">
+        <strong>IT-säkerhet:</strong> Isolerar servern omedelbar. Stänger nätverksanslutningen. Dokumenterar exakt tidpunkt och vad som observerades.
+        <br><strong>CISO:</strong> Presenterar situationen för VD. "Vi har ett ransomware-angrepp. Vi vet inte ännu omfattningen."
+      </div>
+    </div>
+
+    <div class="timeline-hour">
+      <div class="timeline-hour-title">Fredag 14:30 — Dag 0, Timme 0,5</div>
+      <div class="timeline-hour-text">
+        <strong>VD:</strong> Aktiverar krishanteringsteamet. Kallar CISO, juridisk chef, kommunikationsansvarig och styrelsens ordförande.
+        <br><strong>Juridik:</strong> Börjar bedöma incidentens klassificering. Är det en "allvarlig incident" enligt NIS2?
+      </div>
+    </div>
+
+    <div class="timeline-hour">
+      <div class="timeline-hour-title">Fredag 15:00–20:00 — Dag 0, Timme 1–6</div>
+      <div class="timeline-hour-text">
+        <strong>CISO + IT:</strong> Forensik under vägen. Försöker utöka isolering för att förhindra spridning. Sparar loggar.
+        <br><strong>Juridik:</strong> Bedömning slutförd: "Detta är en allvarlig incident. Vi måste anmäla till MSB innan kl. 14:00 imorgon."
+        <br><strong>VD:</strong> Beslutar: rapportera omedelbar (inte vänta tills vi vet allt). Instruerar juridik att skicka tidig varning till MSB senast midnatt.
+        <br><strong>Kommunikation:</strong> Förbereder internt meddelande till medarbetare: "Vi har detekterat ett säkerhetsproblem. Vi arbetar på en lösning."
+      </div>
+    </div>
+
+    <div class="timeline-hour">
+      <div class="timeline-hour-title">Fredag 22:30 — Dag 0, Timme 8,5</div>
+      <div class="timeline-hour-text">
+        <strong>Juridik:</strong> Skickar tidig varning till MSB: "Ransomware-incident detekterad. Påverkad data klassificering okänd. Fullständig rapport följer söndag."
+        <br><strong>MSB:</strong> Bekräftar mottagandet och återgår med referensnummer.
+      </div>
+    </div>
+
+    <div class="timeline-hour">
+      <div class="timeline-hour-title">Lördag 08:00 — Dag 1, Timme 18</div>
+      <div class="timeline-hour-text">
+        <strong>CISO:</strong> Forensiken avslutad. Resultatet: 3,2 miljoner kundrecords kopierats. Ingen data raderad än (ransomware-gräsande ännu inte aktiverad).
+        <br><strong>Juridik:</strong> Bedömning: GDPR-anmälan krävs (eftersom personuppgifter är drabbade). Start av notifieringsprocess.
+        <br><strong>Kommunikation:</strong> Slutför kundmeddelande. VD godkänner. Meddelandet skickas via e-post och push-notifikation till alla 850 000 påverkade användare lördagkväll.
+      </div>
+    </div>
+
+    <div class="timeline-hour">
+      <div class="timeline-hour-title">Söndag 12:00 — Dag 2, Timme 46</div>
+      <div class="timeline-hour-text">
+        <strong>Juridik + CISO:</strong> Sammanställer fullständig rapport till MSB: teknisk timeline, påverkad data, påverkade individer, åtgärder vidtagna (isolering, notifiering), åtgärder planerade (forensik slutförd, containment 100 %, upprustning av system).
+        <br><strong>VD:</strong> Granskar och godkänner rapporten. Undertecknar juridiska granskningsdokument.
+      </div>
+    </div>
+
+    <div class="timeline-hour">
+      <div class="timeline-hour-title">Söndag 20:00 — Dag 2, Timme 54 (före deadline)</div>
+      <div class="timeline-hour-text">
+        <strong>Juridik:</strong> Submittar fullständig rapport till MSB innan 72-timmars deadline (som är fredag 14:00 + 72 timmar = måndag 14:00).
+        <br><strong>Styrelsens ordförande:</strong> Informeras om att rapportering är slutförd och MSB bekräftat mottagandet.
+      </div>
+    </div>
+
+    <div class="timeline-hour">
+      <div class="timeline-hour-title">Måndag 09:00 — Dag 3+</div>
+      <div class="timeline-hour-text">
+        <strong>VD:</strong> Presenterar post-mortem för styrelsen. Root cause: svag multifaktor-autentisering på servern. Åtgärd: implementera MFA på alla kritiska system.
+        <br><strong>IT-säkerhet:</strong> Påbörjar åtgärdande åtgärder. Implementerar kryptering och åtkomststyrning.
+        <br><strong>Kommunikation:</strong> Publicerar uppdatering: "Incident löst. Vi har implementerat nya skyddåtgärder."
+      </div>
+    </div>
+  </div>
+
+  <div class="box-info">
+    <strong>Obs:</strong> Detta scenario antog att organisationen redan hade en krishanteringsplan. Om den inte fanns skulle varje timme från timme 0 ha spenderats på att improvisera.
+  </div>
+
+  <h2>Vad händer om tidsfristen missas?</h2>
+
+  <p>
+    Om rapporten inte nåde MSB före 72 timmar är det en <strong>direkt sanktionsöverträdelse</strong>. Du får böter för:
+  </p>
+
+  <ol>
+    <li>Incidenten i sig (om den är allvarlig)</li>
+    <li>Underlåtenhet att rapportera inom tidsfristen</li>
+  </ol>
+
+  <p>
+    Det räcker inte att säga "vi skickade den 73 timmar senare, men vi jobbar på det". Inkluderingen av ett enda minutdatum är tiden då fristen är bruten.
+  </p>
+
+  <div class="box-warning">
+    <strong>Två böter i stället för en.</strong> En organisation som missar tidsfristen riskerar att få sanktioner för både incidenten OCH överträdelsen. Det är inte försumligt — det är dubbelbeskattning ur bötesperspektiv.
+  </div>
+
+  <h2>Incidentklassificering — när måste du rapportera?</h2>
+
+  <p>
+    Inte alla säkerhetshändelser är "allvarliga incidenter". NIS2 definierar en allvarlig incident som en som påverkar tillgänglighet, integritet eller konfidentialitet på ett betydande sätt.
+  </p>
+
+  <p>
+    Juridiken måste göra denna bedömning omedelbar. En tumregel:
+  </p>
+
+  <ul>
+    <li><strong>Rapportera:</strong> Ransomware, dataexfiltrering, lootreparation, SQL-injection med dataöverföring, wiping av backups</li>
+    <li><strong>Rapportera:</strong> Offline av kritisk service under 4+ timmar</li>
+    <li><strong>Rapportera:</strong> Mer än 100 kundrecords komprometterade</li>
+    <li><strong>Vänta (men dokumentera):</strong> Misslyckade inloggningsförsök utan tillträde</li>
+    <li><strong>Vänta (men dokumentera):</strong> Ph

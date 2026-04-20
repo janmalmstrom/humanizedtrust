@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-BKF3QH9K01"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag("js", new Date());
+    gtag("config", "G-BKF3QH9K01");
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NIS2-risikostyringsramme: En vejledning på bestyrelsesniveau | NIS2Klar</title>
+  <meta name="description" content="Sådan opbygger du en NIS2-compliant risikostyringsramme. ISO 27001-tilpasning, ENISA-retningslinjer, risikostyring på bestyrelsesniveau.">
+  <meta property="og:title" content="NIS2-risikostyringsramme: En vejledning på bestyrelsesniveau">
+  <meta property="og:description" content="Sådan opbygger du en NIS2-compliant risikostyringsramme. ISO 27001-tilpasning, ENISA-retningslinjer, risikostyring på bestyrelsesniveau.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #141416;
+      --card: #1c1c1f;
+      --yellow: #f5c518;
+      --white: #f0f0f0;
+      --muted: #888;
+      --red: #C61212;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: var(--bg); color: var(--white); font-family: 'Barlow', sans-serif; font-size: 19px; line-height: 1.8; }
+
+    /* Nav */
+    nav { display: flex; justify-content: space-between; align-items: center; padding: 20px 40px; border-bottom: 1px solid rgba(255,255,255,0.07); max-width: 900px; margin: 0 auto; }
+    .nav-logo { font-family: 'Poppins', sans-serif; font-weight: 900; font-size: 20px; color: var(--yellow); text-decoration: none; }
+    .nav-logo span { color: var(--white); }
+    .nav-back { color: var(--muted); text-decoration: none; font-size: 15px; }
+    .nav-back:hover { color: var(--white); }
+    .nav-cta { background: var(--yellow); color: #000; padding: 8px 18px; border-radius: 4px; text-decoration: none; font-weight: 700; font-size: 14px; font-family: 'Poppins', sans-serif; }
+    .lang-switcher { display: flex; gap: 8px; align-items: center; font-size: 13px; font-family: 'Poppins', sans-serif; }
+    .lang-switcher a { color: #888; text-decoration: none; font-weight: 600; padding: 4px 8px; border-radius: 3px; }
+    .lang-switcher a.active { color: var(--yellow); background: rgba(245, 197, 24, 0.1); }
+
+    /* Article */
+    .article-wrap { max-width: 760px; margin: 0 auto; padding: 60px 40px; }
+    .article-category { font-size: 13px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 16px; }
+    h1 { font-family: 'Poppins', sans-serif; font-size: clamp(30px, 4vw, 44px); font-weight: 900; line-height: 1.2; margin-bottom: 24px; }
+    .article-meta { font-size: 15px; color: var(--muted); margin-bottom: 48px; padding-bottom: 24px; border-bottom: 1px solid rgba(255,255,255,0.07); }
+    h2 { font-family: 'Poppins', sans-serif; font-size: 26px; font-weight: 700; margin: 48px 0 16px; color: var(--white); }
+    h3 { font-family: 'Poppins', sans-serif; font-size: 20px; font-weight: 600; margin: 32px 0 12px; color: var(--yellow); }
+    p { margin-bottom: 22px; }
+    strong { color: var(--white); font-weight: 700; }
+    .highlight { color: var(--yellow); font-weight: 700; }
+    .danger { color: #ff6b6b; font-weight: 700; }
+    ul, ol { margin: 16px 0 24px 24px; }
+    li { margin-bottom: 12px; font-size: 19px; }
+
+    /* Callout boxes */
+    .box-warning { background: rgba(197,17,17,0.12); border-left: 4px solid var(--red); padding: 20px 24px; margin: 32px 0; border-radius: 0 4px 4px 0; }
+    .box-info { background: rgba(245,197,24,0.08); border-left: 4px solid var(--yellow); padding: 20px 24px; margin: 32px 0; border-radius: 0 4px 4px 0; }
+    .box-case { background: var(--card); border: 1px solid rgba(255,255,255,0.08); padding: 28px; margin: 40px 0; border-radius: 4px; }
+    .box-case .case-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 12px; }
+    blockquote { border-left: 3px solid var(--yellow); padding: 12px 20px; margin: 24px 0; font-style: italic; color: #ccc; }
+
+    /* CTA */
+    .cta-section { background: var(--card); border: 1px solid rgba(245,197,24,0.2); border-radius: 4px; padding: 48px 40px; margin: 64px 0 40px; text-align: center; }
+    .cta-section h2 { margin-top: 0; font-size: 26px; }
+    .cta-section p { color: #aaa; max-width: 500px; margin: 0 auto 28px; }
+    .btn-primary { display: inline-block; background: var(--yellow); color: #000; font-family: 'Poppins', sans-serif; font-weight: 800; font-size: 16px; padding: 16px 36px; border-radius: 4px; text-decoration: none; }
+    .btn-primary:hover { background: #e0b010; }
+    .cta-fine { font-size: 13px; color: var(--muted); margin-top: 16px; }
+
+    /* FAQ */
+    .faq-item { border-bottom: 1px solid rgba(255,255,255,0.07); padding: 20px 0; }
+    .faq-q { font-family: 'Poppins', sans-serif; font-weight: 600; margin-bottom: 10px; }
+    .faq-a { color: #bbb; }
+
+    /* Summary + Key Takeaway */
+    .box-summary { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; padding: 24px 28px; margin: 0 0 32px; }
+    .summary-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-bottom: 14px; }
+    .box-summary ul { margin: 0; padding-left: 20px; }
+    .box-summary li { margin-bottom: 8px; font-size: 17px; color: #ccc; }
+    .box-takeaway { background: rgba(245,197,24,0.08); border-left: 4px solid var(--yellow); padding: 20px 24px; margin: 0 0 40px; border-radius: 0 4px 4px 0; }
+    .takeaway-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 10px; }
+    .box-takeaway p { margin: 0; font-size: 18px; font-weight: 600; color: var(--white); line-height: 1.6; }
+
+    /* Related articles */
+    .related-articles { margin: 2.5rem 0 2rem; padding: 1.5rem; background: #1a1a2e; border-left: 4px solid #f0a500; border-radius: 4px; }
+    .related-articles p { margin: 0 0 1rem; font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #f0a500; }
+    .related-articles ul { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+    .related-articles li { margin: 0; font-size: 0.95rem; }
+    .related-articles a { color: #e0e0e0; text-decoration: none; }
+    .related-articles a:hover { color: #f0a500; }
+
+    /* Footer */
+    footer { border-top: 1px solid rgba(255,255,255,0.07); padding: 32px 40px; text-align: center; font-size: 13px; color: var(--muted); max-width: 900px; margin: 0 auto; }
+    footer a { color: var(--muted); }
+    footer a:hover { color: var(--white); }
+
+    @media (max-width: 600px) {
+      nav, .article-wrap, footer { padding: 20px; }
+      nav { flex-direction: column; gap: 16px; align-items: flex-start; }
+      .cta-section { padding: 32px 20px; }
+      .lang-switcher { width: 100%; justify-content: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="https://nis2klar.se/da/">NIS2<span>Klar</span></a>
+  <a class="nav-back" href="https://nis2klar.se/da/artikler.html">← Alle artikler</a>
+  <div class="lang-switcher">
+    <a href="https://nis2klar.se/artiklar.html" style="color:#888;text-decoration:none;font-weight:600;padding:4px 8px;border-radius:3px;" title="Svenska">SV</a>
+    <a href="https://nis2klar.se/en/articles.html" style="color:#888;text-decoration:none;font-weight:600;padding:4px 8px;border-radius:3px;" title="English">EN</a>
+    <a href="https://nis2klar.se/da/artikler.html" style="color:#f5c518;text-decoration:none;font-weight:600;padding:4px 8px;border-radius:3px;background:rgba(245,197,24,0.1);" title="Dansk">DA</a>
+    <a href="https://nis2klar.se/no/artikler.html" style="color:#888;text-decoration:none;font-weight:600;padding:4px 8px;border-radius:3px;" title="Norsk">NO</a>
+    <a href="https://nis2klar.se/it/articoli.html" style="color:#888;text-decoration:none;font-weight:600;padding:4px 8px;border-radius:3px;" title="Italiano">IT</a>
+  </div>
+  <a class="nav-cta" href="https://nis2klar.se/da/#boka">Book samtale →</a>
+</nav>
+
+<article class="article-wrap">
+  <div class="article-category">Risikostyring &amp; Compliance</div>
+  <h1>NIS2-risikostyringsramme: En vejledning på bestyrelsesniveau</h1>
+  <div class="article-meta">Opdateret 19. april 2026 · Læsetid: ca 8 minutter · Målgruppe: Direktion &amp; Bestyrelse</div>
+
+  <!-- SUMMARY -->
+  <div class="box-summary">
+    <div class="summary-label">Sammenfatning</div>
+    <ul>
+      <li>For direktører og bestyrelsesmedlemmer, der skal godkende en NIS2-compliant risikostyringsramme.</li>
+      <li>NIS2-rammerne er baseret på ISO 27001 og ENISA-retningslinjer, men mindre byrdefulde.</li>
+      <li>En effektiv ramme består af fem kerneelementer: risikoidentifikation, vurdering, håndtering, overvågning og rapportering.</li>
+      <li>Personligt ansvar efter artikel 20 betyder, at du som bestyrelsemedlem skal kunne dokumentere, at du har godkendt rammerne.</li>
+      <li>CFCS forventer ikke perfektion — den forventer dokumentation og systematik.</li>
+    </ul>
+  </div>
+
+  <!-- KEY TAKEAWAY -->
+  <div class="box-takeaway">
+    <div class="takeaway-label">Vigtigste erkendelse</div>
+    <p>En NIS2-risikostyringsramme er ikke en engangsindsats. Det er en løbende proces, som bestyrelsen må godkende årligt, og som IT skal vedligeholde hver måned. Dit ansvar er at sikre, at processen eksisterer og dokumenteres — ikke at bygge den teknisk.</p>
+  </div>
+
+  <!-- HOOK -->
+  <p>
+    Da NIS2-loven trådte i kraft i oktober 2024, blev der stillet ikke bare tekniske, men også strategiske krav til enhver organisation i Danmark, som falder under lovens 18 sektorer.
+    <strong>Artikel 21</strong> foreskriver ti obligatoriske sikkerhedsdomæner. Men hvordan bygger man en ramme, som bestyrelsesmedlemmer kan forstå og godkende uden at være IT-eksperter?
+  </p>
+
+  <p>
+    Og vigtigst: hvordan sikrer man, at CFCS (Center for Cybersikkerhed) eller dit sektortilsyn ser en <strong>systematisk, håndterbar ramme</strong> — ikke en kaotisk samling af initiativer?
+  </p>
+
+  <div class="box-warning">
+    <strong>Dit personlige ansvar er juridisk bindende.</strong> Artikel 20 i NIS2-loven siger klart: ledelsesmedlemmer kan holdes personligt ansvarlige for, at organisationen har en risikostyringsramme på plads. Bøder op til 10 millioner euro. Et forbud mod at varetage ledelsesfunktion. Det er ikke IT-afdelingens ansvar alene.
+  </div>
+
+  <h2>Hvad betyder "risikostyringsramme" i NIS2-sammenhæng?</h2>
+
+  <p>
+    En risikostyringsramme er <strong>ikke</strong> en liste over tekniske værktøjer.
+    Det er en dokumenteret proces, som organisationen bruger til at:
+  </p>
+
+  <ol>
+    <li>Identificere, hvilke netværks- og informationssystemers sikkerhed påvirker organisationen</li>
+    <li>Vurdere, hvilke trusler og sårbarheder der kan påvirke disse systemer</li>
+    <li>Beslutte, hvilke sikkerhedsforanstaltninger der skal implementeres (risikohåndtering)</li>
+    <li>Overvåge løbende, om foranstaltningerne virker</li>
+    <li>Rapportere til ledelsen og bestyrelsen om status</li>
+  </ol>
+
+  <p>
+    ENISA (European Union Agency for Cybersecurity) udgiver anbefalinger, og de fleste danske væsentlige og vigtige enheder bruger <strong>ISO 27001</strong> som grundmodel.
+    NIS2-kravene passer ind i ISO 27001 — de er ikke rivaliserende.
+  </p>
+
+  <p>
+    Det vigtige for bestyrelsen at forstå: <strong>rammen skal være dokumenteret, systematisk og årligt godkendt af ledelsen</strong>.
+    CFCS checker ikke, om du har en bestemt teknologi. Den checker, om du kan vise, at du har gjort en systematisk riskovurdering og taget beslutninger på baggrund af den.
+  </p>
+
+  <h2>De fem kerneelementer i en NIS2-ramme</h2>
+
+  <h3>1. Risikoidentifikation</h3>
+
+  <p>
+    Første skridt er at identificere, <strong>hvilke systemer og data</strong> er vigtige for organisationen.
+    Det betyder ikke at du skal katalogisere alle 5.000 computere. Det betyder, at du skal kunne pege på:
+  </p>
+
+  <ul>
+    <li>Kritiske forretningsfunktioner (økonomi, drift, kundedata)</li>
+    <li>IT-systemer, der understøtter disse (ERP-system, mailserver, websitet)</li>
+    <li>Data, der kræver beskyttelse (kundedata, løndata, handelshemmeligheder)</li>
+  </ul>
+
+  <p>
+    En praktisk tilgang: spørg dit ledelsesteam: <em>"Hvis X system var ude i 48 timer, hvad sker der?"</em>
+    De systemer, hvor svaret er "vi mister penge eller skader kunder," skal med i rammens fokus.
+  </p>
+
+  <div class="box-info">
+    <strong>Tip:</strong> Dokumentér denne samtale. Et mødereferale fra ledelsesteamet, der diskuterer kritiske systemer, er præcis det bevis, som CFCS ønsker at se på. Det viser, at risikostyring handler om forretning, ikke kun IT.
+  </div>
+
+  <h3>2. Riskovurdering</h3>
+
+  <p>
+    For hvert kritisk system skal du vurdere: <strong>Hvad kan gå galt? Hvor alvorligt er det? Hvor sandsynligt er det?</strong>
+  </p>
+
+  <p>
+    Du behøver ikke at være ekspert. En simpel risikomatrix fungerer:
+  </p>
+
+  <blockquote>
+    <strong>Eksempel:</strong> Dit ERP-system (kritisk for økonomi). Trusler: ransomware, dataleak fra medarbejder, serviceudbyder-brud. Alvor: høj (økonomisk tab). Sandsynlighed: mellem (afhænger af sikring). Resultat: høj risiko.
+  </blockquote>
+
+  <p>
+    Du kan bruge en skala fra 1-5 eller simpelthen "lav," "mellem," "høj." CFCS forventer ikke matematisk præcision — den forventer, at du har tænkt systematisk.
+  </p>
+
+  <h3>3. Risikohåndtering</h3>
+
+  <p>
+    For hver høj og mellem risiko skal du afgøre: hvad gør vi ved det?
+    Der er fire valg:
+  </p>
+
+  <ul>
+    <li><strong>Reducere</strong> risikoen (implementer sikkerhedsforanstaltninger)</li>
+    <li><strong>Acceptere</strong> risikoen (beslut, at det er acceptabelt på nuværende tidspunkt)</li>
+    <li><strong>Overdrage</strong> risikoen (fx via forsikring eller outsourcing med sikkerhedskrav)</li>
+    <li><strong>Undgå</strong> risikoen (afbryd aktiviteten, hvis det går)</li>
+  </ul>
+
+  <p>
+    Det vigtige her er, at <strong>du som bestyrelsemedlem tager disse beslutninger</strong>, ikke IT-afdelingen alene.
+    Bestyrelsen skal godkende risikotolerance. Eksempel:
+  </p>
+
+  <blockquote>
+    "Vi accepterer en risiko for kortvarigt systemnedbrud (mindre end 4 timer) på vores internal webportal, fordi omkostningerne ved at sikre 24/7 availability overstiger forretningsværdien."
+  </blockquote>
+
+  <p>
+    Dette beslutning skal være dokumenteret i et styrelsesprotokol. Det er dit bevis overfor CFCS på, at artikel 20 er overholdt.
+  </p>
+
+  <h3>4. Overvågning og evalueringn</h3>
+
+  <p>
+    Risikostyring er ikke engangsaktivitet. Du skal etablere en proces, der siger:
+  </p>
+
+  <ul>
+    <li><strong>Månedligt:</strong> IT rapporterer om implementeringsstatus for sikkerhedsforanstaltninger</li>
+    <li><strong>Kvartalsvis:</strong> Ledelsesteam vurderer, om nye trusler eller ændringer påvirker rammerne</li>
+    <li><strong>Årligt:</strong> Fuld revurdering og styrelsesvedtagelse om fortsættelse eller justering</li>
+  </ul>
+
+  <p>
+    Du behøver ikke detaljerede tekniske rapporter. Du behøver en KPI-rapportering på niveau som: "60% af planlagte sikkerhedsforanstaltninger implementeret," "0 sikkerhedsincidenter," "5 potentielle sårbarheder identificeret og håndteret."
+  </p>
+
+  <h3>5. Rapportering til ledelse og bestyrelse</h3>
+
+  <p>
+    Hver gang der sker noget vigtigt — en potentiel incident, en ny trusel, implementering af store foranstaltninger — skal der rapporteres.
+    Artikel 23 i NIS2 foreskriver, at en alvorlig incident skal rapporteres til CFCS inden 72 timer. Men inden da skal bestyrelsen også være informeret.
+  </p>
+
+  <p>
+    En standardrapport kunne indeholde:
+  </p>
+
+  <ul>
+    <li>Status på implementering af sikkerhedsforanstaltninger (procentvis)</li>
+    <li>Nye eller opdaterede risici siden sidste rapport</li>
+    <li>Incidenter eller mistænkte hændelser</li>
+    <li>Ressourcebehov (budget, personale)</li>
+    <li>Eventuelle ikke-overholdes af NIS2-krav (sårbarheder, mangler)</li>
+  </ul>
+
+  <div class="box-case">
+    <div class="case-label">Praktisk eksempel</div>
+    <p>
+      <strong>En dansk sundhedsudbyder, 200 medarbejdere, klassificeret som vigtig enhed under NIS2.</strong>
+    </p>
+    <p>
+      Direktionen etablerer en risikostyringsramme i Q4 2024:
+    </p>
+    <ul>
+      <li>November: Ledelsesteam identificerer tre kritiske systemer (elektronisk patientjournal, booking, medicineringssystem)</li>
+      <li>December: Riskovurdering viser høj risiko for dataleak (patientdata) og høj risiko for ransomware på medicineringssystem</li>
+      <li>Januar 2025: Styrelsen godkender en handlingsplan: MFA på alle systemer (reducering), backup-løsning for ransomware (reducering), accept af 30 min. downtime for journal (acceptering)</li>
+      <li>Februar–marts: IT implementerer foranstaltninger, rapporterer status månedligt</li>
+      <li>April: Årsrevision foretages, syv nye sårbarheder opdaget, styrelsen vedtager fortsættelse med justeret budget</li>
+    </ul>
+    <p>
+      <strong>Resultat:</strong> Ved en tilsyn fra CFCS i maj 2025 kan udbyderne vise en systematisk, dokumenteret risikostyringsproces. Der var ingen incident, men processen var *på plads*. CFCS finder ingen væsentlige mangler.
+    </p>
+  </div>
+
+  <h2>ISO 27001 eller NIS2 — eller begge?</h2>
+
+  <p>
+    Mange danske organisationer har allerede ISO 27001-certificering. Det er en fordel.
+    NIS2-kravene (artikel 21, de ti domæner) matcher næsten 1:1 med ISO 27001-kontroller.
+  </p>
+
+  <p>
+    Hvis du allerede har ISO 27001:
+  </p>
+
+  <ul>
+    <li>Din eksisterende risikostyringsproces kan køre videre — du behøver ikke to separate systemer</li>
+    <li>Du skal sikre, at alle ti NIS2-domæner er dækket af dine ISO-kontroller</li>
+    <li>Du skal dokumentere, at bestyrelsen årligt godkender den (artikel 20)</li>
+  </ul>
+
+  <p>
+    Hvis du ikke har ISO 27001:
+  </p>
+
+  <ul>
+    <li>Du kan bygge en NIS2-ramme direkte ud fra artikel 21's ti domæner (mindre byrdefuld end fuld ISO 27001)</li>
+    <li>Du kan sidenhen certificere dig, hvis det er værd for markedet</li>
+  </ul>
+
+  <p>
+    <strong>ENISA har offentliggjort mappings</strong> mellem NIS2 og ISO 27001. Hvis du har tvivl, er det værd at investere 10-20 timer i at forstå, hvor dine eksisterende processer passer.
+  </p>
+
+  <h2>De ti domæner fra artikel 21 — hvad betyder de konkret?</h2>
+
+  <p>
+    NIS2 foreskriver ti sikkerhedsdomæner. For hver skal du have en dokumenteret politik eller proces:
+  </p>
+
+  <ol>
+    <li><strong>Risikostyring:</strong> Systematisk identificering og vurdering (som beskrevet ovenfor)</li>
+    <li><strong>Incidenthåndtering:</strong> Proces for at reagere, når noget går galt</li>
+    <li><strong>Kontinuitetsplanlægning:</strong> Backup, gendannelse, krisekommunikation</li>
+    <li><strong>Kryptografi:</strong> Kryptering af følsomme data i transit og hviletilstand</li>
+    <li><strong>Fysisk sikkerhed:</strong> Kontrol af fysisk adgang til kritiske lokationer og servere</li>
+    <li><strong>Personalesikkerhed:</strong> Baggrundstjek, sikkerhedstræning, opsigelsesprocedurer</li>
+    <li><strong>Leverandørrisikostyring:</strong> Kontrol af tredjeparts sikkerhed (cloudleverandører, IT-partnere)</li>
+    <li><strong>Konfigurationsstyring:</strong> Kontrol af systeminstillinger, patches, opdateringer</li>
+    <li><strong>Adgangskontrol &amp; Autentisering:</strong> Hvem må bruge hvad, MFA, password-politik</li>
+    <li><strong>Kryptering &amp; Monitering:</strong> Logning, detektionssystemer, analyse af anomalier</li>
+  </ol>
+
+  <p>
+    Du behøver ikke at være dybdegående ekspert i hver. Du behøver at vide, at hver domæne har en ansvarlig person, en politik og en evalueringskalender.
+  </p>
+
+  <h2>Værktøjer for risikostyringsrammen</h2>
+
+  <p>
+    Mange organisationer bruger simpelt PowerPoint eller Excel til at dokumentere deres risikostyringsramme.
+    Andre bruger software til risikostyring. Valget afhænger af størrelse og kompleksitet.
+  </p>
+
+  <p>
+    <strong>Minimalt krævet:</strong> Et regneark, der viser risikoer, vurderinger, handlingsplaner og status.
+  </p>
+
+  <p>
+    <strong>Anbefalet:</strong> Et systematisk værktøj, som sikrer, at ingen risikoer glemmes, og som automatiserer rapportering.
+  </p>
+
+  <p>
+    <strong>Vigtigst:</strong> Værktøjet skal være vedligeholdt og brugt aktivt. Et glimrende værktøj, som ligger ubrugt, hjælper ikke dig overfor CFCS.
+  </p>
+
+  <h2>Personligt ansvar — hvad skal du dokumentere som bestyrelsemedlem?</h2>
+
+  <p>
+    Artikel 20 i NIS2-loven siger, at du som bestyrelsemedlem er personligt ansvarlig.
+    Det betyder konkret:
+  </p>
+
+  <ul>
+    <li><strong>Du skal godkende rammerne:</strong> Der skal være et styrelsesprotokol, hvor du og dine medkollegaer har vedtaget risikostyringsrammens design og de vigtigste beslutninger</li>
+    <li><strong>Du skal overvåge implementeringen:</strong> Du skal modtage regelmæssige rapporter (
