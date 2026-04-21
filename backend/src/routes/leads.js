@@ -228,46 +228,43 @@ router.get('/export-d365', async (req, res) => {
 
     const today = new Date().toISOString().split('T')[0];
 
-    // D365 Lead entity columns — schema names match D365 import wizard
+    // D365 Lead entity columns — display names for auto-mapping in import wizard
     const header = [
-      'subject',           // Topic — required by D365
-      'companyname',       // Company Name
-      'emailaddress1',     // Email
-      'telephone1',        // Business Phone
-      'websiteurl',        // Website
-      'address1_city',     // City
-      'address1_stateorprovince', // State/Province (county)
-      'address1_country',  // Country
-      'numberofemployees', // No. of Employees
-      'revenue',           // Annual Revenue (SEK)
-      'industrycode',      // Industry (D365 picklist — we send description as text note)
-      'description',       // Description — NIS2 context, score, org.nr
-      'leadsourcecode',    // Lead Source
-      'statuscode',        // Status
-      'donotbulkemail',    // Do Not Bulk Email
-      // Extra context columns (custom fields or notes)
-      'msdyn_leadgrade',   // Lead Grade (if NIS2 module installed)
-      'yomifullname',      // LinkedIn (repurposed field as workaround)
+      'Topic',                  // subject — required by D365
+      'Company Name',           // companyname
+      'First Name',             // firstname — empty for company leads
+      'Last Name',              // lastname — empty for company leads
+      'Email',                  // emailaddress1
+      'Business Phone',         // telephone1
+      'Website',                // websiteurl
+      'City',                   // address1_city
+      'State/Province',         // address1_stateorprovince
+      'Country/Region',         // address1_country
+      'No. of Employees',       // numberofemployees
+      'Annual Revenue',         // revenue (SEK)
+      'Industry',               // industrycode
+      'Description',            // description — NIS2 context, score, org.nr
+      'Status Reason',          // statuscode
+      'Lead Source Description', // leadsourcedescription — tech stack label
     ].join(',');
 
     const lines = [header, ...rows.map(r => [
-      `NIS2 Lead - ${r.company_name}`,        // subject
-      r.company_name,                          // companyname
-      r.email,                                 // emailaddress1
-      r.phone,                                 // telephone1
-      r.website,                               // websiteurl
-      r.city,                                  // address1_city
-      r.county,                                // address1_stateorprovince
-      'Sweden',                                // address1_country
-      r.num_employees_exact || '',             // numberofemployees
-      parseRevenue(r.revenue_range),           // revenue
-      r.nace_description || '',                // industrycode
-      buildDescription(r),                     // description
-      'Web',                                   // leadsourcecode
-      statusMap[r.review_status] || 'New',     // statuscode
-      '0',                                     // donotbulkemail (false)
-      r.score_label === 'hot' ? 'A' : r.score_label === 'warm' ? 'B' : 'C', // msdyn_leadgrade
-      r.linkedin_url || '',                    // linkedin (via yomifullname workaround)
+      `NIS2 Lead - ${r.company_name}`,        // Topic
+      r.company_name,                          // Company Name
+      '',                                      // First Name (empty for company leads)
+      '',                                      // Last Name (empty for company leads)
+      r.email,                                 // Email
+      r.phone,                                 // Business Phone
+      r.website,                               // Website
+      r.city,                                  // City
+      r.county,                                // State/Province
+      'Sweden',                                // Country/Region
+      r.num_employees_exact || '',             // No. of Employees
+      parseRevenue(r.revenue_range),           // Annual Revenue (SEK)
+      r.nace_description || '',                // Industry
+      buildDescription(r),                     // Description
+      statusMap[r.review_status] || 'New',     // Status Reason
+      r.tech_stack === 'microsoft365' ? '🪟 M365' : r.tech_stack === 'google_workspace' ? 'Google WS' : '', // Lead Source Description
     ].map(escape).join(','))];
 
     res.setHeader('Content-Type', 'text/csv; charset=utf-8');
