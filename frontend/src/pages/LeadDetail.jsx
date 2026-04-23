@@ -1891,6 +1891,12 @@ function SequencesPanel({ leadId }) {
     fetchEnrollments();
   }, [fetchEnrollments]);
 
+  useEffect(() => {
+    if (enrollments.length > 0 && !selectedSeq) {
+      setSelectedSeq(String(enrollments[0].sequence_id));
+    }
+  }, [enrollments]);
+
   async function enroll() {
     if (!selectedSeq) return;
     setEnrolling(true);
@@ -1898,7 +1904,6 @@ function SequencesPanel({ leadId }) {
     try {
       const r = await api.post(`/sequences/${leadId}/enroll`, { sequence_id: parseInt(selectedSeq) });
       setSuccessMsg(`Enrolled — ${r.data.tasks_created} tasks created`);
-      setSelectedSeq('');
       fetchEnrollments();
     } catch (err) {
       setSuccessMsg('Error: ' + (err.response?.data?.error || err.message));

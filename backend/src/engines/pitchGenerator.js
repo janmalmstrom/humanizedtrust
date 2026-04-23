@@ -12,8 +12,9 @@
 
 const Anthropic = require('@anthropic-ai/sdk');
 
-function getFramework(scoreLabel, stepIndex = 0) {
-  if (stepIndex > 0) return 'followup';
+function getFramework(scoreLabel, stepIndex = 0, emailStepNumber = 0) {
+  // emailStepNumber = how many email steps have occurred before this one (0 = first email)
+  if (emailStepNumber > 0) return 'followup';
   if (scoreLabel === 'hot')  return 'direct';
   if (scoreLabel === 'warm') return 'pas';
   return 'social_proof';
@@ -53,8 +54,12 @@ function getNis2Hook(naceCode) {
   return NIS2_HOOKS[prefix] || null;
 }
 
-function buildPrompt(lead, { stepIndex = 0, stepTitle = null, enrolledAt = null } = {}) {
-  const framework = getFramework(lead.score_label, stepIndex);
+function buildPrompt(lead, { stepIndex = 0, stepTitle = null, enrolledAt = null, steps = null } = {}) {
+  // Count email steps that occur BEFORE the current stepIndex
+  const emailStepNumber = steps
+    ? steps.slice(0, stepIndex).filter(s => s.channel === 'email').length
+    : (stepIndex > 0 ? 1 : 0); // fallback: assume first email if stepIndex=0
+  const framework = getFramework(lead.score_label, stepIndex, emailStepNumber);
 
   const nis2Hook = getNis2Hook(lead.nace_code);
   const nis2HookCtx = nis2Hook ? `\nNIS2-specifik branschrisk: ${nis2Hook}` : '';
@@ -89,6 +94,7 @@ REGLER (följ strikt):
 - ALDRIG börja med "Hoppas detta mejl når dig väl" eller liknande klichéer
 - CTA: erbjud ett 15 minuter kort samtal
 - Generera 2 alternativa ämnesrader, markera den bästa med ★
+- ALDRIG hitta på case studies, kundnamn, specifika sparade belopp eller påhittade resultat — använd bara fakta du med säkerhet vet är korrekta (NIS2-lagtext, MSB-krav, branschstatistik från kända källor)
 ${hasFinancials ? '- Referera till deras omsättningsskala när du pratar om compliance-investering' : ''}
 
 FORMAT:
@@ -123,7 +129,7 @@ ${commonRules}`,
 
     followup: `Du är en B2B-säljutvecklare för Nomad Cyber, ett svenskt cybersäkerhetskonsultbolag specialiserat på NIS2-efterlevnad, Microsoft Copilot-styrning och AI-säkerhet.
 
-Skriv ett UPPFÖLJNINGSMAIL (steg ${stepIndex + 1} i sekvensen). Det är ${daysSince(enrolledAt)} dagar sedan det första mejlet skickades.
+Skriv ett UPPFÖLJNINGSMAIL (mejl ${emailStepNumber + 1} i sekvensen). Det är ${daysSince(enrolledAt)} dagar sedan det första mejlet skickades.
 Steg-titel: "${stepTitle || 'Uppföljning'}"
 
 Taktik: Referera kortfattat till det förra mejlet ("följer upp mitt förra meddelande"), lägg till ett nytt perspektiv eller en ny insikt — upprepa inte samma budskap. Kortare än det första mejlet (100–150 ord). Håll tonen lättsam men professionell.

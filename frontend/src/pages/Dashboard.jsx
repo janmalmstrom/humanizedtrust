@@ -157,7 +157,7 @@ function SendEmailModal({ action, onSent, onClose }) {
               onClick={send}
               disabled={sending || !subject.trim() || !body.trim()}
               className="px-5 py-2 bg-cyan-600 hover:bg-cyan-500 disabled:opacity-50 disabled:cursor-not-allowed text-white text-sm font-medium rounded-lg transition-colors">
-              {sending ? 'Sending...' : 'Send via AWS SES →'}
+              {sending ? 'Sending...' : 'Send via Resend →'}
             </button>
           </div>
         )}
@@ -434,6 +434,16 @@ function TodayActions() {
     const cfg = CHANNEL_CONFIG[action.step_channel] || CHANNEL_CONFIG.email;
     const isDone = done.has(action.enrollment_id);
     const isEmail = action.step_channel === 'email';
+    const isLinkedIn = action.step_channel === 'linkedin';
+
+    // Derive specific LinkedIn action label from step title
+    const linkedInLabel = isLinkedIn
+      ? action.step_title.toLowerCase().includes('follow') ? 'LinkedIn Follow'
+      : action.step_title.toLowerCase().includes('like') ? 'LinkedIn Like/Comment'
+      : action.step_title.toLowerCase().includes('dm') || action.step_title.toLowerCase().includes('connection') ? 'LinkedIn DM'
+      : 'LinkedIn'
+      : null;
+
     return (
       <div key={action.enrollment_id}
         className={`flex items-center gap-4 px-5 py-3.5 transition-all ${isDone ? 'opacity-40' : 'hover:bg-white/3'}`}>
@@ -451,20 +461,26 @@ function TodayActions() {
               <span className="text-xs bg-red-500/15 text-red-400 px-1.5 py-0.5 rounded">overdue</span>
             )}
           </div>
-          <div className="text-xs text-slate-400 mt-0.5">{action.step_title}</div>
+          <div className="text-xs text-slate-300 mt-0.5 font-medium">{action.step_title}</div>
           <div className="flex items-center gap-3 mt-1">
-            <span className={`text-xs font-medium ${cfg.color}`}>{cfg.label}</span>
+            <span className={`text-xs font-medium ${cfg.color}`}>{isLinkedIn ? linkedInLabel : cfg.label}</span>
             {action.phone && action.step_channel === 'call' && (
               <a href={`tel:${action.phone}`} className="text-xs text-slate-500 hover:text-slate-300 transition-colors">
                 {action.phone}
               </a>
             )}
-            {action.linkedin_url && action.step_channel === 'linkedin' && (
+            {isLinkedIn && action.linkedin_url && (
               <a href={action.linkedin_url} target="_blank" rel="noreferrer"
                 className="text-xs text-sky-500 hover:text-sky-400 transition-colors">
-                Open LinkedIn →
+                Company →
               </a>
             )}
+            {isLinkedIn && action.vd_contacts && action.vd_contacts.map((c, i) => (
+              <a key={i} href={c.linkedin_url} target="_blank" rel="noreferrer"
+                className="text-xs text-cyan-400 hover:text-cyan-300 transition-colors">
+                {c.name} ({c.title}) →
+              </a>
+            ))}
             {isEmail && action.email && (
               <span className="text-xs text-slate-500">{action.email}</span>
             )}
@@ -573,6 +589,42 @@ function TodayActions() {
           const items = grouped[ch] || [];
           if (items.length === 0) return null;
           const sec = CHANNEL_SECTION[ch];
+
+          // LinkedIn: sub-group by step_title so Follow / Like / DM are separated
+          if (ch === 'linkedin') {
+            const subGroups = {};
+            items.forEach(item => {
+              const key = item.type === 'sequence' ? item.data.step_title : 'Other';
+              if (!subGroups[key]) subGroups[key] = [];
+              subGroups[key].push(item);
+            });
+            return (
+              <div key={ch}>
+                <div className="px-5 py-2 bg-white/3 border-y border-white/8 flex items-center justify-between">
+                  <span className="text-xs font-semibold text-slate-400 tracking-wide uppercase">
+                    {sec.icon} {sec.label}
+                  </span>
+                  <span className="text-xs text-slate-600">{sec.hint}</span>
+                </div>
+                {Object.entries(subGroups).map(([title, subItems]) => (
+                  <div key={title}>
+                    <div className="px-5 py-1.5 bg-sky-500/5 border-y border-white/8 flex items-center gap-2">
+                      <span className="text-xs font-semibold text-sky-400">💼 {title}</span>
+                      <span className="text-xs text-slate-600">· {subItems.length} leads</span>
+                    </div>
+                    <div className="divide-y divide-white/5">
+                      {subItems.map(item =>
+                        item.type === 'sequence'
+                          ? renderSequenceRow(item.data)
+                          : renderTaskRow(item.data)
+                      )}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            );
+          }
+
           return (
             <div key={ch}>
               {/* Section header */}
@@ -604,7 +656,7 @@ function TodayActions() {
 }
 
 // ─── BDR Benchmarks (3 focused components) ────────────────────────────────────
-const DAILY_TARGETS = { email: 20, call: 15, linkedin: 10 };
+const DAILY_TARGETS = { email: 8, call: 4, linkedin: 10 };
 
 // 1. Daily scorecard — placed right after Outreach Pulse
 function DailyScorecard({ out }) {
@@ -618,7 +670,7 @@ function DailyScorecard({ out }) {
       <div className="flex items-center justify-between mb-4">
         <div className="flex items-center gap-2">
           <h2 className="text-sm font-semibold text-slate-200">Today's Activity</h2>
-          <InfoTooltip text="Your daily outreach output vs targets. Consistency is everything in BDR — 20 emails/day × 5 days beats 100 in one day because replies come in waves. Targets: 20 emails, 15 calls, 10 LinkedIn actions. Resets at midnight UTC (01:00 Swedish time)." />
+          <InfoTooltip text="Your daily outreach output vs targets. Consistency is everything in BDR — 20 emails/day × 5 days beats 100 in one day because replies come in waves. Targets: 8 emails, 4 calls, 10 LinkedIn actions. Resets at midnight UTC (01:00 Swedish time)." />
         </div>
         <span className="text-xs text-slate-500">Target: {DAILY_TARGETS.email} emails · {DAILY_TARGETS.call} calls · {DAILY_TARGETS.linkedin} LinkedIn</span>
       </div>

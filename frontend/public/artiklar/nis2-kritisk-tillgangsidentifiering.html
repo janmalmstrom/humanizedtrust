@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-BKF3QH9K01"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag("js", new Date());
+    gtag("config", "G-BKF3QH9K01");
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NIS2 Kritisk Tillgångsinventering: Steg-för-steg Klassificeringsguide | NIS2Klar</title>
+  <meta name="description" content="Lär dig klassificera kritiska system, känsliga data, kritiska processer och leverantörer enligt NIS2. En saknad tillgång i inventeringen kan bli ödesdigert vid ett angrepp.">
+  <meta property="og:title" content="NIS2 Kritisk Tillgångsinventering: Steg-för-steg Klassificeringsguide">
+  <meta property="og:description" content="Hur du kartlägger och klassificerar kritiska tillgångar under NIS2 — och vad som händer om något saknas när attacken kommer.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #141416;
+      --card: #1c1c1f;
+      --yellow: #f5c518;
+      --white: #f0f0f0;
+      --muted: #888;
+      --red: #C61212;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: var(--bg); color: var(--white); font-family: 'Barlow', sans-serif; font-size: 19px; line-height: 1.8; }
+
+    /* Nav */
+    nav { display: flex; justify-content: space-between; align-items: center; padding: 20px 40px; border-bottom: 1px solid rgba(255,255,255,0.07); max-width: 900px; margin: 0 auto; }
+    .nav-logo { font-family: 'Poppins', sans-serif; font-weight: 900; font-size: 20px; color: var(--yellow); text-decoration: none; }
+    .nav-logo span { color: var(--white); }
+    .nav-back { color: var(--muted); text-decoration: none; font-size: 15px; }
+    .nav-back:hover { color: var(--white); }
+    .nav-cta { background: var(--yellow); color: #000; padding: 8px 18px; border-radius: 4px; text-decoration: none; font-weight: 700; font-size: 14px; font-family: 'Poppins', sans-serif; }
+
+    /* Article */
+    .article-wrap { max-width: 760px; margin: 0 auto; padding: 60px 40px; }
+    .article-category { font-size: 13px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 16px; }
+    h1 { font-family: 'Poppins', sans-serif; font-size: clamp(30px, 4vw, 44px); font-weight: 900; line-height: 1.2; margin-bottom: 24px; }
+    .article-meta { font-size: 15px; color: var(--muted); margin-bottom: 48px; padding-bottom: 24px; border-bottom: 1px solid rgba(255,255,255,0.07); }
+    h2 { font-family: 'Poppins', sans-serif; font-size: 26px; font-weight: 700; margin: 48px 0 16px; color: var(--white); }
+    h3 { font-family: 'Poppins', sans-serif; font-size: 20px; font-weight: 600; margin: 32px 0 12px; color: var(--yellow); }
+    p { margin-bottom: 22px; }
+    strong { color: var(--white); font-weight: 700; }
+    .highlight { color: var(--yellow); font-weight: 700; }
+    .danger { color: #ff6b6b; font-weight: 700; }
+    ul, ol { margin: 16px 0 24px 24px; }
+    li { margin-bottom: 12px; font-size: 19px; }
+
+    /* Callout boxes */
+    .box-warning { background: rgba(197,17,17,0.12); border-left: 4px solid var(--red); padding: 20px 24px; margin: 32px 0; border-radius: 0 4px 4px 0; }
+    .box-info { background: rgba(245,197,24,0.08); border-left: 4px solid var(--yellow); padding: 20px 24px; margin: 32px 0; border-radius: 0 4px 4px 0; }
+    .box-case { background: var(--card); border: 1px solid rgba(255,255,255,0.08); padding: 28px; margin: 40px 0; border-radius: 4px; }
+    .box-case .case-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 12px; }
+    blockquote { border-left: 3px solid var(--yellow); padding: 12px 20px; margin: 24px 0; font-style: italic; color: #ccc; }
+
+    /* CTA */
+    .cta-section { background: var(--card); border: 1px solid rgba(245,197,24,0.2); border-radius: 4px; padding: 48px 40px; margin: 64px 0 40px; text-align: center; }
+    .cta-section h2 { margin-top: 0; font-size: 26px; }
+    .cta-section p { color: #aaa; max-width: 500px; margin: 0 auto 28px; }
+    .btn-primary { display: inline-block; background: var(--yellow); color: #000; font-family: 'Poppins', sans-serif; font-weight: 800; font-size: 16px; padding: 16px 36px; border-radius: 4px; text-decoration: none; }
+    .btn-primary:hover { background: #e0b010; }
+    .cta-fine { font-size: 13px; color: var(--muted); margin-top: 16px; }
+
+    /* FAQ */
+    .faq-item { border-bottom: 1px solid rgba(255,255,255,0.07); padding: 20px 0; }
+    .faq-q { font-family: 'Poppins', sans-serif; font-weight: 600; margin-bottom: 10px; }
+    .faq-a { color: #bbb; }
+
+    /* Fine table */
+    .fine-table { width: 100%; border-collapse: collapse; margin: 24px 0; }
+    .fine-table th { background: rgba(245,197,24,0.1); color: var(--yellow); font-family: 'Poppins', sans-serif; font-size: 13px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 12px 16px; text-align: left; border-bottom: 1px solid rgba(245,197,24,0.2); }
+    .fine-table td { padding: 14px 16px; border-bottom: 1px solid rgba(255,255,255,0.05); font-size: 15px; }
+    .fine-table tr:last-child td { border-bottom: none; }
+    .fine-table .amount { color: #ff6b6b; font-weight: 700; }
+
+    /* Summary + Key Takeaway */
+    .box-summary { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; padding: 24px 28px; margin: 0 0 32px; }
+    .summary-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-bottom: 14px; }
+    .box-summary ul { margin: 0; padding-left: 20px; }
+    .box-summary li { margin-bottom: 8px; font-size: 17px; color: #ccc; }
+    .box-takeaway { background: rgba(245,197,24,0.08); border-left: 4px solid var(--yellow); padding: 20px 24px; margin: 0 0 40px; border-radius: 0 4px 4px 0; }
+    .takeaway-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 10px; }
+    .box-takeaway p { margin: 0; font-size: 18px; font-weight: 600; color: var(--white); line-height: 1.6; }
+
+    /* Footer */
+    footer { border-top: 1px solid rgba(255,255,255,0.07); padding: 32px 40px; text-align: center; font-size: 13px; color: var(--muted); max-width: 900px; margin: 0 auto; }
+    footer a { color: var(--muted); }
+
+    @media (max-width: 600px) {
+      nav, .article-wrap, footer { padding: 20px; }
+      .cta-section { padding: 32px 20px; }
+      .fine-table { font-size: 14px; }
+      .fine-table th, .fine-table td { padding: 10px 10px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="https://nis2klar.se/">NIS2<span>Klar</span></a>
+  <a class="nav-back" href="https://nis2klar.se/artiklar.html">← Alla artiklar</a>
+  <a class="nav-cta" href="https://nis2klar.se/#boka">Boka samtal →</a>
+</nav>
+
+<article class="article-wrap">
+  <div class="article-category">Risk &amp; Tillgångsstyrning</div>
+  <h1>NIS2 Kritisk Tillgångsinventering: Steg-för-steg klassificeringsguide</h1>
+  <div class="article-meta">Uppdaterad 21 april 2026 · Lästid: ca 8 minuter · Målgrupp: Ledning</div>
+
+  <!-- SUMMARY -->
+  <div class="box-summary">
+    <div class="summary-label">Sammanfattning</div>
+    <ul>
+      <li>NIS2 Artikel 21 kräver en <strong>dokumenterad inventering av kritiska tillgångar</strong> — system, data, processer och leverantörer.</li>
+      <li>En tillgång som inte står med i inventeringen kan inte skyddas. Om den attackeras hamnar organisationen i försvarslös position.</li>
+      <li>Klassificering måste följa en systematisk process: identifiering → kategorisering → riskvärdering → dokumentation.</li>
+      <li>Tillsynsmyndigheten förväntar sig att detta är gjort långt innan en granskning initieras.</li>
+    </ul>
+  </div>
+
+  <!-- KEY TAKEAWAY -->
+  <div class="box-takeaway">
+    <div class="takeaway-label">Viktigaste slutsatsen</div>
+    <p>Om en kritisk tillgång saknas i din inventering och utnyttjas i ett cyberangrepp, kan din organisation varken försvara sig juridiskt eller operativt. Inventering är grunden för allt annat säkeringsarbete enligt NIS2.</p>
+  </div>
+
+  <!-- HOOK -->
+  <p>
+    En av de mest undervärderade delarna av NIS2 är inventeringen av kritiska tillgångar.
+    Det verkar administrativt — en lista. Tråkig, långsam, inte särskilt intressant för en VD eller styrelseledamot.
+    Men det är här allt börjar.
+  </p>
+
+  <p>
+    Om en tillgång inte står med i inventeringen, är den inte klassificerad. Om den inte är klassificerad, har den ingen säkerhetsplan. Om den inte har någon säkerhetsplan och ett angrepp träffar den, så var systemet <strong>okänt för organisationen när skadan inträffade</strong> — och det är en allvarlig brist enligt NIS2 Artikel 21.
+  </p>
+
+  <p>
+    Det här är stegen.
+  </p>
+
+  <h2>Varför inventering är juridiska grunden</h2>
+
+  <p>
+    NIS2 Artikel 21 slår fast tio obligatoriska säkerhetsåtgärder. Den första är <strong>riskhantering</strong> — och riskhantering kräver att du vet vad du har.
+  </p>
+
+  <p>
+    Inventering är alltså inte en frivillig checklista. Det är en <span class="highlight">juridisk skyldighet</span>. Tillsynsmyndigheten förväntar sig att:
+  </p>
+
+  <ol>
+    <li>Du identifierat alla system, data och processer som stöder kritiska funktioner</li>
+    <li>Du klassificerat dem enligt en dokumenterad metod</li>
+    <li>Du bedömt risken för var och en</li>
+    <li>Du dokumenterat detta och låtit styrelsen godkänna det</li>
+  </ol>
+
+  <p>
+    Utan detta underlag kan du inte visa att du gjort en rimlig riskanalys. Och utan riskanalys är det omöjligt att motivera varför du valt vissa säkerhetsåtgärder framför andra.
+  </p>
+
+  <div class="box-warning">
+    <strong>Om en granskning initieras och inventeringen saknas:</strong> Tillsynsmyndigheten kommer att behandla det som ett seriöst lagbrott. Du kan inte säga "vi gör det senare". Du måste kunna visa att det redan är gjort.
+  </div>
+
+  <h2>Steg 1: Identifiering av kritiska tillgångar</h2>
+
+  <p>
+    Börja med att definiera vad "kritiska" betyder för din organisation. Det är inte generellt — det beror på din verksamhet.
+  </p>
+
+  <p>
+    En bank klassificerar sitt betalningssystem som kritiskt. En sjukhusklinik klassificerar sina patientjourner som kritiska. En energileverantör klassificerar sin SCADA-miljö som kritisk.
+  </p>
+
+  <p>
+    För varje organisation gäller: en kritisk tillgång är någonting som, om det blir otillgängligt eller komprometterat, skadar en väsentlig funktion eller utgör en säkerhetsrisk för människor.
+  </p>
+
+  <h3>Fyra kategorier att inventera</h3>
+
+  <p>
+    <strong>1. Kritiska system (IT-miljöer)</strong>
+  </p>
+
+  <ul>
+    <li>Produktionsdatabaser</li>
+    <li>Webbapplikationer mot kunder eller medborgare</li>
+    <li>Autentiserings- och identitetssystem</li>
+    <li>Betalnings- och finansiella system</li>
+    <li>Övervaknings- och styrningssystem (SCADA, ICS)</li>
+    <li>Kommunikationsplattformar</li>
+  </ul>
+
+  <p>
+    Dokumentera: systemnamn, ägare, uppdragsansvarig, lagringslokation för data, integrationspunkter.
+  </p>
+
+  <p>
+    <strong>2. Känsliga data (datastödet för kritiska funktioner)</strong>
+  </p>
+
+  <ul>
+    <li>Personuppgifter (kunder, anställda, patienter)</li>
+    <li>Finansiell information (bokföring, löner, transaktioner)</li>
+    <li>Affärshemligheter (forskning, design, investeringsplaner)</li>
+    <li>Kritisk infrastrukturinformation (säkerhetskoder, konfigurationer)</li>
+    <li>Säkerhetsklassificerad information (om relevant för din sektor)</li>
+  </ul>
+
+  <p>
+    Dokumentera: datatyp, klassificering, var den lagras, vem som kan nå den, retentionspolicy.
+  </p>
+
+  <p>
+    <strong>3. Kritiska processer (affärsprocesser som måste köra)</strong>
+  </p>
+
+  <ul>
+    <li>Betalningshantering (inbetalningar, utbetalningar)</li>
+    <li>Patientvård (remisser, journalföring, läkemedelsmängd)</li>
+    <li>Säkerhetstillsyn (larm, incidentberedskap)</li>
+    <li>Nödkommunikation</li>
+    <li>Kritiska leveranser (el, vatten, mat, medicin)</li>
+  </ul>
+
+  <p>
+    Dokumentera: processflöde, beroenden (vilka system stöder den), tidsaspekt (hur länge kan den pausas), ansvarig funktion.
+  </p>
+
+  <p>
+    <strong>4. Kritiska leverantörer och tredjeparter</strong>
+  </p>
+
+  <ul>
+    <li>Molnleverantörer (där data eller system ligger)</li>
+    <li>IT-leverantörer (underhåll, support, uppdateringar)</li>
+    <li>Logistikpartners</li>
+    <li>Betalningsförmedlare</li>
+    <li>Underleverantörer till dessa</li>
+  </ul>
+
+  <p>
+    Dokumentera: leverantörens namn, kritikalitetsnivå, vilka tillgångar de har åtkomst till, var data finns, kontraktkullanser.
+  </p>
+
+  <h2>Steg 2: Kategorisering enligt risknivå</h2>
+
+  <p>
+    Inte allt är lika kritiskt. Du behöver en klassificeringsmodell som skiljer mellan:
+  </p>
+
+  <table class="fine-table">
+    <thead>
+      <tr>
+        <th>Klassificering</th>
+        <th>Kriterier</th>
+        <th>Exempel</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Kritisk</strong></td>
+        <td>Systemet/data är direkt nödvändigt för en väsentlig funktion. Är det nere påverkas människor eller lagstiftning omedelbar.</td>
+        <td>Betalningssystem, patientjournal, elsystem</td>
+      </tr>
+      <tr>
+        <td><strong>Högt värde</strong></td>
+        <td>Systemet stöder en viktig process men kan ersättas med manuell hantering under begränsad tid. Komprometterad data skadar företaget allvarligt.</td>
+        <td>HR-system, finansrappportering, kunddatabas</td>
+      </tr>
+      <tr>
+        <td><strong>Medel</strong></td>
+        <td>Systemet är användarfunktionellt men inte direkt livsfarligt eller affärskritiskt. Avbrott kan tålas timvis.</td>
+        <td>Intranät, projektverktyg, dokumentdelning</td>
+      </tr>
+      <tr>
+        <td><strong>Låg</strong></td>
+        <td>Systemet eller data är inte känsligt för avbrott eller kompromiss. Få eller inga personer beror på det.</td>
+        <td>Källkod-repository, gamla servrar, testmiljöer</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>
+    Använd denna klassificering konsekvent över hela organisationen. Det är här styrelsen måste godkänna kriteriet — inte klassificeringen av varje enskilt system, men själva kriterierna.
+  </p>
+
+  <div class="box-info">
+    <strong>Tipp:</strong> En organisation kan klassificera samma system på olika sätt för olika delsystem. En databas kan innehålla både produktionsdata (kritisk) och testdata (låg). Klassificera per dataset, inte per server.
+  </div>
+
+  <h2>Steg 3: Riskvärdering — vad kan gå fel?</h2>
+
+  <p>
+    För varje klassificerad tillgång måste du bedöma <strong>vad som kan hända</strong> och <strong>hur sannolikt det är</strong>.
+  </p>
+
+  <p>
+    En enkel riskvärderingsmatris ser ut så här:
+  </p>
+
+  <table class="fine-table">
+    <thead>
+      <tr>
+        <th>Hotscenario</th>
+        <th>Sannolikhet</th>
+        <th>Påverkan</th>
+        <th>Riskresultat</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Okrypterad databas exponeras på nätet</td>
+        <td>Högt</td>
+        <td>Kritisk (personuppgifter)</td>
+        <td>Accepteras ej</td>
+      </tr>
+      <tr>
+        <td>Ransomware låser produktionsserver</td>
+        <td>Högt</td>
+        <td>Kritisk (operativ)</td>
+        <td>Accepteras ej</td>
+      </tr>
+      <tr>
+        <td>Insider kopierar kunddata</td>
+        <td>Medel</td>
+        <td>Kritisk (juridisk)</td>
+        <td>Accepteras ej — åtgärd krävs</td>
+      </tr>
+      <tr>
+        <td>Testserver hackas</td>
+        <td>Högt</td>
+        <td>Låg</td>
+        <td>Accepteras — låg risk</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>
+    För varje "accepteras ej"-risk måste du definiera en motsvarande säkerhetsåtgärd (kryptering, säkerhetskopiering, åtkomstkontroll osv.). Det blir ditt säkerhetsarbete de närmaste månaderna.
+  </p>
+
+  <h2>Steg 4: Leverantörsrisker — redan på inventeringsstadiet</h2>
+
+  <p>
+    En av NIS2-kraven som ofta glöms är att du måste inventera och risk-värdera även dina leverantörers tillgångar.
+  </p>
+
+  <p>
+    Frågor att besvara för varje kritisk tredjepartsleverantör:
+  </p>
+
+  <ul>
+    <li>Vilka data eller system av dina har de åtkomst till?</li>
+    <li>Var finns dessa hosted (Sverige, EU, eller tredjeland)?</li>
+    <li>Har de egen säkerhetsstandard (ISO 27001, SOC 2)?</li>
+    <li>Vad säger kontraktet om incidentrapportering och dataskydd?</li>
+    <li>Vilka är <strong>deras</strong> kritiska leverantörer (andrahandsberoenden)?</li>
+  </ul>
+
+  <p>
+    En saknad leverantör i din inventering är en saknad riskkälla. Om din molnleverantör hackas och din data expone ras — och du inte visste att leverantören var kritisk — kan du inte försvara varför du inte hade tillräckliga säkerhetsåtgärder.
+  </p>
+
+  <div class="box-case">
+    <div class="case-label">Fallstudie</div>
+    <p>
+      <strong>Scenario: Medelstort teknikföretag, 120 anställda, klassas som viktig entitet under NIS2.</strong>
+    </p>
+    <p>
+      Företaget använder tre molnleverantörer: två för utvecklingsmiljöer och en för produktionsdata.
+      Vid inventeringen klassificeras produktionsmiljön som kritisk — men en av utvecklingsmiljöerna klassificeras felaktigt som "låg" eftersom det "bara är testdata".
+    </p>
+    <p>
+      I april 2026 hackas testmiljön. Attackerna använder åtkomsten för att mappera vägen till produktionsmiljön.
+      Från testserver kan de identifiera API-nycklar till produktionsdatabasen.
+      Angreppet lyckas, och 50 000 kunddataset läcker.
+    </p>
+    <p>
+      Under tillsynsgranskningen framkommer att testservern fanns men <strong>inte klassificerats som kritisk i inventeringen</strong>.
+      Organisationen kan inte motivera varför säkerhetsåtgärderna för testmiljön var mindre rigida än för produktion.
+      Sanktion för bristande riskanalys enligt Artikel 21.1 a.
+    </p>
+    <p>
+      <strong>Lärdom:</strong> En tillgång som är "bara test" kan fortfarande vara en väg in till något kritiskt. Klassificera baserat på påverkan, inte intention.
+    </p>
+  </div>
+
+  <h2>Steg 5: Dokumentation och styrelsegodkännande</h2>
+
+  <p>
+    Inventeringen måste dokumenteras på ett sätt som en tillsynsmyndighet kan granskar utan att behöva ställa frågor. Det betyder:
+  </p>
+
+  <ul>
+    <li>En <strong>förteckning över kritiska tillgångar</strong> — daterad, versionerad</li>
+    <li>För varje tillgång: klassificering, riskvärdering, identifierad säkerhetsåtgärd</li>
+    <li>En <strong>riskvärderingsmetod</strong> — dokumenterad matris eller ramverk</li>
+    <li>Ett <strong>styrelsebeslut</strong> som godkänner både inventeringen och metoden</li>
+    <li>En <strong>ansvarig funktion</strong> — vem uppdaterar inventeringen när ny teknik introduceras?</li>
+  </ul>
+
+  <p>
+    Detta är en levande dokumentation, inte ett engångsprojekt. Uppdatering ska ske minst årligen — eller när större systemförändringar görs.
+  </p>
+
+  <div class="box-warning">
+    <strong>Vanligt misstag:</strong> Inventeringen är färdig, men ingen ansvarar för uppdateringen. Efter sex månader är den redan föråldrad. Tillsynsmyndigheten förväntar sig en aktuell inventering, inte en historisk.
+  </div>
+
+  <h2>Vanliga fällor i inventeringsarbetet</h2>
+
+  <p>
+    <strong>1. Du inventerar system, men inte data</strong>
+    En webbserver kan klassificeras som "medel", men om den lagrar kunddataset borde klassificeringen vara "kritisk". Klassificera både behållaren och innehållet.
+  </p>
+
+  <p>
+    <strong>2. Du inventerar egen miljö, men inte tredjepartsmiljöer</strong>
+    Många organisationer är beroende av molnleverantörer för backuplagring eller e-posthantering. Om denna inte står med i inventeringen är den osynlig för säkerhetsarbetet.
+  </p>
+
+  <p>
+    <strong>3. Du klassificerar för lågt för att undvika jobb</strong>
+    Om du klassificerar allt som "låg" slipper du säkerhetsproblem. Men en tillsynsmyndighet kommer att fråga varför dina riskbedömningar är så skeva mot den låga sidan. Klassificera baserat på faktisk påverkan, inte önskad arbetsmängd.
+  </p>
+
+  <p>
+    <strong>4. Du inkluderar inte äldre system som "vi slutar använda snart"</strong>
+    Ett äldre system som är avstängt från internet men fortfarande innehåller kunddataset är fortfarande kritiskt för dataskydd. Äldre betyder inte mindre känsligt.
+  </p>
+
+  <p>
+    <strong>5. Du dokumenterar inte klassificeringsbeslut</strong>
+    Om du inte kan förklara <strong>varför</strong> du klassificerat något på ett visst sätt, kan det ifrågasättas vid tillsyn. Dokumentera grunden för klassificeringen.
+  </p>
+
+  <h2>Vad händer om en kritisk tillgång saknas från inventeringen?</h2>
+
+  <p>
+    Det här är scenariot som en VD måste förstå.
+  </p>
+
+  <p>
+    Anta att en tillgång saknas — antingen för att den glömdes bort, eller för att den klassificerades alltför lågt. Sedan inträffar ett angrepp mot denna tillgång.
+  </p>
+
+  <p>
+    <strong>Operativt:</strong> Organisationen vet inte att systemet är attackerat (för det fanns inget övervakningskrav om det inte klassificerades som kritiskt). Angreppet sprider sig okontrollerat.
+  </p>

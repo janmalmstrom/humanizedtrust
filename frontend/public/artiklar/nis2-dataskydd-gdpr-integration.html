@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-BKF3QH9K01"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag("js", new Date());
+    gtag("config", "G-BKF3QH9K01");
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NIS2 Dataskydd och GDPR: Hur de hänger ihop och var de skiljer sig | NIS2Klar</title>
+  <meta name="description" content="NIS2 och GDPR överlappar men är fundamentalt olika. Vi förklarar överlappen, skillnaderna och varför GDPR-teamen inte automatiskt kan leda NIS2-arbetet.">
+  <meta property="og:title" content="NIS2 Dataskydd och GDPR: Hur de hänger ihop och var de skiljer sig">
+  <meta property="og:description" content="NIS2 och GDPR överlappar men är fundamentalt olika. Vi förklarar överlappen, skillnaderna och varför GDPR-teamen inte automatiskt kan leda NIS2-arbetet.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #141416;
+      --card: #1c1c1f;
+      --yellow: #f5c518;
+      --white: #f0f0f0;
+      --muted: #888;
+      --red: #C61212;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: var(--bg); color: var(--white); font-family: 'Barlow', sans-serif; font-size: 19px; line-height: 1.8; }
+
+    /* Nav */
+    nav { display: flex; justify-content: space-between; align-items: center; padding: 20px 40px; border-bottom: 1px solid rgba(255,255,255,0.07); max-width: 900px; margin: 0 auto; }
+    .nav-logo { font-family: 'Poppins', sans-serif; font-weight: 900; font-size: 20px; color: var(--yellow); text-decoration: none; }
+    .nav-logo span { color: var(--white); }
+    .nav-back { color: var(--muted); text-decoration: none; font-size: 15px; }
+    .nav-back:hover { color: var(--white); }
+    .nav-cta { background: var(--yellow); color: #000; padding: 8px 18px; border-radius: 4px; text-decoration: none; font-weight: 700; font-size: 14px; font-family: 'Poppins', sans-serif; }
+
+    /* Article */
+    .article-wrap { max-width: 760px; margin: 0 auto; padding: 60px 40px; }
+    .article-category { font-size: 13px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 16px; }
+    h1 { font-family: 'Poppins', sans-serif; font-size: clamp(30px, 4vw, 44px); font-weight: 900; line-height: 1.2; margin-bottom: 24px; }
+    .article-meta { font-size: 15px; color: var(--muted); margin-bottom: 48px; padding-bottom: 24px; border-bottom: 1px solid rgba(255,255,255,0.07); }
+    h2 { font-family: 'Poppins', sans-serif; font-size: 26px; font-weight: 700; margin: 48px 0 16px; color: var(--white); }
+    h3 { font-family: 'Poppins', sans-serif; font-size: 20px; font-weight: 600; margin: 32px 0 12px; color: var(--yellow); }
+    p { margin-bottom: 22px; }
+    strong { color: var(--white); font-weight: 700; }
+    .highlight { color: var(--yellow); font-weight: 700; }
+    .danger { color: #ff6b6b; font-weight: 700; }
+    ul, ol { margin: 16px 0 24px 24px; }
+    li { margin-bottom: 12px; font-size: 19px; }
+
+    /* Callout boxes */
+    .box-warning { background: rgba(197,17,17,0.12); border-left: 4px solid var(--red); padding: 20px 24px; margin: 32px 0; border-radius: 0 4px 4px 0; }
+    .box-info { background: rgba(245,197,24,0.08); border-left: 4px solid var(--yellow); padding: 20px 24px; margin: 32px 0; border-radius: 0 4px 4px 0; }
+    .box-case { background: var(--card); border: 1px solid rgba(255,255,255,0.08); padding: 28px; margin: 40px 0; border-radius: 4px; }
+    .box-case .case-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 12px; }
+    blockquote { border-left: 3px solid var(--yellow); padding: 12px 20px; margin: 24px 0; font-style: italic; color: #ccc; }
+
+    /* CTA */
+    .cta-section { background: var(--card); border: 1px solid rgba(245,197,24,0.2); border-radius: 4px; padding: 48px 40px; margin: 64px 0 40px; text-align: center; }
+    .cta-section h2 { margin-top: 0; font-size: 26px; }
+    .cta-section p { color: #aaa; max-width: 500px; margin: 0 auto 28px; }
+    .btn-primary { display: inline-block; background: var(--yellow); color: #000; font-family: 'Poppins', sans-serif; font-weight: 800; font-size: 16px; padding: 16px 36px; border-radius: 4px; text-decoration: none; }
+    .btn-primary:hover { background: #e0b010; }
+    .cta-fine { font-size: 13px; color: var(--muted); margin-top: 16px; }
+
+    /* FAQ */
+    .faq-item { border-bottom: 1px solid rgba(255,255,255,0.07); padding: 20px 0; }
+    .faq-q { font-family: 'Poppins', sans-serif; font-weight: 600; margin-bottom: 10px; }
+    .faq-a { color: #bbb; }
+
+    /* Summary + Key Takeaway */
+    .box-summary { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; padding: 24px 28px; margin: 0 0 32px; }
+    .summary-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-bottom: 14px; }
+    .box-summary ul { margin: 0; padding-left: 20px; }
+    .box-summary li { margin-bottom: 8px; font-size: 17px; color: #ccc; }
+    .box-takeaway { background: rgba(245,197,24,0.08); border-left: 4px solid var(--yellow); padding: 20px 24px; margin: 0 0 40px; border-radius: 0 4px 4px 0; }
+    .takeaway-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 10px; }
+    .box-takeaway p { margin: 0; font-size: 18px; font-weight: 600; color: var(--white); line-height: 1.6; }
+
+    /* Footer */
+    footer { border-top: 1px solid rgba(255,255,255,0.07); padding: 32px 40px; text-align: center; font-size: 13px; color: var(--muted); max-width: 900px; margin: 0 auto; }
+    footer a { color: var(--muted); }
+
+    .comparison-table { width: 100%; border-collapse: collapse; margin: 24px 0; }
+    .comparison-table th { background: rgba(245,197,24,0.1); color: var(--yellow); font-family: 'Poppins', sans-serif; font-size: 13px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 12px 16px; text-align: left; border-bottom: 1px solid rgba(245,197,24,0.2); }
+    .comparison-table td { padding: 14px 16px; border-bottom: 1px solid rgba(255,255,255,0.05); font-size: 15px; }
+    .comparison-table tr:last-child td { border-bottom: none; }
+    .comparison-table .yes { color: #4ade80; font-weight: 700; }
+    .comparison-table .no { color: #ff6b6b; }
+    .comparison-table .partial { color: var(--yellow); }
+
+    @media (max-width: 600px) {
+      nav, .article-wrap, footer { padding: 20px; }
+      .cta-section { padding: 32px 20px; }
+      .comparison-table { font-size: 14px; }
+      .comparison-table th, .comparison-table td { padding: 10px 10px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="https://nis2klar.se/">NIS2<span>Klar</span></a>
+  <a class="nav-back" href="https://nis2klar.se/artiklar.html">← Alla artiklar</a>
+  <a class="nav-cta" href="https://nis2klar.se/#boka">Boka samtal →</a>
+</nav>
+
+<article class="article-wrap">
+  <div class="article-category">Dataskydd &amp; Compliance</div>
+  <h1>NIS2 Dataskydd och GDPR: Hur de hänger ihop och var de skiljer sig</h1>
+  <div class="article-meta">Uppdaterad 21 april 2026 · Lästid: ca 8 minuter · Målgrupp: Ledning</div>
+
+  <!-- SUMMARY -->
+  <div class="box-summary">
+    <div class="summary-label">Sammanfattning</div>
+    <ul>
+      <li>NIS2 och GDPR överlappar när det gäller dataskydd — men de skyddar helt olika intressen.</li>
+      <li>GDPR fokuserar på individers integritet. NIS2 fokuserar på samhällskritisk infrastruktur och leveranssäkerhet.</li>
+      <li>Ett GDPR-team kan inte leda NIS2-arbetet. Du behöver separate ledningslinjer, roll-ägare och granskningsmål.</li>
+      <li>Fångsten: många organisationer tror GDPR+kryptering = NIS2-efterlevnad. Det är fel.</li>
+    </ul>
+  </div>
+
+  <!-- KEY TAKEAWAY -->
+  <div class="box-takeaway">
+    <div class="takeaway-label">Viktigaste slutsatsen</div>
+    <p>NIS2 är inte GDPR fast med cybersäkerhet. Det är en helt annat regelverk med andra syften, andra granskare och andra risker för ledningen. Om du låter GDPR-teamet ta hand om båda hamnar du ofullständig på både fronter.</p>
+  </div>
+
+  <p>
+    Det är en vanlig och begriplig reflex: <em>"Vi har redan gjort GDPR. Dataskyddet är löst. Lägg bara till lite cybersäkerhet och vi är klara med NIS2."</em>
+  </p>
+
+  <p>
+    Det är också en farlig missuppfattning.
+  </p>
+
+  <p>
+    NIS2 och GDPR överlappar när det gäller <strong>dataskydd och kryptering</strong> — men de är fundamentalt olika regelverk med olika syfte, olika tillsynsorgan och helt olika konsekvenser för ledningen om något går fel. I denna artikel förklarar vi överlappen, skillnaderna och varför du behöver separate organisationer för att följa båda lagarna ordentligt.
+  </p>
+
+  <h2>Vad är den faktiska överlappen?</h2>
+
+  <p>
+    Både GDPR och NIS2 kräver dataskydd. Det här är sant. Båda lagarna begär:
+  </p>
+
+  <ul>
+    <li><strong>Kryptering</strong> av känslig data i vila och under transport</li>
+    <li><strong>Åtkomstkontroll</strong> — ingen ska se data de inte ska få se</li>
+    <li><strong>Incidentrapportering</strong> — när något går snett måste myndigheten notifieras</li>
+    <li><strong>Säkerhetspolicyer</strong> och dokumenterad risk-hantering</li>
+  </ul>
+
+  <p>
+    Det finns alltså en teknisk överlapp. Om du implementerar starka krypteringsmetoder, multifaktor-autentisering och en strukturerad incidenthanteringsprocess kommer du att täcka <em>delar av</em> båda regelverken.
+  </p>
+
+  <p>
+    Men — och det här är stort — teknisk överlapp betyder inte att de två regelverken är samma sak.
+  </p>
+
+  <h2>Den kritiska skillnaden: vem skyddar vi?</h2>
+
+  <p>
+    <strong>GDPR skyddar individen.</strong> Om ett företag samlar in data om personen Anna Andersson — hennes namn, personnummer, e-postadress, köphistorik — så är GDPR den lag som säger: <em>"Anna har rätt att veta att ni lagrar det här. Hon har rätt att få det raderat. Hon har rätt att veta vad ni gör med det."</em>
+  </p>
+
+  <p>
+    GDPR handlar om <strong>personlig integritet</strong>. Det är en mänsklig rättighet-lag.
+  </p>
+
+  <p>
+    <strong>NIS2 skyddar samhällskritisk verksamhet.</strong> Om ett energibolag eller ett sjukhus drabbas av ett cyberangrepp som slår ut driften, påverkas inte bara företaget — det påverkar både patienter och allmän samhällsfunktion. NIS2 är en <strong>samhällssäkerhetslag</strong>.
+  </p>
+
+  <p>
+    Det här innebär att ett företag kan <strong>följa GDPR perfekt</strong> — med utmärkt kryptering, tydlig samtyckesstyrning och snabb inkudstresrapportering — och <strong>fortfarande brista i NIS2-krav</strong>.
+  </p>
+
+  <div class="box-case">
+    <div class="case-label">Exempel från verkligheten</div>
+    <p>
+      <strong>Ett telekomföretag i Sverige, klassificerat som väsentlig entitet under NIS2.</strong>
+    </p>
+    <p>
+      Kunddata är krypterad enligt GDPR-krav. Incidenter rapporteras snabbt till Datainspektionen. GDPR-granskningen går fint.
+    </p>
+    <p>
+      Men — organisationen saknar en godkänd <strong>leverantörshanteringspolicy</strong> för sina underleverantörer. Den saknar också en formell <strong>kontinuitetsplan</strong> för nödutfall, och VD:n har aldrig dokumenterat sitt godkännande av säkerhetsåtgärderna enligt Artikel 20 i NIS2.
+    </p>
+    <p>
+      MSB initierar en granskning. GDPR-arbetet är irrelevant för granskarens bedömning. Organisationen hamnar i en sanktionsprocess för brister i riskhantering och leverantörssäkerhet — två områden som är <strong>mycket mindre framträdande</strong> i GDPR än i NIS2.
+    </p>
+  </div>
+
+  <h2>En tabell över skillnaderna</h2>
+
+  <table class="comparison-table">
+    <thead>
+      <tr>
+        <th>Aspekt</th>
+        <th>GDPR</th>
+        <th>NIS2</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Primärt syfte</strong></td>
+        <td>Skydda individers dataintegritet</td>
+        <td>Skydda samhällskritisk infrastruktur</td>
+      </tr>
+      <tr>
+        <td><strong>Gäller för</strong></td>
+        <td>Alla som hanterar personuppgifter (nästan alla)</td>
+        <td>18 samhällskritiska sektorer (mindre snävt urval)</td>
+      </tr>
+      <tr>
+        <td><strong>Granskare</strong></td>
+        <td>Datainspektionen (IMY)</td>
+        <td>MSB och sektorsspecifika myndigheter</td>
+      </tr>
+      <tr>
+        <td><strong>Riskfokus</strong></td>
+        <td>Dataläckage, missbruk av personuppgifter</td>
+        <td>Cyberangrepp som påverkar samhällsfunktion</td>
+      </tr>
+      <tr>
+        <td><strong>Kryptering</strong></td>
+        <td class="partial">Rekommenderad, inte obligatorisk</td>
+        <td class="yes">Obligatorisk för känslig data</td>
+      </tr>
+      <tr>
+        <td><strong>Incidentrapportering</strong></td>
+        <td>72 timmar till IMY</td>
+        <td>24 timmar varning + 72 timmar full rapport</td>
+      </tr>
+      <tr>
+        <td><strong>Leverantörssäkerhet</strong></td>
+        <td class="partial">Datakontroller i avtal</td>
+        <td class="yes">Omfattande säkerhetskrav och kontroller</td>
+      </tr>
+      <tr>
+        <td><strong>Fortsättighetplan</strong></td>
+        <td class="no">Inte nämnvärdt</td>
+        <td class="yes">Obligatorisk (Artikel 21)</td>
+      </tr>
+      <tr>
+        <td><strong>Ledningens roll</strong></td>
+        <td class="partial">Uppgiftansvar (ofta delegerat)</td>
+        <td class="yes">Personligt godkännande (Artikel 20)</td>
+      </tr>
+      <tr>
+        <td><strong>Max böter</strong></td>
+        <td>20 miljoner euro eller 4% omsättning</td>
+        <td>10 miljoner euro eller 2% omsättning</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>Varför kan GDPR-teamen inte leda NIS2-arbetet?</h2>
+
+  <p>
+    Många organisationer tänker: <em>"Vi har en dataskyddssamordnare (DPO) från GDPR-projektet. Kan hen inte också ansvara för NIS2?"</em>
+  </p>
+
+  <p>
+    Svaret är: inte som enda ägare.
+  </p>
+
+  <p>
+    En bra DPO är expert på <strong>personuppgiftsbehandling</strong> — vad som är tillåtet att samla in, hur länge man får spara det, vilka rättigheter individen har. En DPO är ofta inte expert på:
+  </p>
+
+  <ul>
+    <li><strong>Cybersäkerhet och intrångsdetektering</strong> — vilka tekniska åtgärder stoppar faktiska angripare?</li>
+    <li><strong>Leverantörsriskhantering</strong> — hur granskar man tredjepartsrisker för drift?</li>
+    <li><strong>Affärsomständighet-planering</strong> — hur säkerställer man leveranssäkerhet vid kris?</li>
+    <li><strong>Industrisäkerhet</strong> — vilka kontroller behövs för ett kraftverk eller sjukhusystem specifikt?</li>
+  </ul>
+
+  <p>
+    NIS2 kräver en helt andra typ av expertis. Det är inte dataintegritet. Det är cybersäkerhet, operativ resiliens och risk-styrning.
+  </p>
+
+  <div class="box-warning">
+    <strong>Vanligt misstag:</strong> Organisationer som låter en person eller ett team "ärva" GDPR-ansvaret och lägger NIS2 ovanpå. Resultatet blir att NIS2 blir en svag förfälskning av GDPR — fokus på datakryptering, glömt systemförhärdning, saknade kontinuitetsplaner, ingen faktisk cybersäkerhet.
+  </div>
+
+  <h2>Vad behöver du faktiskt göra?</h2>
+
+  <p>
+    För att följa båda regelverken ordentligt behöver du två separata — men koordinerade — ledningsvägar.
+  </p>
+
+  <h3>GDPR-spåret</h3>
+  <p>
+    Ansvarig: Dataskyddssamordnare eller compliance-lead
+  </p>
+  <ul>
+    <li>Inventering av personuppgiftsbehandlingar</li>
+    <li>Dataskyddskonsekvensbedömningar (DPIA)</li>
+    <li>Behandlingsavtal med leverantörer</li>
+    <li>Samtyckeshantering</li>
+    <li>Individens rättigheter (radering, dataportabilitet)</li>
+    <li>Incidentrapportering till Datainspektionen</li>
+  </ul>
+
+  <h3>NIS2-spåret</h3>
+  <p>
+    Ansvarig: Säkerhetschef eller risk management-lead
+  </p>
+  <ul>
+    <li>Riskanalys av digitala system (inte bara data)</li>
+    <li>Säkerhetsåtgärder enligt Artikel 21 (tio obligatoriska domäner)</li>
+    <li>Incidenthantering och rapportering till MSB</li>
+    <li>Leverantörssäkerhet (intrång, backdoors, supply-chain-attacker)</li>
+    <li>Kontinuitetsplanering för systemkritisk drift</li>
+    <li>Styrelsegodkännande av säkerhetsåtgärder (Artikel 20)</li>
+  </ul>
+
+  <p>
+    <strong>De två spåren överlappar.</strong> Samma kryptering kan tjäna båda. Samma incidentrapportering kan feedas till båda myndigheter. Men <strong>granskningen görs separat</strong> — av olika organ, enligt olika kriterier, och med olika fokus.
+  </p>
+
+  <div class="box-info">
+    <strong>Samordning, inte absorption:</strong> Båda teamen måste kommunicera. En incident kan trigga både GDPR-rapportering och NIS2-rapportering. Samma leverantör måste granskas både på dataintegritet (GDPR) och säkerhet (NIS2). Men det är två olika checklistor och två olika bedömare.
+  </div>
+
+  <h2>Två kritiska områden där de skiljer sig maximalt</h2>
+
+  <h3>1. Leverantörssäkerhet</h3>
+
+  <p>
+    <strong>GDPR:</strong> Kräver ett datakontroller-avtal. Du måste veta att leverantören inte missbrukar data.
+  </p>
+
+  <p>
+    <strong>NIS2:</strong> Kräver en djup säkerhetsbedömning. Du måste veta att leverantören inte blir hackad och att integrationen med deras system inte introducerar säkerhetshål. Du måste dokumentera detta årligen.
+  </p>
+
+  <p>
+    En leverantör kan vara GDPR-kompatibel — med ett fint datakontroller-avtal — men helt otillräcklig på NIS2-säkerhet. Du måste granska båda aspekterna separat.
+  </p>
+
+  <h3>2. Incidentrapportering</h3>
+
+  <p>
+    <strong>GDPR:</strong> 72-timmarsfrist till Datainspektionen — men bara om det är ett dataläckage som riskerar individens rättigheter.
+  </p>
+
+  <p>
+    <strong>NIS2:</strong> 24-timmarsfrist för tidig varning, 72-timmarsfrist för fullständig rapport — för varje säkerhetsincident på systemkritisk nivå, oavsett om personuppgifter läckte eller inte.
+  </p>
+
+  <p>
+    En ransomware-attack som inte berör personuppgifter är ingen GDPR-incident. Det är en <strong>NIS2-incident</strong> och måste rapporteras till MSB.
+  </p>
+
+  <h2>Vanliga frågor</h2>
+
+  <div class="faq-item">
+    <div class="faq-q">Kan vi använda samma säkerhetspolicy för båda regelverken?</div>
+    <div class="faq-a">Delvis. En god dataskyddspolicy och en god cybersäkerhetspolicy kommer att likna varandra i många punkter — kryptering, åtkomstkontroll, incident-hantering. Men NIS2 kräver specifika fokusområden (leverantörssäkerhet, kontinuitet, systemarkitektur-härdning) som inte är framträdande i GDPR. Vi rekommenderar en övergripande säkerhetspolicy plus två separata detaljpolicyer — en för dataskydd (GDPR) och en för cybersäkerhet (NIS2).</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">Gäller NIS2 även om vi inte hanterar personuppgifter?</div>
+    <div class="faq-a">Ja. NIS2 gäller för samhällskritiska verksamheter — energi, transport, sjukvård, finans, digital infrastruktur — oavsett om du hanterar personuppgifter eller inte. GDPR gäller bara om du hanterar personuppgifter. Ett kraftverk eller en vattenledning är helt fri från GDPR men kan vara helt bunden av NIS2. Det är en avgörande skillnad.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">Räcker det med att vi uppfyller NIS2 för att även uppfylla GDPR?</div>
+    <div class="faq-a">Nej. NIS2-säkerhet är en del av dataskyddet, men inte hela bilden. GDPR kräver också en policy för individernas rättigheter — rätt att veta, rätt att radera data, rätt till dataportabilitet. En organisation kan ha strålande cybersäkerhet (NIS2-kompatibel) men inte ge individer tillgång till sina uppgifter (GDPR-brist). Både spåren behövs.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">Om vi granskas för NIS2, granskas vi också för GDPR?</div>
+    <div class="faq-a">Inte automatiskt. En MSB-granskning av NIS2 är en MSB-granskning — den fokuserar på cybersäkerhet och systemkritiskhet. En IMY-granskning av GDPR är en separat process. Men en allvarlig säkerhetsincident kan trigga båda myndigheterna samtidigt. Då måste du kunna presentera både ett NIS2-försvar och ett GDPR-försvar.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">Måste VD eller styrelsen godkänna båda regelverken?</div>
+    <div class="faq-a">För NIS2 ja — Artikel 20 kräver aktivt ledningsgodkännande av säkerhetsåtgärder. För GDPR är dataskyddssamordnaren ofta delegerad ansvarig, men risker och dataskyddspolicy bör godkännas av ledningen också. Från ett styrningsperspektiv rekommenderar vi att VD/styrelse godkänner båda — för att säkerställa resurser och prioritering på båda fronter.</div>
+  </div>
+
+  <h2>Praktisk väg framåt</h2>
+
+  <p>
+    Om du redan har GDPR på plats börjar du NIS2-arbetet här:
+  </p>
+
+  <ol>
+    <li><strong>Klassificera din organisation:</strong>

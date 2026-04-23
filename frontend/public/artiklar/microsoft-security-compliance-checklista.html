@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-BKF3QH9K01"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag("js", new Date());
+    gtag("config", "G-BKF3QH9K01");
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Microsoft Security Compliance: Komplett checklista för NIS2-kontroller | NIS2Klar</title>
+  <meta name="description" content="Vilka Microsoft-säkerhetskontroller måste aktiveras för NIS2-efterlevnad? Praktisk checklista för MFA, Conditional Access, Defender, Purview, Sentinel och Intune.">
+  <meta property="og:title" content="Microsoft Security Compliance: Komplett checklista för NIS2-kontroller">
+  <meta property="og:description" content="Vilka Microsoft-säkerhetskontroller måste aktiveras för NIS2-efterlevnad? Praktisk checklista för MFA, Conditional Access, Defender, Purview, Sentinel och Intune.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #141416;
+      --card: #1c1c1f;
+      --yellow: #f5c518;
+      --white: #f0f0f0;
+      --muted: #888;
+      --red: #C61212;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: var(--bg); color: var(--white); font-family: 'Barlow', sans-serif; font-size: 19px; line-height: 1.8; }
+
+    /* Nav */
+    nav { display: flex; justify-content: space-between; align-items: center; padding: 20px 40px; border-bottom: 1px solid rgba(255,255,255,0.07); max-width: 900px; margin: 0 auto; }
+    .nav-logo { font-family: 'Poppins', sans-serif; font-weight: 900; font-size: 20px; color: var(--yellow); text-decoration: none; }
+    .nav-logo span { color: var(--white); }
+    .nav-back { color: var(--muted); text-decoration: none; font-size: 15px; }
+    .nav-back:hover { color: var(--white); }
+    .nav-cta { background: var(--yellow); color: #000; padding: 8px 18px; border-radius: 4px; text-decoration: none; font-weight: 700; font-size: 14px; font-family: 'Poppins', sans-serif; }
+
+    /* Article */
+    .article-wrap { max-width: 760px; margin: 0 auto; padding: 60px 40px; }
+    .article-category { font-size: 13px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 16px; }
+    h1 { font-family: 'Poppins', sans-serif; font-size: clamp(30px, 4vw, 44px); font-weight: 900; line-height: 1.2; margin-bottom: 24px; }
+    .article-meta { font-size: 15px; color: var(--muted); margin-bottom: 48px; padding-bottom: 24px; border-bottom: 1px solid rgba(255,255,255,0.07); }
+    h2 { font-family: 'Poppins', sans-serif; font-size: 26px; font-weight: 700; margin: 48px 0 16px; color: var(--white); }
+    h3 { font-family: 'Poppins', sans-serif; font-size: 20px; font-weight: 600; margin: 32px 0 12px; color: var(--yellow); }
+    p { margin-bottom: 22px; }
+    strong { color: var(--white); font-weight: 700; }
+    .highlight { color: var(--yellow); font-weight: 700; }
+    .danger { color: #ff6b6b; font-weight: 700; }
+    ul, ol { margin: 16px 0 24px 24px; }
+    li { margin-bottom: 12px; font-size: 19px; }
+
+    /* Callout boxes */
+    .box-warning { background: rgba(197,17,17,0.12); border-left: 4px solid var(--red); padding: 20px 24px; margin: 32px 0; border-radius: 0 4px 4px 0; }
+    .box-info { background: rgba(245,197,24,0.08); border-left: 4px solid var(--yellow); padding: 20px 24px; margin: 32px 0; border-radius: 0 4px 4px 0; }
+    .box-case { background: var(--card); border: 1px solid rgba(255,255,255,0.08); padding: 28px; margin: 40px 0; border-radius: 4px; }
+    .box-case .case-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 12px; }
+    blockquote { border-left: 3px solid var(--yellow); padding: 12px 20px; margin: 24px 0; font-style: italic; color: #ccc; }
+
+    /* CTA */
+    .cta-section { background: var(--card); border: 1px solid rgba(245,197,24,0.2); border-radius: 4px; padding: 48px 40px; margin: 64px 0 40px; text-align: center; }
+    .cta-section h2 { margin-top: 0; font-size: 26px; }
+    .cta-section p { color: #aaa; max-width: 500px; margin: 0 auto 28px; }
+    .btn-primary { display: inline-block; background: var(--yellow); color: #000; font-family: 'Poppins', sans-serif; font-weight: 800; font-size: 16px; padding: 16px 36px; border-radius: 4px; text-decoration: none; }
+    .btn-primary:hover { background: #e0b010; }
+    .cta-fine { font-size: 13px; color: var(--muted); margin-top: 16px; }
+
+    /* FAQ */
+    .faq-item { border-bottom: 1px solid rgba(255,255,255,0.07); padding: 20px 0; }
+    .faq-q { font-family: 'Poppins', sans-serif; font-weight: 600; margin-bottom: 10px; }
+    .faq-a { color: #bbb; }
+
+    /* Checklist table */
+    .checklist-table { width: 100%; border-collapse: collapse; margin: 24px 0; }
+    .checklist-table th { background: rgba(245,197,24,0.1); color: var(--yellow); font-family: 'Poppins', sans-serif; font-size: 13px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 12px 16px; text-align: left; border-bottom: 1px solid rgba(245,197,24,0.2); }
+    .checklist-table td { padding: 14px 16px; border-bottom: 1px solid rgba(255,255,255,0.05); font-size: 15px; }
+    .checklist-table tr:last-child td { border-bottom: none; }
+    .status-active { color: #4ade80; font-weight: 700; }
+    .status-manual { color: #fbbf24; font-weight: 700; }
+    .status-missing { color: #ff6b6b; font-weight: 700; }
+
+    /* Summary + Key Takeaway */
+    .box-summary { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; padding: 24px 28px; margin: 0 0 32px; }
+    .summary-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-bottom: 14px; }
+    .box-summary ul { margin: 0; padding-left: 20px; }
+    .box-summary li { margin-bottom: 8px; font-size: 17px; color: #ccc; }
+    .box-takeaway { background: rgba(245,197,24,0.08); border-left: 4px solid var(--yellow); padding: 20px 24px; margin: 0 0 40px; border-radius: 0 4px 4px 0; }
+    .takeaway-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 10px; }
+    .box-takeaway p { margin: 0; font-size: 18px; font-weight: 600; color: var(--white); line-height: 1.6; }
+
+    /* Footer */
+    footer { border-top: 1px solid rgba(255,255,255,0.07); padding: 32px 40px; text-align: center; font-size: 13px; color: var(--muted); max-width: 900px; margin: 0 auto; }
+    footer a { color: var(--muted); }
+
+    @media (max-width: 600px) {
+      nav, .article-wrap, footer { padding: 20px; }
+      .cta-section { padding: 32px 20px; }
+      .checklist-table { font-size: 14px; }
+      .checklist-table th, .checklist-table td { padding: 10px 10px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="https://nis2klar.se/">NIS2<span>Klar</span></a>
+  <a class="nav-back" href="https://nis2klar.se/artiklar.html">← Alla artiklar</a>
+  <a class="nav-cta" href="https://nis2klar.se/#boka">Boka samtal →</a>
+</nav>
+
+<article class="article-wrap">
+  <div class="article-category">Teknik &amp; Kontroller</div>
+  <h1>Microsoft Security Compliance: Komplett checklista för NIS2-kontroller</h1>
+  <div class="article-meta">Uppdaterad 23 april 2026 · Lästid: ca 8 minuter · Målgrupp: Ledning &amp; IT-beslutsfattare</div>
+
+  <!-- SUMMARY -->
+  <div class="box-summary">
+    <div class="summary-label">Sammanfattning</div>
+    <ul>
+      <li>Microsoft 365 och Azure innehåller redan många NIS2-kontroller — men några kräver manuell aktivering.</li>
+      <li>Denna checklista visar vad som är aktivt standard, vad som kräver konfiguration, och vad som helt saknas.</li>
+      <li>Att dokumentera att dessa kontroller är på plats är det enda sättet att försvara dig inför en NIS2-granskning.</li>
+      <li>En gap-analys med Compliance Manager och Secure Score ger dig ett styrelsegodkänt, mätbart måttstocksystem.</li>
+    </ul>
+  </div>
+
+  <!-- KEY TAKEAWAY -->
+  <div class="box-takeaway">
+    <div class="takeaway-label">Viktigaste slutsatsen</div>
+    <p>Microsoft-kontroller löser inte NIS2 av sig själva — de måste konfigureras, dokumenteras och styrelseöversvakas. Denna checklista är ditt första steg mot att kunna säga "ja" när tillsynsmyndigheten frågar "kan ni visa att detta är implementerat?"</p>
+  </div>
+
+  <p>
+    NIS2 kräver <strong>tio säkerhetskontroller</strong> enligt Artikel 21. Microsoft 365 och Azure täcker dem flesta — men inte alla är aktiverade som standard.
+    Många organisationer tror de är klara för NIS2 för att de använder Microsoft. De är det inte. De använder bara en del av verktygen, ofta felkonfigurerad.
+  </p>
+
+  <p>
+    Denna artikel listar alla kritiska Microsoft-kontroller, talar om vilka som är aktiva redan idag och vilka som kräver omedelbar handling.
+  </p>
+
+  <h2>De tio NIS2-säkerhetskontrollerna — och Microsoft-motsvarigheten</h2>
+
+  <p>
+    Artikel 21 i NIS2-direktivet specificerar dessa domäner. Vi mappar dem direkt till Microsoft-funktioner:
+  </p>
+
+  <table class="checklist-table">
+    <thead>
+      <tr>
+        <th>NIS2 — Artikel 21</th>
+        <th>Microsoft-lösning</th>
+        <th>Status i standard</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>1. Riskhantering &amp; säkerhetsstrategier</strong></td>
+        <td>Defender Secure Score + Compliance Manager</td>
+        <td><span class="status-manual">Konfiguration krävs</span></td>
+      </tr>
+      <tr>
+        <td><strong>2. Incidenthantering &amp; rapportering</strong></td>
+        <td>Microsoft Sentinel (SIEM) + Defender XDR</td>
+        <td><span class="status-manual">Aktivering + config</span></td>
+      </tr>
+      <tr>
+        <td><strong>3. Kontinuitetsplanering &amp; backup</strong></td>
+        <td>Microsoft 365 Backup + Azure Immutable Vault</td>
+        <td><span class="status-manual">Config krävs</span></td>
+      </tr>
+      <tr>
+        <td><strong>4. Leverantörs-/tredjepart-säkerhet</strong></td>
+        <td>Entra ID GDAP + API-auditlogg</td>
+        <td><span class="status-manual">Aktivering krävs</span></td>
+      </tr>
+      <tr>
+        <td><strong>5. Tillgångskontroll &amp; autentisering</strong></td>
+        <td>Entra ID MFA + Conditional Access</td>
+        <td><span class="status-manual">MFA: standard, CA: config</span></td>
+      </tr>
+      <tr>
+        <td><strong>6. Kryptering av data i transit &amp; rest</strong></td>
+        <td>Purview Sensitivity Labels + Azure Key Vault</td>
+        <td><span class="status-active">Aktiv, men policy krävs</span></td>
+      </tr>
+      <tr>
+        <td><strong>7. Fysisk &amp; miljökontroller</strong></td>
+        <td>Azure Infrastructure Assurance (Microsoft ansvarar)</td>
+        <td><span class="status-active">Inhemsk datacenter (Sweden Central)</span></td>
+      </tr>
+      <tr>
+        <td><strong>8. Loggning &amp; övervakning</strong></td>
+        <td>Sentinel + Microsoft 365 Audit Log</td>
+        <td><span class="status-manual">Retention + config</span></td>
+      </tr>
+      <tr>
+        <td><strong>9. Personal-säkerhet &amp; utbildning</strong></td>
+        <td>Defender Attack Simulation + Awareness Training</td>
+        <td><span class="status-manual">Aktivering &amp; drift krävs</span></td>
+      </tr>
+      <tr>
+        <td><strong>10. Криптografi &amp; säker utveckling</strong></td>
+        <td>Purview DLP + Azure Policy</td>
+        <td><span class="status-manual">Config krävs per org</span></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>
+    Notis: Ingen av kontrollerna är helt "plug-and-play". Även de markerade som <span class="status-active">"aktiva"</span> kräver styrelsegodkänd policy och dokumentation för att uppfylla NIS2:s krav på "ledningens aktiva godkännande" (Artikel 20).
+  </p>
+
+  <h2>Checklista: Entra ID &amp; Multi-Factor Authentication (MFA)</h2>
+
+  <h3>Varför detta är kritiskt för NIS2</h3>
+  <p>
+    Artikel 21 punkt 5 kräver "stark autentisering" och tillgångskontroll. Utan MFA kan en angripare med ett stulet lösenord ta sig in direkt. Med MFA stannar de vid nästa steg.
+  </p>
+
+  <h3>Vad är redan aktivt?</h3>
+  <ul>
+    <li><strong>Entra ID MFA</strong> — standardmässigt tillgänglig för alla Microsoft 365-kunder, men inte tvingat för alla användare per default.</li>
+    <li><strong>Conditional Access</strong> — finns i Entra ID P1/P2, men skapas och aktiveras inte automatiskt. Du måste bygga policyn.</li>
+  </ul>
+
+  <h3>Vad måste du göra?</h3>
+  <ul>
+    <li>Aktivera MFA för alla administrativa användare (omedelbar prioritet).</li>
+    <li>Implementera Conditional Access-policy för riskfyllda login-scenarier:
+      <ul>
+        <li>Kräv MFA om användaren loggar in från en okänd plats eller enhet.</li>
+        <li>Blockera legacy-autentisering (non-modern auth protokoll).</li>
+        <li>Tvinga enhetscompliance innan SharePoint/Exchange-åtkomst.</li>
+      </ul>
+    </li>
+    <li>Implementera FIDO2 eller Windows Hello for Business för passwordless login (rekommenderat för högriskanvändare).</li>
+    <li><strong>Dokumentera</strong> villkoren för varje Conditional Access-policy i ett styrelseprotokoll.</li>
+  </ul>
+
+  <div class="box-info">
+    <strong>Snabbkontroll:</strong> Gå till Entra ID Admin Center → Conditional Access → Policies. Om du ser 0 policies är detta en omedelbar åtgärd.
+  </div>
+
+  <h2>Checklista: Microsoft Defender for Endpoint (EDR)</h2>
+
+  <h3>Varför detta är kritiskt för NIS2</h3>
+  <p>
+    Artikel 21 kräver övervakning och hotdetektering på slutpunkter (datorer, servrar, mobiler). Utan en agent kan du inte se om en enhet komprometterats.
+  </p>
+
+  <h3>Vad är redan aktivt?</h3>
+  <ul>
+    <li><strong>Defender for Endpoint</strong> — måste licenseras separat (inte inkluderat i alla M365-paket) och agenten måste distribueras till varje enhet.</li>
+    <li>Kräver Microsoft 365 Business Premium eller högre, eller separat köp av Defender for Endpoint Plan 1 eller Plan 2.</li>
+  </ul>
+
+  <h3>Vad måste du göra?</h3>
+  <ul>
+    <li>Verifiera att du har rätt licenser för alla enheter som behöver övervakas (Windows, Mac, Linux, iOS, Android).</li>
+    <li>Distribuera Defender-agenten till alla enheter via Intune eller SCCM/Configuration Manager.</li>
+    <li>Aktivera "Attack Surface Reduction" regler för att minska angreppsytan.</li>
+    <li>Ställ in automatisk investeringsnivå för hot (vanligen "Balanced" för de flesta organisationer).</li>
+    <li>Samla alla Defender-varningar i Defender XDR (tidigare MDTP) och dokumentera hur långt du undersöker innan du escalerar.</li>
+    <li><strong>Styrelsedokumentation:</strong> Månadlig rapport på antalet detekterade hot, allvarlighetsgrad och lösningstid.</li>
+  </ul>
+
+  <h2>Checklista: Microsoft Sentinel &amp; SIEM-loggning</h2>
+
+  <h3>Varför detta är kritikt för NIS2</h3>
+  <p>
+    Artikel 21 punkt 8 kräver loggning och övervakning av säkerhetshändelser. Sentinel är ett SIEM-verktyg som samlar logs från hela Microsoft 365-miljön och Azure, utför hotanalys och lagrar bevis för incidentrapportering.
+  </p>
+
+  <h3>Vad är redan aktivt?</h3>
+  <ul>
+    <li><strong>Microsoft 365 Audit Log</strong> — alltid på, men data retention är bara 90 dagar per default.</li>
+    <li><strong>Sentinel</strong> — måste skapa en workspace och ansluta datakällor. Inte automatisk.</li>
+  </ul>
+
+  <h3>Vad måste du göra?</h3>
+  <ul>
+    <li>Utöka Microsoft 365 Audit Log-retentionen från 90 dagar till minst ett år (krav för efterlevnad).</li>
+    <li>Skapa en Sentinel-workspace och anslut dessa datakällor:
+      <ul>
+        <li>Microsoft 365 Defender</li>
+        <li>Microsoft Entra ID</li>
+        <li>Azure Activity Logs</li>
+        <li>Office 365 Audit Logs</li>
+        <li>Cloud App Security (om du använder det)</li>
+      </ul>
+    </li>
+    <li>Ställ in automatiserade detektionsregler för:
+      <ul>
+        <li>Anomal inloggningsaktivitet</li>
+        <li>Elevation av privileger</li>
+        <li>Dataöverföringar till okända externa platser</li>
+        <li>Misslyckat inloggningsförsök från misstänkta IP-adresser</li>
+      </ul>
+    </li>
+    <li>Integrera Sentinel-varningar med ditt incidenthanteringssystem (ticketing) så att varningar faktiskt blir undersökta, inte ignorerade.</li>
+    <li><strong>Dokumentera</strong> din loggning retention-policy, varningsregler och escalation-procedur i Incidenthanteringspolicy.</li>
+  </ul>
+
+  <div class="box-warning">
+    <strong>Vanligt misstag:</strong> Organisationer sätter upp Sentinel men konfigurerar aldrig något datalager-anslutning eller detektionsregel. Det är ungefär som att ha ett larm utan sensor. Innan du startar Sentinel bör du planera vad du faktiskt ska övervaka.
+  </div>
+
+  <h2>Checklista: Purview Data Loss Prevention (DLP) &amp; Sensitivity Labels</h2>
+
+  <h3>Varför detta är kritisk för NIS2</h3>
+  <p>
+    Artikel 21 punkt 6 och 10 kräver kryptering och klassificering av känslig data. Utan DLP och känslighetsetiketter kan anställda skicka hemligstämplad information via e-post eller ladda upp det till OneDrive utan begränsning.
+  </p>
+
+  <h3>Vad är redan aktivt?</h3>
+  <ul>
+    <li><strong>Sensitivity Labels</strong> — tillgänglig i Purview, men ingen label skapas automatiskt och ingen policy tillämpas.</li>
+    <li><strong>DLP</strong> — är separat licens (Purview DLP eller Microsoft 365 E5). Om du inte har E5 eller dedikerad DLP-licens kanske du inte kan använda det.</li>
+  </ul>
+
+  <h3>Vad måste du göra?</h3>
+  <ul>
+    <li>Klassificera din data:
+      <ul>
+        <li><strong>Offentlig:</strong> Kan delas utan begränsning</li>
+        <li><strong>Intern:</strong> Begränsad till anställda</li>
+        <li><strong>Konfidentiell:</strong> Måste krypteras, begränsad åtkomst</li>
+        <li><strong>Strikt konfidentiell:</strong> Högst sekretess, begränsad till särskilda roller</li>
+      </ul>
+    </li>
+    <li>Skapa Sensitivity Labels i Purview för varje nivå med:
+      <ul>
+        <li>Märkning av dokumentet (header/footer)</li>
+        <li>Kryptering (AES 256)</li>
+        <li>Åtkomsträttigheter (vilka kan läsa, redigera, forwardera?)</li>
+      </ul>
+    </li>
+    <li>Implementera DLP-policy som automatiskt klassificerar dokument med PII (personnummer, bankkontonummer, osv) och hindrar överföring till okryperad e-post eller obehörig molnlagring.</li>
+    <li>Implementera "Auto-labeling" så att känsliga dokument automatiskt får korrekt etikett när de skapas.</li>
+    <li><strong>Styrelsedokumentation:</strong> Datakl klassificeringsschema godkänd av styrelsen, logg över vilka dokument som klassificerades felaktigt och åtgärder.</li>
+  </ul>
+
+  <h2>Checklista: Microsoft Intune — Mobile Device Management (MDM)</h2>
+
+  <h3>Varför detta är kritisk för NIS2</h3>
+  <p>
+    Artikel 21 punkt 5 kräver att du kontrollerar vilka enheter som kan ansluta till organisationens nätverk och data. Intune möjliggör detta för mobiler och datorer.
+  </p>
+
+  <h3>Vad är redan aktivt?</h3>
+  <ul>
+    <li><strong>Intune</strong> — tillgängligt i Microsoft 365 Business Premium och högre, men måste konfigureras från början.</li>
+    <li>BYOD (Bring Your Own Device) är helt oreglerad utan Intune-policy.</li>
+  </ul>
+
+  <h3>Vad måste du göra?</h3>
+  <ul>
+    <li>Definierar dina enhetskategori:
+      <ul>
+        <li><strong>Företagsägd:</strong> Fullt kontrollerad av IT, enkrypterad, tvingad konfiguration</li>
+        <li><strong>BYOD (personlig):</strong> Låga krav, men måste uppfylla minimistandard för att få åtkomst</li>
+      </ul>
+    </li>
+    <li>Skapa Intune Compliance Policies:
+      <ul>
+        <li>iOS och Android måste ha lösenord (minst 6 siffror)</li>
+        <li>Windows-datorer måste ha BitLocker-kryptering aktiverad</li>
+        <li>Mac-datorer måste ha FileVault-kryptering</li>
+        <li>Enheterna måste uppdateras med senaste OS och säkerhetspatch inom 30 dagar</li>
+      </ul>
+    </li>
+    <li>Skapa Enrollment Policy som tvingar företagsenheter att registreras i Intune innan de kan ansluta till e-post eller SharePoint.</li>
+    <li>Integrera Conditional Access så att icke-compliant enheter blockeras från att logga in.</li>
+    <li><strong>Dokumentera</strong> dina Intune-policyer och antalet enheter som är compliant vs. non-compliant varje månad.</li>
+  </ul>
+
+  <div class="box-info">
+    <strong>Tips:</strong> Många organisationer skyr Intune för att de är oroliga för att det ska "begränsa användarnas frihet". I praktiken uppskattar anställda det — de vet att deras enhet skyddas och deras data är säker. Och du kan tillåta vissa saker (personliga appar) medan du blockerar andra (nätverks-analys-appar).
+  </div>
+
+  <h2>Checklista: Backup &amp; kontinuitetsplanering</h2>
+
+  <h3>Varför detta är kritisk för NIS2</h3>
+  <p>
+    Artikel 21 punkt 3 kräver kontinuitetsplanering och backup. Utan backup kan en ransomware-attack eller datakorrumpering förinta din verksamhet helt.
+  </p>
+
+  <h3>Vad är redan aktivt?</h3>
+  <ul>
+    <li><strong>Microsoft 365 Backup</strong> — automatisk backup av mailbox, SharePoint och OneDrive från Microsoft. Men den skyddas inte mot ransomware eller oavsiktlig borttagning i 93 dagar som standard.</li>
+    <li><strong>Azure Immutable Storage</strong> — kan skapa icke-skrivbar lagring för arkiverade backups, men måste konfigureras.</li>
+  </ul>
+
+  <h3>Vad måste du göra?</h3>
+  <ul>
+    <li>Aktivera

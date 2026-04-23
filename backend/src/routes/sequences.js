@@ -93,7 +93,9 @@ router.get('/today', async (req, res) => {
     const { rows } = await db.query(
       `SELECT e.id AS enrollment_id, e.lead_id, e.current_step, e.enrolled_at,
               s.name AS sequence_name, s.steps,
-              l.company_name, l.city, l.email, l.phone, l.linkedin_url
+              l.company_name, l.city, l.email, l.phone, l.linkedin_url,
+              (SELECT json_agg(json_build_object('name', c.name, 'title', c.title, 'linkedin_url', c.linkedin_url))
+               FROM contacts c WHERE c.lead_id = l.id AND c.linkedin_url IS NOT NULL) AS vd_contacts
        FROM sequence_enrollments e
        JOIN sequences s ON s.id = e.sequence_id
        JOIN discovery_leads l ON l.id = e.lead_id
@@ -124,6 +126,7 @@ router.get('/today', async (req, res) => {
           email: row.email,
           phone: row.phone,
           linkedin_url: row.linkedin_url,
+          vd_contacts: row.vd_contacts || [],
           sequence_name: row.sequence_name,
           step_index: stepIndex,
           step_total: steps.length,
@@ -210,6 +213,7 @@ router.post('/enrollments/:id/generate-pitch', async (req, res) => {
       stepIndex,
       stepTitle,
       enrolledAt: row.enrolled_at,
+      steps,
     });
 
     res.json({ success: true, data: result });

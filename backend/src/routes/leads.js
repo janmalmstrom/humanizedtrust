@@ -444,6 +444,11 @@ router.get('/bdr-stats', async (req, res) => {
             WHERE a.lead_id = l.id
               AND a.created_at > NOW() - INTERVAL '7 days'
           )
+          AND NOT EXISTS (
+            SELECT 1 FROM sequence_enrollments se
+            WHERE se.lead_id = l.id
+              AND se.status = 'active'
+          )
       `),
       // Sequence stats
       db.query(`
