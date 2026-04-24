@@ -87,6 +87,15 @@ router.get('/enrolled-leads', async (req, res) => {
   }
 });
 
+// Push date to next Monday if it falls on a weekend
+function nextBusinessDay(date) {
+  const d = new Date(date);
+  const day = d.getDay();
+  if (day === 6) d.setDate(d.getDate() + 2); // Sat → Mon
+  if (day === 0) d.setDate(d.getDate() + 1); // Sun → Mon
+  return d;
+}
+
 // GET /api/sequences/today — all active enrollments with a step due today (or overdue)
 router.get('/today', async (req, res) => {
   try {
@@ -106,35 +115,41 @@ router.get('/today', async (req, res) => {
     const today = new Date();
     today.setHours(23, 59, 59, 999); // include steps due any time today
 
+    const todayStart = new Date(new Date().setHours(0, 0, 0, 0));
     const actions = [];
     for (const row of rows) {
       const steps = Array.isArray(row.steps) ? row.steps : JSON.parse(row.steps);
-      const stepIndex = row.current_step;
-      if (stepIndex >= steps.length) continue; // all steps done
+      const currentStep = row.current_step;
+      if (currentStep >= steps.length) continue; // all steps done
 
-      const step = steps[stepIndex];
-      const dueAt = new Date(row.enrolled_at);
-      dueAt.setDate(dueAt.getDate() + (step.day || 0));
+      // Show all pending steps due today or overdue (not just current_step)
+      for (let i = currentStep; i < steps.length; i++) {
+        const step = steps[i];
+        const rawDue = new Date(row.enrolled_at);
+        rawDue.setDate(rawDue.getDate() + (step.day || 0));
+        const dueAt = nextBusinessDay(rawDue);
 
-      if (dueAt <= today) {
-        const isOverdue = dueAt < new Date(new Date().setHours(0, 0, 0, 0));
-        actions.push({
-          enrollment_id: row.enrollment_id,
-          lead_id: row.lead_id,
-          company_name: row.company_name,
-          city: row.city,
-          email: row.email,
-          phone: row.phone,
-          linkedin_url: row.linkedin_url,
-          vd_contacts: row.vd_contacts || [],
-          sequence_name: row.sequence_name,
-          step_index: stepIndex,
-          step_total: steps.length,
-          step_title: step.title,
-          step_channel: step.channel,
-          due_at: dueAt.toISOString(),
-          is_overdue: isOverdue,
-        });
+        if (dueAt <= today) {
+          actions.push({
+            enrollment_id: row.enrollment_id,
+            lead_id: row.lead_id,
+            company_name: row.company_name,
+            city: row.city,
+            email: row.email,
+            phone: row.phone,
+            linkedin_url: row.linkedin_url,
+            vd_contacts: row.vd_contacts || [],
+            sequence_name: row.sequence_name,
+            step_index: i,
+            step_total: steps.length,
+            step_title: step.title,
+            step_channel: step.channel,
+            due_at: dueAt.toISOString(),
+            is_overdue: dueAt < todayStart,
+          });
+        } else {
+          break; // steps ordered by day — nothing further is due yet
+        }
       }
     }
 

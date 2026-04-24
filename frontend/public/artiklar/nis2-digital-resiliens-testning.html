@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-BKF3QH9K01"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag("js", new Date());
+    gtag("config", "G-BKF3QH9K01");
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NIS2 Digital motståndskraft: Testning och validering av säkerhetsåtgärder | NIS2Klar</title>
+  <meta name="description" content="Penetrationstester, backup-tester, tabletop-övningar och disaster recovery-drills. Lär dig hur ofta du måste testa, vad som dokumenteras och det personliga ansvaret för att brister inte upptäcks.">
+  <meta property="og:title" content="NIS2 Digital motståndskraft: Testning och validering av era säkerhetsåtgärder">
+  <meta property="og:description" content="Penetrationstester, backup-tester, tabletop-övningar och disaster recovery-drills. Lär dig hur ofta du måste testa, vad som dokumenteras och det personliga ansvaret.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #141416;
+      --card: #1c1c1f;
+      --yellow: #f5c518;
+      --white: #f0f0f0;
+      --muted: #888;
+      --red: #C61212;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: var(--bg); color: var(--white); font-family: 'Barlow', sans-serif; font-size: 19px; line-height: 1.8; }
+
+    /* Nav */
+    nav { display: flex; justify-content: space-between; align-items: center; padding: 20px 40px; border-bottom: 1px solid rgba(255,255,255,0.07); max-width: 900px; margin: 0 auto; }
+    .nav-logo { font-family: 'Poppins', sans-serif; font-weight: 900; font-size: 20px; color: var(--yellow); text-decoration: none; }
+    .nav-logo span { color: var(--white); }
+    .nav-back { color: var(--muted); text-decoration: none; font-size: 15px; }
+    .nav-back:hover { color: var(--white); }
+    .nav-cta { background: var(--yellow); color: #000; padding: 8px 18px; border-radius: 4px; text-decoration: none; font-weight: 700; font-size: 14px; font-family: 'Poppins', sans-serif; }
+
+    /* Article */
+    .article-wrap { max-width: 760px; margin: 0 auto; padding: 60px 40px; }
+    .article-category { font-size: 13px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 16px; }
+    h1 { font-family: 'Poppins', sans-serif; font-size: clamp(30px, 4vw, 44px); font-weight: 900; line-height: 1.2; margin-bottom: 24px; }
+    .article-meta { font-size: 15px; color: var(--muted); margin-bottom: 48px; padding-bottom: 24px; border-bottom: 1px solid rgba(255,255,255,0.07); }
+    h2 { font-family: 'Poppins', sans-serif; font-size: 26px; font-weight: 700; margin: 48px 0 16px; color: var(--white); }
+    h3 { font-family: 'Poppins', sans-serif; font-size: 20px; font-weight: 600; margin: 32px 0 12px; color: var(--yellow); }
+    p { margin-bottom: 22px; }
+    strong { color: var(--white); font-weight: 700; }
+    .highlight { color: var(--yellow); font-weight: 700; }
+    .danger { color: #ff6b6b; font-weight: 700; }
+    ul, ol { margin: 16px 0 24px 24px; }
+    li { margin-bottom: 12px; font-size: 19px; }
+
+    /* Callout boxes */
+    .box-warning { background: rgba(197,17,17,0.12); border-left: 4px solid var(--red); padding: 20px 24px; margin: 32px 0; border-radius: 0 4px 4px 0; }
+    .box-info { background: rgba(245,197,24,0.08); border-left: 4px solid var(--yellow); padding: 20px 24px; margin: 32px 0; border-radius: 0 4px 4px 0; }
+    .box-case { background: var(--card); border: 1px solid rgba(255,255,255,0.08); padding: 28px; margin: 40px 0; border-radius: 4px; }
+    .box-case .case-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 12px; }
+    blockquote { border-left: 3px solid var(--yellow); padding: 12px 20px; margin: 24px 0; font-style: italic; color: #ccc; }
+
+    /* CTA */
+    .cta-section { background: var(--card); border: 1px solid rgba(245,197,24,0.2); border-radius: 4px; padding: 48px 40px; margin: 64px 0 40px; text-align: center; }
+    .cta-section h2 { margin-top: 0; font-size: 26px; }
+    .cta-section p { color: #aaa; max-width: 500px; margin: 0 auto 28px; }
+    .btn-primary { display: inline-block; background: var(--yellow); color: #000; font-family: 'Poppins', sans-serif; font-weight: 800; font-size: 16px; padding: 16px 36px; border-radius: 4px; text-decoration: none; }
+    .btn-primary:hover { background: #e0b010; }
+    .cta-fine { font-size: 13px; color: var(--muted); margin-top: 16px; }
+
+    /* FAQ */
+    .faq-item { border-bottom: 1px solid rgba(255,255,255,0.07); padding: 20px 0; }
+    .faq-q { font-family: 'Poppins', sans-serif; font-weight: 600; margin-bottom: 10px; }
+    .faq-a { color: #bbb; }
+
+    /* Fine table */
+    .fine-table { width: 100%; border-collapse: collapse; margin: 24px 0; }
+    .fine-table th { background: rgba(245,197,24,0.1); color: var(--yellow); font-family: 'Poppins', sans-serif; font-size: 13px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 12px 16px; text-align: left; border-bottom: 1px solid rgba(245,197,24,0.2); }
+    .fine-table td { padding: 14px 16px; border-bottom: 1px solid rgba(255,255,255,0.05); font-size: 15px; }
+    .fine-table tr:last-child td { border-bottom: none; }
+    .fine-table .amount { color: #ff6b6b; font-weight: 700; }
+
+    /* Summary + Key Takeaway */
+    .box-summary { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; padding: 24px 28px; margin: 0 0 32px; }
+    .summary-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-bottom: 14px; }
+    .box-summary ul { margin: 0; padding-left: 20px; }
+    .box-summary li { margin-bottom: 8px; font-size: 17px; color: #ccc; }
+    .box-takeaway { background: rgba(245,197,24,0.08); border-left: 4px solid var(--yellow); padding: 20px 24px; margin: 0 0 40px; border-radius: 0 4px 4px 0; }
+    .takeaway-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 10px; }
+    .box-takeaway p { margin: 0; font-size: 18px; font-weight: 600; color: var(--white); line-height: 1.6; }
+
+    /* Related articles */
+    .related-articles { margin: 2.5rem 0 2rem; padding: 1.5rem; background: #1a1a2e; border-left: 4px solid #f0a500; border-radius: 4px; }
+    .related-articles p { margin: 0 0 1rem; font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #f0a500; }
+    .related-articles ul { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+    .related-articles li { margin: 0; }
+    .related-articles a { color: #e0e0e0; text-decoration: none; font-size: 0.95rem; }
+    .related-articles a:hover { color: #f0a500; }
+    .related-articles .footer-links { margin: 1.25rem 0 0; font-size: 0.85rem; color: #aaa; }
+    .related-articles .footer-links a { color: #f0a500; }
+
+    /* Footer */
+    footer { border-top: 1px solid rgba(255,255,255,0.07); padding: 32px 40px; text-align: center; font-size: 13px; color: var(--muted); max-width: 900px; margin: 0 auto; }
+    footer a { color: var(--muted); }
+    footer a:hover { color: var(--white); }
+
+    @media (max-width: 600px) {
+      nav, .article-wrap, footer { padding: 20px; }
+      .cta-section { padding: 32px 20px; }
+      .fine-table { font-size: 14px; }
+      .fine-table th, .fine-table td { padding: 10px 10px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="https://nis2klar.se/">NIS2<span>Klar</span></a>
+  <a class="nav-back" href="https://nis2klar.se/artiklar.html">← Alla artiklar</a>
+  <a class="nav-cta" href="https://nis2klar.se/#boka">Boka samtal →</a>
+</nav>
+
+<article class="article-wrap">
+  <div class="article-category">Motståndskraft &amp; Testning</div>
+  <h1>NIS2 Digital motståndskraft: Testning och validering av era säkerhetsåtgärder</h1>
+  <div class="article-meta">Uppdaterad 23 april 2026 · Lästid: ca 8 minuter · Målgrupp: VD, styrelse</div>
+
+  <!-- SUMMARY -->
+  <div class="box-summary">
+    <div class="summary-label">Sammanfattning</div>
+    <ul>
+      <li>NIS2 kräver regelbundna säkerhetstester — penetrationstester, backup-tester, tabletop-övningar och disaster recovery-drills.</li>
+      <li>Du måste kunna visa upp dokumentation på dessa tester när tillsynsmyndigheten frågar. Ingen dokumentation = sanktion.</li>
+      <li>Ett intrång via en känd sårbarhet som aldrig testades efter ett pentest kan göra du personligt ansvarig enligt Artikel 20.</li>
+      <li>Styrelsens roll: godkänna testplanen, övervaka genomförandet och dokumentera det i styrelsebeslut.</li>
+    </ul>
+  </div>
+
+  <!-- KEY TAKEAWAY -->
+  <div class="box-takeaway">
+    <div class="takeaway-label">Viktigaste slutsatsen</div>
+    <p>Om en hacker kommer in genom en sårbarhet som du redan kände till från ett pentest för ett år sedan — men aldrig testade igen — är det inte IT-chefens ansvar. Det är ditt personliga ansvar enligt NIS2 Artikel 20.</p>
+  </div>
+
+  <!-- HOOK -->
+  <p>
+    En organisation drabbas av ett cyberangrepp. Hackarna kommer in genom en känd säkerhetsbrist — en sårbarhet som upptäcktes i ett penetrationtest för 14 månader sedan. IT-avdelningen visste om den. Men den testades aldrig igen. Den fixades aldrig. Den rapporterades aldrig till styrelsen.
+  </p>
+
+  <p>
+    När tillsynsmyndigheten granskar fallet efter incidenten hittar de det gamla pentest-rapporten. De hittar ingen dokumentation på ett nytt test. De hittar inget styrelsebeslut om att åtgärda sårbarheten. De finner styrelsens namn i bolagsverkets register.
+  </p>
+
+  <p>
+    Det är här NIS2 Artikel 20 spelar in. Styrelsen är <strong>personligt ansvarig</strong> för att säkerhetsåtgärderna — inklusive testning — existerar och fungerar.
+  </p>
+
+  <div class="box-warning">
+    <strong>Detta är inte en teoriövning.</strong> Tillsynsmyndigheterna i Sverige granskar redan. MSB och sektorsspecifika myndigheter söker efter styrelser som inte kan visa upp dokumentation på regelbundna tester. Bristen på testning är i sig en sanktionsgrundande åtgärd.
+  </div>
+
+  <h2>Vad säger NIS2 om testning?</h2>
+
+  <p>
+    NIS2 Artikel 21 listar tio obligatoriska säkerhetsåtgärder. En av dem är <strong>testning av motståndskraft</strong>. Det är inte valfritt. Det är obligatoriskt.
+  </p>
+
+  <p>
+    Artikel 21 säger att organisationen ska:
+  </p>
+
+  <blockquote>
+    "Genomföra regelbundna tester av incidenthanteringsåtgärder, inklusive tabletop-övningar, samt regelbundna tester av säkerhet och funktionalitet hos backup- och återställningssystem."
+  </blockquote>
+
+  <p>
+    Det är fyra typer av tester:
+  </p>
+
+  <ol>
+    <li><strong>Penetrationstester</strong> — externt och internt, identifiering av sårbarheter</li>
+    <li><strong>Backup-tester</strong> — verifiering att backups faktiskt kan återställas</li>
+    <li><strong>Tabletop-övningar</strong> — simulering av incidentscenarier med ledningen</li>
+    <li><strong>Disaster recovery-drills</strong> — full simulering av systembortfall och återställning</li>
+  </ol>
+
+  <p>
+    Ordet "regelbundna" är nyckeln. Lagen specificerar inte en exakt frekvens — det är något som bestäms baserat på din riskprofil. Men "regelbundna" betyder inte "en gång om året". Det betyder att det finns en dokumenterad testplan och att den följs konsekvent.
+  </p>
+
+  <h2>Hur ofta måste du testa?</h2>
+
+  <p>
+    Här finns ingen mall. Olika organisationer, olika sektorer, olika risknivåer — allt påverkar frekvensen.
+  </p>
+
+  <p>
+    Men här är vad tillsynsmyndigheter förväntar sig:
+  </p>
+
+  <h3>Penetrationstester</h3>
+  <p>
+    <strong>Minst en gång per år.</strong> Många större organisationer gör två — en extern och en intern. Banksektorn gör ofta kvartalsvisa eller halvårsvisa tester.
+    Nyckeln: ett pentest är ingen engångshändelse. Om du hittar sårbarheter måste du testa igen efter åtgärden för att verifiera att den fungerade.
+  </p>
+
+  <h3>Backup-tester</h3>
+  <p>
+    <strong>Minst fyra gånger per år</strong> (kvartalvis). Många rekommenderar månadsvis eller kontinuerligt för kritiska system.
+    Ett backup-test betyder att du faktiskt återställer data till en testmiljö och verifierar att det är användbart — inte bara att filen finns på servern.
+  </p>
+
+  <h3>Tabletop-övningar</h3>
+  <p>
+    <strong>Minst två gånger per år,</strong> helst med ledningen närvarande. En tabletop-övning är en diskussionsbaserad simulation där ledningsgruppen går genom ett hypotetiskt incidentscenario och diskuterar beslut, eskalering och kommunikation.
+  </p>
+
+  <h3>Disaster recovery-drills</h3>
+  <p>
+    <strong>Minst en gång per år,</strong> ofta två. En DR-drill är en fullskalig testning där ni faktiskt slår av eller simulerar bortfall av kritiska system och mäter återställningstiden.
+    Det är den mest kostsamma övningen, men också den viktigaste.
+  </p>
+
+  <div class="box-info">
+    <strong>Varför så ofta?</strong> IT-miljöer förändras ständigt. Ny programvara installeras. Konfigurationer uppdateras. Systemarkitektur utvecklas. En sårbarhet som fanns för sex månader sedan kanske inte längre är relevant — men en ny kan ha dykt upp. En backup-restore-process som fungerade förra året kanske inte fungerar idag på grund av uppdateringar. Regelbundna tester fångar dessa förändringar innan en attacker eller en verklig kris gör det.
+  </div>
+
+  <h2>Vad måste dokumenteras?</h2>
+
+  <p>
+    Testning är värdelöst om du inte kan bevisa att det skedde. Tillsynsmyndigheten kommer att fråga efter dokumentation.
+  </p>
+
+  <p>
+    För varje test måste du dokumentera:
+  </p>
+
+  <table class="fine-table">
+    <thead>
+      <tr>
+        <th>Testtyp</th>
+        <th>Dokumentation som krävs</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Penetrationtest</td>
+        <td>Rapport från extern testare, identifierade sårbarheter, allvarlighetsgrad, åtgärdsplan, datum för uppföljningstester</td>
+      </tr>
+      <tr>
+        <td>Backup-test</td>
+        <td>Test-log med datum, tid, vilka data som testades, resultat (lyckat/misslyckat), återställningstid, testmiljö</td>
+      </tr>
+      <tr>
+        <td>Tabletop-övning</td>
+        <td>Scenario-beskrivning, deltagarlista (inkl. ledning), datum, beslut som fattades, åtgärder identifierade för förbättring</td>
+      </tr>
+      <tr>
+        <td>DR-drill</td>
+        <td>Test-plan, simuleringsscenario, tidslogg för återställning, deltagare, RTO/RPO-mål vs. faktiskt resultat, åtgärder</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>
+    Allt detta ska sparas i minst tre år. Om en revision eller en incident inträffar och du inte kan visa upp dessa loggar från de senaste 36 månaderna är det en sanktionsgrundande brist.
+  </p>
+
+  <div class="box-case">
+    <div class="case-label">Fallstudie: Den glömda sårbarheten</div>
+    <p>
+      <strong>En medelstör bank i Sverige. 400 anställda. Klassificerad som väsentlig entitet under NIS2.</strong>
+    </p>
+    <p>
+      I juni 2025 genomförde banken ett penetrationtest. Testaren hittade ett okrypterat API-gränssnitt som exponerade kunddata. Allvarlighetsgrad: högt.
+      IT-avdelningen skapade en åtgärdsplan. Men på grund av resursplaneringsmissar pushades åtgärden flera gånger.
+    </p>
+    <p>
+      I mars 2026, nio månader senare, utnyttjar en attacker samma sårbarhet. 50 000 kundposter läcker. En extern aktör anmäler incidenten till MSB.
+    </p>
+    <p>
+      MSB granskar och finner:
+    </p>
+    <ul style="margin: 12px 0 12px 24px;">
+      <li>Penetrationtest från juni 2025 dokumenterade sårbarheten tydligt</li>
+      <li>Ingen dokumentation på ett uppföljningstest efter juni</li>
+      <li>Inget styrelsebeslut om åtgärdsplanen eller eskalering när tidslinjen skjöts upp</li>
+      <li>Ingen notifiering till styrelsen under åtgärdningsperioden</li>
+    </ul>
+    <p>
+      <strong>Utfall:</strong> Banken sanktioneras för bristande testning och bristande styrelsekontroll enligt Artikel 20. Styrelseordföranden och VD får en formell skriftlig varning. Sanktionsavgift för organisationen: 8 miljoner euro.
+    </p>
+  </div>
+
+  <h2>Styrelsens roll — det personliga ansvaret</h2>
+
+  <p>
+    Här är den delen som många styrelser missar: <strong>Artikel 20 säger att styrelsen är personligt ansvarig för att dessa tester genomförs, dokumenteras och följs upp.</strong>
+  </p>
+
+  <p>
+    Det räcker inte att säga "IT hanterar det". Du måste:
+  </p>
+
+  <ol>
+    <li><strong>Godkänna en testplan</strong> vid ett styrelsemöte — skriftligt, med datum och beslutsnummer</li>
+    <li><strong>Övervaka genomförandet</strong> — det betyder att få rapporter från IT-chefen kvartalsvis om status</li>
+    <li><strong>Fatta beslut om åtgärder</strong> när test avslöjar brister — inte delegera denna beslutsfattning till IT</li>
+    <li><strong>Dokumentera allt</strong> i styrelsepodium och protokoll</li>
+  </ol>
+
+  <p>
+    En typisk testplan som styrelsen bör godkänna kan se ut så här:
+  </p>
+
+  <blockquote>
+    "Organisationen genomför externa penetrationstester två gånger per år (juni och december), interna penetrationstester två gånger per år (mars och september), backup-tester månatligen för kritiska system och kvartalsvisa för övriga system, två tabletop-övningar per år (mars och september), och en fullskalig DR-drill varje höst. Alla tester dokumenteras. Sårbarheteter med allvarlighetsgrad högt eller kritisk eskaleras omedelbar till IT-chefen och VD. IT-chefen rapporterar testresultat till styrelsen kvartalsvis."
+  </blockquote>
+
+  <p>
+    Detta godkänns av styrelsen och lagras tillsammans med andra viktiga styrelsebeslut. Det är ditt försvar om granskning skulle inträffa.
+  </p>
+
+  <h2>Vanliga misstag — och hur du undviker dem</h2>
+
+  <h3>Misstag 1: Ett pentest räcker</h3>
+  <p>
+    "Vi gjorde ett pentest för två år sedan och fick en rapport. Nu är vi säkra." Det är inte så det fungerar.
+    Ett pentest är en snapshot av en viss tidpunkt. Miljön förändras. Nya sårbarheter dyker upp. Gamla åtgärder läcker.
+    Du behöver en regelbunden testplan.
+  </p>
+
+  <h3>Misstag 2: Testning är IT:s ansvar</h3>
+  <p>
+    IT-avdelningen kan genomföra testerna, men ansvaret för att de sker och dokumenteras ligger på styrelsen.
+    En IT-chef som säger "vi ska fixa det senare" är inte acceptabelt. Du måste eskalera det till styrelsen.
+  </p>
+
+  <h3>Misstag 3: Ingen backup-testning</h3>
+  <p>
+    Många organisationer har en backup-strategi på pappret, men testar aldrig om backups faktiskt fungerar.
+    Det är ett klassiskt misstag. Backup-tester är obligatoriska under NIS2. En backup som aldrig har testats är ingen backup — det är bara en förhoppning.
+  </p>
+
+  <h3>Misstag 4: Tabletop-övningar utan ledningen</h3>
+  <p>
+    Tabletop-övningar genomförda bara av IT-folk utan styrelsedeltagande räknas inte fullt ut.
+    Övningen ska testa om ledningen kan ta rätt beslut under stress. Det kräver att ledningen är närvarande.
+  </p>
+
+  <h3>Misstag 5: Inga uppföljningstester</h3>
+  <p>
+    Ett pentest identifierar sårbarheter. IT fixar dem. Men inget nytt test gjordes för att verifiera att åtgärden fungerade.
+    Nästa attack kommer genom samma hålet. Dokumentera alla uppföljningstester.
+  </p>
+
+  <div class="box-warning">
+    <strong>Personligt ansvar:</strong> Om en säkerhetsbrist upptäcks i ett test, dokumenteras i en rapport, men aldrig åtgärdas eller följs upp, och sedan orsakar en attack — kan du som styrelseledamot hållas personligt ansvarig för försummelse. Det spelar ingen roll att "IT visste om det".
+  </div>
+
+  <h2>Hur tillsynsmyndigheten bedömer dina tester</h2>
+
+  <p>
+    MSB och sektorsspecifika myndigheter använder ett ramverk när de granskar testningskvaliteten:
+  </p>
+
+  <ul>
+    <li><strong>Existerar en dokumenterad testplan?</strong> Är den godkänd av styrelsen?</li>
+    <li><strong>Är testningen faktiskt genomförd?</strong> Det ska finnas loggar, rapporter, datalista från åtminstone de senaste 12–36 månaderna.</li>
+    <li><strong>Är testerna tillräckligt omfattande?</strong> Täcker de både externa och interna hotkällor, samt kritiska system?</li>
+    <li><strong>Åtgärdas identifierade brister?</strong> Finns det en åtgärdsplan, tidsplan och uppföljningstest?</li>
+    <li><strong>Är rapportterna tillgängliga för ledningen?</strong> Eller håller IT dem dold?</li>
+  </ul>
+
+  <p>
+    Om du kan svara "ja" på alla dessa frågor — du är på rätt väg. Om du kan inte svara "ja" på någon av dem är det en sanktionsrisk.
+  </p>
+
+  <h2>De vanligaste frågorna</h2>
+
+  <div class="faq-item">
+    <div class="faq-q">Måste testerna göras av en extern konsult?</div>
+    <div class="faq-a">Penetrationstester bör göras av en extern part för att undvika gruppthink och för att få ett verkligt angripareperspektiv. Backup-tester och tabletop-övningar kan göras internt, men måste dokumenteras och rapporteras. DR-drills kan också vara interna. Det viktiga är att testerna är oberoende och resultaten dokumenteras.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">Hur mycket kostar tester?</div>
+    <div class="faq-a">Det varierar stort. Ett externt penetrationtest kostar typiskt 50 000–300 000 kronor beroende på storlek och djup. Backup-tester kan automatiseras och kostar ofta ingenting. Tabletop-övningar kostar tid men inte mycket pengar. En fullskalig DR-drill kan ta några dagar och kosta 100 000–500 000 kronor. Som en jämförelse: en NIS2-sanktion kan nå flera miljoner euro. Investeringen i testning är ett försäljningsargument.</div>
+  </div>
+
+  <div

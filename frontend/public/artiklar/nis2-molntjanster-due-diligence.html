@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-BKF3QH9K01"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag("js", new Date());
+    gtag("config", "G-BKF3QH9K01");
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NIS2 och Molntjänster: Shared Responsibility & Due Diligence | NIS2Klar</title>
+  <meta name="description" content="Vem ansvarar när datan ligger i molnet? NIS2 kräver shared responsibility-modellen. Läs om datalokaliseringsregler och due diligence-checklista för molntjänstbedömning.">
+  <meta property="og:title" content="NIS2 och Molntjänster: Vem ansvarar när datan ligger i molnet?">
+  <meta property="og:description" content="Shared responsibility i molnet under NIS2. Datalokaliseringsregler. Due diligence-checklista för molntjänstbedömning.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #141416;
+      --card: #1c1c1f;
+      --yellow: #f5c518;
+      --white: #f0f0f0;
+      --muted: #888;
+      --red: #C61212;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: var(--bg); color: var(--white); font-family: 'Barlow', sans-serif; font-size: 19px; line-height: 1.8; }
+
+    /* Nav */
+    nav { display: flex; justify-content: space-between; align-items: center; padding: 20px 40px; border-bottom: 1px solid rgba(255,255,255,0.07); max-width: 900px; margin: 0 auto; }
+    .nav-logo { font-family: 'Poppins', sans-serif; font-weight: 900; font-size: 20px; color: var(--yellow); text-decoration: none; }
+    .nav-logo span { color: var(--white); }
+    .nav-back { color: var(--muted); text-decoration: none; font-size: 15px; }
+    .nav-back:hover { color: var(--white); }
+    .nav-cta { background: var(--yellow); color: #000; padding: 8px 18px; border-radius: 4px; text-decoration: none; font-weight: 700; font-size: 14px; font-family: 'Poppins', sans-serif; }
+
+    /* Article */
+    .article-wrap { max-width: 760px; margin: 0 auto; padding: 60px 40px; }
+    .article-category { font-size: 13px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 16px; }
+    h1 { font-family: 'Poppins', sans-serif; font-size: clamp(30px, 4vw, 44px); font-weight: 900; line-height: 1.2; margin-bottom: 24px; }
+    .article-meta { font-size: 15px; color: var(--muted); margin-bottom: 48px; padding-bottom: 24px; border-bottom: 1px solid rgba(255,255,255,0.07); }
+    h2 { font-family: 'Poppins', sans-serif; font-size: 26px; font-weight: 700; margin: 48px 0 16px; color: var(--white); }
+    h3 { font-family: 'Poppins', sans-serif; font-size: 20px; font-weight: 600; margin: 32px 0 12px; color: var(--yellow); }
+    p { margin-bottom: 22px; }
+    strong { color: var(--white); font-weight: 700; }
+    .highlight { color: var(--yellow); font-weight: 700; }
+    .danger { color: #ff6b6b; font-weight: 700; }
+    ul, ol { margin: 16px 0 24px 24px; }
+    li { margin-bottom: 12px; font-size: 19px; }
+
+    /* Callout boxes */
+    .box-warning { background: rgba(197,17,17,0.12); border-left: 4px solid var(--red); padding: 20px 24px; margin: 32px 0; border-radius: 0 4px 4px 0; }
+    .box-info { background: rgba(245,197,24,0.08); border-left: 4px solid var(--yellow); padding: 20px 24px; margin: 32px 0; border-radius: 0 4px 4px 0; }
+    .box-case { background: var(--card); border: 1px solid rgba(255,255,255,0.08); padding: 28px; margin: 40px 0; border-radius: 4px; }
+    .box-case .case-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 12px; }
+    blockquote { border-left: 3px solid var(--yellow); padding: 12px 20px; margin: 24px 0; font-style: italic; color: #ccc; }
+
+    /* CTA */
+    .cta-section { background: var(--card); border: 1px solid rgba(245,197,24,0.2); border-radius: 4px; padding: 48px 40px; margin: 64px 0 40px; text-align: center; }
+    .cta-section h2 { margin-top: 0; font-size: 26px; }
+    .cta-section p { color: #aaa; max-width: 500px; margin: 0 auto 28px; }
+    .btn-primary { display: inline-block; background: var(--yellow); color: #000; font-family: 'Poppins', sans-serif; font-weight: 800; font-size: 16px; padding: 16px 36px; border-radius: 4px; text-decoration: none; }
+    .btn-primary:hover { background: #e0b010; }
+    .cta-fine { font-size: 13px; color: var(--muted); margin-top: 16px; }
+
+    /* FAQ */
+    .faq-item { border-bottom: 1px solid rgba(255,255,255,0.07); padding: 20px 0; }
+    .faq-q { font-family: 'Poppins', sans-serif; font-weight: 600; margin-bottom: 10px; }
+    .faq-a { color: #bbb; }
+
+    /* Table */
+    .responsibility-table { width: 100%; border-collapse: collapse; margin: 24px 0; }
+    .responsibility-table th { background: rgba(245,197,24,0.1); color: var(--yellow); font-family: 'Poppins', sans-serif; font-size: 13px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 12px 16px; text-align: left; border-bottom: 1px solid rgba(245,197,24,0.2); }
+    .responsibility-table td { padding: 14px 16px; border-bottom: 1px solid rgba(255,255,255,0.05); font-size: 15px; }
+    .responsibility-table tr:last-child td { border-bottom: none; }
+
+    /* Summary + Key Takeaway */
+    .box-summary { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; padding: 24px 28px; margin: 0 0 32px; }
+    .summary-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-bottom: 14px; }
+    .box-summary ul { margin: 0; padding-left: 20px; }
+    .box-summary li { margin-bottom: 8px; font-size: 17px; color: #ccc; }
+    .box-takeaway { background: rgba(245,197,24,0.08); border-left: 4px solid var(--yellow); padding: 20px 24px; margin: 0 0 40px; border-radius: 0 4px 4px 0; }
+    .takeaway-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 10px; }
+    .box-takeaway p { margin: 0; font-size: 18px; font-weight: 600; color: var(--white); line-height: 1.6; }
+
+    /* Footer */
+    footer { border-top: 1px solid rgba(255,255,255,0.07); padding: 32px 40px; text-align: center; font-size: 13px; color: var(--muted); max-width: 900px; margin: 0 auto; }
+    footer a { color: var(--muted); }
+
+    .related-articles { margin:2.5rem 0 2rem; padding:1.5rem; background:#1a1a2e; border-left:4px solid #f0a500; border-radius:4px; }
+    .related-articles p { margin: 0 0 1rem; font-size:0.85rem; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; color:#f0a500; }
+    .related-articles ul { margin:0; padding:0; list-style:none; display:flex; flex-direction:column; gap:0.5rem; }
+    .related-articles li { margin: 0; }
+    .related-articles a { color:#e0e0e0; text-decoration:none; font-size:0.95rem; }
+    .related-articles a:hover { color: #f0a500; }
+    .related-articles .footer-links { margin:1.25rem 0 0; font-size:0.85rem; color:#aaa; }
+
+    @media (max-width: 600px) {
+      nav, .article-wrap, footer { padding: 20px; }
+      .cta-section { padding: 32px 20px; }
+      .responsibility-table { font-size: 14px; }
+      .responsibility-table th, .responsibility-table td { padding: 10px 10px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="https://nis2klar.se/">NIS2<span>Klar</span></a>
+  <a class="nav-back" href="https://nis2klar.se/artiklar.html">← Alla artiklar</a>
+  <a class="nav-cta" href="https://nis2klar.se/#boka">Boka samtal →</a>
+</nav>
+
+<article class="article-wrap">
+  <div class="article-category">Molntjänster &amp; Leverantörer</div>
+  <h1>NIS2 och molntjänster: Vem ansvarar när datan ligger i molnet?</h1>
+  <div class="article-meta">Uppdaterad 24 april 2026 · Lästid: ca 9 minuter · Målgrupp: Ledning</div>
+
+  <!-- SUMMARY -->
+  <div class="box-summary">
+    <div class="summary-label">Sammanfattning</div>
+    <ul>
+      <li>Shared responsibility är inte ett löfte från molnleverantören — det är ditt juridiska ansvar under NIS2.</li>
+      <li>Din organisation är alltid ansvarig för säkerhet, datalokaliseringskrav och compliance — molnleverantören hanterar bara infrastrukturen.</li>
+      <li>Due diligence innan molnöverflyttning är obligatorisk, och dokumentationen måste godkännas av styrelsen.</li>
+      <li>Sverige har datacenterkapacitet med 100 % förnybar energi — datalokaliseringsrisker kan elimineras idag.</li>
+    </ul>
+  </div>
+
+  <!-- KEY TAKEAWAY -->
+  <div class="box-takeaway">
+    <div class="takeaway-label">Viktigaste slutsatsen</div>
+    <p>Att lägga data i ett molnlager förflyttar inte ditt NIS2-ansvar. Det fördelar det mellan två organisationer — och du är alltid de huvudansvariga. Tillsynsmyndigheten granskar dig, inte molnleverantören.</p>
+  </div>
+
+  <!-- HOOK -->
+  <p>
+    <strong>Shared responsibility</strong> är molnindustrins mest missförstådda term. Det låter som att någon annan tar ansvar. Det gör de inte.
+  </p>
+
+  <p>
+    Under NIS2 är det ditt ansvar — som VD eller styrelse — att säkerställa att datan är skyddad, oavsett var den ligger fysiskt. Om molnleverantören gör ett dåligt jobb är det ditt problem. Om du inte granskat molnleverantören är det ditt problem. Om data lagras utanför Sverige och det strider mot NIS2:s datalokaliseringskrav är det också ditt problem.
+  </p>
+
+  <p>
+    Det här dokumentet är en checklista för hur du granskar en molntjänst innan du undertecknar. Det är also en vägledning för vad styrelsen behöver förstå och godkänna innan data flyttas till molnet.
+  </p>
+
+  <h2>Vad säger NIS2 om molntjänster?</h2>
+
+  <p>
+    NIS2-direktivet tar inte explicit upp "molnleverantörer" eller "SaaS". I stället behandlas de under en bredare kategori: <strong>Kritiska leverantörer av systemkritiska tjänster.</strong>
+  </p>
+
+  <p>
+    Artikel 24 i NIS2 definierar en kritisk leverantör som någon som tillhandahåller IT-tjänster som är väsentliga för att en annan organisation kan upprätthålla eller återhämta sig från incidenter. En molnleverantör som din data ligger på räknas.
+  </p>
+
+  <p>
+    Men här är det viktiga: <strong>Du är fortfarande huvudansvarig</strong>, inte molnleverantören.
+  </p>
+
+  <p>
+    Direktivet kräver att du utför <strong>due diligence</strong> innan du litar på en leverantör. Det innebär:
+  </p>
+
+  <ol>
+    <li>Inventera vilka molntjänster organisationen använder</li>
+    <li>Klassificera datatypen (kunddata, verksamhetsdata, känslig personal-data etc.)</li>
+    <li>Bedöm leverantörens säkerhetsprofil, certifieringar och juridiska ramverk</li>
+    <li>Dokumentera vilka risker ni accepterar — och vilka ni inte gör</li>
+    <li>Låta styrelsen godkänna beslutet om leverantörsanvändning</li>
+  </ol>
+
+  <div class="box-warning">
+    <strong>Vanligt misstag:</strong> "Vi använder Microsoft/Amazon/Google, de är ju stora — då är det säkert." Storleken är inte irrelevant, men den ersätter inte due diligence. Många cyberattacker når just de stora molnplattformarna. Din ansvar är att veta vilka säkerhetslager som finns mellan din data och en angripare.
+  </div>
+
+  <h2>Shared responsibility — vad betyder det egentligen?</h2>
+
+  <p>
+    Molnindustrin använder ofta detta diagram för att illustrera ansvar:
+  </p>
+
+  <p style="font-style: italic; color: #aaa;">
+    [Traditionell shared responsibility-modell för IaaS/PaaS/SaaS]
+  </p>
+
+  <ul>
+    <li><strong>Molnleverantören ansvarar för:</strong> Datacentersäkerhet, fysisk åtkomst, nätverksinfrastruktur, serverhårdvara, hypervisor, host OS</li>
+    <li><strong>Du ansvarar för:</strong> Gästoperativsystem (eller inte, beroende på tjänsttyp), applikationsdata, åtkomstkontroll, säkerhetsuppdateringar, säkerhetsprinciper, incidenthantering, compliance</li>
+  </ul>
+
+  <p>
+    Problemet är att det är <strong>oproportionerligt</strong>. Molnleverantören ansvarar för infrastrukturen — något som är svårt för dig att verifiera eller påverka direkt. Du ansvarar för absolutt allt på toppnivån — något du måste kunna bevisa till en tillsynsmyndighet.
+  </p>
+
+  <p>
+    Det betyder: <strong>Två organisationer, ett ansvar.</strong> Du kan inte friskriva dig från molnleverantörens misstag.
+  </p>
+
+  <div class="box-info">
+    <strong>Viktigt för styrelsemötet:</strong> Shared responsibility är inte en försäkring. Det är en funktionell fördelning av arbetslast. Juridisk ansvar förblir ditt — helt och hållet.
+  </div>
+
+  <h2>Datalokaliseringsregler under NIS2</h2>
+
+  <p>
+    En av NIS2:s mest ofta negligerade delar är <strong>Artikel 5 — Datalokaliseringskomplementet</strong> (kallas ofta för "NIS2 Chapter V").
+  </p>
+
+  <p>
+    Den slår fast att personuppgifter och operativ data för väsentliga och viktiga entiteter <strong>bör lagras och processeras inom EES-området</strong> (Europeiska ekonomiska samarbetsområdet). Det är en rekommendation, inte ett absolut forbud — men ordet "bör" är viktigare än det ser ut.
+  </p>
+
+  <p>
+    Varför? Eftersom det finns både datasäkerhetsskäl (færre länder = färre lagjurisdiktioner) och dataskyddsskäl (GDPR förbjuder i praksis överföring av personuppgifter till länder utan adekvat dataskyddsnivå). Om dina molndata hamnar i USA, Asien eller tredjeland måste du kunna argumentera för varför det är nödvändigt — och dokumentera vilka extra skydd du infört.
+  </p>
+
+  <p>
+    Sverige tillhandahåller nu <strong>Microsoft Azure Sweden Central</strong> — ett dedikerat datacenterområde med 100 % förnybar energi från Vattenfall. Detta eliminerar en stor del av lokaliseringsrisken för verksamheter i Sverige.
+  </p>
+
+  <table class="responsibility-table">
+    <thead>
+      <tr>
+        <th>Datalokaliseringsscenario</th>
+        <th>NIS2-status</th>
+        <th>Vad du måste dokumentera</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Data lagras i EES-datacenter (t.ex. Sverige Central)</td>
+        <td>Rekommenderat — låg risk</td>
+        <td>Leverantörsavtal med platsprecisering. Minimal överövervakningsdokumentation behövs.</td>
+      </tr>
+      <tr>
+        <td>Data lagras i EU men utanför Sverige (t.ex. Tyskland, Irland)</td>
+        <td>Godkänd — medel risk</td>
+        <td>Juridisk bedömning av lokaliseringsvalet + datasäkerhetsanalys. Dokumentera varför Sverige inte var möjligt.</td>
+      </tr>
+      <tr>
+        <td>Data lagras i USA eller tredjeland</td>
+        <td>Högrisktation — kräver överordnade skäl</td>
+        <td>Styrelsebeslut med motivering. Säkerhetsbedömning av lagstiftningsrisker. Extra encryption/access controls. Risk-acceptance dokument.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>
+    Många organisationer placerar data i USA utan att motivera det — bara för att det är "default" eller för att deras system är globalt. Under NIS2-granskning frågar tillsynsmyndigheten alltid: <span class="highlight">"Varför är datan inte i Sverige eller EU?"</span>
+  </p>
+
+  <p>
+    Om du inte kan svara måste du flytta den eller riskera en sanktion.
+  </p>
+
+  <h2>Due diligence-checklista för molntjänstbedömning</h2>
+
+  <p>
+    Här är en konkret checklista som du bör gå igenom innan du undertecknar ett molnleverantörsavtal. Den är designad för styrelsenivå — konkret nog för att guida en IT-beredning, men enkel nog för att presenteras på ett styrelsemöte.
+  </p>
+
+  <h3>1. Leverantörsidentitet &amp; juridisk ställning</h3>
+  <ul>
+    <li>☐ Molnleverantören är registrerad i EU/EES</li>
+    <li>☐ Leverantören har en etablerad säkerhetscertifiering (ISO 27001 som minimum)</li>
+    <li>☐ Leverantören har NIS2-relevanta certifieringar (C5, NIS1-certifiering eller motsvarande)</li>
+    <li>☐ Leverantören tillhandahåller åtminstone årlig säkerhetsgranskning (SOC 2 Type II eller motsv.)</li>
+    <li>☐ Leverantören är villig att underteckna ett säkerhetsbilaga till avtalet med konkreta åtaganden</li>
+  </ul>
+
+  <h3>2. Datalokaliseringsfrågor</h3>
+  <ul>
+    <li>☐ Data lagras i EES (rekommenderat) eller det finns dokumenterad anledning till att det inte gör det</li>
+    <li>☐ Fysiska serverplatser är specifika (vi accepterar inte "kan vara överallt")</li>
+    <li>☐ Backup-lokationer är dokumenterade — och följer samma lokaliseringskrav</li>
+    <li>☐ Leverantören förbinder sig skriftligt att inte flytta data utan ditt godkännande</li>
+    <li>☐ Leverantören kan bevisa att backup inte överförs till tredjeland för lagring</li>
+  </ul>
+
+  <h3>3. Säkerhetsåtgärder &amp; teknik</h3>
+  <ul>
+    <li>☐ Data är krypterad både vid lagring (encryption at rest) och vid överföring (encryption in transit)</li>
+    <li>☐ Krypteringsnycklar hanteras av din organisation, inte enbart av leverantören (customer-managed keys eller motsv.)</li>
+    <li>☐ Multi-factor authentication (MFA) är obligatoriskt för all administrativ åtkomst</li>
+    <li>☐ Tillgångsloggar är tillgängliga för din granskning — minst 90 dagar historik</li>
+    <li>☐ Leverantören tillhandahåller loggdata i ett standardformat (t.ex. syslog eller SIEM-kompatibelt)</li>
+    <li>☐ Leverantören stödjer rollbaserad åtkomstkontroll (RBAC) och principen om minsta behörighet</li>
+  </ul>
+
+  <h3>4. Incidenthantering &amp; samarbete</h3>
+  <ul>
+    <li>☐ Leverantören har en formell incidenthanteringsprocess dokumenterad</li>
+    <li>☐ Leverantören lovar att meddela dig inom 4 timmar om en säkerhetsincident som påverkar din data</li>
+    <li>☐ Leverantören tillhandahåller forensisk support vid incidenter (logganalys, data preservation etc.)</li>
+    <li>☐ Du har rätt att granska incidenthanteringsprocessen via ett revisionsprotokoll</li>
+    <li>☐ Leverantören accepterar tredjepartsgranskningar (från din revisor eller säkerhetsfirma)</li>
+  </ul>
+
+  <h3>5. Avslutning &amp; dataöverföring</h3>
+  <ul>
+    <li>☐ Avtalets uppsägningstid är rimlig (3 månader eller mindre)</li>
+    <li>☐ Data kan exporteras i ett standardformat (inte proprietary lock-in)</li>
+    <li>☐ Leverantören garanterar säker radering av data efter avslut — dokumenterad process</li>
+    <li>☐ Leverantören accepterar en ravelsering/attestation av radering från din sida</li>
+  </ul>
+
+  <h3>6. Styrelsedokumentation</h3>
+  <ul>
+    <li>☐ En gap-analys är genomförd innan beslut — jämför leverantörsåtaganden mot NIS2-krav</li>
+    <li>☐ Identifierade risker är dokumenterade (t.ex. "leverantören stödjer inte automatisk MFA på alla konton")</li>
+    <li>☐ Risker är klassificerade: acceptabel, mitigering behövs, eller oacceptabel</li>
+    <li>☐ Styrelsen har godkänt beslutet att använda denna leverantör — med dokumenterat styrelsebeslut</li>
+    <li>☐ Framtida granskningsplan är etablerad (årlig eller vid större ändringar)</li>
+  </ul>
+
+  <div class="box-case">
+    <div class="case-label">Fallstudie: Shared Responsibility gick fel</div>
+    <p>
+      <strong>Scenario: Försäkringsbolag, 200 anställda, klassificerad som viktig entitet.</strong>
+    </p>
+    <p>
+      IT-ansvarig migrera All kunddata (namn, personnummer, försäkringsöversikt) till en molnplattform utan formell due diligence. Anledningen: snabbare skalning, billigare infrastruktur.
+    </p>
+    <p>
+      Sex månader senare: Molnleverantören rapporterar att deras databas utsattes för ett ransomware-angrepp. Kunddata är encrypterad och stöld. Leverantören slår skulderna på en säkerhetskonfigurationsfeL på kundsidan — "shared responsibility," de säger.
+    </p>
+    <p>
+      Tillsynsmyndigheten (Finansinspektionen) granskar försäkringsbolaget. Det framkommer att:
+    </p>
+    <ul style="margin-top: 12px;">
+      <li>Ingen due diligence gjordes före molnmigration</li>
+      <li>Styrelsen godkände aldrig molnövergången</li>
+      <li>Data lagrades i USA, ingen dokumenterad anledning</li>
+      <li>Molnleverantörens säkerhetsåtagande var aldrig formaliserat i avtalet</li>
+    </ul>
+    <p style="margin-top: 16px;">
+      <strong>Utfall:</strong> NIS2-sanktion för bristande leverantörssäkerhet (Artikel 24). Böter på 2 miljoner euro. Kundersättning separat. Styrelseordförande får personlig tillsyn. Försäkringsbolaget måste migrera data tillbaka till EU.
+    </p>
+    <p style="margin-top: 16px; color: #ff6b6b; font-weight: 600;">
+      Lärdomar: Shared responsibility är inte ett försvar. Det är en funktionell gränsdragning. Tillsynsmyndigheten håller dig ansvarig för alla val, inte bara dina eget åtgärder.
+    </p>
+  </div>
+
+  <h2>Vad ska styrelsen förstå — och godkänna</h2>
+
+  <p>
+    Du behöver inte bli en cloud architect för att förstå risken. Men du måste kunna svara på dessa tre frågor:
+  </p>
+
+  <h3>Fråga 1: Var ligger datan fysiskt?</h3>
+  <p>
+    Du bör kunna namnge ett datacenter eller en region. "Det är i molnet" räcker inte. Om molnleverantören inte kan säga var datan ligger, är det redan en röd flagga.
+  </p>
+
+  <h3>Fråga 2: Kan vi komma åt den om leverantören inte vill?</h3>
+  <p>
+    Om molnleverantören går i konkurs eller förbjuds från att operera, kan du då hämta din data? Kan du exportera den inom en rimlig tid? Om svaret är "nej" eller "det tar 6 månader", är det en för stor risk.
+  </p>
+
+  <h3>Fråga 3: Vem har nyckeln?</h3>
+  <p>
+    Om en angripare penetrerar molnleverantörens nätverk och stjäl alla servrar, kan de dekryptera dina data? Om ja — leverantören har för mycket kontroll. Om nej — du har kontroll över kryp
