@@ -633,7 +633,7 @@ IMPORTANT: Return ONLY valid HTML from <!DOCTYPE html> to </html>. Nothing else.
     try {
       message = await client.messages.create({
         model: 'claude-haiku-4-5-20251001',
-        max_tokens: 8000,
+        max_tokens: 16000,
         messages: [{ role: 'user', content: prompt }]
       });
       break;
@@ -804,6 +804,12 @@ async function main() {
   // Also ensure parent lang dir has an index redirect
   const langDir = path.join(FRONTEND_DIR, 'public', langKey);
   if (!fs.existsSync(langDir)) fs.mkdirSync(langDir, { recursive: true });
+
+  if (args.includes('--index-only')) {
+    generateIndex(langKey);
+    rebuildFrontend(langKey);
+    return;
+  }
 
   if (args.includes('--list')) {
     listStatus(langKey);

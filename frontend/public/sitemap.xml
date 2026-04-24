@@ -5,1371 +5,399 @@
   <!-- Static pages -->
   <url>
     <loc>https://nis2klar.se/nis2.html</loc>
-    <lastmod>2026-04-20</lastmod>
+    <lastmod>2026-04-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://nis2klar.se/artiklar.html</loc>
-    <lastmod>2026-04-20</lastmod>
+    <lastmod>2026-04-24</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://nis2klar.se/en/nis2.html</loc>
-    <lastmod>2026-04-20</lastmod>
+    <lastmod>2026-04-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://nis2klar.se/da/nis2.html</loc>
-    <lastmod>2026-04-20</lastmod>
+    <lastmod>2026-04-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://nis2klar.se/no/nis2.html</loc>
-    <lastmod>2026-04-20</lastmod>
+    <lastmod>2026-04-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://nis2klar.se/en/articles.html</loc>
-    <lastmod>2026-04-20</lastmod>
+    <lastmod>2026-04-24</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://nis2klar.se/da/artikler.html</loc>
-    <lastmod>2026-04-20</lastmod>
+    <lastmod>2026-04-24</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://nis2klar.se/no/artikler.html</loc>
-    <lastmod>2026-04-20</lastmod>
+    <lastmod>2026-04-24</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://nis2klar.se/it/nis2.html</loc>
-    <lastmod>2026-04-20</lastmod>
+    <lastmod>2026-04-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://nis2klar.se/it/articoli.html</loc>
-    <lastmod>2026-04-20</lastmod>
+    <lastmod>2026-04-24</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://nis2klar.se/nis2-gap-analys.html</loc>
-    <lastmod>2026-04-20</lastmod>
+    <lastmod>2026-04-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://nis2klar.se/nis2-checklista.html</loc>
-    <lastmod>2026-04-20</lastmod>
+    <lastmod>2026-04-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://nis2klar.se/nis2-kalkylator.html</loc>
-    <lastmod>2026-04-20</lastmod>
+    <lastmod>2026-04-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://nis2klar.se/nis2-styrelsepaket.html</loc>
-    <lastmod>2026-04-20</lastmod>
+    <lastmod>2026-04-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
 
-  <!-- SV articles (61) -->
-  <url>
-    <loc>https://nis2klar.se/artiklar/iso27001-vs-nis2-efterlevnad.html</loc>
-    <lastmod>2026-04-20</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="sv" href="https://nis2klar.se/artiklar/iso27001-vs-nis2-efterlevnad.html"/>
-  </url>
-  <url>
-    <loc>https://nis2klar.se/artiklar/knowbe4-vs-microsoft-viva-sakerhetsutbildning.html</loc>
-    <lastmod>2026-04-20</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="sv" href="https://nis2klar.se/artiklar/knowbe4-vs-microsoft-viva-sakerhetsutbildning.html"/>
-  </url>
-  <url>
-    <loc>https://nis2klar.se/artiklar/microsoft-365-e5-pris-sakerhetsfunktioner.html</loc>
-    <lastmod>2026-04-20</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="sv" href="https://nis2klar.se/artiklar/microsoft-365-e5-pris-sakerhetsfunktioner.html"/>
-  </url>
+  <!-- SV articles (32) -->
   <url>
     <loc>https://nis2klar.se/artiklar/microsoft-365-vs-google-workspace-sakerhet.html</loc>
-    <lastmod>2026-04-20</lastmod>
+    <lastmod>2026-04-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="sv" href="https://nis2klar.se/artiklar/microsoft-365-vs-google-workspace-sakerhet.html"/>
   </url>
   <url>
     <loc>https://nis2klar.se/artiklar/microsoft-azure-vs-aws-molnsakerhet.html</loc>
-    <lastmod>2026-04-20</lastmod>
+    <lastmod>2026-04-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="sv" href="https://nis2klar.se/artiklar/microsoft-azure-vs-aws-molnsakerhet.html"/>
   </url>
   <url>
-    <loc>https://nis2klar.se/artiklar/microsoft-defender-business-priser.html</loc>
-    <lastmod>2026-04-20</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="sv" href="https://nis2klar.se/artiklar/microsoft-defender-business-priser.html"/>
-  </url>
-  <url>
     <loc>https://nis2klar.se/artiklar/microsoft-defender-vs-crowdstrike-endpoint.html</loc>
-    <lastmod>2026-04-20</lastmod>
+    <lastmod>2026-04-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="sv" href="https://nis2klar.se/artiklar/microsoft-defender-vs-crowdstrike-endpoint.html"/>
   </url>
   <url>
-    <loc>https://nis2klar.se/artiklar/microsoft-defender-vs-netskope-molnsakerhet.html</loc>
-    <lastmod>2026-04-20</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="sv" href="https://nis2klar.se/artiklar/microsoft-defender-vs-netskope-molnsakerhet.html"/>
-  </url>
-  <url>
-    <loc>https://nis2klar.se/artiklar/microsoft-defender-vs-symantec-dlp.html</loc>
-    <lastmod>2026-04-20</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="sv" href="https://nis2klar.se/artiklar/microsoft-defender-vs-symantec-dlp.html"/>
-  </url>
-  <url>
-    <loc>https://nis2klar.se/artiklar/microsoft-entra-id-vs-okta-identitetshantering.html</loc>
-    <lastmod>2026-04-20</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="sv" href="https://nis2klar.se/artiklar/microsoft-entra-id-vs-okta-identitetshantering.html"/>
-  </url>
-  <url>
-    <loc>https://nis2klar.se/artiklar/microsoft-intune-priser-enhetshantering.html</loc>
-    <lastmod>2026-04-20</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="sv" href="https://nis2klar.se/artiklar/microsoft-intune-priser-enhetshantering.html"/>
-  </url>
-  <url>
     <loc>https://nis2klar.se/artiklar/microsoft-intune-vs-vmware-workspace-mdm.html</loc>
-    <lastmod>2026-04-20</lastmod>
+    <lastmod>2026-04-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="sv" href="https://nis2klar.se/artiklar/microsoft-intune-vs-vmware-workspace-mdm.html"/>
   </url>
   <url>
-    <loc>https://nis2klar.se/artiklar/microsoft-power-bi-vs-tableau-sakerhetsrapportering.html</loc>
-    <lastmod>2026-04-20</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="sv" href="https://nis2klar.se/artiklar/microsoft-power-bi-vs-tableau-sakerhetsrapportering.html"/>
-  </url>
-  <url>
-    <loc>https://nis2klar.se/artiklar/microsoft-purview-priser-datastyrning.html</loc>
-    <lastmod>2026-04-20</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="sv" href="https://nis2klar.se/artiklar/microsoft-purview-priser-datastyrning.html"/>
-  </url>
-  <url>
     <loc>https://nis2klar.se/artiklar/microsoft-purview-vs-varonis-datastyrning.html</loc>
-    <lastmod>2026-04-20</lastmod>
+    <lastmod>2026-04-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="sv" href="https://nis2klar.se/artiklar/microsoft-purview-vs-varonis-datastyrning.html"/>
   </url>
   <url>
-    <loc>https://nis2klar.se/artiklar/microsoft-sentinel-kostnadskalkyl.html</loc>
-    <lastmod>2026-04-20</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="sv" href="https://nis2klar.se/artiklar/microsoft-sentinel-kostnadskalkyl.html"/>
-  </url>
-  <url>
     <loc>https://nis2klar.se/artiklar/microsoft-sentinel-vs-splunk-siem.html</loc>
-    <lastmod>2026-04-20</lastmod>
+    <lastmod>2026-04-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="sv" href="https://nis2klar.se/artiklar/microsoft-sentinel-vs-splunk-siem.html"/>
   </url>
   <url>
     <loc>https://nis2klar.se/artiklar/microsoft-sharepoint-vs-box-dokumentsakerhet.html</loc>
-    <lastmod>2026-04-20</lastmod>
+    <lastmod>2026-04-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="sv" href="https://nis2klar.se/artiklar/microsoft-sharepoint-vs-box-dokumentsakerhet.html"/>
   </url>
   <url>
     <loc>https://nis2klar.se/artiklar/microsoft-teams-vs-slack-sakerhet.html</loc>
-    <lastmod>2026-04-20</lastmod>
+    <lastmod>2026-04-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="sv" href="https://nis2klar.se/artiklar/microsoft-teams-vs-slack-sakerhet.html"/>
   </url>
   <url>
     <loc>https://nis2klar.se/artiklar/nis2-boten-konsekvenser-sverige.html</loc>
-    <lastmod>2026-04-20</lastmod>
+    <lastmod>2026-04-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="sv" href="https://nis2klar.se/artiklar/nis2-boten-konsekvenser-sverige.html"/>
   </url>
   <url>
     <loc>https://nis2klar.se/artiklar/nis2-boten-sanktioner-sverige.html</loc>
-    <lastmod>2026-04-20</lastmod>
+    <lastmod>2026-04-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="sv" href="https://nis2klar.se/artiklar/nis2-boten-sanktioner-sverige.html"/>
   </url>
   <url>
-    <loc>https://nis2klar.se/artiklar/nis2-compliance-checklista-essential-entity.html</loc>
-    <lastmod>2026-04-20</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="sv" href="https://nis2klar.se/artiklar/nis2-compliance-checklista-essential-entity.html"/>
-  </url>
-  <url>
     <loc>https://nis2klar.se/artiklar/nis2-compliance-checklista-sverige.html</loc>
-    <lastmod>2026-04-20</lastmod>
+    <lastmod>2026-04-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="sv" href="https://nis2klar.se/artiklar/nis2-compliance-checklista-sverige.html"/>
   </url>
   <url>
     <loc>https://nis2klar.se/artiklar/nis2-cyberstrategi-sverige-basta-praxis.html</loc>
-    <lastmod>2026-04-20</lastmod>
+    <lastmod>2026-04-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="sv" href="https://nis2klar.se/artiklar/nis2-cyberstrategi-sverige-basta-praxis.html"/>
   </url>
   <url>
-    <loc>https://nis2klar.se/artiklar/nis2-cyberstyrning-styrelseansvar-sverige.html</loc>
-    <lastmod>2026-04-20</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="sv" href="https://nis2klar.se/artiklar/nis2-cyberstyrning-styrelseansvar-sverige.html"/>
-  </url>
-  <url>
     <loc>https://nis2klar.se/artiklar/nis2-deadline-ar-din-organisation-redo.html</loc>
-    <lastmod>2026-04-20</lastmod>
+    <lastmod>2026-04-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="sv" href="https://nis2klar.se/artiklar/nis2-deadline-ar-din-organisation-redo.html"/>
   </url>
   <url>
-    <loc>https://nis2klar.se/artiklar/nis2-dokumentationskrav-mallar-sverige.html</loc>
-    <lastmod>2026-04-20</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="sv" href="https://nis2klar.se/artiklar/nis2-dokumentationskrav-mallar-sverige.html"/>
-  </url>
-  <url>
-    <loc>https://nis2klar.se/artiklar/nis2-driftskontinuitet-katastrofaterhamtning.html</loc>
-    <lastmod>2026-04-20</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="sv" href="https://nis2klar.se/artiklar/nis2-driftskontinuitet-katastrofaterhamtning.html"/>
-  </url>
-  <url>
     <loc>https://nis2klar.se/artiklar/nis2-driftskontinuitet-sverige.html</loc>
-    <lastmod>2026-04-20</lastmod>
+    <lastmod>2026-04-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="sv" href="https://nis2klar.se/artiklar/nis2-driftskontinuitet-sverige.html"/>
   </url>
   <url>
     <loc>https://nis2klar.se/artiklar/nis2-essential-vs-important-sverige.html</loc>
-    <lastmod>2026-04-20</lastmod>
+    <lastmod>2026-04-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="sv" href="https://nis2klar.se/artiklar/nis2-essential-vs-important-sverige.html"/>
   </url>
   <url>
     <loc>https://nis2klar.se/artiklar/nis2-hotintelligens-standarder-sverige.html</loc>
-    <lastmod>2026-04-20</lastmod>
+    <lastmod>2026-04-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="sv" href="https://nis2klar.se/artiklar/nis2-hotintelligens-standarder-sverige.html"/>
   </url>
   <url>
     <loc>https://nis2klar.se/artiklar/nis2-implementeringstidslinje-sverige.html</loc>
-    <lastmod>2026-04-20</lastmod>
+    <lastmod>2026-04-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="sv" href="https://nis2klar.se/artiklar/nis2-implementeringstidslinje-sverige.html"/>
   </url>
   <url>
     <loc>https://nis2klar.se/artiklar/nis2-incidentrapportering-24-timmar.html</loc>
-    <lastmod>2026-04-20</lastmod>
+    <lastmod>2026-04-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="sv" href="https://nis2klar.se/artiklar/nis2-incidentrapportering-24-timmar.html"/>
   </url>
   <url>
     <loc>https://nis2klar.se/artiklar/nis2-incidentrapportering-72-timmar-sverige.html</loc>
-    <lastmod>2026-04-20</lastmod>
+    <lastmod>2026-04-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="sv" href="https://nis2klar.se/artiklar/nis2-incidentrapportering-72-timmar-sverige.html"/>
   </url>
   <url>
-    <loc>https://nis2klar.se/artiklar/nis2-krishantering-responseforfaranden-sverige.html</loc>
-    <lastmod>2026-04-20</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="sv" href="https://nis2klar.se/artiklar/nis2-krishantering-responseforfaranden-sverige.html"/>
-  </url>
-  <url>
-    <loc>https://nis2klar.se/artiklar/nis2-kritisk-infrastruktur-skydd-sektorer.html</loc>
-    <lastmod>2026-04-20</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="sv" href="https://nis2klar.se/artiklar/nis2-kritisk-infrastruktur-skydd-sektorer.html"/>
-  </url>
-  <url>
     <loc>https://nis2klar.se/artiklar/nis2-leverantorskedjan-risk.html</loc>
-    <lastmod>2026-04-20</lastmod>
+    <lastmod>2026-04-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="sv" href="https://nis2klar.se/artiklar/nis2-leverantorskedjan-risk.html"/>
   </url>
   <url>
-    <loc>https://nis2klar.se/artiklar/nis2-leverantorskedjans-cybersakerhet.html</loc>
-    <lastmod>2026-04-20</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="sv" href="https://nis2klar.se/artiklar/nis2-leverantorskedjans-cybersakerhet.html"/>
-  </url>
-  <url>
     <loc>https://nis2klar.se/artiklar/nis2-leverantorssakerhet-krav-sverige.html</loc>
-    <lastmod>2026-04-20</lastmod>
+    <lastmod>2026-04-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="sv" href="https://nis2klar.se/artiklar/nis2-leverantorssakerhet-krav-sverige.html"/>
   </url>
   <url>
-    <loc>https://nis2klar.se/artiklar/nis2-medarbetarutbildning-sakhetsmedvetenhet.html</loc>
-    <lastmod>2026-04-20</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="sv" href="https://nis2klar.se/artiklar/nis2-medarbetarutbildning-sakhetsmedvetenhet.html"/>
-  </url>
-  <url>
-    <loc>https://nis2klar.se/artiklar/nis2-natverksovervakning-soc-krav.html</loc>
-    <lastmod>2026-04-20</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="sv" href="https://nis2klar.se/artiklar/nis2-natverksovervakning-soc-krav.html"/>
-  </url>
-  <url>
-    <loc>https://nis2klar.se/artiklar/nis2-natverkssakerhet-overvakning-krav.html</loc>
-    <lastmod>2026-04-20</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="sv" href="https://nis2klar.se/artiklar/nis2-natverkssakerhet-overvakning-krav.html"/>
-  </url>
-  <url>
     <loc>https://nis2klar.se/artiklar/nis2-personligt-ansvar-styrelse.html</loc>
-    <lastmod>2026-04-20</lastmod>
+    <lastmod>2026-04-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="sv" href="https://nis2klar.se/artiklar/nis2-personligt-ansvar-styrelse.html"/>
   </url>
   <url>
     <loc>https://nis2klar.se/artiklar/nis2-revisionsfoerberedelse-sverige.html</loc>
-    <lastmod>2026-04-20</lastmod>
+    <lastmod>2026-04-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="sv" href="https://nis2klar.se/artiklar/nis2-revisionsfoerberedelse-sverige.html"/>
   </url>
   <url>
     <loc>https://nis2klar.se/artiklar/nis2-riskanalys-styrelsen-maste-godkanna.html</loc>
-    <lastmod>2026-04-20</lastmod>
+    <lastmod>2026-04-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="sv" href="https://nis2klar.se/artiklar/nis2-riskanalys-styrelsen-maste-godkanna.html"/>
   </url>
   <url>
-    <loc>https://nis2klar.se/artiklar/nis2-riskbedomning-implementeringsguide.html</loc>
-    <lastmod>2026-04-20</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="sv" href="https://nis2klar.se/artiklar/nis2-riskbedomning-implementeringsguide.html"/>
-  </url>
-  <url>
     <loc>https://nis2klar.se/artiklar/nis2-riskhantering-ramverk-sverige.html</loc>
-    <lastmod>2026-04-20</lastmod>
+    <lastmod>2026-04-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="sv" href="https://nis2klar.se/artiklar/nis2-riskhantering-ramverk-sverige.html"/>
   </url>
   <url>
     <loc>https://nis2klar.se/artiklar/nis2-sakerhetsatgarder-obligatoriska-krav.html</loc>
-    <lastmod>2026-04-20</lastmod>
+    <lastmod>2026-04-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="sv" href="https://nis2klar.se/artiklar/nis2-sakerhetsatgarder-obligatoriska-krav.html"/>
   </url>
   <url>
-    <loc>https://nis2klar.se/artiklar/nis2-sanktioner-konsekvenser-efterlevnad.html</loc>
-    <lastmod>2026-04-20</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="sv" href="https://nis2klar.se/artiklar/nis2-sanktioner-konsekvenser-efterlevnad.html"/>
-  </url>
-  <url>
-    <loc>https://nis2klar.se/artiklar/nis2-styrelseovervakning-cyberstyrning.html</loc>
-    <lastmod>2026-04-20</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="sv" href="https://nis2klar.se/artiklar/nis2-styrelseovervakning-cyberstyrning.html"/>
-  </url>
-  <url>
     <loc>https://nis2klar.se/artiklar/nis2-tekniska-sakerhetsatgarder.html</loc>
-    <lastmod>2026-04-20</lastmod>
+    <lastmod>2026-04-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="sv" href="https://nis2klar.se/artiklar/nis2-tekniska-sakerhetsatgarder.html"/>
   </url>
   <url>
     <loc>https://nis2klar.se/artiklar/nis2-tillsyn-ncsc-msb-sverige.html</loc>
-    <lastmod>2026-04-20</lastmod>
+    <lastmod>2026-04-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="sv" href="https://nis2klar.se/artiklar/nis2-tillsyn-ncsc-msb-sverige.html"/>
   </url>
   <url>
-    <loc>https://nis2klar.se/artiklar/nis2-tredjepartsrisk-leverantorsbedomning-sverige.html</loc>
-    <lastmod>2026-04-20</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="sv" href="https://nis2klar.se/artiklar/nis2-tredjepartsrisk-leverantorsbedomning-sverige.html"/>
-  </url>
-  <url>
-    <loc>https://nis2klar.se/artiklar/nis2-tredjepartsrisk-leverantorsbedomning.html</loc>
-    <lastmod>2026-04-20</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="sv" href="https://nis2klar.se/artiklar/nis2-tredjepartsrisk-leverantorsbedomning.html"/>
-  </url>
-  <url>
-    <loc>https://nis2klar.se/artiklar/nis2-utbildningskrav-anstallda-certifiering.html</loc>
-    <lastmod>2026-04-20</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="sv" href="https://nis2klar.se/artiklar/nis2-utbildningskrav-anstallda-certifiering.html"/>
-  </url>
-  <url>
     <loc>https://nis2klar.se/artiklar/nis2-vad-ar-nis2-direktivet.html</loc>
-    <lastmod>2026-04-20</lastmod>
+    <lastmod>2026-04-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="sv" href="https://nis2klar.se/artiklar/nis2-vad-ar-nis2-direktivet.html"/>
   </url>
   <url>
     <loc>https://nis2klar.se/artiklar/nis2-viktiga-tjanster-krav-sverige.html</loc>
-    <lastmod>2026-04-20</lastmod>
+    <lastmod>2026-04-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="sv" href="https://nis2klar.se/artiklar/nis2-viktiga-tjanster-krav-sverige.html"/>
   </url>
   <url>
     <loc>https://nis2klar.se/artiklar/nis2-vilka-foretag-omfattas.html</loc>
-    <lastmod>2026-04-20</lastmod>
+    <lastmod>2026-04-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="sv" href="https://nis2klar.se/artiklar/nis2-vilka-foretag-omfattas.html"/>
   </url>
   <url>
     <loc>https://nis2klar.se/artiklar/nis2-vs-gdpr-skillnaden.html</loc>
-    <lastmod>2026-04-20</lastmod>
+    <lastmod>2026-04-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="sv" href="https://nis2klar.se/artiklar/nis2-vs-gdpr-skillnaden.html"/>
   </url>
-  <url>
-    <loc>https://nis2klar.se/artiklar/rapid7-vs-microsoft-sarbarhetsbedomning.html</loc>
-    <lastmod>2026-04-20</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="sv" href="https://nis2klar.se/artiklar/rapid7-vs-microsoft-sarbarhetsbedomning.html"/>
-  </url>
-  <url>
-    <loc>https://nis2klar.se/artiklar/servicenow-vs-microsoft-compliance-grc.html</loc>
-    <lastmod>2026-04-20</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="sv" href="https://nis2klar.se/artiklar/servicenow-vs-microsoft-compliance-grc.html"/>
-  </url>
 
-  <!-- EN articles (31) -->
-  <url>
-    <loc>https://nis2klar.se/en/articles/microsoft-365-vs-google-workspace-security.html</loc>
-    <lastmod>2026-04-20</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://nis2klar.se/en/articles/microsoft-365-vs-google-workspace-security.html"/>
-  </url>
-  <url>
-    <loc>https://nis2klar.se/en/articles/microsoft-azure-vs-aws-cloud-security.html</loc>
-    <lastmod>2026-04-20</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://nis2klar.se/en/articles/microsoft-azure-vs-aws-cloud-security.html"/>
-  </url>
-  <url>
-    <loc>https://nis2klar.se/en/articles/microsoft-defender-vs-crowdstrike-endpoint.html</loc>
-    <lastmod>2026-04-20</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://nis2klar.se/en/articles/microsoft-defender-vs-crowdstrike-endpoint.html"/>
-  </url>
-  <url>
-    <loc>https://nis2klar.se/en/articles/microsoft-intune-vs-vmware-mdm.html</loc>
-    <lastmod>2026-04-20</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://nis2klar.se/en/articles/microsoft-intune-vs-vmware-mdm.html"/>
-  </url>
-  <url>
-    <loc>https://nis2klar.se/en/articles/microsoft-purview-vs-varonis-data-governance.html</loc>
-    <lastmod>2026-04-20</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://nis2klar.se/en/articles/microsoft-purview-vs-varonis-data-governance.html"/>
-  </url>
-  <url>
-    <loc>https://nis2klar.se/en/articles/microsoft-sentinel-vs-splunk-siem.html</loc>
-    <lastmod>2026-04-20</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://nis2klar.se/en/articles/microsoft-sentinel-vs-splunk-siem.html"/>
-  </url>
-  <url>
-    <loc>https://nis2klar.se/en/articles/microsoft-sharepoint-vs-box-document-security.html</loc>
-    <lastmod>2026-04-20</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://nis2klar.se/en/articles/microsoft-sharepoint-vs-box-document-security.html"/>
-  </url>
-  <url>
-    <loc>https://nis2klar.se/en/articles/microsoft-teams-vs-slack-security.html</loc>
-    <lastmod>2026-04-20</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://nis2klar.se/en/articles/microsoft-teams-vs-slack-security.html"/>
-  </url>
-  <url>
-    <loc>https://nis2klar.se/en/articles/nis2-audit-preparation.html</loc>
-    <lastmod>2026-04-20</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://nis2klar.se/en/articles/nis2-audit-preparation.html"/>
-  </url>
+  <!-- EN articles (12) -->
   <url>
     <loc>https://nis2klar.se/en/articles/nis2-compliance-checklist.html</loc>
-    <lastmod>2026-04-20</lastmod>
+    <lastmod>2026-04-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://nis2klar.se/en/articles/nis2-compliance-checklist.html"/>
   </url>
   <url>
     <loc>https://nis2klar.se/en/articles/nis2-cyber-strategy-best-practices.html</loc>
-    <lastmod>2026-04-20</lastmod>
+    <lastmod>2026-04-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://nis2klar.se/en/articles/nis2-cyber-strategy-best-practices.html"/>
   </url>
   <url>
-    <loc>https://nis2klar.se/en/articles/nis2-deadline-is-your-organisation-ready.html</loc>
-    <lastmod>2026-04-20</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://nis2klar.se/en/articles/nis2-deadline-is-your-organisation-ready.html"/>
-  </url>
-  <url>
-    <loc>https://nis2klar.se/en/articles/nis2-essential-services-requirements.html</loc>
-    <lastmod>2026-04-20</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://nis2klar.se/en/articles/nis2-essential-services-requirements.html"/>
-  </url>
-  <url>
-    <loc>https://nis2klar.se/en/articles/nis2-essential-vs-important-entities.html</loc>
-    <lastmod>2026-04-20</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://nis2klar.se/en/articles/nis2-essential-vs-important-entities.html"/>
-  </url>
-  <url>
     <loc>https://nis2klar.se/en/articles/nis2-fine-consequences.html</loc>
-    <lastmod>2026-04-20</lastmod>
+    <lastmod>2026-04-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://nis2klar.se/en/articles/nis2-fine-consequences.html"/>
   </url>
   <url>
     <loc>https://nis2klar.se/en/articles/nis2-fines-sanctions.html</loc>
-    <lastmod>2026-04-20</lastmod>
+    <lastmod>2026-04-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://nis2klar.se/en/articles/nis2-fines-sanctions.html"/>
   </url>
   <url>
-    <loc>https://nis2klar.se/en/articles/nis2-implementation-timeline.html</loc>
-    <lastmod>2026-04-20</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://nis2klar.se/en/articles/nis2-implementation-timeline.html"/>
-  </url>
-  <url>
     <loc>https://nis2klar.se/en/articles/nis2-incident-reporting-24-hours.html</loc>
-    <lastmod>2026-04-20</lastmod>
+    <lastmod>2026-04-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://nis2klar.se/en/articles/nis2-incident-reporting-24-hours.html"/>
   </url>
   <url>
     <loc>https://nis2klar.se/en/articles/nis2-incident-reporting-72-hours.html</loc>
-    <lastmod>2026-04-20</lastmod>
+    <lastmod>2026-04-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://nis2klar.se/en/articles/nis2-incident-reporting-72-hours.html"/>
   </url>
   <url>
-    <loc>https://nis2klar.se/en/articles/nis2-mandatory-security-measures.html</loc>
-    <lastmod>2026-04-20</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://nis2klar.se/en/articles/nis2-mandatory-security-measures.html"/>
-  </url>
-  <url>
     <loc>https://nis2klar.se/en/articles/nis2-personal-liability-board.html</loc>
-    <lastmod>2026-04-20</lastmod>
+    <lastmod>2026-04-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://nis2klar.se/en/articles/nis2-personal-liability-board.html"/>
   </url>
   <url>
     <loc>https://nis2klar.se/en/articles/nis2-risk-analysis-board-approval.html</loc>
-    <lastmod>2026-04-20</lastmod>
+    <lastmod>2026-04-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://nis2klar.se/en/articles/nis2-risk-analysis-board-approval.html"/>
   </url>
   <url>
-    <loc>https://nis2klar.se/en/articles/nis2-risk-management-framework.html</loc>
-    <lastmod>2026-04-20</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://nis2klar.se/en/articles/nis2-risk-management-framework.html"/>
-  </url>
-  <url>
-    <loc>https://nis2klar.se/en/articles/nis2-supervision-ncsc-ireland.html</loc>
-    <lastmod>2026-04-20</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://nis2klar.se/en/articles/nis2-supervision-ncsc-ireland.html"/>
-  </url>
-  <url>
     <loc>https://nis2klar.se/en/articles/nis2-supply-chain-risk.html</loc>
-    <lastmod>2026-04-20</lastmod>
+    <lastmod>2026-04-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://nis2klar.se/en/articles/nis2-supply-chain-risk.html"/>
   </url>
   <url>
     <loc>https://nis2klar.se/en/articles/nis2-technical-security-measures.html</loc>
-    <lastmod>2026-04-20</lastmod>
+    <lastmod>2026-04-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://nis2klar.se/en/articles/nis2-technical-security-measures.html"/>
   </url>
   <url>
-    <loc>https://nis2klar.se/en/articles/nis2-threat-intelligence-standards.html</loc>
-    <lastmod>2026-04-20</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://nis2klar.se/en/articles/nis2-threat-intelligence-standards.html"/>
-  </url>
-  <url>
-    <loc>https://nis2klar.se/en/articles/nis2-vendor-security-requirements.html</loc>
-    <lastmod>2026-04-20</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://nis2klar.se/en/articles/nis2-vendor-security-requirements.html"/>
-  </url>
-  <url>
-    <loc>https://nis2klar.se/en/articles/nis2-vs-gdpr-differences.html</loc>
-    <lastmod>2026-04-20</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://nis2klar.se/en/articles/nis2-vs-gdpr-differences.html"/>
-  </url>
-  <url>
     <loc>https://nis2klar.se/en/articles/what-is-nis2-directive.html</loc>
-    <lastmod>2026-04-20</lastmod>
+    <lastmod>2026-04-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://nis2klar.se/en/articles/what-is-nis2-directive.html"/>
   </url>
   <url>
     <loc>https://nis2klar.se/en/articles/which-companies-must-comply-nis2.html</loc>
-    <lastmod>2026-04-20</lastmod>
+    <lastmod>2026-04-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://nis2klar.se/en/articles/which-companies-must-comply-nis2.html"/>
-  </url>
-
-  <!-- DA articles (30) -->
-  <url>
-    <loc>https://nis2klar.se/da/artikler/hvad-er-nis2-direktivet.html</loc>
-    <lastmod>2026-04-20</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="da" href="https://nis2klar.se/da/artikler/hvad-er-nis2-direktivet.html"/>
-  </url>
-  <url>
-    <loc>https://nis2klar.se/da/artikler/hvilke-virksomheder-er-omfattet-nis2.html</loc>
-    <lastmod>2026-04-20</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="da" href="https://nis2klar.se/da/artikler/hvilke-virksomheder-er-omfattet-nis2.html"/>
-  </url>
-  <url>
-    <loc>https://nis2klar.se/da/artikler/microsoft-365-vs-google-workspace-sikkerhed.html</loc>
-    <lastmod>2026-04-20</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="da" href="https://nis2klar.se/da/artikler/microsoft-365-vs-google-workspace-sikkerhed.html"/>
-  </url>
-  <url>
-    <loc>https://nis2klar.se/da/artikler/microsoft-azure-vs-aws-cloud-sikkerhed.html</loc>
-    <lastmod>2026-04-20</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="da" href="https://nis2klar.se/da/artikler/microsoft-azure-vs-aws-cloud-sikkerhed.html"/>
-  </url>
-  <url>
-    <loc>https://nis2klar.se/da/artikler/microsoft-defender-vs-crowdstrike-endpoint.html</loc>
-    <lastmod>2026-04-20</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="da" href="https://nis2klar.se/da/artikler/microsoft-defender-vs-crowdstrike-endpoint.html"/>
-  </url>
-  <url>
-    <loc>https://nis2klar.se/da/artikler/microsoft-intune-vs-vmware-mdm.html</loc>
-    <lastmod>2026-04-20</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="da" href="https://nis2klar.se/da/artikler/microsoft-intune-vs-vmware-mdm.html"/>
-  </url>
-  <url>
-    <loc>https://nis2klar.se/da/artikler/microsoft-purview-vs-varonis-datastyring.html</loc>
-    <lastmod>2026-04-20</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="da" href="https://nis2klar.se/da/artikler/microsoft-purview-vs-varonis-datastyring.html"/>
-  </url>
-  <url>
-    <loc>https://nis2klar.se/da/artikler/microsoft-sentinel-vs-splunk-siem.html</loc>
-    <lastmod>2026-04-20</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="da" href="https://nis2klar.se/da/artikler/microsoft-sentinel-vs-splunk-siem.html"/>
-  </url>
-  <url>
-    <loc>https://nis2klar.se/da/artikler/microsoft-sharepoint-vs-box-dokumentsikkerhed.html</loc>
-    <lastmod>2026-04-20</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="da" href="https://nis2klar.se/da/artikler/microsoft-sharepoint-vs-box-dokumentsikkerhed.html"/>
-  </url>
-  <url>
-    <loc>https://nis2klar.se/da/artikler/nis2-boede-konsekvenser.html</loc>
-    <lastmod>2026-04-20</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="da" href="https://nis2klar.se/da/artikler/nis2-boede-konsekvenser.html"/>
-  </url>
-  <url>
-    <loc>https://nis2klar.se/da/artikler/nis2-boeder-sanktioner.html</loc>
-    <lastmod>2026-04-20</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="da" href="https://nis2klar.se/da/artikler/nis2-boeder-sanktioner.html"/>
-  </url>
-  <url>
-    <loc>https://nis2klar.se/da/artikler/nis2-compliance-tjekliste.html</loc>
-    <lastmod>2026-04-20</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="da" href="https://nis2klar.se/da/artikler/nis2-compliance-tjekliste.html"/>
-  </url>
-  <url>
-    <loc>https://nis2klar.se/da/artikler/nis2-cyberstrategi-bedste-praksis.html</loc>
-    <lastmod>2026-04-20</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="da" href="https://nis2klar.se/da/artikler/nis2-cyberstrategi-bedste-praksis.html"/>
-  </url>
-  <url>
-    <loc>https://nis2klar.se/da/artikler/nis2-deadline-er-din-virksomhed-klar.html</loc>
-    <lastmod>2026-04-20</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="da" href="https://nis2klar.se/da/artikler/nis2-deadline-er-din-virksomhed-klar.html"/>
-  </url>
-  <url>
-    <loc>https://nis2klar.se/da/artikler/nis2-forsyningskaede-risiko.html</loc>
-    <lastmod>2026-04-20</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="da" href="https://nis2klar.se/da/artikler/nis2-forsyningskaede-risiko.html"/>
-  </url>
-  <url>
-    <loc>https://nis2klar.se/da/artikler/nis2-haendelsesrapportering-24-timer.html</loc>
-    <lastmod>2026-04-20</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="da" href="https://nis2klar.se/da/artikler/nis2-haendelsesrapportering-24-timer.html"/>
-  </url>
-  <url>
-    <loc>https://nis2klar.se/da/artikler/nis2-haendelsesrapportering-72-timer.html</loc>
-    <lastmod>2026-04-20</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="da" href="https://nis2klar.se/da/artikler/nis2-haendelsesrapportering-72-timer.html"/>
-  </url>
-  <url>
-    <loc>https://nis2klar.se/da/artikler/nis2-implementeringstidslinje.html</loc>
-    <lastmod>2026-04-20</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="da" href="https://nis2klar.se/da/artikler/nis2-implementeringstidslinje.html"/>
-  </url>
-  <url>
-    <loc>https://nis2klar.se/da/artikler/nis2-leverandoersikkerhed-krav.html</loc>
-    <lastmod>2026-04-20</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="da" href="https://nis2klar.se/da/artikler/nis2-leverandoersikkerhed-krav.html"/>
-  </url>
-  <url>
-    <loc>https://nis2klar.se/da/artikler/nis2-obligatoriske-sikkerhedsforanstaltninger.html</loc>
-    <lastmod>2026-04-20</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="da" href="https://nis2klar.se/da/artikler/nis2-obligatoriske-sikkerhedsforanstaltninger.html"/>
-  </url>
-  <url>
-    <loc>https://nis2klar.se/da/artikler/nis2-personligt-ansvar-bestyrelse.html</loc>
-    <lastmod>2026-04-20</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="da" href="https://nis2klar.se/da/artikler/nis2-personligt-ansvar-bestyrelse.html"/>
-  </url>
-  <url>
-    <loc>https://nis2klar.se/da/artikler/nis2-revisionsforberedelse.html</loc>
-    <lastmod>2026-04-20</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="da" href="https://nis2klar.se/da/artikler/nis2-revisionsforberedelse.html"/>
-  </url>
-  <url>
-    <loc>https://nis2klar.se/da/artikler/nis2-risikoanalyse-bestyrelsen-skal-godkende.html</loc>
-    <lastmod>2026-04-20</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="da" href="https://nis2klar.se/da/artikler/nis2-risikoanalyse-bestyrelsen-skal-godkende.html"/>
-  </url>
-  <url>
-    <loc>https://nis2klar.se/da/artikler/nis2-risikostyring-rammevaerk.html</loc>
-    <lastmod>2026-04-20</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="da" href="https://nis2klar.se/da/artikler/nis2-risikostyring-rammevaerk.html"/>
-  </url>
-  <url>
-    <loc>https://nis2klar.se/da/artikler/nis2-tekniske-sikkerhedsforanstaltninger.html</loc>
-    <lastmod>2026-04-20</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="da" href="https://nis2klar.se/da/artikler/nis2-tekniske-sikkerhedsforanstaltninger.html"/>
-  </url>
-  <url>
-    <loc>https://nis2klar.se/da/artikler/nis2-tilsyn-cfcs-danmark.html</loc>
-    <lastmod>2026-04-20</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="da" href="https://nis2klar.se/da/artikler/nis2-tilsyn-cfcs-danmark.html"/>
-  </url>
-  <url>
-    <loc>https://nis2klar.se/da/artikler/nis2-trusselsefterretning-standarder.html</loc>
-    <lastmod>2026-04-20</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="da" href="https://nis2klar.se/da/artikler/nis2-trusselsefterretning-standarder.html"/>
-  </url>
-  <url>
-    <loc>https://nis2klar.se/da/artikler/nis2-vaesntlige-vs-vigtige-enheder.html</loc>
-    <lastmod>2026-04-20</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="da" href="https://nis2klar.se/da/artikler/nis2-vaesntlige-vs-vigtige-enheder.html"/>
-  </url>
-  <url>
-    <loc>https://nis2klar.se/da/artikler/nis2-vigtige-tjenester-krav.html</loc>
-    <lastmod>2026-04-20</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="da" href="https://nis2klar.se/da/artikler/nis2-vigtige-tjenester-krav.html"/>
-  </url>
-  <url>
-    <loc>https://nis2klar.se/da/artikler/nis2-vs-gdpr-forskellene.html</loc>
-    <lastmod>2026-04-20</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="da" href="https://nis2klar.se/da/artikler/nis2-vs-gdpr-forskellene.html"/>
-  </url>
-
-  <!-- NO articles (29) -->
-  <url>
-    <loc>https://nis2klar.se/no/artikler/hva-er-nis2-direktivet.html</loc>
-    <lastmod>2026-04-20</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="no" href="https://nis2klar.se/no/artikler/hva-er-nis2-direktivet.html"/>
-  </url>
-  <url>
-    <loc>https://nis2klar.se/no/artikler/hvilke-virksomheter-omfattes-nis2.html</loc>
-    <lastmod>2026-04-20</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="no" href="https://nis2klar.se/no/artikler/hvilke-virksomheter-omfattes-nis2.html"/>
-  </url>
-  <url>
-    <loc>https://nis2klar.se/no/artikler/microsoft-365-vs-google-workspace-sikkerhet.html</loc>
-    <lastmod>2026-04-20</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="no" href="https://nis2klar.se/no/artikler/microsoft-365-vs-google-workspace-sikkerhet.html"/>
-  </url>
-  <url>
-    <loc>https://nis2klar.se/no/artikler/microsoft-azure-vs-aws-cloud-sikkerhet.html</loc>
-    <lastmod>2026-04-20</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="no" href="https://nis2klar.se/no/artikler/microsoft-azure-vs-aws-cloud-sikkerhet.html"/>
-  </url>
-  <url>
-    <loc>https://nis2klar.se/no/artikler/microsoft-defender-vs-crowdstrike-endpoint.html</loc>
-    <lastmod>2026-04-20</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="no" href="https://nis2klar.se/no/artikler/microsoft-defender-vs-crowdstrike-endpoint.html"/>
-  </url>
-  <url>
-    <loc>https://nis2klar.se/no/artikler/microsoft-intune-vs-vmware-mdm.html</loc>
-    <lastmod>2026-04-20</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="no" href="https://nis2klar.se/no/artikler/microsoft-intune-vs-vmware-mdm.html"/>
-  </url>
-  <url>
-    <loc>https://nis2klar.se/no/artikler/microsoft-purview-vs-varonis-datastyring.html</loc>
-    <lastmod>2026-04-20</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="no" href="https://nis2klar.se/no/artikler/microsoft-purview-vs-varonis-datastyring.html"/>
-  </url>
-  <url>
-    <loc>https://nis2klar.se/no/artikler/microsoft-sentinel-vs-splunk-siem.html</loc>
-    <lastmod>2026-04-20</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="no" href="https://nis2klar.se/no/artikler/microsoft-sentinel-vs-splunk-siem.html"/>
-  </url>
-  <url>
-    <loc>https://nis2klar.se/no/artikler/nis2-boetekonsekvenser.html</loc>
-    <lastmod>2026-04-20</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="no" href="https://nis2klar.se/no/artikler/nis2-boetekonsekvenser.html"/>
-  </url>
-  <url>
-    <loc>https://nis2klar.se/no/artikler/nis2-boeter-sanksjoner.html</loc>
-    <lastmod>2026-04-20</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="no" href="https://nis2klar.se/no/artikler/nis2-boeter-sanksjoner.html"/>
-  </url>
-  <url>
-    <loc>https://nis2klar.se/no/artikler/nis2-compliance-sjekkliste.html</loc>
-    <lastmod>2026-04-20</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="no" href="https://nis2klar.se/no/artikler/nis2-compliance-sjekkliste.html"/>
-  </url>
-  <url>
-    <loc>https://nis2klar.se/no/artikler/nis2-cyberstrategi-beste-praksis.html</loc>
-    <lastmod>2026-04-20</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="no" href="https://nis2klar.se/no/artikler/nis2-cyberstrategi-beste-praksis.html"/>
-  </url>
-  <url>
-    <loc>https://nis2klar.se/no/artikler/nis2-forsyningskjede-risiko.html</loc>
-    <lastmod>2026-04-20</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="no" href="https://nis2klar.se/no/artikler/nis2-forsyningskjede-risiko.html"/>
-  </url>
-  <url>
-    <loc>https://nis2klar.se/no/artikler/nis2-frist-er-organisasjonen-din-klar.html</loc>
-    <lastmod>2026-04-20</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="no" href="https://nis2klar.se/no/artikler/nis2-frist-er-organisasjonen-din-klar.html"/>
-  </url>
-  <url>
-    <loc>https://nis2klar.se/no/artikler/nis2-hendelsesrapportering-24-timer.html</loc>
-    <lastmod>2026-04-20</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="no" href="https://nis2klar.se/no/artikler/nis2-hendelsesrapportering-24-timer.html"/>
-  </url>
-  <url>
-    <loc>https://nis2klar.se/no/artikler/nis2-hendelsesrapportering-72-timer.html</loc>
-    <lastmod>2026-04-20</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="no" href="https://nis2klar.se/no/artikler/nis2-hendelsesrapportering-72-timer.html"/>
-  </url>
-  <url>
-    <loc>https://nis2klar.se/no/artikler/nis2-implementeringstidslinje.html</loc>
-    <lastmod>2026-04-20</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="no" href="https://nis2klar.se/no/artikler/nis2-implementeringstidslinje.html"/>
-  </url>
-  <url>
-    <loc>https://nis2klar.se/no/artikler/nis2-leverandoersikkerhet-krav.html</loc>
-    <lastmod>2026-04-20</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="no" href="https://nis2klar.se/no/artikler/nis2-leverandoersikkerhet-krav.html"/>
-  </url>
-  <url>
-    <loc>https://nis2klar.se/no/artikler/nis2-obligatoriske-sikkerhetstiltak.html</loc>
-    <lastmod>2026-04-20</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="no" href="https://nis2klar.se/no/artikler/nis2-obligatoriske-sikkerhetstiltak.html"/>
-  </url>
-  <url>
-    <loc>https://nis2klar.se/no/artikler/nis2-personlig-ansvar-styre.html</loc>
-    <lastmod>2026-04-20</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="no" href="https://nis2klar.se/no/artikler/nis2-personlig-ansvar-styre.html"/>
-  </url>
-  <url>
-    <loc>https://nis2klar.se/no/artikler/nis2-revisjonsforberedelse.html</loc>
-    <lastmod>2026-04-20</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="no" href="https://nis2klar.se/no/artikler/nis2-revisjonsforberedelse.html"/>
-  </url>
-  <url>
-    <loc>https://nis2klar.se/no/artikler/nis2-risikoanalyse-styret-maa-godkjenne.html</loc>
-    <lastmod>2026-04-20</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="no" href="https://nis2klar.se/no/artikler/nis2-risikoanalyse-styret-maa-godkjenne.html"/>
-  </url>
-  <url>
-    <loc>https://nis2klar.se/no/artikler/nis2-risikostyring-rammeverk.html</loc>
-    <lastmod>2026-04-20</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="no" href="https://nis2klar.se/no/artikler/nis2-risikostyring-rammeverk.html"/>
-  </url>
-  <url>
-    <loc>https://nis2klar.se/no/artikler/nis2-tekniske-sikkerhetstiltak.html</loc>
-    <lastmod>2026-04-20</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="no" href="https://nis2klar.se/no/artikler/nis2-tekniske-sikkerhetstiltak.html"/>
-  </url>
-  <url>
-    <loc>https://nis2klar.se/no/artikler/nis2-tilsyn-nsm-norge.html</loc>
-    <lastmod>2026-04-20</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="no" href="https://nis2klar.se/no/artikler/nis2-tilsyn-nsm-norge.html"/>
-  </url>
-  <url>
-    <loc>https://nis2klar.se/no/artikler/nis2-trusseletterretning-standarder.html</loc>
-    <lastmod>2026-04-20</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="no" href="https://nis2klar.se/no/artikler/nis2-trusseletterretning-standarder.html"/>
-  </url>
-  <url>
-    <loc>https://nis2klar.se/no/artikler/nis2-vesentlige-vs-viktige-enheter.html</loc>
-    <lastmod>2026-04-20</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="no" href="https://nis2klar.se/no/artikler/nis2-vesentlige-vs-viktige-enheter.html"/>
-  </url>
-  <url>
-    <loc>https://nis2klar.se/no/artikler/nis2-viktige-tjenester-krav.html</loc>
-    <lastmod>2026-04-20</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="no" href="https://nis2klar.se/no/artikler/nis2-viktige-tjenester-krav.html"/>
-  </url>
-  <url>
-    <loc>https://nis2klar.se/no/artikler/nis2-vs-gdpr-forskjellene.html</loc>
-    <lastmod>2026-04-20</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="no" href="https://nis2klar.se/no/artikler/nis2-vs-gdpr-forskjellene.html"/>
-  </url>
-
-  <!-- IT articles (31) -->
-  <url>
-    <loc>https://nis2klar.se/it/articoli/cos-e-la-direttiva-nis2.html</loc>
-    <lastmod>2026-04-20</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="it" href="https://nis2klar.se/it/articoli/cos-e-la-direttiva-nis2.html"/>
-  </url>
-  <url>
-    <loc>https://nis2klar.se/it/articoli/microsoft-365-vs-google-workspace-sicurezza.html</loc>
-    <lastmod>2026-04-20</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="it" href="https://nis2klar.se/it/articoli/microsoft-365-vs-google-workspace-sicurezza.html"/>
-  </url>
-  <url>
-    <loc>https://nis2klar.se/it/articoli/microsoft-azure-vs-aws-cloud-sicurezza.html</loc>
-    <lastmod>2026-04-20</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="it" href="https://nis2klar.se/it/articoli/microsoft-azure-vs-aws-cloud-sicurezza.html"/>
-  </url>
-  <url>
-    <loc>https://nis2klar.se/it/articoli/microsoft-defender-vs-crowdstrike-endpoint.html</loc>
-    <lastmod>2026-04-20</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="it" href="https://nis2klar.se/it/articoli/microsoft-defender-vs-crowdstrike-endpoint.html"/>
-  </url>
-  <url>
-    <loc>https://nis2klar.se/it/articoli/microsoft-intune-vs-vmware-mdm.html</loc>
-    <lastmod>2026-04-20</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="it" href="https://nis2klar.se/it/articoli/microsoft-intune-vs-vmware-mdm.html"/>
-  </url>
-  <url>
-    <loc>https://nis2klar.se/it/articoli/microsoft-purview-vs-varonis-data-governance.html</loc>
-    <lastmod>2026-04-20</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="it" href="https://nis2klar.se/it/articoli/microsoft-purview-vs-varonis-data-governance.html"/>
-  </url>
-  <url>
-    <loc>https://nis2klar.se/it/articoli/microsoft-sentinel-vs-splunk-siem.html</loc>
-    <lastmod>2026-04-20</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="it" href="https://nis2klar.se/it/articoli/microsoft-sentinel-vs-splunk-siem.html"/>
-  </url>
-  <url>
-    <loc>https://nis2klar.se/it/articoli/microsoft-sharepoint-vs-box-sicurezza-documenti.html</loc>
-    <lastmod>2026-04-20</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="it" href="https://nis2klar.se/it/articoli/microsoft-sharepoint-vs-box-sicurezza-documenti.html"/>
-  </url>
-  <url>
-    <loc>https://nis2klar.se/it/articoli/microsoft-teams-vs-slack-sicurezza.html</loc>
-    <lastmod>2026-04-20</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="it" href="https://nis2klar.se/it/articoli/microsoft-teams-vs-slack-sicurezza.html"/>
-  </url>
-  <url>
-    <loc>https://nis2klar.se/it/articoli/nis2-analisi-rischio-approvazione-cda.html</loc>
-    <lastmod>2026-04-20</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="it" href="https://nis2klar.se/it/articoli/nis2-analisi-rischio-approvazione-cda.html"/>
-  </url>
-  <url>
-    <loc>https://nis2klar.se/it/articoli/nis2-checklist-conformita.html</loc>
-    <lastmod>2026-04-20</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="it" href="https://nis2klar.se/it/articoli/nis2-checklist-conformita.html"/>
-  </url>
-  <url>
-    <loc>https://nis2klar.se/it/articoli/nis2-conseguenze-sanzioni.html</loc>
-    <lastmod>2026-04-20</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="it" href="https://nis2klar.se/it/articoli/nis2-conseguenze-sanzioni.html"/>
-  </url>
-  <url>
-    <loc>https://nis2klar.se/it/articoli/nis2-framework-gestione-rischio.html</loc>
-    <lastmod>2026-04-20</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="it" href="https://nis2klar.se/it/articoli/nis2-framework-gestione-rischio.html"/>
-  </url>
-  <url>
-    <loc>https://nis2klar.se/it/articoli/nis2-misure-sicurezza-obbligatorie.html</loc>
-    <lastmod>2026-04-20</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="it" href="https://nis2klar.se/it/articoli/nis2-misure-sicurezza-obbligatorie.html"/>
-  </url>
-  <url>
-    <loc>https://nis2klar.se/it/articoli/nis2-misure-sicurezza-tecniche.html</loc>
-    <lastmod>2026-04-20</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="it" href="https://nis2klar.se/it/articoli/nis2-misure-sicurezza-tecniche.html"/>
-  </url>
-  <url>
-    <loc>https://nis2klar.se/it/articoli/nis2-notifica-incidente-24-ore.html</loc>
-    <lastmod>2026-04-20</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="it" href="https://nis2klar.se/it/articoli/nis2-notifica-incidente-24-ore.html"/>
-  </url>
-  <url>
-    <loc>https://nis2klar.se/it/articoli/nis2-notifica-incidente-72-ore.html</loc>
-    <lastmod>2026-04-20</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="it" href="https://nis2klar.se/it/articoli/nis2-notifica-incidente-72-ore.html"/>
-  </url>
-  <url>
-    <loc>https://nis2klar.se/it/articoli/nis2-piano-implementazione.html</loc>
-    <lastmod>2026-04-20</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="it" href="https://nis2klar.se/it/articoli/nis2-piano-implementazione.html"/>
-  </url>
-  <url>
-    <loc>https://nis2klar.se/it/articoli/nis2-preparazione-audit.html</loc>
-    <lastmod>2026-04-20</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="it" href="https://nis2klar.se/it/articoli/nis2-preparazione-audit.html"/>
-  </url>
-  <url>
-    <loc>https://nis2klar.se/it/articoli/nis2-requisiti-servizi-essenziali.html</loc>
-    <lastmod>2026-04-20</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="it" href="https://nis2klar.se/it/articoli/nis2-requisiti-servizi-essenziali.html"/>
-  </url>
-  <url>
-    <loc>https://nis2klar.se/it/articoli/nis2-requisiti-sicurezza-fornitori.html</loc>
-    <lastmod>2026-04-20</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="it" href="https://nis2klar.se/it/articoli/nis2-requisiti-sicurezza-fornitori.html"/>
-  </url>
-  <url>
-    <loc>https://nis2klar.se/it/articoli/nis2-responsabilita-personale-cda.html</loc>
-    <lastmod>2026-04-20</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="it" href="https://nis2klar.se/it/articoli/nis2-responsabilita-personale-cda.html"/>
-  </url>
-  <url>
-    <loc>https://nis2klar.se/it/articoli/nis2-rischio-catena-fornitura.html</loc>
-    <lastmod>2026-04-20</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="it" href="https://nis2klar.se/it/articoli/nis2-rischio-catena-fornitura.html"/>
-  </url>
-  <url>
-    <loc>https://nis2klar.se/it/articoli/nis2-sanzioni-multe.html</loc>
-    <lastmod>2026-04-20</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="it" href="https://nis2klar.se/it/articoli/nis2-sanzioni-multe.html"/>
-  </url>
-  <url>
-    <loc>https://nis2klar.se/it/articoli/nis2-scadenza-organizzazione-pronta.html</loc>
-    <lastmod>2026-04-20</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="it" href="https://nis2klar.se/it/articoli/nis2-scadenza-organizzazione-pronta.html"/>
-  </url>
-  <url>
-    <loc>https://nis2klar.se/it/articoli/nis2-soggetti-essenziali-vs-importanti.html</loc>
-    <lastmod>2026-04-20</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="it" href="https://nis2klar.se/it/articoli/nis2-soggetti-essenziali-vs-importanti.html"/>
-  </url>
-  <url>
-    <loc>https://nis2klar.se/it/articoli/nis2-strategia-cyber-migliori-pratiche.html</loc>
-    <lastmod>2026-04-20</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="it" href="https://nis2klar.se/it/articoli/nis2-strategia-cyber-migliori-pratiche.html"/>
-  </url>
-  <url>
-    <loc>https://nis2klar.se/it/articoli/nis2-supervisione-acn-italia.html</loc>
-    <lastmod>2026-04-20</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="it" href="https://nis2klar.se/it/articoli/nis2-supervisione-acn-italia.html"/>
-  </url>
-  <url>
-    <loc>https://nis2klar.se/it/articoli/nis2-threat-intelligence-standard.html</loc>
-    <lastmod>2026-04-20</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="it" href="https://nis2klar.se/it/articoli/nis2-threat-intelligence-standard.html"/>
-  </url>
-  <url>
-    <loc>https://nis2klar.se/it/articoli/nis2-vs-gdpr-differenze.html</loc>
-    <lastmod>2026-04-20</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="it" href="https://nis2klar.se/it/articoli/nis2-vs-gdpr-differenze.html"/>
-  </url>
-  <url>
-    <loc>https://nis2klar.se/it/articoli/quali-aziende-devono-conformarsi-nis2.html</loc>
-    <lastmod>2026-04-20</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="it" href="https://nis2klar.se/it/articoli/quali-aziende-devono-conformarsi-nis2.html"/>
   </url>
 
 </urlset>
