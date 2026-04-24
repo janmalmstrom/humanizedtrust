@@ -129,9 +129,10 @@ router.post('/', async (req, res) => {
         `UPDATE discovery_leads
          SET review_status = CASE WHEN review_status IN ('new','cold') THEN 'qualified' ELSE review_status END,
              phone = COALESCE($2, phone),
+             source = $3,
              updated_at = NOW()
          WHERE id = $1`,
-        [leadId, cleanPhone]
+        [leadId, cleanPhone, cleanSource]
       );
     } else {
       // Create new lead from inbound capture
