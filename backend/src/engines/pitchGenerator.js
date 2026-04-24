@@ -148,15 +148,15 @@ function daysSince(dateStr) {
 }
 
 function parseGenerated(text) {
-  // Extract subject — prefer the ★ marked one
-  const subjectLine = text.match(/^Ämne:\s*(.+)/m)?.[1] || '';
+  // Match "Ämne:" with optional markdown bold markers e.g. "**Ämne:**"
+  const subjectLine = text.match(/^\*{0,2}Ämne:\*{0,2}\s*(.+)/m)?.[1] || '';
   let subject = subjectLine;
   const starMatch = subjectLine.match(/([^|★]+)★/);
   const afterStar = subjectLine.match(/★([^|]+)/);
   if (starMatch) subject = starMatch[1].trim().replace(/[★|]/g, '').trim();
   else if (afterStar) subject = afterStar[1].trim();
 
-  const body = text.replace(/^Ämne:\s*.+\n\n?/m, '').trim();
+  const body = text.replace(/^\*{0,2}Ämne:\*{0,2}\s*.+\n\n?/m, '').trim();
   return { subject, body, full: text };
 }
 
