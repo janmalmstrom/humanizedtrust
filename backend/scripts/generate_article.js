@@ -739,6 +739,16 @@ VIKTIGT: Returnera ENBART giltig HTML från <!DOCTYPE html> till </html>. Inget 
     throw new Error('Response does not look like HTML: ' + html.slice(0, 100));
   }
 
+  // Remove duplicate cta-section blocks (keep only the first)
+  const ctaMarker = '<div class="cta-section">';
+  const firstIdx = html.indexOf(ctaMarker);
+  const secondIdx = html.indexOf(ctaMarker, firstIdx + 1);
+  if (firstIdx !== -1 && secondIdx !== -1) {
+    const endIdx = html.indexOf('</div>', secondIdx) + '</div>'.length;
+    html = html.slice(0, secondIdx) + html.slice(endIdx);
+    console.log(`[article] Removed duplicate cta-section`);
+  }
+
   const outPath = path.join(ARTICLES_DIR, `${topic.slug}.html`);
   fs.writeFileSync(outPath, html, 'utf-8');
   console.log(`[article] Saved: ${outPath}`);
