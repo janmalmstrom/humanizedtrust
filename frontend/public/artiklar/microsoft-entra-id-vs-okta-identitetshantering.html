@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-BKF3QH9K01"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag("js", new Date());
+    gtag("config", "G-BKF3QH9K01");
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Microsoft Entra ID vs Okta: Identitetshantering för NIS2-åtkomstkontroll | NIS2Klar</title>
+  <meta name="description" content="Jämför Microsoft Entra ID och Okta för NIS2-krav på åtkomstkontroll, MFA, SSO och conditional access. Vägledning för svenska organisationer med befintlig Microsoft-miljö.">
+  <meta property="og:title" content="Microsoft Entra ID vs Okta: Identitetshantering för NIS2-åtkomstkontroll">
+  <meta property="og:description" content="Jämför Microsoft Entra ID och Okta för NIS2-krav på åtkomstkontroll, MFA, SSO och conditional access. Vägledning för svenska organisationer med befintlig Microsoft-miljö.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #141416;
+      --card: #1c1c1f;
+      --yellow: #f5c518;
+      --white: #f0f0f0;
+      --muted: #888;
+      --red: #C61212;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: var(--bg); color: var(--white); font-family: 'Barlow', sans-serif; font-size: 19px; line-height: 1.8; }
+
+    /* Nav */
+    nav { display: flex; justify-content: space-between; align-items: center; padding: 20px 40px; border-bottom: 1px solid rgba(255,255,255,0.07); max-width: 900px; margin: 0 auto; }
+    .nav-logo { font-family: 'Poppins', sans-serif; font-weight: 900; font-size: 20px; color: var(--yellow); text-decoration: none; }
+    .nav-logo span { color: var(--white); }
+    .nav-back { color: var(--muted); text-decoration: none; font-size: 15px; }
+    .nav-back:hover { color: var(--white); }
+    .nav-cta { background: var(--yellow); color: #000; padding: 8px 18px; border-radius: 4px; text-decoration: none; font-weight: 700; font-size: 14px; font-family: 'Poppins', sans-serif; }
+
+    /* Article */
+    .article-wrap { max-width: 760px; margin: 0 auto; padding: 60px 40px; }
+    .article-category { font-size: 13px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 16px; }
+    h1 { font-family: 'Poppins', sans-serif; font-size: clamp(30px, 4vw, 44px); font-weight: 900; line-height: 1.2; margin-bottom: 24px; }
+    .article-meta { font-size: 15px; color: var(--muted); margin-bottom: 48px; padding-bottom: 24px; border-bottom: 1px solid rgba(255,255,255,0.07); }
+    h2 { font-family: 'Poppins', sans-serif; font-size: 26px; font-weight: 700; margin: 48px 0 16px; color: var(--white); }
+    h3 { font-family: 'Poppins', sans-serif; font-size: 20px; font-weight: 600; margin: 32px 0 12px; color: var(--yellow); }
+    p { margin-bottom: 22px; }
+    strong { color: var(--white); font-weight: 700; }
+    .highlight { color: var(--yellow); font-weight: 700; }
+    .danger { color: #ff6b6b; font-weight: 700; }
+    ul, ol { margin: 16px 0 24px 24px; }
+    li { margin-bottom: 12px; font-size: 19px; }
+
+    /* Callout boxes */
+    .box-warning { background: rgba(197,17,17,0.12); border-left: 4px solid var(--red); padding: 20px 24px; margin: 32px 0; border-radius: 0 4px 4px 0; }
+    .box-info { background: rgba(245,197,24,0.08); border-left: 4px solid var(--yellow); padding: 20px 24px; margin: 32px 0; border-radius: 0 4px 4px 0; }
+    .box-case { background: var(--card); border: 1px solid rgba(255,255,255,0.08); padding: 28px; margin: 40px 0; border-radius: 4px; }
+    .box-case .case-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 12px; }
+    blockquote { border-left: 3px solid var(--yellow); padding: 12px 20px; margin: 24px 0; font-style: italic; color: #ccc; }
+
+    /* Comparison table */
+    .comparison-table { width: 100%; border-collapse: collapse; margin: 24px 0; font-size: 15px; }
+    .comparison-table th { background: rgba(245,197,24,0.1); color: var(--yellow); font-family: 'Poppins', sans-serif; font-size: 13px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 12px 16px; text-align: left; border-bottom: 1px solid rgba(245,197,24,0.2); }
+    .comparison-table td { padding: 14px 16px; border-bottom: 1px solid rgba(255,255,255,0.05); }
+    .comparison-table tr:last-child td { border-bottom: none; }
+    .comparison-table .feature { font-weight: 600; color: #fff; }
+    .comparison-table .checkmark { color: #4ade80; font-weight: 700; }
+    .comparison-table .partial { color: #fbbf24; font-weight: 700; }
+
+    /* CTA */
+    .cta-section { background: var(--card); border: 1px solid rgba(245,197,24,0.2); border-radius: 4px; padding: 48px 40px; margin: 64px 0 40px; text-align: center; }
+    .cta-section h2 { margin-top: 0; font-size: 26px; }
+    .cta-section p { color: #aaa; max-width: 500px; margin: 0 auto 28px; }
+    .btn-primary { display: inline-block; background: var(--yellow); color: #000; font-family: 'Poppins', sans-serif; font-weight: 800; font-size: 16px; padding: 16px 36px; border-radius: 4px; text-decoration: none; }
+    .btn-primary:hover { background: #e0b010; }
+    .cta-fine { font-size: 13px; color: var(--muted); margin-top: 16px; }
+
+    /* Summary + Key Takeaway */
+    .box-summary { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; padding: 24px 28px; margin: 0 0 32px; }
+    .summary-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-bottom: 14px; }
+    .box-summary ul { margin: 0; padding-left: 20px; }
+    .box-summary li { margin-bottom: 8px; font-size: 17px; color: #ccc; }
+    .box-takeaway { background: rgba(245,197,24,0.08); border-left: 4px solid var(--yellow); padding: 20px 24px; margin: 0 0 40px; border-radius: 0 4px 4px 0; }
+    .takeaway-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 10px; }
+    .box-takeaway p { margin: 0; font-size: 18px; font-weight: 600; color: var(--white); line-height: 1.6; }
+
+    /* FAQ */
+    .faq-item { border-bottom: 1px solid rgba(255,255,255,0.07); padding: 20px 0; }
+    .faq-q { font-family: 'Poppins', sans-serif; font-weight: 600; margin-bottom: 10px; }
+    .faq-a { color: #bbb; }
+
+    /* Footer */
+    footer { border-top: 1px solid rgba(255,255,255,0.07); padding: 32px 40px; text-align: center; font-size: 13px; color: var(--muted); max-width: 900px; margin: 0 auto; }
+    footer a { color: var(--muted); }
+
+    @media (max-width: 600px) {
+      nav, .article-wrap, footer { padding: 20px; }
+      .cta-section { padding: 32px 20px; }
+      .comparison-table { font-size: 14px; }
+      .comparison-table th, .comparison-table td { padding: 10px 10px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="https://nis2klar.se/">NIS2<span>Klar</span></a>
+  <a class="nav-back" href="https://nis2klar.se/artiklar.html">← Alla artiklar</a>
+  <a class="nav-cta" href="https://nis2klar.se/#boka">Boka samtal →</a>
+</nav>
+
+<article class="article-wrap">
+  <div class="article-category">Åtkomstkontroll &amp; Identitet</div>
+  <h1>Microsoft Entra ID vs Okta: Identitetshantering för NIS2-åtkomstkontroll</h1>
+  <div class="article-meta">25 april 2026 · Lästid: ca 8 minuter · Målgrupp: VD, styrelsekompetens</div>
+
+  <!-- SUMMARY -->
+  <div class="box-summary">
+    <div class="summary-label">Sammanfattning</div>
+    <ul>
+      <li>Identitetshantering är ett av NIS2:s tio obligatoriska säkerhetskrav (Artikel 21) — mycket viktigt att välja rätt verktyg.</li>
+      <li>Microsoft Entra ID är kostnadslösare för Microsoft-miljöer; Okta är leverantörneutral och skalbar för heterogena miljöer.</li>
+      <li>MFA, SSO och Conditional Access är inte valmöjligheter under NIS2 — de är miniminivå.</li>
+      <li>Migrationen från Azure AD till Entra ID är redan genomförd för befintliga Microsoft-kunder — ingen aktion krävs från dig i styrelsen.</li>
+      <li>Styrelsens roll: godkänna identitetspolicyn och dokumentera detta enligt Artikel 20.</li>
+    </ul>
+  </div>
+
+  <!-- KEY TAKEAWAY -->
+  <div class="box-takeaway">
+    <div class="takeaway-label">Viktigaste slutsatsen</div>
+    <p>Identitetshantering är inte bara IT-teknik under NIS2 — det är en styrelseangelägenhet. Är MFA och Conditional Access inte implementerat är organisationen i brott mot Artikel 21. Du behöver kunna försvara valet av verktyg inför tillsynsmyndigheten.</p>
+  </div>
+
+  <!-- HOOK -->
+  <p>
+    Identitetshantering är <strong>kärnan i NIS2:s åtkomstkontrollkrav</strong>.
+    Det är Artikel 21, punkt 1 — första på listan över tio obligatoriska säkerhetsåtgärder.
+    Utan robust identitetshantering faller allt övriga säkerhetsarbete på sin egen vikt.
+  </p>
+
+  <p>
+    För organisationer med befintlig Microsoft-miljö dyker en naturlig fråga upp: räcker Microsoft Entra ID (tidigare Azure AD)?
+    Eller behövs en neutral plattform som Okta?
+  </p>
+
+  <p>
+    Svaret beror på tre faktorer: din nuvarande miljö, dina integrationsbehov och din riskappetig.
+    Vi går igenom båda alternativen — och vad tillsynsmyndigheten faktiskt förväntar sig av dig.
+  </p>
+
+  <div class="box-warning">
+    <strong>Viktigt från dag ett:</strong> Valet mellan Entra ID och Okta är inte en IT-fråga att delegera. Du som VD eller styrelseledamot behöver förstå konsekvenserna för säkerhet och compliance — och dokumentera att du godkänt detta val.
+  </div>
+
+  <h2>Vad säger NIS2 om identitetshantering?</h2>
+
+  <p>
+    Artikel 21 i NIS2 (implementerad i Sverige via cybersäkerhetslagen 2024:1056) listar tio obligatoriska säkerhetskontroller.
+    Punkt 1 handlar om <strong>åtkomstkontroll och autentisering</strong>. Ordningen är inte slumpmässig — identitet är fundamentet för allt annat.
+  </p>
+
+  <p>
+    Specifikt kräver NIS2:
+  </p>
+
+  <ul>
+    <li><strong>Multifaktor autentisering (MFA)</strong> för åtkomst till kritiska system</li>
+    <li><strong>Single Sign-On (SSO)</strong> för att minimera antalet lösenord och misstag</li>
+    <li><strong>Conditional Access (villkorsad åtkomst)</strong> — åtkomst baseras på riskprofil, plats, enhet, tid</li>
+    <li><strong>Åtkomsträttigheter baseras på behov</strong> — "least privilege principle"</li>
+    <li><strong>Lösenordshantering</strong> — komplexitet, rotation, spärr vid misstänkt brott</li>
+    <li><strong>Åtkomstloggar</strong> som kan granskas vid tillsyn</li>
+  </ul>
+
+  <p>
+    Dessa är inte rekommendationer. De är obligatoriska minimikrav.
+    En organisation utan MFA och Conditional Access är <strong>inte NIS2-kompatibel</strong> — oavsett vilken identitetsplattform som används.
+  </p>
+
+  <h2>Microsoft Entra ID — vad är det egentligen?</h2>
+
+  <p>
+    Microsoft Entra ID är Microsofts identitets- och åtkomsthanteringslösning (IAM).
+    Fram till 2023 kallades det Azure Active Directory (Azure AD).
+    Det är en molnbaserad tjänst som stöder miljontals användaridentiteter och appar.
+  </p>
+
+  <p>
+    Kort sagt: det hanterar vem du är, vad du får göra och varifrån du får göra det.
+  </p>
+
+  <h3>Vad Entra ID täcker för NIS2</h3>
+
+  <ul>
+    <li><strong>MFA:</strong> Microsoft Authenticator, SMS, FIDO2 security keys, Windows Hello for Business — allt stöds</li>
+    <li><strong>SSO:</strong> Fungerar direkt för alla Microsoft 365-appar + 16 000+ SaaS-applikationer (Salesforce, Slack, ServiceNow, etc.)</li>
+    <li><strong>Conditional Access:</strong> Regler baserade på användarrisken, inloggningsrisk, enhetsöverensstämmelse, nätverk, tid på dygnet</li>
+    <li><strong>Lösenordshantering:</strong> Lösenordslös autentisering (Windows Hello), lösenordsåterställning med self-service</li>
+    <li><strong>Åtkomstgranskningar:</strong> Automatiserad verifiering av vem som har åtkomst till vad (för compliance)</li>
+    <li><strong>Åtkomstloggar:</strong> Säkert loggad för granskning — kan integreras med ett SIEM för realtidsövervakning</li>
+  </ul>
+
+  <p>
+    <strong>Kostnad:</strong> Ingår i Microsoft 365 Business Premium (från 240 kr/användare/månad) eller Azure AD Premium (från 180 kr/månad).
+    För de flesta små och medelstora organisationer är det redan betalt.
+  </p>
+
+  <h2>Okta — den neutrala alternativet</h2>
+
+  <p>
+    Okta är en oberoende identitetsplattform — inte knuten till någon molnleverantör.
+    Det kan integreras med vilken miljö som helst: Microsoft, Google, Amazon, on-premises system, legacy-appar, egenbyggd mjukvara.
+  </p>
+
+  <p>
+    Oktas styrka är flexibilitet och skalbarhet för <strong>heterogena miljöer</strong> (många olika system från olika leverantörer).
+  </p>
+
+  <h3>Vad Okta täcker för NIS2</h3>
+
+  <ul>
+    <li><strong>MFA:</strong> Samma bredbeskrivning som Entra ID — alla moderna metoder stöds</li>
+    <li><strong>SSO:</strong> Fungerar med vilken applikation som helst som stöder SAML, OpenID Connect eller OIDC — aldrig låst till en ekosystem</li>
+    <li><strong>Adaptive MFA:</strong> Risk-baserad autentisering som liknar Entra IDs Conditional Access</li>
+    <li><strong>Lösenordshantering:</strong> Self-service reset, lösenordslös alternativ (Fast Identity Online, WebAuthn)</li>
+    <li><strong>Åtkomstgranskningar:</strong> Samma funktion för compliance</li>
+    <li><strong>Åtkomstloggar:</strong> Detaljerade loggar med integrationsmöjligheter till SIEM</li>
+  </ul>
+
+  <p>
+    <strong>Kostnad:</strong> Okta kostar mer än Entra ID — från cirka 2 000–4 000 kr/månad i baskostnad för en organisation plus cirka 800 kr per användare per år.
+    Det är betydligt högre än Microsoft Entra ID för Microsoft-miljöer.
+  </p>
+
+  <h2>Jämförelse: Entra ID vs Okta för NIS2</h2>
+
+  <table class="comparison-table">
+    <thead>
+      <tr>
+        <th>Funktion</th>
+        <th>Microsoft Entra ID</th>
+        <th>Okta</th>
+        <th>NIS2-krav</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="feature">Multifaktor autentisering (MFA)</td>
+        <td class="checkmark">✓ Fullständig</td>
+        <td class="checkmark">✓ Fullständig</td>
+        <td>Obligatoriskt</td>
+      </tr>
+      <tr>
+        <td class="feature">Single Sign-On (SSO)</td>
+        <td class="checkmark">✓ Microsoft 365 + 16k SaaS</td>
+        <td class="checkmark">✓ Alla SAML/OIDC-appar</td>
+        <td>Obligatoriskt</td>
+      </tr>
+      <tr>
+        <td class="feature">Conditional Access / Adaptive Auth</td>
+        <td class="checkmark">✓ Avancerad</td>
+        <td class="checkmark">✓ Avancerad</td>
+        <td>Obligatoriskt</td>
+      </tr>
+      <tr>
+        <td class="feature">Lösenordslös autentisering</td>
+        <td class="checkmark">✓ Windows Hello, FIDO2</td>
+        <td class="checkmark">✓ FIDO2, WebAuthn</td>
+        <td>Rekommenderat</td>
+      </tr>
+      <tr>
+        <td class="feature">Åtkomstgranskningar (för compliance)</td>
+        <td class="checkmark">✓ Inbyggd</td>
+        <td class="checkmark">✓ Inbyggd</td>
+        <td>Obligatoriskt</td>
+      </tr>
+      <tr>
+        <td class="feature">Åtkomstloggar för SIEM</td>
+        <td class="checkmark">✓ Via Microsoft Sentinel</td>
+        <td class="checkmark">✓ Standardintegration</td>
+        <td>Obligatoriskt</td>
+      </tr>
+      <tr>
+        <td class="feature">Least Privilege / Role-Based Access</td>
+        <td class="checkmark">✓ Full support</td>
+        <td class="checkmark">✓ Full support</td>
+        <td>Obligatoriskt</td>
+      </tr>
+      <tr>
+        <td class="feature">Microsoft 365-integration</td>
+        <td class="checkmark">✓ Perfekt</td>
+        <td class="partial">◐ Bra</td>
+        <td>Beroende på miljö</td>
+      </tr>
+      <tr>
+        <td class="feature">On-premises AD-integration</td>
+        <td class="checkmark">✓ Via Azure AD Connect</td>
+        <td class="checkmark">✓ Via agent</td>
+        <td>Beroende på miljö</td>
+      </tr>
+      <tr>
+        <td class="feature">Leverantörneutralitet</td>
+        <td class="partial">◐ Microsoft-fokuserad</td>
+        <td class="checkmark">✓ Helt neutral</td>
+        <td>Beroende på strategi</td>
+      </tr>
+      <tr>
+        <td class="feature">Kostnad för Microsoft-miljö</td>
+        <td class="checkmark">✓ Redan inkluderad</td>
+        <td class="danger">✕ Tillkostnad ~15–20 kkr/år</td>
+        <td>—</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>
+    <strong>Slutsats av tabellen:</strong> För en typisk svensk organisation med Microsoft 365 som grund är Entra ID ofta det smartaste valet.
+    Okta är bättre för mycket större organisationer med heterogena miljöer eller strategiska krav på leverantörneutralitet.
+  </p>
+
+  <h2>Vad saknas i båda plattformarna för NIS2?</h2>
+
+  <p>
+    Här är det viktigt att förstå: <strong>varken Entra ID eller Okta löser hela NIS2 på egen hand</strong>.
+    De löser åtkomstkontroll (Artikel 21, punkt 1).
+    Men NIS2 har nio andra krav.
+  </p>
+
+  <p>
+    Båda behöver kombineras med:
+  </p>
+
+  <ul>
+    <li><strong>En SIEM (Security Information and Event Management)</strong> för att logga och analysera åtkomst i realtid — se vilka som loggar in varifrån och när</li>
+    <li><strong>En endpoint protection-lösning</strong> för att skydda enheterna som loggar in (laptops, mobiltelefoner) från malware</li>
+    <li><strong>Ett backup-system</strong> för att skydda data från ransomware — helt oberoende från identitetsplattformen</li>
+    <li><strong>En incidenthanteringsplan</strong> dokumenterad och godkänd av styrelsen</li>
+  </ul>
+
+  <p>
+    Identitetshantering är alltså <strong>ett block i ett större pussel</strong>, inte lösningen för allt.
+  </p>
+
+  <h2>Entra ID till Entra ID — migrationen är redan gjord</h2>
+
+  <p>
+    Om du använder Microsoft 365 eller Azure har du redan en identitetsplattform: Azure Active Directory.
+    Du behöver veta att Microsoft omvandlat detta till <strong>Microsoft Entra ID</strong> — ett rebranding, inte en migrering.
+  </p>
+
+  <p>
+    <strong>Din befintliga Azure AD är redan Entra ID.</strong>
+    Du behöver inte göra något. Konsolen heter fortfarande Azure Portal, men tjänsten är samma.
+  </p>
+
+  <p>
+    Det som ändrades var namnet och fokus. Microsoft strävar nu efter att göra Entra ID mer leverantörneutral — stöd för icke-Microsoft-appar förbättrades.
+    Men för alla praktiska ändamål är detta en uppdatering, inte en brytande migration.
+  </p>
+
+  <div class="box-info">
+    <strong>För styrelsen:</strong> Om du redan använder Microsoft 365 eller Azure har du redan löst identitetshanteringen enligt NIS2-nivå. Entra ID kan omedelbar uppfylla MFA-, SSO- och Conditional Access-kraven. Du behöver inte köpa Okta eller något annat.
+  </div>
+
+  <h2>Vad behöver styrelsen göra?</h2>
+
+  <p>
+    Artikel 20 i NIS2 säger att ledningen — det är dig — måste godkänna säkerhetsåtgärderna.
+    För identitetshantering betyder det:
+  </p>
+
+  <ol>
+    <li><strong>Ta fram en identitets- och åtkomstkontrollpolicy.</strong> Den ska dokumentera att MFA är obligatoriskt, att Conditional Access tillämpas, och vilka åtkomsträttigheter som är tillåtna.</li>
+    <li><strong>Se till att MFA är aktiverat för alla användare.</strong> För VD och styrelseledamöter är detta extra kritiskt — ni är prioritet 1.</li>
+    <li><strong>Implementera Conditional Access-regler.</strong> Minst: extra granskning för inloggning från okänd plats eller enhet, blockering från högrisk-länder om relevant.</li>
+    <li><strong>Godkänna verktyget i ett styrelsebeslut.</strong> "Vi godkänner användning av Microsoft Entra ID för identitetshantering enligt NIS2 Artikel 21. Implementeringsfrist: 30 juni 2026."</li>
+    <li><strong>Övervaka åtkomstrapporter kvartalsvis.</strong> Fråga: vilka har tillgång till vad? Stämmer det överens med deras roll?</li>
+  </ol>
+
+  <div class="box-warning">
+    <strong>Personligt ansvar:</strong> Om en anställd får åtkomst till känsliga data och detta ligger till grund för ett dataintrång, och styrelsen inte kan visa att åtkomstkontroll var implementerad och övervakas, kan VD och styrelseledamöter hållas personligt ansvarig. Det är inte bara ett böteshot — det kan bli ett förbud för dig att inneha ledande befattning.
+  </div>
+
+  <h2>Vilken plattform ska vi välja? En beslutmatris</h2>
+
+  <p>
+    <strong>Välj Microsoft Entra ID om:</strong>
+  </p>
+
+  <ul>
+    <li>Du använder Microsoft 365 eller Azure</li>
+    <li>Du är mindre än 500 anställda (Entra ID skalas utmärkt)</li>
+    <li>Du vill minimera licensieringskostnader</li>
+    <li>Du har ingen kravspecifikation om leverantörneutralitet</li>
+    <li>Du vill snabbt sätta igång med NIS2-implementering</li>
+  </ul>
+
+  <p>
+    <strong>Välj Okta om:</strong>
+  </p>
+
+  <ul>
+    <li>Du har en blandad miljö (Microsoft, Google, Salesforce, on-premises, egenbyggda system)</li>
+    <li>Du är större än 500 anställda och redan har avancerad IAM-komplexitet</li>
+    <li>Du har ett affärskrav på att inte vara låst till Microsofts ekosystem</li>
+    <li>Du redan använder Okta och vill inte migreras</li>
+    <li>Du är villig att betala extra för maximal flexibilitet</li>
+  </ul>
+
+  <div class="box-case">
+    <div class="case-label">Fallstudie</div>
+    <p>
+      <strong>Scenario: En 150-personers finansserviceföretag i Sverige.</strong>
+    </p>
+    <p>
+      Klassas som viktig entitet under NIS2. Använder Microsoft 365 för e-post och Office, men har också ett legacy-boksystem från 1998 on-premises, en Salesforce-instans och ett hemmabyggt riskanalysverktyg.
+    </p>
+    <p>
+      <strong>Fråga:</strong> Rekommenderas Entra ID eller Okta?
+    </p>
+    <p>
+      <strong>Svar:</strong> Börja med Entra ID för Microsoft 365 och Salesforce (som stöds utmärkt). Integrera legacy-boksystemet via en SAML-adapter (går många gånger). För det hemmabyggda systemet — integrera det senare om möjlighet finns, annars använd en API eller manuell åtkomstövervakning. Okta är öververktyg för detta fall. Entra ID löser 90 % av kraven för samma kostnad som redan är betald.
+    </p>
+    <p>
+      <strong>Slutsats:</strong> Entra ID sparar cirka 150–200 kkr per år jämfört med Okta, utan att kompromissa på säkerhet enligt NIS2.
+    </p>
+  </div>
+
+  <h2>Implementeringstips för styrelsen</h2>
+
+  <p>
+    Här är vad du som VD eller styrelseledamot behöver fråga ditt säkerhetsteam om:
+  </p>
+
+  <div class="faq-item">
+    <div class="faq-q">Är MFA aktiverat för ALLA användare eller bara för administratörer?</div>
+    <div class="faq-a">MFA för bara administratörer räcker inte under NIS2. Det ska vara för alla användare, särskilt för VD, styrelse och personer med åtkomst till känslig data (ekonomi, personaluppgifter, kunddata). Följ 80/20-regeln: börja med administratörer och VD, rulla sedan ut till alla inom 30 dagar.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">Vilka Conditional Access-regler är rimliga?</div>
+    <div class="faq-a">Start low, go high. Börja med att logga vilka inloggningar som skulle bli blockerade av regler (dry-run läge), sedan aktivera regler stegvis. Målet är: extra granskning från okänd plats, blockering från högrisk-länder, krav på modern enhet för högriskaccounts. Inte så strikt att användare blir låsta varje dag.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">Hur ofta ska vi göra åtkomstgranskningar?</div>
+    <div class="faq-a">Minst två gånger per år enligt många tolkar av NIS2. Idealt: kvartalsvis. En åtkomstgranskning betyder: lista alla användare och deras åtkomsträttigheter, verifiera att det stämmer överens med deras roll, dokumentera godkännande från ledningen.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">Vad gör vi med åtkomstloggarna från Entra ID / Okta?</div>
+    <div class="faq-a">De måste integreras i ett SIEM-verktyg (eller åtminstone loggas säkert och granskad regelbundet). Ett SIEM är inte en lyxvara — det är obligatorisk för att följa Artikel 23 (incidenthantering). Entra ID kan skicka logs till Microsoft Sentinel (ett SIEM), Okta kan skicka till Splunk, ELK eller annat.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">Behöver vi Windows Hello for Business?</div>
+    <div class="faq-a">Det beror. Windows Hello är lösenordslös autentisering — mycket säker. Om du har Windows-miljö rekommenderas det. Men det är inte obligatoriskt under NIS2 så länge du har MFA med en annan metod (SMS, Microsoft Authenticator, FIDO2-nyckel). Windows Hello är ett "nice to have", inte ett "must have".</div>
+  </div>
+
+  <!-- MICROSOFT VERKTYG BOX -->
+  <div class="box-info" style="margin: 48px 0 32px;">
+    <div style="font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color: var(--yellow); margin-bottom:10px;">🔧 VERKTYG &amp; LÖSNINGAR</div>
+    <p style="margin:0; font-size:17px; color: #ddd; line-height:1.7;">Microsoft Entra ID Conditional Access + FIDO2 / Windows Hello for Business är hjärtat i NIS2-åtkomstkontroll. En certifierad Microsoft-partner kan genomföra en kostnadsfri gap-analys och visa exakt hur Entra ID täcker dina krav — och vad som ännu behöver konfigureras. Det kan göras på en förmiddag.</p>
+  </div>
+
+  <!-- NYHETSBREV -->
+  <div style="background:#111; border:1px solid rgba(255,255,255,0.1); border-left:3px solid #f5c518; border-radius:4px; padding:32px 36px; margin:40px 0 0; text-align:center; max-width:760px; margin-left:auto; margin-right:auto;">
+    <div style="font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:#f5c518; margin-bottom:12px;">📬 NIS2-UPPDATERINGAR</div>
+    <h3 style="font-family:'Poppins',sans-serif; font-size:20px; font-weight:800; margin:0 0 8px; color:#f0f0f0;">Ny NIS2-artikel varje vecka — direkt i inkorgen</h3>
+    <p style="color:#888; font-size:15px; margin:0 0 20px;">Ingen säljpitch. Bara konkret vägledning för VD:ar och styrelser.</p>
+    <form id="nlForm-microsoft_entra_id_vs_okta_identitetshantering" onsubmit="submitNewsletter_microsoft_entra_id_vs_okta_identitetshantering(event)" style="display:flex; gap:10px; flex-wrap:wrap; justify-content:center; max-width:460px; margin:0 auto;">
+      <input type="email" id="nlEmail-microsoft_entra_id_vs_okta_identitetshantering" placeholder="din@foretag.se" required
+             style="flex:1; min-width:200px; padding:12px 16px; background:#1c1c1f; border:1px solid rgba(255,255,255,0.15); border-radius:4px; color:#f0f0f0; font-size:15px; outline:none;" />
+      <button type="submit" id="nlSubmit-microsoft_entra_id_vs_okta_identitetshantering"
+              style="padding:12px 22px; background:#f5c518; color:#141416; font-weight:700; font-size:15px; border:none; border-radius:4px; cursor:pointer; white-space:nowrap;">
+        Prenumerera gratis →
+      </button>
+    </form>
+    <p style="font-size:12px; color:#555; margin:12px 0 0;">Du kan avprenumerera när som helst. Vi delar aldrig din e-post.</p>
+    <div id="nlThanks-microsoft_entra_id_vs_okta_identitetshantering" style="display:none; color:#4ade80; font-size:16px; font-weight:600; margin-top:14px;">✅ Du är med! Nästa artikel kommer direkt till din inkorg.</div>
+  </div>
+
+  <!-- CTA -->
+  <div class="cta-section">
+    <h2>Vet du var din organisation står idag?</h2>
+    <p>En kostnadsfri gap-analys med en certifierad Microsoft-partner visar exakt vad ni redan har täckt — och vad som saknas.</p>
+    <a href="https://nis2klar.se/#boka" class="btn-primary">Boka kostnadsfri gap-analys →</a>
+    <p class="cta-fine">Böterna är upp till <strong>10 miljoner euro</strong>. Gap-analysen är gratis.</p>
+  </div>
+
+</article>
+
+<div class="related-articles" style="margin:2.5rem 0 2rem;padding:1.5rem;background:#1a1a2e;border-left:4px solid #f0a500;border-radius:4px;">
+  <p style="margin:0 0 1rem;font-size:0.85rem;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:#f0a500;">Läs också</p>
+  <ul style="margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:0.5rem;">
+    <li><a href="https://nis2klar.se/artiklar/nis2-multifaktor-autentisering-mfa.html" style="color:#e0e0e0;text-decoration:none;font-size:0.95rem;">→ MFA: Den kritiska första åtgärden</a></li>
+    <li><a href="https://nis2klar.se/artiklar/nis2-conditional-access-och-villkorsad-atkomst.html" style="color:#e0e0e0;text-decoration:none;font-size:0.95rem;">→ Conditional Access för NIS2</a></li>
+    <li><a href="https://nis2klar.se/artiklar/nis2-personligt-ansvar-styrelse.html" style="color:#e0e0e0;text-decoration:none;font-size:0.95rem;">→ Styrelsens personliga ansvar</a></li>
+  </ul>
+  <p style="margin:1.25rem 0 0;font-size:0.85rem;color:#aaa;">← <a href="https://nis2klar.se/" style="color:#f0a500;text-decoration:none;">NIS2Klar startsida</a> · <a href="https://nis2klar.se/artiklar.html" style="color:#f0a500;text-decoration:none;">Alla guider</a></p>
+</div>
+
+<footer>
+  © 2026 M&J Trusted Marketing KB · 
+  <a href="mailto:support@trustedmarketing.se">support@trustedmarketing.se</a> · <a href="tel:+46470597003">+46 470 59 70 03</a> ·
+  <a href="https://nis2klar.se/">Tillbaka till startsidan</a> ·
+  <a href="https://nis2klar.se/privacy.html">Integritetspolicy</a>
+  <p style="margin-top:12px; font-size:11px; color: #555; line-height:1.5;">Microsoft, Microsoft 365, Azure, Entra och tillhörande produktnamn är varumärken som tillhör Microsoft Corporation. nis2klar.se är inte affilierat med eller godkänt av Microsoft Corporation.</p>
+</footer>
+
+<script data-cfasync="false">
+  async function submitNewsletter_microsoft_entra_id_vs_okta_identitetshantering(e) {
+    e.preventDefault();
+    const btn = document.getElementById('nlSubmit-microsoft_entra_id_vs_okta_identitetshantering');
+    btn.disabled = true;
+    btn.textContent = 'Skickar...';
+    const email = document.getElementById('nlEmail-microsoft_entra_id_vs_okta_identitetshantering').value.trim();
+    try {
+      const res = await fetch('/api/newsletter/subscribe', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, source: 'artikel-microsoft_entra_id_vs_okta_identitetshantering' })
+      });
+      const data = await res.json();
+      if (data.success) {
+        document.getElementById('nlForm-microsoft_entra_id_vs_okta_identitetshantering').style.display = 'none';
+        document.getElementById('nlThanks-microsoft_entra_id_vs_okta_identitetshantering').style.display = 'block';
+      } else {
+        btn.disabled = false;
+        btn.textContent = 'Prenumerera gratis →';
+      }
+    } catch {
+      btn.disabled = false;
+      btn.textContent = 'Prenumerera gratis →';
+    }
+  }
+</script>
+
+</body>
+</html>

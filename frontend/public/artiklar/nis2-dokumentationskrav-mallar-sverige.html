@@ -1,0 +1,798 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-BKF3QH9K01"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag("js", new Date());
+    gtag("config", "G-BKF3QH9K01");
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NIS2-dokumentation i Sverige: Vad som krävs och vilka mallar som hjälper | NIS2Klar</title>
+  <meta name="description" content="Sju nyckelkategorier av NIS2-dokumentation. Mallar, arkivering, uppdateringsschema och tillsynsmyndighetens vanligaste begäran. En praktisk guide för VD och styrelse.">
+  <meta property="og:title" content="NIS2-dokumentation i Sverige: Vad som krävs och vilka mallar som hjälper">
+  <meta property="og:description" content="Sju nyckelkategorier av NIS2-dokumentation. Mallar, arkivering, uppdateringsschema och tillsynsmyndighetens vanligaste begäran. En praktisk guide för VD och styrelse.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #141416;
+      --card: #1c1c1f;
+      --yellow: #f5c518;
+      --white: #f0f0f0;
+      --muted: #888;
+      --red: #C61212;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: var(--bg); color: var(--white); font-family: 'Barlow', sans-serif; font-size: 19px; line-height: 1.8; }
+
+    /* Nav */
+    nav { display: flex; justify-content: space-between; align-items: center; padding: 20px 40px; border-bottom: 1px solid rgba(255,255,255,0.07); max-width: 900px; margin: 0 auto; }
+    .nav-logo { font-family: 'Poppins', sans-serif; font-weight: 900; font-size: 20px; color: var(--yellow); text-decoration: none; }
+    .nav-logo span { color: var(--white); }
+    .nav-back { color: var(--muted); text-decoration: none; font-size: 15px; }
+    .nav-back:hover { color: var(--white); }
+    .nav-cta { background: var(--yellow); color: #000; padding: 8px 18px; border-radius: 4px; text-decoration: none; font-weight: 700; font-size: 14px; font-family: 'Poppins', sans-serif; }
+
+    /* Article */
+    .article-wrap { max-width: 760px; margin: 0 auto; padding: 60px 40px; }
+    .article-category { font-size: 13px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 16px; }
+    h1 { font-family: 'Poppins', sans-serif; font-size: clamp(30px, 4vw, 44px); font-weight: 900; line-height: 1.2; margin-bottom: 24px; }
+    .article-meta { font-size: 15px; color: var(--muted); margin-bottom: 48px; padding-bottom: 24px; border-bottom: 1px solid rgba(255,255,255,0.07); }
+    h2 { font-family: 'Poppins', sans-serif; font-size: 26px; font-weight: 700; margin: 48px 0 16px; color: var(--white); }
+    h3 { font-family: 'Poppins', sans-serif; font-size: 20px; font-weight: 600; margin: 32px 0 12px; color: var(--yellow); }
+    p { margin-bottom: 22px; }
+    strong { color: var(--white); font-weight: 700; }
+    .highlight { color: var(--yellow); font-weight: 700; }
+    .danger { color: #ff6b6b; font-weight: 700; }
+    ul, ol { margin: 16px 0 24px 24px; }
+    li { margin-bottom: 12px; font-size: 19px; }
+
+    /* Callout boxes */
+    .box-warning { background: rgba(197,17,17,0.12); border-left: 4px solid var(--red); padding: 20px 24px; margin: 32px 0; border-radius: 0 4px 4px 0; }
+    .box-info { background: rgba(245,197,24,0.08); border-left: 4px solid var(--yellow); padding: 20px 24px; margin: 32px 0; border-radius: 0 4px 4px 0; }
+    .box-case { background: var(--card); border: 1px solid rgba(255,255,255,0.08); padding: 28px; margin: 40px 0; border-radius: 4px; }
+    .box-case .case-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 12px; }
+    blockquote { border-left: 3px solid var(--yellow); padding: 12px 20px; margin: 24px 0; font-style: italic; color: #ccc; }
+
+    /* CTA */
+    .cta-section { background: var(--card); border: 1px solid rgba(245,197,24,0.2); border-radius: 4px; padding: 48px 40px; margin: 64px 0 40px; text-align: center; }
+    .cta-section h2 { margin-top: 0; font-size: 26px; }
+    .cta-section p { color: #aaa; max-width: 500px; margin: 0 auto 28px; }
+    .btn-primary { display: inline-block; background: var(--yellow); color: #000; font-family: 'Poppins', sans-serif; font-weight: 800; font-size: 16px; padding: 16px 36px; border-radius: 4px; text-decoration: none; }
+    .btn-primary:hover { background: #e0b010; }
+    .cta-fine { font-size: 13px; color: var(--muted); margin-top: 16px; }
+
+    /* FAQ */
+    .faq-item { border-bottom: 1px solid rgba(255,255,255,0.07); padding: 20px 0; }
+    .faq-q { font-family: 'Poppins', sans-serif; font-weight: 600; margin-bottom: 10px; }
+    .faq-a { color: #bbb; }
+
+    /* Doc table */
+    .doc-table { width: 100%; border-collapse: collapse; margin: 24px 0; }
+    .doc-table th { background: rgba(245,197,24,0.1); color: var(--yellow); font-family: 'Poppins', sans-serif; font-size: 13px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 12px 16px; text-align: left; border-bottom: 1px solid rgba(245,197,24,0.2); }
+    .doc-table td { padding: 14px 16px; border-bottom: 1px solid rgba(255,255,255,0.05); font-size: 15px; }
+    .doc-table tr:last-child td { border-bottom: none; }
+
+    /* Summary + Key Takeaway */
+    .box-summary { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; padding: 24px 28px; margin: 0 0 32px; }
+    .summary-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-bottom: 14px; }
+    .box-summary ul { margin: 0; padding-left: 20px; }
+    .box-summary li { margin-bottom: 8px; font-size: 17px; color: #ccc; }
+    .box-takeaway { background: rgba(245,197,24,0.08); border-left: 4px solid var(--yellow); padding: 20px 24px; margin: 0 0 40px; border-radius: 0 4px 4px 0; }
+    .takeaway-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 10px; }
+    .box-takeaway p { margin: 0; font-size: 18px; font-weight: 600; color: var(--white); line-height: 1.6; }
+
+    /* Footer */
+    footer { border-top: 1px solid rgba(255,255,255,0.07); padding: 32px 40px; text-align: center; font-size: 13px; color: var(--muted); max-width: 900px; margin: 0 auto; }
+    footer a { color: var(--muted); }
+
+    @media (max-width: 600px) {
+      nav, .article-wrap, footer { padding: 20px; }
+      .cta-section { padding: 32px 20px; }
+      .doc-table { font-size: 14px; }
+      .doc-table th, .doc-table td { padding: 10px 10px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="https://nis2klar.se/">NIS2<span>Klar</span></a>
+  <a class="nav-back" href="https://nis2klar.se/artiklar.html">← Alla artiklar</a>
+  <a class="nav-cta" href="https://nis2klar.se/#boka">Boka samtal →</a>
+</nav>
+
+<article class="article-wrap">
+  <div class="article-category">Dokumentation &amp; Efterlevnad</div>
+  <h1>NIS2-dokumentation i Sverige: Vad som krävs och vilka mallar som hjälper</h1>
+  <div class="article-meta">Uppdaterad 25 april 2026 · Lästid: ca 9 minuter · Målgrupp: VD och styrelse</div>
+
+  <!-- SUMMARY -->
+  <div class="box-summary">
+    <div class="summary-label">Sammanfattning</div>
+    <ul>
+      <li>NIS2 kräver sju nyckelkategorier av dokumentation — ingen av dem är frivillig.</li>
+      <li>Tillsynsmyndigheten kan begära dessa dokument med kort varsel, ofta 14–30 dagar.</li>
+      <li>De vanligaste begäran är riskanalys, säkerhetspolicy, incidenthanteringsplan och styrelsebeslut.</li>
+      <li>Mallar och arkivering sparar både tid och pengar — och är din försvarslinje vid granskning.</li>
+      <li>Uppdateringsfrekvensen är strikt: policy årligen, riskanalys enligt ändring, styrelsebeslut vid nytt godkännande.</li>
+    </ul>
+  </div>
+
+  <!-- KEY TAKEAWAY -->
+  <div class="box-takeaway">
+    <div class="takeaway-label">Viktigaste slutsatsen</div>
+    <p>Dokumentation är inte pappersarbete. Det är ditt juridiska försvar. Den dag tillsynen inleder granskning kommer aldrig din IT-avdelning att hinna ikapp om dokumentationen inte redan ligger lagd.</p>
+  </div>
+
+  <!-- HOOK -->
+  <p>
+    Det finns en gräns mellan att <strong>förstå NIS2</strong> och att <strong>bevisa att du följer den</strong>.
+  </p>
+
+  <p>
+    Många svenska ledare tror att om IT-avdelningen arbetar på säkerhet räcker det. Det räcker inte. Tillsynsmyndigheten bedömer inte vad ni gör. Den bedömer vad ni kan <strong>bevisa</strong> att ni gör — genom dokumentation.
+  </p>
+
+  <p>
+    Denna artikel behandlar de sju nyckelkategorier av dokumentation som NIS2 kräver, hur du arkiverar och uppdaterar dem, vad tillsynsmyndigheten faktiskt frågar om när de kommer, och en enkel mallstruktur du kan anpassa till din organisation redan idag.
+  </p>
+
+  <h2>Varför dokumentation är din bästa försäkring</h2>
+
+  <p>
+    Artikel 20 i NIS2 slår fast att ledningen — du — är personligt ansvarig för att säkerhetsåtgärderna är på plats och fungerar. Det räcker inte att "tro" på det. Du måste <strong>kunna påvisa det</strong>.
+  </p>
+
+  <p>
+    Dokumentationen är beviset. Den är också det enda sättet att:
+  </p>
+
+  <ul>
+    <li><strong>Visa kontinuitet:</strong> Att säkerhetsarbetet inte är ett engångsprojekt utan en pågående process</li>
+    <li><strong>Bevisa ansvar:</strong> Att styrelsen har godkänt och övervakar åtgärderna</li>
+    <li><strong>Möta tillsynsbegäran:</strong> Att kunna leverera vad myndigheten frågar om inom utsatt tid</li>
+    <li><strong>Reducera böter:</strong> Vid en incident eller granskning visar dokumentation att ni gjort rimliga ansträngningar</li>
+  </ul>
+
+  <div class="box-warning">
+    <strong>Tidskritiskt:</strong> Många svenska organisationer börjar dokumentationen först när tillsynen inleder granskning. Du kan då inte producera retroaktiv dokumentation från två år tillbaka. Börja nu.
+  </div>
+
+  <h2>De sju nyckelkategorier av dokumentation</h2>
+
+  <p>
+    NIS2-dokumentation sorterar sig naturligt i sju kategorier. Var och en tjänar ett specifikt syfte och kräver ett eget uppdateringsschema.
+  </p>
+
+  <h3>1. Riskbedömning och riskanalys</h3>
+
+  <p>
+    <strong>Vad det är:</strong> En systematisk inventering av informationstillgångar, hot och sårbarheter relevanta för din organisation. Den utgör grunden för alla andra säkerhetsåtgärder.
+  </p>
+
+  <p>
+    <strong>NIS2-krav:</strong> Artikel 21.1 och 21.2 kräver att du genomför en riskanalys och dokumenterar resultatet. Du ska identifiera kritiska system, värderas hot och sannolikhet.
+  </p>
+
+  <p>
+    <strong>Mall-innehål:</strong>
+  </p>
+
+  <ul>
+    <li>Tillgångsinventering (servrar, databaser, applikationer, personalens enheter)</li>
+    <li>Hotanalys (externa aktörer, interna aktörer, naturkatastrof)</li>
+    <li>Sårbarhetsbedömning per tillgång</li>
+    <li>Riskvärdering (sannolikhet × påverkan)</li>
+    <li>Prioritering av åtgärder</li>
+  </ul>
+
+  <p>
+    <strong>Uppdatering:</strong> Minst årligen, eller omedelbar uppdatering vid större förändring av IT-miljö, ny tjänst eller ny hotbild.
+  </p>
+
+  <p>
+    <strong>Varför tillsynen frågar:</strong> Det är det första systemet de granskar. Om riskanalysen är undermålig är resten av dokumentationen ofta också skakig.
+  </p>
+
+  <h3>2. Säkerhetspolicy och säkerhetsdirektiv</h3>
+
+  <p>
+    <strong>Vad det är:</strong> Organisationens övergripande säkerhetsstrategi och principerna för hur säkerhet ska hanteras. Detta är inte en IT-manual — det är ett ledningsdokument.
+  </p>
+
+  <p>
+    <strong>NIS2-krav:</strong> Artikel 21.2 ställer krav på att en säkerhetspolicy är etablerad och kommunicerad.
+  </p>
+
+  <p>
+    <strong>Mall-innehål:</strong>
+  </p>
+
+  <ul>
+    <li>Säkerhetsmål och -principer</li>
+    <li>Ansvar och roller (vem beslutar, vem rapporterar till vem)</li>
+    <li>Säkerhetsprocedurer inom tio domäner (se nedan)</li>
+    <li>Inkludering av tredjepartshandlare och leverantörer</li>
+    <li>Incidentrapportering och eskalering</li>
+    <li>Antagen av styrelsen — med datum och namnunderskrift</li>
+  </ul>
+
+  <p>
+    <strong>Uppdatering:</strong> Minst årligen, eller vid större organisatorisk förändring.
+  </p>
+
+  <p>
+    <strong>Varför det är kritiskt:</strong> Utan godkänd policy kan du inte påvisa Artikel 20 — styrelsens ansvar. Det är också den dokumentation som oftast saknas när tillsynen frågar.
+  </p>
+
+  <h3>3. Incidenthanteringsplan och ledningsplan</h3>
+
+  <p>
+    <strong>Vad det är:</strong> En actionplan för vad som ska ske när en cyberincident inträffar. Den ska tala om vem som gör vad, när och hur.
+  </p>
+
+  <p>
+    <strong>NIS2-krav:</strong> Artikel 21.2 och Artikel 23 kräver att du kan rapportera en allvarlig incident inom 72 timmar till tillsynsmyndigheten. Du kan inte göra det utan en plan.
+  </p>
+
+  <p>
+    <strong>Mall-innehål:</strong>
+  </p>
+
+  <ul>
+    <li>Definition av vad som räknas som "incident" och "allvarlig incident"</li>
+    <li>Beredskapsroll och eskaleringsväg (vem ringer vem, i vilken ordning)</li>
+    <li>Steg 1: Detektering och klassificering</li>
+    <li>Steg 2: Isolering och scenarier</li>
+    <li>Steg 3: Återställning och verifiering</li>
+    <li>Steg 4: Kommunikation internt och till myndigheter</li>
+    <li>Steg 5: Analys och lärdomar</li>
+    <li>Kontaktuppgifter till MSB/sektoriell tillsynsmyndighet</li>
+    <li>Formulär för incidentrapportering</li>
+  </ul>
+
+  <p>
+    <strong>Uppdatering:</strong> Efter varje större incident, minst årligen, eller vid organisatorisk omstrukturering.
+  </p>
+
+  <p>
+    <strong>Varför den ofta saknäs:</strong> Många organisationer tror att IT-avdelningen "hanterar incident" redan. Men utan en nedskriven plan riskerar du att inte rapportera i tid — vilket är en separat sanktionsgrund.
+  </p>
+
+  <h3>4. Styrelsebeslut och övervakningsmaterial</h3>
+
+  <p>
+    <strong>Vad det är:</strong> Dokumentation som visar att styrelsen aktivt godkänner säkerhetsåtgärderna och övervakar dem löpande.
+  </p>
+
+  <p>
+    <strong>NIS2-krav:</strong> Artikel 20 är explicit: ledningen ska godkänna åtgärderna och övervakar. Du måste kunna bevisa det.
+  </p>
+
+  <p>
+    <strong>Mall-innehål:</strong>
+  </p>
+
+  <ul>
+    <li>Styrelsebeslut om godkännande av säkerhetspolicy</li>
+    <li>Styrelsebeslut om godkännande av riskanalys och prioriterade åtgärder</li>
+    <li>Styrelseprotokoll med agendum "Cybersäkerhet" (minst två gånger årligen)</li>
+    <li>Övervakningskort (scorecard) med KPI:er som presenteras för styrelsen</li>
+    <li>Åtgärdslogg med status på prioriterade åtgärder</li>
+  </ul>
+
+  <p>
+    <strong>Uppdatering:</strong> Efter varje styrelsemöte. Övervakningsmaterial ska uppdateras en gång per kvartal.
+  </p>
+
+  <p>
+    <strong>Varför detta är kärnfallen:</strong> Det är den dokumentation som direkt visar styrelsens ansvar. Utan den kan du inte försvara dig mot påståndet om personligt ansvar enligt Artikel 20.
+  </p>
+
+  <h3>5. Leverantörskontrakt och säkerhetskrav</h3>
+
+  <p>
+    <strong>Vad det är:</strong> Dokumentation av vilka tredjeparter ni använder, vilka säkerhetskrav som ställs på dem, och hur övervakningen fungerar.
+  </p>
+
+  <p>
+    <strong>NIS2-krav:</strong> Artikel 21.2 (leverantörssäkerhet) säger att du måste förvalta risker från leverantörer och tredjeparter. Du kan inte delegera ansvaret.
+  </p>
+
+  <p>
+    <strong>Mall-innehål:</strong>
+  </p>
+
+  <ul>
+    <li>Leverantörsregister (vem tillhandahåller vad)</li>
+    <li>Klassificering av leverantörer efter risknivå (kritisk, viktig, övrig)</li>
+    <li>Mall för säkerhetskrav i kontrakt (kryptering, backup, incident-rapportering, auditeringsrätt)</li>
+    <li>Attestering av leverantörs säkerhetscertifieringar (ISO 27001, SOC 2 osv)</li>
+    <li>Granskningsprotokoll eller självbedömning från leverantör, årligen</li>
+  </ul>
+
+  <p>
+    <strong>Uppdatering:</strong> Leverantörsregister uppdateras löpande. Säkerhetsbedömning minst årligen per leverantör.
+  </p>
+
+  <p>
+    <strong>Varför tillsynen fokuserar här:</strong> Många intrång kommer via tredjeparter. Kan du inte påvisa att du har krav på dem har du en stor brist.
+  </p>
+
+  <h3>6. Utbildning och medvetenhetsprogram</h3>
+
+  <p>
+    <strong>Vad det är:</strong> Dokumentation av att personalen får utbildning i cybersäkerhet och att organisationen har ett medvetenhetsprogram.
+  </p>
+
+  <p>
+    <strong>NIS2-krav:</strong> Artikel 21.2 (g) kräver "awareness and training" — en av de tio obligatoriska säkerhetsdomenerna.
+  </p>
+
+  <p>
+    <strong>Mall-innehål:</strong>
+  </p>
+
+  <ul>
+    <li>Årlig utbildningsplan för all personal</li>
+    <li>Speciell utbildning för ledning och IT-personal</li>
+    <li>Deltagarlista med datum för varje utbildningstillfälle</li>
+    <li>Phishing-simuleringsrapport (hur många klickar, åtgärd efter misslyckade test)</li>
+    <li>Säkerhetsnewsletter eller intern kommunikation</li>
+    <li>Incidentrapportering från personalen (antalet rapporterade misstänkta e-postmeddelanden, växande trender)</li>
+  </ul>
+
+  <p>
+    <strong>Uppdatering:</strong> Deltagar- och utbildningsloggar löpande. Årsrapport från utbildningsprogram årligen.
+  </p>
+
+  <p>
+    <strong>Varför det räknas:</strong> Människan är både svagaste länken och starkaste försvar. Dokumentationen visar att du investerar i motståndskraft.
+  </p>
+
+  <h3>7. Backup och kontinuitetsplan</h3>
+
+  <p>
+    <strong>Vad det är:</strong> Dokumentation av hur du håller dina kritiska system tillgängliga och kan återställa vid ett angrepp.
+  </p>
+
+  <p>
+    <strong>NIS2-krav:</strong> Artikel 21.2 kräver backup, kryptering och redundans för kritiska data och system.
+  </p>
+
+  <p>
+    <strong>Mall-innehål:</strong>
+  </p>
+
+  <ul>
+    <li>Inventering av kritiska system och data</li>
+    <li>Recovery Time Objective (RTO) och Recovery Point Objective (RPO) per system</li>
+    <li>Backup-policy (frekvens, lagring, kryptering, testning)</li>
+    <li>Redundansplan för kritiska tjänster</li>
+    <li>Återställningstest — logg över genomförda tester med resultat</li>
+    <li>Kommunikationsplan under avbrott (hur informerar du kunder, myndigheter, media)</li>
+  </ul>
+
+  <p>
+    <strong>Uppdatering:</strong> Återställningstest minst årligen per kritiskt system. Efterbördsanalys (lessons learned) dokumenteras.
+  </p>
+
+  <p>
+    <strong>Varför tillsynen kontrollerar detta:</strong> Ransomware-angrepp är den största risken. Om du inte kan återställa är du helt skadad. Dokumentationen visar att du är förberedd.
+  </p>
+
+  <div class="box-info">
+    <strong>Observera:</strong> Dessa sju kategorier är inte låsta i sten. Beroende på din sektor kan tillsynsmyndigheten kräva ytterligare dokumentation (t.ex. dataskyddspolicy för sjukvård, krypteringsnyckelhantering för finanssektorn). Men dessa sju täcker kärnkraven för alla reglerade sektorer.
+  </div>
+
+  <h2>Arkivering och versionskontroll — så gör du det</h2>
+
+  <p>
+    Dokumentation som ligger slumpmässigt i olika mappar på OneDrive hjälper ingen. Tillsynsmyndigheten kommer att fråga efter en viss version från ett visst tillfälle — och du måste kunna leverera det.
+  </p>
+
+  <p>
+    <strong>En enkel struktur:</strong>
+  </p>
+
+  <ul>
+    <li><strong>Mapp:</strong> Cybersäkerhet &gt; Dokumentation &gt; Årtal (2026, 2025...)</li>
+    <li><strong>Under varje år:</strong> Undermappar för varje kategori (Riskanalys, Policy, Incidentplan, Styrelsebeslut, Leverantörer, Utbildning, Backup)</li>
+    <li><strong>Filnamn:</strong> "Säkerhetspolicy_v2.1_Godkänd_styrrelse_2026-03-15.docx" — aldrig bara "Policy.docx"</li>
+    <li><strong>Versionsnummer:</strong> Uppdaterar du året innan från v2.0 till v2.1 — större ändringar blir v3.0</li>
+    <li><strong>Godkännande:</strong> Varje dokument måste ha ett datum då det godkändes av styrelsen eller avgörande chef</li>
+  </ul>
+
+  <p>
+    <strong>Digital signering:</strong> Använd digitala signeringsverktyg (Adobe Sign, DocuSign, eller SharePoint Approval Workflow) för att dokumentera att styrelse faktiskt godkänt dokumentet. E-post räcker inte — den kan förklaras omöjlig att spåra.
+  </p>
+
+  <p>
+    <strong>Åtkomstlogg:</strong> Mappa som innehåller känslig dokumentation ska ha åtkomstlogg. Du måste kunna visa vem som har läst eller ändrat vad, och när.
+  </p>
+
+  <div class="box-case">
+    <div class="case-label">Scenario: Hur arkiveringen sparade ett företag från böter</div>
+    <p>
+      <strong>Situation:</strong> En väsentlig entitet inom finans drabbades av ett ransomware-angrepp i januari 2026. Incidenten rapporterades korrekt till Finansinspektionen. Nu granskar de organisationens säkerhetsprogram.
+    </p>
+    <p>
+      Finansinspektionen frågar: "Hade ni en godkänd riskanalys som identifierade ransomware som hot innan incidenten?" och "Vilka åtgärder hade styrelsen godkänt för att reducera denna risk?"
+    </p>
+    <p>
+      Organisationen kunne — med två dagar — visa:
+    </p>
+    <ul>
+      <li>Riskanalys från maj 2025 (v1.2) som specifikt nämner ransomware och epostbaserat intrång som högt prioriterat hot</li>
+      <li>Styrelsebeslut från juni 2025 som godkänner åtgärder: MFA, EDR-agent på alla enheter, backup-hårdening</li>
+      <li>Implementeringslogg som visar att 98 % av enheterna hade MFA aktivt när attacken kom</li>
+      <li>Backup-test från december 2025 som visar att de kunde återställa kritiska system på 6 timmar</li>
+    </ul>
+    <p>
+      <strong>Utfall:</strong> Finansinspektionen konstaterade att organisationen hade gjort rimliga ansträngningar att reducera risken. Ingen bötesavgift. Istället uppmärksamhet för god styrning.
+    </p>
+    <p>
+      <strong>Kostnad för arkivering:</strong> Några timmar för att sätta upp mappen och mallar.
+      <span class="danger">Potentiell bötesavgift som undviktes:</span> 3–7 miljoner euro.
+    </p>
+  </div>
+
+  <h2>Tillsynsmyndighetens vanligaste dokumentationsbegäran</h2>
+
+  <p>
+    När MSB, sektoriell tillsynsmyndighet eller – värst – en revisionsgrupp från en EU-medlemsstat ringer för att inleda granskning, finns det ett standardmönster i vad de frågar efter.
+  </p>
+
+  <p>
+    Det första de begär är ofta detta — i denna ordning:
+  </p>
+
+  <table class="doc-table">
+    <thead>
+      <tr>
+        <th>Begäran nr</th>
+        <th>Vad de frågar efter</th>
+        <th>Typisk tidsfrist</th>
+        <th>Varför de frågar</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1</td>
+        <td>Godkänd säkerhetspolicy</td>
+        <td>14–21 dagar</td>
+        <td>För att kontrollera om ledningen har en övergripande strategi</td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>Styrelsebeslut om godkännande av säkerhetsåtgärder (Artikel 20)</td>
+        <td>14–21 dagar</td>
+        <td>För att bevisa att styrelsen är medveten och har beslutat</td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td>Riskanalys från senaste året</td>
+        <td>21–30 dagar</td>
+        <td>För att verifiera att ni identifierat relevanta hot och sårbarheter</td>
+      </tr>
+      <tr>
+        <td>4</td>
+        <td>Incidenthanteringsplan och incident-logg (sista 24 mnd)</td>
+        <td>21–30 dagar</td>
+        <td>För att kontrollera om ni kan hantera och rapportera incidenter</td>
+      </tr>
+      <tr>
+        <td>5</td>
+        <td>Leverantörslista och säkerhetskrav på leverantörer</td>
+        <td>21–30 dagar</td>
+        <td>För att bedöma tredjepartsrisker</td>
+      </tr>
+      <tr>
+        <td>6</td>
+        <td>Utbildningsöversikt och phishing-simuleringsresultat</td>
+        <td>21–30 dagar</td>
+        <td>För att se om ni bygger medvetenhet</td>
+      </tr>
+      <tr>
+        <td>7</td>
+        <td>Backup- och återställningstestresultat</td>
+        <td>30 dagar</td>
+        <td>För att verifiera att ni kan återhämta er från angrepp</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>
+    <strong>Gemensam nämnare:</strong> Alla dessa kan levereras på 1–2 timmar om de redan finns arkiverade och organiserade. Utan dem kan du inte leverera på 30 dagar — försöket kommer att sakna både detaljer och historik.
+  </p>
+
+  <div class="box-warning">
+    <strong>Straffet för att inte svara i tid:</strong> Missade frister för dokumentationsbegäran räknas som icke-efterlevnad i sig. Tillsynsmyndigheten kan utfärda böter för obstruktion redan innan den faktiska granskningen är färdig.
+  </div>
+
+  <h2>En enkel mallstruktur — anpassa denna</h2>
+
+  <p>
+    Du behöver inte reinventera hjulet. Här är en mallstruktur som passar alla reglerade organisationer i Sverige. Kopiera den och fyll i organisationsspecifika detaljer.
+  </p>
+
+  <h3>Mall 1: Säkerhetspolicy (övergripande)</h3>
+
+  <p>
+    <strong>Rubrik:</strong> Säkerhetspolicy [År]
+  </p>
+
+  <p>
+    <strong>Struktur:</strong>
+  </p>
+
+  <blockquote>
+    1. Introduktion — Varför denna policy behövs (allmänt om cyberrisker och NIS2)
+    <br><br>
+    2. Omfattning — Vilka delar av organisationen, vilka resurser
+    <br><br>
+    3. Mål — Vad policy ska uppnå (ex: "Reducera cyberrisker för att skydda kunddata och affärsverksamhet")
+    <br><br>
+    4. Roller och ansvar — VD, IT-chef, Säkerhetschef, Styrelse (vilken roll gör vad)
+    <br><br>
+    5. Tio säkerhetsdomar (från NIS2 Artikel 21):
+    <br>
+    &nbsp;&nbsp;&nbsp;&nbsp;a) Riskhantering — Hur ni gör riskanalys årligen
+    <br>
+    &nbsp;&nbsp;&nbsp;&nbsp;b) Incidenthantering — Eskalering och rapportering
+    <br>
+    &nbsp;&nbsp;&nbsp;&nbsp;c) Continuity — Backup och återställning
+    <br>
+    &nbsp;&nbsp;&nbsp;&nbsp;d) Leverantörer — Vilka krav
+    <br>
+    &nbsp;&nbsp;&nbsp;&nbsp;e) Tillgångskontroll — Vem får tillgång till vad
+    <br>
+    &nbsp;&nbsp;&nbsp;&nbsp;f) Kryptering — Av överföring och lagring
+    <br>
+    &nbsp;&nbsp;&nbsp;&nbsp;g) Autentisering — MFA, lösenordspolicy
+    <br>
+    &nbsp;&nbsp;&nbsp;&nbsp;h) Loggning och övervakning — Varning vid avvikelse
+    <br>
+    &nbsp;&nbsp;&nbsp;&nbsp;i) Uppdateringar och patching — Schema och prioritering
+    <br>
+    &nbsp;&nbsp;&nbsp;&nbsp;j) Utbildning och medvetenhet — Årlig utbildning
+    <br><br>
+    6. Styrelsesyn och övervakning — Hur ofta, vad rapporteras
+    <br><br>
+    7. Godkännande — Signeringslista (VD, Styrelseordförande, minst två styrelseledamöter)
+    <br><br>
+    8. Versionshistorik — Tidigare versioner, ändringar
+  </blockquote>
+
+  <p>
+    <strong>Längd:</strong> 8–12 sidor för medelstor organisation. En A4-policy är för kort för att vara trovärdig — tillsynen letar efter substans.
+  </p>
+
+  <h3>Mall 2: Styrelsebeslut om säkerhetsåtgärder</h3>
+
+  <blockquote>
+    Styrelsebeslut [Datum]
+    <br><br>
+    Närvaro: [Namn och befattning på närvaron,de]
+    <br><br>
+    Ärende: Godkännande av säkerhetspolicy och riskanalys för [År]
+    <br><br>
+    Bakgrund: IT-chefen presenterade organisationens cyberrisker och föreslagna åtgärder för 2026. Styrelsen har granskat riskanalysen från maj 2026 och säkerhetspolicyn från juni 2026.
+    <br><br>
+    Beslut: Styrelsen godkänner:
+    <br>
+    • Säkerhetspolicy v2.1
+    <br>
+    • Riskanalys 2026 med identifierade hot och sannolikheter
+    <br>
+    • Prioriterade åtgärder: MFA-implementering, EDR-utbyggnad, backup-hårdening
+    <br>
+    • Budget för säkerhet: [Belopp]
+    <br><br>
+    Ansvar: IT-chef ansvarar för implementering. Styrelse övervakar framsteg varje kvartal.
+    <br><br>
+    Underskrifter: [Digital signering, datum, namn och titel]
+  </blockquote>
+
+  <h3>Mall 3: Incidenthanteringsplan</h3>
+
+  <blockquote>
+    1. Vad räknas som incident och allvarlig incident
+    <br><br>
+    2. Eskaleringsväg:
+    <br>
+    &nbsp;&nbsp;&nbsp;&nbsp;- IT-drift upptäcker något misstänkt → Incident-chef
+    <br>
+    &nbsp;&nbsp;&nbsp;&nbsp;- Incident-chef aktiverar team, klassificerar allvarlighetsgrad
+    <br>
+    &nbsp;&nbsp;&nbsp;&nbsp;- Om allvarlig (större datavaxt, system nere >2h): Informera VD omedelbar
+    <br>
+    &nbsp;&nbsp;&nbsp;&nbsp;- VD informerar styrelse (senast nästa dag)
+    <br>
+    &nbsp;&nbsp;&nbsp;&nbsp;- Om rapporteringsplikt (Artikel 23): Kontakta MSB senast 72 timmar från upptäckt
+    <br><br>
+    3. Kontaktuppgifter (privata telefonnummer till nyckelroll)
+    <br><br>
+    4. Tidsplan för återställning
+    <br><br>
+    5. Kommunikationsmall för kundmeddelande
+    <br><br>
+    6. Incidentrapporteringsformulär till MSB
+  </blockquote>
+
+  <p>
+    <strong>Viktigt:</strong> Denna plan måste tränas minst en gång per år. Dokumentera att träningen genomfördes.
+  </p>
+
+  <div class="box-info">
+    <strong>Praktisk tips:</strong> Spara incidentplanen både i en fysisk låda och digitalt tillgänglig för chefer — om datanätverket går ned måste ni fortfarande veta vem ni ska ringa.
+  </div>
+
+  <h2>Uppdateringsfrekvens — så håller du dokumentation aktuell</h2>
+
+  <p>
+    En genomgång av när varje dokumentkategori ska uppdateras:
+  </p>
+
+  <table class="doc-table">
+    <thead>
+      <tr>
+        <th>Dokumenttyp</th>
+        <th>Uppdateringsfrekvens</th>
+        <th>Utlösande faktor</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Säkerhetspolicy</td>
+        <td>Årligen + vid större ändringar</td>
+        <td>Eller om ny sektorsriktlinje utgetts</td>
+      </tr>
+      <tr>
+        <td>Riskanalys</td>
+        <td>Årligen + omedelbar uppdatering</td>
+        <td>Vid ny tjänst, ny hotbild eller incident</td>
+      </tr>
+      <tr>
+        <td>Incidenthanteringsplan</td>
+        <td>Årligen + efter varje incident</td>
+        <td>Eller nya roller/kontaktuppgifter</td>
+      </tr>
+      <tr>
+        <td>Styrelsebeslut</td>
+        <td>Vid varje godkännande</td>
+        <td>Måste förekomma minst två gånger/år</td>
+      </tr>
+      <tr>
+        <td>Leverantörsregister</td>
+        <td>Löpande + bedömning årligen</td>
+        <td>Eller när ny leverantör läggs till</td>
+      </tr>
+      <tr>
+        <td>Utbildningslogg</td>
+        <td>Löpande registrering</td>
+        <td>Efter varje utbildning/test</td>
+      </tr>
+      <tr>
+        <td>Backup-testresultat</td>
+        <td>Årligen per system</td>
+        <td>Eller efter större systemförändring</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>
+    <strong>Minnesnotering:</strong> Sätt en återkommande kalenderhändelse för varje dokument så att ansvarig får påminnelse två månader innan uppdateringsfristen. Bättre att uppdatera två månader i förväg än att missa helt.
+  </p>
+
+  <h2>Det du förmodligen undrar</h2>
+
+  <div class="faq-item">
+    <div class="faq-q">Räcker det med en sammanfattning av alla sju kategorier i ett dokument?</div>
+    <div class="faq-a">Det är lockande att spara tid, men nej. Tillsynsmyndigheten förväntar sig separata dokument för varje domän. En "allt-i-ett-policy" på 30 sidor är mindre trovärdig än sju välstrukturerade dokument på 4–5 sidor vardera. Separation visar att ni tagit detta allvarligt.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">Hur långt tillbaka måste vi kunna arkivera dokumentationen?</div>
+    <div class="faq-a">Minst två år bakåt — gärna tre. NIS2 börjar gälla fullt ut i oktober 2024, men tillsynsmyndigheterna använder ofta två-årsperspektiv när de granskar. Om ett intrång inträffar nu och det visar sig att ni inte hade någon riskanalys för två år sedan är det en stor brist.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">Vem ska ansvara för att dokumentationen uppdateras?</div>
+    <div class="faq-a">Det måste vara en namngiven person — ofta Säkerhetschef eller IT-chef. Men godkännande från styrelse/VD kan inte delegeras. Du kan ha en säkerhetschef som skriver policyn, men styrelsen måste explicit godkänna den.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">Kan vi använda mallar från externa konsulter?</div>
+    <div class="faq-a">Ja, mallar är en bra utgångspunkt. Men de måste anpassas till din organisation, dina roller och dina risker. En generisk mall som ser ut att klistra in från någon annan organisation väcker skepsis hos tillsynen.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">Vad gör vi med dokument från innan vi visste om NIS2?</div>
+    <div class="faq-a">Arkivera dem för kontext, men räkna med att du behöver nya versioner från oktober 2024 framåt (när cybersäkerhetslagen träde i kraft). Du kan visa historiska dokument för att visa intentionen, men tillsynen kommer att bedöma enligt NIS2-standarden från och med oktober 2024.</div>
+  </div>
+
+  <div class="box-info" style="margin: 48px 0 32px;">
+    <div style="font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color: var(--yellow); margin-bottom:10px;">🔧 VERKTYG &amp; LÖSNINGAR</div>
+    <p style="margin:0; font-size:17px; color: #ddd; line-height:1.7;">Microsoft Defender Secure Score och Compliance Manager ger dig en digital checklista för dessa sju dokumentkategorier — och en 0–100 poäng-KPI att presentera för styrelsen varje kvartal. En certifierad Microsoft-partner kan sätta upp detta kostnadsfritt vid gap-analysen.</p>
+  </div>
+
+  <!-- NEWSLETTER -->
+  <div style="background:#111; border:1px solid rgba(255,255,255,0.1); border-left:3px solid #f5c518; border-radius:4px; padding:32px 36px; margin:40px 0 0; text-align:center; max-width:760px; margin-left:auto; margin-right:auto;">
+    <div style="font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:#f5c518; margin-bottom:12px;">📬 NIS2-UPPDATERINGAR</div>
+    <h3 style="font-family:'Poppins',sans-serif; font-size:20px; font-weight:800; margin:0 0 8px; color:#f0f0f0;">Ny NIS2-artikel varje vecka — direkt i inkorgen</h3>
+    <p style="color:#888; font-size:15px; margin:0 0 20px;">Ingen säljpitch. Bara konkret vägledning för VD:ar och styrelser.</p>
+    <form id="nlForm-nis2_dokumentationskrav_mallar_sverige" onsubmit="submitNewsletter_nis2_dokumentationskrav_mallar_sverige(event)" style="display:flex; gap:10px; flex-wrap:wrap; justify-content:center; max-width:460px; margin:0 auto;">
+      <input type="email" id="nlEmail-nis2_dokumentationskrav_mallar_sverige" placeholder="din@foretag.se" required
+             style="flex:1; min-width:200px; padding:12px 16px; background:#1c1c1f; border:1px solid rgba(255,255,255,0.15); border-radius:4px; color:#f0f0f0; font-size:15px; outline:none;" />
+      <button type="submit" id="nlSubmit-nis2_dokumentationskrav_mallar_sverige"
+              style="padding:12px 22px; background:#f5c518; color:#141416; font-weight:700; font-size:15px; border:none; border-radius:4px; cursor:pointer; white-space:nowrap;">
+        Prenumerera gratis →
+      </button>
+    </form>
+    <p style="font-size:12px; color:#555; margin:12px 0 0;">Du kan avprenumerera när som helst. Vi delar aldrig din e-post.</p>
+    <div id="nlThanks-nis2_dokumentationskrav_mallar_sverige" style="display:none; color:#4ade80; font-size:16px; font-weight:600; margin-top:14px;">✅ Du är med! Nästa artikel kommer direkt till din inkorg.</div>
+  </div>
+
+  <!-- CTA -->
+  <div class="cta-section">
+    <h2>Vet du var din organisation står idag?</h2>
+    <p>En kostnadsfri gap-analys med en certifierad Microsoft-partner visar exakt vilken dokumentation du redan har på plats — och vad som saknas för att möta NIS2.</p>
+    <a href="https://nis2klar.se/#boka" class="btn-primary">Boka kostnadsfri gap-analys →</a>
+    <p class="cta-fine">Dokumentationen är gratis att sätta upp. Böterna för att inte ha den är upp till <strong>10 miljoner euro</strong>.</p>
+  </div>
+
+</article>
+
+<div class="related-articles" style="margin:2.5rem 0 2rem;padding:1.5rem;background:#1a1a2e;border-left:4px solid #f0a500;border-radius:4px;">
+  <p style="margin:0 0 1rem;font-size:0.85rem;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:#f0a500;">Läs också</p>
+  <ul style="margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:0.5rem;">
+    <li><a href="https://nis2klar.se/artiklar/nis2-personligt-ansvar-styrelse.html" style="color:#e0e0e0;text-decoration:none;font-size:0.95rem;">→ Styrelsens personliga ansvar enligt Artikel 20</a></li>
+    <li><a href="https://nis2klar.se/artiklar/nis2-tillsyn-ncsc-msb-sverige.html" style="color:#e0e0e0;text-decoration:none;font-size:0.95rem;">→ NIS2-tillsyn: MSB och sektoriella myndigheter</a></li>
+    <li><a href="https://nis2klar.se/artiklar/nis2-vilka-foretag-omfattas.html" style="color:#e0e0e0;text-decoration:none;font-size:0.95rem;">→ Vilka företag omfattas av NIS2 i Sverige?</a></li>
+  </ul>
+  <p style="margin:1.25rem 0 0;font-size:0.85rem;color:#aaa;">← <a href="https://nis2klar.se/" style="color:#f0a500;text-decoration:none;">NIS2Klar startsida</a> · <a href="https://nis2klar.se/artiklar.html" style="color:#f0a500;text-decoration:none;">Alla guider</a></p>
+</div>
+
+<footer>
+  © 2026 M&J Trusted Marketing KB · <a href="mailto:support@trustedmarketing.se">support@trustedmarketing.se</a> · <a href="tel:+46470597003">+46 470 59 70 03</a> ·
+  <a href="https://nis2klar.se/">Tillbaka till startsidan</a> ·
+  <a href="https://nis2klar.se/privacy.html">Integritetspolicy</a>
+  <p style="margin-top:12px; font-size:11px; color: #555; line-height:1.5;">Microsoft, Microsoft 365, Azure och tillhörande produktnamn är varumärken som tillhör Microsoft Corporation. nis2klar.se är inte affilierat med eller godkänt av Microsoft Corporation.</p>
+</footer>
+
+<script data-cfasync="false">
+  async function submitNewsletter_nis2_dokumentationskrav_mallar_sverige(e) {
+    e.preventDefault();
+    const btn = document.getElementById('nlSubmit-nis2_dokumentationskrav_mallar_sverige');
+    btn.disabled = true;
+    btn.textContent = 'Skickar...';
+    const email = document.getElementById('nlEmail-nis2_dokumentationskrav_mallar_sverige').value.trim();
+    try {
+      const res = await fetch('/api/newsletter/subscribe', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, source: 'artikel-nis2_dokumentationskrav_mallar_sverige' })
+      });
+      const data = await res.json();
+      if (data.success) {
+        document.getElementById('nlForm-nis2_dokumentationskrav_mallar_sverige').style.display = 'none';
+        document.getElementById('nlThanks-nis2_dokumentationskrav_mallar_sverige').style.display = 'block';
+      } else {
+        btn.disabled = false;
+        btn.textContent = 'Prenumerera gratis →';
+      }
+    } catch {
+      btn.disabled = false;
+      btn.textContent = 'Prenumerera gratis →';
+    }
+  }
+</script>
+
+</body>
+</html>
