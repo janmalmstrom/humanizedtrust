@@ -275,7 +275,7 @@
         <input type="text"  id="capName"    placeholder="Ditt namn" autocomplete="name" />
         <input type="email" id="capEmail"   placeholder="E-postadress *" autocomplete="email" required />
         <input type="text"  id="capCompany" placeholder="Bolagets namn *" required />
-        <button type="submit" id="captureSubmit">Boka kostnadsfri gap-analys →</button>
+        <button type="submit" id="captureSubmit">Hör av dig om NIS2 →</button>
       </form>
       <div id="captureThanks" style="display:none" class="capture-thanks">
         ✅ Tack! Vi hör av oss inom 24 timmar.
@@ -434,11 +434,11 @@
           document.getElementById('captureThanks').style.display = 'block';
         } else {
           btn.disabled = false;
-          btn.textContent = 'Boka kostnadsfri gap-analys →';
+          btn.textContent = 'Hör av dig om NIS2 →';
         }
       } catch (err) {
         btn.disabled = false;
-        btn.textContent = 'Boka kostnadsfritt samtal →';
+        btn.textContent = 'Hör av dig om NIS2 →';
       }
     }
   </script>

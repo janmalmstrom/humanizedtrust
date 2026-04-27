@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-BKF3QH9K01"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag("js", new Date());
+    gtag("config", "G-BKF3QH9K01");
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nätverkssäkerhet och övervakning under NIS2 i Sverige: Vad är minimikravet? | NIS2Klar</title>
+  <meta name="description" content="NIS2 kräver segmentering, åtkomstkontroll och logghantering. Läs vad som är minimutkrav enligt direktivet, hur länge loggar ska sparas, och vad styrelsen måste fråga IT-chefen om.">
+  <meta property="og:title" content="Nätverkssäkerhet och övervakning under NIS2 i Sverige: Vad är minimikravet?">
+  <meta property="og:description" content="NIS2 kräver segmentering, åtkomstkontroll och logghantering. Läs vad som är minimutkrav enligt direktivet, hur länge loggar ska sparas, och vad styrelsen måste fråga IT-chefen om.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #141416;
+      --card: #1c1c1f;
+      --yellow: #f5c518;
+      --white: #f0f0f0;
+      --muted: #888;
+      --red: #C61212;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: var(--bg); color: var(--white); font-family: 'Barlow', sans-serif; font-size: 19px; line-height: 1.8; }
+
+    /* Nav */
+    nav { display: flex; justify-content: space-between; align-items: center; padding: 20px 40px; border-bottom: 1px solid rgba(255,255,255,0.07); max-width: 900px; margin: 0 auto; }
+    .nav-logo { font-family: 'Poppins', sans-serif; font-weight: 900; font-size: 20px; color: var(--yellow); text-decoration: none; }
+    .nav-logo span { color: var(--white); }
+    .nav-back { color: var(--muted); text-decoration: none; font-size: 15px; }
+    .nav-back:hover { color: var(--white); }
+    .nav-cta { background: var(--yellow); color: #000; padding: 8px 18px; border-radius: 4px; text-decoration: none; font-weight: 700; font-size: 14px; font-family: 'Poppins', sans-serif; }
+
+    /* Article */
+    .article-wrap { max-width: 760px; margin: 0 auto; padding: 60px 40px; }
+    .article-category { font-size: 13px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 16px; }
+    h1 { font-family: 'Poppins', sans-serif; font-size: clamp(30px, 4vw, 44px); font-weight: 900; line-height: 1.2; margin-bottom: 24px; }
+    .article-meta { font-size: 15px; color: var(--muted); margin-bottom: 48px; padding-bottom: 24px; border-bottom: 1px solid rgba(255,255,255,0.07); }
+    h2 { font-family: 'Poppins', sans-serif; font-size: 26px; font-weight: 700; margin: 48px 0 16px; color: var(--white); }
+    h3 { font-family: 'Poppins', sans-serif; font-size: 20px; font-weight: 600; margin: 32px 0 12px; color: var(--yellow); }
+    p { margin-bottom: 22px; }
+    strong { color: var(--white); font-weight: 700; }
+    .highlight { color: var(--yellow); font-weight: 700; }
+    .danger { color: #ff6b6b; font-weight: 700; }
+    ul, ol { margin: 16px 0 24px 24px; }
+    li { margin-bottom: 12px; font-size: 19px; }
+
+    /* Callout boxes */
+    .box-warning { background: rgba(197,17,17,0.12); border-left: 4px solid var(--red); padding: 20px 24px; margin: 32px 0; border-radius: 0 4px 4px 0; }
+    .box-info { background: rgba(245,197,24,0.08); border-left: 4px solid var(--yellow); padding: 20px 24px; margin: 32px 0; border-radius: 0 4px 4px 0; }
+    .box-case { background: var(--card); border: 1px solid rgba(255,255,255,0.08); padding: 28px; margin: 40px 0; border-radius: 4px; }
+    .box-case .case-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 12px; }
+    blockquote { border-left: 3px solid var(--yellow); padding: 12px 20px; margin: 24px 0; font-style: italic; color: #ccc; }
+
+    /* CTA */
+    .cta-section { background: var(--card); border: 1px solid rgba(245,197,24,0.2); border-radius: 4px; padding: 48px 40px; margin: 64px 0 40px; text-align: center; }
+    .cta-section h2 { margin-top: 0; font-size: 26px; }
+    .cta-section p { color: #aaa; max-width: 500px; margin: 0 auto 28px; }
+    .btn-primary { display: inline-block; background: var(--yellow); color: #000; font-family: 'Poppins', sans-serif; font-weight: 800; font-size: 16px; padding: 16px 36px; border-radius: 4px; text-decoration: none; }
+    .btn-primary:hover { background: #e0b010; }
+    .cta-fine { font-size: 13px; color: var(--muted); margin-top: 16px; }
+
+    /* FAQ */
+    .faq-item { border-bottom: 1px solid rgba(255,255,255,0.07); padding: 20px 0; }
+    .faq-q { font-family: 'Poppins', sans-serif; font-weight: 600; margin-bottom: 10px; }
+    .faq-a { color: #bbb; }
+
+    /* Summary + Key Takeaway */
+    .box-summary { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; padding: 24px 28px; margin: 0 0 32px; }
+    .summary-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-bottom: 14px; }
+    .box-summary ul { margin: 0; padding-left: 20px; }
+    .box-summary li { margin-bottom: 8px; font-size: 17px; color: #ccc; }
+    .box-takeaway { background: rgba(245,197,24,0.08); border-left: 4px solid var(--yellow); padding: 20px 24px; margin: 0 0 40px; border-radius: 0 4px 4px 0; }
+    .takeaway-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 10px; }
+    .box-takeaway p { margin: 0; font-size: 18px; font-weight: 600; color: var(--white); line-height: 1.6; }
+
+    /* Footer */
+    footer { border-top: 1px solid rgba(255,255,255,0.07); padding: 32px 40px; text-align: center; font-size: 13px; color: var(--muted); max-width: 900px; margin: 0 auto; }
+    footer a { color: var(--muted); }
+
+    @media (max-width: 600px) {
+      nav, .article-wrap, footer { padding: 20px; }
+      .cta-section { padding: 32px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="https://nis2klar.se/">NIS2<span>Klar</span></a>
+  <a class="nav-back" href="https://nis2klar.se/artiklar.html">← Alla artiklar</a>
+  <a class="nav-cta" href="https://nis2klar.se/#boka">Boka samtal →</a>
+</nav>
+
+<article class="article-wrap">
+  <div class="article-category">Tekniska Krav &amp; Implementering</div>
+  <h1>Nätverkssäkerhet och övervakning under NIS2 i Sverige: Vad är minimikravet?</h1>
+  <div class="article-meta">Uppdaterad 27 april 2026 · Lästid: ca 8 minuter · Målgrupp: VD &amp; Styrelse</div>
+
+  <!-- SUMMARY -->
+  <div class="box-summary">
+    <div class="summary-label">Sammanfattning</div>
+    <ul>
+      <li>NIS2 Artikel 21 kräver tio obligatoriska säkerhetsåtgärder — segmentering och åtkomstkontroll är två av dem.</li>
+      <li>Loggar måste sparas minst <strong>6 månader</strong> enligt EU-lagstiftning; många branscher kräver längre.</li>
+      <li>Styrelsen måste kunna ställa fyra specifika frågor till IT-chefen för att bevisa sitt ansvar (Artikel 20).</li>
+      <li>Dessa är inte "nice to have" — de är juridiska minimikrav från dag ett av NIS2-klassificering.</li>
+    </ul>
+  </div>
+
+  <!-- KEY TAKEAWAY -->
+  <div class="box-takeaway">
+    <div class="takeaway-label">Viktigaste slutsatsen</div>
+    <p>Nätverkssäkerhet och övervakning är inte tekniska detaljer du kan delegera. De är rättskrav som styrelsen måste förstå och godkänna. En granskning av tillsynsmyndigheten kommer att kolla om ni dokumenterat detta.</p>
+  </div>
+
+  <p>
+    NIS2-direktivet är konkret. Det listar nio kritiska säkerhetsåtgärder och en tionde allmän kategori — och två av dem handlar direkt om nätverket: segmentering och åtkomstkontroll.
+    Det är inte vad som är "bra att ha". Det är minimutkrav som gäller från och med det att er organisation klassificeras som väsentlig eller viktig entitet.
+  </p>
+
+  <p>
+    Frågan är inte om ni ska implementera dessa åtgärder. Frågan är: vet ni vad som redan finns, vad som saknas, och kan ni försvara era val inför en tillsynsmyndighet?
+  </p>
+
+  <h2>Vad säger NIS2 Artikel 21 egentligen?</h2>
+
+  <p>
+    <strong>Artikel 21</strong> i NIS2-direktivet listar "tekniska och organisatoriska åtgärder" som alla väsentliga och viktiga entiteter måste implementera. Det är inte ett menu där ni väljer några och hoppar över andra.
+    Det är ett tvingande minimikrav.
+  </p>
+
+  <p>
+    De nio specificerade åtgärderna är:
+  </p>
+
+  <ol>
+    <li>Riskhantering</li>
+    <li>Incidenthantering</li>
+    <li>Kontinuitets- och katastrofberedskapsplanering</li>
+    <li>Säkerhet i leverantörsrelationer</li>
+    <li><strong>Tillgångskontroll och autentisering</strong> ← Vi fokuserar här</li>
+    <li><strong>Skydd mot obehörig åtkomst av nätverk</strong> ← Och här</li>
+    <li>Kryptering av data i transit och i vila</li>
+    <li>Säkerhet under utveckling och support</li>
+    <li>Hantering av säkerhetsproblem</li>
+  </ol>
+
+  <p>
+    Plus en tionde kategori: "annat som lämpar sig" enligt medlemsstaten — vilket för Sverige betyder att MSB och sektorsspecifika myndigheter kan ställa ytterligare krav.
+  </p>
+
+  <div class="box-info">
+    <strong>I praktiken betyder detta:</strong> En tillsynsmyndighet som granskar er kommer att kontrollera om ni kan dokumentera att alla nio punkter är täckta. Punkt 5 och 6 är nätverk och åtkomst — två saker som många organisationer tror "IT hanterar".
+  </div>
+
+  <h2>Segmentering — vad är minimikravet?</h2>
+
+  <p>
+    <strong>Segmentering</strong> är uppdelningen av ett nätverk i mindre, isolerade delar. Tanken är att om en angripare får tillgång till en del, kan de inte automatiskt komma åt hela organisationen.
+  </p>
+
+  <p>
+    NIS2 kräver detta utan att säga exakt hur. Det är en "resultatbaserad" krav — du måste visa att du har implementerat något som gör att obehörig åtkomst från en nätverksdel inte ger åtkomst till alla andra.
+  </p>
+
+  <p>
+    I praktiken innebär segmentering typiskt:
+  </p>
+
+  <ul>
+    <li>Separation mellan IT-nätverk (kontorsarbete) och OT-nätverk (produktion, styrning) — kritiskt för industri, energi och sjukvård</li>
+    <li>Isolering av känslig data från allmänt använd infrastruktur</li>
+    <li>Gästnätverk helt skilt från företagsnätverket</li>
+    <li>Isolerade miljöer för utveckling/test från produktion</li>
+    <li>Kontrollade övergångar mellan segmenten (brandväggar, mikrosegmentering)</li>
+  </ul>
+
+  <p>
+    Är du i en bank, en sjukhusklinik eller ett kraftföretag är detta redan kritiskt. Är du ett mindre teknikbolag kanske du tror det inte behövs — men enligt NIS2 behövs det för all klassificerad verksamhet.
+  </p>
+
+  <div class="box-case">
+    <div class="case-label">Exempel: Vad granskningen kollar</div>
+    <p>
+      <strong>Ett medelstor sjukhus, 350 anställda.</strong> Klassas som väsentlig entitet under NIS2.
+      Granskning initieras efter ett ransomware-angrepp på administrativ utrustning.
+    </p>
+    <p>
+      Tillsynsmyndigheten (IVO) frågar: "Visa att patient-IT (journalsystem, medicinsk data) är segmenterad från administrativ IT."
+    </p>
+    <p>
+      <strong>Svar 1:</strong> "Ja, de ligger på olika servrar." — <strong>Inte tillräckligt.</strong> Samma nätverk räcker för att en attack kan sprida sig mellan dem.
+    </p>
+    <p>
+      <strong>Svar 2:</strong> "Vi har brandvägg mellan patientdatan och administrationen. Här är nätverkskartan, brandväggskonfigurationen och loggarna som visar vilken trafik som tillåts mellan segmenten." — <strong>Det är tillräckligt.</strong>
+    </p>
+    <p>
+      Skillnaden mellan svar 1 och 2 kan innebära böter på 7 miljoner euro för en viktig entitet — eller ingen sanktion alls.
+    </p>
+  </div>
+
+  <h2>Åtkomstkontroll — vilka får göra vad?</h2>
+
+  <p>
+    <strong>Åtkomstkontroll</strong> betyder: varje person, varje enhet, varje process får bara tillgång till exakt det de behöver för sitt jobb — inte mer.
+  </p>
+
+  <p>
+    Det kallas <strong>"principle of least privilege"</strong> (principen om minsta rättigheter) och det är inte nytt, men under NIS2 är det obligatoriskt att dokumentera.
+  </p>
+
+  <p>
+    Minimikravet omfattar:
+  </p>
+
+  <ul>
+    <li><strong>Användaridentifikation:</strong> Systemet måste veta exakt vilken person som gör vad. Delade konton är inte tillåtet.</li>
+    <li><strong>Autentisering:</strong> Att bevisa sin identitet — lösenord är ett minimum, men starkt autentisering (MFA) är nu nästan universellt förväntat under NIS2.</li>
+    <li><strong>Auktorisering:</strong> Efter att du loggat in, vilka filer/system får du tillgång till? Detta måste definieras per roll, inte per person.</li>
+    <li><strong>Övervakning:</strong> Systemet måste logga vem som gjorde vad och när. Detta är möjligheten att senare bevisa eller utreda en incident.</li>
+  </ul>
+
+  <p>
+    En IT-chef som säger "alla i IT får samma lösenord till produktionsdatabasen" eller "vi använder bara lösenord, inget MFA" bryter redan mot NIS2 från dag ett.
+  </p>
+
+  <h3>Fråga 1 som styrelsen måste ställa</h3>
+  <p>
+    <span class="highlight">"Använder alla användare en unik identitet och lösenord, och är MFA (tvåfaktorsautentisering) aktiverat för minst alla administratörer och känslig data?"</span>
+  </p>
+  <p>
+    Om svaret är nej eller "vi jobbar på det" — ni är redan i gapet. En böter kan komma även under arbetet.
+  </p>
+
+  <h2>Övervakning och loggning — hur länge måste vi spara loggar?</h2>
+
+  <p>
+    <strong>Övervakning</strong> handlar om att kunna se vad som hände i dina system. Det är både en säkerhetsåtgärd och ett bevis i efterhand.
+  </p>
+
+  <p>
+    NIS2 Artikel 21 säger att ni måste ha övervakning på plats. EU-lagstiftningen (notamment GDPR och eIDAS-förordningen) säger hur länge ni ska spara dessa loggar.
+  </p>
+
+  <p>
+    <strong>Minimumsparingstid är 6 månader</strong> enligt GDPR och EU:s riktlinjer för incidenthantering. Men branschen spelar roll:
+  </p>
+
+  <ul>
+    <li><strong>Finans:</strong> 5–7 år (laglig skyldighet för transaktioner och revisioner)</li>
+    <li><strong>Sjukvård:</strong> 5–10 år (medicinska journaler är känslig data)</li>
+    <li><strong>Kritisk infrastruktur (energi, transport):</strong> 3–5 år (ofta ett regelkrav för nätoperatörer)</li>
+    <li><strong>Övriga:</strong> Minst 6 månader; många rekommenderar 1–2 år</li>
+  </ul>
+
+  <p>
+    Problemet är att de flesta organisationer inte sparar alls. De har loggning aktiverat, men loggarna försvinner efter 7–30 dagar när lagringen blir full.
+    När en incident inträffar och tillsynsmyndigheten frågar "visa oss loggarna från för två veckor sedan", är svaret ofta "de är redan borta".
+  </p>
+
+  <div class="box-warning">
+    <strong>Risk:</strong> Utebliven loggning eller loggborttagning innan lagstadgad tid kan klassificeras som "tampering with evidence" under granskning — vilket kan leda till högre böter än själva incidenten.
+  </div>
+
+  <h3>Fråga 2 som styrelsen måste ställa</h3>
+  <p>
+    <span class="highlight">"Spara vi loggdata för minst 6 månader, gärna längre beroende på sektor? Kan IT-chefen visa ett konfigurerat arkiveringssystem och berätta hur länge vi lagrar idag?"</span>
+  </p>
+
+  <h2>De fyra frågor som styrelsens ska ställa IT-chefen</h2>
+
+  <p>
+    Artikel 20 i NIS2 säger att ledningen måste "aktivt godkänna" säkerhetsåtgärderna. Det betyder att det inte räcker att delegera. Du måste förstå tillräckligt för att kunna fatta ett informerat beslut.
+  </p>
+
+  <p>
+    Här är fyra konkreta frågor som bevisar att du gjort detta — och som du måste få svar på innan nästa styrelsemöte:
+  </p>
+
+  <h3>Fråga 1: Åtkomstkontroll</h3>
+  <p>
+    <strong>"Hur många användare har administrativa rättigheter (root, admin, sa-konto) och kan du lista varje person namn för namn? Använder vi MFA för åtminstone administrativa och känsliga system?"</strong>
+  </p>
+  <p>
+    Om IT-chefen inte kan ge ett exakt svar, eller säger "det är svårt att räkna", är det en varningssignal. Administrativa rättigheter måste vara helt kartlagda.
+  </p>
+
+  <h3>Fråga 2: Segmentering</h3>
+  <p>
+    <strong>"Visa nätverkskartan. Var är känslig data segmenterad från övrig trafik? Vilka brandväggsregler styr trafiken mellan segmenten och hur testas dessa regelbundet?"</strong>
+  </p>
+  <p>
+    Förvänta dig en ritning, en förklaring, och åtminstone ett test varje halvår.
+  </p>
+
+  <h3>Fråga 3: Loggning</h3>
+  <p>
+    <strong>"Hur länge sparar vi loggar från känsliga system? Var lagras loggarna och är de skyddade mot ändringar eller borttagning?"</strong>
+  </p>
+  <p>
+    Loggarna måste vara immutable (kan inte ändras i efterhand) enligt best practice. Det är ofta arkiverade på separata lagringsmedier eller i molnlagring med "write once, read many"-inställningar.
+  </p>
+
+  <h3>Fråga 4: Övervakning och incident</h3>
+  <p>
+    <strong>"Vilka allvarliga händelser övervakade vi i fjol och hur många dagar tog det från detektering till att vi visste vad som hade hänt? Kan du visa tre exempel från loggarna?"</strong>
+  </p>
+  <p>
+    Det här visar att övervakningen inte bara är "på" utan faktiskt fungerar. En organisation som inte kan visa ett enda exempel på en detekterad avvikelse på sex månader har en övervakning som inte är verksam.
+  </p>
+
+  <div class="box-info">
+    <strong>Dokumentera dina svar.</strong> Ta en screenshot av när IT-chefen visar dig dessa saker. Dokument dessa svar i ett styrelsebeslut. Det är detta som bevisar att ledningen "aktivt godkänt" åtgärderna enligt Artikel 20.
+  </div>
+
+  <h2>Vad menas med "känslig data" i detta sammanhang?</h2>
+
+  <p>
+    Under NIS2 är det inte bara personuppgifter (GDPR) som räknas. Det är allt som kan skada organisationen om det läcker eller ändras utan tillstånd:
+  </p>
+
+  <ul>
+    <li>Patientdata (sjukvård)</li>
+    <li>Finansiella transaktioner (bank)</li>
+    <li>Styrsignaler till kritisk infrastruktur (energi, transport)</li>
+    <li>Affärshemligheter (source code, klientlistor)</li>
+    <li>Konfigurationsdata (IP-adresser, systemarkitektur)</li>
+    <li>Säkerhetsnyclar och certifikat</li>
+  </ul>
+
+  <p>
+    Principen är: om det skulle skada om det hamnade på en blogg, behöver det övervakas och segmenteras.
+  </p>
+
+  <h2>Teknik vs. dokumentation — vad är viktigast?</h2>
+
+  <p>
+    En vanlig missuppfattning är att NIS2 kräver den senaste tekniken. Det gör det inte. Det kräver att du kan <strong>bevisa</strong> att du har gjort något försvarbart.
+  </p>
+
+  <p>
+    En organisation med en enkel brandvägg från 2015, men där brandväggskonfigurationen är dokumenterad, testad och godkänd av styrelsen, kan hålla måttet.
+  </p>
+
+  <p>
+    En organisation med en cloud-native mikrosegmenteringslösning från 2025, men utan någon dokumentation på hur det fungerar eller vad det skyddar, kan inte.
+  </p>
+
+  <div class="box-case">
+    <div class="case-label">Fallstudie: Två IT-miljöer, en granskning</div>
+    <p>
+      <strong>Organisation A:</strong> Traditionell nätverksinfrastruktur, inga moln-baserade verktyg.
+      Men: de har en nätverksövervakningslösning från Cisco från 2014. Brandväggen är konfigurerad med känd, dokumenterad logik. Styrelsen har godkänt infrastrukturen. Det finns testa- och värdieringsloggar.
+    </p>
+    <p>
+      <strong>Organisation B:</strong> Helt molnbaserad, moderna verktyg överallt. Men IT-chefen har aldrig dokumenterat vilka firewall-regler som gäller för vilken data. Styrelsen har aldrig sett nätverkskartan. En ny konsult förstår inte hur systemet är uppbyggt.
+    </p>
+    <p>
+      <strong>Granskning:</strong> A får ett kort möte och ett grönt ljus. B får en lista med 20 frågor och måste skriva en handlingsplan.
+    </p>
+    <p>
+      Moralens poäng: <strong>Dokumentation och ledningsförankring väger tyngre än teknikens ålder.</strong>
+    </p>
+  </div>
+
+  <h2>Tidsplanen — när måste detta vara på plats?</h2>
+
+  <p>
+    Om er organisation klassificerades som väsentlig eller viktig entitet innan oktober 2024 gällde redan NIS1-krav.
+    Från och med oktober 2024 gäller NIS2-krav enligt cybersäkerhetslagen.
+  </p>
+
+  <p>
+    <strong>Övergångstid:</strong> Sex månader från klassificering för de flesta åtgärder; upp till två år för större teknisk omställning.
+  </p>
+
+  <p>
+    Det betyder:
+  </p>
+
+  <ul>
+    <li>Oktober 2024: Lagen gäller</li>
+    <li>April 2025: Första deadline för minimiåtgärder</li>
+    <li>Oktober 2026: Längre övergångar utgår</li>
+  </ul>
+
+  <p>
+    Det är redan 2026. Om ni inte tagit er igenom detta än är ni redan försenade.
+  </p>
+
+  <h2>Vad gör en tillsynsmyndighet när de granskar?</h2>
+
+  <p>
+    Granskningen börjar ofta med ett frågeformulär. Du får någon vecka eller två till att svara. En typisk fråga ser ut så här:
+  </p>
+
+  <blockquote>
+    "Beskriv er nätverkssegmentering. Länka till nätverkskarta, brandväggskonfiguration och en logg från minst två händelser som visar att brandväggskonfigurationen fungerar som förväntad. Visa också styrelsebeslut som godkänner denna infrastruktur."
+  </blockquote>
+
+  <p>
+    Om du inte kan svara får du ett påpekande. Ett påpekande kan bli ett tillsynsmöte. Ett tillsynsmöte kan bli en sanktionsöverenskommelse eller en böter.
+  </p>
+
+  <p>
+    Den organisationen som redan har detta dokumenterat kan svara på två timmar. Den som inte har det kan spenda veckor på att skrapa ihop material.
+  </p>
+
+  <h2>De vanligaste missuppfattningarna</h2>
+
+  <div class="faq-item">
+    <div class="faq-q">Räcker det med ett VPN för åtkomstkontroll?</div>
+    <div class="faq-a">Nej, VPN är bara hemlig överföring. Det löser inte autentisering (vem är du) eller auktorisering (vad får du göra). Du behöver all tre: MFA för autentisering, rollbaserad åtkomstkontroll för auktorisering, och loggning för övervakning. VPN kan vara ett verktyg, men det är inte tillräckligt.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">Vi är litet företag — behöver vi verkligen MFA?</div>
+    <div class="faq-a">Om ni är klassificerad som viktig entitet under NIS2 (50+ anställda eller 10+ M€ omsättning i reglerad sektor), ja. Storlek spelar ingen roll — lagkravet gäller. MFA behöver inte vara dyrt; många molntjänster har det gratis inbyggt.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">Kan vi bara spara loggar i 30 dagar för att spara lagringutrymme?</div>
+    <div class="faq-a">Det bryter mot NIS2 och sannolikt mot bransschkrav. Lagringsutrymmets kostnad är försumbar jämfört med risken för böter. En 6-månaderslagring kostar ofta mindre än två IT-dagar i arbete — och det kan spara dig miljoner i böter.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">Är detta samma krav för alla sektorer?</div>
+    <div class="faq-a">Artikel 21 är samma för alla, men sektorsspecifika myndigheter kan ställa ytterligare krav. Finanssektorn är ofta strängare än andra. En bank behöver mer avancerad övervakning än ett IT-konsultföretag. Kontrollera dina sektorsriktlinjer.</div>
+  </div>
+
+  <h2>Nästa steg för din organisation</h2>
+
+  <p>
+    Du behöver inte implementera allt i nästa vecka. Men du behöver en plan och ett styrelsebeslut som visar att ledningen är medveten och engagerad.
+  </p>
+
+  <p>
+    <strong>Gör detta innan nästa styrelsemöte:</strong>
+  </p>
+
+  <ol>
+    <li>Kontrollera: Är vi klassificerade som väsentlig eller viktig entitet under NIS2? (Ta reda på detta om du inte redan vet.)</li>
+    <li>Läs in dig själv på Artikel 21 — de nio obligatoriska åtgärderna.</li>
+    <li>Ställ de fyra frågorna ovan till IT-chefen skriftligt. Begär svar senast två veckor senare.</li>
+    <li>Dokumentera svaren och ta med dem till styrelsemötet.</li>
+    <li>Besluta: Vad gör vi för att stänga eventuella gap? Sätt en budget och tidsplan.</li>
+  </ol>
+
+  <p>
+    Det är detta som visar att ledningen gjort sitt ansvar enligt Artikel 20.
+  </p>
+
+  <div class="box-info" style="margin: 48px 0 32px;">
+    <div style="font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color: var(--yellow); margin-bottom:10px;">🔧 VERKTYG &amp; LÖSNINGAR</div>
+    <p style="margin:0; font-size:17px; color: #ddd; line-height:1.7;">Microsoft Entra ID Conditional Access och Microsoft Defender for Cloud ger er automatiserad åtkomstkontroll, MFA och övervakning av nätverkssäkerhet — allt i ett system. En certifierad Microsoft-partner kan genomföra en kostnadsfri gap-analys och visa exakt vilka åtgärder ni redan har täckt och vad som saknas.</p>
+  </div>
+
+  <!-- NEWSLETTER -->
+  <div style="background:#111; border:1px solid rgba(255,255,255,0.1); border-left:3px solid #f5c518; border-radius:4px; padding:32px 36px; margin:40px 0 0; text-align:center; max-width:760px; margin-left:auto; margin-right:auto;">
+    <div style="font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:#f5c518; margin-bottom:12px;">📬 NIS2-UPPDATERINGAR</div>
+    <h3 style="font-family:'Poppins',sans-serif; font-size:20px; font-weight:800; margin:0 0 8px; color:#f0f0f0;">Ny NIS2-artikel varje vecka — direkt i inkorgen</h3>
+    <p style="color:#888; font-size:15px; margin:0 0 20px;">Ingen säljpitch. Bara konkret vägledning för VD:ar och styrelser.</p>
+    <form id="nlForm-nis2_natverkssakerhet_overvakning_krav" onsubmit="submitNewsletter_nis2_natverkssakerhet_overvakning_krav(event)" style="display:flex; gap:10px; flex-wrap:wrap; justify-content:center; max-width:460px; margin:0 auto;">
+      <input type="email" id="nlEmail-nis2_natverkssakerhet_overvakning_krav" placeholder="din@foretag.se" required
+             style="flex:1; min-width:200px; padding:12px 16px; background:#1c1c1f; border:1px solid rgba(255,255,255,0.15); border-radius:4px; color:#f0f0f0; font-size:15px; outline:none;" />
+      <button type="submit" id="nlSubmit-nis2_natverkssakerhet_overvakning_krav"
+              style="padding:12px 22px; background:#f5c518; color:#141416; font-weight:700; font-size:15px; border:none; border-radius:4px; cursor:pointer; white-space:nowrap;">
+        Prenumerera gratis →
+      </button>
+    </form>
+    <p style="font-size:12px; color:#555; margin:12px 0 0;">Du kan avprenumerera när som helst. Vi delar aldrig din e-post.</p>
+    <div id="nlThanks-nis2_natverkssakerhet_overvakning_krav" style="display:none; color:#4ade80; font-size:16px; font-weight:600; margin-top:14px;">✅ Du är med! Nästa artikel kommer direkt till din inkorg.</div>
+  </div>
+
+  <!-- CTA -->
+  <div class="cta-section">
+    <h2>Vet du var din organisation står idag?</h2>
+    <p>En kostnadsfri gap-analys med en certifierad Microsoft-partner visar exakt vad ni redan har täckt — och vad som saknas.</p>
+    <a href="https://nis2klar.se/#boka" class="btn-primary">Boka kostnadsfri gap-analys →</a>
+    <p class="cta-fine">Böterna är upp till <strong>10 miljoner euro</strong>. Gap-analysen är gratis.</p>
+  </div>
+
+</article>
+
+<div class="related-articles" style="margin:2.5rem 0 2rem;padding:1.5rem;background:#1a1a2e;border-left:4px solid #f0a500;border-radius:4px;">
+  <p style="margin:0 0 1rem;font-size:0.85rem;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:#f0a500;">Läs också</p>
+  <ul style="margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:0.5rem;">
+    <li><a href="https://nis2klar.se/artiklar/nis2-personligt-ansvar-styrelse.html" style="color:#e0e0e0;text-decoration:none;font-size:0.95rem;">→ Styrelsens personliga ansvar under NIS2</a></li>
+    <li><a href="https://nis2klar.se/artiklar/nis2-vilka-foretag-omfattas.html" style="color:#e0e0e0;text-decoration:none;font-size:0.95rem;">→ Vilka företag omfattas av NIS2?</a></li>
+    <li><a href="https://nis2klar.se/artiklar/nis2-incidentrapportering.html" style="color:#e0e0e0;text-decoration:none;font-size:0.95rem;">→ Incidentrapportering: 24 timmar eller 72 timmar?</a></li>
+  </ul>
+  <p style="margin:1.25rem 0 0;font-size:0.85rem;color:#aaa;">← <a href="https://nis2klar.se/" style="color:#f0a500;text-decoration:none;">NIS2Klar startsida</a> · <a href="https://nis2klar.se/artiklar.html" style="color:#f0a500;text-decoration:none;">Alla guider</a></p>
+</div>
+
+<footer>
+  © 2026 M&J Trusted Marketing KB ·
+  <a href="mailto:support@trustedmarketing.se">support@trustedmarketing.se</a> · <a href="tel:+46470597003">+46 470 59 70 03</a> ·
+  <a href="https://nis2klar.se/">Tillbaka till startsidan</a> ·
+  <a href="https://nis2klar.se/privacy.html">Integritetspolicy</a>
+  <p style="margin-top:12px; font-size:11px; color: #555; line-height:1.5;">Microsoft, Microsoft 365, Azure, Microsoft Entra ID, Microsoft Defender for Cloud och tillhörande produktnamn är varumärken som tillhör Microsoft Corporation. nis2klar.se är inte affilierat med eller godkänt av Microsoft Corporation.</p>
+</footer>
+
+<script data-cfasync="false">
+  async function submitNewsletter_nis2_natverkssakerhet_overvakning_krav(e) {
+    e.preventDefault();
+    const btn = document.getElementById('nlSubmit-nis2_natverkssakerhet_overvakning_krav');
+    btn.disabled = true;
+    btn.textContent = 'Skickar...';
+    const email = document.getElementById('nlEmail-nis2_natverkssakerhet_overvakning_krav').value.trim();
+    try {
+      const res = await fetch('/api/newsletter/subscribe', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, source: 'artikel-nis2_natverkssakerhet_overvakning_krav' })
+      });
+      const data = await res.json();
+      if (data.success) {
+        document.getElementById('nlForm-nis2_natverkssakerhet_overvakning_krav').style.display = 'none';
+        document.getElementById('nlThanks-nis2_natverkssakerhet_overvakning_krav').style.display = 'block';
+      } else {
+        btn.disabled = false;
+        btn.textContent = 'Prenumerera gratis →';
+      }
+    } catch {
+      btn.disabled = false;
+      btn.textContent = 'Prenumerera gratis →';
+    }
+  }
+</script>
+
+</body>
+</html>

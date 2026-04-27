@@ -491,7 +491,7 @@
         <div class="check-label">
           <strong>Vi har genomfört en GAP-analys mot NIS2-kraven</strong>
           <span>Vet du exakt vad som saknas? En GAP-analys är startpunkten för allt annat.</span>
-            <span style="font-size:11px; color:#f5c518; font-weight:600; margin-top:4px; display:block;">🔧 Nästa steg: Boka en kostnadsfri gap-analys med en certifierad partner →</span>
+            <span style="font-size:11px; color:#f5c518; font-weight:600; margin-top:4px; display:block;">🔧 Nästa steg: Hör av dig om NIS2 →</span>
         </div>
         <div class="answer-btns">
           <button class="ans-btn ja-btn" onclick="answer(this,'ja')">Ja</button>
@@ -540,13 +540,13 @@
 
         <!-- Lead capture — appears after result -->
         <div class="capture-block" id="captureBlock">
-          <div class="capture-heading" id="captureHeading">Vill du ha en kostnadsfri genomgång av din riskprofil?</div>
+          <div class="capture-heading" id="captureHeading">Vet du var ni står med NIS2?</div>
           <p class="capture-sub">Vi går igenom resultatet med dig — 20 minuter, helt utan förpliktelser.</p>
           <form class="capture-form" id="captureForm" onsubmit="submitCapture(event)">
             <input type="text"  id="capName"    placeholder="Ditt namn"      autocomplete="name" />
             <input type="email" id="capEmail"   placeholder="E-postadress *" autocomplete="email" required />
             <input type="text"  id="capCompany" placeholder="Bolagets namn *" required />
-            <button type="submit" class="capture-submit" id="captureSubmit">Boka kostnadsfri genomgång →</button>
+            <button type="submit" class="capture-submit" id="captureSubmit">Hör av dig om NIS2 →</button>
           </form>
           <div class="capture-thanks" id="captureThanks" style="display:none">
             ✅ Tack! Vi hör av oss inom 24 timmar.
@@ -562,10 +562,10 @@
     <!-- CTA -->
     <div class="cta-block">
       <div>
-        <h3>Nästa steg: Boka ett kostnadsfritt samtal</h3>
+        <h3>Nästa steg: Förstå vad NIS2 kräver av er</h3>
         <p>Vi går igenom dina svar, identifierar era tre största gap och tar fram en prioriterad åtgärdsplan — utan krångel och utan kostnad.</p>
       </div>
-      <a class="btn-primary" href="/nis2.html#boka">Boka kostnadsfri gap-analys →</a>
+      <a class="btn-primary" href="/nis2.html#boka">Hör av dig om NIS2 →</a>
     </div>
 
   </div>
@@ -616,7 +616,7 @@
 
       // Update capture heading based on risk
       const headings = {
-        red:   'Din riskprofil är KRITISK — boka en kostnadsfri genomgång nu',
+        red:   'Din riskprofil är KRITISK — förstå vad ni behöver göra',
         amber: 'Åtgärder krävs — vill du ha hjälp att prioritera?',
         green: 'Bra grund! Vill du säkerställa att ni klarar en granskning?',
       };
@@ -669,12 +669,12 @@
           document.getElementById('captureThanks').style.display = 'block';
         } else {
           btn.disabled = false;
-          btn.textContent = 'Boka kostnadsfri genomgång →';
+          btn.textContent = 'Hör av dig om NIS2 →';
           alert('Något gick fel, försök igen.');
         }
       } catch (err) {
         btn.disabled = false;
-        btn.textContent = 'Boka kostnadsfri genomgång →';
+        btn.textContent = 'Hör av dig om NIS2 →';
         alert('Något gick fel, försök igen.');
       }
     }

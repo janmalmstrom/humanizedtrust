@@ -487,7 +487,7 @@
     <a class="nav-back" href="/nis2.html">← Tillbaka till NIS2-sidan</a>
     <div class="nav-right">
       <button class="nav-pdf" onclick="window.print()">⬇ Spara som PDF</button>
-      <a class="nav-cta" href="/nis2.html#boka">Boka kostnadsfri gap-analys →</a>
+      <a class="nav-cta" href="/nis2.html#boka">Hör av dig om NIS2 →</a>
     </div>
   </nav>
 
@@ -713,13 +713,13 @@
     <div class="cta-block" style="flex-direction: column; align-items: stretch; gap: 24px;">
       <div>
         <h3>Vill du ha hjälp att fylla i gapen?</h3>
-        <p>Lämna din kontaktuppgifter så hör vi av oss — kostnadsfritt samtal, ingen förpliktelse.</p>
+        <p>Vi går igenom er situation. Ni bestämmer vad som händer sen.</p>
       </div>
       <form id="captureForm" onsubmit="submitCapture(event)" style="display:flex; flex-direction:column; gap:10px; max-width:420px;">
         <input type="text"  id="capName"    placeholder="Ditt namn" autocomplete="name" style="background:#1c1c1f;border:1px solid #2e2e33;border-radius:4px;padding:12px 16px;font-size:15px;color:#fff;font-family:'Barlow',sans-serif;outline:none;" />
         <input type="email" id="capEmail"   placeholder="E-postadress *" autocomplete="email" required style="background:#1c1c1f;border:1px solid #2e2e33;border-radius:4px;padding:12px 16px;font-size:15px;color:#fff;font-family:'Barlow',sans-serif;outline:none;" />
         <input type="text"  id="capCompany" placeholder="Bolagets namn *" required style="background:#1c1c1f;border:1px solid #2e2e33;border-radius:4px;padding:12px 16px;font-size:15px;color:#fff;font-family:'Barlow',sans-serif;outline:none;" />
-        <button type="submit" id="captureSubmit" class="cta-btn" style="border:none;cursor:pointer;font-size:15px;text-decoration:none;">Boka kostnadsfritt samtal →</button>
+        <button type="submit" id="captureSubmit" class="cta-btn" style="border:none;cursor:pointer;font-size:15px;text-decoration:none;">Hör av dig om NIS2 →</button>
       </form>
       <div id="captureThanks" style="display:none;padding:16px;background:rgba(34,197,94,0.1);border:1px solid rgba(34,197,94,0.3);border-radius:4px;color:#86efac;font-size:15px;">
         ✅ Tack! Vi hör av oss inom 24 timmar.
@@ -772,11 +772,11 @@
           document.getElementById('captureThanks').style.display = 'block';
         } else {
           btn.disabled = false;
-          btn.textContent = 'Boka kostnadsfritt samtal →';
+          btn.textContent = 'Hör av dig om NIS2 →';
         }
       } catch (err) {
         btn.disabled = false;
-        btn.textContent = 'Boka kostnadsfritt samtal →';
+        btn.textContent = 'Hör av dig om NIS2 →';
       }
     }
   </script>
