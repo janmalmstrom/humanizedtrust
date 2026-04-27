@@ -415,7 +415,8 @@ function TodayActions() {
 
   if (loading || (actions.length === 0 && callTasks.length === 0)) return null;
 
-  const pending = actions.filter(a => !done.has(a.enrollment_id));
+  const allPending = actions.filter(a => !done.has(a.enrollment_id));
+  const pending = allPending;
   const pendingTasks = callTasks.filter(t => !doneTasks.has(t.id));
   const totalPending = pending.length + pendingTasks.length;
 

@@ -122,34 +122,30 @@ router.get('/today', async (req, res) => {
       const currentStep = row.current_step;
       if (currentStep >= steps.length) continue; // all steps done
 
-      // Show all pending steps due today or overdue (not just current_step)
-      for (let i = currentStep; i < steps.length; i++) {
-        const step = steps[i];
-        const rawDue = new Date(row.enrolled_at);
-        rawDue.setDate(rawDue.getDate() + (step.day || 0));
-        const dueAt = nextBusinessDay(rawDue);
+      // One step per lead — only show current step if it's due/overdue
+      const step = steps[currentStep];
+      const rawDue = new Date(row.enrolled_at);
+      rawDue.setDate(rawDue.getDate() + (step.day || 0));
+      const dueAt = nextBusinessDay(rawDue);
 
-        if (dueAt <= today) {
-          actions.push({
-            enrollment_id: row.enrollment_id,
-            lead_id: row.lead_id,
-            company_name: row.company_name,
-            city: row.city,
-            email: row.email,
-            phone: row.phone,
-            linkedin_url: row.linkedin_url,
-            vd_contacts: row.vd_contacts || [],
-            sequence_name: row.sequence_name,
-            step_index: i,
-            step_total: steps.length,
-            step_title: step.title,
-            step_channel: step.channel,
-            due_at: dueAt.toISOString(),
-            is_overdue: dueAt < todayStart,
-          });
-        } else {
-          break; // steps ordered by day — nothing further is due yet
-        }
+      if (dueAt <= today) {
+        actions.push({
+          enrollment_id: row.enrollment_id,
+          lead_id: row.lead_id,
+          company_name: row.company_name,
+          city: row.city,
+          email: row.email,
+          phone: row.phone,
+          linkedin_url: row.linkedin_url,
+          vd_contacts: row.vd_contacts || [],
+          sequence_name: row.sequence_name,
+          step_index: currentStep,
+          step_total: steps.length,
+          step_title: step.title,
+          step_channel: step.channel,
+          due_at: dueAt.toISOString(),
+          is_overdue: dueAt < todayStart,
+        });
       }
     }
 
