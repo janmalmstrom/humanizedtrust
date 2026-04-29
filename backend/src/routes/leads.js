@@ -1548,6 +1548,67 @@ Regler:
   }
 });
 
+// POST /api/leads/:id/generate-linkedin-dm — single DM for a specific sequence step
+router.post('/:id/generate-linkedin-dm', async (req, res) => {
+  try {
+    const { rows } = await db.query('SELECT * FROM discovery_leads WHERE id = $1', [req.params.id]);
+    if (!rows[0]) return res.status(404).json({ success: false, error: 'Not found' });
+    const lead = rows[0];
+    const { step_title = '', contact_name = '' } = req.body;
+
+    const titleLower = step_title.toLowerCase();
+    let dmType, instruction;
+    if (titleLower.includes('intro') || titleLower.includes('ref') || titleLower.includes('kort')) {
+      dmType = 'intro';
+      instruction = `Skriv ett kort intro-DM (50-80 ord) att skicka direkt efter att de accepterat anslutningsförfrågan. Bygg rapport, referera subtilt till att du följer dem för att du säljer NIS2-compliance till deras sektor. Mjuk avslutning — fråga eller observation, ingen hård pitch.`;
+    } else if (titleLower.includes('case') || titleLower.includes('artikel') || titleLower.includes('dela')) {
+      dmType = 'case';
+      instruction = `Skriv ett uppföljnings-DM (50-80 ord) där du delar ett konkret case eller insikt om NIS2 i deras bransch. Ingen pitch — värde först. Avsluta med en öppen fråga.`;
+    } else if (titleLower.includes('rätt person') || titleLower.includes('person')) {
+      dmType = 'right-person';
+      instruction = `Skriv ett kort avslutnings-DM (40-60 ord) som frågar om de är rätt person att prata med om NIS2, eller om de kan peka dig vidare. Ärlig, direkt, ingen press.`;
+    } else {
+      dmType = 'followup';
+      instruction = `Skriv ett uppföljnings-DM (50-80 ord) relaterat till NIS2-compliance i deras bransch. Professionellt, peer-to-peer ton.`;
+    }
+
+    const Anthropic = require('@anthropic-ai/sdk');
+    const client = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });
+    const prefix = lead.nace_code ? String(lead.nace_code).substring(0, 2) : null;
+
+    const prompt = `Du är en LinkedIn-expert som skriver korta, personliga DM:s för B2B-försäljning i Sverige.
+
+Vi säljer (Nomad Cyber): NIS2-compliance-konsulting och cybersäkerhetstjänster för svenska medelstora företag.
+
+Prospekt:
+Företag: ${lead.company_name}, ${lead.city || 'Sverige'}
+Bransch: ${lead.nace_description || 'okänd'} (SNI ${prefix || lead.nace_code || 'okänd'})
+Anställda: ${lead.employee_range || 'okänt'}
+NIS2-registrerat: ${lead.nis2_registered ? 'JA – sektor: ' + lead.nis2_sector : 'Nej / okänt'}
+${contact_name ? `Kontaktperson: ${contact_name}` : ''}
+
+Uppgift: ${instruction}
+
+Regler:
+- Svenska
+- Inga generiska fraser
+- Referera till något specifikt om företaget eller branschen
+- Peer-to-peer ton, inte säljare-till-prospekt
+- Svara med BARA meddelandet, ingen förklaring`;
+
+    const message = await client.messages.create({
+      model: 'claude-haiku-4-5',
+      max_tokens: 400,
+      messages: [{ role: 'user', content: prompt }],
+    });
+
+    res.json({ success: true, data: { message: message.content[0].text.trim(), dm_type: dmType } });
+  } catch (err) {
+    console.error('[leads] generate-linkedin-dm error:', err.message);
+    res.status(500).json({ success: false, error: err.message });
+  }
+});
+
 // POST /api/leads/:id/buying-triggers — surface real-time buying signals via Brave Search + Claude
 router.post('/:id/buying-triggers', async (req, res) => {
   try {

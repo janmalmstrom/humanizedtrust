@@ -379,6 +379,7 @@ function TodayActions() {
   const [done, setDone] = useState(new Set());
   const [loading, setLoading] = useState(true);
   const [emailModal, setEmailModal] = useState(null);
+  const [dmTexts, setDmTexts] = useState({}); // { [enrollment_id]: { loading, text, copied } }
 
   const fetchActions = useCallback(() => {
     const todayEnd = new Date(); todayEnd.setHours(23, 59, 59, 999);
@@ -413,6 +414,27 @@ function TodayActions() {
     setDone(prev => new Set(prev).add(enrollmentId));
   }
 
+  async function generateDM(action) {
+    const eid = action.enrollment_id;
+    setDmTexts(prev => ({ ...prev, [eid]: { loading: true, text: null, copied: false } }));
+    try {
+      const contactName = action.vd_contacts?.[0]?.name || '';
+      const r = await api.post(`/leads/${action.lead_id}/generate-linkedin-dm`, {
+        step_title: action.step_title,
+        contact_name: contactName,
+      });
+      setDmTexts(prev => ({ ...prev, [eid]: { loading: false, text: r.data.data.message, copied: false } }));
+    } catch {
+      setDmTexts(prev => ({ ...prev, [eid]: { loading: false, text: null, error: true } }));
+    }
+  }
+
+  function copyDM(eid, text) {
+    navigator.clipboard.writeText(text);
+    setDmTexts(prev => ({ ...prev, [eid]: { ...prev[eid], copied: true } }));
+    setTimeout(() => setDmTexts(prev => ({ ...prev, [eid]: { ...prev[eid], copied: false } })), 2000);
+  }
+
   if (loading || (actions.length === 0 && callTasks.length === 0)) return null;
 
   const allPending = actions.filter(a => !done.has(a.enrollment_id));
@@ -436,81 +458,117 @@ function TodayActions() {
     const isDone = done.has(action.enrollment_id);
     const isEmail = action.step_channel === 'email';
     const isLinkedIn = action.step_channel === 'linkedin';
+    const eid = action.enrollment_id;
+    const dm = dmTexts[eid];
 
     // Derive specific LinkedIn action label from step title
+    const titleLower = action.step_title.toLowerCase();
     const linkedInLabel = isLinkedIn
-      ? action.step_title.toLowerCase().includes('follow') ? 'LinkedIn Follow'
-      : action.step_title.toLowerCase().includes('like') ? 'LinkedIn Like/Comment'
-      : action.step_title.toLowerCase().includes('dm') || action.step_title.toLowerCase().includes('connection') ? 'LinkedIn DM'
+      ? titleLower.includes('follow') ? 'LinkedIn Follow'
+      : titleLower.includes('like') ? 'LinkedIn Like/Comment'
+      : titleLower.includes('dm') || titleLower.includes('connection') ? 'LinkedIn DM'
       : 'LinkedIn'
       : null;
 
+    const isLinkedInDM = isLinkedIn && linkedInLabel === 'LinkedIn DM';
+
     return (
-      <div key={action.enrollment_id}
-        className={`flex items-center gap-4 px-5 py-3.5 transition-all ${isDone ? 'opacity-40' : 'hover:bg-white/3'}`}>
-        <div className={`w-9 h-9 rounded-lg border flex items-center justify-center flex-shrink-0 text-lg ${cfg.bg}`}>
-          {cfg.icon}
-        </div>
-        <div className="flex-1 min-w-0">
-          <div className="flex items-center gap-2 flex-wrap">
-            <Link to={`/leads/${action.lead_id}`}
-              className="text-sm font-medium text-slate-200 hover:text-cyan-400 transition-colors">
-              {action.company_name}
-            </Link>
-            {action.city && <span className="text-xs text-slate-500">{action.city}</span>}
-            {action.is_overdue && !isDone && (
-              <span className="text-xs bg-red-500/15 text-red-400 px-1.5 py-0.5 rounded">overdue</span>
-            )}
+      <div key={eid} className={`transition-all ${isDone ? 'opacity-40' : ''}`}>
+        <div className={`flex items-center gap-4 px-5 py-3.5 ${isDone ? '' : 'hover:bg-white/3'}`}>
+          <div className={`w-9 h-9 rounded-lg border flex items-center justify-center flex-shrink-0 text-lg ${cfg.bg}`}>
+            {cfg.icon}
           </div>
-          <div className="text-xs text-slate-300 mt-0.5 font-medium">{action.step_title}</div>
-          <div className="flex items-center gap-3 mt-1">
-            <span className={`text-xs font-medium ${cfg.color}`}>{isLinkedIn ? linkedInLabel : cfg.label}</span>
-            {action.phone && action.step_channel === 'call' && (
-              <a href={`tel:${action.phone}`} className="text-xs text-slate-500 hover:text-slate-300 transition-colors">
-                {action.phone}
-              </a>
-            )}
-            {isLinkedIn && action.linkedin_url && (
-              <a href={action.linkedin_url} target="_blank" rel="noreferrer"
-                className="text-xs text-sky-500 hover:text-sky-400 transition-colors">
-                Company →
-              </a>
-            )}
-            {isLinkedIn && action.vd_contacts && action.vd_contacts.map((c, i) => (
-              <a key={i} href={c.linkedin_url} target="_blank" rel="noreferrer"
-                className="text-xs text-cyan-400 hover:text-cyan-300 transition-colors">
-                {c.name} ({c.title}) →
-              </a>
-            ))}
-            {isEmail && action.email && (
-              <span className="text-xs text-slate-500">{action.email}</span>
-            )}
-            {isEmail && !action.email && !isDone && (
-              <span className="text-xs text-amber-500">No email — skip or enrich first</span>
-            )}
+          <div className="flex-1 min-w-0">
+            <div className="flex items-center gap-2 flex-wrap">
+              <Link to={`/leads/${action.lead_id}`}
+                className="text-sm font-medium text-slate-200 hover:text-cyan-400 transition-colors">
+                {action.company_name}
+              </Link>
+              {action.city && <span className="text-xs text-slate-500">{action.city}</span>}
+              {action.is_overdue && !isDone && (
+                <span className="text-xs bg-red-500/15 text-red-400 px-1.5 py-0.5 rounded">overdue</span>
+              )}
+            </div>
+            <div className="text-xs text-slate-300 mt-0.5 font-medium">{action.step_title}</div>
+            <div className="flex items-center gap-3 mt-1">
+              <span className={`text-xs font-medium ${cfg.color}`}>{isLinkedIn ? linkedInLabel : cfg.label}</span>
+              {action.phone && action.step_channel === 'call' && (
+                <a href={`tel:${action.phone}`} className="text-xs text-slate-500 hover:text-slate-300 transition-colors">
+                  {action.phone}
+                </a>
+              )}
+              {isLinkedIn && action.linkedin_url && (
+                <a href={action.linkedin_url} target="_blank" rel="noreferrer"
+                  className="text-xs text-sky-500 hover:text-sky-400 transition-colors">
+                  Company →
+                </a>
+              )}
+              {isLinkedIn && action.vd_contacts && action.vd_contacts.map((c, i) => (
+                <a key={i} href={c.linkedin_url} target="_blank" rel="noreferrer"
+                  className="text-xs text-cyan-400 hover:text-cyan-300 transition-colors">
+                  {c.name} ({c.title}) →
+                </a>
+              ))}
+              {isEmail && action.email && (
+                <span className="text-xs text-slate-500">{action.email}</span>
+              )}
+              {isEmail && !action.email && !isDone && (
+                <span className="text-xs text-amber-500">No email — skip or enrich first</span>
+              )}
+            </div>
           </div>
+          <div className="text-xs text-slate-600 flex-shrink-0 text-right mr-2">
+            <div>{action.sequence_name}</div>
+            <div>Step {action.step_index + 1}/{action.step_total}</div>
+          </div>
+          {isEmail && action.email && !isDone ? (
+            <button
+              onClick={() => setEmailModal(action)}
+              className="flex-shrink-0 px-3 py-1.5 rounded-lg text-xs font-medium bg-blue-600/80 hover:bg-blue-500 text-white transition-colors cursor-pointer">
+              Send email
+            </button>
+          ) : isLinkedInDM && !isDone ? (
+            <div className="flex-shrink-0 flex items-center gap-2">
+              <button
+                onClick={() => generateDM(action)}
+                disabled={dm?.loading}
+                className="px-3 py-1.5 rounded-lg text-xs font-medium bg-sky-700/60 hover:bg-sky-600/70 disabled:opacity-50 text-sky-200 transition-colors cursor-pointer">
+                {dm?.loading ? '...' : dm?.text ? '↻ Ny text' : 'Get DM'}
+              </button>
+              <button
+                onClick={() => !isDone && advance(eid, action.step_channel)}
+                className="px-3 py-1.5 rounded-lg text-xs font-medium bg-white/8 hover:bg-cyan-500/20 hover:text-cyan-300 text-slate-300 transition-all cursor-pointer">
+                Mark done
+              </button>
+            </div>
+          ) : (
+            <button
+              onClick={() => !isDone && advance(eid, action.step_channel)}
+              disabled={isDone}
+              className={`flex-shrink-0 px-3 py-1.5 rounded-lg text-xs font-medium transition-all ${
+                isDone
+                  ? 'bg-emerald-500/15 text-emerald-400 cursor-default'
+                  : 'bg-white/8 hover:bg-cyan-500/20 hover:text-cyan-300 text-slate-300 cursor-pointer'
+              }`}>
+              {isDone ? 'Done ✓' : 'Mark done'}
+            </button>
+        )}
         </div>
-        <div className="text-xs text-slate-600 flex-shrink-0 text-right mr-2">
-          <div>{action.sequence_name}</div>
-          <div>Step {action.step_index + 1}/{action.step_total}</div>
-        </div>
-        {isEmail && action.email && !isDone ? (
-          <button
-            onClick={() => setEmailModal(action)}
-            className="flex-shrink-0 px-3 py-1.5 rounded-lg text-xs font-medium bg-blue-600/80 hover:bg-blue-500 text-white transition-colors cursor-pointer">
-            Send email
-          </button>
-        ) : (
-          <button
-            onClick={() => !isDone && advance(action.enrollment_id, action.step_channel)}
-            disabled={isDone}
-            className={`flex-shrink-0 px-3 py-1.5 rounded-lg text-xs font-medium transition-all ${
-              isDone
-                ? 'bg-emerald-500/15 text-emerald-400 cursor-default'
-                : 'bg-white/8 hover:bg-cyan-500/20 hover:text-cyan-300 text-slate-300 cursor-pointer'
-            }`}>
-            {isDone ? 'Done ✓' : 'Mark done'}
-          </button>
+        {isLinkedInDM && dm?.text && !isDone && (
+          <div className="mx-5 mb-3 bg-sky-950/40 border border-sky-500/20 rounded-lg p-3">
+            <div className="flex items-center justify-between mb-2">
+              <span className="text-xs text-sky-400 font-medium">DM-text — klistra in i LinkedIn</span>
+              <button
+                onClick={() => copyDM(eid, dm.text)}
+                className="text-xs px-2.5 py-1 rounded bg-sky-600/40 hover:bg-sky-500/50 text-sky-200 transition-colors">
+                {dm.copied ? '✓ Kopierat' : 'Kopiera'}
+              </button>
+            </div>
+            <p className="text-sm text-slate-300 leading-relaxed whitespace-pre-wrap">{dm.text}</p>
+          </div>
+        )}
+        {isLinkedInDM && dm?.error && (
+          <div className="mx-5 mb-3 text-xs text-red-400 px-3">Kunde inte generera DM-text. Försök igen.</div>
         )}
       </div>
     );

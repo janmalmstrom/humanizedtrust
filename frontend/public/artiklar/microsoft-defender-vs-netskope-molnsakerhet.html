@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-BKF3QH9K01"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag("js", new Date());
+    gtag("config", "G-BKF3QH9K01");
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Microsoft Defender vs Netskope: Cloud Security för NIS2 | NIS2Klar</title>
+  <meta name="description" content="Molnsäkerhet och CASB-lösningar för NIS2-efterlevnad. Jämförelse av Microsoft Defender for Cloud Apps och Netskope. Guide för hybrid molnmiljö.">
+  <meta property="og:title" content="Microsoft Defender vs Netskope: Cloud Security för NIS2">
+  <meta property="og:description" content="Molnsäkerhet och CASB-lösningar för NIS2-efterlevnad. Jämförelse av Microsoft Defender for Cloud Apps och Netskope. Guide för hybrid molnmiljö.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #141416;
+      --card: #1c1c1f;
+      --yellow: #f5c518;
+      --white: #f0f0f0;
+      --muted: #888;
+      --red: #C61212;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: var(--bg); color: var(--white); font-family: 'Barlow', sans-serif; font-size: 19px; line-height: 1.8; }
+
+    /* Nav */
+    nav { display: flex; justify-content: space-between; align-items: center; padding: 20px 40px; border-bottom: 1px solid rgba(255,255,255,0.07); max-width: 900px; margin: 0 auto; }
+    .nav-logo { font-family: 'Poppins', sans-serif; font-weight: 900; font-size: 20px; color: var(--yellow); text-decoration: none; }
+    .nav-logo span { color: var(--white); }
+    .nav-back { color: var(--muted); text-decoration: none; font-size: 15px; }
+    .nav-back:hover { color: var(--white); }
+    .nav-cta { background: var(--yellow); color: #000; padding: 8px 18px; border-radius: 4px; text-decoration: none; font-weight: 700; font-size: 14px; font-family: 'Poppins', sans-serif; }
+
+    /* Article */
+    .article-wrap { max-width: 760px; margin: 0 auto; padding: 60px 40px; }
+    .article-category { font-size: 13px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 16px; }
+    h1 { font-family: 'Poppins', sans-serif; font-size: clamp(30px, 4vw, 44px); font-weight: 900; line-height: 1.2; margin-bottom: 24px; }
+    .article-meta { font-size: 15px; color: var(--muted); margin-bottom: 48px; padding-bottom: 24px; border-bottom: 1px solid rgba(255,255,255,0.07); }
+    h2 { font-family: 'Poppins', sans-serif; font-size: 26px; font-weight: 700; margin: 48px 0 16px; color: var(--white); }
+    h3 { font-family: 'Poppins', sans-serif; font-size: 20px; font-weight: 600; margin: 32px 0 12px; color: var(--yellow); }
+    p { margin-bottom: 22px; }
+    strong { color: var(--white); font-weight: 700; }
+    .highlight { color: var(--yellow); font-weight: 700; }
+    .danger { color: #ff6b6b; font-weight: 700; }
+    ul, ol { margin: 16px 0 24px 24px; }
+    li { margin-bottom: 12px; font-size: 19px; }
+
+    /* Callout boxes */
+    .box-warning { background: rgba(197,17,17,0.12); border-left: 4px solid var(--red); padding: 20px 24px; margin: 32px 0; border-radius: 0 4px 4px 0; }
+    .box-info { background: rgba(245,197,24,0.08); border-left: 4px solid var(--yellow); padding: 20px 24px; margin: 32px 0; border-radius: 0 4px 4px 0; }
+    .box-case { background: var(--card); border: 1px solid rgba(255,255,255,0.08); padding: 28px; margin: 40px 0; border-radius: 4px; }
+    .box-case .case-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 12px; }
+    blockquote { border-left: 3px solid var(--yellow); padding: 12px 20px; margin: 24px 0; font-style: italic; color: #ccc; }
+
+    /* CTA */
+    .cta-section { background: var(--card); border: 1px solid rgba(245,197,24,0.2); border-radius: 4px; padding: 48px 40px; margin: 64px 0 40px; text-align: center; }
+    .cta-section h2 { margin-top: 0; font-size: 26px; }
+    .cta-section p { color: #aaa; max-width: 500px; margin: 0 auto 28px; }
+    .btn-primary { display: inline-block; background: var(--yellow); color: #000; font-family: 'Poppins', sans-serif; font-weight: 800; font-size: 16px; padding: 16px 36px; border-radius: 4px; text-decoration: none; }
+    .btn-primary:hover { background: #e0b010; }
+    .cta-fine { font-size: 13px; color: var(--muted); margin-top: 16px; }
+
+    /* FAQ */
+    .faq-item { border-bottom: 1px solid rgba(255,255,255,0.07); padding: 20px 0; }
+    .faq-q { font-family: 'Poppins', sans-serif; font-weight: 600; margin-bottom: 10px; }
+    .faq-a { color: #bbb; }
+
+    /* Comparison table */
+    .comparison-table { width: 100%; border-collapse: collapse; margin: 24px 0; }
+    .comparison-table th { background: rgba(245,197,24,0.1); color: var(--yellow); font-family: 'Poppins', sans-serif; font-size: 13px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 12px 16px; text-align: left; border-bottom: 1px solid rgba(245,197,24,0.2); }
+    .comparison-table td { padding: 14px 16px; border-bottom: 1px solid rgba(255,255,255,0.05); font-size: 15px; }
+    .comparison-table tr:last-child td { border-bottom: none; }
+
+    /* Summary + Key Takeaway */
+    .box-summary { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; padding: 24px 28px; margin: 0 0 32px; }
+    .summary-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-bottom: 14px; }
+    .box-summary ul { margin: 0; padding-left: 20px; }
+    .box-summary li { margin-bottom: 8px; font-size: 17px; color: #ccc; }
+    .box-takeaway { background: rgba(245,197,24,0.08); border-left: 4px solid var(--yellow); padding: 20px 24px; margin: 0 0 40px; border-radius: 0 4px 4px 0; }
+    .takeaway-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 10px; }
+    .box-takeaway p { margin: 0; font-size: 18px; font-weight: 600; color: var(--white); line-height: 1.6; }
+
+    /* Footer */
+    footer { border-top: 1px solid rgba(255,255,255,0.07); padding: 32px 40px; text-align: center; font-size: 13px; color: var(--muted); max-width: 900px; margin: 0 auto; }
+    footer a { color: var(--muted); }
+
+    @media (max-width: 600px) {
+      nav, .article-wrap, footer { padding: 20px; }
+      .cta-section { padding: 32px 20px; }
+      .comparison-table { font-size: 14px; }
+      .comparison-table th, .comparison-table td { padding: 10px 10px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="https://nis2klar.se/">NIS2<span>Klar</span></a>
+  <a class="nav-back" href="https://nis2klar.se/artiklar.html">← Alla artiklar</a>
+  <a class="nav-cta" href="https://nis2klar.se/#boka">Boka samtal →</a>
+</nav>
+
+<article class="article-wrap">
+  <div class="article-category">Molnsäkerhet &amp; CASB</div>
+  <h1>Microsoft Defender vs Netskope: Cloud Security för NIS2</h1>
+  <div class="article-meta">Uppdaterad 28 april 2026 · Lästid: ca 9 minuter · Målgrupp: Ledning, IT</div>
+
+  <!-- SUMMARY -->
+  <div class="box-summary">
+    <div class="summary-label">Sammanfattning</div>
+    <ul>
+      <li>NIS2 kräver insyn i all molnanvändning — både sanktionerad och skuggtrafik (artikel 21.1 f).</li>
+      <li>CASB (Cloud Access Security Broker) är den arkitektur som fullföljer detta krav.</li>
+      <li>Två huvudvägar: Microsoft Defender for Cloud Apps (om du är redan i Microsoft-ekosystemet) eller Netskope (för hybrid- och multi-cloud-miljöer).</li>
+      <li>Valet är inte teknik — det är en fråga om din molnstrategi och vilken dokumentation du måste kunna visa tillsynsmyndigheten.</li>
+    </ul>
+  </div>
+
+  <!-- KEY TAKEAWAY -->
+  <div class="box-takeaway">
+    <div class="takeaway-label">Viktigaste slutsatsen</div>
+    <p>Om du inte kan bevisa för tillsynsmyndigheten vad dina anställda använder i molnet — och vilka data som flyttas — spelar det ingen roll vilken lösning du installerar. Börja med inventeringen, sedan väljer du verktyget som passar din miljö bäst.</p>
+  </div>
+
+  <h2>Varför molnsäkerhet är en NIS2-fråga</h2>
+
+  <p>
+    NIS2 ställer krav på <strong>insyn i molntrafiken</strong>. Det är inte valfritt. Artikel 21.1 f föreskriver att organisationer ska ha <strong>"kontrollerande åtgärder för lagring och överföring av känslig information"</strong> — och det omfattar alla molntjänster, oavsett om de är godkända av IT-avdelningen eller inte.
+  </p>
+
+  <p>
+    Realiteten är att dina anställda redan använder molnet:
+  </p>
+
+  <ul>
+    <li>Gmail, Outlook.com, Yahoo Mail — för e-post utanför företagskontot</li>
+    <li>Google Drive, Dropbox, OneDrive — för dokumentdelning</li>
+    <li>ChatGPT, Claude, Copilot — för AI-assistans</li>
+    <li>Okända SaaS-tjänster installerade som Chrome-tillägg eller mobila appar</li>
+  </ul>
+
+  <p>
+    Vad kallas detta? <strong>Skuggtrafik</strong> — molnanvändning som IT-avdelningen inte vet om. En moderna organisation har ofta 200–400 molntjänster i bruk, men IT-avdelningen känner till kanske 30–40. Resten är helt osynlig tills något går snett.
+  </p>
+
+  <p>
+    NIS2 säger: Du är ansvarig för det du inte ens vet om. Och om en incident inträffar — exempelvis en anställd som delar en kundlista via en opatchad Dropbox-account — är det en rapporteringsskyldighet enligt artikel 23. Du kan inte säga "vi visste inte om det".
+  </p>
+
+  <div class="box-warning">
+    <strong>Tillsynsfokus:</strong> Myndigheter granskar CASB-loggarna för att se vilken data som flyttades före en incident. Saknar du CASB-data kan du inte visa att du försökte förhindra det. Det räcker för att triggra en sanktion.
+  </div>
+
+  <h2>Vad är CASB — och varför är det svaret?</h2>
+
+  <p>
+    CASB = Cloud Access Security Broker. Det är en mellanperson mellan dina anställda och molnet. Allt de gör i molnet — varje inloggning, varje filöverföring, varje fråga till en AI-modell — flödar genom CASB:n.
+  </p>
+
+  <p>
+    CASB gör fyra saker:
+  </p>
+
+  <h3>1. Synlighet (Visibility)</h3>
+  <p>
+    Du ser alla molntjänster som används — även de som IT inte godkänt. Du får en inventering som visar vilka anställda som använder vad, hur ofta, och vilka data som rör sig.
+  </p>
+
+  <h3>2. Dataskydd (Data Protection)</h3>
+  <p>
+    Om en anställd försöker ladda upp en kunddatabas till en personlig Dropbox-account, kan CASB stoppa det innan data lämnar organisationen. Det kallas DLP (Data Loss Prevention) i molnet.
+  </p>
+
+  <h3>3. Hotskydd (Threat Protection)</h3>
+  <p>
+    Om någon hackar en anställds molnkonto och börjar ladda ned massiva mängder filer, detekterar CASB anomalien och kan blockera inloggningen.
+  </p>
+
+  <h3>4. Compliance &amp; Loggning (Logging)</h3>
+  <p>
+    Varje åtgärd loggas. Du kan senare visa tillsynsmyndigheten att du hade kontroller på plats och att de fungerade — eller varför de inte fungerade i det enskilda fallet.
+  </p>
+
+  <p>
+    För en organisation under NIS2-tillsyn är CASB-loggarna ditt försvar. De visar att du var medveten, att du försökte skydda, och att du kan rekonstruera vad som hände.
+  </p>
+
+  <h2>Microsoft Defender for Cloud Apps — fördelar och begränsningar</h2>
+
+  <p>
+    Om din organisation redan använder Microsoft 365, är det naturligt att fråga: Kan vi inte bara använda det vi redan har?
+  </p>
+
+  <p>
+    Svaret är: <strong>Det beror på din molnmix.</strong>
+  </p>
+
+  <h3>Fördelar med Defender for Cloud Apps</h3>
+
+  <ul>
+    <li><strong>Redan licensierad:</strong> Om du kör Microsoft 365 Business Premium eller Enterprise, är Defender for Cloud Apps ofta inkluderat eller lågt adderat.</li>
+    <li><strong>Integrerad miljö:</strong> Manuell övergång mellan Microsoft-system och Defender är minimal — Azure AD, Exchange, SharePoint och Defender talar samma språk.</li>
+    <li><strong>Känd arkitektur:</strong> Om du har Microsoft-säkerhetsansvarig, kan den redan förstå Defender-landskapet.</li>
+    <li><strong>DLP i Microsoft 365:</strong> Defender har inbyggd dataskydd för dokument som lagras i SharePoint och Teams.</li>
+  </ul>
+
+  <h3>Begränsningar med Defender for Cloud Apps</h3>
+
+  <ul>
+    <li><strong>Microsoft-fokuserat:</strong> Om din organisation använder Google Workspace, Salesforce, ServiceNow eller andra icke-Microsoft SaaS, är Defender-integrationerna svagare eller kräver API-kopplingar.</li>
+    <li><strong>Skuggtrafik från icke-Microsoft tjänster:</strong> Defender kan inte enkelt se molntrafik från användare som loggar in på Gmail eller använder okända SaaS-appar via Chrome-tillägg.</li>
+    <li><strong>Proxykontroll är begränsad:</strong> Defender for Cloud Apps kräver agentinstallation på klienterna för att se proxy-trafik. Det är kostsamt att rulla ut i stor skala.</li>
+    <li><strong>Hybrid-scenario:</strong> Om du har både on-premises Active Directory och cloud-baserad AD, kan Defender skapa latency-problem för lokal appåtkomst.</li>
+  </ul>
+
+  <div class="box-case">
+    <div class="case-label">Fallstudie: Microsoft-fokuserad miljö</div>
+    <p>
+      <strong>Scenario: Medelstort konsultbolag, 120 anställda, helt på Microsoft 365.</strong>
+    </p>
+    <p>
+      Använder: Teams, SharePoint, Exchange, OneDrive, Dynamics 365.
+    </p>
+    <p>
+      <strong>Val: Defender for Cloud Apps</strong>
+    </p>
+    <p>
+      Implementering: 3 veckor. Kostnaden absorberas i befintlig Microsoft-licens. DLP-regler för kundkontrakt och finansiell data konfigureras enkelt.
+    </p>
+    <p>
+      Resultat: Synlighet över molnanvändning inom Microsoft-universum. Två veckor senare detekteras att en anställd försökt dela ett SharePoint-dokument med kundfiler med en personlig Gmail-adress. Defender stoppar det. Incident avvärjd innan data är exponerad.
+    </p>
+    <p>
+      <strong>Tid till NIS2-relevans:</strong> Organisationen kan nu visa tillsynsmyndigheten att den har DLP-loggning på plats och att systemet fungerade.
+    </p>
+  </div>
+
+  <h2>Netskope — för multi-cloud och hybrid-miljöer</h2>
+
+  <p>
+    Om din organisation använder en blandning av tjänster — Microsoft, Google, Salesforce, okända SaaS-appar, on-premises applikationer — är Netskope det mer omfattande svaret.
+  </p>
+
+  <h3>Fördelar med Netskope</h3>
+
+  <ul>
+    <li><strong>Molnneutral:</strong> Netskope ser all molntrafik oavsett källa — Microsoft, Google, Amazon, eller okända tjänster.</li>
+    <li><strong>Skuggtrafikdetektering:</strong> Netskope kan identifiera ALL molnanvändning på nätverket, även tjänster som IT inte godkänt.</li>
+    <li><strong>Real-time threat prevention:</strong> Hotskydd på molnnivå utan att förlita sig på API-integreringar.</li>
+    <li><strong>DLP på all data i rörelse:</strong> Oavsett om data flyttas via Microsoft, Google eller en tredje part, loggas och kan blockeras.</li>
+    <li><strong>Skalbar proxy:</strong> Netskope-arkitekturen är utformad för tusentals användare utan latency-påverkan.</li>
+    <li><strong>API-integrering med hundratals SaaS-tjänster:</strong> Detaljerad loggning av vad som händer inuti varje molntjänst.</li>
+  </ul>
+
+  <h3>Begränsningar med Netskope</h3>
+
+  <ul>
+    <li><strong>Kostnad:</strong> Netskope är dyrare än Defender for Cloud Apps per användare.</li>
+    <li><strong>Implementeringskomplexitet:</strong> Roll-out kräver proxy-konfiguration, agentinstallation och testning. Ofta 6–12 veckor för större organisationer.</li>
+    <li><strong>Organisatorisk förändring:</strong> Säkerhetsteamet måste lära sig en ny plattform. Om du bara känt Microsoft, är övergången märkbar.</li>
+    <li><strong>Supportmodell:</strong> Netskope är ofta ett specialistverktyg — du behöver antingen intern kompetens eller en partner för hantering.</li>
+  </ul>
+
+  <table class="comparison-table">
+    <thead>
+      <tr>
+        <th>Kriterium</th>
+        <th>Defender for Cloud Apps</th>
+        <th>Netskope</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Molnmix</strong></td>
+        <td>Microsoft-miljöer</td>
+        <td>Multi-cloud, hybrid</td>
+      </tr>
+      <tr>
+        <td><strong>Skuggtrafik</strong></td>
+        <td>Begränsad utan proxy</td>
+        <td>Fullständig synlighet</td>
+      </tr>
+      <tr>
+        <td><strong>Kostnad</strong></td>
+        <td>Låg (ofta inkluderad)</td>
+        <td>Medel–Hög</td>
+      </tr>
+      <tr>
+        <td><strong>Implementering</strong></td>
+        <td>3–6 veckor</td>
+        <td>6–12 veckor</td>
+      </tr>
+      <tr>
+        <td><strong>DLP-kraft</strong></td>
+        <td>Stark inom Microsoft</td>
+        <td>Stark på all trafik</td>
+      </tr>
+      <tr>
+        <td><strong>API-integrering</strong></td>
+        <td>Fokus på Microsoft-tjänster</td>
+        <td>500+ SaaS-appar</td>
+      </tr>
+      <tr>
+        <td><strong>NIS2-beredskapstid</strong></td>
+        <td>1–2 månader</td>
+        <td>3–4 månader</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="box-info">
+    <strong>Valet är enkelt:</strong> Är du helt eller huvudsakligen på Microsoft 365? Gå med Defender. Använder du Google, Salesforce eller andra tjänster? Netskope är vägen.
+  </div>
+
+  <h2>NIS2 och data loss prevention — vad måste dokumenteras</h2>
+
+  <p>
+    Oavsett vilken CASB du väljer, måste du kunna visa tillsynsmyndigheten följande:
+  </p>
+
+  <ul>
+    <li><strong>Inventering av molntjänster:</strong> En lista över vilka SaaS-tjänster organisationen använder och klassificering av dem (godkänd, tolererad, förbjuden).</li>
+    <li><strong>DLP-policyer:</strong> Dokumenterade regler för vilken data som INTE får lämna organisationen. Exempel: kundlistor, personlig data, affärshemligheter.</li>
+    <li><strong>Incidentloggar:</strong> Exempelblokeringar som visar att systemet fungerat — att en försökt filöverföring stoppades den 15 mars, och loggen visar vad som hindrades.</li>
+    <li><strong>Ansvarsfördelning:</strong> Vem är ansvarig för att upprätthålla DLP-reglerna? Det måste vara klart definierat.</li>
+    <li><strong>Styrelsebeslut:</strong> CASB-implementeringen måste ha godkänts av styrelsen enligt Artikel 20 — det räcker inte att IT har gjort det.</li>
+  </ul>
+
+  <p>
+    Det är detta som är verkligt viktigt för NIS2. Inte att du har den mest sofistikerade tekniken — utan att du kan bevisa att du HÅR DIG SJÄLV under kontroll.
+  </p>
+
+  <h2>Praktisk vägledning: Börja här</h2>
+
+  <h3>Vecka 1–2: Gap-analys</h3>
+  <p>
+    Kartlägg vilka molntjänster som används idag. Använd ett verktyg för molndetektering (Defender, Netskope eller ett gratis alternativ som CloudFlare). Identifiera topp-10 SaaS-appar.
+  </p>
+
+  <h3>Vecka 3–4: Klassificering</h3>
+  <p>
+    Klassificera varje tjänst: Godkänd (Business-critical), Tolererad (låg risk, få användare) eller Förbjuden (ingen åtkomst).
+  </p>
+
+  <h3>Vecka 5–6: DLP-policy</h3>
+  <p>
+    Skapa dokument som definierar vilken data som inte får lämna organisationen. Exempel: "Kundlistor klassificeras som högt konfidentiell och får inte överföras till okrypterad molntjänst."
+  </p>
+
+  <h3>Vecka 7–8: Styrelsebeslut</h3>
+  <p>
+    Presentera för styrelsen: "Vi implementerar molnsäkerhetskontroller för att uppfylla NIS2-kraven. Här är kostnaden, här är tidsplanen, här är riskerna om vi inte gör det." Få godkännande och beslutprotokoll.
+  </p>
+
+  <h3>Vecka 9+: Implementation</h3>
+  <p>
+    Börja med Defender (om Microsoft-miljö) eller Netskope (om hybrid). Roll ut i faser: Piloting, testning, produktion.
+  </p>
+
+  <div class="box-warning">
+    <strong>Vanligt misstag:</strong> Organisationer köper en CASB-lösning och förväntar sig att den automatiskt gör dem NIS2-kompatibla. Det gör den inte. Verktyget är bara en bricka. Utan policy, klassificering och styrelsebeslut är det bara tyst loggning som ingen använder.
+  </div>
+
+  <h2>Kostnaderna — vad ska du budgetera?</h2>
+
+  <p>
+    <strong>Defender for Cloud Apps:</strong>
+  </p>
+  <ul>
+    <li>Ofta redan i Microsoft 365-licensen (0 kronor adderat för små organisationer)</li>
+    <li>Implementation med intern IT: 2–4 veckors arbete</li>
+    <li>Implementation med extern partner: 50 000–150 000 kronor</li>
+  </ul>
+
+  <p>
+    <strong>Netskope:</strong>
+  </p>
+  <ul>
+    <li>Licenskostnad: 100–400 kronor per användare och månad (beror på volym och vilka moduler)</li>
+    <li>Implementation: 200 000–500 000 kronor (6–12 veckor)</li>
+    <li>Löpande support: 30 000–100 000 kronor per år</li>
+  </ul>
+
+  <p>
+    Samma jämförelse: En sanktion enligt NIS2 börjar på 7 miljoner euro för en viktig entitet. En Netskope-investering på 500 000 kronor och sex måneders implementering är försumbar mot risken.
+  </p>
+
+  <h2>FAQ</h2>
+
+  <div class="faq-item">
+    <div class="faq-q">Måste vi använda en extern CASB eller räcker Microsofts inbyggda kontroller?</div>
+    <div class="faq-a">Det beror på din miljö. Om du är 100 % Microsoft, kan Defender for Cloud Apps täcka NIS2-kraven. Om du använder Google, Salesforce eller okända SaaS-tjänster, behöver du något bredare. Börja med en gap-analys för att se vad du redan täcker.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">Kan vi inte bara blockera all molnanvändning utom Microsoft?</div>
+    <div class="faq-a">Teknik-vällintentionerat, men praktiskt omöjligt. Dina anställda behöver molnet för produktivitet — och om du blockerar allt kommer de hitta vägar runt. Ett exempel: Personlig Dropbox som döljs bakom VPN. Istället för att blockera allt, kartlägg vad som används, klassificera det och implementera DLP för högriskdata.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">Räcker det med CASB eller behöver vi också säkerhet i varje molntjänst?</div>
+    <div class="faq-a">Du behöver båda. CASB är en nätverkskontroll som ser trafiken. Men du behöver också lokal säkerhet — exempelvis MFA i Google Workspace, DLP i Salesforce och åtkomstkontroller överallt. CASB är ett lager, inte löningen.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">Hur hanterar vi anställdas användning av ChatGPT och andra AI-verktyg?</div>
+    <div class="faq-a">Det är en växande riskvektor. CASB kan se när data skickas till ChatGPT och kan blockera det om det klassificeras som högrisk. Men först måste organisationen besluta: Får anställda använda generativ AI? Med vilka begränsningar? Det är ett policy-beslut innan tekniken implementeras.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">Vad gör vi om vi redan har en säkerhetsbrist i molnet som vi inte visste om?</div>
+    <div class="faq-a">Det är ett skäl att börja omedelbar. En långsamt detekterad brist som du nu åtgärdar är mycket bättre än en incident som du aldrig såg komma. Implementera CASB, gör en retroaktiv granskning av tidigare loggning (om möjligt), och rapportera proaktivt till tillsynsmyndigheten om du misstänker exponering. Proaktivitet leder till mildare sanktioner än att bli tagen av tillsynsmyndigheten på bar gärning.</div>
+  </div>
+
+  <div class="box-info" style="margin: 48px 0 32px;">
+    <div style="font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color: var(--yellow); margin-bottom:10px;">🔧 VERKTYG &amp; LÖSNINGAR</div>
+    <p style="margin:0; font-size:17px; color: #ddd; line-height:1.7;">Microsoft Defender for Cloud Apps eller Netskope är bara delen av bilden. För att dokumentera hela säkerhetsprogrammet enligt NIS2 Artikel 20–21, behöver du även Microsoft Purview Sensitivity Labels (för klassificering), Microsoft Entra ID Conditional Access (för åtkomstkontroll) och Compliance Manager (för att visa styrelsen att du följer kraven). En certifierad Microsoft-partner kan göra en kostnadsfri gap-analys som visar exakt vilka verktyg och kontroller du behöver för ditt specifika scenario.</p>
+  </div>
+
+  <!-- Newsletter -->
+  <div style="background:#111; border:1px solid rgba(255,255,255,0.1); border-left:3px solid #f5c518; border-radius:4px; padding:32px 36px; margin:40px 0 0; text-align:center; max-width:760px; margin-left:auto; margin-right:auto;">
+    <div style="font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:#f5c518; margin-bottom:12px;">📬 NIS2-UPPDATERINGAR</div>
+    <h3 style="font-family:'Poppins',sans-serif; font-size:20px; font-weight:800; margin:0 0 8px; color:#f0f0f0;">Ny NIS2-artikel varje vecka — direkt i inkorgen</h3>
+    <p style="color:#888; font-size:15px; margin:0 0 20px;">Ingen säljpitch. Bara konkret vägledning för VD:ar och styrelser.</p>
+    <form id="nlForm-microsoft_defender_vs_netskope_molnsakerhet" onsubmit="submitNewsletter_microsoft_defender_vs_netskope_molnsakerhet(event)" style="display:flex; gap:10px; flex-wrap:wrap; justify-content:center; max-width:460px; margin:0 auto;">
+      <input type="email" id="nlEmail-microsoft_defender_vs_netskope_molnsakerhet" placeholder="din@foretag.se" required
+             style="flex:1; min-width:200px; padding:12px 16px; background:#1c1c1f; border:1px solid rgba(255,255,255,0.15); border-radius:4px; color:#f0f0f0; font-size:15px; outline:none;" />
+      <button type="submit" id="nlSubmit-microsoft_defender_vs_netskope_molnsakerhet"
+              style="padding:12px 22px; background:#f5c518; color:#141416; font-weight:700; font-size:15px; border:none; border-radius:4px; cursor:pointer; white-space:nowrap;">
+        Prenumerera gratis →
+      </button>
+    </form>
+    <p style="font-size:12px; color:#555; margin:12px 0 0;">Du kan avprenumerera när som helst. Vi delar aldrig din e-post.</p>
+    <div id="nlThanks-microsoft_defender_vs_netskope_molnsakerhet" style="display:none; color:#4ade80; font-size:16px; font-weight:600; margin-top:14px;">✅ Du är med! Nästa artikel kommer direkt till din inkorg.</div>
+  </div>
+
+  <!-- CTA -->
+  <div class="cta-section">
+    <h2>Vet du vilka molntjänster dina anställda redan använder?</h2>
+    <p>En kostnadsfri molndetektering och gap-analys visar ditt faktiska molnläge — och vad du behöver för NIS2-efterlevnad.</p>
+    <a href="https://nis2klar.se/#boka" class="btn-primary">Boka kostnadsfri gap-analys →</a>
+    <p class="cta-fine">Molnsäkerhet är inte valfritt under NIS2. Gap-analysen är gratis.</p>
+  </div>
+
+</article>
+
+<div class="related-articles" style="margin:2.5rem 0 2rem;padding:1.5rem;background:#1a1a2e;border-left:4px solid #f0a500;border-radius:4px;">
+  <p style="margin:0 0 1rem;font-size:0.85rem;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:#f0a500;">Läs också</p>
+  <ul style="margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:0.5rem;">
+    <li><a href="https://nis2klar.se/artiklar/nis2-datakryptering-och-dlp.html" style="color:#e0e0e0;text-decoration:none;font-size:0.95rem;">→ DLP i molnet: Klassificering och blockering</a></li>
+    <li><a href="https://nis2klar.se/artiklar/nis2-vilka-foretag-omfattas.html" style="color:#e0e0e0;text-decoration:none;font-size:0.95rem;">→ Vilka företag omfattas av NIS2?</a></li>
+    <li><a href="https://nis2klar.se/artiklar/nis2-riskanalys-artikel-21.html" style="color:#e0e0e0;text-decoration:none;font-size:0.95rem;">→ Riskanalys enligt NIS2 artikel 21</a></li>
+  </ul>
+  <p style="margin:1.25rem 0 0;font-size:0.85rem;color:#aaa;">← <a href="https://nis2klar.se/" style="color:#f0a500;text-decoration:none;">NIS2Klar startsida</a> · <a href="https://nis2klar.se/artiklar.html" style="color:#f0a500;text-decoration:none;">Alla guider</a></p>
+</div>
+
+<footer>
+  © 2026 M&J Trusted Marketing KB ·
+  <a href="mailto:support@trustedmarketing.se">support@trustedmarketing.se</a> · <a href="tel:+46470597003">+46 470 59 70 03</a> ·
+  <a href="https://nis2klar.se/">Tillbaka till startsidan</a> ·
+  <a href="https://nis2klar.se/privacy.html">Integritetspolicy</a>
+  <p style="margin-top:12px; font-size:11px; color: #555; line-height:1.5;">Microsoft, Microsoft 365, Azure och tillhörande produktnamn är varumärken som tillhör Microsoft Corporation. nis2klar.se är inte affilierat med eller godkänt av Microsoft Corporation.</p>
+</footer>
+
+<script data-cfasync="false">
+  async function submitNewsletter_microsoft_defender_vs_netskope_molnsakerhet(e) {
+    e.preventDefault();
+    const btn = document.getElementById('nlSubmit-microsoft_defender_vs_netskope_molnsakerhet');
+    btn.disabled = true;
+    btn.textContent = 'Skickar...';
+    const email = document.getElementById('nlEmail-microsoft_defender_vs_netskope_molnsakerhet').value.trim();
+    try {
+      const res = await fetch('/api/newsletter/subscribe', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, source: 'artikel-microsoft_defender_vs_netskope_molnsakerhet' })
+      });
+      const data = await res.json();
+      if (data.success) {
+        document.getElementById('nlForm-microsoft_defender_vs_netskope_molnsakerhet').style.display = 'none';
+        document.getElementById('nlThanks-microsoft_defender_vs_netskope_molnsakerhet').style.display = 'block';
+      } else {
+        btn.disabled = false;
+        btn.textContent = 'Prenumerera gratis →';
+      }
+    } catch {
+      btn.disabled = false;
+      btn.textContent = 'Prenumerera gratis →';
+    }
+  }
+</script>
+
+</body>
+</html>
