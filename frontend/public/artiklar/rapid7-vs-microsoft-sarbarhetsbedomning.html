@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-BKF3QH9K01"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag("js", new Date());
+    gtag("config", "G-BKF3QH9K01");
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rapid7 vs Microsoft Security Center: Sårbarhetsbedömning under NIS2 | NIS2Klar</title>
+  <meta name="description" content="NIS2 kräver identifiering och hantering av sårbarheter. Jämför Rapid7 InsightVM med Microsoft Defender Vulnerability Management — vad tillsynsmyndigheten förväntar sig.">
+  <meta property="og:title" content="Rapid7 vs Microsoft Security Center: Sårbarhetsbedömning under NIS2">
+  <meta property="og:description" content="NIS2 kräver identifiering och hantering av sårbarheter. Jämför Rapid7 InsightVM med Microsoft Defender Vulnerability Management — vad tillsynsmyndigheten förväntar sig.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #141416;
+      --card: #1c1c1f;
+      --yellow: #f5c518;
+      --white: #f0f0f0;
+      --muted: #888;
+      --red: #C61212;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: var(--bg); color: var(--white); font-family: 'Barlow', sans-serif; font-size: 19px; line-height: 1.8; }
+
+    /* Nav */
+    nav { display: flex; justify-content: space-between; align-items: center; padding: 20px 40px; border-bottom: 1px solid rgba(255,255,255,0.07); max-width: 900px; margin: 0 auto; }
+    .nav-logo { font-family: 'Poppins', sans-serif; font-weight: 900; font-size: 20px; color: var(--yellow); text-decoration: none; }
+    .nav-logo span { color: var(--white); }
+    .nav-back { color: var(--muted); text-decoration: none; font-size: 15px; }
+    .nav-back:hover { color: var(--white); }
+    .nav-cta { background: var(--yellow); color: #000; padding: 8px 18px; border-radius: 4px; text-decoration: none; font-weight: 700; font-size: 14px; font-family: 'Poppins', sans-serif; }
+
+    /* Article */
+    .article-wrap { max-width: 760px; margin: 0 auto; padding: 60px 40px; }
+    .article-category { font-size: 13px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 16px; }
+    h1 { font-family: 'Poppins', sans-serif; font-size: clamp(30px, 4vw, 44px); font-weight: 900; line-height: 1.2; margin-bottom: 24px; }
+    .article-meta { font-size: 15px; color: var(--muted); margin-bottom: 48px; padding-bottom: 24px; border-bottom: 1px solid rgba(255,255,255,0.07); }
+    h2 { font-family: 'Poppins', sans-serif; font-size: 26px; font-weight: 700; margin: 48px 0 16px; color: var(--white); }
+    h3 { font-family: 'Poppins', sans-serif; font-size: 20px; font-weight: 600; margin: 32px 0 12px; color: var(--yellow); }
+    p { margin-bottom: 22px; }
+    strong { color: var(--white); font-weight: 700; }
+    .highlight { color: var(--yellow); font-weight: 700; }
+    .danger { color: #ff6b6b; font-weight: 700; }
+    ul, ol { margin: 16px 0 24px 24px; }
+    li { margin-bottom: 12px; font-size: 19px; }
+
+    /* Callout boxes */
+    .box-warning { background: rgba(197,17,17,0.12); border-left: 4px solid var(--red); padding: 20px 24px; margin: 32px 0; border-radius: 0 4px 4px 0; }
+    .box-info { background: rgba(245,197,24,0.08); border-left: 4px solid var(--yellow); padding: 20px 24px; margin: 32px 0; border-radius: 0 4px 4px 0; }
+    .box-case { background: var(--card); border: 1px solid rgba(255,255,255,0.08); padding: 28px; margin: 40px 0; border-radius: 4px; }
+    .box-case .case-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 12px; }
+    blockquote { border-left: 3px solid var(--yellow); padding: 12px 20px; margin: 24px 0; font-style: italic; color: #ccc; }
+
+    /* CTA */
+    .cta-section { background: var(--card); border: 1px solid rgba(245,197,24,0.2); border-radius: 4px; padding: 48px 40px; margin: 64px 0 40px; text-align: center; }
+    .cta-section h2 { margin-top: 0; font-size: 26px; }
+    .cta-section p { color: #aaa; max-width: 500px; margin: 0 auto 28px; }
+    .btn-primary { display: inline-block; background: var(--yellow); color: #000; font-family: 'Poppins', sans-serif; font-weight: 800; font-size: 16px; padding: 16px 36px; border-radius: 4px; text-decoration: none; }
+    .btn-primary:hover { background: #e0b010; }
+    .cta-fine { font-size: 13px; color: var(--muted); margin-top: 16px; }
+
+    /* FAQ */
+    .faq-item { border-bottom: 1px solid rgba(255,255,255,0.07); padding: 20px 0; }
+    .faq-q { font-family: 'Poppins', sans-serif; font-weight: 600; margin-bottom: 10px; }
+    .faq-a { color: #bbb; }
+
+    /* Comparison table */
+    .comparison-table { width: 100%; border-collapse: collapse; margin: 24px 0; }
+    .comparison-table th { background: rgba(245,197,24,0.1); color: var(--yellow); font-family: 'Poppins', sans-serif; font-size: 13px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 12px 16px; text-align: left; border-bottom: 1px solid rgba(245,197,24,0.2); }
+    .comparison-table td { padding: 14px 16px; border-bottom: 1px solid rgba(255,255,255,0.05); font-size: 15px; }
+    .comparison-table tr:last-child td { border-bottom: none; }
+    .check { color: #4ade80; font-weight: 700; }
+
+    /* Summary + Key Takeaway */
+    .box-summary { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; padding: 24px 28px; margin: 0 0 32px; }
+    .summary-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-bottom: 14px; }
+    .box-summary ul { margin: 0; padding-left: 20px; }
+    .box-summary li { margin-bottom: 8px; font-size: 17px; color: #ccc; }
+    .box-takeaway { background: rgba(245,197,24,0.08); border-left: 4px solid var(--yellow); padding: 20px 24px; margin: 0 0 40px; border-radius: 0 4px 4px 0; }
+    .takeaway-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 10px; }
+    .box-takeaway p { margin: 0; font-size: 18px; font-weight: 600; color: var(--white); line-height: 1.6; }
+
+    /* Footer */
+    footer { border-top: 1px solid rgba(255,255,255,0.07); padding: 32px 40px; text-align: center; font-size: 13px; color: var(--muted); max-width: 900px; margin: 0 auto; }
+    footer a { color: var(--muted); }
+
+    /* Related articles */
+    .related-articles { margin: 2.5rem 0 2rem; padding: 1.5rem; background: #1a1a2e; border-left: 4px solid #f0a500; border-radius: 4px; }
+    .related-articles p { margin: 0 0 1rem; font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #f0a500; }
+    .related-articles ul { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+    .related-articles li a { color: #e0e0e0; text-decoration: none; font-size: 0.95rem; }
+
+    @media (max-width: 600px) {
+      nav, .article-wrap, footer { padding: 20px; }
+      .cta-section { padding: 32px 20px; }
+      .comparison-table { font-size: 14px; }
+      .comparison-table th, .comparison-table td { padding: 10px 10px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="https://nis2klar.se/">NIS2<span>Klar</span></a>
+  <a class="nav-back" href="https://nis2klar.se/artiklar.html">← Alla artiklar</a>
+  <a class="nav-cta" href="https://nis2klar.se/#boka">Boka samtal →</a>
+</nav>
+
+<article class="article-wrap">
+  <div class="article-category">Sårbarhetshantring &amp; Teknik</div>
+  <h1>Rapid7 vs Microsoft Security Center: Sårbarhetsbedömning under NIS2</h1>
+  <div class="article-meta">Uppdaterad 30 april 2026 · Lästid: ca 8 minuter · Målgrupp: Ledning &amp; IT</div>
+
+  <!-- SUMMARY -->
+  <div class="box-summary">
+    <div class="summary-label">Sammanfattning</div>
+    <ul>
+      <li>NIS2 Artikel 21.2 kräver att organisationen identifierar och hanterar säkerhetssårbarheter systematiskt.</li>
+      <li>Två huvudvägar: specialiserade verktyg (Rapid7 InsightVM) eller integrerade lösningar (Microsoft Defender Vulnerability Management).</li>
+      <li>Tillsynsmyndigheten granskar inte ditt verktyg — men dokumentationen av din process och prioriteringsmetod.</li>
+      <li>Minsta nivå: inventering av tillgångar, återkommande skanningar, riskprioriteringar och åtgärdsplan godkänd av ledningen.</li>
+      <li>Styrelsens roll: godkänna sårbarhetshanterings-policy och fatta beslut om acceptabel risk (risk tolerance).</li>
+    </ul>
+  </div>
+
+  <!-- KEY TAKEAWAY -->
+  <div class="box-takeaway">
+    <div class="takeaway-label">Viktigaste slutsatsen</div>
+    <p>NIS2-granskning handlar inte om vilket verktyg du använder utan om du kan visa att du systematiskt hittar, prioriterar och åtgärdar sårbarheter — och att styrelsen aktivt deltar i beslutstagandet.</p>
+  </div>
+
+  <!-- INTRO -->
+  <p>
+    Sårbarhetshanttering är inte ny. Den har funnits i IT-säkerhet i två decennier. Men under NIS2 är det inte längre en optional bästa praxis — det är <strong>obligatorisk juridisk kravuppfyllelse</strong>.
+  </p>
+
+  <p>
+    Artikel 21.2 i NIS2-direktivet slår fast att väsentliga och viktiga entiteter <strong>måste genomföra åtgärder för att identifiera och hantera säkerhetssårbarheter</strong>. Det är inte detaljspecifikt om vilket verktyg du ska använda. Men granskningsmyndigheterna förväntar sig ett specifikt sätt att arbeta — och din ledning måste kunna bevisa det.
+  </p>
+
+  <p>
+    Den här artikeln guider dig genom två vanliga vägar — Rapid7 InsightVM och Microsoft Defender Vulnerability Management — och visar vad tillsynsmyndigheten faktiskt letar efter.
+  </p>
+
+  <h2>Vad säger NIS2 om sårbarheter — ordagrant?</h2>
+
+  <p>
+    <strong>Artikel 21.2 g</strong> lyder: "identifiera säkerhetssårbarheter i sina nätverk och tillhörande system genom regelbundna skanningar och uppdateringar".
+  </p>
+
+  <p>
+    Det verkar enkelt — scanna ofta, uppdatera. Men granskningsmyndigheterna tolkar detta vidare. Det handlar om:
+  </p>
+
+  <ol>
+    <li><strong>Inventering:</strong> Du måste veta vilka tillgångar (servrar, applikationer, nätverk) som existerar.</li>
+    <li><strong>Regelbundna skanningar:</strong> Automatiserade vulnerability scans — inte adhoc-kontroller.</li>
+    <li><strong>Klassificering och prioritering:</strong> Inte alla sårbarheter är lika kritiska. Du måste rangordna dem baserat på påverkan och exponering.</li>
+    <li><strong>Åtgärdsprocess:</strong> En plan för hur och när sårbarheter åtgärdas (patch, mitigering eller acceptance).</li>
+    <li><strong>Styrelsekontroll:</strong> Ledningen måste förstå och godkänna den här processen. Inte delegera bort den helt.</li>
+  </ol>
+
+  <p>
+    Om du inte kan visa dessa fem komponenter när en tillsynsmyndighet kommer knackande, saknar du en obligatorisk säkerhetsåtgärd — och det leder till sanktioner.
+  </p>
+
+  <div class="box-warning">
+    <strong>Kritisk detalj:</strong> Många organisationer genomför skanningar men lagrar resultaten slarvigt, prioriterar inte, och gör ingen åtgärdsplan. Om en granskning initieras kan detta räcka för att fastslå en brist, även om du tekniskt scannning regelbundet.
+  </div>
+
+  <h2>Rapid7 InsightVM: Spetsen för sårbarhetsbedömning</h2>
+
+  <h3>Vad är det?</h3>
+
+  <p>
+    Rapid7 InsightVM är en specialiserad sårbarhetsbedömningsplattform. Den är designad för att:
+  </p>
+
+  <ul>
+    <li>Scanna nätverk och hitta sårbarheter i realtid</li>
+    <li>Klassificera risker enligt industristandarder (CVSS, EPSS — Exploit Prediction Scoring System)</li>
+    <li>Integrera med asset-management-system</li>
+    <li>Generera rapporter för ledning och compliance</li>
+  </ul>
+
+  <h3>Styrkorna under NIS2</h3>
+
+  <p>
+    <strong>Fokuserad expertis:</strong> Rapid7 är ensidigt inriktat på sårbarheter. Det betyder att deras algoritmer och uppdateringar är optimerade för denna enda uppgift.
+  </p>
+
+  <p>
+    <strong>Extern perspective:</strong> InsightVM kan både scanna från ditt nätverk inifrån och från utsidan. Det ger en mer realistisk bild av vilka sårbarheter en angripare faktiskt kunde exploatera.
+  </p>
+
+  <p>
+    <strong>Rapportering för styrelser:</strong> Rapid7 har en hög överensstämmelse med verkställigares språk — risk matrices, trend charts, executive summaries. Det passar när du ska presentera för styrelsen.
+  </p>
+
+  <h3>Begränsningarna</h3>
+
+  <p>
+    <strong>Kostnad:</strong> InsightVM är dyrare per skannad tillgång än många integrerade lösningar. För en stor miljö kan detta bli en signifikant utgift.
+  </p>
+
+  <p>
+    <strong>Integration med IT-drift:</strong> Om din organisation redan investerat i Microsoft 365 och Windows-miljö är Rapid7 en parallell verktygskedja. Det kräver API-integration eller manuell datöverföring för att slå samman data.
+  </p>
+
+  <p>
+    <strong>Beroende på skanning:</strong> InsightVM är uteslutande en scanning-engine. Den detekterar inte sårbarheter som redan exploateras eller döljs av angripare. För detta behöver du även ett EDR-system (Endpoint Detection and Response).
+  </p>
+
+  <h2>Microsoft Defender Vulnerability Management: Den integrerade vägen</h2>
+
+  <h3>Vad är det?</h3>
+
+  <p>
+    Microsoft Defender Vulnerability Management är en modul inom Microsoft Defender XDR — Microsofts unified security platform. Den:
+  </p>
+
+  <ul>
+    <li>Integreerar hårdvara och mjukvara från Windows, Mac och Linux-miljöer</li>
+    <li>Hämtar sårbarheter från Microsoft och tredjepartsföretag</li>
+    <li>Korrelerar sårbarheter med faktiska incidenter och hotningstillstånd</li>
+    <li>Är ingår i Microsoft Defender for Endpoint (MDE)</li>
+  </ul>
+
+  <h3>Styrkorna under NIS2</h3>
+
+  <p>
+    <strong>Systemintegrering:</strong> Om din organisation redan använder Windows, Intune och Microsoft 365 är Vulnerability Management redan närvarande. Det behövs ingen skild licensiering eller parallell toolchain.
+  </p>
+
+  <p>
+    <strong>Kontext från andra sensorer:</strong> Microsoft Defender Vulnerability Management ser inte bara sårbarheter — det korrelerar dem med faktisk exponering. Om en sårbarhet inte påverkas av din brandvägg eller är på en isolerad maskin, kan systemet deprioriterar den.
+  </p>
+
+  <p>
+    <strong>Styrelserapportering via Secure Score:</strong> Microsoft Defender Secure Score är en 0–100 poängskalas som visar organisationens övergripande säkerhetsstatus. Det är en enkel, styrelsevänd metrik som kan presenteras direkt och återspeglar sårbarheter, konfiguration, övning och beteende.
+  </p>
+
+  <h3>Begränsningarna</h3>
+
+  <p>
+    <strong>Begränsat till Microsoft-ekosystem:</strong> Om du har många Linux-servrar, on-premise-applikationer eller tredjepartsenheter kan Vulnerability Management inte scanna allt. Du behöver kompletterande verktyg.
+  </p>
+
+  <p>
+    <strong>Mindre tillåten externa skanningar:</strong> Microsoft-ekosystemet är mer stängd än Rapid7. Externa pentest-skanningar kan ibland klassificeras som driftsstörning enligt tjänsteavtalet.
+  </p>
+
+  <p>
+    <strong>Komplexare uppstart:</strong> Defender Vulnerability Management kräver ett fullt etablerat Defender for Endpoint-system med rätt licenser och endpoints registrerade. Om du inte redan har det är uppstarten större än att bara installera Rapid7.
+  </p>
+
+  <h2>Jämförelse: Rapid7 vs Microsoft för NIS2-granskning</h2>
+
+  <table class="comparison-table">
+    <thead>
+      <tr>
+        <th>Kapacitet</th>
+        <th>Rapid7 InsightVM</th>
+        <th>Microsoft Defender Vulnerability Mgmt</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Täcker Windows-miljö</td>
+        <td class="check">✓ Ja</td>
+        <td class="check">✓ Ja</td>
+      </tr>
+      <tr>
+        <td>Täcker Linux &amp; on-prem</td>
+        <td class="check">✓ Ja</td>
+        <td>Begränsat</td>
+      </tr>
+      <tr>
+        <td>Täcker cloud (AWS, GCP)</td>
+        <td class="check">✓ Ja</td>
+        <td>Begränsat</td>
+      </tr>
+      <tr>
+        <td>Styrelserapport (0–100 skala)</td>
+        <td>Anpassad rapport</td>
+        <td class="check">✓ Secure Score</td>
+      </tr>
+      <tr>
+        <td>Integreerad hotdetektering (EDR)</td>
+        <td>Nej (separat)</td>
+        <td class="check">✓ Ja (XDR)</td>
+      </tr>
+      <tr>
+        <td>Kostnadseffektivitet i ren Windows-miljö</td>
+        <td>Högre per enhet</td>
+        <td class="check">✓ Lägre (redan licensierad)</td>
+      </tr>
+      <tr>
+        <td>Risk-prioritering enligt EPSS</td>
+        <td class="check">✓ Ja</td>
+        <td>CVSS, partiell EPSS</td>
+      </tr>
+      <tr>
+        <td>Extern scanning möjlig</td>
+        <td class="check">✓ Ja</td>
+        <td>Restriktiv</td>
+      </tr>
+      <tr>
+        <td>Rapport for audit trail</td>
+        <td class="check">✓ Detaljerad</td>
+        <td class="check">✓ Detaljerad</td>
+      </tr>
+      <tr>
+        <td>API-möjligheter för integration</td>
+        <td class="check">✓ Robust</td>
+        <td class="check">✓ Robust</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>
+    <strong>Sammanfattning:</strong> Rapid7 är spetsen för heterogena miljöer och externa perspektiv. Microsoft är integrerad och kostnadseffektiv för redan Microsoft-baserade organisationer.
+  </p>
+
+  <h2>Vad förväntar sig tillsynsmyndigheten — konkret?</h2>
+
+  <p>
+    När IMY, MSB eller en sektorsspecifik tillsynsmyndighet granskar din organisation fokuserar de på <strong>processen, inte verktyget</strong>. De förväntar sig att du kan presentera:
+  </p>
+
+  <h3>1. Asset inventory</h3>
+
+  <p>
+    En lista över alla servrar, klienter, applikationer och nätverk som är kritiska för verksamheten. Du måste kunna säga "Vi har X Windows-servrar, Y Linux-servrar, Z webapplikationer."
+  </p>
+
+  <p>
+    <strong>Både Rapid7 och Microsoft</strong> kan automatisera detta — men du måste vara medveten om det och kunna presentera det till styrelsen.
+  </p>
+
+  <h3>2. Scan-metoder och frekvens</h3>
+
+  <p>
+    Dokumentation av hur ofta du scannar (exempelvis "daglig intern scan, veckovis extern scan, månadsvis djupscan"). Tillsynsmyndigheten kollar att denna inte är fallande utan regelbunden.
+  </p>
+
+  <p>
+    <strong>Dokumentation:</strong> En policy-fil som säger exakt när skanningar körs och vem som ansvarar. En scanningslogg som visar att detta faktiskt skett de senaste tre månaderna.
+  </p>
+
+  <h3>3. Risk-klassificering</h3>
+
+  <p>
+    Bevis på att du inte bara lister sårbarheter utan rangordnar dem. Exempelvis enligt CVSS-scores (Common Vulnerability Scoring System) eller EPSS-scores (som visar sannolikheten för exploatering).
+  </p>
+
+  <p>
+    <strong>Båda verktygen</strong> gör detta, men du måste kunna förklara din klassificeringslogik. Exempelvis: "Alla sårbarheter med CVSS >7 får högsta prioritet. CVSS 5–7 klassificeras som medel. Säkerhetspatch appliceras inom 30 dagar för höga sårbarheter, 60 dagar för medel."
+  </p>
+
+  <h3>4. Åtgärd och uppföljning</h3>
+
+  <p>
+    Bevis på att sårbarheter faktiskt åtgärdas — antingen genom patch, mitigering eller godkänd risk acceptance. En log som visar "Denna sårbarhet identifierades den X, klassificerades som högt, åtgärderades med patch den Y."
+  </p>
+
+  <p>
+    <strong>Inte acceptabelt:</strong> En lista på kända sårbarheter som aldrig åtgärdas. Det visar bristande ansvar, inte risk management.
+  </p>
+
+  <h3>5. Styrelsegodkännande</h3>
+
+  <p>
+    <strong>Detta är kritiskt och ofta överskatt.</strong> Styrelsen behöver inte granska varje sårbarhet. Men de måste:
+  </p>
+
+  <ul>
+    <li>Godkänna sårbarhetshanterings-policyn (vem som scannar, hur ofta, klassificeringsmetod)</li>
+    <li>Förstå risknivåerna och vilka sårbarheter som accepteras (risk tolerance)</li>
+    <li>Få regelbundna rapporter (minst kvartalsvis) om status — exempelvis "Vi har 1200 kända sårbarheter, 45 klassificerade som höga, alla åtgärdade eller godkända inom risk tolerance."</li>
+  </ul>
+
+  <p>
+    Om detta inte är dokumenterat i styrelsebeslut eller protokoll är det en brist enligt Artikel 20.
+  </p>
+
+  <div class="box-info">
+    <strong>NIS2-minsta nivå för sårbarhetshanterin:</strong> <br/>
+    (1) Inventering av tillgångar — veckovis uppdaterad lista eller CMDB-system.<br/>
+    (2) Automated scanning — minst månatlig full-scan, veckovis delta-scan.<br/>
+    (3) Risk-klassificering — CVSS eller motsvarande.<br/>
+    (4) SLA för åtgärd — exempelvis 30 dagar för höga, 90 för medel.<br/>
+    (5) Styrelserapport — kvartalsvis status om sårbarhetsläget och acceptance-status.
+  </div>
+
+  <h2>Fallstudie: Sårbarhetsgranskning vid MSB-tillsyn</h2>
+
+  <div class="box-case">
+    <div class="case-label">Praktiskt exempel</div>
+    <p>
+      <strong>Organisation:</strong> Telekommunikationsföretag, 280 anställda, klassad som väsentlig entitet under NIS2.
+    </p>
+    <p>
+      <strong>Situation:</strong> MSB initierar en tillsyn i januari 2026. De begär inom 30 dagar dokumentation om sårbarhetshanterings-policy, skanningsloggar från de senaste sex månaderna och styrelsebeslut relaterat till säkerhetsåtgärder.
+    </p>
+    <p>
+      <strong>Vad organisationen presenterar:</strong><br/>
+      ✓ Policy: "Daglig intern scan, veckovis extern scan, måndagsklassificering enligt CVSS."<br/>
+      ✓ Skanningslogg: Visar att skanningar körs automatiskt varje dag.<br/>
+      ✓ Sårbarhetslista från senaste månad: 2 300 identifierade sårbarheter, klassificerade enligt CVSS.<br/>
+      ✗ Åtgärdsplan: Begränsat — många höga sårbarheter (CVSS >8) är inte åtgärdade eller accepterade.<br/>
+      ✗ Styrelsedokumentation: Styrelsen har aldrig diskuterat eller godkänt sårbarhetshanterings-policyn eller accepterad risknivå.
+    </p>
+    <p>
+      <strong>MSB-slutsats:</strong> "Organisationen scannar, men har ingen dokumenterad process för prioritering, åtgärd eller risk-acceptance. Styrelsen är inte medveten om säkerhetsläget. Detta utgör en brist i Artikel 21.2 g."
+    </p>
+    <p>
+      <strong>Resultat:</strong> Sanktionsavgift + krav på åtgärd inom 90 dagar. Styrelsen måste antaga en formell policy för sårbarhetshanterin, definierar risk tolerance, och presentera en åtgärdsplan för befintliga höga sårbarheter.
+    </p>
+  </div>
+
+  <h2>Praktisk implementering — steg för steg</h2>
+
+  <h3>Om du väljer Rapid7 InsightVM:</h3>
+
+  <ol>
+    <li><strong>Weeks 1–2:</strong> Installera Rapid7 InsightVM. Låt den scanna ditt hela nätverk för att få en baseline.</li>
+    <li><strong>Weeks 3–4:</strong> Klassificera de 100 högsta sårbarheter enligt CVSS/EPSS. Skapa en åtgärdsplan för var och en (patch, mitigering, eller acceptance).</li>
+    <li><strong>Vecka 5:</strong> Skapa en policy-dokument: "Vi scannar dagligen. Höga sårbarheter (CVSS >8) åtgärdas inom 14 dagar eller accepteras formellt av [roll]. Policy godkänd av VD och styrelseordförande på [datum]."</li>
+    <li><strong>Vecka 6:</strong> Presentera för styrelsen: risk dashboard, antal sårbarheter per nivå, åtgärdsplan. Få formellt godkännande.</li>
+    <li><strong>Löpande:</strong> Daglig scan → veckovis rapportering till IT-ledning → månadlig rapportering till styrelse (exempelvis via Secure Score eller motsvarande).</li>
+  </ol>
+
+  <h3>Om du väljer Microsoft Defender Vulnerability Management:</h3>
+
+  <ol>
+    <li><strong>Weeks 1–2:</strong> Se till att alla endpoints har Microsoft Defender for Endpoint (MDE) installerat och aktiv.</li>
+    <li><strong>Week 3:</strong> Aktivera Vulnerability Management i Microsoft 365 Defender-portalen. Låt den bygga sitt sårbarhetsinventorium.</li>
+    <li><strong>Week 4:</strong> Exportera den första Secure Score-rapporten. Denna visar övergripande säkerhetsstatus (0–100).</li>
+    <li><strong>Week 5:</strong> Skapa policy: "Vi använder Microsoft Defender för kontinuerlig hotdetektering. Sårbarheter klassificeras automatiskt. Risk-tolerance godkänd av VD."</li>
+    <li><strong>Week 6:</strong> Presentera Secure Score för styrelse (exempelvis "Vi ligger på 72/100, målnivå är 80. Denna rapportering kommer varje kvartal").</li>
+    <li><strong>Löpande:</strong> Automatisk scanning → månadlig rapport till ledning → kvartalsvis uppdatering till styrelse via Secure Score-trendrapport.</li>
+  </ol>
+
+  <h2>Vanliga frågor om NIS2 och sårbarhetsbedömning</h2>
+
+  <div class="faq-item">
+    <div class="faq-q">Räcker det att köra en Nessus-scan varje månad?</div>
+    <div class="faq-a">En scan var månad är för sällan för väsentliga entiteter. NIS2 kräver "regelbundna skanningar" — vilket tolkas som veckovis eller daglig för kritiska system. En månadlig scan kan accepteras för mindre viktiga entiteter, men du måste då kunna försvara den frekvensen i en risk-assessment. Går ut på risk tolerance — högre exponering kräver högre frekvens.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">Måste vi åtgärda alla sårbarheter inom en viss tid?</div>
+    <div class="faq-a">Nej, men du måste ha en dokumenterad SLA. Exempelvis: "Höga sårbarheter åtgärdas inom 30 dagar eller accepteras formellt av [roll]." Tillsynsmyndigheten accepterar att vissa sårbarheter dröjer — men bara om du kan visa att det är en medveten risk-acceptance-beslut, inte negligens.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">Gäller det även virtuella miljöer och cloud?</div>
+    <div class="faq-a">Ja. Oavsett om dina servrar körs on-premise eller i Azure, AWS eller Google Cloud är de tillgångar som behöver scannas. Valet av verktyg måste kunna täcka din faktiska infrastruktur — hybrid, cloud, on-prem eller blandning.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">Kan vi outsourca sårbarhetshanterin helt?</div>
+    <div class="faq-a">Ja, men ansvaret förblir ditt. Du kan anlita en leverantör för scanning och rapportering, men VD och styrelse måste fortfarande godkänna processen, förstå resultaten och övervaka att åtgärder genomförs. Du kan delegera utförandet, men inte ansvaret.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">Vad händer om vi hittar en zero-day-sårbarhet vi inte kan åtgärda direkt?</div>
+    <div class="faq-a">Du dokumenterar den, klassificerar dess påverkan, och presenterar en mitigerings-plan (exempelvis network segmentation, blocking i brandvägg). Styrelse godkänner den accepterade risken. Detta är legitim risk-management enligt NIS2. Det problemat är inte zero-days — det är när du hittar högrisksårbarheter och gör ingenting.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">Räcker en automated scanning utan manuell penetration testing?</div>
+    <div class="faq-a">För NIS2-granskning räcker automated scanning för att uppfylla minimumsstandard. Penetrationstester (manuella) är värdefullt men inte obligatoriskt. De två kan kombineras — automated scans hittar kända sårbarheter, manuella test hittar logiska fel. MSB accepterar båda vägar så länge processen är dokumenterad.</div>
+  </div>
+
+  <h2>Den kritiska rollen för styrelseledamöter</h2>
+
+  <p>
+    Många VD:ar delegerar sårbarhetshanterin helt till IT-chefen. Det är ett misstag under NIS2.
+  </p>
+
+  <p>
+    Styrelseledamöter behöver inte kunna läsa en sårbarheitsrapport på teknik-nivå. Men de måste kunna besvara dessa frågor:
+  </p>
+
+  <ul>
+    <li>Hur ofta scannar vi för sårbarheter?</li>
+    <li>Vilken nivå på sårbarheter accepterar vi och varför?</li>
+    <li>Vem är ansvarig för att åtgärda identifierade sårbarheter?</li>
+    <li>Vad var statusen för tre månader sedan, och hur går det nu?</li>
+  </ul>
+
+  <p>
+    Om styrelseledamöter inte kan svara på dessa utan att fråga IT-chefen, brister styrelsen i sin övervakning enligt Artikel 20. Dokumentera dessa svar i styrelsemöten — det är ditt försvar vid granskning.
+  </p>
+
+  <div class="box-warning">
+    <strong>Riskfaktor:</strong> En organisation som har excellent scanning men ingen styrelsekontroll kan fortfarande drabbas av sanktioner för bristen på ledningsbeslut. Teknik är inte tillräckligt — process och styrning är obligatoriska.
+  </div>
+
+  <!-- VERKTYGS BOX -->
+  <div class="box-info" style="margin: 48px 0 32px;">
+    <div style="font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color: var(--yellow); margin-bottom:10px;">🔧 VERKTYG &amp; LÖSNINGAR</div>
+    <p style="margin:0; font-size:17px; color: #ddd; line-height:1.7;">Microsoft Defender Secure Score ger er en styrelsevänd 0–100 metrisk för sårbarheter, patch-status och övergripande säkerhet — och är redan inkluderad i Microsoft 365 Business Premium. En certifierad Microsoft-partner kan sätta upp automated rapportering och gap-analys kostnadsfritt.</p>
+  </div>
+
+  <!-- NEWSLETTER -->
+  <div style="background:#111; border:1px solid rgba(255,255,255,0.1); border-left:3px solid #f5c518; border-radius:4px; padding:32px 36px; margin:40px 0 0; text-align:center; max-width:760px; margin-left:auto; margin-right:auto;">
+    <div style="font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:#f5c518; margin-bottom:12px;">📬 NIS2-UPPDATERINGAR</div>
+    <h3 style="font-family:'Poppins',sans-serif; font-size:20px; font-weight:800; margin:0 0 8px; color:#f0f0f0;">Ny NIS2-artikel varje vecka — direkt i inkorgen</h3>
+    <p style="color:#888; font-size:15px; margin:0 0 20px;">Ingen säljpitch. Bara konkret vägledning för VD:ar och styrelser.</p>
+    <form id="nlForm-rapid7_vs_microsoft_sarbarhetsbedomning" onsubmit="submitNewsletter_rapid7_vs_microsoft_sarbarhetsbedomning(event)" style="display:flex; gap:10px; flex-wrap:wrap; justify-content:center; max-width:460px; margin:0 auto;">
+      <input type="email" id="nlEmail-rapid7_vs_microsoft_sarbarhetsbedomning" placeholder="din@foretag.se" required style="flex:1; min-width:200px; padding:12px 16px; background:#1c1c1f; border:1px solid rgba(255,255,255,0.15); border-radius:4px; color:#f0f0f0; font-size:15px; outline:none;" />
+      <button type="submit" id="nlSubmit-rapid7_vs_microsoft_sarbarhetsbedomning" style="padding:12px 22px; background:#f5c518; color:#141416; font-weight:700; font-size:15px; border:none; border-radius:4px; cursor:pointer; white-space:nowrap;">Prenumerera gratis →</button>
+    </form>
+    <p style="font-size:12px; color:#555; margin:12px 0 0;">Du kan avprenumerera när som helst. Vi delar aldrig din e-post.</p>
+    <div id="nlThanks-rapid7_vs_microsoft_sarbarhetsbedomning" style="display:none; color:#4ade80; font-size:16px; font-weight:600; margin-top:14px;">✅ Du är med! Nästa artikel kommer direkt till din inkorg.</div>
+  </div>
+
+  <!-- CTA -->
+  <div class="cta-section">
+    <h2>Vet du var din organisation står idag?</h2>
+    <p>En kostnadsfri gap-analys med en certifierad Microsoft-partner visar exakt vad ni redan har täckt — och vad som saknas i sårbarhetshanterin.</p>
+    <a href="https://nis2klar.se/#boka" class="btn-primary">Boka kostnadsfri gap-analys →</a>
+    <p class="cta-fine">Böterna för bristande sårbarhetshanterin kan nå <strong>10 miljoner euro</strong>. Gap-analysen är gratis.</p>
+  </div>
+
+</article>
+
+<div class="related-articles" style="max-width:760px; margin:0 auto; padding:0 40px;">
+  <p>Läs också</p>
+  <ul>
+    <li><a href="https://nis2klar.se/artiklar.html">← Alla NIS2-artiklar</a></li>
+    <li><a href="https://nis2klar.se/artiklar.html">Incidenthantering enligt NIS2</a></li>
+    <li><a href="https://nis2klar.se/artiklar.html">Styrelsens ansvar för cybersäkerhet</a></li>
+  </ul>
+  <p style="margin-top:16px; font-size:13px;"><a href="https://nis2klar.se/">← NIS2Klar startsida</a></p>
+</div>
+
+<footer>
+  © 2026 M&J Trusted Marketing KB · 
+  <a href="mailto:support@trustedmarketing.se">support@trustedmarketing.se</a> · <a href="tel:+46470597003">+46 470 59 70 03</a> ·
+  <a href="https://nis2klar.se/">Tillbaka till startsidan</a> ·
+  <a href="https://nis2klar.se/privacy.html">Integritetspolicy</a>
+  <p style="margin-top:12px; font-size:11px; color: #555; line-height:1.5;">Microsoft, Microsoft 365, Azure och tillhörande produktnamn är varumärken som tillhör Microsoft Corporation. nis2klar.se är inte affilierat med eller godkänt av Microsoft Corporation.</p>
+</footer>
+
+<script data-cfasync="false">
+  async function submitNewsletter_rapid7_vs_microsoft_sarbarhetsbedomning(e) {
+    e.preventDefault();
+    const btn = document.getElementById('nlSubmit-rapid7_vs_microsoft_sarbarhetsbedomning');
+    btn.disabled = true;
+    btn.textContent = 'Skickar...';
+    const email = document.getElementById('nlEmail-rapid7_vs_microsoft_sarbarhetsbedomning').value.trim();
+    try {
+      const res = await fetch('/api/newsletter/subscribe', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, source: 'artikel-rapid7_vs_microsoft_sarbarhetsbedomning' })
+      });
+      const data = await res.json();
+      if (data.success) {
+        document.getElementById('nlForm-rapid7_vs_microsoft_sarbarhetsbedomning').style.display = 'none';
+        document.getElementById('nlThanks-rapid7_vs_microsoft_sarbarhetsbedomning').style.display = 'block';
+      } else {
+        btn.disabled = false;
+        btn.textContent = 'Prenumerera gratis →';
+      }
+    } catch {
+      btn.disabled = false;
+      btn.textContent = 'Prenumerera gratis →';
+    }
+  }
+</script>
+
+</body>
+</html>
