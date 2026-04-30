@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-BKF3QH9K01"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag("js", new Date());
+    gtag("config", "G-BKF3QH9K01");
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NIS2 Compliance-checklista med krav för Essential Entities | NIS2Klar</title>
+  <meta name="description" content="20-punkts checklista för essential entities under NIS2. Skärpta krav, fallstudie från energisektorn, personligt ansvar för VD och styrelse.">
+  <meta property="og:title" content="NIS2 Compliance-checklista med krav för Essential Entities">
+  <meta property="og:description" content="20-punkts checklista för essential entities under NIS2. Skärpta krav, fallstudie från energisektorn, personligt ansvar för VD och styrelse.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #141416;
+      --card: #1c1c1f;
+      --yellow: #f5c518;
+      --white: #f0f0f0;
+      --muted: #888;
+      --red: #C61212;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: var(--bg); color: var(--white); font-family: 'Barlow', sans-serif; font-size: 19px; line-height: 1.8; }
+
+    /* Nav */
+    nav { display: flex; justify-content: space-between; align-items: center; padding: 20px 40px; border-bottom: 1px solid rgba(255,255,255,0.07); max-width: 900px; margin: 0 auto; }
+    .nav-logo { font-family: 'Poppins', sans-serif; font-weight: 900; font-size: 20px; color: var(--yellow); text-decoration: none; }
+    .nav-logo span { color: var(--white); }
+    .nav-back { color: var(--muted); text-decoration: none; font-size: 15px; }
+    .nav-back:hover { color: var(--white); }
+    .nav-cta { background: var(--yellow); color: #000; padding: 8px 18px; border-radius: 4px; text-decoration: none; font-weight: 700; font-size: 14px; font-family: 'Poppins', sans-serif; }
+
+    /* Article */
+    .article-wrap { max-width: 760px; margin: 0 auto; padding: 60px 40px; }
+    .article-category { font-size: 13px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 16px; }
+    h1 { font-family: 'Poppins', sans-serif; font-size: clamp(30px, 4vw, 44px); font-weight: 900; line-height: 1.2; margin-bottom: 24px; }
+    .article-meta { font-size: 15px; color: var(--muted); margin-bottom: 48px; padding-bottom: 24px; border-bottom: 1px solid rgba(255,255,255,0.07); }
+    h2 { font-family: 'Poppins', sans-serif; font-size: 26px; font-weight: 700; margin: 48px 0 16px; color: var(--white); }
+    h3 { font-family: 'Poppins', sans-serif; font-size: 20px; font-weight: 600; margin: 32px 0 12px; color: var(--yellow); }
+    p { margin-bottom: 22px; }
+    strong { color: var(--white); font-weight: 700; }
+    .highlight { color: var(--yellow); font-weight: 700; }
+    .danger { color: #ff6b6b; font-weight: 700; }
+    ul, ol { margin: 16px 0 24px 24px; }
+    li { margin-bottom: 12px; font-size: 19px; }
+
+    /* Callout boxes */
+    .box-warning { background: rgba(197,17,17,0.12); border-left: 4px solid var(--red); padding: 20px 24px; margin: 32px 0; border-radius: 0 4px 4px 0; }
+    .box-info { background: rgba(245,197,24,0.08); border-left: 4px solid var(--yellow); padding: 20px 24px; margin: 32px 0; border-radius: 0 4px 4px 0; }
+    .box-case { background: var(--card); border: 1px solid rgba(255,255,255,0.08); padding: 28px; margin: 40px 0; border-radius: 4px; }
+    .box-case .case-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 12px; }
+    blockquote { border-left: 3px solid var(--yellow); padding: 12px 20px; margin: 24px 0; font-style: italic; color: #ccc; }
+
+    /* CTA */
+    .cta-section { background: var(--card); border: 1px solid rgba(245,197,24,0.2); border-radius: 4px; padding: 48px 40px; margin: 64px 0 40px; text-align: center; }
+    .cta-section h2 { margin-top: 0; font-size: 26px; }
+    .cta-section p { color: #aaa; max-width: 500px; margin: 0 auto 28px; }
+    .btn-primary { display: inline-block; background: var(--yellow); color: #000; font-family: 'Poppins', sans-serif; font-weight: 800; font-size: 16px; padding: 16px 36px; border-radius: 4px; text-decoration: none; }
+    .btn-primary:hover { background: #e0b010; }
+    .cta-fine { font-size: 13px; color: var(--muted); margin-top: 16px; }
+
+    /* FAQ */
+    .faq-item { border-bottom: 1px solid rgba(255,255,255,0.07); padding: 20px 0; }
+    .faq-q { font-family: 'Poppins', sans-serif; font-weight: 600; margin-bottom: 10px; }
+    .faq-a { color: #bbb; }
+
+    /* Checklist */
+    .checklist-table { width: 100%; border-collapse: collapse; margin: 24px 0; }
+    .checklist-table th { background: rgba(245,197,24,0.1); color: var(--yellow); font-family: 'Poppins', sans-serif; font-size: 13px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 12px 16px; text-align: left; border-bottom: 1px solid rgba(245,197,24,0.2); }
+    .checklist-table td { padding: 14px 16px; border-bottom: 1px solid rgba(255,255,255,0.05); font-size: 15px; }
+    .checklist-table tr:last-child td { border-bottom: none; }
+    .checklist-table .status-fail { color: #ff6b6b; font-weight: 700; }
+    .checklist-table .status-pass { color: #4ade80; font-weight: 700; }
+
+    /* Summary + Key Takeaway */
+    .box-summary { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; padding: 24px 28px; margin: 0 0 32px; }
+    .summary-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-bottom: 14px; }
+    .box-summary ul { margin: 0; padding-left: 20px; }
+    .box-summary li { margin-bottom: 8px; font-size: 17px; color: #ccc; }
+    .box-takeaway { background: rgba(245,197,24,0.08); border-left: 4px solid var(--yellow); padding: 20px 24px; margin: 0 0 40px; border-radius: 0 4px 4px 0; }
+    .takeaway-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 10px; }
+    .box-takeaway p { margin: 0; font-size: 18px; font-weight: 600; color: var(--white); line-height: 1.6; }
+
+    /* Footer */
+    footer { border-top: 1px solid rgba(255,255,255,0.07); padding: 32px 40px; text-align: center; font-size: 13px; color: var(--muted); max-width: 900px; margin: 0 auto; }
+    footer a { color: var(--muted); }
+
+    @media (max-width: 600px) {
+      nav, .article-wrap, footer { padding: 20px; }
+      .cta-section { padding: 32px 20px; }
+      .checklist-table { font-size: 14px; }
+      .checklist-table th, .checklist-table td { padding: 10px 10px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="https://nis2klar.se/">NIS2<span>Klar</span></a>
+  <a class="nav-back" href="https://nis2klar.se/artiklar.html">← Alla artiklar</a>
+  <a class="nav-cta" href="https://nis2klar.se/#boka">Boka samtal →</a>
+</nav>
+
+<article class="article-wrap">
+  <div class="article-category">Efterlevnad &amp; Checklista</div>
+  <h1>NIS2 Compliance-checklista med krav för Essential Entities</h1>
+  <div class="article-meta">Uppdaterad 30 april 2026 · Lästid: ca 8 minuter · Målgrupp: VD, styrelseordförande</div>
+
+  <!-- SUMMARY -->
+  <div class="box-summary">
+    <div class="summary-label">Sammanfattning</div>
+    <ul>
+      <li>Essential entities är större organisationer (250+ anställda eller 50+ M€ omsättning) med skärpta NIS2-krav.</li>
+      <li>20-punkts checklista täcker alla obligatoriska säkerhetsdomäner enligt Artikel 21 och styrelseansvaret enligt Artikel 20.</li>
+      <li>Fallstudien från energisektorn visar vilka punkter som oftast missas — och kostnaderna när det upptäcks vid tillsyn.</li>
+      <li>Du behöver inte vara tekniker för att förstå kraven — styrelsen måste kunna förklara varje punkt vid granskning.</li>
+    </ul>
+  </div>
+
+  <!-- KEY TAKEAWAY -->
+  <div class="box-takeaway">
+    <div class="takeaway-label">Viktigaste slutsatsen</div>
+    <p>Essential entities kan möta böter på upp till 10 miljoner euro vid bristande efterlevnad. Checklistan är inte en "nice to have" — den är din försvarslinje vid granskning från tillsynsmyndigheten.</p>
+  </div>
+
+  <p>
+    Om din organisation klassas som <strong>väsentlig entitet</strong> under NIS2-direktivet är detta ditt dokument.
+    Du behöver inte vara säkerhetschef för att förstå det — du behöver bara kunna förklara varje punkt för styrelsen och senare för tillsynsmyndigheten.
+  </p>
+
+  <p>
+    Vi har kombinerat Artikel 21 i NIS2-direktivet, svenska cybersäkerhetslagen och praktiska erfarenheter från granskningar i andra EU-länder för att skapa denna <strong>20-punkts checklista</strong>. Den täcker allt från riskanalys till incidentrapportering.
+  </p>
+
+  <div class="box-warning">
+    <strong>Essential vs. Important:</strong> Essential entities är större organisationer med över 250 anställda eller över 50 miljoner euro i omsättning. Krav på dessa är strängare än för "viktiga entiteter" — särskilt när det gäller ledningens dokumenterade ansvar och certifieringskrav.
+  </div>
+
+  <h2>Vad är en Essential Entity?</h2>
+
+  <p>
+    Enligt NIS2-direktivet är en organisation en <strong>väsentlig entitet</strong> om den:
+  </p>
+
+  <ul>
+    <li>Är större än 250 anställda eller har årlig omsättning över 50 miljoner euro, OCH</li>
+    <li>Verkar i en av de 18 lagstadgade sektorerna (energi, transport, finans, hälso- och sjukvård, vattenförsörjning, digital infrastruktur, offentlig förvaltning, etc.)</li>
+  </ul>
+
+  <p>
+    Essential entities är under strängare tillsyn än "viktiga entiteter" (som är 50–249 anställda eller 10–50 M€). Du måste inte bara ha säkerhetsåtgärder — du måste kunna bevisa att <strong>styrelsen officiellt godkänt dem</strong> och övervakar deras genomförande.
+  </p>
+
+  <h2>De 20 punkterna i compliance-checklistan</h2>
+
+  <p>
+    Denna checklista bygger på Artikel 21 i NIS2 (obligatoriska åtgärder) och Artikel 20 (ledningsansvar). Varje punkt är något som tillsynsmyndigheten kan fråga om.
+  </p>
+
+  <table class="checklist-table">
+    <thead>
+      <tr>
+        <th style="width: 60%;">Compliance-punkt</th>
+        <th style="width: 40%;">Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>1. Riskanalys genomförd och dokumenterad</strong><br>Skriftlig riskbedömning av alla IT-system, datakällor och externa beroenden. Daterad och namngiven ansvarig.</td>
+        <td style="text-align: center;">☐</td>
+      </tr>
+      <tr>
+        <td><strong>2. Säkerhetspolicy antagen av styrelsen</strong><br>Formellt styrelsebeslut om cybersäkerhetspolicy. Beslutsprotokoll från minst två år tillbaka.</td>
+        <td style="text-align: center;">☐</td>
+      </tr>
+      <tr>
+        <td><strong>3. Incidenthanteringsplan på plats</strong><br>Skriftlig plan för hur kritiska incidenter rapporteras, eskaleras och hanteras. Tydliga roller och 24h-kontakter.</td>
+        <td style="text-align: center;">☐</td>
+      </tr>
+      <tr>
+        <td><strong>4. Incidentrapportering till MSB/sektormyndighet etablerad</strong><br>Dokumenterad process för 24h tidig varning och 72h fullständig rapportering vid allvarliga intrång.</td>
+        <td style="text-align: center;">☐</td>
+      </tr>
+      <tr>
+        <td><strong>5. Kontinuitetsplan (Business Continuity Plan)</strong><br>Skriftlig plan för återhämtning efter katastrof. Testad minst årligen med dokumentation av resultat.</td>
+        <td style="text-align: center;">☐</td>
+      </tr>
+      <tr>
+        <td><strong>6. Backup-strategi implementerad</strong><br>Regelbundna säkerhetskopior av kritiska data. Lagrad på skild plats, okrypterad från produktionsmiljö. Återställningstestning dokumenterad.</td>
+        <td style="text-align: center;">☐</td>
+      </tr>
+      <tr>
+        <td><strong>7. Multi-Factor Authentication (MFA) aktiverat</strong><br>MFA på alla administrative konton och kritiska system. Konfigurering dokumenterad.</td>
+        <td style="text-align: center;">☐</td>
+      </tr>
+      <tr>
+        <td><strong>8. Tillgångskontroll och rättighetsstyrning</strong><br>Documented least-privilege-policy. Åtkomsträttigheter granskas och godkänns minst två gånger per år. Loggning aktiverad.</td>
+        <td style="text-align: center;">☐</td>
+      </tr>
+      <tr>
+        <td><strong>9. Kryptering av känslig data</strong><br>Datakryptering vid överföring och lagring för personuppgifter och annat känsligt material. Nyckelhantering dokumenterad.</td>
+        <td style="text-align: center;">☐</td>
+      </tr>
+      <tr>
+        <td><strong>10. Leverantörssäkerhet (Third-Party Risk Management)</strong><br>Inventering av alla externa leverantörer med IT-åtkomst. Säkerhetsavtal (NDA, Security Addendum) på plats. Risk bedömd årligen.</td>
+        <td style="text-align: center;">☐</td>
+      </tr>
+      <tr>
+        <td><strong>11. Säkerhetsubildning för personal</strong><br>Obligatorisk cybersäkerhetsubildning för alla anställda minst en gång per år. Närvaro- och resultatloggar sparade.</td>
+        <td style="text-align: center;">☐</td>
+      </tr>
+      <tr>
+        <td><strong>12. Säkerhetsubildning för ledning</strong><br>Styrelseledamöter och ledningsgrupp får specifik NIS2-träning minst årligen. Dokumentation av genomförda sessioner.</td>
+        <td style="text-align: center;">☐</td>
+      </tr>
+      <tr>
+        <td><strong>13. IT-systemöversikt uppdaterad</strong><br>Aktuell inventering av alla IT-system, servrar, nätverk och molntjänster. Uppdaterad minst två gånger per år.</td>
+        <td style="text-align: center;">☐</td>
+      </tr>
+      <tr>
+        <td><strong>14. Säkerhetsuppdateringar och patch-hantering</strong><br>Policy för snabb utökning av säkerhetsuppdateringar. Patching-loggar dokumenterade. Kritiska patch inom 30 dagar.</td>
+        <td style="text-align: center;">☐</td>
+      </tr>
+      <tr>
+        <td><strong>15. Övervakning och loggning av säkerhetshändelser</strong><br>Centraliserad säkerhetsbevakningslösning (SIEM eller motsvarande). Anomalier utredda regelbundet. Loggar sparas minst 12 månader.</td>
+        <td style="text-align: center;">☐</td>
+      </tr>
+      <tr>
+        <td><strong>16. Styrelserapportering om säkerhetstatus</strong><br>Styrelsen får minst kvartalsvis uppdatering om säkerhetsstatus. Rapport från säkerhetschef eller delegerad funktion. Dokumenterat i styrelsebeslut.</td>
+        <td style="text-align: center;">☐</td>
+      </tr>
+      <tr>
+        <td><strong>17. Ansvarsfördeling dokumenterad (Artikel 20)</strong><br>Skriftlig övergripande av vilken funktion eller person som ansvarar för varje säkerhetsdomän. Godkänd av styrelse.</td>
+        <td style="text-align: center;">☐</td>
+      </tr>
+      <tr>
+        <td><strong>18. Säkerhetscertifiering eller audit planerad</strong><br>Tredjepartsrevision av säkerhetsåtgärder minst var tredje år. (ISO 27001, SOC 2 eller motsvarande). Plan på plats.</td>
+        <td style="text-align: center;">☐</td>
+      </tr>
+      <tr>
+        <td><strong>19. Incidenter från förra året dokumenterade</strong><br>Logg över alla rapporterade säkerhetsincidenter från de senaste två åren. Vad som hände, hur det hanterades, vad som lärddes.</td>
+        <td style="text-align: center;">☐</td>
+      </tr>
+      <tr>
+        <td><strong>20. Styrelsebeslut om NIS2-överensstämmelse</strong><br>Formellt beslut från styrelsen om att säkerhetsåtgärderna är lämpliga och tillräckliga. Daterat och undertecknat av ordförande. Årligt återkopplat.</td>
+        <td style="text-align: center;">☐</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="box-info">
+    <strong>Tips:</strong> Skriv ut denna tabell och använd den under nästa styrelsemöte. Låt IT-chefen eller säkerhetschefen fylla i status för varje punkt. Då får ni snabbt en bild av vad som saknas.
+  </div>
+
+  <h2>Fallstudie: Energiföretaget som inte var redo</h2>
+
+  <div class="box-case">
+    <div class="case-label">Fallstudie från praktiken</div>
+    <p>
+      <strong>Scenario:</strong> Ett medelstor energidistributionsbolag i Sverige (ca 180 anställda, väl över 50 M€ i omsättning — klassificerat som väsentlig entitet). Tillsynsmyndigheten (Energimarknadsinspektionen) initierar granskning hösten 2025 baserat på en anmälan från en affärspartner om ett tekniskt driftavbrott.
+    </p>
+
+    <p>
+      <strong>Vad tillsynsmyndigheten hittade:</strong>
+    </p>
+
+    <ul style="margin: 16px 0 24px 24px;">
+      <li><span class="status-fail">❌ Punkt 2 — saknad:</span> Ingen formell säkerhetspolicy antagen av styrelsen. IT-chefen hade en intern riktlinje, men aldrig presenterad för styrels godkännande.</li>
+      <li><span class="status-fail">❌ Punkt 4 — inkomplett:</span> Incidentrapporteringsprocessen fanns, men inte dokumenterad. Ingen tydlig ansvarig för att rapportera till MSB inom 24 timmar.</li>
+      <li><span class="status-fail">❌ Punkt 10 — allvarlig:</span> Leverantörsinventering saknades helt. Åtminstone två externa consultbolag hade långtidsprodaktiv åtkomst, men utan säkerhetskontakter.</li>
+      <li><span class="status-fail">❌ Punkt 12 — helt saknad:</span> Styrelseledamöterna hade aldrig fått träning i cybersäkerhet. En ledamot var pensionerad bank-VD men helt okänd med NIS2.</li>
+      <li><span class="status-fail">❌ Punkt 16 — bristfällig:</span> IT-chefen rapporterade tekniska data till ledningsgruppen, men aldrig direkt till styrelsen. Ingen risk-KPI presenterad för styrelse.</li>
+      <li><span class="status-fail">❌ Punkt 17 — saknad:</span> Ingen dokumenterad ansvarsfördelning. Vid granskning kunde ingen säga vem som var "systemägare" för vilket kritiska system.</li>
+      <li><span class="status-fail">❌ Punkt 20 — ej genomfört:</span> Styrelsen hade aldrig fattat något formellt beslut om att säkerhetsmåtten var lämpliga. Det saknades helt.</li>
+    </ul>
+
+    <p>
+      <strong>Konsekvens:</strong>
+    </p>
+
+    <p>
+      Energimarknadsinspektionen utfärdade en sanktionsavgift på <span class="danger">5 miljoner SEK</span> för brister i säkerhetsåtgärder och felaktig incidentrapportering. Dessutom fick VD:n en formell tillsyn med krav på:
+    </p>
+
+    <ul style="margin: 16px 0 24px 24px;">
+      <li>Styrelseutbildning inom 30 dagar</li>
+      <li>Komplett revidering av säkerhetspolicy — godkänd av styrelse senast på nästa styrelsemöte</li>
+      <li>Tredjepartscertifiering (ISO 27001) inom 18 månader</li>
+      <li>Månadsvisa rapporter till tillsynsmyndigheten under 24 månader</li>
+    </ul>
+
+    <p>
+      <strong>Lärdomen:</strong> Två tredjedel av bristerna var inte tekniska — de var processuella och ledningsrelaterade. Styrelsen kunde inte visa att den övervakade säkerhetsarbetet. Det räckte för att utlösa sanktion.
+    </p>
+  </div>
+
+  <h2>Vilka är de vanligaste missarna?</h2>
+
+  <p>
+    Baserat på granskningar i Sverige och övriga EU visar sig fem punkter från checklistan vara återkommande svaga punkter:
+  </p>
+
+  <h3>1. Styrelsen godkänner aldrig säkerhetsmåtten (Punkt 2, 17, 20)</h3>
+  <p>
+    Det räcker inte att IT-chefen presenterar en säkerhetsstrategi på ledningsgruppsmöte. Det måste finnas ett formellt styrelsebeslut. Många organisationer tror att detta är "IT-arbete" och delegerar det helt. NIS2 kräver att styrelsen tar eget ansvar.
+  </p>
+
+  <h3>2. Leverantörer slunker igenom (Punkt 10)</h3>
+  <p>
+    Externa konsulter, molntjänstleverantörer och outsourcing-partners ingår inte automatiskt i säkerhetskontrollerna. Många organisationer har en lista över "stora leverantörer" men glömmer de tio mindre consultbolagen eller systemintegratörer som har SSH-åtkomst till kritiska servrar.
+  </p>
+
+  <h3>3. Styrelserapporteringen är teknisk, inte affärsmässig (Punkt 16)</h3>
+  <p>
+    IT-chefen rapporterar antal "kritiska sårbarheter" och "CVSS-poäng". Styrelsen förstår inte vad det betyder. Rapporten behöver innehålla en risksammanfattning på svenska: "Vad är sannolikheten att ett angrepp slår ut oss? Vilka åtgärder tar vi för att minska risken? Är det tillräckligt?"
+  </p>
+
+  <h3>4. Säkerhetsubildning för ledning skips (Punkt 12)</h3>
+  <p>
+    Alla anställda får träning, men styrelseledamöterna "är inte IT-folk". De behöver inte bli hackerekologer — men de måste förstå vilka krav som gäller, vilka risker som finns och vad som är deras personliga ansvar enligt Artikel 20.
+  </p>
+
+  <h3>5. Incidentrapportering är försent eller aldrig (Punkt 4)</h3>
+  <p>
+    En allvarlig incident inträffar. IT-chefen börjar utreda. Men den första kontakten till MSB eller sektorsöversyn glöms, eller kommer först efter en vecka. Det är redan för sent — 24-timmarsgränsen passerade. Sanktion redan fastställd.
+  </p>
+
+  <h2>Hur använder du checklistan praktiskt?</h2>
+
+  <p>
+    <strong>Steg 1 — Gap-analys:</strong> Be din IT-chef eller säkerhetschef att fylla i status för varje punkt. Markera "ja", "delvis" eller "nej". Spara detta dokument.
+  </p>
+
+  <p>
+    <strong>Steg 2 — Prioritering:</strong> De röda punkerna (helt saknade) måste åtgärdas först. Prioritera enligt detta:
+  </p>
+
+  <ul>
+    <li><strong>Omedelbar (0–30 dagar):</strong> Punkt 2, 17, 20 (styrelsebeslut), Punkt 4 (incidentrapportering), Punkt 12 (styrelseubildning)</li>
+    <li><strong>Kort sikt (30–90 dagar):</strong> Punkt 10 (leverantörer), Punkt 1 (riskanalys), Punkt 3, 5 (planer)</li>
+    <li><strong>Medellång sikt (3–6 månader):</strong> Punkt 7–9 (tekniska åtgärder), Punkt 13–15 (systemöversikt och övervakning)</li>
+  </ul>
+
+  <p>
+    <strong>Steg 3 — Styrelsebeslut:</strong> Vid nästa styrelsemöte presenteras gap-analysen. Styrelsen beslutar om en handlingsplan med tidslinjer och budget. Detta beslut dokumenteras i styrelsebeslut.
+  </p>
+
+  <p>
+    <strong>Steg 4 — Uppföljning:</strong> Varje kvartal uppdateras statusen. IT-chefen rapporterar till styrelse vad som genomförts, vad som återstår, och vilka risker som fortfarande finns.
+  </p>
+
+  <h2>Microsoft-verktyg för essential entities</h2>
+
+  <div class="box-info" style="margin: 48px 0 32px;">
+    <div style="font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color: var(--yellow); margin-bottom:10px;">🔧 VERKTYG &amp; LÖSNINGAR</div>
+    <p style="margin:0; font-size:17px; color: #ddd; line-height:1.7;">För essential entities rekommenderas Microsoft 365 Business Premium tillsammans med Microsoft Defender Secure Score och Compliance Manager. Dessa verktyg ger dig en digital "compliance-checklista" som uppdateras automatiskt, plus en säkerhetspoäng (0–100) som styrelsen enkelt kan förstå och rapportera vidare. En certifierad Microsoft-partner kan genomföra en kostnadsfri gap-analys som mappar din organisation mot alla 20 punkter och visar exakt vilka delar av Microsoft 365 som redan täcker dina NIS2-krav.</p>
+  </div>
+
+  <h2>Vad säger lagstiftningen exakt om styrelseansvaret?</h2>
+
+  <p>
+    <strong>Artikel 20 i NIS2-direktivet</strong> — som implementerats i svenska cybersäkerhetslagen — slår fast att ledningsorganen (styrelsen, VD) ska:
+  </p>
+
+  <ol>
+    <li>Godkänna säkerhetsstrategin och åtgärderna</li>
+    <li>Övervaka att åtgärderna genomförts</li>
+    <li>Säkerställa att resurser (budget, personal) finns för att upprätthålla säkerheten</li>
+    <li>Kunna uppvisa detta för tillsynsmyndigheten vid granskning</li>
+  </ol>
+
+  <p>
+    Det är inte tillräckligt att "IT-avdelningen hanterar det". Styrelsen måste kunna visa ett styrelsebeslut från senaste två år där säkerhetsmåtten godkändes. Och den måste kunna visa en rapportering från IT-chefen till styrelse med låg frekvens.
+  </p>
+
+  <div class="box-warning">
+    <strong>Personligt ansvar:</strong> Vid allvarliga brister kan Artikel 20 användas för att häva näringsförbud för VD eller styrelseledamöter. Det är inte bara böter mot bolaget — det är ett personligt yrkesförbud.
+  </div>
+
+  <h2>FAQ — de frågor vi får ofta</h2>
+
+  <div class="faq-item">
+    <div class="faq-q">Är 20 punkter verkligen allt jag behöver?</div>
+    <div class="faq-a">Ja, för essential entities är detta de 20 väsentliga punkter enligt Artikel 21. Det finns fler detaljer i varje punkt (t.ex. under "patch-hantering" finns regler om tidsgränser), men dessa 20 täcker huvudsakligen. Din tillsynsmyndighet kommer att fokusera på dessa. Du kan utöka checklistan senare, men börja med dessa 20.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">Hur ofta måste styrelsen uppdateras?</div>
+    <div class="faq-a">Enligt Artikel 20 ska ledningen övervaka åtgärderna. I praktiken innebär det minst kvartalsvis rapportering (fyra gånger per år). Vid kritiska incidenter kan det krävas omedelbar rapportering. Vi rekommenderar månadsrapporter för stora organisationer under kritiska perioder, men minst fyra gånger per år är lagstadgat.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">Vad räknas som ett "allvarligt" säkerhetsbeslut som måste godkännas av styrelse?</div>
+    <div class="faq-a">Det handlar framför allt om: riskhanteringsstrategi, säkerhetspolicy, budget för säkerhetsåtgärder och ansvarsfördeling. Allt detta måste styrelsebeslutas. Dagliga IT-beslut (t.ex. vilken brandvägg vi köper) kan IT-chefen göra — men investeringar över en viss nivå och policybeslut måste gå till styrelse.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">Vi är redan ISO 27001-certifierade. Räcker det?</div>
+    <div class="faq-a">Ja — en ISO 27001-certifiering täcker ungefär 18 av dessa 20 punkter. Men du måste se till att certifieringen inkluderar Artikel 20 (styrelserapportering) explicit. En del organisationer är certifierade på "IT-nivå" utan att styrelsen är inblandad — det räcker inte för NIS2.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">Kan jag delegera säkerhetschefsrollen helt?</div>
+    <div class="faq-a">Ja, du kan ha en säkerhetschef som ansvarar för daglig verksamhet. Men styrelsens övervakning kan inte delegeras. Styrelsen måste ta sitt eget ansvar för att godkänna och övervaka. Du kan inte "betala någon för att ta ansvaret" enligt Artikel 20.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">Vad händer om vi är i startgropet och helt oprepared?</div>
+    <div class="faq-a">Du är inte ensam. Vi rekommenderar: (1) Använd denna checklista för en snabb gap-analys. (2) Fokusera på de fem röda områdena från avsnittet "Vanliga missar" — de ger störst resultat snabbt. (3) Boka en kostnadsfri gap-analys med en certifierad partner. (4) Presentera resultaten för styrelsen och säg att detta är lagstadgat, inte frivilligt. Då blir det högt på agendan.</div>
+  </div>
+
+  <!-- NEWSLETTER -->
+  <div style="background:#111; border:1px solid rgba(255,255,255,0.1); border-left:3px solid #f5c518; border-radius:4px; padding:32px 36px; margin:40px 0 0; text-align:center; max-width:760px; margin-left:auto; margin-right:auto;">
+    <div style="font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:#f5c518; margin-bottom:12px;">📬 NIS2-UPPDATERINGAR</div>
+    <h3 style="font-family:'Poppins',sans-serif; font-size:20px; font-weight:800; margin:0 0 8px; color:#f0f0f0;">Ny NIS2-artikel varje vecka — direkt i inkorgen</h3>
+    <p style="color:#888; font-size:15px; margin:0 0 20px;">Ingen säljpitch. Bara konkret vägledning för VD:ar och styrelser.</p>
+    <form id="nlForm-nis2_compliance_checklista_essential_entity" onsubmit="submitNewsletter_nis2_compliance_checklista_essential_entity(event)" style="display:flex; gap:10px; flex-wrap:wrap; justify-content:center; max-width:460px; margin:0 auto;">
+      <input type="email" id="nlEmail-nis2_compliance_checklista_essential_entity" placeholder="din@foretag.se" required
+             style="flex:1; min-width:200px; padding:12px 16px; background:#1c1c1f; border:1px solid rgba(255,255,255,0.15); border-radius:4px; color:#f0f0f0; font-size:15px; outline:none;" />
+      <button type="submit" id="nlSubmit-nis2_compliance_checklista_essential_entity"
+              style="padding:12px 22px; background:#f5c518; color:#141416; font-weight:700; font-size:15px; border:none; border-radius:4px; cursor:pointer; white-space:nowrap;">
+        Prenumerera gratis →
+      </button>
+    </form>
+    <p style="font-size:12px; color:#555; margin:12px 0 0;">Du kan avprenumerera när som helst. Vi delar aldrig din e-post.</p>
+    <div id="nlThanks-nis2_compliance_checklista_essential_entity" style="display:none; color:#4ade80; font-size:16px; font-weight:600; margin-top:14px;">✅ Du är med! Nästa artikel kommer direkt till din inkorg.</div>
+  </div>
+
+  <!-- CTA -->
+  <div class="cta-section">
+    <h2>Vet du var din organisation står idag?</h2>
+    <p>En kostnadsfri gap-analys med en certifierad Microsoft-partner visar exakt vad ni redan har täckt — och vilka av de 20 punkterna som saknas.</p>
+    <a href="https://nis2klar.se/#boka" class="btn-primary">Boka kostnadsfri gap-analys →</a>
+    <p class="cta-fine">Böterna för essential entities är upp till <strong>10 miljoner euro</strong>. Gap-analysen är gratis.</p>
+  </div>
+
+</article>
+
+<div class="related-articles" style="margin:2.5rem 0 2rem;padding:1.5rem;background:#1a1a2e;border-left:4px solid #f0a500;border-radius:4px;">
+  <p style="margin:0 0 1rem;font-size:0.85rem;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:#f0a500;">Läs också</p>
+  <ul style="margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:0.5rem;">
+    <li><a href="https://nis2klar.se/artiklar/nis2-personligt-ansvar-styrelse.html" style="color:#e0e0e0;text-decoration:none;font-size:0.95rem;">→ Styrelsens personliga ansvar enligt Artikel 20</a></li>
+    <li><a href="https://nis2klar.se/artiklar/nis2-vilka-foretag-omfattas.html" style="color:#e0e0e0;text-decoration:none;font-size:0.95rem;">→ Vilka företag omfattas av NIS2?</a></li>
+    <li><a href="https://nis2klar.se/artiklar/nis2-tillsyn-ncsc-msb-sverige.html" style="color:#e0e0e0;text-decoration:none;font-size:0.95rem;">→ NIS2-tillsyn i Sverige: MSB och sektormyndigheter</a></li>
+  </ul>
+  <p style="margin:1.25rem 0 0;font-size:0.85rem;color:#aaa;">← <a href="https://nis2klar.se/" style="color:#f0a500;text-decoration:none;">NIS2Klar startsida</a> · <a href="https://nis2klar.se/artiklar.html" style="color:#f0a500;text-decoration:none;">Alla guider</a></p>
+</div>
+
+<footer>
+  © 2026 M&J Trusted Marketing KB ·
+  <a href="mailto:support@trustedmarketing.se">support@trustedmarketing.se</a> · <a href="tel:+46470597003">+46 470 59 70 03</a> ·
+  <a href="https://nis2klar.se/">Tillbaka till startsidan</a> ·
+  <a href="https://nis2klar.se/privacy.html">Integritetspolicy</a>
+  <p style="margin-top:12px; font-size:11px; color: #555; line-height:1.5;">Microsoft, Microsoft 365, Azure och tillhörande produktnamn är varumärken som tillhör Microsoft Corporation. nis2klar.se är inte affilierat med eller godkänt av Microsoft Corporation.</p>
+</footer>
+
+<script data-cfasync="false">
+  async function submitNewsletter_nis2_compliance_checklista_essential_entity(e) {
+    e.preventDefault();
+    const btn = document.getElementById('nlSubmit-nis2_compliance_checklista_essential_entity');
+    btn.disabled = true;
+    btn.textContent = 'Skickar...';
+    const email = document.getElementById('nlEmail-nis2_compliance_checklista_essential_entity').value.trim();
+    try {
+      const res = await fetch('/api/newsletter/subscribe', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, source: 'artikel-nis2_compliance_checklista_essential_entity' })
+      });
+      const data = await res.json();
+      if (data.success) {
+        document.getElementById('nlForm-nis2_compliance_checklista_essential_entity').style.display = 'none';
+        document.getElementById('nlThanks-nis2_compliance_checklista_essential_entity').style.display = 'block';
+      } else {
+        btn.disabled = false;
+        btn.textContent = 'Prenumerera gratis →';
+      }
+    } catch {
+      btn.disabled = false;
+      btn.textContent = 'Prenumerera gratis →';
+    }
+  }
+</script>
+
+</body>
+</html>

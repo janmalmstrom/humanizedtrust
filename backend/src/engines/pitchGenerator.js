@@ -1,23 +1,25 @@
 'use strict';
 /**
- * pitchGenerator.js — Tiered AI cold email generator
+ * pitchGenerator.js — Short-form cold email generator
  *
- * Three frameworks based on lead score tier:
- *   Hot  (≥70): Direct Value Prop — specific, assumes they know the problem, pushes urgency
- *   Warm (40–69): Problem-Agitate-Solve — surface the pain, amplify it, present solution
- *   Cold (<40): Social Proof / FOMO — others in their sector are preparing, don't get left behind
+ * 7 email templates mapped to sequence position (emailStepNumber 0–6).
+ * Each email: 60–90 words, one specific data point, single yes/no CTA.
  *
- * Sequence-aware: step > 0 = follow-up, references prior contact
+ * Template map (matches M365 NIS2 Security sequence):
+ *   0 → Day 3:  Curiosity + one NIS2/M365 trigger
+ *   1 → Day 7:  Follow-up + restate specific angle
+ *   2 → Day 12: Cost of inaction + concrete consequence
+ *   3 → Day 18: MSB industry observation (no invented case studies)
+ *   4 → Day 26: ROI + scarcity
+ *   5 → Day 33: Missed each other?
+ *   6 → Day 41: Breakup
  */
 
 const Anthropic = require('@anthropic-ai/sdk');
 
 function getFramework(scoreLabel, stepIndex = 0, emailStepNumber = 0) {
-  // emailStepNumber = how many email steps have occurred before this one (0 = first email)
-  if (emailStepNumber > 0) return 'followup';
-  if (scoreLabel === 'hot')  return 'direct';
-  if (scoreLabel === 'warm') return 'pas';
-  return 'social_proof';
+  const templates = ['email_1','email_2','email_3','email_4','email_5','email_6','email_7'];
+  return templates[Math.min(emailStepNumber, templates.length - 1)];
 }
 
 // NIS2 sector-specific compliance hooks by SNI prefix
@@ -54,7 +56,7 @@ function getNis2Hook(naceCode) {
   return NIS2_HOOKS[prefix] || null;
 }
 
-function buildPrompt(lead, { stepIndex = 0, stepTitle = null, enrolledAt = null, steps = null } = {}) {
+function buildPrompt(lead, { stepIndex = 0, enrolledAt = null, steps = null } = {}) {
   // Count email steps that occur BEFORE the current stepIndex
   const emailStepNumber = steps
     ? steps.slice(0, stepIndex).filter(s => s.channel === 'email').length
@@ -87,15 +89,17 @@ Webbplats: ${lead.website || 'okänd'}${financialCtx}${nis2HookCtx}${ms365Ctx}`;
 
   const commonRules = `
 REGLER (följ strikt):
-- Skriv ENDAST på svenska — professionell B2B-ton
-- 150–200 ord i e-postbody
+- Skriv ENDAST på svenska — professionell men direkt B2B-ton
+- MAX 80 ord i e-postbody — kortare är bättre
 - Ämnesrad + e-postbody
-- Avsluta alltid med "Jan Malmström, Nomad Cyber"
+- Avsluta alltid med "Jan Malmström\nNomad Cyber"
 - ALDRIG börja med "Hoppas detta mejl når dig väl" eller liknande klichéer
-- CTA: erbjud ett 15 minuter kort samtal
+- En mening = ett påstående. Inga långa meningar.
+- CTA = EN enkel ja/nej-fråga i sista meningen
 - Generera 2 alternativa ämnesrader, markera den bästa med ★
-- ALDRIG hitta på case studies, kundnamn, specifika sparade belopp eller påhittade resultat — använd bara fakta du med säkerhet vet är korrekta (NIS2-lagtext, MSB-krav, branschstatistik från kända källor)
-${hasFinancials ? '- Referera till deras omsättningsskala när du pratar om compliance-investering' : ''}
+- ALDRIG hitta på case studies, kundnamn, specifika sparade belopp eller påhittade resultat
+- Referera till ETT specifikt faktum om företaget (bransch, storlek, omsättning eller tech-stack) — inte fler
+${hasFinancials ? `- Du får nämna deras omsättningsskala (${(lead.revenue_sek/1e6).toFixed(0)} MSEK) om det är relevant` : ''}
 
 FORMAT:
 Ämne: [ämnesrad ★] | [alternativ ämnesrad]
@@ -103,36 +107,70 @@ FORMAT:
 [e-postbody]`;
 
   const frameworks = {
-    direct: `Du är en B2B-säljutvecklare för Nomad Cyber, ett svenskt cybersäkerhetskonsultbolag specialiserat på NIS2-efterlevnad, Microsoft Copilot-styrning och AI-säkerhet.
+    // Email 1 — Day 3: Curiosity + one specific NIS2/M365 trigger
+    email_1: `Du är en B2B-säljutvecklare för Nomad Cyber, ett svenskt cybersäkerhetskonsultbolag specialiserat på NIS2-efterlevnad.
 
-Skriv ett DIREKT VALUE PROP-mail. Ledtråden är varm (hög poäng) — de vet troligtvis redan om problemet.
-Taktik: Gå rakt på sak med det specifika värdet. Inga långa introduktioner. Referera till ett konkret affärsresultat.
-
-${leadCtx}
-${commonRules}`,
-
-    pas: `Du är en B2B-säljutvecklare för Nomad Cyber, ett svenskt cybersäkerhetskonsultbolag specialiserat på NIS2-efterlevnad, Microsoft Copilot-styrning och AI-säkerhet.
-
-Skriv ett PROBLEM-AGITATE-SOLVE-mail. Ledtråden är varm men inte het — de känner kanske inte till risken.
-Taktik: (1) Nämn ett specifikt problem för deras bransch, (2) Förstärk konsekvenserna om det ignoreras, (3) Presentera Nomad Cyber som lösningen.
+Skriv det FÖRSTA mejlet i sekvensen. Kort, nyfikenhetsdrivande, nästan ingen pitch.
+Taktik: En mening om vad ${lead.company_name} riskerar att gå miste om. En mening om att du kan kartlägga det gratis på 15 min. En ja/nej-fråga.
+Använd ETT av dessa faktaunderlag som krok (välj det mest relevanta):
+${nis2HookCtx || ''}${ms365Ctx || ''}
 
 ${leadCtx}
 ${commonRules}`,
 
-    social_proof: `Du är en B2B-säljutvecklare för Nomad Cyber, ett svenskt cybersäkerhetskonsultbolag specialiserat på NIS2-efterlevnad, Microsoft Copilot-styrning och AI-säkerhet.
+    // Email 2 — Day 7: Follow-up + restate one specific angle
+    email_2: `Du är en B2B-säljutvecklare för Nomad Cyber.
 
-Skriv ett SOCIAL PROOF/FOMO-mail. Ledtråden är kall — de är troligtvis inte medvetna om brådska.
-Taktik: Öppna med att andra företag i deras sektor redan förbereder sig. Skapa FOMO kring NIS2-deadlines eller branschtrender. Mjuk CTA.
+Skriv UPPFÖLJNINGSMEJL 2. Det är ${daysSince(enrolledAt)} dagar sedan första mejlet.
+Taktik: "Ville bara kolla om du såg mitt förra mail." + nämn EN specifik vinkel (M365-gap ELLER branschexponering) som förklarar varför det är relevant för just dem. Avsluta med en ja/nej-fråga.
 
 ${leadCtx}
 ${commonRules}`,
 
-    followup: `Du är en B2B-säljutvecklare för Nomad Cyber, ett svenskt cybersäkerhetskonsultbolag specialiserat på NIS2-efterlevnad, Microsoft Copilot-styrning och AI-säkerhet.
+    // Email 3 — Day 12: Cost of inaction, concrete
+    email_3: `Du är en B2B-säljutvecklare för Nomad Cyber.
 
-Skriv ett UPPFÖLJNINGSMAIL (mejl ${emailStepNumber + 1} i sekvensen). Det är ${daysSince(enrolledAt)} dagar sedan det första mejlet skickades.
-Steg-titel: "${stepTitle || 'Uppföljning'}"
+Skriv UPPFÖLJNINGSMEJL 3. Det är ${daysSince(enrolledAt)} dagar sedan första mejlet.
+Taktik: Öppna med "Vet inte om det stämmer för ${lead.company_name}..." + nämn en konkret konsekvens av att inte agera (förlorade upphandlingar, MSB-böter, 24h-rapporteringskrav) kopplat till deras bransch eller storlek. Ingen hård pitch. Mjuk ja/nej-fråga.
 
-Taktik: Referera kortfattat till det förra mejlet ("följer upp mitt förra meddelande"), lägg till ett nytt perspektiv eller en ny insikt — upprepa inte samma budskap. Kortare än det första mejlet (100–150 ord). Håll tonen lättsam men professionell.
+${leadCtx}
+${commonRules}`,
+
+    // Email 4 — Day 18: MSB industry observation (Option A — NO invented case studies)
+    email_4: `Du är en B2B-säljutvecklare för Nomad Cyber.
+
+Skriv UPPFÖLJNINGSMEJL 4. Det är ${daysSince(enrolledAt)} dagar sedan första mejlet.
+Taktik: Öppna med en riktig MSB- eller NIS2-observation specifik för deras bransch eller storlek — inte ett påhittat case. Exempel: "MSB riktar just nu tillsyn specifikt mot [bransch] med [typ av system/exponering]." Avsluta med om de vill veta var de står. Ingen hård pitch.
+Använd branschinformationen nedan för att göra observationen träffsäker:
+${nis2HookCtx || '(Använd allmän NIS2 Bilaga I-information för deras sektorstorlek)'}
+
+${leadCtx}
+${commonRules}`,
+
+    // Email 5 — Day 26: ROI + scarcity
+    email_5: `Du är en B2B-säljutvecklare för Nomad Cyber.
+
+Skriv UPPFÖLJNINGSMEJL 5. Det är ${daysSince(enrolledAt)} dagar sedan första mejlet.
+Taktik: Konkret ROI-vinkel — kostnaden för NIS2-brist (böter upp till 10M EUR eller 2% av global omsättning för väsentliga entiteter) vs kostnaden för att strukturera det nu. Lägg till ett milt knapphetsbudskap ("håller på att avsluta några gratiskartläggningar"). En ja/nej-fråga.
+${hasFinancials ? `Deras omsättning: ${(lead.revenue_sek/1e6).toFixed(0)} MSEK — använd detta för att sätta bötesrisken i proportion.` : ''}
+
+${leadCtx}
+${commonRules}`,
+
+    // Email 6 — Day 33: Missed each other?
+    email_6: `Du är en B2B-säljutvecklare för Nomad Cyber.
+
+Skriv UPPFÖLJNINGSMEJL 6. Det är ${daysSince(enrolledAt)} dagar sedan första mejlet.
+Taktik: Lättsamt och kort. "Vet inte om det här passar er just nu..." + en sista mjuk påminnelse om vad de riskerar att missa. Avsluta med en öppen ja/nej-fråga. Ingen desperation, ingen hård pitch.
+
+${leadCtx}
+${commonRules}`,
+
+    // Email 7 — Day 41: Breakup, door open
+    email_7: `Du är en B2B-säljutvecklare för Nomad Cyber.
+
+Skriv BREAKUP-MEJLET (sista i sekvensen). Det är ${daysSince(enrolledAt)} dagar sedan första mejlet.
+Taktik: "Hörde aldrig av er, så jag antar att tajmingen inte passade." + en mening om att de alltid är välkomna att höra av sig om [specifik NIS2-risk för deras bransch]. Avsluta med lycka till. Ingen CTA-fråga — bara öppen dörr.
 
 ${leadCtx}
 ${commonRules}`,

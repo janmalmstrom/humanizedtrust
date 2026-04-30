@@ -522,11 +522,18 @@ function TodayActions() {
             <div>Step {action.step_index + 1}/{action.step_total}</div>
           </div>
           {isEmail && action.email && !isDone ? (
-            <button
-              onClick={() => setEmailModal(action)}
-              className="flex-shrink-0 px-3 py-1.5 rounded-lg text-xs font-medium bg-blue-600/80 hover:bg-blue-500 text-white transition-colors cursor-pointer">
-              Send email
-            </button>
+            <div className="flex-shrink-0 flex items-center gap-2">
+              <button
+                onClick={() => setEmailModal(action)}
+                className="px-3 py-1.5 rounded-lg text-xs font-medium bg-blue-600/80 hover:bg-blue-500 text-white transition-colors cursor-pointer">
+                Send email
+              </button>
+              <button
+                onClick={() => !isDone && advance(eid, action.step_channel)}
+                className="px-3 py-1.5 rounded-lg text-xs font-medium bg-white/8 hover:bg-emerald-500/20 hover:text-emerald-300 text-slate-300 transition-all cursor-pointer">
+                Mark done
+              </button>
+            </div>
           ) : isLinkedInDM && !isDone ? (
             <div className="flex-shrink-0 flex items-center gap-2">
               <button
