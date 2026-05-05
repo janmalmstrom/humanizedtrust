@@ -80,12 +80,21 @@ function buildPrompt(lead, { stepIndex = 0, enrolledAt = null, steps = null } = 
     ? `\nKänd tech-stack: Microsoft 365 (detekterad via MX-record)\nKONKURRENSVINKEL: M365 Business Premium täcker INTE NIS2-krav på incidentrapportering (24h-regel), oberoende riskanalyser eller leverantörssäkerhet. Nomad kan komplettera — inte ersätta — deras M365-investering. Nämn detta konkret utan att vara nedsättande om Microsoft.`
     : (lead.competitor_intel ? `\nKänd säkerhetsleverantör: ${lead.competitor_intel}\nAnpassa tonen — de har redan en partner, men troligtvis inte NIS2-specifik kompetens.` : '');
 
+  // Extract first name from vd_contacts if available
+  const vdContacts = Array.isArray(lead.vd_contacts)
+    ? lead.vd_contacts
+    : (lead.vd_contacts ? JSON.parse(lead.vd_contacts) : []);
+  const vdFirstName = vdContacts[0]?.name?.split(' ')[0] || null;
+  const greeting = vdFirstName ? `Hej ${vdFirstName},` : 'Hej,';
+
   const leadCtx = `Företag: ${lead.company_name}
+Mottagare: ${vdFirstName ? vdFirstName + ' (VD/beslutsfattare)' : 'okänd kontakt'}
 Bransch (SNI/NACE): ${lead.nace_code} — ${lead.nace_description || ''}
 Anställda: ${lead.employee_range || 'okänt'}
 Stad: ${lead.city || 'Sverige'}
 NIS2-registrerat: ${lead.nis2_registered ? 'JA — sektor: ' + lead.nis2_sector : 'Nej'}
-Webbplats: ${lead.website || 'okänd'}${financialCtx}${nis2HookCtx}${ms365Ctx}`;
+Webbplats: ${lead.website || 'okänd'}${financialCtx}${nis2HookCtx}${ms365Ctx}
+HÄLSNINGSFRAS: Börja alltid e-posten med exakt: "${greeting}""`;
 
   const commonRules = `
 REGLER (följ strikt):
@@ -94,8 +103,10 @@ REGLER (följ strikt):
 - Ämnesrad + e-postbody
 - Avsluta alltid med "Jan Malmström\nNomad Cyber"
 - ALDRIG börja med "Hoppas detta mejl når dig väl" eller liknande klichéer
+- Använd korrekt grammatik — "missar" INTE "misse", "behöver" INTE "behöve" etc.
 - En mening = ett påstående. Inga långa meningar.
-- CTA = EN enkel ja/nej-fråga i sista meningen
+- CTA = Avsluta med TWO alternativ på max 2 meningar: (1) en mjuk ja/nej-fråga ("Är det värt 15 minuter?" / "Vill ni veta var ni faktiskt står?"), (2) länk till självbetjäningsanalys: "Eller gör er kostnadsfria NIS2-analys direkt här: https://nis2klar.se/nis2-gap-analys.html"
+- ALDRIG "boka", "bokar in" eller "välj en tid"
 - Generera 2 alternativa ämnesrader, markera den bästa med ★
 - ALDRIG hitta på case studies, kundnamn, specifika sparade belopp eller påhittade resultat
 - Referera till ETT specifikt faktum om företaget (bransch, storlek, omsättning eller tech-stack) — inte fler
@@ -205,8 +216,17 @@ async function generatePitch(lead, options = {}) {
   const prompt = buildPrompt(lead, options);
 
   const message = await client.messages.create({
-    model: 'claude-haiku-4-5-20251001',
-    max_tokens: 600,
+    model: 'claude-sonnet-4-6',
+    max_tokens: 900,
+    system: `Du är en senior skribent och översättare med över 15 års erfarenhet av professionell svenska inom B2B och affärskommunikation. Du är infödda talare av svenska med djup förståelse för affärsspråk, tonalitet och kulturella nyanser.
+
+Ditt uppdrag är att producera text som låter som om den är skriven av en infödd svensk — aldrig som en ordagrann rendering av engelska fraser.
+
+Kärnbeteenden:
+- Använd idiomatisk svenska — undvik kalker eller konstruktioner som låter onaturliga för en infödda talare
+- Korrekt grammatik alltid: bestämd form ("den högsta", inte "högsta"), rätt verbform ("missar" inte "misse"), naturlig ordföljd
+- Matcha register: professionell men direkt B2B-ton, inte formell byråkratsvenska
+- Skriv meningar med naturlig svensk rytm och satsstruktur`,
     messages: [{ role: 'user', content: prompt }],
   });
 
