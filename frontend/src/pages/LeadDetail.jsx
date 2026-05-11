@@ -312,8 +312,8 @@ function CallScript({ lead }) {
           {/* Close */}
           <div className="space-y-1.5">
             <div className="text-xs font-semibold text-slate-400 uppercase tracking-wide">Close / next step</div>
-            <div className="bg-white/5 rounded-lg p-3 text-sm text-slate-200 leading-relaxed">
-              "Baserat på vad du berättat verkar det finnas ett par saker värda att titta på. Kan vi boka 30 minuter nästa vecka — jag kan visa konkret vad gap-analysen skulle se ut för {s.company || 'er'}?"
+            <div className="bg-emerald-500/10 border border-emerald-500/30 rounded-lg p-3 text-sm text-slate-200 leading-relaxed">
+              "Gap-analysen på nis2klar.se tar åtta minuter — gör den innan vi ses så har vi något konkret att jobba med istället för att prata i luften. Fungerar det?"
             </div>
           </div>
         </div>
@@ -1289,18 +1289,48 @@ function CallSimulator({ lead, onClose }) {
                         </button>
                       ))}
                     </div>
-                    <div className="text-xs text-slate-300 leading-relaxed whitespace-pre-wrap bg-white/5 rounded-lg p-3 border border-white/8">
-                      {activeScript === 1 ? scripts.script1 : scripts.script2}
-                    </div>
+                    {(() => {
+                      const raw = activeScript === 1 ? scripts.script1 : scripts.script2;
+                      const stepColors = {
+                        'ÖPPNING':   { bg: 'bg-blue-500/10',   border: 'border-blue-500/30',   badge: 'bg-blue-500/20 text-blue-300',   num: '1' },
+                        'AGENDA':    { bg: 'bg-violet-500/10', border: 'border-violet-500/30', badge: 'bg-violet-500/20 text-violet-300', num: '2' },
+                        'TRE TAKEAWAYS': { bg: 'bg-amber-500/10',  border: 'border-amber-500/30',  badge: 'bg-amber-500/20 text-amber-300',  num: '3' },
+                        'CLOSE':     { bg: 'bg-emerald-500/10',border: 'border-emerald-500/30',badge: 'bg-emerald-500/20 text-emerald-300',num: '→' },
+                      };
+                      const sections = raw.split(/\[STEG \d+ — ([^\]]+)\]|\[CLOSE\]/g).filter(Boolean);
+                      const labels = [...raw.matchAll(/\[STEG \d+ — ([^\]]+)\]|\[(CLOSE)\]/g)].map(m => m[1] || m[2]);
+                      if (!labels.length) return (
+                        <div className="text-xs text-slate-300 leading-relaxed whitespace-pre-wrap bg-white/5 rounded-lg p-3 border border-white/8">{raw}</div>
+                      );
+                      return (
+                        <div className="space-y-2">
+                          {labels.map((label, i) => {
+                            const c = stepColors[label] || { bg: 'bg-white/5', border: 'border-white/10', badge: 'bg-white/10 text-slate-300', num: i+1 };
+                            return (
+                              <div key={i} className={`rounded-lg p-3 border ${c.bg} ${c.border}`}>
+                                <div className={`inline-flex items-center gap-1.5 text-xs font-semibold px-2 py-0.5 rounded-full mb-2 ${c.badge}`}>
+                                  <span>{c.num}</span><span>{label}</span>
+                                </div>
+                                <div className="text-xs text-slate-300 leading-relaxed whitespace-pre-wrap">{sections[i]?.trim()}</div>
+                              </div>
+                            );
+                          })}
+                        </div>
+                      );
+                    })()}
                     {scripts.questions?.length > 0 && (
-                      <div className="space-y-2">
-                        <div className="text-xs font-semibold text-slate-400">Discovery questions</div>
-                        {scripts.questions.map((q, i) => (
-                          <div key={i} className="text-xs text-slate-300 bg-white/5 rounded-lg px-3 py-2 border border-white/8">
-                            <span className="text-slate-500 mr-1">Q{i+1}.</span>{q}
-                          </div>
-                        ))}
-                      </div>
+                      <details className="group">
+                        <summary className="text-xs text-slate-500 cursor-pointer hover:text-slate-400 select-none">
+                          Als het gesprek stokt — {scripts.questions.length} backup-vragen ▾
+                        </summary>
+                        <div className="space-y-1.5 mt-2">
+                          {scripts.questions.map((q, i) => (
+                            <div key={i} className="text-xs text-slate-400 bg-white/3 rounded-lg px-3 py-2 border border-white/5">
+                              <span className="text-slate-600 mr-1">Q{i+1}.</span>{q}
+                            </div>
+                          ))}
+                        </div>
+                      </details>
                     )}
                   </>
                 )}

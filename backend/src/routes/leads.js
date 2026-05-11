@@ -634,9 +634,10 @@ router.post('/:id/generate-call-scripts', async (req, res) => {
     const prefix = lead.nace_code ? String(lead.nace_code).substring(0, 2) : null;
     const scoreLabel = lead.score >= 70 ? 'Hot' : lead.score >= 40 ? 'Warm' : 'Cold';
 
-    const prompt = `Du är Cold Call Script GPT, expert på Connor's Value Statement Framework. Du genererar kalla samtalsskript för B2B-säljare.
+    const prompt = `Du är expert på varma B2B-samtal i en sekvens. Jan ringer Day 9 — prospekten har sett Jan på LinkedIn och fått 2 mail om NIS2. De känner igen namnet. Detta är INTE ett kallt samtal.
 
-Produkt: Nomad Cyber — NIS2 Readiness Assessment, Microsoft Copilot-säkerhet, SOCaaS
+Kontekst:
+Produkt: Nomad Cyber — NIS2 Readiness Assessment
 Persona: VD, IT-ansvarig eller CFO
 Bransch: ${lead.nace_description || 'Okänd'} (SNI ${prefix || lead.nace_code})
 Företag: ${lead.company_name}, ${lead.city || 'Sverige'}
@@ -644,36 +645,67 @@ Anställda: ${lead.employee_range || 'okänt'}
 NIS2-registrerat: ${lead.nis2_registered ? 'JA — sektor: ' + lead.nis2_sector : 'Nej'}
 Score: ${lead.score} (${scoreLabel})
 
-Generera OMEDELBART, utan förklaring:
+Samtalsstruktur (följ exakt):
+1. ÖPPNING — referera till mailen, sänk säljtrycket direkt: "Inget säljtryck idag — jag vill förstå er situation och ge dig tre saker du kan ta med dig oavsett vad."
+2. AGENDA — sätt ramen: "Vi går igenom tre saker: var ni är med NIS2, hur det ser ut för bolag i er storlek, och tre konkreta nästa steg."
+3. TRE TAKEAWAYS (inbyggda i samtalet — levereras naturligt, inte som en lista):
+   - Takeaway 1: Varför det är akut — MSB kan granska när som helst, styrelseledamöter är personligt ansvariga (inte bara bolaget)
+   - Takeaway 2: Branschbilden — 8 av 10 bolag i deras storlek är inte redo, de som är klara först vinner upphandlingar
+   - Takeaway 3: Tre minimiåtgärder för att visa aktsamhet — gap-analys, utse ansvarig, dokumentera kritiska system
+4. CLOSE — ALDRIG "boka 30 min möte". Alltid: "Gap-analysen på nis2klar.se tar 8 minuter — gör den innan vi ses, så har vi något konkret att prata om. Fungerar det?"
 
-**Skript 1 – Omedelbar fråga (Immediate Ask)**
-Kort öppning som introducerar Jan, levererar ett tight value statement kopplat till NIS2 eller Copilot-säkerhet för deras bransch, och går direkt till mötesförfrågan. Antagande, självsäker ton. Inga utfyllnadsfraser. Max 5 meningar.
+Skript 1 – Direkt (Immediate Ask): Direkt referens till mail → ingen pitch → agenda → takeaways kort → close med gap-analys. Självsäker, peer-level ton. Max 8 meningar.
 
-**Skript 2 – Paus innan fråga (Pause Before Ask)**
-Samma value statement-struktur men med ett avsiktligt stopp efter hook — ge prospekten ett ögonblick att reagera innan frågan om möte landar. Lite mjukare ingång, samma direkthet. Max 6 meningar.
+Skript 2 – Mjukare (Pause Before Ask): Samma struktur men med ett naturligt stopp efter öppningen — låt dem bekräfta innan du fortsätter. Lite mer lyssnande, samma close. Max 10 meningar.
 
-**3 Discovery-frågor**
-Öppna, kvalificerande frågor anpassade till detta företagets bransch och situation. Ska naturligt följa efter öppningen och driva samtalet mot BANT-kvalificering (Budget, Authority, Need, Timeline). Fokus på NIS2-beredskap, AI-säkerhet eller Copilot-användning beroende på kontext.
+3 Discovery-frågor — situationsförståelse, INTE BANT. Fokus på att förstå deras läge:
+- En fråga om nuvarande hantering av IT-säkerhet/incidenter
+- En fråga om vem som äger NIS2-frågan internt
+- En fråga om styrelsens medvetenhet om personligt ansvar
 
 REGLER:
-- Skriv ENDAST på svenska
-- Naturligt talspråk — inget som låter uppläst
-- Aldrig "Hoppas det är ett bra tillfälle" eller "Jag hoppas detta hittar dig väl"
-- Peer-level ton — inte säljig eller desperat
-- Value hook MÅSTE referera till NIS2-krav eller Copilot-säkerhetsrisk kopplat till deras specifika bransch
-- Avsluta alltid med att be om 15–20 minuter nästa vecka
-- Jan presenterar sig som "Jan Malmström från Nomad Cyber"
+- Svenska, naturligt talspråk — inget uppläst
+- Aldrig "Hoppas det är ett bra tillfälle" eller säljklichéer
+- Aldrig produktpitch — värdet levereras som insikter, inte features
+- Jan presenterar sig som "Jan från Nomad Cyber"
+- Close pekar alltid mot gap-analysen på nis2klar.se — ALDRIG mot ett nytt möte direkt
 
-OUTPUT FORMAT (exakt detta format, inget annat):
-SCRIPT1: [hela skriptet på en sammanhängande text]
-SCRIPT2: [hela skriptet på en sammanhängande text]
+OUTPUT FORMAT (exakt, inga avvikelser):
+SCRIPT1:
+[STEG 1 — ÖPPNING]
+[text]
+
+[STEG 2 — AGENDA]
+[text]
+
+[STEG 3 — TRE TAKEAWAYS]
+[text]
+
+[CLOSE]
+[text]
+
+SCRIPT2:
+[STEG 1 — ÖPPNING]
+[text]
+
+[STEG 2 — AGENDA]
+[text]
+
+[STEG 3 — TRE TAKEAWAYS]
+[text]
+
+[CLOSE]
+[text]
+
 Q1: [första discovery-frågan]
 Q2: [andra discovery-frågan]
-Q3: [tredje discovery-frågan]`;
+Q3: [tredje discovery-frågan]
+
+Obs: Discovery-frågorna är sekundära — de används bara om samtalet stannar av. Fokus är på de fyra stegen ovan.`;
 
     const message = await client.messages.create({
-      model: 'claude-haiku-4-5',
-      max_tokens: 800,
+      model: 'claude-sonnet-4-6',
+      max_tokens: 1200,
       messages: [{ role: 'user', content: prompt }],
     });
 
