@@ -2,8 +2,9 @@ const express = require('express');
 const router = express.Router();
 const db = require('../db');
 const axios = require('axios');
+const { generateGapPdf } = require('../lib/generateGapPdf');
 
-async function sendAutoReply(name, email, company) {
+async function sendAutoReply(name, email, company, gapData) {
   const apiKey = process.env.RESEND_API_KEY;
   if (!apiKey) return;
 
@@ -39,12 +40,40 @@ async function sendAutoReply(name, email, company) {
   `;
 
   try {
-    await axios.post('https://api.resend.com/emails', {
+    const payload = {
       from:    'Jan Malmström <jan@nis2klar.se>',
       to:      [email],
       subject: `Vi återkommer inom 24 timmar — NIS2Klar`,
       html
-    }, { headers: { Authorization: `Bearer ${apiKey}` } });
+    };
+
+    // Attach PDF if gap analysis data provided
+    if (gapData) {
+      try {
+        const pdfBuf = await generateGapPdf({
+          company,
+          name: name || '',
+          score:        gapData.score     ?? 0,
+          scorePct:     gapData.scorePct  ?? 0,
+          riskLevel:    gapData.riskLevel ?? 'red',
+          criticalGaps: gapData.criticalGaps ?? 0,
+          partialGaps:  gapData.partialGaps  ?? 0,
+          domains:      gapData.domains  ?? {},
+          answers:      gapData.answers  ?? {},
+        });
+        payload.attachments = [{
+          filename: 'NIS2_Gap_Analys.pdf',
+          content:  pdfBuf.toString('base64'),
+        }];
+        console.log(`[inbound] PDF generated (${pdfBuf.length} bytes) for ${email}`);
+      } catch (pdfErr) {
+        console.error('[inbound] PDF generation failed:', pdfErr.message);
+        // Continue without attachment
+      }
+    }
+
+    await axios.post('https://api.resend.com/emails', payload,
+      { headers: { Authorization: `Bearer ${apiKey}` } });
     console.log(`[inbound] auto-reply sent to ${email}`);
   } catch (err) {
     console.error('[inbound] auto-reply error:', err.response?.data || err.message);
@@ -88,7 +117,7 @@ async function sendLeadNotification(name, email, phone, company, source) {
 // POST /api/inbound — public lead capture from NIS2 lead magnet pages
 // No auth required — called from public HTML pages
 router.post('/', async (req, res) => {
-  const { name, email, phone, company, source, score_data } = req.body;
+  const { name, email, phone, company, source, score_data, answers } = req.body;
 
   if (!email || !company) {
     return res.status(400).json({ success: false, error: 'email and company required' });
@@ -164,9 +193,48 @@ router.post('/', async (req, res) => {
       [leadId, activityTitle, activityBody]
     );
 
+    // Save gap analysis submission if this is from the gap analysis form
+    if (cleanSource === 'nis2-gap-analys' && score_data) {
+      try {
+        await db.query(
+          `INSERT INTO gap_analysis_submissions
+             (lead_id, company_name, contact_name, score, score_pct, risk_level,
+              critical_gaps, partial_gaps, domains, answers)
+           VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)`,
+          [
+            leadId,
+            cleanCompany,
+            name || null,
+            score_data.score        ?? null,
+            score_data.gapScore     ?? null,
+            score_data.risk         ?? null,
+            score_data.criticalGaps ?? null,
+            score_data.partialGaps  ?? null,
+            JSON.stringify(score_data.domains ?? {}),
+            JSON.stringify(answers ?? {}),
+          ]
+        );
+        console.log(`[inbound] gap analysis saved for lead ${leadId}`);
+      } catch (err) {
+        console.error('[inbound] gap analysis save error:', err.message);
+      }
+    }
+
     // Fire-and-forget notifications
+    const gapData = (cleanSource === 'nis2-gap-analys' && score_data)
+      ? {
+          score:        score_data.score        ?? 0,
+          scorePct:     score_data.gapScore      ?? 0,
+          riskLevel:    score_data.risk          ?? 'red',
+          criticalGaps: score_data.criticalGaps  ?? 0,
+          partialGaps:  score_data.partialGaps   ?? 0,
+          domains:      score_data.domains       ?? {},
+          answers:      answers                  ?? {},
+        }
+      : null;
+
     sendLeadNotification(name, cleanEmail, cleanPhone, cleanCompany, cleanSource);
-    sendAutoReply(name, cleanEmail, cleanCompany);
+    sendAutoReply(name, cleanEmail, cleanCompany, gapData);
 
     res.json({ success: true, lead_id: leadId });
   } catch (err) {

@@ -879,11 +879,13 @@ async function submitGate() {
         source: 'nis2-gap-analys',
         score_data: {
           risk: risk.key === 'god' ? 'green' : risk.key === 'medel' ? 'amber' : 'red',
+          score: total,
           gapScore: pct,
           criticalGaps: gaps.critical,
           partialGaps: gaps.partial,
           domains: domainData,
-        }
+        },
+        answers: { ...answers },
       })
     });
   } catch (e) {

@@ -1378,6 +1378,119 @@ function CallSimulator({ lead, onClose }) {
   );
 }
 
+// ---- NIS2 Gap Analysis Panel ----
+const DOMAIN_NAMES = ['Styrning & Ledning','Riskhantering','Incidentrespons','Leverantörskedja','Tekniska kontroller'];
+const QUESTIONS = [
+  ['Har er organisation en utsedd NIS2-ansvarig (CISO eller motsvarande)?','Har ledningen formellt beslutat om och godkänt en informationssäkerhetspolicy?','Ingår cybersäkerhet och NIS2-efterlevnad regelbundet på styrelsens agenda?','Har ni dokumenterade roller och ansvarsfördelning för informationssäkerhet?','Genomför ni regelbundna säkerhetsutbildningar för all personal?'],
+  ['Har ni ett uppdaterat riskregister för IT och cybersäkerhet?','Genomför ni formella riskbedömningar minst en gång per år?','Är era kritiska IT-system och informationstillgångar inventerade och klassificerade?','Har ni implementerat MFA (multifaktorautentisering) för alla användare?','Hanterar ni sårbarheter systematiskt — t.ex. patchning inom 30 dagar för kritiska brister?'],
+  ['Har ni en dokumenterad och testad incidentresponsplan?','Kan ni identifiera och klassificera en säkerhetsincident inom 4 timmar?','Kan ni rapportera en incident till MSB inom 24 timmar (NIS2:s initialkrav)?','Har ni kontinuerlig loggning och övervakning av era kritiska system?','Har ni en kommunikationsplan för hur ni hanterar incidenter externt?'],
+  ['Har ni en komplett förteckning över era kritiska IT-leverantörer?','Ställer ni dokumenterade säkerhetskrav på era leverantörer?','Granskar ni leverantörers säkerhetsnivå vid upphandling och regelbundet därefter?','Ingår cybersäkerhets- och incidentrapporteringskrav i era leverantörsavtal?','Kontrollerar ni tredjepartsåtkomst till era system systematiskt?'],
+  ['Är era nätverk segmenterade — t.ex. separation av OT/IT, gästnät och produktionsmiljöer?','Har ni endpoint-skydd (EDR/antivirus) installerat och aktivt på alla enheter?','Använder ni krypterad kommunikation och lagring för all känslig data?','Har ni testade backup- och återställningsprocedurer (3-2-1-regeln)?','Har ni ett identitets- och åtkomsthanteringssystem (IAM/PAM) med principen om minsta privilegium?'],
+];
+const ANSWER_LABELS = { 2: 'Ja', 1: 'Delvis', 0: 'Nej' };
+const ANSWER_COLORS = { 2: 'text-green-400', 1: 'text-yellow-400', 0: 'text-red-400' };
+
+function GapAnalysisPanel({ leadId }) {
+  const [submissions, setSubmissions] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [expanded, setExpanded] = useState(null);
+
+  useEffect(() => {
+    api.get(`/leads/${leadId}/gap-analysis`)
+      .then(({ data }) => setSubmissions(data.submissions || []))
+      .catch(() => {})
+      .finally(() => setLoading(false));
+  }, [leadId]);
+
+  if (loading) return null;
+  if (!submissions.length) return null;
+
+  const sub = submissions[0]; // latest
+  const riskColor = sub.risk_level === 'red' ? 'text-red-400' : sub.risk_level === 'amber' ? 'text-yellow-400' : 'text-green-400';
+  const riskLabel = sub.risk_level === 'red' ? 'HÖG RISK' : sub.risk_level === 'amber' ? 'MEDELHÖG RISK' : 'GOD TÄCKNING';
+  const domains = sub.domains || {};
+  const answers = sub.answers || {};
+
+  return (
+    <div className="bg-gray-900 border border-gray-700 rounded-xl p-5 mt-6">
+      <div className="flex items-center justify-between mb-4">
+        <h3 className="text-white font-bold text-base flex items-center gap-2">
+          🛡️ NIS2 Gap-Analys
+          <span className="text-xs text-gray-500 font-normal">
+            {new Date(sub.submitted_at).toLocaleDateString('sv-SE')}
+          </span>
+        </h3>
+        {submissions.length > 1 && (
+          <span className="text-xs text-gray-500">{submissions.length} inlämningar</span>
+        )}
+      </div>
+
+      {/* Score summary */}
+      <div className="flex items-center gap-6 mb-5">
+        <div className="text-center">
+          <div className={`text-4xl font-black ${riskColor}`}>{sub.score_pct}%</div>
+          <div className={`text-xs font-bold tracking-wide ${riskColor}`}>{riskLabel}</div>
+        </div>
+        <div className="text-sm text-gray-400 space-y-1">
+          <div>Poäng: <span className="text-white font-semibold">{sub.score}/50</span></div>
+          <div>Kritiska gap: <span className="text-red-400 font-semibold">{sub.critical_gaps}</span></div>
+          <div>Delvisa gap: <span className="text-yellow-400 font-semibold">{sub.partial_gaps}</span></div>
+        </div>
+      </div>
+
+      {/* Domain bars */}
+      <div className="space-y-2 mb-4">
+        {DOMAIN_NAMES.map(name => {
+          const pct = domains[name] ?? 0;
+          const barColor = pct >= 75 ? 'bg-green-500' : pct >= 40 ? 'bg-yellow-500' : 'bg-red-500';
+          return (
+            <div key={name}>
+              <div className="flex justify-between text-xs mb-1">
+                <span className="text-gray-300">{name}</span>
+                <span className="text-gray-400">{pct}%</span>
+              </div>
+              <div className="h-1.5 bg-gray-700 rounded-full overflow-hidden">
+                <div className={`h-full ${barColor} rounded-full`} style={{ width: `${pct}%` }} />
+              </div>
+            </div>
+          );
+        })}
+      </div>
+
+      {/* Detailed answers toggle */}
+      <button
+        onClick={() => setExpanded(e => e === 0 ? null : 0)}
+        className="text-xs text-blue-400 hover:text-blue-300 underline"
+      >
+        {expanded === 0 ? 'Dölj svar' : 'Visa detaljerade svar'}
+      </button>
+
+      {expanded === 0 && (
+        <div className="mt-4 space-y-4">
+          {DOMAIN_NAMES.map((name, di) => (
+            <div key={name}>
+              <div className="text-xs font-bold text-gray-400 uppercase tracking-wide mb-2">{name}</div>
+              <div className="space-y-1.5">
+                {QUESTIONS[di].map((q, qi) => {
+                  const val = answers[`d${di}_q${qi}`];
+                  const label = ANSWER_LABELS[val] ?? '—';
+                  const color = ANSWER_COLORS[val] ?? 'text-gray-500';
+                  return (
+                    <div key={qi} className="flex items-start gap-2 text-xs">
+                      <span className={`font-bold min-w-[40px] ${color}`}>{label}</span>
+                      <span className="text-gray-400">{q}</span>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+}
+
 // ---- Messages Inbox ----
 function MessagesPanel({ leadId, leadEmail }) {
   const [messages, setMessages] = useState([]);
@@ -3008,6 +3121,9 @@ export default function LeadDetail() {
           {saving ? 'Saving...' : 'Save'}
         </button>
       </div>
+
+      {/* NIS2 Gap Analysis — shown if lead submitted the form */}
+      <GapAnalysisPanel leadId={id} />
 
       {/* Messages — email thread with reply */}
       <MessagesPanel leadId={id} leadEmail={lead?.email} />

@@ -1895,4 +1895,21 @@ router.post('/:id/outreach', async (req, res) => {
   }
 });
 
+// GET /api/leads/:id/gap-analysis — fetch gap analysis submissions for a lead
+router.get('/:id/gap-analysis', async (req, res) => {
+  try {
+    const { rows } = await db.query(
+      `SELECT id, submitted_at, company_name, contact_name, score, score_pct,
+              risk_level, critical_gaps, partial_gaps, domains, answers
+       FROM gap_analysis_submissions
+       WHERE lead_id = $1
+       ORDER BY submitted_at DESC`,
+      [req.params.id]
+    );
+    res.json({ success: true, submissions: rows });
+  } catch (err) {
+    res.status(500).json({ success: false, error: err.message });
+  }
+});
+
 module.exports = router;
