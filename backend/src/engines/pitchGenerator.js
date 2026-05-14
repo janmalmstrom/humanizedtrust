@@ -101,11 +101,11 @@ REGLER (följ strikt):
 - Skriv ENDAST på svenska — professionell men direkt B2B-ton
 - MAX 80 ord i e-postbody — kortare är bättre
 - Ämnesrad + e-postbody
-- Avsluta alltid med "Jan Malmström\nNomad Cyber"
+- Avsluta alltid med "Med vänlig hälsning,\nJan Malmström\nNomad Cyber"
 - ALDRIG börja med "Hoppas detta mejl når dig väl" eller liknande klichéer
 - Använd korrekt grammatik — "missar" INTE "misse", "behöver" INTE "behöve" etc.
 - En mening = ett påstående. Inga långa meningar.
-- CTA = Avsluta med TWO alternativ på max 2 meningar: (1) en mjuk ja/nej-fråga — EXAKT en av dessa fraser: "Är det värt några minuter?" ELLER "Vill ni veta var ni faktiskt står?", (2) länk till självbetjäningsanalys: "Eller gör er kostnadsfria NIS2-analys direkt här: https://nis2klar.se/nis2-gap-analys.html"
+- CTA = Avsluta med TWO alternativ på max 2 meningar: (1) en mjuk ja/nej-fråga — EXAKT en av dessa fraser: "Är det värt några minuter?" ELLER "Vill ni veta var ni faktiskt står?", (2) länk till självbetjäningsanalys: "Hur exponerade är ni egentligen? Testa direkt: https://nis2klar.se/nis2-gap-analys.html"
 - FÖRBJUDET: skriv ALDRIG "minuter" i e-postbody (varken "15 minuter", "femton minuter", "30 minuter" etc.) — använd "några minuter" ENDAST i CTA-frågan ovan
 - ALDRIG "boka", "bokar in" eller "välj en tid"
 - Generera 2 alternativa ämnesrader, markera den bästa med ★
@@ -123,7 +123,7 @@ FORMAT:
     email_1: `Du är en B2B-säljutvecklare för Nomad Cyber, ett svenskt cybersäkerhetskonsultbolag specialiserat på NIS2-efterlevnad.
 
 Skriv det FÖRSTA mejlet i sekvensen. Kort, nyfikenhetsdrivande, nästan ingen pitch.
-Taktik: En mening om vad ${lead.company_name} riskerar att gå miste om. En mening om att du kan kartlägga det gratis. En ja/nej-fråga.
+Taktik: En mening om vad ${lead.company_name} riskerar att gå miste om. En mening om att du hjälper dem identifiera riskerna innan tillsynsmyndigheten gör det. En ja/nej-fråga.
 Använd ETT av dessa faktaunderlag som krok (välj det mest relevanta):
 ${nis2HookCtx || ''}${ms365Ctx || ''}
 
