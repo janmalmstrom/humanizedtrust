@@ -388,8 +388,8 @@ router.get('/inbound', async (req, res) => {
       SELECT id, company_name, email, phone, source, score, score_label, notes, review_status, created_at
       FROM discovery_leads
       WHERE (source LIKE 'nis2%' OR source = 'inbound')
-        AND review_status != 'contacted'
-      ORDER BY created_at DESC
+        AND review_status NOT IN ('archived', 'disqualified')
+      ORDER BY updated_at DESC
       LIMIT 20
     `);
     res.json({ success: true, data: { leads: rows } });

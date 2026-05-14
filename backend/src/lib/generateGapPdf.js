@@ -1,71 +1,42 @@
 /**
  * generateGapPdf.js
- * Generates a NIS2 Gap Analysis PDF report from submission data.
- * Returns a Buffer.
+ * Generates a NIS2 Gap Analysis PDF that mirrors the web report:
+ * - Score summary
+ * - Domain coverage with risk levels
+ * - Prioritized gap recommendations (KRITISK / FÖRBÄTTRA)
  */
 
 const PDFDocument = require('pdfkit');
+const { DOMAINS } = require('./nis2Domains');
 
-const DOMAIN_NAMES = [
-  'Styrning & Ledning',
-  'Riskhantering',
-  'Incidentrespons',
-  'Leverantörskedja',
-  'Tekniska kontroller',
-];
+function riskLabel(pct) {
+  if (pct >= 75) return 'God täckning';
+  if (pct >= 50) return 'Medel';
+  if (pct >= 25) return 'Hög risk';
+  return 'Kritisk';
+}
 
-const QUESTIONS = [
-  [
-    'Har er organisation en utsedd NIS2-ansvarig (CISO eller motsvarande)?',
-    'Har ledningen formellt beslutat om och godkänt en informationssäkerhetspolicy?',
-    'Ingår cybersäkerhet och NIS2-efterlevnad regelbundet på styrelsens agenda?',
-    'Har ni dokumenterade roller och ansvarsfördelning för informationssäkerhet?',
-    'Genomför ni regelbundna säkerhetsutbildningar för all personal?',
-  ],
-  [
-    'Har ni ett uppdaterat riskregister för IT och cybersäkerhet?',
-    'Genomför ni formella riskbedömningar minst en gång per år?',
-    'Är era kritiska IT-system och informationstillgångar inventerade och klassificerade?',
-    'Har ni implementerat MFA (multifaktorautentisering) för alla användare?',
-    'Hanterar ni sårbarheter systematiskt — t.ex. patchning inom 30 dagar för kritiska brister?',
-  ],
-  [
-    'Har ni en dokumenterad och testad incidentresponsplan?',
-    'Kan ni identifiera och klassificera en säkerhetsincident inom 4 timmar?',
-    'Kan ni rapportera en incident till MSB inom 24 timmar (NIS2:s initialkrav)?',
-    'Har ni kontinuerlig loggning och övervakning av era kritiska system?',
-    'Har ni en kommunikationsplan för hur ni hanterar incidenter externt?',
-  ],
-  [
-    'Har ni en komplett förteckning över era kritiska IT-leverantörer?',
-    'Ställer ni dokumenterade säkerhetskrav på era leverantörer?',
-    'Granskar ni leverantörers säkerhetsnivå vid upphandling och regelbundet därefter?',
-    'Ingår cybersäkerhets- och incidentrapporteringskrav i era leverantörsavtal?',
-    'Kontrollerar ni tredjepartsåtkomst till era system systematiskt?',
-  ],
-  [
-    'Är era nätverk segmenterade — t.ex. separation av OT/IT, gästnät och produktionsmiljöer?',
-    'Har ni endpoint-skydd (EDR/antivirus) installerat och aktivt på alla enheter?',
-    'Använder ni krypterad kommunikation och lagring för all känslig data?',
-    'Har ni testade backup- och återställningsprocedurer (3-2-1-regeln)?',
-    'Har ni ett identitets- och åtkomsthanteringssystem (IAM/PAM) med principen om minsta privilegium?',
-  ],
-];
+function riskHex(pct) {
+  if (pct >= 75) return '#2a8a2a';
+  if (pct >= 50) return '#cc7700';
+  return '#cc0000';
+}
 
-const ANSWER_LABELS = { 2: 'Ja', 1: 'Delvis', 0: 'Nej' };
-const RISK_LABELS   = { red: 'HÖG RISK', amber: 'MEDELHÖG RISK', green: 'GOD TÄCKNING' };
+function wrapText(text) {
+  return text.replace(/<[^>]+>/g, '').replace(/&amp;/g, '&').replace(/&nbsp;/g, ' ');
+}
 
 /**
  * @param {object} opts
  * @param {string} opts.company
  * @param {string} opts.name
- * @param {number} opts.score       0-50
- * @param {number} opts.scorePct    0-100
- * @param {string} opts.riskLevel   'red'|'amber'|'green'
+ * @param {number} opts.score        0–50
+ * @param {number} opts.scorePct     0–100
+ * @param {string} opts.riskLevel    'red'|'amber'|'green'
  * @param {number} opts.criticalGaps
  * @param {number} opts.partialGaps
- * @param {object} opts.domains     { "Styrning & Ledning": 60, ... }
- * @param {object} opts.answers     { "d0_q0": 2, ... }
+ * @param {object} opts.domains      { "Styrning & Ledning": 60, ... }
+ * @param {object} opts.answers      { "d0_q0": 2, ... }
  * @returns {Promise<Buffer>}
  */
 function generateGapPdf(opts) {
@@ -73,92 +44,124 @@ function generateGapPdf(opts) {
     const { company, name, score, scorePct, riskLevel, criticalGaps, partialGaps, domains, answers } = opts;
     const chunks = [];
 
-    const doc = new PDFDocument({ margin: 50, size: 'A4' });
+    const doc = new PDFDocument({ margin: 50, size: 'A4', bufferPages: true });
     doc.on('data', chunk => chunks.push(chunk));
     doc.on('end',  () => resolve(Buffer.concat(chunks)));
     doc.on('error', reject);
 
-    const W = doc.page.width - 100; // usable width
+    const W     = doc.page.width - 100;
+    const LEFT  = 50;
+    const rColor = riskLevel === 'red' ? '#cc0000' : riskLevel === 'amber' ? '#cc7700' : '#2a8a2a';
+    const rLabelText = riskLevel === 'red' ? 'HOG RISK' : riskLevel === 'amber' ? 'MEDELHOG RISK' : 'GOD TACKNING';
+    const totalGaps  = criticalGaps + partialGaps;
+    const onPlaceCount = 25 - totalGaps;
 
-    // ── Header ──────────────────────────────────────────────────────────
-    doc.fontSize(20).font('Helvetica-Bold').text('NIS2 Gap-Analys', 50, 50);
-    doc.fontSize(11).font('Helvetica').fillColor('#555')
-       .text(`${company}  ·  ${name}  ·  ${new Date().toLocaleDateString('sv-SE')}`, 50, 78);
-
-    // ── Score block ──────────────────────────────────────────────────────
-    doc.moveDown(1.5);
-    const riskLabel = RISK_LABELS[riskLevel] || riskLevel.toUpperCase();
-    const riskColor = riskLevel === 'red' ? '#cc3333' : riskLevel === 'amber' ? '#cc7700' : '#2a8a2a';
-
-    doc.fontSize(32).font('Helvetica-Bold').fillColor(riskColor)
-       .text(`${scorePct}%`, { continued: false });
-    doc.moveUp(1);
-    doc.fontSize(13).font('Helvetica-Bold').fillColor(riskColor)
-       .text(riskLabel, 110, doc.y - 20);
-    doc.fontSize(11).font('Helvetica').fillColor('#333')
-       .text(`${score}/50 poäng  ·  ${criticalGaps} kritiska gap  ·  ${partialGaps} delvisa gap`, 110, doc.y);
+    // ── Header bar ───────────────────────────────────────────────────────
+    doc.rect(LEFT, 45, W, 52).fill(rColor);
+    doc.fontSize(28).font('Helvetica-Bold').fillColor('#fff')
+       .text(`${scorePct}%`, LEFT + 12, 52, { continued: true });
+    doc.fontSize(11).font('Helvetica').fillColor('rgba(255,255,255,0.85)')
+       .text(`  NIS2-tackning  *  ${criticalGaps} kritiska gap  *  ${partialGaps} forbattringsomraden  *  ${onPlaceCount} kontroller pa plats`, { baseline: 'middle' });
+    doc.fontSize(14).font('Helvetica-Bold').fillColor('#fff')
+       .text(rLabelText, LEFT + 12, 74);
 
     doc.fillColor('#000');
-    doc.moveDown(1.5);
+    doc.moveDown(0.5);
 
-    // ── Domain scores ────────────────────────────────────────────────────
-    doc.fontSize(13).font('Helvetica-Bold').text('Resultat per område');
+    // ── Subtitle ──────────────────────────────────────────────────────────
+    doc.fontSize(9).font('Helvetica').fillColor('#555')
+       .text(`${company}  *  ${name}  *  ${new Date().toLocaleDateString('sv-SE')}`, LEFT, doc.y + 6);
+    doc.moveDown(1.2);
+
+    // ── Domain coverage ───────────────────────────────────────────────────
+    doc.fontSize(12).font('Helvetica-Bold').fillColor('#111').text('Tackning per NIS2-doman', LEFT);
     doc.moveDown(0.4);
 
-    DOMAIN_NAMES.forEach(domainName => {
-      const pct = domains?.[domainName] ?? 0;
-      const barColor = pct >= 75 ? '#2a8a2a' : pct >= 40 ? '#cc7700' : '#cc3333';
-      const barW = Math.round(W * pct / 100);
+    DOMAINS.forEach(d => {
+      const pct      = domains?.[d.name] ?? 0;
+      const barColor = riskHex(pct);
+      const barW     = Math.round(W * pct / 100);
+      const label    = riskLabel(pct);
 
-      doc.fontSize(10).font('Helvetica').fillColor('#333').text(`${domainName}`, { continued: true });
-      doc.fillColor('#888').text(`  ${pct}%`, { continued: false });
+      if (doc.y > doc.page.height - 80) doc.addPage();
 
-      const y = doc.y + 2;
-      doc.rect(50, y, W, 8).fillColor('#eee').fill();
-      doc.rect(50, y, barW, 8).fillColor(barColor).fill();
+      doc.fontSize(10).font('Helvetica').fillColor('#222')
+         .text(d.name, LEFT, doc.y, { continued: true });
+      doc.font('Helvetica-Bold').fillColor(barColor)
+         .text(`  ${pct}% -- ${label}`, { continued: false });
+
+      const barY = doc.y + 2;
+      doc.rect(LEFT, barY, W, 6).fillColor('#eee').fill();
+      doc.rect(LEFT, barY, barW, 6).fillColor(barColor).fill();
       doc.fillColor('#000');
-      doc.moveDown(0.9);
+      doc.moveDown(0.85);
     });
 
-    // ── Answers per domain ────────────────────────────────────────────────
-    doc.moveDown(0.5);
-    doc.addPage();
+    // ── Gap recommendations ───────────────────────────────────────────────
+    if (totalGaps > 0) {
+      doc.addPage();
+      doc.fontSize(13).font('Helvetica-Bold').fillColor('#111')
+         .text(`Era ${totalGaps} NIS2-gap att atgarda`, LEFT);
+      doc.fontSize(9).font('Helvetica').fillColor('#666')
+         .text('Prioriterade efter allvarlighetsgrad -- KRITISK (Nej) fore FORBATTRA (Delvis).', LEFT);
+      doc.moveDown(0.8);
 
-    doc.fontSize(15).font('Helvetica-Bold').text('Detaljerade svar');
-    doc.moveDown(0.6);
-
-    DOMAIN_NAMES.forEach((domainName, di) => {
-      // Domain header
-      doc.fontSize(12).font('Helvetica-Bold').fillColor('#1a1a1a').text(domainName);
-      doc.moveDown(0.3);
-
-      QUESTIONS[di].forEach((q, qi) => {
-        const val = answers?.[`d${di}_q${qi}`];
-        const label = ANSWER_LABELS[val] ?? '—';
-        const color = val === 2 ? '#2a8a2a' : val === 1 ? '#cc7700' : val === 0 ? '#cc3333' : '#888';
-
-        // Check if we need a new page
-        if (doc.y > doc.page.height - 100) doc.addPage();
-
-        doc.fontSize(9).font('Helvetica').fillColor('#444')
-           .text(`${qi + 1}. ${q}`, 50, doc.y, { width: W - 60, continued: false });
-        doc.moveUp(1);
-        doc.fontSize(9).font('Helvetica-Bold').fillColor(color)
-           .text(label, 50 + W - 55, doc.y, { width: 55, align: 'right' });
-        doc.fillColor('#000');
-        doc.moveDown(0.5);
+      // Collect gaps: 0=KRITISK, 1=FÖRBÄTTRA
+      const kritiska = [];
+      const forbattra = [];
+      DOMAINS.forEach((d, di) => {
+        d.recs.forEach((rec, qi) => {
+          const val = answers?.[`d${di}_q${qi}`];
+          if (val === 0)      kritiska.push({ ...rec, domain: d.name });
+          else if (val === 1) forbattra.push({ ...rec, domain: d.name });
+        });
       });
 
-      doc.moveDown(0.5);
-    });
+      const allGaps = [
+        ...kritiska.map(g => ({ ...g, severity: 'KRITISK', color: '#cc0000' })),
+        ...forbattra.map(g => ({ ...g, severity: 'FORBATTRA', color: '#cc7700' })),
+      ];
 
-    // ── Footer ────────────────────────────────────────────────────────────
-    const pages = doc.bufferedPageRange();
-    for (let i = 0; i < pages.count; i++) {
-      doc.switchToPage(pages.start + i);
-      doc.fontSize(8).font('Helvetica').fillColor('#aaa')
-         .text('NIS2Klar · nis2klar.se · M&J Trusted Marketing KB',
-               50, doc.page.height - 40, { align: 'center', width: W });
+      allGaps.forEach(gap => {
+        if (doc.y > doc.page.height - 130) doc.addPage();
+
+        const boxY = doc.y;
+
+        // Severity badge
+        doc.fontSize(8).font('Helvetica-Bold').fillColor('#fff')
+           .rect(LEFT, boxY, 70, 14).fill(gap.color);
+        doc.fillColor('#fff').text(gap.severity, LEFT + 3, boxY + 3);
+
+        // Title
+        doc.fontSize(11).font('Helvetica-Bold').fillColor('#111')
+           .text(gap.title, LEFT + 76, boxY + 1, { width: W - 76 });
+        doc.moveDown(0.3);
+
+        // Why
+        doc.fontSize(9).font('Helvetica').fillColor('#555')
+           .text(wrapText(gap.why), LEFT, doc.y, { width: W });
+        doc.moveDown(0.25);
+
+        // Action
+        doc.fontSize(9).font('Helvetica-Bold').fillColor('#333')
+           .text('Atgard: ', LEFT, doc.y, { continued: true });
+        doc.font('Helvetica').fillColor('#444')
+           .text(wrapText(gap.action), { width: W - 45, continued: false });
+        doc.moveDown(0.9);
+
+        // Separator line
+        doc.moveTo(LEFT, doc.y).lineTo(LEFT + W, doc.y).strokeColor('#ddd').lineWidth(0.5).stroke();
+        doc.moveDown(0.5);
+      });
+    }
+
+    // ── Footer on all pages ────────────────────────────────────────────────
+    const range = doc.bufferedPageRange();
+    for (let i = 0; i < range.count; i++) {
+      doc.switchToPage(range.start + i);
+      doc.fontSize(8).font('Helvetica').fillColor('#bbb')
+         .text(`NIS2Klar * nis2klar.se * Sida ${i + 1} av ${range.count}`,
+               LEFT, doc.page.height - 38, { align: 'center', width: W });
     }
 
     doc.end();

@@ -884,8 +884,8 @@ async function submitGate() {
           criticalGaps: gaps.critical,
           partialGaps: gaps.partial,
           domains: domainData,
+          answers: { ...answers },
         },
-        answers: { ...answers },
       })
     });
   } catch (e) {

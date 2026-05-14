@@ -2726,6 +2726,19 @@ export default function LeadDetail() {
   const [fetchingReport, setFetchingReport] = useState(false);
   const [reportMsg, setReportMsg] = useState('');
   const [showSimulator, setShowSimulator] = useState(false);
+  const [deleting, setDeleting] = useState(false);
+
+  async function deleteLead() {
+    if (!window.confirm(`Delete ${lead?.company_name}? This cannot be undone.`)) return;
+    setDeleting(true);
+    try {
+      await api.delete(`/leads/${id}`);
+      navigate('/leads');
+    } catch (e) {
+      alert('Delete failed: ' + e.message);
+      setDeleting(false);
+    }
+  }
 
   useEffect(() => {
     api.get(`/leads/${id}`).then(({ data }) => {
@@ -2855,6 +2868,13 @@ export default function LeadDetail() {
               className="px-3 py-2 text-xs rounded-lg bg-red-600/80 hover:bg-red-500 text-white transition-colors font-medium"
               title="Practice this cold call with AI">
               🎯 Practice call
+            </button>
+            <button
+              onClick={deleteLead}
+              disabled={deleting}
+              className="px-3 py-2 text-xs rounded-lg bg-slate-700 hover:bg-red-900/60 text-slate-400 hover:text-red-400 transition-colors border border-white/5"
+              title="Delete this lead">
+              🗑 {deleting ? '…' : 'Delete'}
             </button>
           </div>
         </div>

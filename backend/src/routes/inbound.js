@@ -3,13 +3,14 @@ const router = express.Router();
 const db = require('../db');
 const axios = require('axios');
 const { generateGapPdf } = require('../lib/generateGapPdf');
+const { DOMAINS } = require('../lib/nis2Domains');
 
 async function sendAutoReply(name, email, company, gapData) {
   const apiKey = process.env.RESEND_API_KEY;
   if (!apiKey) return;
 
   const firstName = name ? name.split(' ')[0] : 'där';
-  const bookingUrl = process.env.CAL_BOOKING_URL || 'https://cal.eu/jan-malmstrom-dq23y8/30min';
+  const bookingUrl = process.env.CAL_BOOKING_URL || 'https://outlook.office.com/bookwithme/user/f2557dc405cf4b3aaff3c558773b7945@nomadcyber.ai/meetingtype/-Xi3MIAkN0uUGXQjAhZ88w2?anonymous&ismsaljsauthenabled&ep=mLinkFromTile';
 
   const html = `
     <div style="font-family:Arial,sans-serif;max-width:560px;margin:0 auto;color:#1a1a1a">
@@ -80,35 +81,146 @@ async function sendAutoReply(name, email, company, gapData) {
   }
 }
 
-async function sendLeadNotification(name, email, phone, company, source) {
-  const apiKey = process.env.RESEND_API_KEY;
-  if (!apiKey) return; // silently skip if not configured
+const RISK_COLORS = { red: '#cc0000', amber: '#cc7700', green: '#2a7a2a' };
+const RISK_LABELS = { red: 'HOG RISK', amber: 'MEDELHOG RISK', green: 'GOD TACKNING' };
 
-  const notifyTo = process.env.NOTIFY_EMAIL || 'jan@lifeandpower.se';
-  const subject  = `🔔 Ny lead: ${company} (${source})`;
-  const html     = `
-    <h2 style="margin:0 0 16px">Ny inbound lead på nis2klar.se</h2>
-    <table style="font-size:15px;line-height:1.8;border-collapse:collapse">
-      <tr><td style="color:#888;padding-right:16px">Namn</td><td><strong>${name || '—'}</strong></td></tr>
-      <tr><td style="color:#888;padding-right:16px">E-post</td><td><a href="mailto:${email}">${email}</a></td></tr>
-      <tr><td style="color:#888;padding-right:16px">Telefon</td><td>${phone ? `<a href="tel:${phone}">${phone}</a>` : '—'}</td></tr>
-      <tr><td style="color:#888;padding-right:16px">Bolag</td><td><strong>${company}</strong></td></tr>
-      <tr><td style="color:#888;padding-right:16px">Källa</td><td>${source}</td></tr>
-    </table>
-    <p style="margin-top:24px;font-size:13px;color:#888">
-      Se lead i CRM: <a href="https://humanizedtrust.xyz">humanizedtrust.xyz</a>
-    </p>
+
+// Estimate per-question answers from domain scores + gap counts
+// Used when answers object is not present (e.g. old cached HTML)
+function estimateAnswers(domainScores, criticalGaps, partialGaps) {
+  const DOMAIN_NAMES = ['Styrning & Ledning','Riskhantering','Incidentrespons','Leverantörskedja','Tekniska kontroller'];
+  const answers = {};
+  const totalGaps = criticalGaps + partialGaps;
+  if (!totalGaps) return answers;
+
+  const severities = DOMAIN_NAMES.map(n => Math.max(0, 100 - (domainScores?.[n] || 50)));
+  const totalSev = severities.reduce((s, v) => s + v, 0) || 1;
+
+  // Distribute gaps and kritisk proportionally, then fix totals with largest remainder
+  const rawGaps    = severities.map(s => totalGaps    * s / totalSev);
+  const rawKritisk = severities.map(s => criticalGaps * s / totalSev);
+
+  const gapsAlloc    = rawGaps.map(v => Math.floor(v));
+  const kritiskAlloc = rawKritisk.map(v => Math.floor(v));
+
+  let gr = totalGaps    - gapsAlloc.reduce((s,v) => s+v, 0);
+  let kr = criticalGaps - kritiskAlloc.reduce((s,v) => s+v, 0);
+
+  rawGaps.map((v,i) => [i, v%1]).sort((a,b) => b[1]-a[1]).slice(0,gr).forEach(([i]) => gapsAlloc[i]++);
+  rawKritisk.map((v,i) => [i, v%1]).sort((a,b) => b[1]-a[1]).slice(0,kr).forEach(([i]) => kritiskAlloc[i]++);
+
+  for (let di = 0; di < 5; di++) {
+    const domGaps    = Math.min(5, gapsAlloc[di]);
+    const domKritisk = Math.min(domGaps, kritiskAlloc[di]);
+    const domForbattra = domGaps - domKritisk;
+    for (let qi = 0; qi < 5; qi++) {
+      if      (qi < domKritisk)              answers[`d${di}_q${qi}`] = 0;
+      else if (qi < domKritisk + domForbattra) answers[`d${di}_q${qi}`] = 1;
+      else                                     answers[`d${di}_q${qi}`] = 2;
+    }
+  }
+  return answers;
+}
+
+function buildGapHtml(gapData) {
+  if (!gapData) return '';
+  const { scorePct, riskLevel, criticalGaps, partialGaps, domains, answers } = gapData;
+  const riskColor = RISK_COLORS[riskLevel] || '#888';
+  const riskLabel = RISK_LABELS[riskLevel] || riskLevel;
+  const totalGaps = criticalGaps + partialGaps;
+
+  // Domain bars
+  let domainRows = '';
+  DOMAINS.forEach(d => {
+    const pct = domains?.[d.name] ?? 0;
+    const color = pct >= 75 ? '#2a7a2a' : pct >= 50 ? '#cc7700' : '#cc0000';
+    domainRows += `<tr>
+      <td style="padding:4px 12px 4px 0;font-size:13px;color:#444">${d.name}</td>
+      <td style="padding:4px 0;font-size:13px;font-weight:bold;color:${color}">${pct}%</td>
+    </tr>`;
+  });
+
+  // Collect KRITISK (0) and FÖRBÄTTRA (1) gaps
+  const kritiska = [];
+  const forbattra = [];
+  DOMAINS.forEach((d, di) => {
+    d.recs.forEach((rec, qi) => {
+      const val = answers?.[`d${di}_q${qi}`];
+      if (val === 0)      kritiska.push({ ...rec });
+      else if (val === 1) forbattra.push({ ...rec });
+    });
+  });
+
+  const allGaps = [
+    ...kritiska.map(g => ({ ...g, severity: 'KRITISK', color: '#cc0000', bg: '#fff5f5' })),
+    ...forbattra.map(g => ({ ...g, severity: 'FORBATTRA', color: '#cc7700', bg: '#fffbf0' })),
+  ];
+
+  let gapCards = '';
+  allGaps.forEach(gap => {
+    gapCards += `
+      <div style="margin-bottom:16px;padding:14px;background:${gap.bg};border-left:4px solid ${gap.color};border-radius:4px">
+        <div style="margin-bottom:6px">
+          <span style="background:${gap.color};color:#fff;font-size:11px;font-weight:bold;padding:2px 8px;border-radius:3px">${gap.severity}</span>
+          &nbsp;
+          <span style="font-size:14px;font-weight:bold;color:#111">${gap.title}</span>
+        </div>
+        <p style="margin:0 0 6px;font-size:12px;color:#555;line-height:1.5">${gap.why}</p>
+        <p style="margin:0;font-size:12px;color:#333;line-height:1.5"><strong>Atgard:</strong> ${gap.action}</p>
+      </div>`;
+  });
+
+  return `
+    <div style="margin-top:24px;border:2px solid ${riskColor};border-radius:8px;overflow:hidden">
+      <div style="background:${riskColor};padding:10px 16px">
+        <span style="color:#fff;font-size:16px;font-weight:bold">${riskLabel} — ${scorePct}% NIS2-tackning</span>
+        &nbsp;&nbsp;
+        <span style="color:rgba(255,255,255,0.85);font-size:13px">${criticalGaps} kritiska gap · ${partialGaps} forbattringsomraden</span>
+      </div>
+      <div style="padding:16px;background:#fff">
+        <p style="margin:0 0 10px;font-size:13px;font-weight:bold;color:#333">Tackning per doman:</p>
+        <table style="border-collapse:collapse;margin-bottom:20px">${domainRows}</table>
+        <p style="margin:0 0 12px;font-size:14px;font-weight:bold;color:#111">Era ${totalGaps} gap att atgarda</p>
+        ${gapCards}
+      </div>
+    </div>
+  `;
+}
+
+async function sendLeadNotification(name, email, phone, company, source, gapData) {
+  const apiKey = process.env.RESEND_API_KEY;
+  if (!apiKey) return;
+
+  const notifyTo = process.env.NOTIFY_EMAIL || 'malmstromjan@gmail.com';
+  const isGap    = source === 'nis2-gap-analys' && gapData;
+  const subject  = isGap
+    ? `🛡️ Gap-analys: ${company} — ${RISK_LABELS[gapData?.riskLevel] || ''} (${gapData?.scorePct}%)`
+    : `🔔 Ny lead: ${company} (${source})`;
+
+  const html = `
+    <div style="font-family:Arial,sans-serif;max-width:620px">
+      <h2 style="margin:0 0 16px;font-size:18px">Ny inbound lead — nis2klar.se</h2>
+      <table style="font-size:14px;line-height:1.8;border-collapse:collapse">
+        <tr><td style="color:#888;padding-right:16px">Namn</td><td><strong>${name || '—'}</strong></td></tr>
+        <tr><td style="color:#888;padding-right:16px">E-post</td><td><a href="mailto:${email}">${email}</a></td></tr>
+        <tr><td style="color:#888;padding-right:16px">Telefon</td><td>${phone ? `<a href="tel:${phone}">${phone}</a>` : '—'}</td></tr>
+        <tr><td style="color:#888;padding-right:16px">Bolag</td><td><strong>${company}</strong></td></tr>
+        <tr><td style="color:#888;padding-right:16px">Källa</td><td>${source}</td></tr>
+      </table>
+      ${buildGapHtml(isGap ? gapData : null)}
+      <p style="margin-top:20px;font-size:12px;color:#aaa">
+        Se lead i CRM: <a href="https://humanizedtrust.xyz">humanizedtrust.xyz</a>
+      </p>
+    </div>
   `;
 
   try {
     await axios.post('https://api.resend.com/emails', {
-      from:    'NIS2Klar <jan@nis2klar.se>',
-      to:      [notifyTo],
+      from: 'NIS2Klar <jan@nis2klar.se>',
+      to:   [notifyTo],
       subject,
       html
-    }, {
-      headers: { Authorization: `Bearer ${apiKey}` }
-    });
+    }, { headers: { Authorization: `Bearer ${apiKey}` } });
   } catch (err) {
     console.error('[inbound] notify error:', err.response?.data || err.message);
   }
@@ -117,7 +229,8 @@ async function sendLeadNotification(name, email, phone, company, source) {
 // POST /api/inbound — public lead capture from NIS2 lead magnet pages
 // No auth required — called from public HTML pages
 router.post('/', async (req, res) => {
-  const { name, email, phone, company, source, score_data, answers } = req.body;
+  const { name, email, phone, company, source, score_data, answers: bodyAnswers } = req.body;
+  const answers = score_data?.answers || bodyAnswers || {};
 
   if (!email || !company) {
     return res.status(400).json({ success: false, error: 'email and company required' });
@@ -127,6 +240,11 @@ router.post('/', async (req, res) => {
   const cleanCompany = company.trim();
   const cleanPhone = phone ? phone.trim() : null;
   const cleanSource = source || 'nis2-inbound';
+
+  if (cleanSource === 'nis2-gap-analys') {
+    const ansKeys = Object.keys(answers || {}).length;
+    console.log(`[inbound] gap-analys answers keys: ${ansKeys}, score_data keys: ${Object.keys(score_data || {}).join(',')}, body keys: ${Object.keys(req.body).join(',')}`);
+  }
 
   try {
     // Determine score from self-assessed risk
@@ -229,11 +347,13 @@ router.post('/', async (req, res) => {
           criticalGaps: score_data.criticalGaps  ?? 0,
           partialGaps:  score_data.partialGaps   ?? 0,
           domains:      score_data.domains       ?? {},
-          answers:      answers                  ?? {},
+          answers:      (Object.keys(answers || {}).length > 0)
+            ? answers
+            : estimateAnswers(score_data.domains, score_data.criticalGaps ?? 0, score_data.partialGaps ?? 0),
         }
       : null;
 
-    sendLeadNotification(name, cleanEmail, cleanPhone, cleanCompany, cleanSource);
+    sendLeadNotification(name, cleanEmail, cleanPhone, cleanCompany, cleanSource, gapData);
     sendAutoReply(name, cleanEmail, cleanCompany, gapData);
 
     res.json({ success: true, lead_id: leadId });
