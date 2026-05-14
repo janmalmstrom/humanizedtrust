@@ -31,10 +31,9 @@ async function sendAutoReply(name, email, company, gapData) {
         Under tiden kan du läsa mer i våra guider på
         <a href="https://nis2klar.se/artiklar.html" style="color:#0066cc">nis2klar.se/artiklar</a>.
       </p>
-      <p style="font-size:15px;margin-top:24px">— Jan Malmström, NIS2Klar</p>
+      <p style="font-size:15px;margin-top:24px">— Jan Malmström</p>
       <hr style="border:none;border-top:1px solid #eee;margin:24px 0"/>
       <p style="font-size:12px;color:#999">
-        NIS2Klar drivs av M&amp;J Trusted Marketing KB ·
         <a href="https://nis2klar.se/integritetspolicy.html" style="color:#999">Integritetspolicy</a>
       </p>
     </div>
@@ -44,7 +43,7 @@ async function sendAutoReply(name, email, company, gapData) {
     const payload = {
       from:    'Jan Malmström <jan@nis2klar.se>',
       to:      [email],
-      subject: `Vi återkommer inom 24 timmar — NIS2Klar`,
+      subject: `Vi återkommer inom 24 timmar`,
       html
     };
 
