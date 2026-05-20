@@ -1515,55 +1515,60 @@ router.post('/:id/generate-linkedin-sequence', async (req, res) => {
 
     const prefix = lead.nace_code ? String(lead.nace_code).substring(0, 2) : null;
 
-    const prompt = `Du är en LinkedIn-prospekteringsexpert som skapar personliga, konverterande DM-sekvenser för B2B-försäljning i Sverige.
+    const prompt = `Du skriver LinkedIn-meddelanden på svenska för Jan på Nomad Cyber (NIS2-compliance och cybersäkerhet för svenska medelstora företag).
 
-Vi säljer (Nomad Cyber): NIS2-compliance-konsulting, cybersäkerhetsriskbedömningar och löpande cybersäkerhetstjänster för svenska medelstora företag.
-
-Prospekt-kontext:
+Prospekt:
 Företag: ${lead.company_name}, ${lead.city || 'Sverige'}
-Bransch: ${lead.nace_description || 'okänd'} (SNI ${prefix || lead.nace_code || 'okänd'})
+Bransch: ${lead.nace_description || 'okänd'}
 Anställda: ${lead.employee_range || 'okänt'}
 NIS2-registrerat: ${lead.nis2_registered ? 'JA – sektor: ' + lead.nis2_sector : 'Nej / okänt'}
-${lead.website ? `Webbplats: ${lead.website}` : ''}
-${extra_context ? `\nExtra kontext / triggers:\n${extra_context}` : ''}
+${lead.website ? `Webb: ${lead.website}` : ''}
+${extra_context ? `\nExtra kontext:\n${extra_context}` : ''}
 
-Skapa en komplett 4-stegs LinkedIn DM-sekvens på svenska. Varje meddelande ska kännas äkta och naturligt – inte säljigt eller generiskt. Tonen ska vara professionell men avslappnad, som en kunnig kollega.
+Skriv en 4-stegs LinkedIn-sekvens. Naturlig, vardaglig svenska – inte formell, inte säljig. Som om Jan faktiskt skriver det själv.
 
-OUTPUT FORMAT (exakt, använd dessa markörer):
+HÅRDA REGLER – bryt ingen av dessa:
+1. Skriv ALDRIG att "vi jobbar med X-företag" eller "vi arbetar med flera i branschen" – Jan gör INTE det påståendet
+2. Fabricera inga kunder, case eller resultat
+3. Inga engelska ord i texten (inga: "compliance", "cybersäkerhet" i anslutningsförfrågan – håll det enkelt)
+4. Anslutningsförfrågan (steg 1): max 30 ord, en äkta anledning att connecta baserat ENDAST på vad som finns i prospekt-kontexten ovan
+5. Inga generiska fraser: "Hoppas detta når dig väl", "Jag slog upp er", "Vore kul att följa varandra"
+6. Tonen = kollega-till-kollega, inte säljare-till-kund
+
+OUTPUT – använd exakt dessa markörer, inget annat format:
 
 STEP1_LABEL: Anslutningsförfrågan
-STEP1_PURPOSE: [en mening om syftet med detta steg]
-STEP1_MSG: [meddelandet – max 50 ord – refererar till en specifik trigger eller kontext, känns som en äkta anledning att connecta]
+STEP1_PURPOSE: [syftet med detta steg, en mening]
+STEP1_MSG: [max 30 ord – specifik, äkta anledning att connecta]
 
-STEP2_LABEL: Första DM efter anslutning
-STEP2_PURPOSE: [syfte]
-STEP2_MSG: [meddelandet – 50-100 ord – lätt rapportbyggande, hint om värde, mjuk CTA (fråga eller observation). Ingen hård försäljning.]
+STEP2_LABEL: Första DM
+STEP2_PURPOSE: [syftet]
+STEP2_MSG: [50-80 ord – mjuk, nyfiken, ställ en fråga. Ingen pitch.]
 
-STEP3_LABEL: Uppföljning med ny vinkel
-STEP3_PURPOSE: [syfte]
-STEP3_MSG: [meddelandet – 50-100 ord – ny vinkel, insikt eller relevant observation om deras bransch/NIS2. Håller konversationen levande utan att pressa.]
+STEP3_LABEL: Uppföljning
+STEP3_PURPOSE: [syftet]
+STEP3_MSG: [50-80 ord – ny vinkel eller konkret insikt om deras NIS2-situation]
 
-STEP4_LABEL: Direkta mötesfrågan
-STEP4_PURPOSE: [syfte]
-STEP4_MSG: [meddelandet – 50-100 ord – assumptiv mötesförfrågan. Använd "Låt oss ta 15 minuter..." inte "Skulle du vara öppen för...". Direkt men inte aggressiv.]
-
-Regler:
-- Alla meddelanden på svenska
-- Inga generiska fraser ("Hoppas detta hittar dig väl" etc.)
-- Referera till något specifikt om företaget eller branschen i varje steg
-- Sälj mötet, inte produkten
-- Peer-to-peer ton, inte säljare-till-prospekt`;
+STEP4_LABEL: Mötesfrågan
+STEP4_PURPOSE: [syftet]
+STEP4_MSG: [50-80 ord – "Låt oss ta 15 minuter..." – direkt men inte pressande]`;
 
     const message = await client.messages.create({
-      model: 'claude-haiku-4-5',
+      model: 'claude-sonnet-4-6',
       max_tokens: 1200,
       messages: [{ role: 'user', content: prompt }],
     });
 
     const raw = message.content[0].text;
 
+    // Robust parser: handles "KEY: value", "**KEY:** value", and "## KEY\nvalue" formats
     const get = (key) => {
-      const m = raw.match(new RegExp(`${key}:\\s*([\\s\\S]+?)(?=\\nSTEP[0-9]_|$)`));
+      const escaped = key.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+      // Try "KEY: value" or "**KEY:** value" inline format
+      let m = raw.match(new RegExp(`\\*{0,2}${escaped}\\*{0,2}:\\*{0,2}\\s*([\\s\\S]+?)(?=\\n[#*]{0,2}STEP[0-9]_|$)`));
+      if (m) return m[1].trim();
+      // Try "## KEY\nvalue" heading format (value on next line)
+      m = raw.match(new RegExp(`#+\\s*${escaped}\\s*\\n([\\s\\S]+?)(?=\\n#+\\s*STEP[0-9]_|$)`));
       return m ? m[1].trim() : '';
     };
 
@@ -1572,6 +1577,10 @@ Regler:
       purpose: get(`STEP${n}_PURPOSE`),
       message: get(`STEP${n}_MSG`),
     }));
+
+    if (steps.every(s => !s.message)) {
+      console.warn('[linkedin-seq] all steps empty — raw:', raw.substring(0, 600));
+    }
 
     res.json({ success: true, data: { steps } });
   } catch (err) {
@@ -1590,46 +1599,52 @@ router.post('/:id/generate-linkedin-dm', async (req, res) => {
 
     const titleLower = step_title.toLowerCase();
     let dmType, instruction;
-    if (titleLower.includes('intro') || titleLower.includes('ref') || titleLower.includes('kort')) {
-      dmType = 'intro';
-      instruction = `Skriv ett kort intro-DM (50-80 ord) att skicka direkt efter att de accepterat anslutningsförfrågan. Bygg rapport, referera subtilt till att du följer dem för att du säljer NIS2-compliance till deras sektor. Mjuk avslutning — fråga eller observation, ingen hård pitch.`;
+    if (titleLower.includes('ref follow') || (titleLower.includes('intro') && titleLower.includes('ref'))) {
+      dmType = 'connection-request';
+      instruction = `Skriv en anslutningsförfrågan-not (MAX 30 ord). Jan har följt dem på LinkedIn sedan ett tag tillbaka. De har INTE accepterat någon förfrågan än — Jan är inte kontakt med dem. Noten ska referera till att Jan följer dem, och ge en äkta anledning att connecta kopplat till NIS2 och deras bransch. Ingen hälsningsfras, ingen pitch. Raka rör.`;
+    } else if (titleLower.includes('intro') || titleLower.includes('kort')) {
+      dmType = 'first-dm';
+      instruction = `Skriv ett första DM (50-70 ord) att skicka precis efter att de accepterat anslutningsförfrågan. Bygg rapport, referera till NIS2 i deras sektor. Mjuk avslutning med en öppen fråga. Ingen pitch.`;
     } else if (titleLower.includes('case') || titleLower.includes('artikel') || titleLower.includes('dela')) {
       dmType = 'case';
-      instruction = `Skriv ett uppföljnings-DM (50-80 ord) där du delar ett konkret case eller insikt om NIS2 i deras bransch. Ingen pitch — värde först. Avsluta med en öppen fråga.`;
+      instruction = `Skriv ett uppföljnings-DM (50-70 ord) med en konkret insikt om NIS2 i deras bransch. Ingen pitch — värde först. Avsluta med en öppen fråga.`;
     } else if (titleLower.includes('rätt person') || titleLower.includes('person')) {
       dmType = 'right-person';
-      instruction = `Skriv ett kort avslutnings-DM (40-60 ord) som frågar om de är rätt person att prata med om NIS2, eller om de kan peka dig vidare. Ärlig, direkt, ingen press.`;
+      instruction = `Skriv ett kort DM (30-50 ord) som frågar om de är rätt person att prata med om NIS2, eller om de kan peka dig vidare. Ärlig, direkt, ingen press.`;
     } else {
       dmType = 'followup';
-      instruction = `Skriv ett uppföljnings-DM (50-80 ord) relaterat till NIS2-compliance i deras bransch. Professionellt, peer-to-peer ton.`;
+      instruction = `Skriv ett uppföljnings-DM (50-70 ord) om NIS2 i deras bransch. Peer-to-peer ton.`;
     }
 
     const Anthropic = require('@anthropic-ai/sdk');
     const client = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });
     const prefix = lead.nace_code ? String(lead.nace_code).substring(0, 2) : null;
 
-    const prompt = `Du är en LinkedIn-expert som skriver korta, personliga DM:s för B2B-försäljning i Sverige.
-
-Vi säljer (Nomad Cyber): NIS2-compliance-konsulting och cybersäkerhetstjänster för svenska medelstora företag.
+    const prompt = `Du är Jan på Nomad Cyber (NIS2-compliance och cybersäkerhet, svenska medelstora företag). Skriv meddelandet i första person — "jag", inte "Jan".
 
 Prospekt:
 Företag: ${lead.company_name}, ${lead.city || 'Sverige'}
-Bransch: ${lead.nace_description || 'okänd'} (SNI ${prefix || lead.nace_code || 'okänd'})
+Bransch: ${lead.nace_description || 'okänd'}
 Anställda: ${lead.employee_range || 'okänt'}
 NIS2-registrerat: ${lead.nis2_registered ? 'JA – sektor: ' + lead.nis2_sector : 'Nej / okänt'}
 ${contact_name ? `Kontaktperson: ${contact_name}` : ''}
+${['49','50','51','52','53'].includes(prefix) ? 'Bakgrund: Jan jobbade 20 år på DHL — känner transportbranschen inifrån. Använd detta som isbrytare i anslutningsförfrågan om det passar naturligt.' : ''}
 
 Uppgift: ${instruction}
 
-Regler:
-- Svenska
-- Inga generiska fraser
-- Referera till något specifikt om företaget eller branschen
-- Peer-to-peer ton, inte säljare-till-prospekt
-- Svara med BARA meddelandet, ingen förklaring`;
+Hårda regler:
+- Skriv på naturlig, enkel svenska — som en människa skriver, inte som en broschyr
+- ALDRIG: "kul att få in fler i nätverket", "vore kul att följa varandra", "hoppas detta når dig väl", "kunde finnas anledning att ha kontakt", "koppla upp oss", "koppla ihop oss"
+- ALDRIG engelska branschtermer — översätt alltid: "manufacturing" = "tillverkning", "health" = "hälsa/vård", "energy" = "energi" osv
+- Skriv ALLTID till personen som "du/dig" — aldrig "ni/er" (för formellt)
+- Avsluta anslutningsförfrågan med "lägger till dig." eller ingenting. ALDRIG "vill gärna", ALDRIG "ha dig/er i nätverket", ALDRIG "följa ditt/ert arbete"
+- ALDRIG påstå att Jan jobbar med andra företag i branschen — det är osant
+- ALDRIG anta att de redan är kontakter om uppgiften gäller anslutningsförfrågan
+- Inga engelska ord
+- Svara med BARA meddelandet, ingen rubrik eller förklaring`;
 
     const message = await client.messages.create({
-      model: 'claude-haiku-4-5',
+      model: 'claude-sonnet-4-6',
       max_tokens: 400,
       messages: [{ role: 'user', content: prompt }],
     });

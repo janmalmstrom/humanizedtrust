@@ -2138,44 +2138,64 @@ const LINKEDIN_STEP_COLORS = ['blue', 'indigo', 'violet', 'purple'];
 
 function LinkedInSequence({ lead }) {
   const [open, setOpen] = useState(false);
-  const [extraContext, setExtraContext] = useState('');
   const [loading, setLoading] = useState(false);
-  const [result, setResult] = useState(null);
+  const [message, setMessage] = useState('');
   const [error, setError] = useState('');
-  const [copied, setCopied] = useState(null);
+  const [copied, setCopied] = useState(false);
+  const [activeStep, setActiveStep] = useState(null);
+  const resultRef = useRef(null);
+
+  // Fetch active enrollment to find current LinkedIn DM step
+  useEffect(() => {
+    api.get(`/sequences/enrollments/${lead.id}`)
+      .then(r => {
+        const enrollments = r.data?.enrollments || [];
+        const active = enrollments.find(e => e.status === 'active');
+        if (!active) return;
+        const steps = Array.isArray(active.steps) ? active.steps : JSON.parse(active.steps || '[]');
+        const step = steps[active.current_step];
+        if (step && step.channel === 'linkedin' && step.title?.toLowerCase().includes('dm')) {
+          setActiveStep(step);
+        }
+      })
+      .catch(() => {});
+  }, [lead.id]);
 
   async function handleGenerate() {
     setLoading(true);
     setError('');
+    setMessage('');
     try {
-      const r = await api.post(`/leads/${lead.id}/generate-linkedin-sequence`, { extra_context: extraContext });
-      setResult(r.data.data);
-    } catch {
-      setError('Kunde inte generera sekvensen. Försök igen.');
+      const r = await api.post(`/leads/${lead.id}/generate-linkedin-dm`, {
+        step_title: activeStep?.title || 'LinkedIn DM',
+      });
+      setMessage(r.data?.message || '');
+      setTimeout(() => resultRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' }), 100);
+    } catch (err) {
+      setError('Kunde inte generera. Försök igen. (' + (err?.message || 'okänt fel') + ')');
     } finally {
       setLoading(false);
     }
   }
 
-  function copyStep(idx, text) {
-    navigator.clipboard.writeText(text);
-    setCopied(idx);
-    setTimeout(() => setCopied(null), 2000);
+  function handleCopy() {
+    navigator.clipboard.writeText(message);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
   }
-
-  const stepBorderColors = ['border-blue-500/50', 'border-indigo-500/50', 'border-violet-500/50', 'border-purple-500/50'];
-  const stepLabelColors = ['text-blue-300', 'text-indigo-300', 'text-violet-300', 'text-purple-300'];
 
   return (
     <div className="bg-blue-950/30 border border-blue-500/20 rounded-xl">
       <button onClick={() => setOpen(o => !o)} className="w-full flex justify-between items-center px-5 py-3.5 text-left rounded-t-xl">
         <span className="flex items-center gap-2 text-blue-300 font-semibold text-sm">
-          💼 LinkedIn DM-sekvens
-          <InfoTooltip text="Generates a 4-step LinkedIn DM sequence in Swedish: Step 1 = connection request note (≤50 words, trigger-based). Step 2 = first DM (rapport, soft CTA). Step 3 = follow-up bump (new angle or insight). Step 4 = assumptive meeting ask ('Låt oss ta 15 minuter...'). Paste triggers from 🔍 Köpsignaler for best results — copy each step directly into LinkedIn." position="bottom" />
-          {result && (
-            <span className="text-xs bg-blue-500/20 text-blue-300 px-2 py-0.5 rounded-full font-normal">
-              4 steg klara
+          💼 LinkedIn DM
+          {activeStep && (
+            <span className="text-xs bg-blue-500/20 text-blue-400 px-2 py-0.5 rounded-full font-normal">
+              {activeStep.title}
             </span>
+          )}
+          {message && (
+            <span className="text-xs bg-emerald-500/20 text-emerald-400 px-2 py-0.5 rounded-full font-normal">klar</span>
           )}
         </span>
         <span className="text-blue-500 text-xs">{open ? '▲' : '▼'}</span>
@@ -2183,52 +2203,35 @@ function LinkedInSequence({ lead }) {
 
       {open && (
         <div className="px-5 pb-5 space-y-4">
-          <div className="space-y-2">
-            <label className="text-xs text-blue-400">Trigger / extra kontext (valfritt)</label>
-            <textarea
-              value={extraContext}
-              onChange={e => setExtraContext(e.target.value)}
-              placeholder="Klistra in triggers från köpsignaler, nyheter, eller annan kontext som gör kontakten relevant just nu..."
-              rows={3}
-              className="w-full bg-blue-950/40 border border-blue-500/30 rounded-lg px-3 py-2 text-sm text-white placeholder-blue-800 focus:outline-none focus:border-blue-400 resize-none"
-            />
-            <p className="text-xs text-blue-700">Tips: Kör 🔍 Köpsignaler först och klistra in triggerna här för bäst resultat</p>
-          </div>
+          {activeStep ? (
+            <p className="text-xs text-blue-400">
+              Genererar för: <span className="text-white font-medium">{activeStep.title}</span>
+            </p>
+          ) : (
+            <p className="text-xs text-slate-500">Inget aktivt LinkedIn DM-steg i sekvensen.</p>
+          )}
 
           <button
             onClick={handleGenerate}
-            disabled={loading}
+            disabled={loading || !activeStep}
             className="px-4 py-2 bg-blue-700 hover:bg-blue-600 disabled:opacity-40 text-white text-sm rounded-lg font-medium transition-colors flex items-center gap-2"
           >
             {loading ? (
-              <><span className="inline-block w-3 h-3 border border-white/40 border-t-white rounded-full animate-spin" /> Genererar sekvens...</>
-            ) : result ? '↻ Regenerera' : '💼 Generera sekvens'}
+              <><span className="inline-block w-3 h-3 border border-white/40 border-t-white rounded-full animate-spin" /> Genererar...</>
+            ) : message ? '↻ Regenerera' : '💼 Generera DM'}
           </button>
 
           {error && <p className="text-red-400 text-sm">{error}</p>}
 
-          {result && (
-            <div className="space-y-3 mt-1">
-              {result.steps.map((step, i) => (
-                <div key={i} className={`bg-slate-800/60 rounded-lg p-3 border-l-2 ${stepBorderColors[i]}`}>
-                  <div className="flex justify-between items-start mb-1.5">
-                    <div>
-                      <span className="text-xs font-bold text-slate-500 mr-2">Steg {i + 1}</span>
-                      <span className={`text-xs font-semibold ${stepLabelColors[i]}`}>{step.label}</span>
-                    </div>
-                    <button
-                      onClick={() => copyStep(i, step.message)}
-                      className="text-xs text-slate-500 hover:text-slate-300 transition-colors shrink-0 ml-2"
-                    >
-                      {copied === i ? '✓ Kopierat' : 'Kopiera'}
-                    </button>
-                  </div>
-                  {step.purpose && (
-                    <p className="text-xs text-slate-500 italic mb-2">{step.purpose}</p>
-                  )}
-                  <p className="text-sm text-slate-200 leading-relaxed whitespace-pre-wrap">{step.message}</p>
-                </div>
-              ))}
+          {message && (
+            <div ref={resultRef} className="bg-slate-800/60 rounded-lg p-4 border-l-2 border-blue-500/50 space-y-3">
+              <div className="flex justify-between items-center">
+                <span className="text-xs text-blue-300 font-medium">{activeStep?.title}</span>
+                <button onClick={handleCopy} className="text-xs text-slate-500 hover:text-slate-300 transition-colors">
+                  {copied ? '✓ Kopierat' : 'Kopiera'}
+                </button>
+              </div>
+              <p className="text-sm text-slate-200 leading-relaxed whitespace-pre-wrap">{message}</p>
             </div>
           )}
         </div>
