@@ -490,6 +490,12 @@ function TodayActions() {
               )}
             </div>
             <div className="text-xs text-slate-300 mt-0.5 font-medium">{action.step_title}</div>
+            <div className="text-xs text-slate-500 mt-0.5">
+              {action.last_contacted_at
+                ? `Last contact: ${new Date(action.last_contacted_at).toLocaleDateString('sv-SE', { day: 'numeric', month: 'short' })}`
+                : 'No contact yet'}
+              {' · '}Due: {new Date(action.due_at).toLocaleDateString('sv-SE', { day: 'numeric', month: 'short' })}
+            </div>
             <div className="flex items-center gap-3 mt-1">
               <span className={`text-xs font-medium ${cfg.color}`}>{isLinkedIn ? linkedInLabel : cfg.label}</span>
               {action.phone && action.step_channel === 'call' && (

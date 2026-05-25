@@ -105,7 +105,7 @@ REGLER (följ strikt):
 - ALDRIG börja med "Hoppas detta mejl når dig väl" eller liknande klichéer
 - Använd korrekt grammatik — "missar" INTE "misse", "behöver" INTE "behöve" etc.
 - En mening = ett påstående. Inga långa meningar.
-- CTA = Avsluta med TWO alternativ på max 2 meningar: (1) en mjuk ja/nej-fråga — EXAKT en av dessa fraser: "Är det värt några minuter?" ELLER "Vill ni veta var ni faktiskt står?", (2) länk till självbetjäningsanalys: "Hur exponerade är ni egentligen? Testa direkt: https://nis2klar.se/nis2-gap-analys.html"
+- CTA = Avsluta med en mjuk ja/nej-fråga på max 1 mening — EXAKT en av dessa fraser: "Är det värt några minuter?" ELLER "Vill ni veta var ni faktiskt står?"
 - FÖRBJUDET: skriv ALDRIG "minuter" i e-postbody (varken "15 minuter", "femton minuter", "30 minuter" etc.) — använd "några minuter" ENDAST i CTA-frågan ovan
 - ALDRIG "boka", "bokar in" eller "välj en tid"
 - Generera 2 alternativa ämnesrader, markera den bästa med ★

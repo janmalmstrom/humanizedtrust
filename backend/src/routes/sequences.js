@@ -104,7 +104,8 @@ router.get('/today', async (req, res) => {
               s.name AS sequence_name, s.steps,
               l.company_name, l.city, l.email, l.phone, l.linkedin_url,
               (SELECT json_agg(json_build_object('name', c.name, 'title', c.title, 'linkedin_url', c.linkedin_url))
-               FROM contacts c WHERE c.lead_id = l.id AND c.linkedin_url IS NOT NULL) AS vd_contacts
+               FROM contacts c WHERE c.lead_id = l.id AND c.linkedin_url IS NOT NULL) AS vd_contacts,
+              (SELECT MAX(created_at) FROM activities WHERE lead_id = l.id) AS last_contacted_at
        FROM sequence_enrollments e
        JOIN sequences s ON s.id = e.sequence_id
        JOIN discovery_leads l ON l.id = e.lead_id
@@ -145,9 +146,17 @@ router.get('/today', async (req, res) => {
           step_channel: step.channel,
           due_at: dueAt.toISOString(),
           is_overdue: dueAt < todayStart,
+          last_contacted_at: row.last_contacted_at || null,
         });
       }
     }
+
+    // Sort by last_contacted_at ASC — least recently contacted first (nulls first)
+    actions.sort((a, b) => {
+      const aTime = a.last_contacted_at ? new Date(a.last_contacted_at).getTime() : 0;
+      const bTime = b.last_contacted_at ? new Date(b.last_contacted_at).getTime() : 0;
+      return aTime - bTime;
+    });
 
     res.json({ success: true, data: { actions } });
   } catch (err) {
