@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-BKF3QH9K01"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag("js", new Date());
+    gtag("config", "G-BKF3QH9K01");
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Microsoft Sentinel: Kostnadskalkyl och vad ni faktiskt betalar | NIS2Klar</title>
+  <meta name="description" content="Sentinel prissätts per gigabyte data. Vi visar hur du beräknar din faktiska kostnad, vad som är rimligt för 200–500 anställda, och hur du optimerar utan att offra säkerhet.">
+  <meta property="og:title" content="Microsoft Sentinel: Kostnadskalkyl och vad ni faktiskt betalar">
+  <meta property="og:description" content="Sentinel prissätts per gigabyte data. Vi visar hur du beräknar din faktiska kostnad, vad som är rimligt för 200–500 anställda, och hur du optimerar utan att offra säkerhet.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #141416;
+      --card: #1c1c1f;
+      --yellow: #f5c518;
+      --white: #f0f0f0;
+      --muted: #888;
+      --red: #C61212;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: var(--bg); color: var(--white); font-family: 'Barlow', sans-serif; font-size: 19px; line-height: 1.8; }
+
+    /* Nav */
+    nav { display: flex; justify-content: space-between; align-items: center; padding: 20px 40px; border-bottom: 1px solid rgba(255,255,255,0.07); max-width: 900px; margin: 0 auto; }
+    .nav-logo { font-family: 'Poppins', sans-serif; font-weight: 900; font-size: 20px; color: var(--yellow); text-decoration: none; }
+    .nav-logo span { color: var(--white); }
+    .nav-back { color: var(--muted); text-decoration: none; font-size: 15px; }
+    .nav-back:hover { color: var(--white); }
+    .nav-cta { background: var(--yellow); color: #000; padding: 8px 18px; border-radius: 4px; text-decoration: none; font-weight: 700; font-size: 14px; font-family: 'Poppins', sans-serif; }
+
+    /* Article */
+    .article-wrap { max-width: 760px; margin: 0 auto; padding: 60px 40px; }
+    .article-category { font-size: 13px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 16px; }
+    h1 { font-family: 'Poppins', sans-serif; font-size: clamp(30px, 4vw, 44px); font-weight: 900; line-height: 1.2; margin-bottom: 24px; }
+    .article-meta { font-size: 15px; color: var(--muted); margin-bottom: 48px; padding-bottom: 24px; border-bottom: 1px solid rgba(255,255,255,0.07); }
+    h2 { font-family: 'Poppins', sans-serif; font-size: 26px; font-weight: 700; margin: 48px 0 16px; color: var(--white); }
+    h3 { font-family: 'Poppins', sans-serif; font-size: 20px; font-weight: 600; margin: 32px 0 12px; color: var(--yellow); }
+    p { margin-bottom: 22px; }
+    strong { color: var(--white); font-weight: 700; }
+    .highlight { color: var(--yellow); font-weight: 700; }
+    .danger { color: #ff6b6b; font-weight: 700; }
+    ul, ol { margin: 16px 0 24px 24px; }
+    li { margin-bottom: 12px; font-size: 19px; }
+
+    /* Callout boxes */
+    .box-warning { background: rgba(197,17,17,0.12); border-left: 4px solid var(--red); padding: 20px 24px; margin: 32px 0; border-radius: 0 4px 4px 0; }
+    .box-info { background: rgba(245,197,24,0.08); border-left: 4px solid var(--yellow); padding: 20px 24px; margin: 32px 0; border-radius: 0 4px 4px 0; }
+    .box-case { background: var(--card); border: 1px solid rgba(255,255,255,0.08); padding: 28px; margin: 40px 0; border-radius: 4px; }
+    .box-case .case-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 12px; }
+    blockquote { border-left: 3px solid var(--yellow); padding: 12px 20px; margin: 24px 0; font-style: italic; color: #ccc; }
+
+    /* CTA */
+    .cta-section { background: var(--card); border: 1px solid rgba(245,197,24,0.2); border-radius: 4px; padding: 48px 40px; margin: 64px 0 40px; text-align: center; }
+    .cta-section h2 { margin-top: 0; font-size: 26px; }
+    .cta-section p { color: #aaa; max-width: 500px; margin: 0 auto 28px; }
+    .btn-primary { display: inline-block; background: var(--yellow); color: #000; font-family: 'Poppins', sans-serif; font-weight: 800; font-size: 16px; padding: 16px 36px; border-radius: 4px; text-decoration: none; }
+    .btn-primary:hover { background: #e0b010; }
+    .cta-fine { font-size: 13px; color: var(--muted); margin-top: 16px; }
+
+    /* FAQ */
+    .faq-item { border-bottom: 1px solid rgba(255,255,255,0.07); padding: 20px 0; }
+    .faq-q { font-family: 'Poppins', sans-serif; font-weight: 600; margin-bottom: 10px; }
+    .faq-a { color: #bbb; }
+
+    /* Fine table */
+    .fine-table { width: 100%; border-collapse: collapse; margin: 24px 0; }
+    .fine-table th { background: rgba(245,197,24,0.1); color: var(--yellow); font-family: 'Poppins', sans-serif; font-size: 13px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 12px 16px; text-align: left; border-bottom: 1px solid rgba(245,197,24,0.2); }
+    .fine-table td { padding: 14px 16px; border-bottom: 1px solid rgba(255,255,255,0.05); font-size: 15px; }
+    .fine-table tr:last-child td { border-bottom: none; }
+    .fine-table .amount { color: #ff6b6b; font-weight: 700; }
+
+    /* Summary + Key Takeaway */
+    .box-summary { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; padding: 24px 28px; margin: 0 0 32px; }
+    .summary-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-bottom: 14px; }
+    .box-summary ul { margin: 0; padding-left: 20px; }
+    .box-summary li { margin-bottom: 8px; font-size: 17px; color: #ccc; }
+    .box-takeaway { background: rgba(245,197,24,0.08); border-left: 4px solid var(--yellow); padding: 20px 24px; margin: 0 0 40px; border-radius: 0 4px 4px 0; }
+    .takeaway-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 10px; }
+    .box-takeaway p { margin: 0; font-size: 18px; font-weight: 600; color: var(--white); line-height: 1.6; }
+
+    /* Footer */
+    footer { border-top: 1px solid rgba(255,255,255,0.07); padding: 32px 40px; text-align: center; font-size: 13px; color: var(--muted); max-width: 900px; margin: 0 auto; }
+    footer a { color: var(--muted); }
+
+    @media (max-width: 600px) {
+      nav, .article-wrap, footer { padding: 20px; }
+      .cta-section { padding: 32px 20px; }
+      .fine-table { font-size: 14px; }
+      .fine-table th, .fine-table td { padding: 10px 10px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="https://nis2klar.se/">NIS2<span>Klar</span></a>
+  <a class="nav-back" href="https://nis2klar.se/artiklar.html">← Alla artiklar</a>
+  <a class="nav-cta" href="https://nis2klar.se#boka">Boka samtal →</a>
+</nav>
+
+<article class="article-wrap">
+  <div class="article-category">Verktyg &amp; Teknik</div>
+  <h1>Microsoft Sentinel: Kostnadskalkyl och vad ni faktiskt betalar</h1>
+  <div class="article-meta">Uppdaterad 28 maj 2026 · Lästid: ca 8 minuter · Målgrupp: Ledning</div>
+
+  <!-- SUMMARY -->
+  <div class="box-summary">
+    <div class="summary-label">Sammanfattning</div>
+    <ul>
+      <li>Sentinel är en SIEM-lösning prissatt per gigabyte ingesterad data — kostnaderna kan eskalera snabbt om ni loggar allt.</li>
+      <li>En organisation med 200–500 anställda bör räkna med 5–15 TB ingesterad data per månad, motsvarande <strong>80 000–200 000 SEK/månad</strong>.</li>
+      <li>Kostnadsoptimering handlar inte om att offra säkerhet — det handlar om att logga rätt data och filtrera bort bruset.</li>
+      <li>Jämför med andra SIEM:er innan ni bestämmer er — totalkostnaden inkluderar licensiering, lagring, analysverktyg och support.</li>
+    </ul>
+  </div>
+
+  <!-- KEY TAKEAWAY -->
+  <div class="box-takeaway">
+    <div class="takeaway-label">Viktigaste slutsatsen</div>
+    <p>Sentinel är kraftfullt men prissättningen kräver planering. Den organisation som inte optimerar sin dataingestioning från dag ett riskerar att betala 50 % mer än nödvändigt. En gap-analys innan implementering sparar både pengar och huvudvärk.</p>
+  </div>
+
+  <!-- HOOK -->
+  <p>
+    En SIEM-lösning är en måste för NIS2-efterlevnad. Det är där du dokumenterar att du kan detektera och hantera incidenter.
+    Men vilken lösning väljer du — och framför allt: vad kommer den att kosta varje månad?
+  </p>
+
+  <p>
+    Många organisationer väljer ett SIEM-verktyg utan att först förstå hur prissättningen fungerar.
+    Sex månader senare sitter de med en kostnad de inte förutsade och en mängd data de inte behövde logga.
+    Det finns ett bättre sätt.
+  </p>
+
+  <h2>Hur prissätts ett SIEM-verktyg?</h2>
+
+  <p>
+    Ett SIEM-verktyg lagrar och analyserar loggar från hela din IT-miljö — servrar, nätverk, applikationer, brandväggar, användarautentiseringar.
+    För varje enhet som loggning aktiveras på växer datamängden.
+    Och ju mer data du lagrar och analyserar, ju högre blir kostnaden.
+  </p>
+
+  <p>
+    Det finns två grundläggande prissättningsmodeller för SIEM:
+  </p>
+
+  <h3>1. Per gigabyte ingesterad data</h3>
+  <p>
+    Det här är den vanligaste modellen och ungefär hur många molnbaserade SIEM-verktyg fungerar.
+    Du betalar för varje gigabyte data som skickas in till systemet — oavsett om du sedan använder den eller inte.
+    En stor serverpark eller en organisation med många inloggningar genererar snabbt enorma mängder loggdata.
+  </p>
+
+  <p>
+    En typisk prissättning ligger mellan <strong>2–5 USD per GB</strong>, vilket motsvarar ungefär <strong>20–50 SEK per GB</strong> i svensk miljö.
+    Ett företag som loggar 10 TB data per månad betalar alltså mellan <strong>200 000–500 000 SEK per månad</strong> — eller <strong>2,4–6 miljoner SEK årligen</strong> — bara på grund av datamängden.
+  </p>
+
+  <h3>2. Per användare eller per server</h3>
+  <p>
+    Några SIEM-verktyg använder en licensieringsmodell baserad på antalet användare eller servrar du övervakar.
+    Det kan verka förutsebar — men det dolda problemet är att den här modellen inte skaleras väl när du växer.
+    En liten organisation med 50 anställda kan ha ett paket för 200 000 SEK/år.
+    Två år senare, med 150 anställda, har kostnaden tredubblats utan att du någonstans blivit varnad om det.
+  </p>
+
+  <div class="box-info">
+    <strong>Viktigt att veta:</strong> Många SIEM-leverantörer kombinerar dessa två modeller. Du betalar både per gigabyte OCH per user eller server. Det är därför det är kritiskt att förstå prissättningen innan du undertecknar något kontraktsåtgörande.
+  </div>
+
+  <h2>Vad är en rimlig datamängd för din organisation?</h2>
+
+  <p>
+    Det finns ingen universell regel — det beror på hur många system du har, hur aktivt de är, och vilka loggar du samlar in.
+    Men för en organisation med <strong>200–500 anställda</strong> kan vi ge en rimlig riktlinje.
+  </p>
+
+  <table class="fine-table">
+    <thead>
+      <tr>
+        <th>Systemtyp</th>
+        <th>Approximativ daglig volym</th>
+        <th>Månatlig volym</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Windows Server logs (10–15 servrar)</td>
+        <td>500 GB–1 TB</td>
+        <td>15–30 TB</td>
+      </tr>
+      <tr>
+        <td>Brandväggsloggar</td>
+        <td>100–300 GB</td>
+        <td>3–9 TB</td>
+      </tr>
+      <tr>
+        <td>Office 365 / Microsoft Entra logs</td>
+        <td>50–150 GB</td>
+        <td>1,5–4,5 TB</td>
+      </tr>
+      <tr>
+        <td>Webbserver &amp; applikationsloggar</td>
+        <td>100–500 GB</td>
+        <td>3–15 TB</td>
+      </tr>
+      <tr>
+        <td><strong>Totalt estimerat</strong></td>
+        <td><strong>750 GB–2 TB</strong></td>
+        <td><strong>22,5–58,5 TB</strong></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>
+    För en typisk organisation med 250–350 anställda är <strong>5–15 TB per månad</strong> en rimlig riktlinje.
+    Det motsvarar en månadskostnad på ungefär:
+  </p>
+
+  <ul>
+    <li>5 TB × 30 USD/GB = <strong>150 000 SEK/månad</strong> (eller ~1,8 M SEK/år)</li>
+    <li>10 TB × 30 USD/GB = <strong>300 000 SEK/månad</strong> (eller ~3,6 M SEK/år)</li>
+    <li>15 TB × 30 USD/GB = <strong>450 000 SEK/månad</strong> (eller ~5,4 M SEK/år)</li>
+  </ul>
+
+  <p>
+    Dessa siffror omfattar enbart dataingestionen. I praktiken tillkommer ofta licensiering för analysverktyg, lagringskostnader för långtidsarkivering (du måste spara loggar i minst 90 dagar enligt NIS2), och supportkostnader.
+  </p>
+
+  <div class="box-warning">
+    <strong>Varning:</strong> Om du loggar allt utan filtrering kan datamängden lätt fördubblas eller tredubblas. En servermiljö som inte är optimerad kan generera 2–3 gånger mer data än nödvändigt.
+  </div>
+
+  <h2>Kostnadsoptimering — vad måste loggas?</h2>
+
+  <p>
+    NIS2-direktivet kräver <strong>Artikel 21</strong>-åtgärder. En av dem är incidenthantering — vilket innebär att du måste kunna logga, lagra och analysera säkerhetsrelevanta händelser.
+    Men det betyder inte att du måste logga allt.
+  </p>
+
+  <p>
+    En strategisk loggningspolicy sparar pengar utan att offra säkerhet:
+  </p>
+
+  <h3>Vad du MÅSTE logga (NIS2-kritisk)</h3>
+  <ul>
+    <li>Alla inloggningsförsök (framför allt misslyckade) för användaråtkomst</li>
+    <li>Administratörsåtgärder och höga privilegier</li>
+    <li>Ändringar i säkerhetspolicyer eller brandväggsregler</li>
+    <li>Försök att komma åt känslig data eller känsliga system</li>
+    <li>Nätverkstrafikloggar från brandvägg och proxy</li>
+    <li>Endpoint Detection &amp; Response (EDR) från slutpunkter</li>
+    <li>Mejl- och dataskyddshändelser</li>
+  </ul>
+
+  <h3>Vad du BÖR logga (om kapacitet finnas)</h3>
+  <ul>
+    <li>Applikationsloggar från affärkritiska system</li>
+    <li>Databaskopior och transaktioner</li>
+    <li>VPN-anslutningar och fjärrskrivbord (RDP/SSH)</li>
+    <li>DNS-förfrågningar (hjälper att identifiera dold malware-kommunikation)</li>
+  </ul>
+
+  <h3>Vad du kan utesluta (för att spara kostnad)</h3>
+  <ul>
+    <li>Verbose application debugging-loggar från utvecklingsmiljöer</li>
+    <li>Hypervisor- och virtualiserings-systemloggar (samma väsentliga data finnas i guest OS)</li>
+    <li>Dagliga backup-jobbloggar (lagra bara felloggar)</li>
+    <li>Alla HTTP-begäranden från webbutloggning (lagra bara GET/POST-fel och suspekta patterns)</li>
+  </ul>
+
+  <p>
+    En väl utformad filtreringsstrategi kan minska datamängden med 30–50 % utan att svaga säkerhetssignaler försvinner.
+  </p>
+
+  <div class="box-case">
+    <div class="case-label">Fallstudie</div>
+    <p>
+      <strong>Scenario: Medelstort teknikföretag, 280 anställda, 12 servrar, 250 slutpunkter.</strong>
+    </p>
+    <p>
+      De börjar logga allt — alla serverloggar, alla applikationshändelser, alla webbtrafik.
+      Datamängden landar på <strong>28 TB per månad</strong>, motsvarande <strong>~840 000 SEK/månad</strong>.
+    </p>
+    <p>
+      Efter en granskningsrev genomför de en NIS2-gap-analys som säger: "Ni behöver inte allt detta."
+      De trimmar sin loggning: fokus på åtkomst, administratörsåtgärder, säkerhetshändelser och nätverksmissförhållanden.
+      Ny volym: <strong>8 TB per månad</strong>, motsvarande <strong>~240 000 SEK/månad</strong>.
+    </p>
+    <p>
+      <strong>Årlig besparing:</strong> <span class="highlight">7,2 miljoner SEK</span> — utan att säkerhetsberedskapen försämras. De identifierar fortfarande incidenter snabbt och kan fortfarande uppfylla NIS2.
+    </p>
+  </div>
+
+  <h2>Jämförelse: SIEM-alternativ för 200–500-personsorganisationer</h2>
+
+  <p>
+    Det finns flera SIEM-alternativer på marknaden. Här är en sammanfattning av hur de står sig för organisationer i din storlek:
+  </p>
+
+  <h3>Molnbaserade SIEM (flexibel, skalbar)</h3>
+  <ul>
+    <li><strong>Startkostnad:</strong> 200 000–500 000 SEK/år för en medelstor miljö</li>
+    <li><strong>Fördelar:</strong> Ingen lokal hårdvara, enkelt att skala, snabb implementering, molnuppdateringar ingår</li>
+    <li><strong>Nackdelar:</strong> Högre datakostnader vid växande volym, kan bli dyrare på lång sikt för data-tungt logga</li>
+    <li><strong>Lämplig för:</strong> Organisationer utan dedikerad IT-säkerhetsgrupp, växande företag, företag som behöver snabb deployment</li>
+  </ul>
+
+  <h3>Lokal/hybrid SIEM (kontroll, högre initial investering)</h3>
+  <ul>
+    <li><strong>Startkostnad:</strong> 500 000–2 000 000 SEK/år (inkl. servrar och licenser)</li>
+    <li><strong>Fördelar:</strong> Full datakontroll, kan hantera mycket stora datamängder billigare på längre sikt, ingen molnkostnad per GB</li>
+    <li><strong>Nackdelar:</strong> Kräver IT-personal för underhåll, uppdateringar och patch-hantering, högre initial investering</li>
+    <li><strong>Lämplig för:</strong> Organisationer med stark IT-säkerhetsgrupp, företag med höga datamängder, organisationer med strikta datahemlighetskrav</li>
+  </ul>
+
+  <h3>Hybrid-SIEM (best of both)</h3>
+  <ul>
+    <li><strong>Startkostnad:</strong> 400 000–1 000 000 SEK/år</li>
+    <li><strong>Fördelar:</strong> Lokal datakontroll för känslig data, molnanalys för mindre kritisk data, flexibel skalning</li>
+    <li><strong>Nackdelar:</strong> Mer komplex att underhålla, kräver dubbel administratörskunskap</li>
+    <li><strong>Lämplig för:</strong> Organisationer i reglerade sektorer (hälsa, finans) som behöver både kontroll och skalbarhet</li>
+  </ul>
+
+  <p>
+    <strong>Rekommendation för din organisationsstorlek:</strong> Många organisationer med 200–500 anställda börjar med molnbaserad SIEM för enkelhets skull.
+    Det är rätt val om ni optimerar er loggning från starten.
+    Växer ni senare kan ni överväga hybrid-modell för att hålla ned datakostnaderna.
+  </p>
+
+  <h2>Dolda kostnader du måste räkna med</h2>
+
+  <p>
+    Licenspriset är bara en del av bilden. Här är vad som ofta glöms bort:
+  </p>
+
+  <h3>1. Integrationskostnader och konsulttimmar</h3>
+  <p>
+    En genomsnittlig SIEM-implementering tar 6–12 veckor för en medelstor organisation.
+    Konsulter kostar 2 000–3 000 SEK/timmen.
+    Du kan räkna med <strong>100–200 timmar konsultarbete</strong> innan systemet är fullt funktionellt — motsvarande <strong>200 000–600 000 SEK</strong>.
+  </p>
+
+  <h3>2. Lagring och arkivering</h3>
+  <p>
+    NIS2 kräver att du sparar loggar i minst 90 dagar (för väsentliga entiteter upp till ett år).
+    Molnlagring kostar extra. Plan för <strong>30 000–50 000 SEK/månad</strong> bara för att arkivera gamla loggar.
+  </p>
+
+  <h3>3. Utbildning av personal</h3>
+  <p>
+    Dina säkerhets- och IT-personer måste tränas på systemet.
+    Räkna med <strong>10 000–20 000 SEK per person</strong> för initial träning.
+  </p>
+
+  <h3>4. Ongoing support och underhåll</h3>
+  <p>
+    De flesta SIEM-leverantörer erbjuder support. Det kan antingen ingå i licensen eller kosta extra — ofta <strong>20–30 % av årslicensen</strong> per år.
+  </p>
+
+  <p>
+    En realistisk totalkostnad för ett fullt funktionell SIEM för en 250-personsorganisation blir:
+  </p>
+
+  <ul>
+    <li>År 1: Licensiering (300 000 SEK) + Implementering (400 000 SEK) + Lagring (400 000 SEK) = <strong>~1,1 miljoner SEK</strong></li>
+    <li>År 2+: Licensiering (300 000 SEK) + Lagring (400 000 SEK) + Support (90 000 SEK) = <strong>~790 000 SEK/år</strong></li>
+  </ul>
+
+  <div class="box-warning">
+    <strong>Vanligt misstag:</strong> Organisationer räknar bara licensprisen och glömmer bort implementering, konsulter och lagring. Det gör att budgetprocessen blir till en chock när det är dags att betala.
+  </div>
+
+  <h2>Hur optimerar du innan du implementerar?</h2>
+
+  <p>
+    Det bästa tillfället att spara pengar är innan du börjar — inte efteråt.
+  </p>
+
+  <h3>Steg 1: Gap-analys</h3>
+  <p>
+    En certifierad säkerhetsanalytiker går igenom din miljö och bedömer:
+    Vilken data behöver loggning för NIS2-efterlevnad? Vilka systemintegreringar finns redan på plats?
+    Vilka system är redundanta?
+  </p>
+
+  <p>
+    En gap-analys sparar typiskt <strong>25–40 % av den första årskostnaden</strong> för SIEM-implementering.
+  </p>
+
+  <h3>Steg 2: Definiera en loggningspolicy</h3>
+  <p>
+    Innan du implementerar ska du ha en skriftlig policy för vad som loggas och varför.
+    Policyn ska godkännas av styrelsen (Artikel 20-kraven) och sparas för tillsynsmyndigheten.
+  </p>
+
+  <h3>Steg 3: Prova i pilot</h3>
+  <p>
+    Implementera SIEM:et först för en delmängd av dina system — t.ex. en avdelning eller en geografisk plats.
+    Mät faktisk datamängd och justera innan du rullar ut till hela organisationen.
+  </p>
+
+  <h3>Steg 4: Automatisera bort bruset</h3>
+  <p>
+    Många SIEM:er låter dig definiera regler som filterbort falska positiva.
+    En enkel regel kan minska bruset med 20–30 % utan att du mister säkerhetssignaler.
+  </p>
+
+  <h2>Väl ställd fråga: Ska vi köpa eller hyra SIEM?</h2>
+
+  <div class="faq-item">
+    <div class="faq-q">Vad är skillnaden mellan att köpa ett SIEM och att hyra det via molntjänst?</div>
+    <div class="faq-a">
+      Ett köpt (lokal) SIEM innebär att ni investerar i servrar och licenser upfront.
+      Det är en högre startinvestering men ofta lägre kostnad på lång sikt (3+ år) eftersom ni äger hårdvaran.
+      En molnbaserad SIEM är en prenumerationstjänst — ni betalar månatligen eller årligen.
+      Det är mindre upfront-kostnad men kostnaden skaleras med datamängden.
+      För de flesta organisationers storlek rekommenderar vi hybrid eller molnbaserad först — den är flexiblare när ni växer eller minskar.
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">Måste vi köpa ett SIEM för att uppfylla NIS2?</div>
+    <div class="faq-a">
+      Tekniskt sett säger NIS2 inte "du måste ha SIEM". Det säger "du måste kunna detektera och hantera incidenter".
+      För små organisationer kan en kombination av enklare loggningsverktyg räcka.
+      Men för en organisation med 200+ anställda i en reglerad sektor är ett dedikerat SIEM det praktiska sättet att uppfylla kraven och dokumentera att du gör det.
+      Utan SIEM gör du dig själv sårbar inför en granskning — du kan inte bevisa att du kan detektera intrång.
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">Kan vi inte bara lita på Microsoft Defender?</div>
+    <div class="faq-a">
+      Microsoft Defender är en mycket bra endpoint detection &amp; response-lösning.
+      Men den är inte en fullskalig SIEM — den täcker bara slutpunkter.
+      Du behöver också loggar från servrar, nätverk, brandväggar, och applikationer.
+      Microsoft Defender skickar data till ett SIEM där det centraliseras och analyseras.
+      Många organisationer använder en kombination av Defender (för slutpunkter) och ett SIEM-verktyg (för centraliserad analys).
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">Hur snabbt kan vi implementera ett SIEM?</div>
+    <div class="faq-a">
+      En "quick start" av ett molnbaserat SIEM tar 2–4 veckor. En fullt utbyggd implementation med alla integreringar, alerting och automatisering tar 8–12 veckor.
+      En lokal SIEM tar längre — ofta 12–16 veckor på grund av serverprocurement och nätverkskonfiguration.
+      Men: en snabb pilot kan igång på 1–2 veckor för att visa koncept. Det är ofta värt att göra innan du fattar slutgiltiga beslut.
+    </div>
+  </div>
+
+  <!-- MICROSOFT TOOLS BOX -->
+  <div class="box-info" style="margin: 48px 0 32px;">
+    <div style="font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color: var(--yellow); margin-bottom:10px;">🔧 VERKTYG &amp; LÖSNINGAR</div>
+    <p style="margin:0; font-size:17px; color: #ddd; line-height:1.7;">Ett SIEM-verktyg som ett molnbaserat alternativ integrerat med Microsoft 365 Defender och Azure Log Analytics gör incidentdetektering och lagring enkel. En certifierad Microsoft-partner kan genomföra en kostnadsfri gap-analys för att identifiera exakt vilken datamängd ni behöver logga — och spara er 30–50 % på årskostnaden innan ni undertecknar något.</p>
+  </div>
+
+  <!-- NEWSLETTER -->
+  <div style="background:#111; border:1px solid rgba(255,255,255,0.1); border-left:3px solid #f5c518; border-radius:4px; padding:32px 36px; margin:40px 0 0; text-align:center; max-width:760px; margin-left:auto; margin-right:auto;">
+    <div style="font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:#f5c518; margin-bottom:12px;">📬 NIS2-UPPDATERINGAR</div>
+    <h3 style="font-family:'Poppins',sans-serif; font-size:20px; font-weight:800; margin:0 0 8px; color:#f0f0f0;">Ny NIS2-artikel varje vecka — direkt i inkorgen</h3>
+    <p style="color:#888; font-size:15px; margin:0 0 20px;">Ingen säljpitch. Bara konkret vägledning för VD:ar och styrelser.</p>
+    <form id="nlForm-microsoft_sentinel_kostnadskalkyl" onsubmit="submitNewsletter_microsoft_sentinel_kostnadskalkyl(event)" style="display:flex; gap:10px; flex-wrap:wrap; justify-content:center; max-width:460px; margin:0 auto;">
+      <input type="email" id="nlEmail-microsoft_sentinel_kostnadskalkyl" placeholder="din@foretag.se" required style="flex:1; min-width:200px; padding:12px 16px; background:#1c1c1f; border:1px solid rgba(255,255,255,0.15); border-radius:4px; color:#f0f0f0; font-size:15px; outline:none;" />
+      <button type="submit" id="nlSubmit-microsoft_sentinel_kostnadskalkyl" style="padding:12px 22px; background:#f5c518; color:#141416; font-weight:700; font-size:15px; border:none; border-radius:4px; cursor:pointer; white-space:nowrap;">Prenumerera gratis →</button>
+    </form>
+    <p style="font-size:12px; color:#555; margin:12px 0 0;">Du kan avprenumerera när som helst. Vi delar aldrig din e-post.</p>
+    <div id="nlThanks-microsoft_sentinel_kostnadskalkyl" style="display:none; color:#4ade80; font-size:16px; font-weight:600; margin-top:14px;">✅ Du är med! Nästa artikel kommer direkt till din inkorg.</div>
+  </div>
+
+  <!-- CTA -->
+  <div class="cta-section">
+    <h2>Vet du var din organisation står idag?</h2>
+    <p>En kostnadsfri gap-analys med en certifierad Microsoft-partner visar exakt vad ni redan har täckt — och vad som saknas.</p>
+    <a href="https://nis2klar.se#boka" class="btn-primary">Boka kostnadsfri gap-analys →</a>
+    <p class="cta-fine">SIEM kan kostar mycket eller lite — beroende på hur smart ni planerar. Gap-analysen är gratis.</p>
+  </div>
+
+</article>
+
+<div class="related-articles" style="margin:2.5rem 0 2rem;padding:1.5rem;background:#1a1a2e;border-left:4px solid #f0a500;border-radius:4px;">
+  <p style="margin:0 0 1rem;font-size:0.85rem;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:#f0a500;">Läs också</p>
+  <ul style="margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:0.5rem;">
+    <li><a href="https://nis2klar.se/artiklar/nis2-incidenthantering.html" style="color:#e0e0e0;text-decoration:none;font-size:0.95rem;">→ NIS2 Incidenthantering: Vad måste du kunna göra?</a></li>
+    <li><a href="https://nis2klar.se/artiklar/nis2-vilka-foretag-omfattas.html" style="color:#e0e0e0;text-decoration:none;font-size:0.95rem;">→ Vilka företag omfattas av NIS2?</a></li>
+    <li><a href="https://nis2klar.se/artiklar/nis2-personligt-ansvar-styrelse.html" style="color:#e0e0e0;text-decoration:none;font-size:0.95rem;">→ Styrelsens personliga ansvar enligt NIS2</a></li>
+  </ul>
+  <p style="margin:1.25rem 0 0;font-size:0.85rem;color:#aaa;">← <a href="https://nis2klar.se/" style="color:#f0a500;text-decoration:none;">NIS2Klar startsida</a> · <a href="https://nis2klar.se/artiklar.html" style="color:#f0a500;text-decoration:none;">Alla guider</a></p>
+</div>
+
+<footer>
+  © 2026 M&amp;J Trusted Marketing KB ·
+  <a href="mailto:support@trustedmarketing.se">support@trustedmarketing.se</a> · <a href="tel:+46470597003">+46 470 59 70 03</a> ·
+  <a href="https://nis2klar.se/">Tillbaka till startsidan</a> ·
+  <a href="https://nis2klar.se/privacy.html">Integritetspolicy</a>
+  <p style="margin-top:12px; font-size:11px; color: #555; line-height:1.5;">Microsoft, Microsoft 365, Azure, Sentinel och tillhörande produktnamn är varumärken som tillhör Microsoft Corporation. nis2klar.se är inte affilierat med eller godkänt av Microsoft Corporation.</p>
+</footer>
+
+<script data-cfasync="false">
+  async function submitNewsletter_microsoft_sentinel_kostnadskalkyl(e) {
+    e.preventDefault();
+    const btn = document.getElementById('nlSubmit-microsoft_sentinel_kostnadskalkyl');
+    btn.disabled = true;
+    btn.textContent = 'Skickar...';
+    const email = document.getElementById('nlEmail-microsoft_sentinel_kostnadskalkyl').value.trim();
+    try {
+      const res = await fetch('/api/newsletter/subscribe', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, source: 'artikel-microsoft_sentinel_kostnadskalkyl' })
+      });
+      const data = await res.json();
+      if (data.success) {
+        document.getElementById('nlForm-microsoft_sentinel_kostnadskalkyl').style.display = 'none';
+        document.getElementById('nlThanks-microsoft_sentinel_kostnadskalkyl').style.display = 'block';
+      } else {
+        btn.disabled = false;
+        btn.textContent = 'Prenumerera gratis →';
+      }
+    } catch {
+      btn.disabled = false;
+      btn.textContent = 'Prenumerera gratis →';
+    }
+  }
+</script>
+
+</body>
+</html>

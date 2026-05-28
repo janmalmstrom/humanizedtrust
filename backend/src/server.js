@@ -10,13 +10,21 @@ const PORT = process.env.PORT || 3004;
 
 app.use(helmet());
 app.use(cors({
-  origin: [process.env.FRONTEND_URL, 'http://localhost:5175'].filter(Boolean),
+  origin: [
+    process.env.FRONTEND_URL,
+    'http://localhost:5175',
+    'https://www.lifeandpower.se',
+    'https://lifeandpower.se',
+  ].filter(Boolean),
   credentials: true
 }));
 app.use(express.json({ limit: '10mb' }));
 app.use(morgan('combined'));
 
 const { authenticateToken } = require('./middleware/auth');
+
+// Life and Power — public review gate (no auth)
+app.use('/api/lp/review-gate', require('./routes/lp-review-gate'));
 
 // Public
 app.use('/api/auth',    require('./routes/auth'));
