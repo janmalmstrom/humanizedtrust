@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-BKF3QH9K01"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag("js", new Date());
+    gtag("config", "G-BKF3QH9K01");
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Microsoft Azure Security Center: Priser och NIS2-skydd i molnet | NIS2Klar</title>
+  <meta name="description" content="Microsoft Defender for Cloud prissätts per resurs per månad. Vad täcker det av NIS2:s krav? Kostnadskalkyl för Azure-workloads och miniminivå för efterlevnad.">
+  <meta property="og:title" content="Microsoft Azure Security Center: Priser och NIS2-skydd i molnet">
+  <meta property="og:description" content="Microsoft Defender for Cloud prissätts per resurs per månad. Vad täcker det av NIS2:s krav? Kostnadskalkyl för Azure-workloads och miniminivå för efterlevnad.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #141416;
+      --card: #1c1c1f;
+      --yellow: #f5c518;
+      --white: #f0f0f0;
+      --muted: #888;
+      --red: #C61212;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: var(--bg); color: var(--white); font-family: 'Barlow', sans-serif; font-size: 19px; line-height: 1.8; }
+
+    /* Nav */
+    nav { display: flex; justify-content: space-between; align-items: center; padding: 20px 40px; border-bottom: 1px solid rgba(255,255,255,0.07); max-width: 900px; margin: 0 auto; }
+    .nav-logo { font-family: 'Poppins', sans-serif; font-weight: 900; font-size: 20px; color: var(--yellow); text-decoration: none; }
+    .nav-logo span { color: var(--white); }
+    .nav-back { color: var(--muted); text-decoration: none; font-size: 15px; }
+    .nav-back:hover { color: var(--white); }
+    .nav-cta { background: var(--yellow); color: #000; padding: 8px 18px; border-radius: 4px; text-decoration: none; font-weight: 700; font-size: 14px; font-family: 'Poppins', sans-serif; }
+
+    /* Article */
+    .article-wrap { max-width: 760px; margin: 0 auto; padding: 60px 40px; }
+    .article-category { font-size: 13px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 16px; }
+    h1 { font-family: 'Poppins', sans-serif; font-size: clamp(30px, 4vw, 44px); font-weight: 900; line-height: 1.2; margin-bottom: 24px; }
+    .article-meta { font-size: 15px; color: var(--muted); margin-bottom: 48px; padding-bottom: 24px; border-bottom: 1px solid rgba(255,255,255,0.07); }
+    h2 { font-family: 'Poppins', sans-serif; font-size: 26px; font-weight: 700; margin: 48px 0 16px; color: var(--white); }
+    h3 { font-family: 'Poppins', sans-serif; font-size: 20px; font-weight: 600; margin: 32px 0 12px; color: var(--yellow); }
+    p { margin-bottom: 22px; }
+    strong { color: var(--white); font-weight: 700; }
+    .highlight { color: var(--yellow); font-weight: 700; }
+    .danger { color: #ff6b6b; font-weight: 700; }
+    ul, ol { margin: 16px 0 24px 24px; }
+    li { margin-bottom: 12px; font-size: 19px; }
+
+    /* Callout boxes */
+    .box-warning { background: rgba(197,17,17,0.12); border-left: 4px solid var(--red); padding: 20px 24px; margin: 32px 0; border-radius: 0 4px 4px 0; }
+    .box-info { background: rgba(245,197,24,0.08); border-left: 4px solid var(--yellow); padding: 20px 24px; margin: 32px 0; border-radius: 0 4px 4px 0; }
+    .box-case { background: var(--card); border: 1px solid rgba(255,255,255,0.08); padding: 28px; margin: 40px 0; border-radius: 4px; }
+    .box-case .case-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 12px; }
+    blockquote { border-left: 3px solid var(--yellow); padding: 12px 20px; margin: 24px 0; font-style: italic; color: #ccc; }
+
+    /* CTA */
+    .cta-section { background: var(--card); border: 1px solid rgba(245,197,24,0.2); border-radius: 4px; padding: 48px 40px; margin: 64px 0 40px; text-align: center; }
+    .cta-section h2 { margin-top: 0; font-size: 26px; }
+    .cta-section p { color: #aaa; max-width: 500px; margin: 0 auto 28px; }
+    .btn-primary { display: inline-block; background: var(--yellow); color: #000; font-family: 'Poppins', sans-serif; font-weight: 800; font-size: 16px; padding: 16px 36px; border-radius: 4px; text-decoration: none; }
+    .btn-primary:hover { background: #e0b010; }
+    .cta-fine { font-size: 13px; color: var(--muted); margin-top: 16px; }
+
+    /* FAQ */
+    .faq-item { border-bottom: 1px solid rgba(255,255,255,0.07); padding: 20px 0; }
+    .faq-q { font-family: 'Poppins', sans-serif; font-weight: 600; margin-bottom: 10px; }
+    .faq-a { color: #bbb; }
+
+    /* Fine table */
+    .fine-table { width: 100%; border-collapse: collapse; margin: 24px 0; }
+    .fine-table th { background: rgba(245,197,24,0.1); color: var(--yellow); font-family: 'Poppins', sans-serif; font-size: 13px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 12px 16px; text-align: left; border-bottom: 1px solid rgba(245,197,24,0.2); }
+    .fine-table td { padding: 14px 16px; border-bottom: 1px solid rgba(255,255,255,0.05); font-size: 15px; }
+    .fine-table tr:last-child td { border-bottom: none; }
+    .fine-table .amount { color: #ff6b6b; font-weight: 700; }
+
+    /* Summary + Key Takeaway */
+    .box-summary { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; padding: 24px 28px; margin: 0 0 32px; }
+    .summary-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-bottom: 14px; }
+    .box-summary ul { margin: 0; padding-left: 20px; }
+    .box-summary li { margin-bottom: 8px; font-size: 17px; color: #ccc; }
+    .box-takeaway { background: rgba(245,197,24,0.08); border-left: 4px solid var(--yellow); padding: 20px 24px; margin: 0 0 40px; border-radius: 0 4px 4px 0; }
+    .takeaway-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 10px; }
+    .box-takeaway p { margin: 0; font-size: 18px; font-weight: 600; color: var(--white); line-height: 1.6; }
+
+    /* Footer */
+    footer { border-top: 1px solid rgba(255,255,255,0.07); padding: 32px 40px; text-align: center; font-size: 13px; color: var(--muted); max-width: 900px; margin: 0 auto; }
+    footer a { color: var(--muted); }
+
+    @media (max-width: 600px) {
+      nav, .article-wrap, footer { padding: 20px; }
+      .cta-section { padding: 32px 20px; }
+      .fine-table { font-size: 14px; }
+      .fine-table th, .fine-table td { padding: 10px 10px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="https://nis2klar.se/">NIS2<span>Klar</span></a>
+  <a class="nav-back" href="https://nis2klar.se/artiklar.html">← Alla artiklar</a>
+  <a class="nav-cta" href="https://nis2klar.se/#boka">Boka samtal →</a>
+</nav>
+
+<article class="article-wrap">
+  <div class="article-category">Molninfrastruktur &amp; Azure</div>
+  <h1>Microsoft Azure Security Center: Priser och NIS2-skydd i molnet</h1>
+  <div class="article-meta">Uppdaterad 7 juni 2026 · Lästid: ca 8 minuter · Målgrupp: VD, styrelseledamot, CFO</div>
+
+  <!-- SUMMARY -->
+  <div class="box-summary">
+    <div class="summary-label">Sammanfattning</div>
+    <ul>
+      <li>Microsoft Defender for Cloud (tidigare Azure Security Center) prissätts per skyddad resurs per månad.</li>
+      <li>Täcker NIS2:s tekniska krav för riskhantering, incidentanalys och kontinuitet — men kräver rätt plan för full efterlevnad.</li>
+      <li>Kostnadsintervall: 8–45 euro/månad per protected instance, beroende på workload och coverage.</li>
+      <li>Miniminivå för NIS2: Se alla resultat från Secure Score, fixera kritiska fynd, dokumentera styrelsesamtycke.</li>
+      <li>Överkurs: Premium-paket för realtids-SIEM, avancerad hotanalys och multi-cloud compliance.</li>
+    </ul>
+  </div>
+
+  <!-- KEY TAKEAWAY -->
+  <div class="box-takeaway">
+    <div class="takeaway-label">Viktigaste slutsatsen</div>
+    <p>Azure Security Center täcker NIS2:s tekniska lager — men molnsäkerhet är inte samma sak som NIS2-efterlevnad. Du behöver rätt verktyg, rätt konfiguration och rätt dokumentation för att kunna visa tillsynsmyndigheten att kontrollen finns.</p>
+  </div>
+
+  <!-- HOOK -->
+  <p>
+    Din organisation kör workloads i Azure. Det är långt ifrån unikt — 63 % av svenska organisationer använder molninfrastruktur redan idag.
+    Men molnföretag måste förstå något som ofta glöms bort: <strong>molnsäkerhet är inte samma sak som NIS2-efterlevnad</strong>.
+  </p>
+
+  <p>
+    Du kan ha den bästa firewall, den bästa kryptering och den bästa intrångsdetektering i världen — men om du inte kan dokumentera det för tillsynsmyndigheten, och om det inte täcker alla tio domäner i Artikel 21, riskerar du samma böter som organisationer utan något skydd alls.
+  </p>
+
+  <p>
+    Den här artikeln förklarar vad Azure Security Center kosterar, vad det skyddar, vad det <strong>inte</strong> skyddar, och hur mycket du behöver investera för att verkligen uppfylla NIS2.
+  </p>
+
+  <h2>Vad är Microsoft Defender for Cloud?</h2>
+
+  <p>
+    Microsoft Defender for Cloud är Microsofts interna säkerhetskontrollcenter för molninfrastruktur. Det är namnbytte från det gamla "Azure Security Center" och det är den plats där alla dina Azure-resurser rapporterar om sitt säkerhetstillstånd.
+  </p>
+
+  <p>
+    Det gör ungefär tre saker:
+  </p>
+
+  <ol>
+    <li><strong>Kontinuerlig bedömning</strong> — skannar dina virtuella maskiner, databaser, lagringskonton och nätverk för att hitta felkonfigurationer och säkerhetshål.</li>
+    <li><strong>Secure Score</strong> — ger dig ett betyg (0–100) på hur väl du hanterar säkerhet över tid. Perfekt att presentera för styrelsen.</li>
+    <li><strong>Hotdetektering</strong> — integreras med dina loggdata för att hitta misstänkt aktivitet i realtid.</li>
+  </ol>
+
+  <p>
+    Det är ett verktyg för att <strong>se</strong> säkerhetsproblemen och <strong>reagera</strong> på dem. Det är inte ett verktyg för att tvinga fram säkerhet av sig självt — det beror på hur du konfigurerar Azure runt omkring det.
+  </p>
+
+  <div class="box-warning">
+    <strong>Viktigt att förstå:</strong> Azure Security Center är en del av en större sak. Det scannar resurser, men det är inte själva brandväggen, krypteringsalgoritmen eller åtkomstkontrollsystemet. Det är övervakaren som rapporterar om statusen.
+  </div>
+
+  <h2>Prismodellen — vad du faktiskt betalar</h2>
+
+  <p>
+    Microsoft Defender for Cloud använder en <strong>per-resource-per-month-modell</strong> för de flesta av sina planer. Det betyder att du betalar per skyddad instans, och priset varierar beroende på vilken typ av resurs.
+  </p>
+
+  <p>
+    Här är en typisk kostnadstabell för en organisation med Azure-workloads:
+  </p>
+
+  <table class="fine-table">
+    <thead>
+      <tr>
+        <th>Resurstyp</th>
+        <th>Pris/månad</th>
+        <th>Exempel (50 instanser)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Virtual Machine (VMs)</td>
+        <td class="amount">8–15 USD</td>
+        <td>400–750 USD/månad</td>
+      </tr>
+      <tr>
+        <td>SQL Servers</td>
+        <td class="amount">15 USD per server</td>
+        <td>750 USD/månad (50 servrar)</td>
+      </tr>
+      <tr>
+        <td>App Service Plans</td>
+        <td class="amount">10 USD per plan</td>
+        <td>500 USD/månad (50 plans)</td>
+      </tr>
+      <tr>
+        <td>Storage Accounts</td>
+        <td class="amount">0,50 USD per konto</td>
+        <td>25 USD/månad (50 konton)</td>
+      </tr>
+      <tr>
+        <td>Kubernetes Clusters</td>
+        <td class="amount">Från 15 USD/cluster</td>
+        <td>750 USD/månad (50 clusters)</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>
+    En liten organisation med 20 virtuella maskiner och 5 SQL-servrar skulle ligga på <span class="highlight">160–300 USD/månad</span> för grundläggande Defender for Cloud.
+    En medelstör organisation med 100 VMs, 20 SQL-servrar och lite app infrastructure landar på något i närheten av <span class="highlight">1 500–2 500 USD/månad</span>.
+  </p>
+
+  <p>
+    Men det är bara början. Det finns tre nivåer av coverage:
+  </p>
+
+  <h3>Plan 1: Grundläggande (kostnadsfritt)</h3>
+  <p>
+    Du får tillgång till Secure Score och grundläggande rekommendationer. Det är bättre än ingenting, men det täcker inte NIS2:s rapporteringskrav för incidenter.
+  </p>
+
+  <h3>Plan 2: Standard (per resurs/månad)</h3>
+  <p>
+    Du betalar per instans. Du får:
+  </p>
+  <ul>
+    <li>Kontinuerlig bedömning</li>
+    <li>Hotdetektering (anomalianalys)</li>
+    <li>Säkerhetshändelselogg</li>
+    <li>Rekommendationer för reparation</li>
+  </ul>
+
+  <h3>Plan 3: Premium / Extended Coverage</h3>
+  <p>
+    Du lägger till integrationer mot Sentinel (SIEM), avancerad hotanalys och multi-cloud support. Priset stiger betydligt — allt från 500–3 000 USD/månad extra beroende på mängden data och antal sensors.
+  </p>
+
+  <div class="box-info">
+    <strong>NIS2-miniminivå:</strong> Plan 2 (Standard) är ett måste. Plan 1 räcker inte för att visa tillsynsmyndigheten att du kan detektera och rapportera incidenter. Plan 3 behövs bara om du vill ha fullt automated incident response.
+  </div>
+
+  <h2>Vad täcker Azure Security Center av NIS2:s tio domäner?</h2>
+
+  <p>
+    Artikel 21 i NIS2 kräver tio säkerhetsdomar. Låt oss gå igenom dem och se vad Defender for Cloud faktiskt täcker:
+  </p>
+
+  <h3>1. Riskhantering och analys</h3>
+  <p>
+    <strong>NIS2 kräver:</strong> En dokumenterad process för att identifiera, analysera och hantera säkerhetsrisker.
+  </p>
+  <p>
+    <strong>Vad Azure Security Center ger:</strong> Secure Score visar resultat per kategori (nätverkssäkerhet, identitets- och åtkomstkontroll, dataskydd etc.). Du kan exportera detta och lägga det som grund för en riskbedömning.
+  </p>
+  <p>
+    <strong>Nivå: Partiellt täckt.</strong> Du behöver själv dokumentera riskanalysen. Security Center ger dig data — du gör analysen.
+  </p>
+
+  <h3>2. Incidenthantering</h3>
+  <p>
+    <strong>NIS2 kräver:</strong> En process för att detektera, rapportera och hantera säkerhetshändelser.
+  </p>
+  <p>
+    <strong>Vad Azure Security Center ger:</strong> Hotdetektering, alertering och integrering med incident response-verktyg. Om du kopplar Defender for Cloud till Microsoft Sentinel får du en fullständig SIEM-plattform.
+  </p>
+  <p>
+    <strong>Nivå: Väl täckt.</strong> Förutsatt att du konfigurerar rätt och etablerar eskaleringsvägar.
+  </p>
+
+  <h3>3. Business continuity och disaster recovery</h3>
+  <p>
+    <strong>NIS2 kräver:</strong> Processer för att säkerställa att kritiska tjänster kan återupptas efter ett avbrott.
+  </p>
+  <p>
+    <strong>Vad Azure Security Center ger:</strong> Rekommendationer för backup-konfiguration och redundans. Men själva backup-tjänsten är en separat produkt (Azure Backup).
+  </p>
+  <p>
+    <strong>Nivå: Delmässigt täckt.</strong> Security Center rapporterar om vad som saknas, men du måste implementera det själv.
+  </p>
+
+  <h3>4. Leverantörssäkerhet och förvaltning av tredjepartstillgångar</h3>
+  <p>
+    <strong>NIS2 kräver:</strong> Säkerhetskontroller för leverantörer och tredjepartskod.
+  </p>
+  <p>
+    <strong>Vad Azure Security Center ger:</strong> Det finns ingen inbyggd leverantörsöversikt här. Du måste själv inventera dina API:er, integreringar och externa tjänster.
+  </p>
+  <p>
+    <strong>Nivå: Inte täckt.</strong> Du behöver ett eget verktyg eller process för detta.
+  </p>
+
+  <h3>5. Kryptering</h3>
+  <p>
+    <strong>NIS2 kräver:</strong> Kryptering av data i vila och i transport.
+  </p>
+  <p>
+    <strong>Vad Azure Security Center ger:</strong> Rekommendationer för aktivering av kryptering (Storage Service Encryption, TLS för databaskommunikation etc.). Det gör inte själva krypteringen — Azure gör det, men Security Center rapporterar om det är på eller av.
+  </p>
+  <p>
+    <strong>Nivå: Väl täckt som rapportering.</strong> Implementeringen är Azure:s eget standardarbete, inte Security Centers.
+  </p>
+
+  <h3>6. Åtkomstkontroll och identitetshantering</h3>
+  <p>
+    <strong>NIS2 kräver:</strong> Autentisering, multifaktor-autentisering (MFA), rollbaserad åtkomst.
+  </p>
+  <p>
+    <strong>Vad Azure Security Center ger:</strong> Rekommendationer för MFA, disabled accounts, och svaga autentiseringsmetoder. Det scannar Azure AD och rapporterar om policy inte är på plats.
+  </p>
+  <p>
+    <strong>Nivå: Väl täckt som rapportering.</strong> Du implementerar MFA i Azure AD separat — Security Center säger till om det saknas.
+  </p>
+
+  <h3>7. Loggning och övervakning</h3>
+  <p>
+    <strong>NIS2 kräver:</strong> Dokumentering och övervakning av all åtkomst till kritiska resurser.
+  </p>
+  <p>
+    <strong>Vad Azure Security Center ger:</strong> Rapporterar om loggningen är aktiverad. Integreras med Sentinel för att analysera loggarna i realtid.
+  </p>
+  <p>
+    <strong>Nivå: Väl täckt tillsammans med Sentinel.</strong> Enbart Security Center är inte tillräckligt för denna domän.
+  </p>
+
+  <h3>8. Säkerhet vid systemutveckling och -underhåll</h3>
+  <p>
+    <strong>NIS2 kräver:</strong> Säkra kodningsmetoder, testning och deployment-processer.
+  </p>
+  <p>
+    <strong>Vad Azure Security Center ger:</strong> Nästan ingenting. Detta hör hemma i din DevOps-process, inte molninfrastrukturen.
+  </p>
+  <p>
+    <strong>Nivå: Inte täckt.</strong> Du behöver en separat code scanning-lösning eller en utvecklingsprocess.
+  </p>
+
+  <h3>9. Kryptering av känslig information</h3>
+  <p>
+    <strong>NIS2 kräver:</strong> Identifiering, klassificering och skydd av känslig data (personuppgifter, affärshemligheter).
+  </p>
+  <p>
+    <strong>Vad Azure Security Center ger:</strong> Inget inbyggt. Du behöver Microsoft Purview eller en extern DLP-lösning.
+  </p>
+  <p>
+    <strong>Nivå: Inte täckt.</strong>
+  </p>
+
+  <h3>10. Säkerhet vid inkludering av en ny fysisk eller virtuell maskinstöd</h3>
+  <p>
+    <strong>NIS2 kräver:</strong> Granskning och säker konfiguration av nya resurser.
+  </p>
+  <p>
+    <strong>Vad Azure Security Center ger:</strong> Kontinuerlig bedömning av ny infrastruktur, rätt när den deployeras. Det är ganska bra här — Security Center scannar ny infrastruktur automatiskt.
+  </p>
+  <p>
+    <strong>Nivå: Väl täckt.</strong>
+  </p>
+
+  <p style="margin-top: 32px; padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.07);">
+    <strong>Sammanfattning:</strong> Azure Security Center täcker ungefär <strong>50–60 % av NIS2:s tio domäner väl</strong>. Resten behöver du lösa med andra verktyg eller processer utanför Security Center.
+  </p>
+
+  <h2>Kostnadsanalys för en typisk Azure-miljö</h2>
+
+  <p>
+    Låt oss säga att din organisation är en viktig entitet under NIS2 med ungefär 80 anställda och en hybrid-miljö: 30 virtuella maskiner, 8 SQL-databaser, 15 app service-planer och en Azure Kubernetes Service-kluster.
+  </p>
+
+  <div class="box-case">
+    <div class="case-label">Exempel: Mittenstor Azure-miljö</div>
+    <p>
+      <strong>Infrastruktur:</strong> 30 VMs, 8 SQL-servrar, 15 App Service Plans, 1 AKS-kluster, 10 Storage Accounts
+    </p>
+    <p>
+      <strong>Defender for Cloud Standard (per resurs/månad):</strong>
+    </p>
+    <ul style="margin: 12px 0 20px 20px; font-size: 17px;">
+      <li>30 VMs × $12 = $360</li>
+      <li>8 SQL × $15 = $120</li>
+      <li>15 App Services × $10 = $150</li>
+      <li>1 AKS × $15 = $15</li>
+      <li>10 Storage × $0,50 = $5</li>
+      <li><strong>Summa/månad: ~$650 USD (~6 500 SEK/månad)</strong></li>
+    </ul>
+    <p>
+      <strong>Årsväxling med enkel planering:</strong> ~78 000 SEK
+    </p>
+    <p>
+      <strong>Med Microsoft Sentinel (för full incidenthantering):</strong> Lägg till 500–1 000 USD/månad för data ingestion och analys. Totalt då ~150 000 SEK/år.
+    </p>
+    <p>
+      <strong>Med Microsoft 365 Business Premium (för backup, endpoint protection och compliance):</strong> ~$20–30 per användare/månad = ytterligare ~19 000–28 000 SEK/år för 80 anställda.
+    </p>
+    <p>
+      <strong>Slutsumma för täckning av NIS2 av molnlager:</strong> ~200 000–250 000 SEK/år för en medelstör organisation.
+    </p>
+  </div>
+
+  <p>
+    Till det ska du lägga till kostnaden för själva Azure-infrastrukturen (compute, storage, databaser), vilken är helt skild från säkerhetskostnaden. Det här är bara för säkerhetstillåten.
+  </p>
+
+  <h2>Miniminivå för NIS2-efterlevnad</h2>
+
+  <p>
+    Vad är det minsta du måste ha på plats för att kunna säga till en tillsynsmyndighet: "Vi har genomfört NIS2-åtgärderna" när det gäller molninfrastruktur?
+  </p>
+
+  <ol>
+    <li>
+      <strong>Defender for Cloud Standard</strong> aktiverat på alla produktionsmiljöer.
+      Kosta: Det vi räknade upp ovan.
+    </li>
+    <li>
+      <strong>Secure Score på minst 60+</strong> (Microsoft rekommenderar 80+, men 60 är ett försvarbart utgångsläge).
+      Kosta: Det kostar ingen pengar att höja Secure Score, bara tid för reparation av fynd.
+    </li>
+    <li>
+      <strong>En dokumenterad incidenthanteringsplan</strong> som refererar till vad Security Center rapporterar.
+      Kosta: Intern tid eller konsultöversyn (2–5 dagar arbete).
+    </li>
+    <li>
+      <strong>Styrelsebeslut</strong> (Artikel 20) som godkänner dessa åtgärder och instruerar IT-avdelningen att implementera dem.
+      Kosta: En styrelseprotokollanteckning.
+    </li>
+    <li>
+      <strong>Utbildning av ledande personal</strong> om de säkerhetsåtgärder som implementeras.
+      Kosta: 2–4 timmar tid för VD och styrelseledamöter.
+    </li>
+  </ol>
+
+  <p>
+    Total engångskostnad (utöver de månatliga Defender-avgifterna): <strong>50 000–150 000 SEK</strong> för dokumentation och klassificering.
+  </p>
+
+  <h2>Vad är överkurs?</h2>
+
+  <p>
+    Här är vad som är nice-to-have men inte strikt NIS2-krav för molnlager:
+  </p>
+
+  <ul>
+    <li>
+      <strong>Microsoft Sentinel Premium</strong> — full SIEM med avancerad hotanalys. Du behöver det om du vill ha 24/7 monitored incident response, men det är dyrare och kräver säkerhetspersonal att tolka resultaten.
+    </li>
+    <li>
+      <strong>Microsoft Purview</strong> — datakassificering och DLP (data loss prevention). Viktigt för dataskydd, men inte strikt cloud infrastructure-säkerhet.
+    </li>
+    <li>
+      <strong>Azure Policy</strong> (driften av det, inte Self Service) — tvångskonfiguration av alla Azure-resurser enligt policy. Bra för hygien, men inte kritisk för NIS2-rapportering.
+    </li>
+  </ul>
+
+  <h2>Sveriges unika fördel: Lokala datacenter och datarezidens</h2>
+
+  <p>
+    En detalj som ofta ignoreras men som spelar roll för NIS2:
+  </p>
+
+  <p>
+    Microsoft har investerat 33,7 miljarder SEK i Sverige — bland annat för att bygga datacenterregionen "Sweden Central" med noder i Gävle, Sandviken och Staffanstorp. All drift är 100 % koldioxidfri tack vare Vattenfall.
+  </p>
+
+  <p>
+    Vad betyder det för NIS2? Om dina data står i Sverige kan du säga till tillsynsmyndigheten att <strong>datarezidens är löst</strong> — data lämnar aldrig Sverige utan uttryckligt samtycke. Det eliminerar en hel riskvektor som organisationer med data i centrala Europa måste hantera.
+  </p>
+
+  <p>
+    Det är ingenting Security Center gör åt — det är hur du deployar infrastrukturen. Men det är värt att veta.
+  </p>
+
+  <h2>Ofta ställda frågor</h2>
+
+  <div class="faq-item">
+    <div class="faq-q">Räcker grundläggande Defender for Cloud (gratis) för NIS2?</div>
+    <div class="faq-a">Nej. Den kostnadsfria nivån ger dig bara rekommendationer — den ger dig inte hotdetektering eller incidentrapportering som NIS2 kräver (Artikel 23). Du behöver Standard.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">Vi använder AWS eller Google Cloud, inte Azure. Kan vi använda något motsvarande?</div>
+    <div class="faq-a">Ja, AWS Security Hub och Google Cloud Security Command Center är motsvarigheter. De har liknande prismodeller (per resurs/månad) och täcker ungefär samma NIS2-domäner. Artikeln här fokuserar Azure, men logiken är densamma.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">Måste vi sätta Secure Score på 80+?</div>
+    <div class="faq-a">NIS2 anger inte ett specifikt måltal för Secure Score. Vi rekommenderar 60+ som försvarbar utgångspunkt, 80+ är bättre. Det viktigaste är att du kan visa att du har bedömt och prioriterat fynd och gjort de kritiska repariationerna.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">Vad händer om vi använder flera molnleverantörer?</div>
+    <div class="faq-a">Du behöver en motsvarig övervakningslösning för var och en, eller en multi-cloud SIEM (som Microsoft Sentinel) som aggregerar alerter från alla. Det blir dyrare och mer komplext att förvalta.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">Kan vi spara pengar genom att köra mindre infrastruktur eller migrera bort från Azure?</div>
+    <div class="faq-a">Om du inte behöver molninfrastrukturen kan du självfallet spara pengar genom att köra on-premises eller hybrid. Men det kommer kosta mer att bygga motsvarig säkerhet on-premises. Molnet är faktiskt ofta en kostnadseffektiv väg till NIS2-efterlevnad för mindre organisationer.</div>
+  </div>
+
+  <div class="box-info" style="margin: 48px 0 32px;">
+    <div style="font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color: var(--yellow); margin-bottom:10px;">🔧 VERKTYG &amp; LÖSNINGAR</div>
+    <p style="margin:0; font-size:17px; color: #ddd; line-height:1.7;">Microsoft Defender for Cloud (prissatt per resurs per månad) täcker cirka hälften av NIS2:s tio säkerhetskrav för molninfrastruktur. För full efterlevnad behöver du fylla luckor med Microsoft 365 Backup, Azure Backup för kontinuitet, Azure Policy för konfigurationstöd och klassiska processdokument för domäner Security Center inte täcker (utvecklingssäkerhet, leverantörsgranskning). En certifierad Microsoft-partner kan göra en gap-analys som visar exakt vilka åtgärder som behövs och vilka som redan är lösta av din befintliga Azure-miljö.</p>
+  </div>
+
+  <h2>Vägen framåt</h2>
+
+  <p>
+    Azure Security Center är ett starkt verktyg, och om du redan är investerad i Azure är det ingen bra idé att hoppa av bara för att sköta NIS2. Men du måste förstå att det är en <strong>del</strong> av lösningen, inte hela lösningen.
+  </p>
+
+  <p>
+    Nästa steg bör vara:
+  </p>
+
+  <ol>
+    <li><strong>Gör en gap-analys.</strong> Identifiera var ni är idag enligt Secure Score och de tio domänerna.</li>
+    <li><strong>Prioritera kritiska fynd.</strong> Det är bättre att ha låg täckning med högt kvalitet än att ha alla fynd lösta på låg nivå.</li>
+    <li><strong>Dokumentera för styrelsen.</strong> Visa att detta är en styrelseangälegenhet, inte en IT-fråga. Artikel 20 kräver det.</li>
+    <li><strong>Integrera med övriga säkerhetssystem.</strong> Security Center kan inte göra allt — det behöver jobba tillsammans med identitetshantering, dataskydd och processdokumentation.</li>
+  </ol>
+
+  <p>
+    Det är en resa, inte ett projekt. Men det är en resa värd att ta nu — böterna för att inte ta den är långt större än kostnaden för att göra det rätt.
+  </p>
+
+  <!-- NEWSLETTER -->
+  <div style="background:#111; border:1px solid rgba(255,255,255,0.1); border-left:3px solid #f5c518; border-radius:4px; padding:32px 36px; margin:40px 0 0; text-align:center; max-width:760px; margin-left:auto; margin-right:auto;">
+    <div style="font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:#f5c518; margin-bottom:12px;">📬 NIS2-UPPDATERINGAR</div>
+    <h3 style="font-family:'Poppins',sans-serif; font-size:20px; font-weight:800; margin:0 0 8px; color:#f0f0f0;">Ny NIS2-artikel varje vecka — direkt i inkorgen</h3>
+    <p style="color:#888; font-size:15px; margin:0 0 20px;">Ingen säljpitch. Bara konkret vägledning för VD:ar och styrelser.</p>
+    <form id="nlForm-microsoft_azure_security_center_priser" onsubmit="submitNewsletter_microsoft_azure_security_center_priser(event)" style="display:flex; gap:10px; flex-wrap:wrap; justify-content:center; max-width:460px; margin:0 auto;">
+      <input type="email" id="nlEmail-microsoft_azure_security_center_priser" placeholder="din@foretag.se" required style="flex:1; min-width:200px; padding:12px 16px; background:#1c1c1f; border:1px solid rgba(255,255,255,0.15); border-radius:4px; color:#f0f0f0; font-size:15px; outline:none;" />
+      <button type="submit" id="nlSubmit-microsoft_azure_security_center_priser" style="padding:12px 22px; background:#f5c518; color:#141416; font-weight:700; font-size:15px; border:none; border-radius:4px; cursor:pointer; white-space:nowrap;">Prenumerera gratis →</button>
+    </form>
+    <p style="font-size:12px; color:#555; margin:12px 0 0;">Du kan avprenumerera när som helst. Vi delar aldrig din e-post.</p>
+    <div id="nlThanks-microsoft_azure_security_center_priser" style="display:none; color:#4ade80; font-size:16px; font-weight:600; margin-top:14px;">✅ Du är med! Nästa artikel kommer direkt till din inkorg.</div>
+  </div>
+
+  <!-- CTA -->
+  <div class="cta-section">
+    <h2>Vet du var din molnmiljö står gällande NIS2?</h2>
+    <p>En kostnadsfri gap-analys med en certifierad Microsoft-partner visar exakt vilka Azure Security Center-fynd som behöver åtgärdas — och vilka andra områden som behöver täckas utanför molnet.</p>
+    <a href="https://nis2klar.se/#boka" class="btn-primary">Boka kostnadsfri gap-analys →</a>
+    <p class="cta-fine">Gap-analysen är gratis. Microsoft Defender for Cloud kostar från 6 500 SEK/år för en liten miljö.</p>
+  </div>
+
+</article>
+
+<div class="related-articles" style="margin:2.5rem 0 2rem;padding:1.5rem;background:#1a1a2e;border-left:4px solid #f0a500;border-radius:4px;">
+  <p style="margin:0 0 1rem;font-size:0.85rem;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:#f0a500;">Läs också</p>
+  <ul style="margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:0.5rem;">
+    <li><a href="https://nis2klar.se/artiklar/nis2-molnsakerhet-krav.html" style="color:#e0e0e0;text-decoration:none;font-size:0.95rem;">→ NIS2-krav för molninfrastruktur</a></li>
+    <li><a href="https://nis2klar.se/artiklar/nis2-incidentrapportering-24-timmar.html" style="color:#e0e0e0;text-decoration:none;font-size:0.95rem;">→ Artikel 23: Incidentrapportering inom 24 timmar</a></li>
+    <li><a href="https://nis2klar.se/artiklar/nis2-styrelsesamtycke-dokumentation.html" style="color:#e0e0e0;text-decoration:none;font-size:0.95rem;">→ Artikel 20: Styrelsedokumentation och personligt ansvar</a></li>
+  </ul>
+  <p style="margin:1.25rem 0 0;font-size:0.85rem;color:#aaa;">← <a href="https://nis2klar.se/" style="color:#f0a500;text-decoration:none;">NIS2Klar startsida</a> · <a href="https://nis2klar.se/artiklar.html" style="color:#f0a500;text-decoration:none;">Alla guider</a></p>
+</div>
+
+<footer>
+  © 2026 M&J Trusted Marketing KB ·
+  <a href="mailto:support@trustedmarketing.se">support@trustedmarketing.se</a> · <a href="tel:+46470597003">+46 470 59 70 03</a> ·
+  <a href="https://nis2klar.se/">Tillbaka till startsidan</a> ·
+  <a href="https://nis2klar.se/privacy.html">Integritetspolicy</a>
+  <p style="margin-top:12px; font-size:11px; color: #555; line-height:1.5;">Microsoft, Microsoft 365, Azure och tillhörande produktnamn är varumärken som tillhör Microsoft Corporation. nis2klar.se är inte affilierat med eller godkänt av Microsoft Corporation.</p>
+</footer>
+
+<script data-cfasync="false">
+  async function submitNewsletter_microsoft_azure_security_center_priser(e) {
+    e.preventDefault();
+    const btn = document.getElementById('nlSubmit-microsoft_azure_security_center_priser');
+    btn.disabled = true;
+    btn.textContent = 'Skickar...';
+    const email = document.getElementById('nlEmail-microsoft_azure_security_center_priser').value.trim();
+    try {
+      const res = await fetch('/api/newsletter/subscribe', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, source: 'artikel-microsoft_azure_security_center_priser' })
+      });
+      const data = await res.json();
+      if (data.success) {
+        document.getElementById('nlForm-microsoft_azure_security_center_priser').style.display = 'none';
+        document.getElementById('nlThanks-microsoft_azure_security_center_priser').style.display = 'block';
+      } else {
+        btn.disabled = false;
+        btn.textContent = 'Prenumerera gratis →';
+      }
+    } catch {
+      btn.disabled = false;
+      btn.textContent = 'Prenumerera gratis →';
+    }
+  }
+</script>
+
+</body>
+</html>

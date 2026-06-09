@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-BKF3QH9K01"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag("js", new Date());
+    gtag("config", "G-BKF3QH9K01");
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Microsoft Intune: Licenser, priser och vad som räcker för NIS2 | NIS2Klar</title>
+  <meta name="description" content="Vilka Microsoft Intune-licenser behöver du för NIS2? M365 Business Premium eller E3/E5? Kostnadsanalys för enhetshantering. Läs vad som är miniminivå för compliance.">
+  <meta property="og:title" content="Microsoft Intune: Licenser, priser och vad som räcker för NIS2">
+  <meta property="og:description" content="Vilka Microsoft Intune-licenser behöver du för NIS2? M365 Business Premium eller E3/E5? Kostnadsanalys för enhetshantering. Läs vad som är miniminivå för compliance.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #141416;
+      --card: #1c1c1f;
+      --yellow: #f5c518;
+      --white: #f0f0f0;
+      --muted: #888;
+      --red: #C61212;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: var(--bg); color: var(--white); font-family: 'Barlow', sans-serif; font-size: 19px; line-height: 1.8; }
+
+    /* Nav */
+    nav { display: flex; justify-content: space-between; align-items: center; padding: 20px 40px; border-bottom: 1px solid rgba(255,255,255,0.07); max-width: 900px; margin: 0 auto; }
+    .nav-logo { font-family: 'Poppins', sans-serif; font-weight: 900; font-size: 20px; color: var(--yellow); text-decoration: none; }
+    .nav-logo span { color: var(--white); }
+    .nav-back { color: var(--muted); text-decoration: none; font-size: 15px; }
+    .nav-back:hover { color: var(--white); }
+    .nav-cta { background: var(--yellow); color: #000; padding: 8px 18px; border-radius: 4px; text-decoration: none; font-weight: 700; font-size: 14px; font-family: 'Poppins', sans-serif; }
+
+    /* Article */
+    .article-wrap { max-width: 760px; margin: 0 auto; padding: 60px 40px; }
+    .article-category { font-size: 13px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 16px; }
+    h1 { font-family: 'Poppins', sans-serif; font-size: clamp(30px, 4vw, 44px); font-weight: 900; line-height: 1.2; margin-bottom: 24px; }
+    .article-meta { font-size: 15px; color: var(--muted); margin-bottom: 48px; padding-bottom: 24px; border-bottom: 1px solid rgba(255,255,255,0.07); }
+    h2 { font-family: 'Poppins', sans-serif; font-size: 26px; font-weight: 700; margin: 48px 0 16px; color: var(--white); }
+    h3 { font-family: 'Poppins', sans-serif; font-size: 20px; font-weight: 600; margin: 32px 0 12px; color: var(--yellow); }
+    p { margin-bottom: 22px; }
+    strong { color: var(--white); font-weight: 700; }
+    .highlight { color: var(--yellow); font-weight: 700; }
+    .danger { color: #ff6b6b; font-weight: 700; }
+    ul, ol { margin: 16px 0 24px 24px; }
+    li { margin-bottom: 12px; font-size: 19px; }
+
+    /* Callout boxes */
+    .box-warning { background: rgba(197,17,17,0.12); border-left: 4px solid var(--red); padding: 20px 24px; margin: 32px 0; border-radius: 0 4px 4px 0; }
+    .box-info { background: rgba(245,197,24,0.08); border-left: 4px solid var(--yellow); padding: 20px 24px; margin: 32px 0; border-radius: 0 4px 4px 0; }
+    .box-case { background: var(--card); border: 1px solid rgba(255,255,255,0.08); padding: 28px; margin: 40px 0; border-radius: 4px; }
+    .box-case .case-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 12px; }
+    blockquote { border-left: 3px solid var(--yellow); padding: 12px 20px; margin: 24px 0; font-style: italic; color: #ccc; }
+
+    /* CTA */
+    .cta-section { background: var(--card); border: 1px solid rgba(245,197,24,0.2); border-radius: 4px; padding: 48px 40px; margin: 64px 0 40px; text-align: center; }
+    .cta-section h2 { margin-top: 0; font-size: 26px; }
+    .cta-section p { color: #aaa; max-width: 500px; margin: 0 auto 28px; }
+    .btn-primary { display: inline-block; background: var(--yellow); color: #000; font-family: 'Poppins', sans-serif; font-weight: 800; font-size: 16px; padding: 16px 36px; border-radius: 4px; text-decoration: none; }
+    .btn-primary:hover { background: #e0b010; }
+    .cta-fine { font-size: 13px; color: var(--muted); margin-top: 16px; }
+
+    /* FAQ */
+    .faq-item { border-bottom: 1px solid rgba(255,255,255,0.07); padding: 20px 0; }
+    .faq-q { font-family: 'Poppins', sans-serif; font-weight: 600; margin-bottom: 10px; }
+    .faq-a { color: #bbb; }
+
+    /* Fine table */
+    .fine-table { width: 100%; border-collapse: collapse; margin: 24px 0; }
+    .fine-table th { background: rgba(245,197,24,0.1); color: var(--yellow); font-family: 'Poppins', sans-serif; font-size: 13px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 12px 16px; text-align: left; border-bottom: 1px solid rgba(245,197,24,0.2); }
+    .fine-table td { padding: 14px 16px; border-bottom: 1px solid rgba(255,255,255,0.05); font-size: 15px; }
+    .fine-table tr:last-child td { border-bottom: none; }
+    .fine-table .amount { color: #4ade80; font-weight: 700; }
+    .fine-table .noincluded { color: #ff6b6b; }
+
+    /* Summary + Key Takeaway */
+    .box-summary { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; padding: 24px 28px; margin: 0 0 32px; }
+    .summary-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-bottom: 14px; }
+    .box-summary ul { margin: 0; padding-left: 20px; }
+    .box-summary li { margin-bottom: 8px; font-size: 17px; color: #ccc; }
+    .box-takeaway { background: rgba(245,197,24,0.08); border-left: 4px solid var(--yellow); padding: 20px 24px; margin: 0 0 40px; border-radius: 0 4px 4px 0; }
+    .takeaway-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 10px; }
+    .box-takeaway p { margin: 0; font-size: 18px; font-weight: 600; color: var(--white); line-height: 1.6; }
+
+    /* Related articles */
+    .related-articles { margin:2.5rem 0 2rem; padding:1.5rem; background:#1a1a2e; border-left:4px solid #f0a500; border-radius:4px; }
+    .related-articles p:first-child { margin:0 0 1rem; font-size:0.85rem; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; color:#f0a500; }
+    .related-articles ul { margin:0; padding:0; list-style:none; display:flex; flex-direction:column; gap:0.5rem; }
+    .related-articles li { margin:0; }
+    .related-articles a { color:#e0e0e0; text-decoration:none; font-size:0.95rem; }
+    .related-articles a:hover { color:#f0a500; }
+    .related-articles .footer-links { margin:1.25rem 0 0; font-size:0.85rem; color:#aaa; }
+    .related-articles .footer-links a { color:#f0a500; text-decoration:none; }
+
+    /* Footer */
+    footer { border-top: 1px solid rgba(255,255,255,0.07); padding: 32px 40px; text-align: center; font-size: 13px; color: var(--muted); max-width: 900px; margin: 0 auto; }
+    footer a { color: var(--muted); }
+
+    @media (max-width: 600px) {
+      nav, .article-wrap, footer { padding: 20px; }
+      .cta-section { padding: 32px 20px; }
+      .fine-table { font-size: 14px; }
+      .fine-table th, .fine-table td { padding: 10px 10px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="https://nis2klar.se/">NIS2<span>Klar</span></a>
+  <a class="nav-back" href="https://nis2klar.se/artiklar.html">← Alla artiklar</a>
+  <a class="nav-cta" href="https://nis2klar.se/#boka">Boka samtal →</a>
+</nav>
+
+<article class="article-wrap">
+  <div class="article-category">Enhetshantering &amp; Mjukvara</div>
+  <h1>Microsoft Intune: Licenser, priser och vad som räcker för NIS2</h1>
+  <div class="article-meta">Uppdaterad 2 juni 2026 · Lästid: ca 8 minuter · Målgrupp: VD, styrelse, IT-ledning</div>
+
+  <!-- SUMMARY -->
+  <div class="box-summary">
+    <div class="summary-label">Sammanfattning</div>
+    <ul>
+      <li>Intune ingår i M365 Business Premium (från 180 kr/användare/månad) och E3/E5 (från 350 kr).</li>
+      <li>Grundlicensen täcker enhetsregistrering och MFA — men inte alla NIS2-krav på incidenthantering, backup och compliance.</li>
+      <li>Miniminivå för NIS2: M365 Business Premium + Defender for Business (eller E3/E5 med Defender).</li>
+      <li>Kostnadsanalys för 100 användare: 18 000–45 000 kr/månad beroende på mix av enheter och licenstyp.</li>
+      <li>Det finns ingen "gratis väg" till NIS2-compliance — men investeringen är mindre än minsta möjliga böter.</li>
+    </ul>
+  </div>
+
+  <!-- KEY TAKEAWAY -->
+  <div class="box-takeaway">
+    <div class="takeaway-label">Viktigaste slutsatsen</div>
+    <p>En korrekt licensstrategi för Intune sparar både pengar och juridisk exponering. Du betalar antingen nu genom rätt licensiering, eller senare genom böter upp till 10 miljoner euro.</p>
+  </div>
+
+  <!-- HOOK -->
+  <p>
+    Du är VD eller IT-chef och måste sörja för att er organisation uppfyller NIS2. Du börjar researcha "Microsoft Intune" på Google. Du hittar lösa priser, förvirrande licenspaket, och många säljare som säger "du behöver egentligen E5".
+  </p>
+
+  <p>
+    Sanningen är denna: <strong>Intune är enhetshanteringsmjukvaran, inte licensskiktet</strong>. Intune ingår i flera paket, och vilket paket du väljer avgör om du uppfyller NIS2:s krav på säkerhetskontroller — eller inte.
+  </p>
+
+  <p>
+    Den här guiden visar exakt vilka licenser som räcker, vad som saknas i grundpaketen, och hur kostnaden fördelar sig över ett år för en organisation med Windows, Mac och mobila enheter.
+  </p>
+
+  <h2>Vad är Intune egentligen — och varför behövs det för NIS2?</h2>
+
+  <p>
+    Microsoft Intune är <strong>Mobile Device Management (MDM) och Enterprise Mobility Management (EMM)</strong> — en plattform för att registrera, konfigurera och övervaka alla enheter i en organisation (Windows, Mac, iOS, Android).
+  </p>
+
+  <p>
+    NIS2, specifikt <strong>Artikel 21</strong>, kräver att organisationer implementerar säkerhetsåtgärder inom tio områden. Ett av dem är <strong>"access control"</strong> — du måste kunna kontrollera vem som får logga in på vilka enheter, och med vilka behörigheter.
+  </p>
+
+  <p>
+    Utan MDM-lösning som Intune kan du inte:
+  </p>
+
+  <ul>
+    <li>Tvinga MFA (Multi-Factor Authentication) på alla enheter</li>
+    <li>Säkerställa att kryptering är aktiverat</li>
+    <li>Fjärrvasslata en enhet om den blir stulen eller används av en avgång anställd</li>
+    <li>Rapportera till en styrelse vilka enheter som är "komplians" och vilka som brister</li>
+  </ul>
+
+  <p>
+    Intune är inte valfritt för NIS2-reglerade organisationer. Det är praktiskt taget obligatoriskt.
+  </p>
+
+  <h2>Vilka licenser innehåller Intune — och vad kostar de?</h2>
+
+  <p>
+    Intune ingår i flera Microsoft 365-paket. Här är de relevanta för NIS2:
+  </p>
+
+  <table class="fine-table">
+    <thead>
+      <tr>
+        <th>Licenspaket</th>
+        <th>Pris/användare/månad</th>
+        <th>Intune inkluderat?</th>
+        <th>Defender-nivå</th>
+        <th>NIS2-lämplig?</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>M365 Business Basic</strong></td>
+        <td>150 kr</td>
+        <td class="amount">Ja</td>
+        <td>Defender for Business (begränsad)</td>
+        <td class="noincluded">Nej — för lite</td>
+      </tr>
+      <tr>
+        <td><strong>M365 Business Standard</strong></td>
+        <td>180 kr</td>
+        <td class="amount">Ja</td>
+        <td>Defender for Business (begränsad)</td>
+        <td class="noincluded">Nej — för lite</td>
+      </tr>
+      <tr>
+        <td><strong>M365 Business Premium</strong></td>
+        <td>240 kr</td>
+        <td class="amount">Ja</td>
+        <td>Defender for Business (fullständig)</td>
+        <td class="amount">Ja* — miniminivå</td>
+      </tr>
+      <tr>
+        <td><strong>Microsoft 365 E3</strong></td>
+        <td>350 kr</td>
+        <td class="amount">Ja</td>
+        <td>Defender for Office 365</td>
+        <td class="amount">Ja — mellanläge</td>
+      </tr>
+      <tr>
+        <td><strong>Microsoft 365 E5</strong></td>
+        <td>650 kr</td>
+        <td class="amount">Ja</td>
+        <td>Defender for Office 365 + Defender for Endpoint</td>
+        <td class="amount">Ja — komplett</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="box-info">
+    <strong>Observera:</strong> Priserna är ungefärliga svenska listandepriser för 2026. Volymrabatter kan gälla för större organisationer. E3/E5 är för större företag (företagslicenser, inte "small business").
+  </div>
+
+  <h2>Miniminivå för NIS2 — M365 Business Premium</h2>
+
+  <p>
+    Om du är en mindre-till-medelstor organisation (under 250 anställda) är <strong>Microsoft 365 Business Premium</strong> miniminivån för NIS2-compliance.
+  </p>
+
+  <p>
+    Det du får i M365 Business Premium:
+  </p>
+
+  <ul>
+    <li><strong>Intune:</strong> fullständig MDM-funktionalitet</li>
+    <li><strong>Defender for Business:</strong> endpoint-skydd med malware- och behavioranalys</li>
+    <li><strong>Microsoft Entra ID (tidigare Azure AD):</strong> åtkomstkontroll och MFA</li>
+    <li><strong>Exchange Online:</strong> e-postkryptering</li>
+    <li><strong>OneDrive & SharePoint:</strong> molnlagring med filkryptering</li>
+    <li><strong>Microsoft 365 Defender för småföretag:</strong> säkerhetsövervakning</li>
+  </ul>
+
+  <p>
+    Det du INTE får i M365 Business Premium (och som större organisationer behöver):
+  </p>
+
+  <ul>
+    <li><strong>Sentinel:</strong> det avancerade SIEM-systemet för incidentdetektering</li>
+    <li><strong>Advanced Threat Analytics:</strong> beteendeanalys för användare och enheter</li>
+    <li><strong>DLP (Data Loss Prevention) fullversion:</strong> endast Basic i Business-paketet</li>
+  </ul>
+
+  <p>
+    För en organisation som måste rapportera till en styrelse eller en tillsynsmyndighet räcker Business Premium. För en större organisation eller en med höga datasäkerhetskrav är E3/E5 nödvändigt.
+  </p>
+
+  <div class="box-case">
+    <div class="case-label">Fallstudie</div>
+    <p>
+      <strong>Scenario: Medelstort IT-konsultföretag, 75 anställda, blandad enhetsbas (60 Windows, 10 Mac, 5 iPad).</strong>
+    </p>
+    <p>
+      Klassas som viktig entitet under NIS2. VD väljer M365 Business Premium för alla 75 användare = <strong>240 kr × 75 × 12 = 216 000 kr/år</strong>.
+      Intune ingår redan — inget separat köp krävs.
+    </p>
+    <p>
+      Tack vare Intune kan organisationen:
+    </p>
+    <ul style="margin-left: 20px;">
+      <li>Tvinga all-access MFA genom Entra ID Conditional Access</li>
+      <li>Kryptera alla enheter automatiskt</li>
+      <li>Fjärrviska iOS-enhet när anställd slutar</li>
+      <li>Rapportera compliance-status till styrelsen varje månad</li>
+      <li>Integrera med på-plats Windows Server för hybridmiljö</li>
+    </ul>
+    <p>
+      <strong>Utfall:</strong> Genomfört NIS2-efterlevnad för enhetshantering till en total treårs-prishållare på cirka <span class="highlight">648 000 kr</span>. Jämfört med minsta möjliga böter (7–10 miljoner euro) är investeringen försumbar.
+    </p>
+  </div>
+
+  <h2>Vad kostar en fullt NIS2-kompatibel installation för en organisation med 100 användare?</h2>
+
+  <p>
+    Låt oss bryta ned kostnaden för en realistisk scenario: en organisation med 100 användare, ungefär 70 Windows-datorer, 20 Mac, och 10 mobila enheter.
+  </p>
+
+  <h3>Scenario 1: Business Premium (för småföretag)</h3>
+
+  <ul>
+    <li>M365 Business Premium: 240 kr × 100 × 12 = <strong>288 000 kr/år</strong></li>
+    <li>Intune ingår</li>
+    <li>Defender for Business ingår</li>
+    <li>Enkel gap-analys och initialt setup: ~30 000 kr (engångskostnad)</li>
+  </ul>
+
+  <p>
+    <strong>Totalt år 1: 318 000 kr</strong> | Återkommande: 288 000 kr/år
+  </p>
+
+  <h3>Scenario 2: Microsoft 365 E3 (för större organisationer eller blandade miljöer)</h3>
+
+  <ul>
+    <li>M365 E3: 350 kr × 100 × 12 = <strong>420 000 kr/år</strong></li>
+    <li>Intune ingår</li>
+    <li>Defender for Office 365 ingår (mer avancerad e-postsäkerhet)</li>
+    <li>Gap-analys + certifierad setup: ~45 000 kr (engångskostnad)</li>
+  </ul>
+
+  <p>
+    <strong>Totalt år 1: 465 000 kr</strong> | Återkommande: 420 000 kr/år
+  </p>
+
+  <h3>Scenario 3: Microsoft 365 E5 (för större organisationer med höga säkerhetskrav)</h3>
+
+  <ul>
+    <li>M365 E5: 650 kr × 100 × 12 = <strong>780 000 kr/år</strong></li>
+    <li>Intune ingår</li>
+    <li>Defender for Endpoint ingår (EDR — Endpoint Detection & Response)</li>
+    <li>Advanced Threat Analytics</li>
+    <li>Sentinel-integrering (separat, ~3 000 kr/månad för denna skala)</li>
+    <li>Gap-analys + arkitektur-konsultation: ~60 000 kr (engångskostnad)</li>
+  </ul>
+
+  <p>
+    <strong>Totalt år 1: 896 000 kr</strong> | Återkommande: 816 000 kr/år (ink. Sentinel)
+  </p>
+
+  <div class="box-warning">
+    <strong>Observera:</strong> Dessa priser inkluderar inte färre tjänster som backup (Azure Backup), DNS-säkerhet eller specialiserad incidenthantering. För större organisationer är dessa ofta nödvändiga tillägg.
+  </div>
+
+  <h2>Vad ingår INTE i de grundläggande Intune-licensen?</h2>
+
+  <p>
+    Det är lika viktigt att veta vad som saknas:
+  </p>
+
+  <h3>1. Sentinel (Cloud-based SIEM)</h3>
+  <p>
+    <strong>Ingår i:</strong> Inte i något Microsoft 365-paket. Det är en separat Azure-tjänst.
+    <strong>Kostnad:</strong> ~100 kr per GB loggdata (pay-as-you-go). En organisation på 100 användare producerar typiskt 5–15 GB loggdata per dag.
+    <strong>NIS2-relevans:</strong> Artikel 23 (incidenthantering) kräver att du kan detektera intrång och rapportera dem. Sentinel är verktyget för detta på större skala.
+  </p>
+
+  <h3>2. Azure Backup (för servrar och virtuella maskiner)</h3>
+  <p>
+    <strong>Ingår i:</strong> Inte i något consumer Microsoft 365-paket.
+    <strong>Kostnad:</strong> Från ~200 kr/server/månad beroende på lagringsstorlek.
+    <strong>NIS2-relevans:</strong> Artikel 21 (riskhantering) och Artikel 17 (kontinuitetsplanering) kräver backup. Intune hanterar enhet-backup, men servrar och databaser kräver Azure Backup eller motsvarande.
+  </p>
+
+  <h3>3. Microsoft Purview (Data Loss Prevention, Records Management)</h3>
+  <p>
+    <strong>Ingår i:</strong> Endast E5 (begränsad) och Purview Premium (separat licensiering).
+    <strong>Kostnad:</strong> Från ~50 kr/användare/månad för Purview-tillägg.
+    <strong>NIS2-relevans:</strong> Om du hanterar känslig data (personuppgifter, klinisk data, finansiell data) behöver du klassificering och skydd. Purview gör detta automatiskt.
+  </p>
+
+  <h3>4. Microsoft Entra ID Governance (avancerad åtkomstkontroll)</h3>
+  <p>
+    <strong>Ingår i:</strong> Inte i Business Premium. Endast E5 och som separat licensiering.
+    <strong>Kostnad:</strong> Från ~100 kr/användare/månad.
+    <strong>NIS2-relevans:</strong> Artikel 21 (access control) kräver regelbundna åtkomsträttighetsgranskningar. Entra ID Governance automatiserar detta.
+  </p>
+
+  <div class="box-info">
+    <strong>Huvudregel:</strong> Intune täcker enhetssäkerhet och endpoint-hantering. Men NIS2 kräver även server-backup, logganalys och datakryptering. Du behöver ofta ett paket på flera tjänster, inte bara Intune.
+  </div>
+
+  <h2>Kostnadsanalys: Vad blir det totalt?</h2>
+
+  <p>
+    För en organisation med 100 användare, realistisk mix av enheter, och plan att uppfylla alla tio NIS2-säkerhetsdomäner:
+  </p>
+
+  <table class="fine-table">
+    <thead>
+      <tr>
+        <th>Komponent</th>
+        <th>Business Premium</th>
+        <th>E3</th>
+        <th>E5 + Sentinel</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Användarlicanser</strong></td>
+        <td>288 000</td>
+        <td>420 000</td>
+        <td>780 000</td>
+      </tr>
+      <tr>
+        <td><strong>Sentinel/SIEM</strong></td>
+        <td class="noincluded">Ej inkluderat</td>
+        <td>~45 000</td>
+        <td>~60 000</td>
+      </tr>
+      <tr>
+        <td><strong>Azure Backup (2 servrar)</strong></td>
+        <td>~4 800</td>
+        <td>~4 800</td>
+        <td>~4 800</td>
+      </tr>
+      <tr>
+        <td><strong>Purview DLP (om personuppgifter)</strong></td>
+        <td class="noincluded">Ej inkluderat</td>
+        <td>~60 000</td>
+        <td>Ingår (E5)</td>
+      </tr>
+      <tr>
+        <td><strong>Setup &amp; gap-analys (år 1)</strong></td>
+        <td>30 000</td>
+        <td>45 000</td>
+        <td>60 000</td>
+      </tr>
+      <tr>
+        <td><strong>TOTALT ÅR 1</strong></td>
+        <td class="amount">322 800</td>
+        <td class="amount">574 800</td>
+        <td class="amount">904 800</td>
+      </tr>
+      <tr>
+        <td><strong>ÅTERKOMMANDE ÅR 2–3</strong></td>
+        <td class="amount">288 000</td>
+        <td class="amount">529 800</td>
+        <td class="amount">844 800</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>
+    <strong>Slutsats för 3-årsperiod:</strong>
+  </p>
+
+  <ul>
+    <li><strong>Business Premium:</strong> 898 800 kr totalt (genomsnitt 299 600 kr/år)</li>
+    <li><strong>E3:</strong> 1 634 400 kr totalt (genomsnitt 544 800 kr/år)</li>
+    <li><strong>E5 + Sentinel:</strong> 2 594 400 kr totalt (genomsnitt 864 800 kr/år)</li>
+  </ul>
+
+  <p>
+    Jämför detta med minsta möjliga böter vid NIS2-överträdelse: <strong>7 miljoner euro</strong> för en viktig entitet. Investeringen i rätt licens är cirka 1 % av böterna.
+  </p>
+
+  <h2>Vad behöver små organisationer kontra större?</h2>
+
+  <h3>Små organisationer (50–100 anställda)</h3>
+  <p>
+    <strong>Rekommendation:</strong> M365 Business Premium
+    <strong>Räcker för:</strong> Intune-enhetshantering, MFA, e-postkryptering, OneDrive-backup
+    <strong>Räcker INTE för:</strong> Avancerad hotdetektering, centraliserad logganalys, övervakning av användarbeteende
+  </p>
+
+  <h3>Medelstor organisation (100–500 anställda)</h3>
+  <p>
+    <strong>Rekommendation:</strong> M365 E3 + tillägg
+    <strong>Räcker för:</strong> Allt ovan plus Defender for Office 365, DLP-grundfunktioner
+    <strong>Räcker INTE för:</strong> Avancerad Sentinel-analys, Entra ID Governance
+  </p>
+
+  <h3>Större organisation (500+ anställda)</h3>
+  <p>
+    <strong>Rekommendation:</strong> M365 E5 + Sentinel + Entra ID Governance
+    <strong>Räcker för:</strong> Fullständig stackning med avancerad hotdetektering, beteendanalys, centraliserad loggning
+    <strong>Räcker även för:</strong> Regulatorsiska krav och externa audits
+  </p>
+
+  <h2>Windows, Mac och mobila enheter — finns det skillnader i licensomfattningen?</h2>
+
+  <p>
+    Bra fråga. Svaret är: <strong>nej, inte i licensomfattningen — men ja i praktiken</strong>.
+  </p>
+
+  <p>
+    Intune-licensen täcker alla enhetstyper: Windows, macOS, iOS, Android, och till och med Linux (begränsat). Men Defender-skyddet är inte lika omfattande på alla:
+  </p>
+
+  <ul>
+    <li><strong>Windows:</strong> Fullständig Defender-stack (malware, behavioranalys, ransomware-skydd)</li>
+    <li><strong>macOS:</strong> Defender för Mac (malware, men lite svagare behavioral-analys än Windows)</li>
+    <li><strong>iOS:</strong> Defender för iOS (malware-scanning, phishing-skydd)</li>
+    <li><strong>Android:</strong> Defender för Android (malware-scanning, app-säkerhet)</li>
+  </ul>
+
+  <p>
+    För NIS2 räcker detta. Men om du kör en heterogen miljö — mycket Mac, mycket Android — kanske du behöver tredjeparts-lösningar för att täcka luckor.
+  </p>
+
+  <div class="box-info">
+    <strong>Praktisk observation:</strong> En organisation med 80 % Windows och 20 % Mac kan klara sig med Business Premium. En med 50/50 Mac/Windows kanske behöver E3 för att få tillräcklig täckning och reporting av Mac-miljön.
+  </div>
+
+  <h2>De vanligaste misstagen — och hur du undviker dem</h2>
+
+  <div class="faq-item">
+    <div class="faq-q">Misstag 1: "Vi köper bara M365 Business Basic för att spara pengar"</div>
+    <div class="faq-a">Business Basic saknar Defender for Business fullversion. Du får inte åtkomstkontroll med samma styrka, och du kan inte rapportera compliance-status till styrelsen. Under en granskning kommer detta att räknas som en brist. Det är pengar sparade på fel ställe.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">Misstag 2: "Vi tror Intune löser allt"</div>
+    <div class="faq-a">Intune är MDM, inte en komplett säkerhetslösning. Du behöver också MFA (Entra ID), malware-skydd (Defender), incidentdetektering (Sentinel för större organisationer), och backup. Intune är en del av pusslet, inte hela.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">Misstag 3: "Vi kan vänta med Sentinel tills vi blir granskade"</div>
+    <div class="faq-a">Du kan inte. Artikel 23 (incidenthantering) kräver att du kan detektera och rapportera allvarliga incidenter inom 72 timmar. Utan ett SIEM-verktyg som Sentinel kan du inte göra det. Det måste vara på plats innan något händer.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">Misstag 4: "Vi kan väl bara licensiera ledningen?"</div>
+    <div class="faq-a">Nej. Intune måste täcka alla enheter som kan komma åt känslig data — vilket för de flesta organisationer betyder alla anställda. Att licensiera bara ledningen skapar en säkerhetslucka och räknas som bristfällig Artikel 21-implementation.</div>
+  </div>
+
+  <h2>En realistisk implementeringstidslinje</h2>
+
+  <p>
+    Du har inte världens tid, och kostnaden stiger ju längre du väntar. Här är en typisk tidslinje:
+  </p>
+
+  <ul>
+    <li><strong>Vecka 1–2:</strong> Licensanalys och gap-analys (kostnadsfritt från certifierad partner)</li>
+    <li><strong>Vecka 3–4:</strong> Inköp av licenser och setup av Intune i pilotgrupp (10–20 personer)</li>
+    <li><strong>Vecka 5–8:</strong> Utökning till hela organisationen, integration med on-prem AD</li>
+    <li><strong>Vecka 9–10:</strong> Testa säkerhetsåtgärder (MFA, device encryption, remote wipe)</li>
+    <li><strong>Vecka 11–12:</strong> Styrelsepresentation av compliance-status, dokumentation</li>
+  </ul>
+
+  <p>
+    En mindre organisation kan göra detta på 8–10 veckor. En större kan behöva 16–20 veckor.
+  </p>
+
+  <h2>Verktyg & lösningar för att komma igång</h2>
+
+  <div class="box-info" style="margin: 48px 0 32px;">
+    <div style="font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color: var(--yellow); margin-bottom:10px;">🔧 VERKTYG &amp; LÖSNINGAR</div>
+    <p style="margin:0; font-size:17px; color: #ddd; line-height:1.7;">Microsoft Intune tillsammans med Entra ID Conditional Access, Defender for Business (eller Defender for Endpoint i E5) och Azure Backup bildar grunden för NIS2-enhetshantering. En certifierad Microsoft-partner kan genomföra en kostnadsfri gap-analys som visar exakt vilka licenser du behöver — och vad som redan är täckt.</p>
+  </div>
+
+  <!-- NEWSLETTER -->
+  <div style="background:#111; border:1px solid rgba(255,255,255,0.1); border-left:3px solid #f5c518; border-radius:4px; padding:32px 36px; margin:40px 0 0; text-align:center; max-width:760px; margin-left:auto; margin-right:auto;">
+    <div style="font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:#f5c518; margin-bottom:12px;">📬 NIS2-UPPDATERINGAR</div>
+    <h3 style="font-family:'Poppins',sans-serif; font-size:20px; font-weight:800; margin:0 0 8px; color:#f0f0f0;">Ny NIS2-artikel varje vecka — direkt i inkorgen</h3>
+    <p style="color:#888; font-size:15px; margin:0 0 20px;">Ingen säljpitch. Bara konkret vägledning för VD:ar och styrelser.</p>
+    <form id="nlForm-microsoft_intune_licenser_priser_nis2" onsubmit="submitNewsletter_microsoft_intune_licenser_priser_nis2(event)" style="display:flex; gap:10px; flex-wrap:wrap; justify-content:center; max-width:460px; margin:0 auto;">
+      <input type="email" id="nlEmail-microsoft_intune_licenser_priser_nis2" placeholder="din@foretag.se" required
+             style="flex:1; min-width:200px; padding:12px 16px; background:#1c1c1f; border:1px solid rgba(255,255,255,0.15); border-radius:4px; color:#f0f0f0; font-size:15px; outline:none;" />
+      <button type="submit" id="nlSubmit-microsoft_intune_licenser_priser_nis2"
+              style="padding:12px 22px; background:#f5c518; color:#141416; font-weight:700; font-size:15px; border:none; border-radius:4px; cursor:pointer; white-space:nowrap;">
+        Prenumerera gratis →
+      </button>
+    </form>
+    <p style="font-size:12px; color:#555; margin:12px 0 0;">Du kan avprenumerera när som helst. Vi delar aldrig din e-post.</p>
+    <div id="nlThanks-microsoft_intune_licenser_priser_nis2" style="display:none; color:#4ade80; font-size:16px; font-weight:600; margin-top:14px;">✅ Du är med! Nästa artikel kommer direkt till din inkorg.</div>
+  </div>
+
+  <!-- CTA -->
+  <div class="cta-section">
+    <h2>Vet du vilka licenser som räcker för din organisation?</h2>
+    <p>En kostnadsfri gap-analys från en certifierad Microsoft-partner visar exakt vilka licenser du behöver — och vad som redan täcks.</p>
+    <a href="https://nis2klar.se/#boka" class="btn-primary">Boka kostnadsfri gap-analys →</a>
+    <p class="cta-fine">Gap-analysen är gratis. Böterna för brister är upp till 10 miljoner euro.</p>
+  </div>
+
+</article>
+
+<div class="related-articles">
+  <p>Läs också</p>
+  <ul>
+    <li><a href="https://nis2klar.se/artiklar.html">→ Artikel 21: De tio obligatoriska säkerhetsåtgärderna</a></li>
+    <li><a href="https://nis2klar.se/artiklar.html">→ MFA och åtkomstkontroll under NIS2</a></li>
+    <li><a href="https://nis2klar.se/artiklar.html">→ Incidenthantering: Artikel 23 och rapporteringsplikten</a></li>
+  </ul>
+  <p class="footer-links">← <a href="https://nis2klar.se/">NIS2Klar startsida</a> · <a href="https://nis2klar.se/artiklar.html">Alla guider</a></p>
+</div>
+
+<footer>
+  © 2026 M&J Trusted Marketing KB ·
+  <a href="mailto:support@trustedmarketing.se">support@trustedmarketing.se</a> · <a href="tel:+46470597003">+46 470 59 70 03</a> ·
+  <a href="https://nis2klar.se/">Tillbaka till startsidan</a> ·
+  <a href="https://nis2klar.se/privacy.html">Integritetspolicy</a>
+  <p style="margin-top:12px; font-size:11px; color: #555; line-height:1.5;">Microsoft, Microsoft 365, Azure, Intune och tillhörande produktnamn är varumärken som tillhör Microsoft Corporation. nis2klar.se är inte affilierat med eller godkänt av Microsoft Corporation.</p>
+</footer>
+
+<script data-cfasync="false">
+  async function submitNewsletter_microsoft_intune_licenser_priser_nis2(e) {
+    e.preventDefault();
+    const btn = document.getElementById('nlSubmit-microsoft_intune_licenser_priser_nis2');
+    btn.disabled = true;
+    btn.textContent = 'Skickar...';
+    const email = document.getElementById('nlEmail-microsoft_intune_licenser_priser_nis2').value.trim();
+    try {
+      const res = await fetch('/api/newsletter/subscribe', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, source: 'artikel-microsoft_intune_licenser_priser_nis2' })
+      });
+      const data = await res.json();
+      if (data.success) {
+        document.getElementById('nlForm-microsoft_intune_licenser_priser_nis2').style.display = 'none';
+        document.getElementById('nlThanks-microsoft_intune_licenser_priser_nis2').style.display = 'block';
+      } else {
+        btn.disabled = false;
+        btn.textContent = 'Prenumerera gratis →';
+      }
+    } catch {
+      btn.disabled = false;
+      btn.textContent = 'Prenumerera gratis →';
+    }
+  }
+</script>
+
+</body>
+</html>

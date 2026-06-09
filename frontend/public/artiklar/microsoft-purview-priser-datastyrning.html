@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-BKF3QH9K01"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag("js", new Date());
+    gtag("config", "G-BKF3QH9K01");
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Microsoft Purview: Priser och vad som krävs för NIS2-dataskydd | NIS2Klar</title>
+  <meta name="description" content="Vad kostar Microsoft Purview? Vad ingår i E3, E5 och add-ons? Kostnadsanalys för NIS2-dataskydd och Microsoft 365-licenser för svenska företag.">
+  <meta property="og:title" content="Microsoft Purview: Priser och vad som krävs för NIS2-dataskydd">
+  <meta property="og:description" content="Vad kostar Microsoft Purview? Vad ingår i E3, E5 och add-ons? Kostnadsanalys för NIS2-dataskydd och Microsoft 365-licenser för svenska företag.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #141416;
+      --card: #1c1c1f;
+      --yellow: #f5c518;
+      --white: #f0f0f0;
+      --muted: #888;
+      --red: #C61212;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: var(--bg); color: var(--white); font-family: 'Barlow', sans-serif; font-size: 19px; line-height: 1.8; }
+
+    /* Nav */
+    nav { display: flex; justify-content: space-between; align-items: center; padding: 20px 40px; border-bottom: 1px solid rgba(255,255,255,0.07); max-width: 900px; margin: 0 auto; }
+    .nav-logo { font-family: 'Poppins', sans-serif; font-weight: 900; font-size: 20px; color: var(--yellow); text-decoration: none; }
+    .nav-logo span { color: var(--white); }
+    .nav-back { color: var(--muted); text-decoration: none; font-size: 15px; }
+    .nav-back:hover { color: var(--white); }
+    .nav-cta { background: var(--yellow); color: #000; padding: 8px 18px; border-radius: 4px; text-decoration: none; font-weight: 700; font-size: 14px; font-family: 'Poppins', sans-serif; }
+
+    /* Article */
+    .article-wrap { max-width: 760px; margin: 0 auto; padding: 60px 40px; }
+    .article-category { font-size: 13px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 16px; }
+    h1 { font-family: 'Poppins', sans-serif; font-size: clamp(30px, 4vw, 44px); font-weight: 900; line-height: 1.2; margin-bottom: 24px; }
+    .article-meta { font-size: 15px; color: var(--muted); margin-bottom: 48px; padding-bottom: 24px; border-bottom: 1px solid rgba(255,255,255,0.07); }
+    h2 { font-family: 'Poppins', sans-serif; font-size: 26px; font-weight: 700; margin: 48px 0 16px; color: var(--white); }
+    h3 { font-family: 'Poppins', sans-serif; font-size: 20px; font-weight: 600; margin: 32px 0 12px; color: var(--yellow); }
+    p { margin-bottom: 22px; }
+    strong { color: var(--white); font-weight: 700; }
+    .highlight { color: var(--yellow); font-weight: 700; }
+    .danger { color: #ff6b6b; font-weight: 700; }
+    ul, ol { margin: 16px 0 24px 24px; }
+    li { margin-bottom: 12px; font-size: 19px; }
+
+    /* Callout boxes */
+    .box-warning { background: rgba(197,17,17,0.12); border-left: 4px solid var(--red); padding: 20px 24px; margin: 32px 0; border-radius: 0 4px 4px 0; }
+    .box-info { background: rgba(245,197,24,0.08); border-left: 4px solid var(--yellow); padding: 20px 24px; margin: 32px 0; border-radius: 0 4px 4px 0; }
+    .box-case { background: var(--card); border: 1px solid rgba(255,255,255,0.08); padding: 28px; margin: 40px 0; border-radius: 4px; }
+    .box-case .case-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 12px; }
+    blockquote { border-left: 3px solid var(--yellow); padding: 12px 20px; margin: 24px 0; font-style: italic; color: #ccc; }
+
+    /* CTA */
+    .cta-section { background: var(--card); border: 1px solid rgba(245,197,24,0.2); border-radius: 4px; padding: 48px 40px; margin: 64px 0 40px; text-align: center; }
+    .cta-section h2 { margin-top: 0; font-size: 26px; }
+    .cta-section p { color: #aaa; max-width: 500px; margin: 0 auto 28px; }
+    .btn-primary { display: inline-block; background: var(--yellow); color: #000; font-family: 'Poppins', sans-serif; font-weight: 800; font-size: 16px; padding: 16px 36px; border-radius: 4px; text-decoration: none; }
+    .btn-primary:hover { background: #e0b010; }
+    .cta-fine { font-size: 13px; color: var(--muted); margin-top: 16px; }
+
+    /* FAQ */
+    .faq-item { border-bottom: 1px solid rgba(255,255,255,0.07); padding: 20px 0; }
+    .faq-q { font-family: 'Poppins', sans-serif; font-weight: 600; margin-bottom: 10px; }
+    .faq-a { color: #bbb; }
+
+    /* Comparison table */
+    .comparison-table { width: 100%; border-collapse: collapse; margin: 24px 0; }
+    .comparison-table th { background: rgba(245,197,24,0.1); color: var(--yellow); font-family: 'Poppins', sans-serif; font-size: 13px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 12px 16px; text-align: left; border-bottom: 1px solid rgba(245,197,24,0.2); }
+    .comparison-table td { padding: 14px 16px; border-bottom: 1px solid rgba(255,255,255,0.05); font-size: 15px; }
+    .comparison-table tr:last-child td { border-bottom: none; }
+    .comparison-table .included { color: #4ade80; font-weight: 700; }
+    .comparison-table .partial { color: var(--yellow); font-weight: 700; }
+    .comparison-table .excluded { color: #888; }
+    .comparison-table .price { font-family: 'Poppins', sans-serif; font-weight: 700; color: var(--white); font-size: 16px; }
+
+    /* Summary + Key Takeaway */
+    .box-summary { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; padding: 24px 28px; margin: 0 0 32px; }
+    .summary-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-bottom: 14px; }
+    .box-summary ul { margin: 0; padding-left: 20px; }
+    .box-summary li { margin-bottom: 8px; font-size: 17px; color: #ccc; }
+    .box-takeaway { background: rgba(245,197,24,0.08); border-left: 4px solid var(--yellow); padding: 20px 24px; margin: 0 0 40px; border-radius: 0 4px 4px 0; }
+    .takeaway-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 10px; }
+    .box-takeaway p { margin: 0; font-size: 18px; font-weight: 600; color: var(--white); line-height: 1.6; }
+
+    /* Footer */
+    footer { border-top: 1px solid rgba(255,255,255,0.07); padding: 32px 40px; text-align: center; font-size: 13px; color: var(--muted); max-width: 900px; margin: 0 auto; }
+    footer a { color: var(--muted); }
+
+    @media (max-width: 600px) {
+      nav, .article-wrap, footer { padding: 20px; }
+      .cta-section { padding: 32px 20px; }
+      .comparison-table { font-size: 14px; }
+      .comparison-table th, .comparison-table td { padding: 10px 10px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="https://nis2klar.se/">NIS2<span>Klar</span></a>
+  <a class="nav-back" href="https://nis2klar.se/artiklar.html">← Alla artiklar</a>
+  <a class="nav-cta" href="https://nis2klar.se/#boka">Boka samtal →</a>
+</nav>
+
+<article class="article-wrap">
+  <div class="article-category">Dataskydd &amp; Verktygskostnader</div>
+  <h1>Microsoft Purview: Priser och vad som krävs för NIS2-dataskydd</h1>
+  <div class="article-meta">1 juni 2026 · Lästid: ca 8 minuter · Målgrupp: Ledning</div>
+
+  <!-- SUMMARY -->
+  <div class="box-summary">
+    <div class="summary-label">Sammanfattning</div>
+    <ul>
+      <li>Microsoft Purview ingår delvis i Microsoft 365 E3/E5 men de avancerade dataskyddsfunktionerna kräver tillägg.</li>
+      <li>För NIS2-efterlevnad behöver du minst E5 + Purview Information Protection + DLP-licenser.</li>
+      <li>Kostnaden för en organisation på 100 personer är cirka 7 000–12 000 kronor per månad extra jämfört med E3.</li>
+      <li>Det billigaste vägen är inte alltid E5 — för många organisationer räcker E3 + riktade add-ons.</li>
+      <li>Styrelsens dokumentation av dataskyddsval är viktigare än priset.</li>
+    </ul>
+  </div>
+
+  <!-- KEY TAKEAWAY -->
+  <div class="box-takeaway">
+    <div class="takeaway-label">Viktigaste slutsatsen</div>
+    <p>Microsoft Purview är inte ett enda produkt med ett pris — det är en paket av funktioner spridda över E3, E5 och separata add-ons. Rätt val sparar pengar utan att offra NIS2-efterlevnad.</p>
+  </div>
+
+  <!-- HOOK -->
+  <p>
+    Du har hört att Microsoft Purview är svaret på NIS2-dataskydd. Du har även hört priserna — och undrat vad som står för skillnaden mellan E3, E5 och alla dessa add-ons.
+    Spoiler: det handlar inte om att köpa det dyraste paketet. Det handlar om att välja rätt funktioner för din organisation.
+  </p>
+
+  <p>
+    Denna guide bryter ned exakt vad som ingår var, vad NIS2 faktiskt kräver, och hur du räknar kostnaden utan att bli lurad av licenskomplicerade prisbeskrivningar.
+  </p>
+
+  <h2>Vad är Microsoft Purview?</h2>
+
+  <p>
+    Microsoft Purview är inte ett enda verktyg. Det är ett ramverk av dataskydds-, data-governance- och efterlevnadsfunktioner som sträcker sig över flera produkter i Microsoft 365-familjen.
+  </p>
+
+  <p>
+    Det inkluderar:
+  </p>
+
+  <ul>
+    <li><strong>Purview Information Protection</strong> — klassificering, etikett och kryptering av känslig data</li>
+    <li><strong>Purview Data Loss Prevention (DLP)</strong> — blockering av utläckage av klassificerad data</li>
+    <li><strong>Purview Data Lifecycle Management</strong> — lagring och borttagning av data enligt reglering</li>
+    <li><strong>Purview Insider Risk Management</strong> — detektering av högrisksituationer bland anställda</li>
+    <li><strong>Purview Communication Compliance</strong> — övervakning av meddelanden (Teams, Outlook) för reglerbrottningar</li>
+    <li><strong>Purview Advanced eDiscovery</strong> — datasökning för rättsprocesser och granskar</li>
+  </ul>
+
+  <p>
+    För NIS2 behöver du inte alla dessa. Du behöver klassificering, kryptering och DLP. Resten är "nice to have".
+  </p>
+
+  <h2>Vad ingår redan i E3 och E5?</h2>
+
+  <p>
+    Microsoft 365 Business Standard och Enterprise-licenserna (E3 och E5) inkluderar redan vissa dataskyddsfunktioner. Frågorna är: vilka, och räcker de?
+  </p>
+
+  <table class="comparison-table">
+    <thead>
+      <tr>
+        <th>Funktion</th>
+        <th>E3</th>
+        <th>E5</th>
+        <th>NIS2-krav?</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Retention policies (lagring/borttagning)</strong></td>
+        <td class="included">✓ Ja</td>
+        <td class="included">✓ Ja</td>
+        <td>Ja, Artikel 21.1(a)</td>
+      </tr>
+      <tr>
+        <td><strong>Sensitivity labels (grundläggande)</strong></td>
+        <td class="included">✓ Ja</td>
+        <td class="included">✓ Ja</td>
+        <td>Ja, klassificering</td>
+      </tr>
+      <tr>
+        <td><strong>DLP (enkelt mönster)</strong></td>
+        <td class="partial">~ Begränsad</td>
+        <td class="included">✓ Fullt</td>
+        <td>Ja, Artikel 21.1(h)</td>
+      </tr>
+      <tr>
+        <td><strong>Kryptering med Azure Information Protection</strong></td>
+        <td class="excluded">Separat licens</td>
+        <td class="included">✓ Ja</td>
+        <td>Ja, Artikel 21.1(h)</td>
+      </tr>
+      <tr>
+        <td><strong>Insider Risk Management</strong></td>
+        <td class="excluded">Nej</td>
+        <td class="included">✓ Ja</td>
+        <td>Nej (frivilligt)</td>
+      </tr>
+      <tr>
+        <td><strong>Communication Compliance</strong></td>
+        <td class="excluded">Nej</td>
+        <td class="included">✓ Ja</td>
+        <td>Nej (frivilligt)</td>
+      </tr>
+      <tr>
+        <td><strong>Advanced eDiscovery</strong></td>
+        <td class="excluded">Nej</td>
+        <td class="included">✓ Ja</td>
+        <td>Nej (frivilligt)</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>
+    Slutsatsen: E3 ger dig klassificering och lagring. E5 ger dig fullt DLP, kryptering och övervakning. För NIS2 räcker ofta E3 + två add-ons (Azure Information Protection och eventuellt DLP-utvidgning).
+  </p>
+
+  <div class="box-info">
+    <strong>Viktigt:</strong> Microsoft ändrar licensstrukturen regelbundet. Kontrollera alltid din aktuella licensöversikt direkt från Microsoft eller en certifierad partner. Denna artikel baserar sig på juni 2026-prislistorna.
+  </div>
+
+  <h2>Vilka add-ons behöver du för NIS2?</h2>
+
+  <p>
+    Här är listan på separata licenser du troligen behöver för att täcka NIS2:s dataskyddskrav:
+  </p>
+
+  <h3>1. Azure Information Protection Premium (AIP P1 eller P2)</h3>
+
+  <p>
+    <strong>Kostnad:</strong> Ca 60–80 kronor per person per månad (P1) eller 100–130 kronor (P2).
+  </p>
+
+  <p>
+    <strong>Vad det ger:</strong> Riktiga kryptering av känslig data (inte bara etikett). Automatisk klassificering baserad på innehål. Möjlighet att spåra och återkalla delad känslig data.
+  </p>
+
+  <p>
+    <strong>NIS2-relevans:</strong> Artikel 21.1(h) kräver "encryption of personal data". Bara etikettering räcker inte. Du behöver faktisk kryptering. AIP P1 ger det.
+  </p>
+
+  <h3>2. Microsoft Purview Data Loss Prevention — Endpoint DLP</h3>
+
+  <p>
+    <strong>Kostnad:</strong> Ca 5–10 kronor per person per månad (utöver E5) eller ingår redan om du köper E5.
+  </p>
+
+  <p>
+    <strong>Vad det ger:</strong> Möjlighet att blockera export av klassificerad data till USB, skärmdump, samkopia till personlig molntjänst osv.
+  </p>
+
+  <p>
+    <strong>NIS2-relevans:</strong> Artikel 21.1(c) kräver "access control measures". DLP på endpoints förhindrar att anställda lämnar företagsnätverket med känslig data.
+  </p>
+
+  <h3>3. Microsoft Defender for Cloud Apps (MCAS) / Microsoft 365 Defender</h3>
+
+  <p>
+    <strong>Kostnad:</strong> Ingår i E5 eller separat som add-on för ca 15–20 kronor per person per månad.
+  </p>
+
+  <p>
+    <strong>Vad det ger:</strong> Övervakning av molntjänstanvändning (Shadow IT), anomali-detektering, sessionsövervakning.
+  </p>
+
+  <p>
+    <strong>NIS2-relevans:</strong> Artikel 21.1(c) — du behöver kunna se vad som händer med data i molnet.
+  </p>
+
+  <h2>Kostnadsanalys för en organisation på 100 personer</h2>
+
+  <p>
+    Låt oss räkna på realistiska scenarier för ett företag med 100 anställda i Sverige, som är klassificerat som viktig entitet under NIS2.
+  </p>
+
+  <h3>Scenario A: Kostnadsminimering (E3 + add-ons)</h3>
+
+  <p>
+    <strong>Licenser:</strong>
+  </p>
+
+  <ul>
+    <li>Microsoft 365 Business Standard eller E3: 170 kronor/person/månad × 100 = 17 000 kr/månad</li>
+    <li>Azure Information Protection P1: 70 kronor/person/månad × 100 = 7 000 kr/månad</li>
+    <li>Endpoint DLP (add-on): 8 kronor/person/månad × 100 = 800 kr/månad</li>
+    <li><strong>Summa månad:</strong> 24 800 kronor</li>
+    <li><strong>Summa år:</strong> 297 600 kronor</li>
+  </ul>
+
+  <p>
+    <strong>Täcker detta NIS2?</strong> Ja, för klassificering, kryptering, DLP och lagringskontroll. Du mister övervakningen från E5 (Insider Risk, Communication Compliance) men det är inte obligatoriskt för NIS2.
+  </p>
+
+  <h3>Scenario B: Full E5-stack (rekommenderad för större organisationer)</h3>
+
+  <p>
+    <strong>Licenser:</strong>
+  </p>
+
+  <ul>
+    <li>Microsoft 365 Enterprise E5: 380 kronor/person/månad × 100 = 38 000 kr/månad</li>
+    <li>Azure Information Protection P2 (för avancerad kryptering): 120 kronor/person/månad × 100 = 12 000 kr/månad</li>
+    <li><strong>Summa månad:</strong> 50 000 kronor</li>
+    <li><strong>Summa år:</strong> 600 000 kronor</li>
+  </ul>
+
+  <p>
+    <strong>Täcker detta NIS2?</strong> Ja, fullt ut. Du får även Insider Risk Management, Communication Compliance och Advanced eDiscovery — vilket är bra för reglerade sektorer som finans, hälsovård och myndigheter.
+  </p>
+
+  <h3>Scenario C: Hybrid (E5 för ledning + nyckelroller, E3 för resten)</h3>
+
+  <p>
+    <strong>Licenser:</strong>
+  </p>
+
+  <ul>
+    <li>E5 för ledning och nyckelroller (20 personer): 380 × 20 = 7 600 kr/månad</li>
+    <li>E3 för övriga (80 personer): 170 × 80 = 13 600 kr/månad</li>
+    <li>Azure Information Protection P1 för hela organisationen: 70 × 100 = 7 000 kr/månad</li>
+    <li><strong>Summa månad:</strong> 28 200 kronor</li>
+    <li><strong>Summa år:</strong> 338 400 kronor</li>
+  </ul>
+
+  <p>
+    <strong>Täcker detta NIS2?</strong> Ja. Du sparar pengar genom att bara ge ledning och riskpersonal E5 (med övervakning), medan resten får klassificering och kryptering via E3 + add-ons.
+  </p>
+
+  <div class="box-warning">
+    <strong>Observera:</strong> Dessa priser är förhandlingsbara och beror på volym, avtalstyp (EA, CSP, direct) och region. En certifierad Microsoft-partner kan ofta förhandla 10–25 % rabatt. Det lönar sig att fråga.
+  </div>
+
+  <h2>Vad kostar implementering utöver licenserna?</h2>
+
+  <p>
+    Licenserna är bara delen av investeringen. Du behöver även:
+  </p>
+
+  <h3>Gap-analys och planning</h3>
+  <p>
+    <strong>Kostnad:</strong> 30 000–80 000 kronor (engångsavgift).
+    En certifierad Microsoft-partner granskar din miljö och mappar vilka Purview-funktioner du behöver. En del partners gör detta kostnadsfritt vid ett licensköp.
+  </p>
+
+  <h3>Implementering och konfiguration</h3>
+  <p>
+    <strong>Kostnad:</strong> 150 000–400 000 kronor beroende på komplexitet.
+    Att sätta upp klassificering, sensitivity labels, DLP-regler och retention policies tar tid. De flesta organisationer behöver 2–4 veckors konsultinsats.
+  </p>
+
+  <h3>Utbildning</h3>
+  <p>
+    <strong>Kostnad:</strong> 20 000–50 000 kronor.
+    Dina anställda behöver förstå hur de klassificerar data och hanterar känslig information. Styrelsen behöver förstå NIS2-kopplingen.
+  </p>
+
+  <h3>Årlig drift och underhåll</h3>
+  <p>
+    <strong>Kostnad:</strong> 50 000–150 000 kronor per år.
+    En person (helst en dedikerad dataskyddsansvarig eller compliance-ansvarig) behöver övervaka reglerna, uppdatera policies och hantera undantag.
+  </p>
+
+  <p>
+    <strong>Totalt första året:</strong> 250 000–650 000 kronor (engångs) + månadskostnaden från licensen.
+  </p>
+
+  <div class="box-case">
+    <div class="case-label">Fallstudie</div>
+    <p>
+      <strong>Scenario: Medelstort hälso- och sjukvårdsföretag, 150 anställda (läkarvård), klassificerat som väsentlig entitet.</strong>
+    </p>
+    <p>
+      Organisationen hanterar patientdata (PI) som kräver strikt skydd enligt både GDPR och nu NIS2. De startar med E3 men inser snart att de behöver fullt DLP och övervakning (många integrationspunkter med elektroniska journalsystem).
+    </p>
+    <p>
+      <strong>Val:</strong> E5 + Azure Information Protection P2 för hela organisationen.
+    </p>
+    <p>
+      <strong>Kostnad:</strong>
+    </p>
+    <ul>
+      <li>E5: 380 kr × 150 = 57 000 kr/månad</li>
+      <li>AIP P2: 120 kr × 150 = 18 000 kr/månad</li>
+      <li>Månadskostnad: 75 000 kronor</li>
+      <li>Årskostnad (licenser): 900 000 kronor</li>
+      <li>Implementering (4 veckors konsult): 280 000 kronor</li>
+      <li>Gap-analys: 40 000 kronor (kostnadsfritt från partner vid köp)</li>
+      <li>Utbildning: 35 000 kronor</li>
+      <li><strong>Totalt första året: 1 255 000 kronor</strong></li>
+    </ul>
+    <p>
+      <strong>Efterfört:</strong> 900 000 kronor per år + 75 000 kronor årlig drift.
+    </p>
+    <p>
+      <strong>ROI:</strong> Undviker böter på 7–10 miljoner euro. Kostnad för assistanspersonal till juridik och compliance reduceras när systemet automatiserar rapportering. Första året kostar cirka 1,3 miljoner, efteråt cirka 1 miljon årligen. Helt rimligt för en väsentlig entitet.
+    </p>
+  </div>
+
+  <h2>Jämförelse: In-house vs. managed service</h2>
+
+  <p>
+    Istället för att köpa licenserna själv kan du anlita en managed security services provider (MSSP) eller compliance-focused managed service provider (MSP).
+  </p>
+
+  <table class="comparison-table">
+    <thead>
+      <tr>
+        <th>Modell</th>
+        <th>Månadskostnad (100 pers)</th>
+        <th>Ansvarsfördelning</th>
+        <th>Bäst för</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>In-house (Scenario A)</strong></td>
+        <td class="price">24 800 kr</td>
+        <td>Du äger allt</td>
+        <td>Större organisationer med egen IT</td>
+      </tr>
+      <tr>
+        <td><strong>In-house (Scenario B)</strong></td>
+        <td class="price">50 000 kr</td>
+        <td>Du äger allt</td>
+        <td>Organisationer med högt regulatoriskt behov</td>
+      </tr>
+      <tr>
+        <td><strong>Managed Service (E3 + compliance)</strong></td>
+        <td class="price">35 000–45 000 kr</td>
+        <td>Delas — MSP hanterar konfiguration, övervakning, uppdateringar</td>
+        <td>SME och medelstora företag</td>
+      </tr>
+      <tr>
+        <td><strong>Managed Service (E5 + compliance)</strong></td>
+        <td class="price">60 000–75 000 kr</td>
+        <td>Delas</td>
+        <td>Reglerade sektorer (finans, hälsovård)</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>
+    <strong>Fördel med managed service:</strong> Du behöver inte anställa en compliance-specialist. MSP hanterar uppdateringar och regeländringar. Du får månatlig rapportering för styrelsen.
+  </p>
+
+  <p>
+    <strong>Fördel med in-house:</strong> Du äger allt. Ingen tredjepartsberoendet. Du kan customisera helt efter dina behov.
+  </p>
+
+  <h2>NIS2 Artikel 21 — exakt vad Purview måste täcka</h2>
+
+  <p>
+    För att se varför vissa Purview-funktioner är obligatoriska (och därför värd priset), låt oss gå igenom Artikel 21 punkt för punkt.
+  </p>
+
+  <h3>Artikel 21.1(a): Riskanalys</h3>
+  <p>
+    <strong>Purview-del:</strong> Ingen. Du behöver ett eget riskanalysverktyg eller en process. Purview hjälper inte här, men Microsoft Defender Secure Score kan dokumentera din säkerhetsstatus för styrelseprotokoll.
+  </p>
+
+  <h3>Artikel 21.1(b): Incidenthantering</h3>
+  <p>
+    <strong>Purview-del:</strong> Microsoft Sentinel (separat verktyg, cirka 30 kronor/GB/månad) eller Microsoft Defender XDR för incident-loggar. Purview själv loggar varje DLP-block och klassificeringsändring — det räcker för lite organisationer.
+  </p>
+
+  <h3>Artikel 21.1(c): Åtkomstkontroll</h3>
+  <p>
+    <strong>Purview-del:</strong> Sensitivity labels + DLP. Du definierar vem som kan läsa klassificerad data. E5 ger dig detta fullt ut.
+  </p>
+
+  <h3>Artikel 21.1(h): Kryptering</h3>
+  <p>
+    <strong>Purview-del:</strong> Azure Information Protection. Obligatorisk för att uppfylla kravet. Kan inte hoppa över utan att riskera sanktion.
+  </p>
+
+  <p>
+    Sammanfattat: för rena NIS2-krav är klassificering + kryptering (AIP) + DLP + lagring ungefär 90 % av det du behöver från Purview. Övervakningsfunktionerna (Insider Risk, Communication Compliance) är nice-to-have.
+  </p>
+
+  <h2>Vanliga frågor</h2>
+
+  <div class="faq-item">
+    <div class="faq-q">Räcker Microsoft 365 Business Standard (inte E3)?</div>
+    <div class="faq-a">Nej, inte för NIS2. Business Standard ger dig labeling och lagring men inte DLP och inte Azure Information Protection. Du behöver minst E3 eller E5. Business Standard är designad för små företag utan regulatoriska krav.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">Kan vi hoppa över AIP och bara använda sensitivity labels?</div>
+    <div class="faq-a">Tekniskt ja, men det är en sanktionsrisk. Sensitivity labels är metadata — de klassificerar data men krypterar den inte. NIS2 Artikel 21.1(h) kräver faktisk kryptering ("encryption of personal data"). Inte klassificering. Utan AIP kan en tillsynsmyndighet säga att du inte uppfyller kravet, även om du har labels överallt.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">Vilken version av AIP behövs — P1 eller P2?</div>
+    <div class="faq-a">P1 räcker för NIS2. P1 ger dig klassificering och kryptering. P2 lägger till Unified Labeling Client, offline-stöd och HYOK (Hold Your Own Key) — vilket kan vara viktigt för organisationer med extrema krypteringskrav, men det är inte obligatoriskt för NIS2. Spara pengarna och välj P1 om du är liten eller medelstor.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">Räcker det att klassificera bara "toppkänslig" data eller måste allt klassificeras?</div>
+    <div class="faq-a">NIS2 säger inte "allt måste klassificeras". Det säger "implementera åtgärder för att klassificera och kryptera persondata". Det tolkas vanligen som: klassificera det som behöver klassa. För hälsovård är nästan allt patientdata = måste klassificeras. För ett byggföretag kanske bara kontrakt och personskattningslista. Gör en riskanalys först (Artikel 21.1(a)) — det styr klassificeringspolicyn.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">Ändras licenserna ofta? Hur håller jag mig uppdaterad?</div>
+    <div class="faq-a">Ja, Microsoft ändrar paket och priser ungefär två gånger per år. Bästa sättet är att hålla kontakt med en certifierad Microsoft-partner eller anlita en MSP som är uppdaterad. De får meddelanden direkt från Microsoft. Försök inte spåra detta själv — licensmarknaderna är för snabba.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">Ingår Purview-klassificering i Microsoft 365 Copilot?</div>
+    <div class="faq-a">Copilot for Security (ett av Microsofts nya AI-verktyg) kan analysera klassificerad data och föreslå incidentsvar automatiskt. Men det är en separat licens (cirka 25 kronor/person/månad) och det är frivilligt för NIS2. Det sätter inte upp klassificeringen själv. Purview klassificering + DLP behövs oavsett om du använder Copilot eller inte.</div>
+  </div>
+
+  <!-- MICROSOFT TOOLS BOX -->
+  <div class="box-info" style="margin: 48px 0 32px;">
+    <div style="font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color: var(--yellow); margin-bottom:10px;">🔧 VERKTYG &amp; LÖSNINGAR</div>
+    <p style="margin:0; font-size:17px; color: #ddd; line-height:1.7;">Microsoft Purview Sensitivity Labels + Azure Information Protection + Data Loss Prevention utgör kärnan i NIS2-dataskyddet. En certifierad Microsoft-partner kan genomföra en kostnadsfri gap-analys för att visa exakt vilka licenser och funktioner du behöver — och ofta förhandla 10–25 % rabatt på volymköpen.</p>
+  </div>
+
+  <!-- NEWSLETTER -->
+  <div style="background:#111; border:1px solid rgba(255,255,255,0.1); border-left:3px solid #f5c518; border-radius:4px; padding:32px 36px; margin:40px 0 0; text-align:center; max-width:760px; margin-left:auto; margin-right:auto;">
+    <div style="font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:#f5c518; margin-bottom:12px;">📬 NIS2-UPPDATERINGAR</div>
+    <h3 style="font-family:'Poppins',sans-serif; font-size:20px; font-weight:800; margin:0 0 8px; color:#f0f0f0;">Ny NIS2-artikel varje vecka — direkt i inkorgen</h3>
+    <p style="color:#888; font-size:15px; margin:0 0 20px;">Ingen säljpitch. Bara konkret vägledning för VD:ar och styrelser.</p>
+    <form id="nlForm-microsoft_purview_priser_datastyrning" onsubmit="submitNewsletter_microsoft_purview_priser_datastyrning(event)" style="display:flex; gap:10px; flex-wrap:wrap; justify-content:center; max-width:460px; margin:0 auto;">
+      <input type="email" id="nlEmail-microsoft_purview_priser_datastyrning" placeholder="din@foretag.se" required
+             style="flex:1; min-width:200px; padding:12px 16px; background:#1c1c1f; border:1px solid rgba(255,255,255,0.15); border-radius:4px; color:#f0f0f0; font-size:15px; outline:none;" />
+      <button type="submit" id="nlSubmit-microsoft_purview_priser_datastyrning"
+              style="padding:12px 22px; background:#f5c518; color:#141416; font-weight:700; font-size:15px; border:none; border-radius:4px; cursor:pointer; white-space:nowrap;">
+        Prenumerera gratis →
+      </button>
+    </form>
+    <p style="font-size:12px; color:#555; margin:12px 0 0;">Du kan avprenumerera när som helst. Vi delar aldrig din e-post.</p>
+    <div id="nlThanks-microsoft_purview_priser_datastyrning" style="display:none; color:#4ade80; font-size:16px; font-weight:600; margin-top:14px;">✅ Du är med! Nästa artikel kommer direkt till din inkorg.</div>
+  </div>
+
+  <!-- CTA -->
+  <div class="cta-section">
+    <h2>Vet du om E3 eller E5 är rätt för din organisation?</h2>
+    <p>En kostnadsfri gap-analys med en certifierad Microsoft-partner visar exakt vilka licenser och funktioner du behöver för NIS2 — och sparar ofta pengar genom rätt val.</p>
+    <a href="https://nis2klar.se/#boka" class="btn-primary">Boka kostnadsfri gap-analys →</a>
+    <p class="cta-fine">Gap-analysen är gratis. Du sparar vanligen 10–25 % på licenserna.</p>
+  </div>
+
+</article>
+
+<div class="related-articles" style="margin:2.5rem 0 2rem;padding:1.5rem;background:#1a1a2e;border-left:4px solid #f0a500;border-radius:4px;">
+  <p style="margin:0 0 1rem;font-size:0.85rem;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:#f0a500;">Läs också</p>
+  <ul style="margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:0.5rem;">
+    <li><a href="https://nis2klar.se/artiklar/nis2-artikel-21-tio-sakerhetsatgarder.html" style="color:#e0e0e0;text-decoration:none;font-size:0.95rem;">→ NIS2 Artikel 21: De tio obligatoriska säkerhetsåtgärderna</a></li>
+    <li><a href="https://nis2klar.se/artiklar/nis2-styrelsens-roll-artikel-20.html" style="color:#e0e0e0;text-decoration:none;font-size:0.95rem;">→ Styrelsens roll enligt Artikel 20</a></li>
+    <li><a href="https://nis2klar.se/artiklar/nis2-vilka-foretag-omfattas.html" style="color:#e0e0e0;text-decoration:none;font-size:0.95rem;">→ Vilka företag omfattas av NIS2?</a></li>
+  </ul>
+  <p style="margin:1.25rem 0 0;font-size:0.85rem;color:#aaa;">← <a href="https://nis2klar.se/" style="color:#f0a500;text-decoration:none;">NIS2Klar startsida</a> · <a href="https://nis2klar.se/artiklar.html" style="color:#f0a500;text-decoration:none;">Alla guider</a></p>
+</div>
+
+<footer>
+  © 2026 M&J Trusted Marketing KB ·
+  <a href="mailto:support@trustedmarketing.se">support@trustedmarketing.se</a> · <a href="tel:+46470597003">+46 470 59 70 03</a> ·
+  <a href="https://nis2klar.se/">Tillbaka till startsidan</a> ·
+  <a href="https://nis2klar.se/privacy.html">Integritetspolicy</a>
+  <p style="margin-top:12px; font-size:11px; color: #555; line-height:1.5;">Microsoft, Microsoft 365, Azure och tillhörande produktnamn är varumärken som tillhör Microsoft Corporation. nis2klar.se är inte affilierat med eller godkänt av Microsoft Corporation.</p>
+</footer>
+
+  <script data-cfasync="false">
+    async function submitNewsletter_microsoft_purview_priser_datastyrning(e) {
+      e.preventDefault();
+      const btn = document.getElementById('nlSubmit-microsoft_purview_priser_datastyrning');
+      btn.disabled = true;
+      btn.textContent = 'Skickar...';
+      const email = document.getElementById('nlEmail-microsoft_purview_priser_datastyrning').value.trim();
+      try {
+        const res = await fetch('/api/newsletter/subscribe', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email, source: 'artikel-microsoft_purview_priser_datastyrning' })
+        });
+        const data = await res.json();
+        if (data.success) {
+          document.getElementById('nlForm-microsoft_purview_priser_datastyrning').style.display = 'none';
+          document.getElementById('nlThanks-microsoft_purview_priser_datastyrning').style.display = 'block';
+        } else {
+          btn.disabled = false;
+          btn.textContent = 'Prenumerera gratis →';
+        }
+      } catch {
+        btn.disabled = false;
+        btn.textContent = 'Prenumerera gratis →';
+      }
+    }
+  </script>
+</body>
+</html>
