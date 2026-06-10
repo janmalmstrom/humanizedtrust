@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-BKF3QH9K01"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag("js", new Date());
+    gtag("config", "G-BKF3QH9K01");
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NIS2 och molntjänster: Vem ansvarar när datan ligger i molnet? | NIS2Klar</title>
+  <meta name="description" content="Shared responsibility i molnet under NIS2. Due diligence-checklista för molntjänstbedömning. Vem ansvarar för säkerhet när data ligger hos molnleverantör?">
+  <meta property="og:title" content="NIS2 och molntjänster: Vem ansvarar när datan ligger i molnet?">
+  <meta property="og:description" content="Shared responsibility i molnet under NIS2. Due diligence-checklista för molntjänstbedömning. Vem ansvarar för säkerhet när data ligger hos molnleverantör?">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #141416;
+      --card: #1c1c1f;
+      --yellow: #f5c518;
+      --white: #f0f0f0;
+      --muted: #888;
+      --red: #C61212;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: var(--bg); color: var(--white); font-family: 'Barlow', sans-serif; font-size: 19px; line-height: 1.8; }
+
+    /* Nav */
+    nav { display: flex; justify-content: space-between; align-items: center; padding: 20px 40px; border-bottom: 1px solid rgba(255,255,255,0.07); max-width: 900px; margin: 0 auto; }
+    .nav-logo { font-family: 'Poppins', sans-serif; font-weight: 900; font-size: 20px; color: var(--yellow); text-decoration: none; }
+    .nav-logo span { color: var(--white); }
+    .nav-back { color: var(--muted); text-decoration: none; font-size: 15px; }
+    .nav-back:hover { color: var(--white); }
+    .nav-cta { background: var(--yellow); color: #000; padding: 8px 18px; border-radius: 4px; text-decoration: none; font-weight: 700; font-size: 14px; font-family: 'Poppins', sans-serif; }
+
+    /* Article */
+    .article-wrap { max-width: 760px; margin: 0 auto; padding: 60px 40px; }
+    .article-category { font-size: 13px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 16px; }
+    h1 { font-family: 'Poppins', sans-serif; font-size: clamp(30px, 4vw, 44px); font-weight: 900; line-height: 1.2; margin-bottom: 24px; }
+    .article-meta { font-size: 15px; color: var(--muted); margin-bottom: 48px; padding-bottom: 24px; border-bottom: 1px solid rgba(255,255,255,0.07); }
+    h2 { font-family: 'Poppins', sans-serif; font-size: 26px; font-weight: 700; margin: 48px 0 16px; color: var(--white); }
+    h3 { font-family: 'Poppins', sans-serif; font-size: 20px; font-weight: 600; margin: 32px 0 12px; color: var(--yellow); }
+    p { margin-bottom: 22px; }
+    strong { color: var(--white); font-weight: 700; }
+    .highlight { color: var(--yellow); font-weight: 700; }
+    .danger { color: #ff6b6b; font-weight: 700; }
+    ul, ol { margin: 16px 0 24px 24px; }
+    li { margin-bottom: 12px; font-size: 19px; }
+
+    /* Callout boxes */
+    .box-warning { background: rgba(197,17,17,0.12); border-left: 4px solid var(--red); padding: 20px 24px; margin: 32px 0; border-radius: 0 4px 4px 0; }
+    .box-info { background: rgba(245,197,24,0.08); border-left: 4px solid var(--yellow); padding: 20px 24px; margin: 32px 0; border-radius: 0 4px 4px 0; }
+    .box-case { background: var(--card); border: 1px solid rgba(255,255,255,0.08); padding: 28px; margin: 40px 0; border-radius: 4px; }
+    .box-case .case-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 12px; }
+    blockquote { border-left: 3px solid var(--yellow); padding: 12px 20px; margin: 24px 0; font-style: italic; color: #ccc; }
+
+    /* CTA */
+    .cta-section { background: var(--card); border: 1px solid rgba(245,197,24,0.2); border-radius: 4px; padding: 48px 40px; margin: 64px 0 40px; text-align: center; }
+    .cta-section h2 { margin-top: 0; font-size: 26px; }
+    .cta-section p { color: #aaa; max-width: 500px; margin: 0 auto 28px; }
+    .btn-primary { display: inline-block; background: var(--yellow); color: #000; font-family: 'Poppins', sans-serif; font-weight: 800; font-size: 16px; padding: 16px 36px; border-radius: 4px; text-decoration: none; }
+    .btn-primary:hover { background: #e0b010; }
+    .cta-fine { font-size: 13px; color: var(--muted); margin-top: 16px; }
+
+    /* FAQ */
+    .faq-item { border-bottom: 1px solid rgba(255,255,255,0.07); padding: 20px 0; }
+    .faq-q { font-family: 'Poppins', sans-serif; font-weight: 600; margin-bottom: 10px; }
+    .faq-a { color: #bbb; }
+
+    /* Fine table */
+    .fine-table { width: 100%; border-collapse: collapse; margin: 24px 0; }
+    .fine-table th { background: rgba(245,197,24,0.1); color: var(--yellow); font-family: 'Poppins', sans-serif; font-size: 13px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 12px 16px; text-align: left; border-bottom: 1px solid rgba(245,197,24,0.2); }
+    .fine-table td { padding: 14px 16px; border-bottom: 1px solid rgba(255,255,255,0.05); font-size: 15px; }
+    .fine-table tr:last-child td { border-bottom: none; }
+    .fine-table .amount { color: #ff6b6b; font-weight: 700; }
+
+    /* Summary + Key Takeaway */
+    .box-summary { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; padding: 24px 28px; margin: 0 0 32px; }
+    .summary-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-bottom: 14px; }
+    .box-summary ul { margin: 0; padding-left: 20px; }
+    .box-summary li { margin-bottom: 8px; font-size: 17px; color: #ccc; }
+    .box-takeaway { background: rgba(245,197,24,0.08); border-left: 4px solid var(--yellow); padding: 20px 24px; margin: 0 0 40px; border-radius: 0 4px 4px 0; }
+    .takeaway-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 10px; }
+    .box-takeaway p { margin: 0; font-size: 18px; font-weight: 600; color: var(--white); line-height: 1.6; }
+
+    /* Footer */
+    footer { border-top: 1px solid rgba(255,255,255,0.07); padding: 32px 40px; text-align: center; font-size: 13px; color: var(--muted); max-width: 900px; margin: 0 auto; }
+    footer a { color: var(--muted); }
+
+    .related-articles { margin: 2.5rem 0 2rem; padding: 1.5rem; background: #1a1a2e; border-left: 4px solid #f0a500; border-radius: 4px; }
+    .related-articles p { margin: 0 0 1rem; font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #f0a500; }
+    .related-articles ul { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+    .related-articles li { margin: 0; font-size: 0.95rem; }
+    .related-articles a { color: #e0e0e0; text-decoration: none; }
+    .related-articles a:hover { color: #f0a500; }
+    .related-articles .footer-nav { margin: 1.25rem 0 0; font-size: 0.85rem; color: #aaa; }
+    .related-articles .footer-nav a { color: #f0a500; }
+
+    @media (max-width: 600px) {
+      nav, .article-wrap, footer { padding: 20px; }
+      .cta-section { padding: 32px 20px; }
+      .fine-table { font-size: 14px; }
+      .fine-table th, .fine-table td { padding: 10px 10px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="https://nis2klar.se/">NIS2<span>Klar</span></a>
+  <a class="nav-back" href="https://nis2klar.se/artiklar.html">← Alla artiklar</a>
+  <a class="nav-cta" href="https://nis2klar.se#boka">Boka samtal →</a>
+</nav>
+
+<article class="article-wrap">
+  <div class="article-category">Molntjänster &amp; Infrastruktur</div>
+  <h1>NIS2 och molntjänster: Vem ansvarar när datan ligger i molnet?</h1>
+  <div class="article-meta">Uppdaterad 10 juni 2026 · Lästid: ca 8 minuter · Målgrupp: Ledning</div>
+
+  <!-- SUMMARY -->
+  <div class="box-summary">
+    <div class="summary-label">Sammanfattning</div>
+    <ul>
+      <li>Shared responsibility är regeln i molnet — men NIS2 gör dig personligt ansvarig för <strong>hela kedjan</strong>.</li>
+      <li>Molnleverantören ansvarar för infrastrukturen. Du ansvarar för att säkerställa att den lever upp till NIS2.</li>
+      <li>Datalokaliseringskrav kan begränsa dina molnalternativ — speciellt vid klassad information och känslig hälsodata.</li>
+      <li>En due diligence-checklista för molntjänstbedömning är obligatorisk före kontraktskrivning — och måste dokumenteras för tillsynen.</li>
+      <li>Fel val av molnleverantör kan resultera i samma böter (upp till 10 miljoner euro) som om du helt saknade säkerhet.</li>
+    </ul>
+  </div>
+
+  <!-- KEY TAKEAWAY -->
+  <div class="box-takeaway">
+    <div class="takeaway-label">Viktigaste slutsatsen</div>
+    <p>Molnet är inte en genväg från ansvar. NIS2 kräver att du innan du tecknar ett molnkontrakt genomför en säkerhetsbedömning, dokumenterar vilka risker leverantören bär och vilka du behåller — och sedan presenterar detta för styrelsen för godkännande. Utan denna dokumentation är du personligt ansvarig för eventuell incident i molnet, oavsett leverantörens åtgärder.</p>
+  </div>
+
+  <!-- HOOK -->
+  <p>
+    Du sitter på ett möte. IT-chefen säger: "Vi byter till molnet. Det är säkerare och vi slipper bry oss om servrar själva."
+    Du nickar. Problemet är att under NIS2 gör du det — du bry dig fortfarande, juridiskt sett, helt och hållet.
+  </p>
+
+  <p>
+    En molnleverantör som Amazon, Microsoft eller Google kan säkerligen bygga infrastruktur som skyddar din data från externa angripare.
+    Men NIS2 säger inget om vem som ansvarar för valet av leverantör. Det är dig det faller på.
+    Och om du väljer fel, eller inte kan bevisa att du gjort due diligence, är det du som få böterna — inte molnleverantören.
+  </p>
+
+  <div class="box-warning">
+    <strong>Det här är inte IT-avdelningens ansvar.</strong> Valet av molnleverantör är ett styrelseansvar under NIS2 Artikel 20. Du måste personligen kunna visa upp en dokumenterad bedömning som styrelsepresidiet godkänt.
+  </div>
+
+  <h2>Shared responsibility — vad det egentligen betyder</h2>
+
+  <p>
+    Molnleverantörer använder termen "shared responsibility model" för att tydliggöra vad de gör och vad du måste göra själv.
+  </p>
+
+  <p>
+    Modellen brukar se ut så här:
+  </p>
+
+  <ul>
+    <li><strong>Leverantören ansvarar för:</strong> Fysisk säkerhet på datacenter, nätverk, hypervisor, lagring, databaskonfiguration (på många nivåer).</li>
+    <li><strong>Du ansvarar för:</strong> Åtkomstkontroll, data-kryptering, konfiguration av säkerhetsinställningar, patching av operativsystem och applikationer, incidenthantering, backup.</li>
+  </ul>
+
+  <p>
+    Låter rimligt? Problemet är att "du ansvarar" inte stannar hos IT-avdelningen under NIS2. Det är ditt namn, som VD eller styrelseledamot, som står på granskningen när tillsynsmyndigheten kollar huruvida dessa åtgärder faktiskt genomfördes.
+  </p>
+
+  <p>
+    Om molntjänsten är dåligt konfigurerad — om åtkomstkontroller är svaga, om data inte är krypterad, eller om ingen har patcha när det behövdes — är det <strong>inte molnleverantörens ansvar att berätta det för dig</strong>.
+    Det är ditt ansvar att ha frågat, innan du började använda tjänsten, och att ha övervaakat det löpande.
+  </p>
+
+  <h2>NIS2-artikeln som gör molnet till ditt juridiska problem</h2>
+
+  <p>
+    <strong>Artikel 21, avsnitt (3)</strong> i NIS2-direktivet talar om "leverantörer av cybersäkerhetstjänster och -produkter".
+    Det betyder att när du väljer en molnleverantör är du inte bara att delegera ett tekniskt problem — du är att omfördela juridisk risk.
+  </p>
+
+  <p>
+    Artikeln kräver att du:
+  </p>
+
+  <ol>
+    <li>Bedömer säkerhetsrisken hos leverantören</li>
+    <li>Säkerställer att leverantören har adequate security measures</li>
+    <li>Implementerar kontroller för att övervaka leverantörens compliance</li>
+    <li>Dokumenterar allt detta</li>
+  </ol>
+
+  <p>
+    Det sista punkten — dokumentation — är det som ofta missar. Du kan ha gjort en bra bedömning. Men om du inte kan visa upp den när tillsynen knackar på dörren, räknas det som om du inte gjorde någon bedömning alls.
+  </p>
+
+  <div class="box-info">
+    <strong>Praktisk punkt:</strong> En molnleverantörs SOC 2 Type II-certifiering eller ISO 27001 är en bra start — men det räcker inte ensamt. Du måste även bedöma huruvida leverantörens konfiguration matchar dina behov enligt artikel 21. Om leverantören tillåter svag autentisering och du inte konfigurerar MFA själv, är det du som inte följer NIS2 — inte leverantören.
+  </p>
+
+  <h2>Datalokaliseringsregler — en begränsning du måste förstå</h2>
+
+  <p>
+    NIS2 sysslar inte bara med säkerhet. Det sysslar också med kontroll över var din data lagras fysiskt.
+  </p>
+
+  <p>
+    Sverige och EU har restriktioner på dataöverföringar till vissa tredjeland. GDPR sätter gränserna, men NIS2 förstärker dem för kritisk infrastruktur.
+    En molntjänst som lagrar din data i USA, utan särskilda överenskommelser, kan bryta mot både GDPR och NIS2 — och om din organisation betraktas som väsentlig entitet är detta en grav sanktionsfråga.
+  </p>
+
+  <p>
+    Sverige har investerat 33,7 miljarder SEK i att bygga egna datacenter — regionen "Sweden Central" drivs av 100 procent koldioxidfri energi.
+    För många organisationer är detta inte bara ett miljöval — det är en juridisk nödvändighet.
+    Om du arbetar med känslig sjukvårdsdata, klassad försvarsinformation, eller finansiell känslig data, kanske din molnleverantör måste lagra data på svenska eller nordiska servrar.
+  </p>
+
+  <p>
+    Det begränsar antalet molnleverantörer du kan välja. Men det tar bort också en del av juridisk risk — en molnleverantör som garanterar datarezidens i Sverige har redan löst en stor del av NIS2-gåten för dig.
+  </p>
+
+  <div class="box-warning">
+    <strong>Lokal lagring är inte frivillig.</strong> Om din organisation hanterar data som måste stanna i Sverige eller EU enligt lag (klassad information, hälsodata), måste molnleverantören kunna garantera det. Att välja en leverantör som inte kan det är en sanktionsgrundande brist.
+  </div>
+
+  <h2>Due diligence-checklista för molntjänstbedömning</h2>
+
+  <p>
+    Här är vad styrelsen måste godkänna innan du tecknar ett molnkontrakt. Detta är inte IT-avdelningens checklista — det är styrelsens. Använd den tillsammans med er juridiska rådgivare och en IT-säkerhetskonsult.
+  </p>
+
+  <h3>1. Leverantörens säkerhetsstatus</h3>
+  <ul>
+    <li>☐ Molnleverantören har en giltig <strong>SOC 2 Type II-rapport</strong> (eller motsvarande) som är mindre än 12 månader gammal</li>
+    <li>☐ ISO 27001 eller motsvarande certification är dokumenterad</li>
+    <li>☐ Leverantören har en dokumenterad <strong>incident response process</strong> och kan presentera denna</li>
+    <li>☐ Leverantören kan dokumentera uptime SLA (service level agreement) på minst 99,95 %</li>
+    <li>☐ Leverantören tillhandahåller årlig <strong>penetration testing report</strong> eller motsvarande säkerhetsanalys</li>
+  </ul>
+
+  <h3>2. Datalokaliseringskrav</h3>
+  <ul>
+    <li>☐ Molnleverantören kan <strong>lagra data i Sverige eller nordiska datacenter</strong> som förvaltas enligt EU-lagstiftning</li>
+    <li>☐ Leverantören tillhandahåller skriftligt avtal som garanterar datarezidens (data stannar inte i tredjeland utan uttryckligt godkännande)</li>
+    <li>☐ Backup och disaster recovery lagras även de inom EU/EES</li>
+    <li>☐ Juridisk granskning av tredjelandsöverföringar (Standard Contractual Clauses) är dokumenterad</li>
+  </ul>
+
+  <h3>3. Konfigurering och åtkomstkontroll</h3>
+  <ul>
+    <li>☐ <strong>Multi-factor authentication (MFA)</strong> är obligatorisk för all åtkomst till administrativa funktioner</li>
+    <li>☐ Role-based access control (RBAC) kan konfigureras så att lagringsbehörighet är begränsad till det nödvändiga</li>
+    <li>☐ Möjlighet att implementera <strong>conditional access policies</strong> baserat på användarens location och enhetstyp</li>
+    <li>☐ Loggning av all åtkomst är tillgänglig och kan granskas regelbundet</li>
+    <li>☐ Möjlighet att tilldela åtkomst per användare, inte endast per grupp</li>
+  </ul>
+
+  <h3>4. Datakryptering</h3>
+  <ul>
+    <li>☐ <strong>Kryptering i vila (encryption at rest)</strong> är tillgänglig och kan aktiveras utan prestandapåverkan</li>
+    <li>☐ Kryptering under överföring (encryption in transit) är standard för all datakommunikation</li>
+    <li>☐ Du kan hantera dina egna krypteringsnycklar (customer-managed keys) eller molnleverantören kan garantera att de inte har åtkomst</li>
+    <li>☐ Möjlighet att kryptera känsliga dataflöden end-to-end innan de når molnet</li>
+  </ul>
+
+  <h3>5. Backup och beredskap</h3>
+  <ul>
+    <li>☐ Molnleverantören erbjuder <strong>immutable backup</strong> (backup som inte kan raderas eller modifieras)</li>
+    <li>☐ Backup lagras geografiskt separerad från primär data</li>
+    <li>☐ Möjlighet att testa och verifiera backup regelbundet (RTO och RPO är dokumenterade)</li>
+    <li>☐ Disaster recovery plan inkluderar bortförflyttning från leverantören om det behövs (exit strategy)</li>
+  </ul>
+
+  <h3>6. Incidenthantering och rapportering</h3>
+  <ul>
+    <li>☐ Molnleverantören har ett <strong>SLA för incidentsvar</strong> — how long to acknowledge, how long to initial mitigation</li>
+    <li>☐ Avtal innehåller en <strong>24/7 incident notification process</strong> direkt till dina namngivna kontaktpersoner</li>
+    <li>☐ Molnleverantören tillåter (och hjälper) dig att rapportera till tillsynsmyndigheterna inom NIS2:s 72-timmars deadline</li>
+    <li>☐ Post-incident forensics kan genomföras — loggarna är tillgängliga för analys</li>
+    <li>☐ Kontraktet specificerar vem som betalar för incident-relaterad forensics och recovery</li>
+  </ul>
+
+  <h3>7. Säkerhetsupdateringar och patching</h3>
+  <ul>
+    <li>☐ Molnleverantören publicerar en <strong>security update calendar</strong> och notifierar dig innan patching</li>
+    <li>☐ Patching kan schemaläggas för ditt tidsblock (du kan välja uppdateringstid)</li>
+    <li>☐ Kritiska säkerhetsuppdateringar implementeras inom 30 dagar</li>
+    <li>☐ Du kan verifiera att patching har genomförts (change logs är tillgängliga)</li>
+  </ul>
+
+  <h3>8. Övervaknings- och loggningskapacitet</h3>
+  <ul>
+    <li>☐ Molnleverantören tillhandahåller ett verktyg för <strong>continuous monitoring</strong> av din miljö</li>
+    <li>☐ Security alerts kan konfigureras och exporteras till ditt eget SIEM-system</li>
+    <li>☐ Logghistorik är tillgänglig för minst 12 månader</li>
+    <li>☐ Du kan genomföra regelbundna access reviews och certify att åtkomsträttigheter är rätt</li>
+  </ul>
+
+  <h3>9. Avtalsvillkor och juridisk klarhet</h3>
+  <ul>
+    <li>☐ Kontraktet har en <strong>data processing agreement (DPA)</strong> som motsvarar GDPR och NIS2</li>
+    <li>☐ Ansvar för säkerhetsincidenter är tydligt definierat (vad är molnleverantörens ansvar, vad är ditt)</li>
+    <li>☐ Möjlighet att granska eller revidera molnleverantörens sub-processors innan de läggs till</li>
+    <li>☐ Exit-klausuler är tydliga — hur du kan hämta dina data och migrera bort om du vill</li>
+    <li>☐ Kontraktet tillåter tillsynsmyndigheten att granska molnmiljön (möjlighet för audits från MSB/sektorsspecifik myndighet)</li>
+  </ul>
+
+  <h3>10. Styrelsegodkännande och dokumentation</h3>
+  <ul>
+    <li>☐ En <strong>bedömningsrapport</strong> (risk assessment) av molnleverantören har upprättats</li>
+    <li>☐ Rapporten beskriver vilka risker leverantören tar och vilka risker organisationen själv tar</li>
+    <li>☐ Styrelsepresidiet har <strong>godkänt valet av molnleverantör</strong> genom beslut i styrelseprokoll</li>
+    <li>☐ Dokumentationen sparas tillsammans med NIS2-efterlevnaddokumentationen för framtida granskning</li>
+  </ul>
+
+  <div class="box-info">
+    <strong>Denna checklista bör genomgås årligen.</strong> Om en molnleverantör slutar att uppfylla kraven, eller om NIS2-kraven skärps, måste du kunna dokumentera en omvärdering. Spara också alla bedömningsrapporter — de är bevis på att du gjorde due diligence, och det är det som räddas dig om något går snett.
+  </div>
+
+  <h2>Fallstudie: Molnet utan dokumentation</h2>
+
+  <div class="box-case">
+    <div class="case-label">Fallstudie</div>
+    <p>
+      <strong>Scenario: IT-tjänsteföretag i Uppsala, 120 anställda, väsentlig entitet under NIS2.</strong>
+    </p>
+    <p>
+      Företaget börjar använda en populär molnplattform för att lagra kunddata och utvecklingsmiljöer. IT-chefen gör en bra bedömning i sitt huvud, men det dokumenteras aldrig. Det finns inget styrelsebeslut. Det finns ingen skriftlig risk assessment.
+    </p>
+    <p>
+      I november 2026 blir molnmiljön målet för ett ransomware-attack. Angriparen lyckas genom att utnyttja en felkonfigurerad åtkomstkontroll. Det tar 5 dagar innan företaget märker det.
+    </p>
+    <p>
+      MSB initierar granskning enligt artikel 23 (incident reporting). Granskarna frågar: "Kan ni visa er bedömning av molnleverantören?" 
+      Svar: "Vi... gjorde det aldrig skriftligt."
+    </p>
+    <p>
+      "Kan ni visa styrelsebeslut om godkännande av molnet?"
+      Svar: "Det diskuterades på ett möte, men det är inte dokumenterat."
+    </p>
+    <p>
+      "Vilka åtgärder hade ni implementerat enligt artikel 21, punkt 3 för att övervaka leverantören?"
+      Svar: "Vi... förlitade oss på att det skulle fungera."
+    </p>
+    <p>
+      <strong>Utfall:</strong> Sanktionsavgift för utebliven incident-rapportering. Ytterligare sanktionsavgift för bristande säkerhetskontroller (artikel 21). VD får personlig tillsyn. Total kostnad: <span class="danger">8–12 miljoner kronor</span> plus juridisk hantering.
+    </p>
+    <p>
+      <strong>Vad kunde ha gjorts annorlunda:</strong> Innan molnet togs i bruk skulle en one-pager bedömningsrapport ha upprättats. Den skulle godkännas i ett styrelseprot. Det skulle dokumentera vilka risker som övergick på molnleverantören, vilka som stod hos organisationen, och hur dessa skulle övervakas. Det hade tagit 4 timmar. Det hade sparat miljoner kronor.
+    </p>
+  </div>
+
+  <h2>Praktisk genomförande: Från beslut till övervakning</h2>
+
+  <p>
+    Många organisationer tror att en molnbedömning är en engångsaktivitet. Det är den inte. Det är början på en löpande process.
+  </p>
+
+  <p>
+    Här är tidsplanen:
+  </p>
+
+  <h3>Månad 1: Bedömning och styrelsebeslut</h3>
+  <ul>
+    <li>Genomför due diligence-checklistan ovan tillsammans med en IT-säkerhetskonsult</li>
+    <li>Upprättar en en-sidas risk assessment</li>
+    <li>Presenterar för styrelsen, beslutar och dokumenterar</li>
+  </ul>
+
+  <h3>Månad 2–6: Implementering</h3>
+  <ul>
+    <li>Konfigurerar molnmiljön enligt checklistan (MFA, RBAC, kryptering, loggning)</li>
+    <li>Testrar backup och recovery</li>
+    <li>Dokumenterar alla konfigurationer</li>
+  </ul>
+
+  <h3>Månad 6–12: Övervakning och årlig certifiering</h3>
+  <ul>
+    <li>Granskar loggarna från molnmiljön månatligen (eller genom automatisk övervakning)</li>
+    <li>Utnyttjar molnleverantörens säkerhetsvärden för att identifiera missonfigurationer</li>
+    <li>År 1, så övervakar du huruvida molnleverantören fortfarande uppfyller sina åtaganden</li>
+    <li>År 2, upprepar du hela checklistan och presenterar en uppdaterad bedömning för styrelsen</li>
+  </ul>
+
+  <p>
+    Detta kräver resurser, men det är en försäljning av personligt ansvar — och det är en försäljning som kommer att frågas om när tillsynsmyndigheterna knackar på dörren.
+  </p>
+
+  <h2>Vad du förmodligen undrar</h2>
+
+  <div class="faq-item">
+    <div class="faq-q">Kan vi inte bara låta molnleverantören ansvar för säkerhet?</div>
+    <div class="faq-a">Nej. NIS2 artikel 20 och 21 gör det tydligt att du som ledare är personligt ansvarig för att välja en säker leverantör och övervaka den. Du kan delegera den tekniska implementeringen, men inte det juridiska ansvaret. Molnleverantören kommer att neka ansvar för dina misslyckanden — och tillsynsmyndigheten kommer att fråga varför du inte var mer noggrann när du valde.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">Räcker en molnleverantörs ISO 27001-certifiering?</div>
+    <div class="faq-a">Det är ett bra tecken, men det räcker inte. ISO 27001 säger att leverantören har en säkerhetsledningssystem. Det säger ingenting om huruvida deras konfiguration passar dina behov. En leverantör kan vara ISO 27001-certifierad och ändå tillåta svag autentisering, dålig datakryptering, eller lagring utanför EU. Du måste alltid göra en egen bedömning.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">Måste vi lagra data i Sverige?</div>
+    <div class="faq-a">Det beror på vad för data. Om det är allmän affärsdata kan den lagras i EU och ofta även i andra länder under vissa villkor (Standard Contractual Clauses). Om det är klassad försvarsinformation, känslig hälsodata, eller finansiell data som är föremål för statlig övervakning, är svenska eller EU-datacenter ofta ett juridiskt krav, inte bara ett val. Kontrollera med er juridiska rådgivare och tillsynsmyndighetens vägledning för er sektor.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">Vad gör vi om vår molnleverantör en dag inte längre uppfyller NIS2-kraven?</div>
+    <div class="faq-a">Du måste omvärdera årligen. Om en leverantör slutar att uppfylla kraven — kanske de slutar stödja MFA, eller flyttar data till ett osäkert tredjeland — är det ditt juridiska ansvar att antingen kräva att de åtgärdar det eller att migrera till en annan leverantör. Det är inte leverantörens beslut. Du kan inte säga "vi använde det här för att leverantören tillät det." NIS2 gör dig ansvarig för ditt val.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">Vilka kostnader är förknippade med att genomföra denna bedömning?</div>
+    <div class="faq-a">En kostnadsfri grundläggande bedömning kan genomföras av ett litet IT-säkerhetsteam på några timmar. Om du vill ha en djupare analys genom en extern certifierad konsult, räkna med 10 000–30 000 kronor. Jämfört med risken för 10 miljoner euro i böter, eller en incident som kräver forensics för många miljoner, är detta försäljningen av ditt liv.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">Kan vi använda samma bedömning för flera molnleverantörer?</div>
+    <div class="faq-a">Nej. Varje molnleverantör har sina egna säkerhetsmodeller, sina egna konfigurationsalternativ, och sitt eget ansvar-gräns. Du måste göra en separat bedömning för varje leverantör du använder. En organisation som använder både Azure och AWS måste dokumentera bedömning av båda.</div>
+  </div>
+
+</article>
+
+<div class="related-articles">
+  <p>Läs också</p>
+  <ul>
+    <li><a href="https://nis2klar.se/artiklar/nis2-vad-ar.html">→ Vad är NIS2 egentligen?</a></li>
+    <li><a href="https://nis2klar.se/artiklar/nis2-artikel-21-sakerhetsatgarder.html">→ Artikel 21: De tio obligatoriska säkerhetskraven</a></li>
+    <li><a href="https://nis2klar.se/artiklar/nis2-personligt-ansvar-styrelse.html">→ Styrelsens personliga ansvar under Artikel 20</a></li>
+  </ul>
+  <p class="footer-nav">← <a href="https://nis2klar.se/">NIS2Klar startsida</a> · <a href="https://nis2klar.se/artiklar.html">Alla guider</a></p>
+</div>
+
+<div class="box-info" style="margin: 48px 0 32px; max-width: 760px; margin-left: auto; margin-right: auto;">
+  <div style="font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color: var(--yellow); margin-bottom:10px;">🔧 VERKTYG &amp; LÖSNINGAR</div>
+  <p style="margin:0; font-size:17px; color: #ddd; line-height:1.7;">Microsoft Entra ID Conditional Access (MFA + riskbaserad åtkomstkontroll) + Microsoft Purview Sensitivity Labels (datakryptering) bildar ryggraden i en säker molnimplementering. Microsoft 365 Business Premium täcker MFA, backup, EDR och compliance-rapportering — allt ni behöver för att dokumentera Artikel 21. En certifierad Microsoft-partner kan genomföra en kostnadsfri gap-analys för att visa var era molnmiljöer står idag.</p>
+</div>
+
+<!-- NEWSLETTER -->
+<div style="background:#111; border:1px solid rgba(255,255,255,0.1); border-left:3px solid #f5c518; border-radius:4px; padding:32px 36px; margin:40px 0 0; text-align:center; max-width:760px; margin-left:auto; margin-right:auto;">
+  <div style="font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:#f5c518; margin-bottom:12px;">📬 NIS2-UPPDATERINGAR</div>
+  <h3 style="font-family:'Poppins',sans-serif; font-size:20px; font-weight:800; margin:0 0 8px; color:#f0f0f0;">Ny NIS2-artikel varje vecka — direkt i inkorgen</h3>
+  <p style="color:#888; font-size:15px; margin:0 0 20px;">Ingen säljpitch. Bara konkret vägledning för VD:ar och styrelser.</p>
+  <form id="nlForm-nis2_molntjanster_due_diligence" onsubmit="submitNewsletter_nis2_molntjanster_due_diligence(event)" style="display:flex; gap:10px; flex-wrap:wrap; justify-content:center; max-width:460px; margin:0 auto;">
+    <input type="email" id="nlEmail-nis2_molntjanster_due_diligence" placeholder="din@foretag.se" required
+           style="flex:1; min-width:200px; padding:12px 16px; background:#1c1c1f; border:1px solid rgba(255,255,255,0.15); border-radius:4px; color:#f0f0f0; font-size:15px; outline:none;" />
+    <button type="submit" id="nlSubmit-nis2_molntjanster_due_diligence"
+            style="padding:12px 22px; background:#f5c518; color:#141416; font-weight:700; font-size:15px; border:none; border-radius:4px; cursor:pointer; white-space:nowrap;">
+      Prenumerera gratis →
+    </button>
+  </form>
+  <p style="font-size:12px; color:#555; margin:12px 0 0;">Du kan avprenumerera när som helst. Vi delar aldrig din e-post.</p>
+  <div id="nlThanks-nis2_molntjanster_due_diligence" style="display:none; color:#4ade80; font-size:16px; font-weight:600; margin-top:14px;">✅ Du är med! Nästa artikel kommer direkt till din inkorg.</div>
+</div>
+
+<!-- CTA -->
+<div class="cta-section" style="max-width: 760px; margin-left: auto; margin-right: auto;">
+  <h2>Är er molnmiljö bedömd för NIS2?</h2>
+  <p>En kostnadsfri gap-analys med en certifierad Microsoft-partner visar exakt vilka molnkonfigurationer ni redan har på plats — och vad som saknas för att bli NIS2-kompatibel.</p>
+  <a href="https://nis2klar.se#boka" class="btn-primary">Boka kostnadsfri gap-analys →</a>
+  <p class="cta-fine">Böterna för felaktig molnkonfiguration är upp till <strong>10 miljoner euro</strong>. Gap-analysen är gratis.</p>
+</div>
+
+<footer>
+  © 2026 M&J Trusted Marketing KB ·
+  <a href="mailto:support@trustedmarketing.se">support@trustedmarketing.se</a> · <a href="tel:+46470597003">+46 470 59 70 03</a> ·
+  <a href="https://nis2klar.se/">Tillbaka till startsidan</a> ·
+  <a href="https://nis2klar.se/privacy.html">Integritetspolicy</a>
+  <p style="margin-top:12px; font-size:11px; color: #555; line-height:1.5;">Microsoft, Microsoft 365, Azure, Microsoft Entra ID, Microsoft Purview och tillhörande produktnamn är varumärken som tillhör Microsoft Corporation. nis2klar.se är inte affilierat med eller godkänt av Microsoft Corporation.</p>
+</footer>
+
+<script data-cfasync="false">
+  async function submitNewsletter_nis2_molntjanster_due_diligence(e) {
+    e.preventDefault();
+    const btn = document.getElementById('nlSubmit-nis2_molntjanster_due_diligence');
+    btn.disabled = true;
+    btn.textContent = 'Skickar...';
+    const email = document.getElementById('nlEmail-nis2_molntjanster_due_diligence').value.trim();
+    try {
+      const res = await fetch('/api/newsletter/subscribe', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, source: 'artikel-nis2_molntjanster_due_diligence' })
+      });
+      const data = await res.json();
+      if (data.success) {
+        document.getElementById('nlForm-nis2_molntjanster_due_diligence').style.display = 'none';
+        document.getElementById('nlThanks-nis2_molntjanster_due_diligence').style.display = 'block';
+      } else {
+        btn.disabled = false;
+        btn.textContent = 'Prenumerera gratis →';
+      }
+    } catch {
+      btn.disabled = false;
+      btn.textContent = 'Prenumerera gratis →';
+    }
+  }
+</script>
+
+</body>
+</html>
