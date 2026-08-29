@@ -21,7 +21,7 @@ function applyEmployeeFilter(range, params, conditions) {
 router.get('/', async (req, res) => {
   const {
     page = 1, limit = 50,
-    status, county, nace, employees, nis2, has_website, ms365,
+    status, state, niche, has_website,
     score_min, score_label, search,
     sort = 'score', dir = 'desc'
   } = req.query;
@@ -31,37 +31,21 @@ router.get('/', async (req, res) => {
   const conditions = [];
 
   if (status)               { params.push(status);     conditions.push(`review_status = $${params.length}`); }
-  if (county)               { params.push(county);     conditions.push(`county ILIKE $${params.length}`); }
-  if (nace)                 { params.push(`${nace}%`); conditions.push(`nace_code LIKE $${params.length}`); }
-  applyEmployeeFilter(employees, params, conditions);
-  if (nis2 === 'true')      conditions.push('nis2_registered = true');
+  if (state)                { params.push(state);       conditions.push(`state ILIKE $${params.length}`); }
+  if (niche)                { params.push(niche);       conditions.push(`niche ILIKE $${params.length}`); }
   if (has_website === 'true')  conditions.push('website IS NOT NULL');
-  if (ms365 === 'true')     conditions.push("tech_stack = 'microsoft365'");
-  if (req.query.google_ws === 'true') conditions.push("tech_stack = 'google_workspace'");
   if (score_min)            { params.push(parseInt(score_min)); conditions.push(`score >= $${params.length}`); }
   if (score_label)          { params.push(score_label); conditions.push(`score_label = $${params.length}`); }
   if (search) {
     params.push(`%${search}%`);
-    conditions.push(`(company_name ILIKE $${params.length} OR city ILIKE $${params.length} OR email ILIKE $${params.length})`);
+    conditions.push(`(company_name ILIKE $${params.length} OR city ILIKE $${params.length} OR email ILIKE $${params.length} OR state ILIKE $${params.length})`);
   }
 
   const where = conditions.length ? `WHERE ${conditions.join(' AND ')}` : '';
-  const SORT_MAP = { employee_range: 'num_employees_exact' };
-  const VALID_SORTS = ['score','company_name','city','employee_range','num_employees_exact','created_at','sweet_spot','ms365','google_ws'];
-  const rawSort = VALID_SORTS.includes(sort) ? sort : 'sweet_spot';
+  const VALID_SORTS = ['score','company_name','city','state','created_at'];
+  const rawSort = VALID_SORTS.includes(sort) ? sort : 'score';
   const validDir = dir === 'asc' ? 'ASC' : 'DESC';
-
-  // Sweet-spot sort: NIS2-registered 50–249 emp leads always first, then by score
-  const SWEET_SPOT_EXPR = `CASE WHEN nis2_registered = true AND num_employees_exact BETWEEN 50 AND 249 THEN 0 ELSE 1 END ASC, score DESC`;
-  const MS365_EXPR     = `CASE WHEN tech_stack = 'microsoft365' THEN 0 ELSE 1 END ASC, score DESC`;
-  const GOOGLE_WS_EXPR = `CASE WHEN tech_stack = 'google_workspace' THEN 0 ELSE 1 END ASC, score DESC`;
-  const orderClause = rawSort === 'sweet_spot'
-    ? SWEET_SPOT_EXPR
-    : rawSort === 'ms365'
-    ? MS365_EXPR
-    : rawSort === 'google_ws'
-    ? GOOGLE_WS_EXPR
-    : `${SORT_MAP[rawSort] || rawSort} ${validDir} NULLS LAST`;
+  const orderClause = `${rawSort} ${validDir} NULLS LAST`;
 
   try {
     const countRes = await db.query(`SELECT COUNT(*) FROM discovery_leads ${where}`, params);
@@ -69,11 +53,9 @@ router.get('/', async (req, res) => {
 
     params.push(parseInt(limit), offset);
     const { rows } = await db.query(
-      `SELECT id, org_nr, company_name, website, email, email_status, phone,
-              city, county, nace_code, nace_description, employee_range, num_employees_exact, revenue_range,
-              nis2_registered, nis2_sector, linkedin_url, score, score_label,
-              review_status, contacted_at, outreach_angle, created_at,
-              intent_signal, intent_signal_at, ms365_detected_at, tech_stack
+      `SELECT id, company_name, website, email, email_status, phone,
+              city, state, niche, linkedin_url, score, score_label,
+              review_status, contacted_at, outreach_angle, created_at
        FROM discovery_leads ${where}
        ORDER BY ${orderClause}
        LIMIT $${params.length - 1} OFFSET $${params.length}`,
@@ -89,7 +71,7 @@ router.get('/', async (req, res) => {
 
 // GET /api/leads/export — CSV export with same filters
 router.get('/export', async (req, res) => {
-  const { status, county, nace, employees, nis2, has_website, score_min, score_label, search, ids } = req.query;
+  const { status, state, niche, has_website, score_min, score_label, search, ids } = req.query;
 
   const params = [];
   const conditions = [];
@@ -101,11 +83,9 @@ router.get('/export', async (req, res) => {
       conditions.push(`id = ANY($${params.length})`);
     }
   } else {
-    if (status)               { params.push(status);     conditions.push(`review_status = $${params.length}`); }
-    if (county)               { params.push(county);     conditions.push(`county ILIKE $${params.length}`); }
-    if (nace)                 { params.push(`${nace}%`); conditions.push(`nace_code LIKE $${params.length}`); }
-    applyEmployeeFilter(employees, params, conditions);
-    if (nis2 === 'true')      conditions.push('nis2_registered = true');
+    if (status)               { params.push(status);   conditions.push(`review_status = $${params.length}`); }
+    if (state)                { params.push(state);     conditions.push(`state ILIKE $${params.length}`); }
+    if (niche)                { params.push(niche);     conditions.push(`niche ILIKE $${params.length}`); }
     if (has_website === 'true') conditions.push('website IS NOT NULL');
     if (score_min)            { params.push(parseInt(score_min)); conditions.push(`score >= $${params.length}`); }
     if (score_label)          { params.push(score_label); conditions.push(`score_label = $${params.length}`); }
@@ -119,15 +99,15 @@ router.get('/export', async (req, res) => {
 
   try {
     const { rows } = await db.query(
-      `SELECT org_nr, company_name, city, county, nace_code, employee_range, email, phone, website,
-              linkedin_url, score, score_label, review_status, nis2_registered, nis2_sector, notes
+      `SELECT company_name, city, state, niche, email, phone, website,
+              linkedin_url, score, score_label, review_status, notes
        FROM discovery_leads ${where}
        ORDER BY score DESC NULLS LAST`,
       params
     );
 
     const today = new Date().toISOString().split('T')[0];
-    const header = 'org_nr,company_name,city,county,nace_code,employee_range,email,phone,website,linkedin_url,score,score_label,review_status,nis2_registered,nis2_sector,notes';
+    const header = 'company_name,city,state,niche,email,phone,website,linkedin_url,score,score_label,review_status,notes';
 
     const escape = (v) => {
       if (v == null) return '';
@@ -137,9 +117,9 @@ router.get('/export', async (req, res) => {
     };
 
     const lines = [header, ...rows.map(r =>
-      [r.org_nr, r.company_name, r.city, r.county, r.nace_code, r.employee_range,
+      [r.company_name, r.city, r.state, r.niche,
        r.email, r.phone, r.website, r.linkedin_url, r.score, r.score_label,
-       r.review_status, r.nis2_registered, r.nis2_sector, r.notes].map(escape).join(',')
+       r.review_status, r.notes].map(escape).join(',')
     )];
 
     res.setHeader('Content-Type', 'text/csv');
@@ -151,28 +131,21 @@ router.get('/export', async (req, res) => {
   }
 });
 
-// GET /api/leads/export-d365 — CSV export formatted for Dynamics 365 import
+// GET /api/leads/export-d365 — alias for /export (legacy compat)
 router.get('/export-d365', async (req, res) => {
-  const { status, county, nace, employees, nis2, has_website, ms365, google_ws, score_min, score_label, search, ids } = req.query;
+  const { status, state, niche, has_website, score_min, score_label, search, ids } = req.query;
 
   const params = [];
   const conditions = [];
 
   if (ids) {
     const idList = ids.split(',').map(Number).filter(Boolean);
-    if (idList.length) {
-      params.push(idList);
-      conditions.push(`id = ANY($${params.length})`);
-    }
+    if (idList.length) { params.push(idList); conditions.push(`id = ANY($${params.length})`); }
   } else {
-    if (status)               { params.push(status);     conditions.push(`review_status = $${params.length}`); }
-    if (county)               { params.push(county);     conditions.push(`county ILIKE $${params.length}`); }
-    if (nace)                 { params.push(`${nace}%`); conditions.push(`nace_code LIKE $${params.length}`); }
-    applyEmployeeFilter(employees, params, conditions);
-    if (nis2 === 'true')        conditions.push('nis2_registered = true');
+    if (status)               { params.push(status); conditions.push(`review_status = $${params.length}`); }
+    if (state)                { params.push(state);  conditions.push(`state ILIKE $${params.length}`); }
+    if (niche)                { params.push(niche);  conditions.push(`niche ILIKE $${params.length}`); }
     if (has_website === 'true') conditions.push('website IS NOT NULL');
-    if (ms365 === 'true')       conditions.push("tech_stack = 'microsoft365'");
-    if (google_ws === 'true')   conditions.push("tech_stack = 'google_workspace'");
     if (score_min)            { params.push(parseInt(score_min)); conditions.push(`score >= $${params.length}`); }
     if (score_label)          { params.push(score_label); conditions.push(`score_label = $${params.length}`); }
     if (search) {
@@ -185,12 +158,8 @@ router.get('/export-d365', async (req, res) => {
 
   try {
     const { rows } = await db.query(
-      `SELECT org_nr, company_name, city, county, nace_code, nace_description,
-              num_employees_exact, employee_range, revenue_range,
-              email, phone, website, linkedin_url,
-              score, score_label, review_status,
-              nis2_registered, nis2_sector,
-              tech_stack, outreach_angle, notes
+      `SELECT company_name, city, state, niche, email, phone, website,
+              linkedin_url, score, score_label, review_status, outreach_angle, notes
        FROM discovery_leads ${where}
        ORDER BY score DESC NULLS LAST`,
       params
@@ -203,76 +172,20 @@ router.get('/export-d365', async (req, res) => {
       return s;
     };
 
-    const statusMap = { new: 'New', contacted: 'Contacted', qualified: 'Qualified', rejected: 'Disqualified' };
-
-    // Build D365-compatible description combining key NIS2 context
-    const buildDescription = (r) => {
-      const parts = [];
-      if (r.outreach_angle) parts.push(r.outreach_angle);
-      if (r.nis2_registered) parts.push(`NIS2 registered${r.nis2_sector ? ` (${r.nis2_sector})` : ''}`);
-      if (r.tech_stack && r.tech_stack !== 'other') parts.push(`Tech: ${r.tech_stack}`);
-      if (r.nace_description) parts.push(`Sector: ${r.nace_description} (${r.nace_code})`);
-      if (r.score) parts.push(`Lead score: ${r.score} (${r.score_label})`);
-      if (r.org_nr) parts.push(`Org.nr: ${r.org_nr}`);
-      if (r.notes) parts.push(r.notes);
-      return parts.join(' | ');
-    };
-
-    // Estimate revenue from revenue_range string (e.g. "10M-50M" → midpoint in SEK)
-    const parseRevenue = (range) => {
-      if (!range) return '';
-      const m = range.match(/(\d+)M?.*?(\d+)M?/i);
-      if (m) return String(((parseInt(m[1]) + parseInt(m[2])) / 2) * 1_000_000);
-      return '';
-    };
-
     const today = new Date().toISOString().split('T')[0];
-
-    // D365 Lead entity columns — display names for auto-mapping in import wizard
-    const header = [
-      'Topic',                  // subject — required by D365
-      'Company Name',           // companyname
-      'First Name',             // firstname — empty for company leads
-      'Last Name',              // lastname — empty for company leads
-      'Email',                  // emailaddress1
-      'Business Phone',         // telephone1
-      'Website',                // websiteurl
-      'City',                   // address1_city
-      'State/Province',         // address1_stateorprovince
-      'Country/Region',         // address1_country
-      'No. of Employees',       // numberofemployees
-      'Annual Revenue',         // revenue (SEK)
-      'Industry',               // industrycode
-      'Description',            // description — NIS2 context, score, org.nr
-      'Status Reason',          // statuscode
-      'Lead Source Description', // leadsourcedescription — tech stack label
-    ].join(',');
+    const header = 'company_name,city,state,niche,email,phone,website,linkedin_url,score,score_label,review_status,notes';
 
     const lines = [header, ...rows.map(r => [
-      `NIS2 Lead - ${r.company_name}`,        // Topic
-      r.company_name,                          // Company Name
-      '',                                      // First Name (empty for company leads)
-      '',                                      // Last Name (empty for company leads)
-      r.email,                                 // Email
-      r.phone,                                 // Business Phone
-      r.website,                               // Website
-      r.city,                                  // City
-      r.county,                                // State/Province
-      'Sweden',                                // Country/Region
-      r.num_employees_exact || '',             // No. of Employees
-      parseRevenue(r.revenue_range),           // Annual Revenue (SEK)
-      r.nace_description || '',                // Industry
-      buildDescription(r),                     // Description
-      statusMap[r.review_status] || 'New',     // Status Reason
-      r.tech_stack === 'microsoft365' ? '🪟 M365' : r.tech_stack === 'google_workspace' ? 'Google WS' : '', // Lead Source Description
+      r.company_name, r.city, r.state, r.niche,
+      r.email, r.phone, r.website, r.linkedin_url,
+      r.score, r.score_label, r.review_status, r.notes,
     ].map(escape).join(','))];
 
     res.setHeader('Content-Type', 'text/csv; charset=utf-8');
-    res.setHeader('Content-Disposition', `attachment; filename="d365_leads_${today}.csv"`);
-    // BOM for Excel UTF-8 compatibility
+    res.setHeader('Content-Disposition', `attachment; filename="leads_export_${today}.csv"`);
     res.send('\uFEFF' + lines.join('\n'));
   } catch (err) {
-    console.error('[leads] d365 export error:', err.message);
+    console.error('[leads] export error:', err.message);
     res.status(500).json({ success: false, error: err.message });
   }
 });
@@ -284,7 +197,7 @@ router.post('/bulk-status', async (req, res) => {
 
   try {
     const { rowCount } = await db.query(
-      'UPDATE discovery_leads SET review_status=$1, updated_at=NOW() WHERE id = ANY($2)',
+      'UPDATE discovery_leads SET review_status=$1 WHERE id = ANY($2)',
       [status, ids]
     );
     res.json({ success: true, data: { updated: rowCount } });
@@ -1599,49 +1512,39 @@ router.post('/:id/generate-linkedin-dm', async (req, res) => {
 
     const titleLower = step_title.toLowerCase();
     let dmType, instruction;
-    if (titleLower.includes('ref follow') || (titleLower.includes('intro') && titleLower.includes('ref'))) {
+    if (titleLower.includes('follow') || titleLower.includes('comment')) {
       dmType = 'connection-request';
-      instruction = `Skriv en anslutningsförfrågan-not (MAX 30 ord). Jan har följt dem på LinkedIn sedan ett tag tillbaka. De har INTE accepterat någon förfrågan än — Jan är inte kontakt med dem. Noten ska referera till att Jan följer dem, och ge en äkta anledning att connecta kopplat till NIS2 och deras bransch. Ingen hälsningsfras, ingen pitch. Raka rör.`;
-    } else if (titleLower.includes('intro') || titleLower.includes('kort')) {
+      instruction = `Write a LinkedIn connection request note (MAX 30 words). Jan has been following their clinic page. Reference something specific about their niche (ketamine/infusion/wellness) and why you want to connect. No pitch. Direct.`;
+    } else if (titleLower.includes('connect') || titleLower.includes('intro')) {
       dmType = 'first-dm';
-      instruction = `Skriv ett första DM (50-70 ord) att skicka precis efter att de accepterat anslutningsförfrågan. Bygg rapport, referera till NIS2 i deras sektor. Mjuk avslutning med en öppen fråga. Ingen pitch.`;
-    } else if (titleLower.includes('case') || titleLower.includes('artikel') || titleLower.includes('dela')) {
-      dmType = 'case';
-      instruction = `Skriv ett uppföljnings-DM (50-70 ord) med en konkret insikt om NIS2 i deras bransch. Ingen pitch — värde först. Avsluta med en öppen fråga.`;
-    } else if (titleLower.includes('rätt person') || titleLower.includes('person')) {
-      dmType = 'right-person';
-      instruction = `Skriv ett kort DM (30-50 ord) som frågar om de är rätt person att prata med om NIS2, eller om de kan peka dig vidare. Ärlig, direkt, ingen press.`;
+      instruction = `Write a first DM (50-70 words) to send right after they accepted the connection request. Build rapport, reference AI search visibility for healthcare clinics that can't run ads. Soft open-ended question. No pitch.`;
+    } else if (titleLower.includes('dm')) {
+      dmType = 'followup';
+      instruction = `Write a follow-up DM (50-70 words) about the AI visibility gap for ketamine/infusion clinics — competitors showing up on ChatGPT while they don't. Peer-to-peer tone. Soft yes/no question.`;
     } else {
       dmType = 'followup';
-      instruction = `Skriv ett uppföljnings-DM (50-70 ord) om NIS2 i deras bransch. Peer-to-peer ton.`;
+      instruction = `Write a short DM (40-60 words) about AI search visibility for healthcare clinics. Mention that ad-restricted niches (ketamine, infusion therapy) need organic/PR presence more than anyone. Soft question.`;
     }
 
     const Anthropic = require('@anthropic-ai/sdk');
     const client = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });
-    const prefix = lead.nace_code ? String(lead.nace_code).substring(0, 2) : null;
 
-    const prompt = `Du är Jan på Nomad Cyber (NIS2-compliance och cybersäkerhet, svenska medelstora företag). Skriv meddelandet i första person — "jag", inte "Jan".
+    const prompt = `You are Jan at Simaroa Media (content syndication for US healthcare clinics — NBC/CBS/Fox + AI search visibility). Write in first person.
 
-Prospekt:
-Företag: ${lead.company_name}, ${lead.city || 'Sverige'}
-Bransch: ${lead.nace_description || 'okänd'}
-Anställda: ${lead.employee_range || 'okänt'}
-NIS2-registrerat: ${lead.nis2_registered ? 'JA – sektor: ' + lead.nis2_sector : 'Nej / okänt'}
-${contact_name ? `Kontaktperson: ${contact_name}` : ''}
-${['49','50','51','52','53'].includes(prefix) ? 'Bakgrund: Jan jobbade 20 år på DHL — känner transportbranschen inifrån. Använd detta som isbrytare i anslutningsförfrågan om det passar naturligt.' : ''}
+Prospect:
+Clinic: ${lead.company_name}, ${lead.city || ''}, ${lead.state || 'US'}
+Niche: ${lead.niche || 'healthcare/wellness'}
+${contact_name ? `Contact: ${contact_name}` : ''}
 
-Uppgift: ${instruction}
+Task: ${instruction}
 
-Hårda regler:
-- Skriv på naturlig, enkel svenska — som en människa skriver, inte som en broschyr
-- ALDRIG: "kul att få in fler i nätverket", "vore kul att följa varandra", "hoppas detta når dig väl", "kunde finnas anledning att ha kontakt", "koppla upp oss", "koppla ihop oss"
-- ALDRIG engelska branschtermer — översätt alltid: "manufacturing" = "tillverkning", "health" = "hälsa/vård", "energy" = "energi" osv
-- Skriv ALLTID till personen som "du/dig" — aldrig "ni/er" (för formellt)
-- Avsluta anslutningsförfrågan med "lägger till dig." eller ingenting. ALDRIG "vill gärna", ALDRIG "ha dig/er i nätverket", ALDRIG "följa ditt/ert arbete"
-- ALDRIG påstå att Jan jobbar med andra företag i branschen — det är osant
-- ALDRIG anta att de redan är kontakter om uppgiften gäller anslutningsförfrågan
-- Inga engelska ord
-- Svara med BARA meddelandet, ingen rubrik eller förklaring`;
+Hard rules:
+- Write in natural English — human, not corporate
+- NEVER: "Hope this finds you well", "would love to connect", "synergy", "circle back"
+- Always write to the person as "you" — direct peer tone
+- NEVER claim to work with competitors in their market
+- No emojis
+- Reply with ONLY the message, no label or explanation`;
 
     const message = await client.messages.create({
       model: 'claude-sonnet-4-6',

@@ -2,8 +2,8 @@ import React, { useEffect, useState, useCallback } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
 import { api } from '../api';
 
-const COUNTIES = ['Stockholm','Uppsala','Södermanland','Östergötland','Jönköping','Kronoberg','Kalmar','Gotland','Blekinge','Skåne','Halland','Västra Götaland','Värmland','Örebro','Västmanland','Dalarna','Gävleborg','Västernorrland','Jämtland','Västerbotten','Norrbotten'];
-const EMPLOYEE_RANGES = ['1-9','10-49','50-99','100-199','200-499','500+'];
+const US_STATES = ['AL','AK','AZ','AR','CA','CO','CT','DE','FL','GA','HI','ID','IL','IN','IA','KS','KY','LA','ME','MD','MA','MI','MN','MS','MO','MT','NE','NV','NH','NJ','NM','NY','NC','ND','OH','OK','OR','PA','RI','SC','SD','TN','TX','UT','VT','VA','WA','WV','WI','WY'];
+const NICHES = ['ketamine','iv therapy','tms therapy','mental health','pain management'];
 const SCORE_LABELS = [{ value: 'hot', label: '🔴 Hot' }, { value: 'warm', label: '🟡 Warm' }, { value: 'cold', label: '🔵 Cold' }];
 const STATUSES = [
   { value: 'new', label: 'New' }, { value: 'contacted', label: 'Contacted' },
@@ -30,13 +30,9 @@ export default function Leads() {
   const filters = {
     search: searchParams.get('search') || '',
     score_label: searchParams.get('score_label') || '',
-    county: searchParams.get('county') || '',
-    nace: searchParams.get('nace') || '',
-    employees: searchParams.get('employees') || '',
-    nis2: searchParams.get('nis2') || '',
+    state: searchParams.get('state') || '',
+    niche: searchParams.get('niche') || '',
     has_website: searchParams.get('has_website') || '',
-    ms365: searchParams.get('ms365') || '',
-    google_ws: searchParams.get('google_ws') || '',
     status: searchParams.get('status') || '',
   };
 
@@ -146,13 +142,6 @@ export default function Leads() {
           >
             Export {total > 0 ? `${total.toLocaleString()} leads` : ''} CSV
           </button>
-          <button
-            onClick={() => handleExport(null, 'export-d365', 'd365_leads')}
-            className="px-4 py-2 rounded-lg bg-blue-600/20 border border-blue-500/30 text-blue-300 hover:text-blue-100 hover:bg-blue-600/30 text-sm transition-colors flex items-center gap-1.5"
-            title="Export CSV formatted for Microsoft Dynamics 365 import wizard"
-          >
-            🪟 Export for D365
-          </button>
         </div>
       </div>
 
@@ -166,8 +155,8 @@ export default function Leads() {
         />
         {[
           { key: 'score_label', opts: SCORE_LABELS, placeholder: 'Score level' },
-          { key: 'county', opts: COUNTIES.map(c => ({ value: c, label: c })), placeholder: 'County' },
-          { key: 'employees', opts: EMPLOYEE_RANGES.map(r => ({ value: r, label: r })), placeholder: 'Employees' },
+          { key: 'state', opts: US_STATES.map(s => ({ value: s, label: s })), placeholder: 'State' },
+          { key: 'niche', opts: NICHES.map(n => ({ value: n, label: n.charAt(0).toUpperCase() + n.slice(1) })), placeholder: 'Niche' },
           { key: 'status', opts: STATUSES, placeholder: 'Status' },
         ].map(f => (
           <select
@@ -181,14 +170,6 @@ export default function Leads() {
           </select>
         ))}
         <button
-          onClick={() => setFilter('nis2', filters.nis2 ? '' : 'true')}
-          className={`px-3 py-2 rounded-lg text-sm font-medium border transition-colors ${
-            filters.nis2 ? 'bg-cyan-500/20 border-cyan-500/40 text-cyan-400' : 'bg-navy-800 border-white/10 text-slate-400 hover:text-slate-200'
-          }`}
-        >
-          NIS2 only
-        </button>
-        <button
           onClick={() => setFilter('has_website', filters.has_website ? '' : 'true')}
           className={`px-3 py-2 rounded-lg text-sm font-medium border transition-colors ${
             filters.has_website ? 'bg-cyan-500/20 border-cyan-500/40 text-cyan-400' : 'bg-navy-800 border-white/10 text-slate-400 hover:text-slate-200'
@@ -196,44 +177,17 @@ export default function Leads() {
         >
           Has website
         </button>
-        <button
-          onClick={() => setFilter('ms365', filters.ms365 ? '' : 'true')}
-          className={`px-3 py-2 rounded-lg text-sm font-medium border transition-colors ${
-            filters.ms365 ? 'bg-blue-500/20 border-blue-500/40 text-blue-400' : 'bg-navy-800 border-white/10 text-slate-400 hover:text-slate-200'
-          }`}
-        >
-          🪟 Microsoft 365
-        </button>
-        <button
-          onClick={() => setFilter('google_ws', filters.google_ws ? '' : 'true')}
-          className={`px-3 py-2 rounded-lg text-sm font-medium border transition-colors ${
-            filters.google_ws ? 'bg-green-500/20 border-green-500/40 text-green-400' : 'bg-navy-800 border-white/10 text-slate-400 hover:text-slate-200'
-          }`}
-        >
-          🟢 Google Workspace
-        </button>
         <select
           value={sort}
           onChange={e => { setSort(e.target.value); setPage(1); }}
           className="bg-navy-800 border border-white/10 rounded-lg px-3 py-2 text-sm text-slate-200 focus:outline-none focus:border-cyan-500"
         >
-          <option value="sweet_spot">Sort: Sweet Spot</option>
-          <option value="ms365">Sort: M365 first</option>
-          <option value="google_ws">Sort: Google WS first</option>
           <option value="score">Sort: Score</option>
           <option value="company_name">Sort: Name</option>
-          <option value="num_employees_exact">Sort: Employees</option>
+          <option value="city">Sort: City</option>
+          <option value="state">Sort: State</option>
           <option value="created_at">Sort: Newest</option>
         </select>
-        {filters.nace && (
-          <button
-            onClick={() => setFilter('nace', '')}
-            className="px-3 py-2 rounded-lg text-sm font-medium border bg-cyan-500/20 border-cyan-500/40 text-cyan-400 flex items-center gap-1.5"
-          >
-            Sector: {filters.nace}
-            <span className="text-cyan-300 hover:text-white">×</span>
-          </button>
-        )}
       </div>
 
       {/* Bulk action bar */}
@@ -281,12 +235,6 @@ export default function Leads() {
             Export selected
           </button>
           <button
-            onClick={() => handleExport([...selected], 'export-d365', 'd365_leads')}
-            className="px-3 py-1.5 text-xs rounded-lg bg-blue-600/20 border border-blue-500/30 text-blue-300 hover:bg-blue-600/30 transition-colors"
-          >
-            🪟 Export D365
-          </button>
-          <button
             onClick={() => setSelected(new Set())}
             className="text-xs text-slate-500 hover:text-slate-300 transition-colors ml-auto"
           >
@@ -313,7 +261,7 @@ export default function Leads() {
                   className="w-4 h-4 accent-cyan-500 cursor-pointer"
                 />
               </th>
-              {['Score','Company','City / County','Emp.','Sector','NIS2','Data','Status'].map(h => (
+              {['Score','Company','City / State','Niche','Data','Status'].map(h => (
                 <th key={h} className="px-4 py-3 text-xs text-slate-500 font-medium">{h}</th>
               ))}
             </tr>
@@ -322,7 +270,7 @@ export default function Leads() {
             {loading ? (
               <tr><td colSpan={9} className="px-4 py-8 text-center text-slate-500">Loading...</td></tr>
             ) : leads.length === 0 ? (
-              <tr><td colSpan={9} className="px-4 py-8 text-center text-slate-500">No leads found</td></tr>
+              <tr><td colSpan={7} className="px-4 py-8 text-center text-slate-500">No leads found</td></tr>
             ) : leads.map(lead => (
               <tr key={lead.id} className={`border-b border-white/5 hover:bg-white/3 transition-colors ${selected.has(lead.id) ? 'bg-cyan-500/5' : ''}`}>
                 <td className="px-4 py-3">
@@ -343,27 +291,16 @@ export default function Leads() {
                   <Link to={`/leads/${lead.id}`} className="text-slate-200 hover:text-cyan-400 font-medium transition-colors">
                     {lead.company_name}
                   </Link>
-                  {lead.intent_signal && (
-                    <span title="Hiring for security/NIS2 roles — buying signal" className="ml-1.5 text-xs bg-orange-500/20 text-orange-400 px-1.5 py-0.5 rounded-full">🎯 hiring</span>
-                  )}
-                  {lead.tech_stack === 'microsoft365' && (
-                    <span title="Microsoft 365 detected via MX record" className="ml-1.5 text-xs bg-blue-500/20 text-blue-400 px-1.5 py-0.5 rounded-full">🪟 M365</span>
-                  )}
-                  {lead.tech_stack === 'google_workspace' && (
-                    <span title="Google Workspace detected via MX record" className="ml-1.5 text-xs bg-green-500/20 text-green-400 px-1.5 py-0.5 rounded-full">🟢 Google WS</span>
-                  )}
-                  {lead.website && <div className="text-xs text-slate-600 truncate max-w-[180px]">{lead.website}</div>}
+                  {lead.website && <div className="text-xs text-slate-600 truncate max-w-[200px]">{lead.website}</div>}
                 </td>
                 <td className="px-4 py-3 text-slate-400 text-xs">
                   <div>{lead.city || '—'}</div>
-                  <div className="text-slate-600">{lead.county || ''}</div>
+                  <div className="text-slate-600">{lead.state || ''}</div>
                 </td>
-                <td className="px-4 py-3 text-slate-400 text-xs">{lead.num_employees_exact != null ? lead.num_employees_exact : (lead.employee_range || '—')}</td>
-                <td className="px-4 py-3 text-slate-500 font-mono text-xs">{lead.nace_code || '—'}</td>
                 <td className="px-4 py-3">
-                  {lead.nis2_registered
-                    ? <span className="text-xs bg-cyan-500/15 text-cyan-400 px-2 py-0.5 rounded-full">NIS2</span>
-                    : '—'}
+                  {lead.niche && (
+                    <span className="text-xs bg-purple-500/15 text-purple-400 px-2 py-0.5 rounded-full capitalize">{lead.niche}</span>
+                  )}
                 </td>
                 <td className="px-4 py-3">
                   <div className="flex items-center gap-1.5">

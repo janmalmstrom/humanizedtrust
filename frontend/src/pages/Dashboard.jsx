@@ -121,7 +121,7 @@ function SendEmailModal({ action, onSent, onClose }) {
           {generating ? (
             <div className="text-center py-12 text-slate-400">
               <div className="text-2xl mb-2">✨</div>
-              <div className="text-sm">Generating pitch in Swedish...</div>
+              <div className="text-sm">Generating pitch...</div>
             </div>
           ) : (
             <>
@@ -901,16 +901,16 @@ function PipelineBenchmark({ funnelMap, totalLeads }) {
 
 // 3. Cold email + call reference benchmarks — placed after Enrichment Health
 const EMAIL_BENCHMARKS = [
-  { label: 'Reply rate',          target: '5–8%',          avg: '2–5%',         tip: 'Personalized Swedish copy beats templates by 3×' },
-  { label: 'Meeting booked rate', target: '1–3%',          avg: '0.5–1%',       tip: 'Per email sent — AI pitch + NIS2 angle lifts this' },
+  { label: 'Reply rate',          target: '5–8%',          avg: '2–5%',         tip: 'Personalized copy beats templates by 3×. AI visibility angle resonates in ad-restricted healthcare niches.' },
+  { label: 'Meeting booked rate', target: '1–3%',          avg: '0.5–1%',       tip: 'Per email sent — competitor gap + NBC/CBS angle lifts this' },
   { label: 'Follow-up steps',     target: '4–6 touches',   avg: '1–2',          tip: 'Most replies come on step 3–5, not step 1' },
-  { label: 'Best send time',      target: 'Tue–Thu 08–10', avg: 'Mon AM worst', tip: 'Swedish business hours — avoid Fri PM' },
+  { label: 'Best send time',      target: 'Tue–Thu 08–10', avg: 'Mon AM worst', tip: 'US business hours (Eastern) — avoid Fri PM' },
 ];
 const CALL_BENCHMARKS = [
   { label: 'Connect rate',      target: '10–20%',        avg: '5–10%', tip: 'Gatekeeper navigation — try direct/mobile numbers' },
-  { label: 'Connect → meeting', target: '5–15%',         avg: '2–5%',  tip: 'Lead with NIS2 deadline + ROI — skip product pitch' },
+  { label: 'Connect → meeting', target: '5–15%',         avg: '2–5%',  tip: 'Lead with competitor gap + AI visibility angle' },
   { label: 'Dials per meeting', target: '50–80',         avg: '100+',  tip: 'Hot leads (score ≥70) need ~30 dials' },
-  { label: 'Best call time',    target: '10–11 & 15–16', avg: 'Random', tip: 'Avoid Mon AM and Fri PM in Sweden' },
+  { label: 'Best call time',    target: '10–11 & 15–16', avg: 'Random', tip: 'Avoid Mon AM and Fri PM' },
 ];
 
 function OutreachBenchmarks() {
@@ -930,7 +930,7 @@ function OutreachBenchmarks() {
     <div className="grid grid-cols-2 gap-4">
       <div className="bg-navy-800 rounded-xl border border-white/10 p-5">
         <h2 className="text-sm font-semibold text-slate-200 mb-0.5">📧 Cold Email Benchmarks</h2>
-        <p className="text-xs text-slate-500 mb-3">B2B cybersecurity · Swedish market</p>
+        <p className="text-xs text-slate-500 mb-3">B2B content syndication · US healthcare</p>
         {EMAIL_BENCHMARKS.map(b => <BenchRow key={b.label} b={b} tagColor="text-emerald-400 bg-emerald-500/10" />)}
       </div>
       <div className="bg-navy-800 rounded-xl border border-white/10 p-5">
@@ -1051,7 +1051,7 @@ export default function Dashboard() {
     <div className="p-8 space-y-6">
       <div>
         <h1 className="text-xl font-semibold text-slate-100">Dashboard</h1>
-        <p className="text-slate-500 text-sm mt-0.5">Swedish AI/NIS2 outreach pipeline</p>
+        <p className="text-slate-500 text-sm mt-0.5">US Healthcare outreach pipeline · Simaroa Media</p>
       </div>
 
       {scheduleModal && (
@@ -1066,12 +1066,12 @@ export default function Dashboard() {
       {/* Reply inbox alert — shows first if there are unread replies */}
       <ReplyInboxAlert />
 
-      {/* NIS2Klar Inbound Leads */}
+      {/* Inbound Leads */}
       <div className="bg-navy-800 rounded-xl border border-white/10 overflow-hidden">
         <div className="px-5 py-4 border-b border-white/10 flex items-center justify-between">
           <div className="flex items-center gap-2">
             <span className="text-base">📥</span>
-            <h3 className="text-sm font-semibold text-slate-200">NIS2Klar Inbound Leads</h3>
+            <h3 className="text-sm font-semibold text-slate-200">Inbound Leads</h3>
             {inboundLeads.length > 0 && (
               <span className="ml-1 px-2 py-0.5 rounded-full bg-amber-500/20 text-amber-400 text-xs font-bold">{inboundLeads.length}</span>
             )}
@@ -1079,7 +1079,7 @@ export default function Dashboard() {
           <Link to="/leads" className="text-xs text-cyan-400 hover:text-cyan-300 transition-colors">View all →</Link>
         </div>
         {inboundLeads.length === 0 ? (
-          <div className="px-5 py-6 text-sm text-slate-500">No inbound leads yet — forms on nis2klar.se will appear here.</div>
+          <div className="px-5 py-6 text-sm text-slate-500">No inbound leads yet.</div>
         ) : (
           <table className="w-full text-sm">
             <thead>
@@ -1137,10 +1137,10 @@ export default function Dashboard() {
       {/* KPI row */}
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
         {[
-          { label: 'Total leads', value: parseInt(ov.total).toLocaleString(), sub: `${ov.has_email} with email`, tip: 'All Swedish ABs in your database matching NIS2 target sectors (healthcare, finance, transport, IT, etc.). Imported from Bolagsverket + SCB.' },
-          { label: 'NIS2 registered', value: parseInt(ov.nis2_count).toLocaleString(), sub: 'Regulatory = high priority', highlight: true, tip: 'Companies officially registered under Sweden\'s NIS2 implementation. They face legal deadlines to improve cybersecurity — regulatory pressure creates urgency to buy. These are your hottest prospects.' },
-          { label: 'Active sequences', value: bdr?.sequences?.active || 0, sub: `${bdr?.sequences?.enrolled_leads || 0} leads enrolled`, tip: 'Leads currently enrolled in an automated multi-step outreach sequence (e.g. email → LinkedIn → call). Each sequence step fires on a schedule — sequences keep you consistent without manual follow-up tracking.', onClick: () => setShowEnrolled(true) },
-          { label: 'Avg score', value: ov.avg_score || 0, sub: 'out of 100', tip: 'Average lead quality score across all leads (0–100). Scoring: NIS2 registered +30 · employees 50–249 +25 · target NACE sector +20 · has email +15. Avg of ~20 is expected cold — enrichment + filtering push hot leads to 70+.' },
+          { label: 'Total leads', value: parseInt(ov.total).toLocaleString(), sub: `${ov.has_email} with email`, tip: 'US healthcare clinic leads (ketamine, infusion therapy, TMS, etc.) imported from TrustLeads.' },
+          { label: 'Contacted', value: parseInt(ov.contacted).toLocaleString(), sub: 'outreach started', highlight: true, tip: 'Leads where outreach has been initiated — LinkedIn warm-up or email sent.' },
+          { label: 'Active sequences', value: bdr?.sequences?.active || 0, sub: `${bdr?.sequences?.enrolled_leads || 0} leads enrolled`, tip: 'Leads currently enrolled in an automated multi-step outreach sequence (LinkedIn + email). Each step fires on a schedule.', onClick: () => setShowEnrolled(true) },
+          { label: 'Avg score', value: ov.avg_score || 0, sub: 'out of 100', tip: 'Average lead quality score across all leads (0–100).' },
         ].map(kpi => (
           <div key={kpi.label} onClick={kpi.onClick}
             className={`rounded-xl border p-5 ${kpi.highlight ? 'border-cyan-500/30 bg-cyan-500/5' : 'border-white/10 bg-navy-800'} ${kpi.onClick ? 'cursor-pointer hover:border-white/20 hover:bg-white/5 transition-colors' : ''}`}>
@@ -1289,14 +1289,14 @@ export default function Dashboard() {
           <div className="px-5 py-4 border-b border-white/10 flex items-center justify-between">
             <div className="flex items-center gap-2">
               <h2 className="text-sm font-semibold text-slate-200">Hot leads to contact</h2>
-              <InfoTooltip text="Your top 8 leads sorted by score. Score ≥70 = NIS2 registered + right size + target sector. The Score column is the most important — higher = better fit + more urgency. NIS2 badge means they face legal compliance deadlines. Email ✓ means you can start a sequence immediately." position="top" />
+              <InfoTooltip text="Your top 8 leads sorted by score. Higher score = better fit. Email ✓ means you can start a sequence immediately." position="top" />
             </div>
             <Link to="/leads?score_label=hot" className="text-xs text-cyan-400 hover:text-cyan-300">View all</Link>
           </div>
           <table className="w-full text-sm">
             <thead>
               <tr className="border-b border-white/5">
-                {['Company','City','Emp.','NACE','NIS2','Score','Email'].map(h => (
+                {['Company','City','State','Niche','Score','Email'].map(h => (
                   <th key={h} className="text-left px-4 py-3 text-xs text-slate-500 font-medium">{h}</th>
                 ))}
               </tr>
@@ -1310,12 +1310,9 @@ export default function Dashboard() {
                     </Link>
                   </td>
                   <td className="px-4 py-3 text-slate-400">{lead.city || '—'}</td>
-                  <td className="px-4 py-3 text-slate-400">{lead.employee_range || '—'}</td>
-                  <td className="px-4 py-3 text-slate-500 font-mono text-xs">{lead.nace_code || '—'}</td>
+                  <td className="px-4 py-3 text-slate-400">{lead.state || '—'}</td>
                   <td className="px-4 py-3">
-                    {lead.nis2_registered
-                      ? <span className="text-xs bg-cyan-500/15 text-cyan-400 px-2 py-0.5 rounded-full">NIS2</span>
-                      : <span className="text-slate-600">—</span>}
+                    {lead.niche && <span className="text-xs bg-purple-500/15 text-purple-400 px-2 py-0.5 rounded-full capitalize">{lead.niche}</span>}
                   </td>
                   <td className="px-4 py-3">
                     <span className="text-red-400 font-semibold">{lead.score}</span>
@@ -1332,16 +1329,16 @@ export default function Dashboard() {
         </div>
       )}
 
-      {/* County + NACE breakdown */}
+      {/* State + Score breakdown */}
       <div className="grid grid-cols-2 gap-4">
         <div className="bg-navy-800 rounded-xl border border-white/10 p-5">
           <div className="flex items-center gap-2 mb-3">
-            <h3 className="text-sm font-semibold text-slate-200">Leads by County</h3>
-            <InfoTooltip text="Lead count broken down by Swedish county (län), mapped from postal codes. Click any county to filter your leads list. Stockholm and Västra Götaland dominate because they have the most registered ABs — but smaller counties may have less competition." position="top" />
+            <h3 className="text-sm font-semibold text-slate-200">Leads by State</h3>
+            <InfoTooltip text="Lead count by US state. Click any state to filter your leads list." position="top" />
           </div>
           <div className="space-y-2">
             {stats.by_county.map(r => (
-              <Link key={r.county} to={`/leads?county=${encodeURIComponent(r.county)}`}
+              <Link key={r.county} to={`/leads?state=${encodeURIComponent(r.county)}`}
                 className="flex justify-between text-sm group hover:bg-white/5 rounded px-1 -mx-1 transition-colors">
                 <span className="text-slate-400 group-hover:text-cyan-400 transition-colors">{r.county}</span>
                 <span className="text-slate-300 font-medium">{parseInt(r.count).toLocaleString()}</span>
