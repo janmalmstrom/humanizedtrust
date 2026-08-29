@@ -91,12 +91,12 @@ app.get('/api/hq/stats', async (req, res) => {
   }
   try {
     const db = require('./db')
-    const [leads, enroll, seqs, msgs] = await Promise.all([
+    const [leads, enroll, seqs, outreach] = await Promise.all([
       db.query(`SELECT
         COUNT(*)::int AS total,
-        COUNT(CASE WHEN approved_for_outreach = true THEN 1 END)::int AS approved,
-        COUNT(CASE WHEN score_level = 'high' THEN 1 END)::int AS high_score,
-        COUNT(CASE WHEN score_level = 'medium' THEN 1 END)::int AS medium_score,
+        COUNT(CASE WHEN review_status = 'contacted' THEN 1 END)::int AS approved,
+        COUNT(CASE WHEN score_label = 'hot' THEN 1 END)::int AS high_score,
+        COUNT(CASE WHEN score_label = 'warm' THEN 1 END)::int AS medium_score,
         COUNT(CASE WHEN email IS NOT NULL AND email != '' THEN 1 END)::int AS with_email
         FROM discovery_leads`),
       db.query(`SELECT
@@ -106,15 +106,16 @@ app.get('/api/hq/stats', async (req, res) => {
         FROM sequence_enrollments`),
       db.query(`SELECT COUNT(*)::int AS total FROM sequences`),
       db.query(`SELECT
-        COUNT(CASE WHEN direction = 'outbound' AND created_at > NOW() - INTERVAL '30 days' THEN 1 END)::int AS sent_30d,
-        COUNT(CASE WHEN direction = 'inbound' AND created_at > NOW() - INTERVAL '30 days' THEN 1 END)::int AS replies_30d
-        FROM messages`),
+        COUNT(*)::int AS sent_30d,
+        COUNT(CASE WHEN response IS NOT NULL THEN 1 END)::int AS replies_30d
+        FROM outreach_log
+        WHERE sent_at > NOW() - INTERVAL '30 days'`),
     ])
     res.json({
       leads:     leads.rows[0],
       outreach:  enroll.rows[0],
       sequences: seqs.rows[0].total,
-      email:     msgs.rows[0],
+      email:     outreach.rows[0],
     })
   } catch (err) {
     console.error('[hq/stats]', err.message)
