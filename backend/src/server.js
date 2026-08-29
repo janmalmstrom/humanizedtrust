@@ -82,7 +82,45 @@ app.use('/api/messages',   authenticateToken, require('./routes/messages'));
 app.use('/api/seo',        authenticateToken, require('./routes/seo'));
 
 // Health check
-app.get('/api/health', (req, res) => res.json({ status: 'ok', service: 'humanizedtrust', timestamp: new Date() }));
+app.get('/api/health', (req, res) => res.json({ status: 'ok', service: 'humanizedtrust', timestamp: new Date() }))
+
+// HQ stats — internal server-to-server, x-hq-secret auth
+app.get('/api/hq/stats', async (req, res) => {
+  if (req.headers['x-hq-secret'] !== (process.env.HQ_SECRET || 'hq-secret-change-me')) {
+    return res.status(401).json({ error: 'Unauthorized' })
+  }
+  try {
+    const db = require('./db')
+    const [leads, enroll, seqs, msgs] = await Promise.all([
+      db.query(`SELECT
+        COUNT(*)::int AS total,
+        COUNT(CASE WHEN approved_for_outreach = true THEN 1 END)::int AS approved,
+        COUNT(CASE WHEN score_level = 'high' THEN 1 END)::int AS high_score,
+        COUNT(CASE WHEN score_level = 'medium' THEN 1 END)::int AS medium_score,
+        COUNT(CASE WHEN email IS NOT NULL AND email != '' THEN 1 END)::int AS with_email
+        FROM discovery_leads`),
+      db.query(`SELECT
+        COUNT(*)::int AS total_enrolled,
+        COUNT(CASE WHEN status = 'active' THEN 1 END)::int AS active,
+        COUNT(CASE WHEN replied_at IS NOT NULL THEN 1 END)::int AS replied
+        FROM sequence_enrollments`),
+      db.query(`SELECT COUNT(*)::int AS total FROM sequences`),
+      db.query(`SELECT
+        COUNT(CASE WHEN direction = 'outbound' AND created_at > NOW() - INTERVAL '30 days' THEN 1 END)::int AS sent_30d,
+        COUNT(CASE WHEN direction = 'inbound' AND created_at > NOW() - INTERVAL '30 days' THEN 1 END)::int AS replies_30d
+        FROM messages`),
+    ])
+    res.json({
+      leads:     leads.rows[0],
+      outreach:  enroll.rows[0],
+      sequences: seqs.rows[0].total,
+      email:     msgs.rows[0],
+    })
+  } catch (err) {
+    console.error('[hq/stats]', err.message)
+    res.status(500).json({ error: err.message })
+  }
+});
 
 // ========== BACKGROUND JOBS ==========
 const { run: enrichLeadsJob } = require('./jobs/enrichLeads');
