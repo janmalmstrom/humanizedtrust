@@ -113,8 +113,13 @@ router.get('/today', async (req, res) => {
        ORDER BY e.enrolled_at ASC`
     );
 
-    const today = new Date();
-    today.setHours(23, 59, 59, 999); // include steps due any time today
+    const now = new Date();
+    const dayOfWeek = now.getDay();
+    // On weekends, show actions due up to (and including) next Monday
+    const today = new Date(now);
+    if (dayOfWeek === 6) today.setDate(today.getDate() + 2);      // Sat → Mon
+    else if (dayOfWeek === 0) today.setDate(today.getDate() + 1); // Sun → Mon
+    today.setHours(23, 59, 59, 999);
 
     const todayStart = new Date(new Date().setHours(0, 0, 0, 0));
     const actions = [];
