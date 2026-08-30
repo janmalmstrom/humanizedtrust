@@ -232,6 +232,7 @@ router.post('/enrollments/:id/generate-pitch', async (req, res) => {
     const result = await generatePitch(row, {
       stepIndex,
       stepTitle,
+      stepChannel: steps[stepIndex]?.channel || 'email',
       enrolledAt: row.enrolled_at,
       steps,
     });

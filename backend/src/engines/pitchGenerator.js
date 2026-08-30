@@ -6,12 +6,16 @@
  * they're invisible in AI search. AmpiFire = solution.
  *
  * Sequence map (combined LinkedIn + email):
- *   email_1 → Email 1: AI visibility cold intro
- *   email_2 → Email 2: Competitor gap angle
- *   email_3 → Email 3: Social proof / breakup
+ *   email_1    → Email 1: AI visibility cold intro
+ *   email_2    → Email 2: Competitor gap angle
+ *   loom_email → Loom: Send AI audit video (short email with Loom link)
+ *   email_3    → Email 3: Last touch + Paddle checkout link
  */
 
 const Anthropic = require('@anthropic-ai/sdk');
+
+const LOOM_URL = process.env.LOOM_URL || '[YOUR_LOOM_URL_HERE]';
+const PADDLE_CHECKOUT_URL = process.env.PADDLE_CHECKOUT_URL || 'https://app.simaroa.com/checkout';
 
 const PITCH_ANGLE = `
 PRODUCT: Simaroa Media helps local healthcare and wellness clinics appear on NBC, CBS, Fox, and 500+ news sites — and in AI search results (ChatGPT, Claude, Perplexity).
@@ -26,7 +30,12 @@ CTA: One soft yes/no question — "Worth a quick look?" OR "Is this on your rada
 `;
 
 function buildPrompt(lead, options = {}) {
-  const { stepIndex = 0, enrolledAt, steps } = options;
+  const { stepIndex = 0, stepChannel, enrolledAt, steps } = options;
+
+  // Loom step gets its own template
+  if (stepChannel === 'loom') {
+    return buildLoomPrompt(lead, enrolledAt);
+  }
 
   const emailStepNumber = steps
     ? steps.slice(0, stepIndex).filter(s => s.channel === 'email').length
@@ -84,14 +93,63 @@ ${commonRules}`,
     email_3: `You are a B2B outreach specialist for Simaroa Media.
 
 Write the FINAL email (breakup-style). It has been ${daysSince(enrolledAt)} days since the first email.
-Tactic: "I'll stop reaching out after this..." + one last observation about the AI search blind spot for ad-restricted healthcare clinics. Leave the door open — no pressure. No hard CTA, just "let me know if the timing ever works."
+Tactic: "I'll stop reaching out after this..." + one last honest observation about the AI search blind spot for ad-restricted healthcare clinics. End with the checkout link below — frame it as "if you want to move forward on your own, here's the link — no call needed."
+
+CHECKOUT LINK: ${PADDLE_CHECKOUT_URL}
+Include the checkout link naturally in the closing paragraph.
 
 ${PITCH_ANGLE}
 ${leadCtx}
-${commonRules}`,
+
+RULES (follow strictly):
+- Write in English — direct, confident, peer-to-peer tone
+- MAX 100 words in email body
+- Subject line + email body
+- Sign off with: "Jan Malmström\\nSimaroa Media"
+- NEVER start with "Hope this email finds you well" or similar clichés
+- NO soft yes/no CTA — this is the breakup email, just leave the door open
+- Include checkout link once, naturally
+- Generate 2 alternative subject lines, mark best with ★
+- NEVER invent case studies, client names, or specific revenue numbers
+
+FORMAT:
+Subject: [best subject ★] | [alternative subject]
+
+[email body starting with: ${lead.contact_name?.split(' ')[0] ? 'Hi ' + lead.contact_name.split(' ')[0] + ',' : 'Hi,'}]`,
   };
 
   return frameworks[framework] || frameworks.email_1;
+}
+
+function buildLoomPrompt(lead, enrolledAt) {
+  const contactName = lead.contact_name?.split(' ')[0] || null;
+  const greeting = contactName ? `Hi ${contactName},` : 'Hi,';
+
+  return `You are a B2B outreach specialist for Simaroa Media.
+
+Write a SHORT email (max 60 words) that sends a Loom video link to the prospect.
+The video shows their clinic's AI visibility score vs competitors in their city.
+
+Tactic: One sentence framing the video ("Made you a 2-minute video showing..."). Include the Loom URL on its own line. One sentence on what they'll see. No pitch, no CTA — just deliver the video.
+
+LOOM URL: ${LOOM_URL}
+
+Clinic: ${lead.company_name}
+City: ${lead.city || ''}, ${lead.state || 'US'}
+Days since first email: ${daysSince(enrolledAt)}
+
+RULES:
+- MAX 60 words in email body — short as possible
+- Subject line + email body
+- Sign off with: "Jan Malmström\\nSimaroa Media"
+- Put the Loom URL on its own line after the intro sentence
+- NO hard CTA — let the video do the work
+- Generate 2 subject lines, mark best with ★
+
+FORMAT:
+Subject: [best subject ★] | [alternative subject]
+
+[email body starting with: ${greeting}]`;
 }
 
 function getFramework(emailStepNumber) {
@@ -106,7 +164,6 @@ function daysSince(dateStr) {
 }
 
 function parseGenerated(text) {
-  // Match "Subject:" line
   const subjectLine = text.match(/^\*{0,2}Subject:\*{0,2}\s*(.+)/mi)?.[1] || '';
   let subject = subjectLine;
   const starMatch = subjectLine.match(/([^|★]+)★/);

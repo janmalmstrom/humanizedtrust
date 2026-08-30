@@ -68,6 +68,7 @@ const CHANNEL_CONFIG = {
   email:    { icon: '📧', label: 'Send email',        color: 'text-blue-400',    bg: 'bg-blue-500/10 border-blue-500/20' },
   linkedin: { icon: '💼', label: 'LinkedIn connect',  color: 'text-sky-400',     bg: 'bg-sky-500/10 border-sky-500/20' },
   call:     { icon: '📞', label: 'Discovery call',    color: 'text-emerald-400', bg: 'bg-emerald-500/10 border-emerald-500/20' },
+  loom:     { icon: '🎥', label: 'Send Loom video',   color: 'text-violet-400',  bg: 'bg-violet-500/10 border-violet-500/20' },
 };
 
 function SendEmailModal({ action, onSent, onClose }) {
@@ -365,9 +366,10 @@ function ReplyInboxAlert() {
   );
 }
 
-const CHANNEL_ORDER = ['email', 'linkedin', 'call'];
+const CHANNEL_ORDER = ['email', 'loom', 'linkedin', 'call'];
 const CHANNEL_SECTION = {
   email:    { icon: '📧', label: 'Emails',            hint: 'Send all emails first — batch them together' },
+  loom:     { icon: '🎥', label: 'Loom videos',       hint: 'Generate the email copy, record your Loom, send' },
   linkedin: { icon: '💼', label: 'LinkedIn actions',  hint: 'Follow, like, connect, or DM — work down the list' },
   call:     { icon: '📞', label: 'Calls',             hint: 'Call all prospects — use the phone number link' },
 };
@@ -457,6 +459,7 @@ function TodayActions() {
     const cfg = CHANNEL_CONFIG[action.step_channel] || CHANNEL_CONFIG.email;
     const isDone = done.has(action.enrollment_id);
     const isEmail = action.step_channel === 'email';
+    const isLoom = action.step_channel === 'loom';
     const isLinkedIn = action.step_channel === 'linkedin';
     const eid = action.enrollment_id;
     const dm = dmTexts[eid];
@@ -527,12 +530,12 @@ function TodayActions() {
             <div>{action.sequence_name}</div>
             <div>Step {action.step_index + 1}/{action.step_total}</div>
           </div>
-          {isEmail && action.email && !isDone ? (
+          {(isEmail || isLoom) && action.email && !isDone ? (
             <div className="flex-shrink-0 flex items-center gap-2">
               <button
                 onClick={() => setEmailModal(action)}
-                className="px-3 py-1.5 rounded-lg text-xs font-medium bg-blue-600/80 hover:bg-blue-500 text-white transition-colors cursor-pointer">
-                Send email
+                className={`px-3 py-1.5 rounded-lg text-xs font-medium text-white transition-colors cursor-pointer ${isLoom ? 'bg-violet-600/80 hover:bg-violet-500' : 'bg-blue-600/80 hover:bg-blue-500'}`}>
+                {isLoom ? 'Get Loom email' : 'Send email'}
               </button>
               <button
                 onClick={() => !isDone && advance(eid, action.step_channel)}
