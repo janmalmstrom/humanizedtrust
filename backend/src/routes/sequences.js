@@ -36,11 +36,17 @@ router.post('/:lead_id/enroll', async (req, res) => {
     const sequence = seqRows[0];
     const steps = Array.isArray(sequence.steps) ? sequence.steps : JSON.parse(sequence.steps);
 
+    // Pick modular components for this enrollment (locked for entire sequence)
+    const { SUBJECT_BANK, HOOK_BANK, CTA_BANK } = require('../engines/pitchGenerator');
+    const pickRandom = (bank) => { const k = Object.keys(bank); return k[Math.floor(Math.random() * k.length)]; };
+    const componentCodes = { sbj: pickRandom(SUBJECT_BANK), hok: pickRandom(HOOK_BANK), cta: pickRandom(CTA_BANK) };
+    const pitchComponents = `KET_${componentCodes.sbj}_${componentCodes.hok}_${componentCodes.cta}`;
+
     // Create enrollment
     const { rows: enrollRows } = await db.query(
-      `INSERT INTO sequence_enrollments (lead_id, sequence_id, status, current_step)
-       VALUES ($1, $2, 'active', 0) RETURNING id`,
-      [req.params.lead_id, sequence_id]
+      `INSERT INTO sequence_enrollments (lead_id, sequence_id, status, current_step, pitch_components, component_codes)
+       VALUES ($1, $2, 'active', 0, $3, $4) RETURNING id`,
+      [req.params.lead_id, sequence_id, pitchComponents, JSON.stringify(componentCodes)]
     );
     const enrollmentId = enrollRows[0].id;
 
@@ -240,7 +246,16 @@ router.post('/enrollments/:id/generate-pitch', async (req, res) => {
       stepChannel: steps[stepIndex]?.channel || 'email',
       enrolledAt: row.enrolled_at,
       steps,
+      componentCodes: row.component_codes || undefined,
     });
+
+    // Persist components tag on first email (may not be set if enrollment pre-dates migration)
+    if (result.components && result.components !== 'LOOM' && !row.pitch_components) {
+      await db.query(
+        `UPDATE sequence_enrollments SET pitch_components=$1, component_codes=$2 WHERE id=$3`,
+        [result.components, JSON.stringify(result.componentCodes), row.id]
+      );
+    }
 
     res.json({ success: true, data: result });
   } catch (err) {
@@ -377,6 +392,79 @@ router.get('/overview/stats', async (req, res) => {
     res.json({ success: true, data: { sequences: rows } });
   } catch (err) {
     console.error('[sequences] overview error:', err.message);
+    res.status(500).json({ success: false, error: err.message });
+  }
+});
+
+// GET /api/sequences/component-stats — modular A/B performance by SBJ / HOK / CTA
+// Kill threshold: SBJ < 15% open after 50 sends · HOK < 8% reply after 50 openers · CTA < 5% conv after 30 repliers
+router.get('/component-stats', async (req, res) => {
+  try {
+    const [byCombo, bySbj, byHok, byCta] = await Promise.all([
+      // Full combo funnel
+      db.query(`
+        SELECT
+          pitch_components                                                                  AS combo,
+          COUNT(*)                                                                          AS sends,
+          COUNT(opened_at)                                                                  AS opens,
+          ROUND(COUNT(opened_at)::numeric    / COUNT(*) * 100, 1)                          AS open_pct,
+          COUNT(replied_at)                                                                 AS replies,
+          ROUND(COUNT(replied_at)::numeric   / NULLIF(COUNT(opened_at),0) * 100, 1)        AS reply_pct,
+          COUNT(converted_at)                                                               AS conversions,
+          ROUND(COUNT(converted_at)::numeric / NULLIF(COUNT(replied_at),0) * 100, 1)       AS conv_pct
+        FROM sequence_enrollments
+        WHERE pitch_components IS NOT NULL
+        GROUP BY pitch_components
+        ORDER BY sends DESC
+      `),
+      // By SBJ — open rate (which subject type gets opens)
+      db.query(`
+        SELECT
+          component_codes->>'sbj'                                                           AS sbj,
+          COUNT(*)                                                                          AS sends,
+          COUNT(opened_at)                                                                  AS opens,
+          ROUND(COUNT(opened_at)::numeric / COUNT(*) * 100, 1)                             AS open_pct,
+          CASE WHEN COUNT(*) < 50 THEN true ELSE false END                                 AS insufficient_data
+        FROM sequence_enrollments
+        WHERE pitch_components IS NOT NULL
+        GROUP BY sbj ORDER BY open_pct DESC NULLS LAST
+      `),
+      // By HOK — reply rate (which hook earns replies)
+      db.query(`
+        SELECT
+          component_codes->>'hok'                                                           AS hok,
+          COUNT(opened_at)                                                                  AS openers,
+          COUNT(replied_at)                                                                 AS replies,
+          ROUND(COUNT(replied_at)::numeric / NULLIF(COUNT(opened_at),0) * 100, 1)          AS reply_pct,
+          CASE WHEN COUNT(opened_at) < 50 THEN true ELSE false END                         AS insufficient_data
+        FROM sequence_enrollments
+        WHERE pitch_components IS NOT NULL
+        GROUP BY hok ORDER BY reply_pct DESC NULLS LAST
+      `),
+      // By CTA — conversion rate (which CTA drives Paddle purchases)
+      db.query(`
+        SELECT
+          component_codes->>'cta'                                                           AS cta,
+          COUNT(replied_at)                                                                 AS repliers,
+          COUNT(converted_at)                                                               AS conversions,
+          ROUND(COUNT(converted_at)::numeric / NULLIF(COUNT(replied_at),0) * 100, 1)       AS conv_pct,
+          CASE WHEN COUNT(replied_at) < 30 THEN true ELSE false END                        AS insufficient_data
+        FROM sequence_enrollments
+        WHERE pitch_components IS NOT NULL
+        GROUP BY cta ORDER BY conv_pct DESC NULLS LAST
+      `),
+    ]);
+
+    res.json({
+      success: true,
+      kill_thresholds: { sbj: '< 15% open after 50 sends', hok: '< 8% reply after 50 openers', cta: '< 5% conv after 30 repliers' },
+      by_combo: byCombo.rows,
+      by_sbj:   bySbj.rows,
+      by_hok:   byHok.rows,
+      by_cta:   byCta.rows,
+    });
+  } catch (err) {
+    console.error('[sequences] component-stats error:', err.message);
     res.status(500).json({ success: false, error: err.message });
   }
 });
