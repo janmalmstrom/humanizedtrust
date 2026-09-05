@@ -453,4 +453,50 @@ router.post('/email', async (req, res) => {
   }
 });
 
+// POST /api/inbound/converted — called by app.simaroa.com PayPal webhook on payment success
+// Stamps converted_at on the matching lead's active sequence enrollment
+router.post('/converted', async (req, res) => {
+  const secret = req.headers['x-ht-secret'];
+  if (secret !== (process.env.HT_INTERNAL_SECRET || 'ht-internal-secret-change-me')) {
+    return res.status(401).json({ success: false, error: 'Unauthorized' });
+  }
+
+  const { email } = req.body;
+  if (!email) return res.status(400).json({ success: false, error: 'email required' });
+
+  try {
+    // Find lead by email
+    const { rows: leads } = await db.query(
+      `SELECT id FROM discovery_leads WHERE LOWER(email) = LOWER($1) LIMIT 1`,
+      [email]
+    );
+    if (!leads.length) {
+      console.log(`[inbound/converted] no lead found for ${email}`);
+      return res.json({ success: true, matched: false });
+    }
+
+    const leadId = leads[0].id;
+
+    // Stamp converted_at on their active (or most recent) enrollment
+    const { rowCount } = await db.query(
+      `UPDATE sequence_enrollments
+       SET converted_at = NOW()
+       WHERE lead_id = $1
+         AND converted_at IS NULL
+         AND id = (
+           SELECT id FROM sequence_enrollments
+           WHERE lead_id = $1
+           ORDER BY enrolled_at DESC LIMIT 1
+         )`,
+      [leadId]
+    );
+
+    console.log(`[inbound/converted] ${email} → lead ${leadId} — stamped: ${rowCount > 0}`);
+    res.json({ success: true, matched: true, stamped: rowCount > 0 });
+  } catch (err) {
+    console.error('[inbound/converted] error:', err.message);
+    res.status(500).json({ success: false, error: err.message });
+  }
+});
+
 module.exports = router;
