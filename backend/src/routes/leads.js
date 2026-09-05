@@ -527,7 +527,7 @@ router.post('/:id/generate-pitch', async (req, res) => {
     const result = await generatePitch(lead);
 
     await db.query('UPDATE discovery_leads SET outreach_angle=$1 WHERE id=$2', [result.full, lead.id]);
-    res.json({ success: true, data: { email: result.full, subject: result.subject, body: result.body } });
+    res.json({ success: true, data: { email: result.full, subject: result.subject, body: result.body, components: result.components, componentCodes: result.componentCodes } });
   } catch (err) {
     console.error('[leads] generate-pitch error:', err.message);
     res.status(err.message.includes('ANTHROPIC') ? 503 : 500).json({ success: false, error: err.message });
