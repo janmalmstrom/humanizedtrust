@@ -41,20 +41,22 @@ const SUBJECT_BANK = {
 // Opening hook types — determines reply rate
 // 6 types each create a different belief shift in lines 1-2
 const HOOK_BANK = {
-  HOK1: { type: 'reframe',        directive: 'Opening hook — REFRAME: challenge their assumption that Google/SEO is still the main patient acquisition channel. The shift to AI-first search is already happening and ad-restricted categories like theirs are most exposed.' },
-  HOK2: { type: 'mechanism',      directive: 'Opening hook — MECHANISM: explain exactly how AI assistants (ChatGPT, Claude, Perplexity) now answer "best ketamine clinic near me" before Google does — and that they cite specific clinics by name from published content.' },
-  HOK3: { type: 'contrast',       directive: 'Opening hook — CONTRAST: reference that you looked at AI results for clinics in their city/niche. Name a type of competitor (not a specific clinic you\'d be inventing) that appears while they don\'t. Keep it plausible and honest.' },
-  HOK4: { type: 'proof',          directive: 'Opening hook — PROOF: tease a finding — you ran AI searches for their niche in their city and found a clear pattern of who dominates AI results and who is invisible. Don\'t invent specific names or numbers.' },
-  HOK5: { type: 'permission',     directive: 'Opening hook — PERMISSION: ultra-short, low-pressure. Just signal you found something relevant about their AI visibility and ask if you can share it. Give them an easy out. No pitch yet.' },
-  HOK6: { type: 'gradualization', directive: 'Opening hook — GRADUALIZATION: validate that they\'re probably already aware AI search is changing things, then introduce the specific blind spot most clinics in their category miss: being invisible on the AI layer while competitors get cited.' },
+  // Outcome-framed hooks — lead with what happens to THEIR business, not how the technology works
+  HOK1: { type: 'reframe',        directive: 'Opening hook — REFRAME (outcome): The clinics getting new patients from AI search aren\'t doing more marketing — they made one positioning move that made them the recommended answer. Land on the OUTCOME (patients they\'re getting) not the mechanism (how AI works).' },
+  HOK2: { type: 'mechanism',      directive: 'Opening hook — MECHANISM (outcome): Patients in their city are already asking AI assistants which clinic to choose — and getting a specific answer. Some clinics are being recommended. Others don\'t exist in that conversation. Focus on what it means for their patient pipeline, not the technology itself.' },
+  HOK3: { type: 'contrast',       directive: 'Opening hook — CONTRAST (outcome): A competitor type in their market is already being recommended by AI when patients search. That clinic is getting patients this clinic doesn\'t know it\'s losing. Make the lost patient outcome feel real and specific, without inventing names or numbers.' },
+  HOK4: { type: 'proof',          directive: 'Opening hook — PROOF (outcome): You looked at what AI recommends for their niche in their city. There\'s a clear winner in that conversation — and it\'s not them yet. Frame it as patients actively choosing elsewhere, not as a technical SEO problem.' },
+  HOK5: { type: 'permission',     directive: 'Opening hook — PERMISSION (outcome): Ultra-short. Signal you found something about which clinics patients are being sent to by AI in their area — and ask if it\'s worth a look. One sentence. No pitch. Make the outcome (patient referrals) the carrot, not the process.' },
+  HOK6: { type: 'loss',           directive: 'Opening hook — LOSS AVERSION (outcome): Every week a patient asks AI for a ketamine clinic in their city and gets sent somewhere else, that\'s a patient they\'ll never get back. The window to be the recommended clinic in their market is still open — but it closes as competitors move first. Land on the cost of waiting, not the features of the solution.' },
 };
 
 // CTA types — determines self-serve conversion rate (reply → clicks checkout link → buys)
 // Goal: customer buys via Paddle checkout without ever needing a call or meeting
-// 2 types: logic (ROI framing) vs identity (status framing)
+// Outcome-framed: CTAs tie back to what they get, not what we do
 const CTA_BANK = {
-  CTA1: { type: 'logic',    text: 'Worth a quick look?' },
-  CTA2: { type: 'identity', text: 'Is this on your radar?' },
+  CTA1: { type: 'outcome_logic',    text: 'Worth seeing if your market is still open?' },
+  CTA2: { type: 'outcome_identity', text: 'Is being the recommended clinic in your city something you\'re working toward?' },
+  CTA3: { type: 'loss_aversion',    text: 'Want to see what patients are being told when they ask AI about clinics in your city?' },
 };
 
 // ─── Component Picker ─────────────────────────────────────────────────────────
@@ -73,13 +75,13 @@ function buildTag(niche, sbj, hok, cta) {
 // ─── Prompt Builders ──────────────────────────────────────────────────────────
 
 const PRODUCT_CONTEXT = `
-PRODUCT: Simaroa Media helps local healthcare and wellness clinics appear on NBC, CBS, Fox, and 500+ news sites — and in AI search results (ChatGPT, Claude, Perplexity).
+OUTCOME: Simaroa Media makes a clinic the AI-recommended answer when patients in their city search for ketamine therapy, infusion treatment, or wellness services. The clinic becomes the name ChatGPT, Claude, and Perplexity cite by name — before a patient ever opens Google.
 
-PAIN: Ketamine clinics, infusion centers, and wellness practices can't run paid ads (Google/Meta restrict the category). Organic content is the only scalable channel. Competitors who invest in content syndication appear when a patient asks ChatGPT "best ketamine clinic near me" — the invisible clinic loses that patient.
+PAIN: Ketamine clinics can't run paid ads. Every patient who asks an AI assistant "best ketamine clinic near me" gets sent to whoever shows up in AI results. If that's not this clinic, it's a competitor. That's happening right now, every day, with zero visibility into how many patients are being redirected.
 
-OFFER: Content syndication package — brand authority article published on NBC/ABC/CBS/Fox affiliates + 500 sites. Result: Google News, AI search visibility, DA 70–90+ backlinks.
+HOW IT WORKS (internal context only — do NOT describe the mechanism in the email): A brand authority article is published on NBC/ABC/CBS/Fox affiliates and 500+ news sites. AI assistants are trained on published news. When a patient searches, the clinic with published authority gets cited. One article. One-time $797. The clinic becomes findable in AI search.
 
-VALUE PROP: This is the playbook used by the top-ranked clinics in any market. Patients are asking AI before they Google. If you're not in AI search, you're losing them to whoever is.
+FRAMING RULE: Never lead with "we publish articles" or "content syndication." Always lead with the patient outcome — patients finding the clinic through AI, patients being recommended by ChatGPT, being the name that comes up. The article is the mechanism, not the value.
 `;
 
 function leadContext(lead) {
@@ -161,7 +163,7 @@ ${sbj.directive}
 OPENING HOOK DIRECTIVE (lines 1-2 of email body):
 ${hok.directive}
 
-Close with: "If you want to move forward on your own, no call needed — here's the link:" then ${PADDLE_CHECKOUT_URL} on its own line.
+Close with one sentence about the cost of waiting (the market position is being taken by someone — if not them, then a competitor). Then: "If you want to claim it, no call needed:" then ${PADDLE_CHECKOUT_URL} on its own line.
 
 ${PRODUCT_CONTEXT}
 ${block}
