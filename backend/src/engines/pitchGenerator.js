@@ -4,10 +4,11 @@
  * Emails are assembled from 3 independent components tracked separately:
  *   SBJ (subject line type) — what gets the email opened
  *   HOK (opening hook type) — what earns the reply
- *   CTA (call-to-action type) — what converts
+ *   CTA (call-to-action type) — what drives self-serve purchase (no call, no meeting)
  *
  * Every generated email carries a combo tag: KET_SBJ2_HOK4_CTA1
- * Track open rate by SBJ, reply rate by HOK, meeting rate by CTA.
+ * Track open rate by SBJ, reply rate by HOK, checkout clicks by CTA.
+ * Goal: prospect reads email → clicks Paddle link → buys. No meeting required.
  * After 200 sends you know which components win — not just which email won.
  *
  * Usage:
@@ -48,7 +49,8 @@ const HOOK_BANK = {
   HOK6: { type: 'gradualization', directive: 'Opening hook — GRADUALIZATION: validate that they\'re probably already aware AI search is changing things, then introduce the specific blind spot most clinics in their category miss: being invisible on the AI layer while competitors get cited.' },
 };
 
-// CTA types — determines meeting/response rate
+// CTA types — determines self-serve conversion rate (reply → clicks checkout link → buys)
+// Goal: customer buys via Paddle checkout without ever needing a call or meeting
 // 2 types: logic (ROI framing) vs identity (status framing)
 const CTA_BANK = {
   CTA1: { type: 'logic',    text: 'Worth a quick look?' },
